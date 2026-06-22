@@ -177,7 +177,8 @@ npm run preview
 - `npm run format:check`: check formatting without writing files.
 
 React Router 8 currently warns that Node `>=22.22.0` is preferred. Local checks
-have passed on Node `22.21.0`, but CI uses a current Node 22 runtime.
+have passed on Node `22.21.0`, but CI uses a current Node 22 runtime. Playwright
+uses the local Chrome channel outside CI and bundled Chromium inside CI.
 
 ## 15. Repository Structure
 

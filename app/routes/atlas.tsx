@@ -54,22 +54,40 @@ function useAtlasParams() {
     .slice(0, 2);
 
   const updateParams = (updates: Record<string, string | null>) => {
-    const next = new URLSearchParams(params);
-    Object.entries(updates).forEach(([key, value]) => {
-      if (value) {
-        next.set(key, value);
-      } else {
-        next.delete(key);
-      }
-    });
-    setParams(next, { replace: false });
+    setParams(
+      (previous) => {
+        const next = new URLSearchParams(previous);
+        Object.entries(updates).forEach(([key, value]) => {
+          if (value) {
+            next.set(key, value);
+          } else {
+            next.delete(key);
+          }
+        });
+        return next;
+      },
+      { replace: false },
+    );
   };
 
   const selectCompare = (descriptor: Descriptor) => {
-    const next = compareSlugs.includes(descriptor.slug)
-      ? compareSlugs
-      : [...compareSlugs, descriptor.slug].slice(-2);
-    updateParams({ compare: next.join(",") });
+    setParams(
+      (previous) => {
+        const nextParams = new URLSearchParams(previous);
+        const previousSlugs = (nextParams.get("compare") ?? "")
+          .split(",")
+          .map((slug) => slug.trim())
+          .filter(Boolean)
+          .slice(0, 2);
+        const nextSlugs = previousSlugs.includes(descriptor.slug)
+          ? previousSlugs
+          : [...previousSlugs, descriptor.slug].slice(-2);
+
+        nextParams.set("compare", nextSlugs.join(","));
+        return nextParams;
+      },
+      { replace: false },
+    );
   };
 
   return {
