@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software or its curated descriptor data, please cite this repository and the exact release or commit used."
+title: "Coffee Flavor Atlas"
+authors:
+  - name: "dpan538"
+abstract: "An interactive, research-driven atlas of coffee flavor language, including bilingual descriptors, sensory association profiles, provenance records, and experimental web visualization."
+repository-code: "https://github.com/dpan538/coffee-flavor-research"
+license: MIT
+keywords:
+  - coffee
+  - coffee flavor
+  - sensory science
+  - data visualization
+  - bilingual
+  - research software
+  - interactive atlas
