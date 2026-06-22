@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "rootDirs": [".", ".react-router/types"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["app/*"],
+      "flavor-data": ["packages/flavor-data/src/index.ts"]
+    },
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "6.0"
+  },
+  "include": [
+    ".react-router/types/**/*",
+    "app/**/*",
+    "packages/**/*",
+    "tests/**/*",
+    "*.ts",
+    "*.tsx"
+  ],
+  "exclude": ["build", "dist", "node_modules", "src"]
+}
