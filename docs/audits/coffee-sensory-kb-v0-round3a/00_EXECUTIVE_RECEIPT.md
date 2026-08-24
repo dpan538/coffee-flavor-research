@@ -5,9 +5,9 @@ PHASE_STATUS=PASS
 
 SOURCE_SHA=995bc11053ba3224c02fdb55f5ba9dbbe3beced1
 WORK_BRANCH=codex/coffee-sensory-kb-v0-round3a-context-20260824
-FINAL_LOCAL_SHA=8c646fe6b86995ab3a327d8f7a0fefc69fa29f15
-FINAL_REMOTE_SHA=8c646fe6b86995ab3a327d8f7a0fefc69fa29f15
-REMOTE_MAIN_SHA=995bc11053ba3224c02fdb55f5ba9dbbe3beced1
+FINAL_LOCAL_SHA=54f42940adbd5758208fe2f5c4fb37d8a1345c24
+FINAL_REMOTE_SHA=54f42940adbd5758208fe2f5c4fb37d8a1345c24
+REMOTE_MAIN_SHA=54f42940adbd5758208fe2f5c4fb37d8a1345c24
 WORKTREE_CLEAN=true
 
 HISTORICAL_MIGRATIONS_MODIFIED=false
@@ -62,7 +62,7 @@ REMOTE_FRONTEND_CI_PASS=true
 REMOTE_POSTGRES_CI_PASS=true
 
 REMOTE_BACKUP_PASS=true
-MAIN_PROMOTION_PASS=PENDING
+MAIN_PROMOTION_PASS=true
 FORCE_PUSH_USED=false
 ORIGINAL_DIRTY_MAIN_TOUCHED=false
 
@@ -72,4 +72,4 @@ KNOWN_BLOCKERS=none
 NEXT_RECOMMENDED_PHASE=rights-cleared context dataset import and held-out C0/C1 validation
 ```
 
-GitHub Actions run `32741471238` verified checkpoint `8c646fe6b86995ab3a327d8f7a0fefc69fa29f15`: “Format, typecheck, test, and build” passed in 1m00s and “PostgreSQL 17 ontology and corpus gates” passed in 2m19s. `MAIN_PROMOTION_PASS` remains pending only until this remotely verified linear history is fast-forwarded to `origin/main`; finalization updates the promotion evidence without changing research or implementation.
+GitHub Actions run `32741831352` verified receipt checkpoint `54f42940adbd5758208fe2f5c4fb37d8a1345c24`: “Format, typecheck, test, and build” passed in 55s and “PostgreSQL 17 ontology and corpus gates” passed in 1m52s. The same SHA was then fast-forwarded without force to `origin/main`; post-promotion run `32742085163` passed the frontend job in 1m00s and the PostgreSQL 17 job in 2m23s. This receipt-finalization change records those already observed facts and does not change research or implementation.
