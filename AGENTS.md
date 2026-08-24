@@ -2,20 +2,48 @@
 
 ## Product
 
-Coffee Flavor Atlas / 咖啡风味图谱 is an interactive, research-driven atlas of
-coffee flavor language. Treat it as a vocabulary and interface prototype, not a
-coffee standard, ecommerce site, dashboard, or sample database.
+Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
+system for ordinary coffee tasting. The intended product uses low-burden
+context and perception questions to return sensory candidates that help users
+name, refine, compare, and remember their own impressions. Treat candidates as
+references, not correct answers, true flavor probabilities, or a sensory exam.
+
+The current product semantics are governed by
+`docs/product/PRODUCT_CONTRACT_V0.md`. Preparation and roast taxonomies,
+Q1–Q5, consumer ranking, the API, and the final frontend remain research work.
 
 ## Repository Purpose
 
-This repository preserves the Coffee Flavor Atlas public baseline: a static
-React Router + Vite application, schema-validated flavor descriptor data,
-methodology documentation, tests, and layered licensing metadata.
+This repository preserves two deliberately separate layers:
 
-UI redesign work and repository metadata work should stay separate unless a
-task explicitly asks to combine them.
+- the validated PostgreSQL sensory knowledge base, canonical ontology,
+  rights-reviewed pilot corpus, deterministic retrieval baseline, evidence,
+  and audit receipts through Round 2B; and
+- a static React Router + Vite public-baseline interface with
+  schema-validated project-curated pilot descriptors.
+
+PostgreSQL is the canonical architecture for future knowledge, corpus, NLP/ML,
+and evaluation work. The static TypeScript data remains a compatibility
+dependency of the existing interface and is not canonical KB knowledge.
+
+UI redesign, knowledge/research work, and repository metadata work should stay
+separate unless a task explicitly asks to combine them.
 
 ## Current Architecture
+
+Knowledge and research substrate:
+
+- PostgreSQL 17+ with `pg_trgm` and no required `pgvector` dependency.
+- Six schemas: `ref`, `kb`, `evidence`, `corpus`, `ml`, and `audit`.
+- Forward-only migrations under `db/`; migrations `000` through `007` are the
+  immutable Round 1 baseline, and `008` through `011` are the immutable Round
+  2A baseline.
+- Source-controlled ontology and corpus inputs, SQL validation, negative and
+  semantic tests, query-plan review, and reproducibility scripts.
+- Canonical knowledge, corpus observations, model inference, and evaluation
+  results remain separate.
+
+Static application compatibility layer:
 
 - React Router Framework Mode with `ssr: false`.
 - Vite for build and preview.
@@ -29,8 +57,10 @@ task explicitly asks to combine them.
 
 Astro has been removed. Do not reintroduce Astro, Next.js, Tailwind, Framer
 Motion, GSAP, Lenis, Three.js, WebGL, Canvas as primary rendering, UI component
-frameworks, CMS, databases, login, API server, or large global state libraries
-without an explicit architecture task.
+frameworks, CMS, a second database architecture, login, API server, or large
+global state libraries without an explicit architecture task. Do not connect
+the static frontend to PostgreSQL without a dedicated API/data-integration
+contract.
 
 ## Common Commands
 
@@ -45,10 +75,24 @@ npm run test:smoke
 npm run format:check
 ```
 
+Database commands require a disposable PostgreSQL 17+ environment and the
+destructive-operation safeguards documented in `db/README.md`:
+
+```bash
+npm run db:migrate
+npm run test:db
+npm run test:db:repro
+```
+
 Use npm because `package-lock.json` is the active lockfile.
 
 ## Data Location
 
+- `db/`: canonical PostgreSQL migrations, source-controlled inputs, scripts,
+  and executable database tests.
+- `docs/audits/`: frozen implementation and validation receipts.
+- `docs/methodology/METHODOLOGY_OVERVIEW.md`: current scientific architecture.
+- `docs/research/RESEARCH_ROADMAP.md`: ordered research program.
 - `packages/flavor-data/src/descriptors.ts`: 24 pilot descriptors.
 - `packages/flavor-data/src/categories.ts`: category registry.
 - `packages/flavor-data/src/sources.ts`: source registry.
@@ -57,7 +101,8 @@ Use npm because `package-lock.json` is the active lockfile.
 - `packages/flavor-data/src/sort.ts`: search, map, and related sorting tools.
 
 React UI must import descriptor/category/source data from `packages/flavor-data`.
-Do not copy or fork descriptor data inside `app/`.
+Do not copy or fork descriptor data inside `app/`, and do not promote the
+static pilot descriptor scores into PostgreSQL as canonical knowledge.
 
 ## Schema Rules
 
@@ -118,6 +163,8 @@ entries, or "free download" assets with unverified licenses.
 
 - `npm run format:check`, `npm run check`, `npm run test`,
   `npm run test:smoke`, and `npm run build` pass for functional changes.
+- Database changes remain forward-only and pass the applicable PostgreSQL
+  validation and reproducibility gates.
 - Home, Atlas, descriptor detail, and methodology routes remain statically
   buildable.
 - Atlas search, aliases, category filters, FIELD/INDEX/MAP, detail navigation,
@@ -126,3 +173,5 @@ entries, or "free download" assets with unverified licenses.
   errors.
 - Documentation is updated when architecture, data, motion, licensing, or asset
   policy changes.
+- Significant rounds include an executive receipt and follow
+  `docs/engineering/GIT_CHECKPOINT_POLICY.md`.

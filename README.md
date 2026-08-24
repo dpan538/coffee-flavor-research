@@ -1,97 +1,155 @@
 # Coffee Flavor Atlas / Coffee Sensory Knowledge Base
 
-Coffee Flavor Atlas / 咖啡风味图谱 is a research project about coffee sensory
-language. The repository now has two deliberately separate layers:
+Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
+system for people tasting coffee at home, in a café, or in another ordinary
+drinking context. The intended product asks for preparation and roast context,
+then uses about four low-burden sensory questions to return five primary and
+three secondary flavor references compatible with the user's current
+perception.
 
-- a static React Router + Vite public-baseline interface with 24 project-curated
-  pilot descriptors; and
-- the current PostgreSQL-backed Coffee Sensory Knowledge Base V0 research
-  substrate under [`db/`](./db/).
+The system is meant to help someone name, refine, compare, and remember sensory
+impressions. It is not a tasting exam, a coffee standard, or a system that
+declares a person's perception wrong. Its candidates may help a user compare
+their experience with roaster, store, or packaging tasting notes, but those
+notes remain industry-language observations rather than objective flavor
+labels.
 
-The PostgreSQL model is the canonical architecture for future knowledge, NLP,
-corpus, and evaluation work. The existing TypeScript descriptor data remains a
-compatibility dependency of the static interface only. Its draft association
-ranges are not scientific measurements, official cupping values, or canonical
-KB assertions.
+The current repository contains the validated research and database foundation
+through Round 2B. The final consumer interaction and ranking model have not yet
+been implemented or validated.
 
-## Current research architecture
+## Product contract
 
-KB V0 separates language-neutral concepts, multilingual lexical expressions,
-typed polyhierarchical relations, source and rights evidence, raw corpus
-observations, model inference, independent review, and explicit promotion.
-PostgreSQL 17+ is the system of record, `pg_trgm` is the only required
-extension, and `pgvector` is not a V0 dependency.
-
-Start with:
-
-- [`docs/research/coffee-sensory-kb-v0/00_RESEARCH_SOURCE.md`](./docs/research/coffee-sensory-kb-v0/00_RESEARCH_SOURCE.md)
-- [`docs/research/coffee-sensory-kb-v0/01_V0_ARCHITECTURE.md`](./docs/research/coffee-sensory-kb-v0/01_V0_ARCHITECTURE.md)
-- [`docs/research/coffee-sensory-kb-v0/02_DATABASE_INVARIANTS.md`](./docs/research/coffee-sensory-kb-v0/02_DATABASE_INVARIANTS.md)
-- [`docs/research/coffee-sensory-kb-v0/03_ENGINEERING_DECISIONS.md`](./docs/research/coffee-sensory-kb-v0/03_ENGINEERING_DECISIONS.md)
-- [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md)
-
-The external Deep Research PDF named by the engineering brief was not present
-in the workspace and has not been fabricated or copied. The supplied Round 1
-brief is recorded as the engineering contract. Test results, rather than these
-documents, determine whether an implementation gate passes.
-
-## Database workflow
-
-The migrations are ordered, directly executable through `psql`, and isolated
-from the frontend runtime:
+The current product semantics are frozen in the
+[Product Contract V0](./docs/product/PRODUCT_CONTRACT_V0.md). At a conceptual
+level, the intended interaction is:
 
 ```text
-db/000_extensions.sql
-db/001_reference_and_schemas.sql
-db/002_core_schema.sql
-db/003_evidence_corpus_ml_audit.sql
-db/004_constraints_and_triggers.sql
-db/005_indexes_and_views.sql
-db/006_reference_seed.sql
-db/007_validation_queries.sql
-db/008_concept_provenance.sql
-db/009_concept_schemes.sql
-db/010_canonical_ontology_seed.sql
-db/011_ontology_validation.sql
+C0 preparation / beverage context
+C1 roast context
+Q1 + Q2 + Q3 + Q4
+optional adaptive Q5
+↓
+5 primary sensory candidates + 3 secondary candidates
 ```
 
-Migrations `000` through `007` are the immutable Round 1 baseline. Round 2A is
-forward-only: it adds controlled concept-provenance roles, isolated
-source-specific schemes, the curated canonical ontology, and ontology-specific
-views and validation.
+The C0 and C1 taxonomies, the exact questions, and the consumer-to-sensory
+ranking model remain research questions. In particular, the proposed
+seven-level roast scale is a product hypothesis, not a universal scientific
+roast standard.
 
-Use only a disposable PostgreSQL 17+ database. The database README documents
-the required environment and destructive-test safeguards:
-[`db/README.md`](./db/README.md).
+## Methodology
 
-```bash
-npm run db:migrate
-npm run test:db
-npm run test:db:repro
+Scientific credibility in this project comes from evidence, explicit
+semantics, evaluation, uncertainty handling, and reproducibility—not from the
+mere use of AI or deep learning.
+
+```text
+coffee sensory science
+        ↓
+canonical sensory knowledge base
+        ↓
+industry-language observations
+        ↓
+deterministic normalization
+        ↓
+NLP / ML candidate retrieval
+        ↓
+evaluated ranking
+        ↓
+consumer sensory references
 ```
 
-Round 1 evidence is recorded under
-[`docs/audits/coffee-sensory-kb-v0-round1/`](./docs/audits/coffee-sensory-kb-v0-round1/).
-Round 2A ontology, provenance, rights, query-plan, and reproducibility evidence
-is recorded under
-[`docs/audits/coffee-sensory-kb-v0-round2a/`](./docs/audits/coffee-sensory-kb-v0-round2a/).
+The [Methodology Overview](./docs/methodology/METHODOLOGY_OVERVIEW.md) explains
+this architecture, its epistemic boundaries, and its present limitations. Any
+future embedding or deep-learning layer must demonstrate measurable held-out
+benefit over the deterministic baseline. Model output never silently becomes
+canonical knowledge, and retrieval may explicitly return `UNRESOLVED`.
 
-## Static public baseline
+## Validated status through Round 2B
 
-The frontend remains a vocabulary and interface prototype, not a coffee
-standard, ecommerce site, formal cupping system, or sample database. It keeps
-search, category filtering, Atlas views, descriptor details, comparison,
-methodology, and bilingual pilot labels available while later data integration
-is designed separately.
+The PostgreSQL 17 foundation currently includes:
+
+- 130 ontology concepts, including 92 active canonical sensory attributes;
+- source-versioned provenance, rights policy, lifecycle status, and isolated
+  source-specific concept schemes;
+- 2,474 historical corpus documents and 6,818 parsed observations from a
+  rights-reviewed pilot;
+- 1,713 unique normalized industry-language expressions;
+- deterministic exact, approved-variant, `pg_trgm`, and typed-graph retrieval;
+- explicit abstention and `UNRESOLVED` behavior; and
+- reproducible migrations and two-clean-rebuild validation.
+
+Round 2B retrieval results are **deterministic language-retrieval metrics**
+against graded semantic judgments. They are not coffee flavor accuracy. See
+the [Round 2B executive receipt](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md)
+for the frozen inventory, metrics, rights decisions, and validation gates.
+
+No `pgvector`, embedding, production LLM, automatic ontology promotion,
+consumer ranking model, or database-to-frontend connection is required by the
+validated baseline.
+
+## Knowledge architecture
+
+PostgreSQL is the canonical system of record. Its six logical domains preserve
+different kinds of claims:
+
+- `ref`: controlled codes and semantics;
+- `kb`: canonical concepts, lexicalizations, and governed relations;
+- `evidence`: sources, rights, support, measurements, and projections;
+- `corpus`: captured language observations and corpus-derived statistics;
+- `ml`: versioned model runs, mapping candidates, and candidate signals; and
+- `audit`: review, lifecycle history, validation, and explicit promotion.
+
+The central boundary is:
+
+```text
+canonical knowledge
+≠ raw corpus observation
+≠ model inference
+≠ evaluation result
+```
+
+See the [Repository Architecture](./docs/ARCHITECTURE.md),
+[database guide](./db/README.md), and
+[database research architecture](./docs/research/coffee-sensory-kb-v0/01_V0_ARCHITECTURE.md)
+for implementation details.
+
+## Known limitations
+
+The current foundation is deliberately incomplete:
+
+- the Round 2B corpus is primarily one historical secondary source;
+- the governed lexical bridge remains sparse and deterministic retrieval
+  coverage is low;
+- consumer-to-sensory-region ranking is not calibrated;
+- preparation and roast context are not yet modeled;
+- embeddings have not been benchmarked; and
+- no final four-to-five-question interaction has been validated.
+
+These limits constrain generalization. They are not hidden by forcing weak
+mappings or by describing retrieval scores as sensory probabilities.
+
+## Current research direction
+
+The next phase researches preparation context, roast context, their database
+representation, multi-source corpus enrichment, and lexical normalization
+expansion. Independent evaluation and an optional embedding benchmark follow
+only after those foundations are stronger.
+
+See the [Research Roadmap](./docs/research/RESEARCH_ROADMAP.md) for the ordered
+program. No dates are implied by that sequence.
+
+## Repository boundaries and local workflow
+
+The repository still includes a static React Router + Vite public-baseline
+interface backed by 24 project-curated TypeScript pilot descriptors. That UI
+is a compatibility and interface prototype; its draft association ranges are
+not canonical KB assertions or scientific measurements. It is not yet
+connected to PostgreSQL.
 
 ```bash
 npm ci
-npm run dev
-```
-
-Other frontend checks:
-
-```bash
 npm run format:check
 npm run check
 npm run test
@@ -99,51 +157,49 @@ npm run build
 npm run test:smoke
 ```
 
-Application code imports descriptor/category/source data only from
-`packages/flavor-data`. Do not copy that pilot dataset into `app/` or promote it
-into PostgreSQL as canonical knowledge.
+Database migrations and destructive-test safeguards are documented in
+[`db/README.md`](./db/README.md). Use only a disposable PostgreSQL 17+
+database.
 
-## Repository map
-
-```text
-app/                         Static React Router application
-packages/flavor-data/src/    Runtime-referenced pilot descriptor model
-db/                          PostgreSQL KB migrations and executable tests
-docs/research/               Current KB V0 research architecture
-docs/audits/                 Evidence-backed implementation receipts
-docs/archive/                Frozen pre-KB product and design material
-tests/                       Vitest and Playwright frontend tests
+```bash
+npm run db:migrate
+npm run test:db
+npm run test:db:repro
 ```
 
-The archived 2026-06-22 product baseline remains available at
-[`docs/archive/pre-sensory-kb-v0-20260824/`](./docs/archive/pre-sensory-kb-v0-20260824/).
-Archival status preserves traceability; it does not imply every earlier idea
-was wrong.
+## Documentation map
 
-## Scientific and rights boundaries
+- Current product semantics:
+  [Product Contract V0](./docs/product/PRODUCT_CONTRACT_V0.md)
+- Scientific and evaluation boundaries:
+  [Methodology Overview](./docs/methodology/METHODOLOGY_OVERVIEW.md)
+- Ordered research program:
+  [Research Roadmap](./docs/research/RESEARCH_ROADMAP.md)
+- Database structure:
+  [Repository Architecture](./docs/ARCHITECTURE.md) and
+  [KB V0 research documents](./docs/research/coffee-sensory-kb-v0/)
+- Validated implementation evidence:
+  [Round 1](./docs/audits/coffee-sensory-kb-v0-round1/00_EXECUTIVE_RECEIPT.md),
+  [Round 2A](./docs/audits/coffee-sensory-kb-v0-round2a/00_EXECUTIVE_RECEIPT.md),
+  and [Round 2B](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md)
+- Frozen pre-V0 material:
+  [legacy archive](./docs/archive/pre-sensory-kb-v0-20260824/README.md) and
+  [archive manifest](./docs/archive/pre-sensory-kb-v0-20260824/MANIFEST.md)
 
-- Concepts are language-neutral; display labels are lexical records, not IDs.
-- A concept is not restricted to one universal Flavor Wheel family.
-- Descriptor identity has no intrinsic permanent intensity or universal
-  coordinate.
-- Perceptual, linguistic, corpus, structural, model, and governance signals
-  remain distinct.
-- Retrieval may return `UNRESOLVED`; nearest-neighbour classification is never
-  forced.
-- Model output never silently becomes canonical knowledge.
-- Restricted raw text is excluded from production-export views unless rights
-  metadata affirmatively permits export.
-- The project does not reproduce protected SCA, WCR, ISO, Cup of Excellence,
-  or commercial source content as its dataset.
+Historical documents and audit receipts preserve the terminology and claims
+that applied when they were written. Current product interpretation should
+start with the Product Contract V0.
 
-See [`docs/LICENSE-SCOPE.md`](./docs/LICENSE-SCOPE.md),
-[`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md), and
-[`docs/ASSET-LICENSES.md`](./docs/ASSET-LICENSES.md) for the layered rights
-policy.
+## Scientific, rights, and contribution boundaries
 
-## Citation and contribution
+The project does not reproduce protected SCA, WCR, ISO, Cup of Excellence, or
+commercial source content as its dataset. Public web access is not treated as
+reuse permission. Restricted raw text is excluded from production-export
+surfaces unless rights metadata affirmatively permit export.
 
-[`CITATION.cff`](./CITATION.cff) is the repository citation metadata. Cite the
-exact commit used until a formal version and release exist. Contributions must
-follow [`CONTRIBUTING.md`](./CONTRIBUTING.md) and include provenance for any
-sensory, translation, source, or rights claim.
+See [License Scope](./docs/LICENSE-SCOPE.md),
+[Third-Party Notices](./THIRD_PARTY_NOTICES.md), and
+[Asset Licenses](./docs/ASSET-LICENSES.md). Cite the exact repository commit
+used until a formal release exists. Contributions must follow
+[CONTRIBUTING.md](./CONTRIBUTING.md) and include provenance for sensory,
+translation, source, or rights claims.
