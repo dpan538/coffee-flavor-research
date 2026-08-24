@@ -1,7 +1,7 @@
 # Coffee Sensory Knowledge Base V0 — Engineering Decisions
 
-Status: current decision record  
-Effective date: 2026-08-24
+- Status: current decision record
+- Effective date: 2026-08-24
 
 This record turns the research contract into implementation choices. It does
 not duplicate database test evidence and does not claim the implementation has

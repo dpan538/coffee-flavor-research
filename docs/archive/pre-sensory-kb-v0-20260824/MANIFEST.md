@@ -1,9 +1,9 @@
 # Archive Manifest: Pre-Sensory-KB V0
 
-Archive key: `pre-sensory-kb-v0-20260824`  
-Archive event: 2026-08-24  
-Source revision: `1755915d3918013c8bd7c5f744e5ce8a0e972167`  
-Work branch: `codex/coffee-sensory-kb-v0-round1-20260824`
+- Archive key: `pre-sensory-kb-v0-20260824`
+- Archive event: 2026-08-24
+- Source revision: `1755915d3918013c8bd7c5f744e5ce8a0e972167`
+- Work branch: `codex/coffee-sensory-kb-v0-round1-20260824`
 
 The five archived artifacts below all belong to the 2026-06-22 public baseline.
 They were moved rather than copied, and Git reports each as a rename. The

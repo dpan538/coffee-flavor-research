@@ -1,8 +1,8 @@
 # 01 — Discovery and Archive Receipt
 
-Receipt date: 2026-08-24  
-Scope: read-only discovery and archival classification only  
-Archive: [`docs/archive/pre-sensory-kb-v0-20260824/`](../../archive/pre-sensory-kb-v0-20260824/)
+- Receipt date: 2026-08-24
+- Scope: read-only discovery and archival classification only
+- Archive: [`docs/archive/pre-sensory-kb-v0-20260824/`](../../archive/pre-sensory-kb-v0-20260824/)
 
 ## Repository facts recorded before KB implementation
 

@@ -1,10 +1,10 @@
 # Coffee Sensory Knowledge Base V0 — Research Source
 
-Status: current engineering contract  
-Effective date: 2026-08-24  
-Supersedes: the pre-Sensory-KB V0 product, frontend, data-methodology, and
-decision documents listed in the
-[archive manifest](../../archive/pre-sensory-kb-v0-20260824/MANIFEST.md)
+- Status: current engineering contract
+- Effective date: 2026-08-24
+- Supersedes: the pre-Sensory-KB V0 product, frontend, data-methodology, and
+  decision documents listed in the
+  [archive manifest](../../archive/pre-sensory-kb-v0-20260824/MANIFEST.md)
 
 ## Source identity and availability
 

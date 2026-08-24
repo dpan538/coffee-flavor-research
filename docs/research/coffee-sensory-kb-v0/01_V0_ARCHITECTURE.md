@@ -1,8 +1,8 @@
 # Coffee Sensory Knowledge Base V0 Architecture
 
-Status: canonical target architecture  
-Validation status: determined only by the
-[Round 1 audit receipts](../../audits/coffee-sensory-kb-v0-round1/)
+- Status: canonical target architecture
+- Validation status: determined only by the
+  [Round 1 audit receipts](../../audits/coffee-sensory-kb-v0-round1/)
 
 ## Architectural purpose
 

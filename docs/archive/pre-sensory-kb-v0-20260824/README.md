@@ -1,8 +1,8 @@
 # Pre-Sensory-KB V0 Archive
 
-Archive event: 2026-08-24  
-Artifact baseline date: 2026-06-22  
-Status: historical, non-canonical
+- Archive event: 2026-08-24
+- Artifact baseline date: 2026-06-22
+- Status: historical, non-canonical
 
 This archive freezes the Coffee Flavor Atlas product, frontend, methodology,
 and decision documents that predate the PostgreSQL-backed Coffee Sensory

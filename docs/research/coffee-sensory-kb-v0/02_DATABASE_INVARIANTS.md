@@ -1,8 +1,8 @@
 # Coffee Sensory Knowledge Base V0 — Database Invariants
 
-Status: normative implementation requirements  
-Evidence status: requirements only; see
-[Round 1 audits](../../audits/coffee-sensory-kb-v0-round1/) for test results
+- Status: normative implementation requirements
+- Evidence status: requirements only; see
+  [Round 1 audits](../../audits/coffee-sensory-kb-v0-round1/) for test results
 
 The words **MUST**, **MUST NOT**, **REQUIRED**, and **PROHIBITED** define the
 engineering contract. They do not report that an implementation has passed.
