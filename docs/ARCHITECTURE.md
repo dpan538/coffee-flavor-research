@@ -4,8 +4,16 @@
 
 The current research architecture is the PostgreSQL 17+ Coffee Sensory
 Knowledge Base V0. It is implemented as an isolated migration and test
-substrate under `db/`. Round 2A populates that substrate but still does not
-connect the frontend to PostgreSQL.
+substrate under `db/`. Rounds 1 through 2B establish its schema, canonical
+ontology, rights-reviewed pilot corpus, and deterministic retrieval baseline.
+The frontend is still not connected to PostgreSQL.
+
+Current product meaning is governed by the
+[Product Contract V0](./product/PRODUCT_CONTRACT_V0.md). The
+[Methodology Overview](./methodology/METHODOLOGY_OVERVIEW.md) explains how the
+knowledge layers support the intended sensory-reference system, while the
+[Research Roadmap](./research/RESEARCH_ROADMAP.md) identifies what remains
+unvalidated.
 
 The database uses six logical schemas:
 
@@ -23,20 +31,28 @@ Executable pass/fail evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round1/`](./audits/coffee-sensory-kb-v0-round1/).
 Round 2A evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round2a/`](./audits/coffee-sensory-kb-v0-round2a/).
+Round 2B corpus, retrieval, rights, and reproducibility evidence belongs in
+[`docs/audits/coffee-sensory-kb-v0-round2b/`](./audits/coffee-sensory-kb-v0-round2b/).
 
 ## PostgreSQL boundary
 
 `db/000_extensions.sql` through `db/007_validation_queries.sql` form the
 immutable, dependency-ordered Round 1 baseline. Forward migrations `008`
 through `011` add concept-level provenance roles, source-local concept schemes,
-the curated V0 ontology, and ontology validation. PostgreSQL is the system of
-record and `pg_trgm` is required. `pgvector`, embeddings, an application API,
-and frontend data integration are deliberately outside V0.
+the curated V0 ontology, and ontology validation. Forward migrations `012`
+through `017` add corpus governance, versioned normalization and statistics,
+deterministic retrieval and audit structures, the frozen pilot, evaluation,
+resolution feedback, and Round 2B validation. PostgreSQL is the system of
+record and `pg_trgm` is required. `pgvector`, embeddings, a consumer ranking
+model, an application API, and frontend data integration are not dependencies
+of the validated baseline.
 
 Canonical concepts never store display labels, permanent descriptor intensity,
 universal similarity, or projection coordinates. Source-specific structures,
 empirical measurements, raw observations, model output, and promotion decisions
-remain in separate normalized relations.
+remain in separate normalized relations. Corpus frequency and co-occurrence do
+not automatically become canonical sensory assertions, and retrieval may
+explicitly abstain with `UNRESOLVED`.
 
 ## Static application compatibility boundary
 
