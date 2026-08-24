@@ -293,7 +293,21 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  if (( DISCOVERED_MIGRATION_COUNT > 8 )); then
+  if (( DISCOVERED_MIGRATION_COUNT > 17 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 8 )); then
     psql_target "$database_name" \
       --tuples-only \
       --no-align \
@@ -313,6 +327,147 @@ write_validation_results() {
                  FROM audit.run_validation_queries()
                  ORDER BY check_key;" >"$output_file"
   fi
+}
+
+write_round2b_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 15 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="WITH receipt(record_type, record_key, record_value) AS (
+                   SELECT
+                     'source_policy_decision',
+                     review.corpus_source_decision_code,
+                     count(*)::TEXT
+                   FROM corpus.source_policy_review AS review
+                   GROUP BY review.corpus_source_decision_code
+
+                   UNION ALL
+
+                   SELECT
+                     'corpus_snapshot',
+                     snapshot.corpus_snapshot_key,
+                     concat_ws(',',
+                       snapshot.expected_document_count,
+                       snapshot.expected_observation_count,
+                       snapshot.expected_normalized_expression_count,
+                       snapshot.source_inventory_sha256,
+                       snapshot.document_inventory_sha256,
+                       snapshot.code_commit_sha,
+                       snapshot.frozen_at IS NOT NULL
+                     )
+                   FROM corpus.corpus_snapshot AS snapshot
+
+                   UNION ALL
+
+                   SELECT
+                     'observation_retention',
+                     observation.observation_retention_code,
+                     count(*)::TEXT
+                   FROM corpus.raw_observation AS observation
+                   JOIN corpus.captured_document AS document
+                     ON document.captured_document_id = observation.captured_document_id
+                   JOIN corpus.corpus AS selected_corpus
+                     ON selected_corpus.corpus_id = document.corpus_id
+                   WHERE selected_corpus.corpus_key = 'corpus.firstbloom_a6cb002_pilot_v1'
+                   GROUP BY observation.observation_retention_code
+
+                   UNION ALL
+
+                   SELECT
+                     'normalization_run',
+                     inventory.normalization_derivation_run_key,
+                     concat_ws(',',
+                       inventory.input_observation_count,
+                       inventory.output_occurrence_count,
+                       inventory.stored_occurrence_count,
+                       inventory.unique_normalized_expression_count,
+                       inventory.unique_surface_expression_count,
+                       inventory.input_inventory_sha256,
+                       inventory.output_inventory_sha256,
+                       inventory.code_commit_sha,
+                       inventory.frozen_at IS NOT NULL
+                     )
+                   FROM corpus.v_round2b_normalization_inventory AS inventory
+
+                   UNION ALL
+
+                   SELECT
+                     'statistic_run',
+                     statistic_run.corpus_statistic_run_key,
+                     concat_ws(',',
+                       statistic_run.sample_document_count,
+                       statistic_run.sample_observation_count,
+                       (SELECT count(*) FROM corpus.normalized_expression_frequency AS frequency
+                        WHERE frequency.corpus_statistic_run_id = statistic_run.corpus_statistic_run_id),
+                       (SELECT count(*) FROM corpus.normalized_expression_pair_measurement AS pair
+                        WHERE pair.corpus_statistic_run_id = statistic_run.corpus_statistic_run_id),
+                       statistic_run.configuration_sha256,
+                       statistic_run.result_inventory_sha256,
+                       statistic_run.frozen_at IS NOT NULL
+                     )
+                   FROM corpus.corpus_statistic_run AS statistic_run
+
+                   UNION ALL
+
+                   SELECT
+                     'audit_split',
+                     audit_set.retrieval_audit_set_key || '.' || audit_case.audit_split_code,
+                     count(*)::TEXT
+                   FROM audit.retrieval_audit_set AS audit_set
+                   JOIN audit.retrieval_audit_case AS audit_case
+                     ON audit_case.retrieval_audit_set_id = audit_set.retrieval_audit_set_id
+                   GROUP BY audit_set.retrieval_audit_set_key, audit_case.audit_split_code
+
+                   UNION ALL
+
+                   SELECT
+                     'retrieval_run',
+                     model_run.model_run_key,
+                     concat_ws(',',
+                       deterministic_run.retrieval_baseline_code,
+                       model_run.model_run_status_code,
+                       deterministic_run.top_k,
+                       deterministic_run.trigram_threshold,
+                       deterministic_run.configuration_sha256,
+                       (SELECT count(*) FROM ml.mapping_inference AS inference
+                        WHERE inference.model_run_id = model_run.model_run_id),
+                       (SELECT count(*) FROM ml.mapping_candidate AS candidate
+                        JOIN ml.mapping_inference AS inference
+                          ON inference.mapping_inference_id = candidate.mapping_inference_id
+                        WHERE inference.model_run_id = model_run.model_run_id)
+                     )
+                   FROM ml.model_run AS model_run
+                   JOIN ml.deterministic_retrieval_run AS deterministic_run
+                     ON deterministic_run.model_run_id = model_run.model_run_id
+
+                   UNION ALL
+
+                   SELECT
+                     'retrieval_metric',
+                     evaluation.retrieval_evaluation_key || '.' ||
+                       metric.retrieval_metric_code || '.' ||
+                       COALESCE(metric.cutoff_k::TEXT, 'none'),
+                     concat_ws(',',
+                       metric.numerator,
+                       metric.denominator,
+                       metric.metric_value
+                     )
+                   FROM audit.retrieval_metric_value AS metric
+                   JOIN audit.retrieval_evaluation AS evaluation
+                     ON evaluation.retrieval_evaluation_id = metric.retrieval_evaluation_id
+               )
+               SELECT record_type, record_key, record_value
+               FROM receipt
+               ORDER BY record_type, record_key, record_value;" >"$output_file"
 }
 
 write_ontology_coverage() {
@@ -377,6 +532,7 @@ run_build() {
   write_source_version_inventory "$database_name" "$build_dir/source-version-inventory.txt"
   write_validation_results "$database_name" "$build_dir/validation-results.txt"
   write_ontology_coverage "$database_name" "$build_dir/ontology-coverage.txt"
+  write_round2b_inventory "$database_name" "$build_dir/round2b-inventory.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -431,6 +587,7 @@ compare_artifact REFERENCE_TABLE_ROW_COUNTS reference-row-counts.txt
 compare_artifact SOURCE_VERSION_INVENTORY source-version-inventory.txt
 compare_artifact VALIDATION_RESULT_COUNTS validation-results.txt
 compare_artifact ONTOLOGY_COVERAGE ontology-coverage.txt
+compare_artifact ROUND2B_INVENTORY round2b-inventory.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
@@ -449,6 +606,7 @@ print_result_file REFERENCE_TABLE_ROW_COUNTS "$ARTIFACT_DIR/build-one/reference-
 print_result_file SOURCE_VERSION_INVENTORY "$ARTIFACT_DIR/build-one/source-version-inventory.txt"
 print_result_file VALIDATION_RESULT_COUNTS "$ARTIFACT_DIR/build-one/validation-results.txt"
 print_result_file ONTOLOGY_COVERAGE "$ARTIFACT_DIR/build-one/ontology-coverage.txt"
+print_result_file ROUND2B_INVENTORY "$ARTIFACT_DIR/build-one/round2b-inventory.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'

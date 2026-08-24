@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import math
 import re
@@ -32,7 +33,7 @@ CORPUS_VERSION = "firstbloom-a6cb002-pilot-v1"
 CORPUS_KEY = "corpus.firstbloom_a6cb002_pilot_v1"
 SNAPSHOT_KEY = "corpus_snapshot.firstbloom_a6cb002_pilot_v1"
 PIPELINE_KEY = "normalization.en_v1"
-GENERATOR_VERSION = "round2b-pilot-generator-v1"
+GENERATOR_VERSION = "round2b-pilot-generator-v2-dual-review"
 CHECKED_AT = "2026-08-24"
 CAPTURED_AT = "2026-08-24T00:00:00+00:00"
 MAX_BATCH = 16
@@ -46,16 +47,62 @@ EXPECTED_PUBLISHERS = 215
 EXPECTED_DOCUMENTS = 2474
 EXPECTED_PRODUCTS = 2383
 EXPECTED_RAW_OBSERVATIONS = 6818
-EXPECTED_REDACTED_OBSERVATIONS = 85
-EXPECTED_RETAINED_OCCURRENCES = 6733
-EXPECTED_UNIQUE_RAW_EXPRESSIONS = 3072
-EXPECTED_LEXICAL_FORMS = 2637
-EXPECTED_NORMALIZED_EXPRESSIONS = 2634
-EXPECTED_COOCCURRENCE_PAIRS = 6141
+EXPECTED_LONG_OBSERVATIONS = 85
+EXPECTED_COMPLETE_FIELD_ORIGIN_OCCURRENCES = 311
+EXPECTED_SHORT_COMPLETE_FIELDS = 2257
+EXPECTED_COMPLETE_FIELD_SURFACE_OCCURRENCES = 502
+EXPECTED_COMPLETE_FIELD_UNIQUE_HASHES = 2209
+EXPECTED_COMPLETE_FIELD_PARSED_SURFACE_HASHES = 306
+EXPECTED_REVIEW_CANDIDATE_UNIQUE_HASHES = 2766
+EXPECTED_PRIVATE_REVIEW_CANDIDATE_SHA256 = (
+    "6f0af6acfeab8f758ca79e1540d810d57955ab67b81736525db3d8a2b8a3b6a9"
+)
+SPOT_AUDIT_POLICY_VERSION = "expression-admission-spot-audit-v2"
+SPOT_AUDIT_SAMPLING_SALT = "spot-audit-v2"
+EXPECTED_PRIVATE_SPOT_AUDIT_ROWS = 271
+EXPECTED_PRIVATE_SPOT_AUDIT_ADMITTED_ROWS = 130
+EXPECTED_PRIVATE_SPOT_AUDIT_REJECTED_ROWS = 141
+EXPECTED_PRIVATE_SPOT_AUDIT_SHA256 = (
+    "22094d38c7ac8fe6572953f77edb9ab371be4ec63109bbd87d0f3bd519e217fe"
+)
+SPOT_AUDIT_REMEDIATED_HASHES = (
+    "de03643627d17f2d30664c492279306731a3e5987bb4047a5041470ef2f9661b",
+    "80a76bd18b895238c07bb054ebc2e496286768c9edb6504b17e0d68f574a982a",
+)
+INITIAL_SPOT_AUDIT_PACKET_SHA256 = (
+    "860584dc863148211815c6973e87b95dc13e962e788801cc50d39045e358d58f"
+)
+INITIAL_SPOT_AUDIT_LEDGER_SHA256 = (
+    "dc306076ff2d97a25b9f2f8e9c5a503b53808ce74d06a71655dcc3923f0d0c43"
+)
+FINAL_SPOT_AUDIT_LEDGER_SHA256 = (
+    "d3d3945291c9217c1078ef3fb96721c6e18fd147d7a46bf966b5a5757da47152"
+)
+FINAL_SPOT_AUDIT_RETRIEVAL_LEDGER_SHA256 = (
+    "84238908cf0059484882f3e086a66d941121a1695860e951e51af14973fd7053"
+)
+# Frozen only after dual independent admission review, structural-gate v2, and
+# two zero-blocker final spot audits.  These are corpus-language counts, never
+# objective coffee-flavor measurements.
+EXPECTED_REDACTED_OBSERVATIONS = 1254
+EXPECTED_RETAINED_OCCURRENCES = 5564
+EXPECTED_UNIQUE_RAW_EXPRESSIONS = 2124
+EXPECTED_LEXICAL_FORMS = 1716
+EXPECTED_NORMALIZED_EXPRESSIONS = 1713
+EXPECTED_COOCCURRENCE_PAIRS = 4600
+EXPECTED_FINAL_TOP_25_OVERLAP = 25
+EXPECTED_FINAL_TOP_100_OVERLAP = 98
+EXPECTED_BOOTSTRAP_PLATEAU_VALUE = 3 / 7
 EXPECTED_DUPLICATE_REVIEWS = 129
 
 MANIFEST_RELATIVE_PATH = Path("db/data/round2b/firstbloom_source_manifest.json")
 RIGHTS_RELATIVE_PATH = Path("db/data/round2b/source_rights.tsv")
+ADMISSION_REVIEW_RELATIVE_PATH = Path(
+    "db/data/round2b/expression_admission_review.tsv"
+)
+ADMISSION_REVIEW_METADATA_RELATIVE_PATH = Path(
+    "db/data/round2b/expression_admission_review.json"
+)
 SQL_RELATIVE_PATH = Path("db/015_round2b_pilot_seed.sql")
 DATA_RELATIVE_DIR = Path("db/data/round2b")
 
@@ -110,6 +157,53 @@ WHOLE_PHRASE_RULES = (
     (30, "black currant", "blackcurrant"),
 )
 
+REVIEW_POLICY_VERSION = "expression-admission-dual-review-v1"
+STRUCTURAL_GATE_VERSION = "structural-prose-gate-v2"
+REVIEW_DECISION_CODES = {
+    "ENGLISH_TASTING_LANGUAGE",
+    "NARRATIVE_OR_NON_DESCRIPTOR",
+    "NON_ENGLISH",
+    "UNCERTAIN",
+}
+REVIEW_PASS_EVIDENCE_CLASS = "CODEX_ASSISTED_PROJECT_CURATION"
+EXPECTED_REVIEWER_IDS = (
+    "codex_admission_reviewer_a_20260824",
+    "codex_admission_reviewer_b_20260824",
+)
+STRUCTURAL_GATE_CODES = {
+    "PASS_CONCISE_FRAGMENT",
+    "REJECT_CONTROL_OR_FORMAT_CHARACTER",
+    "REJECT_SENTENCE_PUNCTUATION",
+    "REJECT_PERSONAL_PRONOUN_OR_FINITE_AUXILIARY",
+    "REJECT_REPEATED_CONNECTIVE",
+    "REJECT_GT_8_WORD_TOKENS",
+}
+SENTENCE_PUNCTUATION_RE = re.compile(r"[.!?]")
+WORD_TOKEN_RE = re.compile(r"\b[\w'\u2019/-]+\b", re.UNICODE)
+PERSONAL_OR_FINITE_AUXILIARY_RE = re.compile(
+    r"\b(?:"
+    r"i|me|my|mine|myself|we|us|our|ours|ourselves|"
+    r"you|your|yours|yourself|yourselves|"
+    r"he|him|his|himself|she|her|hers|herself|"
+    r"they|them|their|theirs|themselves|it|its|itself|"
+    r"am|is|are|was|were|be|been|being|have|has|had|"
+    r"do|does|did|can|could|will|would|shall|should|"
+    r"may|might|must|"
+    r"isn['\u2019]t|aren['\u2019]t|wasn['\u2019]t|weren['\u2019]t|"
+    r"haven['\u2019]t|hasn['\u2019]t|hadn['\u2019]t|"
+    r"don['\u2019]t|doesn['\u2019]t|didn['\u2019]t|"
+    r"can['\u2019]t|couldn['\u2019]t|won['\u2019]t|"
+    r"wouldn['\u2019]t|shouldn['\u2019]t|mustn['\u2019]t|"
+    r"it['\u2019]s|that['\u2019]s|there['\u2019]s|here['\u2019]s"
+    r")\b",
+    re.IGNORECASE,
+)
+REPEATED_CONNECTIVE_RE = re.compile(
+    r"\b(?:and|or|with|plus|then|but)\s+"
+    r"(?:and|or|with|plus|then|but)\b",
+    re.IGNORECASE,
+)
+
 
 class GenerationError(RuntimeError):
     """Raised when a pinned input or deterministic invariant is violated."""
@@ -156,6 +250,11 @@ def load_manifest(repo_root: Path) -> dict[str, Any]:
     require(
         manifest.get("rights_boundary") == "ALLOW_DERIVED_TERMS",
         "source manifest rights boundary changed",
+    )
+    require(
+        manifest.get("expression_admission_policy")
+        == REVIEW_POLICY_VERSION,
+        "source manifest expression-admission policy changed",
     )
     return manifest
 
@@ -281,7 +380,109 @@ def normalization_rules() -> dict[str, Any]:
             for rule_order, source_phrase, replacement_phrase in WHOLE_PHRASE_RULES
         ],
         "stored_phrase_max_unicode_characters": MAX_STORED_PHRASE_CHARACTERS,
+        "expression_admission": {
+            "policy_version": REVIEW_POLICY_VERSION,
+            "structural_gate_version": STRUCTURAL_GATE_VERSION,
+            "complete_field_surface_policy": (
+                "hash_only_when_surface_equals_any_complete_selected_field"
+            ),
+            "review_pass_count": 2,
+            "admit_consensus": "ENGLISH_TASTING_LANGUAGE",
+            "disagreement_policy": "hash_only",
+            "language_tag_basis": (
+                "dual Codex-assisted project curation consensus; not human "
+                "review or automated language detection"
+            ),
+        },
     }
+
+
+def spot_audit_receipts() -> list[dict[str, Any]]:
+    common_reviewer = {
+        "reviewer_id": "codex_admission_spot_auditor_schema_20260824",
+        "evidence_class": REVIEW_PASS_EVIDENCE_CLASS,
+        "human_review": False,
+        "automated_language_detection": False,
+    }
+    receipts = [
+        {
+            "audit_policy_version": "expression-admission-spot-audit-v1",
+            "structural_gate_version": "structural-prose-gate-v1",
+            "sampling_salt": "spot-audit-v1",
+            "sampling_salt_sha256": sha256_text("spot-audit-v1"),
+            "private_packet_sha256": INITIAL_SPOT_AUDIT_PACKET_SHA256,
+            "private_ledger_sha256": INITIAL_SPOT_AUDIT_LEDGER_SHA256,
+            "sampled_row_count": 268,
+            "sampled_admitted_count": 130,
+            "sampled_rejected_count": 138,
+            "decision_counts": {
+                "PASS_ACCEPTED": 128,
+                "PASS_REJECTED_CONSERVATIVE": 106,
+                "WARN_REJECTED_FALSE_NEGATIVE": 32,
+                "FAIL_ACCEPTED_NARRATIVE": 0,
+                "FAIL_ACCEPTED_NON_ENGLISH": 0,
+                "FAIL_ACCEPTED_UNCLEAR_SCOPE": 0,
+                "FAIL_ACCEPTED_STRUCTURAL_LEAK": 2,
+            },
+            "accepted_blocker_count": 2,
+            "changed_hashes": list(SPOT_AUDIT_REMEDIATED_HASHES),
+            "result": "FAIL_REMEDIATED_BY_STRUCTURAL_GATE_V2",
+            **common_reviewer,
+        },
+        {
+            "audit_policy_version": SPOT_AUDIT_POLICY_VERSION,
+            "structural_gate_version": STRUCTURAL_GATE_VERSION,
+            "sampling_salt": SPOT_AUDIT_SAMPLING_SALT,
+            "sampling_salt_sha256": sha256_text(
+                SPOT_AUDIT_SAMPLING_SALT
+            ),
+            "private_packet_sha256": EXPECTED_PRIVATE_SPOT_AUDIT_SHA256,
+            "private_ledger_sha256": FINAL_SPOT_AUDIT_LEDGER_SHA256,
+            "sampled_row_count": EXPECTED_PRIVATE_SPOT_AUDIT_ROWS,
+            "sampled_admitted_count": (
+                EXPECTED_PRIVATE_SPOT_AUDIT_ADMITTED_ROWS
+            ),
+            "sampled_rejected_count": (
+                EXPECTED_PRIVATE_SPOT_AUDIT_REJECTED_ROWS
+            ),
+            "decision_counts": {
+                "PASS_ACCEPTED": 130,
+                "PASS_REJECTED_CONSERVATIVE": 114,
+                "WARN_REJECTED_FALSE_NEGATIVE": 27,
+                "FAIL_ACCEPTED_NARRATIVE": 0,
+                "FAIL_ACCEPTED_NON_ENGLISH": 0,
+                "FAIL_ACCEPTED_UNCLEAR_SCOPE": 0,
+                "FAIL_ACCEPTED_STRUCTURAL_LEAK": 0,
+            },
+            "accepted_blocker_count": 0,
+            "changed_hashes": [],
+            "remediated_hashes_verified": list(
+                SPOT_AUDIT_REMEDIATED_HASHES
+            ),
+            "result": "PASS",
+            **common_reviewer,
+        },
+    ]
+    retrieval_receipt = {
+        **receipts[-1],
+        "private_ledger_sha256": (
+            FINAL_SPOT_AUDIT_RETRIEVAL_LEDGER_SHA256
+        ),
+        "decision_counts": {
+            "PASS_ACCEPTED": 130,
+            "PASS_REJECTED_CONSERVATIVE": 103,
+            "WARN_REJECTED_FALSE_NEGATIVE": 38,
+            "FAIL_ACCEPTED_NARRATIVE": 0,
+            "FAIL_ACCEPTED_NON_ENGLISH": 0,
+            "FAIL_ACCEPTED_UNCLEAR_SCOPE": 0,
+            "FAIL_ACCEPTED_STRUCTURAL_LEAK": 0,
+        },
+        "reviewer_id": (
+            "codex_admission_spot_auditor_retrieval_20260824"
+        ),
+    }
+    receipts.append(retrieval_receipt)
+    return receipts
 
 
 def selection_digest(release_id: str) -> str:
@@ -486,11 +687,431 @@ def build_product_metadata(
     return output
 
 
+def complete_field_surface_hashes(
+    selected: Sequence[dict[str, Any]],
+) -> set[str]:
+    """Return every short complete-field surface hash in the pilot.
+
+    A surface that is a complete tasting-note field anywhere in the selected
+    snapshot is never emitted as text, even when another document happens to
+    use the same surface as one segment of a longer field.  This global rule is
+    deliberately more conservative than redacting only the originating row.
+    """
+    eligible_complete_fields = [
+        release["roaster_tasting_notes_string"].strip()
+        for release in selected
+        if release["roaster_tasting_notes_string"].strip()
+        and len(release["roaster_tasting_notes_string"].strip())
+        <= MAX_STORED_PHRASE_CHARACTERS
+    ]
+    hashes = {sha256_text(value) for value in eligible_complete_fields}
+    require(
+        len(eligible_complete_fields) == EXPECTED_SHORT_COMPLETE_FIELDS,
+        "short complete-field count changed",
+    )
+    require(
+        len(hashes) == EXPECTED_COMPLETE_FIELD_UNIQUE_HASHES,
+        "short complete-field unique-hash count changed",
+    )
+    return hashes
+
+
+def review_exclusion_reason(consensus_decision_code: str) -> str | None:
+    return {
+        "ENGLISH_TASTING_LANGUAGE": None,
+        "NARRATIVE_OR_NON_DESCRIPTOR": (
+            "dual_review_narrative_or_non_descriptor"
+        ),
+        "NON_ENGLISH": "dual_review_non_english",
+        "UNCERTAIN": "dual_review_uncertain",
+        "DISAGREEMENT": "dual_review_disagreement",
+    }[consensus_decision_code]
+
+
+def expected_consensus_decision(
+    reviewer_one_decision_code: str,
+    reviewer_two_decision_code: str,
+) -> str:
+    if reviewer_one_decision_code == reviewer_two_decision_code:
+        return reviewer_one_decision_code
+    return "DISAGREEMENT"
+
+
+def structural_prose_gate_v2(value: str) -> str:
+    """Reject sentence-like text before any lexical/statistical admission."""
+    if any(unicodedata.category(character) in {"Cc", "Cf"} for character in value):
+        return "REJECT_CONTROL_OR_FORMAT_CHARACTER"
+    if SENTENCE_PUNCTUATION_RE.search(value):
+        return "REJECT_SENTENCE_PUNCTUATION"
+    if PERSONAL_OR_FINITE_AUXILIARY_RE.search(value):
+        return "REJECT_PERSONAL_PRONOUN_OR_FINITE_AUXILIARY"
+    if REPEATED_CONNECTIVE_RE.search(value):
+        return "REJECT_REPEATED_CONNECTIVE"
+    if len(WORD_TOKEN_RE.findall(value)) > 8:
+        return "REJECT_GT_8_WORD_TOKENS"
+    return "PASS_CONCISE_FRAGMENT"
+
+
+def expected_final_admission_code(
+    consensus_decision_code: str,
+    structural_gate_code: str,
+) -> str:
+    if (
+        consensus_decision_code == "ENGLISH_TASTING_LANGUAGE"
+        and structural_gate_code == "PASS_CONCISE_FRAGMENT"
+    ):
+        return "ADMIT_ENGLISH_TASTING_LANGUAGE"
+    if consensus_decision_code != "ENGLISH_TASTING_LANGUAGE":
+        return "HASH_ONLY_REVIEW_CONSENSUS"
+    return "HASH_ONLY_STRUCTURAL_PROSE_GATE"
+
+
+def expected_final_exclusion_reason(
+    consensus_decision_code: str,
+    structural_gate_code: str,
+) -> str | None:
+    final_admission = expected_final_admission_code(
+        consensus_decision_code, structural_gate_code
+    )
+    if final_admission == "ADMIT_ENGLISH_TASTING_LANGUAGE":
+        return None
+    if final_admission == "HASH_ONLY_REVIEW_CONSENSUS":
+        return review_exclusion_reason(consensus_decision_code)
+    return {
+        "REJECT_CONTROL_OR_FORMAT_CHARACTER": (
+            "structural_gate_control_or_format_character"
+        ),
+        "REJECT_SENTENCE_PUNCTUATION": (
+            "structural_gate_sentence_punctuation"
+        ),
+        "REJECT_PERSONAL_PRONOUN_OR_FINITE_AUXILIARY": (
+            "structural_gate_personal_pronoun_or_finite_auxiliary"
+        ),
+        "REJECT_REPEATED_CONNECTIVE": (
+            "structural_gate_repeated_connective"
+        ),
+        "REJECT_GT_8_WORD_TOKENS": "structural_gate_gt_8_word_tokens",
+    }[structural_gate_code]
+
+
+def load_admission_reviews(
+    repo_root: Path,
+) -> dict[str, dict[str, str]]:
+    """Load the text-free, dual-review admission inventory.
+
+    Review decisions are explicit project curation records.  They are not
+    human-review evidence, automatic language detection, or semantic mappings
+    to canonical concepts.
+    """
+    path = repo_root / ADMISSION_REVIEW_RELATIVE_PATH
+    metadata_path = repo_root / ADMISSION_REVIEW_METADATA_RELATIVE_PATH
+    require(path.is_file(), f"missing admission review inventory: {path}")
+    require(
+        metadata_path.is_file(),
+        f"missing admission review metadata: {metadata_path}",
+    )
+
+    with path.open(encoding="utf-8", newline="") as handle:
+        physical_rows = list(csv.reader(handle, delimiter="\t"))
+    require(bool(physical_rows), "admission review inventory is empty")
+    expected_columns = [
+        "source_surface_sha256",
+        "reviewer_one_decision_code",
+        "reviewer_two_decision_code",
+        "consensus_decision_code",
+        "structural_gate_code",
+        "final_admission_code",
+        "admitted_language_tag_code",
+        "exclusion_reason_code",
+    ]
+    require(
+        physical_rows[0] == expected_columns,
+        "admission review inventory columns changed",
+    )
+    for line_number, row in enumerate(physical_rows[1:], start=2):
+        require(
+            len(row) == len(expected_columns),
+            f"admission review line {line_number} has the wrong field count",
+        )
+
+    rows: dict[str, dict[str, str]] = {}
+    rows_in_order: list[dict[str, str]] = []
+    with path.open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle, delimiter="\t"):
+            surface_hash = row["source_surface_sha256"]
+            require(
+                bool(re.fullmatch(r"[0-9a-f]{64}", surface_hash)),
+                "admission review contains an invalid SHA-256",
+            )
+            require(
+                surface_hash not in rows,
+                "admission review contains a duplicate surface hash",
+            )
+            decision_one = row["reviewer_one_decision_code"]
+            decision_two = row["reviewer_two_decision_code"]
+            require(
+                decision_one in REVIEW_DECISION_CODES
+                and decision_two in REVIEW_DECISION_CODES,
+                "admission review contains an unsupported review decision",
+            )
+            consensus = expected_consensus_decision(
+                decision_one, decision_two
+            )
+            require(
+                row["consensus_decision_code"] == consensus,
+                "admission review consensus does not match both passes",
+            )
+            structural_gate = row["structural_gate_code"]
+            require(
+                structural_gate in STRUCTURAL_GATE_CODES,
+                "admission review contains an unsupported structural gate",
+            )
+            final_admission = expected_final_admission_code(
+                consensus, structural_gate
+            )
+            require(
+                row["final_admission_code"] == final_admission,
+                "admission review final gate does not match its inputs",
+            )
+            admitted = final_admission == "ADMIT_ENGLISH_TASTING_LANGUAGE"
+            require(
+                row["admitted_language_tag_code"] == ("en" if admitted else ""),
+                "admission language tag does not match consensus",
+            )
+            require(
+                row["exclusion_reason_code"]
+                == (
+                    expected_final_exclusion_reason(
+                        consensus, structural_gate
+                    )
+                    or ""
+                ),
+                "admission exclusion reason does not match final gate",
+            )
+            rows[surface_hash] = row
+            rows_in_order.append(row)
+
+    require(
+        len(rows) == EXPECTED_REVIEW_CANDIDATE_UNIQUE_HASHES,
+        "admission review candidate count changed",
+    )
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    require(
+        metadata.get("review_policy_version") == REVIEW_POLICY_VERSION,
+        "admission review policy version changed",
+    )
+    require(
+        metadata.get("structural_gate_version")
+        == STRUCTURAL_GATE_VERSION,
+        "admission review structural-gate version changed",
+    )
+    require(
+        metadata.get("admission_inventory_sha256")
+        == sha256_bytes(path.read_bytes()),
+        "admission review metadata does not bind the TSV",
+    )
+    require(
+        metadata.get("private_candidate_review_file_sha256")
+        == EXPECTED_PRIVATE_REVIEW_CANDIDATE_SHA256,
+        "admission review metadata does not bind the private candidate packet",
+    )
+    require(
+        metadata.get("candidate_hash_inventory_sha256")
+        == sha256_text(canonical_json(sorted(rows))),
+        "admission review metadata does not bind the candidate hash inventory",
+    )
+    require(
+        metadata.get("pinned_firstbloom_sha") == PINNED_SOURCE_SHA,
+        "admission review metadata source SHA changed",
+    )
+    require(
+        metadata.get("decision_codes") == sorted(REVIEW_DECISION_CODES),
+        "admission review metadata decision codes changed",
+    )
+    expected_spot_audits = spot_audit_receipts()
+    final_spot_audits = [
+        audit
+        for audit in expected_spot_audits
+        if audit["audit_policy_version"] == SPOT_AUDIT_POLICY_VERSION
+    ]
+    require(
+        metadata.get("spot_audits") == expected_spot_audits
+        and len(final_spot_audits) == 2
+        and all(
+            audit["result"] == "PASS"
+            and audit["accepted_blocker_count"] == 0
+            for audit in final_spot_audits
+        ),
+        "admission review spot-audit closure changed",
+    )
+    passes = metadata.get("review_passes")
+    require(
+        isinstance(passes, list)
+        and len(passes) == 2
+        and tuple(item.get("reviewer_id") for item in passes)
+        == EXPECTED_REVIEWER_IDS,
+        "admission review requires two distinct review passes",
+    )
+    for review_pass in passes:
+        require(
+            review_pass.get("evidence_class")
+            == REVIEW_PASS_EVIDENCE_CLASS
+            and review_pass.get("human_review") is False
+            and review_pass.get("automated_language_detection") is False,
+            "review provenance must remain explicit and conservative",
+        )
+        require(
+            bool(
+                re.fullmatch(
+                    r"[0-9a-f]{64}",
+                    str(review_pass.get("review_pass_sha256", "")),
+                )
+            ),
+            "review-pass provenance SHA-256 is invalid",
+        )
+
+    def reconstructed_review_pass_sha256(decision_column: str) -> str:
+        output = io.StringIO(newline="")
+        writer = csv.writer(
+            output,
+            delimiter="\t",
+            lineterminator="\n",
+            quoting=csv.QUOTE_MINIMAL,
+        )
+        writer.writerow(["source_surface_sha256", "review_decision_code"])
+        for row in rows_in_order:
+            writer.writerow(
+                [row["source_surface_sha256"], row[decision_column]]
+            )
+        return sha256_text(output.getvalue())
+
+    require(
+        passes[0]["review_pass_sha256"]
+        == reconstructed_review_pass_sha256("reviewer_one_decision_code")
+        and passes[1]["review_pass_sha256"]
+        == reconstructed_review_pass_sha256("reviewer_two_decision_code"),
+        "public review columns do not reconstruct the frozen private ledgers",
+    )
+
+    consensus_counts = Counter(
+        row["consensus_decision_code"] for row in rows_in_order
+    )
+    structural_counts = Counter(
+        row["structural_gate_code"] for row in rows_in_order
+    )
+    final_counts = Counter(
+        row["final_admission_code"] for row in rows_in_order
+    )
+    require(
+        metadata.get("consensus_counts")
+        == dict(sorted(consensus_counts.items()))
+        and metadata.get("structural_gate_counts")
+        == dict(sorted(structural_counts.items()))
+        and metadata.get("final_admission_counts")
+        == dict(sorted(final_counts.items())),
+        "admission review metadata aggregate counts changed",
+    )
+    decision_counts_one = Counter(
+        row["reviewer_one_decision_code"] for row in rows_in_order
+    )
+    decision_counts_two = Counter(
+        row["reviewer_two_decision_code"] for row in rows_in_order
+    )
+    agreement_count = sum(
+        row["reviewer_one_decision_code"]
+        == row["reviewer_two_decision_code"]
+        for row in rows_in_order
+    )
+    decision_pair_counts = Counter(
+        (
+            row["reviewer_one_decision_code"],
+            row["reviewer_two_decision_code"],
+        )
+        for row in rows_in_order
+    )
+    review_count = len(rows_in_order)
+    observed_agreement = agreement_count / review_count
+    chance_expected_agreement = sum(
+        (decision_counts_one[decision] / review_count)
+        * (decision_counts_two[decision] / review_count)
+        for decision in REVIEW_DECISION_CODES
+    )
+    cohen_kappa = (
+        (observed_agreement - chance_expected_agreement)
+        / (1 - chance_expected_agreement)
+        if chance_expected_agreement < 1
+        else None
+    )
+    agreement = metadata.get("review_agreement")
+    require(
+        isinstance(agreement, dict)
+        and agreement.get("reviewed_hash_count") == review_count
+        and agreement.get("agreement_count") == agreement_count
+        and agreement.get("disagreement_count")
+        == review_count - agreement_count
+        and agreement.get("reviewer_one_decision_counts")
+        == dict(sorted(decision_counts_one.items()))
+        and agreement.get("reviewer_two_decision_counts")
+        == dict(sorted(decision_counts_two.items())),
+        "admission review agreement metadata changed",
+    )
+    require(
+        isinstance(agreement.get("raw_agreement"), (int, float))
+        and math.isclose(
+            agreement["raw_agreement"],
+            observed_agreement,
+            rel_tol=0,
+            abs_tol=1e-15,
+        )
+        and isinstance(
+            agreement.get("chance_expected_agreement"), (int, float)
+        )
+        and math.isclose(
+            agreement["chance_expected_agreement"],
+            chance_expected_agreement,
+            rel_tol=0,
+            abs_tol=1e-15,
+        )
+        and (
+            cohen_kappa is None
+            and agreement.get("cohen_kappa") is None
+            or isinstance(agreement.get("cohen_kappa"), (int, float))
+            and math.isclose(
+                agreement["cohen_kappa"],
+                cohen_kappa,
+                rel_tol=0,
+                abs_tol=1e-15,
+            )
+        )
+        and agreement.get("decision_pair_counts")
+        == {
+            f"{left}|{right}": count
+            for (left, right), count in sorted(decision_pair_counts.items())
+        },
+        "admission review agreement metrics changed",
+    )
+    return rows
+
+
 def parse_observations(
     selected: Sequence[dict[str, Any]],
+    admission_reviews: dict[str, dict[str, str]] | None = None,
+    enforce_frozen_counts: bool = True,
 ) -> tuple[list[dict[str, Any]], dict[str, dict[str, str]]]:
     observations: list[dict[str, Any]] = []
     lexical_forms: dict[str, dict[str, str]] = {}
+    complete_surface_hashes = complete_field_surface_hashes(selected)
+    complete_field_hash_by_release = {
+        release["product_release_id"]: sha256_text(
+            release["roaster_tasting_notes_string"].strip()
+        )
+        for release in selected
+    }
+    candidate_hashes: set[str] = set()
+    long_count = 0
+    complete_origin_count = 0
+    complete_surface_count = 0
+    parsed_complete_surface_hashes: set[str] = set()
 
     for release in selected:
         release_id = release["product_release_id"]
@@ -518,7 +1139,76 @@ def parse_observations(
             ordinal += 1
             character_count = len(raw_phrase)
             raw_phrase_sha256 = sha256_text(raw_phrase)
-            retained = character_count <= MAX_STORED_PHRASE_CHARACTERS
+            within_length_boundary = (
+                character_count <= MAX_STORED_PHRASE_CHARACTERS
+            )
+            is_complete_field_surface = (
+                within_length_boundary
+                and raw_phrase_sha256 in complete_surface_hashes
+            )
+            is_review_candidate = (
+                within_length_boundary and not is_complete_field_surface
+            )
+            if not within_length_boundary:
+                long_count += 1
+            if (
+                within_length_boundary
+                and raw_phrase_sha256
+                == complete_field_hash_by_release[release_id]
+            ):
+                complete_origin_count += 1
+            if is_complete_field_surface:
+                complete_surface_count += 1
+                parsed_complete_surface_hashes.add(raw_phrase_sha256)
+            if is_review_candidate:
+                candidate_hashes.add(raw_phrase_sha256)
+
+            review = (
+                admission_reviews.get(raw_phrase_sha256)
+                if admission_reviews is not None and is_review_candidate
+                else None
+            )
+            if admission_reviews is not None and is_review_candidate:
+                require(
+                    review is not None,
+                    "admission review omitted an eligible surface hash",
+                )
+            consensus = (
+                review["consensus_decision_code"] if review is not None else None
+            )
+            if review is not None:
+                structural_gate = structural_prose_gate_v2(raw_phrase)
+                require(
+                    review["structural_gate_code"] == structural_gate,
+                    "source phrase does not match its frozen structural gate",
+                )
+                require(
+                    review["final_admission_code"]
+                    == expected_final_admission_code(
+                        consensus, structural_gate
+                    ),
+                    "source phrase does not match its final admission code",
+                )
+            else:
+                structural_gate = None
+            retained = (
+                review is not None
+                and review["final_admission_code"]
+                == "ADMIT_ENGLISH_TASTING_LANGUAGE"
+            )
+            if not within_length_boundary:
+                exclusion_reason = (
+                    "rights_boundary_gt_80_unicode_characters"
+                )
+            elif is_complete_field_surface:
+                exclusion_reason = "rights_complete_field_surface"
+            elif review is None:
+                exclusion_reason = "pending_dual_review"
+            else:
+                exclusion_reason = expected_final_exclusion_reason(
+                    consensus, structural_gate
+                )
+
             normalized_text = normalize_v1(raw_phrase) if retained else None
             basic_text = kb_normalize(raw_phrase) if retained else None
             require(
@@ -560,14 +1250,16 @@ def parse_observations(
                     "source_character_start": character_start,
                     "source_character_end": character_end,
                     "retained": retained,
-                    "exclusion_reason": (
-                        None
-                        if retained
-                        else "rights_boundary_gt_80_unicode_characters"
-                    ),
+                    "exclusion_reason": exclusion_reason,
                     "basic_normalized_text": basic_text,
                     "normalized_text": normalized_text,
                     "expression_key": expression_key,
+                    # This protected value exists only in memory and in the
+                    # explicitly requested private review artifact.  No
+                    # repository emitter includes this field.
+                    "private_review_candidate_text": (
+                        raw_phrase if is_review_candidate else None
+                    ),
                 }
             )
 
@@ -585,6 +1277,52 @@ def parse_observations(
         f"raw observation count is {len(observations)}, expected {EXPECTED_RAW_OBSERVATIONS}",
     )
     require(
+        long_count == EXPECTED_LONG_OBSERVATIONS,
+        "long-observation count changed",
+    )
+    require(
+        complete_origin_count == EXPECTED_COMPLETE_FIELD_ORIGIN_OCCURRENCES,
+        "complete-field origin occurrence count changed",
+    )
+    require(
+        complete_surface_count == EXPECTED_COMPLETE_FIELD_SURFACE_OCCURRENCES,
+        "global complete-field surface occurrence count changed",
+    )
+    require(
+        len(parsed_complete_surface_hashes)
+        == EXPECTED_COMPLETE_FIELD_PARSED_SURFACE_HASHES,
+        "parsed complete-field surface hash count changed",
+    )
+    require(
+        len(candidate_hashes) == EXPECTED_REVIEW_CANDIDATE_UNIQUE_HASHES,
+        "review-candidate surface hash count changed",
+    )
+    if admission_reviews is None:
+        require(
+            retained_count == 0 and not lexical_forms,
+            "pre-review parsing must not admit lexical text",
+        )
+        return observations, lexical_forms
+
+    require(
+        set(admission_reviews) == candidate_hashes,
+        "admission review hash inventory differs from eligible candidates",
+    )
+    if not enforce_frozen_counts:
+        return observations, lexical_forms
+    final_expected_counts = [
+        EXPECTED_REDACTED_OBSERVATIONS,
+        EXPECTED_RETAINED_OCCURRENCES,
+        EXPECTED_UNIQUE_RAW_EXPRESSIONS,
+        EXPECTED_LEXICAL_FORMS,
+        EXPECTED_NORMALIZED_EXPRESSIONS,
+        EXPECTED_COOCCURRENCE_PAIRS,
+    ]
+    require(
+        all(value is not None for value in final_expected_counts),
+        "dual review counts have not been frozen; final seed generation is disabled",
+    )
+    require(
         redacted_count == EXPECTED_REDACTED_OBSERVATIONS,
         f"redacted count is {redacted_count}, expected {EXPECTED_REDACTED_OBSERVATIONS}",
     )
@@ -594,11 +1332,11 @@ def parse_observations(
     )
     require(
         raw_unique == EXPECTED_UNIQUE_RAW_EXPRESSIONS,
-        f"unique raw short-expression count is {raw_unique}, expected {EXPECTED_UNIQUE_RAW_EXPRESSIONS}",
+        f"unique retained surface count is {raw_unique}, expected {EXPECTED_UNIQUE_RAW_EXPRESSIONS}",
     )
     require(
         len(lexical_forms) == EXPECTED_LEXICAL_FORMS,
-        f"Round 1 lexical-form identity count is {len(lexical_forms)}, expected {EXPECTED_LEXICAL_FORMS}",
+        f"lexical-form identity count is {len(lexical_forms)}, expected {EXPECTED_LEXICAL_FORMS}",
     )
     require(
         len({row["normalized_text"] for row in lexical_forms.values()})
@@ -975,11 +1713,15 @@ def build_diagnostics(
 
     final = stages[-1]
     require(
-        final["top_25_set_overlap_with_previous_batch"] == 25,
+        EXPECTED_FINAL_TOP_25_OVERLAP is not None
+        and final["top_25_set_overlap_with_previous_batch"]
+        == EXPECTED_FINAL_TOP_25_OVERLAP,
         "batch 15-to-16 top-25 overlap changed",
     )
     require(
-        final["top_100_set_overlap_with_previous_batch"] == 98,
+        EXPECTED_FINAL_TOP_100_OVERLAP is not None
+        and final["top_100_set_overlap_with_previous_batch"]
+        == EXPECTED_FINAL_TOP_100_OVERLAP,
         "batch 15-to-16 top-100 overlap changed",
     )
     require(
@@ -994,12 +1736,18 @@ def build_diagnostics(
         stage["bootstrap"]["median_jaccard"] for stage in stages[-3:]
     ]
     require(
-        all(
+        EXPECTED_BOOTSTRAP_PLATEAU_VALUE is not None
+        and all(
             value is not None
-            and math.isclose(value, 3 / 7, rel_tol=0, abs_tol=1e-15)
+            and math.isclose(
+                value,
+                EXPECTED_BOOTSTRAP_PLATEAU_VALUE,
+                rel_tol=0,
+                abs_tol=1e-15,
+            )
             for value in plateau
         ),
-        "bootstrap median must plateau at 3/7 for cumulative batches 14-16",
+        "bootstrap median must match the frozen cumulative-batch 14-16 plateau",
     )
 
     return {
@@ -1133,6 +1881,11 @@ def validate_rights_matrix(repo_root: Path) -> list[dict[str, str]]:
                 row["raw_text_allowed"] == "false"
                 and row["production_export_allowed"] == "false",
                 f"live review {row['policy_key']} must keep raw/export gates closed",
+            )
+        if row["decision"] == "UNKNOWN":
+            require(
+                row["source_blocked"] == "true",
+                f"unknown review {row['policy_key']} must be effectively blocked",
             )
     return rows
 
@@ -1433,6 +2186,594 @@ def expression_rows(
         }
         for basic in sorted(lexical_forms)
     ]
+
+
+def require_private_review_path(path: Path, repo_root: Path) -> Path:
+    resolved = path.resolve()
+    private_root = Path("/private/tmp").resolve()
+    require(
+        resolved.is_relative_to(private_root),
+        "protected review artifacts must stay under /private/tmp",
+    )
+    require(
+        not resolved.is_relative_to(repo_root.resolve()),
+        "protected review artifacts must not be written inside the repository",
+    )
+    return resolved
+
+
+def write_private_review_candidates(
+    path: Path,
+    observations: Sequence[dict[str, Any]],
+    repo_root: Path,
+) -> dict[str, Any]:
+    resolved = require_private_review_path(path, repo_root)
+    by_hash: dict[str, dict[str, Any]] = {}
+    document_keys: dict[str, set[str]] = defaultdict(set)
+    occurrence_counts: Counter[str] = Counter()
+    for observation in observations:
+        phrase = observation["private_review_candidate_text"]
+        if phrase is None:
+            continue
+        surface_hash = observation["raw_phrase_sha256"]
+        existing = by_hash.get(surface_hash)
+        if existing is None:
+            by_hash[surface_hash] = {
+                "source_surface_sha256": surface_hash,
+                "candidate_phrase": phrase,
+                "unicode_character_count": observation[
+                    "unicode_character_count"
+                ],
+            }
+        else:
+            require(
+                existing["candidate_phrase"] == phrase,
+                "SHA-256 collision in review candidates",
+            )
+        occurrence_counts[surface_hash] += 1
+        document_keys[surface_hash].add(observation["document_key"])
+
+    require(
+        len(by_hash) == EXPECTED_REVIEW_CANDIDATE_UNIQUE_HASHES,
+        "private review candidate count changed",
+    )
+    rows = []
+    for surface_hash in sorted(by_hash):
+        rows.append(
+            {
+                **by_hash[surface_hash],
+                "occurrence_count": occurrence_counts[surface_hash],
+                "document_count": len(document_keys[surface_hash]),
+            }
+        )
+    resolved.parent.mkdir(parents=True, exist_ok=True)
+    resolved.touch(mode=0o600, exist_ok=True)
+    resolved.chmod(0o600)
+    write_tsv(
+        resolved,
+        rows,
+        [
+            "source_surface_sha256",
+            "candidate_phrase",
+            "unicode_character_count",
+            "occurrence_count",
+            "document_count",
+        ],
+    )
+    resolved.chmod(0o600)
+    file_sha256 = sha256_bytes(resolved.read_bytes())
+    require(
+        file_sha256 == EXPECTED_PRIVATE_REVIEW_CANDIDATE_SHA256,
+        "private review candidate artifact hash changed",
+    )
+    return {
+        "path": str(resolved),
+        "candidate_rows": len(rows),
+        "file_sha256": file_sha256,
+        "max_unicode_characters": max(
+            row["unicode_character_count"] for row in rows
+        ),
+    }
+
+
+def write_private_spot_audit(
+    path: Path,
+    observations: Sequence[dict[str, Any]],
+    admission_reviews: dict[str, dict[str, str]],
+    repo_root: Path,
+) -> dict[str, Any]:
+    resolved = require_private_review_path(path, repo_root)
+    candidates: dict[str, dict[str, Any]] = {}
+    for observation in observations:
+        phrase = observation["private_review_candidate_text"]
+        if phrase is None:
+            continue
+        surface_hash = observation["raw_phrase_sha256"]
+        existing = candidates.get(surface_hash)
+        if existing is None:
+            review = admission_reviews[surface_hash]
+            candidates[surface_hash] = {
+                **review,
+                "candidate_phrase": phrase,
+                "unicode_character_count": observation[
+                    "unicode_character_count"
+                ],
+                "word_token_count": len(WORD_TOKEN_RE.findall(phrase)),
+            }
+        else:
+            require(
+                existing["candidate_phrase"] == phrase,
+                "SHA-256 collision in spot-audit candidates",
+            )
+    require(
+        set(candidates) == set(admission_reviews),
+        "spot-audit candidate inventory differs from admission review",
+    )
+
+    selected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    def deterministic_order(row: dict[str, Any]) -> str:
+        return sha256_text(
+            f"{SPOT_AUDIT_SAMPLING_SALT}:{row['source_surface_sha256']}"
+        )
+
+    def take(
+        stratum: str,
+        values: Sequence[dict[str, Any]],
+        count: int,
+    ) -> None:
+        added = 0
+        for row in values:
+            surface_hash = row["source_surface_sha256"]
+            if surface_hash in seen:
+                continue
+            selected.append({"audit_stratum": stratum, **row})
+            seen.add(surface_hash)
+            added += 1
+            if added >= count:
+                break
+
+    take(
+        "remediated_v1_accepted_blockers",
+        [candidates[surface_hash] for surface_hash in SPOT_AUDIT_REMEDIATED_HASHES],
+        len(SPOT_AUDIT_REMEDIATED_HASHES),
+    )
+    admitted = [
+        row
+        for row in candidates.values()
+        if row["final_admission_code"]
+        == "ADMIT_ENGLISH_TASTING_LANGUAGE"
+    ]
+    take(
+        "accepted_deterministic_hash_sample",
+        sorted(admitted, key=deterministic_order),
+        60,
+    )
+    take(
+        "accepted_longest_remaining",
+        sorted(
+            admitted,
+            key=lambda row: (
+                -row["unicode_character_count"],
+                row["source_surface_sha256"],
+            ),
+        ),
+        40,
+    )
+    take(
+        "accepted_highest_token_count_remaining",
+        sorted(
+            admitted,
+            key=lambda row: (
+                -row["word_token_count"],
+                row["source_surface_sha256"],
+            ),
+        ),
+        30,
+    )
+    for decision, count, stratum in [
+        ("DISAGREEMENT", 20, "rejected_review_disagreement"),
+        (
+            "NARRATIVE_OR_NON_DESCRIPTOR",
+            20,
+            "rejected_review_narrative",
+        ),
+        ("NON_ENGLISH", 20, "rejected_review_non_english"),
+        ("UNCERTAIN", 20, "rejected_review_uncertain"),
+    ]:
+        values = [
+            row
+            for row in candidates.values()
+            if row["consensus_decision_code"] == decision
+        ]
+        take(
+            stratum,
+            sorted(values, key=deterministic_order),
+            min(count, len(values)),
+        )
+    for gate, count, stratum in [
+        (
+            "REJECT_SENTENCE_PUNCTUATION",
+            30,
+            "rejected_structural_sentence_punctuation",
+        ),
+        (
+            "REJECT_PERSONAL_PRONOUN_OR_FINITE_AUXILIARY",
+            20,
+            "rejected_structural_personal_or_auxiliary",
+        ),
+        (
+            "REJECT_GT_8_WORD_TOKENS",
+            20,
+            "rejected_structural_gt8_tokens",
+        ),
+        (
+            "REJECT_CONTROL_OR_FORMAT_CHARACTER",
+            20,
+            "rejected_structural_control_or_format",
+        ),
+        (
+            "REJECT_REPEATED_CONNECTIVE",
+            20,
+            "rejected_structural_repeated_connective",
+        ),
+    ]:
+        values = [
+            row
+            for row in candidates.values()
+            if row["structural_gate_code"] == gate
+        ]
+        take(
+            stratum,
+            sorted(values, key=deterministic_order),
+            min(count, len(values)),
+        )
+
+    admitted_count = sum(
+        row["final_admission_code"]
+        == "ADMIT_ENGLISH_TASTING_LANGUAGE"
+        for row in selected
+    )
+    require(
+        len(selected) == EXPECTED_PRIVATE_SPOT_AUDIT_ROWS
+        and admitted_count == EXPECTED_PRIVATE_SPOT_AUDIT_ADMITTED_ROWS
+        and len(selected) - admitted_count
+        == EXPECTED_PRIVATE_SPOT_AUDIT_REJECTED_ROWS
+        and all(surface_hash in seen for surface_hash in SPOT_AUDIT_REMEDIATED_HASHES),
+        "private spot-audit sampling contract changed",
+    )
+    resolved.parent.mkdir(parents=True, exist_ok=True)
+    resolved.touch(mode=0o600, exist_ok=True)
+    resolved.chmod(0o600)
+    write_tsv(
+        resolved,
+        selected,
+        [
+            "audit_stratum",
+            "source_surface_sha256",
+            "candidate_phrase",
+            "unicode_character_count",
+            "word_token_count",
+            "reviewer_one_decision_code",
+            "reviewer_two_decision_code",
+            "consensus_decision_code",
+            "structural_gate_code",
+            "final_admission_code",
+            "admitted_language_tag_code",
+            "exclusion_reason_code",
+        ],
+    )
+    resolved.chmod(0o600)
+    file_sha256 = sha256_bytes(resolved.read_bytes())
+    require(
+        file_sha256 == EXPECTED_PRIVATE_SPOT_AUDIT_SHA256,
+        "private spot-audit artifact hash changed",
+    )
+    return {
+        "path": str(resolved),
+        "sampled_rows": len(selected),
+        "sampled_admitted_rows": admitted_count,
+        "sampled_rejected_rows": len(selected) - admitted_count,
+        "file_sha256": file_sha256,
+    }
+
+
+def read_private_review_pass(
+    path: Path,
+    candidate_hashes: set[str],
+    repo_root: Path,
+    expected_sha256: str,
+) -> tuple[dict[str, str], str]:
+    resolved = require_private_review_path(path, repo_root)
+    require(resolved.is_file(), f"missing private review pass: {resolved}")
+    require(
+        bool(re.fullmatch(r"[0-9a-f]{64}", expected_sha256)),
+        "private review expected SHA-256 is invalid",
+    )
+    payload = resolved.read_bytes()
+    actual_sha256 = sha256_bytes(payload)
+    require(
+        actual_sha256 == expected_sha256,
+        f"private review pass SHA-256 changed: {resolved}",
+    )
+    decoded = payload.decode("utf-8")
+    physical_rows = list(
+        csv.reader(io.StringIO(decoded, newline=""), delimiter="\t")
+    )
+    expected_header = ["source_surface_sha256", "review_decision_code"]
+    require(
+        bool(physical_rows) and physical_rows[0] == expected_header,
+        "private review pass columns changed",
+    )
+    decisions: dict[str, str] = {}
+    for line_number, row in enumerate(physical_rows[1:], start=2):
+        require(
+            len(row) == 2,
+            f"private review pass line {line_number} has extra content",
+        )
+        surface_hash, decision = row
+        require(
+            bool(re.fullmatch(r"[0-9a-f]{64}", surface_hash)),
+            "private review pass contains an invalid SHA-256",
+        )
+        require(
+            surface_hash not in decisions,
+            "private review pass contains a duplicate hash",
+        )
+        require(
+            decision in REVIEW_DECISION_CODES,
+            "private review pass contains an unsupported decision",
+        )
+        decisions[surface_hash] = decision
+    require(
+        set(decisions) == candidate_hashes,
+        "private review pass does not cover the exact candidate inventory",
+    )
+    return decisions, actual_sha256
+
+
+def merge_private_review_passes(
+    observations: Sequence[dict[str, Any]],
+    reviewer_one_path: Path,
+    reviewer_two_path: Path,
+    reviewer_one_id: str,
+    reviewer_two_id: str,
+    reviewer_one_expected_sha256: str,
+    reviewer_two_expected_sha256: str,
+    repo_root: Path,
+) -> dict[str, Any]:
+    require(
+        (reviewer_one_id, reviewer_two_id) == EXPECTED_REVIEWER_IDS,
+        "review pass identifiers differ from the frozen independent passes",
+    )
+    require(
+        bool(re.fullmatch(r"[a-z0-9_.-]+", reviewer_one_id))
+        and bool(re.fullmatch(r"[a-z0-9_.-]+", reviewer_two_id)),
+        "review pass identifiers must be stable lowercase keys",
+    )
+    candidate_phrase_by_hash: dict[str, str] = {}
+    for observation in observations:
+        phrase = observation["private_review_candidate_text"]
+        if phrase is None:
+            continue
+        surface_hash = observation["raw_phrase_sha256"]
+        existing_phrase = candidate_phrase_by_hash.setdefault(
+            surface_hash, phrase
+        )
+        require(
+            existing_phrase == phrase,
+            "SHA-256 collision in merge candidate inventory",
+        )
+    candidate_hashes = set(candidate_phrase_by_hash)
+    decisions_one, reviewer_one_sha256 = read_private_review_pass(
+        reviewer_one_path,
+        candidate_hashes,
+        repo_root,
+        reviewer_one_expected_sha256,
+    )
+    decisions_two, reviewer_two_sha256 = read_private_review_pass(
+        reviewer_two_path,
+        candidate_hashes,
+        repo_root,
+        reviewer_two_expected_sha256,
+    )
+    rows: list[dict[str, str]] = []
+    consensus_counts: Counter[str] = Counter()
+    structural_gate_counts: Counter[str] = Counter()
+    final_admission_counts: Counter[str] = Counter()
+    decision_counts_one = Counter(decisions_one.values())
+    decision_counts_two = Counter(decisions_two.values())
+    agreement_count = 0
+    agreement_matrix: Counter[tuple[str, str]] = Counter()
+    for surface_hash in sorted(candidate_hashes):
+        decision_one = decisions_one[surface_hash]
+        decision_two = decisions_two[surface_hash]
+        agreement_matrix[(decision_one, decision_two)] += 1
+        agreement_count += decision_one == decision_two
+        consensus = expected_consensus_decision(decision_one, decision_two)
+        structural_gate = structural_prose_gate_v2(
+            candidate_phrase_by_hash[surface_hash]
+        )
+        final_admission = expected_final_admission_code(
+            consensus, structural_gate
+        )
+        consensus_counts[consensus] += 1
+        structural_gate_counts[structural_gate] += 1
+        final_admission_counts[final_admission] += 1
+        rows.append(
+            {
+                "source_surface_sha256": surface_hash,
+                "reviewer_one_decision_code": decision_one,
+                "reviewer_two_decision_code": decision_two,
+                "consensus_decision_code": consensus,
+                "structural_gate_code": structural_gate,
+                "final_admission_code": final_admission,
+                "admitted_language_tag_code": (
+                    "en"
+                    if final_admission == "ADMIT_ENGLISH_TASTING_LANGUAGE"
+                    else ""
+                ),
+                "exclusion_reason_code": (
+                    expected_final_exclusion_reason(
+                        consensus, structural_gate
+                    )
+                    or ""
+                ),
+            }
+        )
+
+    output_path = repo_root / ADMISSION_REVIEW_RELATIVE_PATH
+    write_tsv(
+        output_path,
+        rows,
+        [
+            "source_surface_sha256",
+            "reviewer_one_decision_code",
+            "reviewer_two_decision_code",
+            "consensus_decision_code",
+            "structural_gate_code",
+            "final_admission_code",
+            "admitted_language_tag_code",
+            "exclusion_reason_code",
+        ],
+    )
+    review_count = len(candidate_hashes)
+    observed_agreement = agreement_count / review_count
+    expected_agreement = sum(
+        (decision_counts_one[decision] / review_count)
+        * (decision_counts_two[decision] / review_count)
+        for decision in REVIEW_DECISION_CODES
+    )
+    cohen_kappa = (
+        (observed_agreement - expected_agreement)
+        / (1 - expected_agreement)
+        if expected_agreement < 1
+        else None
+    )
+    metadata = {
+        "review_policy_version": REVIEW_POLICY_VERSION,
+        "structural_gate_version": STRUCTURAL_GATE_VERSION,
+        "reviewed_at_contract_date": CHECKED_AT,
+        "pinned_firstbloom_sha": PINNED_SOURCE_SHA,
+        "candidate_hash_inventory_sha256": sha256_text(
+            canonical_json(sorted(candidate_hashes))
+        ),
+        "private_candidate_review_file_sha256": (
+            EXPECTED_PRIVATE_REVIEW_CANDIDATE_SHA256
+        ),
+        "admission_inventory_sha256": sha256_bytes(output_path.read_bytes()),
+        "review_passes": [
+            {
+                "reviewer_id": reviewer_one_id,
+                "review_pass_sha256": reviewer_one_sha256,
+                "evidence_class": REVIEW_PASS_EVIDENCE_CLASS,
+                "human_review": False,
+                "automated_language_detection": False,
+            },
+            {
+                "reviewer_id": reviewer_two_id,
+                "review_pass_sha256": reviewer_two_sha256,
+                "evidence_class": REVIEW_PASS_EVIDENCE_CLASS,
+                "human_review": False,
+                "automated_language_detection": False,
+            },
+        ],
+        "decision_codes": sorted(REVIEW_DECISION_CODES),
+        "decision_definitions": {
+            "ENGLISH_TASTING_LANGUAGE": (
+                "Concise English sensory, tactile, qualifier, composite-reference, "
+                "or process-like tasting language; admission is lexical only and "
+                "does not assert a canonical mapping."
+            ),
+            "NARRATIVE_OR_NON_DESCRIPTOR": (
+                "Sentence-like, promotional, evaluative narrative, or other text "
+                "that is not a conservative tasting-expression fragment."
+            ),
+            "NON_ENGLISH": (
+                "The reviewed fragment is not English; no alternative language "
+                "tag is inferred in this English-only pilot."
+            ),
+            "UNCERTAIN": (
+                "Language or descriptor scope cannot be established conservatively."
+            ),
+        },
+        "consensus_rule": (
+            "Admit as en only when both independent passes select "
+            "ENGLISH_TASTING_LANGUAGE; every disagreement and every other "
+            "decision remains hash-only."
+        ),
+        "claims_not_made": [
+            "human language review",
+            "automatic language detection",
+            "canonical concept mapping",
+            "objective coffee flavor labels",
+        ],
+        "consensus_counts": dict(sorted(consensus_counts.items())),
+        "structural_gate_counts": dict(
+            sorted(structural_gate_counts.items())
+        ),
+        "final_admission_counts": dict(
+            sorted(final_admission_counts.items())
+        ),
+        "structural_gate_contract": {
+            "precedence": [
+                "Unicode control or format character",
+                "sentence punctuation [.!?]",
+                "personal-pronoun or finite-auxiliary token",
+                "repeated connective token",
+                "more than eight Unicode word tokens",
+                "pass concise fragment",
+            ],
+            "false_negative_policy": (
+                "Conservative rejection is preferred to retaining narrative prose."
+            ),
+            "complete_field_surfaces": (
+                "Excluded before review candidates are constructed."
+            ),
+        },
+        "review_agreement": {
+            "reviewed_hash_count": review_count,
+            "agreement_count": agreement_count,
+            "disagreement_count": review_count - agreement_count,
+            "raw_agreement": observed_agreement,
+            "chance_expected_agreement": expected_agreement,
+            "cohen_kappa": cohen_kappa,
+            "reviewer_one_decision_counts": dict(
+                sorted(decision_counts_one.items())
+            ),
+            "reviewer_two_decision_counts": dict(
+                sorted(decision_counts_two.items())
+            ),
+            "decision_pair_counts": {
+                f"{left}|{right}": count
+                for (left, right), count in sorted(
+                    agreement_matrix.items()
+                )
+            },
+        },
+        "spot_audits": spot_audit_receipts(),
+    }
+    metadata_path = repo_root / ADMISSION_REVIEW_METADATA_RELATIVE_PATH
+    metadata_path.write_text(
+        json.dumps(metadata, ensure_ascii=False, sort_keys=True, indent=2)
+        + "\n",
+        encoding="utf-8",
+    )
+    return {
+        "admission_inventory_path": str(output_path),
+        "admission_inventory_sha256": sha256_bytes(output_path.read_bytes()),
+        "metadata_path": str(metadata_path),
+        "metadata_sha256": sha256_bytes(metadata_path.read_bytes()),
+        "candidate_rows": len(rows),
+        "consensus_counts": dict(sorted(consensus_counts.items())),
+        "structural_gate_counts": dict(
+            sorted(structural_gate_counts.items())
+        ),
+        "final_admission_counts": dict(
+            sorted(final_admission_counts.items())
+        ),
+    }
 
 
 def write_tsv(
@@ -2126,8 +3467,9 @@ def render_sql(
         "-- Coffee Sensory Knowledge Base V0 -- Round 2B pilot seed.",
         "-- GENERATED by db/scripts/generate-round2b-pilot.py from the pinned",
         "-- Firstbloom checkout. Complete tasting-note strings, descriptions,",
-        "-- consumer reviews, and parsed fragments over 80 Unicode characters",
-        "-- are deliberately absent. Industry language is not canonical truth.",
+        "-- consumer reviews, parsed fragments over 80 Unicode characters,",
+        "-- and non-consensus review candidates are deliberately absent.",
+        "-- Industry language is observational and not canonical truth.",
         "",
         "BEGIN;",
         "",
@@ -2379,6 +3721,15 @@ def render_sql(
         "source_baseline_sha": SOURCE_BASELINE_SHA,
         "code_commit_sha": code_commit_sha,
         "generator_sha256": receipts["generator_sha256"],
+        "expression_admission_review": {
+            "policy_version": REVIEW_POLICY_VERSION,
+            "inventory_sha256": receipts["admission_review_sha256"],
+            "metadata_sha256": receipts[
+                "admission_review_metadata_sha256"
+            ],
+            "human_review": False,
+            "automated_language_detection": False,
+        },
     }
     parts.extend(
         [
@@ -2561,7 +3912,7 @@ def render_sql(
             "    'Firstbloom specialty-coffee industry-language pilot v1',",
             "    'en',",
             "    'Rights-reviewed historical industry tasting-language observations. Roaster language is observational and is not canonical sensory truth.',",
-            f"    {sql_literal(canonical_json({'corpus_version': CORPUS_VERSION, 'raw_text_stored': False, 'source_baseline_sha': SOURCE_BASELINE_SHA, 'code_commit_sha': code_commit_sha, 'rights_boundary': 'ALLOW_DERIVED_TERMS'}))}::JSONB",
+            f"    {sql_literal(canonical_json({'corpus_version': CORPUS_VERSION, 'raw_text_stored': False, 'source_baseline_sha': SOURCE_BASELINE_SHA, 'code_commit_sha': code_commit_sha, 'rights_boundary': 'ALLOW_DERIVED_TERMS', 'expression_admission_policy': REVIEW_POLICY_VERSION, 'expression_admission_review_sha256': receipts['admission_review_sha256'], 'human_review': False, 'automated_language_detection': False}))}::JSONB",
             ");",
             "",
             "INSERT INTO corpus.corpus_snapshot (",
@@ -2583,7 +3934,7 @@ def render_sql(
             f"       {sql_literal(code_commit_sha)},",
             f"       {EXPECTED_DOCUMENTS}, {EXPECTED_RAW_OBSERVATIONS},",
             f"       {EXPECTED_NORMALIZED_EXPRESSIONS}, FALSE,",
-            "       'Public rebuild requires the separately obtained pinned CC BY 4.0 Firstbloom checkout. The repository stores source hashes, explicit metadata, short derived phrases up to 80 Unicode characters, and hash-only receipts for longer fragments; it excludes complete tasting notes, descriptions, and consumer reviews.',",
+            "       'Public rebuild requires the separately obtained pinned CC BY 4.0 Firstbloom checkout. The repository stores source hashes, explicit metadata, and only short partial phrases admitted by two independent Codex-assisted project-curation passes; every other fragment is hash-only. Complete tasting notes, descriptions, and consumer reviews are excluded.',",
             "       NULL",
             "FROM corpus.corpus AS corpus",
             "CROSS JOIN evidence.dataset AS dataset",
@@ -3078,18 +4429,71 @@ def main() -> int:
     )
     parser.add_argument(
         "--code-commit-sha",
-        required=True,
         help=(
             "40-hex commit containing the frozen Round 2B generator and "
             "normalization/schema code; this avoids claiming the Round 2A "
-            "baseline as the implementation commit"
+            "baseline as the implementation commit; required only for final "
+            "seed generation"
         ),
     )
-    args = parser.parse_args()
-    require(
-        bool(re.fullmatch(r"[0-9a-f]{40}", args.code_commit_sha)),
-        "--code-commit-sha must be exactly 40 lowercase hexadecimal characters",
+    parser.add_argument(
+        "--emit-private-review-candidates",
+        type=Path,
+        help=(
+            "Write the protected phrase-review TSV under /private/tmp and "
+            "exit without generating repository artifacts"
+        ),
     )
+    parser.add_argument(
+        "--emit-private-spot-audit",
+        type=Path,
+        help=(
+            "Write the protected deterministic final-admission spot-audit "
+            "packet under /private/tmp and exit"
+        ),
+    )
+    parser.add_argument("--merge-private-review-passes", action="store_true")
+    parser.add_argument("--reviewer-one-decisions", type=Path)
+    parser.add_argument("--reviewer-two-decisions", type=Path)
+    parser.add_argument("--reviewer-one-id")
+    parser.add_argument("--reviewer-two-id")
+    parser.add_argument("--reviewer-one-sha256")
+    parser.add_argument("--reviewer-two-sha256")
+    args = parser.parse_args()
+    review_merge_arguments = [
+        args.reviewer_one_decisions,
+        args.reviewer_two_decisions,
+        args.reviewer_one_id,
+        args.reviewer_two_id,
+        args.reviewer_one_sha256,
+        args.reviewer_two_sha256,
+    ]
+    mode_count = sum(
+        bool(value)
+        for value in [
+            args.emit_private_review_candidates,
+            args.emit_private_spot_audit,
+            args.merge_private_review_passes,
+        ]
+    )
+    require(mode_count <= 1, "review preparation modes are mutually exclusive")
+    require(
+        args.merge_private_review_passes
+        == all(value is not None for value in review_merge_arguments),
+        "review merge requires both decision files and both reviewer IDs",
+    )
+    if not (
+        args.emit_private_review_candidates
+        or args.emit_private_spot_audit
+        or args.merge_private_review_passes
+    ):
+        require(
+            bool(
+                args.code_commit_sha
+                and re.fullmatch(r"[0-9a-f]{40}", args.code_commit_sha)
+            ),
+            "--code-commit-sha must be exactly 40 lowercase hexadecimal characters",
+        )
 
     repo_root = repository_root_from_script()
     source_dir = args.source_dir.resolve()
@@ -3104,8 +4508,55 @@ def main() -> int:
         "roasters",
     )
     selected, _eligible_by_roaster = select_releases(releases, roasters)
+    if args.emit_private_review_candidates:
+        observations, _lexical_forms = parse_observations(selected)
+        summary = write_private_review_candidates(
+            args.emit_private_review_candidates, observations, repo_root
+        )
+        print(json.dumps({"status": "review_candidates_emitted", **summary}, sort_keys=True))
+        return 0
+
+    if args.merge_private_review_passes:
+        observations, _lexical_forms = parse_observations(selected)
+        summary = merge_private_review_passes(
+            observations=observations,
+            reviewer_one_path=args.reviewer_one_decisions,
+            reviewer_two_path=args.reviewer_two_decisions,
+            reviewer_one_id=args.reviewer_one_id,
+            reviewer_two_id=args.reviewer_two_id,
+            reviewer_one_expected_sha256=args.reviewer_one_sha256,
+            reviewer_two_expected_sha256=args.reviewer_two_sha256,
+            repo_root=repo_root,
+        )
+        print(json.dumps({"status": "review_passes_merged", **summary}, sort_keys=True))
+        return 0
+
+    if args.emit_private_spot_audit:
+        admission_reviews = load_admission_reviews(repo_root)
+        observations, _lexical_forms = parse_observations(
+            selected,
+            admission_reviews,
+            enforce_frozen_counts=False,
+        )
+        summary = write_private_spot_audit(
+            args.emit_private_spot_audit,
+            observations,
+            admission_reviews,
+            repo_root,
+        )
+        print(
+            json.dumps(
+                {"status": "private_spot_audit_emitted", **summary},
+                sort_keys=True,
+            )
+        )
+        return 0
+
+    admission_reviews = load_admission_reviews(repo_root)
     product_metadata = build_product_metadata(selected, source_dir)
-    observations, lexical_forms = parse_observations(selected)
+    observations, lexical_forms = parse_observations(
+        selected, admission_reviews
+    )
     documents = document_expression_sets(selected, observations)
     statistics, cooccurrences, _representative_keys = (
         build_expression_statistics(documents, lexical_forms)
@@ -3153,8 +4604,20 @@ def main() -> int:
     generator_path = Path(__file__).resolve()
     manifest_path = repo_root / MANIFEST_RELATIVE_PATH
     rights_path = repo_root / RIGHTS_RELATIVE_PATH
+    admission_review_path = repo_root / ADMISSION_REVIEW_RELATIVE_PATH
+    admission_review_metadata_path = (
+        repo_root / ADMISSION_REVIEW_METADATA_RELATIVE_PATH
+    )
     attribution_path = data_dir / "FIRSTBLOOM_ATTRIBUTION.md"
     require(attribution_path.is_file(), "Firstbloom attribution file is missing")
+    require(
+        admission_review_path.is_file()
+        and admission_review_metadata_path.is_file(),
+        "dual-review admission artifacts are missing",
+    )
+    admission_review_metadata = json.loads(
+        admission_review_metadata_path.read_text(encoding="utf-8")
+    )
 
     generated_data_hashes = {
         name: artifact_sha256(path)
@@ -3186,6 +4649,10 @@ def main() -> int:
         "generator_sha256": artifact_sha256(generator_path),
         "source_manifest_sha256": artifact_sha256(manifest_path),
         "source_rights_sha256": artifact_sha256(rights_path),
+        "admission_review_sha256": artifact_sha256(admission_review_path),
+        "admission_review_metadata_sha256": artifact_sha256(
+            admission_review_metadata_path
+        ),
         "attribution_sha256": artifact_sha256(attribution_path),
         "normalization_rules_sha256": sha256_text(
             canonical_json(normalization_rules())
@@ -3197,6 +4664,12 @@ def main() -> int:
                     "pinned_source_sha": PINNED_SOURCE_SHA,
                     "source_manifest_sha256": artifact_sha256(manifest_path),
                     "source_rights_sha256": artifact_sha256(rights_path),
+                    "admission_review_sha256": artifact_sha256(
+                        admission_review_path
+                    ),
+                    "admission_review_metadata_sha256": artifact_sha256(
+                        admission_review_metadata_path
+                    ),
                     "pilot_publishers_sha256": generated_data_hashes[
                         PUBLISHER_TSV
                     ],
@@ -3261,6 +4734,11 @@ def main() -> int:
     duplicate_basis_counts = Counter(
         row["duplicate_match_basis_code"] for row in duplicate_reviews
     )
+    exclusion_reason_counts = Counter(
+        row["exclusion_reason"]
+        for row in observations
+        if not row["retained"]
+    )
     batch_document_counts = [
         row["expected_document_count"] for row in batches
     ]
@@ -3278,7 +4756,12 @@ def main() -> int:
             "long_descriptions_stored": False,
             "consumer_reviews_read": False,
             "max_stored_phrase_unicode_characters": MAX_STORED_PHRASE_CHARACTERS,
+            "complete_field_surfaces": "hash_only_globally",
+            "non_consensus_review_candidates": "hash_only",
             "long_fragments": "hash_only",
+            "expression_admission_policy": REVIEW_POLICY_VERSION,
+            "human_review": False,
+            "automated_language_detection": False,
         },
         "counts": {
             "reviewed_source_policies": len(rights_rows),
@@ -3291,9 +4774,18 @@ def main() -> int:
             "retained_short_observations": sum(
                 row["retained"] for row in observations
             ),
-            "hash_only_long_observations": sum(
+            "hash_only_observations": sum(
                 not row["retained"] for row in observations
             ),
+            "hash_only_exclusion_reason_counts": dict(
+                sorted(exclusion_reason_counts.items())
+            ),
+            "review_candidate_unique_hashes": (
+                EXPECTED_REVIEW_CANDIDATE_UNIQUE_HASHES
+            ),
+            "review_consensus_counts": admission_review_metadata[
+                "consensus_counts"
+            ],
             "unique_retained_raw_expressions": len(
                 {
                     row["observation_text"]
@@ -3360,9 +4852,11 @@ def main() -> int:
         "artifact_sha256": all_artifact_hashes,
         "reproducibility_boundary": (
             "Schema, derived data, and statistics are reproducible from the "
-            "pinned separately obtained CC BY 4.0 checkout plus this generator. "
-            "The repository intentionally does not vendor complete tasting-note "
-            "strings, long descriptions, or consumer reviews."
+            "pinned separately obtained CC BY 4.0 checkout, this generator, "
+            "and the source-controlled hash-only dual-review inventory. The "
+            "repository intentionally does not vendor complete tasting-note "
+            "strings, rejected review phrases, long descriptions, or consumer "
+            "reviews."
         ),
     }
     receipt_path = data_dir / RECEIPT_JSON

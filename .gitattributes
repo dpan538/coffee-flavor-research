@@ -12,8 +12,10 @@
 *.mjs text eol=lf
 *.cjs text eol=lf
 *.svg text eol=lf
+*.py text eol=lf
 *.sql text eol=lf
 *.sh text eol=lf
+*.tsv text eol=lf whitespace=-blank-at-eol
 
 *.png binary
 *.jpg binary

@@ -46,9 +46,9 @@ jobs:
         run: npm run test:smoke
 
   database:
-    name: PostgreSQL 17 ontology gates
+    name: PostgreSQL 17 ontology and corpus gates
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
 
     container:
       image: postgres:17-bookworm

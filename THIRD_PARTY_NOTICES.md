@@ -26,6 +26,28 @@ Noto Sans SC, and Noto Serif SC. The installed packages report `OFL-1.1`
 licensing. Font files are installed through npm and are not committed directly
 as vendored binaries in this repository.
 
+## Firstbloom Data
+
+The Round 2B historical industry-language pilot derives governed metadata and
+short tasting-language observations from **Firstbloom Data** by Alex Caza,
+licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The source is pinned to commit
+`a6cb0026d1af9642724793c799bbc48dc189ba35` of
+<https://github.com/alexcaza/firstbloom-data>. Transformations include
+deterministic sampling, rights-boundary redaction, independent project
+admission review by two Codex-assisted curation passes, phrase normalization,
+duplicate review, and aggregate statistics. These passes are not represented
+as human reviewers.
+
+The repository does not include Firstbloom consumer reviews, roaster
+descriptions, complete tasting-note fields, or source-specific controlled
+hierarchies. Rejected, non-English, narrative, uncertain, and over-length
+observations are represented only by non-content receipts. The source is a
+historical secondary aggregation; its licensed language observations are not
+objective sensory truth and do not establish global or current-market
+representativeness. The detailed attribution and transformation boundary is in
+[`db/data/round2b/FIRSTBLOOM_ATTRIBUTION.md`](db/data/round2b/FIRSTBLOOM_ATTRIBUTION.md).
+
 ## NPM Dependencies
 
 Runtime and development dependencies retain their package licenses as recorded
@@ -40,6 +62,7 @@ not a replacement for dependency license review before formal release.
 - UC Davis dataset content.
 - Font packages and font files.
 - Game-icons.net SVGs.
+- Firstbloom Data and its derived source observations.
 - NPM dependencies.
 - Any quoted or referenced third-party source material.
 

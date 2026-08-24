@@ -1,0 +1,204 @@
+{
+  "admission_inventory_sha256": "02b6185fbbacc5b4d16b2aecf87672948ebe4cf53b7a250b20f8934c20b2be28",
+  "candidate_hash_inventory_sha256": "bd7071ec1a7b08af64f75f08a965ade61f72487f0036b8cdd77bc45f7a44fb24",
+  "claims_not_made": [
+    "human language review",
+    "automatic language detection",
+    "canonical concept mapping",
+    "objective coffee flavor labels"
+  ],
+  "consensus_counts": {
+    "DISAGREEMENT": 169,
+    "ENGLISH_TASTING_LANGUAGE": 2411,
+    "NARRATIVE_OR_NON_DESCRIPTOR": 75,
+    "NON_ENGLISH": 103,
+    "UNCERTAIN": 8
+  },
+  "consensus_rule": "Admit as en only when both independent passes select ENGLISH_TASTING_LANGUAGE; every disagreement and every other decision remains hash-only.",
+  "decision_codes": [
+    "ENGLISH_TASTING_LANGUAGE",
+    "NARRATIVE_OR_NON_DESCRIPTOR",
+    "NON_ENGLISH",
+    "UNCERTAIN"
+  ],
+  "decision_definitions": {
+    "ENGLISH_TASTING_LANGUAGE": "Concise English sensory, tactile, qualifier, composite-reference, or process-like tasting language; admission is lexical only and does not assert a canonical mapping.",
+    "NARRATIVE_OR_NON_DESCRIPTOR": "Sentence-like, promotional, evaluative narrative, or other text that is not a conservative tasting-expression fragment.",
+    "NON_ENGLISH": "The reviewed fragment is not English; no alternative language tag is inferred in this English-only pilot.",
+    "UNCERTAIN": "Language or descriptor scope cannot be established conservatively."
+  },
+  "final_admission_counts": {
+    "ADMIT_ENGLISH_TASTING_LANGUAGE": 2124,
+    "HASH_ONLY_REVIEW_CONSENSUS": 355,
+    "HASH_ONLY_STRUCTURAL_PROSE_GATE": 287
+  },
+  "pinned_firstbloom_sha": "a6cb0026d1af9642724793c799bbc48dc189ba35",
+  "private_candidate_review_file_sha256": "6f0af6acfeab8f758ca79e1540d810d57955ab67b81736525db3d8a2b8a3b6a9",
+  "review_agreement": {
+    "agreement_count": 2597,
+    "chance_expected_agreement": 0.8160698106174084,
+    "cohen_kappa": 0.6678138579666786,
+    "decision_pair_counts": {
+      "ENGLISH_TASTING_LANGUAGE|ENGLISH_TASTING_LANGUAGE": 2411,
+      "ENGLISH_TASTING_LANGUAGE|NARRATIVE_OR_NON_DESCRIPTOR": 52,
+      "ENGLISH_TASTING_LANGUAGE|UNCERTAIN": 3,
+      "NARRATIVE_OR_NON_DESCRIPTOR|ENGLISH_TASTING_LANGUAGE": 101,
+      "NARRATIVE_OR_NON_DESCRIPTOR|NARRATIVE_OR_NON_DESCRIPTOR": 75,
+      "NARRATIVE_OR_NON_DESCRIPTOR|UNCERTAIN": 2,
+      "NON_ENGLISH|ENGLISH_TASTING_LANGUAGE": 2,
+      "NON_ENGLISH|NON_ENGLISH": 103,
+      "NON_ENGLISH|UNCERTAIN": 4,
+      "UNCERTAIN|ENGLISH_TASTING_LANGUAGE": 4,
+      "UNCERTAIN|NON_ENGLISH": 1,
+      "UNCERTAIN|UNCERTAIN": 8
+    },
+    "disagreement_count": 169,
+    "raw_agreement": 0.9389009399855387,
+    "reviewed_hash_count": 2766,
+    "reviewer_one_decision_counts": {
+      "ENGLISH_TASTING_LANGUAGE": 2466,
+      "NARRATIVE_OR_NON_DESCRIPTOR": 178,
+      "NON_ENGLISH": 109,
+      "UNCERTAIN": 13
+    },
+    "reviewer_two_decision_counts": {
+      "ENGLISH_TASTING_LANGUAGE": 2518,
+      "NARRATIVE_OR_NON_DESCRIPTOR": 127,
+      "NON_ENGLISH": 104,
+      "UNCERTAIN": 17
+    }
+  },
+  "review_passes": [
+    {
+      "automated_language_detection": false,
+      "evidence_class": "CODEX_ASSISTED_PROJECT_CURATION",
+      "human_review": false,
+      "review_pass_sha256": "42f866d1512946d620fd1f79cf2e937b079178708c1b8c8cbb2f301b0f67e50a",
+      "reviewer_id": "codex_admission_reviewer_a_20260824"
+    },
+    {
+      "automated_language_detection": false,
+      "evidence_class": "CODEX_ASSISTED_PROJECT_CURATION",
+      "human_review": false,
+      "review_pass_sha256": "a7edc73a5b9bdebd2aa21c4c56dd8f2fd17b2005b534b82a82e80a091e53a36c",
+      "reviewer_id": "codex_admission_reviewer_b_20260824"
+    }
+  ],
+  "review_policy_version": "expression-admission-dual-review-v1",
+  "reviewed_at_contract_date": "2026-08-24",
+  "spot_audits": [
+    {
+      "accepted_blocker_count": 2,
+      "audit_policy_version": "expression-admission-spot-audit-v1",
+      "automated_language_detection": false,
+      "changed_hashes": [
+        "de03643627d17f2d30664c492279306731a3e5987bb4047a5041470ef2f9661b",
+        "80a76bd18b895238c07bb054ebc2e496286768c9edb6504b17e0d68f574a982a"
+      ],
+      "decision_counts": {
+        "FAIL_ACCEPTED_NARRATIVE": 0,
+        "FAIL_ACCEPTED_NON_ENGLISH": 0,
+        "FAIL_ACCEPTED_STRUCTURAL_LEAK": 2,
+        "FAIL_ACCEPTED_UNCLEAR_SCOPE": 0,
+        "PASS_ACCEPTED": 128,
+        "PASS_REJECTED_CONSERVATIVE": 106,
+        "WARN_REJECTED_FALSE_NEGATIVE": 32
+      },
+      "evidence_class": "CODEX_ASSISTED_PROJECT_CURATION",
+      "human_review": false,
+      "private_ledger_sha256": "dc306076ff2d97a25b9f2f8e9c5a503b53808ce74d06a71655dcc3923f0d0c43",
+      "private_packet_sha256": "860584dc863148211815c6973e87b95dc13e962e788801cc50d39045e358d58f",
+      "result": "FAIL_REMEDIATED_BY_STRUCTURAL_GATE_V2",
+      "reviewer_id": "codex_admission_spot_auditor_schema_20260824",
+      "sampled_admitted_count": 130,
+      "sampled_rejected_count": 138,
+      "sampled_row_count": 268,
+      "sampling_salt": "spot-audit-v1",
+      "sampling_salt_sha256": "ae16198b87db2281bc0cc1a209c79edb65656d13a388ea85da92033b3b1f6527",
+      "structural_gate_version": "structural-prose-gate-v1"
+    },
+    {
+      "accepted_blocker_count": 0,
+      "audit_policy_version": "expression-admission-spot-audit-v2",
+      "automated_language_detection": false,
+      "changed_hashes": [],
+      "decision_counts": {
+        "FAIL_ACCEPTED_NARRATIVE": 0,
+        "FAIL_ACCEPTED_NON_ENGLISH": 0,
+        "FAIL_ACCEPTED_STRUCTURAL_LEAK": 0,
+        "FAIL_ACCEPTED_UNCLEAR_SCOPE": 0,
+        "PASS_ACCEPTED": 130,
+        "PASS_REJECTED_CONSERVATIVE": 114,
+        "WARN_REJECTED_FALSE_NEGATIVE": 27
+      },
+      "evidence_class": "CODEX_ASSISTED_PROJECT_CURATION",
+      "human_review": false,
+      "private_ledger_sha256": "d3d3945291c9217c1078ef3fb96721c6e18fd147d7a46bf966b5a5757da47152",
+      "private_packet_sha256": "22094d38c7ac8fe6572953f77edb9ab371be4ec63109bbd87d0f3bd519e217fe",
+      "remediated_hashes_verified": [
+        "de03643627d17f2d30664c492279306731a3e5987bb4047a5041470ef2f9661b",
+        "80a76bd18b895238c07bb054ebc2e496286768c9edb6504b17e0d68f574a982a"
+      ],
+      "result": "PASS",
+      "reviewer_id": "codex_admission_spot_auditor_schema_20260824",
+      "sampled_admitted_count": 130,
+      "sampled_rejected_count": 141,
+      "sampled_row_count": 271,
+      "sampling_salt": "spot-audit-v2",
+      "sampling_salt_sha256": "b99d5f1fe3569237cf8c25f84ec89133bd987880313ffbcb5878d45f702d9ffa",
+      "structural_gate_version": "structural-prose-gate-v2"
+    },
+    {
+      "accepted_blocker_count": 0,
+      "audit_policy_version": "expression-admission-spot-audit-v2",
+      "automated_language_detection": false,
+      "changed_hashes": [],
+      "decision_counts": {
+        "FAIL_ACCEPTED_NARRATIVE": 0,
+        "FAIL_ACCEPTED_NON_ENGLISH": 0,
+        "FAIL_ACCEPTED_STRUCTURAL_LEAK": 0,
+        "FAIL_ACCEPTED_UNCLEAR_SCOPE": 0,
+        "PASS_ACCEPTED": 130,
+        "PASS_REJECTED_CONSERVATIVE": 103,
+        "WARN_REJECTED_FALSE_NEGATIVE": 38
+      },
+      "evidence_class": "CODEX_ASSISTED_PROJECT_CURATION",
+      "human_review": false,
+      "private_ledger_sha256": "84238908cf0059484882f3e086a66d941121a1695860e951e51af14973fd7053",
+      "private_packet_sha256": "22094d38c7ac8fe6572953f77edb9ab371be4ec63109bbd87d0f3bd519e217fe",
+      "remediated_hashes_verified": [
+        "de03643627d17f2d30664c492279306731a3e5987bb4047a5041470ef2f9661b",
+        "80a76bd18b895238c07bb054ebc2e496286768c9edb6504b17e0d68f574a982a"
+      ],
+      "result": "PASS",
+      "reviewer_id": "codex_admission_spot_auditor_retrieval_20260824",
+      "sampled_admitted_count": 130,
+      "sampled_rejected_count": 141,
+      "sampled_row_count": 271,
+      "sampling_salt": "spot-audit-v2",
+      "sampling_salt_sha256": "b99d5f1fe3569237cf8c25f84ec89133bd987880313ffbcb5878d45f702d9ffa",
+      "structural_gate_version": "structural-prose-gate-v2"
+    }
+  ],
+  "structural_gate_contract": {
+    "complete_field_surfaces": "Excluded before review candidates are constructed.",
+    "false_negative_policy": "Conservative rejection is preferred to retaining narrative prose.",
+    "precedence": [
+      "Unicode control or format character",
+      "sentence punctuation [.!?]",
+      "personal-pronoun or finite-auxiliary token",
+      "repeated connective token",
+      "more than eight Unicode word tokens",
+      "pass concise fragment"
+    ]
+  },
+  "structural_gate_counts": {
+    "PASS_CONCISE_FRAGMENT": 2317,
+    "REJECT_CONTROL_OR_FORMAT_CHARACTER": 2,
+    "REJECT_GT_8_WORD_TOKENS": 27,
+    "REJECT_PERSONAL_PRONOUN_OR_FINITE_AUXILIARY": 43,
+    "REJECT_REPEATED_CONNECTIVE": 1,
+    "REJECT_SENTENCE_PUNCTUATION": 376
+  },
+  "structural_gate_version": "structural-prose-gate-v2"
+}

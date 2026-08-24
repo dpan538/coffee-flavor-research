@@ -7,6 +7,7 @@
   "pinned_git_sha": "a6cb0026d1af9642724793c799bbc48dc189ba35",
   "checked_at": "2026-08-24",
   "rights_boundary": "ALLOW_DERIVED_TERMS",
+  "expression_admission_policy": "expression-admission-dual-review-v1",
   "input_files": {
     "README.md": "522096b2176617bd9bb169863e3b81b0a2e111058bcde2946f9e47b365e6ad05",
     "LISCENSE": "62202e40780cad6d159546cdf74b5b218d07091f6feeca7b1244771ac72cba7c",
@@ -25,6 +26,6 @@
   "excluded_files": {
     "first_bloom_user_product_reviews_202312201402.csv": "Consumer-authored reviews are outside the industry-language corpus and are not read by the generator.",
     "roaster_description": "Long commercial descriptions are not stored or emitted.",
-    "roaster_tasting_notes_string": "The complete source field is never emitted; only its SHA-256 and rights-bounded delimiter-derived observations are retained."
+    "roaster_tasting_notes_string": "The complete source field is never emitted. Only its SHA-256 and partial delimiter-derived phrases admitted by two independent Codex-assisted project-curation passes may be retained as text; all other fragments are hash-only."
   }
 }

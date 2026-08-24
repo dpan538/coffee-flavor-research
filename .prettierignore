@@ -5,3 +5,8 @@ dist/
 .astro/
 playwright-report/
 test-results/
+
+# Deterministically generated Round 2B receipts retain generator-owned bytes
+# because their SHA-256 values are part of the reproducibility contract.
+db/data/round2b/generation_receipt.json
+db/data/round2b/pilot_diagnostics.json

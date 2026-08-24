@@ -22,6 +22,8 @@ db/.test-output/
 .cache/
 .turbo/
 .vercel/
+__pycache__/
+*.py[cod]
 
 # OS, editor, and logs
 .DS_Store

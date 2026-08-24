@@ -37,8 +37,10 @@ environment independently of these scripts.
 ## Migration and domain layout
 
 Top-level migrations are applied in contiguous numeric order. The first eight
-are protected by `db/migration-baselines/round1.sha256`; the migration planner
-refuses to run if any immutable Round 1 file changes:
+are protected by `db/migration-baselines/round1.sha256`, and all twelve Round 1
+plus Round 2A migrations are protected by
+`db/migration-baselines/round2a.sha256`. The migration planner refuses to run
+if either immutable boundary changes:
 
 ```text
 000_extensions.sql
@@ -53,6 +55,10 @@ refuses to run if any immutable Round 1 file changes:
 009_concept_schemes.sql
 010_canonical_ontology_seed.sql
 011_ontology_validation.sql
+012_round2b_corpus_governance.sql
+013_round2b_normalization_statistics.sql
+014_round2b_retrieval_and_audit.sql
+015_round2b_pilot_seed.sql
 ```
 
 `apply.sh` fails unless there is exactly one migration at every contiguous
@@ -61,6 +67,13 @@ values and namespaces, canonical knowledge, evidence and observation domains,
 invariants, retrieval surfaces, the Round 1 smoke seed, baseline validation,
 concept provenance, source-local schemes, the curated ontology seed, and
 ontology validation.
+
+The Round 2B forward layer adds rights-reviewed source decisions, immutable
+corpus snapshots, duplicate and history governance, versioned Unicode phrase
+normalization, occurrence/frequency/NPMI statistics, deterministic A--D
+retrieval, typed one-hop graph expansion, explicit abstention, and graded
+development/held-out audit structures. Historical migrations are never
+rewritten to accommodate corpus data.
 
 The six PostgreSQL schemas have deliberately separate responsibilities:
 
@@ -111,9 +124,13 @@ the run.
 1. the `audit.run_validation_queries()` contract created by migration `007`,
    failing if any check reports a violation;
 2. the Round 1 negative, semantic, retrieval, and query-plan suites;
-3. when forward migrations are present, the
+3. when Round 2A migrations are present, the
    `audit.run_round2a_validation_queries()` contract; and
-4. the Round 2A negative, semantic, retrieval, and query-plan suites.
+4. the Round 2A negative, semantic, retrieval, and query-plan suites;
+5. when Round 2B migrations are present, the Round 2B negative, semantic,
+   retrieval, and query-plan suites; and
+6. after the final Round 2B validation migration, the
+   `audit.run_round2b_validation_queries()` expected-zero contract.
 
 ## Two clean rebuilds
 
@@ -154,7 +171,11 @@ compares:
 - every `ref` table's row count;
 - source-version and license-policy keys;
 - ordered Round 1 and Round 2A validation result counts; and
-- the ordered ontology coverage metrics.
+- the ordered ontology coverage metrics;
+- source-policy, snapshot, retention, normalization, and statistic-run
+  receipts; and
+- frozen audit-split, deterministic A--D run, candidate-count, and retrieval
+  metric values when Round 2B is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases
