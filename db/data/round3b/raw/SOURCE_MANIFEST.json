@@ -1,0 +1,141 @@
+{
+  "manifest_key": "context_source_manifest.round3b.2026-08-25",
+  "created_at": "2026-08-25T00:00:00+10:00",
+  "rights_policy": "Dryad datasets are released under CC0-1.0; scholarly citation is retained.",
+  "sources": [
+    {
+      "source_key": "dryad_cotter_black_coffee",
+      "doi": "10.25338/B8993H",
+      "title": "Consumer preference data for black coffee",
+      "dryad_dataset_id": 91366,
+      "dryad_version_id": 215645,
+      "dryad_version_number": 4,
+      "publication_date": "2023-01-16",
+      "license": "CC0-1.0",
+      "commercial_use": true,
+      "derivative_use": true,
+      "redistribution": true,
+      "machine_use": true,
+      "acquisition_status": "imported",
+      "geography": "Sensory sessions at UC Davis, United States; one washed Honduras coffee",
+      "time_period": "Study sessions reported by the source; dataset published 2023-01-16",
+      "preparation_coverage": "Dataset-level drip/batch-filter black coffee; preparation does not vary",
+      "roast_coverage": "Dataset-level medium roast; roast does not vary",
+      "sensory_coverage": "Consumer liking, JAR ratings, and 17 binary CATA attributes",
+      "known_limitations": "The repository abstract says 3,168 rows in one sentence, but the frozen CSV contains 3,186 data rows and matches the stated 118 x 27 design.",
+      "files": [
+        {
+          "path": "cotter_2020_black_coffee/cotter_dataset.csv",
+          "dryad_file_id": 2041575,
+          "canonical_download_url": "https://datadryad.org/api/v2/files/2041575/download",
+          "mirror_download_url": "https://zenodo.org/records/7542610/files/cotter_dataset.csv?download=1",
+          "bytes": 542026,
+          "sha256": "931aff6185381d5079bf93c4727bbbe65ff58ecfb524d2d3b6046eead2009114",
+          "row_count": 3186,
+          "column_count": 48,
+          "imported_as_context_records": true
+        },
+        {
+          "path": "cotter_2020_black_coffee/README.txt",
+          "dryad_file_id": 2041574,
+          "canonical_download_url": "https://datadryad.org/api/v2/files/2041574/download",
+          "mirror_download_url": "https://zenodo.org/records/7542610/files/README.txt?download=1",
+          "bytes": 8479,
+          "sha256": "f6d8f508bad2824a27be8785c841e8df4c75751b58726820f9e3dd226fe3fb5e",
+          "row_count": null,
+          "column_count": null,
+          "imported_as_context_records": false
+        }
+      ]
+    },
+    {
+      "source_key": "dryad_yeager_acids_meta_analysis",
+      "doi": "10.25338/B8C91C",
+      "title": "Acids in Coffee - A Review of Sensory Measurements and Meta-Analysis of Chemical Composition",
+      "dryad_dataset_id": 69447,
+      "dryad_version_id": 130006,
+      "dryad_version_number": 5,
+      "publication_date": "2021-07-14",
+      "license": "CC0-1.0",
+      "commercial_use": true,
+      "derivative_use": true,
+      "redistribution": true,
+      "machine_use": true,
+      "acquisition_status": "imported",
+      "geography": "121-publication meta-analysis; geography is heterogeneous and not a single sampling frame",
+      "time_period": "Underlying publications reviewed April-December 2020; dataset version published 2021-07-14",
+      "preparation_coverage": "Source extraction labels include immersion, espresso, filter, French press, drip, cold brew, laboratory extraction, instant, and unresolved terms",
+      "roast_coverage": "Source semi-qualitative labels include light, medium, dark, green, roasted, steamed, and unspecified",
+      "sensory_coverage": "No sensory outcome rows; chemical acid concentrations only",
+      "known_limitations": "Not a consumer sensory dataset. Source roast labels were harmonized by the authors to three approximate classes. Wide CSVs contain trailing empty columns.",
+      "files": [
+        {
+          "path": "yeager_2021_acids_meta/Acids_in_Coffee_-CGAs.csv",
+          "dryad_file_id": 811668,
+          "canonical_download_url": "https://datadryad.org/api/v2/files/811668/download",
+          "mirror_download_url": "https://zenodo.org/records/5083325/files/Acids_in_Coffee_-CGAs.csv?download=1",
+          "bytes": 1461458,
+          "sha256": "3cd45f9640db5e1d3cff1e188daa56e64bf3aa5c0659b3d7319188da2d32a112",
+          "row_count": 1344,
+          "column_count": 33,
+          "imported_as_context_records": true
+        },
+        {
+          "path": "yeager_2021_acids_meta/Acids_in_Coffee_-OAs.csv",
+          "dryad_file_id": 811667,
+          "canonical_download_url": "https://datadryad.org/api/v2/files/811667/download",
+          "mirror_download_url": "https://zenodo.org/records/5083325/files/Acids_in_Coffee_-OAs.csv?download=1",
+          "bytes": 36082,
+          "sha256": "3de0483c14b310dfa0f960d0f5096df014483dcdb14ef217d239432c316b808d",
+          "row_count": 287,
+          "column_count": 35,
+          "imported_as_context_records": true
+        },
+        {
+          "path": "yeager_2021_acids_meta/Acids_in_Coffee_-References.csv",
+          "dryad_file_id": 811665,
+          "canonical_download_url": "https://datadryad.org/api/v2/files/811665/download",
+          "mirror_download_url": "https://zenodo.org/records/5083325/files/Acids_in_Coffee_-References.csv?download=1",
+          "bytes": 50950,
+          "sha256": "d43166417e425f471be6d14d03d2c28a3eb5edf3c8ac30106c31b415ac46a9b5",
+          "row_count": 183,
+          "column_count": 1,
+          "imported_as_context_records": false
+        },
+        {
+          "path": "yeager_2021_acids_meta/ReadMe.xlsx",
+          "dryad_file_id": 811666,
+          "canonical_download_url": "https://datadryad.org/api/v2/files/811666/download",
+          "mirror_download_url": "https://zenodo.org/records/5083325/files/ReadMe.xlsx?download=1",
+          "bytes": 13689,
+          "sha256": "6d6e6edb55cd46c02a957e8a84072d11a2b19ff2ac794b1ba132c8c6a3a11530",
+          "row_count": 79,
+          "column_count": 13,
+          "imported_as_context_records": false
+        }
+      ]
+    },
+    {
+      "source_key": "dryad_liang_full_immersion",
+      "doi": "10.5061/dryad.v15dv423h",
+      "title": "Data for the 2024 full-immersion temperature, time, and roast sensory study",
+      "dryad_dataset_id": 124603,
+      "dryad_version_id": null,
+      "dryad_version_number": null,
+      "publication_date": null,
+      "license": "UNVERIFIED_FOR_INACCESSIBLE_RECORD",
+      "commercial_use": null,
+      "derivative_use": null,
+      "redistribution": null,
+      "machine_use": null,
+      "acquisition_status": "not_imported_inaccessible",
+      "geography": "Not verified from an accessible dataset record",
+      "time_period": "Associated article published 2024",
+      "preparation_coverage": "Associated article reports full immersion; exact frozen data fields not inspected",
+      "roast_coverage": "Associated article reports two roast treatments; exact frozen data fields not inspected",
+      "sensory_coverage": "Associated article reports descriptive sensory analysis; exact frozen data fields not inspected",
+      "known_limitations": "Dryad API returned identifier cannot be viewed or is missing required elements on 2026-08-25. No source file, version, license record, or hash was available, so import was refused.",
+      "files": []
+    }
+  ]
+}

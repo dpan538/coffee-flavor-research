@@ -26,3 +26,7 @@
 *.woff2 binary
 *.pdf binary
 *.docx binary
+
+# Frozen external source bytes must retain repository-published line endings so
+# their committed SHA-256 values remain identical to the source registries.
+db/data/round3b/raw/** -text
