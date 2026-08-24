@@ -14,10 +14,10 @@ their experience with roaster, store, or packaging tasting notes, but those
 notes remain industry-language observations rather than objective flavor
 labels.
 
-The current repository contains the validated research and database foundation
-through Round 3A, including governed preparation and roast context. The final
-consumer interaction and ranking model have not yet been implemented or
-validated.
+The current repository contains the research and database foundation through
+Round 3B, including governed preparation and roast context, frozen lawful
+context data, and held-out label-normalization evaluation. The final consumer
+interaction and ranking model have not been implemented or validated.
 
 ## Product contract
 
@@ -26,19 +26,21 @@ The current product semantics are frozen in the
 level, the intended interaction is:
 
 ```text
-C0 preparation / beverage context
-C1 roast context
+C0 mandatory preparation / beverage context (no unknown choice)
+C1 mandatory seven-level roast context
 Q1 + Q2 + Q3 + Q4
 optional adaptive Q5
 ↓
 5 primary sensory candidates + 3 secondary candidates
 ```
 
-Round 3A recommends eight broad C0 preparation families with conditional
-subtypes and five coarse C1 roast labels plus explicit unknown. These are
-research-backed project representations, not frozen UI controls or universal
-coffee standards. The exact questions and consumer-to-sensory ranking model
-remain research questions.
+Round 3B requires one of eight broad C0 preparation families and at least seven
+ordered C1 roast categories, including distinct medium-light and medium-dark
+positions. Database observations may still be unknown, not reported, not
+applicable, or unresolved. These are project interaction constraints, not
+universal coffee standards or proof of equal physical roast intervals. The
+exact questions and consumer-to-sensory ranking model remain research
+questions.
 
 ## Methodology
 
@@ -68,7 +70,7 @@ future embedding or deep-learning layer must demonstrate measurable held-out
 benefit over the deterministic baseline. Model output never silently becomes
 canonical knowledge, and retrieval may explicitly return `UNRESOLVED`.
 
-## Validated status through Round 3A
+## Validated status through Round 3B
 
 The PostgreSQL 17 foundation currently includes:
 
@@ -80,8 +82,9 @@ The PostgreSQL 17 foundation currently includes:
 - 1,713 unique normalized industry-language expressions;
 - deterministic exact, approved-variant, `pg_trgm`, and typed-graph retrieval;
 - explicit abstention and `UNRESOLVED` behavior;
-- preparation/roast context with source-scheme isolation, explicit unknown,
-  additions, measured roast methods, and conservative unresolved labels; and
+- preparation/roast context with source-scheme isolation, observation-level
+  unknown states, additions, measured roast methods, conservative unresolved
+  labels, and production-safe mandatory C0/seven-level C1 projections; and
 - reproducible migrations and two-clean-rebuild validation.
 
 Round 2B retrieval results are **deterministic language-retrieval metrics**
@@ -130,8 +133,8 @@ The current foundation is deliberately incomplete:
   coverage is low;
 - consumer-to-sensory-region ranking is not calibrated;
 - the Round 2B corpus has zero structured preparation and roast coverage;
-- the eight-family C0 and five-level C1 interaction have not yet been tested
-  with ordinary users;
+- ordinary-user comprehension testing remains outstanding even though a
+  held-out lexical normalization audit is now available;
 - embeddings have not been benchmarked; and
 - no final four-to-five-question interaction has been validated.
 
@@ -140,8 +143,8 @@ mappings or by describing retrieval scores as sensory probabilities.
 
 ## Current research direction
 
-The next phase should freeze and import a rights-cleared context dataset,
-validate C0/C1 comprehension and context-conditioned evaluation slices, and
+The next phase should run independent ordinary-user comprehension and labeling
+work, obtain a sensory dataset with varied preparation and roast cells, and
 continue multi-source corpus and lexical normalization work. An embedding
 benchmark follows only after those foundations are stronger.
 
@@ -190,9 +193,10 @@ npm run test:db:repro
   [Round 1](./docs/audits/coffee-sensory-kb-v0-round1/00_EXECUTIVE_RECEIPT.md),
   [Round 2A](./docs/audits/coffee-sensory-kb-v0-round2a/00_EXECUTIVE_RECEIPT.md),
   [Round 2B](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md),
-  and [Round 3A](./docs/audits/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_RECEIPT.md)
+  [Round 3A](./docs/audits/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_RECEIPT.md),
+  and [Round 3B](./docs/audits/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_RECEIPT.md)
 - Current context research:
-  [Round 3A synthesis](./docs/research/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_SYNTHESIS.md)
+  [Round 3B synthesis](./docs/research/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_SYNTHESIS.md)
 - Frozen pre-V0 material:
   [legacy archive](./docs/archive/pre-sensory-kb-v0-20260824/README.md) and
   [archive manifest](./docs/archive/pre-sensory-kb-v0-20260824/MANIFEST.md)

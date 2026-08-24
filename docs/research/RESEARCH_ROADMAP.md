@@ -54,20 +54,30 @@ boundaries are described in the
 ### Preparation and roast context
 
 - Reviewed preparation, milk, roast, and preparation-by-roast evidence.
-- Defined eight broad C0 families with conditional subtypes and explicit
-  unknown preparation.
-- Defined a five-level project C1 projection with source-scheme isolation,
-  measured-method separation, unresolved terminology, and explicit unknown.
+- Defined eight broad internal C0 families with conditional subtypes and
+  separate database observation-status semantics.
+- Preserved the historical Round 3A five-level C1 projection, source-scheme
+  isolation, measured-method separation, and unresolved terminology.
 - Added forward-only normalized context migrations, provenance, semantic and
   negative tests, query plans, and repeatable inventory.
+
+### Round 3B interaction decision
+
+- Made one valid C0 family mandatory in the user interaction with no
+  user-facing unknown option; database unknown states remain valid.
+- Superseded the historical five-level user projection with a current minimum
+  seven-level ordinal scheme that preserves medium-light and medium-dark.
+- Kept interaction constraints separate from empirical mapping calibration.
 
 ## Now
 
 ### Context dataset and interaction validation
 
 - Freeze and hash a rights-cleared context dataset before import.
-- Validate the eight-family preparation and five-level roast interaction with
-  ordinary users.
+- Validate common consumer preparation expressions against the mandatory
+  eight-family C0 projection.
+- Validate source roast expressions against the seven-level C1 projection
+  without forced assignment.
 - Define held-out evaluation slices for known, unresolved, unknown, black,
   milk, preparation, and roast contexts.
 - Test context value without inventing flavor coefficients.

@@ -4,8 +4,9 @@ Status: current product-semantics source of truth
 
 This contract defines what the intended Coffee Flavor Atlas product is trying
 to do and how its output should be interpreted. It freezes product semantics,
-not a final interface, questionnaire, preparation taxonomy, roast standard, or
-ranking implementation.
+not a final interface, questionnaire, universal roast standard, or ranking
+implementation. The current C0/C1 interaction constraints were updated by the
+Round 3B decision record on 2026-08-25.
 
 ## User
 
@@ -45,9 +46,9 @@ with a note does not establish an objective flavor label for the coffee.
 The conceptual interaction is:
 
 ```text
-C0 — Preparation / beverage context
+C0 — Mandatory preparation / beverage context
 
-C1 — Roast context
+C1 — Mandatory seven-level roast context
 
 Q1
 Q2
@@ -63,18 +64,38 @@ optional adaptive Q5
 3 secondary candidates
 ```
 
-C0 and C1 describe context. Q1 through Q4 describe the user's current
-perception. Q5 is permitted only when an additional low-burden discriminator
-is expected to improve a materially ambiguous result.
+C0 and C1 are required before sensory questions begin. C0 has no user-facing
+`unknown`, `unsure`, or “I don't know” choice. C1 exposes at least seven
+ordered project categories. C0 and C1 describe context. Q1 through Q4 describe
+the user's current perception. Q5 is permitted only when an additional
+low-burden discriminator is expected to improve a materially ambiguous result.
 
-The precise C0/C1 taxonomies, question wording, branching policy, and ranking
-features are not frozen. They require further research and held-out
-evaluation.
+The eight C0 computational families and seven-level C1 minimum constrain the
+data architecture. Final user wording, conditional subtypes, question wording,
+branching policy, mappings from external source terms, and ranking features
+still require research and held-out evaluation.
 
 ## C0 — preparation and beverage context
 
-Preparation is a candidate for a mandatory contextual variable in the first
-implemented product. This contract does not hard-code a final taxonomy.
+Preparation is mandatory in the first implemented product. The user selects
+one valid broad family; exact brewer knowledge is optional and can be resolved
+from familiar beverage names such as latte, V60, French press, cold brew, or
+long black.
+
+The current computational families are:
+
+```text
+filter / percolation
+immersion
+hybrid / manual pressure
+espresso / short pressure
+espresso + water
+stovetop / boiled
+cold extraction
+espresso + milk
+```
+
+These technical labels are stable internal identities, not final UI copy.
 
 Current research candidates include:
 
@@ -104,8 +125,8 @@ piccolo
 macchiato
 ```
 
-These are candidate preparation contexts, not canonical application
-categories. Round 3A must determine:
+These are context identities, not sensory attributes or universal coffee
+categories. Ongoing validation determines:
 
 - an appropriate parent/child organization;
 - which preparation differences materially affect sensory-reference ranking;
@@ -113,14 +134,18 @@ categories. Round 3A must determine:
   distinct identities; and
 - whether milk-based coffee requires a separate sensory mode.
 
+`UNKNOWN`, `NOT_REPORTED`, `REPORTED_UNRESOLVED`, and `NOT_APPLICABLE` remain
+valid database observation states for imported evidence. They are not user C0
+choices. If a common consumer expression cannot yet be resolved, that is a
+curation problem; it does not restore an unknown button.
+
 A shared parent must not erase a meaningful distinction. For example, this
 contract does not claim that `flat white = latte` or that
 `long black = cold brew`.
 
 ## C1 — roast context
 
-Roast level is also a candidate for a mandatory contextual variable in the
-first implemented product.
+Roast context is mandatory in the first implemented product.
 
 The proposed initial interaction scale is:
 
@@ -134,11 +159,13 @@ dark
 extremely dark
 ```
 
-This seven-level scale is a product hypothesis. It is not a validated
-universal roast standard, a measured roast-color equivalence, or a claim that
-all roasters use the terms consistently.
+This is the minimum current product interaction scheme. The categories are
+project-defined and ordinal. They are not equal physical intervals, a
+validated universal roast standard, a measured roast-color equivalence, or a
+claim that all roasters use the terms consistently. In particular, ordinal
+positions do not assert equal distance between adjacent categories.
 
-Round 3A must investigate:
+Research and source review continue to investigate:
 
 - formal roast-degree terminology;
 - specialty-roaster terminology;
@@ -152,7 +179,17 @@ Round 3A must investigate:
 
 Research must determine what can be asked reliably of an ordinary user, what
 can be derived only from measured metadata, and how uncertainty should be
-represented when a packaging term is ambiguous.
+represented when a packaging term is ambiguous. A source label may remain
+`REPORTED_UNRESOLVED`; the seven-level interaction minimum does not require a
+forced mapping. `filter roast`, `espresso roast`, `omniroast`, Nordic, City,
+and measured color systems remain source-specific unless evidence supports an
+explicit mapping.
+
+Interaction constraints are product decisions. Scientific calibration remains
+empirical. The product requires at least seven ordinal roast categories to
+retain distinctions important to the target market; empirical work validates
+mappings into those categories. It does not prove seven objectively equal or
+universal roast levels.
 
 ## Sensory question contract
 
@@ -245,7 +282,10 @@ This contract freezes:
 - compatibility with current perception rather than correction as the
   objective;
 - low interaction burden;
-- preparation and roast as contextual research variables;
+- mandatory preparation and roast context before sensory questions;
+- eight valid C0 computational families with no user-facing unknown choice;
+- at least seven ordered C1 categories with distinct medium-light, medium, and
+  medium-dark positions;
 - a default of four sensory questions with at most one adaptive discriminator;
 - five primary plus three secondary candidates as the intended output shape;
 - non-probabilistic user-facing candidate language; and
@@ -255,8 +295,9 @@ This contract freezes:
 
 This contract does not freeze:
 
-- the C0 preparation taxonomy;
-- the C1 roast taxonomy or mapping to measured roast color;
+- final consumer wording for the eight C0 families and conditional subtypes;
+- mappings from external roast schemes to the seven project categories or to
+  measured roast color;
 - the wording or order of Q1–Q5;
 - adaptive-question triggers;
 - a sensory-region representation;
