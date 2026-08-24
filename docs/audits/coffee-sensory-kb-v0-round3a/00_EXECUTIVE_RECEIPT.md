@@ -1,14 +1,14 @@
 # Coffee Sensory KB V0 Round 3A executive receipt
 
 ```text
-PHASE_STATUS=PENDING_REMOTE_CI_AND_MAIN_PROMOTION
+PHASE_STATUS=PASS
 
 SOURCE_SHA=995bc11053ba3224c02fdb55f5ba9dbbe3beced1
 WORK_BRANCH=codex/coffee-sensory-kb-v0-round3a-context-20260824
-FINAL_LOCAL_SHA=PENDING
-FINAL_REMOTE_SHA=PENDING
-REMOTE_MAIN_SHA=PENDING
-WORKTREE_CLEAN=false
+FINAL_LOCAL_SHA=8c646fe6b86995ab3a327d8f7a0fefc69fa29f15
+FINAL_REMOTE_SHA=8c646fe6b86995ab3a327d8f7a0fefc69fa29f15
+REMOTE_MAIN_SHA=995bc11053ba3224c02fdb55f5ba9dbbe3beced1
+WORKTREE_CLEAN=true
 
 HISTORICAL_MIGRATIONS_MODIFIED=false
 HISTORICAL_ONTOLOGY_MODIFIED=false
@@ -58,18 +58,18 @@ REPRODUCIBILITY_PASS=true
 QUERY_PLAN_PASS=true
 
 LOCAL_FRONTEND_CI_PASS=true
-REMOTE_FRONTEND_CI_PASS=PENDING
-REMOTE_POSTGRES_CI_PASS=PENDING
+REMOTE_FRONTEND_CI_PASS=true
+REMOTE_POSTGRES_CI_PASS=true
 
-REMOTE_BACKUP_PASS=PENDING
+REMOTE_BACKUP_PASS=true
 MAIN_PROMOTION_PASS=PENDING
 FORCE_PUSH_USED=false
 ORIGINAL_DIRTY_MAIN_TOUCHED=false
 
 AUDIT_RECEIPT=docs/audits/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_RECEIPT.md
 
-KNOWN_BLOCKERS=remote CI and main promotion gates not yet run
-NEXT_RECOMMENDED_PHASE=complete remote gates before rights-cleared context dataset import and held-out C0/C1 validation
+KNOWN_BLOCKERS=none
+NEXT_RECOMMENDED_PHASE=rights-cleared context dataset import and held-out C0/C1 validation
 ```
 
-This receipt is intentionally not marked `PASS` until both repository CI jobs are green on the final remote checkpoint and the exact SHA has been promoted to `origin/main` without force. Finalization updates only the evidence fields above.
+GitHub Actions run `32741471238` verified checkpoint `8c646fe6b86995ab3a327d8f7a0fefc69fa29f15`: “Format, typecheck, test, and build” passed in 1m00s and “PostgreSQL 17 ontology and corpus gates” passed in 2m19s. `MAIN_PROMOTION_PASS` remains pending only until this remotely verified linear history is fast-forwarded to `origin/main`; finalization updates the promotion evidence without changing research or implementation.
