@@ -15,8 +15,9 @@ notes remain industry-language observations rather than objective flavor
 labels.
 
 The current repository contains the validated research and database foundation
-through Round 2B. The final consumer interaction and ranking model have not yet
-been implemented or validated.
+through Round 3A, including governed preparation and roast context. The final
+consumer interaction and ranking model have not yet been implemented or
+validated.
 
 ## Product contract
 
@@ -33,10 +34,11 @@ optional adaptive Q5
 5 primary sensory candidates + 3 secondary candidates
 ```
 
-The C0 and C1 taxonomies, the exact questions, and the consumer-to-sensory
-ranking model remain research questions. In particular, the proposed
-seven-level roast scale is a product hypothesis, not a universal scientific
-roast standard.
+Round 3A recommends eight broad C0 preparation families with conditional
+subtypes and five coarse C1 roast labels plus explicit unknown. These are
+research-backed project representations, not frozen UI controls or universal
+coffee standards. The exact questions and consumer-to-sensory ranking model
+remain research questions.
 
 ## Methodology
 
@@ -66,7 +68,7 @@ future embedding or deep-learning layer must demonstrate measurable held-out
 benefit over the deterministic baseline. Model output never silently becomes
 canonical knowledge, and retrieval may explicitly return `UNRESOLVED`.
 
-## Validated status through Round 2B
+## Validated status through Round 3A
 
 The PostgreSQL 17 foundation currently includes:
 
@@ -77,7 +79,9 @@ The PostgreSQL 17 foundation currently includes:
   rights-reviewed pilot;
 - 1,713 unique normalized industry-language expressions;
 - deterministic exact, approved-variant, `pg_trgm`, and typed-graph retrieval;
-- explicit abstention and `UNRESOLVED` behavior; and
+- explicit abstention and `UNRESOLVED` behavior;
+- preparation/roast context with source-scheme isolation, explicit unknown,
+  additions, measured roast methods, and conservative unresolved labels; and
 - reproducible migrations and two-clean-rebuild validation.
 
 Round 2B retrieval results are **deterministic language-retrieval metrics**
@@ -91,13 +95,14 @@ validated baseline.
 
 ## Knowledge architecture
 
-PostgreSQL is the canonical system of record. Its six logical domains preserve
+PostgreSQL is the canonical system of record. Its seven logical domains preserve
 different kinds of claims:
 
 - `ref`: controlled codes and semantics;
 - `kb`: canonical concepts, lexicalizations, and governed relations;
 - `evidence`: sources, rights, support, measurements, and projections;
 - `corpus`: captured language observations and corpus-derived statistics;
+- `context`: preparation, beverage-addition, and roast conditions;
 - `ml`: versioned model runs, mapping candidates, and candidate signals; and
 - `audit`: review, lifecycle history, validation, and explicit promotion.
 
@@ -105,6 +110,7 @@ The central boundary is:
 
 ```text
 canonical knowledge
+≠ preparation / roast context
 ≠ raw corpus observation
 ≠ model inference
 ≠ evaluation result
@@ -123,7 +129,9 @@ The current foundation is deliberately incomplete:
 - the governed lexical bridge remains sparse and deterministic retrieval
   coverage is low;
 - consumer-to-sensory-region ranking is not calibrated;
-- preparation and roast context are not yet modeled;
+- the Round 2B corpus has zero structured preparation and roast coverage;
+- the eight-family C0 and five-level C1 interaction have not yet been tested
+  with ordinary users;
 - embeddings have not been benchmarked; and
 - no final four-to-five-question interaction has been validated.
 
@@ -132,10 +140,10 @@ mappings or by describing retrieval scores as sensory probabilities.
 
 ## Current research direction
 
-The next phase researches preparation context, roast context, their database
-representation, multi-source corpus enrichment, and lexical normalization
-expansion. Independent evaluation and an optional embedding benchmark follow
-only after those foundations are stronger.
+The next phase should freeze and import a rights-cleared context dataset,
+validate C0/C1 comprehension and context-conditioned evaluation slices, and
+continue multi-source corpus and lexical normalization work. An embedding
+benchmark follows only after those foundations are stronger.
 
 See the [Research Roadmap](./docs/research/RESEARCH_ROADMAP.md) for the ordered
 program. No dates are implied by that sequence.
@@ -181,7 +189,10 @@ npm run test:db:repro
 - Validated implementation evidence:
   [Round 1](./docs/audits/coffee-sensory-kb-v0-round1/00_EXECUTIVE_RECEIPT.md),
   [Round 2A](./docs/audits/coffee-sensory-kb-v0-round2a/00_EXECUTIVE_RECEIPT.md),
-  and [Round 2B](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md)
+  [Round 2B](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md),
+  and [Round 3A](./docs/audits/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_RECEIPT.md)
+- Current context research:
+  [Round 3A synthesis](./docs/research/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_SYNTHESIS.md)
 - Frozen pre-V0 material:
   [legacy archive](./docs/archive/pre-sensory-kb-v0-20260824/README.md) and
   [archive manifest](./docs/archive/pre-sensory-kb-v0-20260824/MANIFEST.md)

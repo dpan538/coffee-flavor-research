@@ -23,7 +23,8 @@ boundaries are described in the
 ### PostgreSQL architecture
 
 - Established PostgreSQL 17 as the system of record.
-- Separated `ref`, `kb`, `evidence`, `corpus`, `ml`, and `audit` claim domains.
+- Separated `ref`, `kb`, `evidence`, `corpus`, `context`, `ml`, and `audit`
+  claim domains.
 - Validated constraints, negative cases, query plans, and repeatable rebuilds.
 
 ### Canonical sensory ontology
@@ -50,34 +51,26 @@ boundaries are described in the
 - Evaluated four ablations on a frozen development/held-out audit without
   embeddings, `pgvector`, or automatic ontology promotion.
 
+### Preparation and roast context
+
+- Reviewed preparation, milk, roast, and preparation-by-roast evidence.
+- Defined eight broad C0 families with conditional subtypes and explicit
+  unknown preparation.
+- Defined a five-level project C1 projection with source-scheme isolation,
+  measured-method separation, unresolved terminology, and explicit unknown.
+- Added forward-only normalized context migrations, provenance, semantic and
+  negative tests, query plans, and repeatable inventory.
+
 ## Now
 
-### Preparation-context research
+### Context dataset and interaction validation
 
-- Review preparation and beverage-context terminology relevant to ordinary
-  tasting.
-- Determine defensible parent/child groupings without collapsing distinct
-  methods.
-- Test which contextual differences materially affect sensory-reference
-  retrieval or ranking.
-- Investigate whether milk-based coffee requires a separate sensory mode.
-
-### Roast-context research
-
-- Review formal, measured, specialty-industry, regional, filter, espresso, and
-  omniroast terminology.
-- Distinguish user-facing labels from measured roast-color systems.
-- Evaluate the proposed seven-level interaction scale as a product hypothesis,
-  not a universal standard.
-- Define explicit uncertainty for ambiguous packaging or roaster terminology.
-
-### Contextual database model
-
-- Add only forward migrations after research semantics are clear.
-- Keep preparation entities, roast observations, measurements, source labels,
-  and model features distinguishable.
-- Preserve source/version provenance and avoid encoding product taxonomies as
-  universal sensory truth.
+- Freeze and hash a rights-cleared context dataset before import.
+- Validate the eight-family preparation and five-level roast interaction with
+  ordinary users.
+- Define held-out evaluation slices for known, unresolved, unknown, black,
+  milk, preparation, and roast contexts.
+- Test context value without inventing flavor coefficients.
 
 ### Multi-source corpus enrichment
 

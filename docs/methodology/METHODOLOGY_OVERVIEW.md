@@ -211,8 +211,11 @@ system:
   resolved, while 1,656 remain explicitly unresolved.
 - Deterministic retrieval coverage is low, and the held-out audit used
   Codex-assisted non-human review rather than independent human reviewers.
-- Preparation context is not yet modeled.
-- Roast context is not yet modeled or mapped to measured roast-color systems.
+- Preparation and roast context are represented, but the Round 2B corpus has
+  zero structured coverage and no context-conditioned model is calibrated.
+- The recommended eight-family C0 and five-level C1 interaction remain
+  untested with ordinary users; measured roast methods are stored without
+  invented category cutoffs.
 - Consumer-to-sensory-region ranking is not calibrated.
 - Embeddings have not been benchmarked.
 - No final four-to-five-question interaction has been validated.
@@ -224,10 +227,11 @@ and [known gaps](../audits/coffee-sensory-kb-v0-round2b/12_KNOWN_GAPS.md).
 
 ## Next methodological work
 
-The immediate research program covers preparation context, roast context,
-their contextual data model, multi-source corpus enrichment, and expansion of
-the governed lexical bridge. Independent evaluation and an embedding ablation
-follow only when the underlying evidence can support them.
+The immediate research program covers a frozen rights-cleared context dataset,
+C0/C1 comprehension and held-out context slices, multi-source corpus
+enrichment, and expansion of the governed lexical bridge. Independent
+evaluation and an embedding ablation follow only when the underlying evidence
+can support them.
 
 The ordered stages and gates are maintained in the
 [Research Roadmap](../research/RESEARCH_ROADMAP.md).

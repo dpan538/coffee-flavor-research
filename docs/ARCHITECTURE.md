@@ -4,8 +4,9 @@
 
 The current research architecture is the PostgreSQL 17+ Coffee Sensory
 Knowledge Base V0. It is implemented as an isolated migration and test
-substrate under `db/`. Rounds 1 through 2B establish its schema, canonical
-ontology, rights-reviewed pilot corpus, and deterministic retrieval baseline.
+substrate under `db/`. Rounds 1 through 3A establish its schema, canonical
+ontology, rights-reviewed pilot corpus, deterministic retrieval baseline, and
+governed preparation/roast context.
 The frontend is still not connected to PostgreSQL.
 
 Current product meaning is governed by the
@@ -15,13 +16,15 @@ knowledge layers support the intended sensory-reference system, while the
 [Research Roadmap](./research/RESEARCH_ROADMAP.md) identifies what remains
 unvalidated.
 
-The database uses six logical schemas:
+The database uses seven logical schemas:
 
 - `ref`: controlled semantics;
 - `kb`: language-neutral canonical knowledge and lexicalization;
 - `evidence`: sources, rights, datasets, support, measurements, projections,
   and reference calibration;
 - `corpus`: captured documents, raw observations, and co-occurrence measures;
+- `context`: preparation, beverage-addition, roast-scheme, and measured roast
+  conditions;
 - `ml`: versioned models, runs, mapping candidates, and candidate signals; and
 - `audit`: independent reviews, lifecycle history, and explicit promotion.
 
@@ -33,6 +36,8 @@ Round 2A evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round2a/`](./audits/coffee-sensory-kb-v0-round2a/).
 Round 2B corpus, retrieval, rights, and reproducibility evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round2b/`](./audits/coffee-sensory-kb-v0-round2b/).
+Round 3A context research and validation evidence belongs in
+[`docs/audits/coffee-sensory-kb-v0-round3a/`](./audits/coffee-sensory-kb-v0-round3a/).
 
 ## PostgreSQL boundary
 
@@ -42,8 +47,10 @@ through `011` add concept-level provenance roles, source-local concept schemes,
 the curated V0 ontology, and ontology validation. Forward migrations `012`
 through `017` add corpus governance, versioned normalization and statistics,
 deterministic retrieval and audit structures, the frozen pilot, evaluation,
-resolution feedback, and Round 2B validation. PostgreSQL is the system of
-record and `pg_trgm` is required. `pgvector`, embeddings, a consumer ranking
+resolution feedback, and Round 2B validation. Forward migrations `018`
+through `021` add the normalized context domain, integrity rules, context
+taxonomies, and Round 3A validation. PostgreSQL is the system of record and
+`pg_trgm` is required. `pgvector`, embeddings, a consumer ranking
 model, an application API, and frontend data integration are not dependencies
 of the validated baseline.
 
@@ -53,6 +60,11 @@ empirical measurements, raw observations, model output, and promotion decisions
 remain in separate normalized relations. Corpus frequency and co-occurrence do
 not automatically become canonical sensory assertions, and retrieval may
 explicitly abstain with `UNRESOLVED`.
+
+Context follows the same epistemic discipline: a preparation identity, a
+source roast label, a project-normalized category, and a measured roast value
+are different records. Context never becomes a sensory attribute or ranking
+coefficient.
 
 ## Static application compatibility boundary
 
