@@ -2,7 +2,7 @@
 
 Date: 2026-08-24
 
-Status: `PHASE_STATUS=PASS`
+Status: `PHASE_STATUS=BLOCKED_REMOTE_CI`
 
 ## Outcome
 
@@ -84,6 +84,30 @@ because this round did not modify database inputs, migrations, scripts, or
 outputs; the source checkpoint's PostgreSQL 17 gate remains the applicable
 validated database evidence.
 
+## Remote CI result
+
+Remote main and the feature branch were both verified at the documentation
+checkpoint. GitHub Actions run
+[`32725576893`](https://github.com/dpan538/coffee-flavor-research/actions/runs/32725576893)
+then produced a split result:
+
+- formatting, typecheck, unit tests, and production build passed;
+- the PostgreSQL 17 ontology and corpus job passed two clean rebuilds;
+- the Playwright smoke step failed; and
+- one failed-job rerun also failed.
+
+The initial attempt could not find the comparison overlay in all three
+viewports. The rerun passed seven of nine cases but reproduced the existing
+viewport-sensitive comparison flow: the desktop comparison overlay intercepted
+the Lemon detail link, while the mobile comparison heading did not appear.
+The same nine smoke cases passed locally in this clean worktree.
+
+No application or test file changed in this documentation round. Fixing the
+comparison-overlay interaction or its Playwright synchronization would require
+a separate implementation/testing round and is explicitly outside this round's
+scope. Consequently, local repository checks pass, remote database checks
+pass, but the aggregate remote repository gate remains red.
+
 ## Safety
 
 Work was performed in the isolated clean worktree at
@@ -101,7 +125,7 @@ DIFF_SHA256=2c4eec84cd822846900bf6915a2b103c8cac08f04d8243ff7440cea4e21932df
 ## Receipt
 
 ```text
-PHASE_STATUS=PASS
+PHASE_STATUS=BLOCKED_REMOTE_CI
 
 SOURCE_SHA=7243ddb9c1537e3a7096cca652c18c66d18aeb30
 WORK_BRANCH=codex/coffee-sensory-docs-product-contract-v0-20260824
@@ -118,7 +142,7 @@ LEGACY_DOCS_MODIFIED=false
 
 PRODUCT_TERMINOLOGY_PASS=true
 DOCUMENT_LINK_PASS=true
-REPOSITORY_CHECKS_PASS=true
+REPOSITORY_CHECKS_PASS=false
 
 REMOTE_BACKUP_PASS=true
 MAIN_PROMOTION_PASS=true
@@ -126,10 +150,12 @@ FORCE_PUSH_USED=false
 ORIGINAL_DIRTY_MAIN_TOUCHED=false
 
 AUDIT_RECEIPT=docs/audits/coffee-sensory-docs-product-contract-v0-20260824/00_EXECUTIVE_RECEIPT.md
-KNOWN_BLOCKERS=none
-ROUND3A_READY=true
+KNOWN_BLOCKERS=GitHub Actions Playwright comparison-overlay smoke test failed on the initial run and one rerun; formatting, typecheck, unit tests, build, and PostgreSQL gates passed
+ROUND3A_READY=false
 ```
 
-Round 3A readiness means the current documentation contract is committed and
-remotely backed up. It does not mean the C0/C1 taxonomies, sensory questions,
-consumer ranking model, or final interaction have already been validated.
+The documentation contract is committed and remotely backed up, but Round 3A
+readiness remains false until the mandatory remote repository gate is green.
+Even after that gate is repaired, readiness does not mean the C0/C1 taxonomies,
+sensory questions, consumer ranking model, or final interaction have already
+been validated.
