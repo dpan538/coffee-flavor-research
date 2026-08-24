@@ -1,0 +1,30 @@
+{
+  "source": "Firstbloom Data",
+  "source_url": "https://github.com/alexcaza/firstbloom-data",
+  "creator": "Alex Caza",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "pinned_git_sha": "a6cb0026d1af9642724793c799bbc48dc189ba35",
+  "checked_at": "2026-08-24",
+  "rights_boundary": "ALLOW_DERIVED_TERMS",
+  "input_files": {
+    "README.md": "522096b2176617bd9bb169863e3b81b0a2e111058bcde2946f9e47b365e6ad05",
+    "LISCENSE": "62202e40780cad6d159546cdf74b5b218d07091f6feeca7b1244771ac72cba7c",
+    "product_releases.csv": "f0b556742dfbb7f4122ae00c9b31051c9a2ff233444771742bb538281cf6a8c0",
+    "roasters_202312201330.csv": "e49eba2d9d13d0e515c261165dd1fe216205b4d6a7b360ad4a1561f07105d153",
+    "product_release_varieties_202312201400.csv": "2e47758b4296c15bcaf0ac63c33cbcba1b62b3847aa527c14809b543fcb80fc7",
+    "cleaning_processes_202312201327.csv": "96c38342e950b788c6361de7f8a13fb2759f2cb118879be821b62b9e768796c7",
+    "drying_processes_202312201327.csv": "9a770e78eaed586daa2e2c513a5708c95b309068dedbbfee4c0c4e4cb2d9ea5c",
+    "varieties_202312201327.csv": "7bb968d6c2327acec05e500c9060470dc50288508b8ee67a5e68106c17de5785",
+    "coffee_regions_202312201327.csv": "5b8c28d27d0069ee1333e15be1bc984066fdaafd3e766d224477939849a9cd13",
+    "countries_202312201327.csv": "54247c647bc2b79b3363ec7418c348a257c5490a5b99a00fe108486f2370acb7",
+    "regions_202312201327.csv": "5a52a8a06000f37d20b9079472d0b0926685f54313ba9a2c84978a23db87dafc",
+    "producers_202312201327.csv": "7f6259203a5dfdc21b80680c541648929821fc7ceed8d04d70a11dd99688f08a",
+    "farms_202312201327.csv": "a0b145da31fc650d3788f839e554143a02a83db485c2dba3389c892c53b2ba18"
+  },
+  "excluded_files": {
+    "first_bloom_user_product_reviews_202312201402.csv": "Consumer-authored reviews are outside the industry-language corpus and are not read by the generator.",
+    "roaster_description": "Long commercial descriptions are not stored or emitted.",
+    "roaster_tasting_notes_string": "The complete source field is never emitted; only its SHA-256 and rights-bounded delimiter-derived observations are retained."
+  }
+}
