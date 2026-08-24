@@ -368,7 +368,17 @@ BEGIN
             (SELECT count(*) FROM evidence.empirical_pair_measurement)
           + (SELECT count(*) FROM evidence.reference_calibration)
           + (SELECT count(*) FROM corpus.expression_cooccurrence_measurement)
-          + (SELECT count(*) FROM ml.candidate_signal)
+          + CASE
+                -- Round 2B persists a typed retrieval-signal ledger and
+                -- validates its complete inventory through its own closure
+                -- function. Preserve the historical zero-signal assertion
+                -- for Round 1 and Round 2A databases only.
+                WHEN pg_catalog.to_regprocedure(
+                    'audit.run_round2b_validation_queries()'
+                ) IS NULL
+                THEN (SELECT count(*) FROM ml.candidate_signal)
+                ELSE 0
+            END
     ) <> 0 THEN
         RAISE EXCEPTION USING
             ERRCODE = '23514',

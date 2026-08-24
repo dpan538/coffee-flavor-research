@@ -401,6 +401,35 @@ write_round2b_inventory() {
                    UNION ALL
 
                    SELECT
+                     'resolution_run',
+                     resolution_run.observation_resolution_run_key,
+                     concat_ws(',',
+                       derivation.normalization_derivation_run_key,
+                       resolution_run.policy_version,
+                       to_char(
+                         resolution_run.resolution_as_of AT TIME ZONE 'UTC',
+                         'YYYY-MM-DD HH24:MI:SS.US'
+                       ) || 'Z',
+                       resolution_run.expected_occurrence_count,
+                       resolution_run.resolved_occurrence_count,
+                       resolution_run.unresolved_occurrence_count,
+                       resolution_run.expected_normalized_identity_count,
+                       resolution_run.resolved_only_normalized_identity_count,
+                       resolution_run.unresolved_only_normalized_identity_count,
+                       resolution_run.mixed_normalized_identity_count,
+                       resolution_run.policy_sha256,
+                       resolution_run.result_inventory_sha256,
+                       resolution_run.source_baseline_sha,
+                       resolution_run.frozen_at IS NOT NULL
+                     )
+                   FROM corpus.observation_resolution_run AS resolution_run
+                   JOIN corpus.normalization_derivation_run AS derivation
+                     ON derivation.normalization_derivation_run_id =
+                        resolution_run.normalization_derivation_run_id
+
+                   UNION ALL
+
+                   SELECT
                      'statistic_run',
                      statistic_run.corpus_statistic_run_key,
                      concat_ws(',',
@@ -426,6 +455,23 @@ write_round2b_inventory() {
                    JOIN audit.retrieval_audit_case AS audit_case
                      ON audit_case.retrieval_audit_set_id = audit_set.retrieval_audit_set_id
                    GROUP BY audit_set.retrieval_audit_set_key, audit_case.audit_split_code
+
+                   UNION ALL
+
+                   SELECT
+                     'audit_set',
+                     audit_set.retrieval_audit_set_key,
+                     concat_ws(',',
+                       audit_set.version_label,
+                       audit_set.inventory_sha256,
+                       audit_set.code_commit_sha,
+                       (SELECT count(*)
+                        FROM audit.retrieval_audit_case AS audit_case
+                        WHERE audit_case.retrieval_audit_set_id =
+                              audit_set.retrieval_audit_set_id),
+                       audit_set.frozen_at IS NOT NULL
+                     )
+                   FROM audit.retrieval_audit_set AS audit_set
 
                    UNION ALL
 

@@ -59,6 +59,8 @@ if either immutable boundary changes:
 013_round2b_normalization_statistics.sql
 014_round2b_retrieval_and_audit.sql
 015_round2b_pilot_seed.sql
+016_round2b_evaluation_seed.sql
+017_round2b_resolution_feedback_validation.sql
 ```
 
 `apply.sh` fails unless there is exactly one migration at every contiguous
@@ -72,8 +74,11 @@ The Round 2B forward layer adds rights-reviewed source decisions, immutable
 corpus snapshots, duplicate and history governance, versioned Unicode phrase
 normalization, occurrence/frequency/NPMI statistics, deterministic A--D
 retrieval, typed one-hop graph expansion, explicit abstention, and graded
-development/held-out audit structures. Historical migrations are never
-rewritten to accommodate corpus data.
+development/held-out audit structures. The final forward migrations persist
+the frozen audit, four baseline runs and DB-native metrics, then materialize
+the conservative exact-resolution boundary, ontology-feedback queue and
+expected-zero validation contract. Historical migrations are never rewritten
+to accommodate corpus data.
 
 The six PostgreSQL schemas have deliberately separate responsibilities:
 

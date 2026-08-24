@@ -1,0 +1,94 @@
+{
+  "adjudicated_qrel_row_count": 665,
+  "audit_set_key": "audit_set.round2b.firstbloom_pilot_v1",
+  "audit_set_version": "firstbloom-pilot-v1",
+  "case_count": 300,
+  "code_commit_sha": "a6abb4112cff3fc436b1613c37f9b40f51e65144",
+  "compiler_version": "round2b-evaluation-persistence-v1",
+  "corpus_snapshot_key": "corpus_snapshot.firstbloom_a6cb002_pilot_v1",
+  "development_case_count": 75,
+  "evaluation_count": 8,
+  "generated_at": "2026-08-24T08:31:00Z",
+  "governance": {
+    "embedding_baseline_run": false,
+    "grades_inferred": false,
+    "held_out_reviews_strictly_post_model_freeze": true,
+    "held_out_tuning_eligible": false,
+    "non_active_qrels_measure_ontology_gaps": true,
+    "pgvector_required": false,
+    "private_phrases_exported": false,
+    "private_rationales_exported": false,
+    "qrels_require_existing_concepts": true,
+    "retrieved_candidates_require_active_concepts": true,
+    "reviewer_added_concepts_can_enter_qrels_but_not_model_outputs": true,
+    "synthetic_padding_used": false,
+    "weighted_composite_score": false
+  },
+  "graph_policy_key": "graph_policy.round2b.v1",
+  "held_out_case_count": 225,
+  "input_artifacts": {
+    "adjudication.tsv": {
+      "sha256": "7e9b4ce21697ffd614cc11e89632394411d1bf1813bc331f0cc66a1b506ef6e8"
+    },
+    "audit_candidate_pool.tsv": {
+      "sha256": "00b087cabd36d1b50a258624e79e14ea10b3c135969143ca56c967e29c95cd45"
+    },
+    "audit_cases.tsv": {
+      "sha256": "0401ae2c3759044d4b9f5ab16ea1f374e27399080fc14717e27f79d0d96f1609"
+    },
+    "review_one.tsv": {
+      "sha256": "5b6b055cb64d99ffda7310fbb787434740f945bbf6e87fb09d275e43dc55005a"
+    },
+    "review_two.tsv": {
+      "sha256": "ed1ce352de996711182b2bf9ac36bbd05c3d4e4faf0131aaf23906c68458219e"
+    }
+  },
+  "metric_value_contract_count": 80,
+  "model_frozen_at": "2026-08-24T07:48:49Z",
+  "model_key": "model.round2b.deterministic_retrieval_v1",
+  "model_run_keys": {
+    "A": "model_run.round2b.deterministic_retrieval_v1.A",
+    "B": "model_run.round2b.deterministic_retrieval_v1.B",
+    "C": "model_run.round2b.deterministic_retrieval_v1.C",
+    "D": "model_run.round2b.deterministic_retrieval_v1.D"
+  },
+  "model_version_key": "model_version.round2b.deterministic_retrieval_v1.a6abb411",
+  "normalization_derivation_run_key": "normalization_run.firstbloom_a6cb002_pilot_v1.en_v1",
+  "normalization_pipeline_key": "normalization.en_v1",
+  "output_artifacts": {
+    "016_round2b_evaluation_seed.sql": {
+      "byte_count": 2000104,
+      "sha256": "2300911368607debafab935f6141d05a4521c68457da98ef7edb2956ab9bbe1d"
+    },
+    "audit_candidate_pool_public.tsv": {
+      "byte_count": 338642,
+      "sha256": "2ce7f0810c6c368e81534e3e10cc5a73a6c3f3296c519d0d84c9391f667f5d9c"
+    },
+    "audit_cases_public.tsv": {
+      "byte_count": 148266,
+      "sha256": "73c9a969fe7ed796ade10c0c4dc84efb78773ee5fc1b95534902231bf175c769"
+    },
+    "audit_qrels_public.tsv": {
+      "byte_count": 141003,
+      "sha256": "0e14df2cd8f3b03bc725d7fbb9518831e6a21f2551932ac46cacc1827e46c6be"
+    },
+    "audit_review_receipts_public.tsv": {
+      "byte_count": 95908,
+      "sha256": "0818448380fb931b226856361c42c4b6fac97299400aa0a011e59c02fb5b8325"
+    },
+    "evaluation_metric_contract_public.tsv": {
+      "byte_count": 25229,
+      "sha256": "4d3e4dc6393553474314a34b02a243d460c28fe46fb231b94c4d87551e07b951"
+    }
+  },
+  "persisted_candidate_signal_count": 796,
+  "persisted_candidate_trace_count": 610,
+  "pooled_candidate_count": 348,
+  "reviewer_receipts": {
+    "adjudicator_key_sha256": "aea2ae2464d31879037d89a56fdbe0c44529b3dfdfd0067890466635c24b571a",
+    "distinct_actor_count": 3,
+    "reviewer_one_key_sha256": "945895fd09c427dac95c9e27c32a4feaff5e4ad7f498cb66c19cd68ee1a75be4",
+    "reviewer_two_key_sha256": "683bcb200488eb35274743ee3ff68205f214b7572dece77552406385b5a97af6"
+  },
+  "status": "generated"
+}

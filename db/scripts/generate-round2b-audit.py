@@ -1039,7 +1039,12 @@ def write_tsv_atomic(
         raise GenerationError(
             f"refusing to overwrite existing export without --overwrite: {path}"
         )
-    path.parent.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    if path.parent.is_symlink() or not path.parent.is_dir():
+        raise GenerationError(
+            f"private audit output parent is not a real directory: {path.parent}"
+        )
+    os.chmod(path.parent, 0o700)
     temporary_path: Path | None = None
     try:
         with tempfile.NamedTemporaryFile(
@@ -1063,8 +1068,10 @@ def write_tsv_atomic(
             for row in rows:
                 writer.writerow(row)
             handle.flush()
+            os.fchmod(handle.fileno(), 0o600)
             os.fsync(handle.fileno())
         os.replace(temporary_path, path)
+        os.chmod(path, 0o600)
     finally:
         if temporary_path is not None and temporary_path.exists():
             temporary_path.unlink()
