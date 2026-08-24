@@ -176,7 +176,7 @@ FROM ml.retrieve_deterministic_candidates(
 \echo ROUND2B_RETRIEVAL_SAMPLE_C_OBSERVED_UNMAPPED
 SELECT *
 FROM ml.retrieve_deterministic_candidates(
-    'Bergamote', 'en', 'normalization.en_v1', 'C', 5, 0.35::REAL
+    'Hazelnuts', 'en', 'normalization.en_v1', 'C', 5, 0.35::REAL
 );
 
 \echo ROUND2B_RETRIEVAL_SAMPLE_D_GRAPH
@@ -353,7 +353,7 @@ BEGIN
             MESSAGE = 'canonical-dictionary trigram fallback or its signal ledger changed';
     END IF;
 
-    -- The pilot contains an observed normalized identity for "bergamote" but
+    -- The pilot contains an observed normalized identity for "hazelnuts" but
     -- that candidate expression has no approved canonical mapping. Its mere
     -- presence must not suppress fallback against the canonical dictionary.
     IF NOT EXISTS (
@@ -365,7 +365,7 @@ BEGIN
         JOIN corpus.normalization_derivation_run AS derivation
           ON derivation.normalization_derivation_run_id =
              occurrence.normalization_derivation_run_id
-        WHERE normalized.normalized_text = 'bergamote'
+        WHERE normalized.normalized_text = 'hazelnuts'
           AND derivation.normalization_derivation_run_key =
               'normalization_run.firstbloom_a6cb002_pilot_v1.en_v1'
     ) OR EXISTS (
@@ -386,15 +386,15 @@ BEGIN
         JOIN kb.concept AS concept
           ON concept.concept_id = lexicalization.concept_id
          AND concept.lifecycle_status_code = 'active'
-        WHERE normalized.normalized_text = 'bergamote'
+        WHERE normalized.normalized_text = 'hazelnuts'
     ) OR NOT EXISTS (
         SELECT 1
         FROM ml.retrieve_deterministic_candidates(
-            'Bergamote', 'en', 'normalization.en_v1',
+            'Hazelnuts', 'en', 'normalization.en_v1',
             'C', 5, 0.35::REAL
         ) AS result
         WHERE result.retrieval_tier_code = 'C'
-          AND result.concept_key = 'sensory.bergamot'
+          AND result.concept_key = 'sensory.hazelnut'
     ) THEN
         RAISE EXCEPTION USING
             ERRCODE = '23514',

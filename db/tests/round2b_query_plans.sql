@@ -216,7 +216,7 @@ LIMIT 20;
 EXPLAIN (ANALYZE, BUFFERS)
 SELECT *
 FROM ml.retrieve_deterministic_candidates(
-    'Bergamote', 'en', 'normalization.en_v1', 'C', 5, 0.35::REAL
+    'Hazelnuts', 'en', 'normalization.en_v1', 'C', 5, 0.35::REAL
 );
 
 \echo ROUND2B_QUERY_PLAN=typed_graph_expansion_natural
