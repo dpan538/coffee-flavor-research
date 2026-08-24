@@ -1,0 +1,25 @@
+{
+  "case_count": 102,
+  "code_commit": "6e2aa59d407982e77f05d5df539348719490f179",
+  "context_record_count": 4817,
+  "created_at": "2026-08-25T00:00:00+10:00",
+  "held_out_case_count": 17,
+  "normalization_version": "context_normalization_v1",
+  "snapshot_hash": "aca93ed92f0c032f81709bc35d3db102a10bfdddf684c09765228ee1a5481355",
+  "snapshot_key": "context.snapshot.round3b_v1",
+  "source_count": 2,
+  "source_file_hashes": [
+    "3cd45f9640db5e1d3cff1e188daa56e64bf3aa5c0659b3d7319188da2d32a112",
+    "3de0483c14b310dfa0f960d0f5096df014483dcdb14ef217d239432c316b808d",
+    "6d6e6edb55cd46c02a957e8a84072d11a2b19ff2ac794b1ba132c8c6a3a11530",
+    "931aff6185381d5079bf93c4727bbbe65ff58ecfb524d2d3b6046eead2009114",
+    "d43166417e425f471be6d14d03d2c28a3eb5edf3c8ac30106c31b415ac46a9b5",
+    "f6d8f508bad2824a27be8785c841e8df4c75751b58726820f9e3dd226fe3fb5e"
+  ],
+  "source_versions": [
+    "dryad:B8993H:version_id=215645:version_number=4",
+    "dryad:B8C91C:version_id=130006:version_number=5"
+  ],
+  "split_seed": "coffee-context-round3b-heldout-v1-20260825",
+  "stratification": "domain and authored semantic stratum; deterministic SHA-256 allocation"
+}

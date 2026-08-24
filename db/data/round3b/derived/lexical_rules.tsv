@@ -1,0 +1,103 @@
+rule_key	domain	language_tag	normalized_expression	outcome_status	family_key	leaf_key	roast_code	mapping_grade	review_decision	evidence_locator
+context.rule.2d7980a5314251e4cbb5	preparation	en	aeropress	known	preparation.family.hybrid	preparation.method.aeropress		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.a6c1377ae80d47ae04ae	preparation	en	americano	known	preparation.family.diluted_espresso	preparation.beverage.americano		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.4f58dc0c48ccac4fcf70	preparation	en	batch brew	known	preparation.family.filter_percolation	preparation.method.batch_filter		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.b52195c8001796eb1bdd	preparation	en	cafetiere	known	preparation.family.immersion	preparation.method.french_press		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.617a44d31c896f16fd69	preparation	en	cappuccino	known	preparation.family.espresso_milk	preparation.beverage.cappuccino		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.84b25ed178f3f974abd6	preparation	en	cezve	known	preparation.family.stovetop_boiled	preparation.method.cezve		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.3884f5b9e267a020ceb1	preparation	en	chemex	known	preparation.family.filter_percolation	preparation.method.chemex		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.0ad535f4ee1e74fed616	preparation	en	clever dripper	known	preparation.family.hybrid			reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.182af6957f6e1f863068	preparation	en	cold brew	known	preparation.family.cold_extraction	preparation.method.cold_brew_immersion		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.f4265fffa570b3124c7d	preparation	en	cold drip	known	preparation.family.cold_extraction	preparation.method.cold_drip		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.5e7130f3557000b0deb5	preparation	en	cortado	known	preparation.family.espresso_milk	preparation.beverage.cortado		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.d7117acda382b28ef20f	preparation	en	drip coffee	known	preparation.family.filter_percolation			reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.a4243de11ee21bfd9b67	preparation	en	dutch coffee	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.3bd92e4697dfa4cabb14	preparation	en	espresso	known	preparation.family.espresso_pressure	preparation.method.espresso_standard		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.b144cf4f683d51697132	preparation	en	filter coffee	known	preparation.family.filter_percolation			reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.7a4767c39d15c5e521c1	preparation	en	flat white	known	preparation.family.espresso_milk	preparation.beverage.flat_white		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.3c5e1e3551078cc4d240	preparation	en	french press	known	preparation.family.immersion	preparation.method.french_press		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.bd27c970109252a8d004	preparation	en	hand drip	known	preparation.family.filter_percolation	preparation.method.manual_filter		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.5afa9354266ede5954a8	preparation	en	hario v60	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.fa4edf982c4714723de9	preparation	en	iced coffee	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.7203407507c3edc49e36	preparation	en	iced latte	known	preparation.family.espresso_milk	preparation.beverage.latte		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.5a5e37cfd47165f0e1cd	preparation	en	immersion	known	preparation.family.immersion			reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.e25f718c105603a23e39	preparation	en	latte	known	preparation.family.espresso_milk	preparation.beverage.latte		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.a51d1804c2762b4ae25c	preparation	en	long black	known	preparation.family.diluted_espresso	preparation.beverage.long_black		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.4777c88a12f454e03742	preparation	en	lungo	known	preparation.family.espresso_pressure	preparation.beverage.lungo		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.6e44c96d44206c8f0a0e	preparation	en	macchiato	known	preparation.family.espresso_milk	preparation.beverage.macchiato		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.9dfa57ceca4eef637b42	preparation	en	manual filter	known	preparation.family.filter_percolation	preparation.method.manual_filter		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.1161a20d6409f3a22630	preparation	en	mocha	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.563e961793ec7bb5316e	preparation	en	moka pot	known	preparation.family.stovetop_boiled	preparation.method.moka		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.01c62e21a14006748e1c	preparation	en	nitro cold brew	known	preparation.family.cold_extraction	preparation.beverage.nitro_cold_brew		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.83d0b5a47e2657e02a52	preparation	en	piccolo	known	preparation.family.espresso_milk	preparation.beverage.piccolo		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.105768ab96c554d796a9	preparation	en	pour over	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.c1af57f3f9c27550d792	preparation	en	press pot	known	preparation.family.immersion	preparation.method.french_press		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.8a430139b2f687580956	preparation	en	ristretto	known	preparation.family.espresso_pressure	preparation.beverage.ristretto		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.2047e20dae4f2d757c01	preparation	en	short black	known	preparation.family.espresso_pressure	preparation.method.espresso_standard		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.3fc9c026828712e01131	preparation	en	siphon	known	preparation.family.hybrid	preparation.method.siphon		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.bf419064b35ce05e4425	preparation	en	stovetop coffee	known	preparation.family.stovetop_boiled			reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.ea9090d5b76f3c2a06b7	preparation	en	turkish coffee	known	preparation.family.stovetop_boiled	preparation.method.cezve		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.245785c24939e9415e9e	preparation	en	v60	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.15af610419c015940ef8	preparation	en	vacuum pot	known	preparation.family.hybrid	preparation.method.siphon		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.e82c6de907a35165d633	preparation	zh-Hans	v60咖啡	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.1c172bda3590aa7b773a	preparation	zh-Hans	冰咖啡	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.44750eb0678aaca4b32b	preparation	zh-Hans	冰滴	known	preparation.family.cold_extraction	preparation.method.cold_drip		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.51ce8bc15f6b65b13dd1	preparation	zh-Hans	冷萃	known	preparation.family.cold_extraction	preparation.method.cold_brew_immersion		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.d3092abd18077c79f539	preparation	zh-Hans	卡布奇诺	known	preparation.family.espresso_milk	preparation.beverage.cappuccino		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.dfceb9b994ec02ee9b1d	preparation	zh-Hans	土耳其咖啡	known	preparation.family.stovetop_boiled	preparation.method.cezve		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.0e5ad8e2f2f46a35ab54	preparation	zh-Hans	意式浓缩	known	preparation.family.espresso_pressure	preparation.method.espresso_standard		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.4684df369d5037c4799c	preparation	zh-Hans	手冲	known	preparation.family.filter_percolation	preparation.method.manual_filter		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.2477016f2cb6a5b79bd1	preparation	zh-Hans	拿铁	known	preparation.family.espresso_milk	preparation.beverage.latte		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.c62d0ce2e85ed85fbea7	preparation	zh-Hans	摩卡壶	known	preparation.family.stovetop_boiled	preparation.method.moka		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.dbc7d97f35f7f7d830ba	preparation	zh-Hans	法压壶	known	preparation.family.immersion	preparation.method.french_press		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.d968210a3027ed7dc153	preparation	zh-Hans	滴滤咖啡	known	preparation.family.filter_percolation			reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.a5037f8ce1a9782d2017	preparation	zh-Hans	澳白	known	preparation.family.espresso_milk	preparation.beverage.flat_white		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.4f43b6122fe455081589	preparation	zh-Hans	爱乐压	known	preparation.family.hybrid	preparation.method.aeropress		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.e271b567e58b4e770e20	preparation	zh-Hans	美式咖啡	known	preparation.family.diluted_espresso	preparation.beverage.americano		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.94a35a853519cad7c616	preparation	zh-Hans	虹吸壶	known	preparation.family.hybrid	preparation.method.siphon		reviewed_lexical	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.eff905dd3f267affa9a5	roast	en	city roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.0609e9583d99e2e1b7df	roast	en	city+	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.6a0d25a79e1638f2f1d2	roast	en	dark	known			dark	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.341925393a7ad79df2c3	roast	en	dark roast	known			dark	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.cb016015ca42d789009d	roast	en	espresso roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.443c28e9298bc4650dc9	roast	en	extremely dark	known			extremely_dark	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.e6b7e522bf3d2362d44c	roast	en	extremely light	known			extremely_light	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.8c75965d431e81982005	roast	en	extremely-dark roast	known			extremely_dark	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.445c20e927f7c2f3b5ba	roast	en	extremely-light roast	known			extremely_light	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.71411156994b55f11bea	roast	en	filter roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.94684b4df02e6e2194ae	roast	en	french roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.16d2f1876905bba1ddbb	roast	en	full city	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.793b33c38d6c9ff208b3	roast	en	italian roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.b3e4593a189b53d74aed	roast	en	light	known			light	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.9d94df911a7ae832e554	roast	en	light roast	known			light	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.6c61e688bd249f0f313b	roast	en	light-medium	known			medium_light	supported_ordinal	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.1f463a4f4ffa4cf600f7	roast	en	medium	known			medium	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.c16cecd22aad37e4dcc6	roast	en	medium dark	known			medium_dark	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.058f6b5e0cf60884f001	roast	en	medium light	known			medium_light	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.441ca454a6f1bbdf08a3	roast	en	medium roast	known			medium	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.8ae0d196c6651b665071	roast	en	medium-dark	known			medium_dark	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.959f7c0d0ec288217999	roast	en	medium-dark roast	known			medium_dark	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.72af301830c2f1ba6df2	roast	en	medium-light	known			medium_light	exact_project_label	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.2aff86d3d0bbe0bb7bc9	roast	en	medium-light roast	known			medium_light	near_exact	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.694870cc67bb50092869	roast	en	nordic roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.2f336c17919a7385f408	roast	en	omniroast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.f5bb9b6be47abb4deba1	roast	en	very dark	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.f20b672996b44ae23047	roast	en	very light	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.6a46aa6d2a2d90368074	roast	en	vienna roast	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py
+context.rule.c417d529af0f616ed2e1	roast	zh-Hans	中度烘焙	known			medium	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.677a44a4c6bf9209a18d	roast	zh-Hans	中浅度烘焙	known			medium_light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.f84e9ec85d0588188025	roast	zh-Hans	中浅烘	known			medium_light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.e654498f3efc57aaecb6	roast	zh-Hans	中深度烘焙	known			medium_dark	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.8b30e7cf6e71a9b48362	roast	zh-Hans	中深烘	known			medium_dark	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.5b56ee26b599bb739449	roast	zh-Hans	中烘	known			medium	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.774e508a2792c1595add	roast	zh-Hans	极浅度烘焙	known			extremely_light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.96c0fbd5fc54d85e1242	roast	zh-Hans	极浅烘	known			extremely_light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.7b2f2d549c9651e32861	roast	zh-Hans	极深度烘焙	known			extremely_dark	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.a44364aa561f9fde6868	roast	zh-Hans	极深烘	known			extremely_dark	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.ed5eea650d11730640f4	roast	zh-Hans	浅中烘	known			medium_light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.12fdd19b836e8f320948	roast	zh-Hans	浅中烘焙	known			medium_light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.efb0614896266e947309	roast	zh-Hans	浅度烘焙	known			light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.ab6282059ae9e016d5e3	roast	zh-Hans	浅烘	known			light	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.1bbc23575cf784c294c5	roast	zh-Hans	深度烘焙	known			dark	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.1ab01763aabdc0e6edd6	roast	zh-Hans	深烘	known			dark	bilingual_reviewed	approved	db/scripts/evaluate-round3b-normalization.py
+context.rule.ef0a4490d3a7f22f997b	roast	zh-Hans	重烘	reported_unresolved				reviewed_abstention	abstained	db/scripts/evaluate-round3b-normalization.py

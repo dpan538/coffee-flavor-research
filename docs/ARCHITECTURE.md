@@ -4,9 +4,10 @@
 
 The current research architecture is the PostgreSQL 17+ Coffee Sensory
 Knowledge Base V0. It is implemented as an isolated migration and test
-substrate under `db/`. Rounds 1 through 3A establish its schema, canonical
-ontology, rights-reviewed pilot corpus, deterministic retrieval baseline, and
-governed preparation/roast context.
+substrate under `db/`. Rounds 1 through 3B establish its schema, canonical
+ontology, rights-reviewed pilot corpus, deterministic retrieval baseline,
+governed preparation/roast context, current interaction projections, and a
+frozen lawful context snapshot with held-out label-normalization evaluation.
 The frontend is still not connected to PostgreSQL.
 
 Current product meaning is governed by the
@@ -38,6 +39,9 @@ Round 2B corpus, retrieval, rights, and reproducibility evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round2b/`](./audits/coffee-sensory-kb-v0-round2b/).
 Round 3A context research and validation evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round3a/`](./audits/coffee-sensory-kb-v0-round3a/).
+Round 3B source, migration, normalization, signal-sufficiency, and
+reproducibility evidence belongs in
+[`docs/audits/coffee-sensory-kb-v0-round3b/`](./audits/coffee-sensory-kb-v0-round3b/).
 
 ## PostgreSQL boundary
 
@@ -49,7 +53,11 @@ through `017` add corpus governance, versioned normalization and statistics,
 deterministic retrieval and audit structures, the frozen pilot, evaluation,
 resolution feedback, and Round 2B validation. Forward migrations `018`
 through `021` add the normalized context domain, integrity rules, context
-taxonomies, and Round 3A validation. PostgreSQL is the system of record and
+taxonomies, and Round 3A validation. Forward migrations `022` through `025`
+add seven-level roast supersession, mandatory user-context projections,
+rights-governed context-source and frozen-snapshot tables, 4,817 imported raw
+context rows, held-out normalization results, signal-sufficiency records, and
+Round 3B validation. PostgreSQL is the system of record and
 `pg_trgm` is required. `pgvector`, embeddings, a consumer ranking
 model, an application API, and frontend data integration are not dependencies
 of the validated baseline.
@@ -65,6 +73,13 @@ Context follows the same epistemic discipline: a preparation identity, a
 source roast label, a project-normalized category, and a measured roast value
 are different records. Context never becomes a sensory attribute or ranking
 coefficient.
+
+The current user projections are deliberately narrower than the observation
+model. `context.v_current_user_preparation` exposes exactly eight known C0
+families; `context.v_current_user_roast` exposes the active seven-level ordinal
+C1 scheme. Unknown, not-reported, unresolved, and not-applicable states remain
+valid for corpus/database observations but are not selectable interaction
+categories. Ordinal positions assert order, not equal physical distance.
 
 ## Static application compatibility boundary
 

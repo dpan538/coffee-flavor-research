@@ -40,7 +40,9 @@ Top-level migrations are applied in contiguous numeric order. The first eight
 are protected by `db/migration-baselines/round1.sha256`, all twelve Round 1
 plus Round 2A migrations are protected by
 `db/migration-baselines/round2a.sha256`, and all eighteen migrations through
-Round 2B are protected by `db/migration-baselines/round2b.sha256`. The
+Round 2B are protected by `db/migration-baselines/round2b.sha256`. All 22
+migrations through Round 3A are protected by
+`db/migration-baselines/round3a.sha256`. The
 migration planner refuses to run if any immutable boundary changes:
 
 ```text
@@ -66,6 +68,10 @@ migration planner refuses to run if any immutable boundary changes:
 019_context_integrity.sql
 020_context_taxonomy_seed.sql
 021_context_views_validation.sql
+022_round3b_context_governance.sql
+023_round3b_context_dataset_schema.sql
+024_round3b_context_data_seed.sql
+025_round3b_context_views_validation.sql
 ```
 
 `apply.sh` fails unless there is exactly one migration at every contiguous
@@ -91,6 +97,14 @@ roast projection, explicit unknown/unresolved observation states, beverage
 additions, roast measurement methods, context provenance, and context coverage
 and validation views. It adds no sensory coefficients and does not modify the
 ontology or frozen corpus.
+
+The Round 3B forward layer supersedes—but does not delete—the historical
+five-level project roast scheme. It publishes exactly eight mandatory C0
+families and a current seven-level ordinal C1 projection, preserves unknown as
+an observation state, freezes two imported CC0 source versions and 4,817 raw
+context records, and persists a 102-case development/held-out label benchmark.
+It also records explicit abstention where the imported data cannot identify
+preparation, roast, interaction, or milk-mode sensory effects.
 
 The seven PostgreSQL schemas have deliberately separate responsibilities:
 
@@ -153,6 +167,9 @@ the run.
 7. when Round 3A is present, the
    `audit.run_round3a_validation_queries()` expected-zero contract and Round
    3A negative, semantic, context-retrieval, and query-plan suites.
+8. when Round 3B is present, the
+   `audit.run_round3b_validation_queries()` expected-zero contract and Round
+   3B governance, held-out normalization, retrieval, and query-plan suites.
 
 ## Two clean rebuilds
 
@@ -192,14 +209,17 @@ compares:
 - all stable `*_key` and controlled `*_code` values;
 - every `ref` table's row count;
 - source-version and license-policy keys;
-- ordered Round 1, Round 2A, Round 2B, and Round 3A validation result counts;
+- ordered Round 1, Round 2A, Round 2B, Round 3A, and Round 3B validation result
+  counts;
 - the ordered ontology coverage metrics;
 - source-policy, snapshot, retention, normalization, and statistic-run
   receipts; and
 - frozen audit-split, deterministic A--D run, candidate-count, and retrieval
   metric values when Round 2B is present; and
 - preparation, roast, unresolved-context, coverage, and measurement-method
-  inventory when Round 3A is present.
+  inventory when Round 3A is present; and
+- frozen source, snapshot, current C0/C1 projection, coverage, and held-out
+  normalization inventory when Round 3B is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases

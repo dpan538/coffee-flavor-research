@@ -1,0 +1,33 @@
+{
+  "c0": {
+    "ambiguous_rate": 0.0,
+    "family_coverage": 1.0,
+    "gross_family_error_rate": 0.0,
+    "held_out_size": 9,
+    "leaf_coverage": 0.8889,
+    "recall_at_1_family": 1.0,
+    "recall_at_1_leaf": 1.0,
+    "unresolved_rate": 0.0
+  },
+  "c1": {
+    "adjacent_category_agreement": 1.0,
+    "coverage": 0.625,
+    "exact_category_agreement": 1.0,
+    "gross_category_error_rate": 0.0,
+    "held_out_size": 8,
+    "known_expected_size": 5,
+    "mapping_precision": 1.0,
+    "ordinal_error_summary": {
+      "equal_physical_distance_assumed": false,
+      "mean_absolute_category_error_on_mapped_known": 0.0
+    },
+    "unresolved_rate": 0.375
+  },
+  "held_out_size": 17,
+  "metric_semantics": "label-normalization quality; not coffee flavor accuracy",
+  "sufficiency": {
+    "c0_normalization_data_sufficient": false,
+    "c1_normalization_data_sufficient": false,
+    "reason": "The held-out labels are project-authored contract cases, not an independent ordinary-user sample."
+  }
+}

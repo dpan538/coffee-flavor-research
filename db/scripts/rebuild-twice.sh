@@ -295,7 +295,27 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  if (( DISCOVERED_MIGRATION_COUNT > 21 )); then
+  if (( DISCOVERED_MIGRATION_COUNT > 25 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3a', check_key, violation_count, passed
+                 FROM audit.run_round3a_validation_queries()
+                 UNION ALL
+                 SELECT 'round3b', check_key, violation_count, passed
+                 FROM audit.run_round3b_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 21 )); then
     psql_target "$database_name" \
       --tuples-only \
       --no-align \
@@ -401,6 +421,67 @@ write_round3a_inventory() {
                      concat_ws(',', roast_measurement_basis_code, unit,
                        minimum_value, maximum_value, higher_value_is_lighter)
                    FROM context.roast_measurement_method
+               )
+               SELECT record_type, record_key, record_value
+               FROM receipt
+               ORDER BY record_type, record_key, record_value;" >"$output_file"
+}
+
+write_round3b_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 25 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="WITH receipt(record_type, record_key, record_value) AS (
+                   SELECT 'coverage', metric_key, metric_value::TEXT
+                   FROM context.v_round3b_context_coverage
+
+                   UNION ALL
+
+                   SELECT 'normalization_metric', metric_key,
+                          metric_value::TEXT
+                   FROM context.v_held_out_normalization_metrics
+
+                   UNION ALL
+
+                   SELECT 'preparation_choice', preparation_concept_key,
+                          concat_ws(',', ordinal_position,
+                            candidate_user_label_en,
+                            candidate_user_label_zh_hans)
+                   FROM context.v_current_user_preparation
+
+                   UNION ALL
+
+                   SELECT 'roast_choice', roast_category_key,
+                          concat_ws(',', ordinal_position,
+                            interaction_code, scale_semantics)
+                   FROM context.v_current_user_roast
+
+                   UNION ALL
+
+                   SELECT 'source', context_source_review_key,
+                          concat_ws(',', doi, version_label, license_spdx,
+                            context_acquisition_status_code,
+                            COALESCE(inspected_row_count::TEXT, 'none'),
+                            frozen_file_count)
+                   FROM context.v_context_source_inventory
+
+                   UNION ALL
+
+                   SELECT 'snapshot', snapshot_key,
+                          concat_ws(',', snapshot_hash,
+                            normalization_version, code_commit,
+                            case_count, held_out_case_count, is_frozen)
+                   FROM context.context_dataset_snapshot
+                   WHERE snapshot_key = 'context.snapshot.round3b_v1'
                )
                SELECT record_type, record_key, record_value
                FROM receipt
@@ -658,6 +739,7 @@ run_build() {
   write_ontology_coverage "$database_name" "$build_dir/ontology-coverage.txt"
   write_round2b_inventory "$database_name" "$build_dir/round2b-inventory.txt"
   write_round3a_inventory "$database_name" "$build_dir/round3a-inventory.txt"
+  write_round3b_inventory "$database_name" "$build_dir/round3b-inventory.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -714,6 +796,7 @@ compare_artifact VALIDATION_RESULT_COUNTS validation-results.txt
 compare_artifact ONTOLOGY_COVERAGE ontology-coverage.txt
 compare_artifact ROUND2B_INVENTORY round2b-inventory.txt
 compare_artifact ROUND3A_INVENTORY round3a-inventory.txt
+compare_artifact ROUND3B_INVENTORY round3b-inventory.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
@@ -734,6 +817,7 @@ print_result_file VALIDATION_RESULT_COUNTS "$ARTIFACT_DIR/build-one/validation-r
 print_result_file ONTOLOGY_COVERAGE "$ARTIFACT_DIR/build-one/ontology-coverage.txt"
 print_result_file ROUND2B_INVENTORY "$ARTIFACT_DIR/build-one/round2b-inventory.txt"
 print_result_file ROUND3A_INVENTORY "$ARTIFACT_DIR/build-one/round3a-inventory.txt"
+print_result_file ROUND3B_INVENTORY "$ARTIFACT_DIR/build-one/round3b-inventory.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'

@@ -1,0 +1,61 @@
+{
+  "black_milk_distribution": {
+    "black_coffee": 4141,
+    "milk_coffee": 3,
+    "not_applicable": 673
+  },
+  "context_record_count": 4817,
+  "country_distribution": {
+    "heterogeneous_meta_analysis_not_row_normalized": 1631,
+    "united_states_sensory_sessions_honduras_coffee": 3186
+  },
+  "method_audit": {
+    "assumptions": "At least two populated levels per main effect and replicated crossed cells for interaction.",
+    "input_data": "Frozen Round 3B snapshot only.",
+    "limitations": "The Cotter sensory dataset fixes preparation and roast; the Yeager dataset varies context but reports chemistry, not sensory outcomes.",
+    "output": "Sufficiency and identifiability gate; no coefficient estimation.",
+    "research_question": "Do preparation, roast, or their interaction add information about sensory outcomes?"
+  },
+  "preparation_distribution": {
+    "not_applicable": 506,
+    "not_reported": 167,
+    "preparation.family.cold_extraction": 1,
+    "preparation.family.espresso_milk": 3,
+    "preparation.family.espresso_pressure": 228,
+    "preparation.family.filter_percolation": 3365,
+    "preparation.family.immersion": 473,
+    "reported_unresolved": 74
+  },
+  "results": {
+    "milk_mode": "EVIDENCE_INSUFFICIENT: no imported milk-coffee sensory outcomes.",
+    "preparation_roast_interaction": "NOT_ESTIMABLE: sensory rows occupy one preparation-by-roast cell.",
+    "preparation_signal": "NOT_ESTIMABLE: sensory rows contain one preparation family.",
+    "roast_signal": "NOT_ESTIMABLE: sensory rows contain one roast category."
+  },
+  "roast_distribution": {
+    "dark": 123,
+    "light": 111,
+    "medium": 3595,
+    "not_applicable": 569,
+    "not_reported": 364,
+    "reported_unresolved": 55
+  },
+  "sensory_context_inventory": {
+    "milk_sensory_row_count": 0,
+    "preparation_family_count": 1,
+    "preparation_roast_cell_count": 1,
+    "roast_category_count": 1,
+    "sensory_row_count": 3186
+  },
+  "source_concentration_max_share": 0.6614,
+  "source_distribution": {
+    "dryad_cotter_black_coffee": 3186,
+    "dryad_yeager_acids_meta_analysis": 1631
+  },
+  "sufficiency": {
+    "milk_mode_data_sufficient": false,
+    "preparation_roast_interaction_data_sufficient": false,
+    "preparation_signal_data_sufficient": false,
+    "roast_signal_data_sufficient": false
+  }
+}

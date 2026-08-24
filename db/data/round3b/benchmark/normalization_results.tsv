@@ -1,0 +1,103 @@
+case_key	domain	split	expected_status	predicted_status	expected_family_key	predicted_family_key	expected_leaf_key	predicted_leaf_key	expected_roast_code	predicted_roast_code	evaluation_grade	ordinal_error	gross_error	mapping_grade
+c0.en.v60	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.pour_over_cone	preparation.method.pour_over_cone			3		false	reviewed_lexical
+c0.en.hario_v60	preparation	held_out	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.pour_over_cone	preparation.method.pour_over_cone			3		false	reviewed_lexical
+c0.en.pour_over	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.pour_over_cone	preparation.method.pour_over_cone			3		false	reviewed_lexical
+c0.en.hand_drip	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.manual_filter	preparation.method.manual_filter			3		false	reviewed_lexical
+c0.en.manual_filter	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.manual_filter	preparation.method.manual_filter			3		false	reviewed_lexical
+c0.en.chemex	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.chemex	preparation.method.chemex			3		false	reviewed_lexical
+c0.en.batch_brew	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.batch_filter	preparation.method.batch_filter			3		false	reviewed_lexical
+c0.en.drip_coffee	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation					2		false	reviewed_lexical
+c0.en.filter_coffee	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation					2		false	reviewed_lexical
+c0.en.french_press	preparation	development	known	known	preparation.family.immersion	preparation.family.immersion	preparation.method.french_press	preparation.method.french_press			3		false	reviewed_lexical
+c0.en.cafetiere	preparation	development	known	known	preparation.family.immersion	preparation.family.immersion	preparation.method.french_press	preparation.method.french_press			3		false	reviewed_lexical
+c0.en.press_pot	preparation	development	known	known	preparation.family.immersion	preparation.family.immersion	preparation.method.french_press	preparation.method.french_press			3		false	reviewed_lexical
+c0.en.immersion	preparation	development	known	known	preparation.family.immersion	preparation.family.immersion					2		false	reviewed_lexical
+c0.en.clever_dripper	preparation	development	known	known	preparation.family.hybrid	preparation.family.hybrid					2		false	reviewed_lexical
+c0.en.aeropress	preparation	development	known	known	preparation.family.hybrid	preparation.family.hybrid	preparation.method.aeropress	preparation.method.aeropress			3		false	reviewed_lexical
+c0.en.siphon	preparation	development	known	known	preparation.family.hybrid	preparation.family.hybrid	preparation.method.siphon	preparation.method.siphon			3		false	reviewed_lexical
+c0.en.vacuum_pot	preparation	held_out	known	known	preparation.family.hybrid	preparation.family.hybrid	preparation.method.siphon	preparation.method.siphon			3		false	reviewed_lexical
+c0.en.espresso	preparation	development	known	known	preparation.family.espresso_pressure	preparation.family.espresso_pressure	preparation.method.espresso_standard	preparation.method.espresso_standard			3		false	reviewed_lexical
+c0.en.short_black	preparation	development	known	known	preparation.family.espresso_pressure	preparation.family.espresso_pressure	preparation.method.espresso_standard	preparation.method.espresso_standard			3		false	reviewed_lexical
+c0.en.ristretto	preparation	held_out	known	known	preparation.family.espresso_pressure	preparation.family.espresso_pressure	preparation.beverage.ristretto	preparation.beverage.ristretto			3		false	reviewed_lexical
+c0.en.lungo	preparation	development	known	known	preparation.family.espresso_pressure	preparation.family.espresso_pressure	preparation.beverage.lungo	preparation.beverage.lungo			3		false	reviewed_lexical
+c0.en.americano	preparation	held_out	known	known	preparation.family.diluted_espresso	preparation.family.diluted_espresso	preparation.beverage.americano	preparation.beverage.americano			3		false	reviewed_lexical
+c0.en.long_black	preparation	development	known	known	preparation.family.diluted_espresso	preparation.family.diluted_espresso	preparation.beverage.long_black	preparation.beverage.long_black			3		false	reviewed_lexical
+c0.en.moka_pot	preparation	development	known	known	preparation.family.stovetop_boiled	preparation.family.stovetop_boiled	preparation.method.moka	preparation.method.moka			3		false	reviewed_lexical
+c0.en.stovetop_coffee	preparation	held_out	known	known	preparation.family.stovetop_boiled	preparation.family.stovetop_boiled					2		false	reviewed_lexical
+c0.en.turkish	preparation	development	known	known	preparation.family.stovetop_boiled	preparation.family.stovetop_boiled	preparation.method.cezve	preparation.method.cezve			3		false	reviewed_lexical
+c0.en.cezve	preparation	development	known	known	preparation.family.stovetop_boiled	preparation.family.stovetop_boiled	preparation.method.cezve	preparation.method.cezve			3		false	reviewed_lexical
+c0.en.cold_brew	preparation	development	known	known	preparation.family.cold_extraction	preparation.family.cold_extraction	preparation.method.cold_brew_immersion	preparation.method.cold_brew_immersion			3		false	reviewed_lexical
+c0.en.cold_drip	preparation	development	known	known	preparation.family.cold_extraction	preparation.family.cold_extraction	preparation.method.cold_drip	preparation.method.cold_drip			3		false	reviewed_lexical
+c0.en.dutch_coffee	preparation	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c0.en.nitro	preparation	development	known	known	preparation.family.cold_extraction	preparation.family.cold_extraction	preparation.beverage.nitro_cold_brew	preparation.beverage.nitro_cold_brew			3		false	reviewed_lexical
+c0.en.flat_white	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.flat_white	preparation.beverage.flat_white			3		false	reviewed_lexical
+c0.en.latte	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.latte	preparation.beverage.latte			3		false	reviewed_lexical
+c0.en.cappuccino	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.cappuccino	preparation.beverage.cappuccino			3		false	reviewed_lexical
+c0.en.cortado	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.cortado	preparation.beverage.cortado			3		false	reviewed_lexical
+c0.en.piccolo	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.piccolo	preparation.beverage.piccolo			3		false	reviewed_lexical
+c0.en.macchiato	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.macchiato	preparation.beverage.macchiato			3		false	reviewed_lexical
+c0.en.iced_latte	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.latte	preparation.beverage.latte			3		false	reviewed_lexical
+c0.en.iced_coffee	preparation	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c0.en.mocha	preparation	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c0.zh.pour_over	preparation	held_out	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.manual_filter	preparation.method.manual_filter			3		false	reviewed_lexical
+c0.zh.v60	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation	preparation.method.pour_over_cone	preparation.method.pour_over_cone			3		false	reviewed_lexical
+c0.zh.drip	preparation	development	known	known	preparation.family.filter_percolation	preparation.family.filter_percolation					2		false	reviewed_lexical
+c0.zh.french_press	preparation	development	known	known	preparation.family.immersion	preparation.family.immersion	preparation.method.french_press	preparation.method.french_press			3		false	reviewed_lexical
+c0.zh.aeropress	preparation	development	known	known	preparation.family.hybrid	preparation.family.hybrid	preparation.method.aeropress	preparation.method.aeropress			3		false	reviewed_lexical
+c0.zh.siphon	preparation	held_out	known	known	preparation.family.hybrid	preparation.family.hybrid	preparation.method.siphon	preparation.method.siphon			3		false	reviewed_lexical
+c0.zh.espresso	preparation	development	known	known	preparation.family.espresso_pressure	preparation.family.espresso_pressure	preparation.method.espresso_standard	preparation.method.espresso_standard			3		false	reviewed_lexical
+c0.zh.americano	preparation	development	known	known	preparation.family.diluted_espresso	preparation.family.diluted_espresso	preparation.beverage.americano	preparation.beverage.americano			3		false	reviewed_lexical
+c0.zh.flat_white	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.flat_white	preparation.beverage.flat_white			3		false	reviewed_lexical
+c0.zh.latte	preparation	held_out	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.latte	preparation.beverage.latte			3		false	reviewed_lexical
+c0.zh.cappuccino	preparation	development	known	known	preparation.family.espresso_milk	preparation.family.espresso_milk	preparation.beverage.cappuccino	preparation.beverage.cappuccino			3		false	reviewed_lexical
+c0.zh.moka	preparation	development	known	known	preparation.family.stovetop_boiled	preparation.family.stovetop_boiled	preparation.method.moka	preparation.method.moka			3		false	reviewed_lexical
+c0.zh.turkish	preparation	development	known	known	preparation.family.stovetop_boiled	preparation.family.stovetop_boiled	preparation.method.cezve	preparation.method.cezve			3		false	reviewed_lexical
+c0.zh.cold_brew	preparation	development	known	known	preparation.family.cold_extraction	preparation.family.cold_extraction	preparation.method.cold_brew_immersion	preparation.method.cold_brew_immersion			3		false	reviewed_lexical
+c0.zh.cold_drip	preparation	held_out	known	known	preparation.family.cold_extraction	preparation.family.cold_extraction	preparation.method.cold_drip	preparation.method.cold_drip			3		false	reviewed_lexical
+c0.zh.iced_coffee	preparation	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.extremely_light	roast	development	known	known					extremely_light	extremely_light	exact	0	false	exact_project_label
+c1.en.light	roast	development	known	known					light	light	exact	0	false	exact_project_label
+c1.en.medium_light	roast	development	known	known					medium_light	medium_light	exact	0	false	exact_project_label
+c1.en.medium	roast	development	known	known					medium	medium	exact	0	false	exact_project_label
+c1.en.medium_dark	roast	held_out	known	known					medium_dark	medium_dark	exact	0	false	exact_project_label
+c1.en.dark	roast	development	known	known					dark	dark	exact	0	false	exact_project_label
+c1.en.extremely_dark	roast	held_out	known	known					extremely_dark	extremely_dark	exact	0	false	exact_project_label
+c1.en.extremely_light_roast	roast	development	known	known					extremely_light	extremely_light	exact	0	false	near_exact
+c1.en.light_roast	roast	development	known	known					light	light	exact	0	false	near_exact
+c1.en.medium_light_space	roast	development	known	known					medium_light	medium_light	exact	0	false	near_exact
+c1.en.medium_light_roast	roast	development	known	known					medium_light	medium_light	exact	0	false	near_exact
+c1.en.medium_roast	roast	development	known	known					medium	medium	exact	0	false	near_exact
+c1.en.medium_dark_space	roast	development	known	known					medium_dark	medium_dark	exact	0	false	near_exact
+c1.en.medium_dark_roast	roast	development	known	known					medium_dark	medium_dark	exact	0	false	near_exact
+c1.en.dark_roast	roast	development	known	known					dark	dark	exact	0	false	near_exact
+c1.en.extremely_dark_roast	roast	development	known	known					extremely_dark	extremely_dark	exact	0	false	near_exact
+c1.en.light_medium	roast	held_out	known	known					medium_light	medium_light	exact	0	false	supported_ordinal
+c1.zh.extremely_light	roast	development	known	known					extremely_light	extremely_light	exact	0	false	bilingual_reviewed
+c1.zh.extremely_light_full	roast	development	known	known					extremely_light	extremely_light	exact	0	false	bilingual_reviewed
+c1.zh.light	roast	development	known	known					light	light	exact	0	false	bilingual_reviewed
+c1.zh.light_full	roast	development	known	known					light	light	exact	0	false	bilingual_reviewed
+c1.zh.medium_light	roast	development	known	known					medium_light	medium_light	exact	0	false	bilingual_reviewed
+c1.zh.medium_light_full	roast	development	known	known					medium_light	medium_light	exact	0	false	bilingual_reviewed
+c1.zh.light_medium	roast	development	known	known					medium_light	medium_light	exact	0	false	bilingual_reviewed
+c1.zh.light_medium_full	roast	development	known	known					medium_light	medium_light	exact	0	false	bilingual_reviewed
+c1.zh.medium	roast	development	known	known					medium	medium	exact	0	false	bilingual_reviewed
+c1.zh.medium_full	roast	development	known	known					medium	medium	exact	0	false	bilingual_reviewed
+c1.zh.medium_dark	roast	held_out	known	known					medium_dark	medium_dark	exact	0	false	bilingual_reviewed
+c1.zh.medium_dark_full	roast	development	known	known					medium_dark	medium_dark	exact	0	false	bilingual_reviewed
+c1.zh.dark	roast	development	known	known					dark	dark	exact	0	false	bilingual_reviewed
+c1.zh.dark_full	roast	development	known	known					dark	dark	exact	0	false	bilingual_reviewed
+c1.zh.extremely_dark	roast	held_out	known	known					extremely_dark	extremely_dark	exact	0	false	bilingual_reviewed
+c1.zh.extremely_dark_full	roast	development	known	known					extremely_dark	extremely_dark	exact	0	false	bilingual_reviewed
+c1.en.filter_roast	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.espresso_roast	roast	held_out	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.omniroast	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.nordic	roast	held_out	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.city	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.city_plus	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.full_city	roast	held_out	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.vienna	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.french	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.italian	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.very_light	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.en.very_dark	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention
+c1.zh.heavy	roast	development	reported_unresolved	reported_unresolved							U		false	reviewed_abstention

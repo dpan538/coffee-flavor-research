@@ -1,0 +1,103 @@
+case_key	domain	language_tag	raw_expression	expected_status	expected_family_key	expected_leaf_key	expected_roast_code	stratum	notes	split	split_hash_prefix
+c0.en.v60	preparation	en	V60	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		consumer_device	Common consumer brewer name.	development	79372e40efc4f501
+c0.en.hario_v60	preparation	en	Hario V60	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		consumer_device	Brand plus brewer name.	held_out	1cc521d45d0ca98e
+c0.en.pour_over	preparation	en	pour over	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		consumer_method	Hyphenation-insensitive consumer term.	development	442c641663de0563
+c0.en.hand_drip	preparation	en	hand drip	known	preparation.family.filter_percolation	preparation.method.manual_filter		consumer_method	Broad manual filter term.	development	a214586a2c9f6607
+c0.en.manual_filter	preparation	en	manual filter	known	preparation.family.filter_percolation	preparation.method.manual_filter		technical_method	Internal broad method.	development	8d108ed412697669
+c0.en.chemex	preparation	en	Chemex	known	preparation.family.filter_percolation	preparation.method.chemex		consumer_device	Specific brewer.	development	168ef1150f40e4bd
+c0.en.batch_brew	preparation	en	batch brew	known	preparation.family.filter_percolation	preparation.method.batch_filter		consumer_method	Batch-filter expression.	development	56eeec36b7df7f51
+c0.en.drip_coffee	preparation	en	drip coffee	known	preparation.family.filter_percolation			consumer_beverage	Safe broad family; leaf remains ambiguous.	development	f2b0e8b516b81ca1
+c0.en.filter_coffee	preparation	en	filter coffee	known	preparation.family.filter_percolation			consumer_beverage	Safe broad family.	development	22eb88da6ba9a29a
+c0.en.french_press	preparation	en	French press	known	preparation.family.immersion	preparation.method.french_press		consumer_device	Specific brewer.	development	c456956ad2ef1633
+c0.en.cafetiere	preparation	en	cafetiere	known	preparation.family.immersion	preparation.method.french_press		regional_variant	Regional consumer synonym.	development	df34abd0ceea756f
+c0.en.press_pot	preparation	en	press pot	known	preparation.family.immersion	preparation.method.french_press		regional_variant	Regional consumer synonym.	development	7d8afdd3856f60f6
+c0.en.immersion	preparation	en	immersion	known	preparation.family.immersion			technical_method	Broad family only.	development	3247282ec1e8e5f8
+c0.en.clever_dripper	preparation	en	Clever Dripper	known	preparation.family.hybrid			consumer_device	Hybrid family; no V0 leaf identity.	development	7297c564bb423e98
+c0.en.aeropress	preparation	en	AeroPress	known	preparation.family.hybrid	preparation.method.aeropress		consumer_device	Product interaction resolves multi-parent method to low-burden hybrid family.	development	d36bf6e4d2f18e48
+c0.en.siphon	preparation	en	siphon	known	preparation.family.hybrid	preparation.method.siphon		consumer_device	Specific brewer.	development	a9e2c569044aa077
+c0.en.vacuum_pot	preparation	en	vacuum pot	known	preparation.family.hybrid	preparation.method.siphon		regional_variant	Consumer synonym.	held_out	2d9f560f44e069b8
+c0.en.espresso	preparation	en	espresso	known	preparation.family.espresso_pressure	preparation.method.espresso_standard		consumer_beverage	Specific preparation.	development	23bcd227a1b47da7
+c0.en.short_black	preparation	en	short black	known	preparation.family.espresso_pressure	preparation.method.espresso_standard		regional_variant	Regional consumer label.	development	24307c21600e4688
+c0.en.ristretto	preparation	en	ristretto	known	preparation.family.espresso_pressure	preparation.beverage.ristretto		consumer_beverage	Specific style.	held_out	9f370df84fe9ee67
+c0.en.lungo	preparation	en	lungo	known	preparation.family.espresso_pressure	preparation.beverage.lungo		consumer_beverage	Specific style.	development	d6b5f3962f5c402c
+c0.en.americano	preparation	en	Americano	known	preparation.family.diluted_espresso	preparation.beverage.americano		consumer_beverage	Specific beverage.	held_out	fb887eed3da7f4ef
+c0.en.long_black	preparation	en	long black	known	preparation.family.diluted_espresso	preparation.beverage.long_black		regional_variant	Distinct from cold brew.	development	99cff44083986fb6
+c0.en.moka_pot	preparation	en	moka pot	known	preparation.family.stovetop_boiled	preparation.method.moka		consumer_device	Specific brewer; not espresso equivalence.	development	5bdefeb4b570a669
+c0.en.stovetop_coffee	preparation	en	stovetop coffee	known	preparation.family.stovetop_boiled			consumer_method	Broad family only.	held_out	7abdd37b8fb9d34e
+c0.en.turkish	preparation	en	Turkish coffee	known	preparation.family.stovetop_boiled	preparation.method.cezve		consumer_beverage	Consumer-recognizable boiled preparation.	development	37f6a7fa70ef62f1
+c0.en.cezve	preparation	en	cezve	known	preparation.family.stovetop_boiled	preparation.method.cezve		consumer_device	Specific brewer.	development	38ce7c6508f59ab8
+c0.en.cold_brew	preparation	en	cold brew	known	preparation.family.cold_extraction	preparation.method.cold_brew_immersion		consumer_beverage	Common beverage.	development	4f221b65e71ee362
+c0.en.cold_drip	preparation	en	cold drip	known	preparation.family.cold_extraction	preparation.method.cold_drip		consumer_method	Specific cold percolation.	development	565b3fac8b682ba6
+c0.en.dutch_coffee	preparation	en	Dutch coffee	reported_unresolved				regional_ambiguous	Regional usage is not stable enough for a forced leaf.	development	27c961c95d3ede6e
+c0.en.nitro	preparation	en	nitro cold brew	known	preparation.family.cold_extraction	preparation.beverage.nitro_cold_brew		consumer_beverage	Service style under cold-brew immersion.	development	71bfa172e24307a6
+c0.en.flat_white	preparation	en	flat white	known	preparation.family.espresso_milk	preparation.beverage.flat_white		consumer_beverage	Specific milk beverage.	development	b8c79dcf4847bff5
+c0.en.latte	preparation	en	latte	known	preparation.family.espresso_milk	preparation.beverage.latte		consumer_beverage	Specific milk beverage.	development	40f5e4d628b3b478
+c0.en.cappuccino	preparation	en	cappuccino	known	preparation.family.espresso_milk	preparation.beverage.cappuccino		consumer_beverage	Specific milk beverage.	development	8087751caa928785
+c0.en.cortado	preparation	en	cortado	known	preparation.family.espresso_milk	preparation.beverage.cortado		consumer_beverage	Specific milk beverage.	development	d7cf40c531dd9689
+c0.en.piccolo	preparation	en	piccolo	known	preparation.family.espresso_milk	preparation.beverage.piccolo		consumer_beverage	Specific milk beverage.	development	1378594046099191
+c0.en.macchiato	preparation	en	macchiato	known	preparation.family.espresso_milk	preparation.beverage.macchiato		consumer_beverage	Specific milk beverage with regional recipe variation.	development	2fc0127ccf2112e4
+c0.en.iced_latte	preparation	en	iced latte	known	preparation.family.espresso_milk	preparation.beverage.latte		consumer_beverage	Temperature does not change the broad family.	development	05fe32dcd274e410
+c0.en.iced_coffee	preparation	en	iced coffee	reported_unresolved				consumer_ambiguous	Could be chilled hot brew or cold extraction.	development	42f389822765a854
+c0.en.mocha	preparation	en	mocha	reported_unresolved				consumer_ambiguous	Could identify a chocolate milk beverage or a moka-related term.	development	06c2ab3ea88d4169
+c0.zh.pour_over	preparation	zh-Hans	手冲	known	preparation.family.filter_percolation	preparation.method.manual_filter		consumer_method	Mainland consumer term.	held_out	dbded1f0594ed263
+c0.zh.v60	preparation	zh-Hans	V60咖啡	known	preparation.family.filter_percolation	preparation.method.pour_over_cone		consumer_device	Mixed-script consumer term.	development	4b57ea6986b4a4df
+c0.zh.drip	preparation	zh-Hans	滴滤咖啡	known	preparation.family.filter_percolation			consumer_beverage	Safe family; exact device unavailable.	development	7aeef085eda11f23
+c0.zh.french_press	preparation	zh-Hans	法压壶	known	preparation.family.immersion	preparation.method.french_press		consumer_device	Mainland consumer term.	development	cdc48553aca18fb7
+c0.zh.aeropress	preparation	zh-Hans	爱乐压	known	preparation.family.hybrid	preparation.method.aeropress		consumer_device	Mainland brand rendering.	development	5f8ce341e7668978
+c0.zh.siphon	preparation	zh-Hans	虹吸壶	known	preparation.family.hybrid	preparation.method.siphon		consumer_device	Mainland consumer term.	held_out	a65fc318b0913509
+c0.zh.espresso	preparation	zh-Hans	意式浓缩	known	preparation.family.espresso_pressure	preparation.method.espresso_standard		consumer_beverage	Mainland consumer term.	development	e8d946732ed780db
+c0.zh.americano	preparation	zh-Hans	美式咖啡	known	preparation.family.diluted_espresso	preparation.beverage.americano		consumer_beverage	Mainland consumer term.	development	4839d6a1aa699701
+c0.zh.flat_white	preparation	zh-Hans	澳白	known	preparation.family.espresso_milk	preparation.beverage.flat_white		consumer_beverage	Common Mainland label; regional recipe variation remains metadata.	development	b0cc2aa7d8d9b4b0
+c0.zh.latte	preparation	zh-Hans	拿铁	known	preparation.family.espresso_milk	preparation.beverage.latte		consumer_beverage	Mainland consumer term.	held_out	9aa256352c0fa9a9
+c0.zh.cappuccino	preparation	zh-Hans	卡布奇诺	known	preparation.family.espresso_milk	preparation.beverage.cappuccino		consumer_beverage	Mainland consumer term.	development	8d3a1a95ffe2c05d
+c0.zh.moka	preparation	zh-Hans	摩卡壶	known	preparation.family.stovetop_boiled	preparation.method.moka		consumer_device	Device term disambiguates moka from mocha beverage.	development	6bd7fed771a89c28
+c0.zh.turkish	preparation	zh-Hans	土耳其咖啡	known	preparation.family.stovetop_boiled	preparation.method.cezve		consumer_beverage	Mainland consumer term.	development	35b9435c1381b770
+c0.zh.cold_brew	preparation	zh-Hans	冷萃	known	preparation.family.cold_extraction	preparation.method.cold_brew_immersion		consumer_beverage	Common Mainland term.	development	61ef48389f331305
+c0.zh.cold_drip	preparation	zh-Hans	冰滴	known	preparation.family.cold_extraction	preparation.method.cold_drip		consumer_beverage	Common Mainland term.	held_out	f74108b4beedba8b
+c0.zh.iced_coffee	preparation	zh-Hans	冰咖啡	reported_unresolved				consumer_ambiguous	Serving temperature does not identify extraction.	development	2267198e05e2d701
+c1.en.extremely_light	roast	en	extremely light	known			extremely_light	project_exact	Exact project label.	development	54237d3f081f55ce
+c1.en.light	roast	en	light	known			light	project_exact	Exact project label.	development	92ffbeeb443937ef
+c1.en.medium_light	roast	en	medium-light	known			medium_light	project_exact	Exact project label.	development	9527c81853fa931c
+c1.en.medium	roast	en	medium	known			medium	project_exact	Exact project label.	development	2687f6494118e533
+c1.en.medium_dark	roast	en	medium-dark	known			medium_dark	project_exact	Exact project label.	held_out	f93fb0de11c2b2b7
+c1.en.dark	roast	en	dark	known			dark	project_exact	Exact project label.	development	f4959bf13b1504b2
+c1.en.extremely_dark	roast	en	extremely dark	known			extremely_dark	project_exact	Exact project label.	held_out	22fc973035064a30
+c1.en.extremely_light_roast	roast	en	extremely-light roast	known			extremely_light	near_exact	Punctuation and roast suffix variant.	development	2793ef594daf5b31
+c1.en.light_roast	roast	en	light roast	known			light	near_exact	Roast suffix variant.	development	242b3f4177539de1
+c1.en.medium_light_space	roast	en	medium light	known			medium_light	near_exact	Hyphenation variant.	development	dbeb9716c3b135f3
+c1.en.medium_light_roast	roast	en	medium-light roast	known			medium_light	near_exact	Roast suffix variant.	development	c82f3fd3a847ee9f
+c1.en.medium_roast	roast	en	medium roast	known			medium	near_exact	Roast suffix variant.	development	a83b2c490735509a
+c1.en.medium_dark_space	roast	en	medium dark	known			medium_dark	near_exact	Hyphenation variant.	development	f80da9b0c7890803
+c1.en.medium_dark_roast	roast	en	medium-dark roast	known			medium_dark	near_exact	Roast suffix variant.	development	1c63d56056de59c3
+c1.en.dark_roast	roast	en	dark roast	known			dark	near_exact	Roast suffix variant.	development	80c89578e2e22f6f
+c1.en.extremely_dark_roast	roast	en	extremely-dark roast	known			extremely_dark	near_exact	Punctuation and roast suffix variant.	development	c8d0c360cee9651a
+c1.en.light_medium	roast	en	light-medium	known			medium_light	supported_ordinal	Reviewed English order variant.	held_out	624206ff80185637
+c1.zh.extremely_light	roast	zh-Hans	极浅烘	known			extremely_light	bilingual_project	Project-reviewed Mainland label.	development	be814f9affa2ab9a
+c1.zh.extremely_light_full	roast	zh-Hans	极浅度烘焙	known			extremely_light	bilingual_variant	Degree/full-form variant.	development	b81467618e394060
+c1.zh.light	roast	zh-Hans	浅烘	known			light	bilingual_project	Project-reviewed Mainland label.	development	0cfd9d54aaff4cb1
+c1.zh.light_full	roast	zh-Hans	浅度烘焙	known			light	bilingual_variant	Degree/full-form variant.	development	799e3551c57b85a7
+c1.zh.medium_light	roast	zh-Hans	浅中烘	known			medium_light	bilingual_project	Required target-market distinction.	development	341c197ce56efffb
+c1.zh.medium_light_full	roast	zh-Hans	浅中烘焙	known			medium_light	bilingual_variant	Full-form variant.	development	d11f058d4be86bc1
+c1.zh.light_medium	roast	zh-Hans	中浅烘	known			medium_light	bilingual_variant	Common reversed compound variant.	development	2aabc821367b2ec7
+c1.zh.light_medium_full	roast	zh-Hans	中浅度烘焙	known			medium_light	bilingual_variant	Degree/full-form variant.	development	09ae0f9f19071b71
+c1.zh.medium	roast	zh-Hans	中烘	known			medium	bilingual_project	Project-reviewed Mainland label.	development	9b1a7243faec41b5
+c1.zh.medium_full	roast	zh-Hans	中度烘焙	known			medium	bilingual_variant	Degree/full-form variant.	development	921430858c4475b3
+c1.zh.medium_dark	roast	zh-Hans	中深烘	known			medium_dark	bilingual_project	Required target-market distinction.	held_out	74882a15f36c9cff
+c1.zh.medium_dark_full	roast	zh-Hans	中深度烘焙	known			medium_dark	bilingual_variant	Degree/full-form variant.	development	495a7420b6d08389
+c1.zh.dark	roast	zh-Hans	深烘	known			dark	bilingual_project	Project-reviewed Mainland label.	development	6e372b871d8e4245
+c1.zh.dark_full	roast	zh-Hans	深度烘焙	known			dark	bilingual_variant	Degree/full-form variant.	development	0dfde49ad1b6da02
+c1.zh.extremely_dark	roast	zh-Hans	极深烘	known			extremely_dark	bilingual_project	Project-reviewed Mainland label.	held_out	74568582dcaf3e5a
+c1.zh.extremely_dark_full	roast	zh-Hans	极深度烘焙	known			extremely_dark	bilingual_variant	Degree/full-form variant.	development	28613a95cd23aa84
+c1.en.filter_roast	roast	en	filter roast	reported_unresolved				brew_intent	Intended use is not darkness.	development	4b444c5283e4c713
+c1.en.espresso_roast	roast	en	espresso roast	reported_unresolved				brew_intent	Intended use is not darkness.	held_out	f6b086eaaf14efe9
+c1.en.omniroast	roast	en	omniroast	reported_unresolved				brew_intent	Intended use is not darkness.	development	99d0bb7394f646fb
+c1.en.nordic	roast	en	Nordic roast	reported_unresolved				regional_style	Style has no universal project position.	held_out	1a4ff80ce35e30e4
+c1.en.city	roast	en	City roast	reported_unresolved				trade_label	Trade label has no universal project position.	development	a357e2b216aff692
+c1.en.city_plus	roast	en	City+	reported_unresolved				trade_label	Trade label has no universal project position.	development	16d8c5757694a1c4
+c1.en.full_city	roast	en	Full City	reported_unresolved				trade_label	Trade label has no universal project position.	held_out	d805d57e669ee459
+c1.en.vienna	roast	en	Vienna roast	reported_unresolved				trade_label	Trade label has no universal project position.	development	8f6e68db072c8f3d
+c1.en.french	roast	en	French roast	reported_unresolved				trade_label	Trade label has no universal project position.	development	f3d526ff162a667c
+c1.en.italian	roast	en	Italian roast	reported_unresolved				trade_label	Trade label has no universal project position.	development	4f9f73c84598640a
+c1.en.very_light	roast	en	very light	reported_unresolved				historical_collision	Historical V0 label is not silently redefined as V1 extremely light.	development	2ce7fdfb3bed4367
+c1.en.very_dark	roast	en	very dark	reported_unresolved				historical_collision	Historical V0 label is not silently redefined as V1 extremely dark.	development	12ee127dc135e2c8
+c1.zh.heavy	roast	zh-Hans	重烘	reported_unresolved				ambiguous_variant	Not assumed equivalent to extremely dark.	development	53e1707147cab247
