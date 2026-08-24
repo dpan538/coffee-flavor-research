@@ -2,7 +2,7 @@
 
 Date: 2026-08-24
 
-Status: `PHASE_STATUS=BLOCKED_REMOTE_CI`
+Status: `PHASE_STATUS=PASS`
 
 ## Outcome
 
@@ -102,11 +102,49 @@ viewport-sensitive comparison flow: the desktop comparison overlay intercepted
 the Lemon detail link, while the mobile comparison heading did not appear.
 The same nine smoke cases passed locally in this clean worktree.
 
-No application or test file changed in this documentation round. Fixing the
-comparison-overlay interaction or its Playwright synchronization would require
-a separate implementation/testing round and is explicitly outside this round's
-scope. Consequently, local repository checks pass, remote database checks
-pass, but the aggregate remote repository gate remains red.
+No application or test file changed in the documentation round itself. Its
+aggregate remote repository gate therefore remained red pending a separate,
+narrowly scoped repair.
+
+## CI repair and closure
+
+Repair commit
+[`1848b643a701a0913915405cedd897b75093305d`](https://github.com/dpan538/coffee-flavor-research/commit/1848b643a701a0913915405cedd897b75093305d)
+resolved the blocker on branch
+`fix/coffee-sensory-playwright-comparison-ci-20260824`.
+
+The root cause was a real application race combined with inadequate test
+synchronization. React Router's `setSearchParams` updater closes over the
+current render's search parameters rather than queueing updates like React
+state. Rapid compare, query, close, and view changes could therefore replace a
+newer parameter with stale URL state. The repair merges every change from a
+synchronously maintained latest-requested parameter snapshot.
+
+The Playwright flow now waits for observable URL and comparison-queue
+transitions without sleeps, timeout inflation, retries, skipped viewports, or
+weakened assertions. A focused regression immediately changes the query after
+selecting Jasmine, verifies that `compare=jasmine` survives, adds Dark
+Chocolate, and verifies `compare=jasmine,dark-chocolate` before opening the
+two-item comparison.
+
+Local CI-Chromium validation passed:
+
+- desktop comparison flow: 4 of 4 tests;
+- mobile comparison flow: 4 of 4 tests;
+- focused desktop repeat: 10 of 10 without retries;
+- focused mobile repeat: 10 of 10 without retries; and
+- complete desktop, tablet, and mobile suite: 12 of 12 tests.
+
+GitHub Actions pull-request run
+[`32728230235`](https://github.com/dpan538/coffee-flavor-research/actions/runs/32728230235)
+then passed both required jobs:
+
+- Format, typecheck, test, and build, including Playwright smoke tests; and
+- PostgreSQL 17 ontology and corpus gates, including two clean rebuilds.
+
+This green remote evidence closes the documentation-round CI blocker. The
+repair changed no PostgreSQL schema, migration, corpus, ontology, product
+contract, methodology, roadmap, archive, or product semantics.
 
 ## Safety
 
@@ -125,7 +163,7 @@ DIFF_SHA256=2c4eec84cd822846900bf6915a2b103c8cac08f04d8243ff7440cea4e21932df
 ## Receipt
 
 ```text
-PHASE_STATUS=BLOCKED_REMOTE_CI
+PHASE_STATUS=PASS
 
 SOURCE_SHA=7243ddb9c1537e3a7096cca652c18c66d18aeb30
 WORK_BRANCH=codex/coffee-sensory-docs-product-contract-v0-20260824
@@ -142,7 +180,7 @@ LEGACY_DOCS_MODIFIED=false
 
 PRODUCT_TERMINOLOGY_PASS=true
 DOCUMENT_LINK_PASS=true
-REPOSITORY_CHECKS_PASS=false
+REPOSITORY_CHECKS_PASS=true
 
 REMOTE_BACKUP_PASS=true
 MAIN_PROMOTION_PASS=true
@@ -150,12 +188,16 @@ FORCE_PUSH_USED=false
 ORIGINAL_DIRTY_MAIN_TOUCHED=false
 
 AUDIT_RECEIPT=docs/audits/coffee-sensory-docs-product-contract-v0-20260824/00_EXECUTIVE_RECEIPT.md
-KNOWN_BLOCKERS=GitHub Actions Playwright comparison-overlay smoke test failed on the initial run and one rerun; formatting, typecheck, unit tests, build, and PostgreSQL gates passed
-ROUND3A_READY=false
+CI_REPAIR_BRANCH=fix/coffee-sensory-playwright-comparison-ci-20260824
+CI_REPAIR_SHA=1848b643a701a0913915405cedd897b75093305d
+CI_REPAIR_ACTIONS_RUN=32728230235
+REMOTE_FRONTEND_CI_PASS=true
+REMOTE_POSTGRES_CI_PASS=true
+KNOWN_BLOCKERS=none
+ROUND3A_READY=true
 ```
 
-The documentation contract is committed and remotely backed up, but Round 3A
-readiness remains false until the mandatory remote repository gate is green.
-Even after that gate is repaired, readiness does not mean the C0/C1 taxonomies,
-sensory questions, consumer ranking model, or final interaction have already
-been validated.
+The documentation contract is committed and remotely backed up, and its
+mandatory repository gate is green. Round 3A readiness does not mean the C0/C1
+taxonomies, sensory questions, consumer ranking model, or final interaction
+have already been validated.
