@@ -36,7 +36,9 @@ environment independently of these scripts.
 
 ## Migration and domain layout
 
-Exactly eight top-level migrations are applied, in lexical order:
+Top-level migrations are applied in contiguous numeric order. The first eight
+are protected by `db/migration-baselines/round1.sha256`; the migration planner
+refuses to run if any immutable Round 1 file changes:
 
 ```text
 000_extensions.sql
@@ -47,13 +49,18 @@ Exactly eight top-level migrations are applied, in lexical order:
 005_indexes_and_views.sql
 006_reference_seed.sql
 007_validation_queries.sql
+008_concept_provenance.sql
+009_concept_schemes.sql
+010_canonical_ontology_seed.sql
+011_ontology_validation.sql
 ```
 
-`apply.sh` fails unless there is exactly one matching migration for every
-prefix from `000_` through `007_`. The order separates extension setup,
-controlled reference values and namespaces, canonical knowledge, evidence and
-observation domains, invariants, retrieval surfaces, a small lawful seed, and
-machine-runnable validation.
+`apply.sh` fails unless there is exactly one migration at every contiguous
+numeric position. The order separates extension setup, controlled reference
+values and namespaces, canonical knowledge, evidence and observation domains,
+invariants, retrieval surfaces, the Round 1 smoke seed, baseline validation,
+concept provenance, source-local schemes, the curated ontology seed, and
+ontology validation.
 
 The six PostgreSQL schemas have deliberately separate responsibilities:
 
@@ -71,8 +78,9 @@ The six PostgreSQL schemas have deliberately separate responsibilities:
 The seed in `006_reference_seed.sql` is independently authored, lawful, and
 test-only. It exists to exercise semantic distinctions such as pink grapefruit,
 Earl Grey, bright, fermented, and the intentionally unresolved “meteor fruit.”
-It is not the planned 90–120-concept ontology and contains no copied WCR, SCA,
-ISO, Cup of Excellence, or commercial reference text.
+The forward seed in `010_canonical_ontology_seed.sql` populates the reviewed V0
+ontology without copying WCR, SCA, ISO, journal definitions, reference
+preparations, intensities, Flavor Wheel placement, or commercial source text.
 
 ## Apply and test one disposable database
 
@@ -102,10 +110,10 @@ the run.
 
 1. the `audit.run_validation_queries()` contract created by migration `007`,
    failing if any check reports a violation;
-2. `db/tests/negative.sql`;
-3. `db/tests/semantic.sql`;
-4. `db/tests/retrieval.sql`;
-5. `db/tests/query_plans.sql`.
+2. the Round 1 negative, semantic, retrieval, and query-plan suites;
+3. when forward migrations are present, the
+   `audit.run_round2a_validation_queries()` contract; and
+4. the Round 2A negative, semantic, retrieval, and query-plan suites.
 
 ## Two clean rebuilds
 
@@ -139,13 +147,14 @@ reference row counts, source-version inventory, and validation counts. It then
 compares:
 
 - the per-file migration hash manifest;
-- the seed-file hash;
+- the ordered hash manifest for every migration whose name contains `seed`;
 - a normalized schema-only dump hash (PostgreSQL 17's randomized `\\restrict`
   and `\\unrestrict` lines are removed);
 - all stable `*_key` and controlled `*_code` values;
 - every `ref` table's row count;
 - source-version and license-policy keys;
-- ordered validation result counts.
+- ordered Round 1 and Round 2A validation result counts; and
+- the ordered ontology coverage metrics.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases

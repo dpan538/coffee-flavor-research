@@ -4,7 +4,8 @@
 
 The current research architecture is the PostgreSQL 17+ Coffee Sensory
 Knowledge Base V0. It is implemented as an isolated migration and test
-substrate under `db/`; the frontend does not connect to it in Round 1.
+substrate under `db/`. Round 2A populates that substrate but still does not
+connect the frontend to PostgreSQL.
 
 The database uses six logical schemas:
 
@@ -20,13 +21,17 @@ The governing specification is
 [`docs/research/coffee-sensory-kb-v0/`](./research/coffee-sensory-kb-v0/).
 Executable pass/fail evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round1/`](./audits/coffee-sensory-kb-v0-round1/).
+Round 2A evidence belongs in
+[`docs/audits/coffee-sensory-kb-v0-round2a/`](./audits/coffee-sensory-kb-v0-round2a/).
 
 ## PostgreSQL boundary
 
 `db/000_extensions.sql` through `db/007_validation_queries.sql` form the
-dependency-ordered baseline. PostgreSQL is the system of record and `pg_trgm`
-is required. `pgvector`, embeddings, an application API, and frontend data
-integration are deliberately outside V0.
+immutable, dependency-ordered Round 1 baseline. Forward migrations `008`
+through `011` add concept-level provenance roles, source-local concept schemes,
+the curated V0 ontology, and ontology validation. PostgreSQL is the system of
+record and `pg_trgm` is required. `pgvector`, embeddings, an application API,
+and frontend data integration are deliberately outside V0.
 
 Canonical concepts never store display labels, permanent descriptor intensity,
 universal similarity, or projection coordinates. Source-specific structures,

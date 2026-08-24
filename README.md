@@ -49,7 +49,16 @@ db/004_constraints_and_triggers.sql
 db/005_indexes_and_views.sql
 db/006_reference_seed.sql
 db/007_validation_queries.sql
+db/008_concept_provenance.sql
+db/009_concept_schemes.sql
+db/010_canonical_ontology_seed.sql
+db/011_ontology_validation.sql
 ```
+
+Migrations `000` through `007` are the immutable Round 1 baseline. Round 2A is
+forward-only: it adds controlled concept-provenance roles, isolated
+source-specific schemes, the curated canonical ontology, and ontology-specific
+views and validation.
 
 Use only a disposable PostgreSQL 17+ database. The database README documents
 the required environment and destructive-test safeguards:
@@ -63,6 +72,9 @@ npm run test:db:repro
 
 Round 1 evidence is recorded under
 [`docs/audits/coffee-sensory-kb-v0-round1/`](./docs/audits/coffee-sensory-kb-v0-round1/).
+Round 2A ontology, provenance, rights, query-plan, and reproducibility evidence
+is recorded under
+[`docs/audits/coffee-sensory-kb-v0-round2a/`](./docs/audits/coffee-sensory-kb-v0-round2a/).
 
 ## Static public baseline
 

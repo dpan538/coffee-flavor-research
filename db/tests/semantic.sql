@@ -37,14 +37,52 @@ DECLARE
     public_document_id BIGINT;
     restricted_document_id BIGINT;
 BEGIN
-    IF (SELECT count(*) FROM kb.concept) <> 19 THEN
+    IF (
+        SELECT count(*)
+        FROM kb.concept AS concept
+        WHERE concept.concept_key = ANY(ARRAY[
+            'category.citrus',
+            'sensory.grapefruit',
+            'sensory.pink_grapefruit',
+            'sensory.bergamot',
+            'sensory.jasmine',
+            'sensory.black_tea',
+            'composite.earl_grey',
+            'sensory.fermented_character',
+            'process.fermentation',
+            'sensory.cardboard',
+            'sensory.rubber',
+            'qualifier.bright',
+            'qualifier.clean',
+            'qualifier.juicy',
+            'qualifier.tea_like',
+            'qualifier.winey',
+            'sensory.wine_like_character',
+            'sensory.bitter',
+            'affective.pleasant'
+        ]::TEXT[])
+    ) <> 19 THEN
         RAISE EXCEPTION USING
             ERRCODE = '23514',
-            CONSTRAINT = 'semantic_seed_concept_count_ck',
-            MESSAGE = 'semantic smoke: expected exactly 19 lawful seed concepts';
+            CONSTRAINT = 'semantic_round1_fixture_preserved_ck',
+            MESSAGE = 'semantic smoke: all 19 lawful Round 1 fixture identities must remain preserved';
     END IF;
 
-    IF NOT EXISTS (
+    -- Round 1 remains an exact 19-concept smoke seed. Forward ontology rounds
+    -- preserve those identities but gate their larger inventory through their
+    -- own versioned validation and coverage contracts.
+    IF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NULL AND (SELECT count(*) FROM kb.concept) <> 19 THEN
+        RAISE EXCEPTION USING
+            ERRCODE = '23514',
+            CONSTRAINT = 'semantic_round1_seed_concept_count_ck',
+            MESSAGE = 'semantic smoke: the Round 1-only database must contain exactly 19 lawful seed concepts';
+    END IF;
+
+    IF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NULL AND NOT EXISTS (
         SELECT 1
         FROM kb.concept AS concept
         WHERE concept.concept_key = 'sensory.pink_grapefruit'
@@ -54,7 +92,20 @@ BEGIN
         RAISE EXCEPTION USING
             ERRCODE = '23514',
             CONSTRAINT = 'semantic_pink_grapefruit_identity_ck',
-            MESSAGE = 'semantic smoke: pink grapefruit must retain its own active sensory concept';
+            MESSAGE = 'semantic smoke: the Round 1 pink-grapefruit fixture must be an active sensory concept';
+    ELSIF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NOT NULL AND NOT EXISTS (
+        SELECT 1
+        FROM kb.concept AS concept
+        WHERE concept.concept_key = 'sensory.pink_grapefruit'
+          AND concept.concept_type_code = 'sensory_attribute'
+          AND concept.lifecycle_status_code = 'candidate'
+    ) THEN
+        RAISE EXCEPTION USING
+            ERRCODE = '23514',
+            CONSTRAINT = 'semantic_pink_grapefruit_candidate_identity_ck',
+            MESSAGE = 'semantic smoke: Round 2A must preserve pink grapefruit as a distinct candidate sensory concept';
     END IF;
 
     IF NOT EXISTS (
@@ -91,7 +142,9 @@ BEGIN
             MESSAGE = 'semantic smoke: pink grapefruit must resolve independently and never collapse into grapefruit';
     END IF;
 
-    IF NOT EXISTS (
+    IF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NULL AND NOT EXISTS (
         SELECT 1
         FROM kb.concept_relation AS relation
         JOIN kb.concept AS broader
@@ -107,6 +160,25 @@ BEGIN
             ERRCODE = '23514',
             CONSTRAINT = 'semantic_pink_grapefruit_hierarchy_ck',
             MESSAGE = 'semantic smoke: grapefruit must be broader than the distinct pink-grapefruit concept';
+    ELSIF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NOT NULL AND NOT EXISTS (
+        SELECT 1
+        FROM kb.concept_relation AS relation
+        JOIN kb.concept AS broader
+          ON broader.concept_id = relation.subject_concept_id
+        JOIN kb.concept AS narrower
+          ON narrower.concept_id = relation.object_concept_id
+        WHERE relation.relation_type_code = 'broader_than'
+          AND relation.lifecycle_status_code = 'deprecated'
+          AND relation.valid_until IS NOT NULL
+          AND broader.concept_key = 'sensory.grapefruit'
+          AND narrower.concept_key = 'sensory.pink_grapefruit'
+    ) THEN
+        RAISE EXCEPTION USING
+            ERRCODE = '23514',
+            CONSTRAINT = 'semantic_round2a_pink_grapefruit_history_ck',
+            MESSAGE = 'semantic smoke: Round 2A must retain the historical grapefruit-to-pink-grapefruit assertion after deactivating it';
     END IF;
 
     IF NOT EXISTS (

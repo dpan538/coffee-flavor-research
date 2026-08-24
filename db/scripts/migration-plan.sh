@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+DB_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+ROUND_ONE_BASELINE="$DB_DIR/migration-baselines/round1.sha256"
+MODE=${1:-verify}
+
+if (( $# > 1 )); then
+  printf 'Usage: %s [verify|paths|hashes|count]\n' "$0" >&2
+  exit 64
+fi
+
+case "$MODE" in
+  verify | paths | hashes | count) ;;
+  *)
+    printf 'ERROR: unsupported migration-plan mode: %s\n' "$MODE" >&2
+    exit 64
+    ;;
+esac
+
+if command -v sha256sum >/dev/null 2>&1; then
+  SHA256_COMMAND=sha256sum
+elif command -v shasum >/dev/null 2>&1; then
+  SHA256_COMMAND=shasum
+else
+  printf 'ERROR: sha256sum or shasum is required to verify immutable migrations.\n' >&2
+  exit 69
+fi
+
+sha256_file() {
+  local file_path=$1
+
+  if [[ "$SHA256_COMMAND" == sha256sum ]]; then
+    sha256sum "$file_path" | awk '{print $1}'
+  else
+    shasum -a 256 "$file_path" | awk '{print $1}'
+  fi
+}
+
+if [[ ! -f "$ROUND_ONE_BASELINE" ]]; then
+  printf 'ERROR: missing immutable Round 1 fingerprint manifest: %s\n' \
+    "$ROUND_ONE_BASELINE" >&2
+  exit 66
+fi
+
+migrations=()
+while IFS= read -r migration; do
+  migrations+=("$migration")
+done < <(
+  find "$DB_DIR" \
+    -maxdepth 1 \
+    -type f \
+    -name '[0-9][0-9][0-9]_*.sql' \
+    -print |
+    LC_ALL=C sort
+)
+
+if (( ${#migrations[@]} < 8 )); then
+  printf 'ERROR: expected at least immutable migrations 000 through 007; found %d.\n' \
+    "${#migrations[@]}" >&2
+  exit 65
+fi
+
+for index in "${!migrations[@]}"; do
+  migration_name=$(basename -- "${migrations[$index]}")
+  expected_prefix=$(printf '%03d_' "$index")
+  case "$migration_name" in
+    "$expected_prefix"*.sql) ;;
+    *)
+      printf 'ERROR: migration position %d must start with %s; found %s.\n' \
+        "$index" "$expected_prefix" "$migration_name" >&2
+      exit 65
+      ;;
+  esac
+done
+
+baseline_count=0
+while read -r expected_hash expected_name extra_field; do
+  if [[ -z "$expected_hash" && -z "$expected_name" ]]; then
+    continue
+  fi
+  if [[ -n "${extra_field:-}" || ! "$expected_hash" =~ ^[0-9a-f]{64}$ || -z "$expected_name" ]]; then
+    printf 'ERROR: malformed Round 1 fingerprint entry at position %d.\n' \
+      "$baseline_count" >&2
+    exit 65
+  fi
+  if (( baseline_count >= 8 )); then
+    printf 'ERROR: Round 1 fingerprint manifest must contain exactly 8 entries.\n' >&2
+    exit 65
+  fi
+
+  actual_path=${migrations[$baseline_count]}
+  actual_name=$(basename -- "$actual_path")
+  actual_hash=$(sha256_file "$actual_path")
+  if [[ "$actual_name" != "$expected_name" || "$actual_hash" != "$expected_hash" ]]; then
+    printf 'ERROR: immutable Round 1 migration fingerprint mismatch at %03d.\n' \
+      "$baseline_count" >&2
+    printf 'EXPECTED=%s  %s\n' "$expected_hash" "$expected_name" >&2
+    printf 'ACTUAL=%s  %s\n' "$actual_hash" "$actual_name" >&2
+    exit 65
+  fi
+  baseline_count=$((baseline_count + 1))
+done <"$ROUND_ONE_BASELINE"
+
+if (( baseline_count != 8 )); then
+  printf 'ERROR: Round 1 fingerprint manifest must contain exactly 8 entries; found %d.\n' \
+    "$baseline_count" >&2
+  exit 65
+fi
+
+case "$MODE" in
+  verify)
+    printf 'ROUND1_MIGRATION_FINGERPRINT_PASS=true\n'
+    printf 'MIGRATION_COUNT=%d\n' "${#migrations[@]}"
+    ;;
+  paths)
+    printf '%s\n' "${migrations[@]}"
+    ;;
+  hashes)
+    for migration in "${migrations[@]}"; do
+      printf '%s  %s\n' \
+        "$(sha256_file "$migration")" \
+        "$(basename -- "$migration")"
+    done
+    ;;
+  count)
+    printf '%d\n' "${#migrations[@]}"
+    ;;
+esac

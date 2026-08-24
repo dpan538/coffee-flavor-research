@@ -4,6 +4,7 @@ set -euo pipefail
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 DB_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+MIGRATION_PLAN="$SCRIPT_DIR/migration-plan.sh"
 
 ALLOW_DROP=${COFFEE_KB_ALLOW_DATABASE_DROP:-}
 ADMIN_DATABASE=${PGDATABASE:-postgres}
@@ -50,6 +51,15 @@ for required_command in "${required_commands[@]}"; do
     exit 69
   fi
 done
+
+if [[ ! -x "$MIGRATION_PLAN" ]]; then
+  printf 'ERROR: migration plan helper is missing or not executable: %s\n' \
+    "$MIGRATION_PLAN" >&2
+  exit 66
+fi
+
+"$MIGRATION_PLAN" verify
+DISCOVERED_MIGRATION_COUNT=$("$MIGRATION_PLAN" count)
 
 if command -v sha256sum >/dev/null 2>&1; then
   SHA256_COMMAND=sha256sum
@@ -153,39 +163,31 @@ trap 'exit 130' INT TERM
 
 write_migration_manifest() {
   local output_file=$1
-  local migration
-  local migration_name
-  local expected_prefix
-  local index
-  local migrations=()
+  "$MIGRATION_PLAN" hashes >"$output_file"
+}
 
-  while IFS= read -r migration; do
-    migrations+=("$migration")
+write_seed_manifest() {
+  local output_file=$1
+  local seed_file
+
+  : >"$output_file"
+  while IFS= read -r seed_file; do
+    printf '%s  %s\n' \
+      "$(sha256_file "$seed_file")" \
+      "$(basename -- "$seed_file")" >>"$output_file"
   done < <(
-    find "$DB_DIR" -maxdepth 1 -type f -name '00[0-7]_*.sql' -print |
+    find "$DB_DIR" \
+      -maxdepth 1 \
+      -type f \
+      -name '[0-9][0-9][0-9]_*seed*.sql' \
+      -print |
       LC_ALL=C sort
   )
 
-  if (( ${#migrations[@]} != 8 )); then
-    printf 'ERROR: expected exactly 8 migrations while building hash manifest; found %d.\n' \
-      "${#migrations[@]}" >&2
+  if [[ ! -s "$output_file" ]]; then
+    printf 'ERROR: no deterministic seed migrations were discovered.\n' >&2
     return 1
   fi
-
-  : >"$output_file"
-  for index in "${!migrations[@]}"; do
-    migration=${migrations[$index]}
-    migration_name=$(basename -- "$migration")
-    expected_prefix=$(printf '%03d_' "$index")
-    case "$migration_name" in
-      "$expected_prefix"*.sql) ;;
-      *)
-        printf 'ERROR: unexpected migration order while hashing: %s.\n' "$migration_name" >&2
-        return 1
-        ;;
-    esac
-    printf '%s  %s\n' "$(sha256_file "$migration")" "$migration_name" >>"$output_file"
-  done
 }
 
 write_stable_key_inventory() {
@@ -291,13 +293,43 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  psql_target "$database_name" \
-    --tuples-only \
-    --no-align \
-    --field-separator='|' \
-    --command='SELECT check_key, violation_count, passed
-               FROM audit.run_validation_queries()
-               ORDER BY check_key;' >"$output_file"
+  if (( DISCOVERED_MIGRATION_COUNT > 8 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  else
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 ORDER BY check_key;" >"$output_file"
+  fi
+}
+
+write_ontology_coverage() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT > 8 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command='SELECT metric_key, metric_value
+                 FROM kb.v_ontology_coverage
+                 ORDER BY metric_key;' >"$output_file"
+  else
+    : >"$output_file"
+  fi
 }
 
 normalize_schema_dump() {
@@ -321,7 +353,7 @@ run_build() {
 
   mkdir -p "$build_dir"
   write_migration_manifest "$build_dir/migration-files.txt"
-  sha256_file "$DB_DIR/006_reference_seed.sql" >"$build_dir/seed.sha256"
+  write_seed_manifest "$build_dir/seed-files.txt"
 
   printf 'CREATE_DATABASE=%s\n' "$database_name"
   createdb \
@@ -344,6 +376,7 @@ run_build() {
   write_reference_row_counts "$database_name" "$build_dir/reference-row-counts.txt"
   write_source_version_inventory "$database_name" "$build_dir/source-version-inventory.txt"
   write_validation_results "$database_name" "$build_dir/validation-results.txt"
+  write_ontology_coverage "$database_name" "$build_dir/ontology-coverage.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -391,15 +424,17 @@ run_build "$DATABASE_ONE" build-one
 run_build "$DATABASE_TWO" build-two
 
 compare_artifact MIGRATION_HASH migration-files.txt
+compare_artifact SEED_FILE_HASHES seed-files.txt
 compare_artifact SCHEMA_ONLY_DUMP_HASH schema.sql
 compare_artifact STABLE_KEY_INVENTORY stable-key-inventory.txt
 compare_artifact REFERENCE_TABLE_ROW_COUNTS reference-row-counts.txt
 compare_artifact SOURCE_VERSION_INVENTORY source-version-inventory.txt
 compare_artifact VALIDATION_RESULT_COUNTS validation-results.txt
+compare_artifact ONTOLOGY_COVERAGE ontology-coverage.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
-seed_hash_one=$(sed -n '1p' "$ARTIFACT_DIR/build-one/seed.sha256")
-seed_hash_two=$(sed -n '1p' "$ARTIFACT_DIR/build-two/seed.sha256")
+seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
+seed_hash_two=$(sha256_file "$ARTIFACT_DIR/build-two/seed-files.txt")
 printf 'SEED_HASH_BUILD_ONE_SHA256=%s\n' "$seed_hash_one"
 printf 'SEED_HASH_BUILD_TWO_SHA256=%s\n' "$seed_hash_two"
 if [[ "$seed_hash_one" != "$seed_hash_two" ]]; then
@@ -408,10 +443,12 @@ if [[ "$seed_hash_one" != "$seed_hash_two" ]]; then
 fi
 
 print_result_file MIGRATION_FILE_HASHES "$ARTIFACT_DIR/build-one/migration-files.txt"
+print_result_file SEED_FILE_HASHES "$ARTIFACT_DIR/build-one/seed-files.txt"
 print_result_file STABLE_KEY_INVENTORY "$ARTIFACT_DIR/build-one/stable-key-inventory.txt"
 print_result_file REFERENCE_TABLE_ROW_COUNTS "$ARTIFACT_DIR/build-one/reference-row-counts.txt"
 print_result_file SOURCE_VERSION_INVENTORY "$ARTIFACT_DIR/build-one/source-version-inventory.txt"
 print_result_file VALIDATION_RESULT_COUNTS "$ARTIFACT_DIR/build-one/validation-results.txt"
+print_result_file ONTOLOGY_COVERAGE "$ARTIFACT_DIR/build-one/ontology-coverage.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'

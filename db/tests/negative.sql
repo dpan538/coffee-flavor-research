@@ -203,16 +203,29 @@ BEGIN
             provenance_scope_code
         )
         SELECT
-            'negative.pink_grapefruit.broader_than.citrus',
+            'negative.indirect_hierarchy_cycle',
             'broader_than',
-            pink_grapefruit.concept_id,
-            citrus.concept_id,
+            path.descendant_concept_id,
+            path.ancestor_concept_id,
             'active',
             'project_authored'
-        FROM kb.concept AS pink_grapefruit
-        CROSS JOIN kb.concept AS citrus
-        WHERE pink_grapefruit.concept_key = 'sensory.pink_grapefruit'
-          AND citrus.concept_key = 'category.citrus';
+        FROM (
+            SELECT
+                first_edge.subject_concept_id AS ancestor_concept_id,
+                second_edge.object_concept_id AS descendant_concept_id
+            FROM kb.concept_relation AS first_edge
+            JOIN kb.concept_relation AS second_edge
+              ON second_edge.subject_concept_id =
+                 first_edge.object_concept_id
+             AND second_edge.relation_type_code = 'broader_than'
+             AND second_edge.lifecycle_status_code = 'active'
+            WHERE first_edge.relation_type_code = 'broader_than'
+              AND first_edge.lifecycle_status_code = 'active'
+            ORDER BY
+                first_edge.relation_key,
+                second_edge.relation_key
+            LIMIT 1
+        ) AS path;
         RAISE EXCEPTION 'indirect hierarchy cycle was unexpectedly accepted';
     EXCEPTION WHEN OTHERS THEN
         GET STACKED DIAGNOSTICS

@@ -4,6 +4,7 @@ set -euo pipefail
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 DB_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+MIGRATION_PLAN="$SCRIPT_DIR/migration-plan.sh"
 
 usage() {
   printf 'Usage: %s [database]\n' "$0" >&2
@@ -27,32 +28,18 @@ if ! command -v psql >/dev/null 2>&1; then
   exit 69
 fi
 
+if [[ ! -x "$MIGRATION_PLAN" ]]; then
+  printf 'ERROR: migration plan helper is missing or not executable: %s\n' \
+    "$MIGRATION_PLAN" >&2
+  exit 66
+fi
+
+"$MIGRATION_PLAN" verify
+
 migrations=()
 while IFS= read -r migration; do
   migrations+=("$migration")
-done < <(
-  find "$DB_DIR" -maxdepth 1 -type f -name '00[0-7]_*.sql' -print |
-    LC_ALL=C sort
-)
-
-if (( ${#migrations[@]} != 8 )); then
-  printf 'ERROR: expected exactly 8 migrations matching db/000_*.sql through db/007_*.sql; found %d.\n' \
-    "${#migrations[@]}" >&2
-  exit 65
-fi
-
-for index in "${!migrations[@]}"; do
-  migration_name=$(basename -- "${migrations[$index]}")
-  expected_prefix=$(printf '%03d_' "$index")
-  case "$migration_name" in
-    "$expected_prefix"*.sql) ;;
-    *)
-      printf 'ERROR: migration position %d must start with %s; found %s.\n' \
-        "$index" "$expected_prefix" "$migration_name" >&2
-      exit 65
-      ;;
-  esac
-done
+done < <("$MIGRATION_PLAN" paths)
 
 printf 'Applying %d migrations to database %s.\n' "${#migrations[@]}" "$TARGET_DATABASE"
 for migration in "${migrations[@]}"; do

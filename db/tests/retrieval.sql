@@ -54,27 +54,55 @@ BEGIN
             MESSAGE = 'retrieval smoke: grapefruit must resolve by exact preferred label without trigram fallback';
     END IF;
 
-    IF NOT EXISTS (
-        SELECT 1
-        FROM kb.retrieve_lexical_candidates(
-            'pink-grapefruit', 'en', 5, 0.35::REAL
-        ) AS result
-        WHERE result.stage = 'EXACT_APPROVED_VARIANT'
-          AND result.stage_order = 2
-          AND result.matched_expression_key = 'expression.en.pink_grapefruit_hyphenated'
-          AND result.concept_key = 'sensory.pink_grapefruit'
-          AND result.resolution_status = 'RESOLVED'
-    ) OR EXISTS (
-        SELECT 1
-        FROM kb.retrieve_lexical_candidates(
-            'pink-grapefruit', 'en', 5, 0.35::REAL
-        ) AS result
-        WHERE result.stage IN ('TRIGRAM', 'UNRESOLVED')
+    IF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NULL AND (
+        NOT EXISTS (
+            SELECT 1
+            FROM kb.retrieve_lexical_candidates(
+                'pink-grapefruit', 'en', 5, 0.35::REAL
+            ) AS result
+            WHERE result.stage = 'EXACT_APPROVED_VARIANT'
+              AND result.stage_order = 2
+              AND result.matched_expression_key = 'expression.en.pink_grapefruit_hyphenated'
+              AND result.concept_key = 'sensory.pink_grapefruit'
+              AND result.resolution_status = 'RESOLVED'
+        ) OR EXISTS (
+            SELECT 1
+            FROM kb.retrieve_lexical_candidates(
+                'pink-grapefruit', 'en', 5, 0.35::REAL
+            ) AS result
+            WHERE result.stage IN ('TRIGRAM', 'UNRESOLVED')
+        )
     ) THEN
         RAISE EXCEPTION USING
             ERRCODE = '23514',
             CONSTRAINT = 'retrieval_approved_variant_precedes_trigram_ck',
             MESSAGE = 'retrieval smoke: pink-grapefruit must use its approved variant mapping';
+    ELSIF pg_catalog.to_regprocedure(
+        'audit.run_round2a_validation_queries()'
+    ) IS NOT NULL AND (
+        (
+            SELECT count(*)
+            FROM kb.retrieve_lexical_candidates(
+                'pink-grapefruit', 'en', 5, 0.35::REAL
+            ) AS result
+        ) <> 1 OR NOT EXISTS (
+            SELECT 1
+            FROM kb.retrieve_lexical_candidates(
+                'pink-grapefruit', 'en', 5, 0.35::REAL
+            ) AS result
+            WHERE result.stage = 'UNRESOLVED'
+              AND result.stage_order = 5
+              AND result.matched_expression_key = 'expression.en.pink_grapefruit_hyphenated'
+              AND result.concept_key IS NULL
+              AND result.resolution_status = 'UNRESOLVED'
+        )
+    ) THEN
+        RAISE EXCEPTION USING
+            ERRCODE = '23514',
+            CONSTRAINT = 'retrieval_round2a_candidate_not_forced_ck',
+            MESSAGE = 'retrieval smoke: Round 2A must not force the candidate pink-grapefruit identity into active retrieval';
     END IF;
 
     IF NOT EXISTS (
