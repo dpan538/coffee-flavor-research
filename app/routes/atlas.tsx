@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import {
   categories,
@@ -36,11 +36,19 @@ export function meta() {
 
 function useAtlasParams() {
   const [params, setParams] = useSearchParams();
+  // React Router search-param updaters close over the current render rather
+  // than queueing like React state. Keep the latest requested URL state so
+  // rapid compare/search updates merge instead of replacing one another.
+  const latestParamsRef = useRef(new URLSearchParams(params));
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     setHydrated(true);
   }, []);
+
+  useEffect(() => {
+    latestParamsRef.current = new URLSearchParams(params);
+  }, [params]);
 
   const activeParams = hydrated ? params : new URLSearchParams();
   const query = activeParams.get("q") ?? "";
@@ -53,41 +61,38 @@ function useAtlasParams() {
     .filter(Boolean)
     .slice(0, 2);
 
+  const commitParams = (mutate: (next: URLSearchParams) => void) => {
+    const next = new URLSearchParams(latestParamsRef.current);
+    mutate(next);
+    latestParamsRef.current = next;
+    setParams(next, { replace: false });
+  };
+
   const updateParams = (updates: Record<string, string | null>) => {
-    setParams(
-      (previous) => {
-        const next = new URLSearchParams(previous);
-        Object.entries(updates).forEach(([key, value]) => {
-          if (value) {
-            next.set(key, value);
-          } else {
-            next.delete(key);
-          }
-        });
-        return next;
-      },
-      { replace: false },
-    );
+    commitParams((next) => {
+      Object.entries(updates).forEach(([key, value]) => {
+        if (value) {
+          next.set(key, value);
+        } else {
+          next.delete(key);
+        }
+      });
+    });
   };
 
   const selectCompare = (descriptor: Descriptor) => {
-    setParams(
-      (previous) => {
-        const nextParams = new URLSearchParams(previous);
-        const previousSlugs = (nextParams.get("compare") ?? "")
-          .split(",")
-          .map((slug) => slug.trim())
-          .filter(Boolean)
-          .slice(0, 2);
-        const nextSlugs = previousSlugs.includes(descriptor.slug)
-          ? previousSlugs
-          : [...previousSlugs, descriptor.slug].slice(-2);
+    commitParams((next) => {
+      const previousSlugs = (next.get("compare") ?? "")
+        .split(",")
+        .map((slug) => slug.trim())
+        .filter(Boolean)
+        .slice(0, 2);
+      const nextSlugs = previousSlugs.includes(descriptor.slug)
+        ? previousSlugs
+        : [...previousSlugs, descriptor.slug].slice(-2);
 
-        nextParams.set("compare", nextSlugs.join(","));
-        return nextParams;
-      },
-      { replace: false },
-    );
+      next.set("compare", nextSlugs.join(","));
+    });
   };
 
   return {

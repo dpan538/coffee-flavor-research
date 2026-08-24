@@ -12,6 +12,20 @@ function watchConsoleErrors(page: Page) {
   return consoleErrors;
 }
 
+async function expectSearchParams(
+  page: Page,
+  expected: Record<string, string | null>,
+) {
+  await expect
+    .poll(() => {
+      const params = new URL(page.url()).searchParams;
+      return Object.fromEntries(
+        Object.keys(expected).map((key) => [key, params.get(key)]),
+      );
+    })
+    .toEqual(expected);
+}
+
 test("home page, methodology, and desktop layout load without horizontal overflow", async ({
   page,
 }) => {
@@ -45,26 +59,95 @@ test("atlas search, aliases, map navigation, and comparison work", async ({
     page.getByRole("link", { name: "茉莉", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: /Compare Jasmine/ }).click();
+  await expectSearchParams(page, {
+    view: "index",
+    q: "茉莉",
+    compare: "jasmine",
+  });
+  await expect(page.getByText(/Jasmine selected/)).toBeVisible();
 
   await page.getByLabel(/Search English/).fill("cacao");
+  await expectSearchParams(page, {
+    view: "index",
+    q: "cacao",
+    compare: "jasmine",
+  });
   await expect(
     page.getByRole("link", { name: "黑巧克力", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: /Compare Dark Chocolate/ }).click();
+  await expectSearchParams(page, {
+    view: "index",
+    q: "cacao",
+    compare: "jasmine,dark-chocolate",
+  });
   await expect(
     page.getByRole("heading", { name: /Descriptor comparison/ }),
   ).toBeVisible();
   await expect(page.getByText(/^差异最大:/)).toBeVisible();
   await page.getByRole("button", { name: /Close comparison/ }).click();
+  await expectSearchParams(page, {
+    view: "index",
+    q: "cacao",
+    compare: null,
+  });
+  await expect(
+    page.getByRole("heading", { name: /Descriptor comparison/ }),
+  ).toBeHidden();
 
   await page.getByLabel(/Search English/).fill("lemon");
+  await expectSearchParams(page, {
+    view: "index",
+    q: "lemon",
+    compare: null,
+  });
   await page.getByRole("button", { name: "MAP" }).click();
+  await expectSearchParams(page, {
+    view: "map",
+    q: "lemon",
+    compare: null,
+  });
   await expect(
     page.getByRole("img", { name: /Sensory association map/ }),
   ).toBeVisible();
   await page.getByRole("link", { name: /Open Lemon detail page/ }).click();
   await expect(page).toHaveURL(/\/flavor\/lemon/);
   await expect(page.getByRole("heading", { name: /柠檬/ })).toBeVisible();
+  expect(consoleErrors).toEqual([]);
+});
+
+test("comparison selection survives an immediate search-param update", async ({
+  page,
+}) => {
+  const consoleErrors = watchConsoleErrors(page);
+  await page.goto("/atlas?view=index");
+
+  await page.getByLabel(/Search English/).fill("茉莉");
+  await expect(
+    page.getByRole("link", { name: "茉莉", exact: true }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: /Compare Jasmine/ }).click();
+  await page.getByLabel(/Search English/).fill("cacao");
+  await expect(
+    page.getByRole("link", { name: "黑巧克力", exact: true }),
+  ).toBeVisible();
+  await expectSearchParams(page, {
+    view: "index",
+    q: "cacao",
+    compare: "jasmine",
+  });
+
+  await page.getByRole("button", { name: /Compare Dark Chocolate/ }).click();
+  await expectSearchParams(page, {
+    view: "index",
+    q: "cacao",
+    compare: "jasmine,dark-chocolate",
+  });
+  await expect(
+    page.getByRole("heading", { name: /Descriptor comparison/ }),
+  ).toBeVisible();
+  await expect(page.getByText(/^差异最大:/)).toBeVisible();
   expect(consoleErrors).toEqual([]);
 });
 
