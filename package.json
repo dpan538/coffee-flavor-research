@@ -18,6 +18,9 @@
     "check": "react-router typegen && tsc --noEmit",
     "test": "vitest run",
     "test:smoke": "playwright test",
+    "db:migrate": "bash db/scripts/apply.sh",
+    "test:db": "bash db/scripts/test.sh",
+    "test:db:repro": "bash db/scripts/rebuild-twice.sh",
     "format": "prettier . --write",
     "format:check": "prettier . --check"
   },

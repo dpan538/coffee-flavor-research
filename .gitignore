@@ -11,6 +11,7 @@ dist/
 coverage/
 playwright-report/
 test-results/
+db/.test-output/
 
 # Environment and local secrets
 .env
