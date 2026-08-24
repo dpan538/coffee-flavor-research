@@ -18,7 +18,7 @@ copy of a proprietary flavor wheel.
 - PostgreSQL server **17 or newer** and matching PostgreSQL client tools.
 - `psql`, `createdb`, `dropdb`, and `pg_dump` on `PATH`.
 - The PostgreSQL `pg_trgm` extension available to the target server.
-- A role allowed to create `pg_trgm` and the six logical schemas when applying
+- A role allowed to create `pg_trgm` and the seven logical schemas when applying
   migrations. The reproducibility script additionally needs `CREATEDB`.
 - `sha256sum` or `shasum` for reproducibility hashes.
 
@@ -37,10 +37,11 @@ environment independently of these scripts.
 ## Migration and domain layout
 
 Top-level migrations are applied in contiguous numeric order. The first eight
-are protected by `db/migration-baselines/round1.sha256`, and all twelve Round 1
+are protected by `db/migration-baselines/round1.sha256`, all twelve Round 1
 plus Round 2A migrations are protected by
-`db/migration-baselines/round2a.sha256`. The migration planner refuses to run
-if either immutable boundary changes:
+`db/migration-baselines/round2a.sha256`, and all eighteen migrations through
+Round 2B are protected by `db/migration-baselines/round2b.sha256`. The
+migration planner refuses to run if any immutable boundary changes:
 
 ```text
 000_extensions.sql
@@ -61,6 +62,10 @@ if either immutable boundary changes:
 015_round2b_pilot_seed.sql
 016_round2b_evaluation_seed.sql
 017_round2b_resolution_feedback_validation.sql
+018_context_schema.sql
+019_context_integrity.sql
+020_context_taxonomy_seed.sql
+021_context_views_validation.sql
 ```
 
 `apply.sh` fails unless there is exactly one migration at every contiguous
@@ -80,7 +85,14 @@ the conservative exact-resolution boundary, ontology-feedback queue and
 expected-zero validation contract. Historical migrations are never rewritten
 to accommodate corpus data.
 
-The six PostgreSQL schemas have deliberately separate responsibilities:
+The Round 3A forward layer adds preparation polyhierarchy, preparation and
+roast expressions, source-specific roast schemes, one conservative project
+roast projection, explicit unknown/unresolved observation states, beverage
+additions, roast measurement methods, context provenance, and context coverage
+and validation views. It adds no sensory coefficients and does not modify the
+ontology or frozen corpus.
+
+The seven PostgreSQL schemas have deliberately separate responsibilities:
 
 - `ref`: controlled codes and their semantics.
 - `kb`: language-neutral canonical concepts, multilingual expressions,
@@ -89,6 +101,8 @@ The six PostgreSQL schemas have deliberately separate responsibilities:
   measurements, projections, and reference calibrations.
 - `corpus`: captured industry language, raw observations, resolutions, and
   corpus-derived co-occurrence measurements.
+- `context`: preparation, serving additions, roast labels/schemes, measured
+  roast conditions, and observation context.
 - `ml`: versioned models, runs, mapping candidates, and candidate signals.
 - `audit`: independent reviews, lifecycle history, explicit promotions, and
   database validation.
@@ -135,7 +149,10 @@ the run.
 5. when Round 2B migrations are present, the Round 2B negative, semantic,
    retrieval, and query-plan suites; and
 6. after the final Round 2B validation migration, the
-   `audit.run_round2b_validation_queries()` expected-zero contract.
+   `audit.run_round2b_validation_queries()` expected-zero contract;
+7. when Round 3A is present, the
+   `audit.run_round3a_validation_queries()` expected-zero contract and Round
+   3A negative, semantic, context-retrieval, and query-plan suites.
 
 ## Two clean rebuilds
 
@@ -175,12 +192,14 @@ compares:
 - all stable `*_key` and controlled `*_code` values;
 - every `ref` table's row count;
 - source-version and license-policy keys;
-- ordered Round 1 and Round 2A validation result counts; and
+- ordered Round 1, Round 2A, Round 2B, and Round 3A validation result counts;
 - the ordered ontology coverage metrics;
 - source-policy, snapshot, retention, normalization, and statistic-run
   receipts; and
 - frozen audit-split, deterministic A--D run, candidate-count, and retrieval
-  metric values when Round 2B is present.
+  metric values when Round 2B is present; and
+- preparation, roast, unresolved-context, coverage, and measurement-method
+  inventory when Round 3A is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases
