@@ -2,13 +2,16 @@
 
 Receipt date: 2026-08-25.
 
-`PHASE_STATUS=PENDING_FINAL_REMOTE_CI_AND_PROMOTION`
+`PHASE_STATUS=READY_FOR_MAIN_PROMOTION`
 
-The local implementation is complete through forward migrations 033–035,
+The implementation checkpoint is
+`2d465e7b2c22ee7e49c8f038abc12c5730b746ac`. It is complete through forward migrations 033–035,
 rights-cleared source-local imports, quality and coverage outputs, governed
 corpus/question candidates, approval drafts and CI reliability gates. Two clean
-PostgreSQL 17 rebuilds passed with identical inventories. Final feature/main run
-identities and promoted SHA will be recorded after remote verification.
+PostgreSQL 17 rebuilds passed with identical inventories. Remote feature run
+`32818720429` passed both unified jobs. Final promoted-main verification remains
+an out-of-band terminal handoff check because a commit cannot record the ID of
+the CI run that its own push will create.
 
 Hard boundaries:
 
