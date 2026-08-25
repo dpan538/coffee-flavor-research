@@ -1,0 +1,1 @@
+study_key,protocol_version_key,beverage_sample_key,coffee_lot_key,roast_batch_key,preparation_condition_key,replicate_number,prepared_at,operator_code,dose_g,water_g,beverage_g,temperature_c,time_seconds,grind_setting,deviation_code,record_origin_code,data_quality_flags

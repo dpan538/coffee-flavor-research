@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: >-
+  Cite this protocol-and-schema engineering package; do not cite it as a
+  collected coffee sensory dataset.
+title: Coffee Sensory Context Calibration Protocol and Schema
+type: dataset
+version: 0.1.0-protocol-schema
+date-released: 2026-08-25
+authors:
+  - name: Coffee Flavor Atlas project
+license: CC-BY-4.0
+repository-code: https://github.com/dpan538/coffee-flavor-research
+abstract: >-
+  A protocol, normalized schema, empty capture templates, deterministic pilot
+  matrix, and engineering dry-run package containing zero real observations.

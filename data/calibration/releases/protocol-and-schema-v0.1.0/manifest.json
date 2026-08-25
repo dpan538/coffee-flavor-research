@@ -1,0 +1,123 @@
+{
+  "artifacts": [
+    {
+      "bytes": 574,
+      "path": "data/calibration/CITATION.cff",
+      "sha256": "f29f035906489eec70777ea77759dbe3577137f55ea4a3afd6b5b20a53f7867f"
+    },
+    {
+      "bytes": 1703,
+      "path": "data/calibration/DATA_DICTIONARY.md",
+      "sha256": "245eb8e72a6ca603d8a364495de108202c07b545e07da54227d46c3a95fe7b9f"
+    },
+    {
+      "bytes": 631,
+      "path": "data/calibration/DATA_LICENSE.md",
+      "sha256": "37aef5bddcc4407a4c2cb275de79574e9eed47769a2662398bcf96a4a1d53281"
+    },
+    {
+      "bytes": 907,
+      "path": "data/calibration/README.md",
+      "sha256": "b9a2c5481fe09c62a305951cd5ecf742818d77cf7b1a53ff849b3b2a02fb7b0d"
+    },
+    {
+      "bytes": 235,
+      "path": "data/calibration/releases/protocol-and-schema-v0.1.0/analysis/README.md",
+      "sha256": "cd8f12946124593152b7119c5186dd24ad04e2808860f44e2845ed9a86cf6753"
+    },
+    {
+      "bytes": 242,
+      "path": "data/calibration/releases/protocol-and-schema-v0.1.0/data/README.md",
+      "sha256": "5ff844b82497b9031774c650bcb7195ae09fcc8f1a25cf627755fcb4a86a145a"
+    },
+    {
+      "bytes": 183,
+      "path": "data/calibration/releases/protocol-and-schema-v0.1.0/protocol/README.md",
+      "sha256": "0e74dc133bbe77a974ab160afd0c3256feb2e782eec54f16c376a8d7c95adc34"
+    },
+    {
+      "bytes": 844,
+      "path": "data/calibration/schema/capture.schema.json",
+      "sha256": "5794d1edc534af07647b878ecbbb9846d07873a252af40fedb864b9c93bbb55b"
+    },
+    {
+      "bytes": 210,
+      "path": "data/calibration/templates/assessors.csv",
+      "sha256": "14407de5468016e8bf9df819b42b4c7eba28f0e9564f51d007cd6ac1a0b86105"
+    },
+    {
+      "bytes": 271,
+      "path": "data/calibration/templates/beverage_samples.csv",
+      "sha256": "a41b3ee376cbad85010e93b83ec4b11331227389c716cbb78dc3fd1fc9a2dc39"
+    },
+    {
+      "bytes": 185,
+      "path": "data/calibration/templates/candidate_judgments.csv",
+      "sha256": "43155ddbfbd4fda9c8ddf3aeac6babf1966fdb52452ca79be4253c126b102daa"
+    },
+    {
+      "bytes": 236,
+      "path": "data/calibration/templates/capture_bundle.example.json",
+      "sha256": "a294542ef3aa476ece24c834e0fa5aa35637a8a517e1cb03126614bc77df2b5a"
+    },
+    {
+      "bytes": 176,
+      "path": "data/calibration/templates/coffee_lots.csv",
+      "sha256": "6ca53306a5a557487536ed997c4b29e1705636b68905711787175518930acec8"
+    },
+    {
+      "bytes": 186,
+      "path": "data/calibration/templates/descriptor_responses.csv",
+      "sha256": "8efef4e2f889e360adcdae3297d4de4cc901c79d36b94f5cdb92678ac8295528"
+    },
+    {
+      "bytes": 164,
+      "path": "data/calibration/templates/dimension_responses.csv",
+      "sha256": "2760d88e023200e4d14562013cf55cda8ddb0955958e9a69d22550d5cd9e8c20"
+    },
+    {
+      "bytes": 207,
+      "path": "data/calibration/templates/preparation_conditions.csv",
+      "sha256": "9796371dcb1eea0334949be328db5a729c3f44b2df3875e2ed873cd3500c8320"
+    },
+    {
+      "bytes": 205,
+      "path": "data/calibration/templates/presentations.csv",
+      "sha256": "51807cb56fdc7c481e3e907349388308023096186fe9b799c39f66d9c461f345"
+    },
+    {
+      "bytes": 194,
+      "path": "data/calibration/templates/protocol_deviations.csv",
+      "sha256": "afa65242d861cb2e9fc16897700258b75c8273ce0f215282aea8987965e00514"
+    },
+    {
+      "bytes": 316,
+      "path": "data/calibration/templates/question_responses.csv",
+      "sha256": "505bfea8d7354039eb87e53311e4f99713798c89c4b1fc69dbe6fa8489790855"
+    },
+    {
+      "bytes": 241,
+      "path": "data/calibration/templates/roast_batches.csv",
+      "sha256": "e796e81b1d0233135d9b837e052267c2429ea4e6fda2098a4cbd1eb27d7ae413"
+    },
+    {
+      "bytes": 178,
+      "path": "data/calibration/templates/sessions.csv",
+      "sha256": "778cde1eb08594d0a8b73338b9f472738b2bd914e91e30fd493ca2e1f2197922"
+    }
+  ],
+  "dry_run_fixture_count": 5,
+  "human_participant_ethics_required": true,
+  "institutional_approval_status": "NOT_OBTAINED",
+  "is_sensory_dataset_release": false,
+  "matrix_sha256": "dbd56b90672e00af5fe17a4d8c2c50b996d020a29e39dce04e9bd752de6d356b",
+  "protocol_sha256": "4c759fcae812203c40394d1f510e93c4a83430a3dfb298e832b5ffc49f5924ad",
+  "public_data_consent_required": true,
+  "public_release_rights_ready": false,
+  "question_assignment_sha256": "3e48c83feff27767cf68792f6a9e4c51e80c21aabf0cb419a1cfb02261a528e9",
+  "randomization_sha256": "eb7aa3fbfa6daf2d94819c007c42cdb43efcbbe4540335f231907b0b4a6edb4b",
+  "real_observation_count": 0,
+  "release_key": "protocol-and-schema-v0.1.0",
+  "release_status": "PROTOCOL_AND_SCHEMA_ONLY",
+  "split_inventory_sha256": "fe76dab2f695a0e7a1d23eb0744c97fb7c832e069cd9b060d26da47c3cebe45a"
+}
