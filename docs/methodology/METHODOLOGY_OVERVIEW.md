@@ -179,16 +179,16 @@ production LLM dependency.
 PostgreSQL 17 is the canonical system of record. Eight logical domains separate
 claim types:
 
-| Domain        | Responsibility                                                                                                   |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `ref`         | Controlled codes and their semantics.                                                                            |
-| `kb`          | Canonical concepts, lexicalizations, schemes, relations, and governed sensory constructs.                        |
-| `evidence`    | Sources, versions, rights, concept support, measurements, projections, and reference calibration.                |
-| `corpus`      | Documents, raw and normalized observations, resolutions, frequencies, and co-occurrence statistics.              |
+| Domain        | Responsibility                                                                                                  |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+| `ref`         | Controlled codes and their semantics.                                                                           |
+| `kb`          | Canonical concepts, lexicalizations, schemes, relations, and governed sensory constructs.                       |
+| `evidence`    | Sources, versions, rights, concept support, measurements, projections, and reference calibration.               |
+| `corpus`      | Documents, raw and normalized observations, resolutions, frequencies, and co-occurrence statistics.             |
 | `context`     | Preparation, beverage-addition, roast-scheme, and measured-roast context.                                       |
 | `calibration` | Studies, protocols, conditions, samples, pseudonymous cohorts, questions, observations, analysis, and releases. |
-| `ml`          | Versioned models, runs, mapping candidates, and candidate-signal ledgers.                                     |
-| `audit`       | Independent review, lifecycle history, validation results, and explicit promotion.                            |
+| `ml`          | Versioned models, runs, mapping candidates, and candidate-signal ledgers.                                       |
+| `audit`       | Independent review, lifecycle history, validation results, and explicit promotion.                              |
 
 The fundamental separation is:
 

@@ -13,18 +13,18 @@ flavor.
 
 The minimum engineering and protocol-feasibility design uses:
 
-| Element | Selected value |
-| --- | ---: |
-| Green coffee lots | 2 |
-| Roast batches | 14 (seven project categories per lot) |
-| C0 families represented | 7 |
-| Unique condition cells | 66 |
-| Independent beverage replicates | 2 |
-| Beverage samples | 132 |
-| Reference sensory assessors | 12 |
-| Ordinary users | 60 |
-| Reference sessions per assessor | 6 |
-| Ordinary-user sessions per person | 2 |
+| Element                           |                        Selected value |
+| --------------------------------- | ------------------------------------: |
+| Green coffee lots                 |                                     2 |
+| Roast batches                     | 14 (seven project categories per lot) |
+| C0 families represented           |                                     7 |
+| Unique condition cells            |                                    66 |
+| Independent beverage replicates   |                                     2 |
+| Beverage samples                  |                                   132 |
+| Reference sensory assessors       |                                    12 |
+| Ordinary users                    |                                    60 |
+| Reference sessions per assessor   |                                     6 |
+| Ordinary-user sessions per person |                                     2 |
 
 Three core black-coffee families—filter/percolation, immersion, and
 espresso/short pressure—are crossed with all seven roast categories for both

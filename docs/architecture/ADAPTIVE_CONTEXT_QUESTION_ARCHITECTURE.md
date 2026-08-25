@@ -50,14 +50,14 @@ current system estimates calibrated probabilities.
 
 The candidate engine must retain the meaning and provenance of each signal:
 
-| Signal | Permitted role | Must not be interpreted as |
-| --- | --- | --- |
-| Context support | Soft prior, tie-breaker, noisy-answer stabilizer, fallback envelope | A direct flavor generator or hard sensory rule |
-| Sensory-answer evidence | Direct evidence about the user's current perception | Objective coffee truth |
-| Semantic/NLP similarity | Candidate generation from language similarity | Perceptual identity or calibrated probability |
-| Ontology structure | Typed navigation and bounded graph expansion | Universal perceptual distance |
-| Industry-language prevalence | Descriptive evidence about language use | Sensory validity or coffee ground truth |
-| Epistemic confidence | Uncertainty about evidence, mappings, or model support | User correctness |
+| Signal                       | Permitted role                                                      | Must not be interpreted as                     |
+| ---------------------------- | ------------------------------------------------------------------- | ---------------------------------------------- |
+| Context support              | Soft prior, tie-breaker, noisy-answer stabilizer, fallback envelope | A direct flavor generator or hard sensory rule |
+| Sensory-answer evidence      | Direct evidence about the user's current perception                 | Objective coffee truth                         |
+| Semantic/NLP similarity      | Candidate generation from language similarity                       | Perceptual identity or calibrated probability  |
+| Ontology structure           | Typed navigation and bounded graph expansion                        | Universal perceptual distance                  |
+| Industry-language prevalence | Descriptive evidence about language use                             | Sensory validity or coffee ground truth        |
+| Epistemic confidence         | Uncertainty about evidence, mappings, or model support              | User correctness                               |
 
 Scores from different signals must not be flattened into an unexplained
 percentage. Candidate ledgers must record which signal admitted or moved an

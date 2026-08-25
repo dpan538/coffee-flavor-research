@@ -5,14 +5,14 @@
 Round 3C seeds 12 language-specific question versions: six logical distinctions
 in English and Simplified Chinese.
 
-| Logical code | Target distinction | Options |
-| --- | --- | ---: |
-| `family_direction` | floral/tea vs cocoa/nut/caramel vs roast/spice/smoke | 3 |
-| `fruit_direction` | citrus vs berry vs tropical/dried fruit | 3 |
-| `sweet_direction` | sugar/brown sugar vs honey/caramel vs little/no sweetness | 3 |
-| `roast_direction` | smoke/ash vs cocoa/toast vs neither | 3 |
-| `bright_acidity` | bright/tangy present | 2 |
-| `texture_direction` | light/tea-like vs round/creamy vs heavy/drying | 3 |
+| Logical code        | Target distinction                                        | Options |
+| ------------------- | --------------------------------------------------------- | ------: |
+| `family_direction`  | floral/tea vs cocoa/nut/caramel vs roast/spice/smoke      |       3 |
+| `fruit_direction`   | citrus vs berry vs tropical/dried fruit                   |       3 |
+| `sweet_direction`   | sugar/brown sugar vs honey/caramel vs little/no sweetness |       3 |
+| `roast_direction`   | smoke/ash vs cocoa/toast vs neither                       |       3 |
+| `bright_acidity`    | bright/tangy present                                      |       2 |
+| `texture_direction` | light/tea-like vs round/creamy vs heavy/drying            |       3 |
 
 The copy is a design draft. It has not passed independent ordinary-user or
 bilingual comprehension testing.

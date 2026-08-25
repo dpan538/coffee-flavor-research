@@ -67,7 +67,7 @@ SELECT
     study.study_id,
     'v0.1.0-design',
     'docs/protocols/COFFEE_SENSORY_CONTEXT_CALIBRATION_PROTOCOL_V0.md',
-    '3eb9cc53203be650b8a7bb0f707fbe6e17c1f7600e4a3bf9809768df495a6ba2',
+    '4c759fcae812203c40394d1f510e93c4a83430a3dfb298e832b5ffc49f5924ad',
     DATE '2026-08-25', TRUE
 FROM calibration.study AS study
 WHERE study.study_key = 'study.context_calibration_v0.minimum';
