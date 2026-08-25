@@ -1,0 +1,17 @@
+{
+  "batch_key": "round3h.batch5.relationship-evidence-closure",
+  "new_relationship_evidence_claim_count": 76,
+  "total_relationship_evidence_claim_count": 96,
+  "new_source_local_supported_membership_count": 6,
+  "source_local_supported_membership_count_after": 6,
+  "new_cross_source_supported_membership_count": 4,
+  "cross_source_supported_membership_count_after": 4,
+  "range_with_source_local_evidence_count": 6,
+  "range_with_cross_source_evidence_count": 3,
+  "question_target_with_independent_research_support_count": 12,
+  "question_user_validated_count": 0,
+  "question_information_gain_estimated_count": 0,
+  "relationship_evidence_minimum_pass": true,
+  "relationship_evidence_preferred_pass": false,
+  "limitations": "Evidence remains source- and method-specific. Exact-term promotion does not validate full range boundaries, synonymy, bilingual equivalence, question wording, or information gain."
+}

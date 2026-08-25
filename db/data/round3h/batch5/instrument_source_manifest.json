@@ -1,0 +1,57 @@
+{
+  "batch_key": "round3h.batch5.relationship-question-evidence",
+  "acquired_on": "2026-08-25",
+  "derived_construct_file": {
+    "path": "db/data/round3h/batch5/instrument_constructs.tsv",
+    "sha256": "3a196e6581f5717e88d6e59980b2d584f28f113a8b889a1493ae184268477f9b",
+    "rows": 43,
+    "fields": 10
+  },
+  "sources": [
+    {
+      "source_family_key": "family.condelli-consumer-cata-2022",
+      "source_key": "pmc.condelli-2022",
+      "snapshot_key": "snapshot.pmc9826037.vor",
+      "version": "Journal of Food Science version of record; PMC9826037",
+      "title": "Drivers of coffee liking: Effect of physicochemical characteristics and aromatic profile on consumers' acceptability of mono-origin and mono-variety coffees",
+      "doi_or_url": "https://doi.org/10.1111/1750-3841.16323",
+      "license": "CC BY 4.0",
+      "official_metadata_sha256": "782b4a65207e61eddff18f8205d632494d72770f73c9dbd6a8ab37af92bdd9d9",
+      "rights_decision": "CLEARED_ARTICLE_AGGREGATE",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY",
+      "public_export_decision": "PUBLIC_GENERIC_CONSTRUCTS",
+      "evidence_role": "Independent consumer CATA contrasts and liking relationships",
+      "limitations": "No participant rows; supplement redistribution is excluded pending file-specific scope review."
+    },
+    {
+      "source_family_key": "family.heo-coldbrew-consumers-2019",
+      "source_key": "pmc.heo-2019",
+      "snapshot_key": "snapshot.pmc6723667.vor",
+      "version": "Foods 8(8) 344 version of record; PMC6723667",
+      "title": "Cold Brew Coffee: Consumer Acceptability and Characterization Using the Check-All-That-Apply Method",
+      "doi_or_url": "https://doi.org/10.3390/foods8080344",
+      "license": "CC BY 4.0",
+      "official_metadata_sha256": "f8b135fa53a866c1d4d1f9c6889de21fcf6ba645966e125178757d78b0843231",
+      "rights_decision": "CLEARED_REDUCED_OBSERVED_CONSTRUCTS",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY",
+      "public_export_decision": "PUBLIC_REDUCED_OBSERVED_CONSTRUCTS",
+      "evidence_role": "Independent ordinary-consumer cold-brew CATA contrasts",
+      "limitations": "Only the reduced observed term set is retained; the antecedent-derived full 108-term list is not republished."
+    },
+    {
+      "source_family_key": "family.coffee-cuality-experts-2026",
+      "source_key": "pmc.coffee-cuality-2026",
+      "snapshot_key": "snapshot.pmc12938992.vor",
+      "version": "Foods 15(4) 678 version of record; PMC12938992",
+      "title": "Validation of the Coffee Cuality Method for the Expert Assessment of Coffee Sensory Quality",
+      "doi_or_url": "https://doi.org/10.3390/foods15040678",
+      "license": "CC BY 4.0 article copyright; trademark rights excluded",
+      "official_metadata_sha256": "54e05e1a2159063a5b93365dd748f28a56f92ad68fea7c800bb09e7f350cafab",
+      "rights_decision": "CLEARED_GENERIC_ARCHITECTURE_ONLY",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY",
+      "public_export_decision": "PUBLIC_GENERIC_ARCHITECTURE_BRANDED_FORM_BLOCKED",
+      "evidence_role": "Independent expert evidence separating quality score, JAR adequacy, CATA presence, and open response",
+      "limitations": "Trademarked name, logo, scorecard, trade dress, and proprietary-form identity are not reproduced or adopted."
+    }
+  ]
+}
