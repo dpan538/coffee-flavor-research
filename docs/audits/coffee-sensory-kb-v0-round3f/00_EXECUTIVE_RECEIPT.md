@@ -2,9 +2,15 @@
 
 Receipt date: 2026-08-25.
 
-`PHASE_STATUS=LOCAL_IMPLEMENTATION_VERIFIED_REMOTE_PENDING`
+`PHASE_STATUS=FEATURE_CHECKPOINT_VERIFIED_READY_FOR_FINAL_RECEIPT`
 
 Source SHA: `eee5c140fb6d3ab61f87dfe472601aac2e4c39cf`.
+
+Implementation checkpoint SHA:
+`d323e067b2a0c1a73f2276dafd68d3ab5125b025`.
+
+Exact feature-checkpoint CI run `32827880683` passed both the frontend job
+`97739820775` and PostgreSQL 17 job `97739820874`.
 
 Round 3F establishes the permanent relationship model, constraint registry,
 future-round delta gate, overlapping non-ontological range layer, question-range
@@ -44,5 +50,6 @@ Hard boundaries remain closed:
 
 `PRODUCT_FRONTEND_MODIFIED=false`
 
-Remote feature and promoted-main CI evidence is recorded only after the exact
-commits exist; no future run ID is invented in this receipt.
+The final audit-receipt commit and promoted-main run necessarily occur after
+this checkpoint. Their exact SHAs and run/job identifiers are reported by the
+immutable final handoff; no future identifier is invented here.
