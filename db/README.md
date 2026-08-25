@@ -256,6 +256,9 @@ compares:
   counts, field counts, quality profiles, observed coverage cells, question
   lifecycle states, and named generated-artifact hashes when Round 3E is
   present.
+- the Round 3F relationship/constraint delta when Round 3F is present; and
+- the complete Round 3G expected-state gate, result classification and
+  relationship/constraint delta when Round 3G is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases

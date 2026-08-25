@@ -301,7 +301,74 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  if (( DISCOVERED_MIGRATION_COUNT > 35 )); then
+  if (( DISCOVERED_MIGRATION_COUNT > 41 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3a', check_key, violation_count, passed
+                 FROM audit.run_round3a_validation_queries()
+                 UNION ALL
+                 SELECT 'round3b', check_key, violation_count, passed
+                 FROM audit.run_round3b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3c', check_key, violation_count, passed
+                 FROM audit.run_round3c_validation_queries()
+                 UNION ALL
+                 SELECT 'round3d', check_key, violation_count, passed
+                 FROM audit.run_round3d_validation_queries()
+                 UNION ALL
+                 SELECT 'round3e', check_key, violation_count, passed
+                 FROM audit.run_round3e_validation_queries()
+                 UNION ALL
+                 SELECT 'round3f', check_key, violation_count, passed
+                 FROM audit.run_round3f_validation_queries()
+                 UNION ALL
+                 SELECT 'round3g', check_key, violation_count, passed
+                 FROM audit.run_round3g_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 38 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3a', check_key, violation_count, passed
+                 FROM audit.run_round3a_validation_queries()
+                 UNION ALL
+                 SELECT 'round3b', check_key, violation_count, passed
+                 FROM audit.run_round3b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3c', check_key, violation_count, passed
+                 FROM audit.run_round3c_validation_queries()
+                 UNION ALL
+                 SELECT 'round3d', check_key, violation_count, passed
+                 FROM audit.run_round3d_validation_queries()
+                 UNION ALL
+                 SELECT 'round3e', check_key, violation_count, passed
+                 FROM audit.run_round3e_validation_queries()
+                 UNION ALL
+                 SELECT 'round3f', check_key, violation_count, passed
+                 FROM audit.run_round3f_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 35 )); then
     psql_target "$database_name" \
       --tuples-only \
       --no-align \
@@ -779,6 +846,64 @@ write_round3e_inventory() {
                ORDER BY record_type, record_key, record_value;" >"$output_file"
 }
 
+write_round3f_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 38 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="SELECT 'relationship_constraint_delta', 'round3f',
+                      row_to_json(delta)::TEXT
+               FROM audit.v_round3f_relationship_constraint_delta AS delta;" \
+    >"$output_file"
+}
+
+write_round3g_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 41 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="WITH receipt(record_type, record_key, record_value) AS (
+                   SELECT 'expected_state', metric_key,
+                          concat_ws(',',
+                            COALESCE(baseline_value, 'none'),
+                            COALESCE(minimum_expected_value, 'none'),
+                            COALESCE(preferred_expected_value, 'none'),
+                            observed_value, hard_gate, minimum_gate,
+                            preferred_gate, passed, evidence_path)
+                   FROM audit.run_round3g_expected_state_gate()
+
+                   UNION ALL
+
+                   SELECT 'expected_state_result', 'round3g',
+                          audit.round3g_expected_state_result()
+
+                   UNION ALL
+
+                   SELECT 'relationship_constraint_delta', 'round3g',
+                          row_to_json(delta)::TEXT
+                   FROM audit.v_round3g_relationship_constraint_delta AS delta
+               )
+               SELECT record_type, record_key, record_value
+               FROM receipt
+               ORDER BY record_type, record_key, record_value;" >"$output_file"
+}
+
 write_round2b_inventory() {
   local database_name=$1
   local output_file=$2
@@ -1049,6 +1174,8 @@ run_build() {
   write_round3c_inventory "$database_name" "$build_dir/round3c-inventory.txt"
   write_round3d_inventory "$database_name" "$build_dir/round3d-inventory.txt"
   write_round3e_inventory "$database_name" "$build_dir/round3e-inventory.txt"
+  write_round3f_inventory "$database_name" "$build_dir/round3f-inventory.txt"
+  write_round3g_inventory "$database_name" "$build_dir/round3g-inventory.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -1109,6 +1236,8 @@ compare_artifact ROUND3B_INVENTORY round3b-inventory.txt
 compare_artifact ROUND3C_INVENTORY round3c-inventory.txt
 compare_artifact ROUND3D_INVENTORY round3d-inventory.txt
 compare_artifact ROUND3E_INVENTORY round3e-inventory.txt
+compare_artifact ROUND3F_INVENTORY round3f-inventory.txt
+compare_artifact ROUND3G_INVENTORY round3g-inventory.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
@@ -1133,6 +1262,8 @@ print_result_file ROUND3B_INVENTORY "$ARTIFACT_DIR/build-one/round3b-inventory.t
 print_result_file ROUND3C_INVENTORY "$ARTIFACT_DIR/build-one/round3c-inventory.txt"
 print_result_file ROUND3D_INVENTORY "$ARTIFACT_DIR/build-one/round3d-inventory.txt"
 print_result_file ROUND3E_INVENTORY "$ARTIFACT_DIR/build-one/round3e-inventory.txt"
+print_result_file ROUND3F_INVENTORY "$ARTIFACT_DIR/build-one/round3f-inventory.txt"
+print_result_file ROUND3G_INVENTORY "$ARTIFACT_DIR/build-one/round3g-inventory.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'
