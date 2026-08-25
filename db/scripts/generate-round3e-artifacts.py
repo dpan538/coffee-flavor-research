@@ -80,6 +80,22 @@ def write_tsv(path: Path, headers: list[str], rows: list[dict[str, object]]) -> 
             writer.writerow({key: row.get(key, "") for key in headers})
 
 
+def copy_value(value: object | None) -> str:
+    if value is None or value == "":
+        return r"\N"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    text = str(value)
+    return text.replace("\\", "\\\\").replace("\t", "\\t").replace("\n", "\\n").replace("\r", "\\r")
+
+
+def copy_block(table: str, columns: list[str], rows: list[list[object | None]]) -> str:
+    lines = [f"COPY {table} ({', '.join(columns)}) FROM STDIN;"]
+    lines.extend("\t".join(copy_value(value) for value in row) for row in rows)
+    lines.append(r"\.")
+    return "\n".join(lines) + "\n"
+
+
 def normalize_expression(value: str) -> str:
     normalized = unicodedata.normalize("NFKC", value).strip().casefold()
     return re.sub(r"\s+", " ", normalized)
@@ -224,7 +240,7 @@ def build_excel_observations() -> tuple[list[dict[str, object]], list[dict[str, 
             continue
         fields.append({
             "dataset_snapshot_key": "mendeley.ftnir-specialty-coffee.v4.selected",
-            "source_file": origin_path.name,
+            "source_file": f"mendeley_ftnir_v4/{origin_path.name}",
             "source_local_column_name": str(padded(rows[1], 13)[position - 1]),
             "project_field_key": header,
             "source_local_unit": {5: "ratio", 6: "percent wet basis", 10: "decimal degrees", 11: "decimal degrees", 12: "metres above sea level", 13: "millimetres"}.get(position, "not_applicable"),
@@ -240,7 +256,7 @@ def build_excel_observations() -> tuple[list[dict[str, object]], list[dict[str, 
         normalized = normalized_record(raw, {"derived_sample_no": current_sample})
         observations.append({
             "dataset_snapshot_key": "mendeley.ftnir-specialty-coffee.v4.selected",
-            "source_file": origin_path.name,
+            "source_file": f"mendeley_ftnir_v4/{origin_path.name}",
             "source_row_identity": f"data!{source_row}",
             "record_type": "sample_origin_and_score",
             "raw_value_json": compact_json(raw),
@@ -258,7 +274,7 @@ def build_excel_observations() -> tuple[list[dict[str, object]], list[dict[str, 
     for position, header in enumerate(headers):
         fields.append({
             "dataset_snapshot_key": "mendeley.ftnir-specialty-coffee.v4.selected",
-            "source_file": score_path.name,
+            "source_file": f"mendeley_ftnir_v4/{score_path.name}",
             "source_local_column_name": str(padded(rows[0], 3)[position]),
             "project_field_key": header,
             "source_local_unit": "source-local points" if position == 2 else "not_applicable",
@@ -272,7 +288,7 @@ def build_excel_observations() -> tuple[list[dict[str, object]], list[dict[str, 
         normalized = normalized_record(raw, {"derived_sample_no": current_sample})
         observations.append({
             "dataset_snapshot_key": "mendeley.ftnir-specialty-coffee.v4.selected",
-            "source_file": score_path.name,
+            "source_file": f"mendeley_ftnir_v4/{score_path.name}",
             "source_row_identity": f"Cup quality_RoastedCoffee!{source_row}",
             "record_type": "sensory_score_replicate",
             "raw_value_json": compact_json(raw),
@@ -292,7 +308,7 @@ def build_excel_observations() -> tuple[list[dict[str, object]], list[dict[str, 
             raise ContractError(f"import of direct participant identifiers: {header}")
         fields.append({
             "dataset_snapshot_key": "mendeley.coffee-taste-sensitivity.v1",
-            "source_file": taste_path.name,
+            "source_file": f"mendeley_taste_sensitivity_v1/{taste_path.name}",
             "source_local_column_name": header,
             "project_field_key": re.sub(r"[^a-z0-9]+", "_", header.casefold()).strip("_"),
             "source_local_unit": "source-local response scale",
@@ -312,7 +328,7 @@ def build_excel_observations() -> tuple[list[dict[str, object]], list[dict[str, 
         exact_rows[compact_json(raw)] += 1
         observations.append({
             "dataset_snapshot_key": "mendeley.coffee-taste-sensitivity.v1",
-            "source_file": taste_path.name,
+            "source_file": f"mendeley_taste_sensitivity_v1/{taste_path.name}",
             "source_row_identity": f"raw data!{source_row}",
             "record_type": "pseudonymous_consumer_response",
             "raw_value_json": compact_json(raw),
@@ -561,6 +577,105 @@ def build_coverage(observations: list[dict[str, object]], documents: list[dict[s
     return rows
 
 
+def sql_literal(value: str) -> str:
+    return "'" + value.replace("'", "''") + "'"
+
+
+def build_seed_sql(
+    manifest: dict[str, object],
+    observations: list[dict[str, object]],
+    fields: list[dict[str, object]],
+    documents: list[dict[str, object]],
+    expressions: list[dict[str, object]],
+    mappings: list[dict[str, object]],
+    questions: list[dict[str, object]],
+    coverage: list[dict[str, object]],
+    profiles: dict[str, object],
+    named_hashes: dict[str, str],
+) -> str:
+    import_code_sha = str(manifest["import_code_sha"])
+    if not re.fullmatch(r"[0-9a-f]{40}", import_code_sha):
+        raise ContractError("manifest import_code_sha must identify the committed import implementation")
+    dataset_keys = {
+        "mendeley.ftnir-specialty-coffee.v4.selected": "dataset.round3e.mendeley_ftnir_v4_selected",
+        "mendeley.coffee-taste-sensitivity.v1": "dataset.round3e.mendeley_taste_sensitivity_v1",
+        "wikidata.coffee-preparation-entities.20260825": "dataset.round3e.wikidata_preparation_20260825",
+        "usda.fdc-coffee-search.fndds-2021-2023.20260825": "dataset.round3e.usda_fdc_fndds_20260825",
+    }
+    license_keys = {"CC-BY-4.0": "license.round3e.cc-by-4.0.public", "CC0-1.0": "license.round3e.cc0-1.0.public"}
+    source_version_keys = {snapshot["dataset_snapshot_key"]: f"source_version.round3e.{snapshot['source_key']}.{snapshot['source_version']}".lower() for snapshot in manifest["snapshots"]}
+
+    parts = [
+        "-- Generated by db/scripts/generate-round3e-artifacts.py. Do not edit.\n",
+        "INSERT INTO evidence.license_policy (license_policy_key, access_class_code, rights_status_code, redistributable, derivative_work_allowed, commercial_use_allowed, machine_use_allowed, production_export_allowed, checked_on, notes) VALUES\n"
+        "('license.round3e.cc-by-4.0.public', 'public', 'verified', TRUE, TRUE, TRUE, TRUE, TRUE, DATE '2026-08-25', 'CC BY 4.0 snapshot rights reviewed for attribution, redistribution, derivative, commercial, and machine use.'),\n"
+        "('license.round3e.cc0-1.0.public', 'public', 'verified', TRUE, TRUE, TRUE, TRUE, TRUE, DATE '2026-08-25', 'CC0 1.0 or United States public-domain source reviewed for unrestricted reuse.');\n",
+    ]
+    source_rows = []
+    for snapshot in manifest["snapshots"]:
+        source_rows.append([
+            snapshot["source_key"], snapshot["source_title"], snapshot["source_owner"],
+            "Mendeley Data" if str(snapshot["source_key"]).startswith("mendeley") else ("Wikimedia Foundation" if str(snapshot["source_key"]).startswith("wikidata") else "United States Department of Agriculture"),
+            f"{snapshot['source_owner']} ({snapshot['source_version']}), {snapshot['source_title']}, {snapshot['doi_or_repository_url']}",
+            snapshot["doi_or_repository_url"] if "doi.org" in str(snapshot["doi_or_repository_url"]) else None,
+            snapshot["doi_or_repository_url"], compact_json({"round": "3E", "source_local_only": True}),
+        ])
+    parts.append(copy_block("evidence.source", ["source_key", "title", "creator", "publisher", "citation", "doi", "source_url", "external_metadata"], source_rows))
+
+    for snapshot in manifest["snapshots"]:
+        source_version_key = source_version_keys[snapshot["dataset_snapshot_key"]]
+        license_key = license_keys[snapshot["license"]]
+        parts.append(
+            "INSERT INTO evidence.source_version (source_version_key, source_id, license_policy_id, version_label, published_on, retrieved_on, version_locator, external_metadata)\n"
+            f"SELECT {sql_literal(source_version_key)}, source.source_id, policy.license_policy_id, {sql_literal(str(snapshot['source_version']))}, NULL, DATE '2026-08-25', {sql_literal(str(snapshot['doi_or_repository_url']))}, {sql_literal(compact_json({'capture_date': '2026-08-25', 'immutable_file_hashes': True}))}::JSONB\n"
+            "FROM evidence.source AS source CROSS JOIN evidence.license_policy AS policy\n"
+            f"WHERE source.source_key = {sql_literal(str(snapshot['source_key']))} AND policy.license_policy_key = {sql_literal(license_key)};\n"
+        )
+        dataset_key = dataset_keys[snapshot["dataset_snapshot_key"]]
+        parts.append(
+            "INSERT INTO evidence.dataset (dataset_key, source_version_id, name, description, external_metadata)\n"
+            f"SELECT {sql_literal(dataset_key)}, version.source_version_id, {sql_literal(str(snapshot['source_title']))}, 'Round 3E source-local snapshot; semantically incompatible sources are not pooled.', {sql_literal(compact_json({'canonical_ontology_import_allowed': False, 'round': '3E'}))}::JSONB\n"
+            "FROM evidence.source_version AS version\n"
+            f"WHERE version.source_version_key = {sql_literal(source_version_key)};\n"
+        )
+        imported = {"mendeley.ftnir-specialty-coffee.v4.selected": 320, "mendeley.coffee-taste-sensitivity.v1": 93, "wikidata.coffee-preparation-entities.20260825": 14, "usda.fdc-coffee-search.fndds-2021-2023.20260825": 32}[snapshot["dataset_snapshot_key"]]
+        excluded = snapshot["declared_row_count"] - imported
+        file_hashes = {item["path"]: item["sha256"] for item in snapshot["files"]}
+        parts.append(
+            "INSERT INTO evidence.external_dataset_snapshot (dataset_snapshot_key, dataset_id, source_version, file_hashes, declared_row_count, verified_row_count, declared_field_count, verified_field_count, imported_record_count, exclusion_count, import_version, import_code_sha, license_expression, rights_decision, privacy_decision, public_release_eligible, created_on)\n"
+            f"SELECT {sql_literal(str(snapshot['dataset_snapshot_key']))}, dataset.dataset_id, {sql_literal(str(snapshot['source_version']))}, {sql_literal(compact_json(file_hashes))}::JSONB, {snapshot['declared_row_count']}, {snapshot['declared_row_count']}, {snapshot['declared_field_count']}, {snapshot['declared_field_count']}, {imported}, {excluded}, {sql_literal(str(manifest['import_version']))}, {sql_literal(import_code_sha)}, {sql_literal(str(snapshot['license']))}, {sql_literal(str(snapshot['rights_decision']))}, {sql_literal(str(snapshot['privacy_decision']))}, {str(bool(snapshot['public_release_eligible'])).upper()}, DATE {sql_literal(str(manifest['capture_date']))}\n"
+            "FROM evidence.dataset AS dataset\n"
+            f"WHERE dataset.dataset_key = {sql_literal(dataset_key)};\n"
+        )
+
+    file_rows = []
+    for snapshot in manifest["snapshots"]:
+        for item in snapshot["files"]:
+            is_data = item["role"] == "source_data"
+            included = item.get("included_row_count", item["declared_row_count"] if is_data else 0)
+            excluded = item.get("excluded_row_count", 0)
+            file_rows.append([
+                snapshot["dataset_snapshot_key"], item["path"], item["role"], item["sha256"], item["sha256"],
+                item["declared_row_count"], item["declared_field_count"], included, excluded, is_data, True, True,
+            ])
+    parts.append(copy_block("evidence.external_source_file", ["dataset_snapshot_key", "source_file_path", "file_role", "declared_sha256", "observed_sha256", "declared_row_count", "declared_field_count", "included_row_count", "exclusion_count", "counts_toward_snapshot", "raw_public_export_allowed", "pii_scan_pass"], file_rows))
+    parts.append(copy_block("evidence.external_field_dictionary", ["dataset_snapshot_key", "source_file_path", "source_local_column_name", "project_field_key", "source_local_unit", "normalization_rule"], [[row["dataset_snapshot_key"], row["source_file"], row["source_local_column_name"], row["project_field_key"], row["source_local_unit"], row["normalization_rule"]] for row in fields]))
+    parts.append(copy_block("evidence.external_observation", ["dataset_snapshot_key", "source_file_path", "source_row_identity", "record_type", "raw_value", "parsed_value", "normalized_value", "normalization_rule", "exclusion_reason"], [[row["dataset_snapshot_key"], row["source_file"], row["source_row_identity"], row["record_type"], row["raw_value_json"], row["parsed_value_json"], row["normalized_value_json"], row["normalization_rule"], row["exclusion_reason"]] for row in observations]))
+    parts.append(copy_block("corpus.external_document", ["dataset_snapshot_key", "source_document_key", "source_revision", "source_date", "geography", "language_code", "raw_text", "raw_text_public_export_allowed", "capture_method", "c0_candidate", "c1_source_local", "black_milk", "sensory_method", "participant_type"], [[row[column] for column in ["dataset_snapshot_key", "source_document_key", "source_revision", "source_date", "geography", "language", "raw_text", "raw_text_public_export_allowed", "capture_method", "c0_candidate", "c1_source_local", "black_milk", "sensory_method", "participant_type"]] for row in documents]))
+    parts.append(copy_block("corpus.external_expression_occurrence", ["expression_occurrence_key", "dataset_snapshot_key", "source_document_key", "language_code", "raw_source_phrase", "normalized_expression", "expression_role", "candidate_canonical_mappings", "lexical_candidates", "review_state", "automatic_promotion_allowed", "regional_or_register_note"], [[row[column] for column in ["expression_occurrence_key", "dataset_snapshot_key", "source_document_key", "language", "raw_source_phrase", "normalized_expression", "expression_role", "candidate_canonical_mappings", "model_or_lexical_candidates", "review_state", "automatic_promotion_allowed", "regional_or_register_note"]] for row in expressions]))
+    parts.append(copy_block("corpus.lexical_mapping_candidate", ["mapping_key", "raw_source_phrase", "normalized_expression", "candidate_mapping", "evidence_key", "lifecycle_status", "mapping_scope", "ambiguity_note"], [[row[column] for column in ["mapping_key", "raw_source_phrase", "normalized_expression", "candidate_mapping", "evidence_key", "lifecycle_status", "mapping_scope", "ambiguity_note"]] for row in mappings]))
+    question_columns = ["question_version_key", "logical_question_code", "language_code", "lifecycle_status", "target_distinction", "eligible_c0", "eligible_c1", "candidate_region", "prompt_text", "answer_options", "sensory_modality", "evidence", "consumer_familiarity_assumptions", "translation_notes", "ambiguity", "expected_information_role", "unresolved_concerns", "information_gain_status", "ordinary_user_validation_evidence"]
+    question_source_columns = ["question_version_key", "logical_question_code", "language", "lifecycle_status", "target_distinction", "eligible_c0_json", "eligible_c1_json", "candidate_region", "prompt", "answer_options_json", "sensory_modality", "evidence_json", "consumer_familiarity_assumptions", "translation_notes", "ambiguity", "expected_information_role", "unresolved_concerns", "information_gain_status", "ordinary_user_validation_evidence"]
+    parts.append(copy_block("calibration.question_research_candidate", question_columns, [[row[column] for column in question_source_columns] for row in questions]))
+    coverage_columns = ["source_key", "coffee_identity", "c0_preparation", "c1_roast", "black_milk", "sensory_method", "participant_type", "language_code", "observed_record_count", "cell_status", "interpretation_limit"]
+    coverage_source_columns = ["source", "coffee_identity", "c0_preparation", "c1_roast", "black_milk", "sensory_method", "participant_type", "language", "observed_record_count", "cell_status", "interpretation_limit"]
+    parts.append(copy_block("audit.empirical_coverage_cell", coverage_columns, [[row[column] for column in coverage_source_columns] for row in coverage]))
+    parts.append(copy_block("audit.round3e_artifact_hash", ["artifact_key", "sha256"], [[key, value] for key, value in sorted(named_hashes.items())]))
+    parts.append(copy_block("audit.external_import_run", ["external_import_run_key", "import_version", "import_code_sha", "raw_snapshot_row_count", "imported_record_count", "exclusion_count", "source_file_count", "source_file_hash_count", "pii_scan_pass", "rights_review_pass", "public_export_policy_pass", "quality_profile"], [["external_import_run.round3e.v1", manifest["import_version"], import_code_sha, 477, 459, 18, 7, 7, True, True, True, compact_json(profiles)]]))
+    parts.append(copy_block("audit.round3e_prohibition", ["prohibition_key", "ranking_model_trained", "adaptive_policy_trained", "deep_learning_model_run", "embedding_baseline_run", "pgvector_required", "real_human_collection_performed", "real_observation_count", "product_frontend_modified"], [["round3e.no_training_or_collection", False, False, False, False, False, False, 0, False]]))
+    return "\n".join(parts)
+
+
 def main() -> int:
     global RAW_ROOT, MANIFEST_PATH
     parser = argparse.ArgumentParser()
@@ -593,15 +708,39 @@ def main() -> int:
         "generator": "db/scripts/generate-round3e-artifacts.py",
         "source_manifest": "db/data/round3e/raw/SOURCE_MANIFEST.json",
         "question_source": "db/data/round3e/source/question_candidates.json",
-        "generated_paths": sorted(
-            f"db/data/round3e/generated/{path.name}"
-            for path in output_dir.glob("*")
-            if path.name not in {"artifact_manifest.json", "ci_inventory.json"}
-        ),
+        "generated_paths": [
+            f"db/data/round3e/generated/{name}"
+            for name in sorted(
+                [
+                    "corpus_documents.tsv",
+                    "corpus_expressions.tsv",
+                    "coverage_cube.tsv",
+                    "data_quality_profiles.json",
+                    "external_field_dictionary.tsv",
+                    "external_observations.tsv",
+                    "lexical_mapping_candidates.tsv",
+                    "question_candidates.tsv",
+                    "seed_round3e.sql",
+                ]
+            )
+        ],
         "required_gates": ["source_hashes", "declared_dimensions", "pii_scan", "rights_decision", "deterministic_generation", "canonical_format", "git_diff_clean"],
         "forbidden_runs": {"deep_learning": False, "embeddings": False, "pgvector": False, "ranking": False, "adaptive_policy": False},
     }
     write_json(output_dir / "ci_inventory.json", ci_inventory)
+
+    named_hashes = {
+        "question_bank_hash": sha256(output_dir / "question_candidates.tsv"),
+        "lexical_mapping_hash": sha256(output_dir / "lexical_mapping_candidates.tsv"),
+        "coverage_cube_hash": sha256(output_dir / "coverage_cube.tsv"),
+        "ci_inventory_hash": sha256(output_dir / "ci_inventory.json"),
+        "data_quality_report_hash": sha256(output_dir / "data_quality_profiles.json"),
+    }
+    seed_sql = build_seed_sql(
+        manifest, observations, fields, documents, expressions, mappings,
+        questions, coverage, profiles, named_hashes
+    )
+    (output_dir / "seed_round3e.sql").write_text(seed_sql, encoding="utf-8")
 
     generated = sorted(path for path in output_dir.glob("*") if path.name != "artifact_manifest.json")
     artifact_rows = []
@@ -644,13 +783,7 @@ def main() -> int:
             "question_user_validated_count": 0,
             "coverage_observed_cell_count": len(coverage),
         },
-        "named_hashes": {
-            "question_bank_hash": sha256(output_dir / "question_candidates.tsv"),
-            "lexical_mapping_hash": sha256(output_dir / "lexical_mapping_candidates.tsv"),
-            "coverage_cube_hash": sha256(output_dir / "coverage_cube.tsv"),
-            "ci_inventory_hash": sha256(output_dir / "ci_inventory.json"),
-            "data_quality_report_hash": sha256(output_dir / "data_quality_profiles.json"),
-        },
+        "named_hashes": named_hashes,
     }
     write_json(output_dir / "artifact_manifest.json", artifact_manifest)
     print("ROUND3E_ARTIFACT_GENERATION_PASS=true")

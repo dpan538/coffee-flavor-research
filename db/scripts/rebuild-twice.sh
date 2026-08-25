@@ -10,6 +10,7 @@ ALLOW_DROP=${COFFEE_KB_ALLOW_DATABASE_DROP:-}
 ADMIN_DATABASE=${PGDATABASE:-postgres}
 DATABASE_ONE=${COFFEE_KB_REBUILD_DB_ONE:-coffee_sensory_kb_v0_rebuild_one}
 DATABASE_TWO=${COFFEE_KB_REBUILD_DB_TWO:-coffee_sensory_kb_v0_rebuild_two}
+PG_DUMP_CONTAINER=${COFFEE_KB_PG_DUMP_CONTAINER:-}
 
 if [[ "$ALLOW_DROP" != 1 ]]; then
   printf 'ERROR: this script creates and drops databases. Set COFFEE_KB_ALLOW_DATABASE_DROP=1 to continue.\n' >&2
@@ -44,7 +45,12 @@ if [[ "$DATABASE_ONE" == "$ADMIN_DATABASE" || "$DATABASE_TWO" == "$ADMIN_DATABAS
   exit 64
 fi
 
-required_commands=(psql createdb dropdb pg_dump find sort sed awk cmp mktemp)
+required_commands=(psql createdb dropdb find sort sed awk cmp mktemp)
+if [[ -n "$PG_DUMP_CONTAINER" ]]; then
+  required_commands+=(docker)
+else
+  required_commands+=(pg_dump)
+fi
 for required_command in "${required_commands[@]}"; do
   if ! command -v "$required_command" >/dev/null 2>&1; then
     printf 'ERROR: required command is unavailable: %s\n' "$required_command" >&2
@@ -295,7 +301,36 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  if (( DISCOVERED_MIGRATION_COUNT > 32 )); then
+  if (( DISCOVERED_MIGRATION_COUNT > 35 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3a', check_key, violation_count, passed
+                 FROM audit.run_round3a_validation_queries()
+                 UNION ALL
+                 SELECT 'round3b', check_key, violation_count, passed
+                 FROM audit.run_round3b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3c', check_key, violation_count, passed
+                 FROM audit.run_round3c_validation_queries()
+                 UNION ALL
+                 SELECT 'round3d', check_key, violation_count, passed
+                 FROM audit.run_round3d_validation_queries()
+                 UNION ALL
+                 SELECT 'round3e', check_key, violation_count, passed
+                 FROM audit.run_round3e_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 32 )); then
     psql_target "$database_name" \
       --tuples-only \
       --no-align \
@@ -664,6 +699,86 @@ write_round3d_inventory() {
                ORDER BY record_type, record_key, record_value;" >"$output_file"
 }
 
+write_round3e_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 35 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="WITH receipt(record_type, record_key, record_value) AS (
+                   SELECT 'snapshot', dataset_snapshot_key,
+                          concat_ws(',', source_key, source_version_key,
+                            dataset_key, source_version,
+                            declared_row_count, verified_row_count,
+                            declared_field_count, verified_field_count,
+                            imported_record_count, exclusion_count,
+                            import_version, import_code_sha,
+                            license_expression, rights_decision,
+                            privacy_decision, public_release_eligible,
+                            source_file_count, matched_file_hash_count,
+                            external_observation_count,
+                            external_document_count)
+                   FROM evidence.v_external_snapshot_inventory
+
+                   UNION ALL
+
+                   SELECT 'file_hash',
+                          dataset_snapshot_key || ':' || source_file_path,
+                          concat_ws(',', declared_sha256, observed_sha256,
+                            declared_row_count, declared_field_count,
+                            included_row_count, exclusion_count,
+                            counts_toward_snapshot,
+                            raw_public_export_allowed, pii_scan_pass)
+                   FROM evidence.external_source_file
+
+                   UNION ALL
+
+                   SELECT 'artifact_hash', artifact_key, sha256
+                   FROM audit.round3e_artifact_hash
+
+                   UNION ALL
+
+                   SELECT 'import_run', external_import_run_key,
+                          concat_ws(',', import_version, import_code_sha,
+                            raw_snapshot_row_count, imported_record_count,
+                            exclusion_count, source_file_count,
+                            source_file_hash_count, pii_scan_pass,
+                            rights_review_pass,
+                            public_export_policy_pass,
+                            quality_profile::TEXT)
+                   FROM audit.external_import_run
+
+                   UNION ALL
+
+                   SELECT 'question', question_version_key,
+                          concat_ws(',', logical_question_code,
+                            language_code, lifecycle_status,
+                            information_gain_status,
+                            ordinary_user_validation_evidence IS NULL)
+                   FROM calibration.question_research_candidate
+
+                   UNION ALL
+
+                   SELECT 'coverage', empirical_coverage_cell_id::TEXT,
+                          concat_ws(',', source_key, coffee_identity,
+                            c0_preparation, c1_roast, black_milk,
+                            sensory_method, participant_type,
+                            language_code, observed_record_count,
+                            cell_status)
+                   FROM audit.empirical_coverage_cell
+               )
+               SELECT record_type, record_key, record_value
+               FROM receipt
+               ORDER BY record_type, record_key, record_value;" >"$output_file"
+}
+
 write_round2b_inventory() {
   local database_name=$1
   local output_file=$2
@@ -872,14 +987,29 @@ normalize_schema_dump() {
   local database_name=$1
   local output_file=$2
 
-  pg_dump \
-    --schema-only \
-    --no-owner \
-    --no-privileges \
-    --dbname="$database_name" |
-    sed \
-      -e '/^\\restrict /d' \
-      -e '/^\\unrestrict /d' >"$output_file"
+  if [[ -n "$PG_DUMP_CONTAINER" ]]; then
+    docker exec \
+      --env "PGPASSWORD=${PGPASSWORD:-}" \
+      "$PG_DUMP_CONTAINER" \
+      pg_dump \
+      --username="${PGUSER:-postgres}" \
+      --schema-only \
+      --no-owner \
+      --no-privileges \
+      --dbname="$database_name" |
+      sed \
+        -e '/^\\restrict /d' \
+        -e '/^\\unrestrict /d' >"$output_file"
+  else
+    pg_dump \
+      --schema-only \
+      --no-owner \
+      --no-privileges \
+      --dbname="$database_name" |
+      sed \
+        -e '/^\\restrict /d' \
+        -e '/^\\unrestrict /d' >"$output_file"
+  fi
 }
 
 run_build() {
@@ -918,6 +1048,7 @@ run_build() {
   write_round3b_inventory "$database_name" "$build_dir/round3b-inventory.txt"
   write_round3c_inventory "$database_name" "$build_dir/round3c-inventory.txt"
   write_round3d_inventory "$database_name" "$build_dir/round3d-inventory.txt"
+  write_round3e_inventory "$database_name" "$build_dir/round3e-inventory.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -977,6 +1108,7 @@ compare_artifact ROUND3A_INVENTORY round3a-inventory.txt
 compare_artifact ROUND3B_INVENTORY round3b-inventory.txt
 compare_artifact ROUND3C_INVENTORY round3c-inventory.txt
 compare_artifact ROUND3D_INVENTORY round3d-inventory.txt
+compare_artifact ROUND3E_INVENTORY round3e-inventory.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
@@ -1000,6 +1132,7 @@ print_result_file ROUND3A_INVENTORY "$ARTIFACT_DIR/build-one/round3a-inventory.t
 print_result_file ROUND3B_INVENTORY "$ARTIFACT_DIR/build-one/round3b-inventory.txt"
 print_result_file ROUND3C_INVENTORY "$ARTIFACT_DIR/build-one/round3c-inventory.txt"
 print_result_file ROUND3D_INVENTORY "$ARTIFACT_DIR/build-one/round3d-inventory.txt"
+print_result_file ROUND3E_INVENTORY "$ARTIFACT_DIR/build-one/round3e-inventory.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'

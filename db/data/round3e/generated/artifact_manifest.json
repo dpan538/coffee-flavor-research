@@ -3,7 +3,7 @@
     {
       "path": "db/data/round3e/generated/ci_inventory.json",
       "row_count": null,
-      "sha256": "d43cf44c96d091127b2e43f4b6b2b62e91994c6512570794d7bd0e28b26f9caf"
+      "sha256": "e61ebe79810d0a2638619fe500620e377d3f411e89414cab9a683d4839fb4c81"
     },
     {
       "path": "db/data/round3e/generated/corpus_documents.tsv",
@@ -28,12 +28,12 @@
     {
       "path": "db/data/round3e/generated/external_field_dictionary.tsv",
       "row_count": 28,
-      "sha256": "372e0ac6c3f3af8ab6cb036674bba9a607ce83fb840a0c50f346beb5e6b1937f"
+      "sha256": "da32e0b62a5ee23f31fecd044c3a39aeabbe93f7841cfc7fb7163921305ef326"
     },
     {
       "path": "db/data/round3e/generated/external_observations.tsv",
       "row_count": 413,
-      "sha256": "8c105cf3df51d346135c6f1e0165a62ad2d7d062ef79e8fc0806f1ad9607a929"
+      "sha256": "409cdfda2a102a93761580b15164440f31873f7dfe07b04ee359e6dd1c431914"
     },
     {
       "path": "db/data/round3e/generated/lexical_mapping_candidates.tsv",
@@ -44,6 +44,11 @@
       "path": "db/data/round3e/generated/question_candidates.tsv",
       "row_count": 18,
       "sha256": "98d47b24a4f5def1ccbe616f5932205b2bca74ce9ca29d3fb14ce58eae590a90"
+    },
+    {
+      "path": "db/data/round3e/generated/seed_round3e.sql",
+      "row_count": null,
+      "sha256": "36e34281cbea11d605560317fa51ed6fc7b7daa03a33be9a1104fa80f1ff3de7"
     }
   ],
   "counts": {
@@ -62,7 +67,7 @@
     "unique_normalized_expression_count": 134
   },
   "named_hashes": {
-    "ci_inventory_hash": "d43cf44c96d091127b2e43f4b6b2b62e91994c6512570794d7bd0e28b26f9caf",
+    "ci_inventory_hash": "e61ebe79810d0a2638619fe500620e377d3f411e89414cab9a683d4839fb4c81",
     "coverage_cube_hash": "b0a2e865a731c8e30a382b6a4f5bd15179520311a8850ebd22790ebc4aa27a62",
     "data_quality_report_hash": "804ae622caef23f68a5fab0aa87fdea56cd444faa7b5e15624427c516215c588",
     "lexical_mapping_hash": "c629336c0c170dc53e4edefca33f9bda0b7d71c36c61a017e706a911f064dbf4",

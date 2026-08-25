@@ -14,7 +14,8 @@
     "db/data/round3e/generated/external_field_dictionary.tsv",
     "db/data/round3e/generated/external_observations.tsv",
     "db/data/round3e/generated/lexical_mapping_candidates.tsv",
-    "db/data/round3e/generated/question_candidates.tsv"
+    "db/data/round3e/generated/question_candidates.tsv",
+    "db/data/round3e/generated/seed_round3e.sql"
   ],
   "generator": "db/scripts/generate-round3e-artifacts.py",
   "question_source": "db/data/round3e/source/question_candidates.json",
