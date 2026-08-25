@@ -22,6 +22,7 @@
     "db:migrate": "bash db/scripts/apply.sh",
     "test:db": "bash db/scripts/test.sh",
     "test:db:repro": "bash db/scripts/rebuild-twice.sh",
+    "artifacts:verify": "bash scripts/verify-generated-artifacts.sh",
     "ci:verify:web": "bash scripts/ci-verify-web.sh",
     "ci:verify": "bash scripts/ci-verify.sh",
     "format": "prettier . --write",

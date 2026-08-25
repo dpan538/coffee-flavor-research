@@ -3,6 +3,7 @@
 set -euo pipefail
 
 NPM_BIN=${COFFEE_CI_NPM_BIN:-npm}
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
 if [[ "$NPM_BIN" == */* ]]; then
   if [[ ! -x "$NPM_BIN" ]]; then
@@ -13,6 +14,9 @@ elif ! command -v "$NPM_BIN" >/dev/null 2>&1; then
   printf 'ERROR: npm is required for web verification.\n' >&2
   exit 69
 fi
+
+printf 'CI_VERIFY_STEP=generated_artifact_drift\n'
+bash "$SCRIPT_DIR/verify-generated-artifacts.sh"
 
 printf 'CI_VERIFY_STEP=format:check\n'
 "$NPM_BIN" run format:check
