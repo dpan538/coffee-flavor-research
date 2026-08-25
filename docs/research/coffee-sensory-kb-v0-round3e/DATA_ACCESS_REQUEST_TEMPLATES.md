@@ -44,3 +44,18 @@ quotation of short instrument wording, translation research, and publication
 of derived question-design notes.
 
 This request has not been sent as part of Round 3E.
+
+## Round 3G rights clarification paragraph
+
+Add the following paragraph to either draft before a separately authorized
+send:
+
+> If you are willing to share, please identify the license or written terms for
+> the files and for de-identified derivatives. We are specifically seeking
+> permission for machine analysis, adaptation, commercial reuse, publication of
+> aggregate/de-identified derivatives, and—only if you explicitly permit it—
+> redistribution of the original files. We will preserve your requested
+> attribution and will not publish direct participant identifiers.
+
+Round 3G refined the two field lists but did not send either request.
+`DATA_ACCESS_REQUEST_SENT=false`.

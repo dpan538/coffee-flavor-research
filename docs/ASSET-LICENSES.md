@@ -39,3 +39,14 @@ unverified image downloads are used.
 Before expanding to all 24 descriptors, review whether a single icon library
 can support the full set without losing recognizability or creating excessive
 attribution complexity.
+
+## Research data and metadata
+
+These are research artifacts rather than visual assets, but they are listed
+here so the repository has one complete third-party material inventory.
+
+| Repository path                                       | Asset/component                      | Author/project                                          | Original source                                                                      | License                        | Attribution required            | Modified | Notes                                                                                                                                                                |
+| ----------------------------------------------------- | ------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------ | ------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `db/data/round3g/liberica_rata_summary_matrix.tsv`    | De-identified aggregate RATA summary | Lita Meilina; Rangganis Ulya Auliya; Niken Widya Palupi | Mendeley Data v1, DOI [10.17632/m3n2gc4dv6.1](https://doi.org/10.17632/m3n2gc4dv6.1) | CC BY 4.0                      | Yes                             | Yes      | Ten aggregate summary rows transcribed from `RATA Test!A158:J168`; upstream workbook excluded from public export because it contains pseudonymous panelist initials. |
+| `db/data/round3g/enwiktionary_revision_metadata.json` | English Wiktionary revision metadata | Wiktionary contributors / Wikimedia Foundation          | English Wiktionary MediaWiki Action API                                              | CC BY-SA 4.0 and GFDL boundary | Yes if reused with page content | Yes      | Metadata only: page/revision IDs, timestamps and missing-title state; no definitions or quotations.                                                                  |
+| `db/data/round3g/zhwiktionary_revision_metadata.json` | Chinese Wiktionary revision metadata | Wiktionary contributors / Wikimedia Foundation          | Chinese Wiktionary MediaWiki Action API                                              | CC BY-SA 4.0 and GFDL boundary | Yes if reused with page content | Yes      | Metadata only; counted in the same source family as English Wiktionary and not as bilingual review.                                                                  |

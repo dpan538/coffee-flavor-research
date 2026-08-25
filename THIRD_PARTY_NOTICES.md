@@ -48,6 +48,28 @@ objective sensory truth and do not establish global or current-market
 representativeness. The detailed attribution and transformation boundary is in
 [`db/data/round2b/FIRSTBLOOM_ATTRIBUTION.md`](db/data/round2b/FIRSTBLOOM_ATTRIBUTION.md).
 
+## Round 3G relationship-evidence sources
+
+Round 3G admits two independent source families without treating them as
+equivalent evidence.
+
+The coffee-sensory family is **Dataset on Liberica coffee sensory profiles** by
+Lita Meilina, Rangganis Ulya Auliya and Niken Widya Palupi, Mendeley Data v1,
+DOI [10.17632/m3n2gc4dv6.1](https://doi.org/10.17632/m3n2gc4dv6.1), licensed
+CC BY 4.0. The upstream workbook is not redistributed because it contains
+pseudonymous panelist initials. The repository includes only a project-derived,
+de-identified transcription of ten published aggregate RATA summary rows. That
+table retains the upstream CC BY 4.0 attribution and records transformation and
+limitations in [`db/data/round3g/README.md`](db/data/round3g/README.md).
+
+The lexical family consists of exact English and Chinese Wiktionary revision
+metadata returned by the MediaWiki Action API. Wiktionary text is generally
+available under CC BY-SA 4.0 and GFDL subject to page-specific history and
+attribution. The committed JSON stores revision identifiers, timestamps and
+missing-title status only; it contains no definitions, translations or
+quotation text. English and Chinese editions are one Wiktionary source family
+for Round 3G independence counting and are not independent bilingual review.
+
 ## NPM Dependencies
 
 Runtime and development dependencies retain their package licenses as recorded
@@ -63,6 +85,8 @@ not a replacement for dependency license review before formal release.
 - Font packages and font files.
 - Game-icons.net SVGs.
 - Firstbloom Data and its derived source observations.
+- The Liberica source workbook and its derived aggregate summary.
+- Wiktionary revision metadata and any upstream entry text.
 - NPM dependencies.
 - Any quoted or referenced third-party source material.
 

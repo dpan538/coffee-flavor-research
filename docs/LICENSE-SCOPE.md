@@ -80,6 +80,29 @@ pilot. A public database rebuild from committed migrations is reproducible;
 regenerating those derived artifacts from upstream requires the separately
 obtained, checksum-verified pinned source checkout.
 
+## Round 3G evidence layers
+
+Round 3G keeps its rights boundaries explicit:
+
+- source-family, source-version, evidence-claim, review, expected-state and
+  validation schemas are project-authored software under MIT;
+- project-created source annotations, rights/privacy decisions, evidence
+  interpretations, review dispositions and audit prose are under CC BY 4.0;
+- `liberica_rata_summary_matrix.tsv` is a transformed, de-identified aggregate
+  derived from Mendeley Data DOI `10.17632/m3n2gc4dv6.1` and retains the
+  upstream CC BY 4.0 terms and attribution;
+- the raw Liberica workbook is external-only and is not committed or included
+  in the public-export boundary because it contains pseudonymous panelist
+  initials; and
+- Wiktionary revision JSON files contain only API metadata. They remain within
+  the upstream CC BY-SA 4.0/GFDL attribution boundary and do not include entry
+  definitions, translations or quotation corpora.
+
+Admitting a source under an open license does not make its relationships
+canonical, cross-source supported, bilingual reviewed or scientifically
+generalizable. The database preserves source-local scope and independent-family
+counting separately from redistribution rights.
+
 ## Research Boundary
 
 The current sensory association ranges are project-curated drafts. They should

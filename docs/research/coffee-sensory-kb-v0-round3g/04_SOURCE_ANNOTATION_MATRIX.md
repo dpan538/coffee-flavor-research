@@ -1,0 +1,30 @@
+# Source annotation matrix
+
+## Admitted source identity and context
+
+| Source key                            | Family                                    | Title / owner / year                                                                     | Stable version and repository                                                      | Type; geography; language                                          | Population / method                                                               | Preparation / roast / milk                                                                            |
+| ------------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `mendeley.liberica-sensory.v1`        | `family.liberica-ratapanel-2025`          | _Liberica Coffee Sensory_; Lita Meilina, Rangganis Ulya Auliya, Niken Widya Palupi; 2025 | DOI `10.17632/m3n2gc4dv6.1`; Mendeley Data v1; accessed 2026-08-25                 | coffee sensory dataset; Indonesia; English/Indonesian headings     | 25 pseudonymous panelist codes; RATA plus hedonic study; only aggregate RATA used | Liberica coffee bags and source-defined leaf infusion; L/M/D roast configurations; no milk documented |
+| `wiktionary.en.revision-set.20260825` | `family.wiktionary-revision-set-20260825` | English Wiktionary contributors; 2026                                                    | four exact oldids plus two missing-title results; Action API; accessed 2026-08-25  | lexical revision metadata; global; English                         | community dictionary; exact title/revision attestation                            | preparation/milk N/A; `medium-light` queried                                                          |
+| `wiktionary.zh.revision-set.20260825` | same conservative family                  | Chinese Wiktionary contributors; 2026                                                    | three exact oldids plus six missing-title results; Action API; accessed 2026-08-25 | lexical revision metadata; global; Simplified-Chinese query titles | community dictionary; exact title/revision attestation                            | preparation/milk N/A; `中浅烘` and `浅中烘` queried                                                   |
+
+## Rights, files and evidence role
+
+| Source key                     | License and permissions                                                                      | Privacy / public export                                                            | Files; SHA-256                                             | Rows / fields                              | Evidence role; relationship keys                                                                        | Locator; limitations; independence                                                                                   |
+| ------------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `mendeley.liberica-sensory.v1` | CC BY 4.0; commercial, derivative, redistribution and machine use allowed                    | reviewed; raw participant codes remain external; de-identified aggregate is public | `Dataset.xlsx` `299c4e…e8dda`; aggregate TSV `05c703…babc` | raw structural 956 / 41; aggregate 10 / 10 | supports `membership.roast-spice-smoke.smoke`; challenges heterogeneous roast/acidity/texture groupings | RATA sheet descriptor blocks and A158:J168; specialized formulation and one protocol; workbook/derivative count once |
+| English Wiktionary source      | CC BY-SA 4.0/GFDL; commercial, derivative, redistribution and machine use allowed with terms | no participant data; metadata public                                               | `enwiktionary_revision_metadata.json` `d3c68a…bfa8`        | 6 / 5                                      | lexical attestation and question wording evidence only                                                  | exact oldids/metadata; no coffee semantics or bilingual equivalence; one family with Chinese edition                 |
+| Chinese Wiktionary source      | CC BY-SA 4.0/GFDL; same permissions                                                          | no participant data; metadata public                                               | `zhwiktionary_revision_metadata.json` `fab81d…0ac2`        | 9 / 5                                      | lexical attestation and question wording evidence only                                                  | exact oldids/metadata; missing titles are not negative evidence; one family with English edition                     |
+
+The full, non-abbreviated values are enforced in
+`evidence.relationship_source`, `evidence.relationship_source_file`, and
+`db/data/round3g/source_files.tsv`.
+
+## Reviewed but not admitted
+
+The mozambioside record is CC BY 4.0 but out of scope. The Zenodo record is
+CC BY-NC 4.0. WCR provides personal-use copies only. CC-CEDICT is CC BY-SA but
+its official download page prohibits scripted access. No files, rows or fields
+from those four candidates were imported; their evidence role is candidate
+rights/scope review, their relationship arrays are empty, and their
+independence is not counted.

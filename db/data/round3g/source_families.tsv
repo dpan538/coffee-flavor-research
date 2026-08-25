@@ -1,0 +1,3 @@
+source_family_key	family_name	family_type	canonical_origin_key	counts_as_independent	independence_basis	admitted
+family.liberica-ratapanel-2025	Liberica coffee-bag RATA study	COFFEE_SENSORY	origin.doi.10.17632.m3n2gc4dv6.1	true	Independent Universitas Jember study; workbook and project-derived aggregate are one family.	true
+family.wiktionary-revision-set-20260825	Wiktionary exact-revision lexical review	BILINGUAL_LEXICAL	origin.wikimedia.wiktionary.revision-set-20260825	true	English and Chinese Wiktionary editions are kept as two sources in one conservative Wikimedia lexical family.	true
