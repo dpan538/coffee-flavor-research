@@ -1,0 +1,27 @@
+source_term_key	ordinal	raw_term	normalized_term	normalization_rule	instrument_type	published_sample_association	published_liking_role	participant_count	missingness_semantics
+gorman.cata.01	1	sweet	sweet	casefold only; source wording preserved	CATA	milk	positive_driver	116	NOT_APPLICABLE
+gorman.cata.02	2	aftertaste	aftertaste	casefold only; source wording preserved	CATA	milk	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.03	3	bitter	bitter	casefold only; source wording preserved	CATA	almond_or_soy	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.04	4	fruity	fruity	casefold only; source wording preserved	CATA	NOT_REPORTED	NOT_REPORTED	116	NOT_REPORTED
+gorman.cata.05	5	roasted	roasted	casefold only; source wording preserved	CATA	milk	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.06	6	creamy	creamy	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.07	7	beany	beany	casefold only; source wording preserved	CATA	NOT_REPORTED	negative_driver	116	NOT_APPLICABLE
+gorman.cata.08	8	vegetative	vegetative	casefold only; source wording preserved	CATA	almond_or_soy	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.09	9	floral	floral	casefold only; source wording preserved	CATA	milk	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.10	10	acid	acid	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.11	11	grassy	grassy	casefold only; source wording preserved	CATA	almond_or_soy	negative_driver	116	NOT_APPLICABLE
+gorman.cata.12	12	vanilla	vanilla	casefold only; source wording preserved	CATA	milk	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.13	13	earthy	earthy	casefold only; source wording preserved	CATA	NOT_REPORTED	negative_driver	116	NOT_APPLICABLE
+gorman.cata.14	14	nutty	nutty	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.15	15	burnt	burnt	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.16	16	caramel	caramel	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.17	17	chemical	chemical	casefold only; source wording preserved	CATA	NOT_REPORTED	NOT_REPORTED	116	NOT_REPORTED
+gorman.cata.18	18	metallic	metallic	casefold only; source wording preserved	CATA	almond_or_soy	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.19	19	strong aftertaste	strong aftertaste	casefold only; source wording preserved	CATA	almond_or_soy	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.20	20	no aftertaste	no aftertaste	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.21	21	sour	sour	casefold only; source wording preserved	CATA	almond_or_soy	negative_driver	116	NOT_APPLICABLE
+gorman.cata.22	22	astringent	astringent	casefold only; source wording preserved	CATA	milk	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.23	23	smoky	smoky	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.24	24	pungent	pungent	casefold only; source wording preserved	CATA	almond_or_soy	negative_driver	116	NOT_APPLICABLE
+gorman.cata.25	25	chocolate	chocolate	casefold only; source wording preserved	CATA	milk	NOT_REPORTED	116	NOT_APPLICABLE
+gorman.cata.26	26	musty	musty	casefold only; source wording preserved	CATA	oat	NOT_REPORTED	116	NOT_APPLICABLE

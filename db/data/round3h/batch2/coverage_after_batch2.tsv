@@ -1,0 +1,13 @@
+metric_key	observed_before_batch	observed_after_batch	absolute_delta	evidence_path	limitation
+coffee_sensory_source_family_count	7	9	2	db/data/round3h/batch2/batch2_source_manifest.json	Two independent actual milk-coffee sensory origins.
+sensory_method_family_count	3	3	0	Gorman CATA/hedonic and Nguyen descriptive/hedonic	Method families remain unpooled.
+source_local_sensory_observation_row_count	4016	4344	328	Gorman liking and Nguyen aggregate tables	The 26-term instrument inventory is excluded from outcome-row count.
+source_local_sensory_sample_count	216	230	14	Four Gorman additions and ten Nguyen coffee-PBMA conditions	Conditions counted once despite multiple aggregate measures.
+source_local_participant_or_panel_count	295	520	225	116 Gorman consumers; 9 Nguyen panelists; 100 Nguyen consumers	Descriptive only; no participant rows are imported.
+sensory_outcome_preparation_family_count	7	8	1	batch-brew coffee with addition; espresso-with-PBMA already overlaps espresso	Milk mode is a context field, not a new core preparation solely for counting.
+sensory_outcome_roast_category_or_scheme_count	8	9	1	Nguyen source-reported medium roast scheme	Gorman unreported roast is not counted.
+crossed_preparation_roast_observed_cell_count	108	118	10	Nguyen ten observed medium-roast espresso-PBMA conditions	Gorman roast-unknown cells are excluded.
+milk_sensory_outcome_source_family_count	0	2	2	Gorman and Nguyen	Actual sensory outcomes, not preparation-only metadata.
+ordinary_user_sensory_source_family_count	3	5	2	Gorman and Nguyen consumer panels	Participant populations remain source-local.
+reference_panel_source_family_count	3	4	1	Nguyen trained descriptive panel	Consumer and trained observations are never pooled.
+empirical_coverage_cell_count	167	181	14	Four Gorman plus ten Nguyen observed cells	Preferred engineering target reached without inferred cells.

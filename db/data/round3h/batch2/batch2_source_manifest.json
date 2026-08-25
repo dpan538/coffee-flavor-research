@@ -1,0 +1,73 @@
+{
+  "batch_key": "round3h.batch2.context-milk",
+  "acquired_on": "2026-08-25",
+  "public_export_policy": "Only CC BY article aggregates and source-local instrument labels are committed. Participant rows described as request-only or confidential are not reconstructed or exported.",
+  "sources": [
+    {
+      "source_family_key": "family.gorman-milk-consumers-2021",
+      "source_key": "mdpi.gorman-2021",
+      "source_version": "Beverages 7(4) 80 version of record published 2021-12-20",
+      "snapshot_key": "snapshot.mdpi-beverages-07-00080.vor",
+      "title": "Consumer Perception of Milk and Plant-Based Alternatives Added to Coffee",
+      "doi_or_url": "https://doi.org/10.3390/beverages7040080",
+      "license": "CC BY 4.0",
+      "official_file": {
+        "locator": "https://mdpi-res.com/d_attachment/beverages/beverages-07-00080/article_deploy/beverages-07-00080.pdf",
+        "sha256": "af49a8410e1cc0b34236f20b39c7174c2c1a495908af9393a5ca1f9bce6493c6",
+        "bytes": 1019098
+      },
+      "derived_files": [
+        {
+          "path": "db/data/round3h/batch2/gorman_2021_liking_aggregates.tsv",
+          "sha256": "78934fa0876598d9dee480407cba93743e6554106fce7071b27d7116301771d1",
+          "rows": 48,
+          "fields": 14
+        },
+        {
+          "path": "db/data/round3h/batch2/gorman_2021_cata_terms.tsv",
+          "sha256": "23e94c22aa23755120eaa9e73bc3210adce1a0d7e1eaf3932a7ba401bb59923a",
+          "rows": 26,
+          "fields": 10
+        }
+      ],
+      "rights_decision": "CLEARED_AGGREGATE",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY_RAW_CONFIDENTIAL",
+      "public_export_decision": "PUBLIC_AGGREGATE",
+      "evidence_role": "Consumer CATA and hedonic outcomes for coffee with dairy, soy, almond, or oat addition",
+      "limitations": "One Canadian convenience population; commercial coffee roast and origin unreported; 116 by 4 raw rows remain unavailable for confidentiality."
+    },
+    {
+      "source_family_key": "family.nguyen-pbma-thai-2026",
+      "source_key": "mdpi.nguyen-2026",
+      "source_version": "Foods 15(15) 2583 version of record published 2026-07-23",
+      "snapshot_key": "snapshot.mdpi-foods-15-02583.vor",
+      "title": "Characterizing Sensory Drivers of Acceptance, Purchase Intent, and Emotional Responses to Plant-Based Milk Alternatives in Chilled Sweetened Coffee Among Thai Consumers",
+      "doi_or_url": "https://doi.org/10.3390/foods15152583",
+      "license": "CC BY 4.0",
+      "official_file": {
+        "locator": "https://mdpi-res.com/d_attachment/foods/foods-15-02583/article_deploy/foods-15-02583.pdf",
+        "sha256": "c66dcbe9f6bae0eb0e3dd77cf85a44c5bf97f30519267e5be121c57cfbf8b08f",
+        "bytes": 2157354
+      },
+      "derived_files": [
+        {
+          "path": "db/data/round3h/batch2/nguyen_2026_table3_sensory_intensities.tsv",
+          "sha256": "10630ff70297d0dbab22ecc164dd863b6bafbef66980a6287c68d6cbb8eda574",
+          "rows": 260,
+          "fields": 16
+        },
+        {
+          "path": "db/data/round3h/batch2/nguyen_2026_table4_consumer_outcomes.tsv",
+          "sha256": "5d9b8891930629b9304eda3cd5d65018559c84344f40a765ee6d012afc231cc2",
+          "rows": 20,
+          "fields": 15
+        }
+      ],
+      "rights_decision": "CLEARED_AGGREGATE",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY",
+      "public_export_decision": "PUBLIC_AGGREGATE",
+      "evidence_role": "Trained descriptive intensity and consumer outcomes for ten chilled sweetened espresso-PBMA conditions",
+      "limitations": "Thai consumers and highly trained women panelists; PBMA formulation, sweetness, and culture are inseparable source-local context; no participant rows are public."
+    }
+  ]
+}
