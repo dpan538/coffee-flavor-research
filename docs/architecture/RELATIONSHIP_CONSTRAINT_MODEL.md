@@ -136,3 +136,26 @@ Future ontology suggestions belong only in the
 `ONTOLOGY_CHANGE_CANDIDATE_REGISTER` section of the active round's gap report.
 Additional project-level range proposals belong only in the
 `ADDITIONAL_RANGE_CANDIDATE_REGISTER`. Both registers are empty in Round 3F.
+
+## Round 3G evidence and review layer
+
+Round 3G makes the source-to-decision path executable without changing the
+relationship taxonomy:
+
+```text
+source family -> versioned source -> immutable snapshot/file
+              -> relationship evidence claim -> explicit review decision
+```
+
+`evidence.relationship_evidence_claim` retains direction (`SUPPORTS`,
+`CHALLENGES`, `MIXED`, `INSUFFICIENT` or `OUT_OF_SCOPE`) and an exact evidence
+locator. `kb.relationship_review_decision` and the question/range decision
+tables preserve the prior state, disposition, resulting state, reasons and
+uncertainties. A source-local promotion requires a permitting review and
+evidence from one family; cross-source promotion requires at least two distinct
+independent family keys. Derived copies and mirrors never increase that count.
+
+The expected-state gate measures acquisition and review completeness while
+keeping evidence outcomes separate from engineering success. No minimum number
+of promotions is encoded. Contradictory evidence is immutable audit material,
+and no Round 3G source may feed a model run.

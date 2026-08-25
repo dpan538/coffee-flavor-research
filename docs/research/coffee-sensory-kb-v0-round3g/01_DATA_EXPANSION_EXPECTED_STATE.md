@@ -59,18 +59,26 @@ supports it. These are soft targets, not fabrication quotas.
 
 ## OBSERVED
 
-`PENDING_PRE_ACQUISITION`
+The post-acquisition database gate observes 130 concepts, 92 active sensory
+attributes, 7 ranges, 18 memberships, 18 question targets, 6 named candidates,
+2 admitted independent families, 3 admitted sources, 3 immutable snapshots, 4
+verified files, and 20 evidence claims. All source-annotation, rights, privacy,
+file-hash, evidence-provenance, and disposition rates are `1.0000`.
 
-Observed values must be generated from the final database and source manifest.
-No observed value exists at this freeze checkpoint.
+All seven ranges, all 18 memberships, and all 18 question targets have one
+Round 3G review. One membership is source-local-supported; all ranges remain
+candidate. Hard, minimum, and preferred gates pass.
 
 ## DELTA
 
-`PENDING_PRE_ACQUISITION`
+Ontology, active-sensory, range, membership, overlap, question-target,
+text-first-candidate, supported-range, validation, information-gain, model, and
+real-observation deltas are zero. Expansion deltas are `+6` named candidates,
+`+2` independent families, `+3` admitted sources, `+3` snapshots, `+4` source
+file records, `+20` evidence claims, and `+1` source-local membership
+promotion. The detailed machine result is in `db/data/round3g/expected_state.tsv`.
 
-Delta values must be computed as observed minus baseline or evaluated against
-the declared predicate. Thresholds may not be changed after acquisition merely
-because a result is difficult to reach.
+`EXPECTED_STATE_RESULT=PASS`; thresholds were not changed after acquisition.
 
 ## Frozen association thresholds
 
