@@ -17,7 +17,7 @@ knowledge layers support the intended sensory-reference system, while the
 [Research Roadmap](./research/RESEARCH_ROADMAP.md) identifies what remains
 unvalidated.
 
-The database uses seven logical schemas:
+The database uses eight logical schemas:
 
 - `ref`: controlled semantics;
 - `kb`: language-neutral canonical knowledge and lexicalization;
@@ -26,6 +26,9 @@ The database uses seven logical schemas:
 - `corpus`: captured documents, raw observations, and co-occurrence measures;
 - `context`: preparation, beverage-addition, roast-scheme, and measured roast
   conditions;
+- `calibration`: governed studies, experimental material, pseudonymous
+  participants, presentations, observations, adaptive questions, analyses,
+  grouped splits, and releases;
 - `ml`: versioned models, runs, mapping candidates, and candidate signals; and
 - `audit`: independent reviews, lifecycle history, and explicit promotion.
 
@@ -42,6 +45,9 @@ Round 3A context research and validation evidence belongs in
 Round 3B source, migration, normalization, signal-sufficiency, and
 reproducibility evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round3b/`](./audits/coffee-sensory-kb-v0-round3b/).
+Round 3C adaptive architecture, dataset-design, protocol, migration, and
+reproducibility evidence belongs in
+[`docs/audits/coffee-sensory-kb-v0-round3c/`](./audits/coffee-sensory-kb-v0-round3c/).
 
 ## PostgreSQL boundary
 
@@ -57,7 +63,9 @@ taxonomies, and Round 3A validation. Forward migrations `022` through `025`
 add seven-level roast supersession, mandatory user-context projections,
 rights-governed context-source and frozen-snapshot tables, 4,817 imported raw
 context rows, held-out normalization results, signal-sufficiency records, and
-Round 3B validation. PostgreSQL is the system of record and
+Round 3B validation. Forward migrations `026` through `029` add the isolated
+calibration-governance domain, experimental linkage, bilingual draft question
+bank, analysis/release provenance, and Round 3C validation. PostgreSQL is the system of record and
 `pg_trgm` is required. `pgvector`, embeddings, a consumer ranking
 model, an application API, and frontend data integration are not dependencies
 of the validated baseline.
@@ -73,6 +81,14 @@ Context follows the same epistemic discipline: a preparation identity, a
 source roast label, a project-normalized category, and a measured roast value
 are different records. Context never becomes a sensory attribute or ranking
 coefficient.
+
+Calibration adds another firebreak. C0/C1 are soft contextual support rather
+than flavor generators; strong sensory answers may override a weak prior.
+Reference observations, ordinary-user responses, derived consensus, model
+outputs, and evaluation judgments remain different relations. Round 3C seeds
+only governance and design rows, records zero empirical observations, and
+keeps the real-collection gate closed pending institutional approval, consent,
+and public-release rights.
 
 The current user projections are deliberately narrower than the observation
 model. `context.v_current_user_preparation` exposes exactly eight known C0

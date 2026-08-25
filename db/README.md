@@ -170,6 +170,10 @@ the run.
 8. when Round 3B is present, the
    `audit.run_round3b_validation_queries()` expected-zero contract and Round
    3B governance, held-out normalization, retrieval, and query-plan suites.
+9. when Round 3C is present, the
+   `audit.run_round3c_validation_queries()` expected-zero contract and Round
+   3C calibration-governance, failure-path, semantic, retrieval, and query-plan
+   suites.
 
 ## Two clean rebuilds
 
@@ -220,6 +224,8 @@ compares:
   inventory when Round 3A is present; and
 - frozen source, snapshot, current C0/C1 projection, coverage, and held-out
   normalization inventory when Round 3B is present.
+- frozen study-readiness, design-scale, bilingual question-bank, and
+  real-versus-fixture observation inventory when Round 3C is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases
@@ -235,3 +241,25 @@ application package is a hidden migration dependency. The current static
 TypeScript frontend continues to import its public descriptor data from
 `packages/flavor-data`; this V0 database is not silently wired into frontend
 runtime behavior in this round.
+
+## Round 3C calibration domain
+
+Forward migrations `026` through `029` add the separate `calibration` schema.
+It contains protocol and analysis governance, coffee/roast/preparation/sample
+identity, pseudonymous assessors and randomized presentations, raw sensory and
+question responses, grouped splits, analyses, candidate-reference output, and
+release provenance. It does not insert a sensory observation or connect the
+frontend to PostgreSQL.
+
+The seeded contract contains one blocked minimum-pilot study, three documented
+design scales, one frozen protocol, one frozen analysis plan, and 12
+language-specific question rows (six English/Simplified-Chinese pairs). The
+minimum target is 2 lots, 14 roast batches, 66 condition cells, and 132 planned
+beverages. It is explicitly `FEASIBILITY_ONLY`; empirical results remain
+`NOT_ESTIMABLE`.
+
+Database constraints reject non-current C0/C1 values, mismatched sample
+linkage, direct participant identifiers, malformed active questions,
+ineligible assignments, over-cardinality responses, duplicate randomization,
+consensus disguised as raw observation, model output disguised as canonical
+knowledge, lot split leakage, and incomplete public-release metadata.
