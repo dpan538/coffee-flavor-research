@@ -1,5 +1,11 @@
 # Coffee Flavor Atlas / Coffee Sensory Knowledge Base
 
+Round 3F relationship and constraint research is recorded under
+`docs/research/coffee-sensory-kb-v0-round3f/` and
+`docs/audits/coffee-sensory-kb-v0-round3f/`. It defines overlapping,
+non-ontological association ranges while preserving text-first lexical
+candidates and the 130-concept canonical freeze.
+
 Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
 system for people tasting coffee at home, in a café, or in another ordinary
 drinking context. The intended product asks for preparation and roast context,
