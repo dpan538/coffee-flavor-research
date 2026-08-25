@@ -1,0 +1,12 @@
+{
+  "batch_key": "round3h.batch3.contemporary-language",
+  "targeted_gap": "lawful contemporary coffee tasting and product sensory language excluding Firstbloom",
+  "new_admitted_source_family_count": 0,
+  "new_document_count": 0,
+  "new_normalized_expression_count": 0,
+  "meaningful_coverage_gain": false,
+  "consecutive_no_gain_batch_number": 1,
+  "decision": "NO_GAIN_RIGHTS_OR_OBSERVATION_GAP",
+  "next_target": "source-authored Simplified-Chinese coffee sensory language",
+  "limitations": "Open Food Facts remains legally promising but unprofiled and requires a separate ODbL/DbCL partition. Linguistically strong commercial catalogs remain blocked by posted terms or upstream chain-of-title uncertainty."
+}
