@@ -1,0 +1,12 @@
+{
+  "batch_key": "round3h.batch4.zh-hans-language",
+  "targeted_gap": "source-authored Simplified-Chinese coffee sensory and tasting language",
+  "new_admitted_source_family_count": 0,
+  "new_sensory_expression_count": 0,
+  "meaningful_coverage_gain": false,
+  "consecutive_no_gain_batch_number": 2,
+  "stopping_rule_triggered": true,
+  "decision": "NO_GAIN_RIGHTS_PROVENANCE_OR_TARGET_DOMAIN_GAP",
+  "acquisition_stop_status": "STOP_TWO_CONSECUTIVE_TARGETED_NO_GAIN_BATCHES",
+  "limitations": "Potentially lawful Global Voices and Wikipedia paths lack verified source-authored coffee-sensory yield. Dictionaries, standards, noncommercial reviews, unclear web corpora, mirrors, and machine-converted text remain excluded."
+}
