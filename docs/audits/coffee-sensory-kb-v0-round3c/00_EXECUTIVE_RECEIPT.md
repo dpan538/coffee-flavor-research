@@ -1,0 +1,53 @@
+# Round 3C executive receipt
+
+This committed receipt closes the implementation/design checkpoint without a
+self-referential SHA. Final feature-branch and remote-main SHAs are recorded in
+the external execution receipt and milestone tag, as required by the receipt
+SHA rule.
+
+```text
+ROUND3C_PHASE_STATUS=PASS
+
+ROUND3C_SOURCE_SHA=0dd90880ab38397651c39ec54351bf1bbfb2aa53
+ROUND3C_WORK_BRANCH=codex/coffee-sensory-kb-v0-round3c-calibration-design-20260825
+ROUND3C_IMPLEMENTATION_CHECKPOINT_SHA=f077b840213c7ade540ae94ad3c4570b24ad632e
+IMPLEMENTATION_CHECKPOINT_SHA=f077b840213c7ade540ae94ad3c4570b24ad632e
+RECEIPT_PARENT_SHA=f077b840213c7ade540ae94ad3c4570b24ad632e
+ROUND3C_FINAL_REMOTE_SHA=EXTERNAL_EXECUTION_RECEIPT
+ROUND3C_REMOTE_MAIN_SHA=EXTERNAL_EXECUTION_RECEIPT
+
+ARCHITECTURE_DOC_PASS=true
+PRODUCT_CONTRACT_UPDATED=true
+METHODOLOGY_UPDATED=true
+ROADMAP_UPDATED=true
+
+SUFFICIENT_PUBLIC_CALIBRATION_DATASET=false
+PUBLIC_DATASET_CANDIDATE_COUNT=10
+RIGHTS_CLEARED_USABLE_DATASET_COUNT=3
+
+MINIMUM_PILOT_DESIGN_PASS=true
+PREFERRED_STUDY_DESIGN_PASS=true
+EXPANDED_STUDY_DESIGN_PASS=true
+
+QUESTION_BANK_DESIGN_PASS=true
+ADAPTIVE_POLICY_SPEC_PASS=true
+ANALYSIS_PREREGISTRATION_PASS=true
+ETHICS_PRIVACY_PLAN_PASS=true
+PUBLIC_RELEASE_PLAN_PASS=true
+
+FORWARD_MIGRATION_COUNT=4
+NEGATIVE_TEST_PASS=true
+CLEAN_REBUILD_COUNT=2
+REPRODUCIBILITY_PASS=true
+
+COMMIT_DESCRIPTION_POLICY_PASS=true
+REMOTE_BACKUP_PASS=true
+REMOTE_FRONTEND_CI_PASS=true
+REMOTE_POSTGRES_CI_PASS=true
+MAIN_PROMOTION_PASS=EXTERNAL_AFTER_RECEIPT_COMMIT
+ROUND3D_READY=EXTERNAL_AFTER_MAIN_VERIFICATION
+
+KNOWN_BLOCKERS=institutional approval not obtained; consent material not ready; public-release rights not ready; no real observations; public data insufficient; production context effects and adaptive policy not estimable
+```
+
+No participant was recruited and no sensory observation was fabricated.
