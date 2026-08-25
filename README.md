@@ -185,6 +185,7 @@ npm run check
 npm run test
 npm run build
 npm run test:smoke
+npm run ci:verify:web
 ```
 
 Database migrations and destructive-test safeguards are documented in
@@ -195,6 +196,7 @@ database.
 npm run db:migrate
 npm run test:db
 npm run test:db:repro
+npm run ci:verify
 ```
 
 ## Documentation map
@@ -213,15 +215,18 @@ npm run test:db:repro
   [Round 2A](./docs/audits/coffee-sensory-kb-v0-round2a/00_EXECUTIVE_RECEIPT.md),
   [Round 2B](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md),
   [Round 3A](./docs/audits/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_RECEIPT.md),
-  and [Round 3B](./docs/audits/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_RECEIPT.md)
+  [Round 3B](./docs/audits/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_RECEIPT.md),
+  [Round 3C](./docs/audits/coffee-sensory-kb-v0-round3c/00_EXECUTIVE_RECEIPT.md),
+  [Round 3D](./docs/audits/coffee-sensory-kb-v0-round3d/00_EXECUTIVE_RECEIPT.md),
+  and [Round 3E](./docs/audits/coffee-sensory-kb-v0-round3e/00_EXECUTIVE_RECEIPT.md)
 - Adaptive calibration architecture:
   [architecture contract](./docs/architecture/ADAPTIVE_CONTEXT_QUESTION_ARCHITECTURE.md)
   and [Round 3 decision](./docs/decisions/ROUND3_CONTEXT_CALIBRATION_ARCHITECTURE_20260825.md)
 - Calibration dataset and protocol contracts:
   [dataset specification](./docs/data/COFFEE_SENSORY_CONTEXT_CALIBRATION_DATASET_SPEC_V0.md)
   and [protocol](./docs/protocols/COFFEE_SENSORY_CONTEXT_CALIBRATION_PROTOCOL_V0.md)
-- Current context research:
-  [Round 3B synthesis](./docs/research/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_SYNTHESIS.md)
+- Current context/evidence research:
+  [Round 3E synthesis](./docs/research/coffee-sensory-kb-v0-round3e/00_EXECUTIVE_SYNTHESIS.md)
 - Frozen pre-V0 material:
   [legacy archive](./docs/archive/pre-sensory-kb-v0-20260824/README.md) and
   [archive manifest](./docs/archive/pre-sensory-kb-v0-20260824/MANIFEST.md)

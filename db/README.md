@@ -15,7 +15,9 @@ copy of a proprietary flavor wheel.
 
 ## Requirements
 
-- PostgreSQL server **17 or newer** and matching PostgreSQL client tools.
+- PostgreSQL server **17 or newer** and matching PostgreSQL client tools. A
+  local Docker server may set `COFFEE_KB_PG_DUMP_CONTAINER` to use the matching
+  `pg_dump` inside that container for schema comparison.
 - `psql`, `createdb`, `dropdb`, and `pg_dump` on `PATH`.
 - The PostgreSQL `pg_trgm` extension available to the target server.
 - A role allowed to create `pg_trgm` and the seven logical schemas when applying
@@ -178,6 +180,10 @@ the run.
     `audit.run_round3d_validation_queries()` expected-zero contract and the
     frozen-pilot, real-observation-gate, privacy, dry-run, retrieval, and
     query-plan suites.
+11. when Round 3E is present, the
+    `audit.run_round3e_validation_queries()` expected-zero contract and the
+    external-snapshot, rights/privacy, raw-value-preservation, corpus/question
+    governance, coverage, prohibition, retrieval, and query-plan suites.
 
 ## Two clean rebuilds
 
@@ -233,6 +239,10 @@ compares:
 - frozen pilot hashes and counts, randomized session/question slots, capture
   batch, protocol/schema release, five labelled mechanics fixtures, and the
   all-`NOT_ESTIMABLE` analysis inventory when Round 3D is present.
+- exact Round 3E snapshot versions and file hashes, declared/imported/excluded
+  counts, field counts, quality profiles, observed coverage cells, question
+  lifecycle states, and named generated-artifact hashes when Round 3E is
+  present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases
@@ -291,3 +301,25 @@ remain outside observation and release counts.
 The distinct `protocol-and-schema-v0.1.0` release contains no participant
 rows. Its analysis record is `NOT_ESTIMABLE` for every preregistered output;
 deep learning, embeddings, and `pgvector` remain unused.
+
+## Round 3E external evidence and language research
+
+Forward migrations `033` through `035` add governed external dataset snapshots,
+source-file and source-field dictionaries, raw/parsed/normalized source-local
+observations, contemporary corpus documents and expressions, lexical mapping
+candidates, question-research candidates, observed empirical coverage cells,
+import runs, artifact hashes, and explicit training prohibitions. They reuse the
+existing schemas and never insert external records into canonical ontology
+tables.
+
+The seeded Round 3E inventory contains four separate rights-reviewed snapshots:
+477 raw source rows, 459 admitted source-local records, 18 explicit exclusions,
+46 corpus documents, 215 expression occurrences and 18 question-language
+research versions. These fragments are not pooled. Question information gain,
+context priors, ranking and adaptive-policy fields remain `NOT_ESTIMABLE` or
+`NOT_RUN`.
+
+The database and generator contracts reject hash/count mismatches, missing
+rights decisions, direct identifiers, blocked public export, silent unit
+conversion, raw-value overwrite, ontology leakage, lexical auto-promotion,
+false question validation and prohibited model runs.
