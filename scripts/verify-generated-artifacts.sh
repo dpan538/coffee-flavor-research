@@ -39,6 +39,7 @@ generate_active_artifacts() {
 
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3e-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3g-artifact-contract.py"
+python3 "$REPOSITORY_ROOT/db/scripts/test-round3h-artifact-contract.py"
 
 write_manifest() {
   local output_path=$1
@@ -60,6 +61,8 @@ write_manifest() {
       "$REPOSITORY_ROOT/db/data/round3d/generated" \
       "$REPOSITORY_ROOT/db/data/round3e/generated" \
       "$REPOSITORY_ROOT/db/data/round3g" \
+      "$REPOSITORY_ROOT/db/data/round3h" \
+      "$REPOSITORY_ROOT/db/data/model-prebuild/v0" \
       "$REPOSITORY_ROOT/data/calibration/releases/protocol-and-schema-v0.1.1" \
       -type f -print0 2>/dev/null | LC_ALL=C sort -z
   )
@@ -93,6 +96,12 @@ fi
 if [[ -d db/data/round3g ]]; then
   FORMAT_PATHS+=(db/data/round3g)
 fi
+if [[ -d db/data/round3h ]]; then
+  FORMAT_PATHS+=(db/data/round3h)
+fi
+if [[ -d db/data/model-prebuild/v0 ]]; then
+  FORMAT_PATHS+=(db/data/model-prebuild/v0)
+fi
 if [[ -d data/calibration/releases/protocol-and-schema-v0.1.1 ]]; then
   FORMAT_PATHS+=(data/calibration/releases/protocol-and-schema-v0.1.1)
 fi
@@ -103,7 +112,9 @@ git diff --exit-code -- \
   db/data/round3d/generated \
   data/calibration/releases/protocol-and-schema-v0.1.1 \
   db/data/round3e/generated \
-  db/data/round3g
+  db/data/round3g \
+  db/data/round3h \
+  db/data/model-prebuild/v0
 
 printf 'GENERATED_ARTIFACT_DRIFT_GATE_PASS=true\n'
 printf 'GENERATED_ARTIFACT_NONDETERMINISM_COUNT=0\n'

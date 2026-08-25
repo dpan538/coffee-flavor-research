@@ -50,6 +50,12 @@ ALTER TABLE calibration.question_target_review_decision
         AND reviewed_round IN ('3G', '3H')
     );
 
+ALTER TABLE evidence.relationship_source_file
+    ADD CONSTRAINT model_prebuild_raw_export_rights_ck CHECK (
+        file_role <> 'RAW_EXTERNAL'
+        OR public_export_decision = 'EXTERNAL_ONLY'
+    );
+
 CREATE OR REPLACE FUNCTION audit.enforce_round3g_membership_promotion()
 RETURNS TRIGGER
 LANGUAGE plpgsql
@@ -114,6 +120,66 @@ BEGIN
     RETURN NEW;
 END
 $enforce_round3g_membership_promotion$;
+
+CREATE OR REPLACE VIEW audit.v_round3g_promotion_audit AS
+WITH membership_promotions AS (
+    SELECT
+        membership.membership_key,
+        membership.lifecycle_status,
+        decision.disposition,
+        count(DISTINCT family.canonical_origin_key) FILTER (
+            WHERE claim.evidence_direction = 'SUPPORTS'
+              AND claim.review_status = 'REVIEWED'
+              AND claim.support_count >= 3
+              AND claim.document_count >= 1
+              AND family.counts_as_independent
+              AND family.admitted
+        ) AS independent_supporting_origin_count,
+        count(claim.evidence_claim_key) FILTER (
+            WHERE claim.evidence_direction = 'SUPPORTS'
+              AND claim.evidence_locator <> ''
+        ) AS located_supporting_claim_count
+    FROM corpus.association_range_membership AS membership
+    LEFT JOIN LATERAL (
+        SELECT review.disposition
+        FROM kb.relationship_review_decision AS review
+        WHERE review.association_range_membership_id =
+            membership.association_range_membership_id
+        ORDER BY review.reviewed_round DESC
+        LIMIT 1
+    ) AS decision ON TRUE
+    LEFT JOIN evidence.relationship_evidence_claim AS claim
+      ON claim.target_entity_type = 'MEMBERSHIP'
+     AND claim.target_entity_key = membership.membership_key
+    LEFT JOIN evidence.source_family AS family
+      ON family.source_family_key = claim.source_family_key
+    WHERE membership.lifecycle_status IN (
+        'SOURCE_LOCAL_SUPPORTED', 'CROSS_SOURCE_SUPPORTED'
+    )
+    GROUP BY membership.membership_key, membership.lifecycle_status,
+             decision.disposition
+)
+SELECT
+    count(*)::BIGINT AS promoted_membership_count,
+    count(*) FILTER (
+        WHERE lifecycle_status = 'SOURCE_LOCAL_SUPPORTED'
+    )::BIGINT AS source_local_promoted_membership_count,
+    count(*) FILTER (
+        WHERE lifecycle_status = 'CROSS_SOURCE_SUPPORTED'
+    )::BIGINT AS cross_source_promoted_membership_count,
+    count(*) FILTER (
+        WHERE located_supporting_claim_count = 0
+           OR disposition IS NULL
+           OR (
+               lifecycle_status = 'SOURCE_LOCAL_SUPPORTED'
+               AND independent_supporting_origin_count < 1
+           )
+           OR (
+               lifecycle_status = 'CROSS_SOURCE_SUPPORTED'
+               AND independent_supporting_origin_count < 2
+           )
+    )::BIGINT AS unsupported_promotion_count
+FROM membership_promotions;
 
 CREATE TABLE evidence.model_prebuild_source_profile (
     source_key TEXT NOT NULL,
@@ -277,6 +343,31 @@ CREATE TABLE evidence.model_prebuild_source_partition (
     )
 );
 
+CREATE FUNCTION evidence.enforce_model_prebuild_partition_source_family()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog
+AS $enforce_model_prebuild_partition_source_family$
+BEGIN
+    IF NEW.partition_key NOT LIKE 'partition.baseline.%'
+       AND NOT EXISTS (
+           SELECT 1 FROM evidence.source_family AS family
+           WHERE family.source_family_key = NEW.source_family_key
+             AND family.admitted
+       ) THEN
+        RAISE EXCEPTION USING ERRCODE = '23503',
+            CONSTRAINT = 'model_prebuild_partition_source_family_fk',
+            MESSAGE = 'Round 3H partitions require an admitted source family';
+    END IF;
+    RETURN NEW;
+END
+$enforce_model_prebuild_partition_source_family$;
+
+CREATE TRIGGER model_prebuild_partition_source_family_biu
+BEFORE INSERT OR UPDATE ON evidence.model_prebuild_source_partition
+FOR EACH ROW EXECUTE FUNCTION
+    evidence.enforce_model_prebuild_partition_source_family();
+
 CREATE TABLE evidence.model_prebuild_partition_feature (
     partition_key TEXT NOT NULL,
     feature_key TEXT NOT NULL,
@@ -313,7 +404,9 @@ CREATE TABLE evidence.model_prebuild_partition_feature (
             'SOURCE_LOCAL_ONLY', 'SEMANTICALLY_COMPATIBLE',
             'PARTIALLY_COMPATIBLE', 'NOT_COMPATIBLE', 'UNRESOLVED'
         )
-        AND (pooling_allowed OR harmonization_status <> 'SEMANTICALLY_COMPATIBLE')
+        AND pooling_allowed = (
+            harmonization_status = 'SEMANTICALLY_COMPATIBLE'
+        )
     )
 );
 
@@ -344,6 +437,42 @@ CREATE TABLE evidence.model_prebuild_split_candidate (
         AND limitation = btrim(limitation) AND limitation <> ''
     )
 );
+
+CREATE FUNCTION evidence.enforce_model_prebuild_split_grouping()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog
+AS $enforce_model_prebuild_split_grouping$
+DECLARE
+    partition_grouping_keys TEXT[];
+BEGIN
+    SELECT grouping_keys INTO partition_grouping_keys
+    FROM evidence.model_prebuild_source_partition
+    WHERE partition_key = NEW.partition_key;
+
+    IF partition_grouping_keys @> ARRAY['coffee_identity']::TEXT[]
+       AND NOT (
+           NEW.grouping_dimensions @> ARRAY['coffee_identity']::TEXT[]
+           AND NEW.prohibited_cross_split_keys
+               @> ARRAY['coffee_identity']::TEXT[]
+       ) THEN
+        RAISE EXCEPTION USING ERRCODE = '23514',
+            CONSTRAINT = 'model_prebuild_same_coffee_split_ck',
+            MESSAGE = 'coffee identity must remain grouped and prohibited across future split candidates';
+    END IF;
+
+    IF NOT (NEW.prohibited_cross_split_keys <@ NEW.grouping_dimensions) THEN
+        RAISE EXCEPTION USING ERRCODE = '23514',
+            CONSTRAINT = 'model_prebuild_split_grouping_subset_ck',
+            MESSAGE = 'prohibited cross-split keys must be declared grouping dimensions';
+    END IF;
+    RETURN NEW;
+END
+$enforce_model_prebuild_split_grouping$;
+
+CREATE TRIGGER model_prebuild_split_grouping_biu
+BEFORE INSERT OR UPDATE ON evidence.model_prebuild_split_candidate
+FOR EACH ROW EXECUTE FUNCTION evidence.enforce_model_prebuild_split_grouping();
 
 CREATE TABLE audit.model_prebuild_context_cell (
     context_cell_key TEXT NOT NULL,
@@ -401,6 +530,7 @@ CREATE TABLE corpus.model_prebuild_language_source_decision (
     source_authored BOOLEAN NOT NULL,
     machine_translated BOOLEAN NOT NULL,
     artificial_variant BOOLEAN NOT NULL,
+    evidence_role TEXT NOT NULL DEFAULT 'CANDIDATE_REVIEW',
     countable_family_gain INTEGER NOT NULL,
     countable_document_gain INTEGER NOT NULL,
     countable_expression_gain INTEGER NOT NULL,
@@ -419,9 +549,19 @@ CREATE TABLE corpus.model_prebuild_language_source_decision (
         AND countable_expression_gain >= 0
         AND NOT machine_translated
         AND NOT artificial_variant
+        AND evidence_role IN (
+            'CANDIDATE_REVIEW', 'OBSERVED_COFFEE_TASTING_LANGUAGE',
+            'DICTIONARY_REFERENCE', 'PREPARATION_REFERENCE',
+            'FORMAL_STANDARD', 'SYNTHETIC_STIMULUS'
+        )
         AND (
-            countable_expression_gain = 0
-            OR (source_authored AND observation_status = 'VERIFIED_OBSERVED')
+            (countable_family_gain = 0 AND countable_document_gain = 0
+                AND countable_expression_gain = 0)
+            OR (
+                source_authored
+                AND observation_status = 'VERIFIED_OBSERVED'
+                AND evidence_role = 'OBSERVED_COFFEE_TASTING_LANGUAGE'
+            )
         )
         AND decision = btrim(decision) AND decision <> ''
         AND limitation = btrim(limitation) AND limitation <> ''
@@ -619,6 +759,23 @@ CREATE TABLE audit.model_prebuild_checkpoint (
     )
 );
 
+CREATE TABLE audit.model_prebuild_artifact_hash (
+    artifact_key TEXT NOT NULL,
+    artifact_path TEXT NOT NULL,
+    sha256 TEXT NOT NULL,
+    artifact_role TEXT NOT NULL,
+    CONSTRAINT model_prebuild_artifact_hash_pk PRIMARY KEY (artifact_key),
+    CONSTRAINT model_prebuild_artifact_hash_value_ck CHECK (
+        artifact_key = lower(btrim(artifact_key)) AND artifact_key <> ''
+        AND artifact_path = btrim(artifact_path) AND artifact_path <> ''
+        AND sha256 ~ '^[0-9a-f]{64}$'
+        AND artifact_role IN (
+            'MODEL_PREBUILD_MANIFEST', 'EXPECTED_STATE',
+            'SOURCE_FILE', 'AUDIT_RECEIPT'
+        )
+    )
+);
+
 CREATE TABLE audit.model_prebuild_data_access_request (
     request_key TEXT NOT NULL,
     source_doi TEXT NOT NULL,
@@ -688,23 +845,56 @@ CREATE TABLE audit.model_prebuild_readiness_assertion (
     )
 );
 
-CREATE FUNCTION audit.prevent_model_prebuild_concept_insert()
+CREATE FUNCTION audit.prevent_model_prebuild_model_run()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 SET search_path = pg_catalog
-AS $prevent_model_prebuild_concept_insert$
+AS $prevent_model_prebuild_model_run$
 BEGIN
-    IF EXISTS (SELECT 1 FROM audit.model_prebuild_checkpoint) THEN
+    IF EXISTS (SELECT 1 FROM audit.model_prebuild_checkpoint)
+       AND (
+           NEW.run_configuration ->> 'round' = '3H'
+           OR coalesce(
+               (NEW.run_configuration ->> 'prebuild')::BOOLEAN,
+               FALSE
+           )
+       ) THEN
         RAISE EXCEPTION USING ERRCODE = '23514',
-            CONSTRAINT = 'model_prebuild_canonical_concept_freeze_ck',
-            MESSAGE = 'Round 3H cannot add canonical concepts to increase coverage';
+            CONSTRAINT = 'model_prebuild_model_run_prohibited_ck',
+            MESSAGE = 'Round 3H is metadata-only and cannot create model runs';
     END IF;
     RETURN NEW;
 END
-$prevent_model_prebuild_concept_insert$;
+$prevent_model_prebuild_model_run$;
 
-CREATE TRIGGER concept_model_prebuild_freeze_bi
-BEFORE INSERT ON kb.concept
-FOR EACH ROW EXECUTE FUNCTION audit.prevent_model_prebuild_concept_insert();
+CREATE TRIGGER model_prebuild_model_run_prohibited_biu
+BEFORE INSERT OR UPDATE ON ml.model_run
+FOR EACH ROW EXECUTE FUNCTION audit.prevent_model_prebuild_model_run();
+
+CREATE FUNCTION audit.prevent_model_prebuild_model_version()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog
+AS $prevent_model_prebuild_model_version$
+BEGIN
+    IF EXISTS (SELECT 1 FROM audit.model_prebuild_checkpoint)
+       AND (
+           NEW.configuration ->> 'round' = '3H'
+           OR coalesce(
+               (NEW.configuration ->> 'embeddings')::BOOLEAN,
+               FALSE
+           )
+       ) THEN
+        RAISE EXCEPTION USING ERRCODE = '23514',
+            CONSTRAINT = 'model_prebuild_embedding_generation_prohibited_ck',
+            MESSAGE = 'Round 3H cannot create model or embedding artifacts';
+    END IF;
+    RETURN NEW;
+END
+$prevent_model_prebuild_model_version$;
+
+CREATE TRIGGER model_prebuild_model_version_prohibited_biu
+BEFORE INSERT OR UPDATE ON ml.model_version
+FOR EACH ROW EXECUTE FUNCTION audit.prevent_model_prebuild_model_version();
 
 COMMIT;

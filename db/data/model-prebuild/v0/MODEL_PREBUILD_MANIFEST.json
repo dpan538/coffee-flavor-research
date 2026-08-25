@@ -26,7 +26,12 @@
     {
       "partition_key": "partition.baseline.liberica",
       "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
-      "grouping_keys": ["source_family", "coffee_identity", "roast", "preparation"]
+      "grouping_keys": [
+        "source_family",
+        "coffee_identity",
+        "roast",
+        "preparation"
+      ]
     },
     {
       "partition_key": "partition.baseline.firstbloom",
@@ -36,7 +41,12 @@
     {
       "partition_key": "partition.round3h.iswaldi",
       "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
-      "grouping_keys": ["source_family", "coffee_identity", "roast", "preparation"]
+      "grouping_keys": [
+        "source_family",
+        "coffee_identity",
+        "roast",
+        "preparation"
+      ]
     },
     {
       "partition_key": "partition.round3h.vezzulli",
@@ -56,7 +66,12 @@
     {
       "partition_key": "partition.round3h.nguyen",
       "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
-      "grouping_keys": ["source_family", "coffee_identity", "milk_mode", "panel_type"]
+      "grouping_keys": [
+        "source_family",
+        "coffee_identity",
+        "milk_mode",
+        "panel_type"
+      ]
     },
     {
       "partition_key": "partition.round3h.condelli",
@@ -117,26 +132,86 @@
     }
   ],
   "feature_registry": [
-    {"feature_key": "feature.source-family", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.coffee-identity", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.participant-type", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.preparation", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.roast", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.milk-mode", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.language", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.missingness-code", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
-    {"feature_key": "feature.descriptor-presence", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.descriptor-intensity", "harmonization_status": "NOT_COMPATIBLE"},
-    {"feature_key": "feature.cata-selection", "harmonization_status": "SOURCE_LOCAL_ONLY"},
-    {"feature_key": "feature.rata-rating", "harmonization_status": "SOURCE_LOCAL_ONLY"},
-    {"feature_key": "feature.basic-taste", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.body", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.astringency", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.liking", "harmonization_status": "NOT_COMPATIBLE"},
-    {"feature_key": "feature.purchase-intent", "harmonization_status": "SOURCE_LOCAL_ONLY"},
-    {"feature_key": "feature.industry-expression", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.association-membership", "harmonization_status": "PARTIALLY_COMPATIBLE"},
-    {"feature_key": "feature.question-response", "harmonization_status": "NOT_COMPATIBLE"}
+    {
+      "feature_key": "feature.source-family",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.coffee-identity",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.participant-type",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.preparation",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.roast",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.milk-mode",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.language",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.missingness-code",
+      "harmonization_status": "SEMANTICALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.descriptor-presence",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.descriptor-intensity",
+      "harmonization_status": "NOT_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.cata-selection",
+      "harmonization_status": "SOURCE_LOCAL_ONLY"
+    },
+    {
+      "feature_key": "feature.rata-rating",
+      "harmonization_status": "SOURCE_LOCAL_ONLY"
+    },
+    {
+      "feature_key": "feature.basic-taste",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.body",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.astringency",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.liking",
+      "harmonization_status": "NOT_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.purchase-intent",
+      "harmonization_status": "SOURCE_LOCAL_ONLY"
+    },
+    {
+      "feature_key": "feature.industry-expression",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.association-membership",
+      "harmonization_status": "PARTIALLY_COMPATIBLE"
+    },
+    {
+      "feature_key": "feature.question-response",
+      "harmonization_status": "NOT_COMPATIBLE"
+    }
   ],
   "coverage_inventory": {
     "coffee_sensory_source_family_count": 9,
@@ -173,10 +248,22 @@
   ],
   "eligibility_condition": "A future, separately authorized protocol must define source-local objectives, grouped splits, missingness handling, evaluation, and permitted exports.",
   "ineligible_surfaces": [
-    {"partition_key": "partition.baseline.yeager", "reason": "CHEMISTRY_ONLY"},
-    {"partition_key": "partition.round3h.condelli", "reason": "QUESTION_INSTRUMENT_METADATA_ONLY"},
-    {"partition_key": "partition.round3h.heo", "reason": "QUESTION_INSTRUMENT_METADATA_ONLY"},
-    {"partition_key": "partition.round3h.coffee-cuality", "reason": "QUESTION_INSTRUMENT_METADATA_ONLY_AND_TRADEMARK_BOUNDARY"}
+    {
+      "partition_key": "partition.baseline.yeager",
+      "reason": "CHEMISTRY_ONLY"
+    },
+    {
+      "partition_key": "partition.round3h.condelli",
+      "reason": "QUESTION_INSTRUMENT_METADATA_ONLY"
+    },
+    {
+      "partition_key": "partition.round3h.heo",
+      "reason": "QUESTION_INSTRUMENT_METADATA_ONLY"
+    },
+    {
+      "partition_key": "partition.round3h.coffee-cuality",
+      "reason": "QUESTION_INSTRUMENT_METADATA_ONLY_AND_TRADEMARK_BOUNDARY"
+    }
   ],
   "rights_constraints": [
     "Keep every source under its recorded license and public-export decision.",

@@ -34,33 +34,53 @@ BEGIN
       MESSAGE = 'Round 3G expected-state result is not hard/minimum/preferred PASS';
   END IF;
 
-  IF (SELECT count(*) FROM evidence.relationship_evidence_claim) <> 20
-     OR (SELECT count(*) FROM evidence.relationship_evidence_claim
-         WHERE evidence_direction = 'SUPPORTS') <> 1
-     OR (SELECT count(*) FROM evidence.relationship_evidence_claim
-         WHERE evidence_direction = 'CHALLENGES') <> 3
-     OR (SELECT count(*) FROM evidence.relationship_evidence_claim
-         WHERE evidence_direction = 'MIXED') <> 1
-     OR (SELECT count(*) FROM evidence.relationship_evidence_claim
-         WHERE evidence_direction = 'INSUFFICIENT') <> 15 THEN
+  IF (SELECT count(*) FROM evidence.relationship_evidence_claim AS claim
+      JOIN evidence.source_family AS family
+        ON family.source_family_key = claim.source_family_key
+      WHERE family.introduced_round = '3G') <> 20
+     OR (SELECT count(*) FROM evidence.relationship_evidence_claim AS claim
+         JOIN evidence.source_family AS family
+           ON family.source_family_key = claim.source_family_key
+         WHERE family.introduced_round = '3G'
+           AND claim.evidence_direction = 'SUPPORTS') <> 1
+     OR (SELECT count(*) FROM evidence.relationship_evidence_claim AS claim
+         JOIN evidence.source_family AS family
+           ON family.source_family_key = claim.source_family_key
+         WHERE family.introduced_round = '3G'
+           AND claim.evidence_direction = 'CHALLENGES') <> 3
+     OR (SELECT count(*) FROM evidence.relationship_evidence_claim AS claim
+         JOIN evidence.source_family AS family
+           ON family.source_family_key = claim.source_family_key
+         WHERE family.introduced_round = '3G'
+           AND claim.evidence_direction = 'MIXED') <> 1
+     OR (SELECT count(*) FROM evidence.relationship_evidence_claim AS claim
+         JOIN evidence.source_family AS family
+           ON family.source_family_key = claim.source_family_key
+         WHERE family.introduced_round = '3G'
+           AND claim.evidence_direction = 'INSUFFICIENT') <> 15 THEN
     RAISE EXCEPTION USING ERRCODE = '23514',
       CONSTRAINT = 'round3g_evidence_direction_inventory_ck',
       MESSAGE = 'Round 3G evidence direction inventory changed';
   END IF;
 
   IF (SELECT count(*) FROM kb.relationship_review_decision
-      WHERE disposition = 'PROMOTE_SOURCE_LOCAL') <> 1
+      WHERE reviewed_round = '3G'
+        AND disposition = 'PROMOTE_SOURCE_LOCAL') <> 1
      OR (SELECT count(*) FROM kb.relationship_review_decision
-         WHERE disposition = 'RETAIN_CANDIDATE') <> 17
+         WHERE reviewed_round = '3G'
+           AND disposition = 'RETAIN_CANDIDATE') <> 17
      OR (SELECT count(*)
          FROM calibration.question_target_review_decision
-         WHERE disposition = 'RETAIN_HYPOTHESIS') <> 12
+         WHERE reviewed_round = '3G'
+           AND disposition = 'RETAIN_HYPOTHESIS') <> 12
      OR (SELECT count(*)
          FROM calibration.question_target_review_decision
-         WHERE disposition = 'RESEARCH_SUPPORT_ADDED') <> 2
+         WHERE reviewed_round = '3G'
+           AND disposition = 'RESEARCH_SUPPORT_ADDED') <> 2
      OR (SELECT count(*)
          FROM calibration.question_target_review_decision
-         WHERE disposition = 'BILINGUAL_REVIEW_REQUIRED') <> 4 THEN
+         WHERE reviewed_round = '3G'
+           AND disposition = 'BILINGUAL_REVIEW_REQUIRED') <> 4 THEN
     RAISE EXCEPTION USING ERRCODE = '23514',
       CONSTRAINT = 'round3g_review_inventory_ck',
       MESSAGE = 'Round 3G membership or question disposition inventory changed';

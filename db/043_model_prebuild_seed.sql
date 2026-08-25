@@ -533,10 +533,14 @@ VALUES (
     'audit.run_model_prebuild_readiness_gate()'
 );
 
-INSERT INTO audit.round3e_artifact_hash (artifact_key, sha256)
+INSERT INTO audit.model_prebuild_artifact_hash (
+    artifact_key, artifact_path, sha256, artifact_role
+)
 VALUES (
     'round3h.model-prebuild-manifest',
-    'ea895bc0a9a8f9ee2edf567d86ee42bb6acf9570aa9dc8d3dd73f63cd5368569'
+    'db/data/model-prebuild/v0/MODEL_PREBUILD_MANIFEST.json',
+    '254f7b2aa1fb697372dd896a3631ff31c5b663cd9b79e3c24ba737716fe1b8ad',
+    'MODEL_PREBUILD_MANIFEST'
 );
 
 COMMIT;

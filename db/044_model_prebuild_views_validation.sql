@@ -482,12 +482,12 @@ WITH coverage AS (
     FROM audit.model_prebuild_leakage_risk
     UNION ALL SELECT 'analysis.manifest', 'true', 'true',
         EXISTS (
-            SELECT 1 FROM audit.round3e_artifact_hash
+            SELECT 1 FROM audit.model_prebuild_artifact_hash
             WHERE artifact_key = 'round3h.model-prebuild-manifest'
         )::TEXT,
         TRUE,
         EXISTS (
-            SELECT 1 FROM audit.round3e_artifact_hash
+            SELECT 1 FROM audit.model_prebuild_artifact_hash
             WHERE artifact_key = 'round3h.model-prebuild-manifest'
               AND sha256 ~ '^[0-9a-f]{64}$'
         ),
@@ -722,9 +722,9 @@ WITH checks AS (
     FROM audit.model_prebuild_execution_guard
     UNION ALL SELECT 'round3h.manifest_hash_registry',
         CASE WHEN count(*) = 1 THEN 0 ELSE 1 END::BIGINT
-    FROM audit.round3e_artifact_hash
+    FROM audit.model_prebuild_artifact_hash
     WHERE artifact_key = 'round3h.model-prebuild-manifest'
-      AND sha256 = 'ea895bc0a9a8f9ee2edf567d86ee42bb6acf9570aa9dc8d3dd73f63cd5368569'
+      AND sha256 = '254f7b2aa1fb697372dd896a3631ff31c5b663cd9b79e3c24ba737716fe1b8ad'
     UNION ALL SELECT 'round3h.readiness_false',
         CASE WHEN EXISTS (
             SELECT 1 FROM audit.run_model_prebuild_readiness_gate()

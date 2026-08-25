@@ -335,6 +335,9 @@ write_validation_results() {
                  UNION ALL
                  SELECT 'round3g', check_key, violation_count, passed
                  FROM audit.run_round3g_validation_queries()
+                 UNION ALL
+                 SELECT 'round3h', check_key, violation_count, passed
+                 FROM audit.run_round3h_validation_queries()
                  ORDER BY 1, 2;" >"$output_file"
   elif (( DISCOVERED_MIGRATION_COUNT > 38 )); then
     psql_target "$database_name" \
@@ -904,6 +907,71 @@ write_round3g_inventory() {
                ORDER BY record_type, record_key, record_value;" >"$output_file"
 }
 
+write_round3h_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 44 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="WITH receipt(record_type, record_key, record_value) AS (
+                   SELECT 'readiness_gate', readiness_key,
+                          concat_ws(',', minimum_required,
+                            preferred_required, observed,
+                            hard_gate, passed, evidence_path)
+                   FROM audit.run_model_prebuild_readiness_gate()
+
+                   UNION ALL
+
+                   SELECT 'readiness_state', 'round3h',
+                          audit.model_prebuild_readiness_state()
+
+                   UNION ALL
+
+                   SELECT 'coverage', 'round3h', row_to_json(coverage)::TEXT
+                   FROM audit.v_model_prebuild_coverage AS coverage
+
+                   UNION ALL
+
+                   SELECT 'feature', feature_key,
+                          concat_ws(',', harmonization_status,
+                            data_type, unit, model_use_status)
+                   FROM evidence.model_prebuild_feature_definition
+
+                   UNION ALL
+
+                   SELECT 'partition', partition_key,
+                          concat_ws(',', source_family_key,
+                            dataset_snapshot_key, participant_type,
+                            sensory_method, sample_count, row_count,
+                            future_training_surface_status,
+                            compatible_join_group)
+                   FROM evidence.model_prebuild_source_partition
+
+                   UNION ALL
+
+                   SELECT 'leakage', leakage_risk_key,
+                          concat_ws(',', risk_type, control_status,
+                            control_key, audit_pass)
+                   FROM audit.model_prebuild_leakage_risk
+
+                   UNION ALL
+
+                   SELECT 'relationship_constraint_delta', 'round3h',
+                          row_to_json(delta)::TEXT
+                   FROM audit.v_model_prebuild_relationship_delta AS delta
+               )
+               SELECT record_type, record_key, record_value
+               FROM receipt
+               ORDER BY record_type, record_key, record_value;" >"$output_file"
+}
+
 write_round2b_inventory() {
   local database_name=$1
   local output_file=$2
@@ -1176,6 +1244,7 @@ run_build() {
   write_round3e_inventory "$database_name" "$build_dir/round3e-inventory.txt"
   write_round3f_inventory "$database_name" "$build_dir/round3f-inventory.txt"
   write_round3g_inventory "$database_name" "$build_dir/round3g-inventory.txt"
+  write_round3h_inventory "$database_name" "$build_dir/round3h-inventory.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -1238,6 +1307,7 @@ compare_artifact ROUND3D_INVENTORY round3d-inventory.txt
 compare_artifact ROUND3E_INVENTORY round3e-inventory.txt
 compare_artifact ROUND3F_INVENTORY round3f-inventory.txt
 compare_artifact ROUND3G_INVENTORY round3g-inventory.txt
+compare_artifact ROUND3H_INVENTORY round3h-inventory.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
@@ -1264,6 +1334,7 @@ print_result_file ROUND3D_INVENTORY "$ARTIFACT_DIR/build-one/round3d-inventory.t
 print_result_file ROUND3E_INVENTORY "$ARTIFACT_DIR/build-one/round3e-inventory.txt"
 print_result_file ROUND3F_INVENTORY "$ARTIFACT_DIR/build-one/round3f-inventory.txt"
 print_result_file ROUND3G_INVENTORY "$ARTIFACT_DIR/build-one/round3g-inventory.txt"
+print_result_file ROUND3H_INVENTORY "$ARTIFACT_DIR/build-one/round3h-inventory.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'
