@@ -1,5 +1,12 @@
 # Repository Architecture
 
+Permanent research-relationship governance is defined in
+[`architecture/RELATIONSHIP_CONSTRAINT_MODEL.md`](architecture/RELATIONSHIP_CONSTRAINT_MODEL.md)
+and
+[`architecture/CONSTRAINT_REGISTRY.md`](architecture/CONSTRAINT_REGISTRY.md).
+From Round 3F onward, substantive rounds also publish the delta required by
+[`engineering/ROUND_RELATIONSHIP_CONSTRAINT_REQUIREMENT.md`](engineering/ROUND_RELATIONSHIP_CONSTRAINT_REQUIREMENT.md).
+
 ## Canonical knowledge boundary
 
 The current research architecture is the PostgreSQL 17+ Coffee Sensory
