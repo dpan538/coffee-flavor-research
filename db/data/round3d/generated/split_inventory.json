@@ -1,0 +1,8 @@
+{
+  "development_lots": [],
+  "held_out_test_lots": [],
+  "method": "lot_grouped",
+  "reason": "Two lots cannot support the frozen three-way performance split.",
+  "status": "NOT_AVAILABLE_MINIMUM_TWO_LOT_FEASIBILITY_PILOT",
+  "validation_lots": []
+}

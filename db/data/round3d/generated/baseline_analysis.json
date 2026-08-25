@@ -1,0 +1,24 @@
+{
+  "analysis_status": "PASS_WITH_NOT_ESTIMABLE_OUTPUTS",
+  "deep_learning_model_run": false,
+  "embedding_baseline_run": false,
+  "fixture_exclusion_pass": true,
+  "fixture_observation_count": 5,
+  "outputs": {
+    "assessor_uncertainty": "NOT_ESTIMABLE",
+    "average_questions_required": "NOT_ESTIMABLE",
+    "candidate_ranking_baseline": "NOT_ESTIMABLE",
+    "context_conflict_rate": "NOT_ESTIMABLE",
+    "context_support_distributions": "NOT_ESTIMABLE",
+    "early_stop_rate": "NOT_ESTIMABLE",
+    "explicit_user_override_rate": "NOT_ESTIMABLE",
+    "q2_marginal_value": "NOT_ESTIMABLE",
+    "q3_marginal_value": "NOT_ESTIMABLE",
+    "q4_marginal_value": "NOT_ESTIMABLE",
+    "q5_marginal_value": "NOT_ESTIMABLE",
+    "question_information_gain": "NOT_ESTIMABLE",
+    "repeat_stability": "NOT_ESTIMABLE"
+  },
+  "pgvector_required": false,
+  "real_observation_count": 0
+}

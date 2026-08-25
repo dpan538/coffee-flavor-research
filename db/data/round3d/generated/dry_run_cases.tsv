@@ -1,0 +1,6 @@
+dry_run_case_key	c0_code	c1_code	answer_path	expected_stop_step	explicit_override	fixture_label
+dry_run.round3d.early_stop_q1	filter_percolation	light	family_direction:fruit_bright	1	false	DRY_RUN_FIXTURE
+dry_run.round3d.continue_q2	immersion	medium	family_direction:fruit_bright|fruit_direction:citrus	2	false	DRY_RUN_FIXTURE
+dry_run.round3d.refine_q4	espresso_pressure	medium_dark	family_direction:cocoa_roast|roast_direction:cocoa_nut|sweet_direction:caramel|bright_acidity:soft_round	4	false	DRY_RUN_FIXTURE
+dry_run.round3d.exceptional_q5	cold_extraction	dark	family_direction:fruit_bright|fruit_direction:dried_tropical|sweet_direction:honey|bright_acidity:juicy|texture_direction:juicy_silky	5	false	DRY_RUN_FIXTURE
+dry_run.round3d.user_override_jasmine	filter_percolation	dark	family_direction:floral_tea|fruit_direction:citrus	2	true	DRY_RUN_FIXTURE

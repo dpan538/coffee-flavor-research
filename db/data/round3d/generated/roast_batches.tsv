@@ -1,0 +1,15 @@
+roast_batch_key	coffee_lot_key	roast_category_key	batch_code	record_status
+pilot.round3d.lot_01.roast.extremely_light	pilot.round3d.lot_01	roast.project_v1.extremely_light	PILOT-L01-R01	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_01.roast.light	pilot.round3d.lot_01	roast.project_v1.light	PILOT-L01-R02	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_01.roast.medium_light	pilot.round3d.lot_01	roast.project_v1.medium_light	PILOT-L01-R03	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_01.roast.medium	pilot.round3d.lot_01	roast.project_v1.medium	PILOT-L01-R04	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_01.roast.medium_dark	pilot.round3d.lot_01	roast.project_v1.medium_dark	PILOT-L01-R05	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_01.roast.dark	pilot.round3d.lot_01	roast.project_v1.dark	PILOT-L01-R06	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_01.roast.extremely_dark	pilot.round3d.lot_01	roast.project_v1.extremely_dark	PILOT-L01-R07	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.extremely_light	pilot.round3d.lot_02	roast.project_v1.extremely_light	PILOT-L02-R01	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.light	pilot.round3d.lot_02	roast.project_v1.light	PILOT-L02-R02	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.medium_light	pilot.round3d.lot_02	roast.project_v1.medium_light	PILOT-L02-R03	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.medium	pilot.round3d.lot_02	roast.project_v1.medium	PILOT-L02-R04	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.medium_dark	pilot.round3d.lot_02	roast.project_v1.medium_dark	PILOT-L02-R05	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.dark	pilot.round3d.lot_02	roast.project_v1.dark	PILOT-L02-R06	PLANNED_PHYSICAL_MATERIAL
+pilot.round3d.lot_02.roast.extremely_dark	pilot.round3d.lot_02	roast.project_v1.extremely_dark	PILOT-L02-R07	PLANNED_PHYSICAL_MATERIAL

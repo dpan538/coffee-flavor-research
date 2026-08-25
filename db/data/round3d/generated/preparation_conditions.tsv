@@ -1,0 +1,8 @@
+preparation_condition_key	preparation_concept_key	condition_code	coffee_mode_code	paired_black_condition_key	recipe_json
+pilot.round3d.preparation.filter_percolation	preparation.family.filter_percolation	PILOT-FILTER_PERCOLATION	black_coffee		"{""dose_g"":15,""mode"":""filter"",""water_g"":250}"
+pilot.round3d.preparation.immersion	preparation.family.immersion	PILOT-IMMERSION	black_coffee		"{""dose_g"":15,""mode"":""immersion"",""water_g"":250}"
+pilot.round3d.preparation.espresso_pressure	preparation.family.espresso_pressure	PILOT-ESPRESSO_PRESSURE	black_coffee		"{""beverage_g"":40,""dose_g"":18,""mode"":""espresso""}"
+pilot.round3d.preparation.hybrid	preparation.family.hybrid	PILOT-HYBRID	black_coffee		"{""dose_g"":15,""mode"":""manual_pressure"",""water_g"":230}"
+pilot.round3d.preparation.diluted_espresso	preparation.family.diluted_espresso	PILOT-DILUTED_ESPRESSO	black_coffee		"{""espresso_g"":40,""mode"":""espresso_water"",""water_g"":160}"
+pilot.round3d.preparation.cold_extraction	preparation.family.cold_extraction	PILOT-COLD_EXTRACTION	black_coffee		"{""dose_g"":20,""mode"":""cold_immersion"",""water_g"":240}"
+pilot.round3d.preparation.espresso_milk	preparation.family.espresso_milk	PILOT-ESPRESSO_MILK	milk_coffee	pilot.round3d.preparation.espresso_pressure	"{""espresso_g"":40,""milk_g"":120,""mode"":""dairy_milk""}"

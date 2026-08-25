@@ -1,0 +1,67 @@
+{
+  "artifact_status": "ENGINEERING_PILOT_NO_REAL_OBSERVATIONS",
+  "counts": {
+    "beverage_samples": 132,
+    "coffee_lots": 2,
+    "condition_cells": 66,
+    "dry_run_fixtures": 5,
+    "ordinary_user_presentations": 720,
+    "preparation_families": 7,
+    "presentation_slots": 1512,
+    "question_assignment_slots": 3600,
+    "real_observations": 0,
+    "reference_presentations": 792,
+    "roast_batches": 14,
+    "roast_categories": 7,
+    "session_slots": 192
+  },
+  "files": {
+    "baseline_analysis.json": {
+      "bytes": 876,
+      "sha256": "4a7688075dd1306b0026bf06b9c05080b45c208fe0c995b67d43e2f371d1381d"
+    },
+    "beverage_samples.tsv": {
+      "bytes": 23553,
+      "sha256": "dbd56b90672e00af5fe17a4d8c2c50b996d020a29e39dce04e9bd752de6d356b"
+    },
+    "coffee_lots.tsv": {
+      "bytes": 165,
+      "sha256": "ef2b2c7371b264e70d21e642b92d1b7f47936846cbfd26c2a95c2e88859a71a7"
+    },
+    "dry_run_cases.tsv": {
+      "bytes": 858,
+      "sha256": "46bfe8f939eb4fc024696645d011fa0e3028d247de48ce3bcf017fd8b50bf27a"
+    },
+    "preparation_conditions.tsv": {
+      "bytes": 1342,
+      "sha256": "ed557de94b16de599c21d7f5679691375ab5803016a5321157502a1e630c12f4"
+    },
+    "presentation_slots.tsv": {
+      "bytes": 305031,
+      "sha256": "eb7aa3fbfa6daf2d94819c007c42cdb43efcbbe4540335f231907b0b4a6edb4b"
+    },
+    "question_assignment_slots.tsv": {
+      "bytes": 702103,
+      "sha256": "3e48c83feff27767cf68792f6a9e4c51e80c21aabf0cb419a1cfb02261a528e9"
+    },
+    "roast_batches.tsv": {
+      "bytes": 1841,
+      "sha256": "12fe032cd62a59a5bd3e8d9777c477765bfe4edece5b3ceb8b815ad88946c44d"
+    },
+    "session_slots.tsv": {
+      "bytes": 19637,
+      "sha256": "17912dfd5dd55bf81aa5bd0affe42995b13564d113d51ab144185080ffc19b0d"
+    },
+    "split_inventory.json": {
+      "bytes": 251,
+      "sha256": "fe76dab2f695a0e7a1d23eb0744c97fb7c832e069cd9b060d26da47c3cebe45a"
+    }
+  },
+  "generator": "db/scripts/generate-round3d-pilot.py",
+  "matrix_sha256": "dbd56b90672e00af5fe17a4d8c2c50b996d020a29e39dce04e9bd752de6d356b",
+  "protocol_sha256": "4c759fcae812203c40394d1f510e93c4a83430a3dfb298e832b5ffc49f5924ad",
+  "question_bank_source_sha256": "f67dd524b6412463883848691b469099b23ed93cf2df5a692159b929a17c8607",
+  "randomization_seed": "coffee-context-calibration-minimum-pilot-20260825-v1",
+  "randomization_sha256": "eb7aa3fbfa6daf2d94819c007c42cdb43efcbbe4540335f231907b0b4a6edb4b",
+  "split_inventory_sha256": "fe76dab2f695a0e7a1d23eb0744c97fb7c832e069cd9b060d26da47c3cebe45a"
+}
