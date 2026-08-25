@@ -295,7 +295,33 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  if (( DISCOVERED_MIGRATION_COUNT > 29 )); then
+  if (( DISCOVERED_MIGRATION_COUNT > 32 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3a', check_key, violation_count, passed
+                 FROM audit.run_round3a_validation_queries()
+                 UNION ALL
+                 SELECT 'round3b', check_key, violation_count, passed
+                 FROM audit.run_round3b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3c', check_key, violation_count, passed
+                 FROM audit.run_round3c_validation_queries()
+                 UNION ALL
+                 SELECT 'round3d', check_key, violation_count, passed
+                 FROM audit.run_round3d_validation_queries()
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 29 )); then
     psql_target "$database_name" \
       --tuples-only \
       --no-align \
@@ -563,6 +589,81 @@ write_round3c_inventory() {
                ORDER BY record_type, record_key, record_value;" >"$output_file"
 }
 
+write_round3d_inventory() {
+  local database_name=$1
+  local output_file=$2
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 32 )); then
+    : >"$output_file"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command="WITH receipt(record_type, record_key, record_value) AS (
+                   SELECT 'pilot_inventory', pilot_matrix_snapshot_key,
+                          concat_ws(',', matrix_sha256,
+                            randomization_sha256,
+                            question_assignment_sha256,
+                            protocol_sha256, split_inventory_sha256,
+                            coffee_lot_count, roast_batch_count,
+                            preparation_condition_count,
+                            beverage_sample_count, session_slot_count,
+                            presentation_slot_count,
+                            question_assignment_slot_count,
+                            dry_run_fixture_count, real_observation_count,
+                            is_frozen)
+                   FROM calibration.v_round3d_pilot_inventory
+
+                   UNION ALL
+
+                   SELECT 'analysis', analysis_run_key,
+                          concat_ws(',', estimability_status,
+                            release_version, real_observation_count,
+                            dry_run_fixture_count, analysis_status,
+                            fixture_exclusion_pass,
+                            deep_learning_model_run,
+                            embedding_baseline_run, pgvector_required,
+                            outputs::TEXT)
+                   FROM calibration.v_round3d_analysis_status
+
+                   UNION ALL
+
+                   SELECT 'capture_batch', capture_import_batch_key,
+                          concat_ws(',', source_manifest_sha256,
+                            staged_row_count, real_row_count,
+                            fixture_row_count, pii_scan_pass,
+                            governance_gate_pass, promotion_status)
+                   FROM calibration.capture_import_batch
+
+                   UNION ALL
+
+                   SELECT 'dry_run', dry_run_case_key,
+                          concat_ws(',', c0_code, c1_code,
+                            expected_stop_step, explicit_override,
+                            fixture_label, mechanics_pass)
+                   FROM calibration.engineering_dry_run_case
+
+                   UNION ALL
+
+                   SELECT 'release', release_snapshot_key,
+                          concat_ws(',', version_label,
+                            lifecycle_status_code, manifest_sha256,
+                            checksums_sha256, license_spdx,
+                            split_snapshot_sha256,
+                            real_observation_count,
+                            dry_run_fixture_count)
+                   FROM calibration.release_snapshot
+                   WHERE release_snapshot_key =
+                     'release.context_calibration_v0.protocol_schema_v0_1_0'
+               )
+               SELECT record_type, record_key, record_value
+               FROM receipt
+               ORDER BY record_type, record_key, record_value;" >"$output_file"
+}
+
 write_round2b_inventory() {
   local database_name=$1
   local output_file=$2
@@ -816,6 +917,7 @@ run_build() {
   write_round3a_inventory "$database_name" "$build_dir/round3a-inventory.txt"
   write_round3b_inventory "$database_name" "$build_dir/round3b-inventory.txt"
   write_round3c_inventory "$database_name" "$build_dir/round3c-inventory.txt"
+  write_round3d_inventory "$database_name" "$build_dir/round3d-inventory.txt"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -874,6 +976,7 @@ compare_artifact ROUND2B_INVENTORY round2b-inventory.txt
 compare_artifact ROUND3A_INVENTORY round3a-inventory.txt
 compare_artifact ROUND3B_INVENTORY round3b-inventory.txt
 compare_artifact ROUND3C_INVENTORY round3c-inventory.txt
+compare_artifact ROUND3D_INVENTORY round3d-inventory.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
@@ -896,6 +999,7 @@ print_result_file ROUND2B_INVENTORY "$ARTIFACT_DIR/build-one/round2b-inventory.t
 print_result_file ROUND3A_INVENTORY "$ARTIFACT_DIR/build-one/round3a-inventory.txt"
 print_result_file ROUND3B_INVENTORY "$ARTIFACT_DIR/build-one/round3b-inventory.txt"
 print_result_file ROUND3C_INVENTORY "$ARTIFACT_DIR/build-one/round3c-inventory.txt"
+print_result_file ROUND3D_INVENTORY "$ARTIFACT_DIR/build-one/round3d-inventory.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'

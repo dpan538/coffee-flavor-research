@@ -176,14 +176,22 @@ def main() -> None:
         "split_abstention",
     )
 
-    public_paths = [ROOT / "data" / "calibration", GENERATED]
-    for root in public_paths:
-        if not root.exists():
-            continue
-        for path in root.rglob("*"):
-            if path.is_file():
-                text = path.read_text(encoding="utf-8", errors="ignore")
-                require(not DIRECT_IDENTIFIER.search(text), f"pii_scan:{path.relative_to(ROOT)}")
+    # Scan machine-readable row payloads, not documentation or schema prose
+    # that necessarily names prohibited fields while defining the policy.
+    public_payloads = sorted(GENERATED.glob("*"))
+    public_payloads.extend(
+        sorted((ROOT / "data" / "calibration" / "templates").glob("*.csv"))
+    )
+    public_payloads.append(
+        ROOT / "data" / "calibration" / "capture_bundle.example.json"
+    )
+    for path in public_payloads:
+        if path.is_file():
+            payload_text = path.read_text(encoding="utf-8", errors="ignore")
+            require(
+                not DIRECT_IDENTIFIER.search(payload_text),
+                f"pii_scan:{path.relative_to(ROOT)}",
+            )
 
     print("PILOT_MATRIX_VALIDATION_PASS=true")
     print("RANDOMIZATION_VALIDATION_PASS=true")

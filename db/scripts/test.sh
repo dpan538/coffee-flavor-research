@@ -89,6 +89,15 @@ if (( migration_count > 29 )); then
   )
 fi
 
+if (( migration_count > 32 )); then
+  test_files+=(
+    "$DB_DIR/tests/round3d_negative.sql"
+    "$DB_DIR/tests/round3d_semantic.sql"
+    "$DB_DIR/tests/round3d_retrieval.sql"
+    "$DB_DIR/tests/round3d_query_plans.sql"
+  )
+fi
+
 if [[ ! -f "$DB_DIR/007_validation_queries.sql" ]]; then
   printf 'ERROR: missing db/007_validation_queries.sql. Apply all migrations before testing.\n' >&2
   exit 66
@@ -268,6 +277,32 @@ END
 $round3c_validation_gate$;
 SQL
   printf 'ROUND3C_VALIDATION_PASS=true\n'
+fi
+
+if (( migration_count > 32 )); then
+  printf 'Running Round 3D validation query contract on database %s.\n' "$TARGET_DATABASE"
+  psql \
+    -X \
+    --set=ON_ERROR_STOP=1 \
+    --dbname="$TARGET_DATABASE" <<'SQL'
+SELECT check_key, violation_count, passed
+FROM audit.run_round3d_validation_queries()
+ORDER BY check_key;
+
+DO $round3d_validation_gate$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM audit.run_round3d_validation_queries()
+  ) OR EXISTS (
+    SELECT 1 FROM audit.run_round3d_validation_queries()
+    WHERE passed IS NOT TRUE OR violation_count <> 0
+  ) THEN
+    RAISE EXCEPTION 'Round 3D database validation failed: one or more checks reported violations';
+  END IF;
+END
+$round3d_validation_gate$;
+SQL
+  printf 'ROUND3D_VALIDATION_PASS=true\n'
 fi
 
 for test_file in "${test_files[@]}"; do
