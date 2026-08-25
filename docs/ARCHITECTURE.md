@@ -48,6 +48,9 @@ reproducibility evidence belongs in
 Round 3C adaptive architecture, dataset-design, protocol, migration, and
 reproducibility evidence belongs in
 [`docs/audits/coffee-sensory-kb-v0-round3c/`](./audits/coffee-sensory-kb-v0-round3c/).
+Round 3D pilot generation, capture, privacy, dry-run, release, and
+reproducibility evidence belongs in
+[`docs/audits/coffee-sensory-kb-v0-round3d/`](./audits/coffee-sensory-kb-v0-round3d/).
 
 ## PostgreSQL boundary
 
@@ -65,7 +68,11 @@ rights-governed context-source and frozen-snapshot tables, 4,817 imported raw
 context rows, held-out normalization results, signal-sufficiency records, and
 Round 3B validation. Forward migrations `026` through `029` add the isolated
 calibration-governance domain, experimental linkage, bilingual draft question
-bank, analysis/release provenance, and Round 3C validation. PostgreSQL is the system of record and
+bank, analysis/release provenance, and Round 3C validation. Forward migrations
+`030` through `032` add the frozen Round 3D pilot matrix, deterministic session,
+presentation, and question-assignment slots, closed real-observation import
+gates, a protocol/schema-only release, abstaining analysis receipt, and Round
+3D validation. PostgreSQL is the system of record and
 `pg_trgm` is required. `pgvector`, embeddings, a consumer ranking
 model, an application API, and frontend data integration are not dependencies
 of the validated baseline.
@@ -89,6 +96,13 @@ outputs, and evaluation judgments remain different relations. Round 3C seeds
 only governance and design rows, records zero empirical observations, and
 keeps the real-collection gate closed pending institutional approval, consent,
 and public-release rights.
+
+Round 3D materializes the approved minimum design as an engineering plan, not
+as a sensory dataset. Planned lots, roast batches, preparations, beverages,
+session slots, and randomized presentations remain separate from participant
+and sensory-observation tables. Five conspicuously labelled dry-run cases test
+interaction mechanics only. The public release skeleton reports zero real
+observations, and every empirical analysis output remains `NOT_ESTIMABLE`.
 
 The current user projections are deliberately narrower than the observation
 model. `context.v_current_user_preparation` exposes exactly eight known C0

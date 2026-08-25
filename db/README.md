@@ -174,6 +174,10 @@ the run.
    `audit.run_round3c_validation_queries()` expected-zero contract and Round
    3C calibration-governance, failure-path, semantic, retrieval, and query-plan
    suites.
+10. when Round 3D is present, the
+    `audit.run_round3d_validation_queries()` expected-zero contract and the
+    frozen-pilot, real-observation-gate, privacy, dry-run, retrieval, and
+    query-plan suites.
 
 ## Two clean rebuilds
 
@@ -226,6 +230,9 @@ compares:
   normalization inventory when Round 3B is present.
 - frozen study-readiness, design-scale, bilingual question-bank, and
   real-versus-fixture observation inventory when Round 3C is present.
+- frozen pilot hashes and counts, randomized session/question slots, capture
+  batch, protocol/schema release, five labelled mechanics fixtures, and the
+  all-`NOT_ESTIMABLE` analysis inventory when Round 3D is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases
@@ -263,3 +270,24 @@ linkage, direct participant identifiers, malformed active questions,
 ineligible assignments, over-cardinality responses, duplicate randomization,
 consensus disguised as raw observation, model output disguised as canonical
 knowledge, lot split leakage, and incomplete public-release metadata.
+
+## Round 3D engineering pilot
+
+Forward migrations `030` through `032` load the deterministic minimum-pilot
+plan generated under `db/data/round3d/generated/`. The database inventory is 2
+planned coffee lots, 14 planned roast batches, 7 preparation conditions, 66
+cross-condition cells, 132 planned beverages, 192 session slots, 1,512
+presentation slots, and 3,600 adaptive-question slots. These are plans, not
+physical samples or collected observations.
+
+The matrix, presentation schedule, question schedule, protocol, split, and
+release hashes are stored with the frozen plan. Update/delete triggers protect
+the plan, while governance triggers reject any `real_observation` write or
+promotion until ethics/approval, consent-material, and public-release-rights
+gates are all true. Five `DRY_RUN_FIXTURE` cases test Q1 stopping, Q2
+continuation, Q4 refinement, exceptional Q5, and explicit user override. They
+remain outside observation and release counts.
+
+The distinct `protocol-and-schema-v0.1.0` release contains no participant
+rows. Its analysis record is `NOT_ESTIMABLE` for every preregistered output;
+deep learning, embeddings, and `pgvector` remain unused.
