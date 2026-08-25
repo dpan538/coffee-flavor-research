@@ -1,0 +1,551 @@
+{
+  "version": "round3e-question-language-v1",
+  "information_gain_status": "NOT_ESTIMABLE",
+  "ordinary_user_validation_count": 0,
+  "logical_questions": [
+    {
+      "logical_question_code": "floral_tea_reference",
+      "target_distinction": "floral, fragrant-tea, and neither/uncertain references after a broad floral-or-tea response",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "floral/tea",
+      "sensory_modality": "retronasal aroma and flavor reference",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:CATA Tea.floral",
+        "round3e.lexical-review:floral-tea"
+      ],
+      "consumer_familiarity_assumptions": "Jasmine and tea may be familiar while white-floral and fragrant-tea subtypes may not be.",
+      "ambiguity": "Tea-like can describe aroma, structure, dilution, or a named tea; jasmine can mean flower, tea, or fragrance.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Needs bilingual sensory review and ordinary-user comprehension testing in each eligible context.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which reference is closest, if any?",
+          "options": [
+            "jasmine or white floral",
+            "fragrant tea",
+            "another floral or tea reference",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "English research draft; not user-validated."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的联想，哪一种最像？",
+          "options": [
+            "茉莉或白色花香",
+            "芳香型茶",
+            "其他花香或茶感联想",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "“芳香型茶” is experiential, not asserted equivalent to fragrant tea; Mainland review pending."
+        }
+      }
+    },
+    {
+      "logical_question_code": "tea_style_reference",
+      "target_distinction": "Earl Grey, black tea, citrus-peel, and neither/uncertain references after a tea-like answer",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "diluted_espresso",
+        "cold_extraction"
+      ],
+      "eligible_c1": ["extremely_light", "light", "medium_light", "medium"],
+      "candidate_region": "floral/tea",
+      "sensory_modality": "aroma and flavor reference",
+      "evidence": [
+        "round3e.lexical-review:tea-like",
+        "round3e.question-research:nearby-reference-design"
+      ],
+      "consumer_familiarity_assumptions": "Earl Grey familiarity varies by country; black tea is broad and citrus peel may be more concrete.",
+      "ambiguity": "Earl Grey combines black tea, bergamot, citrus, and floral associations.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Named-tea familiarity and experiential equivalence need regional testing.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "What kind of tea-like reference is closest, if any?",
+          "options": [
+            "Earl Grey or bergamot",
+            "black tea",
+            "citrus peel",
+            "another tea-like reference",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "English research draft; named reference may be unfamiliar."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的茶感联想，哪一种最像？",
+          "options": [
+            "伯爵茶或佛手柑",
+            "红茶",
+            "柑橘皮",
+            "其他茶感联想",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "Mainland 红茶 corresponds to black tea by production convention, not color-literal translation; review pending."
+        }
+      }
+    },
+    {
+      "logical_question_code": "fruit_region_reference",
+      "target_distinction": "berry, stone-fruit, tropical-fruit, citrus, and neither/uncertain regions after a broad fruit answer",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "fruit",
+      "sensory_modality": "aroma and flavor reference",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:CATA Fruit and Citrus",
+        "round2b.firstbloom:recurrent fruit expressions"
+      ],
+      "consumer_familiarity_assumptions": "Fruit families are more familiar than many individual cultivars, but stone fruit is specialist language for some consumers.",
+      "ambiguity": "Fermented, winey, and candy-like fruit references can cross regions.",
+      "expected_information_role": "candidate-region refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Stone-fruit terminology and examples require comprehension testing.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which fruit region is closest, if any?",
+          "options": [
+            "berry",
+            "stone fruit such as peach or plum",
+            "tropical fruit",
+            "citrus",
+            "another fruit",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "Examples are explanatory, not candidate labels."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的水果联想，哪一类最像？",
+          "options": [
+            "莓果类",
+            "桃或李子一类的核果",
+            "热带水果",
+            "柑橘类",
+            "其他水果",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "“核果” may be technical; experiential wording is retained for review."
+        }
+      }
+    },
+    {
+      "logical_question_code": "cocoa_nut_reference",
+      "target_distinction": "cocoa, dark-chocolate, nut, and neither/uncertain references",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "cocoa/nut/caramel",
+      "sensory_modality": "aroma and flavor reference",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:CATA Nutty and Dark.chocolate",
+        "round2b.firstbloom:recurrent cocoa and nut expressions"
+      ],
+      "consumer_familiarity_assumptions": "Cocoa and chocolate are familiar but cocoa powder, cacao, and dark chocolate can overlap.",
+      "ambiguity": "Roast bitterness can be interpreted as dark chocolate; nut identity remains broad.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Needs familiar-reference and milk-context review.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which reference is closest, if any?",
+          "options": [
+            "cocoa powder",
+            "dark chocolate",
+            "nuts",
+            "another cocoa or nut reference",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "English research draft."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的联想，哪一种最像？",
+          "options": [
+            "可可粉",
+            "黑巧克力",
+            "坚果",
+            "其他可可或坚果联想",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "可可/巧克力 boundaries need regional review."
+        }
+      }
+    },
+    {
+      "logical_question_code": "browned_sweet_reference",
+      "target_distinction": "caramel, brown-sugar, honey, and neither/uncertain references",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "cocoa/nut/caramel",
+      "sensory_modality": "aroma, flavor, and sweetness reference",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:CATA Caramel and Sweet",
+        "round2b.firstbloom:recurrent caramel, brown sugar, and honey expressions"
+      ],
+      "consumer_familiarity_assumptions": "The references are familiar but sweetness intensity and flavor identity can be conflated.",
+      "ambiguity": "Honey can imply sweetness, aroma, processing, or mouthfeel.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Question must avoid treating perceived sweetness as proof of sugar content.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which sweet or browned-sugar reference is closest, if any?",
+          "options": [
+            "caramel",
+            "brown sugar",
+            "honey",
+            "another sweet reference",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "English research draft."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的甜香或焦糖化联想，哪一种最像？",
+          "options": [
+            "焦糖",
+            "红糖",
+            "蜂蜜",
+            "其他甜香联想",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "红糖 is regionally concrete but not an exact universal equivalent of brown sugar."
+        }
+      }
+    },
+    {
+      "logical_question_code": "roast_smoke_reference",
+      "target_distinction": "toast, smoke, ash, spice, and neither/uncertain references",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "roast/spice/smoke",
+      "sensory_modality": "orthonasal and retronasal aroma and flavor reference",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:CATA Burnt and Roasted",
+        "round2b.firstbloom:recurrent roast expressions"
+      ],
+      "consumer_familiarity_assumptions": "Toast, smoke, and ash are concrete but can carry quality judgments.",
+      "ambiguity": "Roast darkness is context C1, while a roast-like reference is a response; they must not be collapsed.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Potentially leading negative wording and C1 interaction need comprehension testing.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which roast-related reference is closest, if any?",
+          "options": [
+            "toast",
+            "smoke",
+            "ash",
+            "spice",
+            "another roast-related reference",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "English research draft."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的烘烤类联想，哪一种最像？",
+          "options": [
+            "烤面包",
+            "烟熏",
+            "灰烬",
+            "香料",
+            "其他烘烤类联想",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "烟熏 and 灰烬 may imply defects; neutral framing review pending."
+        }
+      }
+    },
+    {
+      "logical_question_code": "sweetness_character",
+      "target_distinction": "perceived sweetness presence and character without implying measured sugar",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "sweetness",
+      "sensory_modality": "basic taste and flavor association",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:CATA Sweet",
+        "mendeley.coffee-taste-sensitivity.v1:consumer response structure"
+      ],
+      "consumer_familiarity_assumptions": "Consumers can answer perceived sweetness, but added-sugar expectations and milk sweetness may intrude.",
+      "ambiguity": "Sweet aroma, basic taste, and named sweet foods are distinct constructs.",
+      "expected_information_role": "broad response clarification only; no information-gain value assigned",
+      "unresolved_concerns": "Black/milk wording and unsweetened-beverage framing need testing.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "How does the perceived sweetness come across, if at all?",
+          "options": [
+            "clearly sweet",
+            "sweet-smelling or sweet-associated, not a clear sweet taste",
+            "not sweet",
+            "does not fit these",
+            "not sure"
+          ],
+          "translation_notes": "Separates taste from association provisionally."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果能感觉到甜，它更接近哪一种？",
+          "options": [
+            "有明显甜味",
+            "有甜香或甜食联想，但甜味不明显",
+            "不甜",
+            "都不符合",
+            "不确定"
+          ],
+          "translation_notes": "甜味/甜香 distinction needs Mainland comprehension review."
+        }
+      }
+    },
+    {
+      "logical_question_code": "acidity_character",
+      "target_distinction": "bright, juicy, citrus-like, sour, and neither/uncertain acidity language",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "acidity",
+      "sensory_modality": "basic taste, mouthfeel, and experiential association",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:JAR Acidity and CATA Citrus/Sour",
+        "round3e.bilingual-review:bright-juicy"
+      ],
+      "consumer_familiarity_assumptions": "Sour is familiar; bright and juicy are specialty-coffee register and may not be sensory-equivalent across languages.",
+      "ambiguity": "Bright can mean acidity, aroma, clarity, color, or positive evaluation; juicy can mean fruit, salivation, or body.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Requires literal-versus-experiential translation review and ordinary-user testing.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which description is closest to the acidity, if any?",
+          "options": [
+            "bright or lively",
+            "juicy or mouth-watering",
+            "citrus-like",
+            "plainly sour",
+            "another acidity character",
+            "no noticeable acidity",
+            "not sure"
+          ],
+          "translation_notes": "Bright and juicy remain research terms, not validated constructs."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果能感觉到酸感，哪种描述最接近？",
+          "options": [
+            "明亮或活泼",
+            "多汁感或让人口中生津",
+            "类似柑橘",
+            "直接的酸味",
+            "其他酸感",
+            "没有明显酸感",
+            "不确定"
+          ],
+          "translation_notes": "明亮 is literal and potentially non-equivalent; 生津 is experiential and region/register-sensitive."
+        }
+      }
+    },
+    {
+      "logical_question_code": "texture_character",
+      "target_distinction": "silky, creamy, heavy, drying, thin/clean, and neither/uncertain texture references",
+      "eligible_c0": [
+        "filter_percolation",
+        "immersion",
+        "hybrid",
+        "espresso_pressure",
+        "diluted_espresso",
+        "stovetop_boiled",
+        "cold_extraction",
+        "espresso_milk"
+      ],
+      "eligible_c1": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark"
+      ],
+      "candidate_region": "texture",
+      "sensory_modality": "mouthfeel and tactile sensation",
+      "evidence": [
+        "dryad.cotter-black-coffee.v4:JAR Mouthfeel and CATA Thick.viscous/Astringent",
+        "round3e.bilingual-review:clean-texture"
+      ],
+      "consumer_familiarity_assumptions": "Creamy is familiar but may imply milk; clean may be evaluative rather than tactile.",
+      "ambiguity": "Body, viscosity, astringency, finish, and absence of sediment are separable.",
+      "expected_information_role": "candidate-local refinement only; no information-gain value assigned",
+      "unresolved_concerns": "Milk mode, clean wording, and drying sensation need separate review.",
+      "versions": {
+        "en": {
+          "lifecycle": "RESEARCH_REVIEWED",
+          "prompt": "Which mouthfeel is closest, if any?",
+          "options": [
+            "silky or smooth",
+            "creamy",
+            "heavy or thick",
+            "drying or puckering",
+            "light or thin",
+            "another texture",
+            "none of these",
+            "not sure"
+          ],
+          "translation_notes": "Clean is omitted from the option set pending construct review."
+        },
+        "zh-Hans": {
+          "lifecycle": "CANDIDATE",
+          "prompt": "如果有接近的口感，哪一种最像？",
+          "options": [
+            "丝滑或顺滑",
+            "绵密或奶油般",
+            "厚重或浓稠",
+            "收敛或口腔发干",
+            "轻盈或偏薄",
+            "其他质感",
+            "都不像",
+            "不确定"
+          ],
+          "translation_notes": "奶油般 may imply dairy; 收敛 is technical while 口腔发干 is experiential."
+        }
+      }
+    }
+  ]
+}

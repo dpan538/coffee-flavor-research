@@ -1,0 +1,127 @@
+{
+  "capture_date": "2026-08-25",
+  "import_version": "round3e-v1",
+  "snapshots": [
+    {
+      "dataset_snapshot_key": "mendeley.ftnir-specialty-coffee.v4.selected",
+      "source_key": "mendeley.ftnir-specialty-coffee",
+      "source_version": "4",
+      "source_title": "Fourier Transform Near Infrared (FT-NIR) spectra and sensory scores in green and roasted specialty coffee for machine learning-based quality monitoring",
+      "source_owner": "Gentil Andres Collazos-Escobar; Ever M. Morales-Angulo; Andres Felipe Bahamon Monje; Nelson Gutierrez Guzman",
+      "doi_or_repository_url": "https://doi.org/10.17632/nz2fr76trm.4",
+      "license": "CC-BY-4.0",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "privacy_decision": "PASS_NO_DIRECT_PARTICIPANT_IDENTIFIERS",
+      "public_release_eligible": true,
+      "declared_row_count": 320,
+      "declared_field_count": 15,
+      "files": [
+        {
+          "path": "mendeley_ftnir_v4/file_inventory.json",
+          "sha256": "2303a63cfaecee7ca19104993c43b7b01a08dceb94c2fcde3df2977329d3c664",
+          "role": "repository_file_inventory",
+          "declared_row_count": 18,
+          "declared_field_count": 5
+        },
+        {
+          "path": "mendeley_ftnir_v4/Sample_origin_and_sensory_score_Specialty_Coffee.xlsx",
+          "sha256": "71926de32c4d183c4c627efb00d5c32fa530844e92d5e4ea011f6d05e1a35a8e",
+          "role": "source_data",
+          "worksheet": "data",
+          "declared_row_count": 128,
+          "declared_field_count": 12
+        },
+        {
+          "path": "mendeley_ftnir_v4/SensoryQuality_RoastedCoffee.xlsx",
+          "sha256": "4d6a39b332887f2f3a519bf73bd7631a77821a784bc9094a4a52e932c02a3174",
+          "role": "source_data",
+          "worksheet": "Cup quality_RoastedCoffee",
+          "declared_row_count": 192,
+          "declared_field_count": 3
+        }
+      ]
+    },
+    {
+      "dataset_snapshot_key": "mendeley.coffee-taste-sensitivity.v1",
+      "source_key": "mendeley.coffee-taste-sensitivity",
+      "source_version": "1",
+      "source_title": "Data for: Does taste sensitivity matter? The effect of coffee sensory tasting information and taste sensitivity on consumer preferences",
+      "source_owner": "Jie Li; Miguel Gomez; Nadia A. Streletskaya",
+      "doi_or_repository_url": "https://doi.org/10.17632/3yv7bdrczd.1",
+      "license": "CC-BY-4.0",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "privacy_decision": "PASS_PSEUDONYMOUS_ID_DEMOGRAPHIC_REVIEW",
+      "public_release_eligible": true,
+      "declared_row_count": 93,
+      "declared_field_count": 13,
+      "files": [
+        {
+          "path": "mendeley_taste_sensitivity_v1/file_inventory.json",
+          "sha256": "2600818a4ef26b84b7b52c479137545c5c18c11779919e5edb0e670b3d8eb644",
+          "role": "repository_file_inventory",
+          "declared_row_count": 1,
+          "declared_field_count": 5
+        },
+        {
+          "path": "mendeley_taste_sensitivity_v1/Coffee_sensory_information_data.xlsx",
+          "sha256": "1ef4bc85e81ff56e396c98108373a0b4626f89dc9c920f521b001979c590bab3",
+          "role": "source_data",
+          "worksheet": "raw data",
+          "declared_row_count": 93,
+          "declared_field_count": 13,
+          "excluded_worksheet": "Sheet1",
+          "exclusion_reason": "source-authored aggregate analysis is not a source-local participant row table"
+        }
+      ]
+    },
+    {
+      "dataset_snapshot_key": "wikidata.coffee-preparation-entities.20260825",
+      "source_key": "wikidata.coffee-preparation-entities",
+      "source_version": "entity-revisions-captured-2026-08-25",
+      "source_title": "Wikidata coffee preparation entity labels and aliases",
+      "source_owner": "Wikidata contributors",
+      "doi_or_repository_url": "https://www.wikidata.org/w/api.php?action=wbgetentities",
+      "license": "CC0-1.0",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "privacy_decision": "PASS_NO_PARTICIPANT_DATA",
+      "public_release_eligible": true,
+      "declared_row_count": 14,
+      "declared_field_count": 6,
+      "files": [
+        {
+          "path": "wikidata_20260825/entities.json",
+          "sha256": "c2a65e166483124750118ac8c57f9cf92f5610ca7f3cebe5d45a8f596c0bbc42",
+          "role": "source_data",
+          "declared_row_count": 14,
+          "declared_field_count": 6
+        }
+      ]
+    },
+    {
+      "dataset_snapshot_key": "usda.fdc-coffee-search.fndds-2021-2023.20260825",
+      "source_key": "usda.fooddata-central-coffee-search",
+      "source_version": "FNDDS-2021-2023-api-capture-2026-08-25",
+      "source_title": "USDA FoodData Central Survey (FNDDS) coffee search response",
+      "source_owner": "United States Department of Agriculture",
+      "doi_or_repository_url": "https://fdc.nal.usda.gov/api-guide",
+      "license": "CC0-1.0",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "privacy_decision": "PASS_NO_PARTICIPANT_DATA",
+      "public_release_eligible": true,
+      "declared_row_count": 50,
+      "declared_field_count": 18,
+      "files": [
+        {
+          "path": "usda_fdc_20260825/coffee_search.json",
+          "sha256": "7f72598967e210c1479ac8d399f16213fde6ba5e53852b8c2a625ce28868de36",
+          "role": "source_data",
+          "declared_row_count": 50,
+          "declared_field_count": 18,
+          "included_row_count": 32,
+          "excluded_row_count": 18,
+          "exclusion_reason": "search hits that are coffee creamers, cakes, or breads rather than coffee beverages"
+        }
+      ]
+    }
+  ]
+}

@@ -37,6 +37,8 @@ generate_active_artifacts() {
   fi
 }
 
+python3 "$REPOSITORY_ROOT/db/scripts/test-round3e-artifact-contract.py"
+
 write_manifest() {
   local output_path=$1
   local relative_path

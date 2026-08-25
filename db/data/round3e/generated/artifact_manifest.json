@@ -1,0 +1,137 @@
+{
+  "artifacts": [
+    {
+      "path": "db/data/round3e/generated/ci_inventory.json",
+      "row_count": null,
+      "sha256": "d43cf44c96d091127b2e43f4b6b2b62e91994c6512570794d7bd0e28b26f9caf"
+    },
+    {
+      "path": "db/data/round3e/generated/corpus_documents.tsv",
+      "row_count": 46,
+      "sha256": "1294c6270dae12d9b8c544f0cf5df5265b5c0d8a49bde0c8d91281d31eb9f73a"
+    },
+    {
+      "path": "db/data/round3e/generated/corpus_expressions.tsv",
+      "row_count": 215,
+      "sha256": "7bf4d056532f1da12dc39bf9b2f717d8dd691ab8952e40277d59e28b1fa27900"
+    },
+    {
+      "path": "db/data/round3e/generated/coverage_cube.tsv",
+      "row_count": 52,
+      "sha256": "b0a2e865a731c8e30a382b6a4f5bd15179520311a8850ebd22790ebc4aa27a62"
+    },
+    {
+      "path": "db/data/round3e/generated/data_quality_profiles.json",
+      "row_count": null,
+      "sha256": "804ae622caef23f68a5fab0aa87fdea56cd444faa7b5e15624427c516215c588"
+    },
+    {
+      "path": "db/data/round3e/generated/external_field_dictionary.tsv",
+      "row_count": 28,
+      "sha256": "372e0ac6c3f3af8ab6cb036674bba9a607ce83fb840a0c50f346beb5e6b1937f"
+    },
+    {
+      "path": "db/data/round3e/generated/external_observations.tsv",
+      "row_count": 413,
+      "sha256": "8c105cf3df51d346135c6f1e0165a62ad2d7d062ef79e8fc0806f1ad9607a929"
+    },
+    {
+      "path": "db/data/round3e/generated/lexical_mapping_candidates.tsv",
+      "row_count": 107,
+      "sha256": "c629336c0c170dc53e4edefca33f9bda0b7d71c36c61a017e706a911f064dbf4"
+    },
+    {
+      "path": "db/data/round3e/generated/question_candidates.tsv",
+      "row_count": 18,
+      "sha256": "98d47b24a4f5def1ccbe616f5932205b2bca74ce9ca29d3fb14ce58eae590a90"
+    }
+  ],
+  "counts": {
+    "corpus_document_count": 46,
+    "corpus_expression_occurrence_count": 215,
+    "coverage_observed_cell_count": 52,
+    "exclusion_count": 18,
+    "external_observation_count": 413,
+    "imported_record_count": 459,
+    "imported_source_count": 4,
+    "lexical_mapping_count": 107,
+    "question_language_version_count": 18,
+    "question_logical_candidate_count": 9,
+    "question_user_validated_count": 0,
+    "raw_snapshot_row_count": 477,
+    "unique_normalized_expression_count": 134
+  },
+  "named_hashes": {
+    "ci_inventory_hash": "d43cf44c96d091127b2e43f4b6b2b62e91994c6512570794d7bd0e28b26f9caf",
+    "coverage_cube_hash": "b0a2e865a731c8e30a382b6a4f5bd15179520311a8850ebd22790ebc4aa27a62",
+    "data_quality_report_hash": "804ae622caef23f68a5fab0aa87fdea56cd444faa7b5e15624427c516215c588",
+    "lexical_mapping_hash": "c629336c0c170dc53e4edefca33f9bda0b7d71c36c61a017e706a911f064dbf4",
+    "question_bank_hash": "98d47b24a4f5def1ccbe616f5932205b2bca74ce9ca29d3fb14ce58eae590a90"
+  },
+  "snapshots": [
+    {
+      "created_at": "2026-08-25",
+      "dataset_snapshot_key": "mendeley.ftnir-specialty-coffee.v4.selected",
+      "field_count": 15,
+      "file_hashes": {
+        "mendeley_ftnir_v4/Sample_origin_and_sensory_score_Specialty_Coffee.xlsx": "71926de32c4d183c4c627efb00d5c32fa530844e92d5e4ea011f6d05e1a35a8e",
+        "mendeley_ftnir_v4/SensoryQuality_RoastedCoffee.xlsx": "4d6a39b332887f2f3a519bf73bd7631a77821a784bc9094a4a52e932c02a3174",
+        "mendeley_ftnir_v4/file_inventory.json": "2303a63cfaecee7ca19104993c43b7b01a08dceb94c2fcde3df2977329d3c664"
+      },
+      "import_code_sha": "RECORDED_BY_FORWARD_MIGRATION",
+      "import_version": "round3e-v1",
+      "license": "CC-BY-4.0",
+      "privacy_decision": "PASS_NO_DIRECT_PARTICIPANT_IDENTIFIERS",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "row_count": 320,
+      "source_version": "4"
+    },
+    {
+      "created_at": "2026-08-25",
+      "dataset_snapshot_key": "mendeley.coffee-taste-sensitivity.v1",
+      "field_count": 13,
+      "file_hashes": {
+        "mendeley_taste_sensitivity_v1/Coffee_sensory_information_data.xlsx": "1ef4bc85e81ff56e396c98108373a0b4626f89dc9c920f521b001979c590bab3",
+        "mendeley_taste_sensitivity_v1/file_inventory.json": "2600818a4ef26b84b7b52c479137545c5c18c11779919e5edb0e670b3d8eb644"
+      },
+      "import_code_sha": "RECORDED_BY_FORWARD_MIGRATION",
+      "import_version": "round3e-v1",
+      "license": "CC-BY-4.0",
+      "privacy_decision": "PASS_PSEUDONYMOUS_ID_DEMOGRAPHIC_REVIEW",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "row_count": 93,
+      "source_version": "1"
+    },
+    {
+      "created_at": "2026-08-25",
+      "dataset_snapshot_key": "wikidata.coffee-preparation-entities.20260825",
+      "field_count": 6,
+      "file_hashes": {
+        "wikidata_20260825/entities.json": "c2a65e166483124750118ac8c57f9cf92f5610ca7f3cebe5d45a8f596c0bbc42"
+      },
+      "import_code_sha": "RECORDED_BY_FORWARD_MIGRATION",
+      "import_version": "round3e-v1",
+      "license": "CC0-1.0",
+      "privacy_decision": "PASS_NO_PARTICIPANT_DATA",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "row_count": 14,
+      "source_version": "entity-revisions-captured-2026-08-25"
+    },
+    {
+      "created_at": "2026-08-25",
+      "dataset_snapshot_key": "usda.fdc-coffee-search.fndds-2021-2023.20260825",
+      "field_count": 18,
+      "file_hashes": {
+        "usda_fdc_20260825/coffee_search.json": "7f72598967e210c1479ac8d399f16213fde6ba5e53852b8c2a625ce28868de36"
+      },
+      "import_code_sha": "RECORDED_BY_FORWARD_MIGRATION",
+      "import_version": "round3e-v1",
+      "license": "CC0-1.0",
+      "privacy_decision": "PASS_NO_PARTICIPANT_DATA",
+      "rights_decision": "IMPORT_RAW_AND_DERIVED",
+      "row_count": 50,
+      "source_version": "FNDDS-2021-2023-api-capture-2026-08-25"
+    }
+  ],
+  "version": "round3e-artifact-manifest-v1"
+}

@@ -1,0 +1,82 @@
+{
+  "mendeley.coffee-taste-sensitivity.v1": {
+    "duplicate_row_count": 0,
+    "exclusion_count": 0,
+    "imported_record_count": 93,
+    "missingness_by_field": {},
+    "participant_type": "ordinary_user_or_consumer_as_source_described",
+    "pii_scan_pass": true,
+    "quality_flags": [
+      "source-local numeric codebooks are not fully defined in the workbook",
+      "age and gender are retained as public source demographics; source ID is pseudonymous"
+    ],
+    "raw_row_count": 93,
+    "unique_participant_count": 90
+  },
+  "mendeley.ftnir-specialty-coffee.v4.selected": {
+    "exclusion_count": 0,
+    "imported_record_count": 320,
+    "pii_scan_pass": true,
+    "preparation_coverage": {
+      "not_reported_in_selected_files": 320
+    },
+    "quality_flags": [
+      "source label says SCA score; no project endorsement or conversion",
+      "assessor and preparation metadata are not present in selected files",
+      "geographical columns end before the 128-row green/roasted series"
+    ],
+    "raw_row_count": 320,
+    "replicate_coverage": "three source-labelled score replicates for each of 64 samples",
+    "roast_coverage": {
+      "green_source_rows": 64,
+      "roasted_source_rows_no_seven_level_mapping": 256
+    },
+    "unique_participant_or_assessor_count": 0,
+    "unique_sample_count": 64
+  },
+  "usda.fdc-coffee-search.fndds-2021-2023.20260825": {
+    "black_milk_coverage": {
+      "black": 7,
+      "milk": 23,
+      "not_reported": 2
+    },
+    "exclusion_count": 18,
+    "imported_record_count": 32,
+    "language_coverage": {
+      "en": 32
+    },
+    "quality_flags": [
+      "search-page snapshot is source-concentrated to the first 50 sorted hits",
+      "food descriptions are not specialty sensory observations",
+      "18 non-beverage hits are retained only in raw source and excluded from derived corpus"
+    ],
+    "raw_row_count": 50
+  },
+  "wikidata.coffee-preparation-entities.20260825": {
+    "exclusion_count": 0,
+    "imported_record_count": 14,
+    "language_coverage": {
+      "en": 43,
+      "zh": 36,
+      "zh-cn": 14,
+      "zh-hans": 14
+    },
+    "preparation_coverage": {
+      "cold_extraction": 1,
+      "diluted_espresso": 2,
+      "espresso_milk": 3,
+      "espresso_pressure": 1,
+      "filter_percolation": 1,
+      "hybrid": 1,
+      "immersion": 1,
+      "stovetop_boiled": 2,
+      "unresolved_iced_preparation": 1,
+      "unresolved_instant_product": 1
+    },
+    "quality_flags": [
+      "community-edited labels and aliases are lexical evidence only",
+      "language fallbacks and regional equivalence are not assumed"
+    ],
+    "raw_row_count": 14
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "forbidden_runs": {
+    "adaptive_policy": false,
+    "deep_learning": false,
+    "embeddings": false,
+    "pgvector": false,
+    "ranking": false
+  },
+  "generated_paths": [
+    "db/data/round3e/generated/corpus_documents.tsv",
+    "db/data/round3e/generated/corpus_expressions.tsv",
+    "db/data/round3e/generated/coverage_cube.tsv",
+    "db/data/round3e/generated/data_quality_profiles.json",
+    "db/data/round3e/generated/external_field_dictionary.tsv",
+    "db/data/round3e/generated/external_observations.tsv",
+    "db/data/round3e/generated/lexical_mapping_candidates.tsv",
+    "db/data/round3e/generated/question_candidates.tsv"
+  ],
+  "generator": "db/scripts/generate-round3e-artifacts.py",
+  "question_source": "db/data/round3e/source/question_candidates.json",
+  "required_gates": [
+    "source_hashes",
+    "declared_dimensions",
+    "pii_scan",
+    "rights_decision",
+    "deterministic_generation",
+    "canonical_format",
+    "git_diff_clean"
+  ],
+  "source_manifest": "db/data/round3e/raw/SOURCE_MANIFEST.json"
+}
