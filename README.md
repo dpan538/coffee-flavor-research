@@ -3,7 +3,8 @@
 Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
 system for people tasting coffee at home, in a café, or in another ordinary
 drinking context. The intended product asks for preparation and roast context,
-then uses about four low-burden sensory questions to return five primary and
+then asks one mandatory adaptive sensory question and up to four additional
+questions only while useful uncertainty remains. It returns five primary and
 three secondary flavor references compatible with the user's current
 perception.
 
@@ -14,10 +15,10 @@ their experience with roaster, store, or packaging tasting notes, but those
 notes remain industry-language observations rather than objective flavor
 labels.
 
-The current repository contains the research and database foundation through
-Round 3B, including governed preparation and roast context, frozen lawful
-context data, and held-out label-normalization evaluation. The final consumer
-interaction and ranking model have not been implemented or validated.
+The current repository contains the validated research and database foundation
+through Round 3B plus the Round 3C calibration architecture and protocol
+contract. The final consumer interaction, calibrated adaptive policy, and
+candidate-ranking model have not been implemented or validated.
 
 ## Product contract
 
@@ -28,8 +29,9 @@ level, the intended interaction is:
 ```text
 C0 mandatory preparation / beverage context (no unknown choice)
 C1 mandatory seven-level roast context
-Q1 + Q2 + Q3 + Q4
-optional adaptive Q5
+Q1 mandatory context-adaptive question
+Q2-Q4 conditional while additional discrimination is useful
+Q5 exceptional maximum
 ↓
 5 primary sensory candidates + 3 secondary candidates
 ```
@@ -39,8 +41,10 @@ ordered C1 roast categories, including distinct medium-light and medium-dark
 positions. Database observations may still be unknown, not reported, not
 applicable, or unresolved. These are project interaction constraints, not
 universal coffee standards or proof of equal physical roast intervals. The
-exact questions and consumer-to-sensory ranking model remain research
-questions.
+exact questions, prior strength, stopping thresholds, and consumer-to-sensory
+ranking model remain empirical research questions. C0/C1 provide soft context
+support; they do not directly generate flavor labels or hard-delete a
+descriptor that is strongly supported by the user's answers.
 
 ## Methodology
 
@@ -70,7 +74,7 @@ future embedding or deep-learning layer must demonstrate measurable held-out
 benefit over the deterministic baseline. Model output never silently becomes
 canonical knowledge, and retrieval may explicitly return `UNRESOLVED`.
 
-## Validated status through Round 3B
+## Validated foundation and Round 3C design
 
 The PostgreSQL 17 foundation currently includes:
 
@@ -87,6 +91,12 @@ The PostgreSQL 17 foundation currently includes:
   labels, and production-safe mandatory C0/seven-level C1 projections; and
 - reproducible migrations and two-clean-rebuild validation.
 
+Round 3C freezes the next calibration layer: signal separation, adaptive
+question flow, a two-cohort study design, a versioned question bank, grouped
+evaluation splits, ethics/privacy gates, and a public protocol-and-schema
+release contract. It does not claim that a real Coffee Sensory Context
+Calibration Dataset exists.
+
 Round 2B retrieval results are **deterministic language-retrieval metrics**
 against graded semantic judgments. They are not coffee flavor accuracy. See
 the [Round 2B executive receipt](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md)
@@ -98,14 +108,16 @@ validated baseline.
 
 ## Knowledge architecture
 
-PostgreSQL is the canonical system of record. Its seven logical domains preserve
-different kinds of claims:
+PostgreSQL is the canonical system of record. Its eight logical domains
+preserve different kinds of claims:
 
 - `ref`: controlled codes and semantics;
 - `kb`: canonical concepts, lexicalizations, and governed relations;
 - `evidence`: sources, rights, support, measurements, and projections;
 - `corpus`: captured language observations and corpus-derived statistics;
 - `context`: preparation, beverage-addition, and roast conditions;
+- `calibration`: governed studies, protocols, samples, pseudonymous cohorts,
+  question assignments, raw observations, analysis provenance, and releases;
 - `ml`: versioned model runs, mapping candidates, and candidate signals; and
 - `audit`: review, lifecycle history, validation, and explicit promotion.
 
@@ -115,6 +127,7 @@ The central boundary is:
 canonical knowledge
 ≠ preparation / roast context
 ≠ raw corpus observation
+≠ calibration observation or derived reference distribution
 ≠ model inference
 ≠ evaluation result
 ```
@@ -136,17 +149,23 @@ The current foundation is deliberately incomplete:
 - ordinary-user comprehension testing remains outstanding even though a
   held-out lexical normalization audit is now available;
 - embeddings have not been benchmarked; and
-- no final four-to-five-question interaction has been validated.
+- no calibrated adaptive-question or stopping policy has been validated;
+- no independently collected ordinary-user question-response dataset exists;
+- no replicated multi-family preparation-by-seven-level-roast sensory matrix
+  exists; and
+- no real public Coffee Sensory Context Calibration Dataset has been released.
 
 These limits constrain generalization. They are not hidden by forcing weak
 mappings or by describing retrieval scores as sensory probabilities.
 
 ## Current research direction
 
-The next phase should run independent ordinary-user comprehension and labeling
-work, obtain a sensory dataset with varied preparation and roast cells, and
-continue multi-source corpus and lexical normalization work. An embedding
-benchmark follows only after those foundations are stronger.
+The immediate program is the ethics-gated physical collection handoff for the
+selected incomplete-factorial pilot, followed by independent bilingual
+ordinary-user comprehension and question-response calibration. Real data must
+be lawfully collected before context priors, information gain, stopping, or
+candidate ranking are estimated. An embedding benchmark follows only after
+those foundations are stronger.
 
 See the [Research Roadmap](./docs/research/RESEARCH_ROADMAP.md) for the ordered
 program. No dates are implied by that sequence.
@@ -195,6 +214,12 @@ npm run test:db:repro
   [Round 2B](./docs/audits/coffee-sensory-kb-v0-round2b/00_EXECUTIVE_RECEIPT.md),
   [Round 3A](./docs/audits/coffee-sensory-kb-v0-round3a/00_EXECUTIVE_RECEIPT.md),
   and [Round 3B](./docs/audits/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_RECEIPT.md)
+- Adaptive calibration architecture:
+  [architecture contract](./docs/architecture/ADAPTIVE_CONTEXT_QUESTION_ARCHITECTURE.md)
+  and [Round 3 decision](./docs/decisions/ROUND3_CONTEXT_CALIBRATION_ARCHITECTURE_20260825.md)
+- Calibration dataset and protocol contracts:
+  [dataset specification](./docs/data/COFFEE_SENSORY_CONTEXT_CALIBRATION_DATASET_SPEC_V0.md)
+  and [protocol](./docs/protocols/COFFEE_SENSORY_CONTEXT_CALIBRATION_PROTOCOL_V0.md)
 - Current context research:
   [Round 3B synthesis](./docs/research/coffee-sensory-kb-v0-round3b/00_EXECUTIVE_SYNTHESIS.md)
 - Frozen pre-V0 material:

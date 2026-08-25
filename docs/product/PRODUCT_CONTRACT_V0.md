@@ -5,8 +5,9 @@ Status: current product-semantics source of truth
 This contract defines what the intended Coffee Flavor Atlas product is trying
 to do and how its output should be interpreted. It freezes product semantics,
 not a final interface, questionnaire, universal roast standard, or ranking
-implementation. The current C0/C1 interaction constraints were updated by the
-Round 3B decision record on 2026-08-25.
+implementation. The current C0/C1 constraints were updated by Round 3B, and the
+adaptive-question semantics were frozen by the Round 3C decision record on
+2026-08-25.
 
 ## User
 
@@ -50,12 +51,11 @@ C0 — Mandatory preparation / beverage context
 
 C1 — Mandatory seven-level roast context
 
-Q1
-Q2
-Q3
-Q4
+Q1 — mandatory context-adaptive sensory question
 
-optional adaptive Q5
+Q2–Q4 — conditional while additional discrimination is useful
+
+Q5 — exceptional maximum
 
 ↓
 
@@ -66,14 +66,19 @@ optional adaptive Q5
 
 C0 and C1 are required before sensory questions begin. C0 has no user-facing
 `unknown`, `unsure`, or “I don't know” choice. C1 exposes at least seven
-ordered project categories. C0 and C1 describe context. Q1 through Q4 describe
-the user's current perception. Q5 is permitted only when an additional
-low-burden discriminator is expected to improve a materially ambiguous result.
+ordered project categories. C0 and C1 describe context and provide a soft
+candidate-space prior. They do not directly generate flavor labels. Q1 is
+mandatory and may be broad or fine-grained depending on the current candidate
+region. Q2 through Q4 are conditional, and Q5 is permitted only when an
+additional low-burden discriminator is expected to improve a materially
+ambiguous result.
 
 The eight C0 computational families and seven-level C1 minimum constrain the
 data architecture. Final user wording, conditional subtypes, question wording,
-branching policy, mappings from external source terms, and ranking features
-still require research and held-out evaluation.
+calibrated branching thresholds, mappings from external source terms, and
+ranking features still require real data and held-out evaluation. Strong
+sensory-answer evidence must be able to override weak context support;
+preparation or roast alone must not hard-delete a descriptor.
 
 ## C0 — preparation and beverage context
 
@@ -193,11 +198,12 @@ universal roast levels.
 
 ## Sensory question contract
 
-The intended interaction burden is deliberately low:
+The intended interaction burden is deliberately low and adaptive:
 
 ```text
-default: 4 sensory questions
-optional: 5th adaptive discriminator
+mandatory: Q1
+conditional: Q2–Q4
+exceptional maximum: Q5
 ```
 
 Preferred answer forms are:
@@ -215,9 +221,11 @@ matrices, 15-point trained-panel scales, and large multi-select questionnaires.
 Those methods may inform research, but they are not the intended ordinary
 tasting interaction.
 
-The final questions remain unresolved. Before adoption, they must be tested
-for sensory meaning, user comprehension, discriminatory value, burden,
-context sensitivity, and ranking benefit.
+The final questions remain unresolved. Before adoption, calibration mode must
+compare randomized or balanced candidate questions, and product-simulation
+mode must test sequential selection and stopping. Questions must be tested for
+sensory meaning, user comprehension, discriminatory value, burden, context
+sensitivity, override behavior, and ranking benefit.
 
 ## Output contract
 
@@ -286,7 +294,8 @@ This contract freezes:
 - eight valid C0 computational families with no user-facing unknown choice;
 - at least seven ordered C1 categories with distinct medium-light, medium, and
   medium-dark positions;
-- a default of four sensory questions with at most one adaptive discriminator;
+- a mandatory context-adaptive Q1, conditional Q2–Q4, and exceptional Q5;
+- soft context support that cannot erase strong explicit user perception;
 - five primary plus three secondary candidates as the intended output shape;
 - non-probabilistic user-facing candidate language; and
 - evidence, evaluation, reproducibility, and uncertainty as scientific gates.
@@ -299,7 +308,7 @@ This contract does not freeze:
 - mappings from external roast schemes to the seven project categories or to
   measured roast color;
 - the wording or order of Q1–Q5;
-- adaptive-question triggers;
+- calibrated adaptive-question and stopping thresholds;
 - a sensory-region representation;
 - consumer-to-region model features;
 - ranking algorithms or thresholds;

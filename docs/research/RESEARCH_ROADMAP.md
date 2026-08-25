@@ -69,18 +69,30 @@ boundaries are described in the
   seven-level ordinal scheme that preserves medium-light and medium-dark.
 - Kept interaction constraints separate from empirical mapping calibration.
 
+### Round 3C calibration design
+
+- Defined C0/C1 as soft contextual priors rather than direct flavor predictors.
+- Made Q1 mandatory and adaptive, Q2–Q4 conditional, and Q5 exceptional.
+- Separated calibration-mode counterfactual question assignment from
+  product-simulation paths.
+- Designed same-coffee minimum, preferred, and expanded study scales.
+- Preregistered baselines, context ablations, grouped splits, uncertainty,
+  privacy, ethics, and public-release gates.
+- Added a forward-only `calibration` database contract without collecting or
+  fabricating observations.
+
 ## Now
 
-### Context dataset and interaction validation
+### Pilot engineering and collection handoff
 
-- Freeze and hash a rights-cleared context dataset before import.
-- Validate common consumer preparation expressions against the mandatory
-  eight-family C0 projection.
-- Validate source roast expressions against the seven-level C1 projection
-  without forced assignment.
-- Define held-out evaluation slices for known, unresolved, unknown, black,
-  milk, preparation, and roast contexts.
-- Test context value without inventing flavor coefficients.
+- Generate the selected deterministic incomplete-factorial pilot matrix.
+- Generate balanced presentation and question-assignment schedules.
+- Validate research capture, import, privacy, and release tooling with clearly
+  excluded dry-run fixtures.
+- Obtain institutional/ethics determination, approved consent materials, and
+  public-release authorization before recruitment or real collection.
+- Collect reference-sensory and ordinary-user observations only through the
+  approved physical protocol.
 
 ### Multi-source corpus enrichment
 
@@ -131,11 +143,12 @@ boundaries are described in the
 
 ## Later
 
-### Four-to-five-question sensory-region research
+### Adaptive sensory-region calibration
 
 - Identify low-burden questions that discriminate useful sensory regions.
 - Test question comprehension, order effects, adaptation triggers, and burden.
-- Validate a default of four questions and the value of an optional fifth.
+- Estimate context-adaptive Q1 and the marginal value of Q2–Q5.
+- Calibrate evidence-based early stopping with five as the exceptional maximum.
 - Avoid importing trained-panel instruments directly into an ordinary tasting
   interaction without evidence.
 

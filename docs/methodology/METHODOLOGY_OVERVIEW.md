@@ -7,9 +7,9 @@ that are compatible with an ordinary user's current coffee perception. It is
 not intended to detect an objective hidden flavor, reproduce a proprietary
 flavor wheel, or score the user against a professional panel.
 
-This document describes the current methodological architecture through Round
-2B and the evidence required before the planned consumer interaction can be
-called validated.
+This document describes the validated foundation through Round 3B and the
+Round 3C calibration architecture required before the planned adaptive
+consumer interaction can be called validated.
 
 ## Research architecture
 
@@ -26,13 +26,15 @@ NLP / ML candidate retrieval
         ↓
 evaluated ranking
         ↓
+context-prior calibration + adaptive questions
+        ↓
 consumer sensory references
 ```
 
-The first five layers have a validated V0 foundation or deterministic baseline.
-Consumer-conditioned ranking and the final sensory-reference interaction are
-future research; the diagram is an architecture, not a claim that every layer
-is complete.
+The ontology, corpus, deterministic retrieval, and context-normalization layers
+have validated V0 foundations. The calibration layer currently has a governed
+protocol and database contract only. Consumer-conditioned ranking and the final
+sensory-reference interaction remain future empirical work.
 
 ### Coffee sensory science
 
@@ -125,6 +127,24 @@ Consumer-conditioned ranking has not yet been calibrated. A future model must
 be evaluated independently of the data used to design questions, features, or
 thresholds.
 
+### Context-prior calibration and adaptive questions
+
+C0 preparation and C1 roast provide a soft contextual support envelope. They
+may regularize a candidate region, break ties, stabilize noisy answers, or
+provide a fallback. They are not direct flavor predictors and do not hard
+exclude descriptors. Strong user answers can overcome weak context support.
+
+Q1 is mandatory and adaptive. Q2 through Q4 are conditional on residual
+uncertainty and expected marginal value; Q5 is exceptional. Calibration mode
+must assign competing questions so counterfactual question value can be
+estimated. Product-simulation mode measures the sequential policy, question
+count, stopping, candidate usefulness, and override behavior.
+
+The selected V0 research criterion is expected information gain accompanied by
+interpretable candidate-elimination and burden diagnostics. No production
+formula, weight, or stopping threshold is claimed before lawful real
+observations support estimation.
+
 ### Consumer sensory references
 
 The intended output is five primary and three secondary candidates that can
@@ -156,23 +176,27 @@ production LLM dependency.
 
 ## PostgreSQL knowledge architecture
 
-PostgreSQL 17 is the canonical system of record. Six logical domains separate
+PostgreSQL 17 is the canonical system of record. Eight logical domains separate
 claim types:
 
-| Domain     | Responsibility                                                                                      |
-| ---------- | --------------------------------------------------------------------------------------------------- |
-| `ref`      | Controlled codes and their semantics.                                                               |
-| `kb`       | Canonical concepts, lexicalizations, schemes, relations, and governed sensory constructs.           |
-| `evidence` | Sources, versions, rights, concept support, measurements, projections, and reference calibration.   |
-| `corpus`   | Documents, raw and normalized observations, resolutions, frequencies, and co-occurrence statistics. |
-| `ml`       | Versioned models, runs, mapping candidates, and candidate-signal ledgers.                           |
-| `audit`    | Independent review, lifecycle history, validation results, and explicit promotion.                  |
+| Domain        | Responsibility                                                                                                   |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ref`         | Controlled codes and their semantics.                                                                            |
+| `kb`          | Canonical concepts, lexicalizations, schemes, relations, and governed sensory constructs.                        |
+| `evidence`    | Sources, versions, rights, concept support, measurements, projections, and reference calibration.                |
+| `corpus`      | Documents, raw and normalized observations, resolutions, frequencies, and co-occurrence statistics.              |
+| `context`     | Preparation, beverage-addition, roast-scheme, and measured-roast context.                                       |
+| `calibration` | Studies, protocols, conditions, samples, pseudonymous cohorts, questions, observations, analysis, and releases. |
+| `ml`          | Versioned models, runs, mapping candidates, and candidate-signal ledgers.                                     |
+| `audit`       | Independent review, lifecycle history, validation results, and explicit promotion.                            |
 
 The fundamental separation is:
 
 ```text
 canonical knowledge
+≠ preparation / roast context
 ≠ raw corpus observation
+≠ calibration observation or derived reference distribution
 ≠ model inference
 ≠ evaluation result
 ```
@@ -213,12 +237,15 @@ system:
   Codex-assisted non-human review rather than independent human reviewers.
 - Preparation and roast context are represented, but the Round 2B corpus has
   zero structured coverage and no context-conditioned model is calibrated.
-- The recommended eight-family C0 and five-level C1 interaction remain
-  untested with ordinary users; measured roast methods are stored without
+- The mandatory eight-family C0 and seven-level C1 projections remain untested
+  with independent ordinary users; measured roast methods are stored without
   invented category cutoffs.
 - Consumer-to-sensory-region ranking is not calibrated.
 - Embeddings have not been benchmarked.
-- No final four-to-five-question interaction has been validated.
+- No adaptive question policy or stopping threshold has been calibrated.
+- No real replicated preparation-by-roast calibration observations or
+  milk-mode sensory outcomes have been collected for this project.
+- The protocol and schema are not a completed public sensory dataset.
 - The PostgreSQL knowledge base is not connected to the static frontend.
 
 Complete Round 2B boundaries are preserved in the
@@ -227,9 +254,10 @@ and [known gaps](../audits/coffee-sensory-kb-v0-round2b/12_KNOWN_GAPS.md).
 
 ## Next methodological work
 
-The immediate research program covers a frozen rights-cleared context dataset,
-C0/C1 comprehension and held-out context slices, multi-source corpus
-enrichment, and expansion of the governed lexical bridge. Independent
+The immediate program is an ethics-gated, same-coffee incomplete-factorial
+pilot with separate reference-sensory and ordinary-user cohorts. It must
+collect repeated sensory observations, calibration-mode question responses,
+and product-simulation judgments without exposing roaster notes. Independent
 evaluation and an embedding ablation follow only when the underlying evidence
 can support them.
 
