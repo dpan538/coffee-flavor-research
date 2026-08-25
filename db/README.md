@@ -7,6 +7,12 @@ semantic boundaries are documented in
 change the canonical ontology or require text candidates to resolve to a
 concept.
 
+Round 3G migrations 039–041 add versioned source-family evidence, immutable
+snapshot/file provenance, explicit evidence direction, membership/question/range
+review decisions and a database-native data-expansion expected-state gate. One
+existing membership gains source-local support; no canonical concept or active
+range is added.
+
 > **Destructive-operation warning:** never point these scripts at a production
 > database, a database containing user data, or any database that is not
 > disposable. `apply.sh` changes the selected database. `rebuild-twice.sh`
@@ -330,3 +336,36 @@ The database and generator contracts reject hash/count mismatches, missing
 rights decisions, direct identifiers, blocked public export, silent unit
 conversion, raw-value overwrite, ontology leakage, lexical auto-promotion,
 false question validation and prohibited model runs.
+
+## Round 3G independent relationship evidence
+
+Forward migrations `039` through `041` formalize independent source-family
+counting and import two rights-cleared families: a de-identified aggregate RATA
+summary from a versioned Liberica sensory dataset, and exact English/Chinese
+Wiktionary revision metadata. Multiple files, mirrors and project-derived
+tables from one origin cannot satisfy cross-source independence.
+
+The seed records 20 provenance-complete evidence claims, reviews all 18 current
+range memberships and all 18 current question targets, and leaves all seven
+ranges `CANDIDATE`. The single `SOURCE_LOCAL_SUPPORTED` membership is scoped to
+the Liberica RATA source; contradictory and insufficient claims remain stored.
+No evidence is pooled into a universal score.
+
+When migration `041` is present, `test.sh` additionally runs Round 3G negative,
+semantic, retrieval and query-plan suites. The negative suite exercises 20
+forbidden shortcuts, including derivative-family double counting, unsupported
+promotion, bilingual promotion without an independent reviewer, active-range
+creation, ontology leakage and model use. The artifact validator checks the
+expected-state sections, committed file hashes and all data-review counts
+without network access.
+
+The database gate is available as:
+
+```sql
+SELECT * FROM audit.run_round3g_expected_state_gate();
+SELECT * FROM audit.round3g_expected_state_result();
+SELECT * FROM audit.v_round3g_relationship_constraint_delta;
+```
+
+These surfaces distinguish hard, minimum and preferred gates. They do not
+contain a promotion quota.
