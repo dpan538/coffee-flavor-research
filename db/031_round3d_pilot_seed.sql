@@ -299,6 +299,25 @@ WHERE study.study_key = 'study.context_calibration_v0.minimum'
   AND protocol.protocol_version_key =
       'protocol.context_calibration_v0.2026_08_25';
 
+INSERT INTO calibration.analysis_plan (
+    analysis_plan_key, study_id, version_label, repository_path,
+    content_sha256, split_method, split_seed, grouping_variable,
+    estimability_status, is_frozen
+)
+SELECT
+    'analysis_plan.context_calibration_v0.round3d.2026_08_25',
+    study.study_id,
+    'v0.1.0-pilot-dry-run',
+    'db/data/round3d/generated/baseline_analysis.json',
+    '4a7688075dd1306b0026bf06b9c05080b45c208fe0c995b67d43e2f371d1381d',
+    'lot-grouped development/validation/held-out test; unavailable for the two-lot feasibility pilot',
+    'coffee-context-calibration-v0-lot-split-20260825',
+    'coffee_lot_id',
+    'NOT_ESTIMABLE',
+    TRUE
+FROM calibration.study AS study
+WHERE study.study_key = 'study.context_calibration_v0.minimum';
+
 INSERT INTO calibration.release_snapshot (
     release_snapshot_key, study_id, protocol_version_id, analysis_plan_id,
     version_label, lifecycle_status_code, manifest_sha256,
@@ -328,7 +347,7 @@ WHERE study.study_key = 'study.context_calibration_v0.minimum'
   AND protocol.protocol_version_key =
       'protocol.context_calibration_v0.2026_08_25'
   AND plan.analysis_plan_key =
-      'analysis_plan.context_calibration_v0.2026_08_25';
+      'analysis_plan.context_calibration_v0.round3d.2026_08_25';
 
 INSERT INTO calibration.analysis_run (
     analysis_run_key, analysis_plan_id, release_snapshot_id,
@@ -370,7 +389,7 @@ FROM calibration.analysis_plan AS plan
 JOIN calibration.release_snapshot AS release
   ON release.analysis_plan_id = plan.analysis_plan_id
 WHERE plan.analysis_plan_key =
-      'analysis_plan.context_calibration_v0.2026_08_25'
+      'analysis_plan.context_calibration_v0.round3d.2026_08_25'
   AND release.release_snapshot_key =
       'release.context_calibration_v0.protocol_schema_v0_1_0';
 

@@ -347,29 +347,29 @@ BEGIN
 END;
 $enforce_real_observation_collection_gate$;
 
-CREATE TRIGGER beverage_sample_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.beverage_sample
+CREATE TRIGGER beverage_sample_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.beverage_sample
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER assessor_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.assessor
+CREATE TRIGGER assessor_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.assessor
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER session_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.session
+CREATE TRIGGER session_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.session
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER presentation_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.presentation
+CREATE TRIGGER presentation_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.presentation
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER sensory_observation_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.sensory_observation
+CREATE TRIGGER sensory_observation_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.sensory_observation
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER question_assignment_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.question_assignment
+CREATE TRIGGER question_assignment_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.question_assignment
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER candidate_judgment_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.candidate_reference_judgment
+CREATE TRIGGER candidate_judgment_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.candidate_reference_judgment
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
-CREATE TRIGGER capture_import_row_real_observation_biu
-BEFORE INSERT OR UPDATE ON calibration.capture_import_row
+CREATE TRIGGER capture_import_row_real_observation_aiu
+AFTER INSERT OR UPDATE ON calibration.capture_import_row
 FOR EACH ROW EXECUTE FUNCTION calibration.enforce_real_observation_collection_gate();
 
 CREATE FUNCTION calibration.enforce_capture_promotion_gate()
