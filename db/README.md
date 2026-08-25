@@ -1,5 +1,12 @@
 # Coffee Sensory Knowledge Base V0 database
 
+Round 3F migrations 036–038 add the minimal overlapping association-range,
+question-target and relationship/constraint governance layer. The authoritative
+semantic boundaries are documented in
+`docs/architecture/RELATIONSHIP_CONSTRAINT_MODEL.md`; association ranges never
+change the canonical ontology or require text candidates to resolve to a
+concept.
+
 > **Destructive-operation warning:** never point these scripts at a production
 > database, a database containing user data, or any database that is not
 > disposable. `apply.sh` changes the selected database. `rebuild-twice.sh`
