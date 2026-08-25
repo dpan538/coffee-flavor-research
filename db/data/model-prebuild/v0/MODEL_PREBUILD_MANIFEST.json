@@ -1,0 +1,227 @@
+{
+  "manifest_version": "coffee-sensory-model-prebuild-v0",
+  "round": "3H",
+  "source_checkpoint_sha": "aa6a18ca5f4c289d5fa588e1996c7fa219f99eca",
+  "expected_state_commit_sha": "a2d85ecc1e03a96f129342f4ee4ed9755d7c4a75",
+  "generated_at": "2026-08-25T12:00:00Z",
+  "artifact_type": "FEDERATED_MODEL_PREBUILD_METADATA",
+  "contains_model_weights": false,
+  "contains_embeddings": false,
+  "training_or_evaluation_executed": false,
+  "model_use_status": "PREBUILD_ONLY",
+  "model_prebuild_data_ready": false,
+  "model_prebuild_readiness_state": "COMPLETE_WITH_DATA_COVERAGE_GAP",
+  "milk_mode_model_prebuild_allowed": true,
+  "source_partitions": [
+    {
+      "partition_key": "partition.baseline.cotter",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "coffee_identity", "participant"]
+    },
+    {
+      "partition_key": "partition.baseline.yeager",
+      "surface_status": "INELIGIBLE",
+      "grouping_keys": ["source_family", "coffee_identity"]
+    },
+    {
+      "partition_key": "partition.baseline.liberica",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "coffee_identity", "roast", "preparation"]
+    },
+    {
+      "partition_key": "partition.baseline.firstbloom",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "document"]
+    },
+    {
+      "partition_key": "partition.round3h.iswaldi",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "coffee_identity", "roast", "preparation"]
+    },
+    {
+      "partition_key": "partition.round3h.vezzulli",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "coffee_identity", "preparation"]
+    },
+    {
+      "partition_key": "partition.round3h.bollen",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "genotype", "harvest"]
+    },
+    {
+      "partition_key": "partition.round3h.gorman",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "milk_mode", "participant_group"]
+    },
+    {
+      "partition_key": "partition.round3h.nguyen",
+      "surface_status": "ELIGIBLE_AFTER_FUTURE_PROTOCOL",
+      "grouping_keys": ["source_family", "coffee_identity", "milk_mode", "panel_type"]
+    },
+    {
+      "partition_key": "partition.round3h.condelli",
+      "surface_status": "METADATA_ONLY",
+      "grouping_keys": ["source_family", "construct"]
+    },
+    {
+      "partition_key": "partition.round3h.heo",
+      "surface_status": "METADATA_ONLY",
+      "grouping_keys": ["source_family", "construct"]
+    },
+    {
+      "partition_key": "partition.round3h.coffee-cuality",
+      "surface_status": "METADATA_ONLY",
+      "grouping_keys": ["source_family", "construct"]
+    }
+  ],
+  "file_hashes": [
+    {
+      "file_key": "file.iswaldi.table3-derived",
+      "sha256": "9b1771dccfed02da3cc4235633445eecd4800256f5f61e0c3288d5b48235bc53"
+    },
+    {
+      "file_key": "file.vezzulli.table2-derived",
+      "sha256": "1ae24e67eb77ddcf7c85e6fc085a504e022d22df3642211d21d81ee23040066b"
+    },
+    {
+      "file_key": "file.bollen.sensory-derived",
+      "sha256": "af06701d39891c3af2d92d1a493461d33aa8995db1c6a2d39d7239178af20073"
+    },
+    {
+      "file_key": "file.gorman.liking-derived",
+      "sha256": "78934fa0876598d9dee480407cba93743e6554106fce7071b27d7116301771d1"
+    },
+    {
+      "file_key": "file.gorman.cata-derived",
+      "sha256": "23e94c22aa23755120eaa9e73bc3210adce1a0d7e1eaf3932a7ba401bb59923a"
+    },
+    {
+      "file_key": "file.nguyen.sensory-derived",
+      "sha256": "10630ff70297d0dbab22ecc164dd863b6bafbef66980a6287c68d6cbb8eda574"
+    },
+    {
+      "file_key": "file.nguyen.consumer-derived",
+      "sha256": "5d9b8891930629b9304eda3cd5d65018559c84344f40a765ee6d012afc231cc2"
+    },
+    {
+      "file_key": "file.condelli.constructs-derived",
+      "sha256": "3a196e6581f5717e88d6e59980b2d584f28f113a8b889a1493ae184268477f9b"
+    },
+    {
+      "file_key": "file.heo.constructs-derived",
+      "sha256": "3a196e6581f5717e88d6e59980b2d584f28f113a8b889a1493ae184268477f9b"
+    },
+    {
+      "file_key": "file.coffee-cuality.constructs-derived",
+      "sha256": "3a196e6581f5717e88d6e59980b2d584f28f113a8b889a1493ae184268477f9b"
+    }
+  ],
+  "feature_registry": [
+    {"feature_key": "feature.source-family", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.coffee-identity", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.participant-type", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.preparation", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.roast", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.milk-mode", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.language", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.missingness-code", "harmonization_status": "SEMANTICALLY_COMPATIBLE"},
+    {"feature_key": "feature.descriptor-presence", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.descriptor-intensity", "harmonization_status": "NOT_COMPATIBLE"},
+    {"feature_key": "feature.cata-selection", "harmonization_status": "SOURCE_LOCAL_ONLY"},
+    {"feature_key": "feature.rata-rating", "harmonization_status": "SOURCE_LOCAL_ONLY"},
+    {"feature_key": "feature.basic-taste", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.body", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.astringency", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.liking", "harmonization_status": "NOT_COMPATIBLE"},
+    {"feature_key": "feature.purchase-intent", "harmonization_status": "SOURCE_LOCAL_ONLY"},
+    {"feature_key": "feature.industry-expression", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.association-membership", "harmonization_status": "PARTIALLY_COMPATIBLE"},
+    {"feature_key": "feature.question-response", "harmonization_status": "NOT_COMPATIBLE"}
+  ],
+  "coverage_inventory": {
+    "coffee_sensory_source_family_count": 9,
+    "sensory_method_family_count": 4,
+    "source_local_sensory_observation_row_count": 4344,
+    "source_local_sensory_sample_count": 230,
+    "source_local_participant_or_panel_count": 520,
+    "sensory_outcome_preparation_family_count": 8,
+    "sensory_outcome_roast_category_or_scheme_count": 9,
+    "crossed_preparation_roast_observed_cell_count": 118,
+    "milk_sensory_outcome_source_family_count": 2,
+    "ordinary_user_sensory_source_family_count": 5,
+    "reference_panel_source_family_count": 4,
+    "empirical_coverage_cell_count": 181,
+    "contemporary_tasting_language_source_family_count": 0,
+    "new_contemporary_tasting_document_count": 0,
+    "governed_unique_normalized_expression_count": 1777,
+    "simplified_chinese_lexical_source_family_count": 0,
+    "simplified_chinese_sensory_expression_count": 0,
+    "relationship_evidence_claim_count": 96,
+    "source_local_supported_membership_count": 6,
+    "cross_source_supported_membership_count": 4,
+    "question_target_with_independent_research_support_count": 12
+  },
+  "eligible_future_training_surfaces": [
+    "partition.baseline.cotter",
+    "partition.baseline.liberica",
+    "partition.baseline.firstbloom",
+    "partition.round3h.iswaldi",
+    "partition.round3h.vezzulli",
+    "partition.round3h.bollen",
+    "partition.round3h.gorman",
+    "partition.round3h.nguyen"
+  ],
+  "eligibility_condition": "A future, separately authorized protocol must define source-local objectives, grouped splits, missingness handling, evaluation, and permitted exports.",
+  "ineligible_surfaces": [
+    {"partition_key": "partition.baseline.yeager", "reason": "CHEMISTRY_ONLY"},
+    {"partition_key": "partition.round3h.condelli", "reason": "QUESTION_INSTRUMENT_METADATA_ONLY"},
+    {"partition_key": "partition.round3h.heo", "reason": "QUESTION_INSTRUMENT_METADATA_ONLY"},
+    {"partition_key": "partition.round3h.coffee-cuality", "reason": "QUESTION_INSTRUMENT_METADATA_ONLY_AND_TRADEMARK_BOUNDARY"}
+  ],
+  "rights_constraints": [
+    "Keep every source under its recorded license and public-export decision.",
+    "Do not export confidential or request-only participant rows.",
+    "Do not republish third-party sensory wheels, scorecards, branded forms, logos, or trade dress.",
+    "Do not treat a public URL, mirror, or uploader license as proof of upstream reuse permission.",
+    "Keep Open Food Facts in a separate ODbL/DbCL share-alike partition if admitted in a future round."
+  ],
+  "known_leakage_risks": [
+    "leakage.round3h.same-coffee",
+    "leakage.round3h.same-participant",
+    "leakage.round3h.duplicate-product-page",
+    "leakage.round3h.mirrored-source",
+    "leakage.round3h.derived-raw-overlap",
+    "leakage.round3h.translation-variant",
+    "leakage.round3h.context-derivative"
+  ],
+  "grouping_keys": [
+    "source_family",
+    "coffee_identity",
+    "participant",
+    "document",
+    "roast",
+    "preparation",
+    "genotype",
+    "harvest",
+    "milk_mode",
+    "panel_type",
+    "construct"
+  ],
+  "readiness_gaps": [
+    "language.contemporary_source_family_count: observed 0, minimum 3",
+    "language.new_contemporary_document_count: observed 0, minimum 500",
+    "language.unique_expression_count: observed 1777, minimum 2500",
+    "language.zh_hans_source_family_count: observed 0, minimum 2"
+  ],
+  "prohibitions": {
+    "ranking_model_trained": false,
+    "adaptive_policy_trained": false,
+    "deep_learning_model_run": false,
+    "embedding_baseline_run": false,
+    "pgvector_required": false,
+    "real_human_collection_performed": false,
+    "real_observation_count": 0,
+    "product_frontend_modified": false,
+    "canonical_concept_change_count": 0
+  }
+}
