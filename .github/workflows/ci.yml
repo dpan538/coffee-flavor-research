@@ -27,23 +27,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check formatting
-        run: npm run format:check
-
-      - name: Type check
-        run: npm run check
-
-      - name: Unit tests
-        run: npm run test
-
-      - name: Production build
-        run: npm run build
-
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Smoke tests
-        run: npm run test:smoke
+      - name: Run unified web verification
+        run: npm run ci:verify:web
 
   database:
     name: PostgreSQL 17 ontology and corpus gates
@@ -68,7 +56,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run two clean database rebuilds
+      - name: Run unified database verification
         env:
           PGHOST: postgres
           PGPORT: 5432
@@ -78,4 +66,4 @@ jobs:
           COFFEE_KB_ALLOW_DATABASE_DROP: 1
           COFFEE_KB_REBUILD_DB_ONE: coffee_sensory_kb_v0_ci_one
           COFFEE_KB_REBUILD_DB_TWO: coffee_sensory_kb_v0_ci_two
-        run: bash db/scripts/rebuild-twice.sh
+        run: bash db/scripts/ci-verify.sh

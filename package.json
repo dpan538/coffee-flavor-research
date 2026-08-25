@@ -18,9 +18,12 @@
     "check": "react-router typegen && tsc --noEmit",
     "test": "vitest run",
     "test:smoke": "playwright test",
+    "test:ci-contract": "bash scripts/test-ci-fail-fast.sh",
     "db:migrate": "bash db/scripts/apply.sh",
     "test:db": "bash db/scripts/test.sh",
     "test:db:repro": "bash db/scripts/rebuild-twice.sh",
+    "ci:verify:web": "bash scripts/ci-verify-web.sh",
+    "ci:verify": "bash scripts/ci-verify.sh",
     "format": "prettier . --write",
     "format:check": "prettier . --check"
   },
