@@ -1,0 +1,161 @@
+source_row_key	coffee_species	preparation	source_descriptor	raw_value	parsed_value	normalized_value	normalization_rule	source_unit	project_feature_mapping	missingness_semantics
+vezzulli.001	arabica	moka	Color intensity	7.0	7.0	7.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.002	arabica	neapolitan_pot	Color intensity	6.7	6.7	6.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.003	robusta	moka	Color intensity	6.9	6.9	6.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.004	robusta	neapolitan_pot	Color intensity	6.1	6.1	6.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.005	arabica	espresso	Color intensity	7.0	7.0	7.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.006	robusta	espresso	Color intensity	7.3	7.3	7.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.007	arabica	filter	Color intensity	7.0	7.0	7.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.008	robusta	filter	Color intensity	7.2	7.2	7.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.009	arabica	moka	Aroma intensity	5.4	5.4	5.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.010	arabica	neapolitan_pot	Aroma intensity	4.1	4.1	4.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.011	robusta	moka	Aroma intensity	5.6	5.6	5.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.012	robusta	neapolitan_pot	Aroma intensity	4.0	4.0	4.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.013	arabica	espresso	Aroma intensity	6.7	6.7	6.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.014	robusta	espresso	Aroma intensity	6.2	6.2	6.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.015	arabica	filter	Aroma intensity	4.8	4.8	4.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.016	robusta	filter	Aroma intensity	5.2	5.2	5.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.017	arabica	moka	Body	4.7	4.7	4.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.018	arabica	neapolitan_pot	Body	4.1	4.1	4.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.019	robusta	moka	Body	4.9	4.9	4.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.020	robusta	neapolitan_pot	Body	3.4	3.4	3.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.021	arabica	espresso	Body	6.0	6.0	6.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.022	robusta	espresso	Body	5.8	5.8	5.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.023	arabica	filter	Body	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.024	robusta	filter	Body	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.025	arabica	moka	Acidity	3.1	3.1	3.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.026	arabica	neapolitan_pot	Acidity	1.4	1.4	1.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.027	robusta	moka	Acidity	1.9	1.9	1.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.028	robusta	neapolitan_pot	Acidity	2.1	2.1	2.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.029	arabica	espresso	Acidity	3.8	3.8	3.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.030	robusta	espresso	Acidity	3.3	3.3	3.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.031	arabica	filter	Acidity	1.8	1.8	1.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.032	robusta	filter	Acidity	2.2	2.2	2.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.033	arabica	moka	Bitter	3.4	3.4	3.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.034	arabica	neapolitan_pot	Bitter	3.1	3.1	3.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.035	robusta	moka	Bitter	3.3	3.3	3.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.036	robusta	neapolitan_pot	Bitter	2.9	2.9	2.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.037	arabica	espresso	Bitter	4.0	4.0	4.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.038	robusta	espresso	Bitter	4.7	4.7	4.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.039	arabica	filter	Bitter	1.2	1.2	1.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.040	robusta	filter	Bitter	3.5	3.5	3.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.041	arabica	moka	Astringency	2.1	2.1	2.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.042	arabica	neapolitan_pot	Astringency	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.043	robusta	moka	Astringency	1.7	1.7	1.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.044	robusta	neapolitan_pot	Astringency	1.4	1.4	1.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.045	arabica	espresso	Astringency	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.046	robusta	espresso	Astringency	2.8	2.8	2.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.047	arabica	filter	Astringency	1.0	1.0	1.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.048	robusta	filter	Astringency	1.3	1.3	1.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.049	arabica	moka	Honey	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.050	arabica	neapolitan_pot	Honey	1.6	1.6	1.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.051	robusta	moka	Honey	1.0	1.0	1.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.052	robusta	neapolitan_pot	Honey	1.4	1.4	1.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.053	arabica	espresso	Honey	0.7	0.7	0.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.054	robusta	espresso	Honey	0.3	0.3	0.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.055	arabica	filter	Honey	0.5	0.5	0.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.056	robusta	filter	Honey	0.5	0.5	0.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.057	arabica	moka	Floral and fruity	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.058	arabica	neapolitan_pot	Floral and fruity	1.3	1.3	1.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.059	robusta	moka	Floral and fruity	1.3	1.3	1.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.060	robusta	neapolitan_pot	Floral and fruity	1.6	1.6	1.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.061	arabica	espresso	Floral and fruity	1.3	1.3	1.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.062	robusta	espresso	Floral and fruity	0.7	0.7	0.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.063	arabica	filter	Floral and fruity	1.5	1.5	1.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.064	robusta	filter	Floral and fruity	1.0	1.0	1.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.065	arabica	moka	Dry vegetal	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.066	arabica	neapolitan_pot	Dry vegetal	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.067	robusta	moka	Dry vegetal	3.9	3.9	3.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.068	robusta	neapolitan_pot	Dry vegetal	2.4	2.4	2.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.069	arabica	espresso	Dry vegetal	2.2	2.2	2.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.070	robusta	espresso	Dry vegetal	3.8	3.8	3.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.071	arabica	filter	Dry vegetal	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.072	robusta	filter	Dry vegetal	1.8	1.8	1.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.073	arabica	moka	Vegetal	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.074	arabica	neapolitan_pot	Vegetal	3.1	3.1	3.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.075	robusta	moka	Vegetal	3.9	3.9	3.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.076	robusta	neapolitan_pot	Vegetal	2.9	2.9	2.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.077	arabica	espresso	Vegetal	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.078	robusta	espresso	Vegetal	3.1	3.1	3.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.079	arabica	filter	Vegetal	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.080	robusta	filter	Vegetal	1.7	1.7	1.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.081	arabica	moka	Stone fruit	2.9	2.9	2.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.082	arabica	neapolitan_pot	Stone fruit	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.083	robusta	moka	Stone fruit	2.9	2.9	2.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.084	robusta	neapolitan_pot	Stone fruit	2.2	2.2	2.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.085	arabica	espresso	Stone fruit	3.2	3.2	3.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.086	robusta	espresso	Stone fruit	3.3	3.3	3.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.087	arabica	filter	Stone fruit	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.088	robusta	filter	Stone fruit	1.8	1.8	1.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.089	arabica	moka	Nuts and dry fruits	3.9	3.9	3.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.090	arabica	neapolitan_pot	Nuts and dry fruits	3.3	3.3	3.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.091	robusta	moka	Nuts and dry fruits	4.0	4.0	4.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.092	robusta	neapolitan_pot	Nuts and dry fruits	3.1	3.1	3.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.093	arabica	espresso	Nuts and dry fruits	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.094	robusta	espresso	Nuts and dry fruits	3.3	3.3	3.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.095	arabica	filter	Nuts and dry fruits	2.8	2.8	2.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.096	robusta	filter	Nuts and dry fruits	2.2	2.2	2.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.097	arabica	moka	Cereals	2.9	2.9	2.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.098	arabica	neapolitan_pot	Cereals	2.6	2.6	2.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.099	robusta	moka	Cereals	3.9	3.9	3.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.100	robusta	neapolitan_pot	Cereals	3.1	3.1	3.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.101	arabica	espresso	Cereals	3.5	3.5	3.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.102	robusta	espresso	Cereals	3.4	3.4	3.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.103	arabica	filter	Cereals	3.7	3.7	3.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.104	robusta	filter	Cereals	2.5	2.5	2.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.105	arabica	moka	Caramel	1.9	1.9	1.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.106	arabica	neapolitan_pot	Caramel	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.107	robusta	moka	Caramel	2.4	2.4	2.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.108	robusta	neapolitan_pot	Caramel	1.6	1.6	1.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.109	arabica	espresso	Caramel	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.110	robusta	espresso	Caramel	3.0	3.0	3.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.111	arabica	filter	Caramel	1.3	1.3	1.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.112	robusta	filter	Caramel	1.5	1.5	1.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.113	arabica	moka	Cocoa	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.114	arabica	neapolitan_pot	Cocoa	2.4	2.4	2.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.115	robusta	moka	Cocoa	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.116	robusta	neapolitan_pot	Cocoa	2.4	2.4	2.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.117	arabica	espresso	Cocoa	1.5	1.5	1.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.118	robusta	espresso	Cocoa	2.7	2.7	2.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.119	arabica	filter	Cocoa	0.7	0.7	0.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.120	robusta	filter	Cocoa	1.2	1.2	1.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.121	arabica	moka	Pastry	2.6	2.6	2.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.122	arabica	neapolitan_pot	Pastry	2.0	2.0	2.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.123	robusta	moka	Pastry	1.0	1.0	1.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.124	robusta	neapolitan_pot	Pastry	1.8	1.8	1.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.125	arabica	espresso	Pastry	2.5	2.5	2.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.126	robusta	espresso	Pastry	1.6	1.6	1.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.127	arabica	filter	Pastry	1.5	1.5	1.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.128	robusta	filter	Pastry	1.0	1.0	1.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.129	arabica	moka	Roasted	3.9	3.9	3.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.130	arabica	neapolitan_pot	Roasted	3.6	3.6	3.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.131	robusta	moka	Roasted	4.9	4.9	4.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.132	robusta	neapolitan_pot	Roasted	4.0	4.0	4.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.133	arabica	espresso	Roasted	4.3	4.3	4.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.134	robusta	espresso	Roasted	4.6	4.6	4.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.135	arabica	filter	Roasted	3.5	3.5	3.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.136	robusta	filter	Roasted	3.2	3.2	3.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.137	arabica	moka	Burnt	1.7	1.7	1.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.138	arabica	neapolitan_pot	Burnt	1.0	1.0	1.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.139	robusta	moka	Burnt	1.9	1.9	1.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.140	robusta	neapolitan_pot	Burnt	1.1	1.1	1.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.141	arabica	espresso	Burnt	0.0	0.0	0.0	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.142	robusta	espresso	Burnt	0.8	0.8	0.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.143	arabica	filter	Burnt	0.5	0.5	0.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.144	robusta	filter	Burnt	0.7	0.7	0.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.145	arabica	moka	Positive aromas	4.4	4.4	4.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.146	arabica	neapolitan_pot	Positive aromas	3.7	3.7	3.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.147	robusta	moka	Positive aromas	3.9	3.9	3.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.148	robusta	neapolitan_pot	Positive aromas	3.5	3.5	3.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.149	arabica	espresso	Positive aromas	4.3	4.3	4.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.150	robusta	espresso	Positive aromas	4.6	4.6	4.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.151	arabica	filter	Positive aromas	3.8	3.8	3.8	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.152	robusta	filter	Positive aromas	3.5	3.5	3.5	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.153	arabica	moka	Aroma persistence	4.4	4.4	4.4	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.154	arabica	neapolitan_pot	Aroma persistence	3.7	3.7	3.7	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.155	robusta	moka	Aroma persistence	4.1	4.1	4.1	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.156	robusta	neapolitan_pot	Aroma persistence	2.9	2.9	2.9	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.157	arabica	espresso	Aroma persistence	4.2	4.2	4.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.158	robusta	espresso	Aroma persistence	5.6	5.6	5.6	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.159	arabica	filter	Aroma persistence	3.2	3.2	3.2	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE
+vezzulli.160	robusta	filter	Aroma persistence	2.3	2.3	2.3	direct transcription from article Table 2	source panel median on source-defined scale	descriptor_intensity	NOT_APPLICABLE

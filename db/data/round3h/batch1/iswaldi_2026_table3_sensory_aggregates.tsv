@@ -1,0 +1,73 @@
+source_row_key	coffee_origin	roast_source_label	preparation	sensory_attribute	raw_value	parsed_mean	parsed_sd	normalized_value	normalization_rule	source_unit	project_feature_mapping	missingness_semantics	participant_count
+iswaldi.001	gayo	light	v60	colour	3.18 ± 1.19	3.18	1.19	3.18	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.002	flores_bajawa	light	v60	colour	3.50 ± 1.30	3.50	1.30	3.50	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.003	gayo	light	cold_brew	colour	3.04 ± 1.03	3.04	1.03	3.04	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.004	flores_bajawa	light	cold_brew	colour	2.94 ± 1.15	2.94	1.15	2.94	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.005	gayo	medium	v60	colour	5.14 ± 1.05	5.14	1.05	5.14	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.006	flores_bajawa	medium	v60	colour	4.12 ± 1.19	4.12	1.19	4.12	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.007	gayo	medium	cold_brew	colour	3.88 ± 1.00	3.88	1.00	3.88	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.008	flores_bajawa	medium	cold_brew	colour	3.68 ± 1.10	3.68	1.10	3.68	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.009	gayo	dark	v60	colour	6.38 ± 0.95	6.38	0.95	6.38	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.010	flores_bajawa	dark	v60	colour	6.56 ± 0.76	6.56	0.76	6.56	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.011	gayo	dark	cold_brew	colour	5.18 ± 1.02	5.18	1.02	5.18	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.012	flores_bajawa	dark	cold_brew	colour	5.20 ± 1.34	5.20	1.34	5.20	direct transcription from article Table 3	source 0-7 RATA intensity mean	color_intensity	NOT_APPLICABLE	50
+iswaldi.013	gayo	light	v60	aroma	3.78 ± 1.31	3.78	1.31	3.78	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.014	flores_bajawa	light	v60	aroma	3.82 ± 1.51	3.82	1.51	3.82	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.015	gayo	light	cold_brew	aroma	3.68 ± 1.49	3.68	1.49	3.68	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.016	flores_bajawa	light	cold_brew	aroma	3.36 ± 1.63	3.36	1.63	3.36	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.017	gayo	medium	v60	aroma	4.02 ± 1.57	4.02	1.57	4.02	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.018	flores_bajawa	medium	v60	aroma	4.04 ± 1.46	4.04	1.46	4.04	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.019	gayo	medium	cold_brew	aroma	3.28 ± 1.44	3.28	1.44	3.28	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.020	flores_bajawa	medium	cold_brew	aroma	3.42 ± 1.59	3.42	1.59	3.42	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.021	gayo	dark	v60	aroma	5.22 ± 1.46	5.22	1.46	5.22	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.022	flores_bajawa	dark	v60	aroma	5.24 ± 1.48	5.24	1.48	5.24	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.023	gayo	dark	cold_brew	aroma	3.70 ± 1.56	3.70	1.56	3.70	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.024	flores_bajawa	dark	cold_brew	aroma	3.80 ± 1.29	3.80	1.29	3.80	direct transcription from article Table 3	source 0-7 RATA intensity mean	aroma	NOT_APPLICABLE	50
+iswaldi.025	gayo	light	v60	acidity	4.70 ± 1.34	4.70	1.34	4.70	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.026	flores_bajawa	light	v60	acidity	4.98 ± 1.88	4.98	1.88	4.98	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.027	gayo	light	cold_brew	acidity	4.66 ± 1.17	4.66	1.17	4.66	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.028	flores_bajawa	light	cold_brew	acidity	4.68 ± 1.63	4.68	1.63	4.68	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.029	gayo	medium	v60	acidity	4.00 ± 1.75	4.00	1.75	4.00	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.030	flores_bajawa	medium	v60	acidity	4.62 ± 1.60	4.62	1.60	4.62	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.031	gayo	medium	cold_brew	acidity	3.32 ± 1.79	3.32	1.79	3.32	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.032	flores_bajawa	medium	cold_brew	acidity	4.48 ± 1.73	4.48	1.73	4.48	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.033	gayo	dark	v60	acidity	3.20 ± 1.91	3.20	1.91	3.20	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.034	flores_bajawa	dark	v60	acidity	3.20 ± 2.08	3.20	2.08	3.20	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.035	gayo	dark	cold_brew	acidity	2.66 ± 1.86	2.66	1.86	2.66	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.036	flores_bajawa	dark	cold_brew	acidity	2.88 ± 1.93	2.88	1.93	2.88	direct transcription from article Table 3	source 0-7 RATA intensity mean	acidity	NOT_APPLICABLE	50
+iswaldi.037	gayo	light	v60	bitterness	3.82 ± 1.60	3.82	1.60	3.82	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.038	flores_bajawa	light	v60	bitterness	3.80 ± 1.63	3.80	1.63	3.80	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.039	gayo	light	cold_brew	bitterness	3.58 ± 1.26	3.58	1.26	3.58	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.040	flores_bajawa	light	cold_brew	bitterness	3.20 ± 1.67	3.20	1.67	3.20	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.041	gayo	medium	v60	bitterness	4.92 ± 1.52	4.92	1.52	4.92	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.042	flores_bajawa	medium	v60	bitterness	3.96 ± 1.68	3.96	1.68	3.96	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.043	gayo	medium	cold_brew	bitterness	3.44 ± 1.45	3.44	1.45	3.44	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.044	flores_bajawa	medium	cold_brew	bitterness	3.68 ± 1.63	3.68	1.63	3.68	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.045	gayo	dark	v60	bitterness	5.70 ± 1.23	5.70	1.23	5.70	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.046	flores_bajawa	dark	v60	bitterness	5.94 ± 0.96	5.94	0.96	5.94	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.047	gayo	dark	cold_brew	bitterness	4.98 ± 1.35	4.98	1.35	4.98	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.048	flores_bajawa	dark	cold_brew	bitterness	4.96 ± 1.19	4.96	1.19	4.96	direct transcription from article Table 3	source 0-7 RATA intensity mean	bitterness	NOT_APPLICABLE	50
+iswaldi.049	gayo	light	v60	mouthfeel	3.50 ± 1.13	3.50	1.13	3.50	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.050	flores_bajawa	light	v60	mouthfeel	3.56 ± 1.40	3.56	1.40	3.56	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.051	gayo	light	cold_brew	mouthfeel	2.42 ± 1.42	2.42	1.42	2.42	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.052	flores_bajawa	light	cold_brew	mouthfeel	2.90 ± 1.45	2.90	1.45	2.90	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.053	gayo	medium	v60	mouthfeel	4.18 ± 1.29	4.18	1.29	4.18	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.054	flores_bajawa	medium	v60	mouthfeel	3.98 ± 1.48	3.98	1.48	3.98	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.055	gayo	medium	cold_brew	mouthfeel	2.92 ± 1.44	2.92	1.44	2.92	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.056	flores_bajawa	medium	cold_brew	mouthfeel	3.44 ± 1.28	3.44	1.28	3.44	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.057	gayo	dark	v60	mouthfeel	4.68 ± 1.58	4.68	1.58	4.68	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.058	flores_bajawa	dark	v60	mouthfeel	4.94 ± 1.35	4.94	1.35	4.94	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.059	gayo	dark	cold_brew	mouthfeel	3.86 ± 1.47	3.86	1.47	3.86	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.060	flores_bajawa	dark	cold_brew	mouthfeel	3.94 ± 1.48	3.94	1.48	3.94	direct transcription from article Table 3	source 0-7 RATA intensity mean	mouthfeel	NOT_APPLICABLE	50
+iswaldi.061	gayo	light	v60	overall_liking	3.50 ± 1.34	3.50	1.34	3.50	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.062	flores_bajawa	light	v60	overall_liking	3.40 ± 1.51	3.40	1.51	3.40	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.063	gayo	light	cold_brew	overall_liking	3.46 ± 1.40	3.46	1.40	3.46	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.064	flores_bajawa	light	cold_brew	overall_liking	3.52 ± 1.40	3.52	1.40	3.52	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.065	gayo	medium	v60	overall_liking	3.78 ± 1.46	3.78	1.46	3.78	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.066	flores_bajawa	medium	v60	overall_liking	4.14 ± 1.90	4.14	1.90	4.14	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.067	gayo	medium	cold_brew	overall_liking	3.96 ± 0.182	3.96	0.182	3.96	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.068	flores_bajawa	medium	cold_brew	overall_liking	4.04 ± 1.43	4.04	1.43	4.04	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.069	gayo	dark	v60	overall_liking	4.12 ± 1.70	4.12	1.70	4.12	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.070	flores_bajawa	dark	v60	overall_liking	4.26 ± 1.82	4.26	1.82	4.26	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.071	gayo	dark	cold_brew	overall_liking	3.92 ± 1.48	3.92	1.48	3.92	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50
+iswaldi.072	flores_bajawa	dark	cold_brew	overall_liking	4.34 ± 1.66	4.34	1.66	4.34	direct transcription from article Table 3	source 1-7 hedonic mean	overall_liking	NOT_APPLICABLE	50

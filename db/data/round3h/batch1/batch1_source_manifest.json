@@ -1,0 +1,84 @@
+{
+  "batch_key": "round3h.batch1.sensory-context",
+  "frozen_register_commit": "6924319",
+  "acquired_on": "2026-08-25",
+  "public_export_policy": "Only project-transcribed or source-derived aggregate TSVs are committed. Official source files remain externally locatable and are represented by verified acquisition hashes.",
+  "sources": [
+    {
+      "source_family_key": "family.iswaldi-rataconsumers-2026",
+      "source_key": "scielo.iswaldi-2026",
+      "source_version": "Braz. J. Food Technol. 29 e2025106 version of record",
+      "snapshot_key": "snapshot.scielo-iswaldi-2026.vor",
+      "title": "Chemical, antioxidant, and sensory profiles of Indonesian single-origin Arabica coffee with different roast levels and brewing methods",
+      "doi_or_url": "https://doi.org/10.1590/1981-6723.1062025",
+      "license": "CC BY 4.0",
+      "official_file": {
+        "locator": "http://www.scielo.br/scielo.php?script=sci_pdf&pid=S1981-67232026000100207&tlng=en",
+        "sha256": "3eb3c6dba45e93c9f3799b6e372330137bcf452cfb5c6001477b2ebc7560b9f8",
+        "bytes": 1693884
+      },
+      "derived_file": {
+        "path": "db/data/round3h/batch1/iswaldi_2026_table3_sensory_aggregates.tsv",
+        "sha256": "9b1771dccfed02da3cc4235633445eecd4800256f5f61e0c3288d5b48235bc53",
+        "rows": 72,
+        "fields": 14
+      },
+      "rights_decision": "CLEARED_AGGREGATE",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY",
+      "public_export_decision": "PUBLIC_AGGREGATE",
+      "evidence_role": "Ordinary-consumer RATA and liking across 12 observed origin-roast-preparation conditions",
+      "limitations": "Fifty naive consumers; aggregate means and standard deviations; RATA and hedonic scales remain separate."
+    },
+    {
+      "source_family_key": "family.vezzulli-trainedpanel-2022",
+      "source_key": "pmc.vezzulli-2022",
+      "source_version": "Foods 11(6) 807 PMC8953325 full-text XML released 2022-03-26",
+      "snapshot_key": "snapshot.pmc8953325.xml",
+      "title": "Metabolomics Combined with Sensory Analysis Reveals the Impact of Different Extraction Methods on Coffee Beverages from Coffea arabica and Coffea canephora var. Robusta",
+      "doi_or_url": "https://doi.org/10.3390/foods11060807",
+      "license": "CC BY 4.0",
+      "official_file": {
+        "locator": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8953325/fullTextXML",
+        "sha256": "1120133f98712a44d4af364a578f90bc348d31b51de948381fa1b835b5b26c75",
+        "bytes": 148989
+      },
+      "derived_file": {
+        "path": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+        "sha256": "1ae24e67eb77ddcf7c85e6fc085a504e022d22df3642211d21d81ee23040066b",
+        "rows": 160,
+        "fields": 11
+      },
+      "rights_decision": "CLEARED_AGGREGATE",
+      "privacy_decision": "PUBLIC_AGGREGATE_ONLY",
+      "public_export_decision": "PUBLIC_AGGREGATE",
+      "evidence_role": "Trained-panel medians for 20 source descriptors across two coffee species and four extraction methods",
+      "limitations": "Six panelists; source-scale medians only; no conversion to CATA, RATA, or a shared roast scale."
+    },
+    {
+      "source_family_key": "family.bollen-robusta-qgraders-2024",
+      "source_key": "figshare.bollen-2024",
+      "source_version": "Frontiers Figshare item 25735122 version 1 published 2024-05-02T04:25:40Z",
+      "snapshot_key": "snapshot.figshare-25735122.v1",
+      "title": "Sensory profiles of Robusta coffee genetic resources from the Democratic Republic of the Congo",
+      "doi_or_url": "https://doi.org/10.3389/fsufs.2024.1382976.s002",
+      "license": "CC BY 4.0",
+      "official_file": {
+        "locator": "https://ndownloader.figshare.com/files/46039437",
+        "sha256": "4ca2bff21183d2615e244f68b330ba23282f56e6d012c7be762f04baa19abb0a",
+        "md5": "886875682fd42b90f5b4767e0769160d",
+        "bytes": 31426
+      },
+      "derived_file": {
+        "path": "db/data/round3h/batch1/bollen_2024_sensory_scores.tsv",
+        "sha256": "af06701d39891c3af2d92d1a493461d33aa8995db1c6a2d39d7239178af20073",
+        "rows": 95,
+        "fields": 36
+      },
+      "rights_decision": "CLEARED_SOURCE_FILE_AND_DERIVED",
+      "privacy_decision": "NO_PARTICIPANT_IDENTIFIERS",
+      "public_export_decision": "PUBLIC_AGGREGATE",
+      "evidence_role": "Three-Q-grader sample profiles for 95 harvest/genotype records under source-reported medium-roast cupping",
+      "limitations": "One preparation family and source-defined broad descriptor classes; genotype and harvest are future grouping keys, not participant identities."
+    }
+  ]
+}
