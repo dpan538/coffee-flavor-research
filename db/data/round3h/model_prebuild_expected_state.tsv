@@ -1,0 +1,96 @@
+section	readiness_key	minimum_required	preferred_required	observed	hard_gate	passed	evidence_path	limitation
+BASELINE	checkpoint.source_sha	aa6a18ca5f4c289d5fa588e1996c7fa219f99eca	aa6a18ca5f4c289d5fa588e1996c7fa219f99eca	aa6a18ca5f4c289d5fa588e1996c7fa219f99eca	true	true	git rev-parse origin/main	Exact remote main verified before worktree creation.
+BASELINE	canonical.concept_count	130	130	130	true	true	kb.concept	All lifecycle states; ontology frozen.
+BASELINE	canonical.active_sensory_attribute_count	92	92	92	true	true	kb.concept	Active sensory attributes only; ontology frozen.
+BASELINE	sensory.source_family_count	5	5	4	true	false	whole governed evidence inventory	Independent research origins; chemistry and marketing corpora excluded.
+BASELINE	sensory.method_family_count	3	3	3	true	true	context raw payload plus relationship source annotations	CATA, JAR/liking, and RATA; unspecified score methods excluded.
+BASELINE	sensory.source_local_observation_row_count	DESCRIPTIVE	DESCRIPTIVE	3689	false	true	source-local raw/aggregate inventories	Rows are never pooled across incompatible methods.
+BASELINE	sensory.source_local_sample_count	DESCRIPTIVE	DESCRIPTIVE	101	false	true	source-local sample/configuration inventories	Counts coffee/sample/configuration identities, not independent people.
+BASELINE	sensory.source_local_participant_or_panel_count	DESCRIPTIVE	DESCRIPTIVE	236	false	true	source-local participant/panel metadata	FT-NIR assessor count is unreported and excluded.
+BASELINE	consumer.ordinary_user_source_count	2	2	2	true	true	Dryad Cotter plus Mendeley taste-sensitivity	General surveys without sensory variables excluded.
+BASELINE	reference.panel_source_count	2	2	1	true	false	Mendeley Liberica RATA	FT-NIR assessor method is unreported and excluded.
+BASELINE	context.preparation_sensory_coverage	3	3	1	true	false	audit.v_round3e_empirical_coverage	Only filter/percolation is normalized with sensory outcomes.
+BASELINE	context.roast_sensory_coverage	4	4	4	true	true	Cotter medium plus source-defined Liberica L/M/D	Source-local labels are not silently harmonized.
+BASELINE	context.crossed_cell_count	12	12	1	true	false	observed coffee/sample × preparation × roast inventory	Only cells with sensory outcomes and reported context count.
+BASELINE	context.empirical_coverage_cell_count	120	180	52	true	false	audit.empirical_coverage_cell	Observed source-local cells only; no inferred or zero-filled cells.
+BASELINE	milk.sensory_outcome_source_family_count	0	1	0	false	true	whole governed evidence inventory	Preferred only; black-coffee-only state must exclude milk.
+BASELINE	language.contemporary_source_family_count	3	5	0	true	false	corpus source-family inventory excluding Firstbloom	Preparation dictionaries and USDA descriptions excluded.
+BASELINE	language.new_contemporary_document_count	500	1500	0	true	false	corpus document inventory excluding Firstbloom	Documents must contain actual coffee tasting/sensory language.
+BASELINE	language.unique_expression_count	2500	3500	1777	true	false	corpus.normalized_expression	Observed/sourced normalized forms only.
+BASELINE	language.zh_hans_source_family_count	2	3	0	true	false	governed zh-Hans sensory-language inventory	Round 3G Wikimedia editions are one family and have no admitted coffee expression rows.
+BASELINE	language.zh_hans_sensory_expression_count	0	200	0	false	true	governed zh-Hans sensory-language inventory	No synthetic or machine-translated expressions count.
+BASELINE	relationship.evidence_claim_count	80	150	20	true	false	evidence.relationship_evidence_claim	Claims remain evidence-specific; no mechanical row multiplication.
+BASELINE	relationship.source_local_membership_count	6	10	1	true	false	audit.v_round3g_promotion_audit	Supported membership paths only.
+BASELINE	relationship.cross_source_membership_count	3	6	0	true	false	audit.v_round3g_promotion_audit	Independent canonical origins required.
+BASELINE	relationship.range_with_source_local_evidence_count	5	5	1	true	false	reviewed supported membership paths	A range counts only through one supported membership path.
+BASELINE	relationship.range_with_cross_source_evidence_count	0	4	0	false	true	reviewed supported membership paths	Preferred only; lifecycle promotion not required.
+BASELINE	question.independent_research_target_count	6	10	2	true	false	calibration.question_target_review_decision	Internal question wording is not evidence.
+BASELINE	question.user_validated_count	0	0	0	true	true	calibration.question_research_status	Real-human validation is outside Round 3H.
+BASELINE	question.information_gain_estimated_count	0	0	0	true	true	calibration.question_research_status	No model or real-observation estimate allowed.
+BASELINE	governance.source_annotation	true	true	true	true	true	audit.v_round3g_source_completeness	Applies to admitted baseline sources.
+BASELINE	governance.rights	true	true	true	true	true	audit.v_round3g_source_completeness	Admitted files have explicit commercial/derivative/machine/export decisions.
+BASELINE	governance.hashes	true	true	true	true	true	audit.v_round3g_source_completeness	All locally admitted source files are hash verified.
+BASELINE	quality.explicit_missingness_and_harmonization	true	true	false	true	false	model-prebuild feature registry	Registry does not exist at baseline.
+BASELINE	analysis.feature_registry	true	true	false	true	false	evidence.model_prebuild_feature_definition	Registry does not exist at baseline.
+BASELINE	analysis.source_partitions	true	true	false	true	false	evidence.model_prebuild_source_partition	Federated partition registry does not exist at baseline.
+BASELINE	analysis.leakage_audit	true	true	false	true	false	audit.model_prebuild_leakage_check	Future-split leakage audit does not exist at baseline.
+BASELINE	analysis.manifest	true	true	false	true	false	db/data/model-prebuild/v0/MODEL_PREBUILD_MANIFEST.json	Manifest does not exist at baseline.
+MINIMUM_MODEL_PREBUILD_STATE	sensory.source_family_count	5	5	4	true	false	audit.run_model_prebuild_readiness_gate	At least one additional independent sensory family required.
+MINIMUM_MODEL_PREBUILD_STATE	sensory.method_family_count	3	3	3	true	true	audit.run_model_prebuild_readiness_gate	No conversion between method semantics.
+MINIMUM_MODEL_PREBUILD_STATE	context.preparation_sensory_coverage	3	3	1	true	false	audit.run_model_prebuild_readiness_gate	Two additional reported preparation families required.
+MINIMUM_MODEL_PREBUILD_STATE	context.roast_sensory_coverage	4	4	4	true	true	audit.run_model_prebuild_readiness_gate	Source-local categories retained.
+MINIMUM_MODEL_PREBUILD_STATE	context.crossed_cell_count	12	12	1	true	false	audit.run_model_prebuild_readiness_gate	Eleven observed cells required.
+MINIMUM_MODEL_PREBUILD_STATE	context.empirical_coverage_cell_count	120	180	52	true	false	audit.run_model_prebuild_readiness_gate	Sixty-eight observed cells required.
+MINIMUM_MODEL_PREBUILD_STATE	consumer.ordinary_user_source_count	2	2	2	true	true	audit.run_model_prebuild_readiness_gate	Both must contain sensory response variables.
+MINIMUM_MODEL_PREBUILD_STATE	reference.panel_source_count	2	2	1	true	false	audit.run_model_prebuild_readiness_gate	One additional disclosed reference/trained-panel family required.
+MINIMUM_MODEL_PREBUILD_STATE	language.contemporary_source_family_count	3	5	0	true	false	audit.run_model_prebuild_readiness_gate	Firstbloom excluded.
+MINIMUM_MODEL_PREBUILD_STATE	language.new_contemporary_document_count	500	1500	0	true	false	audit.run_model_prebuild_readiness_gate	Multiple independent families required.
+MINIMUM_MODEL_PREBUILD_STATE	language.unique_expression_count	2500	3500	1777	true	false	audit.run_model_prebuild_readiness_gate	Artificial variants prohibited.
+MINIMUM_MODEL_PREBUILD_STATE	language.zh_hans_source_family_count	2	3	0	true	false	audit.run_model_prebuild_readiness_gate	Mirrors/editions count once.
+MINIMUM_MODEL_PREBUILD_STATE	relationship.evidence_claim_count	80	150	20	true	false	audit.run_model_prebuild_readiness_gate	Sixty evidence-specific claims required.
+MINIMUM_MODEL_PREBUILD_STATE	relationship.source_local_membership_count	6	10	1	true	false	audit.run_model_prebuild_readiness_gate	Five additional supported membership paths required.
+MINIMUM_MODEL_PREBUILD_STATE	relationship.cross_source_membership_count	3	6	0	true	false	audit.run_model_prebuild_readiness_gate	Three independent-origin paths required.
+MINIMUM_MODEL_PREBUILD_STATE	relationship.range_with_source_local_evidence_count	5	5	1	true	false	audit.run_model_prebuild_readiness_gate	Four additional ranges require a supported membership path.
+MINIMUM_MODEL_PREBUILD_STATE	question.independent_research_target_count	6	10	2	true	false	audit.run_model_prebuild_readiness_gate	Four additional independently supported targets required.
+MINIMUM_MODEL_PREBUILD_STATE	governance.source_annotation	true	true	true	true	true	audit.run_model_prebuild_readiness_gate	Must remain complete after acquisition.
+MINIMUM_MODEL_PREBUILD_STATE	governance.rights	true	true	true	true	true	audit.run_model_prebuild_readiness_gate	Unknown rights block admission/export.
+MINIMUM_MODEL_PREBUILD_STATE	governance.hashes	true	true	true	true	true	audit.run_model_prebuild_readiness_gate	Every admitted local file must hash-match.
+MINIMUM_MODEL_PREBUILD_STATE	quality.explicit_missingness_and_harmonization	true	true	false	true	false	audit.run_model_prebuild_readiness_gate	Raw, parsed, normalized, unit, rule, mapping, and exclusion semantics required.
+MINIMUM_MODEL_PREBUILD_STATE	analysis.feature_registry	true	true	false	true	false	audit.run_model_prebuild_readiness_gate	Every partition feature must be declared.
+MINIMUM_MODEL_PREBUILD_STATE	analysis.source_partitions	true	true	false	true	false	audit.run_model_prebuild_readiness_gate	Incompatible source semantics remain federated.
+MINIMUM_MODEL_PREBUILD_STATE	analysis.leakage_audit	true	true	false	true	false	audit.run_model_prebuild_readiness_gate	Future grouped split candidates require leakage checks.
+MINIMUM_MODEL_PREBUILD_STATE	analysis.manifest	true	true	false	true	false	audit.run_model_prebuild_readiness_gate	Must prohibit model runs and state milk-mode eligibility.
+PREFERRED_MODEL_PREBUILD_STATE	milk.sensory_outcome_source_family_count	0	1	0	false	false	audit.run_model_prebuild_readiness_gate	Absence permits only black-coffee-only readiness if all hard gates pass.
+PREFERRED_MODEL_PREBUILD_STATE	context.empirical_coverage_cell_count	120	180	52	true	false	audit.run_model_prebuild_readiness_gate	Preferred engineering coverage.
+PREFERRED_MODEL_PREBUILD_STATE	language.contemporary_source_family_count	3	5	0	true	false	audit.run_model_prebuild_readiness_gate	Preferred family breadth.
+PREFERRED_MODEL_PREBUILD_STATE	language.new_contemporary_document_count	500	1500	0	true	false	audit.run_model_prebuild_readiness_gate	Preferred document breadth.
+PREFERRED_MODEL_PREBUILD_STATE	language.unique_expression_count	2500	3500	1777	true	false	audit.run_model_prebuild_readiness_gate	Preferred lexical breadth.
+PREFERRED_MODEL_PREBUILD_STATE	language.zh_hans_source_family_count	2	3	0	true	false	audit.run_model_prebuild_readiness_gate	Preferred independent-family breadth.
+PREFERRED_MODEL_PREBUILD_STATE	language.zh_hans_sensory_expression_count	0	200	0	false	false	audit.run_model_prebuild_readiness_gate	Observed only; no machine translation.
+PREFERRED_MODEL_PREBUILD_STATE	relationship.evidence_claim_count	80	150	20	true	false	audit.run_model_prebuild_readiness_gate	Preferred evidence density.
+PREFERRED_MODEL_PREBUILD_STATE	relationship.source_local_membership_count	6	10	1	true	false	audit.run_model_prebuild_readiness_gate	Preferred supported-membership breadth.
+PREFERRED_MODEL_PREBUILD_STATE	relationship.cross_source_membership_count	3	6	0	true	false	audit.run_model_prebuild_readiness_gate	Preferred independent corroboration.
+PREFERRED_MODEL_PREBUILD_STATE	relationship.range_with_cross_source_evidence_count	0	4	0	false	false	audit.run_model_prebuild_readiness_gate	Preferred range corroboration; no lifecycle promotion implied.
+PREFERRED_MODEL_PREBUILD_STATE	question.independent_research_target_count	6	10	2	true	false	audit.run_model_prebuild_readiness_gate	Preferred research breadth.
+PREFERRED_MODEL_PREBUILD_STATE	language.new_source_concentration_max_share	0.60	0.60	NOT_APPLICABLE	false	false	future source-family distribution	Warning rather than deletion if exceeded.
+OBSERVED	model_prebuild_data_ready	true	true	false	true	false	frozen pre-acquisition decision	One or more mandatory evidence planes fail.
+OBSERVED	model_prebuild_readiness_state	MODEL_PREBUILD_READY	MODEL_PREBUILD_READY	COMPLETE_WITH_DATA_COVERAGE_GAP	true	false	frozen pre-acquisition decision	May later become black-coffee-only only if all hard gates pass and milk is excluded.
+OBSERVED	expected_state_threshold_revision_count	0	0	0	true	true	git history plus decision registry	No post-inspection threshold edits permitted without a separate decision record.
+DELTA	sensory.source_family_count	1	0	1	true	false	minimum minus baseline	Independent sensory origin required.
+DELTA	context.preparation_sensory_coverage	2	0	2	true	false	minimum minus baseline	Observed sensory outcomes required.
+DELTA	context.crossed_cell_count	11	0	11	true	false	minimum minus baseline	No inferred cells.
+DELTA	context.empirical_coverage_cell_count	68	128	68	true	false	minimum/preferred minus baseline	No inferred cells.
+DELTA	language.contemporary_source_family_count	3	5	3	true	false	minimum/preferred minus baseline	Firstbloom excluded.
+DELTA	language.new_contemporary_document_count	500	1500	500	true	false	minimum/preferred minus baseline	Multiple families required.
+DELTA	language.unique_expression_count	723	1723	723	true	false	minimum/preferred minus baseline	Observed/sourced only.
+DELTA	language.zh_hans_source_family_count	2	3	2	true	false	minimum/preferred minus baseline	Independent families only.
+DELTA	relationship.evidence_claim_count	60	130	60	true	false	minimum/preferred minus baseline	Evidence-specific claims only.
+DELTA	relationship.source_local_membership_count	5	9	5	true	false	minimum/preferred minus baseline	Unsupported promotions prohibited.
+DELTA	relationship.cross_source_membership_count	3	6	3	true	false	minimum/preferred minus baseline	Distinct canonical origins required.
+DELTA	relationship.range_with_source_local_evidence_count	4	4	4	true	false	minimum minus baseline	Supported membership paths, not range promotion.
+DELTA	question.independent_research_target_count	4	8	4	true	false	minimum/preferred minus baseline	Circular internal evidence prohibited.
+DELTA	reference.panel_source_count	1	1	1	true	false	minimum minus baseline	Disclosed trained/reference panel required.
+READINESS_DECISION	mandatory_gate_policy	ALL_HARD_GATES_PASS	ALL_HARD_GATES_PASS	NOT_ALL_PASS	true	false	audit.run_model_prebuild_readiness_gate	No arbitrary aggregate score.
+READINESS_DECISION	milk_mode_policy	BLACK_COFFEE_ONLY_ALLOWED_IF_OTHER_HARD_GATES_PASS	MILK_SOURCE_FAMILY_COUNT_GE_1	MILK_EXCLUDED	false	true	db/data/model-prebuild/v0/MODEL_PREBUILD_MANIFEST.json	Milk metadata and chemistry never count as milk sensory outcomes.
+READINESS_DECISION	stop_rule	MINIMUM_REACHED_OR_TWO_CONSECUTIVE_NO_GAIN_BATCHES	MINIMUM_REACHED	PENDING	true	false	batch coverage audit	Do not search indefinitely or lower thresholds.
+READINESS_DECISION	prohibited_execution	NO_MODELS_NO_EMBEDDINGS_NO_REAL_HUMANS	NO_MODELS_NO_EMBEDDINGS_NO_REAL_HUMANS	ENFORCED	true	true	audit prohibition registry	Also no pgvector, frontend change, or ontology expansion.
