@@ -1,0 +1,24 @@
+{
+  "access_blocked_count": 0,
+  "batch_key": "round3i.batch4.relationship-depth",
+  "coverage_cells_added": 0,
+  "documents_added": 0,
+  "file_hashes": {
+    "cotter_brew_acidity_citrus_aggregates.tsv": "adf26fd10be549b4f4bf74f2e5a45121f85405d1231e874f7cb9a2aecbb3118c",
+    "relationship_evidence_claims.tsv": "9ef0aa5d19db683877a469ec229cfa156ddafd56e70c6346be2e438bab0577b0",
+    "source_annotation.json": "8875d99b5724f6a1c27acab390f679671c9ccfb82a44cd48c1cd4d4798afc453"
+  },
+  "marginal_coverage_gain": "HIGH",
+  "named_sources_reviewed": 1,
+  "promotion_decision": "CORRELATIONAL_SUPPORT_RETAIN_SOURCE_LOCAL_MEMBERSHIP_LIFECYCLE",
+  "range_lifecycle_changed": false,
+  "readiness_state_after": "ALL_HARD_GATES_AND_FOURTH_RANGE_PREFERRED_GATE_PASS",
+  "relationship_support_added": 1,
+  "rights_blocked_count": 0,
+  "rows_added": 1,
+  "source_families_added": 0,
+  "sources_admitted": 1,
+  "targeted_gap": "RANGE_WITH_CROSS_SOURCE_EVIDENCE_COUNT_PREFERRED",
+  "unique_expressions_added": 0,
+  "zh_hans_expressions_added": 0
+}
