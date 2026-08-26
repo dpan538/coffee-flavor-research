@@ -11,6 +11,8 @@ ADMIN_DATABASE=${PGDATABASE:-postgres}
 DATABASE_ONE=${COFFEE_KB_REBUILD_DB_ONE:-coffee_sensory_kb_v0_rebuild_one}
 DATABASE_TWO=${COFFEE_KB_REBUILD_DB_TWO:-coffee_sensory_kb_v0_rebuild_two}
 PG_DUMP_CONTAINER=${COFFEE_KB_PG_DUMP_CONTAINER:-}
+# The v0.1 freeze is the database state after migration 048 (49 files).
+ROUND3I_FREEZE_MIGRATION_COUNT=49
 
 if [[ "$ALLOW_DROP" != 1 ]]; then
   printf 'ERROR: this script creates and drops databases. Set COFFEE_KB_ALLOW_DATABASE_DROP=1 to continue.\n' >&2
@@ -643,7 +645,7 @@ write_schema_guard_counts() {
                ORDER BY 1;" >"$output_file"
 }
 
-apply_with_round3h_checkpoint() {
+apply_through_round3i_freeze() {
   local database_name=$1
   local checkpoint_output=$2
   local checkpoint_schema_guard_output=$3
@@ -655,7 +657,7 @@ apply_with_round3h_checkpoint() {
     migrations+=("$migration")
   done < <("$MIGRATION_PLAN" paths)
 
-  if (( DISCOVERED_MIGRATION_COUNT <= 48 )); then
+  if (( DISCOVERED_MIGRATION_COUNT < ROUND3I_FREEZE_MIGRATION_COUNT )); then
     "$SCRIPT_DIR/apply.sh" "$database_name"
     : >"$checkpoint_output"
     : >"$checkpoint_schema_guard_output"
@@ -671,9 +673,34 @@ apply_with_round3h_checkpoint() {
   printf 'ROUND3H_CHECKPOINT_VALIDATION_PASS=true\n'
 
   printf 'Applying forward Round 3I migrations (045-048).\n'
-  for (( index=45; index<DISCOVERED_MIGRATION_COUNT; index+=1 )); do
+  for (( index=45; index<ROUND3I_FREEZE_MIGRATION_COUNT; index+=1 )); do
     psql_target "$database_name" --file="${migrations[$index]}"
   done
+  printf 'ROUND3I_FREEZE_MIGRATION_COUNT=%d\n' \
+    "$ROUND3I_FREEZE_MIGRATION_COUNT"
+}
+
+apply_post_round3i_migrations() {
+  local database_name=$1
+  local migrations=()
+  local migration
+  local index
+
+  while IFS= read -r migration; do
+    migrations+=("$migration")
+  done < <("$MIGRATION_PLAN" paths)
+
+  if (( DISCOVERED_MIGRATION_COUNT > ROUND3I_FREEZE_MIGRATION_COUNT )); then
+    printf 'Applying additive migrations after Round 3I freeze (049+).\n'
+    for ((
+      index=ROUND3I_FREEZE_MIGRATION_COUNT;
+      index<DISCOVERED_MIGRATION_COUNT;
+      index+=1
+    )); do
+      psql_target "$database_name" --file="${migrations[$index]}"
+    done
+  fi
+
   printf 'MIGRATION_COUNT=%d\n' "$DISCOVERED_MIGRATION_COUNT"
   printf 'MIGRATION_PASS=true\n'
 }
@@ -1361,7 +1388,7 @@ normalize_schema_dump() {
   fi
 }
 
-run_build() {
+prepare_build_through_round3i_freeze() {
   local database_name=$1
   local build_label=$2
   local build_dir="$ARTIFACT_DIR/$build_label"
@@ -1383,10 +1410,23 @@ run_build() {
     DATABASE_TWO_CREATED=true
   fi
 
-  apply_with_round3h_checkpoint \
+  apply_through_round3i_freeze \
     "$database_name" \
     "$build_dir/round3h-checkpoint-validation.txt" \
     "$build_dir/round3h-checkpoint-schema-guard-counts.txt"
+
+  printf 'Exporting Round 3I v0.1 freeze artifacts before additive migrations.\n'
+  python3 "$SCRIPT_DIR/export-round3i-freeze.py" \
+    --database "$database_name" \
+    --output-dir "$build_dir/round3i-freeze"
+}
+
+finish_build() {
+  local database_name=$1
+  local build_label=$2
+  local build_dir="$ARTIFACT_DIR/$build_label"
+
+  apply_post_round3i_migrations "$database_name"
   "$SCRIPT_DIR/test.sh" "$database_name"
   write_schema_guard_counts \
     "$database_name" "$build_dir/round3i-final-schema-guard-counts.txt"
@@ -1406,9 +1446,6 @@ run_build() {
   write_round3f_inventory "$database_name" "$build_dir/round3f-inventory.txt"
   write_round3g_inventory "$database_name" "$build_dir/round3g-inventory.txt"
   write_round3h_inventory "$database_name" "$build_dir/round3h-inventory.txt"
-  python3 "$SCRIPT_DIR/export-round3i-freeze.py" \
-    --database "$database_name" \
-    --output-dir "$build_dir/round3i-freeze"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -1447,13 +1484,50 @@ compare_artifact() {
   fi
 }
 
+compare_round3i_freeze_artifacts() {
+  local freeze_files=(
+    CANONICAL_INVENTORY.tsv
+    SOURCE_INVENTORY.tsv
+    RAW_FILE_MANIFEST.tsv
+    SENSORY_INVENTORY.tsv
+    CONTEXT_COVERAGE.tsv
+    LANGUAGE_CORPUS.tsv
+    RELATIONSHIP_EVIDENCE.tsv
+    QUESTION_EVIDENCE.tsv
+    FEATURE_REGISTRY.tsv
+    SOURCE_PARTITION.tsv
+    FREEZE_MANIFEST.json
+  )
+  local freeze_file
+  local freeze_label
+
+  for freeze_file in "${freeze_files[@]}"; do
+    freeze_label="ROUND3I_FREEZE_${freeze_file%%.*}"
+    freeze_label=${freeze_label//-/_}
+    compare_artifact "$freeze_label" "round3i-freeze/$freeze_file"
+    if ! cmp -s \
+        "$ARTIFACT_DIR/build-one/round3i-freeze/$freeze_file" \
+        "$DB_DIR/data/freeze/coffee-sensory-research-db-v0/$freeze_file"; then
+      printf 'ERROR: committed Round 3I freeze artifact differs: %s.\n' \
+        "$freeze_file" >&2
+      return 1
+    fi
+  done
+
+  printf 'ROUND3I_FREEZE_CHECKPOINT_COMPARE_PASS=true\n'
+}
+
 printf 'POSTGRES_VERSION=%s\n' "$server_version"
 printf 'ADMIN_DATABASE=%s\n' "$admin_database_name"
 printf 'DISPOSABLE_DATABASE_ONE=%s\n' "$DATABASE_ONE"
 printf 'DISPOSABLE_DATABASE_TWO=%s\n' "$DATABASE_TWO"
 
-run_build "$DATABASE_ONE" build-one
-run_build "$DATABASE_TWO" build-two
+prepare_build_through_round3i_freeze "$DATABASE_ONE" build-one
+prepare_build_through_round3i_freeze "$DATABASE_TWO" build-two
+compare_round3i_freeze_artifacts
+
+finish_build "$DATABASE_ONE" build-one
+finish_build "$DATABASE_TWO" build-two
 
 compare_artifact MIGRATION_HASH migration-files.txt
 compare_artifact SEED_FILE_HASHES seed-files.txt
@@ -1478,32 +1552,6 @@ compare_artifact ROUND3H_CHECKPOINT_SCHEMA_GUARD_COUNTS \
 compare_artifact ROUND3I_FINAL_SCHEMA_GUARD_COUNTS \
   round3i-final-schema-guard-counts.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
-
-round3i_freeze_files=(
-  CANONICAL_INVENTORY.tsv
-  SOURCE_INVENTORY.tsv
-  RAW_FILE_MANIFEST.tsv
-  SENSORY_INVENTORY.tsv
-  CONTEXT_COVERAGE.tsv
-  LANGUAGE_CORPUS.tsv
-  RELATIONSHIP_EVIDENCE.tsv
-  QUESTION_EVIDENCE.tsv
-  FEATURE_REGISTRY.tsv
-  SOURCE_PARTITION.tsv
-  FREEZE_MANIFEST.json
-)
-for freeze_file in "${round3i_freeze_files[@]}"; do
-  freeze_label="ROUND3I_FREEZE_${freeze_file%%.*}"
-  freeze_label=${freeze_label//-/_}
-  compare_artifact "$freeze_label" "round3i-freeze/$freeze_file"
-  if ! cmp -s \
-      "$ARTIFACT_DIR/build-one/round3i-freeze/$freeze_file" \
-      "$DB_DIR/data/freeze/coffee-sensory-research-db-v0/$freeze_file"; then
-    printf 'ERROR: committed Round 3I freeze artifact differs: %s.\n' \
-      "$freeze_file" >&2
-    exit 1
-  fi
-done
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
 seed_hash_two=$(sha256_file "$ARTIFACT_DIR/build-two/seed-files.txt")
