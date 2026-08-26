@@ -76,11 +76,24 @@ EXPECTED_OCCURRENCE_COUNTS = {
 EXPECTED_SOURCE_FAMILY_COUNT = 3
 EXPECTED_DOCUMENT_COUNT = 3289
 EXPECTED_EXPRESSION_COUNT = 37
-EXPECTED_BASELINE_OVERLAP_COUNT = 14
-EXPECTED_UNIQUE_EXPRESSION_GAIN = 23
+EXPECTED_ROUND2B_OVERLAP_COUNT = 14
+EXPECTED_GOVERNED_BASELINE_OVERLAP_COUNT = 19
+EXPECTED_UNIQUE_EXPRESSION_GAIN = 18
 EXPECTED_OCCURRENCE_COUNT = 11444
 EXPECTED_BASELINE_EXPRESSION_ROWS = 1716
 EXPECTED_BASELINE_NORMALIZED_IDENTITIES = 1713
+
+# These identities were admitted after the Round 2B pilot inventory and are
+# already present in the governed 1,777-expression Round 3H baseline.  Keep
+# them explicit so this offline generator cannot overstate incremental gain by
+# comparing only with the older Round 2B file.
+POST_ROUND2B_GOVERNED_BASELINE = {
+    "astringent",
+    "bitter",
+    "burnt",
+    "rubber",
+    "sour",
+}
 
 FAMILY_FIELDS = [
     "language_source_family_key",
@@ -1160,7 +1173,7 @@ def build_vezzulli(
     return documents, occurrences
 
 
-def baseline_expression_inventory() -> set[str]:
+def round2b_expression_inventory() -> set[str]:
     rows = read_delimited(BASELINE_EXPRESSIONS, "\t")
     require(
         len(rows) == EXPECTED_BASELINE_EXPRESSION_ROWS,
@@ -1176,6 +1189,10 @@ def baseline_expression_inventory() -> set[str]:
         "Round 2B normalized-expression identity count changed",
     )
     return normalized
+
+
+def governed_expression_inventory() -> set[str]:
+    return round2b_expression_inventory() | POST_ROUND2B_GOVERNED_BASELINE
 
 
 def verify_generated(
@@ -1211,7 +1228,7 @@ def verify_generated(
             not bool(row["counts_toward_governed_total"])
             for row in expressions
         )
-        == EXPECTED_BASELINE_OVERLAP_COUNT,
+        == EXPECTED_GOVERNED_BASELINE_OVERLAP_COUNT,
         "baseline expression overlap differs",
     )
     require(
@@ -1316,7 +1333,7 @@ def verify_generated(
 
 def main() -> int:
     cotter_manifest, batch1_sources = verify_inputs()
-    baseline_normalized = baseline_expression_inventory()
+    baseline_normalized = governed_expression_inventory()
     families = source_families()
     sources = language_sources(cotter_manifest, batch1_sources)
     expressions_by_normalized: dict[str, dict[str, Any]] = {}
@@ -1376,9 +1393,10 @@ def main() -> int:
     result = {
         "artifact_hashes": artifact_hashes,
         "batch_key": "round3i.batch1.evaluation-language",
-        "baseline_expression_overlap_count": (
-            EXPECTED_BASELINE_OVERLAP_COUNT
+        "governed_baseline_expression_overlap_count": (
+            EXPECTED_GOVERNED_BASELINE_OVERLAP_COUNT
         ),
+        "round2b_expression_overlap_count": EXPECTED_ROUND2B_OVERLAP_COUNT,
         "contains_article_prose": False,
         "contains_machine_translation": False,
         "contains_proprietary_definitions": False,

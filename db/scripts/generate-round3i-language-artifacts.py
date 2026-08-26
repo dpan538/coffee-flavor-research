@@ -42,7 +42,13 @@ EXPECTED_REVIEW_PASS_B_SHA256 = (
     "9a0c53310fc7e89863513b0f06ede91b10d80128dc47eb8c85b97c50ef710642"
 )
 EXPECTED_CONSENSUS_ADMITTED_IDENTITIES = 953
+EXPECTED_GOVERNED_UNIQUE_EXPRESSION_GAIN = 952
 MAX_PHRASE_CHARACTERS = 80
+
+# This identity was admitted into the governed Round 3H baseline after the
+# Round 2B pilot file used for candidate discovery.  It remains a valid
+# dual-reviewed Firstbloom expression, but it is not an incremental identity.
+POST_ROUND2B_GOVERNED_BASELINE = {"musty"}
 
 DELIMITER_RE = re.compile(r"[,;|\r\n\u2022\u2023\u25e6\u2043\u2219]+")
 WHITESPACE_RE = re.compile(r"\s+")
@@ -599,7 +605,10 @@ def firstbloom_repository_artifacts(
                 "machine_translated": "false",
                 "artificial_variant": "false",
                 "review_state": "DUAL_CODEX_REVIEWED",
-                "counts_toward_governed_total": "true",
+                "counts_toward_governed_total": str(
+                    candidate["normalized_expression"]
+                    not in POST_ROUND2B_GOVERNED_BASELINE
+                ).lower(),
                 "counts_as_zh_hans_sensory_expression": "false",
                 "public_export_allowed": "true",
                 "limitation": "Observed licensed industry phrase; not a canonical concept or scientific sensory fact.",
@@ -687,7 +696,15 @@ def firstbloom_repository_artifacts(
         "source_families_added": 0,
         "rows_added": len(occurrences),
         "documents_added": len(documents),
-        "unique_expressions_added": len(expressions),
+        "governed_baseline_expression_overlap_count": sum(
+            row["counts_toward_governed_total"] == "false"
+            for row in expressions
+        ),
+        "unique_expression_inventory_count": len(expressions),
+        "unique_expressions_added": sum(
+            row["counts_toward_governed_total"] == "true"
+            for row in expressions
+        ),
         "zh_hans_expressions_added": 0,
         "coverage_cells_added": 0,
         "relationship_support_added": 0,
@@ -702,6 +719,11 @@ def firstbloom_repository_artifacts(
         "file_hashes": file_hashes,
     }
     result_path = output_dir / "batch_result.json"
+    require(
+        result["unique_expressions_added"]
+        == EXPECTED_GOVERNED_UNIQUE_EXPRESSION_GAIN,
+        "governed Firstbloom expression gain differs",
+    )
     result_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",

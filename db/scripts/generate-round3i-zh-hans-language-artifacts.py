@@ -23,6 +23,48 @@ EXPECTED_DOCUMENT_INPUT_SHA256 = (
 EXPECTED_OCCURRENCES = 253
 EXPECTED_EXPRESSIONS = 249
 EXPECTED_DOCUMENTS = 8
+FAMILY_FIELDS = [
+    "language_source_family_key", "family_name", "canonical_origin_key",
+    "counts_as_independent", "mirror_of_language_source_family_key",
+    "counts_as_new_contemporary_family", "counts_as_zh_hans_family",
+    "historical_baseline", "source_authored", "admitted",
+    "independence_basis", "introduced_round",
+]
+SOURCE_FIELDS = [
+    "language_source_key", "language_source_family_key", "title",
+    "authors_or_owner", "publication_year", "doi_or_stable_url",
+    "repository", "exact_version", "access_date", "license_expression",
+    "license_url", "raw_text_internal_use",
+    "raw_text_public_redistribution", "derived_expression_internal_use",
+    "derived_expression_public_release", "derived_counts_internal_use",
+    "derived_counts_public_release", "model_research_use", "rights_basis",
+    "rights_review_complete", "privacy_decision", "privacy_review_complete",
+    "source_file_manifest", "source_file_hash_complete", "language_codes",
+    "geography", "data_type", "evidence_role", "limitations",
+    "annotation_complete", "admitted",
+]
+DOCUMENT_FIELDS = [
+    "language_document_key", "language_source_key",
+    "language_source_family_key", "source_revision", "source_date",
+    "source_row_locator", "language_code", "document_type",
+    "source_content_sha256", "content", "raw_text_public_export_allowed",
+    "counts_as_new_contemporary_document", "counts_as_zh_hans_document",
+    "source_authored", "machine_translated", "artificial_variant",
+    "privacy_state", "public_export_state", "frozen_snapshot",
+]
+EXPRESSION_FIELDS = [
+    "language_expression_key", "language_code",
+    "representative_source_phrase", "normalized_expression",
+    "expression_role", "source_authored", "machine_translated",
+    "artificial_variant", "review_state", "counts_toward_governed_total",
+    "counts_as_zh_hans_sensory_expression", "public_export_allowed",
+    "limitation",
+]
+OCCURRENCE_FIELDS = [
+    "language_occurrence_key", "language_document_key",
+    "language_expression_key", "raw_source_phrase", "source_locator",
+    "observed_value",
+]
 ALLOWED_ROLES = {
     "SENSORY_ATTRIBUTE",
     "COMPOSITE_REFERENCE",
@@ -323,16 +365,16 @@ def main() -> int:
     require(output_dir.is_relative_to(repo_root), "output must be inside repository")
     output_dir.mkdir(parents=True, exist_ok=True)
     generated = [
-        ("language_source_families.tsv", source_families()),
-        ("language_sources.tsv", list(source_by_key.values())),
-        ("language_documents.tsv", documents),
-        ("language_expressions.tsv", expressions),
-        ("language_occurrences.tsv", occurrences),
+        ("language_source_families.tsv", source_families(), FAMILY_FIELDS),
+        ("language_sources.tsv", list(source_by_key.values()), SOURCE_FIELDS),
+        ("language_documents.tsv", documents, DOCUMENT_FIELDS),
+        ("language_expressions.tsv", expressions, EXPRESSION_FIELDS),
+        ("language_occurrences.tsv", occurrences, OCCURRENCE_FIELDS),
     ]
     file_hashes: dict[str, str] = {}
-    for filename, rows in generated:
+    for filename, rows, fields in generated:
         path = output_dir / filename
-        write_tsv(path, rows, list(rows[0]))
+        write_tsv(path, rows, fields)
         file_hashes[filename] = sha256_bytes(path.read_bytes())
 
     result = {
