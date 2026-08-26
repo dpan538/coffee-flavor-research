@@ -1,8 +1,10 @@
 {
   "access_date": "2026-08-26",
+  "admitted_row_count": 3186,
   "authors_or_owner": "Ristenpart, Cotter, and Guinard research team",
   "doi_or_stable_url": "https://doi.org/10.25338/B8993H",
   "evidence_role": "Correlational support for an acidity-character/citrus relationship",
+  "excluded_row_count": 0,
   "files": [
     {
       "bytes": 542026,
@@ -20,6 +22,7 @@
   "license": "CC0-1.0",
   "limitations": "Correlational repeated-consumer data from one washed medium-roast Honduras coffee; Citrus and Acidity remain distinct constructs and no causality or general law is claimed.",
   "privacy_decision": "Source identifiers were removed under IRB #1082568; retain pseudonymous Judge codes only and prohibit reidentification.",
+  "raw_row_count": 3186,
   "repository": "Dryad",
   "rights": {
     "derived_counts_internal_use": "ALLOW",
@@ -30,6 +33,7 @@
     "raw_text_internal_use": "ALLOW",
     "raw_text_public_redistribution": "ALLOW"
   },
+  "row_count_unit": "source_consumer_evaluation_row",
   "source_family_key": "family.legacy-cotter-consumers",
   "source_key": "dryad.cotter-black-coffee.relationship.v4",
   "title": "Consumer preference data for black coffee",

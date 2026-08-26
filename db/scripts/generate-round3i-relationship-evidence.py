@@ -253,6 +253,10 @@ def main() -> int:
         "version": "Version 4 files published 2023-01-16",
         "access_date": "2026-08-26",
         "license": "CC0-1.0",
+        "row_count_unit": "source_consumer_evaluation_row",
+        "raw_row_count": EXPECTED_ROWS,
+        "admitted_row_count": EXPECTED_ROWS,
+        "excluded_row_count": 0,
         "rights": {
             "raw_text_internal_use": "ALLOW",
             "raw_text_public_redistribution": "ALLOW",

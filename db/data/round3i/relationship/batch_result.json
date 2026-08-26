@@ -6,7 +6,7 @@
   "file_hashes": {
     "cotter_brew_acidity_citrus_aggregates.tsv": "adf26fd10be549b4f4bf74f2e5a45121f85405d1231e874f7cb9a2aecbb3118c",
     "relationship_evidence_claims.tsv": "9ef0aa5d19db683877a469ec229cfa156ddafd56e70c6346be2e438bab0577b0",
-    "source_annotation.json": "8875d99b5724f6a1c27acab390f679671c9ccfb82a44cd48c1cd4d4798afc453"
+    "source_annotation.json": "51ba8482867c64f05769d364c9f6e54f3ffb585849075b91809c408f97590190"
   },
   "marginal_coverage_gain": "HIGH",
   "named_sources_reviewed": 1,
