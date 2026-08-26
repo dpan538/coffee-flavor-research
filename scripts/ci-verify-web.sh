@@ -18,6 +18,9 @@ fi
 printf 'CI_VERIFY_STEP=generated_artifact_drift\n'
 bash "$SCRIPT_DIR/verify-generated-artifacts.sh"
 
+printf 'CI_VERIFY_STEP=round3j_regional_audit_contract\n'
+"$NPM_BIN" run test:round3j-regional-audit
+
 printf 'CI_VERIFY_STEP=format:check\n'
 "$NPM_BIN" run format:check
 

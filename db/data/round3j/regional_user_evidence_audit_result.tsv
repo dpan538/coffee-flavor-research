@@ -1,0 +1,51 @@
+result_scope	regional_frame_key	region_class	result_key	observed_value	required_value	passed	evidence_path	limitation
+GLOBAL	GLOBAL	GLOBAL	ORIGINAL_CANDIDATE_FRAME_COUNT	17	17	true	db/data/round3j/source_candidate_register.tsv	Immutable original frame.
+GLOBAL	GLOBAL	GLOBAL	ORIGINAL_STOP_RULE_PRESERVED	true	true	true	db/data/round3j/acquisition_batch_ledger.tsv	Original Condition-B result remains valid in its original frame.
+GLOBAL	GLOBAL	GLOBAL	ORIGINAL_STOP_RULE_GLOBAL_EFFECT_SUPERSEDED	true	true	true	docs/research/coffee-sensory-kb-v0-round3j/REGIONAL_STOP_RULE_DECISION.md	Only the global implication is superseded.
+GLOBAL	GLOBAL	GLOBAL	ALL_CORE_REGIONAL_SOURCE_FRAMES_COMPLETE	true	true	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate-frame thresholds only.
+GLOBAL	GLOBAL	GLOBAL	ALL_SECONDARY_REGIONAL_SOURCE_FRAMES_AUDITED	true	true	true	db/data/round3j/regional_source_candidate_register.tsv	Admission remains preferred but is not a secondary audit threshold.
+GLOBAL	GLOBAL	GLOBAL	REGIONAL_SOURCE_FRAME_COMPLETE	true	true	true	this result	All six blocking regional candidate frames are audited.
+GLOBAL	GLOBAL	GLOBAL	REGIONAL_REPRESENTATIVENESS_CLAIM	false	false	true	db/data/round3j/regional_source_family_concentration.tsv	Candidate completeness is not population representativeness.
+GLOBAL	GLOBAL	GLOBAL	GLOBAL_ACQUISITION_COMPLETE	false	false	true	db/data/round3j/regional_coverage_measures.tsv	Governed current-state value; no regional evidence source or training unit was admitted.
+GATE	GLOBAL	GLOBAL	ROUND3J_GLOBAL_ACQUISITION_COMPLETION_GATE	false	true	false	db/data/round3j/regional_coverage_measures.tsv	Blocks Round 3J merge or close despite completion of the regional candidate-frame audit.
+GLOBAL	GLOBAL	GLOBAL	GLOBAL_STOP_RULE_TRIGGERED	false	false	true	db/data/round3j/regional_coverage_measures.tsv	Regional frame prerequisites are now met, but global acquisition remains incomplete.
+REGION	MAINLAND_CHINA	CORE	NAMED_SOURCE_CANDIDATE_COUNT	8	6	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	MAINLAND_CHINA	CORE	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	8	2	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	MAINLAND_CHINA	CORE	STRUCTURED_PREFERENCE_OR_SENSORY_CANDIDATE_COUNT	2	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	MAINLAND_CHINA	CORE	USER_GENERATED_OR_COMMUNITY_SOURCE_CANDIDATE_COUNT	3	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	MAINLAND_CHINA	CORE	INDUSTRY_OR_PROFESSIONAL_LANGUAGE_CANDIDATE_COUNT	3	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	MAINLAND_CHINA	CORE	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	MAINLAND_CHINA	CORE	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	NAMED_SOURCE_CANDIDATE_COUNT	7	6	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	6	2	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	STRUCTURED_PREFERENCE_OR_SENSORY_CANDIDATE_COUNT	4	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	USER_GENERATED_OR_COMMUNITY_SOURCE_CANDIDATE_COUNT	2	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	INDUSTRY_OR_PROFESSIONAL_LANGUAGE_CANDIDATE_COUNT	2	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	TAIWAN	CORE	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	NAMED_SOURCE_CANDIDATE_COUNT	7	6	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	5	2	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	STRUCTURED_PREFERENCE_OR_SENSORY_CANDIDATE_COUNT	4	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	USER_GENERATED_OR_COMMUNITY_SOURCE_CANDIDATE_COUNT	1	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	INDUSTRY_OR_PROFESSIONAL_LANGUAGE_CANDIDATE_COUNT	3	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	AU_NZ	CORE	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	NAMED_SOURCE_CANDIDATE_COUNT	9	6	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	8	2	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	STRUCTURED_PREFERENCE_OR_SENSORY_CANDIDATE_COUNT	5	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	USER_GENERATED_OR_COMMUNITY_SOURCE_CANDIDATE_COUNT	3	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	INDUSTRY_OR_PROFESSIONAL_LANGUAGE_CANDIDATE_COUNT	5	1	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	US_CANADA	CORE	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	JAPAN	SECONDARY	NAMED_SOURCE_CANDIDATE_COUNT	6	4	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	JAPAN	SECONDARY	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	6	2	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	JAPAN	SECONDARY	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	JAPAN	SECONDARY	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	SOUTH_KOREA	SECONDARY	NAMED_SOURCE_CANDIDATE_COUNT	6	4	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	SOUTH_KOREA	SECONDARY	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	6	2	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	SOUTH_KOREA	SECONDARY	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	SOUTH_KOREA	SECONDARY	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	LATIN_AMERICA_NONBLOCKING	NONBLOCKING	NAMED_SOURCE_CANDIDATE_COUNT	3	0	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	LATIN_AMERICA_NONBLOCKING	NONBLOCKING	AUDITED_INDEPENDENT_SOURCE_FAMILY_COUNT	3	0	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	LATIN_AMERICA_NONBLOCKING	NONBLOCKING	RIGHTS_AND_ACCESS_DECISION_COMPLETENESS	1.0000	1.0000	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
+REGION	LATIN_AMERICA_NONBLOCKING	NONBLOCKING	ADMITTED_SOURCE_COUNT	0	NOT_REQUIRED	true	db/data/round3j/regional_source_candidate_register.tsv	Candidate audit and admission counts remain separate.
