@@ -1,0 +1,36 @@
+{
+  "access_blocked_count": 0,
+  "batch_key": "round3i.batch3.zh-hans-language-closure",
+  "coverage_cells_added": 0,
+  "documents_added": 8,
+  "file_hashes": {
+    "language_documents.tsv": "431c79beacb98c277cf1c900678d95b3c58471038fbf848913ba4aa224cc89af",
+    "language_expressions.tsv": "de9a51eb61bc410a5742c456d99a804939d709f4e52aea22f651f703642e1e7b",
+    "language_occurrences.tsv": "5b2ce6885721e9a328691c89e270c9a4629b73991fa661c31311c1984580f5c1",
+    "language_source_families.tsv": "96d927936d22ddacc40763c424d3335b72277c1090d7dc2997622922b44c8092",
+    "language_sources.tsv": "195ac57cf052888382459ff1cf565c3373dcf852e0b62d0f8e9d7e6192714c92"
+  },
+  "marginal_coverage_gain": "HIGH",
+  "named_sources_reviewed": 2,
+  "readiness_state_after": "ALL_MANDATORY_LANGUAGE_GATES_PASS",
+  "relationship_support_added": 0,
+  "reviewed_document_input_sha256": "2ea841c9a771d4e99e681aba189577a68d1d1007df5ccf5fc70d811364814424",
+  "reviewed_occurrence_input_sha256": "0380b2403589d6e938eed528787977a215aa66bc2137c0d688b427b7db832cbe",
+  "rights_blocked_count": 0,
+  "role_counts": {
+    "AROMA_REFERENCE": 64,
+    "BASIC_TASTE": 64,
+    "COMPOSITE_REFERENCE": 21,
+    "CONSUMER_METAPHOR": 10,
+    "QUALIFIER": 5,
+    "SENSORY_ATTRIBUTE": 70,
+    "TEXTURE": 13,
+    "UNRESOLVED": 6
+  },
+  "rows_added": 253,
+  "source_families_added": 2,
+  "sources_admitted": 2,
+  "targeted_gap": "SIMPLIFIED_CHINESE_LANGUAGE_FAMILY_AND_DEPTH_GATES",
+  "unique_expressions_added": 249,
+  "zh_hans_expressions_added": 249
+}
