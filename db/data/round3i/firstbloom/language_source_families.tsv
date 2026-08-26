@@ -1,0 +1,2 @@
+language_source_family_key	family_name	canonical_origin_key	counts_as_independent	mirror_of_language_source_family_key	counts_as_new_contemporary_family	counts_as_zh_hans_family	historical_baseline	source_authored	admitted	independence_basis	introduced_round
+family.baseline.firstbloom-industry	Firstbloom licensed industry tasting notes	origin.github.alexcaza.firstbloom-data	true		false	false	true	true	true	One pinned upstream aggregation already governed as the Round 2B historical language baseline; this increment is not a new independent family.	3I

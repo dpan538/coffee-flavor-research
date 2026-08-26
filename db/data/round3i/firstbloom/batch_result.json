@@ -1,0 +1,31 @@
+{
+  "access_blocked_count": 0,
+  "batch_key": "round3i.batch2.firstbloom-language-expansion",
+  "candidate_inventory_sha256": "51f65a21fa2e5d29e129d398eec6394541fb8b2b1c058eeaa9a4a6a31365e7a1",
+  "consensus_admitted_identity_count": 953,
+  "coverage_cells_added": 0,
+  "documents_added": 840,
+  "file_hashes": {
+    "firstbloom_review_candidates_text_free.tsv": "28bd9dbf1edf9a7234c1eb63d2ece6f3a2fab8ea947f254d3eab4c167342d604",
+    "firstbloom_review_consensus.tsv": "e035383fb42c23ab150426bbe9a5d2aa9f5d186d9295f7e3a07b588e1d60b996",
+    "firstbloom_review_decisions.tsv": "320d613125a731b3433f969bdb4490dfe652a7a62c972821f13198a8cf18364c",
+    "language_documents.tsv": "13d1a270ddfe523c48eb95b76cebcac004e76735a9c8ce6209f15d48380b9ab5",
+    "language_expressions.tsv": "a62f344a68bef806e7ce4737c3330216e67adef79a75d1f1f137638b4b0c33be",
+    "language_occurrences.tsv": "8095dd024e2df55a266955d2c29612886e45c4e2f697d77fc7225550330254a8",
+    "language_source_families.tsv": "46b25b4a002d6564723ee2662388ea558e9735a056007309061c57604b9d00ac",
+    "language_sources.tsv": "e4c9ecbf8e0df67fe909aab04717380245f07b13732794ee9c6de5d4d31c4708"
+  },
+  "marginal_coverage_gain": "HIGH",
+  "named_sources_reviewed": 1,
+  "readiness_state_after": "LANGUAGE_EXPRESSION_GATE_PENDING_ZH_HANS",
+  "relationship_support_added": 0,
+  "review_pass_a_sha256": "7e7917abc798ac45ab1ab9e2f610d48ce62bcb897528f916e66c92ab26dcb3dc",
+  "review_pass_b_sha256": "9a0c53310fc7e89863513b0f06ede91b10d80128dc47eb8c85b97c50ef710642",
+  "rights_blocked_count": 0,
+  "rows_added": 1058,
+  "source_families_added": 0,
+  "sources_admitted": 1,
+  "targeted_gap": "TOTAL_GOVERNED_UNIQUE_NORMALIZED_EXPRESSION_COUNT",
+  "unique_expressions_added": 953,
+  "zh_hans_expressions_added": 0
+}
