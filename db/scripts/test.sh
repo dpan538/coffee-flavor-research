@@ -125,13 +125,17 @@ if (( migration_count > 41 )); then
   )
 fi
 
-if (( migration_count > 44 )); then
+if (( migration_count > 44 && migration_count <= 45 )); then
   test_files+=(
     "$DB_DIR/tests/round3h_negative.sql"
     "$DB_DIR/tests/round3h_semantic.sql"
     "$DB_DIR/tests/round3h_retrieval.sql"
     "$DB_DIR/tests/round3h_query_plans.sql"
   )
+fi
+
+if (( migration_count > 48 )); then
+  test_files+=("$DB_DIR/tests/round3i_negative.sql")
 fi
 
 if [[ ! -f "$DB_DIR/007_validation_queries.sql" ]]; then
@@ -419,7 +423,7 @@ SQL
   printf 'ROUND3G_VALIDATION_PASS=true\n'
 fi
 
-if (( migration_count > 44 )); then
+if (( migration_count > 44 && migration_count <= 45 )); then
   printf 'Running Round 3H validation query contract on database %s.\n' "$TARGET_DATABASE"
   psql \
     -X \
@@ -443,6 +447,35 @@ END
 $round3h_validation_gate$;
 SQL
   printf 'ROUND3H_VALIDATION_PASS=true\n'
+fi
+
+if (( migration_count > 48 )); then
+  printf 'Running Round 3I research-database freeze gate on database %s.\n' "$TARGET_DATABASE"
+  psql \
+    -X \
+    --set=ON_ERROR_STOP=1 \
+    --dbname="$TARGET_DATABASE" <<'SQL'
+SELECT freeze_gate_key, required, observed, passed, severity, evidence_path
+FROM audit.run_research_database_freeze_gate()
+ORDER BY freeze_gate_key;
+
+DO $round3i_freeze_gate$
+BEGIN
+  IF NOT audit.model_prebuild_data_ready()
+     OR NOT EXISTS (
+       SELECT 1 FROM audit.run_research_database_freeze_gate()
+     )
+     OR EXISTS (
+       SELECT 1 FROM audit.run_research_database_freeze_gate()
+       WHERE severity = 'HARD' AND NOT passed
+     ) THEN
+    RAISE EXCEPTION 'Round 3I database freeze validation failed';
+  END IF;
+END
+$round3i_freeze_gate$;
+SQL
+  printf 'ROUND3I_FREEZE_GATE_PASS=true\n'
+  printf 'MODEL_PREBUILD_DATA_READY=true\n'
 fi
 
 for test_file in "${test_files[@]}"; do

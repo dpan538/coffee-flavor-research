@@ -1,0 +1,305 @@
+{
+  "canonical_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/CANONICAL_INVENTORY.tsv",
+    "row_count": 193,
+    "sha256": "5370b37e46b2e38e978633c69d027e94f04d39b2355062cc69f455a4c5abe715"
+  },
+  "contains_embeddings": false,
+  "contains_model_weights": false,
+  "context_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/CONTEXT_COVERAGE.tsv",
+    "row_count": 129,
+    "sha256": "3a17d6d2db7e6499a6dc13c1a59e96898c6c135dcd2a8d13034aeb251a7cfc68"
+  },
+  "coverage_inventory": {
+    "active_sensory_attribute_count": 92,
+    "approved_current_surface_count": 8,
+    "canonical_concept_count": 130,
+    "coffee_sensory_source_family_count": 9,
+    "contemporary_language_source_family_count": 3,
+    "cross_source_supported_membership_count": 4,
+    "current_canonical_view_distinct_concept_count": 114,
+    "current_canonical_view_row_count": 193,
+    "deprecated_research_surface_count": 8,
+    "empirical_coverage_cell_count": 181,
+    "evidence_source_family_count": 11,
+    "governed_unique_expression_count": 2996,
+    "independent_language_source_family_count": 6,
+    "language_source_count": 6,
+    "language_source_family_count": 6,
+    "model_prebuild_feature_count": 20,
+    "new_contemporary_document_count": 3289,
+    "question_target_with_independent_research_support_count": 12,
+    "range_with_cross_source_evidence_count": 4,
+    "range_with_source_local_evidence_count": 6,
+    "relationship_evidence_claim_count": 97,
+    "relationship_source_count": 12,
+    "release_member_count": 21203,
+    "source_local_sensory_observation_row_count": 4344,
+    "source_local_sensory_sample_count": 230,
+    "source_local_supported_membership_count": 6,
+    "source_partition_count": 12,
+    "zh_hans_sensory_expression_count": 249,
+    "zh_hans_source_family_count": 2
+  },
+  "current_approved_views": [
+    "calibration.v_current_question_evidence",
+    "context.v_current_context",
+    "corpus.v_current_language_corpus",
+    "evidence.v_current_model_prebuild_feature",
+    "evidence.v_current_relationship_evidence",
+    "evidence.v_current_sensory_partition",
+    "kb.v_current_canonical_concept",
+    "kb.v_current_lexical_evidence"
+  ],
+  "database_engine": "PostgreSQL 17",
+  "deprecated_research_views": [
+    "audit.v_model_prebuild_context_coverage",
+    "audit.v_model_prebuild_relationship_delta",
+    "calibration.v_model_prebuild_question_evidence",
+    "corpus.v_model_prebuild_language_inventory",
+    "evidence.v_model_prebuild_feature_availability",
+    "evidence.v_model_prebuild_source_partitions",
+    "kb.v_current_canonical_ontology",
+    "kb.v_lexical_resolution"
+  ],
+  "expected_state_commit_sha": "602624143fef8fa4250e5e84f07478101b0846ff",
+  "feature_definitions": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/FEATURE_REGISTRY.tsv",
+    "row_count": 77,
+    "sha256": "2691f475037976d51104e4007d6b6cc9aa138b0e730621994617bfc6b4577ef6"
+  },
+  "file_hashes": {
+    "db/data/freeze/coffee-sensory-research-db-v0/CANONICAL_INVENTORY.tsv": "5370b37e46b2e38e978633c69d027e94f04d39b2355062cc69f455a4c5abe715",
+    "db/data/freeze/coffee-sensory-research-db-v0/CONTEXT_COVERAGE.tsv": "3a17d6d2db7e6499a6dc13c1a59e96898c6c135dcd2a8d13034aeb251a7cfc68",
+    "db/data/freeze/coffee-sensory-research-db-v0/FEATURE_REGISTRY.tsv": "2691f475037976d51104e4007d6b6cc9aa138b0e730621994617bfc6b4577ef6",
+    "db/data/freeze/coffee-sensory-research-db-v0/LANGUAGE_CORPUS.tsv": "b5509f8d60cea90a76421a7fad489be10456d2ccb8c66ef0bc135acf02fbbb02",
+    "db/data/freeze/coffee-sensory-research-db-v0/QUESTION_EVIDENCE.tsv": "17ff588f8452a85805dc34a2dfae4a1844fa0d6c733c4885a7832996e341ff24",
+    "db/data/freeze/coffee-sensory-research-db-v0/RAW_FILE_MANIFEST.tsv": "36acdc2f2a49642bbd0609e1b51f136d94ac62ee8fa9995ca3d06ee6038764f1",
+    "db/data/freeze/coffee-sensory-research-db-v0/RELATIONSHIP_EVIDENCE.tsv": "8565053a83f369b8dbd627f315d6ec82f5bf4a06a8c4ad5a58a14395eb53ccb2",
+    "db/data/freeze/coffee-sensory-research-db-v0/SENSORY_INVENTORY.tsv": "1de3f11919ee264a7bafffd491522c4eb161b9649c2019dc034bf67e87b495f3",
+    "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_INVENTORY.tsv": "37263bd203e736aa2832f5a090dc25afd07610b07ac63965e0874d6be9b16363",
+    "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_PARTITION.tsv": "978a494af8e534633768c75fd5844394f53e2445a6ad523c69afa7eb6890ac10"
+  },
+  "file_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/RAW_FILE_MANIFEST.tsv",
+    "row_count": 38,
+    "sha256": "36acdc2f2a49642bbd0609e1b51f136d94ac62ee8fa9995ca3d06ee6038764f1"
+  },
+  "final_repository_sha_binding": "POST_COMMIT_ATTESTATION_REQUIRED_NON_SELF_REFERENTIAL",
+  "format_version": "1.0",
+  "freeze_version": "coffee-sensory-research-db-v0.1.0",
+  "implementation_expected_state_checkpoint_sha": "602624143fef8fa4250e5e84f07478101b0846ff",
+  "inventory_hashes": [
+    {
+      "artifact_key": "round3i.freeze.canonical-inventory",
+      "artifact_type": "CANONICAL_INVENTORY",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/CANONICAL_INVENTORY.tsv",
+      "row_count": 193,
+      "sha256": "5370b37e46b2e38e978633c69d027e94f04d39b2355062cc69f455a4c5abe715"
+    },
+    {
+      "artifact_key": "round3i.freeze.source-inventory",
+      "artifact_type": "SOURCE_INVENTORY",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_INVENTORY.tsv",
+      "row_count": 35,
+      "sha256": "37263bd203e736aa2832f5a090dc25afd07610b07ac63965e0874d6be9b16363"
+    },
+    {
+      "artifact_key": "round3i.freeze.raw-file-manifest",
+      "artifact_type": "RAW_FILE_MANIFEST",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/RAW_FILE_MANIFEST.tsv",
+      "row_count": 38,
+      "sha256": "36acdc2f2a49642bbd0609e1b51f136d94ac62ee8fa9995ca3d06ee6038764f1"
+    },
+    {
+      "artifact_key": "round3i.freeze.sensory-inventory",
+      "artifact_type": "SENSORY_INVENTORY",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/SENSORY_INVENTORY.tsv",
+      "row_count": 24,
+      "sha256": "1de3f11919ee264a7bafffd491522c4eb161b9649c2019dc034bf67e87b495f3"
+    },
+    {
+      "artifact_key": "round3i.freeze.context-coverage",
+      "artifact_type": "CONTEXT_COVERAGE",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/CONTEXT_COVERAGE.tsv",
+      "row_count": 129,
+      "sha256": "3a17d6d2db7e6499a6dc13c1a59e96898c6c135dcd2a8d13034aeb251a7cfc68"
+    },
+    {
+      "artifact_key": "round3i.freeze.language-corpus",
+      "artifact_type": "LANGUAGE_CORPUS",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/LANGUAGE_CORPUS.tsv",
+      "row_count": 14532,
+      "sha256": "b5509f8d60cea90a76421a7fad489be10456d2ccb8c66ef0bc135acf02fbbb02"
+    },
+    {
+      "artifact_key": "round3i.freeze.relationship-evidence",
+      "artifact_type": "RELATIONSHIP_EVIDENCE",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/RELATIONSHIP_EVIDENCE.tsv",
+      "row_count": 80,
+      "sha256": "8565053a83f369b8dbd627f315d6ec82f5bf4a06a8c4ad5a58a14395eb53ccb2"
+    },
+    {
+      "artifact_key": "round3i.freeze.question-evidence",
+      "artifact_type": "QUESTION_EVIDENCE",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/QUESTION_EVIDENCE.tsv",
+      "row_count": 12,
+      "sha256": "17ff588f8452a85805dc34a2dfae4a1844fa0d6c733c4885a7832996e341ff24"
+    },
+    {
+      "artifact_key": "round3i.freeze.feature-registry",
+      "artifact_type": "FEATURE_REGISTRY",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/FEATURE_REGISTRY.tsv",
+      "row_count": 77,
+      "sha256": "2691f475037976d51104e4007d6b6cc9aa138b0e730621994617bfc6b4577ef6"
+    },
+    {
+      "artifact_key": "round3i.freeze.source-partition",
+      "artifact_type": "SOURCE_PARTITION",
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_PARTITION.tsv",
+      "row_count": 12,
+      "sha256": "978a494af8e534633768c75fd5844394f53e2445a6ad523c69afa7eb6890ac10"
+    }
+  ],
+  "inventory_index": {
+    "CANONICAL_INVENTORY": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/CANONICAL_INVENTORY.tsv",
+      "row_count": 193,
+      "sha256": "5370b37e46b2e38e978633c69d027e94f04d39b2355062cc69f455a4c5abe715"
+    },
+    "CONTEXT_COVERAGE": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/CONTEXT_COVERAGE.tsv",
+      "row_count": 129,
+      "sha256": "3a17d6d2db7e6499a6dc13c1a59e96898c6c135dcd2a8d13034aeb251a7cfc68"
+    },
+    "FEATURE_REGISTRY": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/FEATURE_REGISTRY.tsv",
+      "row_count": 77,
+      "sha256": "2691f475037976d51104e4007d6b6cc9aa138b0e730621994617bfc6b4577ef6"
+    },
+    "LANGUAGE_CORPUS": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/LANGUAGE_CORPUS.tsv",
+      "row_count": 14532,
+      "sha256": "b5509f8d60cea90a76421a7fad489be10456d2ccb8c66ef0bc135acf02fbbb02"
+    },
+    "QUESTION_EVIDENCE": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/QUESTION_EVIDENCE.tsv",
+      "row_count": 12,
+      "sha256": "17ff588f8452a85805dc34a2dfae4a1844fa0d6c733c4885a7832996e341ff24"
+    },
+    "RAW_FILE_MANIFEST": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/RAW_FILE_MANIFEST.tsv",
+      "row_count": 38,
+      "sha256": "36acdc2f2a49642bbd0609e1b51f136d94ac62ee8fa9995ca3d06ee6038764f1"
+    },
+    "RELATIONSHIP_EVIDENCE": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/RELATIONSHIP_EVIDENCE.tsv",
+      "row_count": 80,
+      "sha256": "8565053a83f369b8dbd627f315d6ec82f5bf4a06a8c4ad5a58a14395eb53ccb2"
+    },
+    "SENSORY_INVENTORY": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/SENSORY_INVENTORY.tsv",
+      "row_count": 24,
+      "sha256": "1de3f11919ee264a7bafffd491522c4eb161b9649c2019dc034bf67e87b495f3"
+    },
+    "SOURCE_INVENTORY": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_INVENTORY.tsv",
+      "row_count": 35,
+      "sha256": "37263bd203e736aa2832f5a090dc25afd07610b07ac63965e0874d6be9b16363"
+    },
+    "SOURCE_PARTITION": {
+      "path": "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_PARTITION.tsv",
+      "row_count": 12,
+      "sha256": "978a494af8e534633768c75fd5844394f53e2445a6ad523c69afa7eb6890ac10"
+    }
+  },
+  "known_exclusions": [
+    "No model weights, embeddings, or model training/evaluation outputs.",
+    "No real-human study, question validation, or information-gain estimate.",
+    "No frontend or canonical ontology change.",
+    "No machine translation or artificial lexical variants count toward gates.",
+    "Rights-blocked raw text is excluded from public inventories."
+  ],
+  "known_gaps": [
+    "Contemporary tasting-language families: 3 observed, 5 preferred.",
+    "Governed unique normalized expressions: 2996 observed, 3500 preferred.",
+    "Simplified-Chinese source families: 2 observed, 3 preferred.",
+    "Milk-mode sensory outcome coverage remains a preferred future gap."
+  ],
+  "language_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/LANGUAGE_CORPUS.tsv",
+    "row_count": 14532,
+    "sha256": "b5509f8d60cea90a76421a7fad489be10456d2ccb8c66ef0bc135acf02fbbb02"
+  },
+  "manifest_hash_semantics": "SHA-256 of exact UTF-8 bytes. This manifest lists the ten inventory digests and intentionally excludes its own digest.",
+  "migration_count": 49,
+  "model_prebuild_data_ready": true,
+  "privacy_states": {
+    "language_privacy_review_complete_count": 6,
+    "language_source_count": 6,
+    "public_participant_identifier_file_count": 0,
+    "relationship_privacy_reviewed_count": 12,
+    "relationship_source_count": 12
+  },
+  "question_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/QUESTION_EVIDENCE.tsv",
+    "row_count": 12,
+    "sha256": "17ff588f8452a85805dc34a2dfae4a1844fa0d6c733c4885a7832996e341ff24"
+  },
+  "relationship_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/RELATIONSHIP_EVIDENCE.tsv",
+    "row_count": 80,
+    "sha256": "8565053a83f369b8dbd627f315d6ec82f5bf4a06a8c4ad5a58a14395eb53ccb2"
+  },
+  "release_tag": "coffee-sensory-research-db-v0.1.0",
+  "repository_sha": "ccf5769cb5e1f165209e59beaef9fe54017265f5",
+  "repository_sha_role": "VERIFIED_STARTING_SOURCE_SHA",
+  "research_database_freeze_state": "READY_TO_FREEZE",
+  "rights_states": {
+    "language_document_public_export_state_counts": {
+      "PUBLIC_DERIVED_ONLY": 4129,
+      "PUBLIC_RAW": 8
+    },
+    "language_rights_review_complete_count": 6,
+    "language_source_count": 6,
+    "relationship_rights_cleared_count": 12,
+    "relationship_source_count": 12,
+    "source_rights_derived_expression_release_allow_count": 6,
+    "source_rights_raw_redistribution_allow_count": 6,
+    "source_rights_raw_redistribution_deny_count": 0
+  },
+  "row_inventories": {
+    "CANONICAL_INVENTORY": 193,
+    "CONTEXT_COVERAGE": 129,
+    "FEATURE_REGISTRY": 77,
+    "LANGUAGE_CORPUS": 14532,
+    "QUESTION_EVIDENCE": 12,
+    "RAW_FILE_MANIFEST": 38,
+    "RELATIONSHIP_EVIDENCE": 80,
+    "SENSORY_INVENTORY": 24,
+    "SOURCE_INVENTORY": 35,
+    "SOURCE_PARTITION": 12
+  },
+  "sensory_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/SENSORY_INVENTORY.tsv",
+    "row_count": 24,
+    "sha256": "1de3f11919ee264a7bafffd491522c4eb161b9649c2019dc034bf67e87b495f3"
+  },
+  "source_family_inventory": {
+    "evidence_source_family_count": 11,
+    "independent_language_source_family_count": 6,
+    "language_source_family_count": 6
+  },
+  "source_inventory": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_INVENTORY.tsv",
+    "row_count": 35,
+    "sha256": "37263bd203e736aa2832f5a090dc25afd07610b07ac63965e0874d6be9b16363"
+  },
+  "source_partitions": {
+    "path": "db/data/freeze/coffee-sensory-research-db-v0/SOURCE_PARTITION.tsv",
+    "row_count": 12,
+    "sha256": "978a494af8e534633768c75fd5844394f53e2445a6ad523c69afa7eb6890ac10"
+  },
+  "training_or_evaluation_executed": false
+}

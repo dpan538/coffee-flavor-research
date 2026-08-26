@@ -22,6 +22,7 @@
     "test:round3e-artifacts": "python3 db/scripts/test-round3e-artifact-contract.py",
     "test:round3g-artifacts": "python3 db/scripts/test-round3g-artifact-contract.py",
     "test:round3h-artifacts": "python3 db/scripts/test-round3h-artifact-contract.py",
+    "test:round3i-freeze-artifacts": "python3 db/scripts/test-round3i-freeze-artifact-contract.py",
     "db:migrate": "bash db/scripts/apply.sh",
     "test:db": "bash db/scripts/test.sh",
     "test:db:repro": "bash db/scripts/rebuild-twice.sh",

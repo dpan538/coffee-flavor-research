@@ -45,7 +45,7 @@ if [[ "$DATABASE_ONE" == "$ADMIN_DATABASE" || "$DATABASE_TWO" == "$ADMIN_DATABAS
   exit 64
 fi
 
-required_commands=(psql createdb dropdb find sort sed awk cmp mktemp)
+required_commands=(psql createdb dropdb find sort sed awk cmp mktemp python3)
 if [[ -n "$PG_DUMP_CONTAINER" ]]; then
   required_commands+=(docker)
 else
@@ -301,7 +301,47 @@ write_validation_results() {
   local database_name=$1
   local output_file=$2
 
-  if (( DISCOVERED_MIGRATION_COUNT > 41 )); then
+  if (( DISCOVERED_MIGRATION_COUNT > 48 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round1', check_key, violation_count, passed
+                 FROM audit.run_validation_queries()
+                 UNION ALL
+                 SELECT 'round2a', check_key, violation_count, passed
+                 FROM audit.run_round2a_validation_queries()
+                 UNION ALL
+                 SELECT 'round2b', check_key, violation_count, passed
+                 FROM audit.run_round2b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3a', check_key, violation_count, passed
+                 FROM audit.run_round3a_validation_queries()
+                 UNION ALL
+                 SELECT 'round3b', check_key, violation_count, passed
+                 FROM audit.run_round3b_validation_queries()
+                 UNION ALL
+                 SELECT 'round3c', check_key, violation_count, passed
+                 FROM audit.run_round3c_validation_queries()
+                 UNION ALL
+                 SELECT 'round3d', check_key, violation_count, passed
+                 FROM audit.run_round3d_validation_queries()
+                 UNION ALL
+                 SELECT 'round3e', check_key, violation_count, passed
+                 FROM audit.run_round3e_validation_queries()
+                 UNION ALL
+                 SELECT 'round3f', check_key, violation_count, passed
+                 FROM audit.run_round3f_validation_queries()
+                 UNION ALL
+                 SELECT 'round3g', check_key, violation_count, passed
+                 FROM audit.run_round3g_validation_queries()
+                 UNION ALL
+                 SELECT 'round3i', freeze_gate_key,
+                        CASE WHEN passed THEN 0 ELSE 1 END::BIGINT, passed
+                 FROM audit.run_research_database_freeze_gate()
+                 WHERE severity = 'HARD'
+                 ORDER BY 1, 2;" >"$output_file"
+  elif (( DISCOVERED_MIGRATION_COUNT > 41 )); then
     psql_target "$database_name" \
       --tuples-only \
       --no-align \
@@ -520,6 +560,122 @@ write_validation_results() {
                  FROM audit.run_validation_queries()
                  ORDER BY check_key;" >"$output_file"
   fi
+}
+
+write_round3h_checkpoint_results() {
+  local database_name=$1
+  local output_file=$2
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='|' \
+    --command='SELECT check_key, violation_count, passed
+               FROM audit.run_round3h_validation_queries()
+               ORDER BY check_key;' >"$output_file"
+
+  psql_target "$database_name" <<'SQL'
+DO $round3h_checkpoint_gate$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM audit.run_round3h_validation_queries()
+  ) OR EXISTS (
+    SELECT 1 FROM audit.run_round3h_validation_queries()
+    WHERE NOT passed OR violation_count <> 0
+  ) THEN
+    RAISE EXCEPTION 'Round 3H checkpoint validation failed before Round 3I migrations';
+  END IF;
+END
+$round3h_checkpoint_gate$;
+SQL
+
+  local checkpoint_test
+  for checkpoint_test in \
+    "$DB_DIR/tests/round3h_negative.sql" \
+    "$DB_DIR/tests/round3h_semantic.sql" \
+    "$DB_DIR/tests/round3h_retrieval.sql" \
+    "$DB_DIR/tests/round3h_query_plans.sql"; do
+    psql_target "$database_name" --file="$checkpoint_test"
+  done
+}
+
+write_schema_guard_counts() {
+  local database_name=$1
+  local output_file=$2
+
+  psql_target "$database_name" \
+    --tuples-only \
+    --no-align \
+    --field-separator='=' \
+    --command="WITH governed_namespaces AS (
+                 SELECT oid
+                 FROM pg_namespace
+                 WHERE nspname IN (
+                   'audit','calibration','context','corpus',
+                   'evidence','kb','ml','ref'
+                 )
+               )
+               SELECT 'CONSTRAINT_TRIGGER_CATALOG_COUNT', count(*)
+               FROM pg_constraint
+               WHERE connamespace IN (SELECT oid FROM governed_namespaces)
+                 AND contype = 't'
+               UNION ALL
+               SELECT 'PG_CONSTRAINT_COUNT', count(*)
+               FROM pg_constraint
+               WHERE connamespace IN (SELECT oid FROM governed_namespaces)
+               UNION ALL
+               SELECT 'RELATIONAL_CONSTRAINT_COUNT', count(*)
+               FROM pg_constraint
+               WHERE connamespace IN (SELECT oid FROM governed_namespaces)
+                 AND contype <> 't'
+               UNION ALL
+               SELECT 'USER_EVENT_TRIGGER_COUNT', count(*)
+               FROM pg_event_trigger
+               UNION ALL
+               SELECT 'USER_TRIGGER_COUNT', count(*)
+               FROM pg_trigger AS trigger_record
+               JOIN pg_class AS relation
+                 ON relation.oid = trigger_record.tgrelid
+               WHERE relation.relnamespace IN (
+                 SELECT oid FROM governed_namespaces
+               )
+                 AND NOT trigger_record.tgisinternal
+               ORDER BY 1;" >"$output_file"
+}
+
+apply_with_round3h_checkpoint() {
+  local database_name=$1
+  local checkpoint_output=$2
+  local checkpoint_schema_guard_output=$3
+  local migrations=()
+  local migration
+  local index
+
+  while IFS= read -r migration; do
+    migrations+=("$migration")
+  done < <("$MIGRATION_PLAN" paths)
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 48 )); then
+    "$SCRIPT_DIR/apply.sh" "$database_name"
+    : >"$checkpoint_output"
+    : >"$checkpoint_schema_guard_output"
+    return
+  fi
+
+  printf 'Applying immutable Round 3H checkpoint (migrations 000-044).\n'
+  for (( index=0; index<45; index+=1 )); do
+    psql_target "$database_name" --file="${migrations[$index]}"
+  done
+  write_round3h_checkpoint_results "$database_name" "$checkpoint_output"
+  write_schema_guard_counts "$database_name" "$checkpoint_schema_guard_output"
+  printf 'ROUND3H_CHECKPOINT_VALIDATION_PASS=true\n'
+
+  printf 'Applying forward Round 3I migrations (045-048).\n'
+  for (( index=45; index<DISCOVERED_MIGRATION_COUNT; index+=1 )); do
+    psql_target "$database_name" --file="${migrations[$index]}"
+  done
+  printf 'MIGRATION_COUNT=%d\n' "$DISCOVERED_MIGRATION_COUNT"
+  printf 'MIGRATION_PASS=true\n'
 }
 
 write_round3a_inventory() {
@@ -1227,8 +1383,13 @@ run_build() {
     DATABASE_TWO_CREATED=true
   fi
 
-  "$SCRIPT_DIR/apply.sh" "$database_name"
+  apply_with_round3h_checkpoint \
+    "$database_name" \
+    "$build_dir/round3h-checkpoint-validation.txt" \
+    "$build_dir/round3h-checkpoint-schema-guard-counts.txt"
   "$SCRIPT_DIR/test.sh" "$database_name"
+  write_schema_guard_counts \
+    "$database_name" "$build_dir/round3i-final-schema-guard-counts.txt"
 
   normalize_schema_dump "$database_name" "$build_dir/schema.sql"
   write_stable_key_inventory "$database_name" "$build_dir/stable-key-inventory.txt"
@@ -1245,6 +1406,9 @@ run_build() {
   write_round3f_inventory "$database_name" "$build_dir/round3f-inventory.txt"
   write_round3g_inventory "$database_name" "$build_dir/round3g-inventory.txt"
   write_round3h_inventory "$database_name" "$build_dir/round3h-inventory.txt"
+  python3 "$SCRIPT_DIR/export-round3i-freeze.py" \
+    --database "$database_name" \
+    --output-dir "$build_dir/round3i-freeze"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -1308,7 +1472,38 @@ compare_artifact ROUND3E_INVENTORY round3e-inventory.txt
 compare_artifact ROUND3F_INVENTORY round3f-inventory.txt
 compare_artifact ROUND3G_INVENTORY round3g-inventory.txt
 compare_artifact ROUND3H_INVENTORY round3h-inventory.txt
+compare_artifact ROUND3H_CHECKPOINT_VALIDATION round3h-checkpoint-validation.txt
+compare_artifact ROUND3H_CHECKPOINT_SCHEMA_GUARD_COUNTS \
+  round3h-checkpoint-schema-guard-counts.txt
+compare_artifact ROUND3I_FINAL_SCHEMA_GUARD_COUNTS \
+  round3i-final-schema-guard-counts.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
+
+round3i_freeze_files=(
+  CANONICAL_INVENTORY.tsv
+  SOURCE_INVENTORY.tsv
+  RAW_FILE_MANIFEST.tsv
+  SENSORY_INVENTORY.tsv
+  CONTEXT_COVERAGE.tsv
+  LANGUAGE_CORPUS.tsv
+  RELATIONSHIP_EVIDENCE.tsv
+  QUESTION_EVIDENCE.tsv
+  FEATURE_REGISTRY.tsv
+  SOURCE_PARTITION.tsv
+  FREEZE_MANIFEST.json
+)
+for freeze_file in "${round3i_freeze_files[@]}"; do
+  freeze_label="ROUND3I_FREEZE_${freeze_file%%.*}"
+  freeze_label=${freeze_label//-/_}
+  compare_artifact "$freeze_label" "round3i-freeze/$freeze_file"
+  if ! cmp -s \
+      "$ARTIFACT_DIR/build-one/round3i-freeze/$freeze_file" \
+      "$DB_DIR/data/freeze/coffee-sensory-research-db-v0/$freeze_file"; then
+    printf 'ERROR: committed Round 3I freeze artifact differs: %s.\n' \
+      "$freeze_file" >&2
+    exit 1
+  fi
+done
 
 seed_hash_one=$(sha256_file "$ARTIFACT_DIR/build-one/seed-files.txt")
 seed_hash_two=$(sha256_file "$ARTIFACT_DIR/build-two/seed-files.txt")
@@ -1335,7 +1530,55 @@ print_result_file ROUND3E_INVENTORY "$ARTIFACT_DIR/build-one/round3e-inventory.t
 print_result_file ROUND3F_INVENTORY "$ARTIFACT_DIR/build-one/round3f-inventory.txt"
 print_result_file ROUND3G_INVENTORY "$ARTIFACT_DIR/build-one/round3g-inventory.txt"
 print_result_file ROUND3H_INVENTORY "$ARTIFACT_DIR/build-one/round3h-inventory.txt"
+print_result_file ROUND3H_CHECKPOINT_VALIDATION \
+  "$ARTIFACT_DIR/build-one/round3h-checkpoint-validation.txt"
+print_result_file ROUND3H_CHECKPOINT_SCHEMA_GUARD_COUNTS \
+  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt"
+print_result_file ROUND3I_FINAL_SCHEMA_GUARD_COUNTS \
+  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt"
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
+checkpoint_relational_constraints=$(awk -F= \
+  '$1 == "RELATIONAL_CONSTRAINT_COUNT" { print $2 }' \
+  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt")
+final_relational_constraints=$(awk -F= \
+  '$1 == "RELATIONAL_CONSTRAINT_COUNT" { print $2 }' \
+  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt")
+checkpoint_user_triggers=$(awk -F= \
+  '$1 == "USER_TRIGGER_COUNT" { print $2 }' \
+  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt")
+final_user_triggers=$(awk -F= \
+  '$1 == "USER_TRIGGER_COUNT" { print $2 }' \
+  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt")
+checkpoint_event_triggers=$(awk -F= \
+  '$1 == "USER_EVENT_TRIGGER_COUNT" { print $2 }' \
+  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt")
+final_event_triggers=$(awk -F= \
+  '$1 == "USER_EVENT_TRIGGER_COUNT" { print $2 }' \
+  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt")
+new_relational_constraint_count=$((
+  final_relational_constraints - checkpoint_relational_constraints
+))
+new_user_trigger_count=$((final_user_triggers - checkpoint_user_triggers))
+new_event_trigger_count=$((
+  final_event_triggers - checkpoint_event_triggers
+))
+new_trigger_count=$((new_user_trigger_count + new_event_trigger_count))
+new_constraint_and_trigger_count=$((
+  new_relational_constraint_count + new_trigger_count
+))
+
+printf 'NEW_RELATIONAL_CONSTRAINT_COUNT=%d\n' \
+  "$new_relational_constraint_count"
+printf 'NEW_USER_TRIGGER_COUNT=%d\n' "$new_user_trigger_count"
+printf 'NEW_EVENT_TRIGGER_COUNT=%d\n' "$new_event_trigger_count"
+printf 'NEW_TRIGGER_COUNT=%d\n' "$new_trigger_count"
+printf 'NEW_CONSTRAINT_COUNT=%d\n' "$new_relational_constraint_count"
+printf 'NEW_CONSTRAINT_COUNT_SEMANTICS=round3i-net-new-relational-pg-constraints-excluding-constraint-trigger-aliases\n'
+printf 'NEW_CONSTRAINT_AND_TRIGGER_COUNT=%d\n' \
+  "$new_constraint_and_trigger_count"
+
 printf 'CLEAN_REBUILD_COUNT=2\n'
+printf 'ROUND3I_FREEZE_ARTIFACT_COUNT=11\n'
+printf 'ROUND3I_FREEZE_REPRODUCIBILITY_PASS=true\n'
 printf 'REPRODUCIBILITY_PASS=true\n'

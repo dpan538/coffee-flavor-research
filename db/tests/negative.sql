@@ -718,7 +718,7 @@ BEGIN
         WHERE run.model_run_key = 'negative.model_run.completed'
           AND occurrence.observation_expression_key = 'observation_expression.public_pink_grapefruit';
 
-        SET CONSTRAINTS ALL IMMEDIATE;
+        SET CONSTRAINTS ml.inference_candidate_count_inference_ct IMMEDIATE;
         RAISE EXCEPTION 'resolved inference without candidate was unexpectedly accepted';
     EXCEPTION WHEN OTHERS THEN
         GET STACKED DIAGNOSTICS
@@ -783,7 +783,7 @@ BEGIN
         WHERE inference.mapping_inference_key = 'negative.inference.unresolved_with_candidate'
           AND concept.concept_key = 'sensory.grapefruit';
 
-        SET CONSTRAINTS ALL IMMEDIATE;
+        SET CONSTRAINTS ml.inference_candidate_count_inference_ct IMMEDIATE;
         RAISE EXCEPTION 'unresolved inference with candidate was unexpectedly accepted';
     EXCEPTION WHEN OTHERS THEN
         GET STACKED DIAGNOSTICS
