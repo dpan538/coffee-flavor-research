@@ -1,0 +1,47 @@
+{
+  "artifact_hashes": {
+    "db/data/round3i/evaluation/language_documents.tsv": "e2732974ee76eed920a5ae517bd301b77374d5fb623521ecb525e2c0bf53c359",
+    "db/data/round3i/evaluation/language_expression_occurrences.tsv": "ac6a3cfbc3af911913e7a2f3d8567ba6c64d24a7e6431620887aabeea9a5d173",
+    "db/data/round3i/evaluation/language_expressions.tsv": "e7a77e6022e268933da47330e80887f3528616dccfc770034269e104ee88b3b0",
+    "db/data/round3i/evaluation/language_source_families.tsv": "1270a65dd628c25a4f38342cc3d573f7a1ce9402cd9de1c594c6246469104869",
+    "db/data/round3i/evaluation/language_sources.tsv": "1bcd0f6c6cf7aeacbc4028734df02943cd6e444037db24e72723106575497731"
+  },
+  "baseline_expression_overlap_count": 14,
+  "batch_key": "round3i.batch1.evaluation-language",
+  "contains_article_prose": false,
+  "contains_machine_translation": false,
+  "contains_proprietary_definitions": false,
+  "documents_added": 3289,
+  "documents_by_source": {
+    "dryad.cotter-v4": 3186,
+    "figshare.bollen-2024": 95,
+    "pmc.vezzulli-2022": 8
+  },
+  "generated_on": "2026-08-26",
+  "input_hashes": {
+    "db/data/round2b/pilot_expressions.tsv": "4848c64e38a70eba3d51dd3ab7d965d6d02544d6e5b28619dd4e209f0c2f2c23",
+    "db/data/round3b/raw/SOURCE_MANIFEST.json": "0a77f686c26d989fefac330d0cabe5f7b8b8c10863dc7e64012bb4abf604f2db",
+    "db/data/round3b/raw/cotter_2020_black_coffee/README.txt": "f6d8f508bad2824a27be8785c841e8df4c75751b58726820f9e3dd226fe3fb5e",
+    "db/data/round3b/raw/cotter_2020_black_coffee/cotter_dataset.csv": "931aff6185381d5079bf93c4727bbbe65ff58ecfb524d2d3b6046eead2009114",
+    "db/data/round3h/batch1/batch1_source_manifest.json": "f89dfe2aac6f49010b21667f28dbc01f9d7710e96c056a40176cf3f761c4fcda",
+    "db/data/round3h/batch1/bollen_2024_sensory_scores.tsv": "af06701d39891c3af2d92d1a493461d33aa8995db1c6a2d39d7239178af20073",
+    "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv": "1ae24e67eb77ddcf7c85e6fc085a504e022d22df3642211d21d81ee23040066b"
+  },
+  "marginal_coverage_gain": "HIGH",
+  "named_sources_reviewed": 3,
+  "occurrences_added": 11444,
+  "occurrences_by_source": {
+    "dryad.cotter-v4": 10763,
+    "figshare.bollen-2024": 530,
+    "pmc.vezzulli-2022": 151
+  },
+  "pooled_source_local_scales": false,
+  "readiness_state_after": "FAMILY_AND_DOCUMENT_GATES_PASS_UNIQUE_EXPRESSION_GAP_REMAINS",
+  "rights_blocked_count": 0,
+  "source_families_added": 3,
+  "sources_admitted": 3,
+  "targeted_gap": "Rights-cleared contemporary coffee evaluation-language families and documents",
+  "unique_expression_inventory_count": 37,
+  "unique_expressions_added": 23,
+  "zh_hans_expressions_added": 0
+}
