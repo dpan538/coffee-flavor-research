@@ -1,0 +1,140 @@
+section	readiness_key	minimum_required	preferred_required	observed	hard_gate	passed	evidence_path	limitation
+BASELINE	checkpoint.source_sha	c3ae9b880d85507a0b8b0298bb94ef013d02f928	c3ae9b880d85507a0b8b0298bb94ef013d02f928	c3ae9b880d85507a0b8b0298bb94ef013d02f928	true	true	git rev-parse origin/main	Exact verified remote main before Round 3J acquisition.
+BASELINE	checkpoint.source_release	coffee-sensory-research-db-v0.1.0	coffee-sensory-research-db-v0.1.0	coffee-sensory-research-db-v0.1.0	true	true	annotated git tag and freeze manifest	Release tag manifest inventories views migrations and source snapshots are immutable.
+BASELINE	foundation.v0_1_0_mutation_count	0	0	0	true	true	git diff plus freeze hash inventory	Round 3J is additive only.
+BASELINE	canonical.concept_count	130	130	130	true	true	kb.v_current_canonical_concept	Canonical ontology remains frozen.
+BASELINE	canonical.active_sensory_attribute_count	92	92	92	true	true	kb.v_current_canonical_concept	No concept addition split merge or retype.
+BASELINE	language.governed_unique_normalized_expression_count	6000	10000	2996	true	false	corpus.v_current_language_corpus	Governed observed or source-derived expressions only.
+BASELINE	language.contemporary_tasting_source_family_count	6	10	3	true	false	corpus.v_current_language_corpus	Independent origins; mirrors do not count.
+BASELINE	language.contemporary_tasting_document_count	6000	12000	3289	true	false	corpus.v_current_language_corpus	Documents must contain actual sensory or tasting language.
+BASELINE	language.zh_hans_source_family_count	4	6	2	true	false	corpus.v_current_language_corpus	Source-authored Simplified Chinese only.
+BASELINE	language.zh_hans_sensory_expression_count	500	1000	249	true	false	corpus.v_current_language_corpus	Project and machine translations do not count.
+BASELINE	sensory.source_family_count	12	15	9	true	false	evidence.v_current_sensory_partition	Independent governed sensory origins only.
+BASELINE	sensory.source_local_raw_observation_count	DESCRIPTIVE	DESCRIPTIVE	4344	false	true	evidence.v_current_sensory_partition	Raw rows are not effective samples.
+BASELINE	sensory.source_local_sample_or_configuration_count	500	1000	230	true	false	evidence.v_current_sensory_partition	Baseline inventory count requires task-specific independence audit.
+BASELINE	sensory.effective_sample_count	500	1000	NOT_YET_AUDITED	true	false	future effective-sample audit	Must not be inferred from raw rows.
+BASELINE	sensory.configuration_count	DESCRIPTIVE	DESCRIPTIVE	NOT_YET_AUDITED	false	false	future effective-sample audit	Track separately from coffee identities and participants.
+BASELINE	sensory.coffee_identity_count	DESCRIPTIVE	DESCRIPTIVE	NOT_YET_AUDITED	false	false	future effective-sample audit	Independent identity semantics remain source local.
+BASELINE	sensory.participant_or_panel_count	DESCRIPTIVE	DESCRIPTIVE	NOT_YET_AUDITED	false	false	future effective-sample audit	Only disclosed participant or panel counts may be reported.
+BASELINE	context.empirical_coverage_cell_count	DESCRIPTIVE	DESCRIPTIVE	181	false	true	context.v_current_context	Must not be relabelled as preparation-roast cells without audit.
+BASELINE	relationship.evidence_claim_count	150	250	97	true	false	evidence.v_current_relationship_evidence	Reviewed meaningful claims only; no mechanical pair generation.
+BASELINE	relationship.source_local_supported_membership_count	DESCRIPTIVE	DESCRIPTIVE	6	false	true	evidence.v_current_relationship_evidence	Source-local supported paths remain distinct.
+BASELINE	relationship.cross_source_supported_membership_count	6	8	4	true	false	evidence.v_current_relationship_evidence	Independent-origin support only.
+BASELINE	relationship.range_with_source_local_evidence_count	DESCRIPTIVE	DESCRIPTIVE	6	false	true	evidence.v_current_relationship_evidence	No range promotion implied.
+BASELINE	relationship.range_with_cross_source_evidence_count	5	6	4	true	false	evidence.v_current_relationship_evidence	No forced promotion to reach target.
+BASELINE	analysis.model_prebuild_feature_count	20	20	20	true	true	evidence.v_current_model_prebuild_feature	Frozen v0.1.0 feature definitions.
+BASELINE	analysis.model_prebuild_source_partition_count	12	12	12	true	true	evidence.v_current_model_prebuild_feature	Federated source semantics remain explicit.
+BASELINE	state.round3_foundation_complete	true	true	true	true	true	v0.1.0 freeze receipt	Foundational research database is complete and immutable.
+BASELINE	state.model_prebuild_data_ready	true	true	true	true	true	v0.1.0 freeze gate	Does not imply task-specific training readiness.
+BASELINE	state.round3_data_scale_complete	true	true	false	true	false	frozen pre-acquisition decision	Known main scale minima are not met.
+BASELINE	state.round3_training_corpus_ready	true	true	false	true	false	frozen pre-acquisition decision	No governed training-candidate corpus is frozen.
+BASELINE	state.round3_exit_gate_pass	true	true	false	true	false	frozen pre-acquisition decision	Exit conditions have not been evaluated as passing.
+BASELINE	state.training_experiment_ready	true	true	false	true	false	frozen pre-acquisition decision	Round 3J may move toward readiness but may not train.
+MINIMUM_SCALE_STATE	language.governed_unique_normalized_expression_count	6000	10000	2996	true	false	future training-scale gate	Engineering entry target; not a sufficiency claim.
+MINIMUM_SCALE_STATE	language.contemporary_tasting_source_family_count	6	10	3	true	false	future training-scale gate	Independent origins only.
+MINIMUM_SCALE_STATE	language.contemporary_tasting_document_count	6000	12000	3289	true	false	future training-scale gate	Actual sensory or tasting documents only.
+MINIMUM_SCALE_STATE	language.zh_hans_source_family_count	4	6	2	true	false	future training-scale gate	Source-authored zh-Hans only.
+MINIMUM_SCALE_STATE	language.zh_hans_sensory_expression_count	500	1000	249	true	false	future training-scale gate	No project translation or synthetic variants.
+MINIMUM_SCALE_STATE	sensory.source_family_count	12	15	9	true	false	future training-scale gate	Independent governed sensory families.
+MINIMUM_SCALE_STATE	sensory.effective_sample_or_configuration_count	500	1000	230_BASELINE_INVENTORY_NOT_YET_ELIGIBILITY_AUDITED	true	false	future effective-sample audit	Effective units must be task specific.
+MINIMUM_SCALE_STATE	lexical.training_eligible_unique_expression_count	5000	8000	NOT_YET_AUDITED	true	false	future lexical candidate audit	Unreviewed automatic normalization is not a gold label.
+MINIMUM_SCALE_STATE	lexical.training_source_family_count	8	12	NOT_YET_AUDITED	true	false	future lexical candidate audit	Only rights-cleared training-eligible families count.
+MINIMUM_SCALE_STATE	lexical.held_out_source_family_count	2	3	0	true	false	future grouped split manifest	At least two fully held-out families required.
+MINIMUM_SCALE_STATE	lexical.zh_hans_training_eligible_count	500	1000	NOT_YET_AUDITED	true	false	future lexical candidate audit	Source-authored evidence only.
+MINIMUM_SCALE_STATE	lexical.label_provenance_rate	1.0000	1.0000	NOT_YET_AUDITED	true	false	future training eligibility audit	Every label resolves to source version snapshot rule/review and target semantics.
+MINIMUM_SCALE_STATE	lexical.max_single_source_family_share_training_candidate	<=0.60	<=0.45	NOT_YET_AUDITED	true	false	future source concentration audit	Documented deterministic capping may apply only to the candidate corpus.
+MINIMUM_SCALE_STATE	context.effective_sample_count	400	800	NOT_YET_AUDITED	true	false	future context candidate audit	Independent source-local samples/configurations only.
+MINIMUM_SCALE_STATE	context.observed_preparation_roast_cell_count	250	400	NOT_YET_AUDITED	true	false	future context candidate audit	Observed legitimate combinations only; no inferred cells.
+MINIMUM_SCALE_STATE	context.source_family_count	8	12	NOT_YET_AUDITED	true	false	future context candidate audit	Multiple independent families must contribute.
+MINIMUM_SCALE_STATE	context.coffee_or_sample_group_count	300	NOT_DECLARED	NOT_YET_AUDITED	true	false	future context candidate audit	Grouping must prevent identity leakage.
+MINIMUM_SCALE_STATE	relationship.evidence_claim_count	150	250	97	true	false	future association evidence audit	Claims are reviewed and evidence specific.
+MINIMUM_SCALE_STATE	relationship.cross_source_supported_membership_count	6	8	4	true	false	future association evidence audit	Independent-origin support required.
+MINIMUM_SCALE_STATE	relationship.range_with_cross_source_evidence_count	5	6	4	true	false	future association evidence audit	Do not force claims or promotions.
+PREFERRED_SCALE_STATE	language.governed_unique_normalized_expression_count	6000	10000	2996	false	false	future training-scale gate	Preferred breadth does not authorize fabrication.
+PREFERRED_SCALE_STATE	language.contemporary_tasting_source_family_count	6	10	3	false	false	future training-scale gate	Independent origins only.
+PREFERRED_SCALE_STATE	language.contemporary_tasting_document_count	6000	12000	3289	false	false	future training-scale gate	Actual sensory or tasting documents only.
+PREFERRED_SCALE_STATE	language.zh_hans_source_family_count	4	6	2	false	false	future training-scale gate	Source-authored zh-Hans only.
+PREFERRED_SCALE_STATE	language.zh_hans_sensory_expression_count	500	1000	249	false	false	future training-scale gate	Do not count project translation.
+PREFERRED_SCALE_STATE	sensory.source_family_count	12	15	9	false	false	future training-scale gate	Independent governed origins.
+PREFERRED_SCALE_STATE	sensory.effective_sample_or_configuration_count	500	1000	230_BASELINE_INVENTORY_NOT_YET_ELIGIBILITY_AUDITED	false	false	future effective-sample audit	Raw repetitions do not improve effective scale.
+PREFERRED_SCALE_STATE	lexical.training_eligible_unique_expression_count	5000	8000	NOT_YET_AUDITED	false	false	future lexical candidate audit	Hard examples and abstentions remain represented.
+PREFERRED_SCALE_STATE	lexical.training_source_family_count	8	12	NOT_YET_AUDITED	false	false	future lexical candidate audit	Independent training-eligible families.
+PREFERRED_SCALE_STATE	lexical.held_out_source_family_count	2	3	0	false	false	future grouped split manifest	Fully held-out source families.
+PREFERRED_SCALE_STATE	lexical.zh_hans_training_eligible_count	500	1000	NOT_YET_AUDITED	false	false	future lexical candidate audit	Source-authored evidence only.
+PREFERRED_SCALE_STATE	lexical.max_single_source_family_share_training_candidate	<=0.60	<=0.45	NOT_YET_AUDITED	false	false	future source concentration audit	Full raw corpus remains preserved.
+PREFERRED_SCALE_STATE	context.effective_sample_count	400	800	NOT_YET_AUDITED	false	false	future context candidate audit	Engineering target only.
+PREFERRED_SCALE_STATE	context.observed_preparation_roast_cell_count	250	400	NOT_YET_AUDITED	false	false	future context candidate audit	Observed cells only.
+PREFERRED_SCALE_STATE	context.source_family_count	8	12	NOT_YET_AUDITED	false	false	future context candidate audit	Independent families.
+PREFERRED_SCALE_STATE	relationship.evidence_claim_count	150	250	97	false	false	future association evidence audit	No mechanical claim generation.
+PREFERRED_SCALE_STATE	relationship.cross_source_supported_membership_count	6	8	4	false	false	future association evidence audit	Independent corroboration.
+PREFERRED_SCALE_STATE	relationship.range_with_cross_source_evidence_count	5	6	4	false	false	future association evidence audit	No forced promotion.
+TASK_SPECIFIC_READINESS_STATE	lexical.eligible_unique_expression_minimum_pass	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Requires at least 5000 eligible unique expressions.
+TASK_SPECIFIC_READINESS_STATE	lexical.source_diversity_minimum_pass	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Requires at least eight eligible source families.
+TASK_SPECIFIC_READINESS_STATE	lexical.held_out_source_family_feasible	true	true	false	true	false	future grouped split audit	Requires at least two fully held-out source families.
+TASK_SPECIFIC_READINESS_STATE	lexical.zh_hans_minimum_pass	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Requires at least 500 source-authored eligible expressions.
+TASK_SPECIFIC_READINESS_STATE	lexical.label_provenance_complete	true	true	false	true	false	future label provenance audit	Required rate is 1.0000.
+TASK_SPECIFIC_READINESS_STATE	lexical.duplicate_control_pass	true	true	false	true	false	future duplicate audit	Deterministic exact near-duplicate mirror and translation controls required.
+TASK_SPECIFIC_READINESS_STATE	lexical.source_concentration_pass	true	true	false	true	false	future source concentration audit	Candidate maximum family share must be no greater than 0.60.
+TASK_SPECIFIC_READINESS_STATE	lexical.grouped_split_feasible	true	true	false	true	false	future grouped split audit	No naive random row split.
+TASK_SPECIFIC_READINESS_STATE	lexical.nonzero_ambiguous_unresolved_evaluation_strata	true	true	false	true	false	future lexical candidate audit	Hard examples cannot be removed to inflate accuracy.
+TASK_SPECIFIC_READINESS_STATE	lexical.normalization_training_ready	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Conjunction of every mandatory lexical condition.
+TASK_SPECIFIC_READINESS_STATE	association.multiple_independent_evidence_families	true	true	NOT_YET_AUDITED	true	false	future association candidate audit	Mirrors and repeated rows are not independent.
+TASK_SPECIFIC_READINESS_STATE	association.source_local_measurement_semantics_preserved	true	true	NOT_YET_AUDITED	true	false	future association candidate audit	Methods cannot collapse into one universal similarity score.
+TASK_SPECIFIC_READINESS_STATE	association.cross_source_minimum_pass	true	true	false	true	false	future association candidate audit	Declared membership and range minima must pass.
+TASK_SPECIFIC_READINESS_STATE	association.positive_and_challenging_or_mixed_evidence_sufficient	true	true	NOT_YET_AUDITED	true	false	future association candidate audit	Absence is not a negative label.
+TASK_SPECIFIC_READINESS_STATE	association.grouped_holdout_feasible	true	true	false	true	false	future grouped split audit	Source-qualified groups must remain intact.
+TASK_SPECIFIC_READINESS_STATE	association.absence_derived_negative_count	0	0	NOT_YET_AUDITED	true	false	future association candidate audit	No fabricated negative labels.
+TASK_SPECIFIC_READINESS_STATE	association.model_training_ready	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Conjunction of every mandatory association condition.
+TASK_SPECIFIC_READINESS_STATE	context.effective_sample_minimum_pass	true	true	false	true	false	future context candidate audit	Requires at least 400 effective samples.
+TASK_SPECIFIC_READINESS_STATE	context.multiple_source_families_pass	true	true	false	true	false	future context candidate audit	Requires at least eight families.
+TASK_SPECIFIC_READINESS_STATE	context.preparation_roast_coverage_pass	true	true	false	true	false	future context candidate audit	Requires at least 250 observed cells.
+TASK_SPECIFIC_READINESS_STATE	context.grouped_coffee_or_sample_holdout_feasible	true	true	false	true	false	future grouped split audit	Related identities cannot cross boundaries.
+TASK_SPECIFIC_READINESS_STATE	context.source_local_outcome_semantics_available	true	true	NOT_YET_AUDITED	true	false	future context candidate audit	Incompatible methods remain federated.
+TASK_SPECIFIC_READINESS_STATE	context.false_pooled_sensory_scale_count	0	0	NOT_YET_AUDITED	true	false	future context candidate audit	No convenience harmonization.
+TASK_SPECIFIC_READINESS_STATE	context.model_training_ready	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Conjunction of every mandatory context condition.
+TASK_SPECIFIC_READINESS_STATE	question.model_training_ready	false	false	false	true	true	future audit.run_training_experiment_readiness_gate	No real sequential response information-gain or stopping evidence.
+TASK_SPECIFIC_READINESS_STATE	adaptive_policy.training_ready	false	false	false	true	true	future audit.run_training_experiment_readiness_gate	No real ordinary-user sequential response evidence.
+TASK_SPECIFIC_READINESS_STATE	exit.training_corpus_frozen	true	true	false	true	false	future training corpus manifest	Must reference an immutable database release.
+TASK_SPECIFIC_READINESS_STATE	exit.held_out_source_split_ready	true	true	false	true	false	future grouped split manifest	Source-family holdout is mandatory.
+TASK_SPECIFIC_READINESS_STATE	exit.training_label_provenance_rate	1.0000	1.0000	NOT_YET_AUDITED	true	false	future label provenance audit	No opaque manually typed labels.
+TASK_SPECIFIC_READINESS_STATE	exit.training_set_source_concentration_acceptable	true	true	false	true	false	future source concentration audit	Complete raw corpus must remain preserved.
+TASK_SPECIFIC_READINESS_STATE	exit.training_corpus_reproducible	true	true	false	true	false	future reproducibility audit	Candidate and split manifests must reproduce deterministically.
+TASK_SPECIFIC_READINESS_STATE	exit.round3_exit_gate_pass	true	true	false	true	false	future audit.run_training_experiment_readiness_gate	Requires lexical readiness plus association or context readiness and every exit control.
+OBSERVED	expected_state.frozen_before_acquisition	true	true	true	true	true	git history	This contract must commit before any Round 3J acquisition download or import.
+OBSERVED	expected_state.threshold_revision_count	0	0	0	true	true	future threshold revision registry	No post-acquisition threshold reduction without a separate invalid-metric decision.
+OBSERVED	training.full_governed_corpus_preserved	true	true	true	true	true	v0.1.0 freeze artifacts	Sampling or capping may only create a separate candidate manifest.
+OBSERVED	training.task_specific_eligibility_audit_complete	true	true	false	true	false	future training eligibility audit	Frozen evidence rows are not presumed training eligible.
+OBSERVED	training.source_concentration_audit_complete	true	true	false	true	false	future concentration audit	Raw and candidate concentration require separate share top-three HHI and effective-family metrics.
+OBSERVED	training.duplicate_audit_complete	true	true	false	true	false	future deterministic duplicate audit	No embedding similarity permitted.
+OBSERVED	training.grouped_split_manifest_complete	true	true	false	true	false	future grouped split audit	Source coffee product participant and duplicate groups must not leak.
+OBSERVED	state.training_experiment_ready	true	true	false	true	false	frozen pre-acquisition decision	No task is yet authorized for training.
+DELTA	language.governed_unique_normalized_expression_count	3004	7004	3004	true	false	minimum/preferred minus baseline	Unique governed expressions only.
+DELTA	language.contemporary_tasting_source_family_count	3	7	3	true	false	minimum/preferred minus baseline	Independent origins only.
+DELTA	language.contemporary_tasting_document_count	2711	8711	2711	true	false	minimum/preferred minus baseline	Qualifying documents only.
+DELTA	language.zh_hans_source_family_count	2	4	2	true	false	minimum/preferred minus baseline	Source-authored families only.
+DELTA	language.zh_hans_sensory_expression_count	251	751	251	true	false	minimum/preferred minus baseline	Project translation excluded.
+DELTA	sensory.source_family_count	3	6	3	true	false	minimum/preferred minus baseline	Independent sensory origins.
+DELTA	sensory.source_local_sample_or_configuration_count	270	770	270	true	false	minimum/preferred minus baseline	Final effective-unit delta must be revalidated by independence audit.
+DELTA	relationship.evidence_claim_count	53	153	53	true	false	minimum/preferred minus baseline	No mechanical claim creation.
+DELTA	relationship.cross_source_supported_membership_count	2	4	2	true	false	minimum/preferred minus baseline	Independent corroboration.
+DELTA	relationship.range_with_cross_source_evidence_count	1	2	1	true	false	minimum/preferred minus baseline	No forced range promotion.
+DELTA	lexical.training_eligible_unique_expression_count	NOT_COMPUTABLE_UNTIL_AUDIT	NOT_COMPUTABLE_UNTIL_AUDIT	UNKNOWN	true	false	future lexical candidate audit	Global expression inventory is not the eligible count.
+DELTA	context.effective_sample_count	NOT_COMPUTABLE_UNTIL_AUDIT	NOT_COMPUTABLE_UNTIL_AUDIT	UNKNOWN	true	false	future context candidate audit	Raw observations and inventory units are not effective samples.
+DELTA	context.observed_preparation_roast_cell_count	NOT_COMPUTABLE_UNTIL_AUDIT	NOT_COMPUTABLE_UNTIL_AUDIT	UNKNOWN	true	false	future context candidate audit	Empirical coverage cells are not automatically preparation-roast cells.
+DELTA	context.source_family_count	NOT_COMPUTABLE_UNTIL_AUDIT	NOT_COMPUTABLE_UNTIL_AUDIT	UNKNOWN	true	false	future context candidate audit	Only legitimate contributing families count.
+DELTA	context.coffee_or_sample_group_count	NOT_COMPUTABLE_UNTIL_AUDIT	NOT_DECLARED	UNKNOWN	true	false	future context candidate audit	Requires grouped identity audit.
+DECISION	effective_unit_policy	TASK_SPECIFIC_INDEPENDENT_UNIT	TASK_SPECIFIC_INDEPENDENT_UNIT	FROZEN	true	true	this expected-state contract	No global training sample count.
+DECISION	raw_row_policy	REPORT_SEPARATELY_FROM_EFFECTIVE_UNITS	REPORT_SEPARATELY_FROM_EFFECTIVE_UNITS	FROZEN	true	true	this expected-state contract	Repeated raw rows alone are not material gain.
+DECISION	lexical_label_policy	REVIEWED_TARGET_OR_DISPOSITION_WITH_PROVENANCE	REVIEWED_TARGET_OR_DISPOSITION_WITH_PROVENANCE	FROZEN	true	true	this expected-state contract	Ambiguous unresolved abstain and outside-ontology outcomes remain valid.
+DECISION	association_negative_policy	NO_ABSENCE_DERIVED_NEGATIVES	NO_ABSENCE_DERIVED_NEGATIVES	FROZEN	true	true	this expected-state contract	Negative or challenging evidence requires explicit support.
+DECISION	context_semantics_policy	PRESERVE_SOURCE_LOCAL_METHOD_AND_SCALE	PRESERVE_SOURCE_LOCAL_METHOD_AND_SCALE	FROZEN	true	true	this expected-state contract	No false pooled sensory scale.
+DECISION	source_concentration_policy	CANDIDATE_MAX_SHARE_LE_0_60	CANDIDATE_MAX_SHARE_LE_0_45	FROZEN	true	true	this expected-state contract	Deterministic capping is allowed only in a separate candidate manifest.
+DECISION	full_corpus_policy	PRESERVE_FULL_GOVERNED_CORPUS	PRESERVE_FULL_GOVERNED_CORPUS	FROZEN	true	true	this expected-state contract	Do not delete excess observations to hide concentration.
+DECISION	readiness_gate_policy	TASK_SPECIFIC_ALL_MANDATORY_CONDITIONS	TASK_SPECIFIC_ALL_MANDATORY_CONDITIONS	FROZEN	true	true	future audit.run_training_experiment_readiness_gate	No weighted aggregate or raw-size shortcut.
+DECISION	round3_exit_policy	FROZEN_AND_LEXICAL_AND_ASSOCIATION_OR_CONTEXT_AND_SPLIT_AND_PROVENANCE_AND_CONCENTRATION_AND_REPRODUCIBILITY	SAME	NOT_READY	true	false	future audit.run_training_experiment_readiness_gate	Question and adaptive readiness remain false without blocking ready tasks.
+DECISION	acquisition_stop_rule	EXIT_GATE_PASS_OR_THREE_CONSECUTIVE_TARGETED_NO_MATERIAL_GAIN_BATCHES	EXIT_GATE_PASS	PENDING	true	false	future acquisition batch registry	Do not search indefinitely or lower thresholds.
+DECISION	v0_1_0_mutation_policy	ZERO_MUTATIONS_FORWARD_ADDITIVE_ONLY	ZERO_MUTATIONS_FORWARD_ADDITIVE_ONLY	ENFORCED	true	true	freeze hash inventory	Any v0.1.0 mutation blocks Round 3J.
+DECISION	new_release_policy	V0_2_ONLY_IF_ROUND3_EXIT_GATE_PASS	V0_2_ONLY_IF_ROUND3_EXIT_GATE_PASS	NOT_AUTHORIZED	true	true	future release gate	Do not create or move a v0.2 tag before the gate and exact green SHA.
+DECISION	prohibited_training_execution	NO_MODEL_FITTING_NO_EMBEDDINGS_NO_HYPERPARAMETER_SEARCH	NO_MODEL_FITTING_NO_EMBEDDINGS_NO_HYPERPARAMETER_SEARCH	ENFORCED	true	true	future execution guard	Round 4 is the first round that may authorize task-specific fitting.
+DECISION	prohibited_human_execution	NO_REAL_HUMAN_COLLECTION_NO_SYNTHETIC_RESPONSES_AS_DATA	NO_REAL_HUMAN_COLLECTION_NO_SYNTHETIC_RESPONSES_AS_DATA	ENFORCED	true	true	future execution guard	Real observations and user validation remain zero.
+DECISION	prohibited_ontology_execution	NO_CANONICAL_ADD_SPLIT_MERGE_RETYPE	NO_CANONICAL_ADD_SPLIT_MERGE_RETYPE	ENFORCED	true	true	future execution guard	New lexical material remains text first.
