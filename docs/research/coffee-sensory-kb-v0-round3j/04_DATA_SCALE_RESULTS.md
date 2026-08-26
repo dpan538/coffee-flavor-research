@@ -9,21 +9,21 @@ separate measures.
 
 ## Acquisition-scale result
 
-| Measure | Result | Counting boundary |
-| --- | ---: | --- |
-| Registered named candidates | 17 | Canonical candidates after mirror and frozen-baseline reconciliation |
-| Candidates authorized for file audit | 5 | Authorization did not imply admission or model use |
-| Audited payload files | 584 | 2 Zenodo files, 571 Bichlmaier archive members, 5 `guchengf` HTML files, and 6 Xian Zhang archive members |
-| Audited source-payload bytes | 97,938,951 | Compressed archive bytes for the two Mendeley deposits plus directly audited Zenodo and HTML bytes; not decompressed corpus size and excludes the 172-byte Liang API receipt |
-| Metadata/API receipt bytes | 172 | Liang access-failure response; explicitly not a source payload or raw acquisition |
-| Known raw-observation lower bound | 934 | 526 Golovinsky spreadsheet rows, 404 overlapping Xian workbook rows, and 4 `guchengf` review documents; Bichlmaier rows were not enumerated |
-| Source-authored candidate documents acquired | 4 | `guchengf` review pages; the fifth HTML file is the license locator |
-| Source-reviewed unique zh-Hans candidate expressions | 22 | Exact source-authored substrings after the bounded text review; all remain unresolved, non-gold, not governed, not imported, and not sampling eligible |
-| New independent source-family feasibility | 1 | `guchengf`; this is an acquisition gain, not a canonical ontology or frozen-corpus count |
-| Acquisition-stage admitted rows | 0 | No raw source was imported by this audit |
-| Acquisition-stage effective training units | 0 | No raw occurrence was promoted to an eligible training example |
-| Consecutive targeted no-gain batches after the gain batch | 3 | `R3J-AQ-002` through `R3J-AQ-004` |
-| Stop rule | `CONDITION_B_MET_STOP_ACQUISITION` | Three consecutive targeted batches added no material gain toward a failed gate |
+| Measure                                                   |                             Result | Counting boundary                                                                                                                                                            |
+| --------------------------------------------------------- | ---------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Registered named candidates                               |                                 17 | Canonical candidates after mirror and frozen-baseline reconciliation                                                                                                         |
+| Candidates authorized for file audit                      |                                  5 | Authorization did not imply admission or model use                                                                                                                           |
+| Audited payload files                                     |                                584 | 2 Zenodo files, 571 Bichlmaier archive members, 5 `guchengf` HTML files, and 6 Xian Zhang archive members                                                                    |
+| Audited source-payload bytes                              |                         97,938,951 | Compressed archive bytes for the two Mendeley deposits plus directly audited Zenodo and HTML bytes; not decompressed corpus size and excludes the 172-byte Liang API receipt |
+| Metadata/API receipt bytes                                |                                172 | Liang access-failure response; explicitly not a source payload or raw acquisition                                                                                            |
+| Known raw-observation lower bound                         |                                934 | 526 Golovinsky spreadsheet rows, 404 overlapping Xian workbook rows, and 4 `guchengf` review documents; Bichlmaier rows were not enumerated                                  |
+| Source-authored candidate documents acquired              |                                  4 | `guchengf` review pages; the fifth HTML file is the license locator                                                                                                          |
+| Source-reviewed unique zh-Hans candidate expressions      |                                 22 | Exact source-authored substrings after the bounded text review; all remain unresolved, non-gold, not governed, not imported, and not sampling eligible                       |
+| New independent source-family feasibility                 |                                  1 | `guchengf`; this is an acquisition gain, not a canonical ontology or frozen-corpus count                                                                                     |
+| Acquisition-stage admitted rows                           |                                  0 | No raw source was imported by this audit                                                                                                                                     |
+| Acquisition-stage effective training units                |                                  0 | No raw occurrence was promoted to an eligible training example                                                                                                               |
+| Consecutive targeted no-gain batches after the gain batch |                                  3 | `R3J-AQ-002` through `R3J-AQ-004`                                                                                                                                            |
+| Stop rule                                                 | `CONDITION_B_MET_STOP_ACQUISITION` | Three consecutive targeted batches added no material gain toward a failed gate                                                                                               |
 
 The value 934 is a heterogeneous lower bound and is not an effective-sample
 total. It must not be used for readiness, source concentration, or split size.
