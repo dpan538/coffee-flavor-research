@@ -56,6 +56,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Python for deterministic freeze exports
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends python3
+
       - name: Run unified database verification
         env:
           PGHOST: postgres
