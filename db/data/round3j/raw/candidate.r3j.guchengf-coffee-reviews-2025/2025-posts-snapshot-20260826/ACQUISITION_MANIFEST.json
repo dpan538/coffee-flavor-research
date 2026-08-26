@@ -1,0 +1,65 @@
+{
+  "acquisition_state": "ACQUIRED_BYTES_HASHED_NOT_IMPORTED",
+  "candidate_key": "candidate.r3j.guchengf-coffee-reviews-2025",
+  "files": [
+    {
+      "byte_count": 7210,
+      "path": "00_home.html",
+      "sha256": "822da848a0cb1da0f3454cd0e44f61b2853a3e751c13375fdd55ea465c4c7a8a",
+      "source_url": "https://guchengf.me/"
+    },
+    {
+      "byte_count": 2959,
+      "path": "01_sangaria-crown-coffee-260ml.html",
+      "sha256": "56b2fd603f9690c27605ac9183908e46a92da9ae33da12136e9f092442b6b542",
+      "source_url": "https://guchengf.me/blog/sangaria-crown-coffee-260ml/"
+    },
+    {
+      "byte_count": 3138,
+      "path": "02_review-georgia-the-black-coffee-500ml.html",
+      "sha256": "4d59ea2920dfa7a0e769ae20e0437853ade00ed9f50efc470550fe7b751edc6a",
+      "source_url": "https://guchengf.me/blog/review-georgia-the-black-coffee-500ml/"
+    },
+    {
+      "byte_count": 3562,
+      "path": "03_review-ucc-shokunin-no-coffee-sugar-free-black-900ml.html",
+      "sha256": "66903b74256748af4b16f6a0f2d75d01861dd1c08e5875de7b8104bcfbfe113b",
+      "source_url": "https://guchengf.me/blog/review-ucc-shokunin-no-coffee-sugar-free-black-900ml/"
+    },
+    {
+      "byte_count": 3266,
+      "path": "04_review-kirin-fire-one-day-black-coffee-600-ml.html",
+      "sha256": "51abc486d0ba3a446fa1c588474ae89b2479130b6a941a5e968f343ad08de167",
+      "source_url": "https://guchengf.me/blog/review-kirin-fire-one-day-black-coffee-600-ml/"
+    }
+  ],
+  "immutable_destination_path": "db/data/round3j/raw/candidate.r3j.guchengf-coffee-reviews-2025/2025-posts-snapshot-20260826",
+  "manifest_schema": "coffee-flavor-round3j-acquisition-v1",
+  "overwrite_policy": "REFUSE_EXISTING_DESTINATION",
+  "raw_file_hash_completeness": 1.0,
+  "source_candidate_register": {
+    "path": "db/data/round3j/source_candidate_register.tsv",
+    "sha256": "3cbc8890a4e3c1fd65b1c664794ce5fe5f986d4f889b835e07e3d6a71d3c2471"
+  },
+  "source_candidate_register_row": {
+    "access_state": "PUBLIC_HTML",
+    "acquisition_batch": "A;B",
+    "authors_or_owner": "gucheen",
+    "candidate_key": "candidate.r3j.guchengf-coffee-reviews-2025",
+    "decision": "TARGET_MANUAL_TEXT_BOUNDARY_AUDIT",
+    "doi_or_stable_url": "https://guchengf.me/blog/",
+    "estimated_effective_units": "4 documents; expressions not yet audited",
+    "expected_contribution": "4 zh-Hans documents with consumer sensory prose",
+    "independence_basis": "New author and domain independent of both frozen zh-Hans families",
+    "license_or_terms": "CC BY 4.0",
+    "limitation": "Exclude packaging copy images and any separately marked material.",
+    "raw_acquisition_authorized": "true",
+    "registered_on": "2026-08-26",
+    "repository": "Official author archive",
+    "rights_state": "CLEARED_WITH_TEXT_BOUNDARY_AUDIT",
+    "targeted_training_gap": "contemporary_language;zh_hans_scale",
+    "title": "Four source-authored 2025 packaged-coffee reviews",
+    "year": "2025"
+  },
+  "source_version": "2025-posts-snapshot-20260826"
+}
