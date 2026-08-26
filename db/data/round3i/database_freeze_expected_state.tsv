@@ -1,0 +1,100 @@
+section	readiness_key	minimum_required	preferred_required	observed	hard_gate	passed	evidence_path	limitation
+BASELINE	checkpoint.source_sha	ccf5769cb5e1f165209e59beaef9fe54017265f5	ccf5769cb5e1f165209e59beaef9fe54017265f5	ccf5769cb5e1f165209e59beaef9fe54017265f5	true	true	git rev-parse origin/main	Exact verified remote main before isolated worktree creation.
+BASELINE	canonical.concept_count	130	130	130	true	true	kb.concept	Canonical ontology remains frozen.
+BASELINE	canonical.active_sensory_attribute_count	92	92	92	true	true	kb.concept	Active sensory attributes remain frozen.
+BASELINE	sensory.source_family_count	5	8	9	true	true	audit.v_model_prebuild_coverage	Independent governed sensory origins only.
+BASELINE	sensory.method_family_count	3	4	4	true	true	evidence.model_prebuild_source_profile	Source-local CATA RATA descriptive and Q-grader semantics remain distinct.
+BASELINE	sensory.source_local_observation_row_count	DESCRIPTIVE	DESCRIPTIVE	4344	false	true	audit.v_model_prebuild_coverage	No mandatory sensory-row quota.
+BASELINE	sensory.source_local_sample_count	DESCRIPTIVE	DESCRIPTIVE	230	false	true	audit.v_model_prebuild_coverage	Counts source-local samples/configurations not pooled people.
+BASELINE	sensory.disclosed_participant_or_panelist_count	DESCRIPTIVE	DESCRIPTIVE	520	false	true	audit.v_model_prebuild_coverage	Only disclosed counts.
+BASELINE	context.preparation_sensory_coverage	3	5	8	true	true	audit.v_model_prebuild_coverage	Observed sensory-outcome preparations only.
+BASELINE	context.roast_sensory_coverage	4	6	9	true	true	audit.v_model_prebuild_coverage	Source roast schemes remain explicit.
+BASELINE	context.crossed_cell_count	12	50	118	true	true	audit.model_prebuild_context_cell	Observed cells only.
+BASELINE	context.empirical_coverage_cell_count	120	180	181	true	true	audit.v_model_prebuild_coverage	No inferred or zero-filled cells.
+BASELINE	consumer.ordinary_user_source_count	2	4	5	true	true	audit.v_model_prebuild_coverage	Sources must contain sensory outcomes.
+BASELINE	reference.panel_source_count	2	3	4	true	true	audit.v_model_prebuild_coverage	Disclosed trained/reference panels.
+BASELINE	milk.sensory_outcome_source_family_count	0	1	2	false	true	audit.v_model_prebuild_coverage	Actual milk-coffee sensory outcomes.
+BASELINE	language.contemporary_source_family_count	3	5	0	true	false	corpus.v_model_prebuild_language_inventory	Firstbloom dictionaries chemistry-only and generic titles excluded.
+BASELINE	language.new_contemporary_document_count	500	1500	0	true	false	corpus.v_model_prebuild_language_inventory	Documents must contain actual contemporary tasting language.
+BASELINE	language.unique_expression_count	2500	3500	1777	true	false	corpus.normalized_expression	Observed or source-derived normalized expressions only.
+BASELINE	language.zh_hans_source_family_count	2	3	0	true	false	corpus.v_model_prebuild_language_inventory	Source-authored Simplified Chinese only.
+BASELINE	language.zh_hans_sensory_expression_count	0	200	0	false	false	corpus.v_model_prebuild_language_inventory	Preferred depth; no project or machine translation.
+BASELINE	relationship.evidence_claim_count	80	150	96	true	true	audit.v_model_prebuild_relationship_delta	Reviewed meaningful claims only.
+BASELINE	relationship.source_local_membership_count	6	10	6	true	true	audit.v_model_prebuild_relationship_delta	Supported membership paths.
+BASELINE	relationship.cross_source_membership_count	4	6	4	true	true	audit.v_model_prebuild_relationship_delta	Independent-origin paths.
+BASELINE	relationship.range_with_source_local_evidence_count	6	7	6	true	true	audit.model_prebuild_range_evidence_summary	Range lifecycle remains unchanged.
+BASELINE	relationship.range_with_cross_source_evidence_count	0	4	3	false	false	audit.model_prebuild_range_evidence_summary	Preferred depth; do not force a fourth range.
+BASELINE	question.independent_research_target_count	6	10	12	true	true	calibration.v_model_prebuild_question_evidence	Research support is not user validation.
+BASELINE	question.user_validated_count	0	0	0	true	true	calibration.model_prebuild_question_evidence	Real-human validation remains prohibited.
+BASELINE	question.information_gain_estimated_count	0	0	0	true	true	calibration.model_prebuild_question_evidence	No real observations or model estimates.
+BASELINE	analysis.feature_registry_count	20	20	20	true	true	evidence.model_prebuild_feature_definition	Registry exists and remains source-partition aware.
+BASELINE	analysis.source_partition_count	12	12	12	true	true	evidence.model_prebuild_source_partition	Federated source partitions exist.
+BASELINE	analysis.leakage_audit	true	true	true	true	true	audit.model_prebuild_leakage_risk	Future grouping keys are declared.
+BASELINE	governance.source_annotation_completeness	1.0000	1.0000	1.0000	true	true	audit.v_model_prebuild_rights_completeness	Admitted source profiles are complete.
+BASELINE	governance.rights_review_completeness	1.0000	1.0000	1.0000	true	true	audit.v_model_prebuild_rights_completeness	Granular language rights not yet exercised.
+BASELINE	governance.privacy_review_completeness	1.0000	1.0000	1.0000	true	true	audit.v_model_prebuild_rights_completeness	No direct participant identifiers admitted.
+BASELINE	governance.source_file_hash_completeness	1.0000	1.0000	1.0000	true	true	audit.v_model_prebuild_rights_completeness	All admitted local files are hash governed.
+BASELINE	governance.relationship_provenance_completeness	1.0000	1.0000	1.0000	true	true	audit.v_model_prebuild_relationship_delta	All governed claims resolve to evidence.
+BASELINE	freeze.current_view_contract	true	true	false	true	false	future freeze migration	Freeze-approved surfaces are not yet declared.
+BASELINE	freeze.manifest	true	true	false	true	false	db/data/freeze/coffee-sensory-research-db-v0/FREEZE_MANIFEST.json	Freeze manifest does not exist at baseline.
+BASELINE	freeze.deterministic_inventory_hash_count	11	11	0	true	false	future freeze manifest	Database-derived freeze hashes do not exist at baseline.
+BASELINE	freeze.lifecycle_state	FROZEN	FROZEN	DRAFT	true	false	future audit.research_database_release	Only exact green main may be frozen.
+BASELINE	freeze.research_database_v0_ready	true	true	false	true	false	future audit.run_research_database_freeze_gate	Language and freeze-engineering gates remain open.
+BASELINE	model_prebuild.data_ready	true	true	false	true	false	audit.model_prebuild_readiness_state	Four mandatory language gates fail.
+BASELINE	prohibition.model_embedding_human_frontend_ontology	ALL_ZERO_OR_FALSE	ALL_ZERO_OR_FALSE	ALL_ZERO_OR_FALSE	true	true	audit.model_prebuild_execution_guard	No model embedding human frontend or ontology operation occurred.
+MINIMUM_FREEZE_STATE	canonical.concept_count	130	130	130	true	true	future freeze gate	Must remain exact.
+MINIMUM_FREEZE_STATE	canonical.active_sensory_attribute_count	92	92	92	true	true	future freeze gate	Must remain exact.
+MINIMUM_FREEZE_STATE	language.contemporary_source_family_count	3	5	0	true	false	future freeze gate	Three independent contemporary tasting-language origins required.
+MINIMUM_FREEZE_STATE	language.new_contemporary_document_count	500	1500	0	true	false	future freeze gate	Actual sensory/tasting descriptions required.
+MINIMUM_FREEZE_STATE	language.unique_expression_count	2500	3500	1777	true	false	future freeze gate	Artificial variants and duplicates prohibited.
+MINIMUM_FREEZE_STATE	language.zh_hans_source_family_count	2	3	0	true	false	future freeze gate	Genuinely source-authored Simplified Chinese required.
+MINIMUM_FREEZE_STATE	relationship.source_local_membership_count	6	10	6	true	true	future freeze gate	Current minimum must not regress.
+MINIMUM_FREEZE_STATE	relationship.cross_source_membership_count	4	6	4	true	true	future freeze gate	Current minimum must not regress.
+MINIMUM_FREEZE_STATE	relationship.range_with_source_local_evidence_count	6	7	6	true	true	future freeze gate	Current minimum must not regress.
+MINIMUM_FREEZE_STATE	question.independent_research_target_count	6	10	12	true	true	future freeze gate	Question research must not regress.
+MINIMUM_FREEZE_STATE	analysis.feature_registry	true	true	true	true	true	future freeze gate	Every available feature must be declared.
+MINIMUM_FREEZE_STATE	analysis.source_partitions	true	true	true	true	true	future freeze gate	All source semantics remain federated.
+MINIMUM_FREEZE_STATE	analysis.current_approved_view_count	8	8	0	true	false	future freeze view registry	Canonical lexical context sensory language relationship question and feature surfaces required.
+MINIMUM_FREEZE_STATE	governance.source_annotation_completeness	1.0000	1.0000	1.0000	true	true	future freeze gate	Every admitted source must be complete.
+MINIMUM_FREEZE_STATE	governance.rights_review_completeness	1.0000	1.0000	1.0000	true	true	future freeze gate	Every admitted source and artifact must have a rights decision.
+MINIMUM_FREEZE_STATE	governance.privacy_review_completeness	1.0000	1.0000	1.0000	true	true	future freeze gate	Every admitted source must have a privacy decision.
+MINIMUM_FREEZE_STATE	governance.source_file_hash_completeness	1.0000	1.0000	1.0000	true	true	future freeze gate	Every admitted file must hash match.
+MINIMUM_FREEZE_STATE	governance.relationship_provenance_completeness	1.0000	1.0000	1.0000	true	true	future freeze gate	Every claim must resolve to governed evidence.
+MINIMUM_FREEZE_STATE	quality.schema_integrity_pass	true	true	false	true	false	future freeze gate	Dedicated freeze schema audit required.
+MINIMUM_FREEZE_STATE	quality.global_data_quality_pass	true	true	false	true	false	future freeze gate	All critical global quality counts must be zero.
+MINIMUM_FREEZE_STATE	quality.leakage_audit_pass	true	true	true	true	true	audit.model_prebuild_leakage_risk	Grouping and partition controls required.
+MINIMUM_FREEZE_STATE	quality.deterministic_inventory_hash_count	11	11	0	true	false	future freeze manifest	Eleven named hashes must reproduce.
+MINIMUM_FREEZE_STATE	quality.clean_rebuild_count	2	2	0	true	false	future reproducibility audit	Two independent PostgreSQL 17 rebuilds required.
+MINIMUM_FREEZE_STATE	quality.remote_frontend_ci_pass	true	true	false	true	false	GitHub Actions	Exact candidate and main release jobs required.
+MINIMUM_FREEZE_STATE	quality.remote_postgres_ci_pass	true	true	false	true	false	GitHub Actions	Exact candidate and main release jobs required.
+MINIMUM_FREEZE_STATE	freeze.manifest	true	true	false	true	false	future freeze manifest	Manifest must bind all governed inventories.
+MINIMUM_FREEZE_STATE	freeze.release_version	coffee-sensory-research-db-v0.1.0	coffee-sensory-research-db-v0.1.0	UNASSIGNED	true	false	future release registry	Research database release not training truth.
+MINIMUM_FREEZE_STATE	freeze.exact_main_sha	FINAL_MAIN_SHA	FINAL_MAIN_SHA	UNASSIGNED	true	false	future release registry	Feature candidate cannot be final frozen release.
+MINIMUM_FREEZE_STATE	freeze.tag	coffee-sensory-research-db-v0.1.0	coffee-sensory-research-db-v0.1.0	UNASSIGNED	true	false	git tag	Annotated tag must point to immutable main release SHA.
+MINIMUM_FREEZE_STATE	model_prebuild.data_ready	true	true	false	true	false	audit.model_prebuild_readiness_state	All mandatory gates must pass.
+MINIMUM_FREEZE_STATE	prohibition.model_embedding_human_frontend_ontology	ALL_ZERO_OR_FALSE	ALL_ZERO_OR_FALSE	ALL_ZERO_OR_FALSE	true	true	future freeze gate	Any prohibited execution blocks freeze.
+PREFERRED_FREEZE_STATE	language.contemporary_source_family_count	3	5	0	false	false	future freeze gate	Preferred independent-family breadth.
+PREFERRED_FREEZE_STATE	language.new_contemporary_document_count	500	1500	0	false	false	future freeze gate	Preferred document breadth.
+PREFERRED_FREEZE_STATE	language.unique_expression_count	2500	3500	1777	false	false	future freeze gate	Preferred observed lexical breadth.
+PREFERRED_FREEZE_STATE	language.zh_hans_source_family_count	2	3	0	false	false	future freeze gate	Preferred independent-family breadth.
+PREFERRED_FREEZE_STATE	language.zh_hans_sensory_expression_count	0	200	0	false	false	future freeze gate	May freeze with an explicit warning if hard gates pass.
+PREFERRED_FREEZE_STATE	relationship.range_with_cross_source_evidence_count	0	4	3	false	false	future freeze gate	May freeze with an explicit warning; no forced promotion.
+OBSERVED	database.freeze_expected_state_frozen_before_import	true	true	true	true	true	git history	This file and contract must commit before first Round 3I import.
+OBSERVED	database.expected_state_threshold_revision_count	0	0	0	true	true	future threshold revision registry	No threshold changes after inspection.
+OBSERVED	model_prebuild.data_ready	true	true	false	true	false	audit.model_prebuild_readiness_state	Mandatory language coverage remains below minimum.
+OBSERVED	database.research_database_v0_freeze_ready	true	true	false	true	false	frozen pre-acquisition decision	Freeze infrastructure and language evidence are incomplete.
+OBSERVED	database.research_database_freeze_state	RESEARCH_DATABASE_V0_FROZEN	RESEARCH_DATABASE_V0_FROZEN	DATABASE_FREEZE_BLOCKED_BY_DATA_GAP	true	false	frozen pre-acquisition decision	No false FROZEN state permitted.
+DELTA	language.contemporary_source_family_count	3	5	3	true	false	minimum/preferred minus baseline	Independent contemporary origins required.
+DELTA	language.new_contemporary_document_count	500	1500	500	true	false	minimum/preferred minus baseline	Qualifying sensory/tasting documents required.
+DELTA	language.unique_expression_count	723	1723	723	true	false	minimum/preferred minus baseline	Observed unique normalized expressions only.
+DELTA	language.zh_hans_source_family_count	2	3	2	true	false	minimum/preferred minus baseline	Source-authored families only.
+DELTA	language.zh_hans_sensory_expression_count	0	200	200	false	false	preferred minus baseline	Preferred role-classified sensory expressions.
+DELTA	relationship.range_with_cross_source_evidence_count	0	1	1	false	false	preferred minus baseline	Only defensible reviewed evidence may close the gap.
+DELTA	freeze.current_approved_view_count	8	8	8	true	false	minimum minus baseline	Approved current surfaces must be explicit.
+DELTA	freeze.deterministic_inventory_hash_count	11	11	11	true	false	minimum minus baseline	All named hashes must be reproducible.
+FREEZE_DECISION	mandatory_gate_policy	ALL_HARD_GATES_PASS	ALL_HARD_GATES_PASS	NOT_ALL_PASS	true	false	future audit.run_research_database_freeze_gate	No weighted aggregate or threshold lowering.
+FREEZE_DECISION	acquisition_stop_rule	ALL_HARD_GATES_PASS_OR_THREE_CONSECUTIVE_TARGETED_NO_GAIN	ALL_HARD_GATES_PASS	PENDING	true	false	batch acquisition register	Do not search indefinitely.
+FREEZE_DECISION	candidate_policy	EXACT_GREEN_FEATURE_SHA	EXACT_GREEN_FEATURE_SHA	NOT_CREATED	true	false	GitHub Actions	Candidate must pass both remote jobs before main promotion.
+FREEZE_DECISION	frozen_release_policy	EXACT_GREEN_MAIN_SHA_AND_ANNOTATED_TAG	EXACT_GREEN_MAIN_SHA_AND_ANNOTATED_TAG	NOT_CREATED	true	false	future release registry and git tag	Only exact main SHA may be FROZEN.
+FREEZE_DECISION	post_freeze_mutation_policy	NEW_FORWARD_MIGRATION_SNAPSHOT_AND_VERSION	NEW_FORWARD_MIGRATION_SNAPSHOT_AND_VERSION	UNENFORCED	true	false	future freeze constraints	No in-place mutation of frozen v0.1.0 artifacts.
+FREEZE_DECISION	prohibited_execution	NO_MODELS_NO_EMBEDDINGS_NO_REAL_HUMANS_NO_FRONTEND_NO_ONTOLOGY_CHANGE	NO_MODELS_NO_EMBEDDINGS_NO_REAL_HUMANS_NO_FRONTEND_NO_ONTOLOGY_CHANGE	ENFORCED	true	true	audit.model_prebuild_execution_guard	Also no pgvector requirement.
