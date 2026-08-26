@@ -11,6 +11,7 @@ ROUND_THREE_A_BASELINE="$DB_DIR/migration-baselines/round3a.sha256"
 ROUND_THREE_B_BASELINE="$DB_DIR/migration-baselines/round3b.sha256"
 ROUND_THREE_C_BASELINE="$DB_DIR/migration-baselines/round3c.sha256"
 ROUND_THREE_G_BASELINE="$DB_DIR/migration-baselines/round3g.sha256"
+ROUND_THREE_H_BASELINE="$DB_DIR/migration-baselines/round3h.sha256"
 MODE=${1:-verify}
 
 if (( $# > 1 )); then
@@ -84,6 +85,12 @@ fi
 if [[ ! -f "$ROUND_THREE_G_BASELINE" ]]; then
   printf 'ERROR: missing immutable Round 3G fingerprint manifest: %s\n' \
     "$ROUND_THREE_G_BASELINE" >&2
+  exit 66
+fi
+
+if [[ ! -f "$ROUND_THREE_H_BASELINE" ]]; then
+  printf 'ERROR: missing immutable Round 3H fingerprint manifest: %s\n' \
+    "$ROUND_THREE_H_BASELINE" >&2
   exit 66
 fi
 
@@ -356,6 +363,40 @@ if (( round_three_g_count != 42 )); then
   exit 65
 fi
 
+round_three_h_count=0
+while read -r expected_hash expected_name extra_field; do
+  if [[ -z "$expected_hash" && -z "$expected_name" ]]; then
+    continue
+  fi
+  if [[ -n "${extra_field:-}" || ! "$expected_hash" =~ ^[0-9a-f]{64}$ || -z "$expected_name" ]]; then
+    printf 'ERROR: malformed Round 3H fingerprint entry at position %d.\n' \
+      "$round_three_h_count" >&2
+    exit 65
+  fi
+  if (( round_three_h_count >= 45 )); then
+    printf 'ERROR: Round 3H fingerprint manifest must contain exactly 45 entries.\n' >&2
+    exit 65
+  fi
+
+  actual_path=${migrations[$round_three_h_count]}
+  actual_name=$(basename -- "$actual_path")
+  actual_hash=$(sha256_file "$actual_path")
+  if [[ "$actual_name" != "$expected_name" || "$actual_hash" != "$expected_hash" ]]; then
+    printf 'ERROR: immutable Round 3H migration fingerprint mismatch at %03d.\n' \
+      "$round_three_h_count" >&2
+    printf 'EXPECTED=%s  %s\n' "$expected_hash" "$expected_name" >&2
+    printf 'ACTUAL=%s  %s\n' "$actual_hash" "$actual_name" >&2
+    exit 65
+  fi
+  round_three_h_count=$((round_three_h_count + 1))
+done <"$ROUND_THREE_H_BASELINE"
+
+if (( round_three_h_count != 45 )); then
+  printf 'ERROR: Round 3H fingerprint manifest must contain exactly 45 entries; found %d.\n' \
+    "$round_three_h_count" >&2
+  exit 65
+fi
+
 case "$MODE" in
   verify)
     printf 'ROUND1_MIGRATION_FINGERPRINT_PASS=true\n'
@@ -365,6 +406,7 @@ case "$MODE" in
     printf 'ROUND3B_MIGRATION_FINGERPRINT_PASS=true\n'
     printf 'ROUND3C_MIGRATION_FINGERPRINT_PASS=true\n'
     printf 'ROUND3G_MIGRATION_FINGERPRINT_PASS=true\n'
+    printf 'ROUND3H_MIGRATION_FINGERPRINT_PASS=true\n'
     printf 'MIGRATION_COUNT=%d\n' "${#migrations[@]}"
     ;;
   paths)
