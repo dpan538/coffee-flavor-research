@@ -35,12 +35,15 @@ generate_active_artifacts() {
   if [[ -f "$REPOSITORY_ROOT/db/scripts/prepare-round3e-release.py" ]]; then
     python3 "$REPOSITORY_ROOT/db/scripts/prepare-round3e-release.py" >/dev/null
   fi
+
+  python3 "$REPOSITORY_ROOT/db/scripts/generate-round3j-global-corpus.py" >/dev/null
 }
 
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3e-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3g-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3h-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3i-freeze-artifact-contract.py"
+python3 "$REPOSITORY_ROOT/db/scripts/test-round3j-global-corpus.py"
 
 write_manifest() {
   local output_path=$1
@@ -65,6 +68,9 @@ write_manifest() {
       "$REPOSITORY_ROOT/db/data/round3h" \
       "$REPOSITORY_ROOT/db/data/model-prebuild/v0" \
       "$REPOSITORY_ROOT/db/data/freeze/coffee-sensory-research-db-v0" \
+      "$REPOSITORY_ROOT/db/data/round3j/global-corpus" \
+      "$REPOSITORY_ROOT/db/data/round3j/raw/candidate.r3j.regional.latam-br-mfact-consumer-sensory-2017" \
+      "$REPOSITORY_ROOT/db/data/round3j/raw/candidate.r3j.regional.latam-br-ufla-consumer-cata-2021" \
       "$REPOSITORY_ROOT/data/calibration/releases/protocol-and-schema-v0.1.1" \
       -type f -print0 2>/dev/null | LC_ALL=C sort -z
   )
@@ -107,6 +113,9 @@ fi
 if [[ -d db/data/freeze/coffee-sensory-research-db-v0 ]]; then
   FORMAT_PATHS+=(db/data/freeze/coffee-sensory-research-db-v0)
 fi
+if [[ -d db/data/round3j/global-corpus ]]; then
+  FORMAT_PATHS+=(db/data/round3j/global-corpus)
+fi
 if [[ -d data/calibration/releases/protocol-and-schema-v0.1.1 ]]; then
   FORMAT_PATHS+=(data/calibration/releases/protocol-and-schema-v0.1.1)
 fi
@@ -120,7 +129,10 @@ git diff --exit-code -- \
   db/data/round3g \
   db/data/round3h \
   db/data/model-prebuild/v0 \
-  db/data/freeze/coffee-sensory-research-db-v0
+  db/data/freeze/coffee-sensory-research-db-v0 \
+  db/data/round3j/global-corpus \
+  db/data/round3j/raw/candidate.r3j.regional.latam-br-mfact-consumer-sensory-2017 \
+  db/data/round3j/raw/candidate.r3j.regional.latam-br-ufla-consumer-cata-2021
 
 printf 'GENERATED_ARTIFACT_DRIFT_GATE_PASS=true\n'
 printf 'GENERATED_ARTIFACT_NONDETERMINISM_COUNT=0\n'

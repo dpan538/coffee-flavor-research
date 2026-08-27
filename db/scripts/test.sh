@@ -138,6 +138,10 @@ if (( migration_count > 48 )); then
   test_files+=("$DB_DIR/tests/round3i_negative.sql")
 fi
 
+if (( migration_count > 49 )); then
+  test_files+=("$DB_DIR/tests/round3j_global_negative.sql")
+fi
+
 if [[ ! -f "$DB_DIR/007_validation_queries.sql" ]]; then
   printf 'ERROR: missing db/007_validation_queries.sql. Apply all migrations before testing.\n' >&2
   exit 66

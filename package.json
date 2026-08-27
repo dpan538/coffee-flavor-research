@@ -24,6 +24,7 @@
     "test:round3h-artifacts": "python3 db/scripts/test-round3h-artifact-contract.py",
     "test:round3i-freeze-artifacts": "python3 db/scripts/test-round3i-freeze-artifact-contract.py",
     "test:round3j-regional-audit": "node db/scripts/generate-round3j-regional-audit.mjs --check",
+    "test:round3j-global-corpus": "python3 db/scripts/test-round3j-global-corpus.py",
     "db:migrate": "bash db/scripts/apply.sh",
     "test:db": "bash db/scripts/test.sh",
     "test:db:repro": "bash db/scripts/rebuild-twice.sh",
