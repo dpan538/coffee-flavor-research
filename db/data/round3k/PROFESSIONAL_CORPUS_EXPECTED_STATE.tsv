@@ -1,0 +1,50 @@
+section	state_key	required_value	phase_a_value	hard_gate	phase_a_pass	evidence_basis	note
+SOURCE_CHECKPOINT	FROZEN_MAIN_SHA	c3ae9b880d85507a0b8b0298bb94ef013d02f928	c3ae9b880d85507a0b8b0298bb94ef013d02f928	true	true	git rev-parse origin/main	Verified after git fetch --prune origin on 2026-08-27.
+SOURCE_CHECKPOINT	FAILED_ROUND3J_BRANCH_SHA	a92b448043e8dad468339b3ca2cdfd2b7f6aa772	a92b448043e8dad468339b3ca2cdfd2b7f6aa772	true	true	git rev-parse failed branch	The failed branch is retained as immutable failure evidence.
+SOURCE_CHECKPOINT	WORK_BRANCH	codex/coffee-sensory-kb-v0-round3k-professional-competition-corpus-20260827	codex/coffee-sensory-kb-v0-round3k-professional-competition-corpus-20260827	true	true	git branch --show-current	The branch was created in an isolated worktree from the exact frozen SHA.
+RECOVERY	ROUND3J_FAILURE_BRANCH_PRESERVED	true	true	true	true	git branch -vv	No Round 3J ref or commit was rewritten.
+RECOVERY	ROUND3J_FAILURE_BRANCH_MERGED	false	false	true	true	git merge-base --is-ancestor	The failed branch is not an ancestor of frozen main or this branch.
+RECOVERY	ROUND3J_DB050_SUPERSEDED	true	DESIGN_FROZEN_IMPLEMENTATION_PENDING	true	false	Round 3K corpus rules	db/050 remains on the failed branch and will have no active Round 3K role.
+RECOVERY	ROUND3J_DB050_DELETED	false	false	true	true	failed branch tree	db/050 remains available as audit history.
+RECOVERY	ORIGINAL_DIRTY_MAIN_TOUCHED	false	false	true	true	isolated worktree creation	No file, index, ref, stash, or checkout operation changed the user's dirty main worktree.
+ARCHITECTURE	COMPETITION_SCHEMA_REQUIRED	true	DESIGN_FROZEN_IMPLEMENTATION_PENDING	true	false	Deep Research Round 2 and Round 3K request	The effective observation unit is a competition round-service event, not a document.
+ARCHITECTURE	DB049_SEMANTICS_RETAINED	true	DESIGN_RETAINED_IMPLEMENTATION_PENDING	true	false	failed branch db/049 dependency audit	The required semantics are frozen for reimplementation; do not blindly cherry-pick code.
+ARCHITECTURE	DB049_CODE_CHERRY_PICKED	false	false	true	true	branch history	Forward migrations must be authored on the clean Round 3K branch.
+ARCHITECTURE	DB049_DEPENDENCY_AUDIT_PASS	true	true	true	true	failed branch db/049 dependency audit	Exact code depends on frozen and obsolete Round 3J objects and hard-coded thresholds; semantic reimplementation is required.
+ARCHITECTURE	DB050_FORCED_UNRESOLVED_CONTRACT_REUSED	false	false	true	true	Round 3K label contract	Positive, multi-target, ambiguous, conflicting, source-local, unresolved, abstention, and outside-ontology labels are supported.
+ARCHITECTURE	COMPETITION_DATA_STORED_AS_MIGRATIONS	false	false	true	true	Round 3K adapter contract	Competition records are governed snapshots and adapter outputs.
+CORE_POPULATION	CORE_EVIDENCE_TIERS	P1|P2	P1|P2	true	true	PROFESSIONAL_EVIDENCE_TIER.tsv	P0 is authority; P3-P5 are not core professional evidence.
+CORE_POPULATION	FRESH_PREPARATION_CONFIRMED	true	CONTRACT_FROZEN	true	true	PROFESSIONAL_RECORD_CONTRACT.tsv	Every credited core record must link to official preparation evidence.
+CORE_POPULATION	CORE_BLACK_COFFEE_MILK_POOLED	false	false	true	true	fresh-preparation contract	Milk and plant-milk records remain an auxiliary context stratum.
+CORE_POPULATION	SYNTHETIC_CORE_RECORD_COUNT	0	0	true	true	prohibition contract	No synthetic, project-authored, machine-generated, or LLM-generated descriptor is observed evidence.
+CORE_POPULATION	INFERRED_PROFESSIONAL_DESCRIPTOR_COUNT	0	0	true	true	no-semantic-invention contract	Only explicit source fields, spans, scores, descriptors, and metadata may be extracted.
+COUNTING	EFFECTIVE_RECORD_UNIT	series_x_edition_x_category_x_round_x_entry_or_lot_x_preparation_service	CONTRACT_FROZEN	true	true	PROFESSIONAL_RECORD_CONTRACT.tsv	Judge rows are observations and do not multiply effective coffee records.
+COUNTING	DISTINCT_ENTRY_SERVICE_RATIO_AT_7000	>=0.60	NOT_EVALUATED	true	false	SCALE_GATE.tsv	Calculated before legitimate round multiplication.
+COUNTING	DISTINCT_ENTRY_SERVICE_RATIO_AT_10000	>=0.65	NOT_EVALUATED	false	false	SCALE_GATE.tsv	Preferred anti-inflation target.
+COUNTING	UNLINKED_REPEAT_COUNT	0	NOT_EVALUATED	true	false	future duplicate and repeat audit	Legitimate repeated rounds must retain entry, coffee, and repeat relationships.
+RIGHTS	RIGHTS_DIMENSIONS	PUBLIC_RESULTS_USE|PUBLIC_DESCRIPTOR_USE|INTERNAL_RESEARCH_USE|PUBLIC_DERIVED_RELEASE|MODEL_RESEARCH_USE|COMMERCIAL_MODEL_USE	CONTRACT_FROZEN	true	true	PROFESSIONAL_RECORD_CONTRACT.tsv	Rights are independent decisions rather than one open/closed state.
+RIGHTS	OBSERVED_CORE_REQUIRES_MODEL_RESEARCH_USE	false	false	true	true	Round 3K counting contract	Observed core may have model rights pending if lawfully acquired for internal research.
+RIGHTS	MODEL_ELIGIBLE_CORE_REQUIRES_MODEL_RESEARCH_USE	true	true	true	true	Round 3K counting contract	Pending or unknown model rights never count toward 10,000.
+RIGHTS	RIGHTS_DECISION_COMPLETENESS	1.0000	NOT_EVALUATED	true	false	future source and rights views	Every observed record must join to a source-specific rights decision.
+RIGHTS	MODEL_RESEARCH_RIGHTS_RATE_AT_10000	1.0000	NOT_EVALUATED	true	false	future training readiness view	The denominator is the model-eligible candidate corpus.
+SCALE	OBSERVED_CORE_PROFESSIONAL_RECORD_COUNT_MILESTONE	>=7000	0	true	false	SCALE_GATE.tsv	Research-grade acquisition milestone only; it does not authorize training.
+SCALE	MODEL_ELIGIBLE_CORE_PROFESSIONAL_RECORD_COUNT_EXIT	>=10000	0	true	false	SCALE_GATE.tsv	Only a later separately authorized Round 4 may train.
+SCALE	PROFESSIONAL_DESCRIPTOR_ASSERTION_COUNT_AT_7000	>=40000	0	true	false	SCALE_GATE.tsv	Only explicit professional descriptor text or source-defined descriptor identities with lineage count; numeric structured scores are reported separately.
+SCALE	PROFESSIONAL_DESCRIPTOR_ASSERTION_COUNT_AT_10000	>=60000	0	true	false	SCALE_GATE.tsv	Record count alone is insufficient and numeric structured scores do not inflate this metric.
+SCALE	LARGEST_SOURCE_FAMILY_SHARE_AT_7000	<=0.35	NOT_EVALUATED	true	false	SCALE_GATE.tsv	Independent source-family identity and mirror handling are mandatory.
+SCALE	LARGEST_SOURCE_FAMILY_SHARE_AT_10000	<=0.30	NOT_EVALUATED	true	false	SCALE_GATE.tsv	No dominant organizer may pass the exit gate alone.
+SCALE	GATE_12000_FORENSIC_AUDIT_TRIGGER	>=12000	NOT_TRIGGERED	true	true	SCALE_GATE.tsv	The trigger mandates audit; it is not automatic evidence of inflation.
+PROHIBITION	ML_BASELINE_RUN	false	false	true	true	Round 3K execution boundary	No classical ML fitting.
+PROHIBITION	RANKING_MODEL_TRAINED	false	false	true	true	Round 3K execution boundary	No learning-to-rank fitting or production ranking.
+PROHIBITION	ADAPTIVE_POLICY_TRAINED	false	false	true	true	Round 3K execution boundary	No adaptive-policy fitting.
+PROHIBITION	DEEP_LEARNING_MODEL_RUN	false	false	true	true	Round 3K execution boundary	No neural or transformer training.
+PROHIBITION	EMBEDDING_BASELINE_RUN	false	false	true	true	Round 3K execution boundary	No embedding generation or benchmarking.
+PROHIBITION	CROSS_ENCODER_RUN	false	false	true	true	Round 3K execution boundary	No cross-encoder training or evaluation.
+PROHIBITION	PGVECTOR_REQUIRED	false	false	true	true	Round 3K execution boundary	PostgreSQL pg_trgm remains sufficient for this round.
+PROHIBITION	MODEL_WEIGHT_FILE_COUNT	0	0	true	true	repository inventory	No model weight artifact may be created.
+OPERATIONS	EXPERT_REVIEW_PERFORMED	false	false	true	true	available reviewer evidence	Codex may only create candidates; no qualified reviewer evidence has been supplied.
+OPERATIONS	OUTBOUND_DATA_REQUEST_COUNT	0	0	true	true	user authorization boundary	Packets may be prepared but not sent.
+OPERATIONS	COMMERCIAL_PURCHASE_COUNT	0	0	true	true	user authorization boundary	No purchase or subscription is authorized.
+OPERATIONS	CONTRACT_ACCEPTANCE_COUNT	0	0	true	true	user authorization boundary	No external terms or contracts are accepted.
+OPERATIONS	MAIN_PROMOTION_ALLOWED	false	false	true	true	Round 3K promotion policy	The feature branch remains unmerged until every 10,000-record and integrity gate passes.
+OPERATIONS	FORCE_PUSH_USED	false	false	true	true	Git policy	History must remain append-only.
