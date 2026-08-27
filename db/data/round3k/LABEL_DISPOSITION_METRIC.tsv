@@ -1,0 +1,10 @@
+label_disposition	professional_record_count	expression_instance_count	unique_lexical_form_count	final_governed_count	candidate_only_count	status	note
+EXACT_CANONICAL_TARGET	0	0	0	0	0	NOT_EVALUATED	May arise from a governed level-one exact identity or qualified review.
+MULTI_CANONICAL_TARGET	0	0	0	0	0	NOT_EVALUATED	Requires multiple retained targets and qualified review.
+RANGE_LEVEL_TARGET	0	0	0	0	0	NOT_EVALUATED	Range target remains distinct from canonical concept identity.
+SOURCE_LOCAL_TARGET	0	0	0	0	0	NOT_EVALUATED	Source-local meaning is retained rather than forced into the ontology.
+AMBIGUOUS_TARGET	0	0	0	0	0	NOT_EVALUATED	Ambiguity is a governed stratum, not an import failure.
+CONTRADICTORY_TARGET	0	0	0	0	0	NOT_EVALUATED	Conflicting professional assertions are preserved.
+UNRESOLVED	0	0	0	0	0	NOT_EVALUATED	Unresolved is permitted but is not the default for every phrase.
+ABSTAIN	0	0	0	0	0	NOT_EVALUATED	Qualified reviewers may abstain.
+OUTSIDE_ONTOLOGY	0	0	0	0	0	NOT_EVALUATED	Explicitly outside the current ontology.

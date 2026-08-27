@@ -1,0 +1,2 @@
+source_family_key	observed_core_record_count	model_eligible_record_count	observed_share	model_eligible_share	independent	mirror_of_source_family_key	status	note
+NO_ADMITTED_SOURCE_FAMILY	0	0	NA	NA	false		NOT_EVALUATED	Source concentration is undefined until at least one governed observed core record exists.

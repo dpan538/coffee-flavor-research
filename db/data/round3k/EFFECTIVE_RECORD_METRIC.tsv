@@ -1,0 +1,25 @@
+metric_key	metric_value	unit	status	population_basis	measured_on	note
+COMPETITION_SERIES_COUNT	0	series	OBSERVED	competition.series rows admitted through a governed acquisition snapshot	2026-08-27	Planning inventory rows are reported separately and do not create database corpus records.
+COMPETITION_EDITION_COUNT	0	editions	OBSERVED	competition.edition rows with acquired governed evidence	2026-08-27	Verified archive census rows do not count as acquired editions.
+INDEPENDENT_PROFESSIONAL_SOURCE_FAMILY_COUNT	0	families	OBSERVED	independent admitted source families represented in observed core records	2026-08-27	Mirrors and registry entries do not multiply families.
+OBSERVED_CORE_PROFESSIONAL_RECORD_COUNT	0	effective_round_service_records	OBSERVED	P1/P2 fresh-prepared rights-governed effective services	2026-08-27	No official competition record snapshot has been admitted.
+MODEL_ELIGIBLE_CORE_PROFESSIONAL_RECORD_COUNT	0	effective_round_service_records	OBSERVED	observed core records with affirmative model-research rights and integrity completion	2026-08-27	Unknown and pending model rights never count.
+AUXILIARY_PROFESSIONAL_RECORD_COUNT	0	effective_round_service_records	OBSERVED	P3/P4 fresh-prepared auxiliary services	2026-08-27	No auxiliary professional snapshot has been admitted.
+UNIQUE_COFFEE_IDENTITY_COUNT	0	coffee_identities	OBSERVED	distinct governed coffee identities represented in effective records	2026-08-27	No denominator.
+UNIQUE_ENTRY_SERVICE_COUNT	0	entry_services	OBSERVED	distinct entry-or-lot x preparation-service units before round multiplication	2026-08-27	No denominator.
+EFFECTIVE_ROUND_SERVICE_RECORD_COUNT	0	effective_round_service_records	OBSERVED	all observed effective P1/P2 round-service records	2026-08-27	Judge observations are excluded from this count.
+DISTINCT_ENTRY_SERVICE_RATIO	NA	ratio	NOT_EVALUATED	unique entry-service count divided by effective round-service count	2026-08-27	Undefined at a zero denominator and therefore cannot pass a scale gate.
+P1_RECORD_COUNT	0	records	OBSERVED	observed effective records with P1 evidence	2026-08-27	Zero admitted professional evidence.
+P2_RECORD_COUNT	0	records	OBSERVED	observed effective records with P2 evidence	2026-08-27	Zero admitted professional evidence.
+P3_RECORD_COUNT	0	records	OBSERVED	auxiliary effective records with P3 evidence	2026-08-27	Zero admitted professional evidence.
+P4_RECORD_COUNT	0	records	OBSERVED	auxiliary effective records with P4 evidence	2026-08-27	Zero admitted professional evidence.
+JUDGE_OBSERVATION_COUNT	0	observations	OBSERVED	official judge-observation rows	2026-08-27	Judge rows never multiply effective records.
+PROFESSIONAL_DESCRIPTOR_ASSERTION_COUNT	0	assertions	OBSERVED	explicit non-score P1/P2 descriptor assertions	2026-08-27	Numeric structured scores are excluded.
+STRUCTURED_SCORE_COUNT	0	scores	OBSERVED	explicit P1/P2 source-native score rows	2026-08-27	Reported separately from descriptor assertions.
+P1_P2_DESCRIPTOR_COASSERTION_EVENT_COUNT	0	coassertion_events	OBSERVED	explicit positive same-event P1/P2 descriptor pairs	2026-08-27	Descriptor absence is not a negative association.
+FRESH_PREPARATION_PROVENANCE_RATE	NA	ratio	NOT_EVALUATED	observed core effective records	2026-08-27	Undefined at zero and cannot pass.
+SOURCE_PROVENANCE_RATE	NA	ratio	NOT_EVALUATED	observed core effective records	2026-08-27	Undefined at zero and cannot pass.
+SOURCE_FILE_HASH_COMPLETENESS	NA	ratio	NOT_EVALUATED	observed core source files	2026-08-27	Undefined at zero and cannot pass.
+RIGHTS_DECISION_COMPLETENESS	NA	ratio	NOT_EVALUATED	observed core source snapshots	2026-08-27	Undefined at zero and cannot pass.
+MODEL_RESEARCH_RIGHTS_RATE	NA	ratio	NOT_EVALUATED	model-eligible candidate denominator	2026-08-27	Undefined at zero and cannot pass.
+TRAINING_LABEL_PROVENANCE_RATE	NA	ratio	NOT_EVALUATED	included task-specific training candidates	2026-08-27	No training candidate is frozen.

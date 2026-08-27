@@ -1,0 +1,35 @@
+metric_key	metric_value	unit	status	required_value	gate_or_boundary	note
+REVIEWED_POSITIVE_RECORD_COUNT	0	records	NOT_MET	7000	GATE_10000	Current governed positives are zero.
+MULTI_TARGET_RECORD_COUNT	0	records	NOT_MET	1200	GATE_10000	No qualified review has occurred.
+ABSTENTION_OR_UNRESOLVED_RECORD_COUNT	0	records	NOT_MET	1000	GATE_10000	No professional expressions are admitted.
+AMBIGUOUS_OR_CONFLICTING_RECORD_COUNT	0	records	NOT_MET	500	GATE_10000	No professional expressions are admitted.
+REVIEWED_POSITIVE_PROFESSIONAL_EXPRESSION_INSTANCE_COUNT	0	expressions	NOT_MET	3000	NORMALIZATION	No expert review has occurred.
+UNIQUE_REVIEWED_PROFESSIONAL_LEXICAL_FORM_COUNT	0	lexical_forms	NOT_MET	1500	NORMALIZATION	No expert review has occurred.
+MULTI_TARGET_EXPRESSION_COUNT	0	expressions	NOT_MET	500	NORMALIZATION	No expert review has occurred.
+ABSTENTION_OR_UNRESOLVED_EXPRESSION_COUNT	0	expressions	NOT_MET	500	NORMALIZATION	No professional expressions are admitted.
+AMBIGUOUS_OR_CONFLICTING_EXPRESSION_COUNT	0	expressions	NOT_MET	300	NORMALIZATION	No professional expressions are admitted.
+INDEPENDENT_COASSERTION_SOURCE_FAMILY_COUNT	0	families	NOT_MET	5	ASSOCIATION	No P1/P2 co-assertion event exists.
+HELD_OUT_COMPETITION_FAMILY_COUNT	0	families	NOT_MET	3	GATE_10000	No frozen deterministic split plan exists.
+HELD_OUT_COMPETITION_YEAR_COUNT	0	years	NOT_MET	1	GATE_10000	No frozen deterministic split plan exists.
+CROSS_SPLIT_COFFEE_IDENTITY_LEAK_COUNT	0	leaks	VACUOUS_ZERO	0	GATE_10000	Zero candidates do not make the split gate pass.
+CROSS_SPLIT_DUPLICATE_LEAK_COUNT	0	leaks	VACUOUS_ZERO	0	GATE_10000	Zero candidates do not make the split gate pass.
+CROSS_SPLIT_MIRROR_LEAK_COUNT	0	leaks	VACUOUS_ZERO	0	GATE_10000	Zero candidates do not make the split gate pass.
+TRAINING_CORPUS_REPRODUCIBLE	false	boolean	NOT_MET	true	GATE_10000	No training-corpus candidate manifest exists.
+EXPERT_REVIEW_PERFORMED	false	boolean	BOUNDARY	false	ROUND3K	No qualified reviewer evidence was supplied.
+ML_BASELINE_RUN	false	boolean	BOUNDARY	false	ROUND3K	No fitting was run.
+RANKING_MODEL_TRAINED	false	boolean	BOUNDARY	false	ROUND3K	No learning-to-rank fitting was run.
+ADAPTIVE_POLICY_TRAINED	false	boolean	BOUNDARY	false	ROUND3K	No policy fitting was run.
+DEEP_LEARNING_MODEL_RUN	false	boolean	BOUNDARY	false	ROUND3K	No neural training was run.
+EMBEDDING_BASELINE_RUN	false	boolean	BOUNDARY	false	ROUND3K	No embedding generation or benchmark was run.
+CROSS_ENCODER_RUN	false	boolean	BOUNDARY	false	ROUND3K	No cross-encoder run occurred.
+PGVECTOR_REQUIRED	false	boolean	BOUNDARY	false	ROUND3K	The repository does not require pgvector.
+MODEL_WEIGHT_FILE_COUNT	0	files	BOUNDARY	0	ROUND3K	No model weight artifact exists.
+OUTBOUND_DATA_REQUEST_COUNT	0	requests	BOUNDARY	0	AUTHORIZATION	No request was sent.
+COMMERCIAL_PURCHASE_COUNT	0	purchases	BOUNDARY	0	AUTHORIZATION	No purchase or subscription occurred.
+CONTRACT_ACCEPTANCE_COUNT	0	contracts	BOUNDARY	0	AUTHORIZATION	No terms or contract were accepted.
+GATE_1000_PASS	false	boolean	NOT_MET	true	SCALE	Observed core record count is zero.
+GATE_3000_PASS	false	boolean	NOT_MET	true	SCALE	Observed core record count is zero.
+GATE_7000_PASS	false	boolean	NOT_MET	true	SCALE	Observed core record count is zero.
+GATE_10000_PASS	false	boolean	NOT_MET	true	SCALE	Model-eligible core record count is zero.
+GATE_12000_FORENSIC_AUDIT_REQUIRED	false	boolean	NOT_TRIGGERED	true_if_observed_count_ge_12000	SCALE	Observed core record count is zero.
+GATE_12000_FORENSIC_AUDIT_PASS	false	boolean	NOT_EVALUATED	true_if_required	SCALE	A non-triggered audit does not claim a pass.

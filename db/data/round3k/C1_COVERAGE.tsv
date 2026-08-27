@@ -1,0 +1,6 @@
+metric_key	metric_value	unit	status	basis	note
+DIRECT_C1_OR_SOURCE_ROAST_RECORD_COUNT	0	records	NOT_MET	direct source-native roast field or reviewed C1 mapping	Filter and espresso categories do not count as roast evidence.
+C1_REVIEWED_MAPPING_COUNT	0	records	OBSERVED	reviewed mapping to the current seven-level ordinal C1 scheme	No expert or governed C1 review evidence was supplied.
+C1_UNRESOLVED_COUNT	0	records	OBSERVED	source-native roast reported but unresolved to C1	No acquired source record exists.
+DIRECT_C1_OR_SOURCE_ROAST_GATE_7000	2000	records	NOT_MET	minimum at the observed 7000 milestone	Current value is zero.
+DIRECT_C1_OR_SOURCE_ROAST_GATE_10000	4000	records	NOT_MET	minimum at the model-eligible 10000 exit gate	Current value is zero.

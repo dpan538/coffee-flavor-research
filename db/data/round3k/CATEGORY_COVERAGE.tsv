@@ -1,0 +1,7 @@
+coverage_key	preparation_taxonomy_code	population	observed_record_count	model_eligible_record_count	gate_7000_required	gate_10000_required	status	note
+filter_or_pour_over	FILTER_OR_POUR_OVER	CORE	0	0	1500	2000	NOT_MET	Fresh professionally judged filter, pour-over, or competition batch-filter service only.
+espresso	ESPRESSO	CORE	0	0	1500	2000	NOT_MET	Black espresso service only; milk and plant milk are auxiliary.
+professional_cupping_or_roasting	PROFESSIONAL_CUPPING_OR_ROASTING	CORE	0	0	1500	2000	NOT_MET	Standardized, green-competition, or production-roast cupping.
+milk_auxiliary	FRESH_MILK_OR_PLANT_MILK_ESPRESSO	AUXILIARY	0	0	0	0	NOT_EVALUATED	Stored separately and never pooled into the black-coffee core model.
+fresh_cezve_ibrik	FRESH_CEZVE_IBRIK	CORE	0	0	0	0	NOT_EVALUATED	Core-eligible only with explicit fresh-preparation and P1/P2 evidence.
+fresh_cold_extraction	FRESH_COLD_EXTRACTION	CORE	0	0	0	0	NOT_EVALUATED	Judged fresh extraction only; RTD and shelf-stable products are excluded.

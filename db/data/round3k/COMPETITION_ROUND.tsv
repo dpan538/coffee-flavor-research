@@ -1,0 +1,25 @@
+round_key	edition_key	round_name	round_order	service_type	official_url	verification_status	note
+wcc_wbc_2026_preliminary	wcc_wbc_2026	Preliminary Round	1	ESPRESSO_MILK_SIGNATURE	https://wcc.coffee/world-barista-championship	VERIFIED	Top competitors advance; only espresso course is core
+wcc_wbc_2026_semifinal	wcc_wbc_2026	Semifinal Round	2	ESPRESSO_MILK_SIGNATURE	https://wcc.coffee/world-barista-championship	VERIFIED	Only espresso course is core
+wcc_wbc_2026_final	wcc_wbc_2026	Final Round	3	ESPRESSO_MILK_SIGNATURE	https://wcc.coffee/world-barista-championship	VERIFIED	Top six compete; only espresso course is core
+wcc_wbrc_2026_open	wcc_wbrc_2026	Open Service	1	MANUAL_FILTER_OPEN	https://wcc.coffee/world-brewers-cup	VERIFIED_SERVICE_COMPONENT	Service component retained as round-like inventory unit
+wcc_wbrc_2026_compulsory	wcc_wbrc_2026	Compulsory Service	2	MANUAL_FILTER_COMPULSORY	https://wcc.coffee/world-brewers-cup	VERIFIED_SERVICE_COMPONENT	Common coffee and standardized service
+wcc_wcrc_2026_green	wcc_wcrc_2026	Green Coffee Evaluation	1	GREEN_EVALUATION	https://wcc.coffee/world-coffee-roasting-championship	VERIFIED	Non-tasting preparation stage
+wcc_wcrc_2026_sample	wcc_wcrc_2026	Sample Roasting	2	SAMPLE_ROASTING	https://wcc.coffee/world-coffee-roasting-championship	VERIFIED	Roast-development stage
+wcc_wcrc_2026_production	wcc_wcrc_2026	Production Roasting	3	PRODUCTION_ROASTING	https://wcc.coffee/world-coffee-roasting-championship	VERIFIED	Produces judged roast
+wcc_wcrc_2026_cupping	wcc_wcrc_2026	Production Cupping	4	FRESH_CUPPING	https://wcc.coffee/world-coffee-roasting-championship	VERIFIED	Core sensory evidence stage
+coe_thailand_2026_preselection	coe_thailand_2026	Preselection	1	BLIND_CUPPING	https://cupofexcellence.org/cup-of-excellence/	VERIFIED_PROGRAM_STRUCTURE	First stage in official three-stage process
+coe_thailand_2026_national	coe_thailand_2026	National Jury	2	BLIND_CUPPING	https://cupofexcellence.org/cup-of-excellence/	VERIFIED_PROGRAM_STRUCTURE	Qualified jurors from the origin country
+coe_thailand_2026_international	coe_thailand_2026	International Jury	3	BLIND_CUPPING	https://cupofexcellence.org/cup-of-excellence/	VERIFIED_PROGRAM_STRUCTURE	International jury selects auction lots
+bop_2026_national	best_of_panama_2026	National Cupping Round	1	BLIND_CUPPING	https://bestofpanama.org/about2026	VERIFIED	Official dates 20-24 July 2026
+bop_2026_international	best_of_panama_2026	International Cupping Round	2	BLIND_CUPPING	https://bestofpanama.org/about2026	VERIFIED	Official dates 28 July-1 August 2026
+gbws_2026_multiple_tastings	golden_bean_world_series_2026	Multiple Tastings	1	ESPRESSO_MILK_FILTER	https://goldenbean.com.au/pages/world-series	VERIFIED_FORMAT	Official family format uses repeated tastings before final
+gbws_2026_final	golden_bean_world_series_2026	Final	2	ESPRESSO_MILK_FILTER	https://goldenbean.com.au/pages/world-series	VERIFIED_FORMAT	Final judged by head category judges
+toh_2025_26_national	toh_regional_2025_26	National Competition Rounds	1	BLIND_CUPPING	https://afca.coffee/programs/taste-of-harvest/	VERIFIED_PROGRAM_STRUCTURE	National winners feed regional competition; country-level exact rounds vary
+toh_2025_26_regional	toh_regional_2025_26	Regional Final Rounds	2	BLIND_CUPPING	https://afca.coffee/conference/conference/competitions/	VERIFIED	Official final-round dates 2-6 February 2026
+scaj_jhdc_2026_prelim	scaj_jhdc_2026	Preliminary Round	1	HAND_DRIP	https://scaj.org/activity/competitions/jhdc-2/2026-competition	VERIFIED	Official district preliminaries
+scaj_jhdc_2026_final	scaj_jhdc_2026	Final Round	2	HAND_DRIP	https://scaj.org/activity/competitions/jhdc-2/2026-competition	VERIFIED	Official final listed for 16 October 2026
+scaj_jbrc_2026_prelim	scaj_jbrc_2026	Preliminary Round	1	OPEN_AND_COMPULSORY_BREWING	https://scaj.org/activity/competitions/jbrc/2026-competition	VERIFIED	Official competition structure
+scaj_jbrc_2026_final	scaj_jbrc_2026	Final Round	2	OPEN_BREWING	https://scaj.org/activity/competitions/jbrc/2026-competition	VERIFIED	Official competition structure
+scaj_jsc_2026_prelim	scaj_jsc_2026	Preliminary Round	1	COMMON_COFFEE_SIPHON	https://scaj.org/activity/competitions/jsc/jsc2026-competitor	VERIFIED	Common roasted coffee
+scaj_jsc_2026_final	scaj_jsc_2026	Final Round	2	BLEND_AND_SIGNATURE_SIPHON	https://scaj.org/activity/competitions/jsc/jsc2026-competitor	VERIFIED	Blend service core; signature beverage excluded
