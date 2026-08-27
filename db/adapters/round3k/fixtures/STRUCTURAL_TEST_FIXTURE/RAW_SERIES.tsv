@@ -1,0 +1,2 @@
+series_id	source_family_id	official_name	source_locator	source_record_id	source_text	structural_test_fixture	core_count_eligible
+fixture-series-001	structural-source-family-001	Fixture Competition Series	STRUCTURAL_SOURCE.txt#line=3	fixture-series-source-001	Series: Fixture Competition Series	true	false

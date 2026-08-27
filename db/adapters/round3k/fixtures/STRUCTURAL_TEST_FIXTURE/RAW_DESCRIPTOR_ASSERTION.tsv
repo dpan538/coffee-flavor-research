@@ -1,0 +1,2 @@
+descriptor_assertion_id	preparation_service_id	judge_observation_id	assertion_actor_role	descriptor_text	source_span	source_span_start	source_span_end	assertion_type	extraction_method	label_disposition	source_locator	structural_test_fixture	core_count_eligible
+fixture-descriptor-001	fixture-service-001	fixture-judge-001	JUDGE	fixture-citrus	Judge descriptor: fixture-citrus	264	278	JUDGE_NOTE	VERBATIM_SPAN	CANDIDATE_NOT_TRAINING_LABEL	STRUCTURAL_SOURCE.txt#line=9	true	false

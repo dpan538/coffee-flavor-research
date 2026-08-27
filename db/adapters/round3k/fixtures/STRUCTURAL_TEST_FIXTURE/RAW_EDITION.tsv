@@ -1,0 +1,2 @@
+edition_id	series_id	official_name	competition_year	source_locator	source_record_id	source_text	structural_test_fixture	core_count_eligible
+fixture-edition-001	fixture-series-001	Fixture 2000	2000	STRUCTURAL_SOURCE.txt#line=4	fixture-edition-source-001	Edition: Fixture 2000	true	false

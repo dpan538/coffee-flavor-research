@@ -1,0 +1,2 @@
+preparation_service_id	entry_id	coffee_identity_id	round_name	service_sequence	preparation_family_source_text	preparation_family_code	preparation_evidence	fresh_preparation_confirmed	fresh_preparation_evidence	roast_source_text	roast_code	roast_evidence	source_locator	source_text	structural_test_fixture	core_count_eligible
+fixture-service-001	fixture-entry-001	fixture-coffee-001	Fixture Final	1	filter	FILTER_PERCOLATION	EXPLICIT_SOURCE_FIELD	true	EXPLICIT_SOURCE_FIELD			NOT_PROVIDED	STRUCTURAL_SOURCE.txt#line=7	Preparation: filter, freshly prepared	true	false

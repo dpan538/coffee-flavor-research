@@ -1,0 +1,9 @@
+STRUCTURAL_TEST_FIXTURE
+Synthetic contract exercise only; this is not an observed coffee record.
+Series: Fixture Competition Series
+Edition: Fixture 2000
+Entry: Fixture Entry 001
+Coffee: Fixture Coffee 001
+Preparation: filter, freshly prepared
+Score: 0/100
+Judge descriptor: fixture-citrus

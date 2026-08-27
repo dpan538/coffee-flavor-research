@@ -41,6 +41,8 @@ python3 "$REPOSITORY_ROOT/db/scripts/test-round3e-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3g-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3h-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3i-freeze-artifact-contract.py"
+"$NPM_BIN" run test:round3k-governance-artifacts
+"$NPM_BIN" run test:round3k-adapter-contract
 
 write_manifest() {
   local output_path=$1

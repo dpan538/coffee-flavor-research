@@ -1,0 +1,2 @@
+effective_record_id	entry_id	coffee_identity_id	preparation_service_id	effective_record_type	observed_core_eligible	model_eligible	auxiliary_eligible	exclusion_reason	judge_observation_count	descriptor_assertion_count	structural_test_fixture
+fixture-effective-001	fixture-entry-001	fixture-coffee-001	fixture-service-001	EFFECTIVE_ROUND_SERVICE_RECORD	false	false	false	STRUCTURAL_TEST_FIXTURE	1	1	true

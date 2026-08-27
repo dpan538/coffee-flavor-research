@@ -1,0 +1,2 @@
+entry_id	edition_id	source_entry_id	competitor_name	entry_name	competition_category	placement	source_locator	source_text	structural_test_fixture	core_count_eligible
+fixture-entry-001	fixture-edition-001	fixture-source-entry-001	Fixture Competitor	Fixture Entry 001	Fixture Category	1	STRUCTURAL_SOURCE.txt#line=5	Entry: Fixture Entry 001	true	false

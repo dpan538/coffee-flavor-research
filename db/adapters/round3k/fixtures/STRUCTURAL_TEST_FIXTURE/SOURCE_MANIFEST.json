@@ -1,0 +1,78 @@
+{
+  "acquisition_authorization": "FIXTURE_ONLY",
+  "adapter_id": "round3k-structural-fixture-adapter",
+  "adapter_status": "STRUCTURAL_TEST_ONLY",
+  "adapter_version": "1.0.0",
+  "contains_observed_coffee_data": false,
+  "contract_version": "round3k.source-adapter.v1",
+  "core_count_eligible": false,
+  "generated_at": "2000-01-01T00:00:00Z",
+  "llm_generated_fields_permitted": false,
+  "output_files": [
+    "RAW_SERIES.tsv",
+    "RAW_EDITION.tsv",
+    "RAW_ENTRY.tsv",
+    "RAW_COFFEE_IDENTITY.tsv",
+    "RAW_PREPARATION_SERVICE.tsv",
+    "RAW_SCORE.tsv",
+    "RAW_DESCRIPTOR_ASSERTION.tsv",
+    "NORMALIZATION_REPORT.tsv",
+    "DUPLICATE_REPEAT_REPORT.tsv",
+    "RIGHTS_REPORT.tsv",
+    "EFFECTIVE_RECORD_REPORT.tsv"
+  ],
+  "quality_gate_policy": {
+    "DESCRIPTOR_SPAN_PRECISION": ">=0.97",
+    "DUPLICATE_LINKAGE_ACCURACY": ">=0.98",
+    "ENTRY_IDENTITY_FIELD_ACCURACY": ">=0.99",
+    "FALSE_FLAVOR_DOCUMENT_RATE": "<=0.02",
+    "SCORE_FIELD_ACCURACY": ">=0.99",
+    "manual_audit_rule": "max(100,ceil(0.01*parsed_record_count))"
+  },
+  "quality_gate_results": {
+    "DESCRIPTOR_SPAN_PRECISION": null,
+    "DUPLICATE_LINKAGE_ACCURACY": null,
+    "ENTRY_IDENTITY_FIELD_ACCURACY": null,
+    "FALSE_FLAVOR_DOCUMENT_RATE": null,
+    "SCORE_FIELD_ACCURACY": null,
+    "audited_record_count": 0,
+    "parsed_record_count": 0,
+    "quality_gate_status": "NOT_APPLICABLE_STRUCTURAL_FIXTURE"
+  },
+  "record_count_basis": "ENTRY_PREPARATION_SERVICE",
+  "record_counts": {
+    "DUPLICATE_REPEAT_REPORT.tsv": 0,
+    "EFFECTIVE_RECORD_REPORT.tsv": 1,
+    "NORMALIZATION_REPORT.tsv": 0,
+    "RAW_COFFEE_IDENTITY.tsv": 1,
+    "RAW_DESCRIPTOR_ASSERTION.tsv": 1,
+    "RAW_EDITION.tsv": 1,
+    "RAW_ENTRY.tsv": 1,
+    "RAW_PREPARATION_SERVICE.tsv": 1,
+    "RAW_SCORE.tsv": 1,
+    "RAW_SERIES.tsv": 1,
+    "RIGHTS_REPORT.tsv": 1
+  },
+  "rights_dimensions": [
+    "PUBLIC_RESULTS_USE",
+    "PUBLIC_DESCRIPTOR_USE",
+    "INTERNAL_RESEARCH_USE",
+    "PUBLIC_DERIVED_RELEASE",
+    "MODEL_RESEARCH_USE",
+    "COMMERCIAL_MODEL_USE"
+  ],
+  "semantic_inference_permitted": false,
+  "snapshot_id": "structural-test-fixture-v1",
+  "source_family_id": "structural-source-family-001",
+  "source_files": [
+    {
+      "captured_at": "2000-01-01T00:00:00Z",
+      "media_type": "text/plain",
+      "path": "STRUCTURAL_SOURCE.txt",
+      "sha256": "44a9a79c6c21e0f742c17784b52721eccea228725b165acfd3c45c0e644a8139",
+      "source_locator": "urn:round3k:structural-test-fixture"
+    }
+  ],
+  "source_kind": "CSV_EXPORT",
+  "structural_test_fixture": true
+}

@@ -1,0 +1,2 @@
+coffee_identity_id	entry_id	source_coffee_id	coffee_name	country	region	producer	farm	variety	process	lot_name	source_locator	source_text	structural_test_fixture	core_count_eligible
+fixture-coffee-001	fixture-entry-001	fixture-source-coffee-001	Fixture Coffee 001								STRUCTURAL_SOURCE.txt#line=6	Coffee: Fixture Coffee 001	true	false

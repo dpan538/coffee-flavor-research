@@ -1,0 +1,2 @@
+rights_id	source_family_id	public_results_use	public_descriptor_use	internal_research_use	public_derived_release	model_research_use	commercial_model_use	rights_decision_status	evidence_locator	review_status
+fixture-rights-001	structural-source-family-001	false	false	false	false	false	false	FIXTURE_ONLY_NO_RIGHTS	SOURCE_MANIFEST.json#structural_test_fixture	NOT_APPLICABLE

@@ -1,0 +1,2 @@
+score_id	preparation_service_id	judge_observation_id	score_name	score_value	score_scale_min	score_scale_max	score_unit	score_role	source_locator	source_text	structural_test_fixture	core_count_eligible
+fixture-score-001	fixture-service-001	fixture-judge-001	fixture_total	0	0	100	points	JUDGE_COMPONENT	STRUCTURAL_SOURCE.txt#line=8	Score: 0/100	true	false
