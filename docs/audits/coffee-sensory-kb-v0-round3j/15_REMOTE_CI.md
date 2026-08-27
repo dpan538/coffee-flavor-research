@@ -1,6 +1,14 @@
 # Remote CI
 
-Remote frontend and PostgreSQL CI receipts must be bound to the exact final
-branch SHA after the global corpus commits are pushed. Until those checks are
-observed green, `REMOTE_FRONTEND_CI_PASS` and `REMOTE_POSTGRES_CI_PASS` remain
-false and cannot be inferred from local success.
+GitHub Actions run
+[`33050779740`](https://github.com/dpan538/coffee-flavor-research/actions/runs/33050779740)
+passed on implementation SHA
+`c9da8a797008a33773e7e6e8c28f1e5b3d09e377`:
+
+- `Format, typecheck, test, and build`: passed
+- `PostgreSQL 17 ontology and corpus gates`: passed
+- `REMOTE_FRONTEND_CI_PASS=true`
+- `REMOTE_POSTGRES_CI_PASS=true`
+
+The documentation-only audit closeout that records this result must also pass
+both jobs before its SHA is reported as final.
