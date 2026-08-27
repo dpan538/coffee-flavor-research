@@ -1,0 +1,16 @@
+{
+  "acquisition_state": "ACQUIRED_BYTES_HASHED_AND_DERIVED_ONLY_ADMITTED",
+  "candidate_key": "candidate.r3j.regional.latam-br-ufla-consumer-cata-2021",
+  "files": [
+    {
+      "byte_count": 1015217,
+      "path": "bressani_2021.pdf",
+      "sha256": "425c82a15fadfa122a3c04ad0215672da42d94600bdb56fb4cc142fd47fdf608",
+      "source_url": "https://www.scielo.br/j/cta/a/cSjz6CM9ScRVL6KHypQdyYy/?format=pdf&lang=en"
+    }
+  ],
+  "manifest_schema": "coffee-flavor-round3j-global-acquisition-v1",
+  "overwrite_policy": "IMMUTABLE_COMMITTED_SOURCE_FILE",
+  "raw_file_hash_completeness": 1.0,
+  "source_version": "article-vor-2021"
+}

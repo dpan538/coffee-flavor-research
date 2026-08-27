@@ -1,0 +1,4 @@
+batch_key	source_class	candidate_count	admitted_source_count	new_source_family_count	new_document_count	new_occurrence_count	new_unique_expression_count	new_effective_sensory_sample_count	material_gain	stop_state	evidence
+r3j-global-f-001	F	1	1	1	4	22	22	0	true	CONTINUE	guchengf Stage 3 admission
+r3j-global-bc-001	B;C	2	2	2	2	15	15	6	true	CONTINUE	MFACT and Bressani aggregate article admissions
+r3j-global-g-001	G	2	0	0	0	0	0	0	false	OPEN_BLOCKED_ACCESS_NOT_SATURATED	Open Food Facts 503 and FoodRepo token gate

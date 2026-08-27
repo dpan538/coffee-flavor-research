@@ -1,0 +1,16 @@
+{
+  "acquisition_state": "ACQUIRED_BYTES_HASHED_AND_DERIVED_ONLY_ADMITTED",
+  "candidate_key": "candidate.r3j.regional.latam-br-mfact-consumer-sensory-2017",
+  "files": [
+    {
+      "byte_count": 253842,
+      "path": "mfact_2017.pdf",
+      "sha256": "ba39867b8872a75b670fd468602d9d9e92f6e0d19621cdb282ae2106444dda11",
+      "source_url": "https://repositorio.ufla.br/bitstreams/c5141fef-1a67-4433-b3bc-c25f1c127ae8/download"
+    }
+  ],
+  "manifest_schema": "coffee-flavor-round3j-global-acquisition-v1",
+  "overwrite_policy": "IMMUTABLE_COMMITTED_SOURCE_FILE",
+  "raw_file_hash_completeness": 1.0,
+  "source_version": "article-v1-2017"
+}

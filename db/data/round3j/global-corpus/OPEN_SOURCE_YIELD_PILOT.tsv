@@ -1,0 +1,6 @@
+pilot_key	candidate_key	stage	sample_limit	records_observed	qualifying_flavor_documents	unique_expressions	duplicate_rate	result	limitation
+pilot.openfoodfacts.coffee-api-20260827	openfoodfacts.global-product-database	STAGE_2_ATTEMPTED	200	0	0	0	NOT_MEASURABLE	BLOCKED_ACCESS	Three bounded official API requests returned HTTP 503; no whole-database download was substituted.
+pilot.foodrepo.v3-20260827	foodrepo.v3-api	STAGE_1_COMPLETE	200	0	0	0	NOT_MEASURABLE	BLOCKED_ACCESS	Filtered v3 access requires an API token; the 90 MB legacy full dump was not downloaded as a substitute for a bounded filtered pilot.
+pilot.guchengf.2025-posts	candidate.r3j.guchengf-coffee-reviews-2025	STAGE_3_COMPLETE	200	4	4	22	0.0000	ADMIT_RAW_AND_DERIVED	Four source-authored review pages only; site shell, images, and packaging copy excluded.
+pilot.mfact.article-2017	candidate.r3j.regional.latam-br-mfact-consumer-sensory-2017	STAGE_3_COMPLETE	200	1	1	3	0.0000	ADMIT_DERIVED_ONLY	Four coffee configurations and three flavor attributes; nota geral remains preference/overall evidence and is excluded from flavor expressions.
+pilot.bressani.article-2021	candidate.r3j.regional.latam-br-ufla-consumer-cata-2021	STAGE_3_COMPLETE	200	1	1	12	0.0000	ADMIT_DERIVED_ONLY	One coffee, two information conditions, twelve article-authored CATA descriptors; forms and participant records excluded.

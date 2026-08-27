@@ -1,0 +1,55 @@
+{
+  "artifacts": [
+    {
+      "bytes": 5025,
+      "path": "db/data/round3j/global-corpus/ADMITTED_FLAVOR_DOCUMENT.tsv",
+      "sha256": "28a9c036131aa62edc3c4149e13d82dfa2d3992c13a76cedd2bf8e2b800db137"
+    },
+    {
+      "bytes": 22204,
+      "path": "db/data/round3j/global-corpus/ADMITTED_FLAVOR_EXPRESSION_OCCURRENCE.tsv",
+      "sha256": "f6f39787d2ab3954244c2a8f2183616ff4e37d1a21eb85cecc32e90b3b20abde"
+    },
+    {
+      "bytes": 515,
+      "path": "db/data/round3j/global-corpus/GLOBAL_ACQUISITION_BATCH.tsv",
+      "sha256": "8faa8f3c4dedc1bdbb8efce1fce2f19e288c78a9a08bbefa91167644f7a7027c"
+    },
+    {
+      "bytes": 1931,
+      "path": "db/data/round3j/global-corpus/GLOBAL_FLAVOR_CORPUS_METRIC.tsv",
+      "sha256": "b417e1310b21128bd47901088cd8b494e964f432dcce01b4efba8bd51a7a0142"
+    },
+    {
+      "bytes": 1803,
+      "path": "db/data/round3j/global-corpus/HIGH_YIELD_PERMISSION_AND_LICENSE_OPTION.tsv",
+      "sha256": "06c9c47f21d8d9a99a3275ba4b5819300ddba1f6cc654570b3ace7e2c81b28a6"
+    },
+    {
+      "bytes": 1366,
+      "path": "db/data/round3j/global-corpus/OPEN_SOURCE_YIELD_PILOT.tsv",
+      "sha256": "36c10dba4fce43ad2992f9299e95d2d27c63c91826203e8df28d51fe05609227"
+    },
+    {
+      "bytes": 23791,
+      "path": "db/data/round3j/global-corpus/SOURCE_CLASS_CANDIDATE_COVERAGE.tsv",
+      "sha256": "4f078b2ba8724b824a86891339395bc66f047b0be7e8d4dd3200497a2e924744"
+    },
+    {
+      "bytes": 2255,
+      "path": "db/data/round3j/global-corpus/SOURCE_CLASS_SATURATION.tsv",
+      "sha256": "9e2d8bc4e0db4f275d44a1d8dba9f9eb3c2b508861cee0a75151bb202f864031"
+    },
+    {
+      "bytes": 348,
+      "path": "db/data/round3j/global-corpus/SOURCE_CONCENTRATION.tsv",
+      "sha256": "b17d8d49732cba4ba9d160e51fbafec37c3c0ed8aaaec8cd313a73cbe92f1b8f"
+    }
+  ],
+  "expected_state_commit": "599b1fa",
+  "global_acquisition_complete": false,
+  "manifest_schema": "coffee-flavor-round3j-global-corpus-v1",
+  "model_training_authorized": false,
+  "phase_status": "ROUND3J_PARTIAL_GLOBAL_SCALEUP",
+  "source_sha": "c3ae9b880d85507a0b8b0298bb94ef013d02f928"
+}

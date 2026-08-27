@@ -1,0 +1,16 @@
+metric	value	counting_boundary
+NEW_ADMITTED_SOURCE_COUNT	3	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_INDEPENDENT_SOURCE_FAMILY_COUNT	3	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_ADMITTED_FLAVOR_DOCUMENT_COUNT	6	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_FLAVOR_EXPRESSION_OCCURRENCE_COUNT	37	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_UNIQUE_NORMALIZED_FLAVOR_EXPRESSION_COUNT	27	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_TRAINING_ELIGIBLE_UNIQUE_EXPRESSION_COUNT	27	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_EFFECTIVE_SENSORY_SAMPLE_OR_CONFIGURATION_COUNT	6	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+NEW_COFFEE_OR_PRODUCT_IDENTITY_COUNT	9	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+TOTAL_ADMITTED_FLAVOR_DOCUMENT_COUNT	4143	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+TOTAL_ADMITTED_FLAVOR_EXPRESSION_OCCURRENCE_COUNT	12792	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+TOTAL_GOVERNED_UNIQUE_NORMALIZED_EXPRESSION_COUNT	3023	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+TOTAL_EFFECTIVE_SENSORY_SAMPLE_OR_CONFIGURATION_COUNT	236	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+TOTAL_COFFEE_SENSORY_SOURCE_FAMILY_COUNT	12	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+LEXICAL_TRAINING_ELIGIBLE_UNIQUE_EXPRESSION_COUNT	700	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.
+SOURCE_CLASS_WITH_ADMITTED_DATA_COUNT	5	Frozen v0.1.0 baseline plus admitted Round 3J global delta; no mirror inflation.

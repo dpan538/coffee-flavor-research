@@ -1,0 +1,3 @@
+corpus_scope	total_units	source_family_count	largest_source_family_share	top_three_source_family_share	hhi	effective_source_family_count	gate_status
+ALL_ADMITTED_DOCUMENTS	4143	9	0.7690079652	0.9946898383	0.6330149602	1.5797414957	FAIL
+LEXICAL_TRAINING_CANDIDATE	710	9	0.5450704225	0.8957746479	0.4018051974	2.4887682054	PASS_MINIMUM_NOT_PREFERRED
