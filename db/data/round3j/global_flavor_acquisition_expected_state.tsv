@@ -1,0 +1,52 @@
+section	metric_key	minimum_required	preferred_required	baseline_observed	hard_gate	passed	evidence_path	limitation
+CHECKPOINT	checkpoint.work_branch	codex/coffee-sensory-kb-v0-round3j-training-corpus-scaleup-20260826	SAME	codex/coffee-sensory-kb-v0-round3j-training-corpus-scaleup-20260826	true	true	git branch --show-current	Round 3J continues on the existing branch.
+CHECKPOINT	checkpoint.source_sha	c3ae9b880d85507a0b8b0298bb94ef013d02f928	SAME	c3ae9b880d85507a0b8b0298bb94ef013d02f928	true	true	git tag coffee-sensory-research-db-v0.1.0	Frozen main baseline remains immutable.
+CHECKPOINT	checkpoint.continuation_sha	0328c5bc83a20018b1be848d7e560baaf59a77ac	SAME	0328c5bc83a20018b1be848d7e560baaf59a77ac	true	true	git rev-parse HEAD	Exact remote Round 3J continuation checkpoint before this contract.
+CHECKPOINT	checkpoint.source_release	coffee-sensory-research-db-v0.1.0	SAME	coffee-sensory-research-db-v0.1.0	true	true	annotated git tag	No frozen release mutation is authorized.
+BASELINE	language.governed_unique_normalized_expression_count	6000	10000	2996	true	false	db/data/round3j/training_scale_expected_state.tsv	Governed unique expressions are not occurrence rows.
+BASELINE	language.contemporary_tasting_source_family_count	12	20	3	true	false	db/data/round3j/training_scale_expected_state.tsv	Global flavor-acquisition source-family target supersedes the earlier lexical-only family target.
+BASELINE	corpus.admitted_flavor_document_count	10000	25000	3289	true	false	db/data/round3j/training_scale_expected_state.tsv	Baseline uses the frozen contemporary tasting-document inventory.
+BASELINE	corpus.admitted_flavor_expression_occurrence_count	40000	100000	NOT_YET_MATERIALIZED	true	false	future global corpus manifest	Do not infer occurrences from unique-expression or document counts.
+BASELINE	lexical.training_eligible_unique_expression_count	5000	8000	NOT_YET_AUDITED	true	false	future training eligibility audit	Rights provenance source authorship and duplicate governance are conjunctive.
+BASELINE	sensory.source_local_sample_or_configuration_count	500	1000	230	true	false	db/data/round3j/training_scale_expected_state.tsv	Raw rows do not count as effective units.
+BASELINE	sensory.coffee_sensory_source_family_count	12	15	9	true	false	db/data/round3j/training_scale_expected_state.tsv	Independent source families only.
+BASELINE	source_class.with_admitted_data_count	6	8	NOT_YET_AUDITED	true	false	future source-class audit	Classes are acquisition registers not pooled evidence labels.
+MINIMUM_GLOBAL_ACQUISITION	corpus.admitted_flavor_source_family_count	12	20	3	true	false	future global corpus manifest	Mirrors and snapshots of one upstream family count once.
+MINIMUM_GLOBAL_ACQUISITION	source_class.with_admitted_data_count	6	8	NOT_YET_AUDITED	true	false	future source-class audit	At least six of classes A through I must contribute admitted data.
+MINIMUM_GLOBAL_ACQUISITION	language.governed_unique_normalized_expression_count	6000	10000	2996	true	false	future global corpus manifest	No generated paraphrases translations or inferred expressions.
+MINIMUM_GLOBAL_ACQUISITION	corpus.admitted_flavor_document_count	10000	25000	3289	true	false	future global corpus manifest	A product row without qualifying sensory language is not a document.
+MINIMUM_GLOBAL_ACQUISITION	corpus.admitted_flavor_expression_occurrence_count	40000	100000	NOT_YET_MATERIALIZED	true	false	future global corpus manifest	Every occurrence must resolve to an admitted source substring or deterministic normalization.
+MINIMUM_GLOBAL_ACQUISITION	lexical.training_eligible_unique_expression_count	5000	8000	NOT_YET_AUDITED	true	false	future lexical training manifest	Unmapped expressions may remain unresolved or abstention eligible.
+MINIMUM_GLOBAL_ACQUISITION	sensory.source_local_sample_or_configuration_count	500	1000	230	true	false	future effective-unit audit	Preserve source-local independence semantics.
+MINIMUM_GLOBAL_ACQUISITION	sensory.coffee_sensory_source_family_count	12	15	9	true	false	future source-family audit	Independent governed sensory origins only.
+CONCENTRATION	training.max_single_source_family_share	<=0.60	<=0.45	NOT_YET_AUDITED	true	false	future source concentration analysis	Capping may apply only to a task-specific manifest.
+CONCENTRATION	training.top_three_source_family_share	DESCRIPTIVE	DESCRIPTIVE	NOT_YET_AUDITED	false	false	future source concentration analysis	Report without hiding the full corpus.
+CONCENTRATION	training.hhi	DESCRIPTIVE	DESCRIPTIVE	NOT_YET_AUDITED	false	false	future source concentration analysis	Computed on training-eligible units by source family.
+CONCENTRATION	training.effective_source_family_count	DESCRIPTIVE	DESCRIPTIVE	NOT_YET_AUDITED	false	false	future source concentration analysis	Inverse HHI when HHI is nonzero.
+READINESS	lexical.normalization_training_ready	true	true	false	true	false	future task-readiness audit	All lexical provenance split duplicate and concentration gates are required.
+READINESS	association.model_training_ready	true	true	false	false	false	future task-readiness audit	Either association or context readiness is required for Round 3 exit.
+READINESS	context.model_training_ready	true	true	false	false	false	future task-readiness audit	Either association or context readiness is required for Round 3 exit.
+READINESS	exit.held_out_source_split_ready	true	true	false	true	false	future grouped split manifest	At least two fully held-out source families are required.
+READINESS	exit.training_label_provenance_rate	1.0000	1.0000	NOT_YET_AUDITED	true	false	future training eligibility audit	Every label or disposition must be traceable.
+READINESS	exit.training_set_source_concentration_acceptable	true	true	false	true	false	future source concentration analysis	Maximum single-family share must pass.
+READINESS	exit.training_corpus_reproducible	true	true	false	true	false	future two-rebuild audit	All committed artifacts and manifests must reproduce.
+STATE	state.round3j_regional_audit_complete	true	true	true	true	true	db/data/round3j/regional_user_evidence_audit_result.tsv	The preserved regional coverage audit is complete.
+STATE	state.round3j_regional_data_acquisition_complete	false	false	false	true	true	db/data/round3j/regional_coverage_measures.tsv	No regional acquisition-completeness claim is made.
+STATE	state.regional_source_frame_blocks_global_acquisition	false	false	false	true	true	this contract	Regional candidate frames no longer gate broad acquisition.
+STATE	state.regional_representativeness_claim	false	false	false	true	true	db/data/round3j/regional_source_family_concentration.tsv	Regional distributions are descriptive only.
+STATE	state.regional_minimum_quota_enforced	false	false	false	true	true	this contract	No artificial regional quota limits lawful acquisition.
+STATE	state.regional_acquisition_blocking_gate	false	false	false	true	true	this contract	Low regional coverage produces warnings not global failure.
+STATE	state.global_flavor_acquisition_complete	true	true	false	true	false	future global acquisition result	Global acquisition remains open.
+STATE	state.global_flavor_corpus_scale_pass	true	true	false	true	false	future global acquisition result	Minimum scale is not met at baseline.
+STATE	state.round3_exit_gate_pass	true	true	false	true	false	future Round 3 exit audit	Round 3J must not merge or close at baseline.
+PROHIBITION	execution.ml_baseline_run	false	false	false	true	true	Round 3J execution guard	No fitting is authorized.
+PROHIBITION	execution.ranking_model_trained	false	false	false	true	true	Round 3J execution guard	No fitting is authorized.
+PROHIBITION	execution.adaptive_policy_trained	false	false	false	true	true	Round 3J execution guard	No fitting is authorized.
+PROHIBITION	execution.deep_learning_model_run	false	false	false	true	true	Round 3J execution guard	No fitting is authorized.
+PROHIBITION	execution.embedding_baseline_run	false	false	false	true	true	Round 3J execution guard	Embedding artifacts are prohibited.
+PROHIBITION	architecture.pgvector_required	false	false	false	true	true	AGENTS.md	PostgreSQL remains usable without pgvector.
+DECISION	acquisition.primary_unit	SOURCE_AUTHORED_FLAVOR_DESCRIPTION_DOCUMENT	SAME	FROZEN	true	true	docs/research/coffee-sensory-kb-v0-round3j/FLAVOR_DOCUMENT_DEFINITION.md	Documents tie sensory language to an identifiable coffee product sample or evaluation.
+DECISION	acquisition.completeness_frame	SOURCE_CLASSES_A_THROUGH_I	SAME	FROZEN	true	true	docs/research/coffee-sensory-kb-v0-round3j/GLOBAL_SOURCE_CLASS_FRAME.md	Regional quotas are not completeness gates.
+DECISION	acquisition.full_import_gate	BOUNDED_YIELD_PILOT_THEN_HEURISTIC	SAME	FROZEN	true	true	docs/research/coffee-sensory-kb-v0-round3j/GLOBAL_SOURCE_CLASS_FRAME.md	Large files do not justify import without qualifying yield.
+DECISION	acquisition.expected_state_frozen_before_new_acquisition	true	true	true	true	true	git history	This contract must be committed before new global acquisition.
+DECISION	acquisition.expected_state_threshold_revision_count	0	0	0	true	true	this contract	Do not lower thresholds after acquisition begins.
