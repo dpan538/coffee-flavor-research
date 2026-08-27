@@ -38,14 +38,15 @@ C1 or source-native roast evidence is zero; filter, espresso, or “Nordic”
 language cannot be converted to C1 by inference. C0 mappings likewise require
 official service evidence rather than category-name assumptions.
 
-## Validation and release gaps
+## Validation and release boundary
 
-Final local validation, two clean PostgreSQL rebuilds, deterministic inventory
-hash comparison, final remote frontend CI, and final remote PostgreSQL CI are
-`PENDING_FINAL_VALIDATION`. Final local and remote SHAs are also pending. The
-branch must remain unmerged, no force push is permitted, and main promotion is
-not allowed while any scale, rights, review, integrity, or reproducibility gate
-is unmet.
+Local artifact, format, type, unit, build, and 12-case browser-smoke checks pass.
+Native PostgreSQL 17 checkpoint CI passes 53 migrations, all Round 3K validation
+and failure paths, two clean rebuilds, and eight deterministic inventory
+comparisons. The final documentation commit still requires its own green remote
+run before handoff. The branch remains unmerged, no force push is permitted,
+and main promotion is not allowed while any scale, rights, review, integrity, or
+reproducibility gate is unmet.
 
 ## Recommended next phase
 

@@ -96,19 +96,29 @@ Round 3K applies the user's explicit contract:
   represents cupping, siphon, cezve/ibrik, and other governed services before
   any reviewed C0 projection.
 
-## Phase A state
+## Implemented recovery state
 
-The authoritative expected-state, evidence-tier, effective-record, and scale
-gate contracts are frozen in `db/data/round3k/`. No professional competition
-record has been credited yet, no model-eligible record is claimed, no expert
-review has been performed, and no outbound request has been sent. The next
-authorized step is to push this rules checkpoint and require green remote CI
-before adding the competition schema or adapter framework.
+Phase A froze the authoritative expected-state, evidence-tier, effective-record,
+and scale-gate contracts at `6e0279e75622f59341cef5464940c385381c82c7`.
+Remote CI run
+[33070396341](https://github.com/dpan538/coffee-flavor-research/actions/runs/33070396341)
+was green before Phase B began.
 
-Current truthful result state:
+Phase B adds four normalized forward migrations, eleven generic adapter source
+profiles, strict adapter and governance contracts, 24-series/50-edition planning
+inventories, official access and rights matrices, and deterministic rebuild
+inventories. Native PostgreSQL 17 CI run
+[33075085741](https://github.com/dpan538/coffee-flavor-research/actions/runs/33075085741)
+passed two clean rebuilds, 385 new relational constraints, all Round 3K SQL
+failure paths and validation checks, and eight reproducible inventory hashes at
+checkpoint `ab7c886f0ea3d3a59709a618c148f82fe892d927`.
+
+No professional competition record is credited, no model-eligible record is
+claimed, no expert review was performed, and no outbound request was sent.
+Cup of Excellence and Best of Panama are publicly inspectable, but their
+required research, descriptor-reuse, derived-release, and model-use rights were
+not established. The truthful result state is therefore:
 
 ```text
-ROUND3K_PARTIAL_PROFESSIONAL_ACQUISITION
+BLOCKED_RIGHTS
 ```
-
-This is a phase-start state, not the final Round 3K receipt.
