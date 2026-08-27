@@ -33,7 +33,7 @@ copy of a proprietary flavor wheel.
   `pg_dump` inside that container for schema comparison.
 - `psql`, `createdb`, `dropdb`, and `pg_dump` on `PATH`.
 - The PostgreSQL `pg_trgm` extension available to the target server.
-- A role allowed to create `pg_trgm` and the seven logical schemas when applying
+- A role allowed to create `pg_trgm` and the logical schemas when applying
   migrations. The reproducibility script additionally needs `CREATEDB`.
 - `sha256sum` or `shasum` for reproducibility hashes.
 
@@ -121,7 +121,7 @@ context records, and persists a 102-case development/held-out label benchmark.
 It also records explicit abstention where the imported data cannot identify
 preparation, roast, interaction, or milk-mode sensory effects.
 
-The seven PostgreSQL schemas have deliberately separate responsibilities:
+The PostgreSQL schemas have deliberately separate responsibilities:
 
 - `ref`: controlled codes and their semantics.
 - `kb`: language-neutral canonical concepts, multilingual expressions,
@@ -135,6 +135,9 @@ The seven PostgreSQL schemas have deliberately separate responsibilities:
 - `ml`: versioned models, runs, mapping candidates, and candidate signals.
 - `audit`: independent reviews, lifecycle history, explicit promotions, and
   database validation.
+- `competition`: normalized professional competition identity, preparation
+  services, panels, evidence lineage, rights-gated effective records, governed
+  labels, duplicates/repeats, deterministic candidate splits, and scale gates.
 
 The seed in `006_reference_seed.sql` is independently authored, lawful, and
 test-only. It exists to exercise semantic distinctions such as pink grapefruit,
@@ -197,6 +200,12 @@ the run.
     `audit.run_round3e_validation_queries()` expected-zero contract and the
     external-snapshot, rights/privacy, raw-value-preservation, corpus/question
     governance, coverage, prohibition, retrieval, and query-plan suites.
+12. when Round 3K is present, the
+    `audit.run_round3k_validation_queries()` expected-zero contract and the
+    competition core and cross-domain adversarial suites. These reject record
+    inflation, evidence-tier leakage, missing fresh-preparation/source lineage,
+    rights conflation, unlinked repeats, split leakage, forced labels, and
+    prohibited model artifacts or runs.
 
 ## Two clean rebuilds
 
@@ -259,12 +268,49 @@ compares:
 - the Round 3F relationship/constraint delta when Round 3F is present; and
 - the complete Round 3G expected-state gate, result classification and
   relationship/constraint delta when Round 3G is present.
+- the Round 3K competition-series, edition, effective-record,
+  descriptor-assertion, current-rights, duplicate/repeat, label-disposition,
+  and training-corpus-candidate inventories when Round 3K is present.
 
 Only stable logical values are inventoried. Identity IDs and sequence state
 advanced by deliberately failing negative tests are excluded. Both databases
 that this invocation created are dropped by the exit cleanup, including after
 a test or comparison failure. Temporary artifacts remain at the printed path
 for audit inspection.
+
+## Round 3K professional competition domain
+
+Forward migrations `049` through `052` bind the work to the immutable Round 3I
+base, create the normalized `competition` schema, add professional evidence and
+six-dimensional rights lineage, and publish observed/model/auxiliary views plus
+the 1,000/3,000/7,000/10,000 and 12,000-forensic gates. The migration planner
+verifies every Round 3I migration against
+`db/migration-baselines/round3i.sha256`; no historical migration is rewritten.
+
+One effective record is a unique series × edition × category × round × entry
+or lot × preparation-service observation. Judge rows, scores, descriptor
+assertions, mirrors, snapshots, and repeated rounds have separate identities
+and cannot silently multiply this count. Only fresh-prepared P1/P2 evidence can
+enter the observed core view. Model eligibility additionally requires an
+affirmative current model-research rights decision, governed label provenance,
+and all applicable integrity gates. Unknown or pending rights never pass.
+
+The generic adapter contract under `db/adapters/round3k/` supports the eleven
+authorized source shapes through one source-neutral output bundle. Its committed
+fixture is structural only and is explicitly ineligible for corpus counts. Run
+the two Round 3K non-database contracts with:
+
+```bash
+npm run test:round3k-governance-artifacts
+npm run test:round3k-adapter-contract
+```
+
+The authoritative Round 3K TSV package intentionally reports zero acquired,
+observed, and model-eligible professional records until real source snapshots
+have lawful access, passing adapter audits, complete hashes and provenance, and
+the required evidence lineage. Planning inventories do not create database
+records. Round 3K prohibits model fitting, embeddings, vector requirements, and
+model-weight artifacts.
 
 ## Frontend isolation
 

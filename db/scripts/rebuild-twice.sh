@@ -225,7 +225,8 @@ JOIN information_schema.tables AS t
  AND t.table_name = c.table_name
 WHERE t.table_type = 'BASE TABLE'
   AND c.table_schema IN (
-    'ref', 'kb', 'evidence', 'corpus', 'context', 'calibration', 'ml', 'audit'
+    'ref', 'kb', 'evidence', 'corpus', 'context', 'calibration', 'ml',
+    'audit', 'competition'
   )
   AND (
     c.column_name LIKE '%\_key' ESCAPE '\'
@@ -560,6 +561,16 @@ write_validation_results() {
                  FROM audit.run_validation_queries()
                  ORDER BY check_key;" >"$output_file"
   fi
+
+  if (( DISCOVERED_MIGRATION_COUNT > 52 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round3k', check_key, violation_count, passed
+                 FROM audit.run_round3k_validation_queries()
+                 ORDER BY check_key;" >>"$output_file"
+  fi
 }
 
 write_round3h_checkpoint_results() {
@@ -612,7 +623,7 @@ write_schema_guard_counts() {
                  FROM pg_namespace
                  WHERE nspname IN (
                    'audit','calibration','context','corpus',
-                   'evidence','kb','ml','ref'
+                   'evidence','kb','ml','ref','competition'
                  )
                )
                SELECT 'CONSTRAINT_TRIGGER_CATALOG_COUNT', count(*)
@@ -647,6 +658,8 @@ apply_with_round3h_checkpoint() {
   local database_name=$1
   local checkpoint_output=$2
   local checkpoint_schema_guard_output=$3
+  local round3i_schema_guard_output=$4
+  local round3i_freeze_output_dir=$5
   local migrations=()
   local migration
   local index
@@ -659,6 +672,7 @@ apply_with_round3h_checkpoint() {
     "$SCRIPT_DIR/apply.sh" "$database_name"
     : >"$checkpoint_output"
     : >"$checkpoint_schema_guard_output"
+    : >"$round3i_schema_guard_output"
     return
   fi
 
@@ -670,8 +684,18 @@ apply_with_round3h_checkpoint() {
   write_schema_guard_counts "$database_name" "$checkpoint_schema_guard_output"
   printf 'ROUND3H_CHECKPOINT_VALIDATION_PASS=true\n'
 
-  printf 'Applying forward Round 3I migrations (045-048).\n'
-  for (( index=45; index<DISCOVERED_MIGRATION_COUNT; index+=1 )); do
+  printf 'Applying immutable Round 3I freeze migrations (045-048).\n'
+  for (( index=45; index<49; index+=1 )); do
+    psql_target "$database_name" --file="${migrations[$index]}"
+  done
+  write_schema_guard_counts "$database_name" "$round3i_schema_guard_output"
+  python3 "$SCRIPT_DIR/export-round3i-freeze.py" \
+    --database "$database_name" \
+    --output-dir "$round3i_freeze_output_dir"
+  printf 'ROUND3I_CHECKPOINT_EXPORT_PASS=true\n'
+
+  printf 'Applying forward migrations after frozen Round 3I (049+).\n'
+  for (( index=49; index<DISCOVERED_MIGRATION_COUNT; index+=1 )); do
     psql_target "$database_name" --file="${migrations[$index]}"
   done
   printf 'MIGRATION_COUNT=%d\n' "$DISCOVERED_MIGRATION_COUNT"
@@ -1128,6 +1152,237 @@ write_round3h_inventory() {
                ORDER BY record_type, record_key, record_value;" >"$output_file"
 }
 
+write_round3k_inventories() {
+  local database_name=$1
+  local output_dir=$2
+
+  mkdir -p "$output_dir"
+
+  if (( DISCOVERED_MIGRATION_COUNT <= 52 )); then
+    : >"$output_dir/competition-series-inventory.txt"
+    : >"$output_dir/edition-inventory.txt"
+    : >"$output_dir/effective-record-inventory.txt"
+    : >"$output_dir/descriptor-assertion-inventory.txt"
+    : >"$output_dir/rights-inventory.txt"
+    : >"$output_dir/duplicate-repeat-inventory.txt"
+    : >"$output_dir/label-disposition-inventory.txt"
+    : >"$output_dir/training-corpus-manifest.txt"
+    return
+  fi
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT series_key, official_name, organizer_name,
+                      COALESCE(official_series_identifier, ''),
+                      series_scope_code, lifecycle_status_code,
+                      series_metadata::TEXT
+               FROM competition.series
+               ORDER BY series_key;" \
+    >"$output_dir/competition-series-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT series.series_key, edition.edition_key,
+                      edition.series_local_edition_key,
+                      COALESCE(edition.official_edition_identifier, ''),
+                      edition.edition_name, edition.edition_year,
+                      COALESCE(edition.starts_on::TEXT, ''),
+                      COALESCE(edition.ends_on::TEXT, ''),
+                      edition.lifecycle_status_code,
+                      edition.edition_metadata::TEXT
+               FROM competition.edition AS edition
+               JOIN competition.series AS series
+                 ON series.series_id = edition.series_id
+               ORDER BY series.series_key, edition.edition_key;" \
+    >"$output_dir/edition-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT service.preparation_service_key, series.series_key,
+                      edition.edition_key, category.category_key,
+                      round_record.round_key,
+                      COALESCE(entry.entry_key, lot.lot_key),
+                      service.entry_service_key,
+                      COALESCE(parent.preparation_service_key, ''),
+                      COALESCE(service.repeat_relationship_code, ''),
+                      service.fresh_preparation_confirmed,
+                      service.fresh_preparation_status_code,
+                      service.preparation_taxonomy_code,
+                      service.milk_auxiliary,
+                      service.black_coffee_core_candidate,
+                      service.c0_source_status_code,
+                      COALESCE(preparation.preparation_concept_key, ''),
+                      service.source_native_roast_status_code,
+                      COALESCE(service.source_native_roast_value, ''),
+                      COALESCE(service.source_native_roast_scheme, ''),
+                      service.c1_mapping_status_code,
+                      COALESCE(roast.roast_category_key, ''),
+                      service.lifecycle_status_code
+               FROM competition.preparation_service AS service
+               JOIN competition.series AS series
+                 ON series.series_id = service.series_id
+               JOIN competition.edition AS edition
+                 ON edition.edition_id = service.edition_id
+               JOIN competition.category AS category
+                 ON category.category_id = service.category_id
+               JOIN competition.round AS round_record
+                 ON round_record.round_id = service.round_id
+               LEFT JOIN competition.entry AS entry
+                 ON entry.entry_id = service.entry_id
+               LEFT JOIN competition.lot AS lot
+                 ON lot.lot_id = service.lot_id
+               LEFT JOIN competition.preparation_service AS parent
+                 ON parent.preparation_service_id =
+                    service.repeat_of_preparation_service_id
+               LEFT JOIN context.preparation_concept AS preparation
+                 ON preparation.preparation_concept_id =
+                    service.c0_preparation_concept_id
+               LEFT JOIN context.roast_category AS roast
+                 ON roast.roast_category_id =
+                    service.reviewed_c1_roast_category_id
+               ORDER BY service.preparation_service_key;" \
+    >"$output_dir/effective-record-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT assertion.descriptor_assertion_key,
+                      service.preparation_service_key,
+                      assertion.assertion_type_code,
+                      assertion.evidence_tier_code,
+                      assertion.language_tag,
+                      assertion.raw_phrase_sha256,
+                      COALESCE(assertion.source_defined_descriptor_key, ''),
+                      snapshot.professional_source_snapshot_key,
+                      COALESCE(source_file.professional_source_file_key, ''),
+                      assertion.source_locator,
+                      assertion.derived_from_judge_observations,
+                      assertion.semantic_inference_used
+               FROM competition.descriptor_assertion AS assertion
+               JOIN competition.preparation_service AS service
+                 ON service.preparation_service_id =
+                    assertion.preparation_service_id
+               JOIN evidence.professional_source_snapshot AS snapshot
+                 ON snapshot.professional_source_snapshot_id =
+                    assertion.professional_source_snapshot_id
+               LEFT JOIN evidence.professional_source_file AS source_file
+                 ON source_file.professional_source_file_id =
+                    assertion.professional_source_file_id
+               ORDER BY assertion.descriptor_assertion_key;" \
+    >"$output_dir/descriptor-assertion-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT decision.professional_rights_decision_key,
+                      snapshot.professional_source_snapshot_key,
+                      decision.public_results_use,
+                      decision.public_descriptor_use,
+                      decision.internal_research_use,
+                      decision.public_derived_release,
+                      decision.model_research_use,
+                      decision.commercial_model_use,
+                      decision.decision_authority_code,
+                      decision.decided_on,
+                      COALESCE(predecessor.professional_rights_decision_key, '')
+               FROM evidence.professional_rights_decision AS decision
+               JOIN evidence.professional_source_snapshot AS snapshot
+                 ON snapshot.professional_source_snapshot_id =
+                    decision.professional_source_snapshot_id
+               LEFT JOIN evidence.professional_rights_decision AS predecessor
+                 ON predecessor.professional_rights_decision_id =
+                    decision.supersedes_decision_id
+               ORDER BY decision.professional_rights_decision_key;" \
+    >"$output_dir/rights-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT 'duplicate', duplicate_group.professional_duplicate_group_key,
+                      duplicate_group.duplicate_type_code,
+                      member.member_ordinal::TEXT,
+                      COALESCE(service.preparation_service_key,
+                               snapshot.professional_source_snapshot_key),
+                      member.member_role_code
+               FROM audit.professional_duplicate_group AS duplicate_group
+               JOIN audit.professional_duplicate_group_member AS member
+                 ON member.professional_duplicate_group_id =
+                    duplicate_group.professional_duplicate_group_id
+               LEFT JOIN competition.preparation_service AS service
+                 ON service.preparation_service_id = member.preparation_service_id
+               LEFT JOIN evidence.professional_source_snapshot AS snapshot
+                 ON snapshot.professional_source_snapshot_id =
+                    member.professional_source_snapshot_id
+               UNION ALL
+               SELECT 'repeat', service.preparation_service_key,
+                      repeat_audit.repeat_relationship_code, '1',
+                      parent.preparation_service_key,
+                      repeat_audit.relationship_status_code
+               FROM audit.professional_repeat_audit AS repeat_audit
+               JOIN competition.preparation_service AS service
+                 ON service.preparation_service_id =
+                    repeat_audit.preparation_service_id
+               JOIN competition.preparation_service AS parent
+                 ON parent.preparation_service_id =
+                    repeat_audit.repeats_preparation_service_id
+               ORDER BY 1, 2, 4;" \
+    >"$output_dir/duplicate-repeat-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT decision.professional_label_decision_key,
+                      expression.professional_expression_key,
+                      decision.decision_version,
+                      decision.label_disposition_code,
+                      decision.decision_method_code,
+                      decision.decision_status_code,
+                      decision.expert_review_complete,
+                      decision.candidate_only,
+                      decision.provenance_complete,
+                      COALESCE(string_agg(
+                          COALESCE(concept.concept_key, association_range.range_key),
+                          ',' ORDER BY target.target_ordinal
+                      ), '')
+               FROM corpus.professional_label_decision AS decision
+               JOIN corpus.professional_expression AS expression
+                 ON expression.professional_expression_id =
+                    decision.professional_expression_id
+               LEFT JOIN corpus.professional_label_target AS target
+                 ON target.professional_label_decision_id =
+                    decision.professional_label_decision_id
+               LEFT JOIN kb.concept AS concept
+                 ON concept.concept_id = target.concept_id
+               LEFT JOIN corpus.association_range AS association_range
+                 ON association_range.association_range_id =
+                    target.association_range_id
+               GROUP BY decision.professional_label_decision_id,
+                        expression.professional_expression_key
+               ORDER BY decision.professional_label_decision_key;" \
+    >"$output_dir/label-disposition-inventory.txt"
+
+  psql_target "$database_name" \
+    --tuples-only --no-align --field-separator='|' \
+    --command="SELECT 'artifact', round3k_artifact_key,
+                      artifact_type_code, artifact_path, artifact_sha256
+               FROM audit.round3k_artifact_registry
+               WHERE artifact_type_code =
+                     'TRAINING_CORPUS_CANDIDATE_MANIFEST'
+               UNION ALL
+               SELECT 'candidate', professional_training_candidate_key,
+                      task_code, candidate_status_code,
+                      concat_ws(',', provenance_complete, rights_complete,
+                                integrity_complete, included)
+               FROM ml.professional_training_candidate
+               UNION ALL
+               SELECT 'split', assignment.assignment_key,
+                      split_plan.professional_split_plan_key,
+                      assignment.partition_code,
+                      assignment.deterministic_assignment_sha256
+               FROM ml.professional_split_assignment AS assignment
+               JOIN ml.professional_split_plan AS split_plan
+                 ON split_plan.professional_split_plan_id =
+                    assignment.professional_split_plan_id
+               ORDER BY 1, 2;" \
+    >"$output_dir/training-corpus-manifest.txt"
+}
+
 write_round2b_inventory() {
   local database_name=$1
   local output_file=$2
@@ -1386,10 +1641,12 @@ run_build() {
   apply_with_round3h_checkpoint \
     "$database_name" \
     "$build_dir/round3h-checkpoint-validation.txt" \
-    "$build_dir/round3h-checkpoint-schema-guard-counts.txt"
+    "$build_dir/round3h-checkpoint-schema-guard-counts.txt" \
+    "$build_dir/round3i-checkpoint-schema-guard-counts.txt" \
+    "$build_dir/round3i-freeze"
   "$SCRIPT_DIR/test.sh" "$database_name"
   write_schema_guard_counts \
-    "$database_name" "$build_dir/round3i-final-schema-guard-counts.txt"
+    "$database_name" "$build_dir/round3k-final-schema-guard-counts.txt"
 
   normalize_schema_dump "$database_name" "$build_dir/schema.sql"
   write_stable_key_inventory "$database_name" "$build_dir/stable-key-inventory.txt"
@@ -1406,9 +1663,7 @@ run_build() {
   write_round3f_inventory "$database_name" "$build_dir/round3f-inventory.txt"
   write_round3g_inventory "$database_name" "$build_dir/round3g-inventory.txt"
   write_round3h_inventory "$database_name" "$build_dir/round3h-inventory.txt"
-  python3 "$SCRIPT_DIR/export-round3i-freeze.py" \
-    --database "$database_name" \
-    --output-dir "$build_dir/round3i-freeze"
+  write_round3k_inventories "$database_name" "$build_dir/round3k-inventories"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
@@ -1475,9 +1730,29 @@ compare_artifact ROUND3H_INVENTORY round3h-inventory.txt
 compare_artifact ROUND3H_CHECKPOINT_VALIDATION round3h-checkpoint-validation.txt
 compare_artifact ROUND3H_CHECKPOINT_SCHEMA_GUARD_COUNTS \
   round3h-checkpoint-schema-guard-counts.txt
-compare_artifact ROUND3I_FINAL_SCHEMA_GUARD_COUNTS \
-  round3i-final-schema-guard-counts.txt
+compare_artifact ROUND3I_CHECKPOINT_SCHEMA_GUARD_COUNTS \
+  round3i-checkpoint-schema-guard-counts.txt
+compare_artifact ROUND3K_FINAL_SCHEMA_GUARD_COUNTS \
+  round3k-final-schema-guard-counts.txt
 compare_artifact PG_TRGM_VERSION pg-trgm-version.txt
+
+round3k_inventory_files=(
+  competition-series-inventory.txt
+  edition-inventory.txt
+  effective-record-inventory.txt
+  descriptor-assertion-inventory.txt
+  rights-inventory.txt
+  duplicate-repeat-inventory.txt
+  label-disposition-inventory.txt
+  training-corpus-manifest.txt
+)
+for round3k_inventory_file in "${round3k_inventory_files[@]}"; do
+  round3k_inventory_label="ROUND3K_${round3k_inventory_file%%.*}"
+  round3k_inventory_label=${round3k_inventory_label//-/_}
+  compare_artifact \
+    "$round3k_inventory_label" \
+    "round3k-inventories/$round3k_inventory_file"
+done
 
 round3i_freeze_files=(
   CANONICAL_INVENTORY.tsv
@@ -1534,34 +1809,43 @@ print_result_file ROUND3H_CHECKPOINT_VALIDATION \
   "$ARTIFACT_DIR/build-one/round3h-checkpoint-validation.txt"
 print_result_file ROUND3H_CHECKPOINT_SCHEMA_GUARD_COUNTS \
   "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt"
-print_result_file ROUND3I_FINAL_SCHEMA_GUARD_COUNTS \
-  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt"
+print_result_file ROUND3I_CHECKPOINT_SCHEMA_GUARD_COUNTS \
+  "$ARTIFACT_DIR/build-one/round3i-checkpoint-schema-guard-counts.txt"
+print_result_file ROUND3K_FINAL_SCHEMA_GUARD_COUNTS \
+  "$ARTIFACT_DIR/build-one/round3k-final-schema-guard-counts.txt"
+for round3k_inventory_file in "${round3k_inventory_files[@]}"; do
+  round3k_inventory_label="ROUND3K_${round3k_inventory_file%%.*}"
+  round3k_inventory_label=${round3k_inventory_label//-/_}
+  print_result_file \
+    "$round3k_inventory_label" \
+    "$ARTIFACT_DIR/build-one/round3k-inventories/$round3k_inventory_file"
+done
 printf 'PG_TRGM_VERSION=%s\n' "$(sed -n '1p' "$ARTIFACT_DIR/build-one/pg-trgm-version.txt")"
 
-checkpoint_relational_constraints=$(awk -F= \
+round3i_relational_constraints=$(awk -F= \
   '$1 == "RELATIONAL_CONSTRAINT_COUNT" { print $2 }' \
-  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt")
+  "$ARTIFACT_DIR/build-one/round3i-checkpoint-schema-guard-counts.txt")
 final_relational_constraints=$(awk -F= \
   '$1 == "RELATIONAL_CONSTRAINT_COUNT" { print $2 }' \
-  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt")
-checkpoint_user_triggers=$(awk -F= \
+  "$ARTIFACT_DIR/build-one/round3k-final-schema-guard-counts.txt")
+round3i_user_triggers=$(awk -F= \
   '$1 == "USER_TRIGGER_COUNT" { print $2 }' \
-  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt")
+  "$ARTIFACT_DIR/build-one/round3i-checkpoint-schema-guard-counts.txt")
 final_user_triggers=$(awk -F= \
   '$1 == "USER_TRIGGER_COUNT" { print $2 }' \
-  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt")
-checkpoint_event_triggers=$(awk -F= \
+  "$ARTIFACT_DIR/build-one/round3k-final-schema-guard-counts.txt")
+round3i_event_triggers=$(awk -F= \
   '$1 == "USER_EVENT_TRIGGER_COUNT" { print $2 }' \
-  "$ARTIFACT_DIR/build-one/round3h-checkpoint-schema-guard-counts.txt")
+  "$ARTIFACT_DIR/build-one/round3i-checkpoint-schema-guard-counts.txt")
 final_event_triggers=$(awk -F= \
   '$1 == "USER_EVENT_TRIGGER_COUNT" { print $2 }' \
-  "$ARTIFACT_DIR/build-one/round3i-final-schema-guard-counts.txt")
+  "$ARTIFACT_DIR/build-one/round3k-final-schema-guard-counts.txt")
 new_relational_constraint_count=$((
-  final_relational_constraints - checkpoint_relational_constraints
+  final_relational_constraints - round3i_relational_constraints
 ))
-new_user_trigger_count=$((final_user_triggers - checkpoint_user_triggers))
+new_user_trigger_count=$((final_user_triggers - round3i_user_triggers))
 new_event_trigger_count=$((
-  final_event_triggers - checkpoint_event_triggers
+  final_event_triggers - round3i_event_triggers
 ))
 new_trigger_count=$((new_user_trigger_count + new_event_trigger_count))
 new_constraint_and_trigger_count=$((
@@ -1574,11 +1858,12 @@ printf 'NEW_USER_TRIGGER_COUNT=%d\n' "$new_user_trigger_count"
 printf 'NEW_EVENT_TRIGGER_COUNT=%d\n' "$new_event_trigger_count"
 printf 'NEW_TRIGGER_COUNT=%d\n' "$new_trigger_count"
 printf 'NEW_CONSTRAINT_COUNT=%d\n' "$new_relational_constraint_count"
-printf 'NEW_CONSTRAINT_COUNT_SEMANTICS=round3i-net-new-relational-pg-constraints-excluding-constraint-trigger-aliases\n'
+printf 'NEW_CONSTRAINT_COUNT_SEMANTICS=round3k-net-new-relational-pg-constraints-excluding-constraint-trigger-aliases\n'
 printf 'NEW_CONSTRAINT_AND_TRIGGER_COUNT=%d\n' \
   "$new_constraint_and_trigger_count"
 
 printf 'CLEAN_REBUILD_COUNT=2\n'
 printf 'ROUND3I_FREEZE_ARTIFACT_COUNT=11\n'
 printf 'ROUND3I_FREEZE_REPRODUCIBILITY_PASS=true\n'
+printf 'ROUND3K_REPRODUCIBLE_INVENTORY_COUNT=8\n'
 printf 'REPRODUCIBILITY_PASS=true\n'
