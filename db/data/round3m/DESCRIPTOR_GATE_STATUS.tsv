@@ -24,7 +24,7 @@ round3m-descriptor-gates-v1	ASSOCIATION_15000	reviewed_p1_p2_strict_assertions	0
 round3m-descriptor-gates-v1	ASSOCIATION_15000	descriptor_bearing_records	0	3000	COUNT	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	false	false	true	true	Round 3M has no human-confirmed descriptor imports.
 round3m-descriptor-gates-v1	ASSOCIATION_15000	supported_pair_events	0	10000	COUNT	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	false	false	true	true	Round 3M has no human-confirmed descriptor imports.
 round3m-descriptor-gates-v1	ASSOCIATION_15000	independent_families	0	5	COUNT	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	false	false	true	true	Round 3M has no human-confirmed descriptor imports.
-round3m-descriptor-gates-v1	ASSOCIATION_15000	record_boundaries_preserved	1	1	BOOLEAN	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	true	false	false	false	true	Round 3M has no human-confirmed descriptor imports.
+round3m-descriptor-gates-v1	ASSOCIATION_15000	record_boundaries_preserved	NA	1	BOOLEAN	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	true	false	true	true	No denominator exists; NA is explicitly non-passing.
 round3m-descriptor-gates-v1	ASSOCIATION_15000	affirmative_model_research_rights	NA	100	PERCENT	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	true	true	false	true	No denominator exists; NA is explicitly non-passing.
 round3m-descriptor-gates-v1	EXPERIMENTAL_RANKING_5000	reviewed_p1_p2_strict_assertions	0	5000	COUNT	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	false	false	true	true	Round 3M has no human-confirmed descriptor imports.
 round3m-descriptor-gates-v1	EXPERIMENTAL_RANKING_5000	descriptor_bearing_records	0	1000	COUNT	HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE	false	false	false	true	true	Round 3M has no human-confirmed descriptor imports.

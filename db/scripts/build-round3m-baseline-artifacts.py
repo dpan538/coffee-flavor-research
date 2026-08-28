@@ -243,7 +243,12 @@ def gate_rows() -> list[dict[str, object]]:
             ("descriptor_bearing_records", 0, 3000, "COUNT"),
             ("supported_pair_events", 0, 10000, "COUNT"),
             ("independent_families", 0, 5, "COUNT"),
-            ("record_boundaries_preserved", 1, 1, "BOOLEAN"),
+            (
+                "record_boundaries_preserved",
+                "NA",
+                1,
+                "BOOLEAN",
+            ),
             ("affirmative_model_research_rights", "NA", 100, "PERCENT"),
         ),
         "EXPERIMENTAL_RANKING_5000": (
