@@ -23,9 +23,7 @@
   "reconciliation_decisions": {
     "bop_historical_year_rows_invented": 0,
     "live_coe_delta_vs_round2_full_count": 0,
-    "retained_stale_or_removed_coe_editions": [
-      "coe_taiwan_2026"
-    ]
+    "retained_stale_or_removed_coe_editions": ["coe_taiwan_2026"]
   },
   "round2_seed_claims": {
     "best_of_panama_edition_ordinal_2026": 30,
