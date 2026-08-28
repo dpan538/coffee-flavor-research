@@ -553,6 +553,7 @@ $round3m_professional_label_review_payload_sha256$;
 CREATE TABLE audit.round3m_human_reviewer_identity_receipt (
     reviewer_identity_receipt_key TEXT NOT NULL,
     reviewer_id BIGINT NOT NULL,
+    identity_evidence_artifact_id TEXT NOT NULL,
     canonical_human_identity_sha256 TEXT NOT NULL,
     identity_evidence_sha256 TEXT NOT NULL,
     receipt_origin_code TEXT NOT NULL,
@@ -571,6 +572,11 @@ CREATE TABLE audit.round3m_human_reviewer_identity_receipt (
         reviewer_id
     ) REFERENCES audit.reviewer (reviewer_id)
         ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT round3m_human_reviewer_identity_artifact_fk FOREIGN KEY (
+        identity_evidence_artifact_id
+    ) REFERENCES evidence.round3m_reviewer_evidence_artifact (
+        reviewer_evidence_artifact_id
+    ) ON UPDATE RESTRICT ON DELETE RESTRICT,
     CONSTRAINT round3m_human_reviewer_identity_receipt_text_ck CHECK (
         reviewer_identity_receipt_key =
             lower(btrim(reviewer_identity_receipt_key))
@@ -591,12 +597,34 @@ RETURNS TRIGGER
 LANGUAGE plpgsql
 SET search_path = pg_catalog
 AS $validate_round3m_human_reviewer_identity_receipt$
+DECLARE
+    artifact evidence.round3m_reviewer_evidence_artifact%ROWTYPE;
 BEGIN
+    SELECT * INTO STRICT artifact
+    FROM evidence.round3m_reviewer_evidence_artifact
+    WHERE reviewer_evidence_artifact_id =
+          NEW.identity_evidence_artifact_id
+    FOR KEY SHARE;
+
     IF NEW.created_at IS DISTINCT FROM transaction_timestamp() THEN
         RAISE EXCEPTION USING
             ERRCODE = '23514',
             CONSTRAINT = 'round3m_human_reviewer_identity_import_time_ck',
             MESSAGE = 'reviewer identity receipt created_at is the immutable database import time';
+    END IF;
+    IF artifact.artifact_purpose_code <> 'REVIEWER_IDENTITY_EVIDENCE'
+       OR artifact.evidence_classification_code NOT IN (
+           'ACTUAL_EXTERNAL_HUMAN_DECISION',
+           'PROJECT_HUMAN_DECISION_WITH_EVIDENCE'
+       )
+       OR artifact.artifact_sha256 IS DISTINCT FROM
+          NEW.identity_evidence_sha256
+       OR artifact.governed_locator IS DISTINCT FROM NEW.evidence_locator
+       OR artifact.imported_at > NEW.created_at THEN
+        RAISE EXCEPTION USING
+            ERRCODE = '23514',
+            CONSTRAINT = 'round3m_human_reviewer_identity_artifact_ck',
+            MESSAGE = 'reviewer identity receipt must bind an acquired governed identity artifact by exact hash and locator';
     END IF;
 
     RETURN NEW;
@@ -615,7 +643,10 @@ FOR EACH ROW EXECUTE FUNCTION audit.reject_round3m_immutable_mutation();
 
 CREATE FUNCTION audit.round3m_human_review_event_member_sha256(
     professional_label_review_id_value BIGINT,
-    human_event_evidence_sha256_value TEXT
+    human_event_evidence_sha256_value TEXT,
+    qualification_receipt_id_value TEXT,
+    admission_receipt_id_value TEXT,
+    reviewer_decision_evidence_id_value TEXT
 )
 RETURNS TEXT
 LANGUAGE SQL
@@ -630,8 +661,19 @@ SELECT audit.round3i_utf8_sha256(
         'canonical_human_identity_sha256',
             identity.canonical_human_identity_sha256,
         'identity_evidence_sha256', identity.identity_evidence_sha256,
+        'identity_evidence_artifact_id',
+            identity.identity_evidence_artifact_id,
         'human_event_evidence_sha256',
             human_event_evidence_sha256_value,
+        'qualification_receipt_id', qualification_receipt_id_value,
+        'qualification_payload_sha256',
+            qualification.deterministic_payload_sha256,
+        'admission_receipt_id', admission_receipt_id_value,
+        'admission_payload_sha256', admission.deterministic_payload_sha256,
+        'reviewer_decision_evidence_id',
+            reviewer_decision_evidence_id_value,
+        'decision_evidence_payload_sha256',
+            decision_evidence.deterministic_payload_sha256,
         'review_payload_sha256',
             audit.round3m_professional_label_review_payload_sha256(
                 review.professional_label_review_id
@@ -641,6 +683,14 @@ SELECT audit.round3i_utf8_sha256(
 FROM audit.professional_label_review AS review
 JOIN audit.round3m_human_reviewer_identity_receipt AS identity
   ON identity.reviewer_id = review.reviewer_id
+JOIN audit.round3m_reviewer_qualification_receipt AS qualification
+  ON qualification.qualification_receipt_id =
+     qualification_receipt_id_value
+JOIN audit.round3m_reviewer_admission_receipt AS admission
+  ON admission.admission_receipt_id = admission_receipt_id_value
+JOIN audit.round3m_reviewer_decision_evidence AS decision_evidence
+  ON decision_evidence.reviewer_decision_evidence_id =
+     reviewer_decision_evidence_id_value
 WHERE review.professional_label_review_id =
       professional_label_review_id_value
 $round3m_human_review_event_member_sha256$;
@@ -818,6 +868,11 @@ CREATE TABLE audit.round3m_professional_label_review_attestation (
     receipt_origin_code TEXT NOT NULL,
     reviewer_id_or_pseudonymous_code TEXT NOT NULL,
     reviewer_identity_receipt_key TEXT NOT NULL,
+    qualification_receipt_id TEXT NOT NULL,
+    admission_receipt_id TEXT NOT NULL,
+    reviewer_decision_evidence_id TEXT NOT NULL,
+    reviewer_decision_artifact_id TEXT NOT NULL,
+    review_protocol_version TEXT NOT NULL,
     human_event_evidence_sha256 TEXT NOT NULL,
     human_event_member_sha256 TEXT NOT NULL,
     review_payload_sha256 TEXT NOT NULL,
@@ -845,6 +900,28 @@ CREATE TABLE audit.round3m_professional_label_review_attestation (
     ) REFERENCES audit.round3m_human_reviewer_identity_receipt (
         reviewer_identity_receipt_key
     ) ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT round3m_prof_label_review_attestation_qualification_fk
+        FOREIGN KEY (qualification_receipt_id)
+        REFERENCES audit.round3m_reviewer_qualification_receipt (
+            qualification_receipt_id
+        ) ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT round3m_prof_label_review_attestation_admission_fk
+        FOREIGN KEY (admission_receipt_id)
+        REFERENCES audit.round3m_reviewer_admission_receipt (
+            admission_receipt_id
+        ) ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT round3m_prof_label_review_attestation_decision_evidence_fk
+        FOREIGN KEY (reviewer_decision_evidence_id)
+        REFERENCES audit.round3m_reviewer_decision_evidence (
+            reviewer_decision_evidence_id
+        ) ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT round3m_prof_label_review_attestation_decision_artifact_fk
+        FOREIGN KEY (reviewer_decision_artifact_id)
+        REFERENCES evidence.round3m_reviewer_evidence_artifact (
+            reviewer_evidence_artifact_id
+        ) ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT round3m_prof_label_review_attestation_decision_evidence_uq
+        UNIQUE (reviewer_decision_evidence_id),
     CONSTRAINT round3m_prof_label_review_attestation_text_ck CHECK (
         attestation_key = lower(btrim(attestation_key))
         AND attestation_key ~ '^[a-z0-9][a-z0-9._:/-]*$'
@@ -857,6 +934,8 @@ CREATE TABLE audit.round3m_professional_label_review_attestation (
             lower(btrim(reviewer_identity_receipt_key))
         AND reviewer_identity_receipt_key ~
             '^[a-z0-9][a-z0-9._:/-]*$'
+        AND review_protocol_version = btrim(review_protocol_version)
+        AND review_protocol_version <> ''
         AND human_event_evidence_sha256 ~ '^[0-9a-f]{64}$'
         AND human_event_member_sha256 ~ '^[0-9a-f]{64}$'
         AND review_payload_sha256 ~ '^[0-9a-f]{64}$'
@@ -888,6 +967,14 @@ DECLARE
     selected_reviewer audit.reviewer%ROWTYPE;
     selected_identity audit.round3m_human_reviewer_identity_receipt%ROWTYPE;
     selected_expression corpus.professional_expression%ROWTYPE;
+    selected_qualification
+        audit.round3m_reviewer_qualification_receipt%ROWTYPE;
+    selected_admission audit.round3m_reviewer_admission_receipt%ROWTYPE;
+    selected_decision_evidence
+        audit.round3m_reviewer_decision_evidence%ROWTYPE;
+    expected_actor_type TEXT;
+    expected_reviewer_role TEXT;
+    expected_review_scope TEXT;
 BEGIN
     SELECT professional_label_decision_id INTO STRICT selected_decision_id
     FROM audit.professional_label_review
@@ -930,6 +1017,33 @@ BEGIN
           NEW.reviewer_identity_receipt_key
     FOR UPDATE;
 
+    SELECT * INTO STRICT selected_qualification
+    FROM audit.round3m_reviewer_qualification_receipt
+    WHERE qualification_receipt_id = NEW.qualification_receipt_id
+    FOR KEY SHARE;
+
+    SELECT * INTO STRICT selected_admission
+    FROM audit.round3m_reviewer_admission_receipt
+    WHERE admission_receipt_id = NEW.admission_receipt_id
+    FOR KEY SHARE;
+
+    SELECT * INTO STRICT selected_decision_evidence
+    FROM audit.round3m_reviewer_decision_evidence
+    WHERE reviewer_decision_evidence_id =
+          NEW.reviewer_decision_evidence_id
+    FOR KEY SHARE;
+
+    expected_actor_type := CASE selected_review.reviewer_role_code
+        WHEN 'INDEPENDENT_REVIEWER' THEN 'HUMAN_REVIEWER'
+        WHEN 'ADJUDICATOR' THEN 'EXPERT_REVIEWER'
+    END;
+    expected_reviewer_role := selected_review.reviewer_role_code;
+    expected_review_scope := CASE selected_review.reviewer_role_code
+        WHEN 'INDEPENDENT_REVIEWER' THEN
+            'NORMALIZATION_TARGET_REVIEW'
+        WHEN 'ADJUDICATOR' THEN 'SENSORY_ADJUDICATION'
+    END;
+
     IF selected_review.review_outcome_code <> 'ACCEPT'
        OR selected_review.reviewed_at > selected_decision.decided_at
        OR selected_review.reviewed_at > transaction_timestamp()
@@ -948,13 +1062,86 @@ BEGIN
        OR selected_identity.reviewer_id IS DISTINCT FROM
           selected_reviewer.reviewer_id
        OR selected_identity.created_at > NEW.created_at
+       OR selected_qualification.reviewer_id IS DISTINCT FROM
+          selected_reviewer.reviewer_id
+       OR selected_qualification.reviewer_pseudonymous_code IS DISTINCT FROM
+          selected_reviewer.reviewer_key
+       OR selected_qualification.allowed_reviewer_role IS DISTINCT FROM
+          expected_reviewer_role
+       OR selected_qualification.qualification_scope_code IS DISTINCT FROM
+          expected_review_scope
+       OR selected_qualification.qualification_protocol_version IS DISTINCT
+          FROM NEW.review_protocol_version
+       OR NOT EXISTS (
+           SELECT 1
+           FROM audit.v_round3m_current_reviewer_qualification_receipt
+           WHERE qualification_receipt_id = NEW.qualification_receipt_id
+       )
+       OR selected_admission.reviewer_id IS DISTINCT FROM
+          selected_reviewer.reviewer_id
+       OR selected_admission.reviewer_pseudonymous_code IS DISTINCT FROM
+          selected_reviewer.reviewer_key
+       OR selected_admission.qualification_receipt_id IS DISTINCT FROM
+          NEW.qualification_receipt_id
+       OR selected_admission.admitted_reviewer_role IS DISTINCT FROM
+          expected_reviewer_role
+       OR selected_admission.admitted_protocol_version IS DISTINCT FROM
+          NEW.review_protocol_version
+       OR selected_admission.review_scope_code IS DISTINCT FROM
+          expected_review_scope
+       OR selected_admission.valid_from > selected_review.reviewed_at
+       OR selected_admission.valid_to IS NOT NULL
+          AND selected_admission.valid_to < selected_review.reviewed_at
+       OR NOT EXISTS (
+           SELECT 1
+           FROM audit.v_round3m_current_reviewer_admission_receipt
+           WHERE admission_receipt_id = NEW.admission_receipt_id
+       )
+       OR selected_decision_evidence.decision_target_kind <>
+          'PROFESSIONAL_LABEL_REVIEW'
+       OR selected_decision_evidence.professional_label_review_id IS DISTINCT
+          FROM selected_review.professional_label_review_id
+       OR selected_decision_evidence.reviewer_id IS DISTINCT FROM
+          selected_reviewer.reviewer_id
+       OR selected_decision_evidence.reviewer_pseudonymous_code IS DISTINCT
+          FROM selected_reviewer.reviewer_key
+       OR selected_decision_evidence.review_decision_code IS DISTINCT FROM
+          selected_review.review_outcome_code
+       OR selected_decision_evidence.review_actor_type IS DISTINCT FROM
+          expected_actor_type
+       OR selected_decision_evidence.reviewer_role IS DISTINCT FROM
+          expected_reviewer_role
+       OR selected_decision_evidence.review_protocol_version IS DISTINCT FROM
+          NEW.review_protocol_version
+       OR selected_decision_evidence.review_scope_code IS DISTINCT FROM
+          expected_review_scope
+       OR selected_decision_evidence.review_scope_key IS DISTINCT FROM
+          selected_admission.review_scope_key
+       OR selected_decision_evidence.review_event_timestamp IS DISTINCT FROM
+          selected_review.reviewed_at
+       OR selected_decision_evidence.source_decision_artifact_id IS DISTINCT
+          FROM NEW.reviewer_decision_artifact_id
+       OR selected_decision_evidence.bounded_decision_locator IS DISTINCT FROM
+          NEW.evidence_locator
+       OR selected_decision_evidence.source_decision_payload_sha256 IS DISTINCT
+          FROM NEW.human_event_evidence_sha256
+       OR NOT EXISTS (
+           SELECT 1
+           FROM audit.v_round3m_current_reviewer_decision_evidence
+           WHERE reviewer_decision_evidence_id =
+                 NEW.reviewer_decision_evidence_id
+       )
+       OR NEW.independence_evidence_locator IS DISTINCT FROM
+          selected_admission.admission_evidence_locator
        OR NEW.human_event_member_sha256 IS DISTINCT FROM
           audit.round3m_human_review_event_member_sha256(
               NEW.professional_label_review_id,
-              NEW.human_event_evidence_sha256
+              NEW.human_event_evidence_sha256,
+              NEW.qualification_receipt_id,
+              NEW.admission_receipt_id,
+              NEW.reviewer_decision_evidence_id
           )
-       OR selected_review.reviewer_role_code = 'ADJUDICATOR'
-          AND NEW.review_actor_type <> 'EXPERT_REVIEWER'
+       OR NEW.review_actor_type IS DISTINCT FROM expected_actor_type
        OR NEW.review_payload_sha256 IS DISTINCT FROM
           audit.round3m_professional_label_review_payload_sha256(
               NEW.professional_label_review_id
@@ -1053,6 +1240,107 @@ CREATE TRIGGER round3m_prof_label_review_attestation_bud
 BEFORE UPDATE OR DELETE
 ON audit.round3m_professional_label_review_attestation
 FOR EACH ROW EXECUTE FUNCTION audit.reject_round3m_immutable_mutation();
+
+CREATE FUNCTION audit.round3m_prof_label_attestation_has_full_058_evidence(
+    professional_label_review_id_value BIGINT
+)
+RETURNS BOOLEAN
+LANGUAGE SQL
+STABLE
+STRICT
+SET search_path = pg_catalog
+AS $round3m_prof_label_attestation_has_full_058_evidence$
+SELECT EXISTS (
+    SELECT 1
+    FROM audit.professional_label_review AS review
+    JOIN audit.reviewer AS reviewer
+      ON reviewer.reviewer_id = review.reviewer_id
+    JOIN audit.round3m_professional_label_review_attestation AS attestation
+      ON attestation.professional_label_review_id =
+         review.professional_label_review_id
+    JOIN audit.round3m_human_reviewer_identity_receipt AS identity
+      ON identity.reviewer_identity_receipt_key =
+         attestation.reviewer_identity_receipt_key
+     AND identity.reviewer_id = reviewer.reviewer_id
+    JOIN audit.v_round3m_current_reviewer_qualification_receipt AS qualification
+      ON qualification.qualification_receipt_id =
+         attestation.qualification_receipt_id
+     AND qualification.reviewer_id = reviewer.reviewer_id
+     AND qualification.reviewer_pseudonymous_code = reviewer.reviewer_key
+     AND qualification.qualification_protocol_version =
+         attestation.review_protocol_version
+    JOIN audit.v_round3m_current_reviewer_admission_receipt AS admission
+      ON admission.admission_receipt_id = attestation.admission_receipt_id
+     AND admission.qualification_receipt_id =
+         qualification.qualification_receipt_id
+     AND admission.reviewer_id = reviewer.reviewer_id
+     AND admission.reviewer_pseudonymous_code = reviewer.reviewer_key
+     AND admission.admitted_reviewer_role = review.reviewer_role_code
+     AND admission.admitted_protocol_version =
+         attestation.review_protocol_version
+     AND admission.valid_from <= review.reviewed_at
+     AND (admission.valid_to IS NULL OR
+          admission.valid_to >= review.reviewed_at)
+    JOIN audit.v_round3m_current_reviewer_decision_evidence AS decision_evidence
+      ON decision_evidence.reviewer_decision_evidence_id =
+         attestation.reviewer_decision_evidence_id
+     AND decision_evidence.decision_target_kind =
+         'PROFESSIONAL_LABEL_REVIEW'
+     AND decision_evidence.professional_label_review_id =
+         review.professional_label_review_id
+     AND decision_evidence.reviewer_id = reviewer.reviewer_id
+     AND decision_evidence.reviewer_pseudonymous_code = reviewer.reviewer_key
+     AND decision_evidence.review_decision_code = review.review_outcome_code
+     AND decision_evidence.review_protocol_version =
+         attestation.review_protocol_version
+     AND decision_evidence.review_scope_code = admission.review_scope_code
+     AND decision_evidence.review_scope_key = admission.review_scope_key
+     AND decision_evidence.review_event_timestamp = review.reviewed_at
+     AND decision_evidence.source_decision_artifact_id =
+         attestation.reviewer_decision_artifact_id
+     AND decision_evidence.bounded_decision_locator =
+         attestation.evidence_locator
+     AND decision_evidence.source_decision_payload_sha256 =
+         attestation.human_event_evidence_sha256
+    JOIN evidence.round3m_reviewer_evidence_artifact AS identity_artifact
+      ON identity_artifact.reviewer_evidence_artifact_id =
+         identity.identity_evidence_artifact_id
+     AND identity_artifact.artifact_purpose_code =
+         'REVIEWER_IDENTITY_EVIDENCE'
+     AND identity_artifact.artifact_sha256 = identity.identity_evidence_sha256
+     AND identity_artifact.governed_locator = identity.evidence_locator
+    WHERE review.professional_label_review_id =
+          professional_label_review_id_value
+      AND attestation.reviewer_id_or_pseudonymous_code = reviewer.reviewer_key
+      AND attestation.review_actor_type = CASE review.reviewer_role_code
+          WHEN 'INDEPENDENT_REVIEWER' THEN 'HUMAN_REVIEWER'
+          WHEN 'ADJUDICATOR' THEN 'EXPERT_REVIEWER'
+      END
+      AND qualification.allowed_reviewer_role = review.reviewer_role_code
+      AND qualification.qualification_scope_code =
+          CASE review.reviewer_role_code
+              WHEN 'INDEPENDENT_REVIEWER' THEN
+                  'NORMALIZATION_TARGET_REVIEW'
+              WHEN 'ADJUDICATOR' THEN 'SENSORY_ADJUDICATION'
+          END
+      AND admission.review_scope_code =
+          qualification.qualification_scope_code
+      AND attestation.independence_evidence_locator =
+          admission.admission_evidence_locator
+      AND attestation.human_event_member_sha256 =
+          audit.round3m_human_review_event_member_sha256(
+              review.professional_label_review_id,
+              attestation.human_event_evidence_sha256,
+              attestation.qualification_receipt_id,
+              attestation.admission_receipt_id,
+              attestation.reviewer_decision_evidence_id
+          )
+)
+$round3m_prof_label_attestation_has_full_058_evidence$;
+
+COMMENT ON FUNCTION
+    audit.round3m_prof_label_attestation_has_full_058_evidence(BIGINT) IS
+    'True only when one 059 professional-label attestation is bound to current migration-058 qualification, admission, identity artifact, and row-level decision evidence.';
 
 -- Freeze the complete review/decision/target/expression surface once its first
 -- human attestation exists.  Corrections append a successor decision.
@@ -1995,7 +2283,10 @@ WHERE model.source_native_lexical_form IS NOT NULL
             OR attestation.human_event_member_sha256 IS DISTINCT FROM
                audit.round3m_human_review_event_member_sha256(
                    review.professional_label_review_id,
-                   attestation.human_event_evidence_sha256
+                   attestation.human_event_evidence_sha256,
+                   attestation.qualification_receipt_id,
+                   attestation.admission_receipt_id,
+                   attestation.reviewer_decision_evidence_id
                )
             OR review.reviewer_role_code = 'ADJUDICATOR'
                AND attestation.review_actor_type <> 'EXPERT_REVIEWER'
@@ -2011,60 +2302,9 @@ WHERE model.source_native_lexical_form IS NOT NULL
                audit.round3m_professional_reviewer_independence_set_sha256(
                    decision.professional_label_decision_id
                )
-            OR review.reviewer_role_code = 'INDEPENDENT_REVIEWER'
-               AND NOT EXISTS (
-                    SELECT 1
-                    FROM audit.professional_reviewer_qualification AS qualification
-                    WHERE qualification.reviewer_id = review.reviewer_id
-                      AND qualification.eligible
-                      AND qualification.verified_on <=
-                          (review.reviewed_at AT TIME ZONE 'UTC')::DATE
-                      AND qualification.qualification_scope_code IN (
-                          'PROFESSIONAL_COFFEE_SENSORY',
-                          'COMPETITION_JUDGING'
-                      )
-               )
-            OR review.reviewer_role_code = 'ADJUDICATOR'
-               AND (
-                    NOT EXISTS (
-                        SELECT 1
-                        FROM audit.professional_reviewer_qualification AS qualification
-                        WHERE qualification.reviewer_id = review.reviewer_id
-                          AND qualification.eligible
-                          AND qualification.verified_on <=
-                              (review.reviewed_at AT TIME ZONE 'UTC')::DATE
-                          AND qualification.qualification_scope_code =
-                              'ADJUDICATION'
-                    )
-                    OR NOT EXISTS (
-                        SELECT 1
-                        FROM audit.professional_reviewer_qualification AS qualification
-                        WHERE qualification.reviewer_id = review.reviewer_id
-                          AND qualification.eligible
-                          AND qualification.verified_on <=
-                              (review.reviewed_at AT TIME ZONE 'UTC')::DATE
-                          AND qualification.qualification_scope_code IN (
-                              'PROFESSIONAL_COFFEE_SENSORY',
-                              'COMPETITION_JUDGING'
-                          )
-                    )
-               )
-            OR lower(split_part(expression.language_tag, '-', 1)) <> 'en'
-               AND NOT EXISTS (
-                    SELECT 1
-                    FROM audit.professional_reviewer_qualification AS qualification
-                    WHERE qualification.reviewer_id = review.reviewer_id
-                      AND qualification.eligible
-                      AND qualification.verified_on <=
-                          (review.reviewed_at AT TIME ZONE 'UTC')::DATE
-                      AND qualification.qualification_scope_code =
-                          'SOURCE_LANGUAGE'
-                      AND lower(split_part(
-                          qualification.source_language_tag, '-', 1
-                      )) = lower(split_part(
-                          expression.language_tag, '-', 1
-                      ))
-               )
+            OR NOT audit.round3m_prof_label_attestation_has_full_058_evidence(
+                review.professional_label_review_id
+            )
         )
   )
   AND audit.round3m_professional_label_target_set_is_countable(
@@ -2682,6 +2922,22 @@ WITH challenge_rows AS (
           )
     UNION ALL
     SELECT
+        'round3m.professional_label_attestation_requires_full_058_chain',
+        count(*)::BIGINT
+    FROM audit.round3m_professional_label_review_attestation AS attestation
+    WHERE NOT audit.round3m_prof_label_attestation_has_full_058_evidence(
+        attestation.professional_label_review_id
+    )
+    UNION ALL
+    SELECT
+        'round3m.normalization_challenge_view_uses_full_058_chain',
+        CASE WHEN pg_get_viewdef(
+            'corpus.v_round3m_human_reviewed_normalization_challenge_universe'::regclass,
+            TRUE
+        ) LIKE '%round3m_prof_label_attestation_has_full_058_evidence%'
+        THEN 0 ELSE 1 END::BIGINT
+    UNION ALL
+    SELECT
         'round3m.professional_label_attestation_sets_are_exact',
         count(*)::BIGINT
     FROM attested_review AS attested
@@ -2703,7 +2959,10 @@ WITH challenge_rows AS (
        OR attested.human_event_member_sha256 IS DISTINCT FROM
           audit.round3m_human_review_event_member_sha256(
               attested.professional_label_review_id,
-              attested.human_event_evidence_sha256
+              attested.human_event_evidence_sha256,
+              attested.qualification_receipt_id,
+              attested.admission_receipt_id,
+              attested.reviewer_decision_evidence_id
           )
     UNION ALL
     SELECT
