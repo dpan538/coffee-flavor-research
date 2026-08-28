@@ -13,7 +13,7 @@ descriptor gate.
 ## Identity and branch boundary
 
 ```text
-PHASE_STATUS=IMPLEMENTED_AWAITING_REMOTE_CI
+PHASE_STATUS=PASS_PORTFOLIO_AND_REPOSITORY_NORMALIZATION
 
 SOURCE_BRANCH=codex/coffee-sensory-kb-v0-round3m-descriptor-first-provenance-pilot-20260828
 SOURCE_SHA=13b56d2c1d4beec3754ce53edec8954d4e034bce
@@ -153,13 +153,13 @@ STATUS_GENERATION_DETERMINISTIC_PASS=true
 FRONTEND_ACCESSIBILITY_SMOKE_PASS=true
 LOCAL_FRONTEND_CI_PASS=true
 LOCAL_POSTGRES_CI_PASS=true
-REMOTE_FRONTEND_CI_PASS=PENDING
-REMOTE_POSTGRES_CI_PASS=PENDING
+REMOTE_FRONTEND_CI_PASS=true
+REMOTE_POSTGRES_CI_PASS=true
 
 MAIN_PROMOTION_ALLOWED=false
 MAIN_PROMOTION_PASS=false
 FORCE_PUSH_USED=false
-REMOTE_BACKUP_PASS=PENDING
+REMOTE_BACKUP_PASS=true
 ```
 
 Local web verification included generated-artifact drift checks, public
@@ -173,6 +173,20 @@ empty disposable databases. Both applied all 60 migrations, loaded the same
 governed artifacts, passed the full database harness, and produced matching
 migration, seed, schema, stable-key inventory, validation, ontology, and
 historical checkpoint hashes.
+
+The first remote run exposed a CI-only provenance issue: the default
+single-commit checkout could not resolve the earlier implementation commit
+recorded by the screenshot manifest. The run was cancelled after the frontend
+failure, the frontend checkout was changed to retain Git history, and the
+replacement run passed without weakening or rewriting screenshot provenance.
+
+```text
+REMOTE_CI_RUN_ID=33199679962
+REMOTE_FRONTEND_JOB_ID=98945699505
+REMOTE_POSTGRES_JOB_ID=98945699685
+REMOTE_FRONTEND_DURATION=1m16s
+REMOTE_POSTGRES_DURATION=32m39s
+```
 
 ```text
 CLEAN_REBUILD_COUNT=2
