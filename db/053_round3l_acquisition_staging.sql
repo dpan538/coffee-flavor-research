@@ -683,6 +683,7 @@ WITH census AS (
     FROM corpus.professional_acquisition_record
 ), core AS (
     SELECT
+        count(*)::BIGINT AS staged_core_candidate_count,
         count(*) FILTER (
             WHERE observed_rights_eligible
         )::BIGINT AS staged_observed_core_eligible_count,
@@ -714,7 +715,7 @@ SELECT
     blockers.*,
     greatest(7000 - core.staged_observed_core_eligible_count, 0)::BIGINT
         AS remaining_gap_to_7000,
-    greatest(10000 - records.model_eligible_record_count, 0)::BIGINT
+    greatest(10000 - core.staged_observed_core_eligible_count, 0)::BIGINT
         AS remaining_gap_to_10000
 FROM census
 CROSS JOIN attempts

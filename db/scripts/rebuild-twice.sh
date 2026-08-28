@@ -200,6 +200,7 @@ write_stable_key_inventory() {
   local database_name=$1
   local output_file=$2
   local inventory_sql
+  local inventory_query_file
 
   # Negative tests may consume identity sequence values even when their
   # transactions roll back. Compare only stable logical candidate values.
@@ -240,11 +241,16 @@ SQL
     return
   fi
 
+  # Passing the generated UNION as --command eventually exceeds the platform
+  # argument-size limit as governed schemas add stable key columns. Keep the
+  # same deterministic query, but let psql read it from an artifact file.
+  inventory_query_file=$(mktemp "$ARTIFACT_DIR/stable-key-query.XXXXXX.sql")
+  printf '%s\n' "$inventory_sql" >"$inventory_query_file"
   psql_target "$database_name" \
     --tuples-only \
     --no-align \
     --field-separator='|' \
-    --command="$inventory_sql" >"$output_file"
+    --file="$inventory_query_file" >"$output_file"
 }
 
 write_reference_row_counts() {
