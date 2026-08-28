@@ -40,6 +40,15 @@ Before expanding to all 24 descriptors, review whether a single icon library
 can support the full set without losing recognizability or creating excessive
 attribution complexity.
 
+## Portfolio screenshots
+
+| Repository path                                       | Asset/component                             | Author/project              | Original source                                                  | License                                                                                    | Attribution required               | Modified              | Notes                                                                  |
+| ----------------------------------------------------- | ------------------------------------------- | --------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------- | --------------------- | ---------------------------------------------------------------------- |
+| `docs/portfolio/assets/desktop-home.png`              | Production-preview interface capture        | Coffee Flavor Atlas project | Local application at commit recorded in `SCREENSHOT_MANIFEST.md` | CC BY 4.0 for project-authored composition; embedded third-party assets retain their terms | Yes for embedded Game-icons assets | No post-capture edits | Real interface capture; no model output or restricted corpus text.     |
+| `docs/portfolio/assets/mobile-home.png`               | Mobile production-preview interface capture | Coffee Flavor Atlas project | Local application at commit recorded in `SCREENSHOT_MANIFEST.md` | CC BY 4.0 for project-authored composition; embedded third-party assets retain their terms | Yes for embedded Game-icons assets | No post-capture edits | Real mobile viewport; no participant or model data.                    |
+| `docs/portfolio/assets/desktop-atlas-interaction.png` | Atlas comparison capture                    | Coffee Flavor Atlas project | Local application at commit recorded in `SCREENSHOT_MANIFEST.md` | CC BY 4.0 for project-authored composition; embedded third-party assets retain their terms | Yes for embedded Game-icons assets | No post-capture edits | Shows project-curated draft comparison, not a model prediction.        |
+| `docs/portfolio/assets/desktop-project-status.png`    | Generated project-status capture            | Coffee Flavor Atlas project | Local application at commit recorded in `SCREENSHOT_MANIFEST.md` | CC BY 4.0                                                                                  | No                                 | No post-capture edits | Aggregate public status only; no restricted evidence or reviewer data. |
+
 ## Research data and metadata
 
 These are research artifacts rather than visual assets, but they are listed
