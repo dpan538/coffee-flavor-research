@@ -758,6 +758,130 @@ WHERE plan.professional_split_plan_key =
 SET CONSTRAINTS ALL IMMEDIATE;
 SET CONSTRAINTS ALL DEFERRED;
 
+-- When Round 3M hardening is present, reuse this fully governed Round 3K
+-- fixture to exercise real candidate/member/assignment rows.  Earlier
+-- migration checkpoints retain this test unchanged through the guard.
+DO $round3m_bound_candidate_runtime_regression$
+DECLARE
+    target_plan_id BIGINT;
+    target_group_id BIGINT;
+    bound_candidate_id BIGINT;
+    actual_state TEXT;
+    actual_constraint TEXT;
+BEGIN
+    IF to_regprocedure(
+        'ml.protect_round3m_frozen_training_candidate()'
+    ) IS NULL THEN
+        RAISE NOTICE
+            'ROUND3M_CANDIDATE_BINDING_RUNTIME=SKIP_MIGRATION_NOT_PRESENT';
+        RETURN;
+    END IF;
+
+    INSERT INTO ml.professional_split_plan (
+        professional_split_plan_key, plan_version,
+        deterministic_rule_version, lifecycle_status_code
+    ) VALUES (
+        'round3m.descriptor-gate-holdout', 1,
+        'round3m-bound-candidate-runtime-v1', 'CANDIDATE'
+    ) RETURNING professional_split_plan_id INTO target_plan_id;
+
+    INSERT INTO ml.professional_split_group (
+        professional_split_plan_id, split_group_kind_code,
+        split_group_key, source_basis
+    ) VALUES (
+        target_plan_id, 'COMPETITION_FAMILY',
+        'negative.round3k.integrated.family.bound-candidate',
+        'Transaction-local Round 3M candidate-lock runtime fixture.'
+    ) RETURNING professional_split_group_id INTO target_group_id;
+
+    SELECT professional_training_candidate_id
+    INTO STRICT bound_candidate_id
+    FROM ml.professional_training_candidate
+    WHERE professional_training_candidate_key =
+          'negative.round3k.integrated.training.core.excluded';
+
+    INSERT INTO ml.professional_split_group_member (
+        professional_split_group_id,
+        professional_training_candidate_id
+    ) VALUES (target_group_id, bound_candidate_id);
+
+    INSERT INTO ml.professional_split_assignment (
+        professional_split_plan_id,
+        professional_training_candidate_id,
+        partition_code, assignment_key,
+        deterministic_assignment_sha256
+    ) VALUES (
+        target_plan_id, bound_candidate_id, 'TEST',
+        'round3m.bound-candidate-runtime.assignment',
+        ml.round3m_professional_split_assignment_sha256(
+            target_plan_id, bound_candidate_id, 'TEST'
+        )
+    );
+
+    BEGIN
+        UPDATE ml.professional_training_candidate
+        SET provenance_complete = FALSE
+        WHERE professional_training_candidate_id = bound_candidate_id;
+        RAISE EXCEPTION
+            'Round 3M bound candidate update unexpectedly succeeded';
+    EXCEPTION WHEN OTHERS THEN
+        GET STACKED DIAGNOSTICS
+            actual_state = RETURNED_SQLSTATE,
+            actual_constraint = CONSTRAINT_NAME;
+        IF actual_state <> '23514'
+           OR actual_constraint IS DISTINCT FROM
+              'round3m_bound_split_candidate_immutable_ck' THEN
+            RAISE;
+        END IF;
+    END;
+
+    BEGIN
+        DELETE FROM ml.professional_training_candidate
+        WHERE professional_training_candidate_id = bound_candidate_id;
+        RAISE EXCEPTION
+            'Round 3M bound candidate delete unexpectedly succeeded';
+    EXCEPTION WHEN OTHERS THEN
+        GET STACKED DIAGNOSTICS
+            actual_state = RETURNED_SQLSTATE,
+            actual_constraint = CONSTRAINT_NAME;
+        IF actual_state <> '23514'
+           OR actual_constraint IS DISTINCT FROM
+              'round3m_bound_split_candidate_immutable_ck' THEN
+            RAISE;
+        END IF;
+    END;
+
+    DELETE FROM ml.professional_split_assignment
+    WHERE professional_split_plan_id = target_plan_id
+      AND professional_training_candidate_id = bound_candidate_id;
+    DELETE FROM ml.professional_split_group_member
+    WHERE professional_split_group_id = target_group_id
+      AND professional_training_candidate_id = bound_candidate_id;
+    DELETE FROM ml.professional_split_group
+    WHERE professional_split_group_id = target_group_id;
+    DELETE FROM ml.professional_split_plan
+    WHERE professional_split_plan_id = target_plan_id;
+
+    -- The same candidate remains assigned only to the legacy Round 3K plan.
+    -- Round 3M binding protection must not reinterpret that prior contract.
+    UPDATE ml.professional_training_candidate
+    SET provenance_complete = FALSE
+    WHERE professional_training_candidate_id =
+          bound_candidate_id;
+    UPDATE ml.professional_training_candidate
+    SET provenance_complete = TRUE
+    WHERE professional_training_candidate_id =
+          bound_candidate_id;
+
+    RAISE NOTICE
+        'ROUND3M_NEGATIVE=bound_split_candidate_update,delete SQLSTATE=23514 CONSTRAINT=round3m_bound_split_candidate_immutable_ck PASS';
+    RAISE NOTICE
+        'ROUND3M_POSITIVE=legacy_only_candidate_mutation_remains_allowed PASS';
+    RAISE NOTICE
+        'ROUND3M_CONSTRAINT=candidate_member_assignment_lock_runtime PASS';
+END
+$round3m_bound_candidate_runtime_regression$;
+
 SELECT pg_temp.expect_round3k_failure(
     'source_snapshot_hash_missing',
     $sql$

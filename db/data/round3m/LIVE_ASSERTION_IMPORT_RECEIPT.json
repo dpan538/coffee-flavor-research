@@ -33,6 +33,9 @@
   "model_eligible_count": 0,
   "receipt_version": "round3m-public-safe-live-assertion-import-v1",
   "record_level_unique_count": 137,
+  "restricted_capture_manifest_contract": "round3m.restricted-capture-manifest.v1",
+  "restricted_capture_manifest_sha256": "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d",
+  "restricted_capture_root_locator": "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z",
   "review_state_distribution": {
     "PROVISIONAL_MACHINE_CLASSIFIED": 140
   },

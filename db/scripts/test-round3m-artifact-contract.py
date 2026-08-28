@@ -23,6 +23,34 @@ from typing import Iterable, Mapping, Sequence
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DATA_DIR = REPOSITORY_ROOT / "db" / "data" / "round3m"
 DEFAULT_GENERATED_DIR = REPOSITORY_ROOT / "db" / "adapters" / "round3m" / "generated"
+EXPECTED_CAPTURE_MANIFEST_SHA256 = (
+    "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d"
+)
+EXPECTED_CAPTURE_ROOT_LOCATOR = (
+    "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z"
+)
+HISTORICAL_GATE_SQL = (
+    REPOSITORY_ROOT / "db" / "056_round3m_descriptor_gate_contract.sql"
+)
+CURRENT_GATE_SQL = (
+    REPOSITORY_ROOT / "db" / "059_round3m_normalization_challenge_contract.sql"
+)
+
+HISTORICAL_GATE_VERSION = "round3m-descriptor-gates-v1"
+CURRENT_GATE_VERSION = "round3m-descriptor-gates-v2"
+NORMALIZATION_CHALLENGE_GATE = "GATE_2000_EXPERIMENTAL_NORMALIZATION"
+NORMALIZATION_CHALLENGE_METRIC = (
+    "REVIEWED_AMBIGUOUS_OR_UNRESOLVED_CHALLENGE_COUNT"
+)
+NORMALIZATION_CHALLENGE_UNIVERSE = (
+    "HUMAN_REVIEWED_NORMALIZATION_CHALLENGE_UNIVERSE"
+)
+NORMALIZATION_CHALLENGE_NOTE = (
+    "Leaf final all-ACCEPT qualified-human ambiguous, contradictory, or "
+    "unresolved normalization-label decisions with exact Round 3M/Round 3K "
+    "source binding; ABSTAIN, REVISE, REJECT, CONFLICT, and generic assertion "
+    "MARK_* receipts do not count."
+)
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 SCOPED_CAPTURE_SHA256_RE = re.compile(
@@ -143,6 +171,41 @@ FORBIDDEN_TRAINING_SUFFIXES = {
     ".tflite",
 }
 
+GATE_ARTIFACT_COLUMNS = (
+    "gate_version",
+    "gate_name",
+    "criterion_ordinal",
+    "metric_name",
+    "operator",
+    "observed_value",
+    "required_value",
+    "universe",
+    "pass",
+    "not_applicable",
+    "rights_blocker",
+    "data_blocker",
+    "review_blocker",
+    "explanatory_note",
+)
+
+GATE_NULL_METRICS = {
+    "MINIMUM_RECORDS_PER_OUTPUT_LABEL",
+    "REVIEWED_LARGEST_FAMILY_SHARE",
+    "SOURCE_PROVENANCE_COMPLETENESS",
+    "LABEL_PROVENANCE_COMPLETENESS",
+    "SOURCE_AND_LABEL_PROVENANCE_COMPLETENESS",
+    "MODEL_RESEARCH_RIGHTS_RATE",
+    "DEPLOYMENT_RIGHTS_RATE",
+}
+
+GATE_CRITERION_SQL_RE = re.compile(
+    r"^\('(?P<gate_name>[^']+)', (?P<ordinal>[0-9]+), "
+    r"'(?P<metric_name>[^']+)', '(?P<operator>>=|<=|=)', "
+    r"[^,]+, [^,]+, '(?P<required_value>[^']+)', "
+    r"'(?P<universe>[^']+)', '(?P<blocker_class>[^']+)', "
+    r"'(?P<note>(?:[^']|'')*)'\),?$"
+)
+
 
 class ContractError(AssertionError):
     """A deterministic artifact-contract violation."""
@@ -165,6 +228,142 @@ def parse_int(value: str, context: str) -> int:
 
 def require_sha256(value: str, context: str) -> None:
     require(SHA256_RE.fullmatch(value) is not None, f"{context}: invalid SHA-256 {value!r}")
+
+
+def historical_zero_human_gate_rows() -> list[dict[str, str]]:
+    """Project the immutable v1 SQL criteria into the zero-human status view."""
+
+    sql = HISTORICAL_GATE_SQL.read_text(encoding="utf-8")
+    start_marker = "FROM (VALUES\n"
+    end_marker = "\n) AS values_row(\n    gate_name, criterion_ordinal"
+    require(start_marker in sql and end_marker in sql, "authoritative gate SQL markers drifted")
+    block = sql.split(start_marker, 1)[1].split(end_marker, 1)[0]
+    rows: list[dict[str, str]] = []
+    for source_line in block.splitlines():
+        if not source_line.strip():
+            continue
+        match = GATE_CRITERION_SQL_RE.fullmatch(source_line)
+        require(match is not None, f"unparsed authoritative gate criterion: {source_line}")
+        values = match.groupdict()
+        metric_name = values["metric_name"]
+        blocker_class = values["blocker_class"]
+        not_applicable = metric_name in GATE_NULL_METRICS
+        observed_value = (
+            "NA"
+            if not_applicable
+            else "false"
+            if metric_name == "RECORD_BOUNDARIES_PRESERVED"
+            else "0"
+        )
+        note = values["note"].replace("''", "'")
+        rows.append(
+            {
+                "gate_version": HISTORICAL_GATE_VERSION,
+                "gate_name": values["gate_name"],
+                "criterion_ordinal": values["ordinal"],
+                "metric_name": metric_name,
+                "operator": values["operator"],
+                "observed_value": observed_value,
+                "required_value": values["required_value"],
+                "universe": values["universe"],
+                "pass": "false",
+                "not_applicable": str(not_applicable).lower(),
+                "rights_blocker": str(blocker_class == "RIGHTS").lower(),
+                "data_blocker": str(
+                    blocker_class in {"DATA", "DATA_AND_REVIEW"}
+                ).lower(),
+                "review_blocker": str(
+                    blocker_class in {"REVIEW", "DATA_AND_REVIEW"}
+                ).lower(),
+                "explanatory_note": (
+                    note + " Observed value is unavailable; NA never passes."
+                    if not_applicable
+                    else note
+                ),
+            }
+        )
+    require(len(rows) == 56, f"authoritative SQL criterion count {len(rows)} != 56")
+    require(
+        len({row["gate_name"] for row in rows}) == 7,
+        "historical SQL gate-definition count != 7",
+    )
+    return rows
+
+
+def authoritative_zero_human_gate_rows() -> list[dict[str, str]]:
+    """Project the append-only v2 contract from v1 with its sole criterion delta."""
+
+    current_sql = CURRENT_GATE_SQL.read_text(encoding="utf-8")
+    append_only_start = "-- Gate rows are immutable by design.  Append a complete successor contract;"
+    append_only_end = "CREATE FUNCTION audit.round3m_descriptor_gate_contract_payload_sha256("
+    require(
+        append_only_start in current_sql and append_only_end in current_sql,
+        "current append-only gate-contract SQL markers drifted",
+    )
+    append_only_sql = current_sql.split(append_only_start, 1)[1].split(
+        append_only_end, 1
+    )[0]
+    require(
+        "INSERT INTO audit.round3m_descriptor_gate_definition" in append_only_sql
+        and "INSERT INTO audit.round3m_descriptor_gate_criterion" in append_only_sql,
+        "current gate contract is not appended as complete definition and criterion sets",
+    )
+    require(
+        f"'{CURRENT_GATE_VERSION}'" in append_only_sql
+        and f"'{HISTORICAL_GATE_VERSION}'" in append_only_sql,
+        "current gate-contract successor lineage drifted",
+    )
+    require(
+        f"'{NORMALIZATION_CHALLENGE_UNIVERSE}'" in append_only_sql
+        and f"'{NORMALIZATION_CHALLENGE_NOTE}'" in append_only_sql,
+        "current normalization-challenge SQL semantics drifted",
+    )
+    require(
+        "UPDATE audit.round3m_descriptor_gate_" not in append_only_sql
+        and "DELETE FROM audit.round3m_descriptor_gate_" not in append_only_sql,
+        "current gate contract rewrites historical definition or criterion rows",
+    )
+
+    historical = historical_zero_human_gate_rows()
+    current: list[dict[str, str]] = []
+    changed = 0
+    unchanged = 0
+    comparison_columns = tuple(
+        column for column in GATE_ARTIFACT_COLUMNS if column != "gate_version"
+    )
+    for historical_row in historical:
+        current_row = dict(historical_row)
+        current_row["gate_version"] = CURRENT_GATE_VERSION
+        if (
+            historical_row["gate_name"] == NORMALIZATION_CHALLENGE_GATE
+            and historical_row["metric_name"] == NORMALIZATION_CHALLENGE_METRIC
+        ):
+            require(
+                historical_row["universe"]
+                == "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE"
+                and historical_row["explanatory_note"]
+                == "Actual-human challenge cases.",
+                "historical normalization-challenge criterion drifted",
+            )
+            current_row["universe"] = NORMALIZATION_CHALLENGE_UNIVERSE
+            current_row["explanatory_note"] = NORMALIZATION_CHALLENGE_NOTE
+        current.append(current_row)
+        if all(
+            historical_row[column] == current_row[column]
+            for column in comparison_columns
+        ):
+            unchanged += 1
+        else:
+            changed += 1
+
+    require(changed == 1, f"v2 gate-contract changed-criterion count {changed} != 1")
+    require(unchanged == 55, f"v2 gate-contract unchanged-criterion count {unchanged} != 55")
+    require(len(current) == 56, f"current SQL criterion count {len(current)} != 56")
+    require(
+        len({row["gate_name"] for row in current}) == 7,
+        "current SQL gate-definition count != 7",
+    )
+    return current
 
 
 def read_tsv(path: Path, required_columns: Iterable[str] = ()) -> list[dict[str, str]]:
@@ -221,6 +420,18 @@ def scoped_file_hash(row: Mapping[str, str], context: str) -> str:
         f"{context}: scoped-only hash requires explicit non-storage reason",
     )
     return match.group(1)
+
+
+def governed_snapshot_identity(row: Mapping[str, str], context: str) -> str:
+    """Return the hash-governed snapshot identity, never free-form scope text."""
+
+    source_file_sha256 = row.get("source_file_sha256", "")
+    if source_file_sha256:
+        require_sha256(source_file_sha256, f"{context}.source_file_sha256")
+        return f"file:{source_file_sha256}"
+    route_index_sha256 = row.get("route_index_sha256", "")
+    require_sha256(route_index_sha256, f"{context}.route_index_sha256")
+    return f"route-index:{route_index_sha256}"
 
 
 def count_data_rows(path: Path) -> int | None:
@@ -605,6 +816,33 @@ def validate_live_assertions(
     public_live = read_tsv(generated_dir / "PUBLIC_SAFE_LIVE_ASSERTIONS.tsv", set(read_tsv(generated_dir / "PUBLIC_SAFE_LIVE_ASSERTIONS.tsv")[0]))
     require(len(public_live) == 140, "public-safe live export must contain 140 rows")
     require(set(index_unique(public_live, "descriptor_assertion_id", "public live export")) == set(assertion_by_id), "public live export/ledger identities differ")
+    metrics = json.loads(
+        (generated_dir / "LIVE_ADAPTER_METRICS.json").read_text(encoding="utf-8")
+    )
+    require(
+        metrics.get("restricted_capture_manifest_sha256")
+        == EXPECTED_CAPTURE_MANIFEST_SHA256,
+        "live metrics are not bound to the governed capture manifest hash",
+    )
+    require(
+        metrics.get("restricted_capture_root_locator")
+        == EXPECTED_CAPTURE_ROOT_LOCATOR,
+        "live metrics governed capture locator drift",
+    )
+    require(
+        metrics.get("restricted_capture_manifest_contract")
+        == "round3m.restricted-capture-manifest.v1",
+        "live metrics capture manifest contract drift",
+    )
+    require(
+        metrics.get("public_review_candidate_count") == len(public_live),
+        "public review-candidate count drift",
+    )
+    require(
+        metrics.get("secondary_review_only_candidate_count")
+        == sum(row["count_disposition"] == "SECONDARY_REVIEW_ONLY" for row in public_live),
+        "secondary publication-layer candidate count drift",
+    )
 
     duplicate_rows = read_tsv(
         data_dir / "DUPLICATE_REPEAT_DECISION.tsv",
@@ -613,10 +851,80 @@ def validate_live_assertions(
     require(len(duplicate_rows) == 516, "duplicate ledger must cover 516 candidates")
     duplicate_by_assertion = index_unique(duplicate_rows, "descriptor_assertion_id", "duplicate decisions")
     require(set(duplicate_by_assertion) == set(queue), "duplicate decisions do not cover queue")
+    publication_layer_rows = read_tsv(
+        data_dir / "PUBLICATION_LAYER_RELATION.tsv",
+        {
+            "descriptor_assertion_id",
+            "publication_layer",
+            "relation_type",
+        },
+    )
+    publication_layer_by_assertion = index_unique(
+        publication_layer_rows,
+        "descriptor_assertion_id",
+        "publication-layer decisions",
+    )
+    for row in public_live:
+        if row["count_disposition"] != "SECONDARY_REVIEW_ONLY":
+            continue
+        assertion_id = row["descriptor_assertion_id"]
+        require(
+            row["publication_layer"] == "SECONDARY_SENSORY_TABLE",
+            f"{assertion_id}: review-only candidate is not a secondary sensory layer",
+        )
+        require(
+            queue[assertion_id]["current_disposition"]
+            == "PUBLICATION_LAYER_CONFLICT",
+            f"{assertion_id}: secondary layer was not routed to publication-layer review",
+        )
+        require(
+            publication_layer_by_assertion[assertion_id]["relation_type"]
+            == "SECONDARY_REVIEW_ONLY",
+            f"{assertion_id}: secondary publication relation was not preserved",
+        )
+        require(
+            not parse_bool(
+                duplicate_by_assertion[assertion_id]["counts_as_assertion"],
+                f"{assertion_id}.counts_as_assertion",
+            )
+            and not parse_bool(
+                duplicate_by_assertion[assertion_id][
+                    "counts_as_record_unique_descriptor"
+                ],
+                f"{assertion_id}.counts_as_record_unique_descriptor",
+            ),
+            f"{assertion_id}: secondary layer silently double-credited",
+        )
     live_duplicates = [duplicate_by_assertion[key] for key in assertion_by_id]
     require(Counter(row["deduplication_disposition"] for row in live_duplicates) == Counter({"CANONICAL": 137, "CROSS_OBSERVATION_REPEAT": 2, "EXACT_WITHIN_FIELD_REPEAT": 1}), "live duplicate disposition changed")
     require(sum(parse_bool(row["counts_as_assertion"], "counts_as_assertion") for row in live_duplicates) == 139, "assertion-level de-inflated count must be 139")
     require(sum(parse_bool(row["counts_as_record_unique_descriptor"], "counts_as_record_unique_descriptor") for row in live_duplicates) == 137, "record-level unique count must be 137")
+    bounded_source_assertions: set[tuple[str, ...]] = set()
+    for row in ledger:
+        disposition = duplicate_by_assertion[row["descriptor_assertion_id"]][
+            "deduplication_disposition"
+        ]
+        if row["publication_layer"] == "SECONDARY_SENSORY_TABLE" or disposition not in {
+            "CANONICAL",
+            "CROSS_OBSERVATION_REPEAT",
+            "REPEATED_ROUND",
+            "REPEATED_PREPARATION_SERVICE",
+        }:
+            continue
+        natural_key = (
+            governed_snapshot_identity(
+                row, f"ledger {row['descriptor_assertion_id']}"
+            ),
+            row["source_page_or_record_locator"],
+            row["source_field_label_sha256"],
+            row["source_selector_or_locator"],
+            row["atomic_source_text_sha256"],
+        )
+        require(
+            natural_key not in bounded_source_assertions,
+            f"{row['descriptor_assertion_id']}: duplicate bounded source assertion",
+        )
+        bounded_source_assertions.add(natural_key)
 
     pairs = read_tsv(
         data_dir / "COASSERTION_EVENT.tsv",
@@ -651,6 +959,10 @@ def validate_live_assertions(
     for artifact_id, row in artifact_by_id.items():
         require_sha256(row["source_file_sha256"], f"{artifact_id}.source_file_sha256")
         require(row["storage_state"] == "HASH_AND_LOCATOR_ONLY", f"{artifact_id}: live artifact must be hash/locator only")
+        require(
+            row["governed_locator"].startswith(EXPECTED_CAPTURE_ROOT_LOCATOR + "/"),
+            f"{artifact_id}: governed locator is outside the pinned capture root",
+        )
         require(row["non_storage_reason"] != "", f"{artifact_id}: missing non-storage reason")
         require(parse_int(row["file_size_bytes"], f"{artifact_id}.file_size_bytes") >= 0, f"{artifact_id}: negative byte count")
         for assertion in (item for item in ledger if item["source_artifact_id"] == artifact_id):
@@ -663,12 +975,43 @@ def validate_live_assertions(
     bridge_by_id = index_unique(bridges, "round3m_effective_record_id", "effective-record bridge")
     require(len(bridge_by_id) == 8, "effective-record bridge must contain 8 rows")
     require(set(bridge_by_id) == {row["effective_record_id"] for row in ledger}, "effective-record bridge does not cover live ledger")
+    governed_source_records: set[tuple[str, str, str]] = set()
     for bridge_id, row in bridge_by_id.items():
         require(row["source_artifact_id"] in artifact_by_id, f"{bridge_id}: unknown source artifact")
         artifact = artifact_by_id[row["source_artifact_id"]]
         require(row["source_route_id"] == artifact["source_route_id"], f"{bridge_id}: artifact route mismatch")
         require(row["source_file_sha256"] == artifact["source_file_sha256"], f"{bridge_id}: artifact hash mismatch")
         require_sha256(row["record_identity_sha256"], f"{bridge_id}.record_identity_sha256")
+        identity_material = "\x1f".join(
+            (
+                row["series_id"],
+                row["edition_id"],
+                row["edition_year"],
+                row["category_id"],
+                row["round_id"],
+                row["subject_kind"],
+                row["entry_or_lot_id"],
+                row["preparation_service_code"],
+                row["source_route_id"],
+                f"file:{row['source_file_sha256']}",
+                row["source_record_locator"],
+            )
+        )
+        require(
+            row["record_identity_sha256"]
+            == hashlib.sha256(identity_material.encode("utf-8")).hexdigest(),
+            f"{bridge_id}: effective-record identity hash is not bound to the governed tuple",
+        )
+        source_identity = (
+            row["source_file_sha256"],
+            row["source_record_locator"],
+            row["preparation_service_code"],
+        )
+        require(
+            source_identity not in governed_source_records,
+            f"{bridge_id}: duplicate governed source-record identity",
+        )
+        governed_source_records.add(source_identity)
         require(1900 <= parse_int(row["edition_year"], f"{bridge_id}.edition_year") <= 2100, f"{bridge_id}: invalid edition year")
         require(row["subject_kind"] in {"ENTRY", "LOT"}, f"{bridge_id}: invalid subject kind")
         require(row["identity_resolution_state"] == "SOURCE_NATIVE_PROVISIONAL", f"{bridge_id}: unexpected identity resolution")
@@ -699,16 +1042,39 @@ def validate_auxiliary_ledgers(data_dir: Path, queue_ids: set[str]) -> None:
 def validate_gates_and_controls(data_dir: Path, generated_dir: Path) -> None:
     gates = read_tsv(
         data_dir / "DESCRIPTOR_GATE_STATUS.tsv",
-        {"gate_version", "gate_name", "metric_name", "observed_value", "required_value", "pass", "not_applicable", "rights_blocker", "data_blocker", "review_blocker"},
+        GATE_ARTIFACT_COLUMNS,
     )
     require(len(gates) == 56, f"gate criterion count {len(gates)} != 56")
+    require(
+        tuple(gates[0]) == GATE_ARTIFACT_COLUMNS,
+        "descriptor gate artifact header/order differs from the SQL projection",
+    )
+    authoritative_gates = authoritative_zero_human_gate_rows()
+    for row_number, (actual, expected) in enumerate(
+        zip(gates, authoritative_gates, strict=True), start=2
+    ):
+        require(
+            actual == expected,
+            f"DESCRIPTOR_GATE_STATUS.tsv:{row_number}: differs from authoritative SQL: actual={actual!r} expected={expected!r}",
+        )
     require(len({(row["gate_version"], row["gate_name"], row["metric_name"]) for row in gates}) == 56, "duplicate gate criterion")
     require(all(not parse_bool(row["pass"], f"gate {row['gate_name']}/{row['metric_name']}") for row in gates), "a descriptor gate passed with no human-reviewed corpus")
     for row in gates:
         if row["observed_value"] == "NA":
             require(parse_bool(row["not_applicable"], f"gate {row['gate_name']}/{row['metric_name']}.not_applicable"), "NA gate metric not marked not_applicable")
             require(not parse_bool(row["pass"], f"gate {row['gate_name']}/{row['metric_name']}.pass"), "NA gate metric passed")
-        require(parse_bool(row["review_blocker"], f"gate {row['gate_name']}/{row['metric_name']}.review_blocker"), "zero-human-review gate lacks review blocker")
+    for gate_name in {row["gate_name"] for row in gates}:
+        require(
+            any(
+                parse_bool(
+                    row["review_blocker"],
+                    f"gate {gate_name}/{row['metric_name']}.review_blocker",
+                )
+                for row in gates
+                if row["gate_name"] == gate_name
+            ),
+            f"zero-human-review gate {gate_name} lacks an aggregate review blocker",
+        )
 
     blocker_rows = read_tsv(
         data_dir / "ROUND3M_RESEARCH_ARTIFACT_BLOCKER.tsv",

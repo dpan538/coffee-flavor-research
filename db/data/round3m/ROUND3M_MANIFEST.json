@@ -7,10 +7,10 @@
       "sha256": "d5affb993d5debbdf95430446f3c8ac1dea89ac911814b4662343b86309d0d88"
     },
     {
-      "byte_count": 538,
+      "byte_count": 539,
       "data_row_count": 1,
       "path": "ANALYST_TIME_LOG.tsv",
-      "sha256": "f3e0090bb34d7029950fc3b6aae796ae1eaaef7d95ec29c75f8af6f7d7b081b7"
+      "sha256": "a0cbe6a4e27524e5607bef190ffd1f957720ffaaf4c6350d5c45fbb30b76890f"
     },
     {
       "byte_count": 1894,
@@ -37,10 +37,10 @@
       "sha256": "a54e81b1a5359fc00ccc5bdbbb45ea6dd105ab7a91d7be27973beb52a10df03a"
     },
     {
-      "byte_count": 11705,
+      "byte_count": 12790,
       "data_row_count": 56,
       "path": "DESCRIPTOR_GATE_STATUS.tsv",
-      "sha256": "f749ceb4bf50e0a9b93dfcf48c690c5b2994af69d2592582552c23259a23bc34"
+      "sha256": "3cf34203783f890a8d36a17aebe5f5f9fcbbdef44b14b5645fbed453caa334ab"
     },
     {
       "byte_count": 132627,
@@ -64,7 +64,7 @@
       "byte_count": 4334,
       "data_row_count": null,
       "path": "DESCRIPTOR_REVIEW_ARTIFACT_MANIFEST.json",
-      "sha256": "d9250d6669b3eb853827cd168e7f5dbac2a0c3a16cce1e45cd7d4adab58a57fe"
+      "sha256": "51d3ef10cfd6bc55ead714061e6b33f1cac29329f02bb02fe5fa4207a029587a"
     },
     {
       "byte_count": 471750,
@@ -112,7 +112,7 @@
       "byte_count": 2091,
       "data_row_count": null,
       "path": "EXISTING_376_SHA256SUMS",
-      "sha256": "cfe21b41f64511fbe40ea8cbb330aee37ebc779e643fcc20a6aa16975cf95a02"
+      "sha256": "27fef9d0ab6e70dc42186ad4ac8ec86a95fbe4179c55cb8bcacc99e12bf25322"
     },
     {
       "byte_count": 1812,
@@ -127,16 +127,16 @@
       "sha256": "c1e0d16be9408c052a0d67401718eb5df522099708e65f8e1968526fd385a122"
     },
     {
-      "byte_count": 1580,
+      "byte_count": 1647,
       "data_row_count": null,
       "path": "LIVE_ASSERTION_EXPORT_CONTRACT.json",
-      "sha256": "ec806a29f8a0893d6f31a927a37701088559428d7704a6faa0ef8bec41923417"
+      "sha256": "e7b6ec23c039e726135e5462aff1754bf869456a6bfecf99a6ef30d6eb6860cf"
     },
     {
-      "byte_count": 1537,
+      "byte_count": 1831,
       "data_row_count": null,
       "path": "LIVE_ASSERTION_IMPORT_RECEIPT.json",
-      "sha256": "a50a5035fc4fb1558d3c2130987c4a9156f64559b32fc6df5a4023b87cfc7b2b"
+      "sha256": "8a46c30293145f7439ebd022420b5c9ffcd1430c20746888b1d39a8754983658"
     },
     {
       "byte_count": 2700,
@@ -193,7 +193,7 @@
       "sha256": "032c71970b8b9342849726147f1a6b4d2e7aea8415bdad3b627187d728ab5f9f"
     }
   ],
-  "generated_at": "2026-08-28T05:53:38Z",
+  "generated_at": "2026-08-28T08:09:06Z",
   "live_pilot": {
     "assertion_level_deinflated_count": 139,
     "broad_sensory_assertion_count": 54,
@@ -213,6 +213,7 @@
   "research_artifact_import_status": "BLOCKED_MISSING_MACHINE_ARTIFACTS",
   "restricted_capture": {
     "locator": "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z",
+    "manifest_contract": "round3m.restricted-capture-manifest.v1",
     "manifest_sha256": "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d",
     "public_redistribution": false
   },

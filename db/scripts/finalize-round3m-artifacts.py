@@ -21,6 +21,12 @@ from typing import Iterable, Mapping
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "db" / "data" / "round3m"
 ADAPTER_DATA = ROOT / "db" / "adapters" / "round3m" / "generated"
+EXPECTED_CAPTURE_MANIFEST_SHA256 = (
+    "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d"
+)
+EXPECTED_CAPTURE_ROOT_LOCATOR = (
+    "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z"
+)
 
 
 class ContractError(RuntimeError):
@@ -110,6 +116,24 @@ def main() -> int:
     require(effective_records_path.is_file(), "missing live effective-record export")
     with effective_records_path.open("r", encoding="utf-8", newline="") as handle:
         effective_records = list(csv.DictReader(handle, delimiter="\t"))
+    adapter_metrics_path = ADAPTER_DATA / "LIVE_ADAPTER_METRICS.json"
+    require(adapter_metrics_path.is_file(), "missing live adapter metrics receipt")
+    adapter_metrics = json.loads(adapter_metrics_path.read_text(encoding="utf-8"))
+    require(
+        adapter_metrics.get("restricted_capture_manifest_sha256")
+        == EXPECTED_CAPTURE_MANIFEST_SHA256,
+        "live adapter manifest receipt hash drift",
+    )
+    require(
+        adapter_metrics.get("restricted_capture_root_locator")
+        == EXPECTED_CAPTURE_ROOT_LOCATOR,
+        "live adapter governed root locator drift",
+    )
+    require(
+        adapter_metrics.get("restricted_capture_manifest_contract")
+        == "round3m.restricted-capture-manifest.v1",
+        "live adapter manifest contract drift",
+    )
 
     ledger_ids = {row["descriptor_assertion_id"] for row in ledger}
     ledger_duplicate_rows = [
@@ -258,8 +282,13 @@ def main() -> int:
             "model_eligible_descriptor_count": 0,
         },
         "restricted_capture": {
-            "locator": "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z",
-            "manifest_sha256": "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d",
+            "locator": adapter_metrics["restricted_capture_root_locator"],
+            "manifest_sha256": adapter_metrics[
+                "restricted_capture_manifest_sha256"
+            ],
+            "manifest_contract": adapter_metrics[
+                "restricted_capture_manifest_contract"
+            ],
             "public_redistribution": False,
         },
         "files": [

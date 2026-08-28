@@ -34,6 +34,7 @@
   "constraints": {
     "affirmative_singular_rights_state_allowed": false,
     "full_source_file_hash_or_explicit_nonstorage_reason_required": true,
+    "governed_restricted_capture_manifest_receipt_required": true,
     "human_or_expert_review_state_allowed": false,
     "model_eligible_allowed": false,
     "raw_and_atomic_sha256_required": true,

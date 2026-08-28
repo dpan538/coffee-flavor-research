@@ -23,6 +23,17 @@ ROUND3L = ROOT / "db" / "data" / "round3l"
 PUBLIC3L = ROUND3L / "public"
 OUTPUT = ROOT / "db" / "data" / "round3m"
 
+CURRENT_GATE_VERSION = "round3m-descriptor-gates-v2"
+NORMALIZATION_CHALLENGE_UNIVERSE = (
+    "HUMAN_REVIEWED_NORMALIZATION_CHALLENGE_UNIVERSE"
+)
+NORMALIZATION_CHALLENGE_NOTE = (
+    "Leaf final all-ACCEPT qualified-human ambiguous, contradictory, or "
+    "unresolved normalization-label decisions with exact Round 3M/Round 3K "
+    "source binding; ABSTAIN, REVISE, REJECT, CONFLICT, and generic assertion "
+    "MARK_* receipts do not count."
+)
+
 EXPECTED_RESEARCH_ARTIFACTS = (
     "OPEN_DESCRIPTOR_SOURCE_CENSUS.tsv",
     "DESCRIPTOR_YIELD_AUDIT.tsv",
@@ -209,110 +220,149 @@ def disposition(row: Mapping[str, str], descriptor_candidates: int) -> str:
     return "UNRESOLVED_ROUTE"
 
 
+GATE_CONTRACT = (
+    (
+        "GATE_500_EVALUATION",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "500", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_UNIQUE_NORMALIZED_FORM_COUNT", ">=", "75", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Distinct conservative normalized forms."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "3", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Routes and editions sharing an origin remain one family."),
+            ("SOURCE_AND_LABEL_PROVENANCE_COMPLETENESS", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA_AND_REVIEW", "Every reviewed assertion has both complete source provenance and receipt-backed label provenance."),
+        ),
+    ),
+    (
+        "GATE_2000_EXPERIMENTAL_NORMALIZATION",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "2000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_DESCRIPTOR_BEARING_RECORD_COUNT", ">=", "500", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Descriptor-bearing effective records."),
+            ("REVIEWED_UNIQUE_NORMALIZED_FORM_COUNT", ">=", "100", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Conservative normalized forms."),
+            ("MINIMUM_RECORDS_PER_OUTPUT_LABEL", ">=", "20", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Minimum effective-record support per output label."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "3", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Independent families."),
+            ("REVIEWED_LARGEST_FAMILY_SHARE", "<=", "0.70", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Largest-family concentration."),
+            ("REVIEWED_AMBIGUOUS_OR_UNRESOLVED_CHALLENGE_COUNT", ">=", "100", NORMALIZATION_CHALLENGE_UNIVERSE, "REVIEW", NORMALIZATION_CHALLENGE_NOTE),
+            ("MODEL_RESEARCH_RIGHTS_RATE", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "RIGHTS", "All counted assertions have affirmative model-research rights."),
+        ),
+    ),
+    (
+        "GATE_5000_EXPERIMENTAL_RANKING",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "5000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_DESCRIPTOR_BEARING_RECORD_COUNT", ">=", "1000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Descriptor-bearing effective records."),
+            ("REVIEWED_MULTI_TARGET_RECORD_COUNT", ">=", "500", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Receipt-backed multi-target records."),
+            ("SUPPORTED_WITHIN_RECORD_PAIR_EVENT_COUNT", ">=", "2500", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Governed within-record pair events."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "4", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Independent families."),
+            ("REVIEWED_LARGEST_FAMILY_SHARE", "<=", "0.60", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Largest-family concentration."),
+            ("HELD_OUT_EDITION_YEAR_COUNT", ">=", "1", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out edition years."),
+            ("MODEL_RESEARCH_RIGHTS_RATE", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "RIGHTS", "Affirmative model-research rights."),
+        ),
+    ),
+    (
+        "GATE_10000_RESEARCH_NORMALIZATION",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "10000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_DESCRIPTOR_BEARING_RECORD_COUNT", ">=", "2500", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Descriptor-bearing effective records."),
+            ("REVIEWED_UNIQUE_NORMALIZED_FORM_COUNT", ">=", "200", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Conservative normalized forms."),
+            ("MINIMUM_RECORDS_PER_OUTPUT_LABEL", ">=", "50", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Minimum effective-record support per output label."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "5", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Independent families."),
+            ("REVIEWED_LARGEST_FAMILY_SHARE", "<=", "0.45", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Largest-family concentration."),
+            ("HELD_OUT_INDEPENDENT_FAMILY_COUNT", ">=", "2", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out families."),
+            ("HELD_OUT_EDITION_YEAR_COUNT", ">=", "2", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out years."),
+            ("MODEL_RESEARCH_RIGHTS_RATE", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "RIGHTS", "Affirmative model-research rights."),
+        ),
+    ),
+    (
+        "GATE_15000_ASSOCIATION",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "15000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_DESCRIPTOR_BEARING_RECORD_COUNT", ">=", "3000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Descriptor-bearing effective records."),
+            ("SUPPORTED_WITHIN_RECORD_PAIR_EVENT_COUNT", ">=", "10000", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Governed within-record pair events."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "5", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Independent families."),
+            ("RECORD_BOUNDARIES_PRESERVED", "=", "true", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "No cross-record or unrelated-observation pair."),
+            ("MODEL_RESEARCH_RIGHTS_RATE", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "RIGHTS", "Affirmative model-research rights."),
+        ),
+    ),
+    (
+        "GATE_20000_RESEARCH_RANKING",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "20000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_DESCRIPTOR_BEARING_RECORD_COUNT", ">=", "4000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Descriptor-bearing effective records."),
+            ("REVIEWED_MULTI_TARGET_RECORD_COUNT", ">=", "2000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Receipt-backed multi-target records."),
+            ("SUPPORTED_WITHIN_RECORD_PAIR_EVENT_COUNT", ">=", "15000", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Governed within-record pair events."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "6", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Independent families."),
+            ("REVIEWED_LARGEST_FAMILY_SHARE", "<=", "0.35", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Largest-family concentration."),
+            ("HELD_OUT_INDEPENDENT_FAMILY_COUNT", ">=", "2", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out families."),
+            ("HELD_OUT_EDITION_YEAR_COUNT", ">=", "2", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out years."),
+            ("MODEL_RESEARCH_RIGHTS_RATE", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "RIGHTS", "Affirmative model-research rights."),
+        ),
+    ),
+    (
+        "GATE_40000_DEPLOYMENT_CANDIDATE",
+        (
+            ("REVIEWED_P1_P2_STRICT_ASSERTION_COUNT", ">=", "40000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Actual-human reviewed P1/P2 strict assertions."),
+            ("REVIEWED_DESCRIPTOR_BEARING_RECORD_COUNT", ">=", "8000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Descriptor-bearing effective records."),
+            ("REVIEWED_MULTI_TARGET_RECORD_COUNT", ">=", "5000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Receipt-backed multi-target records."),
+            ("SUPPORTED_WITHIN_RECORD_PAIR_EVENT_COUNT", ">=", "40000", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Governed within-record pair events."),
+            ("REVIEWED_INDEPENDENT_SOURCE_FAMILY_COUNT", ">=", "8", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Independent families."),
+            ("REVIEWED_LARGEST_FAMILY_SHARE", "<=", "0.25", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Largest-family concentration."),
+            ("HELD_OUT_INDEPENDENT_FAMILY_COUNT", ">=", "3", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out families."),
+            ("HELD_OUT_EDITION_YEAR_COUNT", ">=", "3", "MODEL_ELIGIBLE_DESCRIPTOR_UNIVERSE", "DATA", "Predeclared held-out years."),
+            ("MINIMUM_RECORDS_PER_OUTPUT_LABEL", ">=", "100", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Minimum production support per output label."),
+            ("SOURCE_PROVENANCE_COMPLETENESS", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "DATA", "Complete source provenance."),
+            ("LABEL_PROVENANCE_COMPLETENESS", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "REVIEW", "Complete label provenance."),
+            ("DEPLOYMENT_RIGHTS_RATE", "=", "1.0000", "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE", "RIGHTS", "Affirmative deployment/commercial-model rights."),
+        ),
+    ),
+)
+
+GATE_NULL_METRICS = {
+    "MINIMUM_RECORDS_PER_OUTPUT_LABEL",
+    "REVIEWED_LARGEST_FAMILY_SHARE",
+    "SOURCE_PROVENANCE_COMPLETENESS",
+    "LABEL_PROVENANCE_COMPLETENESS",
+    "SOURCE_AND_LABEL_PROVENANCE_COMPLETENESS",
+    "MODEL_RESEARCH_RIGHTS_RATE",
+    "DEPLOYMENT_RIGHTS_RATE",
+}
+
+
 def gate_rows() -> list[dict[str, object]]:
-    definitions = {
-        "EVALUATION_500": (
-            ("reviewed_p1_p2_strict_assertions", 0, 500, "COUNT"),
-            ("normalized_forms", 0, 75, "COUNT"),
-            ("independent_families", 0, 3, "COUNT"),
-            ("source_and_label_provenance_completeness", "NA", 100, "PERCENT"),
-        ),
-        "EXPERIMENTAL_NORMALIZATION_2000": (
-            ("reviewed_p1_p2_strict_assertions", 0, 2000, "COUNT"),
-            ("descriptor_bearing_records", 0, 500, "COUNT"),
-            ("normalized_forms", 0, 100, "COUNT"),
-            ("records_per_output_label", 0, 20, "MINIMUM"),
-            ("independent_families", 0, 3, "COUNT"),
-            ("largest_family_share", "NA", 70, "MAX_PERCENT"),
-            ("unresolved_challenge_cases", 0, 100, "COUNT"),
-            ("affirmative_model_research_rights", "NA", 100, "PERCENT"),
-        ),
-        "RESEARCH_NORMALIZATION_10000": (
-            ("reviewed_p1_p2_strict_assertions", 0, 10000, "COUNT"),
-            ("descriptor_bearing_records", 0, 2500, "COUNT"),
-            ("normalized_forms", 0, 200, "COUNT"),
-            ("records_per_output_label", 0, 50, "MINIMUM"),
-            ("independent_families", 0, 5, "COUNT"),
-            ("largest_family_share", "NA", 45, "MAX_PERCENT"),
-            ("held_out_families", 0, 2, "COUNT"),
-            ("held_out_years", 0, 2, "COUNT"),
-            ("affirmative_model_research_rights", "NA", 100, "PERCENT"),
-        ),
-        "ASSOCIATION_15000": (
-            ("reviewed_p1_p2_strict_assertions", 0, 15000, "COUNT"),
-            ("descriptor_bearing_records", 0, 3000, "COUNT"),
-            ("supported_pair_events", 0, 10000, "COUNT"),
-            ("independent_families", 0, 5, "COUNT"),
-            (
-                "record_boundaries_preserved",
-                "NA",
-                1,
-                "BOOLEAN",
-            ),
-            ("affirmative_model_research_rights", "NA", 100, "PERCENT"),
-        ),
-        "EXPERIMENTAL_RANKING_5000": (
-            ("reviewed_p1_p2_strict_assertions", 0, 5000, "COUNT"),
-            ("descriptor_bearing_records", 0, 1000, "COUNT"),
-            ("multi_target_records", 0, 500, "COUNT"),
-            ("supported_pair_events", 0, 2500, "COUNT"),
-            ("independent_families", 0, 4, "COUNT"),
-            ("largest_family_share", "NA", 60, "MAX_PERCENT"),
-            ("held_out_years", 0, 1, "COUNT"),
-            ("affirmative_model_research_rights", "NA", 100, "PERCENT"),
-        ),
-        "RESEARCH_RANKING_20000": (
-            ("reviewed_p1_p2_strict_assertions", 0, 20000, "COUNT"),
-            ("descriptor_bearing_records", 0, 4000, "COUNT"),
-            ("multi_target_records", 0, 2000, "COUNT"),
-            ("supported_pair_events", 0, 15000, "COUNT"),
-            ("independent_families", 0, 6, "COUNT"),
-            ("largest_family_share", "NA", 35, "MAX_PERCENT"),
-            ("held_out_families", 0, 2, "COUNT"),
-            ("held_out_years", 0, 2, "COUNT"),
-            ("affirmative_model_research_rights", "NA", 100, "PERCENT"),
-        ),
-        "DEPLOYMENT_RANKING_40000": (
-            ("reviewed_p1_p2_strict_assertions", 0, 40000, "COUNT"),
-            ("descriptor_bearing_records", 0, 8000, "COUNT"),
-            ("multi_target_records", 0, 5000, "COUNT"),
-            ("supported_pair_events", 0, 40000, "COUNT"),
-            ("independent_families", 0, 8, "COUNT"),
-            ("largest_family_share", "NA", 25, "MAX_PERCENT"),
-            ("held_out_families", 0, 3, "COUNT"),
-            ("held_out_years", 0, 3, "COUNT"),
-            ("records_per_production_label", 0, 100, "MINIMUM"),
-            ("source_provenance_completeness", "NA", 100, "PERCENT"),
-            ("label_provenance_completeness", "NA", 100, "PERCENT"),
-            ("affirmative_deployment_rights", "NA", 100, "PERCENT"),
-        ),
-    }
+    if len(GATE_CONTRACT) != 7 or sum(len(criteria) for _, criteria in GATE_CONTRACT) != 56:
+        raise ContractError("current descriptor-gate contract must contain exactly 7 definitions and 56 criteria")
     rows: list[dict[str, object]] = []
-    for gate, metrics in definitions.items():
-        for metric, observed, required, requirement_type in metrics:
-            unavailable = observed == "NA"
-            if requirement_type == "MAX_PERCENT" and not unavailable:
-                metric_pass = float(observed) <= float(required)
-            else:
-                metric_pass = not unavailable and float(observed) >= float(required)
+    for gate_name, criteria in GATE_CONTRACT:
+        for ordinal, criterion in enumerate(criteria, start=1):
+            metric_name, operator, required_value, universe, blocker_class, note = criterion
+            not_applicable = metric_name in GATE_NULL_METRICS
+            observed_value = (
+                "NA"
+                if not_applicable
+                else "false"
+                if metric_name == "RECORD_BOUNDARIES_PRESERVED"
+                else "0"
+            )
             rows.append(
                 {
-                    "gate_version": "round3m-descriptor-gates-v1",
-                    "gate_name": gate,
-                    "metric_name": metric,
-                    "observed_value": observed,
-                    "required_value": required,
-                    "requirement_type": requirement_type,
-                    "universe": "HUMAN_REVIEWED_DESCRIPTOR_UNIVERSE",
-                    "pass": str(metric_pass).lower(),
-                    "not_applicable": str(unavailable).lower(),
-                    "rights_blocker": str("rights" in metric).lower(),
-                    "data_blocker": str(not metric_pass and "rights" not in metric).lower(),
-                    "review_blocker": "true",
+                    "gate_version": CURRENT_GATE_VERSION,
+                    "gate_name": gate_name,
+                    "criterion_ordinal": ordinal,
+                    "metric_name": metric_name,
+                    "operator": operator,
+                    "observed_value": observed_value,
+                    "required_value": required_value,
+                    "universe": universe,
+                    "pass": "false",
+                    "not_applicable": str(not_applicable).lower(),
+                    "rights_blocker": str(blocker_class == "RIGHTS").lower(),
+                    "data_blocker": str(
+                        blocker_class in {"DATA", "DATA_AND_REVIEW"}
+                    ).lower(),
+                    "review_blocker": str(
+                        blocker_class in {"REVIEW", "DATA_AND_REVIEW"}
+                    ).lower(),
                     "explanatory_note": (
-                        "No denominator exists; NA is explicitly non-passing."
-                        if unavailable
-                        else "Round 3M has no human-confirmed descriptor imports."
+                        note + " Observed value is unavailable; NA never passes."
+                        if not_applicable
+                        else note
                     ),
                 }
             )

@@ -97,16 +97,16 @@
       "sha256": "c1e0d16be9408c052a0d67401718eb5df522099708e65f8e1968526fd385a122"
     },
     {
-      "byte_count": 1580,
+      "byte_count": 1647,
       "data_row_count": null,
       "path": "LIVE_ASSERTION_EXPORT_CONTRACT.json",
-      "sha256": "ec806a29f8a0893d6f31a927a37701088559428d7704a6faa0ef8bec41923417"
+      "sha256": "e7b6ec23c039e726135e5462aff1754bf869456a6bfecf99a6ef30d6eb6860cf"
     },
     {
-      "byte_count": 1537,
+      "byte_count": 1831,
       "data_row_count": null,
       "path": "LIVE_ASSERTION_IMPORT_RECEIPT.json",
-      "sha256": "a50a5035fc4fb1558d3c2130987c4a9156f64559b32fc6df5a4023b87cfc7b2b"
+      "sha256": "8a46c30293145f7439ebd022420b5c9ffcd1430c20746888b1d39a8754983658"
     },
     {
       "byte_count": 247800,

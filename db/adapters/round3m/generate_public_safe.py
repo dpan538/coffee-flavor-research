@@ -11,8 +11,8 @@ from collections import Counter
 from pathlib import Path
 
 from .live import coassertion_events, deinflate_assertions, extract_candidates
-from .model import CountDisposition, DescriptorClass
-from .restricted import load_bounded_captures
+from .model import CountDisposition, DescriptorCandidate, DescriptorClass, SourceRecord
+from .restricted import load_bounded_captures, load_capture_manifest
 from .signatures import ADAPTER_VERSION, PARSER_VERSION
 
 
@@ -130,7 +130,18 @@ def _write_tsv(path: Path, columns: tuple[str, ...], rows: list[dict[str, object
         writer.writerows(rows)
 
 
+def public_review_candidates(record: SourceRecord) -> tuple[DescriptorCandidate, ...]:
+    """Retain every sensory candidate, including non-counting secondary layers."""
+
+    return tuple(
+        item
+        for item in extract_candidates(record)
+        if item.descriptor_class != DescriptorClass.NON_DESCRIPTOR
+    )
+
+
 def generate(restricted_root: Path, output_dir: Path) -> dict[str, object]:
+    capture_manifest = load_capture_manifest(restricted_root)
     records, capture_receipts = load_bounded_captures(restricted_root)
     output_dir.mkdir(parents=True, exist_ok=True)
     receipt_by_sha256 = {receipt.sha256: receipt for receipt in capture_receipts}
@@ -140,13 +151,13 @@ def generate(restricted_root: Path, output_dir: Path) -> dict[str, object]:
     within_repeat_groups: dict[str, str] = {}
     repeat_groups: dict[str, str] = {}
     for record in records:
-        candidates = tuple(
+        candidates = public_review_candidates(record)
+        admitted_candidates = tuple(
             item
-            for item in extract_candidates(record)
-            if item.descriptor_class != DescriptorClass.NON_DESCRIPTOR
-            and item.count_disposition == CountDisposition.ADMITTED
+            for item in candidates
+            if item.count_disposition == CountDisposition.ADMITTED
         )
-        result = deinflate_assertions(candidates)
+        result = deinflate_assertions(admitted_candidates)
         all_candidates.extend(candidates)
         all_assertion_level.extend(result.assertion_level)
         all_record_unique.extend(result.record_unique)
@@ -240,8 +251,8 @@ def generate(restricted_root: Path, output_dir: Path) -> dict[str, object]:
             if source_url == record.source_url
         )
         governed_locator = (
-            "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z/"
-            f"web_index_field_capture/{receipt.filename}#/records/{record_index}"
+            f"{capture_manifest.root_locator}/web_index_field_capture/"
+            f"{receipt.filename}#/records/{record_index}"
         )
         source_artifact_rows.append(
             {
@@ -259,28 +270,42 @@ def generate(restricted_root: Path, output_dir: Path) -> dict[str, object]:
             }
         )
         key = record.effective_record
+        series_id = "coe"
+        edition_id = _public_id(key.edition)
+        edition_year = _edition_year(key.edition)
+        category_id = _public_id(key.category)
+        round_id = _public_id(key.round_name)
+        subject_kind = "LOT"
+        entry_or_lot_id = key.entry_or_lot
+        preparation_service_code = _public_id(key.preparation_service)
+        snapshot_identity = f"file:{record.source_file_sha256}"
         identity_material = "\x1f".join(
             (
-                key.competition_series,
-                key.edition,
-                key.category,
-                key.round_name,
-                key.entry_or_lot,
-                key.preparation_service,
+                series_id,
+                edition_id,
+                str(edition_year),
+                category_id,
+                round_id,
+                subject_kind,
+                entry_or_lot_id,
+                preparation_service_code,
+                record.source_route_id,
+                snapshot_identity,
+                record.source_url,
             )
         )
         effective_record_rows.append(
             {
                 "round3m_effective_record_id": key.effective_record_id,
                 "effective_record_key": key.effective_record_id,
-                "series_id": "coe",
-                "edition_id": _public_id(key.edition),
-                "edition_year": _edition_year(key.edition),
-                "category_id": _public_id(key.category),
-                "round_id": _public_id(key.round_name),
-                "subject_kind": "LOT",
-                "entry_or_lot_id": key.entry_or_lot,
-                "preparation_service_code": _public_id(key.preparation_service),
+                "series_id": series_id,
+                "edition_id": edition_id,
+                "edition_year": edition_year,
+                "category_id": category_id,
+                "round_id": round_id,
+                "subject_kind": subject_kind,
+                "entry_or_lot_id": entry_or_lot_id,
+                "preparation_service_code": preparation_service_code,
                 "preparation_evidence_locator": "source-record:preparation-not-published",
                 "source_route_id": record.source_route_id,
                 "source_artifact_id": record.source_artifact_id,
@@ -311,23 +336,33 @@ def generate(restricted_root: Path, output_dir: Path) -> dict[str, object]:
         effective_record_rows,
     )
 
-    tier_counts = Counter(item.evidence_tier.value for item in all_candidates)
-    class_counts = Counter(item.descriptor_class.value for item in all_candidates)
-    rights_counts = Counter(item.rights_state.value for item in all_candidates)
+    admitted_candidates = [
+        item
+        for item in all_candidates
+        if item.count_disposition == CountDisposition.ADMITTED
+    ]
+    tier_counts = Counter(item.evidence_tier.value for item in admitted_candidates)
+    class_counts = Counter(item.descriptor_class.value for item in admitted_candidates)
+    rights_counts = Counter(item.rights_state.value for item in admitted_candidates)
     metrics: dict[str, object] = {
         "contract_version": "round3m.live-adapter-public-receipt.v1",
         "capture_scope": "WEB_INDEX_FIELD_CAPTURE_NOT_FULL_PAGE_BODY",
         "live_source_adapter_count": 4,
         "live_source_adapter_validated_count": 3,
         "completed_wcc_scoresheet_live_positive_count": 0,
-        "segmented_atomic_candidate_count": len(all_candidates),
+        "segmented_atomic_candidate_count": len(admitted_candidates),
+        "public_review_candidate_count": len(all_candidates),
+        "secondary_review_only_candidate_count": sum(
+            item.count_disposition == CountDisposition.SECONDARY_REVIEW_ONLY
+            for item in all_candidates
+        ),
         "assertion_level_deinflated_count": len(all_assertion_level),
         "record_level_unique_count": len(all_record_unique),
         "p1_p2_within_effective_record_coassertion_count": len(
             coassertion_events(all_record_unique)
         ),
         "effective_record_count": len(
-            {item.effective_record_id for item in all_candidates}
+            {item.effective_record_id for item in admitted_candidates}
         ),
         "source_artifact_bridge_count": len(source_artifact_rows),
         "effective_record_bridge_count": len(effective_record_rows),
@@ -349,6 +384,9 @@ def generate(restricted_root: Path, output_dir: Path) -> dict[str, object]:
         "model_eligible_count": 0,
         "raw_source_text_published": False,
         "full_page_body_acquisition_status": "BLOCKED_ENVIRONMENT_POLICY",
+        "restricted_capture_manifest_contract": capture_manifest.contract_version,
+        "restricted_capture_manifest_sha256": capture_manifest.sha256,
+        "restricted_capture_root_locator": capture_manifest.root_locator,
     }
     (output_dir / "LIVE_ADAPTER_METRICS.json").write_text(
         json.dumps(metrics, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

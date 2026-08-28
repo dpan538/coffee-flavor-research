@@ -153,6 +153,14 @@ if (( migration_count > 56 )); then
   test_files+=("$DB_DIR/tests/round3m_gate_schema.sql")
 fi
 
+if (( migration_count > 58 )); then
+  test_files+=("$DB_DIR/tests/round3m_schema_field_expert_admission.sql")
+fi
+
+if (( migration_count > 59 )); then
+  test_files+=("$DB_DIR/tests/round3m_normalization_challenge_contract.sql")
+fi
+
 if [[ ! -f "$DB_DIR/007_validation_queries.sql" ]]; then
   printf 'ERROR: missing db/007_validation_queries.sql. Apply all migrations before testing.\n' >&2
   exit 66
@@ -576,6 +584,7 @@ for test_file in "${test_files[@]}"; do
   psql \
     -X \
     --set=ON_ERROR_STOP=1 \
+    --set=round3m_gate_status_tsv="$DB_DIR/data/round3m/DESCRIPTOR_GATE_STATUS.tsv" \
     --dbname="$TARGET_DATABASE" \
     --file="$test_file"
 done

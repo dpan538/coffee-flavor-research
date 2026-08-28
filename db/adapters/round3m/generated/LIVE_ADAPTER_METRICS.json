@@ -17,12 +17,17 @@
   "mexico_2023_status": "SOURCE_DRIFT_DETAIL_BODY_UNAVAILABLE",
   "model_eligible_count": 0,
   "p1_p2_within_effective_record_coassertion_count": 508,
+  "public_review_candidate_count": 140,
   "raw_source_text_published": false,
   "record_level_unique_count": 137,
+  "restricted_capture_manifest_contract": "round3m.restricted-capture-manifest.v1",
+  "restricted_capture_manifest_sha256": "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d",
+  "restricted_capture_root_locator": "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z",
   "rights_counts": {
     "PENDING": 73,
     "UNKNOWN": 67
   },
+  "secondary_review_only_candidate_count": 0,
   "segmented_atomic_candidate_count": 140,
   "source_artifact_bridge_count": 8,
   "tier_counts": {

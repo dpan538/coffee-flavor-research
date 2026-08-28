@@ -6,9 +6,11 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import importlib.util
 import json
 import os
 import re
+import shutil
 import sys
 import tempfile
 import unittest
@@ -25,6 +27,7 @@ from round3m.generate_public_safe import (  # noqa: E402
     EFFECTIVE_RECORD_COLUMNS,
     SOURCE_ARTIFACT_COLUMNS,
     generate,
+    public_review_candidates,
 )
 from round3m.live import (  # noqa: E402
     assert_no_inferred_service_or_roast,
@@ -45,7 +48,12 @@ from round3m.model import (  # noqa: E402
     SourceField,
     SourceRecord,
 )
-from round3m.restricted import load_bounded_captures  # noqa: E402
+from round3m.restricted import (  # noqa: E402
+    EXPECTED_CAPTURE_MANIFEST_SHA256,
+    EXPECTED_CAPTURE_ROOT_LOCATOR,
+    load_bounded_captures,
+    load_capture_manifest,
+)
 from round3m.signatures import (  # noqa: E402
     COE_COLOMBIA_FREQUENCY,
     COE_GENERIC_SENSORY,
@@ -58,6 +66,21 @@ from round3m.signatures import (  # noqa: E402
 ROUND3M_RESTRICTED_ROOT: Path | None = None
 ROUND3L_RESTRICTED_ROOT: Path | None = None
 SHA256 = re.compile(r"[0-9a-f]{64}")
+
+
+def load_review_artifact_builder():
+    path = REPO_ROOT / "db" / "scripts" / "build-round3m-review-artifacts.py"
+    spec = importlib.util.spec_from_file_location(
+        "round3m_review_artifact_builder", path
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load Round 3M review artifact builder: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+REVIEW_ARTIFACT_BUILDER = load_review_artifact_builder()
 
 
 def sha256(path: Path) -> str:
@@ -128,6 +151,7 @@ class LiveAdapterSemanticTests(unittest.TestCase):
             ),
         )
         candidates = extract_candidates(record)
+        self.assertEqual(public_review_candidates(record), candidates)
         primary = [
             item
             for item in candidates
@@ -148,9 +172,102 @@ class LiveAdapterSemanticTests(unittest.TestCase):
         self.assertTrue(
             all(item.count_disposition == CountDisposition.SECONDARY_REVIEW_ONLY for item in secondary)
         )
+        self.assertEqual(len(secondary), 2)
         self.assertTrue(all(item.evidence_tier == EvidenceTier.P3 for item in producer))
         self.assertEqual(len(deinflate_assertions(candidates).assertion_level), 6)
         self.assertTrue(all(not item.model_eligible for item in candidates))
+
+    def test_secondary_layer_stays_review_only_through_review_artifact_build(self) -> None:
+        live_path = (
+            REPO_ROOT
+            / "db"
+            / "adapters"
+            / "round3m"
+            / "generated"
+            / "PUBLIC_SAFE_LIVE_ASSERTIONS.tsv"
+        )
+        columns, committed_rows = read_tsv(live_path)
+        template = committed_rows[0]
+        shared_hash = template["atomic_source_text_sha256"]
+        primary = {
+            **template,
+            "descriptor_assertion_id": "round3m.synthetic.zzz-primary",
+            "publication_layer": "PRIMARY_JURY_DESCRIPTION",
+            "source_selector_or_locator": "synthetic:#primary",
+            "source_page_or_record_locator": "synthetic:record#primary",
+            "atomic_source_text_sha256": shared_hash,
+            "count_disposition": "ADMITTED",
+            "within_record_repeat_group": "",
+            "cross_observation_repeat_group": "",
+        }
+        secondary = {
+            **template,
+            "descriptor_assertion_id": "round3m.synthetic.aaa-secondary",
+            "publication_layer": "SECONDARY_SENSORY_TABLE",
+            "source_selector_or_locator": "synthetic:#secondary",
+            "source_page_or_record_locator": "synthetic:record#secondary",
+            "atomic_source_text_sha256": shared_hash,
+            "count_disposition": "SECONDARY_REVIEW_ONLY",
+            "within_record_repeat_group": "",
+            "cross_observation_repeat_group": "",
+        }
+
+        converted = REVIEW_ARTIFACT_BUILDER.build_live_rows((secondary, primary))
+        duplicate_by_id = {
+            row["descriptor_assertion_id"]: row for row in converted["duplicates"]
+        }
+        self.assertEqual(
+            duplicate_by_id[primary["descriptor_assertion_id"]][
+                "deduplication_disposition"
+            ],
+            "CANONICAL",
+        )
+        self.assertEqual(
+            duplicate_by_id[primary["descriptor_assertion_id"]][
+                "counts_as_record_unique_descriptor"
+            ],
+            "true",
+        )
+        self.assertEqual(
+            duplicate_by_id[secondary["descriptor_assertion_id"]][
+                "deduplication_disposition"
+            ],
+            "UNRESOLVED",
+        )
+        self.assertEqual(
+            duplicate_by_id[secondary["descriptor_assertion_id"]][
+                "counts_as_assertion"
+            ],
+            "false",
+        )
+        publication_by_id = {
+            row["descriptor_assertion_id"]: row
+            for row in converted["publication_layers"]
+        }
+        self.assertEqual(
+            publication_by_id[secondary["descriptor_assertion_id"]]["relation_type"],
+            "SECONDARY_REVIEW_ONLY",
+        )
+
+        mismatched = {**secondary, "count_disposition": "ADMITTED"}
+        with tempfile.TemporaryDirectory(
+            prefix="round3m-secondary-contract-"
+        ) as temporary:
+            mismatch_path = Path(temporary) / "live.tsv"
+            with mismatch_path.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(
+                    handle,
+                    fieldnames=columns,
+                    delimiter="\t",
+                    lineterminator="\n",
+                )
+                writer.writeheader()
+                writer.writerow(mismatched)
+            with self.assertRaisesRegex(
+                REVIEW_ARTIFACT_BUILDER.ContractError,
+                "secondary publication layer and review-only disposition must match",
+            ):
+                REVIEW_ARTIFACT_BUILDER.read_live_assertions(mismatch_path)
 
     def test_honduras_requires_score_pairing_for_p2(self) -> None:
         record = make_record(
@@ -511,6 +628,10 @@ class LiveFixtureReceiptTests(unittest.TestCase):
         if ROUND3M_RESTRICTED_ROOT is None:
             self.skipTest("Round 3M restricted root not supplied")
         self.assertFalse(ROUND3M_RESTRICTED_ROOT.is_relative_to(REPO_ROOT))
+        manifest = load_capture_manifest(ROUND3M_RESTRICTED_ROOT)
+        self.assertEqual(manifest.sha256, EXPECTED_CAPTURE_MANIFEST_SHA256)
+        self.assertEqual(manifest.root_locator, EXPECTED_CAPTURE_ROOT_LOCATOR)
+        self.assertEqual(len(manifest.artifacts), 4)
         records, receipts = load_bounded_captures(ROUND3M_RESTRICTED_ROOT)
         self.assertEqual(len(records), 8)
         self.assertEqual(len(receipts), 3)
@@ -591,6 +712,37 @@ class LiveFixtureReceiptTests(unittest.TestCase):
         self.assertTrue(
             all(row["storage_state"] == "HASH_AND_LOCATOR_ONLY" for row in artifacts)
         )
+        self.assertTrue(
+            all(row["governed_locator"].startswith(manifest.root_locator + "/") for row in artifacts)
+        )
+
+    def test_restricted_manifest_and_artifacts_fail_closed_when_tampered(self) -> None:
+        if ROUND3M_RESTRICTED_ROOT is None:
+            self.skipTest("Round 3M restricted root not supplied")
+        with tempfile.TemporaryDirectory(prefix="round3m-manifest-tamper-") as temporary:
+            copied_root = Path(temporary) / "restricted-checkpoint"
+            shutil.copytree(ROUND3M_RESTRICTED_ROOT, copied_root)
+            manifest_path = copied_root / "CAPTURE_MANIFEST.json"
+            document = json.loads(manifest_path.read_text(encoding="utf-8"))
+            document["root"] = "restricted://untrusted/substitute"
+            manifest_path.write_text(
+                json.dumps(document, indent=2, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "manifest hash differs"):
+                load_bounded_captures(copied_root)
+
+        with tempfile.TemporaryDirectory(prefix="round3m-artifact-tamper-") as temporary:
+            copied_root = Path(temporary) / "restricted-checkpoint"
+            shutil.copytree(ROUND3M_RESTRICTED_ROOT, copied_root)
+            capture_path = (
+                copied_root
+                / "web_index_field_capture"
+                / "coe_peru_2025_generic.json"
+            )
+            capture_path.write_bytes(capture_path.read_bytes() + b"\n")
+            with self.assertRaisesRegex(ValueError, "manifest artifact hash mismatch"):
+                load_bounded_captures(copied_root)
 
     def test_generator_is_deterministic_when_capture_is_available(self) -> None:
         if ROUND3M_RESTRICTED_ROOT is None:
@@ -600,12 +752,22 @@ class LiveFixtureReceiptTests(unittest.TestCase):
             generated = Path(temporary)
             metrics = generate(ROUND3M_RESTRICTED_ROOT, generated)
             self.assertEqual(metrics["segmented_atomic_candidate_count"], 140)
+            self.assertEqual(metrics["public_review_candidate_count"], 140)
+            self.assertEqual(metrics["secondary_review_only_candidate_count"], 0)
             self.assertEqual(metrics["assertion_level_deinflated_count"], 139)
             self.assertEqual(metrics["record_level_unique_count"], 137)
             self.assertEqual(metrics["within_observation_repeat_count"], 1)
             self.assertEqual(metrics["cross_observation_repeat_count"], 2)
             self.assertEqual(
                 metrics["p1_p2_within_effective_record_coassertion_count"], 508
+            )
+            self.assertEqual(
+                metrics["restricted_capture_manifest_sha256"],
+                EXPECTED_CAPTURE_MANIFEST_SHA256,
+            )
+            self.assertEqual(
+                metrics["restricted_capture_root_locator"],
+                EXPECTED_CAPTURE_ROOT_LOCATOR,
             )
             for filename in (
                 "PUBLIC_SAFE_LIVE_ASSERTIONS.tsv",

@@ -45,6 +45,12 @@ CHECKPOINT_AT = "2026-08-28T04:00:00Z"
 DECISION_EFFECTIVE_DATE = "2026-08-28"
 REVIEW_PROTOCOL_VERSION = "round3m-descriptor-review-v1"
 GENERATOR_VERSION = "round3m-review-artifact-builder-v1"
+EXPECTED_CAPTURE_MANIFEST_SHA256 = (
+    "b36fbe8a959b099b1a3a073b045c3d6ac74e31043f090d2fd88bd78c3290e51d"
+)
+EXPECTED_CAPTURE_ROOT_LOCATOR = (
+    "restricted://coffee-flavor-round3m/round3m-2026-08-28t043000z"
+)
 
 EXPECTED_CANDIDATE_COUNT = 376
 EXPECTED_CANDIDATE_COUNTS_BY_YEAR = {
@@ -1046,6 +1052,11 @@ def read_live_assertions(path: Path) -> list[dict[str, str]]:
         require(row["rights_state"] != "AFFIRMATIVE", "singular rights state cannot grant rights")
         require(row["model_eligible"] == "false", "live provisional row cannot be model eligible")
         require(row["count_disposition"] in {"ADMITTED", "SECONDARY_REVIEW_ONLY"}, "bad count disposition")
+        require(
+            (row["publication_layer"] == "SECONDARY_SENSORY_TABLE")
+            == (row["count_disposition"] == "SECONDARY_REVIEW_ONLY"),
+            "secondary publication layer and review-only disposition must match",
+        )
         require(bool(SHA256_RE.fullmatch(row["raw_field_text_sha256"])), "bad live raw text hash")
         require(bool(SHA256_RE.fullmatch(row["atomic_source_text_sha256"])), "bad live atomic hash")
         require(bool(SHA256_RE.fullmatch(row["route_index_sha256"])), "bad route-index hash")
@@ -1055,6 +1066,30 @@ def read_live_assertions(path: Path) -> list[dict[str, str]]:
         require(row["parser_version"] and row["adapter_version"], "live version missing")
         require("\t" not in row["source_field_label"], "tab in live field label")
     return rows
+
+
+def read_live_adapter_metrics(path: Path) -> dict[str, object]:
+    """Verify the tracked live export's governed restricted-capture receipt."""
+
+    require(path.is_file(), "live adapter metrics receipt is missing")
+    metrics = json.loads(path.read_text(encoding="utf-8"))
+    require(isinstance(metrics, dict), "live adapter metrics must be a JSON object")
+    require(
+        metrics.get("restricted_capture_manifest_sha256")
+        == EXPECTED_CAPTURE_MANIFEST_SHA256,
+        "live adapter metrics manifest hash drift",
+    )
+    require(
+        metrics.get("restricted_capture_root_locator")
+        == EXPECTED_CAPTURE_ROOT_LOCATOR,
+        "live adapter metrics governed locator drift",
+    )
+    require(
+        metrics.get("restricted_capture_manifest_contract")
+        == "round3m.restricted-capture-manifest.v1",
+        "live adapter metrics manifest contract drift",
+    )
+    return metrics
 
 
 def live_capture_sha256(row: Mapping[str, str]) -> str:
@@ -1082,8 +1117,19 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
     human_template: list[dict[str, str]] = []
     adjudication_template: list[dict[str, str]] = []
 
-    observation_groups: dict[tuple[str, ...], list[str]] = {}
+    counting_rows: list[Mapping[str, str]] = []
     for row in live_rows:
+        secondary_layer = row["publication_layer"] == "SECONDARY_SENSORY_TABLE"
+        secondary_review_only = row["count_disposition"] == "SECONDARY_REVIEW_ONLY"
+        require(
+            secondary_layer == secondary_review_only,
+            "secondary publication layer and review-only disposition must match",
+        )
+        if not secondary_review_only:
+            counting_rows.append(row)
+
+    observation_groups: dict[tuple[str, ...], list[str]] = {}
+    for row in counting_rows:
         key = (
             row["effective_record_id"],
             row["source_artifact_id"],
@@ -1107,7 +1153,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 assertion_level_rows.append(
                     next(
                         row
-                        for row in live_rows
+                        for row in counting_rows
                         if row["descriptor_assertion_id"] == assertion_id
                     )
                 )
@@ -1132,7 +1178,18 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
         assertion_id = row["descriptor_assertion_id"]
         source_file_sha256 = live_capture_sha256(row)
         queue_id = stable_id("review", assertion_id)
-        decision_id = stable_id("decision", assertion_id, "HUMAN_REVIEW_REQUIRED")
+        secondary_review_only = row["count_disposition"] == "SECONDARY_REVIEW_ONLY"
+        current_disposition = (
+            "PUBLICATION_LAYER_CONFLICT"
+            if secondary_review_only
+            else "HUMAN_REVIEW_REQUIRED"
+        )
+        disposition_reason_code = (
+            "SECONDARY_LAYER_PRESERVED_WITHOUT_PRIMARY_DOUBLE_CREDIT"
+            if secondary_review_only
+            else "LIVE_HASH_ONLY_CANDIDATE_REQUIRES_HUMAN_REVIEW"
+        )
+        decision_id = stable_id("decision", assertion_id, current_disposition)
         source_locator = row["source_selector_or_locator"]
         page_locator = row["source_page_or_record_locator"]
         source_family_id = (
@@ -1166,8 +1223,8 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "evidence_tier": row["evidence_tier"],
                 "review_state": row["review_state"],
                 "review_actor_type": row["review_actor_type"],
-                "current_disposition": "HUMAN_REVIEW_REQUIRED",
-                "disposition_reason_code": "LIVE_HASH_ONLY_CANDIDATE_REQUIRES_HUMAN_REVIEW",
+                "current_disposition": current_disposition,
+                "disposition_reason_code": disposition_reason_code,
                 "human_review_required": "true",
                 "model_eligible": "false",
                 "decision_effective_date": DECISION_EFFECTIVE_DATE,
@@ -1178,12 +1235,12 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "decision_id": decision_id,
                 "review_queue_id": queue_id,
                 "descriptor_assertion_id": assertion_id,
-                "current_disposition": "HUMAN_REVIEW_REQUIRED",
+                "current_disposition": current_disposition,
                 "descriptor_class": row["descriptor_class"],
                 "review_state": row["review_state"],
                 "review_actor_type": row["review_actor_type"],
                 "review_protocol_version": REVIEW_PROTOCOL_VERSION,
-                "decision_reason_code": "LIVE_HASH_ONLY_CANDIDATE_REQUIRES_HUMAN_REVIEW",
+                "decision_reason_code": disposition_reason_code,
                 "decision_basis": row["origin_decision_basis"],
                 "evidence_locator": page_locator,
                 "source_file_sha256": source_file_sha256,
@@ -1296,7 +1353,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "related_assertion_id": "",
                 "relation_type": (
                     "SECONDARY_REVIEW_ONLY"
-                    if row["count_disposition"] == "SECONDARY_REVIEW_ONLY"
+                    if secondary_review_only
                     else "PRIMARY_PROVISIONAL_LAYER"
                 ),
                 "decision_basis": row["origin_decision_basis"],
@@ -1307,7 +1364,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "source_file_nonstorage_reason": row["source_file_nonstorage_reason"],
             }
         )
-        if row["count_disposition"] == "SECONDARY_REVIEW_ONLY":
+        if secondary_review_only:
             dedup = "UNRESOLVED"
         else:
             dedup = dedup_by_id[assertion_id]
@@ -1357,7 +1414,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "source_locator": page_locator,
                 "source_file_sha256": source_file_sha256,
                 "source_text_sha256": row["atomic_source_text_sha256"],
-                "machine_disposition": "HUMAN_REVIEW_REQUIRED",
+                "machine_disposition": current_disposition,
                 "reviewer_id_or_pseudonymous_code": "",
                 "reviewer_role": "",
                 "review_actor_type": "",
@@ -1367,7 +1424,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "evidence_locator": source_locator,
                 "reviewed_at": "",
                 "adjudication_status": "",
-                "previous_decision": "HUMAN_REVIEW_REQUIRED",
+                "previous_decision": current_disposition,
             }
         )
         adjudication_template.append(
@@ -1377,7 +1434,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "source_locator": page_locator,
                 "source_file_sha256": source_file_sha256,
                 "source_text_sha256": row["atomic_source_text_sha256"],
-                "provisional_decision": "HUMAN_REVIEW_REQUIRED",
+                "provisional_decision": current_disposition,
                 "human_review_decision": "",
                 "reviewer_id_or_pseudonymous_code": "",
                 "reviewer_role": "",
@@ -1388,7 +1445,7 @@ def build_live_rows(live_rows: Sequence[Mapping[str, str]]) -> dict[str, list[di
                 "evidence_locator": source_locator,
                 "reviewed_at": "",
                 "adjudication_status": "",
-                "previous_decision": "HUMAN_REVIEW_REQUIRED",
+                "previous_decision": current_disposition,
             }
         )
 
@@ -1727,6 +1784,7 @@ def build_live_import_receipt(
     live_path: Path,
     live_rows: Sequence[Mapping[str, str]],
     converted: Mapping[str, Sequence[Mapping[str, str]]],
+    live_metrics: Mapping[str, object],
 ) -> dict[str, object]:
     if not live_rows:
         return {
@@ -1791,6 +1849,15 @@ def build_live_import_receipt(
         "model_eligible_count": 0,
         "coassertion_event_count": len(converted["coassertions"]),
         "coassertion_scope": "P2_PRIMARY_JURY_WITHIN_EFFECTIVE_RECORD_HASH_ONLY",
+        "restricted_capture_manifest_sha256": live_metrics[
+            "restricted_capture_manifest_sha256"
+        ],
+        "restricted_capture_root_locator": live_metrics[
+            "restricted_capture_root_locator"
+        ],
+        "restricted_capture_manifest_contract": live_metrics[
+            "restricted_capture_manifest_contract"
+        ],
         "independent_source_body_reproduction_status": (
             "NOT_CLAIMED_ROUTE_INDEX_HASH_ONLY_AND_MACHINE_CENSUS_BUNDLE_MISSING"
         ),
@@ -1861,6 +1928,11 @@ def main() -> int:
     validate_outputs(existing_rows)
     live_path = args.live_assertion_export.resolve()
     live_input_rows = read_live_assertions(live_path)
+    live_metrics = (
+        read_live_adapter_metrics(live_path.parent / "LIVE_ADAPTER_METRICS.json")
+        if live_input_rows
+        else {}
+    )
     live_rows = build_live_rows(live_input_rows)
     require(
         not (
@@ -1871,7 +1943,9 @@ def main() -> int:
     )
     generated_rows = merge_rows(existing_rows, live_rows)
     validate_merged_outputs(generated_rows, len(live_input_rows))
-    live_import_receipt = build_live_import_receipt(live_path, live_input_rows, live_rows)
+    live_import_receipt = build_live_import_receipt(
+        live_path, live_input_rows, live_rows, live_metrics
+    )
     c0_c1_receipt = build_c0_c1_receipt(record_index)
 
     search_roots = [path.resolve() for path in args.research_artifact_root]
@@ -2051,6 +2125,7 @@ def main() -> int:
                 "human_or_expert_review_state_allowed": False,
                 "model_eligible_allowed": False,
                 "affirmative_singular_rights_state_allowed": False,
+                "governed_restricted_capture_manifest_receipt_required": True,
                 "rights_mapping": (
                     "SINGULAR_PENDING_OR_UNKNOWN_IS_CONSERVATIVELY_APPLIED_TO_ALL_SIX_"
                     "PURPOSES_WITH_NO_AFFIRMATIVE_GRANT"
