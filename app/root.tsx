@@ -45,7 +45,7 @@ export function meta() {
     {
       name: "description",
       content:
-        "An experimental digital publication and sensory specimen index for bilingual coffee flavor descriptors.",
+        "An evidence-grounded mobile-first web prototype for translating everyday coffee perception into professional sensory references.",
     },
   ];
 }
@@ -133,6 +133,11 @@ function AppChrome() {
       { to: "/", label: "FIELD", zh: "词场" },
       { to: "/atlas", label: "ATLAS", zh: "索引" },
       { to: "/methodology", label: "METHOD", zh: "方法" },
+      {
+        to: "/methodology#project-status",
+        label: "STATUS",
+        zh: "状态",
+      },
     ],
     [],
   );
@@ -177,13 +182,13 @@ function AppChrome() {
         aria-hidden="true"
       />
       <CursorLayer mode={cursor.mode} label={cursor.label} />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <Outlet context={cursor} />
       </main>
       <footer className="publication-footer">
-        <span>v0.2 editorial field migration</span>
+        <span>mobile-first research prototype</span>
         <span>project-curated draft sensory association profiles</span>
-        <span>not chemical indicators / not fixed cupping results</span>
+        <span>planned PWA / model not trained</span>
       </footer>
       <DevDebugPanel />
     </>

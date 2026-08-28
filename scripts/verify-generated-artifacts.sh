@@ -41,6 +41,7 @@ python3 "$REPOSITORY_ROOT/db/scripts/test-round3e-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3g-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3h-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3i-freeze-artifact-contract.py"
+python3 "$REPOSITORY_ROOT/scripts/generate-public-project-status.py" --check
 "$NPM_BIN" run test:round3k-governance-artifacts
 "$NPM_BIN" run test:round3k-adapter-contract
 

@@ -165,3 +165,49 @@ test("mobile atlas layout avoids horizontal overflow", async ({ page }) => {
   expect(hasHorizontalOverflow).toBe(false);
   expect(consoleErrors).toEqual([]);
 });
+
+test("project status is generated, keyboard reachable, and reduced-motion aware", async ({
+  page,
+  request,
+}) => {
+  const consoleErrors = watchConsoleErrors(page);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/methodology#project-status");
+
+  await expect(
+    page.getByRole("heading", { name: /evidence before adjectives/i }),
+  ).toBeVisible();
+  await expect(page.getByText("NOT_STARTED", { exact: true })).toHaveCount(2);
+  await expect(
+    page.getByRole("link", { name: /Try the prototype/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Download public status JSON/ }),
+  ).toBeVisible();
+
+  const reducedMotion = await page.evaluate(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  expect(reducedMotion).toBe(true);
+
+  await page.goto("/");
+  await page.keyboard.press("Tab");
+  await expect(
+    page.getByRole("link", { name: /Skip to content/ }),
+  ).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#main-content")).toBeFocused();
+
+  const statusResponse = await request.get("/project-status.json");
+  expect(statusResponse.ok()).toBe(true);
+  const status = await statusResponse.json();
+  expect(status.ml.model_status).toBe("NOT_TRAINED");
+  expect(status.pwa.public_claim_allowed).toBe(false);
+  expect(status.first_party_user_research.user_data_collected).toBe(false);
+
+  const hasHorizontalOverflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > window.innerWidth + 1,
+  );
+  expect(hasHorizontalOverflow).toBe(false);
+  expect(consoleErrors).toEqual([]);
+});

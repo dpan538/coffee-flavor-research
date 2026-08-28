@@ -1000,6 +1000,85 @@ a:focus-visible .map-node__label {
   font-family: var(--font-meta);
 }
 
+.project-status-section {
+  padding: clamp(4rem, 8vw, 8rem) var(--safe-x);
+  border-bottom: var(--line);
+}
+
+.project-status-section__intro {
+  max-width: 76rem;
+}
+
+.project-status-section__intro .strip-title {
+  max-width: 10ch;
+}
+
+.project-status-grid,
+.project-track-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 3rem;
+  border-top: var(--line);
+  border-left: var(--line);
+}
+
+.project-track-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.project-status-grid article,
+.project-track-grid article {
+  min-height: 12rem;
+  border-right: var(--line);
+  border-bottom: var(--line);
+  padding: 1rem;
+}
+
+.project-status-grid strong {
+  display: block;
+  margin-block: 1rem;
+  font-family: var(--font-display-latin);
+  font-size: clamp(1.7rem, 3vw, 3.4rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.project-status-grid p,
+.project-track-grid p {
+  max-width: 36ch;
+  font-family: var(--font-meta);
+  font-size: 0.74rem;
+}
+
+.project-track-grid h3 {
+  margin-block: 1rem;
+  font-family: var(--font-display-latin);
+  font-size: clamp(1.5rem, 2.5vw, 2.8rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.project-status-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.project-status-links a {
+  border: var(--line);
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-meta);
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.project-status-links a:hover,
+.project-status-links a:focus-visible {
+  background: var(--accent);
+  color: #050505;
+}
+
 .source-matrix,
 .asset-matrix {
   width: 100%;
@@ -1085,7 +1164,7 @@ a:focus-visible .map-node__label {
 
   .site-chrome nav {
     grid-auto-flow: row;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .site-chrome nav a {
@@ -1140,7 +1219,9 @@ a:focus-visible .map-node__label {
   }
 
   .asset-grid,
-  .dimension-ledger {
+  .dimension-ledger,
+  .project-status-grid,
+  .project-track-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1165,6 +1246,8 @@ a:focus-visible .map-node__label {
   .method-index,
   .asset-grid,
   .dimension-ledger,
+  .project-status-grid,
+  .project-track-grid,
   .specimen-actions {
     grid-template-columns: 1fr;
   }

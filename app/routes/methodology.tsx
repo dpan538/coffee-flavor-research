@@ -10,14 +10,15 @@ import { descriptorAssets } from "@/assets/descriptor-assets";
 import { SpecimenVisual } from "@/components/SpecimenVisual";
 import { useAnimeScope } from "@/motion/animeScope";
 import { useScrollScene } from "@/motion/scrollObservers";
+import { projectStatus } from "@/generated/projectStatus";
 
 export function meta() {
   return [
-    { title: "Methodology Appendix / Coffee Flavor Atlas" },
+    { title: "Methodology and Project Status / Coffee Flavor Atlas" },
     {
       name: "description",
       content:
-        "Data model, uncertainty, source policy and asset spike notes for Coffee Flavor Atlas.",
+        "Data model, evidence boundaries, public project status and limitations for Coffee Flavor Atlas.",
     },
   ];
 }
@@ -36,14 +37,15 @@ export default function MethodologyRoute() {
       >
         <nav className="method-index" aria-label="Method sections">
           {[
-            ["01", "data model"],
-            ["02", "range profile"],
-            ["03", "evidence"],
-            ["04", "translation"],
-            ["05", "source policy"],
-            ["06", "asset spike"],
-          ].map(([number, label]) => (
-            <a href={`#method-${number}`} key={number}>
+            ["01", "data model", "method-01"],
+            ["02", "range profile", "method-02"],
+            ["03", "evidence", "method-03"],
+            ["04", "translation", "method-04"],
+            ["05", "source policy", "method-05"],
+            ["06", "asset spike", "method-06"],
+            ["07", "project status", "project-status"],
+          ].map(([number, label, target]) => (
+            <a href={`#${target}`} key={number}>
               <span className="meta-label">{number}</span>
               <strong>{label}</strong>
             </a>
@@ -218,6 +220,124 @@ export default function MethodologyRoute() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section
+        className="project-status-section"
+        id="project-status"
+        data-scroll-scene
+        aria-labelledby="project-status-title"
+      >
+        <div className="project-status-section__intro" data-reveal>
+          <p className="meta-label">07 / CURRENT PROJECT STATUS</p>
+          <h2 className="strip-title" id="project-status-title">
+            evidence before adjectives
+          </h2>
+          <p className="body-copy">
+            Coffee Flavor Atlas is a mobile-first web prototype backed by a
+            validated PostgreSQL research foundation. Installable PWA behavior,
+            first-party user research and trained models are not current
+            capabilities. These values are generated from repository receipts,
+            not marketing estimates.
+          </p>
+        </div>
+
+        <div className="project-status-grid" data-reveal>
+          <article>
+            <span className="meta-label">PRODUCT</span>
+            <strong>IMPLEMENTED</strong>
+            <p>Responsive atlas, detail, comparison and method surfaces.</p>
+          </article>
+          <article>
+            <span className="meta-label">DATABASE</span>
+            <strong>VALIDATED</strong>
+            <p>
+              {projectStatus.database.canonical_concept_count} canonical
+              concepts; {projectStatus.database.migration_count} forward
+              migrations.
+              {/* claim: DATABASE_CANONICAL_CONCEPTS */}
+              {/* claim: DATABASE_MIGRATIONS */}
+            </p>
+          </article>
+          <article>
+            <span className="meta-label">USER RESEARCH</span>
+            <strong>NOT_STARTED</strong>
+            <p>
+              {projectStatus.first_party_user_research.interview_count}
+              interviews and{" "}
+              {projectStatus.first_party_user_research.usability_session_count}
+              usability sessions; protocol design only.
+              {/* claim: USER_INTERVIEW_COUNT */}
+              {/* claim: USER_USABILITY_COUNT */}
+            </p>
+          </article>
+          <article>
+            <span className="meta-label">ML / DL</span>
+            <strong>NOT_STARTED</strong>
+            <p>
+              {projectStatus.ml.model_run_count} model runs; deterministic
+              retrieval remains the baseline.
+              {/* claim: MODEL_RUN_COUNT */}
+            </p>
+          </article>
+          <article>
+            <span className="meta-label">PWA</span>
+            <strong>{projectStatus.pwa.status}</strong>
+            <p>No manifest, service worker, installability or offline shell.</p>
+          </article>
+          <article>
+            <span className="meta-label">MODEL ELIGIBILITY</span>
+            <strong>BLOCKED</strong>
+            <p>
+              {projectStatus.professional_descriptor_pilot.model_eligible_count}
+              rights-cleared model-eligible assertions.
+              {/* claim: MODEL_ELIGIBLE_ASSERTIONS */}
+            </p>
+          </article>
+        </div>
+
+        <div className="project-track-grid" data-reveal>
+          <article>
+            <span className="meta-label">TRACK A</span>
+            <h3>Professional evidence</h3>
+            <p>
+              Grounds future normalization only after provenance, qualified
+              review, rights and gate requirements pass.
+            </p>
+          </article>
+          <article>
+            <span className="meta-label">TRACK B</span>
+            <h3>Industry language</h3>
+            <p>
+              Supports vocabulary and package-note comparison; it is not
+              automatically professional truth.
+            </p>
+          </article>
+          <article>
+            <span className="meta-label">TRACK C</span>
+            <h3>Consumer language</h3>
+            <p>
+              Supports comprehension and UX research; it cannot become a core
+              professional label.
+            </p>
+          </article>
+          <article>
+            <span className="meta-label">TRACK D</span>
+            <h3>First-party research</h3>
+            <p>
+              Future consented behavior may support relevance and evaluation,
+              not objective flavor truth.
+            </p>
+          </article>
+        </div>
+
+        <div className="project-status-links" data-reveal>
+          <a href="/atlas">Try the prototype</a>
+          <a href="/project-status.json">Download public status JSON</a>
+          <a href="https://github.com/dpan538/coffee-flavor-research/blob/codex/coffee-flavor-portfolio-repo-normalization-20260828/docs/portfolio/CASE_STUDY.md">
+            Read the project case study
+          </a>
         </div>
       </section>
     </div>

@@ -18,6 +18,9 @@ fi
 printf 'CI_VERIFY_STEP=generated_artifact_drift\n'
 bash "$SCRIPT_DIR/verify-generated-artifacts.sh"
 
+printf 'CI_VERIFY_STEP=public_project_contracts\n'
+"$NPM_BIN" run public:verify
+
 printf 'CI_VERIFY_STEP=format:check\n'
 "$NPM_BIN" run format:check
 
