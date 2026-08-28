@@ -1,0 +1,46 @@
+{
+  "assertion_level_deinflated_count": 139,
+  "coassertion_event_count": 508,
+  "coassertion_scope": "P2_PRIMARY_JURY_WITHIN_EFFECTIVE_RECORD_HASH_ONLY",
+  "count_disposition_distribution": {
+    "ADMITTED": 140
+  },
+  "counts_as_reviewed_descriptor_count": 0,
+  "descriptor_class_distribution": {
+    "BROAD_SENSORY": 54,
+    "STRICT_FLAVOR": 86
+  },
+  "duplicate_disposition_distribution": {
+    "CANONICAL": 137,
+    "CROSS_OBSERVATION_REPEAT": 2,
+    "EXACT_WITHIN_FIELD_REPEAT": 1
+  },
+  "effective_record_count": 8,
+  "evidence_tier_distribution": {
+    "P2": 73,
+    "UNRESOLVED": 67
+  },
+  "expert_adjudicated_count": 0,
+  "explicit_source_file_nonstorage_reason_count": 140,
+  "full_source_file_hash_count": 0,
+  "human_confirmed_count": 0,
+  "independent_source_body_reproduction_status": "NOT_CLAIMED_ROUTE_INDEX_HASH_ONLY_AND_MACHINE_CENSUS_BUNDLE_MISSING",
+  "input_path": "db/adapters/round3m/generated/PUBLIC_SAFE_LIVE_ASSERTIONS.tsv",
+  "input_row_count": 140,
+  "input_sha256": "64248036679df67ab7442fdae17034e88e3c30e8aa652747ed3cc4be2a5a7683",
+  "input_status": "IMPORTED_PUBLIC_SAFE_HASH_ONLY",
+  "merged_row_count": 140,
+  "model_eligible_count": 0,
+  "receipt_version": "round3m-public-safe-live-assertion-import-v1",
+  "record_level_unique_count": 137,
+  "review_state_distribution": {
+    "PROVISIONAL_MACHINE_CLASSIFIED": 140
+  },
+  "rights_state_distribution": {
+    "PENDING": 73,
+    "UNKNOWN": 67
+  },
+  "route_index_hash_count": 140,
+  "source_route_count": 3,
+  "source_text_storage_state": "HASH_ONLY"
+}

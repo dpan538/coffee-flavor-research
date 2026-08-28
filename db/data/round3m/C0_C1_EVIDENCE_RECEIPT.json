@@ -1,0 +1,47 @@
+{
+  "c0_source_status_distribution": {
+    "NOT_APPLICABLE": 273,
+    "NOT_REPORTED": 22071,
+    "REPORTED": 495,
+    "REPORTED_UNRESOLVED": 39,
+    "SOURCE_UNKNOWN": 3637
+  },
+  "c1_evidence_status_distribution": {
+    "NOT_APPLICABLE": 270,
+    "NOT_REPORTED": 14388,
+    "REPORTED_UNRESOLVED": 7683,
+    "SOURCE_UNKNOWN": 4174
+  },
+  "c1_promotion_count": 0,
+  "direct_roast_evidence_c1_status_distribution": {
+    "REPORTED_UNRESOLVED": 7683
+  },
+  "direct_source_roast_scheme_present_count": 7683,
+  "direct_source_roast_value_and_scheme_present_count": 7683,
+  "direct_source_roast_value_present_count": 7683,
+  "fresh_preparation_status_distribution": {
+    "CONFIRMED": 13157,
+    "NOT_APPLICABLE": 273,
+    "PENDING": 13085
+  },
+  "input_checkpoint_at": "2026-08-28T04:00:00Z",
+  "input_checkpoint_sha256": "c054e364e5193558c752ce03ff5ec002b807343e00743e7af94676e17cf39e7e",
+  "policy": {
+    "c0_mapping_requires_reviewed_mapping": true,
+    "competition_categories_auto_mapped_to_c1": false,
+    "preparation_service_requires_explicit_source_evidence": true,
+    "source_native_roast_retained_in_restricted_checkpoint": true,
+    "tasting_descriptors_used_to_infer_roast": false
+  },
+  "public_boundary": {
+    "aggregate_presence_counts_emitted": true,
+    "record_level_context_rows_emitted": 0,
+    "source_native_roast_scheme_strings_emitted": 0,
+    "source_native_roast_strings_emitted": 0
+  },
+  "receipt_version": "round3m-c0-c1-evidence-receipt-v1",
+  "record_count": 26515,
+  "reviewed_c1_mapping_count": 0,
+  "semantic_inference_used_count": 0,
+  "universe": "ROUND3L_RESEARCH_STAGED_PUBLICATION_RECORDS"
+}

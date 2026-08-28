@@ -1,0 +1,33 @@
+{
+  "assertion_level_deinflated_count": 139,
+  "capture_scope": "WEB_INDEX_FIELD_CAPTURE_NOT_FULL_PAGE_BODY",
+  "class_counts": {
+    "BROAD_SENSORY": 54,
+    "STRICT_FLAVOR": 86
+  },
+  "completed_wcc_scoresheet_live_positive_count": 0,
+  "contract_version": "round3m.live-adapter-public-receipt.v1",
+  "cross_observation_repeat_count": 2,
+  "effective_record_bridge_count": 8,
+  "effective_record_count": 8,
+  "full_page_body_acquisition_status": "BLOCKED_ENVIRONMENT_POLICY",
+  "live_source_adapter_count": 4,
+  "live_source_adapter_validated_count": 3,
+  "mexico_2023_export_count": 0,
+  "mexico_2023_status": "SOURCE_DRIFT_DETAIL_BODY_UNAVAILABLE",
+  "model_eligible_count": 0,
+  "p1_p2_within_effective_record_coassertion_count": 508,
+  "raw_source_text_published": false,
+  "record_level_unique_count": 137,
+  "rights_counts": {
+    "PENDING": 73,
+    "UNKNOWN": 67
+  },
+  "segmented_atomic_candidate_count": 140,
+  "source_artifact_bridge_count": 8,
+  "tier_counts": {
+    "P2": 73,
+    "UNRESOLVED": 67
+  },
+  "within_observation_repeat_count": 1
+}

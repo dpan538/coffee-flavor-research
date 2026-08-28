@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "byte_count": 248871,
+      "data_row_count": 376,
+      "path": "EXISTING_376_PROVISIONAL_DECISIONS.tsv",
+      "sha256": "4667c5d234b64b185fae6c61567cd83593abcc83a69d380b7f9a368aa0558675"
+    },
+    {
+      "byte_count": 339552,
+      "data_row_count": 376,
+      "path": "EXISTING_376_REVIEW_QUEUE.tsv",
+      "sha256": "52184d0a3ef72bf6938fa0db63922150f45ffa52af2e761e11e1aa3730988436"
+    },
+    {
+      "byte_count": 2881,
+      "data_row_count": null,
+      "path": "EXISTING_376_REVIEW_RECEIPT.json",
+      "sha256": "01b118036b668e54da571d54695cba1409048d84259763e4c163f922ff337748"
+    },
+    {
+      "byte_count": 1812,
+      "data_row_count": 5,
+      "path": "EXISTING_376_SOURCE_ARTIFACT_RECEIPT.tsv",
+      "sha256": "48e213941d3c9e838b2b2028ea1dcb973e7ffc2b43a2297a6b1bccb2de379f47"
+    }
+  ],
+  "generator_version": "round3m-review-artifact-builder-v1",
+  "input_checkpoint_at": "2026-08-28T04:00:00Z",
+  "manifest_version": "round3m-existing-376-public-safe-v1",
+  "rights_boundary": "NO_SOURCE_NATIVE_ROW_TEXT_OR_RESULT_IDENTITY_FIELDS"
+}
