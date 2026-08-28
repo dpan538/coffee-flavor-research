@@ -1,0 +1,2 @@
+analyst_time_log_key	task_type	source_route_id	artifact_count	candidate_count	reviewed_count	started_at	ended_at	active_minutes	automated_runtime_seconds	review_actor_type	notes
+round3m.end-to-end-execution.20260828	RECONCILIATION		851	516	0	2026-08-28T04:56:44Z	2026-08-28T05:53:38Z	56.900	NA_NOT_INSTRUMENTED_FROM_TASK_START	CODEX_SOURCE_AUDITOR	MULTIPLE_ROUTES aggregate. Exact round-local elapsed time only; no historical or per-route allocation was fabricated. Automated runtime was not comprehensively instrumented from task start.

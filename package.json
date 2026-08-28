@@ -25,6 +25,8 @@
     "test:round3i-freeze-artifacts": "python3 db/scripts/test-round3i-freeze-artifact-contract.py",
     "test:round3k-governance-artifacts": "python3 -B db/scripts/test-round3k-governance-artifacts.py",
     "test:round3k-adapter-contract": "python3 -B db/scripts/test-round3k-adapter-contract.py",
+    "test:round3m-artifacts": "python3 -B db/scripts/test-round3m-artifact-contract.py",
+    "test:round3m-live-adapters": "env -u ROUND3M_RESTRICTED_ROOT -u ROUND3L_RESTRICTED_ROOT python3 -B db/scripts/test-round3m-live-adapters.py",
     "db:migrate": "bash db/scripts/apply.sh",
     "test:db": "bash db/scripts/test.sh",
     "test:db:repro": "bash db/scripts/rebuild-twice.sh",

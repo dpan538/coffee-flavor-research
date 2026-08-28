@@ -244,7 +244,9 @@ SQL
   # Passing the generated UNION as --command eventually exceeds the platform
   # argument-size limit as governed schemas add stable key columns. Keep the
   # same deterministic query, but let psql read it from an artifact file.
-  inventory_query_file=$(mktemp "$ARTIFACT_DIR/stable-key-query.XXXXXX.sql")
+  # macOS mktemp only substitutes a trailing XXXXXX run; a suffix after it
+  # creates the same literal filename on each build and breaks rebuild two.
+  inventory_query_file=$(mktemp "$ARTIFACT_DIR/stable-key-query.XXXXXX")
   printf '%s\n' "$inventory_sql" >"$inventory_query_file"
   psql_target "$database_name" \
     --tuples-only \
@@ -575,6 +577,16 @@ write_validation_results() {
       --field-separator='|' \
       --command="SELECT 'round3k', check_key, violation_count, passed
                  FROM audit.run_round3k_validation_queries()
+                 ORDER BY check_key;" >>"$output_file"
+  fi
+
+  if (( DISCOVERED_MIGRATION_COUNT > 56 )); then
+    psql_target "$database_name" \
+      --tuples-only \
+      --no-align \
+      --field-separator='|' \
+      --command="SELECT 'round3m', check_key, violation_count, passed
+                 FROM audit.run_round3m_gate_validation_queries()
                  ORDER BY check_key;" >>"$output_file"
   fi
 }
@@ -1650,6 +1662,10 @@ run_build() {
     "$build_dir/round3h-checkpoint-schema-guard-counts.txt" \
     "$build_dir/round3i-checkpoint-schema-guard-counts.txt" \
     "$build_dir/round3i-freeze"
+  if (( DISCOVERED_MIGRATION_COUNT > 56 )); then
+    "$SCRIPT_DIR/load-round3m-artifacts.sh" "$database_name"
+    printf 'ROUND3M_ARTIFACT_LOAD_PASS=true\n'
+  fi
   "$SCRIPT_DIR/test.sh" "$database_name"
   write_schema_guard_counts \
     "$database_name" "$build_dir/round3k-final-schema-guard-counts.txt"
