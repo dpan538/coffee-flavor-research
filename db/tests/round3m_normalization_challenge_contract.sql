@@ -607,25 +607,25 @@ INSERT INTO audit.round3m_descriptor_review_receipt (
 )
 SELECT 'round3m.normalization.contract.generic-receipt.' || fixture.suffix,
        assertion.descriptor_assertion_id, 1,
-       'round3m-normalization-generic-human-' || fixture.suffix,
-       'PROFESSIONAL_SENSORY_REVIEWER', 'HUMAN_REVIEWER',
-       'DOCUMENTED_HUMAN_EVENT', fixture.event_sha256,
+       'round3m-normalization-generic-source-audit-' || fixture.suffix,
+       'SOURCE_AUDITOR', 'CODEX_SOURCE_AUDITOR',
+       'CODEX_SOURCE_AUDIT', NULL,
        'round3m-normalization-generic-v1', fixture.decision,
        'Generic assertion-level review is not qualified normalization review.',
        'fixture://round3m-normalization/generic-review/' || fixture.suffix,
        transaction_timestamp() - interval '2 hours', 'NOT_REQUIRED',
        'PROVISIONAL_MACHINE_CLASSIFIED'
 FROM (VALUES
-    ('ambiguous', 'MARK_AMBIGUOUS', repeat('1', 64)),
-    ('unresolved', 'MARK_UNRESOLVED', repeat('2', 64))
-) AS fixture(suffix, decision, event_sha256)
+    ('ambiguous', 'MARK_AMBIGUOUS'),
+    ('unresolved', 'MARK_UNRESOLVED')
+) AS fixture(suffix, decision)
 JOIN corpus.round3m_descriptor_assertion AS assertion
   ON assertion.descriptor_assertion_key =
      'round3m.normalization.contract.generic.' || fixture.suffix;
 
 UPDATE corpus.round3m_descriptor_assertion AS assertion
 SET review_state = 'PROVENANCE_UNRESOLVED',
-    review_actor_type = 'HUMAN_REVIEWER',
+    review_actor_type = 'CODEX_SOURCE_AUDITOR',
     current_review_receipt_id = receipt.review_receipt_id
 FROM audit.round3m_descriptor_review_receipt AS receipt
 WHERE receipt.descriptor_assertion_id = assertion.descriptor_assertion_id
@@ -722,15 +722,203 @@ JOIN competition.edition AS edition
 WHERE competition_assertion.descriptor_assertion_key =
       'round3m.normalization.contract.competition-assertion';
 
+INSERT INTO audit.reviewer (reviewer_key, display_name, affiliation)
+VALUES
+    ('round3m-normalization-confirming-human',
+     'Round 3M normalization confirming human',
+     'Transaction-local fixture'),
+    ('round3m.normalization.contract.reviewer.independent-1',
+     'Round 3M normalization independent reviewer 1',
+     'Transaction-local fixture'),
+    ('round3m.normalization.contract.reviewer.independent-2',
+     'Round 3M normalization independent reviewer 2',
+     'Transaction-local fixture'),
+    ('round3m.normalization.contract.reviewer.adjudicator',
+     'Round 3M normalization adjudicator',
+     'Transaction-local fixture');
+
+INSERT INTO evidence.round3m_reviewer_evidence_artifact (
+    reviewer_evidence_artifact_id, artifact_purpose_code,
+    evidence_classification_code, governed_locator, artifact_sha256,
+    byte_count, non_storage_reason, acquired_at, storage_state_code,
+    privacy_state_code, supplying_authority, acquisition_method_code
+)
+SELECT 'round3m.normalization.contract.artifact.' || purpose.suffix || '.' ||
+           replace(reviewer.reviewer_key,
+                   'round3m.normalization.contract.reviewer.',''),
+       purpose.purpose_code,
+       'PROJECT_HUMAN_DECISION_WITH_EVIDENCE',
+       'fixture://round3m-normalization/' || purpose.suffix || '/' ||
+           replace(reviewer.reviewer_key,
+                   'round3m.normalization.contract.reviewer.',''),
+       audit.round3i_utf8_sha256(
+           'round3m normalization ' || purpose.suffix || ' evidence ' ||
+           reviewer.reviewer_key
+       ), 0, 'Transaction-local hash-only 058 fixture.',
+       transaction_timestamp() - interval '3 hours',
+       'HASH_AND_LOCATOR_ONLY', 'PSEUDONYMOUS',
+       'Round 3M test harness', 'GOVERNED_PROJECT_HUMAN_IMPORT'
+FROM audit.reviewer AS reviewer
+CROSS JOIN (VALUES
+    ('qualification','REVIEWER_QUALIFICATION_EVIDENCE'),
+    ('admission','REVIEWER_ADMISSION_AUTHORIZATION'),
+    ('decision','ROW_LEVEL_REVIEWER_DECISION_EXPORT')
+) AS purpose(suffix,purpose_code)
+WHERE reviewer.reviewer_key IN (
+    'round3m-normalization-confirming-human',
+    'round3m.normalization.contract.reviewer.independent-1',
+    'round3m.normalization.contract.reviewer.independent-2',
+    'round3m.normalization.contract.reviewer.adjudicator'
+);
+
+INSERT INTO evidence.round3m_reviewer_evidence_artifact (
+    reviewer_evidence_artifact_id, artifact_purpose_code,
+    evidence_classification_code, governed_locator, artifact_sha256,
+    byte_count, non_storage_reason, acquired_at, storage_state_code,
+    privacy_state_code, supplying_authority, acquisition_method_code
+)
+SELECT 'round3m.normalization.contract.artifact.identity.' || fixture.suffix,
+       'REVIEWER_IDENTITY_EVIDENCE',
+       'PROJECT_HUMAN_DECISION_WITH_EVIDENCE',
+       'fixture://round3m-normalization/human-identity/' || fixture.suffix,
+       audit.round3i_utf8_sha256(
+           'round3m human identity evidence ' || fixture.suffix
+       ), 0, 'Transaction-local hash-only identity fixture.',
+       transaction_timestamp() - interval '3 hours',
+       'HASH_AND_LOCATOR_ONLY', 'PSEUDONYMOUS',
+       'Round 3M test harness', 'GOVERNED_PROJECT_HUMAN_IMPORT'
+FROM (VALUES ('independent-1'),('independent-2'),('adjudicator'))
+    AS fixture(suffix);
+
+INSERT INTO audit.round3m_reviewer_qualification_receipt (
+    qualification_receipt_id, qualification_identity_key,
+    qualification_version, reviewer_id, reviewer_pseudonymous_code,
+    qualification_scope_code, allowed_reviewer_role,
+    qualification_level_code, qualification_protocol_version,
+    qualification_evidence_artifact_id, qualification_evidence_locator,
+    issuing_authority, valid_from, valid_to, qualification_state_code,
+    deterministic_payload_sha256
+)
+SELECT 'round3m.normalization.contract.q.' || fixture.suffix || '.v1',
+       'round3m.normalization.contract.q.' || fixture.suffix, 1,
+       reviewer.reviewer_id, reviewer.reviewer_key, fixture.scope_code,
+       fixture.role_code, fixture.level_code, fixture.protocol_version,
+       'round3m.normalization.contract.artifact.qualification.' ||
+           fixture.suffix,
+       'fixture://round3m-normalization/qualification/' || fixture.suffix,
+       'Round 3M test authority', DATE '2026-01-01', DATE '2026-12-31',
+       'ACTIVE', repeat('0',64)
+FROM (VALUES
+    ('round3m-normalization-confirming-human','round3m-normalization-confirming-human',
+     'DESCRIPTOR_SEGMENTATION_REVIEW','PROFESSIONAL_SENSORY_REVIEWER',
+     'PROTOCOL_QUALIFIED','round3m-normalization-confirmation-v1'),
+    ('independent-1','round3m.normalization.contract.reviewer.independent-1',
+     'NORMALIZATION_TARGET_REVIEW','INDEPENDENT_REVIEWER',
+     'PROFESSIONAL','round3m-normalization-label-review-v1'),
+    ('independent-2','round3m.normalization.contract.reviewer.independent-2',
+     'NORMALIZATION_TARGET_REVIEW','INDEPENDENT_REVIEWER',
+     'PROFESSIONAL','round3m-normalization-label-review-v1'),
+    ('adjudicator','round3m.normalization.contract.reviewer.adjudicator',
+     'SENSORY_ADJUDICATION','ADJUDICATOR','EXPERT',
+     'round3m-normalization-label-review-v1')
+) AS fixture(suffix,reviewer_key,scope_code,role_code,level_code,
+             protocol_version)
+JOIN audit.reviewer AS reviewer ON reviewer.reviewer_key=fixture.reviewer_key;
+
+INSERT INTO audit.round3m_reviewer_admission_receipt (
+    admission_receipt_id, admission_identity_key, admission_version,
+    reviewer_id, reviewer_pseudonymous_code, qualification_receipt_id,
+    admitted_reviewer_role, admitted_protocol_version, review_scope_code,
+    review_scope_key, admission_authority, admission_evidence_artifact_id,
+    admission_evidence_locator, valid_from, valid_to,
+    admission_state_code, deterministic_payload_sha256
+)
+SELECT 'round3m.normalization.contract.a.' || fixture.suffix || '.v1',
+       'round3m.normalization.contract.a.' || fixture.suffix, 1,
+       reviewer.reviewer_id, reviewer.reviewer_key,
+       'round3m.normalization.contract.q.' || fixture.suffix || '.v1',
+       fixture.role_code, fixture.protocol_version, fixture.scope_code,
+       fixture.scope_key, 'Round 3M test authority',
+       'round3m.normalization.contract.artifact.admission.' || fixture.suffix,
+       'fixture://round3m-normalization/admission/' || fixture.suffix,
+       '2026-01-01T00:00:00Z','2026-12-31T23:59:59Z','ACTIVE',repeat('0',64)
+FROM (VALUES
+    ('round3m-normalization-confirming-human','round3m-normalization-confirming-human',
+     'PROFESSIONAL_SENSORY_REVIEWER','round3m-normalization-confirmation-v1',
+     'DESCRIPTOR_SEGMENTATION_REVIEW','descriptor:round3m-normalization'),
+    ('independent-1','round3m.normalization.contract.reviewer.independent-1',
+     'INDEPENDENT_REVIEWER','round3m-normalization-label-review-v1',
+     'NORMALIZATION_TARGET_REVIEW','professional-label:round3m-normalization'),
+    ('independent-2','round3m.normalization.contract.reviewer.independent-2',
+     'INDEPENDENT_REVIEWER','round3m-normalization-label-review-v1',
+     'NORMALIZATION_TARGET_REVIEW','professional-label:round3m-normalization'),
+    ('adjudicator','round3m.normalization.contract.reviewer.adjudicator',
+     'ADJUDICATOR','round3m-normalization-label-review-v1',
+     'SENSORY_ADJUDICATION','professional-label:round3m-normalization')
+) AS fixture(suffix,reviewer_key,role_code,protocol_version,scope_code,scope_key)
+JOIN audit.reviewer AS reviewer ON reviewer.reviewer_key=fixture.reviewer_key;
+
+INSERT INTO audit.round3m_human_reviewer_identity_receipt (
+    reviewer_identity_receipt_key, reviewer_id,
+    identity_evidence_artifact_id, canonical_human_identity_sha256,
+    identity_evidence_sha256, receipt_origin_code, evidence_locator
+)
+SELECT 'round3m.normalization.contract.identity.' || fixture.suffix,
+       reviewer.reviewer_id,
+       'round3m.normalization.contract.artifact.identity.' || fixture.suffix,
+       audit.round3i_utf8_sha256(
+           'round3m canonical human identity ' || fixture.suffix
+       ),
+       audit.round3i_utf8_sha256(
+           'round3m human identity evidence ' || fixture.suffix
+       ), 'DOCUMENTED_HUMAN_EVENT',
+       'fixture://round3m-normalization/human-identity/' || fixture.suffix
+FROM (VALUES
+    ('independent-1','round3m.normalization.contract.reviewer.independent-1'),
+    ('independent-2','round3m.normalization.contract.reviewer.independent-2'),
+    ('adjudicator','round3m.normalization.contract.reviewer.adjudicator')
+) AS fixture(suffix,reviewer_key)
+JOIN audit.reviewer AS reviewer ON reviewer.reviewer_key=fixture.reviewer_key;
+
+INSERT INTO audit.round3m_reviewer_decision_evidence (
+    reviewer_decision_evidence_id, decision_evidence_identity_key,
+    decision_evidence_version, reviewer_id, reviewer_pseudonymous_code,
+    decision_target_kind, descriptor_assertion_id, review_decision_code,
+    review_actor_type, reviewer_role, review_protocol_version,
+    review_scope_code, review_scope_key, review_event_timestamp,
+    source_decision_artifact_id, bounded_decision_locator,
+    source_decision_payload_sha256, evidence_state_code,
+    row_level_evidence, deterministic_payload_sha256
+)
+SELECT 'round3m.normalization.contract.d.confirmation.v1',
+       'round3m.normalization.contract.d.confirmation',1,
+       reviewer.reviewer_id, reviewer.reviewer_key,
+       'ROUND3M_DESCRIPTOR_ASSERTION', assertion.descriptor_assertion_id,
+       'CONFIRM_DESCRIPTOR','HUMAN_REVIEWER',
+       'PROFESSIONAL_SENSORY_REVIEWER','round3m-normalization-confirmation-v1',
+       'DESCRIPTOR_SEGMENTATION_REVIEW','descriptor:round3m-normalization',
+       transaction_timestamp()-interval '2 hours',
+       'round3m.normalization.contract.artifact.decision.round3m-normalization-confirming-human',
+       'fixture://round3m-normalization/confirmation',repeat('3',64),
+       'ACTIVE',TRUE,repeat('0',64)
+FROM audit.reviewer AS reviewer
+CROSS JOIN corpus.round3m_descriptor_assertion AS assertion
+WHERE reviewer.reviewer_key='round3m-normalization-confirming-human'
+  AND assertion.descriptor_assertion_key=
+      'round3m.normalization.contract.qualified-assertion';
+
 INSERT INTO audit.round3m_descriptor_review_receipt (
     review_receipt_key, descriptor_assertion_id, receipt_version,
-    reviewer_id_or_pseudonymous_code, reviewer_role, review_actor_type,
+    reviewer_id, reviewer_id_or_pseudonymous_code,
+    reviewer_role, review_actor_type,
     receipt_origin_code, human_event_evidence_sha256,
     review_protocol_version, decision, decision_reason, evidence_locator,
-    reviewed_at, adjudication_status, previous_decision
+    reviewed_at, adjudication_status, previous_decision,
+    qualification_receipt_id, admission_receipt_id,
+    reviewer_decision_evidence_id, reviewer_decision_artifact_id
 )
 SELECT 'round3m.normalization.contract.confirmation-receipt',
-       descriptor_assertion_id, 1,
+       assertion.descriptor_assertion_id, 1, reviewer.reviewer_id,
        'round3m-normalization-confirming-human',
        'PROFESSIONAL_SENSORY_REVIEWER', 'HUMAN_REVIEWER',
        'DOCUMENTED_HUMAN_EVENT', repeat('3', 64),
@@ -738,10 +926,16 @@ SELECT 'round3m.normalization.contract.confirmation-receipt',
        'Actual-human confirmation of the source-native descriptor instance.',
        'fixture://round3m-normalization/confirmation',
        transaction_timestamp() - interval '2 hours', 'NOT_REQUIRED',
-       'PROVISIONAL_MACHINE_CLASSIFIED'
-FROM corpus.round3m_descriptor_assertion
-WHERE descriptor_assertion_key =
-      'round3m.normalization.contract.qualified-assertion';
+       'PROVISIONAL_MACHINE_CLASSIFIED',
+       'round3m.normalization.contract.q.round3m-normalization-confirming-human.v1',
+       'round3m.normalization.contract.a.round3m-normalization-confirming-human.v1',
+       'round3m.normalization.contract.d.confirmation.v1',
+       'round3m.normalization.contract.artifact.decision.round3m-normalization-confirming-human'
+FROM corpus.round3m_descriptor_assertion AS assertion
+CROSS JOIN audit.reviewer AS reviewer
+WHERE assertion.descriptor_assertion_key =
+      'round3m.normalization.contract.qualified-assertion'
+  AND reviewer.reviewer_key='round3m-normalization-confirming-human';
 
 UPDATE corpus.round3m_descriptor_assertion AS assertion
 SET review_state = 'HUMAN_CONFIRMED',
@@ -751,57 +945,6 @@ FROM audit.round3m_descriptor_review_receipt AS receipt
 WHERE receipt.descriptor_assertion_id = assertion.descriptor_assertion_id
   AND assertion.descriptor_assertion_key =
       'round3m.normalization.contract.qualified-assertion';
-
-INSERT INTO audit.reviewer (reviewer_key, display_name, affiliation)
-VALUES
-    (
-        'round3m.normalization.contract.reviewer.independent-1',
-        'Round 3M normalization independent reviewer 1',
-        'Transaction-local fixture'
-    ),
-    (
-        'round3m.normalization.contract.reviewer.independent-2',
-        'Round 3M normalization independent reviewer 2',
-        'Transaction-local fixture'
-    ),
-    (
-        'round3m.normalization.contract.reviewer.adjudicator',
-        'Round 3M normalization adjudicator',
-        'Transaction-local fixture'
-    );
-
-INSERT INTO audit.round3m_human_reviewer_identity_receipt (
-    reviewer_identity_receipt_key, reviewer_id,
-    canonical_human_identity_sha256, identity_evidence_sha256,
-    receipt_origin_code, evidence_locator
-)
-SELECT 'round3m.normalization.contract.identity.' || fixture.suffix,
-       reviewer.reviewer_id,
-       audit.round3i_utf8_sha256(
-           'round3m canonical human identity ' || fixture.suffix
-       ),
-       audit.round3i_utf8_sha256(
-           'round3m human identity evidence ' || fixture.suffix
-       ),
-       'DOCUMENTED_HUMAN_EVENT',
-       'fixture://round3m-normalization/human-identity/' ||
-           fixture.suffix
-FROM (VALUES
-    (
-        'independent-1',
-        'round3m.normalization.contract.reviewer.independent-1'
-    ),
-    (
-        'independent-2',
-        'round3m.normalization.contract.reviewer.independent-2'
-    ),
-    (
-        'adjudicator',
-        'round3m.normalization.contract.reviewer.adjudicator'
-    )
-) AS fixture(suffix, reviewer_key)
-JOIN audit.reviewer AS reviewer
-  ON reviewer.reviewer_key = fixture.reviewer_key;
 
 DO $duplicate_canonical_human_identity_rejected$
 DECLARE
@@ -818,14 +961,16 @@ BEGIN
 
         INSERT INTO audit.round3m_human_reviewer_identity_receipt (
             reviewer_identity_receipt_key, reviewer_id,
+            identity_evidence_artifact_id,
             canonical_human_identity_sha256, identity_evidence_sha256,
             receipt_origin_code, evidence_locator
         )
         SELECT 'round3m.normalization.contract.identity.duplicate-human',
                duplicate_reviewer.reviewer_id,
+               existing_identity.identity_evidence_artifact_id,
                existing_identity.canonical_human_identity_sha256,
-               repeat('f', 64), 'DOCUMENTED_HUMAN_EVENT',
-               'fixture://round3m-normalization/human-identity/duplicate'
+               existing_identity.identity_evidence_sha256,
+               'DOCUMENTED_HUMAN_EVENT', existing_identity.evidence_locator
         FROM audit.reviewer AS duplicate_reviewer
         CROSS JOIN audit.round3m_human_reviewer_identity_receipt AS
             existing_identity
@@ -933,10 +1078,54 @@ JOIN audit.reviewer AS reviewer
 WHERE decision.professional_label_decision_key =
       'round3m.normalization.contract.label.unresolved.final';
 
+INSERT INTO audit.round3m_reviewer_decision_evidence (
+    reviewer_decision_evidence_id, decision_evidence_identity_key,
+    decision_evidence_version, reviewer_id, reviewer_pseudonymous_code,
+    decision_target_kind, professional_label_review_id,
+    review_decision_code, review_actor_type, reviewer_role,
+    review_protocol_version, review_scope_code, review_scope_key,
+    review_event_timestamp, source_decision_artifact_id,
+    bounded_decision_locator, source_decision_payload_sha256,
+    evidence_state_code, row_level_evidence,
+    deterministic_payload_sha256
+)
+SELECT 'round3m.normalization.contract.d.label.' || fixture.suffix,
+       'round3m.normalization.contract.d.label.' || fixture.suffix, 1,
+       reviewer.reviewer_id, reviewer.reviewer_key,
+       'PROFESSIONAL_LABEL_REVIEW', review.professional_label_review_id,
+       review.review_outcome_code, fixture.actor_type, fixture.role_code,
+       'round3m-normalization-label-review-v1', fixture.scope_code,
+       'professional-label:round3m-normalization', review.reviewed_at,
+       'round3m.normalization.contract.artifact.decision.' || fixture.suffix,
+       'fixture://round3m-normalization/professional-review/' ||
+           fixture.suffix, fixture.human_event_sha256,
+       'ACTIVE', TRUE, repeat('0',64)
+FROM (VALUES
+    ('independent-1','round3m.normalization.contract.reviewer.independent-1',
+     'HUMAN_REVIEWER','INDEPENDENT_REVIEWER',
+     'NORMALIZATION_TARGET_REVIEW',repeat('4',64)),
+    ('independent-2','round3m.normalization.contract.reviewer.independent-2',
+     'HUMAN_REVIEWER','INDEPENDENT_REVIEWER',
+     'NORMALIZATION_TARGET_REVIEW',repeat('5',64)),
+    ('adjudicator','round3m.normalization.contract.reviewer.adjudicator',
+     'EXPERT_REVIEWER','ADJUDICATOR','SENSORY_ADJUDICATION',repeat('6',64))
+) AS fixture(suffix,reviewer_key,actor_type,role_code,scope_code,
+             human_event_sha256)
+JOIN audit.reviewer AS reviewer ON reviewer.reviewer_key=fixture.reviewer_key
+JOIN audit.professional_label_review AS review
+  ON review.reviewer_id=reviewer.reviewer_id
+JOIN corpus.professional_label_decision AS decision
+  ON decision.professional_label_decision_id=review.professional_label_decision_id
+ AND decision.professional_label_decision_key=
+     'round3m.normalization.contract.label.unresolved.final';
+
 INSERT INTO audit.round3m_professional_label_review_attestation (
     attestation_key, professional_label_review_id, review_actor_type,
     receipt_origin_code, reviewer_id_or_pseudonymous_code,
-    reviewer_identity_receipt_key, human_event_evidence_sha256,
+    reviewer_identity_receipt_key, qualification_receipt_id,
+    admission_receipt_id, reviewer_decision_evidence_id,
+    reviewer_decision_artifact_id, review_protocol_version,
+    human_event_evidence_sha256,
     human_event_member_sha256, review_payload_sha256,
     decision_review_set_sha256, reviewer_independence_set_sha256,
     evidence_locator, independence_evidence_locator
@@ -946,10 +1135,18 @@ SELECT 'round3m.normalization.contract.attestation.' || fixture.suffix,
        'DOCUMENTED_HUMAN_EVENT',
        reviewer.reviewer_key,
        identity.reviewer_identity_receipt_key,
+       'round3m.normalization.contract.q.' || fixture.suffix || '.v1',
+       'round3m.normalization.contract.a.' || fixture.suffix || '.v1',
+       'round3m.normalization.contract.d.label.' || fixture.suffix,
+       'round3m.normalization.contract.artifact.decision.' || fixture.suffix,
+       'round3m-normalization-label-review-v1',
        fixture.human_event_sha256,
        audit.round3m_human_review_event_member_sha256(
            review.professional_label_review_id,
-           fixture.human_event_sha256
+           fixture.human_event_sha256,
+           'round3m.normalization.contract.q.' || fixture.suffix || '.v1',
+           'round3m.normalization.contract.a.' || fixture.suffix || '.v1',
+           'round3m.normalization.contract.d.label.' || fixture.suffix
        ),
        audit.round3m_professional_label_review_payload_sha256(
            review.professional_label_review_id
@@ -962,7 +1159,7 @@ SELECT 'round3m.normalization.contract.attestation.' || fixture.suffix,
        ),
        'fixture://round3m-normalization/professional-review/' ||
            fixture.suffix,
-       'fixture://round3m-normalization/independence/' || fixture.suffix
+       'fixture://round3m-normalization/admission/' || fixture.suffix
 FROM (VALUES
     (
         'independent-1',
@@ -1128,26 +1325,62 @@ JOIN competition.edition AS edition
 WHERE source_assertion.descriptor_assertion_key =
       'round3m.normalization.contract.wrong-binding.competition-assertion';
 
+INSERT INTO audit.round3m_reviewer_decision_evidence (
+    reviewer_decision_evidence_id, decision_evidence_identity_key,
+    decision_evidence_version, reviewer_id, reviewer_pseudonymous_code,
+    decision_target_kind, descriptor_assertion_id, review_decision_code,
+    review_actor_type, reviewer_role, review_protocol_version,
+    review_scope_code, review_scope_key, review_event_timestamp,
+    source_decision_artifact_id, bounded_decision_locator,
+    source_decision_payload_sha256, evidence_state_code,
+    row_level_evidence, deterministic_payload_sha256
+)
+SELECT 'round3m.normalization.contract.d.wrong-binding.v1',
+       'round3m.normalization.contract.d.wrong-binding',1,
+       reviewer.reviewer_id, reviewer.reviewer_key,
+       'ROUND3M_DESCRIPTOR_ASSERTION', assertion.descriptor_assertion_id,
+       'CONFIRM_DESCRIPTOR','HUMAN_REVIEWER',
+       'PROFESSIONAL_SENSORY_REVIEWER','round3m-normalization-confirmation-v1',
+       'DESCRIPTOR_SEGMENTATION_REVIEW','descriptor:round3m-normalization',
+       transaction_timestamp()-interval '2 hours',
+       'round3m.normalization.contract.artifact.decision.round3m-normalization-confirming-human',
+       'fixture://round3m-normalization/wrong-binding-confirmation',repeat('d',64),
+       'ACTIVE',TRUE,repeat('0',64)
+FROM audit.reviewer AS reviewer
+CROSS JOIN corpus.round3m_descriptor_assertion AS assertion
+WHERE reviewer.reviewer_key='round3m-normalization-confirming-human'
+  AND assertion.descriptor_assertion_key=
+      'round3m.normalization.contract.wrong-binding.assertion';
+
 INSERT INTO audit.round3m_descriptor_review_receipt (
     review_receipt_key, descriptor_assertion_id, receipt_version,
-    reviewer_id_or_pseudonymous_code, reviewer_role, review_actor_type,
+    reviewer_id, reviewer_id_or_pseudonymous_code,
+    reviewer_role, review_actor_type,
     receipt_origin_code, human_event_evidence_sha256,
     review_protocol_version, decision, decision_reason, evidence_locator,
-    reviewed_at, adjudication_status, previous_decision
+    reviewed_at, adjudication_status, previous_decision,
+    qualification_receipt_id, admission_receipt_id,
+    reviewer_decision_evidence_id, reviewer_decision_artifact_id
 )
 SELECT 'round3m.normalization.contract.wrong-binding.confirmation-receipt',
-       descriptor_assertion_id, 1,
-       'round3m-normalization-wrong-binding-human',
+       assertion.descriptor_assertion_id, 1, reviewer.reviewer_id,
+       'round3m-normalization-confirming-human',
        'PROFESSIONAL_SENSORY_REVIEWER', 'HUMAN_REVIEWER',
        'DOCUMENTED_HUMAN_EVENT', repeat('d', 64),
-       'round3m-normalization-wrong-binding-v1', 'CONFIRM_DESCRIPTOR',
+       'round3m-normalization-confirmation-v1', 'CONFIRM_DESCRIPTOR',
        'Human confirmation cannot repair a cross-file source mismatch.',
        'fixture://round3m-normalization/wrong-binding-confirmation',
        transaction_timestamp() - interval '2 hours', 'NOT_REQUIRED',
-       'PROVISIONAL_MACHINE_CLASSIFIED'
-FROM corpus.round3m_descriptor_assertion
-WHERE descriptor_assertion_key =
-      'round3m.normalization.contract.wrong-binding.assertion';
+       'PROVISIONAL_MACHINE_CLASSIFIED',
+       'round3m.normalization.contract.q.round3m-normalization-confirming-human.v1',
+       'round3m.normalization.contract.a.round3m-normalization-confirming-human.v1',
+       'round3m.normalization.contract.d.wrong-binding.v1',
+       'round3m.normalization.contract.artifact.decision.round3m-normalization-confirming-human'
+FROM corpus.round3m_descriptor_assertion AS assertion
+CROSS JOIN audit.reviewer AS reviewer
+WHERE assertion.descriptor_assertion_key =
+      'round3m.normalization.contract.wrong-binding.assertion'
+  AND reviewer.reviewer_key='round3m-normalization-confirming-human';
 
 UPDATE corpus.round3m_descriptor_assertion AS assertion
 SET review_state = 'HUMAN_CONFIRMED',
@@ -1224,10 +1457,54 @@ JOIN audit.reviewer AS reviewer
 WHERE decision.professional_label_decision_key =
       'round3m.normalization.contract.wrong-binding.label.final';
 
+INSERT INTO audit.round3m_reviewer_decision_evidence (
+    reviewer_decision_evidence_id, decision_evidence_identity_key,
+    decision_evidence_version, reviewer_id, reviewer_pseudonymous_code,
+    decision_target_kind, professional_label_review_id,
+    review_decision_code, review_actor_type, reviewer_role,
+    review_protocol_version, review_scope_code, review_scope_key,
+    review_event_timestamp, source_decision_artifact_id,
+    bounded_decision_locator, source_decision_payload_sha256,
+    evidence_state_code, row_level_evidence,
+    deterministic_payload_sha256
+)
+SELECT 'round3m.normalization.contract.d.wrong.' || fixture.suffix,
+       'round3m.normalization.contract.d.wrong.' || fixture.suffix, 1,
+       reviewer.reviewer_id, reviewer.reviewer_key,
+       'PROFESSIONAL_LABEL_REVIEW', review.professional_label_review_id,
+       review.review_outcome_code, fixture.actor_type, fixture.role_code,
+       'round3m-normalization-label-review-v1', fixture.scope_code,
+       'professional-label:round3m-normalization', review.reviewed_at,
+       'round3m.normalization.contract.artifact.decision.' || fixture.suffix,
+       'fixture://round3m-normalization/wrong-binding-review/' ||
+           fixture.suffix, fixture.human_event_sha256,
+       'ACTIVE', TRUE, repeat('0',64)
+FROM (VALUES
+    ('independent-1','round3m.normalization.contract.reviewer.independent-1',
+     'HUMAN_REVIEWER','INDEPENDENT_REVIEWER',
+     'NORMALIZATION_TARGET_REVIEW',repeat('7',64)),
+    ('independent-2','round3m.normalization.contract.reviewer.independent-2',
+     'HUMAN_REVIEWER','INDEPENDENT_REVIEWER',
+     'NORMALIZATION_TARGET_REVIEW',repeat('8',64)),
+    ('adjudicator','round3m.normalization.contract.reviewer.adjudicator',
+     'EXPERT_REVIEWER','ADJUDICATOR','SENSORY_ADJUDICATION',repeat('9',64))
+) AS fixture(suffix,reviewer_key,actor_type,role_code,scope_code,
+             human_event_sha256)
+JOIN audit.reviewer AS reviewer ON reviewer.reviewer_key=fixture.reviewer_key
+JOIN audit.professional_label_review AS review
+  ON review.reviewer_id=reviewer.reviewer_id
+JOIN corpus.professional_label_decision AS decision
+  ON decision.professional_label_decision_id=review.professional_label_decision_id
+ AND decision.professional_label_decision_key=
+     'round3m.normalization.contract.wrong-binding.label.final';
+
 INSERT INTO audit.round3m_professional_label_review_attestation (
     attestation_key, professional_label_review_id, review_actor_type,
     receipt_origin_code, reviewer_id_or_pseudonymous_code,
-    reviewer_identity_receipt_key, human_event_evidence_sha256,
+    reviewer_identity_receipt_key, qualification_receipt_id,
+    admission_receipt_id, reviewer_decision_evidence_id,
+    reviewer_decision_artifact_id, review_protocol_version,
+    human_event_evidence_sha256,
     human_event_member_sha256, review_payload_sha256,
     decision_review_set_sha256, reviewer_independence_set_sha256,
     evidence_locator, independence_evidence_locator
@@ -1237,10 +1514,18 @@ SELECT 'round3m.normalization.contract.wrong-binding.attestation.' ||
        review.professional_label_review_id, fixture.actor_type,
        'DOCUMENTED_HUMAN_EVENT', reviewer.reviewer_key,
        identity.reviewer_identity_receipt_key,
+       'round3m.normalization.contract.q.' || fixture.suffix || '.v1',
+       'round3m.normalization.contract.a.' || fixture.suffix || '.v1',
+       'round3m.normalization.contract.d.wrong.' || fixture.suffix,
+       'round3m.normalization.contract.artifact.decision.' || fixture.suffix,
+       'round3m-normalization-label-review-v1',
        fixture.human_event_sha256,
        audit.round3m_human_review_event_member_sha256(
            review.professional_label_review_id,
-           fixture.human_event_sha256
+           fixture.human_event_sha256,
+           'round3m.normalization.contract.q.' || fixture.suffix || '.v1',
+           'round3m.normalization.contract.a.' || fixture.suffix || '.v1',
+           'round3m.normalization.contract.d.wrong.' || fixture.suffix
        ),
        audit.round3m_professional_label_review_payload_sha256(
            review.professional_label_review_id
@@ -1253,8 +1538,7 @@ SELECT 'round3m.normalization.contract.wrong-binding.attestation.' ||
        ),
        'fixture://round3m-normalization/wrong-binding-review/' ||
            fixture.suffix,
-       'fixture://round3m-normalization/wrong-binding-independence/' ||
-           fixture.suffix
+       'fixture://round3m-normalization/admission/' || fixture.suffix
 FROM (VALUES
     (
         'independent-1',
@@ -1345,6 +1629,11 @@ LANGUAGE plpgsql
 AS $assert_round3m_attestation_rejected$
 DECLARE
     rejected_constraint TEXT;
+    expected_constraint TEXT := CASE
+        WHEN case_key = 'future_review'
+            THEN 'round3m_reviewer_decision_artifact_binding_ck'
+        ELSE 'round3m_prof_label_review_human_attestation_ck'
+    END;
 BEGIN
     BEGIN
         INSERT INTO corpus.professional_label_decision (
@@ -1411,11 +1700,53 @@ BEGIN
               'round3m.normalization.contract.negative.' || case_key ||
               '.decision';
 
+        INSERT INTO audit.round3m_reviewer_decision_evidence (
+            reviewer_decision_evidence_id,
+            decision_evidence_identity_key, decision_evidence_version,
+            reviewer_id, reviewer_pseudonymous_code,
+            decision_target_kind, professional_label_review_id,
+            review_decision_code, review_actor_type, reviewer_role,
+            review_protocol_version, review_scope_code, review_scope_key,
+            review_event_timestamp, source_decision_artifact_id,
+            bounded_decision_locator, source_decision_payload_sha256,
+            evidence_state_code, row_level_evidence,
+            deterministic_payload_sha256
+        )
+        SELECT 'round3m.normalization.contract.d.negative.' || case_key,
+               'round3m.normalization.contract.d.negative.' || case_key,
+               1, reviewer.reviewer_id, reviewer.reviewer_key,
+               'PROFESSIONAL_LABEL_REVIEW',
+               review.professional_label_review_id,
+               review.review_outcome_code, 'HUMAN_REVIEWER',
+               'INDEPENDENT_REVIEWER',
+               'round3m-normalization-label-review-v1',
+               'NORMALIZATION_TARGET_REVIEW',
+               'professional-label:round3m-normalization',
+               review.reviewed_at,
+               'round3m.normalization.contract.artifact.decision.independent-1',
+               'fixture://round3m-normalization/negative/' || case_key,
+               audit.round3i_utf8_sha256('negative-event-' || case_key),
+               'ACTIVE', TRUE, repeat('0',64)
+        FROM audit.professional_label_review AS review
+        JOIN audit.reviewer AS reviewer
+          ON reviewer.reviewer_id=review.reviewer_id
+        JOIN corpus.professional_label_decision AS decision
+          ON decision.professional_label_decision_id=
+             review.professional_label_decision_id
+        WHERE decision.professional_label_decision_key=
+              'round3m.normalization.contract.negative.' || case_key ||
+              '.decision'
+          AND reviewer.reviewer_key=
+              'round3m.normalization.contract.reviewer.independent-1';
+
         INSERT INTO audit.round3m_professional_label_review_attestation (
             attestation_key, professional_label_review_id,
             review_actor_type, receipt_origin_code,
             reviewer_id_or_pseudonymous_code,
             reviewer_identity_receipt_key,
+            qualification_receipt_id, admission_receipt_id,
+            reviewer_decision_evidence_id,
+            reviewer_decision_artifact_id, review_protocol_version,
             human_event_evidence_sha256, human_event_member_sha256,
             review_payload_sha256,
             decision_review_set_sha256,
@@ -1427,12 +1758,20 @@ BEGIN
                review.professional_label_review_id, 'HUMAN_REVIEWER',
                'DOCUMENTED_HUMAN_EVENT', reviewer.reviewer_key,
                identity.reviewer_identity_receipt_key,
+               'round3m.normalization.contract.q.independent-1.v1',
+               'round3m.normalization.contract.a.independent-1.v1',
+               'round3m.normalization.contract.d.negative.' || case_key,
+               'round3m.normalization.contract.artifact.decision.independent-1',
+               'round3m-normalization-label-review-v1',
                audit.round3i_utf8_sha256('negative-event-' || case_key),
                audit.round3m_human_review_event_member_sha256(
                    review.professional_label_review_id,
                    audit.round3i_utf8_sha256(
                        'negative-event-' || case_key
-                   )
+                   ),
+                   'round3m.normalization.contract.q.independent-1.v1',
+                   'round3m.normalization.contract.a.independent-1.v1',
+                   'round3m.normalization.contract.d.negative.' || case_key
                ),
                audit.round3m_professional_label_review_payload_sha256(
                    review.professional_label_review_id
@@ -1450,8 +1789,7 @@ BEGIN
                    )
                END,
                'fixture://round3m-normalization/negative/' || case_key,
-               'fixture://round3m-normalization/negative-independence/' ||
-                   case_key,
+               'fixture://round3m-normalization/admission/independent-1',
                transaction_timestamp() + selected_receipt_offset
         FROM audit.professional_label_review AS review
         JOIN audit.reviewer AS reviewer
@@ -1475,13 +1813,14 @@ BEGIN
         WHEN check_violation THEN
             GET STACKED DIAGNOSTICS
                 rejected_constraint = CONSTRAINT_NAME;
-            IF rejected_constraint IS DISTINCT FROM
-               'round3m_prof_label_review_human_attestation_ck' THEN
+            IF rejected_constraint IS DISTINCT FROM expected_constraint THEN
                 RAISE;
             END IF;
     END;
 
-    RAISE NOTICE 'ROUND3M_NEGATIVE=%_attestation_rejected PASS', case_key;
+    RAISE NOTICE
+        'ROUND3M_NEGATIVE=%_review_evidence_or_attestation_rejected expected_constraint=% PASS',
+        case_key,expected_constraint;
 END
 $assert_round3m_attestation_rejected$;
 
@@ -1860,9 +2199,11 @@ DECLARE
         'round3m.normalization_challenge_exact_source_binding_is_unique',
         'round3m.normalization_challenge_metric_matches_governed_universe',
         'round3m.normalization_challenge_target_set_is_countable',
+        'round3m.normalization_challenge_view_uses_full_058_chain',
         'round3m.professional_label_attestation_human_identity_is_exact',
         'round3m.professional_label_attestation_identity_outcome_chronology_is_exact',
         'round3m.professional_label_attestation_payload_is_exact',
+        'round3m.professional_label_attestation_requires_full_058_chain',
         'round3m.professional_label_attestation_sets_are_exact',
         'round3m.professional_label_attested_lineage_is_valid',
         'round3m.professional_label_attested_parent_marker_is_exact'

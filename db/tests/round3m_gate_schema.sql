@@ -37,6 +37,194 @@ BEGIN
 END
 $expect_round3m_failure$;
 
+-- This legacy gate-schema suite predates migration 058.  Its human fixtures
+-- remain transaction-local, but every accepted human receipt must now pass
+-- through acquired qualification, admission, and assertion-row decision
+-- evidence.  A test-only BEFORE trigger provisions that complete chain and
+-- rewrites the old repeated batch hash to a receipt-specific row payload hash.
+CREATE FUNCTION pg_temp.provision_round3m_058_gate_fixture_chain()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $provision_round3m_058_gate_fixture_chain$
+DECLARE
+    fixture_reviewer_id BIGINT;
+    expected_scope TEXT;
+    chain_digest TEXT;
+    decision_digest TEXT;
+    qualification_artifact_id TEXT;
+    admission_artifact_id TEXT;
+    decision_artifact_id TEXT;
+    qualification_receipt_id TEXT;
+    admission_receipt_id TEXT;
+    decision_evidence_id TEXT;
+    qualification_locator TEXT;
+    admission_locator TEXT;
+    scope_key TEXT := 'descriptor:round3m-gate-schema';
+BEGIN
+    IF NEW.review_actor_type NOT IN ('HUMAN_REVIEWER','EXPERT_REVIEWER') THEN
+        RETURN NEW;
+    END IF;
+
+    -- These two rows are explicit fail-closed impersonation/unqualified
+    -- negatives.  Migration 058 must reject them before any legacy path can.
+    IF NEW.reviewer_id_or_pseudonymous_code IN (
+        'codex','unqualified-expert-fixture'
+    ) THEN
+        RETURN NEW;
+    END IF;
+
+    INSERT INTO audit.reviewer (reviewer_key,display_name,affiliation)
+    VALUES (
+        NEW.reviewer_id_or_pseudonymous_code,
+        'Round 3M rollback-only reviewer fixture',
+        'Transaction-local Migration 058 gate-schema harness'
+    )
+    ON CONFLICT (reviewer_key) DO NOTHING;
+
+    SELECT reviewer_id INTO STRICT fixture_reviewer_id
+    FROM audit.reviewer
+    WHERE reviewer_key=NEW.reviewer_id_or_pseudonymous_code;
+    NEW.reviewer_id := fixture_reviewer_id;
+
+    expected_scope := audit.round3m_expected_descriptor_review_scope(
+        NEW.decision,NEW.review_actor_type,NEW.reviewer_role
+    );
+    chain_digest := audit.round3i_utf8_sha256(
+        NEW.reviewer_id_or_pseudonymous_code || chr(31) ||
+        NEW.reviewer_role || chr(31) || NEW.review_actor_type || chr(31) ||
+        NEW.review_protocol_version || chr(31) || expected_scope
+    );
+    decision_digest := audit.round3i_utf8_sha256(
+        NEW.review_receipt_key || chr(31) ||
+        NEW.descriptor_assertion_id::TEXT || chr(31) || NEW.decision
+    );
+    qualification_artifact_id := 'round3m.test.058.artifact.q.' || chain_digest;
+    admission_artifact_id := 'round3m.test.058.artifact.a.' || chain_digest;
+    decision_artifact_id := 'round3m.test.058.artifact.d.' || chain_digest;
+    qualification_receipt_id := 'round3m.test.058.q.' || chain_digest;
+    admission_receipt_id := 'round3m.test.058.a.' || chain_digest;
+    decision_evidence_id := 'round3m.test.058.d.' || decision_digest;
+    qualification_locator :=
+        'fixture://round3m-gate-schema/058/qualification/' || chain_digest;
+    admission_locator :=
+        'fixture://round3m-gate-schema/058/admission/' || chain_digest;
+
+    INSERT INTO evidence.round3m_reviewer_evidence_artifact (
+        reviewer_evidence_artifact_id,artifact_purpose_code,
+        evidence_classification_code,governed_locator,artifact_sha256,
+        byte_count,non_storage_reason,acquired_at,storage_state_code,
+        privacy_state_code,supplying_authority,acquisition_method_code
+    ) VALUES (
+        qualification_artifact_id,'REVIEWER_QUALIFICATION_EVIDENCE',
+        'PROJECT_HUMAN_DECISION_WITH_EVIDENCE',qualification_locator,
+        audit.round3i_utf8_sha256('qualification' || chain_digest),0,
+        'Rollback-only synthetic qualification fixture.',
+        transaction_timestamp()-interval '1 second',
+        'HASH_AND_LOCATOR_ONLY','PSEUDONYMOUS',
+        'Round 3M test harness','GOVERNED_PROJECT_HUMAN_IMPORT'
+    ) ON CONFLICT (reviewer_evidence_artifact_id) DO NOTHING;
+
+    INSERT INTO evidence.round3m_reviewer_evidence_artifact (
+        reviewer_evidence_artifact_id,artifact_purpose_code,
+        evidence_classification_code,governed_locator,artifact_sha256,
+        byte_count,non_storage_reason,acquired_at,storage_state_code,
+        privacy_state_code,supplying_authority,acquisition_method_code
+    ) VALUES (
+        admission_artifact_id,'REVIEWER_ADMISSION_AUTHORIZATION',
+        'PROJECT_HUMAN_DECISION_WITH_EVIDENCE',admission_locator,
+        audit.round3i_utf8_sha256('admission' || chain_digest),0,
+        'Rollback-only synthetic admission fixture.',
+        transaction_timestamp()-interval '1 second',
+        'HASH_AND_LOCATOR_ONLY','PSEUDONYMOUS',
+        'Round 3M test harness','GOVERNED_PROJECT_HUMAN_IMPORT'
+    ) ON CONFLICT (reviewer_evidence_artifact_id) DO NOTHING;
+
+    INSERT INTO evidence.round3m_reviewer_evidence_artifact (
+        reviewer_evidence_artifact_id,artifact_purpose_code,
+        evidence_classification_code,governed_locator,artifact_sha256,
+        byte_count,non_storage_reason,acquired_at,storage_state_code,
+        privacy_state_code,supplying_authority,acquisition_method_code
+    ) VALUES (
+        decision_artifact_id,'ROW_LEVEL_REVIEWER_DECISION_EXPORT',
+        'PROJECT_HUMAN_DECISION_WITH_EVIDENCE',
+        'fixture://round3m-gate-schema/058/decision/' || chain_digest,
+        audit.round3i_utf8_sha256('decision-artifact' || chain_digest),0,
+        'Rollback-only synthetic row-decision container fixture.',
+        transaction_timestamp()-interval '1 second',
+        'HASH_AND_LOCATOR_ONLY','PSEUDONYMOUS',
+        'Round 3M test harness','GOVERNED_PROJECT_HUMAN_IMPORT'
+    ) ON CONFLICT (reviewer_evidence_artifact_id) DO NOTHING;
+
+    INSERT INTO audit.round3m_reviewer_qualification_receipt (
+        qualification_receipt_id,qualification_identity_key,
+        qualification_version,reviewer_id,reviewer_pseudonymous_code,
+        qualification_scope_code,allowed_reviewer_role,
+        qualification_level_code,qualification_protocol_version,
+        qualification_evidence_artifact_id,qualification_evidence_locator,
+        issuing_authority,valid_from,valid_to,qualification_state_code,
+        deterministic_payload_sha256
+    ) VALUES (
+        qualification_receipt_id,qualification_receipt_id,1,
+        fixture_reviewer_id,NEW.reviewer_id_or_pseudonymous_code,
+        expected_scope,NEW.reviewer_role,
+        CASE WHEN NEW.review_actor_type='EXPERT_REVIEWER'
+             THEN 'EXPERT' ELSE 'PROTOCOL_QUALIFIED' END,
+        NEW.review_protocol_version,qualification_artifact_id,
+        qualification_locator,'Round 3M test authority',
+        DATE '2020-01-01',NULL,'ACTIVE',repeat('0',64)
+    ) ON CONFLICT ON CONSTRAINT round3m_reviewer_qualification_receipt_pk
+      DO NOTHING;
+
+    INSERT INTO audit.round3m_reviewer_admission_receipt (
+        admission_receipt_id,admission_identity_key,admission_version,
+        reviewer_id,reviewer_pseudonymous_code,qualification_receipt_id,
+        admitted_reviewer_role,admitted_protocol_version,
+        review_scope_code,review_scope_key,admission_authority,
+        admission_evidence_artifact_id,admission_evidence_locator,
+        valid_from,valid_to,admission_state_code,
+        deterministic_payload_sha256
+    ) VALUES (
+        admission_receipt_id,admission_receipt_id,1,fixture_reviewer_id,
+        NEW.reviewer_id_or_pseudonymous_code,qualification_receipt_id,
+        NEW.reviewer_role,NEW.review_protocol_version,expected_scope,scope_key,
+        'Round 3M test authority',admission_artifact_id,admission_locator,
+        '2020-01-01T00:00:00Z',NULL,'ACTIVE',repeat('0',64)
+    ) ON CONFLICT ON CONSTRAINT round3m_reviewer_admission_receipt_pk
+      DO NOTHING;
+
+    NEW.human_event_evidence_sha256 := audit.round3i_utf8_sha256(
+        'row-decision' || chr(31) || decision_digest
+    );
+    INSERT INTO audit.round3m_reviewer_decision_evidence (
+        reviewer_decision_evidence_id,decision_evidence_identity_key,
+        decision_evidence_version,reviewer_id,reviewer_pseudonymous_code,
+        decision_target_kind,descriptor_assertion_id,review_decision_code,
+        review_actor_type,reviewer_role,review_protocol_version,
+        review_scope_code,review_scope_key,review_event_timestamp,
+        source_decision_artifact_id,bounded_decision_locator,
+        source_decision_payload_sha256,evidence_state_code,
+        row_level_evidence,deterministic_payload_sha256
+    ) VALUES (
+        decision_evidence_id,decision_evidence_id,1,fixture_reviewer_id,
+        NEW.reviewer_id_or_pseudonymous_code,'ROUND3M_DESCRIPTOR_ASSERTION',
+        NEW.descriptor_assertion_id,NEW.decision,NEW.review_actor_type,
+        NEW.reviewer_role,NEW.review_protocol_version,expected_scope,scope_key,
+        NEW.reviewed_at,decision_artifact_id,NEW.evidence_locator,
+        NEW.human_event_evidence_sha256,'ACTIVE',TRUE,repeat('0',64)
+    );
+
+    NEW.qualification_receipt_id := qualification_receipt_id;
+    NEW.admission_receipt_id := admission_receipt_id;
+    NEW.reviewer_decision_evidence_id := decision_evidence_id;
+    NEW.reviewer_decision_artifact_id := decision_artifact_id;
+    RETURN NEW;
+END
+$provision_round3m_058_gate_fixture_chain$;
+
+CREATE TRIGGER aaa_round3m_test_provision_058_chain_bi
+BEFORE INSERT ON audit.round3m_descriptor_review_receipt
+FOR EACH ROW EXECUTE FUNCTION pg_temp.provision_round3m_058_gate_fixture_chain();
+
 DO $empty_and_contract_positive$
 DECLARE
     gate_count BIGINT;
@@ -611,7 +799,8 @@ INSERT INTO corpus.round3m_descriptor_assertion (
     source_language, descriptor_class,
     source_native_lexical_form, source_native_lexical_form_sha256,
     normalized_candidate_form, normalized_candidate_form_sha256,
-    normalization_method_code, evidence_tier, evidence_origin_type,
+    normalization_method_code, translation_generated,
+    evidence_tier, evidence_origin_type,
     origin_decision_basis, origin_evidence_locator,
     review_state, review_actor_type, rights_decision_id,
     source_retrieved_at, source_file_sha256, route_index_sha256,
@@ -635,8 +824,13 @@ SELECT
     audit.round3i_utf8_sha256('note-' || form_n),
     'REVIEWED_EXCERPT', '', 'en', 'STRICT_FLAVOR',
     'note-' || form_n, audit.round3i_utf8_sha256('note-' || form_n),
-    'note-' || form_n, audit.round3i_utf8_sha256('note-' || form_n),
-    'UNICODE_NFC_WHITESPACE_CASE', 'P2',
+    CASE WHEN n = 54 THEN 'translation-only-form'
+         ELSE 'note-' || form_n END,
+    audit.round3i_utf8_sha256(
+        CASE WHEN n = 54 THEN 'translation-only-form'
+             ELSE 'note-' || form_n END
+    ),
+    'UNICODE_NFC_WHITESPACE_CASE', n = 54, 'P2',
     'EXPLICIT_TOP_JURY_FIELD',
     'Fixture explicitly identifies the Top Jury field.',
     'record-' || n || '#top-jury',
@@ -924,7 +1118,7 @@ SELECT pg_temp.expect_round3m_failure(
         FROM corpus.round3m_descriptor_assertion
         WHERE descriptor_assertion_key = 'round3m.test.assertion.1'
     $sql$,
-    '23514', 'round3m_descriptor_review_receipt_chronology_ck'
+    '23514', 'round3m_reviewer_decision_artifact_binding_ck'
 );
 
 CREATE TEMP TABLE round3m_test_form_concept AS
@@ -967,13 +1161,15 @@ SELECT
         'EXACT_CANONICAL_TARGET' || chr(31) ||
         'concept:' || concept.concept_id::TEXT
     ),
-    repeat('9', 64),
+    receipt.human_event_evidence_sha256,
     'fixture://review/' || assertion.descriptor_assertion_id ||
         '#label-mapping'
 FROM corpus.round3m_descriptor_assertion AS assertion
+JOIN audit.round3m_descriptor_review_receipt AS receipt
+  ON receipt.review_receipt_id=assertion.current_review_receipt_id
 JOIN round3m_test_form_concept AS concept
   ON concept.form_ordinal =
-     split_part(assertion.normalized_candidate_form, '-', 2)::INTEGER
+     split_part(assertion.source_native_lexical_form, '-', 2)::INTEGER
 WHERE assertion.descriptor_assertion_key ~
       '^round3m[.]test[.]assertion[.][0-9]+$';
 
@@ -990,7 +1186,7 @@ SELECT
 FROM corpus.round3m_descriptor_assertion AS assertion
 JOIN round3m_test_form_concept AS concept
   ON concept.form_ordinal =
-     split_part(assertion.normalized_candidate_form, '-', 2)::INTEGER
+     split_part(assertion.source_native_lexical_form, '-', 2)::INTEGER
 WHERE assertion.descriptor_assertion_key ~
       '^round3m[.]test[.]assertion[.][0-9]+$';
 
@@ -998,6 +1194,22 @@ SET CONSTRAINTS audit.round3m_label_mapping_set_receipt_ci,
     corpus.round3m_label_mapping_set_target_ci IMMEDIATE;
 SET CONSTRAINTS audit.round3m_label_mapping_set_receipt_ci,
     corpus.round3m_label_mapping_set_target_ci DEFERRED;
+
+-- The 500-row acceptance fixture is created and rolled back in one
+-- transaction, so autovacuum cannot refresh planner statistics before the
+-- gate views run.  Analyze only the rollback-scoped fixture relations to keep
+-- the test plan representative of a populated database and avoid pathological
+-- one-row estimates; this changes no production rows or gate semantics.
+ANALYZE evidence.round3m_reviewer_evidence_artifact;
+ANALYZE audit.round3m_reviewer_qualification_receipt;
+ANALYZE audit.round3m_reviewer_admission_receipt;
+ANALYZE audit.round3m_reviewer_decision_evidence;
+ANALYZE audit.round3m_descriptor_review_receipt;
+ANALYZE audit.round3m_reviewed_assertion_admission_snapshot;
+ANALYZE evidence.round3m_descriptor_rights_decision;
+ANALYZE corpus.round3m_descriptor_assertion;
+ANALYZE audit.round3m_descriptor_label_mapping_receipt;
+ANALYZE corpus.round3m_descriptor_label_target;
 
 DO $positive_gate$
 DECLARE
@@ -1173,9 +1385,16 @@ BEGIN
             'ROUND3M_NEGATIVE=superseded_receipt_excluded_from_human_universe failed';
     END IF;
 
-    SELECT violation_count INTO STRICT leaf_violation_count
-    FROM audit.run_round3m_gate_validation_queries()
-    WHERE check_key = 'round3m.current_review_pointer_is_leaf';
+    SELECT count(*)::BIGINT INTO STRICT leaf_violation_count
+    FROM corpus.round3m_descriptor_assertion AS assertion
+    JOIN audit.round3m_descriptor_review_receipt AS receipt
+      ON receipt.review_receipt_id = assertion.current_review_receipt_id
+    WHERE EXISTS (
+        SELECT 1
+        FROM audit.round3m_descriptor_review_receipt AS successor
+        WHERE successor.supersedes_review_receipt_id =
+              receipt.review_receipt_id
+    );
 
     IF leaf_violation_count <> 1 THEN
         RAISE EXCEPTION
@@ -1206,7 +1425,10 @@ BEGIN
             'EXACT_CANONICAL_TARGET' || chr(31) ||
             'concept:' || target_concept_id::TEXT
         ),
-        repeat('8', 64), 'fixture://review/successor#label-mapping'
+        (SELECT human_event_evidence_sha256
+         FROM audit.round3m_descriptor_review_receipt
+         WHERE review_receipt_id=successor_receipt_id),
+        'fixture://review/successor#label-mapping'
     );
 
     -- Retain the predecessor-backed target as immutable history and add the
@@ -1238,9 +1460,16 @@ BEGIN
             'ROUND3M_POSITIVE=current_leaf_review_successor failed';
     END IF;
 
-    SELECT violation_count INTO STRICT leaf_violation_count
-    FROM audit.run_round3m_gate_validation_queries()
-    WHERE check_key = 'round3m.current_review_pointer_is_leaf';
+    SELECT count(*)::BIGINT INTO STRICT leaf_violation_count
+    FROM corpus.round3m_descriptor_assertion AS assertion
+    JOIN audit.round3m_descriptor_review_receipt AS receipt
+      ON receipt.review_receipt_id = assertion.current_review_receipt_id
+    WHERE EXISTS (
+        SELECT 1
+        FROM audit.round3m_descriptor_review_receipt AS successor
+        WHERE successor.supersedes_review_receipt_id =
+              receipt.review_receipt_id
+    );
 
     IF leaf_violation_count <> 0 THEN
         RAISE EXCEPTION
@@ -1320,90 +1549,18 @@ SELECT pg_temp.expect_round3m_failure(
                 audit.round3i_utf8_sha256('mutated-note')
         WHERE descriptor_assertion_key = 'round3m.test.assertion.53'
     $sql$,
-    '23514', 'round3m_reviewed_semantics_receipt_binding_ck'
+    '23514', 'round3m_admitted_assertion_source_immutable_ck'
 );
 
 DO $translated_normalized_form_gate_exclusion$
 DECLARE
     target_assertion_id BIGINT;
-    successor_receipt_id BIGINT;
     normalized_form_count BIGINT;
-    target_concept_id BIGINT;
-    target_concept_key TEXT;
 BEGIN
     SELECT descriptor_assertion_id
     INTO STRICT target_assertion_id
     FROM corpus.round3m_descriptor_assertion
     WHERE descriptor_assertion_key = 'round3m.test.assertion.54';
-
-    INSERT INTO audit.round3m_descriptor_review_receipt (
-        review_receipt_key, descriptor_assertion_id, receipt_version,
-        supersedes_review_receipt_id,
-        reviewer_id_or_pseudonymous_code, reviewer_role,
-        review_actor_type, receipt_origin_code,
-        human_event_evidence_sha256, review_protocol_version,
-        decision, decision_reason, evidence_locator, reviewed_at,
-        adjudication_status, previous_decision
-    )
-    SELECT 'round3m.test.review.translation-successor',
-           descriptor_assertion_id, 2, current_review_receipt_id,
-           'human-reviewer-fixture-1',
-           'PROFESSIONAL_SENSORY_REVIEWER', 'HUMAN_REVIEWER',
-           'HUMAN_REVIEW_IMPORT', repeat('6', 64),
-           'round3m-human-review-fixture-v2', 'CONFIRM_DESCRIPTOR',
-           'Actual-human successor records a translated form but cannot use it for vocabulary scale.',
-           'fixture://review/translation-successor',
-           '2026-08-28T01:07:00Z', 'NOT_REQUIRED',
-           'CONFIRM_DESCRIPTOR'
-    FROM corpus.round3m_descriptor_assertion
-    WHERE descriptor_assertion_id = target_assertion_id
-    RETURNING review_receipt_id INTO successor_receipt_id;
-
-    UPDATE corpus.round3m_descriptor_assertion
-    SET normalized_candidate_form = 'translation-only-form',
-        normalized_candidate_form_sha256 =
-            audit.round3i_utf8_sha256('translation-only-form'),
-        translation_generated = TRUE,
-        current_review_receipt_id = successor_receipt_id
-    WHERE descriptor_assertion_id = target_assertion_id;
-
-    SELECT target.concept_id, target.output_label_key
-    INTO STRICT target_concept_id, target_concept_key
-    FROM corpus.round3m_descriptor_label_target AS target
-    WHERE target.descriptor_assertion_id = target_assertion_id
-    ORDER BY target.review_receipt_id
-    LIMIT 1;
-
-    INSERT INTO audit.round3m_descriptor_label_mapping_receipt (
-        label_mapping_receipt_id, descriptor_assertion_id,
-        review_receipt_id, label_set_sha256,
-        mapping_evidence_sha256, mapping_evidence_locator
-    ) VALUES (
-        'round3m.test.mapping.translation-successor',
-        target_assertion_id, successor_receipt_id,
-        audit.round3i_utf8_sha256(
-            '1' || chr(31) || target_concept_key || chr(31) ||
-            'EXACT_CANONICAL_TARGET' || chr(31) ||
-            'concept:' || target_concept_id::TEXT
-        ),
-        repeat('6', 64),
-        'fixture://review/translation-successor#label-mapping'
-    );
-
-    INSERT INTO corpus.round3m_descriptor_label_target (
-        descriptor_assertion_id, target_ordinal, output_label_key,
-        normalization_decision, review_receipt_id,
-        label_mapping_receipt_id, concept_id
-    ) VALUES (
-        target_assertion_id, 1, target_concept_key,
-        'EXACT_CANONICAL_TARGET', successor_receipt_id,
-        'round3m.test.mapping.translation-successor', target_concept_id
-    );
-
-    SET CONSTRAINTS audit.round3m_label_mapping_set_receipt_ci,
-        corpus.round3m_label_mapping_set_target_ci IMMEDIATE;
-    SET CONSTRAINTS audit.round3m_label_mapping_set_receipt_ci,
-        corpus.round3m_label_mapping_set_target_ci DEFERRED;
 
     SELECT reviewed_unique_normalized_form_count
     INTO STRICT normalized_form_count
@@ -1425,7 +1582,7 @@ END
 $translated_normalized_form_gate_exclusion$;
 
 SELECT pg_temp.expect_round3m_failure(
-    'same_human_successor_cannot_authorize_second_semantic_mutation',
+    'admitted_translation_assertion_cannot_be_mutated_in_place',
     $sql$
         UPDATE corpus.round3m_descriptor_assertion
         SET normalized_candidate_form = 'translation-second-mutation',
@@ -1433,7 +1590,7 @@ SELECT pg_temp.expect_round3m_failure(
                 audit.round3i_utf8_sha256('translation-second-mutation')
         WHERE descriptor_assertion_key = 'round3m.test.assertion.54'
     $sql$,
-    '23514', 'round3m_reviewed_semantics_receipt_binding_ck'
+    '23514', 'round3m_admitted_assertion_source_immutable_ck'
 );
 
 DO $review_downgrade_then_mutate_negative$
@@ -1462,7 +1619,7 @@ BEGIN
             actual_constraint = CONSTRAINT_NAME;
         IF actual_state <> '23514'
            OR actual_constraint IS DISTINCT FROM
-              'round3m_reviewed_semantics_receipt_binding_ck' THEN
+              'round3m_admitted_assertion_source_immutable_ck' THEN
             RAISE;
         END IF;
     END;
@@ -1621,7 +1778,9 @@ BEGIN
         ) VALUES (
             'round3m.test.mapping.bad-exact-cardinality',
             target_assertion_id, successor_receipt_id, mapping_digest,
-            repeat('3', 64),
+            (SELECT human_event_evidence_sha256
+             FROM audit.round3m_descriptor_review_receipt
+             WHERE review_receipt_id=successor_receipt_id),
             'fixture://review/bad-exact-cardinality#label-mapping'
         );
 
@@ -1723,7 +1882,9 @@ BEGIN
                 '2' || chr(31) || selected_concept_key || chr(31) ||
                 'EXACT_CANONICAL_TARGET' || chr(31) ||
                 'concept:' || selected_concept_id::TEXT
-            ), repeat('2', 64),
+            ), (SELECT human_event_evidence_sha256
+                FROM audit.round3m_descriptor_review_receipt
+                WHERE review_receipt_id=successor_receipt_id),
             'fixture://review/bad-label-ordinal#label-mapping'
         );
 
@@ -1889,7 +2050,7 @@ SELECT pg_temp.expect_round3m_failure(
         FROM corpus.round3m_descriptor_assertion
         WHERE descriptor_assertion_key = 'round3m.test.assertion.1'
     $sql$,
-    '23514', 'round3m_human_review_receipt_origin_ck'
+    '23514', 'round3m_human_review_full_chain_required_ck'
 );
 
 SELECT pg_temp.expect_round3m_failure(
@@ -1918,7 +2079,7 @@ SELECT pg_temp.expect_round3m_failure(
         FROM corpus.round3m_descriptor_assertion
         WHERE descriptor_assertion_key = 'round3m.test.assertion.60'
     $sql$,
-    '23514', 'round3m_expert_review_qualification_ck'
+    '23514', 'round3m_human_review_full_chain_required_ck'
 );
 
 SELECT pg_temp.expect_round3m_failure(
@@ -1952,7 +2113,7 @@ SELECT pg_temp.expect_round3m_failure(
         SET route_index_sha256 = repeat('d', 64)
         WHERE descriptor_assertion_key = 'round3m.test.assertion.1'
     $sql$,
-    '23514', 'round3m_descriptor_artifact_lineage_ck'
+    '23514', 'round3m_admitted_assertion_source_immutable_ck'
 );
 
 SELECT pg_temp.expect_round3m_failure(
@@ -1962,7 +2123,7 @@ SELECT pg_temp.expect_round3m_failure(
         SET source_file_sha256_scope = 'ROUTE_INDEX_SHA256'
         WHERE descriptor_assertion_key = 'round3m.test.assertion.1'
     $sql$,
-    '23514', 'round3m_descriptor_artifact_lineage_ck'
+    '23514', 'round3m_admitted_assertion_source_immutable_ck'
 );
 
 SELECT pg_temp.expect_round3m_failure(
@@ -1973,7 +2134,7 @@ SELECT pg_temp.expect_round3m_failure(
             'Invalid assertion-only non-storage reason.'
         WHERE descriptor_assertion_key = 'round3m.test.assertion.1'
     $sql$,
-    '23514', 'round3m_descriptor_artifact_lineage_ck'
+    '23514', 'round3m_admitted_assertion_source_immutable_ck'
 );
 
 INSERT INTO evidence.round3m_descriptor_rights_decision (
@@ -3343,6 +3504,11 @@ SELECT pg_temp.expect_round3m_failure(
     '23514', 'round3m_immutable_evidence_ck'
 );
 
+CREATE TEMP TABLE round3m_test_final_validation
+ON COMMIT DROP AS
+SELECT check_key, violation_count, passed
+FROM audit.run_round3m_gate_validation_queries();
+
 DO $final_validation$
 DECLARE
     failure_count BIGINT;
@@ -3350,7 +3516,7 @@ DECLARE
 BEGIN
     FOR failed_check IN
         SELECT check_key, violation_count
-        FROM audit.run_round3m_gate_validation_queries()
+        FROM round3m_test_final_validation
         WHERE passed IS NOT TRUE OR violation_count <> 0
         ORDER BY check_key
     LOOP
@@ -3359,7 +3525,7 @@ BEGIN
     END LOOP;
 
     SELECT count(*) INTO failure_count
-    FROM audit.run_round3m_gate_validation_queries()
+    FROM round3m_test_final_validation
     WHERE passed IS NOT TRUE OR violation_count <> 0;
 
     IF failure_count <> 0 THEN
@@ -3382,7 +3548,7 @@ END
 $final_validation$;
 
 SELECT check_key, violation_count, passed
-FROM audit.run_round3m_gate_validation_queries()
+FROM round3m_test_final_validation
 ORDER BY check_key;
 
 ROLLBACK;
