@@ -545,6 +545,10 @@ img {
   line-height: 0.88;
 }
 
+.category-network strong {
+  overflow-wrap: anywhere;
+}
+
 .dimension-ledger {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
