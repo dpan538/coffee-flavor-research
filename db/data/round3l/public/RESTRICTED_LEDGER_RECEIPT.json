@@ -1,0 +1,267 @@
+{
+  "checkpoint_at": "2026-08-28T04:00:00Z",
+  "file_count": 43,
+  "files": [
+    {
+      "byte_count": 1843,
+      "data_row_count": 11,
+      "logical_path": "restricted_ingest/BLOCKER_QUEUE.tsv",
+      "sha256": "4ca4261c999f5b57ad74c82c331ced7faf632ba8654e05b79983a7cff14b6194"
+    },
+    {
+      "byte_count": 10048,
+      "data_row_count": null,
+      "logical_path": "restricted_ingest/INGESTION_CHECKPOINT.json",
+      "sha256": "c054e364e5193558c752ce03ff5ec002b807343e00743e7af94676e17cf39e7e"
+    },
+    {
+      "byte_count": 4493477,
+      "data_row_count": 11801,
+      "logical_path": "restricted_ingest/PROFESSIONAL_ASSERTIONS.tsv",
+      "sha256": "d31f056edd31f1eea657a7056e9268c9833e315be5734310018b0fc82ee5a89a"
+    },
+    {
+      "byte_count": 17219681,
+      "data_row_count": 26515,
+      "logical_path": "restricted_ingest/PROFESSIONAL_RECORDS.tsv",
+      "sha256": "2f283d3cececa243dd840bba7f9b67a037b1164576b2e819778d186237d6fdc0"
+    },
+    {
+      "byte_count": 501615,
+      "data_row_count": 851,
+      "logical_path": "restricted_ingest/SOURCE_ATTEMPTS.tsv",
+      "sha256": "1ae1e3fe189308237ae6666266d507822955160d75feaa778dd0cbe1642406f5"
+    },
+    {
+      "byte_count": 229784,
+      "data_row_count": 480,
+      "logical_path": "restricted_ingest/SOURCE_CENSUS.tsv",
+      "sha256": "86c16cf8797842446c5274de33060cf3ec0b77f3bfdaf4ae93fc278471931743"
+    },
+    {
+      "byte_count": 247,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/bop_historical_continuation/ASSERTIONS.tsv",
+      "sha256": "17d174af2d3061d5bd47f98235786e13e6869a70e6433ebe365d3b56ea42d988"
+    },
+    {
+      "byte_count": 8831,
+      "data_row_count": 14,
+      "logical_path": "restricted_lanes/bop_historical_continuation/ATTEMPTS.tsv",
+      "sha256": "6813910aa9d71f11c21ff9f0cac90a6b8cac93c9e419c995f288c7c96439be68"
+    },
+    {
+      "byte_count": 111,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/bop_historical_continuation/BLOCKERS.tsv",
+      "sha256": "3f437df539e2982418bad4ff6dac4b4467fb04983102a632c470ebad73af81c8"
+    },
+    {
+      "byte_count": 187570,
+      "data_row_count": 395,
+      "logical_path": "restricted_lanes/bop_historical_continuation/RECORDS.tsv",
+      "sha256": "8df4a2ddeebeaa9aa557970ec8baca45b9f458c59c44e9c3c01bd26ae12e5fed"
+    },
+    {
+      "byte_count": 662,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/bop_historical_continuation/RESUME_MANIFEST.json",
+      "sha256": "a7cf2a596bf97910cb2d2ea55c22a41d1002e2522440d71dccde5cef7fb18814"
+    },
+    {
+      "byte_count": 1375,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/bop_historical_continuation/SUMMARY.json",
+      "sha256": "dd5ebceb7a6aaeb27c1168d65ae7fb10382991f723993efbeaf32fd068f0269f"
+    },
+    {
+      "byte_count": 4343368,
+      "data_row_count": 11418,
+      "logical_path": "restricted_lanes/coe_bop/ASSERTIONS.tsv",
+      "sha256": "e771e694c63f0b2c1e7811575ebc78591af16ec262ae3cde9d3c5f33a2f9365b"
+    },
+    {
+      "byte_count": 283317,
+      "data_row_count": 525,
+      "logical_path": "restricted_lanes/coe_bop/ATTEMPTS.tsv",
+      "sha256": "f19bb471e0faafaae4d7f218feb1476c7952202aa8f479eaaa72e8ed7bb98e47"
+    },
+    {
+      "byte_count": 949,
+      "data_row_count": 5,
+      "logical_path": "restricted_lanes/coe_bop/BLOCKERS.tsv",
+      "sha256": "92fed3f5f372ad7250795289eac2bb746bd803c95497ca505308d85175a73589"
+    },
+    {
+      "byte_count": 7078025,
+      "data_row_count": 11574,
+      "logical_path": "restricted_lanes/coe_bop/RECORDS.tsv",
+      "sha256": "a3aa2dba9df25c58605392f37fd62271f568260172122370755fad81aeb9a737"
+    },
+    {
+      "byte_count": 894,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/coe_bop/RESUME_MANIFEST.json",
+      "sha256": "96b06f539a161587fc335d364a1b44f630db183616c253dd29130a5e435dbb32"
+    },
+    {
+      "byte_count": 147851,
+      "data_row_count": 376,
+      "logical_path": "restricted_lanes/commercial_regional/ASSERTIONS.tsv",
+      "sha256": "abe9341a0c7ee758f60fac457c40810b00947c7eaf6c258eb8afe1b4ca465477"
+    },
+    {
+      "byte_count": 73903,
+      "data_row_count": 127,
+      "logical_path": "restricted_lanes/commercial_regional/ATTEMPTS.tsv",
+      "sha256": "597b0594e40396ea8fe601dd0790a4a598de98b70a97ec07c449838efcae0370"
+    },
+    {
+      "byte_count": 111,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/commercial_regional/BLOCKERS.tsv",
+      "sha256": "3f437df539e2982418bad4ff6dac4b4467fb04983102a632c470ebad73af81c8"
+    },
+    {
+      "byte_count": 5893999,
+      "data_row_count": 8102,
+      "logical_path": "restricted_lanes/commercial_regional/RECORDS.tsv",
+      "sha256": "943ad3d6d84da71c8536dfeb7aa0a868871670f99bc89284066f6afd58a87f41"
+    },
+    {
+      "byte_count": 697,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/commercial_regional/RESUME_MANIFEST.json",
+      "sha256": "1f319626ffb0983848a38bf2ac3d917386ecbe56580b749509cffbedfe351b0f"
+    },
+    {
+      "byte_count": 1091,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/commercial_regional/SUMMARY.json",
+      "sha256": "5eaa34fa3018d8ce60f2825238106422b16a06c26c9a5b2e0f48824cea7409bf"
+    },
+    {
+      "byte_count": 247,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/golden_bean_ocr_continuation/ASSERTIONS.tsv",
+      "sha256": "17d174af2d3061d5bd47f98235786e13e6869a70e6433ebe365d3b56ea42d988"
+    },
+    {
+      "byte_count": 46801,
+      "data_row_count": 57,
+      "logical_path": "restricted_lanes/golden_bean_ocr_continuation/ATTEMPTS.tsv",
+      "sha256": "9499b9424b91badb7f70a5056d88e83401ed7231056928c1196c3e1245c7f51d"
+    },
+    {
+      "byte_count": 111,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/golden_bean_ocr_continuation/BLOCKERS.tsv",
+      "sha256": "3f437df539e2982418bad4ff6dac4b4467fb04983102a632c470ebad73af81c8"
+    },
+    {
+      "byte_count": 1547386,
+      "data_row_count": 2419,
+      "logical_path": "restricted_lanes/golden_bean_ocr_continuation/RECORDS.tsv",
+      "sha256": "ac8f5d25a9209cdda2118968081afa53693ddd3ba160b0daed5d59a760f04687"
+    },
+    {
+      "byte_count": 796,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/golden_bean_ocr_continuation/RESUME_MANIFEST.json",
+      "sha256": "223a8e18e9b52e9ca8978b6def00a512f7bea830024b4769611135d067c2e51e"
+    },
+    {
+      "byte_count": 1143,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/golden_bean_ocr_continuation/SUMMARY.json",
+      "sha256": "14a9a190af0bb3bb1d8e9baf378d951e6380c0d92944f52f2b85b73c0d4f2882"
+    },
+    {
+      "byte_count": 2752,
+      "data_row_count": 7,
+      "logical_path": "restricted_lanes/wcc_body_continuation/ASSERTIONS.tsv",
+      "sha256": "64a37e8a8499396e302ce93556a427094c5cbf56617c206cc0a04acbb5bdba9b"
+    },
+    {
+      "byte_count": 11816,
+      "data_row_count": 16,
+      "logical_path": "restricted_lanes/wcc_body_continuation/ATTEMPTS.tsv",
+      "sha256": "c7c63e8d38724304dfc11ecde77b1a1f46f98835abbea9acd6a96c4fda87f4b6"
+    },
+    {
+      "byte_count": 897,
+      "data_row_count": 6,
+      "logical_path": "restricted_lanes/wcc_body_continuation/BLOCKERS.tsv",
+      "sha256": "2e0b517bf60b1d541860f2125ed2ca6cc0ac5c59619bc01417913553beff4eb8"
+    },
+    {
+      "byte_count": 460950,
+      "data_row_count": 466,
+      "logical_path": "restricted_lanes/wcc_body_continuation/RECORDS.tsv",
+      "sha256": "a8a3d71e4cd5025e04877e5145b233ab2df90ff82abc49406017c009654425d2"
+    },
+    {
+      "byte_count": 618,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/wcc_body_continuation/RESUME_MANIFEST.json",
+      "sha256": "0427a5ec3dc5dbbde0080163a95ba8776f1f9de91d32942b769987ef7595dee4"
+    },
+    {
+      "byte_count": 9335,
+      "data_row_count": 29,
+      "logical_path": "restricted_lanes/wcc_body_continuation/SOURCE_FILE_MANIFEST.tsv",
+      "sha256": "4c4b6c5ac97abf702229fad2fcacdfc4c2521b0e2363989a722843c90187f9dc"
+    },
+    {
+      "byte_count": 1375,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/wcc_body_continuation/SUMMARY.json",
+      "sha256": "1b5d91872fa33b5de39fa4561899f4bed6a2ac3773d4a83449c909b8d956bf2e"
+    },
+    {
+      "byte_count": 247,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/wcc_national/ASSERTIONS.tsv",
+      "sha256": "17d174af2d3061d5bd47f98235786e13e6869a70e6433ebe365d3b56ea42d988"
+    },
+    {
+      "byte_count": 78462,
+      "data_row_count": 112,
+      "logical_path": "restricted_lanes/wcc_national/ATTEMPTS.tsv",
+      "sha256": "3fe88853a3c170e95cc0843ccd203a51fd8d6376dfd81e58599270cfc9320322"
+    },
+    {
+      "byte_count": 111,
+      "data_row_count": 0,
+      "logical_path": "restricted_lanes/wcc_national/BLOCKERS.tsv",
+      "sha256": "3f437df539e2982418bad4ff6dac4b4467fb04983102a632c470ebad73af81c8"
+    },
+    {
+      "byte_count": 2056121,
+      "data_row_count": 3559,
+      "logical_path": "restricted_lanes/wcc_national/RECORDS.tsv",
+      "sha256": "5a6ab3c8cf2772fb9bf77b752e6bd409933562cb815855dd78ca0329a449b47e"
+    },
+    {
+      "byte_count": 524,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/wcc_national/RESUME_MANIFEST.json",
+      "sha256": "f32a76b197a9aa691660c26e79b3bf1fe4c64a2c87f452376b140e3e18d03b6b"
+    },
+    {
+      "byte_count": 59322,
+      "data_row_count": 112,
+      "logical_path": "restricted_lanes/wcc_national/SOURCE_FILE_MANIFEST.tsv",
+      "sha256": "d93cd4b491802383256cbaa559fcd25ee7530deee521ec1df0ae4f775dc84c3b"
+    },
+    {
+      "byte_count": 835,
+      "data_row_count": null,
+      "logical_path": "restricted_lanes/wcc_national/SUMMARY.json",
+      "sha256": "876781ac3ce7b9bdf1d008a875fedbaf0d2e037198f17109ca1bc4e65dda5996"
+    }
+  ],
+  "receipt_root_sha256": "62c827c0b65029fb99c039445ec88c13b4a122bc7ad001f9c9d36fdac1c33a6a",
+  "receipt_version": "round3l-restricted-ledger-receipt-v1",
+  "restricted_inputs_tracked_in_git": false
+}

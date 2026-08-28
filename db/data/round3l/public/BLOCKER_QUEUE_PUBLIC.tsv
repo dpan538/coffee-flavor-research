@@ -1,0 +1,12 @@
+blocker_key	attempt_key	lane_key	external_action_type	blocker_state	recorded_at	resolution_evidence_present	continuation_cursor
+blocker-coe-bop-bop-pre-2017-organizer-route	coe-bop-bop-pre-2017-organizer-route	coe_bop	ORGANIZER_RESPONSE	RESOLVED	2026-08-28T02:03:04Z	true	best_of_panama/official-scap-archive-2003
+blocker-coe-bop-bop-results-pdf-edition-ambiguity	coe-bop-bop-results-pdf-edition-ambiguity	coe_bop	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:03:04Z	false	retain-pdf-hash-without-edition-assignment
+blocker-coe-bop-index-collision-brazil-pulped-naturals-2010	coe-bop-index-collision-brazil-pulped-naturals-2010	coe_bop	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:03:04Z	false	continue-all-noncolliding-coe-editions
+blocker-coe-bop-rights-bop	coe-bop-rights-bop	coe_bop	PERMISSION	OPEN	2026-08-28T02:03:04Z	false	continue-bop-public-route-discovery-with-rights-pending
+blocker-coe-bop-rights-coe	coe-bop-rights-coe	coe_bop	PERMISSION	OPEN	2026-08-28T02:03:04Z	false	continue-coe-acquisition-with-rights-pending
+wcc-body-cont.blocker.canada	wcc-body-cont.canada	wcc_body_continuation	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:05:00Z	false	source:wcc_cb_rec6kvidw1gqaqubv
+wcc-body-cont.blocker.ecuador	wcc-body-cont.ecuador	wcc_body_continuation	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:05:00Z	false	source:wcc_cb_recaucmwthkwmahzq
+wcc-body-cont.blocker.honduras	wcc-body-cont.honduras	wcc_body_continuation	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:05:00Z	false	source:wcc_cb_rec21urnlnue16imu
+wcc-body-cont.blocker.peru	wcc-body-cont.peru	wcc_body_continuation	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:05:00Z	false	source:wcc_cb_rec7tuorabqiycucm
+wcc-body-cont.blocker.sweden	wcc-body-cont.sweden	wcc_body_continuation	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:05:00Z	false	source:wcc_cb_recagnhh5aiyrwslp
+wcc-body-cont.blocker.united-kingdom	wcc-body-cont.united-kingdom	wcc_body_continuation	ORGANIZER_RESPONSE	OPEN	2026-08-28T02:05:00Z	false	source:wcc_cb_recahobfxvazsne9r

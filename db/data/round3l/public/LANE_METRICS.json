@@ -1,0 +1,551 @@
+{
+  "lane_count": 6,
+  "lanes": {
+    "bop_historical_continuation": {
+      "artifacts": {
+        "bytes": 5434816,
+        "count": 14
+      },
+      "assertions": {
+        "auxiliary_source_terms": 0,
+        "numeric_structured_scores": 0,
+        "staged_gate_type_descriptors": 0
+      },
+      "attempts": {
+        "count": 14,
+        "outcomes": {
+          "COMPLETED": 14
+        },
+        "parsed_rows": 408,
+        "sources_attempted": 1,
+        "sources_with_completed_attempt": 1
+      },
+      "blockers": {},
+      "c0_evidence_status": {
+        "NOT_REPORTED": 395
+      },
+      "c1_evidence_status": {
+        "NOT_REPORTED": 395
+      },
+      "continuation": {
+        "latest_attempt_sequence": 14,
+        "next_action": "Reconcile the official SCAP 2001-2003 auction artifacts, then search organizer-owned competition-result or score-sheet routes distinct from auction-result snapshots.",
+        "next_edition_or_cursor": "official-scap-archive-2003"
+      },
+      "losses": {
+        "emitted_duplicate_publications": 0,
+        "mirrors": 0,
+        "non_emitted_duplicate_publications": 0,
+        "repeated_services": 0
+      },
+      "preparation": {
+        "fresh_status_distribution": {
+          "PENDING": 395
+        },
+        "service_distribution": {
+          "UNRESOLVED": 395
+        }
+      },
+      "records": {
+        "canonical": 395,
+        "ingested": 395,
+        "model_eligible": 0,
+        "observed_core": 0,
+        "payload_distribution": {
+          "RANKING_ONLY": 395
+        },
+        "staged_core_candidates": 0
+      },
+      "rights_by_dimension": {
+        "commercial_model_use": {
+          "PENDING": 395
+        },
+        "internal_research_use": {
+          "PENDING": 395
+        },
+        "model_research_use": {
+          "PENDING": 395
+        },
+        "public_derived_release": {
+          "PENDING": 395
+        },
+        "public_descriptor_use": {
+          "PENDING": 395
+        },
+        "public_results_use": {
+          "PENDING": 395
+        }
+      },
+      "unresolved_review_inventory": {
+        "automatically_collapsed_rows": 0,
+        "source_conflict_rows": 0
+      }
+    },
+    "coe_bop": {
+      "artifacts": {
+        "bytes": 140104288,
+        "count": 517
+      },
+      "assertions": {
+        "auxiliary_source_terms": 0,
+        "numeric_structured_scores": 11418,
+        "staged_gate_type_descriptors": 0
+      },
+      "attempts": {
+        "count": 525,
+        "outcomes": {
+          "BLOCKED_EXTERNAL_ACTION": 5,
+          "COMPLETED": 498,
+          "NOT_FOUND": 2,
+          "NO_RECORD_PAYLOAD": 18,
+          "PARTIAL": 1,
+          "TRANSIENT_TECHNICAL_FAILURE": 1
+        },
+        "parsed_rows": 11577,
+        "sources_attempted": 233,
+        "sources_with_completed_attempt": 218
+      },
+      "blockers": {
+        "OPEN": 4,
+        "RESOLVED": 1
+      },
+      "c0_evidence_status": {
+        "NOT_REPORTED": 11574
+      },
+      "c1_evidence_status": {
+        "NOT_REPORTED": 11574
+      },
+      "continuation": {
+        "latest_attempt_sequence": 525,
+        "next_action": "retry any transient census route, then resume the official farm directory after the Cloudflare challenge window; continue Best of Panama pre-2017 organizer-owned route discovery independently",
+        "next_edition_or_cursor": "farm-directory-page-105"
+      },
+      "losses": {
+        "emitted_duplicate_publications": 4551,
+        "mirrors": 0,
+        "non_emitted_duplicate_publications": 0,
+        "repeated_services": 431
+      },
+      "preparation": {
+        "fresh_status_distribution": {
+          "CONFIRMED": 11574
+        },
+        "service_distribution": {
+          "CUPPING": 11574
+        }
+      },
+      "records": {
+        "canonical": 6592,
+        "ingested": 11574,
+        "model_eligible": 0,
+        "observed_core": 0,
+        "payload_distribution": {
+          "OFFICIAL_STRUCTURED_SCORE": 11192,
+          "RANKING_ONLY": 382
+        },
+        "staged_core_candidates": 6268
+      },
+      "rights_by_dimension": {
+        "commercial_model_use": {
+          "PENDING": 11574
+        },
+        "internal_research_use": {
+          "PENDING": 11574
+        },
+        "model_research_use": {
+          "PENDING": 11574
+        },
+        "public_derived_release": {
+          "PENDING": 11574
+        },
+        "public_descriptor_use": {
+          "PENDING": 11574
+        },
+        "public_results_use": {
+          "PENDING": 11574
+        }
+      },
+      "unresolved_review_inventory": {
+        "automatically_collapsed_rows": 0,
+        "source_conflict_rows": 0
+      }
+    },
+    "commercial_regional": {
+      "artifacts": {
+        "bytes": 674543488,
+        "count": 119
+      },
+      "assertions": {
+        "auxiliary_source_terms": 0,
+        "numeric_structured_scores": 0,
+        "staged_gate_type_descriptors": 376
+      },
+      "attempts": {
+        "count": 127,
+        "outcomes": {
+          "COMPLETED": 47,
+          "NO_RECORD_PAYLOAD": 4,
+          "PARTIAL": 72,
+          "TRANSIENT_TECHNICAL_FAILURE": 4
+        },
+        "parsed_rows": 8102,
+        "sources_attempted": 38,
+        "sources_with_completed_attempt": 26
+      },
+      "blockers": {},
+      "c0_evidence_status": {
+        "NOT_APPLICABLE": 270,
+        "NOT_REPORTED": 7683,
+        "REPORTED": 139,
+        "REPORTED_UNRESOLVED": 10
+      },
+      "c1_evidence_status": {
+        "NOT_APPLICABLE": 270,
+        "REPORTED_UNRESOLVED": 7683,
+        "SOURCE_UNKNOWN": 149
+      },
+      "continuation": {
+        "exact_archive_cursor": "golden_bean/gba_2023_category_01.pdf page 1",
+        "exact_next_action": "Run lossless OCR over the acquired organizer-hosted Golden Bean category PDFs, retain page/card locators and hashes, then rerun build_lane.py; never guess unreadable labels.",
+        "exact_next_edition": "2023",
+        "latest_attempt_sequence": 127
+      },
+      "losses": {
+        "emitted_duplicate_publications": 196,
+        "mirrors": 0,
+        "non_emitted_duplicate_publications": 0,
+        "repeated_services": 0
+      },
+      "preparation": {
+        "fresh_status_distribution": {
+          "CONFIRMED": 1208,
+          "NOT_APPLICABLE": 270,
+          "PENDING": 6624
+        },
+        "service_distribution": {
+          "CUPPING": 149,
+          "ESPRESSO": 2537,
+          "ESPRESSO_MILK": 2189,
+          "FILTER": 951,
+          "LATTE": 119,
+          "PICCOLO": 59,
+          "PLUNGER": 126,
+          "SINGLE_SERVE": 6,
+          "UNFILTERED_INFUSION": 60,
+          "UNRESOLVED": 1906
+        }
+      },
+      "records": {
+        "canonical": 7906,
+        "ingested": 8102,
+        "model_eligible": 0,
+        "observed_core": 0,
+        "payload_distribution": {
+          "OFFICIAL_DESCRIPTOR": 395,
+          "OFFICIAL_STRUCTURED_SCORE": 404,
+          "RANKING_ONLY": 2683,
+          "RESULT_METADATA_ONLY": 4620
+        },
+        "staged_core_candidates": 486
+      },
+      "rights_by_dimension": {
+        "commercial_model_use": {
+          "UNKNOWN": 8102
+        },
+        "internal_research_use": {
+          "UNKNOWN": 8102
+        },
+        "model_research_use": {
+          "UNKNOWN": 8102
+        },
+        "public_derived_release": {
+          "UNKNOWN": 8102
+        },
+        "public_descriptor_use": {
+          "UNKNOWN": 8102
+        },
+        "public_results_use": {
+          "UNKNOWN": 8102
+        }
+      },
+      "unresolved_review_inventory": {
+        "automatically_collapsed_rows": 0,
+        "source_conflict_rows": 0
+      }
+    },
+    "golden_bean_ocr_continuation": {
+      "artifacts": {
+        "bytes": 389666008,
+        "count": 57
+      },
+      "assertions": {
+        "auxiliary_source_terms": 0,
+        "numeric_structured_scores": 0,
+        "staged_gate_type_descriptors": 0
+      },
+      "attempts": {
+        "count": 57,
+        "outcomes": {
+          "COMPLETED": 20,
+          "PARTIAL": 37
+        },
+        "parsed_rows": 2419,
+        "sources_attempted": 3,
+        "sources_with_completed_attempt": 2
+      },
+      "blockers": {},
+      "c0_evidence_status": {
+        "NOT_REPORTED": 2419
+      },
+      "c1_evidence_status": {
+        "NOT_REPORTED": 2419
+      },
+      "continuation": {
+        "exact_archive_cursor": "golden_bean/gba_2023_category_01.pdf page 4 card segmentation review",
+        "exact_next_action": "Visually review the first pending page/card segmentation against the official PDF, record only hashes and locators, then rerun build_lane.py; never guess unreadable labels.",
+        "exact_next_edition": "2023",
+        "latest_attempt_sequence": 57
+      },
+      "losses": {
+        "emitted_duplicate_publications": 337,
+        "mirrors": 0,
+        "non_emitted_duplicate_publications": 0,
+        "repeated_services": 0
+      },
+      "preparation": {
+        "fresh_status_distribution": {
+          "PENDING": 2419
+        },
+        "service_distribution": {
+          "ESPRESSO": 761,
+          "ESPRESSO_MILK": 1002,
+          "FILTER": 517,
+          "SINGLE_SERVE": 12,
+          "UNRESOLVED": 127
+        }
+      },
+      "records": {
+        "canonical": 2082,
+        "ingested": 2419,
+        "model_eligible": 0,
+        "observed_core": 0,
+        "payload_distribution": {
+          "RANKING_ONLY": 2419
+        },
+        "staged_core_candidates": 0
+      },
+      "rights_by_dimension": {
+        "commercial_model_use": {
+          "UNKNOWN": 2419
+        },
+        "internal_research_use": {
+          "UNKNOWN": 2419
+        },
+        "model_research_use": {
+          "UNKNOWN": 2419
+        },
+        "public_derived_release": {
+          "UNKNOWN": 2419
+        },
+        "public_descriptor_use": {
+          "UNKNOWN": 2419
+        },
+        "public_results_use": {
+          "UNKNOWN": 2419
+        }
+      },
+      "unresolved_review_inventory": {
+        "automatically_collapsed_rows": 0,
+        "source_conflict_rows": 0
+      }
+    },
+    "wcc_body_continuation": {
+      "artifacts": {
+        "bytes": 15284886,
+        "count": 29
+      },
+      "assertions": {
+        "auxiliary_source_terms": 7,
+        "numeric_structured_scores": 0,
+        "staged_gate_type_descriptors": 0
+      },
+      "attempts": {
+        "count": 16,
+        "outcomes": {
+          "BLOCKED_EXTERNAL_ACTION": 6,
+          "COMPLETED": 6,
+          "NO_RECORD_PAYLOAD": 2,
+          "PARTIAL": 2
+        },
+        "parsed_rows": 466,
+        "sources_attempted": 16,
+        "sources_with_completed_attempt": 6
+      },
+      "blockers": {
+        "OPEN": 6
+      },
+      "c0_evidence_status": {
+        "NOT_APPLICABLE": 3,
+        "REPORTED": 356,
+        "REPORTED_UNRESOLVED": 29,
+        "SOURCE_UNKNOWN": 78
+      },
+      "c1_evidence_status": {
+        "SOURCE_UNKNOWN": 466
+      },
+      "continuation": {
+        "latest_attempt_sequence": 16,
+        "next_action": "Attempt the official SCA Denmark public national-championship result and scoresheet routes, then continue in SOURCE_UNIVERSE.tsv order.",
+        "next_census_item_key": "source:wcc_cb_recdwegkkkkomky5z"
+      },
+      "losses": {
+        "emitted_duplicate_publications": 0,
+        "mirrors": 0,
+        "non_emitted_duplicate_publications": 7,
+        "repeated_services": 0
+      },
+      "preparation": {
+        "fresh_status_distribution": {
+          "CONFIRMED": 375,
+          "NOT_APPLICABLE": 3,
+          "PENDING": 88
+        },
+        "service_distribution": {
+          "UNRESOLVED": 91,
+          "aeropress": 1,
+          "barista_multi_service": 3,
+          "cold_brew": 1,
+          "compulsory_service": 6,
+          "cup_tasters_batch_brew": 327,
+          "filter_open_service": 3,
+          "final_aggregate": 6,
+          "manual_filter": 2,
+          "open_service": 6,
+          "preliminary_aggregate": 20
+        }
+      },
+      "records": {
+        "canonical": 466,
+        "ingested": 466,
+        "model_eligible": 0,
+        "observed_core": 0,
+        "payload_distribution": {
+          "RANKING_ONLY": 360,
+          "RESULT_METADATA_ONLY": 106
+        },
+        "staged_core_candidates": 0
+      },
+      "rights_by_dimension": {
+        "commercial_model_use": {
+          "PROHIBITED": 466
+        },
+        "internal_research_use": {
+          "PENDING": 466
+        },
+        "model_research_use": {
+          "PENDING": 466
+        },
+        "public_derived_release": {
+          "PENDING": 466
+        },
+        "public_descriptor_use": {
+          "PENDING": 466
+        },
+        "public_results_use": {
+          "PENDING": 466
+        }
+      },
+      "unresolved_review_inventory": {
+        "automatically_collapsed_rows": 0,
+        "source_conflict_rows": 2
+      }
+    },
+    "wcc_national": {
+      "artifacts": {
+        "bytes": 102504011,
+        "count": 112
+      },
+      "assertions": {
+        "auxiliary_source_terms": 0,
+        "numeric_structured_scores": 0,
+        "staged_gate_type_descriptors": 0
+      },
+      "attempts": {
+        "count": 112,
+        "outcomes": {
+          "COMPLETED": 112
+        },
+        "parsed_rows": 3559,
+        "sources_attempted": 9,
+        "sources_with_completed_attempt": 9
+      },
+      "blockers": {},
+      "c0_evidence_status": {
+        "SOURCE_UNKNOWN": 3559
+      },
+      "c1_evidence_status": {
+        "SOURCE_UNKNOWN": 3559
+      },
+      "continuation": {
+        "latest_attempt_sequence": 112,
+        "next_action": "inspect_official_body_route_for_public_results_and_score_files",
+        "next_census_item_key": "source:wcc_cb_rec0zgr8vngzfsqhw"
+      },
+      "losses": {
+        "emitted_duplicate_publications": 6,
+        "mirrors": 0,
+        "non_emitted_duplicate_publications": 0,
+        "repeated_services": 0
+      },
+      "preparation": {
+        "fresh_status_distribution": {
+          "PENDING": 3559
+        },
+        "service_distribution": {
+          "UNRESOLVED": 3559
+        }
+      },
+      "records": {
+        "canonical": 3553,
+        "ingested": 3559,
+        "model_eligible": 0,
+        "observed_core": 0,
+        "payload_distribution": {
+          "RESULT_METADATA_ONLY": 3559
+        },
+        "staged_core_candidates": 0
+      },
+      "rights_by_dimension": {
+        "commercial_model_use": {
+          "PROHIBITED": 3480,
+          "UNKNOWN": 79
+        },
+        "internal_research_use": {
+          "PENDING": 3480,
+          "UNKNOWN": 79
+        },
+        "model_research_use": {
+          "PENDING": 3480,
+          "UNKNOWN": 79
+        },
+        "public_derived_release": {
+          "PENDING": 3480,
+          "UNKNOWN": 79
+        },
+        "public_descriptor_use": {
+          "PENDING": 3480,
+          "UNKNOWN": 79
+        },
+        "public_results_use": {
+          "PENDING": 3480,
+          "UNKNOWN": 79
+        }
+      },
+      "unresolved_review_inventory": {
+        "automatically_collapsed_rows": 0,
+        "source_conflict_rows": 0
+      }
+    }
+  },
+  "phase_status": "IN_PROGRESS_ACQUISITION"
+}

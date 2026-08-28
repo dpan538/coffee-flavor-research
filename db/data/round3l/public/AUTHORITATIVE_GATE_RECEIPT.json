@@ -1,0 +1,21 @@
+{
+  "clean_55_migration_postgresql_17_verification": "DELEGATED_TO_CI",
+  "countable_professional_descriptor_assertions": 0,
+  "freeze_id": "round3l-2026-08-28t040000z",
+  "gate_status": "NOT_MET",
+  "model_eligible_core_professional_records": 0,
+  "observed_core_professional_records": 0,
+  "query_columns": [
+    "observed_core_professional_record_count",
+    "model_eligible_core_professional_record_count",
+    "professional_descriptor_assertion_count"
+  ],
+  "receipt_schema": "round3l-authoritative-gate-receipt-v1",
+  "restricted_manifest_sha256": "c054e364e5193558c752ce03ff5ec002b807343e00743e7af94676e17cf39e7e",
+  "source_view": "audit.v_round3k_professional_corpus_metrics",
+  "staging_metrics_used_as_authoritative_evidence": false,
+  "verification_environment": "PostgreSQL 16.13 disposable integration database; clean PostgreSQL 17 migration verification is required in CI",
+  "verification_status": "VERIFIED",
+  "verified_at": "2026-08-28T02:48:15Z",
+  "verified_input_sha256": "be3d7f8078dab0bba14581b74a3a68ab1ead9940be8bbf71b2944fb73fc05ddc"
+}

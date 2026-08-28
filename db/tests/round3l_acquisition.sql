@@ -6,6 +6,9 @@
 
 BEGIN;
 
+CREATE TEMP TABLE round3l_metric_baseline ON COMMIT DROP AS
+SELECT * FROM audit.v_round3l_acquisition_metrics;
+
 CREATE FUNCTION pg_temp.expect_round3l_failure(
     test_key TEXT,
     statement_text TEXT,
@@ -37,6 +40,18 @@ BEGIN
     END;
 END;
 $expect_round3l_failure$;
+
+INSERT INTO audit.round3l_restricted_ingest_freeze (
+    freeze_id,
+    manifest_sha256,
+    census_row_count,
+    attempt_row_count,
+    professional_record_row_count,
+    professional_assertion_row_count,
+    blocker_row_count
+) VALUES (
+    'round3l.test.freeze', repeat('f', 64), 2, 2, 2, 1, 1
+);
 
 INSERT INTO audit.round3l_source_census (
     census_version, census_item_key, item_kind, series_key,
@@ -183,22 +198,31 @@ WHERE professional_acquisition_record_key =
 DO $metrics$
 DECLARE
     metric audit.v_round3l_acquisition_metrics%ROWTYPE;
+    baseline audit.v_round3l_acquisition_metrics%ROWTYPE;
 BEGIN
     SELECT * INTO STRICT metric FROM audit.v_round3l_acquisition_metrics;
-    IF metric.discovered_source_families <> 2
-       OR metric.discovered_editions <> 2
-       OR metric.attempted_sources <> 2
-       OR metric.completed_sources <> 1
-       OR metric.acquired_file_count <> 1
-       OR metric.parsed_row_count <> 2
-       OR metric.ingested_record_count <> 2
-       OR metric.research_staged_record_count <> 2
-       OR metric.staged_observed_core_eligible_count <> 0
-       OR metric.professional_descriptor_assertion_count <> 1
-       OR metric.duplicate_loss_count <> 1
-       OR metric.open_external_blocker_count <> 1
-       OR metric.remaining_gap_to_7000 <> 7000
-       OR metric.remaining_gap_to_10000 <> 10000 THEN
+    SELECT * INTO STRICT baseline FROM round3l_metric_baseline;
+    IF metric.discovered_source_families <>
+          baseline.discovered_source_families + 2
+       OR metric.discovered_editions <> baseline.discovered_editions + 2
+       OR metric.attempted_sources <> baseline.attempted_sources + 2
+       OR metric.completed_sources <> baseline.completed_sources + 1
+       OR metric.acquired_file_count <> baseline.acquired_file_count + 1
+       OR metric.parsed_row_count <> baseline.parsed_row_count + 2
+       OR metric.ingested_record_count <> baseline.ingested_record_count + 2
+       OR metric.research_staged_record_count <>
+          baseline.research_staged_record_count + 2
+       OR metric.staged_core_candidate_count <>
+          baseline.staged_core_candidate_count + 1
+       OR metric.staged_observed_core_eligible_count <>
+          baseline.staged_observed_core_eligible_count
+       OR metric.professional_descriptor_assertion_count <>
+          baseline.professional_descriptor_assertion_count + 1
+       OR metric.duplicate_loss_count <> baseline.duplicate_loss_count + 1
+       OR metric.open_external_blocker_count <>
+          baseline.open_external_blocker_count + 1
+       OR metric.remaining_gap_to_7000 <> baseline.remaining_gap_to_7000
+       OR metric.remaining_gap_to_10000 <> baseline.remaining_gap_to_10000 THEN
         RAISE EXCEPTION 'Round 3L metric fixture mismatch: %', row_to_json(metric);
     END IF;
 END
@@ -257,6 +281,17 @@ SELECT pg_temp.expect_round3l_failure(
     $sql$,
     '23514',
     'round3l_source_attempt_blocker_ck'
+);
+
+SELECT pg_temp.expect_round3l_failure(
+    'restricted_freeze_manifest_hash_required',
+    $sql$
+        UPDATE audit.round3l_restricted_ingest_freeze
+        SET manifest_sha256 = 'not-a-sha256'
+        WHERE freeze_id = 'round3l.test.freeze'
+    $sql$,
+    '23514',
+    'round3l_restricted_ingest_freeze_text_ck'
 );
 
 DO $validation$

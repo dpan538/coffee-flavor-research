@@ -638,12 +638,20 @@ WITH census AS (
             WHERE item_kind IN ('COMPETITION_EDITION', 'PILOT_EDITION')
         )::BIGINT AS discovered_editions
     FROM audit.round3l_source_census
+), source_attempt_status AS (
+    SELECT
+        round3l_source_census_id,
+        bool_and(outcome = 'COMPLETED') AS every_attempt_completed
+    FROM audit.round3l_source_attempt
+    GROUP BY round3l_source_census_id
 ), attempts AS (
     SELECT
         count(DISTINCT round3l_source_census_id)::BIGINT AS attempted_sources,
-        count(DISTINCT round3l_source_census_id) FILTER (
-            WHERE outcome = 'COMPLETED'
-        )::BIGINT AS completed_sources,
+        (
+            SELECT count(*)::BIGINT
+            FROM source_attempt_status
+            WHERE every_attempt_completed
+        ) AS completed_sources,
         count(*) FILTER (
             WHERE source_snapshot_sha256 IS NOT NULL
         )::BIGINT AS acquired_file_count,
@@ -802,6 +810,6 @@ COMMENT ON TABLE corpus.professional_acquisition_assertion IS
 COMMENT ON VIEW corpus.v_round3l_core_candidate IS
     'Deduplicated P1/P2 fresh-preparation score/descriptor rows; rights flags remain independent.';
 COMMENT ON VIEW audit.v_round3l_acquisition_metrics IS
-    'Round 3L checkpoint metrics, including staged records, rights-qualified core candidates, losses, and target gaps.';
+    'Round 3L staging metrics only. Completed sources require every recorded attempt to be COMPLETED; acquired_file_count is hashed attempt snapshots, not a physical-file inventory. Core, descriptor, and gap fields do not replace the authoritative Round 3K gate.';
 
 COMMIT;

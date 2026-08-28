@@ -1,0 +1,266 @@
+{
+  "acquisition": {
+    "artifact_bytes": 1327537497,
+    "artifact_count": 848,
+    "canonical_rows": 20994,
+    "corpus_state_distribution": {
+      "RESEARCH_STAGED": 26515
+    },
+    "evidence_tier_distribution": {
+      "P1": 11949,
+      "P2": 4046,
+      "P3": 10520
+    },
+    "ingested_rows": 26515,
+    "parsed_rows": 26531,
+    "record_payload_distribution": {
+      "OFFICIAL_DESCRIPTOR": 395,
+      "OFFICIAL_STRUCTURED_SCORE": 11596,
+      "RANKING_ONLY": 6239,
+      "RESULT_METADATA_ONLY": 8285
+    }
+  },
+  "authoritative_round3k_gate": {
+    "countable_descriptor_assertions": 0,
+    "evidence_receipt": "AUTHORITATIVE_GATE_RECEIPT.json",
+    "gate_status": "NOT_MET",
+    "model_eligible_records": 0,
+    "observed_core_professional_records": 0,
+    "remaining_countable_descriptors_to_40000": 40000,
+    "remaining_countable_descriptors_to_60000": 60000,
+    "remaining_observed_records_to_10000": 10000,
+    "remaining_observed_records_to_7000": 7000,
+    "verification_status": "VERIFIED",
+    "verified_at": "2026-08-28T02:48:15Z"
+  },
+  "blockers": {
+    "open": 10,
+    "queue_rows": 11,
+    "resolved": 1
+  },
+  "c0_evidence_status": {
+    "NOT_APPLICABLE": 273,
+    "NOT_REPORTED": 22071,
+    "REPORTED": 495,
+    "REPORTED_UNRESOLVED": 39,
+    "SOURCE_UNKNOWN": 3637
+  },
+  "c1_evidence_status": {
+    "NOT_APPLICABLE": 270,
+    "NOT_REPORTED": 14388,
+    "REPORTED_UNRESOLVED": 7683,
+    "SOURCE_UNKNOWN": 4174
+  },
+  "census_version": "round3l-census-v1-2026-08-28",
+  "checkpoint_at": "2026-08-28T04:00:00Z",
+  "checkpoint_schema": "round3l-public-aggregate-v1",
+  "continuation_cursor": {
+    "bop_historical_continuation": {
+      "latest_attempt_sequence": 14,
+      "next_action": "Reconcile the official SCAP 2001-2003 auction artifacts, then search organizer-owned competition-result or score-sheet routes distinct from auction-result snapshots.",
+      "next_edition_or_cursor": "official-scap-archive-2003"
+    },
+    "coe_bop": {
+      "latest_attempt_sequence": 525,
+      "next_action": "retry any transient census route, then resume the official farm directory after the Cloudflare challenge window; continue Best of Panama pre-2017 organizer-owned route discovery independently",
+      "next_edition_or_cursor": "farm-directory-page-105"
+    },
+    "commercial_regional": {
+      "exact_archive_cursor": "golden_bean/gba_2023_category_01.pdf page 1",
+      "exact_next_action": "Run lossless OCR over the acquired organizer-hosted Golden Bean category PDFs, retain page/card locators and hashes, then rerun build_lane.py; never guess unreadable labels.",
+      "exact_next_edition": "2023",
+      "latest_attempt_sequence": 127
+    },
+    "golden_bean_ocr_continuation": {
+      "exact_archive_cursor": "golden_bean/gba_2023_category_01.pdf page 4 card segmentation review",
+      "exact_next_action": "Visually review the first pending page/card segmentation against the official PDF, record only hashes and locators, then rerun build_lane.py; never guess unreadable labels.",
+      "exact_next_edition": "2023",
+      "latest_attempt_sequence": 57
+    },
+    "wcc_body_continuation": {
+      "latest_attempt_sequence": 16,
+      "next_action": "Attempt the official SCA Denmark public national-championship result and scoresheet routes, then continue in SOURCE_UNIVERSE.tsv order.",
+      "next_census_item_key": "source:wcc_cb_recdwegkkkkomky5z"
+    },
+    "wcc_national": {
+      "latest_attempt_sequence": 112,
+      "next_action": "inspect_official_body_route_for_public_results_and_score_files",
+      "next_census_item_key": "source:wcc_cb_rec0zgr8vngzfsqhw"
+    }
+  },
+  "fresh_preparation_status": {
+    "CONFIRMED": 13157,
+    "NOT_APPLICABLE": 273,
+    "PENDING": 13085
+  },
+  "losses": {
+    "emitted_duplicate_publication_rows": 5090,
+    "mirror_rows": 0,
+    "non_admitted_aggregate_components": 9,
+    "non_emitted_duplicate_publication_rows": 7,
+    "repeated_service_rows": 431
+  },
+  "phase_status": "IN_PROGRESS_ACQUISITION",
+  "preparation_service_coverage": {
+    "CUPPING": 11723,
+    "ESPRESSO": 3298,
+    "ESPRESSO_MILK": 3191,
+    "FILTER": 1468,
+    "LATTE": 119,
+    "PICCOLO": 59,
+    "PLUNGER": 126,
+    "SINGLE_SERVE": 18,
+    "UNFILTERED_INFUSION": 60,
+    "UNRESOLVED": 6078,
+    "aeropress": 1,
+    "barista_multi_service": 3,
+    "cold_brew": 1,
+    "compulsory_service": 6,
+    "cup_tasters_batch_brew": 327,
+    "filter_open_service": 3,
+    "final_aggregate": 6,
+    "manual_filter": 2,
+    "open_service": 6,
+    "preliminary_aggregate": 20
+  },
+  "public_boundary": {
+    "assertion_rows_emitted": 0,
+    "participant_company_product_result_fields_emitted": 0,
+    "raw_ocr_emitted": 0,
+    "record_rows_emitted": 0,
+    "score_values_or_text_emitted": 0,
+    "source_native_descriptors_emitted": 0
+  },
+  "public_output_receipts": [
+    {
+      "byte_count": 273905,
+      "path": "ARTIFACT_MANIFEST.tsv",
+      "sha256": "75f9d4a4ecfb5163310598005d7a490a97ff7692ca28826169a1d55efb1e855c"
+    },
+    {
+      "byte_count": 1064,
+      "path": "AUTHORITATIVE_GATE_RECEIPT.json",
+      "sha256": "bf01b88a060ff5733c500348a6d17b34ecff9a76af6a8b6327157b0c362908ce"
+    },
+    {
+      "byte_count": 1961,
+      "path": "BLOCKER_QUEUE_PUBLIC.tsv",
+      "sha256": "037ab67ac797d253eed0ea69e0a4276739bba654e2611e900c7e39518113ede6"
+    },
+    {
+      "byte_count": 15009,
+      "path": "LANE_METRICS.json",
+      "sha256": "c7666b584a245a7b6c24fa2561b102487fe1f025bc1d31056076fbe648322e27"
+    },
+    {
+      "byte_count": 10050,
+      "path": "RESTRICTED_LEDGER_RECEIPT.json",
+      "sha256": "895817cb590d77176e32cda75a4e75008d2c220ed7137f48ccc588b460ab475c"
+    },
+    {
+      "byte_count": 355333,
+      "path": "SOURCE_ATTEMPTS_PUBLIC.tsv",
+      "sha256": "e4c39091f2a23692143cbcb0d75d48eb6381e9abdb5701ed28dc7c90fb4e067a"
+    }
+  ],
+  "restricted_ledger_receipt_root_sha256": "62c827c0b65029fb99c039445ec88c13b4a122bc7ad001f9c9d36fdac1c33a6a",
+  "rights_state_distribution": {
+    "by_dimension": {
+      "commercial_model_use": {
+        "PENDING": 11969,
+        "PROHIBITED": 3946,
+        "UNKNOWN": 10600
+      },
+      "internal_research_use": {
+        "PENDING": 15915,
+        "UNKNOWN": 10600
+      },
+      "model_research_use": {
+        "PENDING": 15915,
+        "UNKNOWN": 10600
+      },
+      "public_derived_release": {
+        "PENDING": 15915,
+        "UNKNOWN": 10600
+      },
+      "public_descriptor_use": {
+        "PENDING": 15915,
+        "UNKNOWN": 10600
+      },
+      "public_results_use": {
+        "PENDING": 15915,
+        "UNKNOWN": 10600
+      }
+    },
+    "joint": [
+      {
+        "commercial_model_use": "PENDING",
+        "internal_research_use": "PENDING",
+        "model_research_use": "PENDING",
+        "public_derived_release": "PENDING",
+        "public_descriptor_use": "PENDING",
+        "public_results_use": "PENDING",
+        "record_count": 11969
+      },
+      {
+        "commercial_model_use": "PROHIBITED",
+        "internal_research_use": "PENDING",
+        "model_research_use": "PENDING",
+        "public_derived_release": "PENDING",
+        "public_descriptor_use": "PENDING",
+        "public_results_use": "PENDING",
+        "record_count": 3946
+      },
+      {
+        "commercial_model_use": "UNKNOWN",
+        "internal_research_use": "UNKNOWN",
+        "model_research_use": "UNKNOWN",
+        "public_derived_release": "UNKNOWN",
+        "public_descriptor_use": "UNKNOWN",
+        "public_results_use": "UNKNOWN",
+        "record_count": 10600
+      }
+    ]
+  },
+  "source_universe": {
+    "attempt_count": 851,
+    "attempt_outcome_distribution": {
+      "BLOCKED_EXTERNAL_ACTION": 11,
+      "COMPLETED": 697,
+      "NOT_FOUND": 2,
+      "NO_RECORD_PAYLOAD": 24,
+      "PARTIAL": 112,
+      "TRANSIENT_TECHNICAL_FAILURE": 5
+    },
+    "attempted_sources": 296,
+    "census_items": 480,
+    "census_state_distribution": {
+      "DISCOVERED": 194,
+      "RESEARCH_STAGED": 286
+    },
+    "completed_attempt_count": 697,
+    "discovered_editions": 267,
+    "discovered_source_families": 131,
+    "source_completion_note": "These are attempt-state aggregates, not source-terminal or archive-exhaustion claims.",
+    "sources_every_attempt_completed": 252,
+    "sources_with_completed_attempt": 259
+  },
+  "staging_inventory": {
+    "auxiliary_source_term_assertions": 7,
+    "numeric_structured_score_assertions": 11418,
+    "promotion_note": "Restricted staging has not been promoted into the Round 3K governed source and preparation structures.",
+    "staged_core_candidates": 6754,
+    "staged_gate_type_descriptor_assertions": 376,
+    "staged_internal_rights_eligible_core_candidates": 0,
+    "staged_model_eligible_records": 0,
+    "total_assertions": 11801
+  },
+  "unresolved_review_inventory": {
+    "automatically_collapsed_rows": 0,
+    "counted_as_losses": false,
+    "cross_family_raw_hash_review_groups": 1,
+    "cross_family_raw_hash_review_rows": 3,
+    "review_state": "OPEN_NO_AUTOMATIC_COLLAPSE",
+    "wcc_body_source_conflict_rows": 2
+  }
+}
