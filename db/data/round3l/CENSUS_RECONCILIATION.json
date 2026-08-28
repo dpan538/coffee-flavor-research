@@ -1,0 +1,37 @@
+{
+  "census_version": "round3l-census-v1-2026-08-28",
+  "freeze_rule": "Immutable during this run; acquisition attempts and newly discovered mirrors are recorded in lane ledgers without rewriting the seed census.",
+  "live_official_coe_snapshot": {
+    "byte_count": 294477,
+    "full_editions": 224,
+    "pilot_editions": 2,
+    "retrieved_at": "2026-08-28T01:27:24Z",
+    "sha256": "4f6fc7748f8accc50189840466f2a2e8378261b574c30906f51635d0d5322d60",
+    "url": "https://allianceforcoffeeexcellence.org/competition-auction-results/"
+  },
+  "reconciled_counts": {
+    "coe_full_editions": 225,
+    "coe_pilot_editions": 2,
+    "competition_series": 24,
+    "known_edition_rows": 267,
+    "result_archives": 37,
+    "scoresheets": 42,
+    "source_access_routes": 109,
+    "total_census_items": 480,
+    "wcc_competition_bodies": 61
+  },
+  "reconciliation_decisions": {
+    "bop_historical_year_rows_invented": 0,
+    "live_coe_delta_vs_round2_full_count": 0,
+    "retained_stale_or_removed_coe_editions": [
+      "coe_taiwan_2026"
+    ]
+  },
+  "round2_seed_claims": {
+    "best_of_panama_edition_ordinal_2026": 30,
+    "coe_full_country_editions": 225,
+    "coe_pilot_editions": 2,
+    "wcc_competition_body_lower_bound": 50,
+    "wcc_world_series": 7
+  }
+}
