@@ -6,6 +6,7 @@ those records.
 
 ## Current evidence package
 
+- [Portfolio and repository normalization receipt](./coffee-flavor-portfolio-repo-normalization/00_EXECUTIVE_RECEIPT.md)
 - [Round 3M executive receipt](./coffee-sensory-kb-v0-round3m/00_EXECUTIVE_RECEIPT.md)
 - [Baseline reconciliation](./coffee-sensory-kb-v0-round3m/01_BASELINE_RECONCILIATION.md)
 - [Schema and migrations](./coffee-sensory-kb-v0-round3m/02_SCHEMA_AND_MIGRATIONS.md)
