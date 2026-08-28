@@ -1,0 +1,52 @@
+{
+  "exact_match": true,
+  "expected": {
+    "artifacts": 848,
+    "canonical_rows": 20994,
+    "census_items": 480,
+    "editions": 267,
+    "model_eligible_descriptors": 0,
+    "parsed_rows": 26531,
+    "reviewed_descriptors": 0,
+    "source_route_or_family_keys": 131,
+    "staged_assertions": 11801,
+    "staged_core_candidates": 6754,
+    "staged_gate_descriptors": 376,
+    "staged_rows": 26515
+  },
+  "independence_semantics": "Conservative publication-origin grouping; route, edition, host, rights lineage, mirror lineage, and family are separate columns.",
+  "independent_source_family_count": 11,
+  "machine_readable_research_artifacts_available": false,
+  "missing_research_artifacts": [
+    "OPEN_DESCRIPTOR_SOURCE_CENSUS.tsv",
+    "DESCRIPTOR_YIELD_AUDIT.tsv",
+    "DESCRIPTOR_COUNT_RECEIPT.json",
+    "DESCRIPTOR_PROVENANCE_MATRIX.tsv",
+    "OPEN_DESCRIPTOR_CEILING.md",
+    "DESCRIPTOR_TRAINING_GATES.md",
+    "SOURCE_PRIORITY_BY_DESCRIPTOR_YIELD.tsv",
+    "LOW_YIELD_AND_FALSE_SCALE_REGISTER.tsv",
+    "CODEX_RESUMPTION_DECISION.md"
+  ],
+  "receipt_schema": "round3m-baseline-reconciliation-v1",
+  "recomputed": {
+    "artifacts": 848,
+    "canonical_rows": 20994,
+    "census_items": 480,
+    "editions": 267,
+    "model_eligible_descriptors": 0,
+    "parsed_rows": 26531,
+    "reviewed_descriptors": 0,
+    "source_route_or_family_keys": 131,
+    "staged_assertions": 11801,
+    "staged_core_candidates": 6754,
+    "staged_gate_descriptors": 376,
+    "staged_rows": 26515
+  },
+  "report_counts_independently_reproduced": false,
+  "report_counts_usage": "Methodological and expected-count receipt only; no 303-row ledger reconstructed from PDF.",
+  "research_artifact_import_status": "BLOCKED_MISSING_MACHINE_ARTIFACTS",
+  "round3l_public_regeneration": "PASS",
+  "source_checkpoint_sha": "4159636afec052b96f20d3d10c6c5f2b943b4536",
+  "source_route_or_family_key_count": 131
+}
