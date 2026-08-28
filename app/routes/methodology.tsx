@@ -265,9 +265,9 @@ export default function MethodologyRoute() {
             <strong>NOT_STARTED</strong>
             <p>
               {projectStatus.first_party_user_research.interview_count}
-              interviews and{" "}
+              {" interviews and "}
               {projectStatus.first_party_user_research.usability_session_count}
-              usability sessions; protocol design only.
+              {" usability sessions; protocol design only."}
               {/* claim: USER_INTERVIEW_COUNT */}
               {/* claim: USER_USABILITY_COUNT */}
             </p>
@@ -291,7 +291,7 @@ export default function MethodologyRoute() {
             <strong>BLOCKED</strong>
             <p>
               {projectStatus.professional_descriptor_pilot.model_eligible_count}
-              rights-cleared model-eligible assertions.
+              {" rights-cleared model-eligible assertions."}
               {/* claim: MODEL_ELIGIBLE_ASSERTIONS */}
             </p>
           </article>

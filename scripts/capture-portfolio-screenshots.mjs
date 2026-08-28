@@ -31,7 +31,7 @@ const captures = [
     filename: "mobile-home.png",
     route: "/",
     viewport: { width: 390, height: 900 },
-    fullPage: true,
+    fullPage: false,
   },
   {
     filename: "desktop-atlas-interaction.png",
