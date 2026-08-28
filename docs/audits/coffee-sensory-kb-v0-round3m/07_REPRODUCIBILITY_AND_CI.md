@@ -10,7 +10,7 @@ The local audit records:
 6. named SQL positive and negative tests;
 7. two separate clean database rebuilds at the historical reproducibility
    checkpoint;
-8. final current-tree PostgreSQL 17 CI, still pending;
+8. final current-tree PostgreSQL 17 CI;
 9. current-tree local frontend CI.
 
 The independent Round 3M review-artifact determinism check wrote 22 files to
@@ -38,13 +38,24 @@ first completed PostgreSQL 17 attempt exposed only a macOS `mktemp` filename
 collision after the database tests; the suffix-free template fix was followed
 by a full two-build pass.
 
-Current release hardening has only focused evidence: probe 10 compiled
-migrations 000-057 plus draft 059 and passed 68 of 68 global validations (49
-pre-v059 plus an exact 19-check v059 delta). The focused normalization test and
-full `round3m_gate_schema.sql` both exited 0; the latter emitted
-`ROUND3M_GATE_SCHEMA_PASS`. The contiguous migration plan still rejects 059
-because 058 is absent, so neither that probe nor the earlier two-build pass
-authorizes a current-tree reproducibility or local PostgreSQL-CI claim.
+The current contiguous 60-migration tree applied 058 first to disposable
+PostgreSQL 17, ran its 3 positive and 32 negative cases, ran the corrected 059
+suite, and passed all 84 current gate invariants. The 84 include the original
+68 focused checks plus 16 evidence-binding and gate-rebinding checks. The
+complete database harness passed before two further empty-database rebuilds.
+
+Both clean rebuilds imported the same artifact set and produced byte-identical
+41-file schema, manifest, stable-key, reference-count, validation, ontology,
+and Round 2/3 inventory packages. The rebuild script then disposed both
+databases. The enclosing verification emitted the current-tree pass markers:
+
+```text
+DATABASE_TEST_PASS=true
+CLEAN_REBUILD_COUNT=2
+REPRODUCIBILITY_PASS=true
+CI_VERIFY_DATABASE_PASS=true
+LOCAL_POSTGRES_CI_PASS=true
+```
 
 An earlier frontend run stopped at `format:check` on three new Markdown files.
 After correction, an in-sandbox run failed only when Playwright's server could
@@ -53,15 +64,12 @@ fail-fast CI contract, formatting, typecheck, 9 Vitest tests, production
 prerender, and 12 Playwright smoke paths, ending with
 `CI_VERIFY_WEB_PASS=true` for that earlier tree.
 
-The current-tree `npm run ci:verify:web` rerun first failed inside the sandbox
-at production prerender because loopback bind to `::1` returned `EPERM`. The
-same command outside the sandbox exited 0 and passed generated-drift checks,
-format, the fail-fast contract, typecheck, 2 Vitest files with 9 tests,
+The post-058 `npm run ci:verify:web` command exited 0 and passed generated-drift
+checks, format, the fail-fast contract, typecheck, 2 Vitest files with 9 tests,
 production prerender, and all 12 Playwright smoke paths. This establishes
-`LOCAL_FRONTEND_CI_PASS=true`; it is not remote CI and does not close the
-PostgreSQL/migration blocker. Remote frontend/PostgreSQL outcomes remain
+`LOCAL_FRONTEND_CI_PASS=true`. Remote frontend/PostgreSQL outcomes remain
 `NA_POST_COMMIT_VERIFICATION_REPORTED_IN_FINAL_RESPONSE` in the committed
-receipt.
+receipt because they depend on the final pushed commit.
 
 The preceding reproducibility checkpoint did receive a successful remote
 baseline run: workflow `33151084412` at

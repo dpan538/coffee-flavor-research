@@ -41,14 +41,18 @@ layer, and distinct secondary observation. The explicit regression marker is
 are transaction-local and rolled back; the live pilot has zero secondary
 review-only candidates.
 
-Draft 059 expands this suite. Focused probe 10 ran the full Round 3M gate-schema
-test successfully, but 058 is absent and the contiguous full-CI pipeline has
-not run. Seventeen is therefore retained only as a historical test inventory,
-not a final positive-test count. The final count will be taken from
-post-hardening markers.
+Migration 058 adds three transaction-local positive cases: a protocol-qualified
+human confirmation, a versioned successor correction, and a qualified `FINAL`
+expert sensory adjudication. Each binds governed qualification, admission, and
+row-level decision evidence; every synthetic row is rolled back. The corrected
+059 suite similarly binds its normalization fixture to the complete 058 chain
+inside a rolled-back transaction. No migration seed or generated artifact
+contains a synthetic human decision.
 
 ```text
 ROUND3M_LIVE_ADAPTERS_PASS
+NEW_058_POSITIVE_TEST_COUNT=3
+PERSISTED_SYNTHETIC_HUMAN_FIXTURE_COUNT=0
 COE_EXPLICIT_JURY_ADAPTER_PASS=true
 COE_FREQUENCY_CODED_ADAPTER_PASS=true
 COE_GENERIC_FIELD_ADAPTER_PASS=true

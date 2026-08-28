@@ -41,15 +41,24 @@ assertions, 139 assertion-level observations, 137 record-level unique
 observations, 508 pair events, 0 human-confirmed rows, and 0 model-eligible
 rows. The artifact validator and all 18 restricted live-adapter tests passed.
 
-Subsequent release hardening is not represented by those two rebuilds. Focused
-PostgreSQL 17 probe 10 compiled migrations 000-057 plus draft 059 and passed 68
-of 68 global validations: 49 pre-v059 checks plus an exact 19-check v059 delta.
-The focused normalization test and full Round 3M gate-schema test both exited
-0, with `ROUND3M_GATE_SCHEMA_PASS`. The repository's contiguous migration plan nevertheless fails
-closed because 059 is present while 058 is absent; the 058 decision requires
-explicit user authorization. The full contiguous current-tree migration
-pipeline, two clean rebuilds, and artifact regeneration therefore remain
-unverified and no final local PostgreSQL pass is claimed.
+The current contiguous 60-migration tree applied 058 first to disposable
+PostgreSQL 17, ran 3 focused positives, 32 focused negatives, the corrected 059
+suite, all 84 current gate invariants, and the complete database harness. The
+84 include the original 68 focused invariants plus 16 evidence-binding and gate
+rebinding checks.
+
+Two further empty databases independently applied the full tree and artifacts.
+Their 41-file schema, manifest, stable-key, reference-count, validation,
+ontology, and Round 2/3 inventory packages were byte-identical; both databases
+were disposed by the guarded cleanup path. Current markers are:
+
+```text
+DATABASE_TEST_PASS=true
+CLEAN_REBUILD_COUNT=2
+REPRODUCIBILITY_PASS=true
+CI_VERIFY_DATABASE_PASS=true
+LOCAL_POSTGRES_CI_PASS=true
+```
 
 An earlier local frontend run reached `format:check` and stopped on three Round
 3M Markdown files. After formatting was corrected, an in-sandbox retry reached
@@ -59,13 +68,10 @@ CI contract, typecheck, 9 Vitest tests, production prerender, and 12 Playwright
 smoke paths with `CI_VERIFY_WEB_PASS=true`. Both failed attempts are retained in
 the execution transcript.
 
-The current-tree `npm run ci:verify:web` verification again encountered only
-the sandbox `listen EPERM ::1` restriction during production prerender. The
-outside-sandbox retry exited 0 and passed generated drift, format, fail-fast,
-typecheck, 2 Vitest files/9 tests, production prerender, and Playwright 12/12,
-ending with `CI_VERIFY_WEB_PASS=true`. This is a current local web pass, not a
-remote-CI or PostgreSQL result. Remote frontend and PostgreSQL CI for the final
-documentation branch tip have not yet produced run identifiers or results.
+The post-058 `npm run ci:verify:web` command exited 0 and passed generated
+drift, format, fail-fast, typecheck, 2 Vitest files/9 tests, production
+prerender, and Playwright 12/12, ending with `CI_VERIFY_WEB_PASS=true`. Remote
+frontend and PostgreSQL CI for the final branch tip remain post-push receipts.
 
 An earlier remote baseline run for reproducibility checkpoint
 `bdc9bca15dad58a910a943ab5fed41176cc77af8` did complete successfully: workflow

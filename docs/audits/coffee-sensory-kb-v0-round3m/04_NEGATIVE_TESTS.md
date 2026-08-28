@@ -54,8 +54,16 @@ pass/NA, blocker, or explanatory-note drift. Review-supersession regression
 also proves that stale predecessor receipts cannot contribute to per-label or
 multi-target gate metrics.
 
-Draft 059 adds further provenance, identity, review, normalization, challenge,
-publication-layer, pair, and concurrency regressions. Because the contiguous
-migration plan and full current-tree CI are incomplete, 13 is historical only
-and no final negative-test total is claimed here. Focused probe 10's full
-gate-schema test exited 0 but does not close those pipeline blockers.
+Migration 058 adds 32 named negatives, each asserting its expected constraint
+or trigger. They reject hash-only claims; missing qualification, admission, or
+row decision; reviewer/assertion/decision/protocol/scope/time mismatches;
+expired or superseded authority; evidence reuse; automated actors presented as
+humans; insufficient or non-final expert claims; unsupported self-adjudication;
+ordinary update/delete; forked successors; multiple current leaves; old-path
+gate credit; persisted synthetic evidence; and user approval treated as review.
+
+```text
+NEW_058_NEGATIVE_TEST_COUNT=32
+OLD_SELF_ATTESTING_GATE_PATH_COUNT=0
+PERSISTED_SYNTHETIC_HUMAN_FIXTURE_COUNT=0
+```

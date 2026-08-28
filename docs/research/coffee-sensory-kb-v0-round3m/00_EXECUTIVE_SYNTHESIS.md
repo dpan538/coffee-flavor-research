@@ -51,17 +51,18 @@ retained only as a projection of visible strict fields that includes
 unresolved-origin material. It is not verified P1/P2, rights-cleared,
 model-eligible, or training-ready scale.
 
-The historical reproducibility checkpoint
-`bdc9bca15dad58a910a943ab5fed41176cc77af8` completed two clean PostgreSQL 17
-rebuilds over the then-current 57 migrations. It does not verify the later
-release-hardening tree. Focused probe 10 compiled migrations 000-057 plus the
-draft 059 contract and passed 68 of 68 probe validations, but the current
-migration plan still fails
-closed because 058 is absent. No current-tree full-CI, remote-CI, or final
-branch-tip equality result is claimed here.
+Migration 058 closes the reviewer self-attestation gap with governed artifacts,
+current qualification, current admission, and row-level decision evidence.
+Migration 059 consumes that full chain. The contiguous 60-migration plan and
+all 84 current gate validations pass on disposable PostgreSQL 17. Production
+human, expert, and qualified-human challenge counts remain zero because no
+actual reviewer evidence was acquired; user approval was not treated as review.
+Final branch-tip and remote-CI values remain post-commit receipts.
 
 ## Current recommendation
 
-The next decision is `SEEK_FIELD_SPECIFIC_ACE_RIGHTS_DECISION`. Broad result
-archive crawling remains stopped because rankings, scores, awards, blank forms,
-and publication rows do not provide descriptor-corpus scale.
+The next phase is to acquire actual reviewer qualification/admission/row
+decision evidence and seek a field-specific ACE rights decision. Both are
+external actions requiring separate authorization. Broad result archive
+crawling remains stopped because rankings, scores, awards, blank forms, and
+publication rows do not provide descriptor-corpus scale.

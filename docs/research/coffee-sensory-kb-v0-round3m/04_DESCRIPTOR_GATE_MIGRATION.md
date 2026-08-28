@@ -36,12 +36,15 @@ history. The last generated version-one artifact has 56 criteria: 0 pass and 17
 explicitly not applicable because a denominator does not exist. Every NA
 criterion still has `pass=false`.
 
-Draft `059_round3m_normalization_challenge_contract.sql` extends the contract,
-but the migration plan currently fails because 058 is absent. Probe 10 applied
-000-057 plus draft 059 and passed 68 of 68 global validations (49 pre-v059 plus
-the exact 19-check v059 delta); this is focused evidence only. Final gate counts and
-artifact parity remain unclaimed until the contiguous migration sequence,
-regeneration, and full CI are complete.
+Migration `058_round3m_schema_field_expert_admission.sql` binds human and expert
+claims to acquired reviewer artifacts, current qualification, current
+admission, and row-level decision evidence. Migration
+`059_round3m_normalization_challenge_contract.sql` consumes the same chain for
+label normalization and qualified-human challenge credit. The contiguous
+000-059 sequence passes 84 of 84 global validations. The current version-two
+surface retains 7 gates and 56 criteria: 0 pass, 17 not applicable, 38 with data
+blockers, 13 with review blockers, and 6 with rights blockers; blocker flags are
+non-exclusive.
 
 The generated `DESCRIPTOR_GATE_STATUS.tsv` is required to match the
 authoritative SQL criterion contract exactly, including gate/metric identifiers,
@@ -51,11 +54,11 @@ Per-label and multi-target metrics count only assertions whose current review
 receipt is the leaf of its supersession chain; stale predecessors cannot inflate
 support.
 
-The pre-hardening SQL suite exercised a transaction-local 500-assertion fixture
+The SQL suite exercises a transaction-local 500-assertion fixture
 to prove that the evaluation gate can work when actual human receipts,
 provenance, labels, and rights exist while still exposing
 `training_authorization_pass=false`. Those fixture rows were rolled back and
-are not corpus evidence. Current positive, negative, policy, and invariant
-totals await final marker-derived reconciliation.
+are not corpus evidence. Migration 058 adds 3 positive and 32 negative focused
+tests; the production synthetic-human count remains zero.
 
 No gate authorizes training during Round 3M.
