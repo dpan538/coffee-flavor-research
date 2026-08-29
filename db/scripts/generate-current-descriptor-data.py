@@ -727,7 +727,12 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
     years = {row["edition_year"] for row in deinf}
     editions = {row["edition_id"] for row in deinf}
     largest_family_share = max(families.values()) / len(deinf)
-    source_family_hhi = sum((count / len(deinf)) ** 2 for count in families.values())
+    # Use one integer-ratio division so Python 3.11 and 3.12+ serialize the
+    # same value. Python 3.12 changed float summation and otherwise shifts the
+    # final digit of this derived receipt.
+    source_family_hhi = sum(count * count for count in families.values()) / (
+        len(deinf) * len(deinf)
+    )
     sidecar_rows = read_tsv(BATCH2_SIDECAR)
     judge_observations = {
         (row["effective_record_id"], row["judge_observation_id_sha256"])

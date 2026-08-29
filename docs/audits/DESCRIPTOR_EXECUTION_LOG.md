@@ -41,6 +41,10 @@
   idempotence, and two byte-identical offline acquisition replays. The observed
   live automated acquisition runtime was 1,057.548111 seconds; manual analyst
   timing is not applicable.
+- Replaced floating-point HHI summation with an exact integer-ratio calculation
+  after the first remote checkpoint exposed a one-unit final-decimal difference
+  between Python 3.11 and 3.12. Generator idempotence then passed under both
+  runtimes.
 - Candidate-volume criteria pass through 20k, while complete model gates remain
   blocked by review, provenance, rights, label-support, preparation, and
   eligible held-out distribution requirements. No model, weights, schema,
