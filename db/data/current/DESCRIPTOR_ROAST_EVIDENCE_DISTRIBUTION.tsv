@@ -1,2 +1,3 @@
 roast_evidence_state	assertion_count	effective_record_count
-NO_DIRECT_SOURCE_ROAST_OR_REVIEWED_C1	157	9
+DIRECT_SOURCE_ROAST_HASH	4028	88
+UNREPORTED	15975	704

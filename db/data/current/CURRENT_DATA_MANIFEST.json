@@ -1,194 +1,220 @@
 {
   "active_research_branch": "research/coffee-sensory-data-ml-readiness",
   "baseline_main_sha": "21d04f50952ac30ee13010ee26bae8a224ea9f71",
-  "batch_id": "descriptor-data-integration-batch-1-20260829",
-  "dataset_inventory_count": 32,
+  "batch_id": "professional-descriptor-scaleup-batch2-20260829",
+  "dataset_inventory_count": 34,
   "dataset_role_counts": {
-    "AGGREGATE_RECEIPT_ONLY": 9,
+    "AGGREGATE_RECEIPT_ONLY": 10,
     "DUPLICATE_DERIVATION": 9,
     "REFERENCE_ONLY": 1,
     "ROW_LEVEL_DERIVED": 11,
-    "ROW_LEVEL_PRIMARY": 2
+    "ROW_LEVEL_PRIMARY": 2,
+    "ROW_LEVEL_PRIMARY_PUBLIC_SAFE": 1
+  },
+  "deltas_from_initial_current_snapshot": {
+    "assertion_deinflated": 19846,
+    "effective_records": 783,
+    "pair_event_count": 258066,
+    "provisional_normalized_forms": 2915,
+    "raw_segmented": 20087,
+    "record_unique": 17914,
+    "source_native_forms": 3337
   },
   "descriptor_census_machine_bundle_available": false,
   "descriptor_census_row_level_import_status": "BLOCKED_MISSING_MACHINE_ARTIFACTS;EXTERNAL_COUNTS_RECEIPT_ONLY",
   "files": [
     {
-      "byte_count": 211121,
-      "data_row_count": "158",
+      "byte_count": 30420247,
+      "data_row_count": "20245",
       "path": "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
-      "sha256": "b6d565035417d8745c3f4a140e010595a0b6164194a89b8a8da87515da48c3dd"
+      "sha256": "07b835ef98936d36736011ddcddbe3e744c5a146efa83e5790d72c1f0edf0b76"
     },
     {
-      "byte_count": 17242,
-      "data_row_count": "32",
+      "byte_count": 18497,
+      "data_row_count": "34",
       "path": "DATASET_INVENTORY.tsv",
-      "sha256": "5c54dd7f9f356f5db201aa28c194580a4ef61a664dd94ff42e8db8ca0d01b9a8"
+      "sha256": "047e13f7c2e83b0c8b867330abf9749b6b991be6ba462d6e619f6a9dfe4a6a43"
     },
     {
-      "byte_count": 11448,
-      "data_row_count": "32",
+      "byte_count": 12343,
+      "data_row_count": "34",
       "path": "DATASET_ROLE_AND_LINEAGE.tsv",
-      "sha256": "dc21ac8f29aeca3f46fc9dcfc5aa858e6c0928eba823ef6307277eff12ec44ab"
+      "sha256": "6f0f373eb9dda8be3fb9519a49984a54344e3db4ddcc2e17d54f79e731d5078d"
     },
     {
-      "byte_count": 452,
-      "data_row_count": "0",
+      "byte_count": 1619108,
+      "data_row_count": "13980",
       "path": "DESCRIPTOR_DISTRIBUTION.tsv",
-      "sha256": "88e3c72d3c33c0ef0d2911f7d331f3d687cfe995246324a0870361c81b3cdb02"
+      "sha256": "89780a4d91d4ad9429c7906c53bc49bf63a0345b38c979e4468b8d338c168db9"
     },
     {
-      "byte_count": 585,
-      "data_row_count": "5",
+      "byte_count": 1026,
+      "data_row_count": "8",
       "path": "DESCRIPTOR_DUPLICATE_RECEIPT.tsv",
-      "sha256": "9830f0b0df122a4fb528adab4a9494caebbfef280180648f6e1c121b9fd6a827"
+      "sha256": "2363a9aeaa520648c4078c3b9041c1602d3279bb4349ff5bbb8ffad2541df37a"
     },
     {
-      "byte_count": 1004,
+      "byte_count": 1138,
       "data_row_count": "10",
       "path": "DESCRIPTOR_GAP_MATRIX.tsv",
-      "sha256": "0e26aed4c64d737ece037f6f34ffc217efd788281c287dd4a7f7bfb20ef49159"
+      "sha256": "6edde9a57aacfadeca026c0d82228b124c04ec626ea6f7c8f67df26e7e6e80f4"
     },
     {
-      "byte_count": 1356,
-      "data_row_count": "18",
+      "byte_count": 2433,
+      "data_row_count": "29",
       "path": "DESCRIPTOR_MERGE_RECEIPT.tsv",
-      "sha256": "9167c0c1282b3975b76c25b0077eeba72abc0255b39881549e453c009f5844dc"
+      "sha256": "772c174224d9d6495d2611f1468ebf0032977e0591a7fa0f92c530a9d651cf95"
     },
     {
-      "byte_count": 1073,
-      "data_row_count": "6",
+      "byte_count": 1283,
+      "data_row_count": "7",
       "path": "DESCRIPTOR_OVERLAP_MAP.tsv",
-      "sha256": "472d365fdc1c794bd5cfc5b22d3650b1c66bf66dbd20ab54c718c1cf3f768071"
+      "sha256": "2a17162da11401abd09ef0fa2708649fc838486197cb20599bd303904b49940f"
     },
     {
-      "byte_count": 96,
-      "data_row_count": "1",
+      "byte_count": 114,
+      "data_row_count": "2",
       "path": "DESCRIPTOR_PREPARATION_DISTRIBUTION.tsv",
-      "sha256": "e38c73272c8eef6835f718e93ae034b312c69798f7d896fbf76f9b5cc72e8850"
+      "sha256": "af147dff4420ffd160869a0116c9306c529870858b0cab74fe0a0ff1645c9c50"
     },
     {
-      "byte_count": 110,
+      "byte_count": 112,
       "data_row_count": "1",
       "path": "DESCRIPTOR_REVIEW_DISTRIBUTION.tsv",
-      "sha256": "7df142a45d1902cd53bcdc4782dba0b189f58af0b95f1cee8fb6ddbf8e785800"
+      "sha256": "352e17bcf59672b0af2b9d3905e4a9721b3df1ca50cbc8cebcdefa4008756178"
     },
     {
-      "byte_count": 107,
+      "byte_count": 114,
       "data_row_count": "4",
       "path": "DESCRIPTOR_RIGHTS_DISTRIBUTION.tsv",
-      "sha256": "560c6ff7daf1737017e3cb4267ad0521e2a2dc15a78ce1e99623f6866e4279bf"
+      "sha256": "069351b68bf4d872ffa0337b484a3d3ed7d9c8bd43e998b422c3078be2041366"
     },
     {
-      "byte_count": 104,
-      "data_row_count": "1",
+      "byte_count": 114,
+      "data_row_count": "2",
       "path": "DESCRIPTOR_ROAST_EVIDENCE_DISTRIBUTION.tsv",
-      "sha256": "841ab92c07fee90b4b327a89c71df3c7f69e055dd8c799574ba79466262942d1"
+      "sha256": "519eb352f837bdb73ec63a652c33bc83d0befc3636400fc93dfd1abd90a58530"
     },
     {
-      "byte_count": 340,
-      "data_row_count": "4",
+      "byte_count": 1744,
+      "data_row_count": "24",
       "path": "DESCRIPTOR_SOURCE_FAMILY_DISTRIBUTION.tsv",
-      "sha256": "96569c2a16468aafe3cfe39664f321e58440071bff5b576f39b61f0bed920f17"
+      "sha256": "e30823e5ba9ac9619742e3c785f4ecd2638fed05a0118e02dd1b14ce77305584"
     },
     {
-      "byte_count": 5130,
-      "data_row_count": "64",
+      "byte_count": 6854,
+      "data_row_count": "77",
       "path": "DESCRIPTOR_SUPPORT_BANDS.tsv",
-      "sha256": "faa437b9ecc2ffaa05ebe35809b0e7908a66c9ec1446d6f82a558f227bdc17d4"
+      "sha256": "05c130e94e120c7f88102d530c54a741ee62ffb1919e138299f615c613faaed2"
     },
     {
-      "byte_count": 606,
-      "data_row_count": "15",
+      "byte_count": 3748,
+      "data_row_count": "103",
       "path": "DESCRIPTOR_YEAR_DISTRIBUTION.tsv",
-      "sha256": "591250893403b4b83b597516c1db126ddf968422cc4ec9a6355c7ace5c5d8b83"
+      "sha256": "18b47b19bd8249cccf798cd566be0ec36306bbdb1de99836a654cbd6eaf0b745"
     },
     {
-      "byte_count": 66941,
-      "data_row_count": "157",
+      "byte_count": 67782,
+      "data_row_count": "200",
       "path": "REVIEW_QUEUE_RECEIPT.tsv",
-      "sha256": "5e4137310b8e485826e1bec890f57b853706c3017cdcf9e68101454124b71ad9"
+      "sha256": "cae3d0dedace8f8dfad0f4086f000aef59b6c9068d555ff0bb76c977f2ed10ef"
     },
     {
-      "byte_count": 1036,
+      "byte_count": 1203,
       "data_row_count": "1",
       "path": "STRICTNESS_IMPACT_LOG.tsv",
-      "sha256": "32796f487b2957242b7819d9c089c1a75a26458a448433d9bb3098d7f11ae894"
+      "sha256": "a40e1f125008ac896a0d9463964939ff0140dcc0a6ec320023ea2a3a84e7c16e"
     },
     {
-      "byte_count": 2129,
-      "data_row_count": "7",
+      "byte_count": 1827,
+      "data_row_count": "6",
       "path": "TARGETED_ACQUISITION_QUEUE.tsv",
-      "sha256": "dc400ef6fb3dc7246ed0f1061544725e94dbccad6eb1f6cf6eb310b142347232"
+      "sha256": "b225b169da7062f7ed63e7bfb3f63007533a52b1e03c67a440a8268536d8db12"
     },
     {
-      "byte_count": 1261,
-      "data_row_count": "3",
+      "byte_count": 8101,
+      "data_row_count": "16",
       "path": "TARGETED_ACQUISITION_RESULT.tsv",
-      "sha256": "9d68aa33e88739c1b9520d38d907593452d94bcfd292e3538dadb6ef2c6ea4e7"
+      "sha256": "0cb13adb2709f1e5956fa942e2e9ba046fe9f7b4d8c3057158e0a4c1fe213043"
     },
     {
-      "byte_count": 5369,
-      "data_row_count": "35",
+      "byte_count": 6351,
+      "data_row_count": "41",
       "path": "TRAINING_GATE_STATUS.tsv",
-      "sha256": "9d0efc459bc4df8e08485289fac9f08e477fd97eead5d2b28c42e35e3ad03ffb"
+      "sha256": "a0f0dd49db5df5a300c2b4acff969b0662a40f3cccdd02f0d24ca34cdb3cd09e"
     }
   ],
-  "final_data_decision": "MERGE_COMPLETE_STRICTNESS_POLICY_REVIEW_REQUIRED",
+  "final_data_decision": "CANDIDATE_CORPUS_HARD_STOP_REACHED;MODEL_WORK_BLOCKED_BY_REVIEW_RIGHTS_PROVENANCE_AND_DISTRIBUTION_GATES",
   "full_clean_rebuild_required": false,
   "generated_date": "2026-08-29",
+  "hard_stop_assertion_count": 20000,
   "metrics": {
-    "assertion_deinflated": 157,
-    "broad": 61,
-    "edition_count": 4,
-    "effective_records": 9,
-    "largest_family_share": 1.0,
-    "new_pair_event_count": 153,
-    "normalized_forms": 0,
-    "p1": 0,
-    "p2": 73,
+    "assertion_deinflated": 20003,
+    "broad": 4220,
+    "bronze": 330,
+    "edition_count": 28,
+    "effective_records": 792,
+    "gold": 5055,
+    "judge_observations": 360,
+    "largest_family_share": 0.741338799180123,
+    "model_eligible": 0,
+    "normalized_forms": 2915,
+    "p1": 4785,
+    "p2": 270,
     "p3": 0,
-    "p4": 0,
-    "pair_event_count": 661,
-    "pair_with_multi_family_support_count": 0,
-    "pair_with_multi_year_support_count": 0,
-    "raw_segmented": 158,
-    "record_unique": 155,
-    "rights_affirmative": 0,
-    "rights_pending": 73,
+    "p4": 330,
+    "pair_event_count": 258727,
+    "pair_with_multi_family_support_count": 3845,
+    "pair_with_multi_year_support_count": 17526,
+    "provisional_mapping_coverage_count": 19846,
+    "provisional_mapping_coverage_rate": 0.9921511773234015,
+    "provisional_normalized_pair_event_count": 257351,
+    "provisional_pair_with_multi_family_support_count": 3845,
+    "provisional_pair_with_multi_year_support_count": 17521,
+    "raw_segmented": 20245,
+    "record_unique": 18069,
+    "rights_affirmative": 4785,
+    "rights_pending": 270,
     "rights_prohibited": 0,
-    "rights_unknown": 84,
-    "set_level_coassertion_record_count": 9,
-    "source_families": 1,
-    "source_family_hhi": 1.0,
-    "source_native_forms": 130,
-    "source_routes": 4,
-    "strict": 96,
-    "unique_supported_pair_count": 659,
+    "rights_unknown": 14948,
+    "set_level_coassertion_record_count": 790,
+    "silver": 14618,
+    "source_families": 5,
+    "source_family_hhi": 0.6070452102783993,
+    "source_native_forms": 3467,
+    "source_routes": 10,
+    "strict": 15783,
+    "unique_provisional_normalized_pair_count": 111953,
+    "unique_supported_pair_count": 113319,
     "unmapped": 157,
-    "unresolved": 84,
-    "year_count": 4
+    "unresolved": 14618,
+    "year_count": 19
   },
+  "milestone_10000_role": "HEALTHY_CANDIDATE_CORPUS_MILESTONE",
   "model_training_run": false,
   "model_weight_file_count": 0,
   "new_migration_count": 0,
+  "phase_status": "CANDIDATE_CORPUS_20000_REACHED_DISTRIBUTION_GAPS",
   "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",
   "round4a_implementation_sha": "3781afc46495ad4e6ad94e0d4dd238f6f71a293f",
   "round4a_product_files_imported": 0,
   "round4a_source_sha": "48ff0a921db4da98b2802c60bc23ee031687175b",
   "schema": "coffee-flavor-current-descriptor-data-v1",
   "schema_changed": false,
+  "stop_at_first_complete_record_boundary_at_or_above_20000": true,
   "strictness_impact_triggered": true,
-  "strictness_user_decision_required": true,
+  "strictness_user_decision_required": false,
   "targeted_acquisition": {
-    "analyst_equivalent_minutes": "NA_NOT_INSTRUMENTED_DURING_INTERACTIVE_BROWSER_PASS",
-    "artifact_count": 4,
-    "new_broad_descriptor_candidate_count": 7,
-    "new_descriptor_bearing_record_count": 1,
-    "new_provenance_unresolved_count": 18,
-    "new_strict_descriptor_candidate_count": 11,
+    "analyst_equivalent_minutes": "NA_AUTOMATED_ROUTES_REPORTED_SEPARATELY",
+    "artifact_count": 971,
+    "continuation_cursor": "archive-page=12;detail-index=10;url=https://farmdirectory.cupofexcellence.org/listing/9-liquidambar-honduras-2026-parainema-catracha/",
+    "new_broad_descriptor_candidate_count": 4159,
+    "new_descriptor_assertion_count": 19846,
+    "new_provenance_unresolved_count": 14534,
+    "new_record_unique_assertion_count": 17914,
+    "new_strict_descriptor_candidate_count": 15687,
     "run": true,
-    "source_route_count": 3,
-    "stop_condition": "TWO_CONSECUTIVE_TARGET_ROUTE_STRATA_ZERO_YIELD"
+    "source_route_count": 16,
+    "stop_condition": "FIRST_COMPLETE_RECORD_BOUNDARY_AT_OR_ABOVE_20000"
   }
 }

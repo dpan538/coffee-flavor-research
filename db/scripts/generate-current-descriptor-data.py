@@ -24,12 +24,16 @@ OUT = ROOT / "db" / "data" / "current"
 ROUND3M = ROOT / "db" / "data" / "round3m"
 ROUND3L = ROOT / "db" / "data" / "round3l" / "public"
 ADAPTER3M = ROOT / "db" / "adapters" / "round3m" / "generated"
+BATCH2 = ROOT / "db" / "data" / "professional-descriptor-staging"
+BATCH2_SIDECAR = BATCH2 / "PUBLIC_SAFE_ASSERTION_SIDECAR.tsv"
+BATCH2_ROUTES = BATCH2 / "SOURCE_ROUTE_PROBE_AND_YIELD.tsv"
+BATCH2_MANIFEST = BATCH2 / "BATCH2_PUBLIC_MANIFEST.json"
 
 BASELINE_MAIN_SHA = "21d04f50952ac30ee13010ee26bae8a224ea9f71"
 ROUND4A_SHA = "48ff0a921db4da98b2802c60bc23ee031687175b"
 ROUND4A_IMPLEMENTATION_SHA = "3781afc46495ad4e6ad94e0d4dd238f6f71a293f"
 ROUND3_EXTERNAL_REPORT_SHA256 = "d319236311f2abc5e15baaf70923b32e0a2bdbb5dc010723feea3e4aec8069e0"
-BATCH_ID = "descriptor-data-integration-batch-1-20260829"
+BATCH_ID = "professional-descriptor-scaleup-batch2-20260829"
 BATCH_DATE = "2026-08-29"
 
 NEW_SOURCE_URL = (
@@ -228,10 +232,10 @@ def inventory() -> list[dict[str, Any]]:
         source_round_or_batch="ROUND3_EXTERNAL_DESCRIPTOR_RECEIPT",
         source_branch="NA_EXTERNAL_REPORT_NOT_GIT_VERSIONED",
         source_commit_sha="NA_EXTERNAL_REPORT_NOT_GIT_VERSIONED",
-        repository_path_or_restricted_locator="missing-input://Descriptor-First-Census-of-Open-Professional-Coffee-Sensory-Evidence.pdf",
+        repository_path_or_restricted_locator="external-attachment://Descriptor-First-Census-of-Open-Professional-Coffee-Sensory-Evidence.pdf",
         file_sha256=ROUND3_EXTERNAL_REPORT_SHA256,
-        file_size="NA_REQUIRED_PDF_NOT_PRESENT_IN_SUPPLIED_INPUTS",
-        row_count="NA_AGGREGATE_RECEIPT_ONLY_MACHINE_BUNDLE_MISSING",
+        file_size="122241",
+        row_count="NA_AGGREGATE_RECEIPT_ONLY_REPORT_PRESENT_MACHINE_BUNDLE_MISSING",
         descriptor_candidate_row_count="303",
         effective_record_count="15",
         data_role="AGGREGATE_RECEIPT_ONLY",
@@ -239,7 +243,7 @@ def inventory() -> list[dict[str, Any]]:
         rights_state="NOT_REPORTED_IN_HEADLINE_RECEIPT",
         review_state="DIRECTLY_INSPECTED_EXTERNAL_AUDIT_RECEIPT",
         overlap_expected_with="round3m-live-assertions|round3l-restricted-receipt",
-        current_disposition="COUNTS_ONLY_NO_ROW_LEVEL_IMPORT",
+        current_disposition="COUNTS_ONLY_REPORT_INSPECTED_NO_ROW_LEVEL_IMPORT",
     )
     rows.append(external)
 
@@ -315,6 +319,53 @@ def inventory() -> list[dict[str, Any]]:
             current_disposition=(ROUND4A_REJECTED[name] if rejected else "ACCEPTED_SEMANTICS_REGENERATE_OR_LINEAGE_ONLY"),
         )
         rows.append(row)
+
+    batch2_manifest = json.loads(BATCH2_MANIFEST.read_text(encoding="utf-8"))
+    batch2_sidecar = dict(fields)
+    batch2_sidecar.update(
+        dataset_id="professional-descriptor-scaleup-batch2-public-safe",
+        dataset_name="Batch 2 public-safe professional descriptor assertion sidecar",
+        source_round_or_batch=BATCH_ID,
+        source_branch="research/coffee-sensory-data-ml-readiness",
+        source_commit_sha="NA_GENERATED_IN_CURRENT_RESEARCH_BRANCH",
+        repository_path_or_restricted_locator=BATCH2_SIDECAR.relative_to(ROOT).as_posix(),
+        file_sha256=sha256_file(BATCH2_SIDECAR),
+        file_size=str(BATCH2_SIDECAR.stat().st_size),
+        row_count=data_rows(BATCH2_SIDECAR),
+        descriptor_candidate_row_count=str(
+            batch2_manifest["net_new_deinflated_candidate_count"]
+        ),
+        effective_record_count="SEE_CURRENT_MERGE_RECEIPT",
+        data_role="ROW_LEVEL_PRIMARY_PUBLIC_SAFE",
+        evidence_tiers_present="P1|P2|P4|UNRESOLVED",
+        rights_state="AFFIRMATIVE|PENDING|UNKNOWN",
+        review_state="PROVISIONAL_MACHINE_CLASSIFIED",
+        overlap_expected_with="current-targeted-acquisition-hash-ledger",
+        current_disposition="MERGE_WITH_PUBLICATION_LAYER_DEINFLATION;MODEL_INELIGIBLE",
+    )
+    rows.append(batch2_sidecar)
+
+    batch2_routes = dict(fields)
+    batch2_routes.update(
+        dataset_id="professional-descriptor-scaleup-batch2-route-receipt",
+        dataset_name="Batch 2 source-route probe and yield receipt",
+        source_round_or_batch=BATCH_ID,
+        source_branch="research/coffee-sensory-data-ml-readiness",
+        source_commit_sha="NA_GENERATED_IN_CURRENT_RESEARCH_BRANCH",
+        repository_path_or_restricted_locator=BATCH2_ROUTES.relative_to(ROOT).as_posix(),
+        file_sha256=sha256_file(BATCH2_ROUTES),
+        file_size=str(BATCH2_ROUTES.stat().st_size),
+        row_count=data_rows(BATCH2_ROUTES),
+        descriptor_candidate_row_count="NA_ROUTE_AGGREGATE",
+        effective_record_count="NA_ROUTE_AGGREGATE",
+        data_role="AGGREGATE_RECEIPT_ONLY",
+        evidence_tiers_present="P1|P2|P4|UNRESOLVED",
+        rights_state="AFFIRMATIVE|PENDING|UNKNOWN",
+        review_state="SOURCE_AUDITED_ROUTE_CLASSIFICATION",
+        overlap_expected_with="professional-descriptor-scaleup-batch2-public-safe",
+        current_disposition="ACQUISITION_LINEAGE_ONLY",
+    )
+    rows.append(batch2_routes)
     return rows
 
 
@@ -474,6 +525,92 @@ def canonical_ledger() -> list[dict[str, Any]]:
                 "source_text_non_storage_reason": "RIGHTS_UNKNOWN_PUBLIC_REPOSITORY_RETAINS_HASH_AND_LOCATOR_ONLY",
             }
         )
+
+    for source in read_tsv(BATCH2_SIDECAR):
+        tier = source["evidence_tier"]
+        collection_tier = source["collection_tier"]
+        if collection_tier == "GOLD":
+            stratum = "A_GOLD_CANDIDATE_REVIEW_OR_RIGHTS_BLOCKED"
+        elif collection_tier == "SILVER":
+            stratum = "C_OFFICIAL_FIELD_PROVENANCE_UNRESOLVED"
+        else:
+            stratum = "D_BRONZE_AUXILIARY_PROFESSIONAL_FIELD"
+        rows.append(
+            {
+                "descriptor_assertion_id": source["descriptor_assertion_id"],
+                "source_dataset_id": "professional-descriptor-scaleup-batch2-public-safe",
+                "source_artifact_id": f"artifact-b2:{source['source_artifact_sha256'][:24]}",
+                "source_file_sha256": source["source_artifact_sha256"],
+                "source_route_id": source["source_route_id"],
+                "source_family_id": source["source_family_id"],
+                "organizer_id": stable_id("organizer-b2", source["publisher"]),
+                "competition_series_id": source["source_family_id"],
+                "edition_id": stable_id(
+                    "edition-b2",
+                    f"{source['source_route_id']}|{source['edition_or_release']}",
+                ),
+                "edition_year": source["edition_year"] or "UNREPORTED",
+                "category_id": "professional-sensory-record",
+                "round_id": "source-publication",
+                "entry_or_lot_id": source["effective_record_id"],
+                "coffee_identity_id": source["coffee_identity_id"],
+                "preparation_service_id": source["preparation_service"],
+                "effective_record_id": source["effective_record_id"],
+                "publication_layer": source["publication_layer"],
+                "source_field_label": source["source_field_label"],
+                "source_locator": source["source_locator"],
+                "raw_source_text_or_restricted_pointer": (
+                    f"hash:sha256:{source['raw_field_text_sha256']}"
+                ),
+                "atomic_source_text_or_restricted_pointer": (
+                    f"hash:sha256:{source['atomic_source_text_sha256']}"
+                ),
+                "source_language": source["source_language"],
+                "descriptor_class": source["descriptor_class"],
+                "source_native_lexical_form_or_restricted_pointer": (
+                    f"hash:sha256:{source['source_native_form_sha256']}"
+                ),
+                "normalized_descriptor_candidate_id": source[
+                    "provisional_normalized_form_id"
+                ],
+                "evidence_tier": tier,
+                "provenance_state": source["provenance_state"],
+                "rights_state": source["rights_state"],
+                "review_state": "PROVISIONAL_MACHINE_CLASSIFIED",
+                "corpus_state": "CANDIDATE_ONLY_HUMAN_REVIEW_REQUIRED",
+                "evidence_stratum": stratum,
+                "duplicate_group_id": (
+                    "CROSS_BATCH_PUBLICATION_LAYER_OVERLAP"
+                    if source["counts_as_assertion"] == "false"
+                    else ""
+                ),
+                "mirror_group_id": "",
+                "repeat_group_id": "",
+                "same_coffee_cross_observation_group_id": "",
+                "c0_source_status": "SOURCE_UNKNOWN",
+                "c0_family": "",
+                "c1_source_status": "SOURCE_UNKNOWN",
+                "source_native_roast_value": source[
+                    "roast_evidence_sha256_or_state"
+                ],
+                "reviewed_c1_mapping": "",
+                "source_commit_sha": "NA_GENERATED_IN_CURRENT_RESEARCH_BRANCH",
+                "parser_version": "batch2.professional-source-parser.v1",
+                "adapter_version": "batch2.public-safe-sidecar.v1",
+                "created_at": f"{BATCH_DATE}T00:00:00+10:00",
+                "counts_as_assertion": source["counts_as_assertion"],
+                "counts_as_record_unique_descriptor": source[
+                    "counts_as_record_unique_descriptor"
+                ],
+                "model_eligible": False,
+                "source_field_text_sha256": source["raw_field_text_sha256"],
+                "atomic_source_text_sha256": source["atomic_source_text_sha256"],
+                "source_text_storage_state": source["source_text_storage_state"],
+                "source_text_non_storage_reason": (
+                    "RIGHTS_AND_REVIEW_BOUNDARY_HASH_ONLY_PUBLIC"
+                ),
+            }
+        )
     return rows
 
 
@@ -482,48 +619,75 @@ def view_rows(ledger: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     return {
         "ALL_PROFESSIONAL_CANDIDATES": deinf,
         "SOURCE_AUDITED_CANDIDATES": deinf,
+        "GOLD_CANDIDATES": [
+            row
+            for row in deinf
+            if row["evidence_stratum"].startswith(("A_", "B_"))
+        ],
+        "SILVER_CANDIDATES": [
+            row for row in deinf if row["evidence_stratum"].startswith("C_")
+        ],
+        "BRONZE_CANDIDATES": [
+            row for row in deinf if row["evidence_stratum"].startswith("D_")
+        ],
         "HUMAN_REVIEWED_P1_P2": [],
         "CORE_ELIGIBLE": [],
         "MODEL_ELIGIBLE": [],
-        "P3_P4_AUXILIARY": [],
-        "PROVENANCE_UNRESOLVED": [row for row in deinf if row["provenance_state"] == "OFFICIAL_FIELD_ORIGIN_UNRESOLVED"],
+        "P3_P4_AUXILIARY": [
+            row for row in deinf if row["evidence_tier"] in {"P3", "P4"}
+        ],
+        "PROVENANCE_UNRESOLVED": [
+            row for row in deinf if row["evidence_tier"] == "UNRESOLVED"
+        ],
         "RIGHTS_BLOCKED": [row for row in deinf if row["rights_state"] in {"PENDING", "UNKNOWN"}],
     }
 
 
 def pair_metrics(ledger: list[dict[str, Any]]) -> dict[str, Any]:
-    by_assertion = {row["descriptor_assertion_id"]: row for row in ledger}
     pair_records: dict[tuple[str, str], set[str]] = defaultdict(set)
     pair_families: dict[tuple[str, str], set[str]] = defaultdict(set)
     pair_years: dict[tuple[str, str], set[str]] = defaultdict(set)
-    event_count = 0
-    for event in read_tsv(ROUND3M / "COASSERTION_EVENT.tsv"):
-        pair = tuple(sorted((event["left_atomic_source_text_sha256"], event["right_atomic_source_text_sha256"])))
-        source = by_assertion[event["left_descriptor_assertion_id"]]
-        pair_records[pair].add(event["effective_record_id"])
-        pair_families[pair].add(source["source_family_id"])
-        pair_years[pair].add(source["edition_year"])
-        event_count += int(event["pair_support_event_count"])
-
-    new_rows = [row for row in ledger if row["source_dataset_id"] == "current-targeted-acquisition-hash-ledger"]
-    for left, right in itertools.combinations(new_rows, 2):
-        pair = tuple(sorted((left["atomic_source_text_sha256"], right["atomic_source_text_sha256"])))
-        pair_records[pair].add(left["effective_record_id"])
-        pair_families[pair].add(left["source_family_id"])
-        pair_years[pair].add(left["edition_year"])
-        event_count += 1
-
-    per_record: dict[str, set[str]] = defaultdict(set)
+    per_record: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for row in ledger:
-        if scalar(row["counts_as_assertion"]) == "true":
-            per_record[row["effective_record_id"]].add(row["atomic_source_text_sha256"])
+        if scalar(row["counts_as_record_unique_descriptor"]) != "true":
+            continue
+        identity = row["normalized_descriptor_candidate_id"]
+        if not identity:
+            identity = f"source-hash:{row['atomic_source_text_sha256']}"
+        per_record[row["effective_record_id"]][identity] = row
+
+    event_count = 0
+    provisional_event_count = 0
+    provisional_pairs: set[tuple[str, str]] = set()
+    provisional_pair_families: dict[tuple[str, str], set[str]] = defaultdict(set)
+    provisional_pair_years: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for record_id, identities in per_record.items():
+        for left, right in itertools.combinations(sorted(identities), 2):
+            pair = (left, right)
+            source = identities[left]
+            pair_records[pair].add(record_id)
+            pair_families[pair].add(source["source_family_id"])
+            pair_years[pair].add(source["edition_year"])
+            event_count += 1
+            if not left.startswith("source-hash:") and not right.startswith("source-hash:"):
+                provisional_event_count += 1
+                provisional_pairs.add(pair)
+                provisional_pair_families[pair].add(source["source_family_id"])
+                provisional_pair_years[pair].add(source["edition_year"])
     return {
         "pair_event_count": event_count,
         "unique_supported_pair_count": len(pair_records),
         "pair_with_multi_family_support_count": sum(len(value) > 1 for value in pair_families.values()),
         "pair_with_multi_year_support_count": sum(len(value) > 1 for value in pair_years.values()),
         "set_level_coassertion_record_count": sum(len(value) > 1 for value in per_record.values()),
-        "new_pair_event_count": len(list(itertools.combinations(new_rows, 2))),
+        "provisional_normalized_pair_event_count": provisional_event_count,
+        "unique_provisional_normalized_pair_count": len(provisional_pairs),
+        "provisional_pair_with_multi_family_support_count": sum(
+            len(value) > 1 for value in provisional_pair_families.values()
+        ),
+        "provisional_pair_with_multi_year_support_count": sum(
+            len(value) > 1 for value in provisional_pair_years.values()
+        ),
     }
 
 
@@ -553,12 +717,32 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
     rights = Counter(row["rights_state"] for row in deinf)
     records = {row["effective_record_id"] for row in deinf}
     native_forms = {row["atomic_source_text_sha256"] for row in deinf}
+    normalized_forms = {
+        row["normalized_descriptor_candidate_id"]
+        for row in deinf
+        if row["normalized_descriptor_candidate_id"]
+    }
     routes = {row["source_route_id"] for row in deinf}
     families = Counter(row["source_family_id"] for row in deinf)
     years = {row["edition_year"] for row in deinf}
     editions = {row["edition_id"] for row in deinf}
     largest_family_share = max(families.values()) / len(deinf)
     source_family_hhi = sum((count / len(deinf)) ** 2 for count in families.values())
+    sidecar_rows = read_tsv(BATCH2_SIDECAR)
+    judge_observations = {
+        (row["effective_record_id"], row["judge_observation_id_sha256"])
+        for row in sidecar_rows
+        if row["counts_as_assertion"] == "true"
+        and row["judge_observation_id_sha256"]
+    }
+    collection = Counter(
+        "GOLD"
+        if row["evidence_stratum"].startswith(("A_", "B_"))
+        else "SILVER"
+        if row["evidence_stratum"].startswith("C_")
+        else "BRONZE"
+        for row in deinf
+    )
     metrics = {
         "raw_segmented": len(ledger),
         "assertion_deinflated": len(deinf),
@@ -569,8 +753,15 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
         "p1": tiers["P1"], "p2": tiers["P2"], "p3": tiers["P3"], "p4": tiers["P4"],
         "unresolved": tiers["UNRESOLVED"],
         "source_native_forms": len(native_forms),
-        "normalized_forms": 0,
-        "unmapped": len(deinf),
+        "normalized_forms": len(normalized_forms),
+        "provisional_mapping_coverage_count": sum(
+            bool(row["normalized_descriptor_candidate_id"]) for row in deinf
+        ),
+        "provisional_mapping_coverage_rate": sum(
+            bool(row["normalized_descriptor_candidate_id"]) for row in deinf
+        )
+        / len(deinf),
+        "unmapped": sum(not row["normalized_descriptor_candidate_id"] for row in deinf),
         "source_routes": len(routes),
         "source_families": len(families),
         "largest_family_share": largest_family_share,
@@ -581,6 +772,11 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
         "rights_unknown": rights["UNKNOWN"],
         "rights_affirmative": rights["AFFIRMATIVE"],
         "rights_prohibited": rights["PROHIBITED"],
+        "gold": collection["GOLD"],
+        "silver": collection["SILVER"],
+        "bronze": collection["BRONZE"],
+        "judge_observations": len(judge_observations),
+        "model_eligible": sum(scalar(row["model_eligible"]) == "true" for row in deinf),
         **pairs,
     }
     receipt_rows = [
@@ -588,10 +784,14 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
         ("ASSERTION_LEVEL_DEINFLATED_COUNT", metrics["assertion_deinflated"], "counts_as_assertion=true"),
         ("EFFECTIVE_RECORD_LEVEL_UNIQUE_DESCRIPTOR_COUNT", metrics["record_unique"], "counts_as_record_unique_descriptor=true"),
         ("DESCRIPTOR_BEARING_EFFECTIVE_RECORD_COUNT", metrics["effective_records"], "distinct effective_record_id"),
-        ("JUDGE_OR_OBSERVATION_LEVEL_COUNT", "NA_NO_JUDGE_OR_OBSERVATION_IDENTIFIERS", "Official fields are aggregate record-level passages."),
+        ("JUDGE_OR_OBSERVATION_LEVEL_COUNT", metrics["judge_observations"], "Distinct effective-record and public-safe judge-observation hash pairs."),
         ("SET_LEVEL_COASSERTION_RECORD_COUNT", pairs["set_level_coassertion_record_count"], "records with at least two de-inflated source atoms"),
         ("PAIR_EDGE_EVENT_COUNT", pairs["pair_event_count"], "Round 3M events plus current record combinations"),
         ("UNIQUE_SUPPORTED_PAIR_COUNT", pairs["unique_supported_pair_count"], "unique sorted source-atom hash pairs"),
+        ("PROVISIONAL_NORMALIZED_PAIR_EVENT_COUNT", pairs["provisional_normalized_pair_event_count"], "complete-record combinations of provisional normalized targets"),
+        ("UNIQUE_PROVISIONAL_NORMALIZED_PAIR_COUNT", pairs["unique_provisional_normalized_pair_count"], "unique provisional normalized target pairs"),
+        ("PROVISIONAL_PAIRS_WITH_MULTI_FAMILY_SUPPORT", pairs["provisional_pair_with_multi_family_support_count"], "provisional target pairs supported by more than one source family"),
+        ("PROVISIONAL_PAIRS_WITH_MULTI_YEAR_SUPPORT", pairs["provisional_pair_with_multi_year_support_count"], "provisional target pairs supported in more than one year"),
         ("STRICT_FLAVOR_ASSERTION_COUNT", metrics["strict"], "assertion-level de-inflated"),
         ("BROAD_SENSORY_ASSERTION_COUNT", metrics["broad"], "assertion-level de-inflated"),
         ("P1_ASSERTION_COUNT", metrics["p1"], "assertion-level de-inflated"),
@@ -599,9 +799,16 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
         ("P3_ASSERTION_COUNT", metrics["p3"], "assertion-level de-inflated"),
         ("P4_ASSERTION_COUNT", metrics["p4"], "assertion-level de-inflated"),
         ("PROVENANCE_UNRESOLVED_ASSERTION_COUNT", metrics["unresolved"], "assertion-level de-inflated"),
+        ("GOLD_CANDIDATE_ASSERTION_COUNT", metrics["gold"], "candidate collection tier; not model eligibility"),
+        ("SILVER_CANDIDATE_ASSERTION_COUNT", metrics["silver"], "candidate collection tier; not model eligibility"),
+        ("BRONZE_CANDIDATE_ASSERTION_COUNT", metrics["bronze"], "candidate collection tier; not model eligibility"),
         ("SOURCE_NATIVE_HASH_IDENTITY_COUNT", metrics["source_native_forms"], "restricted lexical forms counted by SHA-256 identity"),
+        ("PROVISIONAL_NORMALIZED_DESCRIPTOR_FORM_COUNT", metrics["normalized_forms"], "Machine-proposed identities; not reviewed canonical labels."),
+        ("PROVISIONAL_MAPPING_COVERAGE_COUNT", metrics["provisional_mapping_coverage_count"], "Assertions with a machine-proposed normalization identity."),
+        ("PROVISIONAL_MAPPING_COVERAGE_RATE", f"{metrics['provisional_mapping_coverage_rate']:.6f}", "Machine-proposed coverage only."),
         ("REVIEWED_NORMALIZED_DESCRIPTOR_FORM_COUNT", 0, "No source atoms have a reviewed canonical mapping."),
-        ("UNMAPPED_DESCRIPTOR_ASSERTION_COUNT", metrics["unmapped"], "All de-inflated assertions remain unmapped."),
+        ("UNMAPPED_DESCRIPTOR_ASSERTION_COUNT", metrics["unmapped"], "Baseline hash-only assertions remain unmapped."),
+        ("MODEL_ELIGIBLE_ASSERTION_COUNT", metrics["model_eligible"], "Requires review, provenance, rights, and distribution gates."),
     ]
     write_tsv("DESCRIPTOR_MERGE_RECEIPT.tsv", ["metric", "observed_value", "basis"], [dict(zip(("metric", "observed_value", "basis"), row)) for row in receipt_rows])
 
@@ -612,15 +819,20 @@ def write_merge_outputs(ledger: list[dict[str, Any]], pairs: dict[str, Any]) -> 
         ("ROUND3M_LIVE_PILOT", "CURRENT_NORMALIZED_EXPRESSION_ASSETS", "REFERENCE_ONLY_NO_OBSERVATION_OVERLAP", "Language expressions are not coffee observations and are not promoted."),
         ("ROUND3M_LIVE_PILOT", "CURRENT_TARGETED_ACQUISITION", "NO_EFFECTIVE_RECORD_LOCATOR_OVERLAP_FOUND", "The 2009 official listing is absent from the eight-record live pilot."),
         ("CURRENT_TARGETED_ACQUISITION", "CURRENT_TARGETED_ARCHIVE_INDEX", "SAME_PUBLICATION_FIELD_REEXPORT", "Archive excerpt was discovery-only; detail structured fields are the sole segmented source."),
+        ("CURRENT_TARGETED_ACQUISITION", "PROFESSIONAL_DESCRIPTOR_SCALEUP_BATCH2", "SAME_PUBLICATION_LAYER_SUPERSEDED_BY_EXISTING_CURRENT_RECORD", "The known Batch 1 detail URL is retained as a false-count audit copy in Batch 2."),
     ]
     write_tsv("DESCRIPTOR_OVERLAP_MAP.tsv", ["left_dataset", "right_dataset", "overlap_decision", "basis"], [dict(zip(("left_dataset", "right_dataset", "overlap_decision", "basis"), row)) for row in overlap])
 
+    batch2_manifest = json.loads(BATCH2_MANIFEST.read_text(encoding="utf-8"))
     duplicate_rows = [
         ("ROUND3M_EXACT_WITHIN_FIELD_REPEAT", 1, "ASSERTION_LEVEL", "Removed from assertion-level count."),
         ("ROUND3M_CROSS_OBSERVATION_REPEAT", 2, "EFFECTIVE_RECORD_UNIQUE", "Retained as assertions; excluded from record-unique count."),
         ("ROUND4A_DERIVED_PAIR_VIEW", 508, "PAIR_EVENT", "Derived pair events add zero source observations."),
         ("CURRENT_ARCHIVE_INDEX_REEXPORT", 1, "PRE_SEGMENTATION_PUBLICATION_LAYER", "Index excerpt not segmented; detail field is canonical."),
         ("CURRENT_TARGETED_ASSERTION_DUPLICATE_LOSS", 0, "ASSERTION_LEVEL", "No repeat among the 18 canonical structured-field atoms."),
+        ("BATCH2_ASSERTION_DUPLICATE_LOSS", batch2_manifest["assertion_duplicate_losses"], "ASSERTION_LEVEL", "Within-batch and cross-batch publication-layer losses retained as false-count audit rows."),
+        ("BATCH2_CROSS_BATCH_PUBLICATION_LAYER_LOSS", batch2_manifest["cross_batch_publication_layer_duplicate_losses"], "ASSERTION_LEVEL", "Existing current publication supersedes the Batch 2 reinspection."),
+        ("BATCH2_RECORD_LEVEL_REPEAT_LOSS", batch2_manifest["record_level_repeat_losses"], "EFFECTIVE_RECORD_UNIQUE", "Assertions retained; repeated provisional target within an effective record excluded from record-unique count."),
     ]
     write_tsv("DESCRIPTOR_DUPLICATE_RECEIPT.tsv", ["duplicate_type", "count", "count_surface", "disposition"], [dict(zip(("duplicate_type", "count", "count_surface", "disposition"), row)) for row in duplicate_rows])
     return metrics
@@ -635,15 +847,93 @@ def write_distributions(ledger: list[dict[str, Any]], metrics: dict[str, Any]) -
         "c0_family_count", "direct_source_roast_count", "reviewed_c1_count", "p1_count",
         "p2_count", "p3_count", "p4_count", "unresolved_count", "rights_affirmative_count",
         "rights_pending_count", "rights_unknown_count", "human_reviewed_count",
+        "gold_candidate_count", "silver_candidate_count", "bronze_candidate_count",
         "multi_target_record_count", "supported_pair_event_count",
     ]
-    write_tsv("DESCRIPTOR_DISTRIBUTION.tsv", descriptor_fields, [])
+    descriptor_rows: list[dict[str, Any]] = []
+    support_rows: list[dict[str, Any]] = []
 
-    bands = (("ZERO", "0"), ("SINGLETON", "1"), ("VERY_LOW", "2-4"), ("LOW", "5-9"), ("EMERGING", "10-19"), ("USABLE", "20-49"), ("STRONG", "50-99"), ("HIGH_SUPPORT", "100+"))
-    support_rows = []
-    for view_name in views:
-        for band, definition in bands:
-            support_rows.append({"corpus_view": view_name, "support_band": band, "effective_record_support": definition, "descriptor_count": 0, "reason": "NO_REVIEWED_NORMALIZED_DESCRIPTOR_IDENTITIES"})
+    bands = (
+        ("SINGLETON", 1, 1, "1"),
+        ("VERY_LOW", 2, 4, "2-4"),
+        ("LOW", 5, 9, "5-9"),
+        ("EMERGING", 10, 19, "10-19"),
+        ("USABLE", 20, 49, "20-49"),
+        ("STRONG", 50, 99, "50-99"),
+        ("HIGH_SUPPORT", 100, 10**12, "100+"),
+    )
+    for view_name, rows in views.items():
+        groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        record_targets: dict[str, set[str]] = defaultdict(set)
+        for row in rows:
+            target = row["normalized_descriptor_candidate_id"]
+            if not target:
+                continue
+            groups[target].append(row)
+            record_targets[row["effective_record_id"]].add(target)
+        support_band_counts: Counter[str] = Counter()
+        for target, group in sorted(groups.items()):
+            records = {row["effective_record_id"] for row in group}
+            record_support = len(records)
+            for band, lower, upper, _ in bands:
+                if lower <= record_support <= upper:
+                    support_band_counts[band] += 1
+                    break
+            gold = sum(
+                row["evidence_stratum"].startswith(("A_", "B_")) for row in group
+            )
+            silver = sum(row["evidence_stratum"].startswith("C_") for row in group)
+            bronze = sum(row["evidence_stratum"].startswith("D_") for row in group)
+            descriptor_rows.append(
+                {
+                    "corpus_view": view_name,
+                    "normalized_descriptor_candidate_id": target,
+                    "assertion_count": len(group),
+                    "effective_record_count": record_support,
+                    "coffee_identity_count": len({row["coffee_identity_id"] for row in group}),
+                    "source_family_count": len({row["source_family_id"] for row in group}),
+                    "source_route_count": len({row["source_route_id"] for row in group}),
+                    "edition_count": len({row["edition_id"] for row in group}),
+                    "year_count": len({row["edition_year"] for row in group}),
+                    "preparation_service_count": len({row["preparation_service_id"] for row in group}),
+                    "c0_family_count": len({row["c0_family"] for row in group if row["c0_family"]}),
+                    "direct_source_roast_count": sum(
+                        row["source_native_roast_value"].startswith("hash:sha256:")
+                        for row in group
+                    ),
+                    "reviewed_c1_count": sum(bool(row["reviewed_c1_mapping"]) for row in group),
+                    "p1_count": sum(row["evidence_tier"] == "P1" for row in group),
+                    "p2_count": sum(row["evidence_tier"] == "P2" for row in group),
+                    "p3_count": sum(row["evidence_tier"] == "P3" for row in group),
+                    "p4_count": sum(row["evidence_tier"] == "P4" for row in group),
+                    "unresolved_count": sum(row["evidence_tier"] == "UNRESOLVED" for row in group),
+                    "rights_affirmative_count": sum(row["rights_state"] == "AFFIRMATIVE" for row in group),
+                    "rights_pending_count": sum(row["rights_state"] == "PENDING" for row in group),
+                    "rights_unknown_count": sum(row["rights_state"] == "UNKNOWN" for row in group),
+                    "human_reviewed_count": 0,
+                    "gold_candidate_count": gold,
+                    "silver_candidate_count": silver,
+                    "bronze_candidate_count": bronze,
+                    "multi_target_record_count": sum(
+                        len(record_targets[record_id]) >= 2 for record_id in records
+                    ),
+                    "supported_pair_event_count": sum(
+                        max(len(record_targets[record_id]) - 1, 0) for record_id in records
+                    ),
+                }
+            )
+        for band, _, _, definition in bands:
+            support_rows.append(
+                {
+                    "corpus_view": view_name,
+                    "support_band": band,
+                    "effective_record_support": definition,
+                    "descriptor_count": support_band_counts[band],
+                    "reason": "PROVISIONAL_MACHINE_NORMALIZATION_NOT_HUMAN_REVIEWED",
+                }
+            )
+    write_tsv("DESCRIPTOR_DISTRIBUTION.tsv", descriptor_fields, descriptor_rows)
+
     write_tsv("DESCRIPTOR_SUPPORT_BANDS.tsv", ["corpus_view", "support_band", "effective_record_support", "descriptor_count", "reason"], support_rows)
 
     family_rows: list[dict[str, Any]] = []
@@ -665,52 +955,74 @@ def write_distributions(ledger: list[dict[str, Any]], metrics: dict[str, Any]) -
     prep = Counter(row["preparation_service_id"] for row in deinf)
     prep_rows = [{"preparation_service": key, "assertion_count": count, "effective_record_count": len({row["effective_record_id"] for row in deinf if row["preparation_service_id"] == key})} for key, count in sorted(prep.items())]
     write_tsv("DESCRIPTOR_PREPARATION_DISTRIBUTION.tsv", ["preparation_service", "assertion_count", "effective_record_count"], prep_rows)
-    write_tsv("DESCRIPTOR_ROAST_EVIDENCE_DISTRIBUTION.tsv", ["roast_evidence_state", "assertion_count", "effective_record_count"], [{"roast_evidence_state": "NO_DIRECT_SOURCE_ROAST_OR_REVIEWED_C1", "assertion_count": len(deinf), "effective_record_count": len({row["effective_record_id"] for row in deinf})}])
+    roast_groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in deinf:
+        value = row["source_native_roast_value"]
+        state = "DIRECT_SOURCE_ROAST_HASH" if value.startswith("hash:sha256:") else value or "UNREPORTED"
+        roast_groups[state].append(row)
+    write_tsv(
+        "DESCRIPTOR_ROAST_EVIDENCE_DISTRIBUTION.tsv",
+        ["roast_evidence_state", "assertion_count", "effective_record_count"],
+        [
+            {
+                "roast_evidence_state": state,
+                "assertion_count": len(group),
+                "effective_record_count": len({row["effective_record_id"] for row in group}),
+            }
+            for state, group in sorted(roast_groups.items())
+        ],
+    )
     rights = Counter(row["rights_state"] for row in deinf)
     write_tsv("DESCRIPTOR_RIGHTS_DISTRIBUTION.tsv", ["rights_state", "assertion_count", "model_eligible_count"], [{"rights_state": state, "assertion_count": rights[state], "model_eligible_count": 0} for state in ("AFFIRMATIVE", "PENDING", "UNKNOWN", "PROHIBITED")])
     review = Counter(row["review_state"] for row in deinf)
     write_tsv("DESCRIPTOR_REVIEW_DISTRIBUTION.tsv", ["review_state", "assertion_count", "human_reviewed", "expert_adjudicated"], [{"review_state": state, "assertion_count": count, "human_reviewed": state == "HUMAN_CONFIRMED", "expert_adjudicated": state == "EXPERT_ADJUDICATED"} for state, count in sorted(review.items())])
 
+    direct_roast_records = len(
+        {
+            row["effective_record_id"]
+            for row in deinf
+            if row["source_native_roast_value"].startswith("hash:sha256:")
+        }
+    )
+    provisional_multi_target_records = metrics["set_level_coassertion_record_count"]
     gaps = [
         ("reviewed_p1_p2_strict_assertions", 0, 500, 500, "REVIEW|RIGHTS", "Minimum deterministic evaluation checkpoint"),
-        ("reviewed_normalized_forms", 0, 75, 75, "REVIEW|NORMALIZATION", "No reviewed mappings exist"),
-        ("independent_core_source_families", 0, 3, 3, "ACQUISITION|RIGHTS|REVIEW", "All candidates currently trace to one family"),
-        ("descriptor_bearing_effective_records", metrics["effective_records"], 500, 500 - metrics["effective_records"], "ACQUISITION", "Experimental normalization checkpoint"),
-        ("multi_target_records", 0, 500, 500, "NORMALIZATION|REVIEW", "Hash-only coassertion records are not reviewed multi-target labels"),
-        ("direct_source_roast_records", 0, 1, 1, "ACQUISITION", "No direct roast value in current descriptor records"),
+        ("reviewed_normalized_forms", 0, 75, 75, "REVIEW|NORMALIZATION", f"{metrics['normalized_forms']} provisional machine mappings exist; none are human reviewed"),
+        ("independent_core_source_families", 0, 3, 3, "RIGHTS|REVIEW", f"{metrics['source_families']} candidate families exist; none are core eligible"),
+        ("descriptor_bearing_effective_records", metrics["effective_records"], 500, max(500 - metrics["effective_records"], 0), "NONE_IF_COUNT_ONLY", "Candidate record checkpoint reached; eligibility remains separate"),
+        ("multi_target_records", provisional_multi_target_records, 500, max(500 - provisional_multi_target_records, 0), "REVIEW", "Provisional target sets are machine mapped and not reviewed"),
+        ("direct_source_roast_records", direct_roast_records, 1, max(1 - direct_roast_records, 0), "DISTRIBUTION", "Direct roast evidence is concentrated in one source family"),
         ("filter_or_pour_over_records", 0, 1, 1, "ACQUISITION", "Preparation service unresolved"),
         ("espresso_records", 0, 1, 1, "ACQUISITION", "Preparation service unresolved"),
-        ("rights_affirmative_model_assertions", 0, 1, 1, "RIGHTS", "No affirmative model-research decision"),
-        ("held_out_source_family", 0, 1, 1, "DISTRIBUTION", "One candidate source family and zero eligible families"),
+        ("rights_affirmative_model_assertions", 0, 1, 1, "RIGHTS|REVIEW", f"{metrics['rights_affirmative']} candidate assertions have affirmative noncommercial research rights but remain unreviewed"),
+        ("held_out_source_family", 0, 1, 1, "DISTRIBUTION|RIGHTS|REVIEW", f"{metrics['source_families']} candidate families and zero eligible held-out families"),
     ]
     write_tsv("DESCRIPTOR_GAP_MATRIX.tsv", ["distribution_cell", "observed", "next_checkpoint_required", "gap", "blocker", "note"], [dict(zip(("distribution_cell", "observed", "next_checkpoint_required", "gap", "blocker", "note"), row)) for row in gaps])
 
 
-def write_acquisition_outputs() -> None:
+def write_acquisition_outputs(
+    ledger: list[dict[str, Any]], metrics: dict[str, Any]
+) -> None:
     queue_fields = ["priority_tier", "target_descriptor_or_family", "current_effective_record_support", "current_source_family_support", "current_year_support", "current_preparation_support", "current_evidence_tier", "current_rights_state", "target_source_route", "expected_descriptor_yield", "expected_distribution_improvement", "known_provenance_risk", "known_rights_risk", "estimated_review_cost", "stop_condition"]
     queue = [
-        ("P1", "INDEPENDENT_EXPLICIT_JURY_FIELD_FAMILY", 0, 0, 0, 0, "NONE", "UNKNOWN", "FILLED_OFFICIAL_JUDGE_OR_PANEL_COMMENTS_OUTSIDE_COE", "UNKNOWN_NO_MEASURED_ROUTE_YIELD", "INDEPENDENT_SOURCE_FAMILY_DIVERSITY", "MEDIUM", "UNKNOWN", "UNKNOWN", "ONE_BOUNDED_ROUTE_STRATUM"),
-        ("P1", "COE_EXPLICIT_TOP_JURY_OTHER_YEARS", 5, 1, 1, 0, "P2", "PENDING", "EXPLICIT_TOP_JURY_DESCRIPTIONS", "73_ASSERTIONS_PER_GOVERNED_CAPTURE_HISTORICAL_PILOT", "YEAR_AND_EFFECTIVE_RECORD_SUPPORT", "LOW_FIELD_LABEL_EXPLICIT", "PENDING", "UNKNOWN", "STOP_AFTER_REGISTERED_ARTIFACT_BUDGET"),
-        ("P1", "OFFICIAL_FIELD_ORIGIN_RESOLUTION", 4, 1, 3, 0, "UNRESOLVED", "UNKNOWN", "ORGANIZER_PROVENANCE_REQUEST_FOR_GENERIC_AND_FREQUENCY_FIELDS", "UNKNOWN_NOT_AN_ACQUISITION_YIELD", "P2_RETENTION_AND_YEAR_SUPPORT", "HIGH_UNTIL_ORIGIN_CONFIRMED", "UNKNOWN", "UNKNOWN", "STOP_AT_ORGANIZER_RESPONSE_OR_POLICY_DECISION"),
-        ("P2", "REVIEWED_NORMALIZATION_FOR_HASH_ONLY_ATOMS", 0, 1, 4, 0, "P2|UNRESOLVED", "PENDING|UNKNOWN", "OWNER_CONTROLLED_RESTRICTED_REVIEW_PACKET", "NA_REVIEW_ROUTE_NOT_ACQUISITION", "NORMALIZED_FORM_AND_SUPPORT_BANDS", "LOW_IF_SOURCE_TEXT_VERIFIED", "UNCHANGED", "MAX_158_CURRENT_ITEMS", "MAX_REVIEW_PACKET_SIZE_200"),
+        ("P1", "ACTIVE_PROVISIONAL_NORMALIZATION_CLUSTERS", metrics["effective_records"], metrics["source_families"], metrics["year_count"], 1, "P1|P2|P4|UNRESOLVED", "AFFIRMATIVE|PENDING|UNKNOWN", "OWNER_CONTROLLED_RESTRICTED_CLUSTER_REVIEW", "NA_REVIEW_ROUTE", "REVIEWED_LABEL_SUPPORT_AND_PAIR_ELIGIBILITY", "LOW_IF_SOURCE_TEXT_VERIFIED", "UNCHANGED", "MAX_200_ACTIVE_CLUSTERS", "ONE_REVIEW_PACKET_MAX_200"),
+        ("P1", "OFFICIAL_FIELD_ORIGIN_RESOLUTION", metrics["effective_records"], 1, metrics["year_count"], 1, "UNRESOLVED", "UNKNOWN", "ORGANIZER_PROVENANCE_REQUEST_FOR_GENERIC_AND_FREQUENCY_FIELDS", "NA_PROVENANCE_ROUTE", "SILVER_TO_GOLD_RECLASSIFICATION_IF_EVIDENCE_SUPPORTS", "HIGH_UNTIL_ORIGIN_CONFIRMED", "UNKNOWN", "UNKNOWN", "STOP_AT_RESPONSE_OR_POLICY_DECISION"),
+        ("P1", "RIGHTS_CLEARANCE_FOR_REVIEWED_P1_P2", 0, metrics["source_families"], metrics["year_count"], 1, "P1|P2", "AFFIRMATIVE|PENDING", "PURPOSE_SPECIFIC_RIGHTS_REVIEW", "NA_RIGHTS_ROUTE", "MODEL_ELIGIBILITY_CANDIDATE_POOL", "UNCHANGED", "HIGH", "UNKNOWN", "STOP_AT_DOCUMENTED_PURPOSE_DECISION"),
         ("P2", "FILTER_OR_POUR_OVER_JUDGE_FIELDS", 0, 0, 0, 0, "NONE", "UNKNOWN", "FILLED_OFFICIAL_BREWERS_CUP_SCORESHEET_OR_JUDGE_FEEDBACK", "UNKNOWN_NO_MEASURED_ROUTE_YIELD", "PREPARATION_DIVERSITY", "MEDIUM", "UNKNOWN", "UNKNOWN", "ONE_BOUNDED_EDITION_FIELD_SCHEMA"),
-        ("P2", "DIRECT_ROAST_AND_C1_EVIDENCE", 0, 0, 0, 0, "NONE", "UNKNOWN", "FILLED_WCRC_PRODUCTION_CUPPING_OBSERVATION_WITH_ROAST_CONTEXT", "UNKNOWN_NO_MEASURED_ROUTE_YIELD", "ROAST_AND_C1_COVERAGE", "MEDIUM", "UNKNOWN", "UNKNOWN", "ONE_BOUNDED_EDITION_FIELD_SCHEMA"),
-        ("P3", "CQI_FILLED_PUBLIC_GRADE_DESCRIPTOR_SURFACE", 0, 0, 0, 0, "NONE", "UNKNOWN", "CQI_SAMPLE_GRADE_DETAIL_WITH_VISIBLE_FILLED_VALUES", "0_ON_CURRENT_PUBLIC_SAMPLE_ROUTE", "INDEPENDENT_PROFESSIONAL_FAMILY", "LOW_IF_GRADER_ORIGIN_VISIBLE", "UNKNOWN", "UNKNOWN", "DO_NOT_RESCAN_CURRENT_EMPTY_SURFACE_WITHOUT_ROUTE_CHANGE"),
+        ("P2", "ESPRESSO_JUDGE_FIELDS", 0, 0, 0, 0, "NONE", "UNKNOWN", "FILLED_OFFICIAL_BARISTA_OR_ESPRESSO_JUDGE_FEEDBACK", "UNKNOWN_NO_MEASURED_ROUTE_YIELD", "PREPARATION_DIVERSITY", "MEDIUM", "UNKNOWN", "UNKNOWN", "ONE_BOUNDED_EDITION_FIELD_SCHEMA"),
+        ("P3", "ADDITIONAL_INDEPENDENT_PROFESSIONAL_FAMILY", 0, metrics["source_families"], metrics["year_count"], 1, "NONE", "UNKNOWN", "FILLED_EXPLICIT_PROFESSIONAL_PANEL_OR_JUDGE_FIELDS", "UNKNOWN_NO_MEASURED_ROUTE_YIELD", "SOURCE_FAMILY_CONCENTRATION_AND_HELD_OUT_FEASIBILITY", "MEDIUM", "UNKNOWN", "UNKNOWN", "ONE_BOUNDED_ROUTE_STRATUM"),
     ]
     write_tsv("TARGETED_ACQUISITION_QUEUE.tsv", queue_fields, [dict(zip(queue_fields, row)) for row in queue])
 
-    result_fields = ["targeted_batch_id", "source_route", "route_stratum", "artifacts_inspected", "descriptor_bearing_artifacts", "effective_records", "strict_descriptor_candidates", "broad_sensory_candidates", "p1_candidates", "p2_candidates", "p3_candidates", "p4_candidates", "provenance_unresolved_candidates", "duplicates_removed", "non_descriptor_rows_rejected", "analyst_equivalent_minutes", "rights_state", "disposition", "stop_condition"]
-    results = [
-        (BATCH_ID, "route.coe.brazil-pulped-naturals-2009.generic-official-field", "PRIORITY_3_DESCRIPTOR_RICH_GENERIC_OFFICIAL_FIELD", 2, 1, 1, 11, 7, 0, 0, 0, 0, 18, 0, 0, "NA_NOT_INSTRUMENTED_DURING_INTERACTIVE_BROWSER_PASS", "UNKNOWN", "RESEARCH_STAGED_HASH_ONLY", "ROUTE_STRATUM_COMPLETED"),
-        (BATCH_ID, "route.cqi.public-sample-grade-detail", "PRIORITY_4_INDEPENDENT_PROFESSIONAL_SAMPLE_ROUTE", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "NA_NOT_INSTRUMENTED_DURING_INTERACTIVE_BROWSER_PASS", "UNKNOWN", "ZERO_YIELD_VISIBLE_FILLED_VALUES_ABSENT", "FIRST_CONSECUTIVE_ZERO_YIELD_STRATUM"),
-        (BATCH_ID, "route.taiwan-ali-nsa-2026-results-release", "PRIORITY_4_INDEPENDENT_OFFICIAL_COMPETITION_ROUTE", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "NA_NOT_INSTRUMENTED_DURING_INTERACTIVE_BROWSER_PASS", "UNKNOWN", "REFERENCE_ONLY_RANKING_AND_JUDGING_CONTEXT", "SECOND_CONSECUTIVE_ZERO_YIELD_STRATUM_STOP"),
-    ]
-    write_tsv("TARGETED_ACQUISITION_RESULT.tsv", result_fields, [dict(zip(result_fields, row)) for row in results])
+    route_rows = read_tsv(BATCH2_ROUTES)
+    result_fields = ["targeted_batch_id", *route_rows[0].keys()]
+    results = [{"targeted_batch_id": BATCH_ID, **row} for row in route_rows]
+    write_tsv("TARGETED_ACQUISITION_RESULT.tsv", result_fields, results)
 
 
 def write_strictness_and_review(ledger: list[dict[str, Any]]) -> None:
     deinf = [row for row in ledger if scalar(row["counts_as_assertion"]) == "true"]
-    unresolved = [row for row in deinf if row["provenance_state"] == "OFFICIAL_FIELD_ORIGIN_UNRESOLVED"]
+    unresolved = [row for row in deinf if row["evidence_tier"] == "UNRESOLVED"]
     affected_records = len({row["effective_record_id"] for row in unresolved})
     affected_classes = Counter(row["descriptor_class"] for row in unresolved)
     strict_fields = ["constraint_id", "constraint_description", "affected_source_routes", "affected_source_families", "affected_effective_record_count", "affected_strict_descriptor_count", "affected_broad_descriptor_count", "current_disposition", "core_retention_rate", "expected_retention_if_relaxed", "provenance_risk_if_relaxed", "rights_risk_if_relaxed", "duplicate_risk_if_relaxed", "safe_quarantine_alternative", "recommended_action", "user_decision_required"]
@@ -729,67 +1041,93 @@ def write_strictness_and_review(ledger: list[dict[str, Any]]) -> None:
         "rights_risk_if_relaxed": "UNCHANGED_UNKNOWN",
         "duplicate_risk_if_relaxed": "LOW_AFTER_CURRENT_PUBLICATION_LAYER_RULES",
         "safe_quarantine_alternative": "C_OFFICIAL_FIELD_PROVENANCE_UNRESOLVED",
-        "recommended_action": "REQUEST_ORGANIZER_PROVENANCE",
-        "user_decision_required": True,
+        "recommended_action": "KEEP_AS_SILVER_CANDIDATE_AND_REQUEST_ORGANIZER_PROVENANCE",
+        "user_decision_required": False,
     }
     write_tsv("STRICTNESS_IMPACT_LOG.tsv", strict_fields, [strict_row])
 
-    review_fields = ["review_item_id", "priority_tier", "effective_record_id", "source_family", "edition_year", "source_locator", "publication_layer", "descriptor_class", "source_native_form_or_restricted_pointer", "proposed_normalized_form", "proposed_evidence_tier", "current_provenance_state", "current_rights_state", "distribution_gap_affected", "machine_recommendation", "reviewer_decision", "reviewer_reason"]
-    sorted_rows = sorted(
-        deinf,
-        key=lambda row: (
-            0 if row["source_dataset_id"] == "current-targeted-acquisition-hash-ledger" else 1,
-            0 if row["evidence_tier"] == "P2" else 1,
-            row["descriptor_assertion_id"],
+    review_fields = [
+        "review_item_id", "priority_tier", "provisional_normalized_form_id",
+        "assertion_count", "effective_record_count", "source_family_count",
+        "year_count", "unresolved_assertion_count", "strict_assertion_count",
+        "broad_assertion_count", "mapping_methods", "mapping_confidences",
+        "mapping_bases", "rights_states", "distribution_gap_affected",
+        "machine_recommendation", "reviewer_decision", "reviewer_reason",
+    ]
+    clusters: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in deinf:
+        target = row["normalized_descriptor_candidate_id"]
+        if target:
+            clusters[target].append(row)
+    sidecar_by_target: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in read_tsv(BATCH2_SIDECAR):
+        if row["counts_as_assertion"] == "true":
+            sidecar_by_target[row["provisional_normalized_form_id"]].append(row)
+
+    ranked_clusters = sorted(
+        clusters.items(),
+        key=lambda item: (
+            -len(item[1]),
+            -len({row["source_family_id"] for row in item[1]}),
+            -len({row["edition_year"] for row in item[1]}),
+            -sum(row["evidence_tier"] == "UNRESOLVED" for row in item[1]),
+            item[0],
         ),
     )
     review_rows = []
-    for row in sorted_rows[:200]:
-        if row["source_dataset_id"] == "current-targeted-acquisition-hash-ledger":
-            priority, gap, recommendation = "P1", "YEAR_SUPPORT|PROVENANCE|NORMALIZATION", "VERIFY_FIELD_ORIGIN_AND_NORMALIZE_OR_ABSTAIN"
-        elif row["evidence_tier"] == "P2":
-            priority, gap, recommendation = "P2", "CORE_P1_P2|NORMALIZATION|RIGHTS", "VERIFY_SOURCE_ATOM_THEN_NORMALIZE_OR_ABSTAIN"
-        else:
-            priority, gap, recommendation = "P3", "PROVENANCE|NORMALIZATION", "VERIFY_ORIGIN_OR_RETAIN_QUARANTINE"
-        review_rows.append({
-            "review_item_id": stable_id("review-current", row["descriptor_assertion_id"]),
-            "priority_tier": priority,
-            "effective_record_id": row["effective_record_id"],
-            "source_family": row["source_family_id"],
-            "edition_year": row["edition_year"],
-            "source_locator": row["source_locator"],
-            "publication_layer": row["publication_layer"],
-            "descriptor_class": row["descriptor_class"],
-            "source_native_form_or_restricted_pointer": row["source_native_lexical_form_or_restricted_pointer"],
-            "proposed_normalized_form": "",
-            "proposed_evidence_tier": row["evidence_tier"],
-            "current_provenance_state": row["provenance_state"],
-            "current_rights_state": row["rights_state"],
-            "distribution_gap_affected": gap,
-            "machine_recommendation": recommendation,
-            "reviewer_decision": "",
-            "reviewer_reason": "",
-        })
+    for rank, (target, group) in enumerate(ranked_clusters[:200], 1):
+        sidecar_group = sidecar_by_target[target]
+        unresolved_count = sum(row["evidence_tier"] == "UNRESOLVED" for row in group)
+        review_rows.append(
+            {
+                "review_item_id": stable_id("review-cluster-current", target),
+                "priority_tier": "P1" if rank <= 50 else "P2" if rank <= 125 else "P3",
+                "provisional_normalized_form_id": target,
+                "assertion_count": len(group),
+                "effective_record_count": len({row["effective_record_id"] for row in group}),
+                "source_family_count": len({row["source_family_id"] for row in group}),
+                "year_count": len({row["edition_year"] for row in group}),
+                "unresolved_assertion_count": unresolved_count,
+                "strict_assertion_count": sum(row["descriptor_class"] == "STRICT_FLAVOR" for row in group),
+                "broad_assertion_count": sum(row["descriptor_class"] == "BROAD_SENSORY" for row in group),
+                "mapping_methods": sorted({row["mapping_method"] for row in sidecar_group}),
+                "mapping_confidences": sorted({row["mapping_confidence"] for row in sidecar_group}),
+                "mapping_bases": sorted({row["mapping_basis"] for row in sidecar_group}),
+                "rights_states": sorted({row["rights_state"] for row in group}),
+                "distribution_gap_affected": "LABEL_SUPPORT|PAIR_SUPPORT|SOURCE_FAMILY|YEAR|PROVENANCE",
+                "machine_recommendation": (
+                    "VERIFY_CLUSTER_MEMBERSHIP_AND_CANONICAL_LABEL_OR_SPLIT_OR_ABSTAIN"
+                    if unresolved_count
+                    else "VERIFY_CLUSTER_MEMBERSHIP_AND_CANONICAL_LABEL_OR_ABSTAIN"
+                ),
+                "reviewer_decision": "",
+                "reviewer_reason": "",
+            }
+        )
     write_tsv("REVIEW_QUEUE_RECEIPT.tsv", review_fields, review_rows)
 
 
-def write_gates() -> None:
+def write_gates(metrics: dict[str, Any]) -> None:
     gates = {
         "GATE_500_EVALUATION": [
+            ("candidate_corpus_assertions", metrics["assertion_deinflated"], 500, ""),
+            ("candidate_effective_records", metrics["effective_records"], 100, ""),
             ("reviewed_p1_p2_strict_assertions", 0, 500, "REVIEW|RIGHTS"),
             ("reviewed_normalized_forms", 0, 75, "REVIEW|NORMALIZATION"),
             ("eligible_source_families", 0, 3, "DISTRIBUTION|RIGHTS"),
             ("complete_provenance_rate", 0, 1, "PROVENANCE|REVIEW"),
         ],
         "GATE_2000_NORMALIZATION": [
+            ("candidate_corpus_assertions", metrics["assertion_deinflated"], 2000, ""),
+            ("provisional_mapping_coverage_percent", int(metrics["provisional_mapping_coverage_rate"] * 100), 80, ""),
             ("reviewed_p1_p2_strict_assertions", 0, 2000, "REVIEW|RIGHTS"),
             ("eligible_descriptor_records", 0, 500, "DATA|RIGHTS"),
             ("reviewed_normalized_forms", 0, 100, "REVIEW|NORMALIZATION"),
             ("minimum_records_per_output_label", 0, 20, "DATA|NORMALIZATION"),
             ("eligible_source_families", 0, 3, "DISTRIBUTION|RIGHTS"),
-            ("unresolved_challenge_cases", 85, 100, "DATA"),
         ],
         "GATE_5000_RANKING": [
+            ("candidate_corpus_assertions", metrics["assertion_deinflated"], 5000, ""),
             ("reviewed_p1_p2_strict_assertions", 0, 5000, "REVIEW|RIGHTS"),
             ("eligible_descriptor_records", 0, 1000, "DATA|RIGHTS"),
             ("multi_target_records", 0, 500, "NORMALIZATION|REVIEW"),
@@ -798,6 +1136,7 @@ def write_gates() -> None:
             ("held_out_years", 0, 1, "DISTRIBUTION|RIGHTS"),
         ],
         "GATE_10000_RESEARCH_NORMALIZATION": [
+            ("candidate_corpus_assertions", metrics["assertion_deinflated"], 10000, ""),
             ("reviewed_p1_p2_strict_assertions", 0, 10000, "REVIEW|RIGHTS"),
             ("eligible_descriptor_records", 0, 2500, "DATA|RIGHTS"),
             ("reviewed_normalized_forms", 0, 200, "REVIEW|NORMALIZATION"),
@@ -807,6 +1146,7 @@ def write_gates() -> None:
             ("held_out_years", 0, 2, "DISTRIBUTION|RIGHTS"),
         ],
         "GATE_20000_RESEARCH_RANKING": [
+            ("candidate_corpus_assertions", metrics["assertion_deinflated"], 20000, ""),
             ("reviewed_p1_p2_strict_assertions", 0, 20000, "REVIEW|RIGHTS"),
             ("eligible_descriptor_records", 0, 4000, "DATA|RIGHTS"),
             ("multi_target_records", 0, 2000, "NORMALIZATION|REVIEW"),
@@ -844,13 +1184,14 @@ def write_gates() -> None:
             "review_blocker": True,
             "rights_blocker": True,
             "distribution_blocker": True,
-            "feasibility_assessment": "FAIL_NO_AUTOMATIC_GATE_RELAXATION;STRICTNESS_IMPACT_REVIEW_REQUIRED",
+            "feasibility_assessment": "FAIL_CANDIDATE_VOLUME_DOES_NOT_OVERRIDE_REVIEW_RIGHTS_OR_DISTRIBUTION_GATES",
         })
     write_tsv("TRAINING_GATE_STATUS.tsv", fields, rows)
 
 
 def write_manifest(inventory_rows: list[dict[str, Any]], metrics: dict[str, Any]) -> None:
     role_counts = Counter(row["data_role"] for row in inventory_rows)
+    batch2_manifest = json.loads(BATCH2_MANIFEST.read_text(encoding="utf-8"))
     manifest = {
         "schema": "coffee-flavor-current-descriptor-data-v1",
         "batch_id": BATCH_ID,
@@ -868,21 +1209,46 @@ def write_manifest(inventory_rows: list[dict[str, Any]], metrics: dict[str, Any]
         "model_weight_file_count": 0,
         "targeted_acquisition": {
             "run": True,
-            "source_route_count": 3,
-            "artifact_count": 4,
-            "new_descriptor_bearing_record_count": 1,
-            "new_strict_descriptor_candidate_count": 11,
-            "new_broad_descriptor_candidate_count": 7,
-            "new_provenance_unresolved_count": 18,
-            "stop_condition": "TWO_CONSECUTIVE_TARGET_ROUTE_STRATA_ZERO_YIELD",
-            "analyst_equivalent_minutes": "NA_NOT_INSTRUMENTED_DURING_INTERACTIVE_BROWSER_PASS",
+            "source_route_count": batch2_manifest["source_route_count_inspected"],
+            "artifact_count": batch2_manifest["artifact_count"],
+            "new_descriptor_assertion_count": batch2_manifest[
+                "net_new_deinflated_candidate_count"
+            ],
+            "new_record_unique_assertion_count": batch2_manifest[
+                "record_unique_new_assertion_count"
+            ],
+            "new_strict_descriptor_candidate_count": batch2_manifest[
+                "descriptor_class_distribution"
+            ].get("STRICT_FLAVOR", 0),
+            "new_broad_descriptor_candidate_count": batch2_manifest[
+                "descriptor_class_distribution"
+            ].get("BROAD_SENSORY", 0),
+            "new_provenance_unresolved_count": batch2_manifest[
+                "evidence_tier_distribution"
+            ].get("UNRESOLVED", 0),
+            "stop_condition": "FIRST_COMPLETE_RECORD_BOUNDARY_AT_OR_ABOVE_20000",
+            "continuation_cursor": batch2_manifest["continuation_cursor"],
+            "analyst_equivalent_minutes": "NA_AUTOMATED_ROUTES_REPORTED_SEPARATELY",
         },
         "metrics": metrics,
+        "deltas_from_initial_current_snapshot": {
+            "raw_segmented": metrics["raw_segmented"] - 158,
+            "assertion_deinflated": metrics["assertion_deinflated"] - 157,
+            "record_unique": metrics["record_unique"] - 155,
+            "effective_records": metrics["effective_records"] - 9,
+            "pair_event_count": metrics["pair_event_count"] - 661,
+            "source_native_forms": metrics["source_native_forms"] - 130,
+            "provisional_normalized_forms": metrics["normalized_forms"],
+        },
         "dataset_inventory_count": len(inventory_rows),
         "dataset_role_counts": dict(sorted(role_counts.items())),
         "strictness_impact_triggered": True,
-        "strictness_user_decision_required": True,
-        "final_data_decision": "MERGE_COMPLETE_STRICTNESS_POLICY_REVIEW_REQUIRED",
+        "strictness_user_decision_required": False,
+        "final_data_decision": "CANDIDATE_CORPUS_HARD_STOP_REACHED;MODEL_WORK_BLOCKED_BY_REVIEW_RIGHTS_PROVENANCE_AND_DISTRIBUTION_GATES",
+        "phase_status": batch2_manifest["phase_status"],
+        "milestone_10000_role": "HEALTHY_CANDIDATE_CORPUS_MILESTONE",
+        "hard_stop_assertion_count": 20000,
+        "stop_at_first_complete_record_boundary_at_or_above_20000": True,
         "full_clean_rebuild_required": False,
         "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",
         "files": [],
@@ -916,9 +1282,9 @@ def main() -> None:
     write_tsv("CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv", LEDGER_FIELDS, ledger)
     metrics = write_merge_outputs(ledger, pairs)
     write_distributions(ledger, metrics)
-    write_acquisition_outputs()
+    write_acquisition_outputs(ledger, metrics)
     write_strictness_and_review(ledger)
-    write_gates()
+    write_gates(metrics)
     write_manifest(inventory_rows, metrics)
     print(
         "CURRENT_DESCRIPTOR_DATA_PASS "

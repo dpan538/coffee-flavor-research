@@ -1,0 +1,100 @@
+{
+  "artifact_count": 423,
+  "batch_id": "professional-descriptor-scaleup-batch2-20260829",
+  "collection_tier_distribution": {
+    "BRONZE": 330,
+    "GOLD": 4858,
+    "SILVER": 4818
+  },
+  "continue_after_10000": true,
+  "descriptor_class_distribution": {
+    "BROAD_SENSORY": 2514,
+    "STRICT_FLAVOR": 7492
+  },
+  "duplicate_statistics": {
+    "assertion_duplicate_losses": 87,
+    "record_level_repeat_losses": 1513
+  },
+  "effective_record_count": 396,
+  "evidence_tier_distribution": {
+    "P1": 4785,
+    "P2": 73,
+    "P4": 330,
+    "UNRESOLVED": 4818
+  },
+  "exact_continuation_cursor": "detail-index=306;url=https://farmdirectory.cupofexcellence.org/listing/2015-brazil-naturals-88-30-5/",
+  "hard_stop_assertion_count": 20000,
+  "judge_observation_count": 360,
+  "largest_source_family_share": 0.4829102538476914,
+  "milestone_assertion_count": 10006,
+  "milestone_role": "HEALTHY_CANDIDATE_CORPUS_MILESTONE",
+  "model_eligible_assertion_count": 0,
+  "pair_statistics": {
+    "effective_records_with_multiple_provisional_targets": 386,
+    "pairs_supported_by_multiple_source_families": 2718,
+    "pairs_supported_by_multiple_years": 7119,
+    "provisional_normalized_pair_event_count": 117013,
+    "unique_provisional_normalized_pair_count": 60897
+  },
+  "preparation_distribution": {
+    "CUPPING": 9849,
+    "unresolved_preparation_service": 157
+  },
+  "provisional_mapping_coverage_count": 9849,
+  "provisional_mapping_coverage_rate": 0.9843094143513892,
+  "provisional_normalized_form_count": 1805,
+  "public_safe_sidecar_sha256": "9eb02b1557b4ff170abd75ef01d0ecad02028ae129a0b6b9ce4c873dff5a891e",
+  "raw_segmented_assertion_count": 10093,
+  "record_unique_assertion_count": 8493,
+  "restricted_assertion_ledger_sha256": "49eda64db153f14dbbce973a9f09ee1ac658c1ec913404b8338f3f0dc63ea18b",
+  "restricted_raw_artifact_receipt_sha256": "8f550926e1b3f8393056e777b20247b433f6ecf53ee6afa7f165a33f2dcc0945",
+  "rights_and_review_warning": "CANDIDATE_CORPUS_ONLY_NOT_MODEL_READY",
+  "rights_distribution": {
+    "AFFIRMATIVE": 4785,
+    "PENDING": 73,
+    "UNKNOWN": 5148
+  },
+  "roast_evidence_distribution": {
+    "DIRECT_EXPLICIT": 4028,
+    "UNREPORTED": 5978
+  },
+  "schema": "professional-descriptor-candidate-milestone-v1",
+  "source_family_count": 5,
+  "source_family_distribution": {
+    "family.ace_cup_of_excellence": 4832,
+    "family.coffee_board_of_india_fine_cup": 59,
+    "family.project_origin": 302,
+    "family.sheba_coffee_yemen_auction": 28,
+    "family.zenodo_golovinsky_q_grader_dataset": 4785
+  },
+  "source_family_hhi": 0.4628436010550376,
+  "source_native_form_count": 2113,
+  "stop_at_10000": false,
+  "stop_rule": "FIRST_COMPLETE_RECORD_BOUNDARY_AT_OR_ABOVE_20000",
+  "support_band_distribution": {
+    "1": 1226,
+    "10-24": 74,
+    "2-4": 302,
+    "25-49": 42,
+    "5-9": 115,
+    "50+": 46
+  },
+  "unmapped_baseline_assertion_count": 157,
+  "year_distribution": {
+    "2008": 99,
+    "2009": 392,
+    "2010": 218,
+    "2011": 214,
+    "2012": 555,
+    "2013": 369,
+    "2014": 386,
+    "2017": 73,
+    "2019": 59,
+    "2021": 374,
+    "2022": 454,
+    "2023": 554,
+    "2024": 265,
+    "2025": 993,
+    "2026": 5001
+  }
+}

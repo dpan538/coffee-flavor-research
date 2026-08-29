@@ -1,0 +1,78 @@
+{
+  "analyst_equivalent_minutes": "NA_AUTOMATED_ACQUISITION_NO_MANUAL_TIMING",
+  "artifact_count": 971,
+  "assertion_duplicate_losses": 241,
+  "automated_live_acquisition_runtime_seconds": 1057.548111,
+  "batch_id": "professional-descriptor-scaleup-batch2-20260829",
+  "candidate_corpus_10000_reached": true,
+  "collection_tier_distribution": {
+    "BRONZE": 330,
+    "GOLD": 4982,
+    "SILVER": 14534
+  },
+  "continuation_cursor": "archive-page=12;detail-index=10;url=https://farmdirectory.cupofexcellence.org/listing/9-liquidambar-honduras-2026-parainema-catracha/",
+  "continue_after_10000": true,
+  "cross_batch_publication_layer_duplicate_losses": 18,
+  "descriptor_class_distribution": {
+    "BROAD_SENSORY": 4159,
+    "STRICT_FLAVOR": 15687
+  },
+  "evidence_tier_distribution": {
+    "P1": 4785,
+    "P2": 197,
+    "P4": 330,
+    "UNRESOLVED": 14534
+  },
+  "files": [
+    {
+      "byte_count": 24158491,
+      "path": "PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "row_count": 20087,
+      "sha256": "20905a6747de98a0a9211d35857fb74242a573ea182f056e1c60d4967f27f1d5"
+    },
+    {
+      "byte_count": 7315,
+      "path": "SOURCE_ROUTE_PROBE_AND_YIELD.tsv",
+      "row_count": 16,
+      "sha256": "5c484c4a1a6dc8d9c3958bb2c6b68cc2bf96caeb64e38ee159d6f873270481e0"
+    },
+    {
+      "byte_count": 3164,
+      "path": "CANDIDATE_MILESTONE_10000.json",
+      "row_count": "NA_NOT_TABULAR",
+      "sha256": "ed65cc9d0256867937718ecfa073da6ca5e5e066e3880c3d4dcee6f47e3a792d"
+    },
+    {
+      "byte_count": 4274,
+      "path": "CANDIDATE_MILESTONE_10000_RECONCILIATION.json",
+      "row_count": "NA_NOT_TABULAR",
+      "sha256": "08d4109bf1d8bbc0800d36db45a1ce3d3cc6e31a4940777ac3cdb2cdb276bec4"
+    }
+  ],
+  "final_deinflated_candidate_count": 20003,
+  "generated_date": "2026-08-29",
+  "hard_stop_assertion_count": 20000,
+  "largest_new_source_family_share": 0.7392925526554469,
+  "net_new_deinflated_candidate_count": 19846,
+  "phase_status": "CANDIDATE_CORPUS_20000_REACHED_DISTRIBUTION_GAPS",
+  "positive_source_family_count": 5,
+  "provisional_form_count": 2915,
+  "provisional_mapping_coverage_rate": 1.0,
+  "raw_segmented_new_assertion_count": 20087,
+  "record_level_repeat_losses": 1932,
+  "record_unique_new_assertion_count": 17914,
+  "remaining_to_10000": 0,
+  "restricted_checkpoint_receipt_sha256": "dc5a2579bb8971bd92632c5e8079218ad17443fa41d52b80a67be79e8640280f",
+  "rights_distribution": {
+    "AFFIRMATIVE": 4785,
+    "PENDING": 197,
+    "UNKNOWN": 14864
+  },
+  "schema": "professional-descriptor-batch2-public-safe-v1",
+  "source_family_count_new": 5,
+  "source_route_count_inspected": 16,
+  "starting_deinflated_candidate_count": 157,
+  "stop_at_10000": false,
+  "stop_at_first_complete_record_boundary_at_or_above_20000": true,
+  "target_10000_role": "HEALTHY_CANDIDATE_CORPUS_MILESTONE"
+}

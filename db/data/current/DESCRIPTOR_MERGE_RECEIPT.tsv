@@ -1,19 +1,30 @@
 metric	observed_value	basis
-RAW_SEGMENTED_DESCRIPTOR_ASSERTION_COUNT	158	CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv
-ASSERTION_LEVEL_DEINFLATED_COUNT	157	counts_as_assertion=true
-EFFECTIVE_RECORD_LEVEL_UNIQUE_DESCRIPTOR_COUNT	155	counts_as_record_unique_descriptor=true
-DESCRIPTOR_BEARING_EFFECTIVE_RECORD_COUNT	9	distinct effective_record_id
-JUDGE_OR_OBSERVATION_LEVEL_COUNT	NA_NO_JUDGE_OR_OBSERVATION_IDENTIFIERS	Official fields are aggregate record-level passages.
-SET_LEVEL_COASSERTION_RECORD_COUNT	9	records with at least two de-inflated source atoms
-PAIR_EDGE_EVENT_COUNT	661	Round 3M events plus current record combinations
-UNIQUE_SUPPORTED_PAIR_COUNT	659	unique sorted source-atom hash pairs
-STRICT_FLAVOR_ASSERTION_COUNT	96	assertion-level de-inflated
-BROAD_SENSORY_ASSERTION_COUNT	61	assertion-level de-inflated
-P1_ASSERTION_COUNT	0	assertion-level de-inflated
-P2_ASSERTION_COUNT	73	assertion-level de-inflated
+RAW_SEGMENTED_DESCRIPTOR_ASSERTION_COUNT	20245	CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv
+ASSERTION_LEVEL_DEINFLATED_COUNT	20003	counts_as_assertion=true
+EFFECTIVE_RECORD_LEVEL_UNIQUE_DESCRIPTOR_COUNT	18069	counts_as_record_unique_descriptor=true
+DESCRIPTOR_BEARING_EFFECTIVE_RECORD_COUNT	792	distinct effective_record_id
+JUDGE_OR_OBSERVATION_LEVEL_COUNT	360	Distinct effective-record and public-safe judge-observation hash pairs.
+SET_LEVEL_COASSERTION_RECORD_COUNT	790	records with at least two de-inflated source atoms
+PAIR_EDGE_EVENT_COUNT	258727	Round 3M events plus current record combinations
+UNIQUE_SUPPORTED_PAIR_COUNT	113319	unique sorted source-atom hash pairs
+PROVISIONAL_NORMALIZED_PAIR_EVENT_COUNT	257351	complete-record combinations of provisional normalized targets
+UNIQUE_PROVISIONAL_NORMALIZED_PAIR_COUNT	111953	unique provisional normalized target pairs
+PROVISIONAL_PAIRS_WITH_MULTI_FAMILY_SUPPORT	3845	provisional target pairs supported by more than one source family
+PROVISIONAL_PAIRS_WITH_MULTI_YEAR_SUPPORT	17521	provisional target pairs supported in more than one year
+STRICT_FLAVOR_ASSERTION_COUNT	15783	assertion-level de-inflated
+BROAD_SENSORY_ASSERTION_COUNT	4220	assertion-level de-inflated
+P1_ASSERTION_COUNT	4785	assertion-level de-inflated
+P2_ASSERTION_COUNT	270	assertion-level de-inflated
 P3_ASSERTION_COUNT	0	assertion-level de-inflated
-P4_ASSERTION_COUNT	0	assertion-level de-inflated
-PROVENANCE_UNRESOLVED_ASSERTION_COUNT	84	assertion-level de-inflated
-SOURCE_NATIVE_HASH_IDENTITY_COUNT	130	restricted lexical forms counted by SHA-256 identity
+P4_ASSERTION_COUNT	330	assertion-level de-inflated
+PROVENANCE_UNRESOLVED_ASSERTION_COUNT	14618	assertion-level de-inflated
+GOLD_CANDIDATE_ASSERTION_COUNT	5055	candidate collection tier; not model eligibility
+SILVER_CANDIDATE_ASSERTION_COUNT	14618	candidate collection tier; not model eligibility
+BRONZE_CANDIDATE_ASSERTION_COUNT	330	candidate collection tier; not model eligibility
+SOURCE_NATIVE_HASH_IDENTITY_COUNT	3467	restricted lexical forms counted by SHA-256 identity
+PROVISIONAL_NORMALIZED_DESCRIPTOR_FORM_COUNT	2915	Machine-proposed identities; not reviewed canonical labels.
+PROVISIONAL_MAPPING_COVERAGE_COUNT	19846	Assertions with a machine-proposed normalization identity.
+PROVISIONAL_MAPPING_COVERAGE_RATE	0.992151	Machine-proposed coverage only.
 REVIEWED_NORMALIZED_DESCRIPTOR_FORM_COUNT	0	No source atoms have a reviewed canonical mapping.
-UNMAPPED_DESCRIPTOR_ASSERTION_COUNT	157	All de-inflated assertions remain unmapped.
+UNMAPPED_DESCRIPTOR_ASSERTION_COUNT	157	Baseline hash-only assertions remain unmapped.
+MODEL_ELIGIBLE_ASSERTION_COUNT	0	Requires review, provenance, rights, and distribution gates.

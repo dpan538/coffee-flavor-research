@@ -4,3 +4,6 @@ ROUND3M_CROSS_OBSERVATION_REPEAT	2	EFFECTIVE_RECORD_UNIQUE	Retained as assertion
 ROUND4A_DERIVED_PAIR_VIEW	508	PAIR_EVENT	Derived pair events add zero source observations.
 CURRENT_ARCHIVE_INDEX_REEXPORT	1	PRE_SEGMENTATION_PUBLICATION_LAYER	Index excerpt not segmented; detail field is canonical.
 CURRENT_TARGETED_ASSERTION_DUPLICATE_LOSS	0	ASSERTION_LEVEL	No repeat among the 18 canonical structured-field atoms.
+BATCH2_ASSERTION_DUPLICATE_LOSS	241	ASSERTION_LEVEL	Within-batch and cross-batch publication-layer losses retained as false-count audit rows.
+BATCH2_CROSS_BATCH_PUBLICATION_LAYER_LOSS	18	ASSERTION_LEVEL	Existing current publication supersedes the Batch 2 reinspection.
+BATCH2_RECORD_LEVEL_REPEAT_LOSS	1932	EFFECTIVE_RECORD_UNIQUE	Assertions retained; repeated provisional target within an effective record excluded from record-unique count.
