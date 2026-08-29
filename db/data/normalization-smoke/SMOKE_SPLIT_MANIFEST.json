@@ -1,0 +1,22 @@
+{
+  "actual_train_test_split_created": true,
+  "contract_version": "batch5.normalization-engineering-smoke.v1",
+  "dev_group_count": 30,
+  "dev_output_count": 148,
+  "grouping": "COFFEE_SAMPLE_EFFECTIVE_RECORD_DUPLICATE_MIRROR_CONNECTED_COMPONENT",
+  "lexical_form_disjoint_split": {
+    "component_count": 2,
+    "decision_basis": "CONNECTED_GROUP_FORM_COMPONENT_DOMINANCE_PREVENTS_70_15_15_WITHOUT_SAMPLE_LEAKAGE",
+    "feasible": false,
+    "largest_component_group_count": 197,
+    "largest_component_output_count": 1004,
+    "largest_component_output_share": 0.9990049751243781
+  },
+  "protocol": "DETERMINISTIC_GROUPED_70_15_15",
+  "seed": 20260829,
+  "split_role": "RESTRICTED_ENGINEERING_SMOKE_ONLY_NOT_TRAINING_CORPUS_FREEZE",
+  "test_group_count": 29,
+  "test_output_count": 127,
+  "train_group_count": 139,
+  "train_output_count": 730
+}

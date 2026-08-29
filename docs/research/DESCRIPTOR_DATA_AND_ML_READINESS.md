@@ -2,7 +2,42 @@
 
 Last updated: 30 August 2026
 Active branch: `research/coffee-sensory-data-ml-readiness`  
-Current decision: `CLEANED_30K_AND_40K_ACQUISITION_CHECKPOINT_REACHED;NO_MODEL_TRAINING`
+Current decision: `ENGINEERING_SMOKE_PASS_LEXICAL_MEMORIZATION_ONLY;FIXED_NORMALIZATION_BASELINE_COMPLETE`
+
+## Batch 5 normalization engineering result
+
+The project-owner authorization in Batch 5 was applied only to restricted,
+professional sensory-language normalization. The exact eligible intersection
+is narrower than the independent Batch 4 smoke indicators: 4,096
+rights-permitted strict outputs and 9,439 machine-governed strict outputs
+intersect at 1,005 outputs with governed targets. They cover 198 connected
+coffee/sample lineage groups, 219 effective records, three professional source
+families, three years, and 52 target concepts. Post-30k data was excluded and
+the immutable 20k, 30k, and 40,030 acquisition checkpoints were not mutated.
+
+The deterministic grouped split assigns 139/30/29 groups and 730/148/127
+outputs to train/dev/test. Sample, coffee, publication, and duplicate-group
+leakage are all zero. A simultaneous lexical-form-disjoint split is not
+feasible: two connected components remain, and the largest contains 1,004 of
+1,005 outputs and 197 of 198 groups. Twenty-nine targets meet the declared
+closed-set support rule; 23 remain low-support. Supported targets cover 115 of
+127 test outputs.
+
+Six preregistered configurations ran offline with seed `20260829`. DEV
+macro-F1 selected the character 3–5-gram TF-IDF SGD log-loss configuration.
+On grouped TEST it has top-1/top-3 `0.984252` and supported-target macro-F1
+`1.000000`, but 125 of 127 test outputs use forms already seen in training.
+Both unseen forms score zero at top-1 and top-3. The Zenodo leave-one-family-out
+macro-F1 is `0.151142`, compared with `1.000000` for each small Frontiers
+holdout. The governed interpretation is therefore
+`SEEN_FORM_LOOKUP_ONLY`, not cross-form or cross-family normalization signal.
+
+No fitted estimator was serialized, committed, released, or uploaded. The
+results contain hashes and governed IDs only and reproduced byte-identically
+from the restricted offline inputs. Human-reviewed and model-eligible counts
+remain zero, the corpus is not frozen for training, and ranking, commercial,
+product, frontend, PWA, deep-learning, embedding, and further model work remain
+unauthorized.
 
 ## Batch 4 current position
 
@@ -47,12 +82,12 @@ events and 127,176 unique pairs; per-record P50/P90/P95/P99 are
 153/528/903/1,485, the maximum is 2,346, and duplicate credit remains capped at
 one per record/pair.
 
-The engineering-smoke candidate manifest passes its feasibility thresholds
+The Batch 4 engineering-smoke candidate manifest passed its feasibility thresholds
 with 206 grouped samples, three purpose-permitted professional families, 4,096
 strict outputs, 1,137 machine-governed outputs, and 60 concept targets. Its
-status is `ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING`: no model, weights, or
-actual split were created, and a later explicit authorization is still
-required.
+status was `ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING`. Batch 5 supplied the
+one-time authorization and produced the restricted fixed result documented
+above; the candidate manifest remains an immutable pre-run checkpoint.
 
 Post-30k acquisition resumed from the exact page-75/detail-2 CoE cursor and
 stopped at the first complete record boundary at 40,030 total candidates. The

@@ -1,0 +1,17 @@
+{
+  "cpu_information": "arm",
+  "execution_network_mode": "OFFLINE_AFTER_LOCAL_GOVERNED_INPUT_LOAD",
+  "joblib_version": "1.5.3",
+  "logical_cpu_count": 8,
+  "machine": "arm64",
+  "model_storage_scope": "TEMPORARY_RESTRICTED_LOCAL_IN_MEMORY_ONLY",
+  "model_thread_limit": 1,
+  "numpy_version": "2.3.2",
+  "os": "macOS-26.5.2-arm64-arm-64bit",
+  "peak_memory_mb": 678.484375,
+  "python_version": "3.12.13",
+  "random_seed": 20260829,
+  "runtime_seconds": 15.879391,
+  "scikit_learn_version": "1.7.1",
+  "scipy_version": "1.16.1"
+}

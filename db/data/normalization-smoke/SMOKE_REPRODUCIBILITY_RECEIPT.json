@@ -1,0 +1,10 @@
+{
+  "byte_identical_core_rerun": true,
+  "model_weights_required_for_reproduction": false,
+  "reference_artifact_count": 20,
+  "reference_core_sha256": "a7566c44a6160b4b431c590f5ca5064ef4be321cfc14a05f7527beb36a1a2656",
+  "reproducibility_pass": true,
+  "runtime_environment_excluded_from_core_comparison": true,
+  "seed": 20260829,
+  "split_and_metric_core_sha256": "a7566c44a6160b4b431c590f5ca5064ef4be321cfc14a05f7527beb36a1a2656"
+}

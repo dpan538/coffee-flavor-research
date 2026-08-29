@@ -1,0 +1,11 @@
+{
+  "conditional_experimental_baseline_run": true,
+  "configuration_count": 6,
+  "deployment_inference_allowed": false,
+  "experiment_result_interpretation": "SEEN_FORM_LOOKUP_ONLY",
+  "next_authorization": "EXPLICIT_PROJECT_OWNER_AUTHORIZATION_REQUIRED_FOR_ANY_WORK_BEYOND_FIXED_NORMALIZATION_BASELINE",
+  "ranking_inference_allowed": false,
+  "selected_configuration_id": "B2_CHAR_LINEAR",
+  "selection_surface": "GROUPED_DEV_MACRO_F1_LINEAR_CONFIGS_ONLY",
+  "test_evaluated_once": true
+}

@@ -1,5 +1,44 @@
 # Descriptor Execution Log
 
+## 2026-08-30 — Normalization engineering smoke and fixed baseline Batch 5
+
+- Continued the existing research branch at the exact authorized SHA
+  `d4a1f7a93db46a3454cf972fba3898e0bc1338ef`; confirmed the remote branch was
+  identical and remote `main` remained
+  `21d04f50952ac30ee13010ee26bae8a224ea9f71`.
+- Verified every governed current-file hash, the immutable 30k acquisition
+  snapshot, cleaner V2, purpose-specific rights, mapping authority, lineage
+  groups, and post-30k exclusion before executing any estimator.
+- Applied the explicit authorization only to professional lexical-expression →
+  governed-concept normalization. The exact intersection contains 1,005
+  outputs, not the broader candidate-manifest indicators: 198 connected
+  sample/coffee groups, 219 effective records, three families, three years,
+  and 52 targets.
+- Reconstructed cleaned lexical strings only in owner-controlled restricted
+  memory and published hashes/governed IDs only. No source-native or cleaned
+  lexical text entered Git artifacts, prediction receipts, logs, or metrics.
+- Created a deterministic 139/30/29-group train/dev/test split with
+  730/148/127 outputs. Confirmed zero sample, coffee, publication, or duplicate
+  leakage. Reported the lexical-form-disjoint alternative as infeasible
+  because 1,004 outputs and 197 groups form one connected component.
+- Ran six fixed configurations with seed `20260829`: train-only lookup,
+  majority, character nearest-neighbour, character-linear, word+character
+  linear, and an allowed-context word+character linear ablation. No broad
+  search or transformer was used.
+- Selected `B2_CHAR_LINEAR` once on DEV macro-F1. Grouped TEST top-1/top-3 are
+  `0.984252`, but unseen-form top-1/top-3 are both zero. The Zenodo family
+  holdout macro-F1 is `0.151142`; the result is
+  `ENGINEERING_SMOKE_PASS_LEXICAL_MEMORIZATION_ONLY`.
+- Ran the authorized conditional fixed baseline and 25/50/75/100% grouped
+  learning curve, then stopped. No ranking, deep-learning, cross-encoder,
+  embedding, commercial, product, or frontend work was performed.
+- Reproduced the split, predictions, metrics, and decisions byte-identically
+  in a second offline run. Created, serialized, committed, and released zero
+  model files; retained only public-safe configuration and result receipts.
+
+Final Git SHA, push state, clean-worktree status, and remote CI result are
+reported after the final commit in the task response.
+
 ## 2026-08-30 — Cleaned 30k integration and isolated 40k checkpoint Batch 4
 
 - Continued the existing branch from `3607297ef2b776be2e50ce7f71ce385ead8e2ae5`

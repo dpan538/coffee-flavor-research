@@ -1,0 +1,5 @@
+training_fraction	configuration_id	training_group_count	training_output_count	target_coverage	dev_macro_f1	dev_unseen_form_top1	held_out_family_min_macro_f1
+0.250000	B2_CHAR_LINEAR	35	199	0.591837	0.876157	0.181818	0.058608
+0.500000	B2_CHAR_LINEAR	70	387	0.897959	1.000000	0.500000	0.151142
+0.750000	B2_CHAR_LINEAR	104	571	0.959184	1.000000	0.500000	0.151142
+1.000000	B2_CHAR_LINEAR	139	730	1.000000	1.000000	0.500000	0.151142

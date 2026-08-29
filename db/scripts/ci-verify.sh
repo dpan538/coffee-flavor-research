@@ -10,6 +10,7 @@ python3 -B "$SCRIPT_DIR/test-batch3-candidate-cleaning.py"
 env -u POST20K_RESTRICTED_ROOT python3 -B "$SCRIPT_DIR/test-post20k-extension.py"
 python3 -B "$SCRIPT_DIR/test-batch4-cleaned-30k.py"
 env -u POST30K_RESTRICTED_ROOT python3 -B "$SCRIPT_DIR/test-post30k-extension.py"
+python3 -B "$SCRIPT_DIR/test-normalization-smoke.py"
 env \
   -u ROUND3M_RESTRICTED_ROOT \
   -u ROUND3L_RESTRICTED_ROOT \
