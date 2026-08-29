@@ -15,10 +15,19 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "db" / "data" / "current"
 STAGING = ROOT / "db" / "data" / "professional-descriptor-staging"
+CLEANING_STAGING = ROOT / "db" / "data" / "candidate-cleaning-staging"
 GENERATOR = ROOT / "db" / "scripts" / "generate-current-descriptor-data.py"
 
 EXPECTED_FILES = {
     "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
+    "CANDIDATE_20K_SNAPSHOT_MANIFEST.json",
+    "CANONICAL_NORMALIZATION_MAP.tsv",
+    "CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv",
+    "CLEANED_DESCRIPTOR_DISTRIBUTION.tsv",
+    "CLEANED_DESCRIPTOR_SUPPORT_BANDS.tsv",
+    "CLEANED_PAIR_EVENT_RECEIPT.tsv",
+    "COE_CROSS_DOMAIN_DUPLICATE_DECISION.tsv",
+    "COE_ENTITY_RESOLUTION.tsv",
     "CURRENT_DATA_MANIFEST.json",
     "DATASET_INVENTORY.tsv",
     "DATASET_ROLE_AND_LINEAGE.tsv",
@@ -34,9 +43,17 @@ EXPECTED_FILES = {
     "DESCRIPTOR_SOURCE_FAMILY_DISTRIBUTION.tsv",
     "DESCRIPTOR_SUPPORT_BANDS.tsv",
     "DESCRIPTOR_YEAR_DISTRIBUTION.tsv",
+    "ONTOLOGY_GAP_REGISTER.tsv",
+    "POST20K_EXTENSION_PROGRESS.tsv",
+    "REVIEW_CLUSTER_QUEUE.tsv",
     "REVIEW_QUEUE_RECEIPT.tsv",
+    "SEGMENTATION_DECISION.tsv",
+    "SEMANTIC_AUDIT_METRICS.json",
+    "SEMANTIC_CLEANING_DECISION.tsv",
     "SHA256SUMS",
     "STRICTNESS_IMPACT_LOG.tsv",
+    "SOURCE_FAMILY_BALANCE.tsv",
+    "SOURCE_STRATIFIED_SEMANTIC_AUDIT.tsv",
     "TARGETED_ACQUISITION_QUEUE.tsv",
     "TARGETED_ACQUISITION_RESULT.tsv",
     "TRAINING_GATE_STATUS.tsv",
@@ -70,6 +87,31 @@ def bool_count(values: list[dict[str, str]], field: str) -> int:
 
 
 def main() -> None:
+    cleaning_checksum_rows = {
+        name: digest
+        for digest, name in (
+            line.split("  ", 1)
+            for line in (CLEANING_STAGING / "SHA256SUMS")
+            .read_text(encoding="utf-8")
+            .splitlines()
+        )
+    }
+    cleaning_files = {
+        path.name
+        for path in CLEANING_STAGING.iterdir()
+        if path.is_file() and path.name != "SHA256SUMS"
+    }
+    check(
+        set(cleaning_checksum_rows) == cleaning_files,
+        "candidate-cleaning staging checksum inventory drift",
+    )
+    check(
+        all(
+            sha(CLEANING_STAGING / name) == digest
+            for name, digest in cleaning_checksum_rows.items()
+        ),
+        "candidate-cleaning staging source hash drift",
+    )
     check(
         EXPECTED_FILES == {path.name for path in DATA.iterdir() if path.is_file()},
         "current output inventory drift",
@@ -88,7 +130,13 @@ def main() -> None:
     check(manifest["round4a_product_files_imported"] == 0, "Round 4A product scope imported")
     check(manifest["schema_changed"] is False and manifest["new_migration_count"] == 0, "schema change claimed")
     check(manifest["model_training_run"] is False and manifest["model_weight_file_count"] == 0, "model training claimed")
-    check(manifest["phase_status"] == "CANDIDATE_CORPUS_20000_REACHED_DISTRIBUTION_GAPS", "20k hard stop absent")
+    check(manifest["phase_status"] in {
+        "CLEANING_PARTIAL_SEMANTIC_REVIEW_REQUIRED",
+        "CLEANING_PASS_POST20K_EXTENSION_CHECKPOINT",
+        "CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED",
+        "CLEANING_PASS_COE_ROUTE_EXHAUSTED",
+        "CLEANING_PASS_NON_COE_DIVERSIFICATION_GAPS",
+    }, "Batch 3 cleaning status absent")
 
     inventory = current_rows("DATASET_INVENTORY.tsv")
     check(len(inventory) == manifest["dataset_inventory_count"], "dataset inventory count drift")
@@ -176,6 +224,95 @@ def main() -> None:
     check(reconciliation["merged_count_at_original_cursor"] == 9988, "original cursor reconciliation drift")
     check(reconciliation["corrected_first_complete_record_boundary_count"] == 10009, "corrected 10k boundary drift")
     check(reconciliation["corrected_exact_continuation_cursor"].startswith("detail-index=307;"), "corrected continuation cursor drift")
+
+    batch3 = manifest["batch3_cleaning_metrics"]
+    snapshot_manifest = json.loads((DATA / "CANDIDATE_20K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
+    check(snapshot_manifest["snapshot_version"] == "professional-descriptor-candidate-v0-20k", "20k snapshot version drift")
+    check(snapshot_manifest["immutable"] is True and snapshot_manifest["post20k_extension_included_in_snapshot"] is False, "20k snapshot not immutable/isolated")
+    check(snapshot_manifest["canonical_source_ledger_sha256"] == sha(DATA / "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv"), "20k snapshot source hash drift")
+    check(snapshot_manifest["frozen_mechanically_deinflated_assertion_count"] == 20003, "20k snapshot denominator drift")
+
+    cleaning = current_rows("SEMANTIC_CLEANING_DECISION.tsv")
+    check(len(cleaning) == len(ledger), "semantic-cleaning completeness drift")
+    check(len({row["descriptor_assertion_id"] for row in cleaning}) == len(cleaning), "semantic-cleaning IDs not unique")
+    check(all(row["human_reviewed"] == "false" and row["expert_adjudicated"] == "false" for row in cleaning), "machine cleaning promoted to human/expert")
+    cleaning_by_id = {row["descriptor_assertion_id"]: row for row in cleaning}
+    for source in ledger:
+        decision = cleaning_by_id[source["descriptor_assertion_id"]]
+        check(decision["evidence_tier"] == source["evidence_tier"], "cleaning widened evidence tier")
+        check(decision["rights_state"] == source["rights_state"], "cleaning widened rights state")
+        check(decision["model_eligible"] == "false", "cleaning widened model eligibility")
+
+    segmentation = current_rows("SEGMENTATION_DECISION.tsv")
+    check(all(row["segmentation_reversible"] == "true" for row in segmentation), "segmentation reversibility drift")
+    normalization = current_rows("CANONICAL_NORMALIZATION_MAP.tsv")
+    check(len({row["cleaned_lexical_form_sha256"] for row in normalization}) == len(normalization), "normalization form IDs not unique")
+    decision_form_hashes = {
+        form_hash
+        for row in cleaning
+        for form_hash in row["cleaned_lexical_form_sha256s"].split("|")
+        if form_hash
+    }
+    normalization_form_hashes = {
+        row["cleaned_lexical_form_sha256"] for row in normalization
+    }
+    check(
+        decision_form_hashes == normalization_form_hashes,
+        "normalization dispositions do not cover every cleaned form",
+    )
+    check(all(row["review_requirement"] in {"AUTOMATED_SAFE_RULE", "MACHINE_PROVISIONAL_REVIEW"} for row in normalization), "normalization review state widened")
+
+    cleaned = current_rows("CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv")
+    check(len(cleaned) == sum(batch3[key] for key in (
+        "cleaned_strict_flavor_assertion_count", "cleaned_broad_sensory_assertion_count", "cleaned_defect_assertion_count"
+    )), "cleaned class reconciliation drift")
+    check(sum(row["counts_as_record_unique_cleaned_descriptor"] == "true" for row in cleaned) == batch3["record_unique_cleaned_assertion_count"], "cleaned record-unique reconciliation drift")
+    check(all(row["source_native_form_or_restricted_pointer"].startswith("hash:sha256:") for row in cleaned), "cleaned ledger leaked source-native text")
+    check(all(row["cleaned_lexical_form_or_restricted_pointer"].startswith("hash:sha256:") for row in cleaned), "cleaned ledger leaked lexical text")
+    check(not any(row["model_eligible"] == "true" for row in cleaned), "cleaned ledger model eligibility widened")
+
+    cleaned_distribution = current_rows("CLEANED_DESCRIPTOR_DISTRIBUTION.tsv")
+    check(sum(int(row["cleaned_assertion_support"]) for row in cleaned_distribution) == len(cleaned), "cleaned distribution assertion reconciliation drift")
+    cleaned_support = current_rows("CLEANED_DESCRIPTOR_SUPPORT_BANDS.tsv")
+    check(sum(int(row["descriptor_count"]) for row in cleaned_support) == len(cleaned_distribution), "cleaned support-band descriptor reconciliation drift")
+    check(sum(int(row["cleaned_assertion_count"]) for row in cleaned_support) == len(cleaned), "cleaned support-band assertion reconciliation drift")
+
+    pair_receipt = current_rows("CLEANED_PAIR_EVENT_RECEIPT.tsv")
+    check(sum(int(row["record_unique_pair_event_count"]) for row in pair_receipt) == batch3["pair_event_count"], "cleaned pair-event reconciliation drift")
+    check(sum(int(row["zenodo_sample_consensus_pair_event_count"]) for row in pair_receipt) == batch3["sample_consensus_pair_event_count"], "sample-consensus pair reconciliation drift")
+    check(all(row["maximum_single_record_contribution"] in {"0", "1"} and row["pair_counted_as_source_assertion"] == "false" for row in pair_receipt), "pair inflated source assertion or record contribution")
+
+    entity = current_rows("COE_ENTITY_RESOLUTION.tsv")
+    check(len(entity) == 7 and all(row["match_state"] in {
+        "EXACT_SAME_EFFECTIVE_RECORD", "HIGH_CONFIDENCE_SAME_EFFECTIVE_RECORD",
+        "POSSIBLE_SAME_EFFECTIVE_RECORD_REVIEW_REQUIRED", "DISTINCT_ROUND_OR_SERVICE",
+        "DISTINCT_COFFEE", "INSUFFICIENT_IDENTITY_EVIDENCE",
+    } for row in entity), "CoE entity audit incomplete")
+    entity_duplicates = current_rows("COE_CROSS_DOMAIN_DUPLICATE_DECISION.tsv")
+    check(all(row["retain_both_source_artifacts"] == "true" for row in entity_duplicates), "CoE publication lineage discarded")
+
+    audit = current_rows("SOURCE_STRATIFIED_SEMANTIC_AUDIT.tsv")
+    check(len(audit) == batch3["semantic_audit_sample_count"], "semantic audit count drift")
+    check(sum(row["audit_stratum"] in {"ZENODO_GOLD_ALL", "COE_GOLD_EXPLICIT_JURY"} for row in audit) == 5055, "not all Gold assertions audited")
+    check(len({row["panelist_sample_observation_sha256"] for row in audit if row["panelist_sample_observation_sha256"]}) == 360, "Zenodo observation audit drift")
+    check(Counter(row["audit_stratum"] for row in audit)["INDIA_FINE_CUP_ALL"] == 59, "India audit incomplete")
+    check(Counter(row["audit_stratum"] for row in audit)["SHEBA_ALL"] == 28, "Sheba audit incomplete")
+    check(Counter(row["audit_stratum"] for row in audit)["PROJECT_ORIGIN_ALL"] == 302, "Project Origin audit incomplete")
+    check(Counter(row["audit_stratum"] for row in audit)["COE_GENERIC_STRATIFIED"] == 300, "CoE generic audit sample incomplete")
+
+    review_clusters = current_rows("REVIEW_CLUSTER_QUEUE.tsv")
+    check(len(review_clusters) <= 300 and len(review_clusters) == batch3["active_review_cluster_count"], "active cleaning cluster cap/reconciliation drift")
+    queued_hashes = {row["cleaned_lexical_form_or_restricted_pointer"].removeprefix("hash:sha256:") for row in review_clusters}
+    check(all(row["cleaned_lexical_form_sha256"] in queued_hashes for row in normalization if row["semantic_class"] in {"STRICT_FLAVOR", "BROAD_SENSORY", "DEFECT_OR_NEGATIVE_SENSORY"} and int(row["assertion_support"]) >= 20), "support>=20 cleaning cluster omitted")
+
+    balance = current_rows("SOURCE_FAMILY_BALANCE.tsv")
+    check(len(balance) == batch3["cleaned_source_family_count"], "cleaned source-family count drift")
+    check(sum(int(row["cleaned_descriptor_assertion_count"]) for row in balance) == len(cleaned), "source-family cleaned assertion reconciliation drift")
+    check(batch3["zenodo_panelist_sample_observation_count"] == 360 and batch3["zenodo_effective_sample_count"] == 112, "Zenodo observation/sample separation drift")
+
+    extension_progress = {row["metric"]: row["observed_value"] for row in current_rows("POST20K_EXTENSION_PROGRESS.tsv")}
+    check(extension_progress["CURSOR_START"] == snapshot_manifest["exact_post20k_continuation_cursor"], "post20k cursor continuity drift")
+    check(not any(row["source_dataset_id"].startswith("post20k") for row in ledger), "post20k extension leaked into frozen ledger")
 
     forbidden_suffixes = {".ckpt", ".joblib", ".onnx", ".pkl", ".pt", ".pth", ".safetensors", ".tflite"}
     check(not any(path.suffix.lower() in forbidden_suffixes for path in DATA.rglob("*")), "model weight persisted")

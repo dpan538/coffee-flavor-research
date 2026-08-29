@@ -1,0 +1,6 @@
+corpus_surface	source_family_id	mechanically_deinflated_source_assertion_count	semantically_valid_source_assertion_count	cleaned_descriptor_assertion_count	record_unique_cleaned_assertion_count	cleaned_assertion_share	rights_affirmative_count	rights_pending_count	rights_unknown_count
+FROZEN_20K_CLEANED	family.ace_cup_of_excellence	14829	13688	13867	13105	0.771417	0	253	13614
+FROZEN_20K_CLEANED	family.coffee_board_of_india_fine_cup	59	56	58	58	0.003227	0	0	58
+FROZEN_20K_CLEANED	family.project_origin	302	268	268	268	0.014909	0	0	268
+FROZEN_20K_CLEANED	family.sheba_coffee_yemen_auction	28	11	12	12	0.000668	0	0	12
+FROZEN_20K_CLEANED	family.zenodo_golovinsky_q_grader_dataset	4785	3764	3771	2851	0.209780	3771	0	0

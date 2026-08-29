@@ -70,6 +70,37 @@ missing-title status only; it contains no definitions, translations or
 quotation text. English and Chinese editions are one Wiktionary source family
 for Round 3G independence counting and are not independent bilingual review.
 
+## Batch 3 professional sensory extension sources
+
+The isolated post-20k extension includes public-safe, hash-only derivations
+from two open professional sensory sources. Source-native descriptor text and
+downloaded source files remain outside the repository in the owner-controlled
+restricted cache.
+
+The Robusta family derives from **Table 1 — Sensory profiles of Robusta coffee
+(Coffea canephora) genetic resources from the Democratic Republic of the
+Congo**, by Robrecht Bollen, Lauren Verleysen, Benjamin Ntumba Katshela,
+Jean-Léon Kambale, Tshimi Ebele, Tom Ruttink, Filip Vandelook, Olivier Honnay,
+and Piet Stoffelen. The Frontiers Figshare record is licensed
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and is pinned by
+source URL and artifact SHA-256 in the extension receipts. The transformation
+retains sample/year identity and positive Q-grader descriptor-frequency
+presence, rejects numeric score fields as descriptors, and publishes only
+hashes and governed metadata.
+
+The Lengupá family derives from **Territory-linked coffee quality in Lengupá
+Province (Boyacá, Colombia): a case study toward a denomination of origin**, by
+Diego Alejandro Benavides Sánchez, published by Frontiers under its stated CC
+BY open-access terms. The transformation retains sample identity and Table 3
+fragrance/aroma and flavor code occurrences attributed by the article to
+trained Cenicafé cuppers. It does not reproduce the article, table, or
+source-native terms in the repository.
+
+Neither source is represented as human review performed by this project,
+objective sensory truth, or model-eligible data. Detailed URLs, rights states,
+transformations, isolation, and checksums are in
+[`db/data/post20k-extension-staging/`](db/data/post20k-extension-staging/).
+
 ## NPM Dependencies
 
 Runtime and development dependencies retain their package licenses as recorded
@@ -86,6 +117,8 @@ not a replacement for dependency license review before formal release.
 - Game-icons.net SVGs.
 - Firstbloom Data and its derived source observations.
 - The Liberica source workbook and its derived aggregate summary.
+- The Frontiers/INERA Robusta sensory workbook and source-native content.
+- The Frontiers Lengupá article, Table 3, and source-native content.
 - Wiktionary revision metadata and any upstream entry text.
 - NPM dependencies.
 - Any quoted or referenced third-party source material.

@@ -1,0 +1,56 @@
+{
+  "audit_assertion_count": 5744,
+  "audit_gold_assertion_count": 5055,
+  "audit_zenodo_observation_count": 360,
+  "builder_version": "batch3.restricted-semantic-cleaner.v1",
+  "coe_old_domain_record_count": 7,
+  "contract_version": "batch3.public-safe-cleaning-staging.v1",
+  "files": [
+    {
+      "byte_count": 18657892,
+      "data_row_count": 20245,
+      "path": "BATCH3_PUBLIC_SAFE_CLEANING_SIDECAR.tsv",
+      "sha256": "24396532ce68f78632775a0712f3f6ec91ab81c95f3c60ddfc95bc3b55955107"
+    },
+    {
+      "byte_count": 2462,
+      "data_row_count": 7,
+      "path": "BATCH3_PUBLIC_SAFE_COE_DUPLICATE_DECISION.tsv",
+      "sha256": "1fda8ef0f80ed921394b69f94e854103afeb5213a736a5eea76de2178552a4bf"
+    },
+    {
+      "byte_count": 4450,
+      "data_row_count": 7,
+      "path": "BATCH3_PUBLIC_SAFE_COE_ENTITY_RESOLUTION.tsv",
+      "sha256": "e7559b1323858197cecc27a8a55d79238ae93b929ade9ca7501a45cf1dc8f2f6"
+    },
+    {
+      "byte_count": 798121,
+      "data_row_count": 2459,
+      "path": "BATCH3_PUBLIC_SAFE_NORMALIZATION_SIDECAR.tsv",
+      "sha256": "efbba63dcf62f4fa73fcc45128ad8fb070e9a81c45cc2aebd45a9dca945f10aa"
+    },
+    {
+      "byte_count": 4672240,
+      "data_row_count": 4296,
+      "path": "BATCH3_PUBLIC_SAFE_SEGMENTATION_SIDECAR.tsv",
+      "sha256": "4e00dabbed5526c61a5b2e3e2bec6cf6da7de386ebdfaf3da75c946d92f7f25d"
+    },
+    {
+      "byte_count": 3472617,
+      "data_row_count": 5744,
+      "path": "BATCH3_PUBLIC_SAFE_SEMANTIC_AUDIT.tsv",
+      "sha256": "bc8762a610ec26a4917becc673679567d3f709ca907c681443039143e9b7605b"
+    }
+  ],
+  "frozen_mechanically_deinflated_assertion_count": 20003,
+  "frozen_raw_assertion_count": 20245,
+  "generated_at": "2026-08-29T00:00:00Z",
+  "governed_scheme_node_count_reported_by_project": 130,
+  "governed_sensory_concept_count": 100,
+  "normalization_disposition_count": 2459,
+  "public_source_native_text_included": false,
+  "restricted_input_storage": "OWNER_CONTROLLED_RESTRICTED_NON_GIT",
+  "semantic_cleaning_disposition_count": 20245,
+  "snapshot_version": "professional-descriptor-candidate-v0-20k"
+}

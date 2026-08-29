@@ -1,0 +1,17 @@
+metric	observed_value
+RUN	true
+NET_NEW_RAW_ASSERTION_COUNT	10023
+NET_NEW_DEINFLATED_ASSERTION_COUNT	10007
+NET_NEW_RECORD_UNIQUE_COUNT	9528
+NET_NEW_EFFECTIVE_RECORD_COUNT	455
+TOTAL_CANDIDATE_COUNT	30010
+CHECKPOINT_30000_REACHED	true
+NEW_COE_ASSERTION_COUNT	9298
+NEW_NON_COE_ASSERTION_COUNT	709
+NEW_NON_COE_POSITIVE_FAMILY_COUNT	2
+NON_COE_DISCOVERY_EFFORT_RATE	0.857143
+CURSOR_START	archive-page=12;detail-index=10;url=https://farmdirectory.cupofexcellence.org/listing/9-liquidambar-honduras-2026-parainema-catracha/
+CURSOR_END	archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/
+COE_ROUTE_EXHAUSTED	false
+COE_CONTINUATION_BLOCKED	false
+STATUS	CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED

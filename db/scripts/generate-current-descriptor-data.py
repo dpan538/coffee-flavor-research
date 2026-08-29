@@ -14,6 +14,8 @@ import csv
 import hashlib
 import itertools
 import json
+import subprocess
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping
@@ -1291,6 +1293,11 @@ def main() -> None:
     write_strictness_and_review(ledger)
     write_gates(metrics)
     write_manifest(inventory_rows, metrics)
+    subprocess.run(
+        [sys.executable, str(ROOT / "db" / "scripts" / "generate-batch3-candidate-cleaning.py")],
+        cwd=ROOT,
+        check=True,
+    )
     print(
         "CURRENT_DESCRIPTOR_DATA_PASS "
         f"inventory={len(inventory_rows)} raw={metrics['raw_segmented']} "

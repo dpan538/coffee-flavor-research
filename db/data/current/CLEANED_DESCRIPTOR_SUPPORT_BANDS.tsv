@@ -1,0 +1,7 @@
+support_band	minimum_support	maximum_support	descriptor_count	cleaned_assertion_count	record_unique_assertion_count
+1	1	1	1482	1482	1482
+2_TO_4	2	4	452	1148	1131
+5_TO_19	5	19	233	2079	1991
+20_TO_49	20	49	60	1894	1807
+50_TO_99	50	99	40	2827	2583
+100_PLUS	100	UNBOUNDED	45	8546	7300

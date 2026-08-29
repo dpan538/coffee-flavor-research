@@ -2,9 +2,101 @@
 
 Last updated: 29 August 2026  
 Active branch: `research/coffee-sensory-data-ml-readiness`  
-Current decision: `CANDIDATE_CORPUS_HARD_STOP_REACHED;MODEL_WORK_BLOCKED`
+Current decision: `CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED;MODEL_WORK_BLOCKED`
 
-## Batch 2 current position
+## Batch 3 current position
+
+The 20,003 mechanically de-inflated candidate assertions are frozen as
+`professional-descriptor-candidate-v0-20k`. Batch 3 assigned a semantic
+cleaning disposition to every one of the 20,245 raw rows and a normalization
+disposition to every one of the 2,459 source-form or cleaned-form identities.
+The frozen snapshot remains a candidate acquisition denominator, not reviewed
+or model-ready data.
+
+The cleaned view contains 17,787 semantically valid source assertions and 35
+semantically unresolved assertions. Safe compound expansion yields 17,976
+cleaned descriptor assertions, of which 16,294 are record-unique. The semantic
+retention rate is 0.889217. Cleaning removed 2,181 non-descriptor source
+assertions and no established cross-domain publication duplicate because none
+of the seven acquired old-domain/new-domain candidates met the identity rule.
+
+Lexically, 3,467 source-native hash identities became 2,915 first-pass
+provisional forms and 2,339 cleaned forms. Deterministic decisions comprise
+5,567 exact canonical assertion mappings, 152 approved-alias mappings, 222
+morphological mappings, 10,173 ontology-candidate mappings, 1,862 ambiguous
+mappings, and 3,002 non-descriptor mappings. No semantic mapping was
+provisionally promoted to a canonical concept. Seventy-seven governed concepts
+receive defensible mappings; 2,222 unique valid forms remain ontology
+candidates. The 247-cluster active queue covers every support-20+ cluster, the
+top coverage set, ambiguous Gold clusters, and the previous top-200 queue.
+
+## Semantic QA and cleaned distributions
+
+The source-stratified machine QA covers 5,744 assertions: all 5,055 Gold
+assertions, all Project Origin, India Fine Cup, and Sheba assertions, 300
+stratified CoE generic assertions, and all 360 Zenodo panelist/sample
+observations. It is machine semantic QA, not human or sensory-expert review.
+The aggregate estimates are 0.712221 valid atomic, 0.046483 valid broad,
+0.049791 compound/under-segmented, 0 over-segmented, 0.190460 non-descriptor
+leakage, and 0.280989 strict/broad classification error. Wilson 95% intervals
+and per-source estimates are preserved in
+`db/data/current/SEMANTIC_AUDIT_METRICS.json`.
+
+The cleaned descriptor classes are 16,489 strict flavor, 1,438 broad sensory,
+49 defect/negative sensory, 831 quality evaluation, 2,042 modifier-only, and 6
+composite-unresolved atoms. The cleaned family distribution is 13,867 CoE,
+3,771 Zenodo, and 338 across the other three families. CoE therefore remains
+the anchor at a 0.771417 share; it was not downsampled to cosmetically rebalance
+the chart.
+
+The pair-ready surface contains 211,176 within-record pair events and 80,749
+unique pairs. Of those, 23,416 have multi-record support, 14,751 have
+multi-year support, and 3,556 have multi-family support. The maximum
+contribution from one record to one pair is one. The separate Zenodo
+sample-consensus view contains 112 effective samples and 847 pair events while
+preserving all 360 panelist/sample observations in the source ledger.
+
+## Isolated post-20k extension
+
+Acquisition resumed from the exact preserved Batch 2 cursor and stopped at the
+first complete effective-record boundary at or above 30,000. The isolated
+extension has 10,023 raw rows, 10,007 de-inflated assertions, 9,528
+record-unique assertions, and 455 effective records. Combined candidate volume
+is 30,010; none of the extension is a member of the frozen 20k snapshot.
+
+The extension contributes 9,298 CoE assertions and 709 affirmative-rights P2
+assertions from two new non-CoE professional families: the CC BY 4.0 Frontiers
+/ INERA Robusta Q-grader frequency dataset (590), and the CC BY Frontiers
+Lengupá trained-Cenicafé-cupper table (119). Six of seven discovery-route
+attempts were non-CoE, a rate of 0.857143. The requested diversification
+targets of three positive families and 3,000 assertions were not met and are
+reported as gaps rather than inferred or padded.
+
+The next CoE cursor is
+`archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/`.
+The route is neither exhausted nor blocked. An offline replay from the
+owner-controlled cache reproduced every committed extension file byte for
+byte.
+
+## Readiness decision and next work
+
+Candidate volume now passes the 30k checkpoint, but model work remains blocked.
+No form is human reviewed or expert adjudicated, no assertion is model
+eligible, and 13,952 cleaned assertions still have unknown rights while 253
+remain pending. The next cleaning work is human review of ambiguous Gold and
+high-impact machine-provisional clusters. The next ontology work is definition
+and alias review for the highest-support hashed gap candidates, beginning with
+`ontology-gap:ac6ad6be092475b1b77b13f9`. The next acquisition work is a third
+independent open professional non-CoE family with row-level observations; the
+documented UFLa trained-TDS route remains aggregate-only until an open matrix
+is available. The next rights work is CoE reuse permission and author/jury
+provenance resolution.
+
+No model, model weights, training-corpus freeze, canonical ontology edit,
+database schema, migration, gate SQL, frontend, PWA, or service-worker change
+was made.
+
+## Archived Batch 2 acquisition position
 
 The descriptor-first scale-up reached the first complete-record boundary at or
 above the amended hard stop: **20,003 assertion-level de-inflated professional

@@ -1,0 +1,62 @@
+{
+  "checkpoint_30000_reached": true,
+  "coe_continuation_blocked": false,
+  "coe_route_exhausted": false,
+  "contract_version": "post20k-extension-manifest.v1",
+  "cursor_end": "archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/",
+  "cursor_start": "archive-page=12;detail-index=10;url=https://farmdirectory.cupofexcellence.org/listing/9-liquidambar-honduras-2026-parainema-catracha/",
+  "extension_batch_id": "professional-descriptor-post20k-extension-20260829",
+  "extension_isolated_from_frozen_snapshot": true,
+  "files": [
+    {
+      "byte_count": 153692,
+      "data_row_count": 406,
+      "path": "POST20K_PUBLIC_ARTIFACT_RECEIPT.tsv",
+      "sha256": "4bb6d8945c33dc1075625c79866c38e574840b60886a24c8ae63bb9a60163a0c"
+    },
+    {
+      "byte_count": 15467891,
+      "data_row_count": 10023,
+      "path": "POST20K_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "2fbeef46f2bcd42f62e9ad181ddea27e73fa5af8306b1da924f17e99d9353040"
+    },
+    {
+      "byte_count": 2163,
+      "data_row_count": 7,
+      "path": "POST20K_SOURCE_ROUTE_DISCOVERY.tsv",
+      "sha256": "eefc2853d0fbd8c1fa5bd55f985a05e97f0ddcea9d01b93f0f21bf4a62a9889d"
+    }
+  ],
+  "frozen_denominator_assertion_count": 20003,
+  "frozen_snapshot_version": "professional-descriptor-candidate-v0-20k",
+  "generated_at": "2026-08-29T00:00:00Z",
+  "hard_stop_rule": "FIRST_COMPLETE_EFFECTIVE_RECORD_BOUNDARY_AT_OR_ABOVE_TOTAL_30000",
+  "human_reviewed_assertion_count": 0,
+  "model_eligible_assertion_count": 0,
+  "net_new_deinflated_assertion_count": 10007,
+  "net_new_effective_record_count": 455,
+  "net_new_raw_assertion_count": 10023,
+  "net_new_record_unique_count": 9528,
+  "new_coe_assertion_count": 9298,
+  "new_migration_count": 0,
+  "new_non_coe_assertion_count": 709,
+  "new_non_coe_assertion_target": 3000,
+  "new_non_coe_positive_families": [
+    "family.frontiers_cenicafe_lengupa_trained_cuppers",
+    "family.frontiers_inera_robusta_q_grader_panel"
+  ],
+  "new_non_coe_positive_family_count": 2,
+  "new_non_coe_positive_family_target": 3,
+  "non_coe_discovery_effort_count": 6,
+  "non_coe_discovery_effort_rate": 0.857143,
+  "non_coe_discovery_effort_unit": "SOURCE_ROUTE_ATTEMPT",
+  "offline_reproduction_policy": "PUBLIC_OUTPUTS_BYTE_IDENTICAL_FROM_RESTRICTED_CACHE",
+  "public_safe_sidecar_sha256": "2fbeef46f2bcd42f62e9ad181ddea27e73fa5af8306b1da924f17e99d9353040",
+  "restricted_artifact_receipt_sha256": "fac2fb7b03f573f16c9a774f7bdb2090caddbdc91badb1b7155e67ed55c7960a",
+  "restricted_assertion_ledger_sha256": "e2f796677d913b8b31d899fd7cffdc7bba4635813f0ee30a889f2b64be4bc0d4",
+  "run": true,
+  "schema_changed": false,
+  "status": "CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED",
+  "total_candidate_count": 30010,
+  "total_discovery_effort_count": 7
+}

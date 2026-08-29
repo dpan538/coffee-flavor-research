@@ -1,7 +1,98 @@
 {
   "active_research_branch": "research/coffee-sensory-data-ml-readiness",
   "baseline_main_sha": "21d04f50952ac30ee13010ee26bae8a224ea9f71",
+  "batch3_cleaning_metrics": {
+    "active_review_cluster_count": 247,
+    "alias_compression_count": 374,
+    "ambiguous_mapping_count": 1862,
+    "auto_approved_alias_count": 152,
+    "auto_exact_canonical_count": 5567,
+    "auto_morphological_count": 222,
+    "canonical_mapped_concept_count": 77,
+    "cleaned_broad_sensory_assertion_count": 1438,
+    "cleaned_coe_assertion_count": 13867,
+    "cleaned_coe_share": 0.771417,
+    "cleaned_composite_unresolved_count": 6,
+    "cleaned_defect_assertion_count": 49,
+    "cleaned_lexical_form_count": 2339,
+    "cleaned_modifier_only_count": 2042,
+    "cleaned_non_coe_assertion_count": 4109,
+    "cleaned_quality_evaluation_count": 831,
+    "cleaned_source_family_count": 5,
+    "cleaned_strict_flavor_assertion_count": 16489,
+    "cleaned_zenodo_assertion_count": 3771,
+    "coe_cross_domain_match_candidate_count": 7,
+    "coe_exact_match_count": 0,
+    "coe_high_confidence_match_count": 0,
+    "coe_possible_match_review_count": 0,
+    "coe_publication_duplicate_assertion_loss_count": 0,
+    "compound_preserved_count": 1277,
+    "compound_split_count": 1006,
+    "expert_adjudicated_form_count": 0,
+    "first_pass_provisional_form_count": 2915,
+    "human_reviewed_normalized_form_count": 0,
+    "lexical_compression_ratio": 0.674647,
+    "maximum_single_record_pair_contribution": 1,
+    "model_eligible_assertion_count": 0,
+    "non_descriptor_mapping_count": 3002,
+    "non_descriptor_removal_count": 2181,
+    "ontology_candidate_count": 2222,
+    "ontology_candidate_mapping_count": 10173,
+    "pair_event_count": 211176,
+    "pair_with_multi_family_support_count": 3556,
+    "pair_with_multi_record_support_count": 23416,
+    "pair_with_multi_year_support_count": 14751,
+    "post20k_extension": {
+      "checkpoint_30000_reached": true,
+      "coe_continuation_blocked": false,
+      "coe_route_exhausted": false,
+      "cursor_end": "archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/",
+      "cursor_start": "archive-page=12;detail-index=10;url=https://farmdirectory.cupofexcellence.org/listing/9-liquidambar-honduras-2026-parainema-catracha/",
+      "net_new_deinflated_assertion_count": 10007,
+      "net_new_effective_record_count": 455,
+      "net_new_raw_assertion_count": 10023,
+      "net_new_record_unique_count": 9528,
+      "new_coe_assertion_count": 9298,
+      "new_non_coe_assertion_count": 709,
+      "new_non_coe_positive_family_count": 2,
+      "non_coe_discovery_effort_rate": 0.857143,
+      "run": true,
+      "status": "CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED",
+      "total_candidate_count": 30010
+    },
+    "provisional_semantic_mapping_count": 0,
+    "publication_duplicate_removal_count": 0,
+    "record_unique_cleaned_assertion_count": 16294,
+    "rights_affirmative_cleaned_assertion_count": 3771,
+    "rights_pending_cleaned_assertion_count": 253,
+    "rights_unknown_cleaned_assertion_count": 13952,
+    "sample_consensus_pair_event_count": 847,
+    "semantic_audit_classification_error_rate": 0.280989,
+    "semantic_audit_compound_rate": 0.049791,
+    "semantic_audit_non_descriptor_leak_rate": 0.19046,
+    "semantic_audit_oversegmentation_rate": 0.0,
+    "semantic_audit_sample_count": 5744,
+    "semantic_audit_undersegmentation_rate": 0.049791,
+    "semantic_audit_valid_atomic_rate": 0.712221,
+    "semantic_audit_valid_broad_rate": 0.046483,
+    "semantic_retention_rate": 0.889217,
+    "semantically_unresolved_assertion_count": 35,
+    "semantically_valid_candidate_assertion_count": 17787,
+    "snapshot_mechanically_deinflated_assertion_count": 20003,
+    "snapshot_raw_candidate_assertion_count": 20245,
+    "source_native_form_count": 3467,
+    "unique_pair_count": 80749,
+    "unresolved_form_count": 35,
+    "zenodo_effective_sample_count": 112,
+    "zenodo_panelist_sample_observation_count": 360,
+    "zenodo_sample_consensus_record_count": 112
+  },
+  "batch3_generator_version": "batch3.public-cleaning-generator.v1",
   "batch_id": "professional-descriptor-scaleup-batch2-20260829",
+  "candidate_20k_snapshot_content_sha256": "c5f671ffba444a6372d014239914e52931d66b9c971a8c2421909f273cfd4067",
+  "candidate_20k_snapshot_created": true,
+  "candidate_20k_snapshot_version": "professional-descriptor-candidate-v0-20k",
+  "cross_encoder_run": false,
   "dataset_inventory_count": 34,
   "dataset_role_counts": {
     "AGGREGATE_RECEIPT_ONLY": 10,
@@ -11,6 +102,7 @@
     "ROW_LEVEL_PRIMARY": 2,
     "ROW_LEVEL_PRIMARY_PUBLIC_SAFE": 1
   },
+  "deep_learning_model_run": false,
   "deltas_from_initial_current_snapshot": {
     "assertion_deinflated": 19846,
     "effective_records": 783,
@@ -22,12 +114,61 @@
   },
   "descriptor_census_machine_bundle_available": false,
   "descriptor_census_row_level_import_status": "BLOCKED_MISSING_MACHINE_ARTIFACTS;EXTERNAL_COUNTS_RECEIPT_ONLY",
+  "embedding_model_trained": false,
   "files": [
+    {
+      "byte_count": 1278,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CANDIDATE_20K_SNAPSHOT_MANIFEST.json",
+      "sha256": "6bba129738d764cfab043b5a9821a762af5e639ee2f593cb7b4d80177f7c0cf9"
+    },
     {
       "byte_count": 30420247,
       "data_row_count": "20245",
       "path": "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
       "sha256": "07b835ef98936d36736011ddcddbe3e744c5a146efa83e5790d72c1f0edf0b76"
+    },
+    {
+      "byte_count": 798121,
+      "data_row_count": "2459",
+      "path": "CANONICAL_NORMALIZATION_MAP.tsv",
+      "sha256": "efbba63dcf62f4fa73fcc45128ad8fb070e9a81c45cc2aebd45a9dca945f10aa"
+    },
+    {
+      "byte_count": 19746521,
+      "data_row_count": "17976",
+      "path": "CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv",
+      "sha256": "b0ee484ccf1d006c9e41020d6e3bb787d026476f2e54c1636a123c143c5a1833"
+    },
+    {
+      "byte_count": 214181,
+      "data_row_count": "2312",
+      "path": "CLEANED_DESCRIPTOR_DISTRIBUTION.tsv",
+      "sha256": "f76d66fb01abdac93e1619cbc02ee57f071d693a2874e029386a9e47cd8c9ccc"
+    },
+    {
+      "byte_count": 281,
+      "data_row_count": "6",
+      "path": "CLEANED_DESCRIPTOR_SUPPORT_BANDS.tsv",
+      "sha256": "6b8142e29462a8c18fac5c52e6598bfaebf3ab90f670eff227019fd981a9c02d"
+    },
+    {
+      "byte_count": 9966659,
+      "data_row_count": "80749",
+      "path": "CLEANED_PAIR_EVENT_RECEIPT.tsv",
+      "sha256": "c342ceb306c93fe3a7293b3856a1aff504ceef18cefc96ce8cade3879b36b8e3"
+    },
+    {
+      "byte_count": 2462,
+      "data_row_count": "7",
+      "path": "COE_CROSS_DOMAIN_DUPLICATE_DECISION.tsv",
+      "sha256": "1fda8ef0f80ed921394b69f94e854103afeb5213a736a5eea76de2178552a4bf"
+    },
+    {
+      "byte_count": 4450,
+      "data_row_count": "7",
+      "path": "COE_ENTITY_RESOLUTION.tsv",
+      "sha256": "e7559b1323858197cecc27a8a55d79238ae93b929ade9ca7501a45cf1dc8f2f6"
     },
     {
       "byte_count": 18497,
@@ -114,10 +255,58 @@
       "sha256": "18b47b19bd8249cccf798cd566be0ec36306bbdb1de99836a654cbd6eaf0b745"
     },
     {
+      "byte_count": 1093418,
+      "data_row_count": "2222",
+      "path": "ONTOLOGY_GAP_REGISTER.tsv",
+      "sha256": "29a73391280629aead00a3e7b3edf9f920212f5fffb511e672d5385022d30969"
+    },
+    {
+      "byte_count": 793,
+      "data_row_count": "16",
+      "path": "POST20K_EXTENSION_PROGRESS.tsv",
+      "sha256": "27172914e90a3077f80b759b277c7320c3848d6cf0bfb6d8087c0bf8e99cf3b4"
+    },
+    {
+      "byte_count": 71599,
+      "data_row_count": "247",
+      "path": "REVIEW_CLUSTER_QUEUE.tsv",
+      "sha256": "818fd5a6e5a42ba8931fa7d33498ce898f392472fdd6d237f0b1cf192ea5e0ad"
+    },
+    {
       "byte_count": 67782,
       "data_row_count": "200",
       "path": "REVIEW_QUEUE_RECEIPT.tsv",
       "sha256": "cae3d0dedace8f8dfad0f4086f000aef59b6c9068d555ff0bb76c977f2ed10ef"
+    },
+    {
+      "byte_count": 4672240,
+      "data_row_count": "4296",
+      "path": "SEGMENTATION_DECISION.tsv",
+      "sha256": "4e00dabbed5526c61a5b2e3e2bec6cf6da7de386ebdfaf3da75c946d92f7f25d"
+    },
+    {
+      "byte_count": 9382,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "SEMANTIC_AUDIT_METRICS.json",
+      "sha256": "2f1c1b9b6461928c8d221e7b14b72bd764bf41b8959f9eeddc2a0fe20c4aaca0"
+    },
+    {
+      "byte_count": 18657892,
+      "data_row_count": "20245",
+      "path": "SEMANTIC_CLEANING_DECISION.tsv",
+      "sha256": "24396532ce68f78632775a0712f3f6ec91ab81c95f3c60ddfc95bc3b55955107"
+    },
+    {
+      "byte_count": 717,
+      "data_row_count": "5",
+      "path": "SOURCE_FAMILY_BALANCE.tsv",
+      "sha256": "93a676039597e3cb38425506cb00f00c2471620f17f1a0ddaec9b39e803c2512"
+    },
+    {
+      "byte_count": 3472617,
+      "data_row_count": "5744",
+      "path": "SOURCE_STRATIFIED_SEMANTIC_AUDIT.tsv",
+      "sha256": "bc8762a610ec26a4917becc673679567d3f709ca907c681443039143e9b7605b"
     },
     {
       "byte_count": 1203,
@@ -144,7 +333,7 @@
       "sha256": "a0f0dd49db5df5a300c2b4acff969b0662a40f3cccdd02f0d24ca34cdb3cd09e"
     }
   ],
-  "final_data_decision": "CANDIDATE_CORPUS_HARD_STOP_REACHED;MODEL_WORK_BLOCKED_BY_REVIEW_RIGHTS_PROVENANCE_AND_DISTRIBUTION_GATES",
+  "final_data_decision": "FROZEN_20K_CLEANED_POST20K_EXTENSION_ISOLATED_MODEL_WORK_REMAINS_BLOCKED",
   "full_clean_rebuild_required": false,
   "generated_date": "2026-08-29",
   "hard_stop_assertion_count": 20000,
@@ -191,16 +380,20 @@
     "year_count": 19
   },
   "milestone_10000_role": "HEALTHY_CANDIDATE_CORPUS_MILESTONE",
+  "ml_baseline_run": false,
   "model_training_run": false,
   "model_weight_file_count": 0,
   "new_migration_count": 0,
-  "phase_status": "CANDIDATE_CORPUS_20000_REACHED_DISTRIBUTION_GAPS",
+  "normalization_disposition_completeness_rate": 1.0,
+  "phase_status": "CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED",
+  "ranking_model_trained": false,
   "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",
   "round4a_implementation_sha": "3781afc46495ad4e6ad94e0d4dd238f6f71a293f",
   "round4a_product_files_imported": 0,
   "round4a_source_sha": "48ff0a921db4da98b2802c60bc23ee031687175b",
   "schema": "coffee-flavor-current-descriptor-data-v1",
   "schema_changed": false,
+  "semantic_cleaning_disposition_completeness_rate": 1.0,
   "stop_at_first_complete_record_boundary_at_or_above_20000": true,
   "strictness_impact_triggered": true,
   "strictness_user_decision_required": false,

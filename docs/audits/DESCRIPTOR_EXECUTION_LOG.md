@@ -1,5 +1,54 @@
 # Descriptor Execution Log
 
+## 2026-08-29 — Candidate corpus cleaning and post-20k extension Batch 3
+
+- Reused the existing clean worktree and long-lived
+  `research/coffee-sensory-data-ml-readiness` branch at
+  `5aa76ded6326007e1cb3a6af257fb55376eb2cdd`; confirmed the same local and
+  remote SHA and left `origin/main` at
+  `21d04f50952ac30ee13010ee26bae8a224ea9f71`.
+- Created immutable snapshot `professional-descriptor-candidate-v0-20k` for
+  the 20,003 mechanically de-inflated assertions, 18,069 record-unique
+  assertions, 792 effective records, and five source families. The extension
+  is explicitly excluded.
+- Read restricted source text through the one-way staging builder and committed
+  only hashes, governed labels, source metadata, decisions, and restricted
+  pointers. Every raw candidate received a semantic decision; every form
+  received a normalization decision.
+- Produced 17,787 semantically valid source assertions, 17,976 cleaned
+  descriptor atoms, 16,294 record-unique cleaned assertions, 2,339 cleaned
+  lexical forms, 77 mapped governed concepts, and 2,222 ontology candidates.
+  Removed 2,181 non-descriptor source assertions without widening evidence or
+  rights.
+- Audited 5,744 assertions, including all Gold, Project Origin, India Fine Cup,
+  Sheba, and Zenodo observations plus 300 stratified generic CoE assertions.
+  The audit is deterministic machine QA and does not claim human or expert
+  review.
+- Evaluated seven CoE cross-domain entity candidates. None met the same-record
+  publication rule, so duplicate loss is zero; all source artifacts and
+  genuinely distinct publication layers remain represented.
+- Preserved 360 Zenodo panelist/sample observations, grouped them under 112
+  effective samples, and derived a separate 112-record sample-consensus view.
+- Rebuilt the pair-ready surface as 211,176 pair events and 80,749 unique
+  pairs, with maximum per-record contribution one. No pair was counted as a
+  source assertion.
+- Continued from the exact page-12/detail-10 CoE cursor in isolated staging.
+  Stopped at the first complete-record boundary with 10,007 net-new
+  de-inflated assertions and 30,010 combined candidates; preserved the next
+  page-75/detail-2 cursor.
+- Directed six of seven source-route attempts to non-CoE discovery. Added two
+  affirmative-rights P2 families: 590 Robusta Q-grader frequency assertions
+  and 119 Lengupá trained-cupper assertions. The three-family and 3,000-row
+  diversification targets remain explicit gaps.
+- Verified the cleaning generator deterministically, ran 14 semantic fixtures,
+  validated the public extension contract, and reproduced the extension byte
+  identically from the restricted offline cache.
+- Made no model, weight, training-corpus freeze, schema, migration, gate-SQL,
+  ontology, frontend, PWA, service-worker, main-branch, or force-push change.
+
+Final Git SHA, push state, clean-worktree status, and remote CI result are
+reported after the final commit in the task response.
+
 ## 2026-08-29 — Professional descriptor scale-up Batch 2
 
 - Reused the existing clean worktree and

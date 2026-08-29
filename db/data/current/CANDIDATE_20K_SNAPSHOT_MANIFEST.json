@@ -1,0 +1,21 @@
+{
+  "batch2_manifest_sha256": "1008f9411e23f88b2a6a2634e01759bc09577af72c6edcd80d7a539649e4e910",
+  "canonical_source_ledger_path": "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
+  "canonical_source_ledger_sha256": "07b835ef98936d36736011ddcddbe3e744c5a146efa83e5790d72c1f0edf0b76",
+  "cleaning_staging_manifest_sha256": "884850628788ce7c8aa3d6cd05b7faca2d912a11832405509114963be8fc9ff1",
+  "contract_version": "candidate-20k-snapshot-manifest.v1",
+  "created_at": "2026-08-29T00:00:00Z",
+  "exact_post20k_continuation_cursor": "archive-page=12;detail-index=10;url=https://farmdirectory.cupofexcellence.org/listing/9-liquidambar-honduras-2026-parainema-catracha/",
+  "frozen_effective_record_count": 792,
+  "frozen_mechanically_deinflated_assertion_count": 20003,
+  "frozen_raw_candidate_assertion_count": 20245,
+  "frozen_record_unique_assertion_count": 18069,
+  "frozen_source_family_count": 5,
+  "human_reviewed": false,
+  "immutable": true,
+  "model_eligible": false,
+  "post20k_extension_included_in_snapshot": false,
+  "snapshot_content_sha256": "c5f671ffba444a6372d014239914e52931d66b9c971a8c2421909f273cfd4067",
+  "snapshot_role": "FROZEN_CANDIDATE_ACQUISITION_DENOMINATOR_NOT_TRAINING_OR_REVIEWED_DATA",
+  "snapshot_version": "professional-descriptor-candidate-v0-20k"
+}
