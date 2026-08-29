@@ -1,0 +1,27 @@
+{
+  "authorization_required_before_any_model_run": true,
+  "candidate_only": true,
+  "candidate_subset": "NONCOMMERCIAL_MODEL_RESEARCH_PERMITTED_AND_MACHINE_GOVERNED",
+  "checks": {
+    "complete_lineage": true,
+    "grouped_sample_count_at_least_200": true,
+    "grouping_executable": true,
+    "high_confidence_concept_target_count_at_least_50": true,
+    "no_cross_family_duplicate_leakage": true,
+    "noncommercial_model_research_not_prohibited": true,
+    "professional_row_level_source_family_count_at_least_3": true,
+    "raw_source_text_absent": true,
+    "strict_output_atom_count_at_least_2000": true
+  },
+  "concept_target_count": 60,
+  "created_at": "2026-08-29T00:00:00Z",
+  "grouped_sample_count": 206,
+  "machine_governed_output_atom_count": 1137,
+  "model_training_run": false,
+  "next_authorization": "PROJECT_OWNER_MUST_EXPLICITLY_AUTHORIZE_ENGINEERING_SMOKE_MODEL_RUN",
+  "rights_status": "PURPOSE_FILTERED_AFFIRMATIVE_OR_AFFIRMATIVE_WITH_CONDITIONS",
+  "source_family_count": 3,
+  "status": "ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING",
+  "strict_output_atom_count": 4096,
+  "training_split_created": false
+}

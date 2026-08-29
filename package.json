@@ -30,6 +30,7 @@
     "test:current-descriptor-data": "python3 -B db/scripts/test-current-descriptor-data.py",
     "test:batch3-candidate-cleaning": "python3 -B db/scripts/test-batch3-candidate-cleaning.py",
     "test:post20k-extension": "python3 -B db/scripts/test-post20k-extension.py",
+    "test:batch4-cleaned-30k": "python3 -B db/scripts/test-batch4-cleaned-30k.py",
     "public:status": "python3 scripts/generate-public-project-status.py",
     "public:status:check": "python3 scripts/generate-public-project-status.py --check",
     "public:claims:lint": "python3 scripts/lint-public-project-claims.py",

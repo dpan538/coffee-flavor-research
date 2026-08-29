@@ -88,10 +88,148 @@
     "zenodo_sample_consensus_record_count": 112
   },
   "batch3_generator_version": "batch3.public-cleaning-generator.v1",
+  "batch4_generator_version": "batch4.public-cleaned-30k-generator.v1",
+  "batch4_metrics": {
+    "ambiguous_cluster_count": 17,
+    "candidate_30k_effective_record_count": 1247,
+    "candidate_30k_source_assertion_count": 30010,
+    "candidate_30k_source_family_count": 7,
+    "cleaned_all_non_coe_output_atom_count": 4772,
+    "cleaned_lexical_form_count": 2860,
+    "cleaned_non_coe_excluding_zenodo_output_atom_count": 1001,
+    "coe_cross_domain_candidate_count": 7,
+    "coe_duplicate_assertion_credit_loss_count": 0,
+    "coe_identity_state_counts": {
+      "DISTINCT_RECORD": 3,
+      "POSSIBLE_SAME_RECORD": 4
+    },
+    "commercial_model_affirmative_output_count": 0,
+    "commercial_model_pending_output_count": 660,
+    "commercial_model_prohibited_output_count": 3771,
+    "commercial_model_unknown_output_count": 23041,
+    "compound_cluster_count": 76,
+    "concept_cluster_count": 2208,
+    "cross_encoder_run": false,
+    "cross_split_coffee_identity_leak_count": 0,
+    "cross_split_duplicate_group_leak_count": 0,
+    "cross_split_publication_leak_count": 0,
+    "cross_split_sample_leak_count": 0,
+    "deep_learning_model_run": false,
+    "embedding_model_trained": false,
+    "engineering_smoke_candidate_manifest_created": true,
+    "engineering_smoke_concept_target_count": 60,
+    "engineering_smoke_feasibility_status": "ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING",
+    "engineering_smoke_grouped_sample_count": 206,
+    "engineering_smoke_machine_governed_output_count": 1137,
+    "engineering_smoke_rights_status": "PURPOSE_FILTERED_AFFIRMATIVE_OR_AFFIRMATIVE_WITH_CONDITIONS",
+    "engineering_smoke_source_family_count": 3,
+    "existing_canonical_alias_cluster_count": 3,
+    "existing_canonical_child_cluster_count": 77,
+    "existing_canonical_exact_cluster_count": 10,
+    "genuine_ontology_candidate_cluster_count": 1831,
+    "grouped_effective_record_split_feasible": true,
+    "grouped_sample_split_feasible": true,
+    "held_out_source_family_feasible_all_candidates": true,
+    "held_out_source_family_feasible_rights_permitted": true,
+    "held_out_year_feasible_all_candidates": true,
+    "held_out_year_feasible_rights_permitted": true,
+    "human_audit_completed_count": 0,
+    "human_audit_packet_count": 900,
+    "human_reviewed_normalized_form_count": 0,
+    "internal_research_affirmative_output_count": 0,
+    "machine_first_pass_reclassification_rate": 0.164379,
+    "machine_governed_high_confidence_mapping_count": 106,
+    "machine_governed_output_atom_count": 9579,
+    "ml_baseline_run": false,
+    "model_eligible_assertion_count": 0,
+    "model_weight_file_count": 0,
+    "modifier_cluster_count": 21,
+    "new_migration_count": 0,
+    "noncommercial_model_research_affirmative_output_count": 0,
+    "noncommercial_model_research_conditional_output_count": 4431,
+    "noncommercial_model_research_pending_output_count": 253,
+    "noncommercial_model_research_prohibited_output_count": 0,
+    "noncommercial_model_research_unknown_output_count": 22788,
+    "normalization_model_trained": false,
+    "pair_metrics": {
+      "family_normalized_total_weight": 655.259278,
+      "max_pair_events_generated_by_one_record": 2346,
+      "maximum_duplicate_credit_per_record_per_pair": 1,
+      "p50_pair_events_per_record": 153,
+      "p90_pair_events_per_record": 528,
+      "p95_pair_events_per_record": 903,
+      "p99_pair_events_per_record": 1485,
+      "pair_event_count": 301648,
+      "pair_surface": "ALL_RECORD_UNIQUE",
+      "record_count": 1242,
+      "source_family_id": "ALL_SOURCE_FAMILIES",
+      "top_10_record_pair_event_share": 0.061568,
+      "top_1_percent_record_pair_event_share": 0.07652,
+      "unique_pair_count": 127176,
+      "weighting_view": "RECORD_NORMALIZED",
+      "year_normalized_total_weight": 4268.4626
+    },
+    "phase_status": "ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING",
+    "post30k_extension": {
+      "checkpoint_40000_reached": false,
+      "coe_continuation_blocked": false,
+      "coe_route_exhausted": false,
+      "cursor_end": "archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/",
+      "cursor_start": "archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/",
+      "net_new_deinflated_assertion_count": 0,
+      "net_new_effective_record_count": 0,
+      "net_new_raw_assertion_count": 0,
+      "new_coe_assertion_count": 0,
+      "new_non_coe_assertion_count": 0,
+      "new_non_coe_positive_family_count": 0,
+      "new_rights_clearable_family_count": 0,
+      "non_coe_discovery_effort_rate": 0.0,
+      "run": false
+    },
+    "product_deployment_affirmative_output_count": 0,
+    "project_owner_review_decision_count": 0,
+    "project_owner_review_packet_count": 250,
+    "project_owner_reviewed_mapping_count": 0,
+    "purpose_specific_rights_completeness_rate": 1.0,
+    "purpose_specific_rights_source_count": 965,
+    "ranking_model_trained": false,
+    "raw_redistribution_affirmative_output_count": 0,
+    "schema_changed": false,
+    "sensory_expert_adjudicated_mapping_count": 0,
+    "source_native_form_count": 4281,
+    "unresolved_cluster_count": 21,
+    "v1_20k_output_atom_count": 17976,
+    "v1_20k_valid_source_assertion_count": 17787,
+    "v1_v2_output_atom_delta": 6,
+    "v1_v2_valid_source_assertion_delta": 45,
+    "v2_20k_output_atom_count": 17982,
+    "v2_20k_valid_source_assertion_count": 17832,
+    "v2_30k_cleaned_output_atom_count": 27472,
+    "v2_30k_non_descriptor_source_assertion_count": 3014,
+    "v2_30k_record_unique_output_atom_count": 24132,
+    "v2_30k_semantic_retention_rate": 0.898234,
+    "v2_30k_semantically_unresolved_source_assertion_count": 40,
+    "v2_30k_valid_source_assertion_count": 26956,
+    "validation": {
+      "cleaner_v2_reconciliation_pass": true,
+      "grouped_split_leakage_pass": true,
+      "mapping_authority_integrity_pass": true,
+      "ontology_cluster_reversibility_pass": true,
+      "pair_contribution_reconciliation_pass": true,
+      "post30k_staging_isolation_pass": true,
+      "public_restricted_boundary_pass": true,
+      "rights_matrix_validation_pass": true,
+      "rights_propagation_pass": true,
+      "snapshot_immutability_pass": true
+    }
+  },
   "batch_id": "professional-descriptor-scaleup-batch2-20260829",
   "candidate_20k_snapshot_content_sha256": "c5f671ffba444a6372d014239914e52931d66b9c971a8c2421909f273cfd4067",
   "candidate_20k_snapshot_created": true,
   "candidate_20k_snapshot_version": "professional-descriptor-candidate-v0-20k",
+  "candidate_30k_snapshot_created": true,
+  "candidate_30k_snapshot_version": "professional-descriptor-candidate-v1-30k",
+  "cleaner_contract_version": "batch4.semantic-cleaner.v2",
   "cross_encoder_run": false,
   "dataset_inventory_count": 34,
   "dataset_role_counts": {
@@ -123,164 +261,284 @@
       "sha256": "6bba129738d764cfab043b5a9821a762af5e639ee2f593cb7b4d80177f7c0cf9"
     },
     {
+      "byte_count": 1821,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CANDIDATE_30K_SNAPSHOT_MANIFEST.json",
+      "sha256": "0153294305f928e1be22003761a860b431337f55534128afd4fdc88c42429032"
+    },
+    {
       "byte_count": 30420247,
-      "data_row_count": "20245",
+      "data_row_count": 20245,
       "path": "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
       "sha256": "07b835ef98936d36736011ddcddbe3e744c5a146efa83e5790d72c1f0edf0b76"
     },
     {
       "byte_count": 798121,
-      "data_row_count": "2459",
+      "data_row_count": 2459,
       "path": "CANONICAL_NORMALIZATION_MAP.tsv",
       "sha256": "efbba63dcf62f4fa73fcc45128ad8fb070e9a81c45cc2aebd45a9dca945f10aa"
     },
     {
+      "byte_count": 28177462,
+      "data_row_count": 31676,
+      "path": "CLEANED_30K_OUTPUT_ATOM_LEDGER.tsv",
+      "sha256": "40f0817c108eed6b3b63efda32d49422537496dbf8678793e0197c7f7c588696"
+    },
+    {
+      "byte_count": 24914581,
+      "data_row_count": 127176,
+      "path": "CLEANED_30K_PAIR_EVENT_RECEIPT.tsv",
+      "sha256": "4ffc5c2f17797c770a1238ccee77a098c6d0930472a568e048db1f6f907bda35"
+    },
+    {
+      "byte_count": 37031152,
+      "data_row_count": 30010,
+      "path": "CLEANED_30K_SOURCE_ASSERTION_LEDGER.tsv",
+      "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
+    },
+    {
       "byte_count": 19746521,
-      "data_row_count": "17976",
+      "data_row_count": 17976,
       "path": "CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv",
       "sha256": "b0ee484ccf1d006c9e41020d6e3bb787d026476f2e54c1636a123c143c5a1833"
     },
     {
       "byte_count": 214181,
-      "data_row_count": "2312",
+      "data_row_count": 2312,
       "path": "CLEANED_DESCRIPTOR_DISTRIBUTION.tsv",
       "sha256": "f76d66fb01abdac93e1619cbc02ee57f071d693a2874e029386a9e47cd8c9ccc"
     },
     {
       "byte_count": 281,
-      "data_row_count": "6",
+      "data_row_count": 6,
       "path": "CLEANED_DESCRIPTOR_SUPPORT_BANDS.tsv",
       "sha256": "6b8142e29462a8c18fac5c52e6598bfaebf3ab90f670eff227019fd981a9c02d"
     },
     {
       "byte_count": 9966659,
-      "data_row_count": "80749",
+      "data_row_count": 80749,
       "path": "CLEANED_PAIR_EVENT_RECEIPT.tsv",
       "sha256": "c342ceb306c93fe3a7293b3856a1aff504ceef18cefc96ce8cade3879b36b8e3"
     },
     {
+      "byte_count": 9188354,
+      "data_row_count": 20003,
+      "path": "CLEANER_V1_V2_DELTA.tsv",
+      "sha256": "90ee696352e6a467c4ba5bf7e6867233b4e63021e906cffa71bd832280577159"
+    },
+    {
       "byte_count": 2462,
-      "data_row_count": "7",
+      "data_row_count": 7,
       "path": "COE_CROSS_DOMAIN_DUPLICATE_DECISION.tsv",
       "sha256": "1fda8ef0f80ed921394b69f94e854103afeb5213a736a5eea76de2178552a4bf"
     },
     {
       "byte_count": 4450,
-      "data_row_count": "7",
+      "data_row_count": 7,
       "path": "COE_ENTITY_RESOLUTION.tsv",
       "sha256": "e7559b1323858197cecc27a8a55d79238ae93b929ade9ca7501a45cf1dc8f2f6"
     },
     {
+      "byte_count": 4611,
+      "data_row_count": 7,
+      "path": "COE_ENTITY_RESOLUTION_V2.tsv",
+      "sha256": "f482e76548d5aa6cde61c84fe04427b5f922fe89df907e35a1013ece8aaf2543"
+    },
+    {
+      "byte_count": 1456136,
+      "data_row_count": 2208,
+      "path": "CONCEPT_CLUSTER.tsv",
+      "sha256": "4229266ad354e23cebe06cf5e731f6acfb1006fd43abfeceb08146c9924946c8"
+    },
+    {
       "byte_count": 18497,
-      "data_row_count": "34",
+      "data_row_count": 34,
       "path": "DATASET_INVENTORY.tsv",
       "sha256": "047e13f7c2e83b0c8b867330abf9749b6b991be6ba462d6e619f6a9dfe4a6a43"
     },
     {
       "byte_count": 12343,
-      "data_row_count": "34",
+      "data_row_count": 34,
       "path": "DATASET_ROLE_AND_LINEAGE.tsv",
       "sha256": "6f0f373eb9dda8be3fb9519a49984a54344e3db4ddcc2e17d54f79e731d5078d"
     },
     {
       "byte_count": 1619108,
-      "data_row_count": "13980",
+      "data_row_count": 13980,
       "path": "DESCRIPTOR_DISTRIBUTION.tsv",
       "sha256": "89780a4d91d4ad9429c7906c53bc49bf63a0345b38c979e4468b8d338c168db9"
     },
     {
       "byte_count": 1026,
-      "data_row_count": "8",
+      "data_row_count": 8,
       "path": "DESCRIPTOR_DUPLICATE_RECEIPT.tsv",
       "sha256": "2363a9aeaa520648c4078c3b9041c1602d3279bb4349ff5bbb8ffad2541df37a"
     },
     {
       "byte_count": 1138,
-      "data_row_count": "10",
+      "data_row_count": 10,
       "path": "DESCRIPTOR_GAP_MATRIX.tsv",
       "sha256": "6edde9a57aacfadeca026c0d82228b124c04ec626ea6f7c8f67df26e7e6e80f4"
     },
     {
       "byte_count": 2433,
-      "data_row_count": "29",
+      "data_row_count": 29,
       "path": "DESCRIPTOR_MERGE_RECEIPT.tsv",
       "sha256": "772c174224d9d6495d2611f1468ebf0032977e0591a7fa0f92c530a9d651cf95"
     },
     {
       "byte_count": 1283,
-      "data_row_count": "7",
+      "data_row_count": 7,
       "path": "DESCRIPTOR_OVERLAP_MAP.tsv",
       "sha256": "2a17162da11401abd09ef0fa2708649fc838486197cb20599bd303904b49940f"
     },
     {
       "byte_count": 114,
-      "data_row_count": "2",
+      "data_row_count": 2,
       "path": "DESCRIPTOR_PREPARATION_DISTRIBUTION.tsv",
       "sha256": "af147dff4420ffd160869a0116c9306c529870858b0cab74fe0a0ff1645c9c50"
     },
     {
       "byte_count": 112,
-      "data_row_count": "1",
+      "data_row_count": 1,
       "path": "DESCRIPTOR_REVIEW_DISTRIBUTION.tsv",
       "sha256": "352e17bcf59672b0af2b9d3905e4a9721b3df1ca50cbc8cebcdefa4008756178"
     },
     {
       "byte_count": 114,
-      "data_row_count": "4",
+      "data_row_count": 4,
       "path": "DESCRIPTOR_RIGHTS_DISTRIBUTION.tsv",
       "sha256": "069351b68bf4d872ffa0337b484a3d3ed7d9c8bd43e998b422c3078be2041366"
     },
     {
       "byte_count": 114,
-      "data_row_count": "2",
+      "data_row_count": 2,
       "path": "DESCRIPTOR_ROAST_EVIDENCE_DISTRIBUTION.tsv",
       "sha256": "519eb352f837bdb73ec63a652c33bc83d0befc3636400fc93dfd1abd90a58530"
     },
     {
       "byte_count": 1744,
-      "data_row_count": "24",
+      "data_row_count": 24,
       "path": "DESCRIPTOR_SOURCE_FAMILY_DISTRIBUTION.tsv",
       "sha256": "e30823e5ba9ac9619742e3c785f4ecd2638fed05a0118e02dd1b14ce77305584"
     },
     {
       "byte_count": 6854,
-      "data_row_count": "77",
+      "data_row_count": 77,
       "path": "DESCRIPTOR_SUPPORT_BANDS.tsv",
       "sha256": "05c130e94e120c7f88102d530c54a741ee62ffb1919e138299f615c613faaed2"
     },
     {
       "byte_count": 3748,
-      "data_row_count": "103",
+      "data_row_count": 103,
       "path": "DESCRIPTOR_YEAR_DISTRIBUTION.tsv",
       "sha256": "18b47b19bd8249cccf798cd566be0ec36306bbdb1de99836a654cbd6eaf0b745"
     },
     {
-      "byte_count": 1093418,
-      "data_row_count": "2222",
+      "byte_count": 1032,
+      "data_row_count": 5,
+      "path": "GROUPED_SPLIT_FEASIBILITY.tsv",
+      "sha256": "b3583748e2337260f6dc4519b7b385a59323f80582c44345f08488bbf537e48a"
+    },
+    {
+      "byte_count": 2198332,
+      "data_row_count": 1220,
+      "path": "GROUPED_SPLIT_GROUPS.tsv",
+      "sha256": "cf146410c01ba6c0047df97faf2637488d4c989fac6d21fffcc19431f9de1ea2"
+    },
+    {
+      "byte_count": 547,
+      "data_row_count": 4,
+      "path": "GROUPED_SPLIT_LEAKAGE_AUDIT.tsv",
+      "sha256": "da72ce459579379f4b2f7513a6ebcc2a37cb8e9f4254bee27e6f960e34a713ee"
+    },
+    {
+      "byte_count": 558402,
+      "data_row_count": 900,
+      "path": "HUMAN_SEMANTIC_AUDIT_TEMPLATE.tsv",
+      "sha256": "0702db692e9c70209cab869a1ae4cc1f0323e4524032f5a09585eda037383ce1"
+    },
+    {
+      "byte_count": 4975992,
+      "data_row_count": 9579,
+      "path": "MACHINE_GOVERNED_MAPPING.tsv",
+      "sha256": "8217247ec2333211d5868f0ac1b02c2ab5a09447feb1d70184ad61da0c434fe3"
+    },
+    {
+      "byte_count": 1132,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "NORMALIZATION_ENGINEERING_SMOKE_CANDIDATE_MANIFEST.json",
+      "sha256": "2449143aec8881c1b054c060924dea3d24d9a2a599feb1ae6bc0d15bd330c07d"
+    },
+    {
+      "byte_count": 15942886,
+      "data_row_count": 31676,
+      "path": "ONTOLOGY_CONSOLIDATION_MAP.tsv",
+      "sha256": "ba1b34275aa1d624088e0519340dde29d783e1be35cfb7c8d504482f6c766a66"
+    },
+    {
+      "byte_count": 1335494,
+      "data_row_count": 2051,
       "path": "ONTOLOGY_GAP_REGISTER.tsv",
+      "sha256": "0286c8e94f7de18673765428fd26a9167660fde37b1c7a9bae14514c73e093ff"
+    },
+    {
+      "byte_count": 1093418,
+      "data_row_count": 2222,
+      "path": "ONTOLOGY_GAP_REGISTER_V1_20K.tsv",
       "sha256": "29a73391280629aead00a3e7b3edf9f920212f5fffb511e672d5385022d30969"
     },
     {
+      "byte_count": 5060,
+      "data_row_count": 30,
+      "path": "PAIR_EVENT_CONTRIBUTION_DISTRIBUTION.tsv",
+      "sha256": "8fc6ae8503ceef84ffcde9736cb3900196dcfed766489d57f965b233dfb6b43d"
+    },
+    {
       "byte_count": 793,
-      "data_row_count": "16",
+      "data_row_count": 16,
       "path": "POST20K_EXTENSION_PROGRESS.tsv",
       "sha256": "27172914e90a3077f80b759b277c7320c3848d6cf0bfb6d8087c0bf8e99cf3b4"
     },
     {
+      "byte_count": 12145,
+      "data_row_count": 250,
+      "path": "PROJECT_OWNER_REVIEW_IMPORT_TEMPLATE.tsv",
+      "sha256": "d470b8f3697f2bf024f95c12996a7e45d6a8ac159f020e639e76cafc472ea53a"
+    },
+    {
+      "byte_count": 223265,
+      "data_row_count": 250,
+      "path": "PROJECT_OWNER_REVIEW_PACKET.tsv",
+      "sha256": "f46a286052a7adf89e8feaa445a7c40eb27ed06f274447f055559e267dee1f51"
+    },
+    {
+      "byte_count": 4500010,
+      "data_row_count": 7720,
+      "path": "PURPOSE_SPECIFIC_RIGHTS_MATRIX.tsv",
+      "sha256": "9d056f851183f72609e4ca7727b2a4e06bb02a197dc509d62943825c085e054e"
+    },
+    {
       "byte_count": 71599,
-      "data_row_count": "247",
+      "data_row_count": 247,
       "path": "REVIEW_CLUSTER_QUEUE.tsv",
       "sha256": "818fd5a6e5a42ba8931fa7d33498ce898f392472fdd6d237f0b1cf192ea5e0ad"
     },
     {
       "byte_count": 67782,
-      "data_row_count": "200",
+      "data_row_count": 200,
       "path": "REVIEW_QUEUE_RECEIPT.tsv",
       "sha256": "cae3d0dedace8f8dfad0f4086f000aef59b6c9068d555ff0bb76c977f2ed10ef"
     },
     {
+      "byte_count": 18838418,
+      "data_row_count": 63898,
+      "path": "RIGHTS_PROPAGATION_RECEIPT.tsv",
+      "sha256": "517cefe4568b2a8f19b4f8cfd709fc1398a80416eb7c18bb1334896b4b5813d1"
+    },
+    {
       "byte_count": 4672240,
-      "data_row_count": "4296",
+      "data_row_count": 4296,
       "path": "SEGMENTATION_DECISION.tsv",
       "sha256": "4e00dabbed5526c61a5b2e3e2bec6cf6da7de386ebdfaf3da75c946d92f7f25d"
     },
@@ -292,48 +550,66 @@
     },
     {
       "byte_count": 18657892,
-      "data_row_count": "20245",
+      "data_row_count": 20245,
       "path": "SEMANTIC_CLEANING_DECISION.tsv",
       "sha256": "24396532ce68f78632775a0712f3f6ec91ab81c95f3c60ddfc95bc3b55955107"
     },
     {
+      "byte_count": 37031152,
+      "data_row_count": 30010,
+      "path": "SEMANTIC_CLEANING_V2_DECISION.tsv",
+      "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
+    },
+    {
       "byte_count": 717,
-      "data_row_count": "5",
+      "data_row_count": 5,
       "path": "SOURCE_FAMILY_BALANCE.tsv",
       "sha256": "93a676039597e3cb38425506cb00f00c2471620f17f1a0ddaec9b39e803c2512"
     },
     {
+      "byte_count": 665,
+      "data_row_count": 7,
+      "path": "SOURCE_FAMILY_HOLDOUT_PLAN.tsv",
+      "sha256": "c5b6f4c76a3a52b57cdd04c2a7e4f7c303cba99f9e80eada9fca017ce5d64d94"
+    },
+    {
       "byte_count": 3472617,
-      "data_row_count": "5744",
+      "data_row_count": 5744,
       "path": "SOURCE_STRATIFIED_SEMANTIC_AUDIT.tsv",
       "sha256": "bc8762a610ec26a4917becc673679567d3f709ca907c681443039143e9b7605b"
     },
     {
       "byte_count": 1203,
-      "data_row_count": "1",
+      "data_row_count": 1,
       "path": "STRICTNESS_IMPACT_LOG.tsv",
       "sha256": "a40e1f125008ac896a0d9463964939ff0140dcc0a6ec320023ea2a3a84e7c16e"
     },
     {
       "byte_count": 1827,
-      "data_row_count": "6",
+      "data_row_count": 6,
       "path": "TARGETED_ACQUISITION_QUEUE.tsv",
       "sha256": "b225b169da7062f7ed63e7bfb3f63007533a52b1e03c67a440a8268536d8db12"
     },
     {
       "byte_count": 8101,
-      "data_row_count": "16",
+      "data_row_count": 16,
       "path": "TARGETED_ACQUISITION_RESULT.tsv",
       "sha256": "0cb13adb2709f1e5956fa942e2e9ba046fe9f7b4d8c3057158e0a4c1fe213043"
     },
     {
       "byte_count": 6351,
-      "data_row_count": "41",
+      "data_row_count": 41,
       "path": "TRAINING_GATE_STATUS.tsv",
       "sha256": "a0f0dd49db5df5a300c2b4acff969b0662a40f3cccdd02f0d24ca34cdb3cd09e"
+    },
+    {
+      "byte_count": 938,
+      "data_row_count": 19,
+      "path": "YEAR_HOLDOUT_PLAN.tsv",
+      "sha256": "3da8e80d3be5257ca230c6accd6fde56eec5f4145fd3fa2a49cce1898eedb152"
     }
   ],
-  "final_data_decision": "FROZEN_20K_CLEANED_POST20K_EXTENSION_ISOLATED_MODEL_WORK_REMAINS_BLOCKED",
+  "final_data_decision": "30K_CLEANED_GOVERNED_DERIVED_CORPUS_NO_MODEL_TRAINING_POST30K_ISOLATED",
   "full_clean_rebuild_required": false,
   "generated_date": "2026-08-29",
   "hard_stop_assertion_count": 20000,
@@ -385,7 +661,7 @@
   "model_weight_file_count": 0,
   "new_migration_count": 0,
   "normalization_disposition_completeness_rate": 1.0,
-  "phase_status": "CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED",
+  "phase_status": "ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING",
   "ranking_model_trained": false,
   "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",
   "round4a_implementation_sha": "3781afc46495ad4e6ad94e0d4dd238f6f71a293f",
@@ -409,5 +685,6 @@
     "run": true,
     "source_route_count": 16,
     "stop_condition": "FIRST_COMPLETE_RECORD_BOUNDARY_AT_OR_ABOVE_20000"
-  }
+  },
+  "training_corpus_frozen": false
 }

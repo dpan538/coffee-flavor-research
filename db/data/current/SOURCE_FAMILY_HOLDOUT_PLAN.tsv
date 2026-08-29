@@ -1,0 +1,8 @@
+held_out_source_family_id	group_count	all_cleaned_output_atom_count	rights_permitted_output_atom_count	year_count	all_candidates_holdout_feasible	rights_permitted_holdout_feasible	actual_holdout_created
+family.ace_cup_of_excellence	957	22700	0	19	true	false	false
+family.coffee_board_of_india_fine_cup	18	59	0	1	true	false	false
+family.frontiers_cenicafe_lengupa_trained_cuppers	21	99	99	1	true	true	false
+family.frontiers_inera_robusta_q_grader_panel	73	561	561	2	true	true	false
+family.project_origin	33	268	0	2	true	false	false
+family.sheba_coffee_yemen_auction	6	14	0	1	true	false	false
+family.zenodo_golovinsky_q_grader_dataset	112	3771	3771	1	true	true	false

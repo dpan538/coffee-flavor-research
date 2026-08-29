@@ -1,0 +1,88 @@
+{
+  "builder_version": "batch4.restricted-public-bridge.v1",
+  "cleaned_output_atom_count": 31676,
+  "cleaner_contract_version": "batch4.semantic-cleaner.v2",
+  "concept_cluster_count": 2208,
+  "contract_version": "batch4.public-safe-cleaning-staging.v1",
+  "expert_adjudicated_count": 0,
+  "extension_source_assertion_count": 10007,
+  "files": [
+    {
+      "byte_count": 428415,
+      "data_row_count": 965,
+      "path": "BATCH4_ARTIFACT_RIGHTS_INPUT.tsv",
+      "sha256": "3f85bffbaed8dff240bf5f32340fb4b06b3b1919c84d51cf2da35b7feff3363a"
+    },
+    {
+      "byte_count": 4611,
+      "data_row_count": 7,
+      "path": "BATCH4_COE_IDENTITY_RESOLUTION.tsv",
+      "sha256": "f482e76548d5aa6cde61c84fe04427b5f922fe89df907e35a1013ece8aaf2543"
+    },
+    {
+      "byte_count": 1235460,
+      "data_row_count": 2208,
+      "path": "BATCH4_CONCEPT_CLUSTER_SIDECAR.tsv",
+      "sha256": "8865e22b65520eeabdfae69444bca4e66d22f4e822a1b622c4a7d8aaea0ff682"
+    },
+    {
+      "byte_count": 37031152,
+      "data_row_count": 30010,
+      "path": "BATCH4_PUBLIC_SAFE_CLEANING_V2.tsv",
+      "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
+    },
+    {
+      "byte_count": 24967054,
+      "data_row_count": 31676,
+      "path": "BATCH4_PUBLIC_SAFE_OUTPUT_ATOMS.tsv",
+      "sha256": "63ba84181532efd6814ae6c27965797db49de464ca5390ab52541f6c13474a2d"
+    },
+    {
+      "byte_count": 26272610,
+      "data_row_count": 30010,
+      "path": "BATCH4_SOURCE_ASSERTION_METADATA.tsv",
+      "sha256": "8a4642fb779c11d39db2619d46658575f5368310984c780871267e09424a5a64"
+    }
+  ],
+  "frozen_20k_source_assertion_count": 20003,
+  "generated_at": "2026-08-29T00:00:00Z",
+  "human_reviewed_count": 0,
+  "legal_review_performed": false,
+  "mapping_state_counts": {
+    "AMBIGUOUS_CONCEPT_BOUNDARY": 2746,
+    "COMPOUND_OF_EXISTING_CONCEPTS": 117,
+    "DEFECT_CONCEPT_CANDIDATE": 42,
+    "EXISTING_CANONICAL_ALIAS": 253,
+    "EXISTING_CANONICAL_CHILD_OR_SPECIFIC_FORM": 3165,
+    "EXISTING_CANONICAL_EXACT": 9052,
+    "EXISTING_CANONICAL_MORPHOLOGICAL_VARIANT": 274,
+    "GENUINE_ONTOLOGY_CANDIDATE": 9952,
+    "MODIFIER_OF_EXISTING_CONCEPT": 2679,
+    "NON_DESCRIPTOR": 382,
+    "QUALITY_OR_STRUCTURE_ATTRIBUTE": 2976,
+    "UNRESOLVED": 38
+  },
+  "model_eligible_count": 0,
+  "normalization_authority_counts": {
+    "MACHINE_GOVERNED_HIGH_CONFIDENCE": 9579,
+    "NO_GOVERNED_AUTHORITY": 22097
+  },
+  "public_source_native_text_included": false,
+  "restricted_input_storage": "OWNER_CONTROLLED_RESTRICTED_NON_GIT",
+  "snapshot_version": "professional-descriptor-candidate-v1-30k",
+  "source_artifact_count": 965,
+  "source_assertion_count": 30010,
+  "source_disposition_counts": {
+    "AMBIGUOUS_SEMANTIC_OUTPUT": 8,
+    "MODIFIER_ONLY": 1578,
+    "NON_DESCRIPTOR": 138,
+    "PROCESS_OR_ORIGIN_METADATA": 242,
+    "QUALITY_EVALUATION": 1056,
+    "UNRESOLVED": 32,
+    "VALID_BROAD_SENSORY": 1652,
+    "VALID_COMPOUND_PRESERVED": 2181,
+    "VALID_COMPOUND_SPLIT": 1654,
+    "VALID_DEFECT_OR_NEGATIVE_SENSORY": 60,
+    "VALID_STRICT_FLAVOR": 21409
+  }
+}
