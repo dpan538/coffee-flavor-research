@@ -16,7 +16,13 @@
 10. Ran the full PostgreSQL 17 harness against two separate empty disposable
     databases; all migration fingerprints, tests, dumps, and governed
     inventories matched.
-11. Final commit, branch push, and remote branch CI: pending.
+11. Committed implementation checkpoint
+    `3781afc46495ad4e6ad94e0d4dd238f6f71a293f`, pushed the branch without
+    force, and verified remote CI run `33225428359`: frontend job
+    `99028079844` passed in 1m25s and PostgreSQL 17 job `99028080047` passed in
+    32m1s.
+12. Sealed this metadata-only final receipt after the exact implementation SHA
+    passed both jobs.
 
 No external request, contract acceptance, purchase, participant collection,
 model training, rights widening, corpus freeze, or migration change occurred.
