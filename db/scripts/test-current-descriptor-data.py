@@ -17,17 +17,25 @@ DATA = ROOT / "db" / "data" / "current"
 STAGING = ROOT / "db" / "data" / "professional-descriptor-staging"
 CLEANING_STAGING = ROOT / "db" / "data" / "candidate-cleaning-staging"
 GENERATOR = ROOT / "db" / "scripts" / "generate-current-descriptor-data.py"
+BATCH4_GENERATOR = ROOT / "db" / "scripts" / "generate-batch4-cleaned-30k.py"
 
 EXPECTED_FILES = {
     "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
     "CANDIDATE_20K_SNAPSHOT_MANIFEST.json",
+    "CANDIDATE_30K_SNAPSHOT_MANIFEST.json",
     "CANONICAL_NORMALIZATION_MAP.tsv",
+    "CLEANED_30K_OUTPUT_ATOM_LEDGER.tsv",
+    "CLEANED_30K_PAIR_EVENT_RECEIPT.tsv",
+    "CLEANED_30K_SOURCE_ASSERTION_LEDGER.tsv",
     "CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv",
     "CLEANED_DESCRIPTOR_DISTRIBUTION.tsv",
     "CLEANED_DESCRIPTOR_SUPPORT_BANDS.tsv",
     "CLEANED_PAIR_EVENT_RECEIPT.tsv",
+    "CLEANER_V1_V2_DELTA.tsv",
     "COE_CROSS_DOMAIN_DUPLICATE_DECISION.tsv",
     "COE_ENTITY_RESOLUTION.tsv",
+    "COE_ENTITY_RESOLUTION_V2.tsv",
+    "CONCEPT_CLUSTER.tsv",
     "CURRENT_DATA_MANIFEST.json",
     "DATASET_INVENTORY.tsv",
     "DATASET_ROLE_AND_LINEAGE.tsv",
@@ -43,20 +51,36 @@ EXPECTED_FILES = {
     "DESCRIPTOR_SOURCE_FAMILY_DISTRIBUTION.tsv",
     "DESCRIPTOR_SUPPORT_BANDS.tsv",
     "DESCRIPTOR_YEAR_DISTRIBUTION.tsv",
+    "GROUPED_SPLIT_FEASIBILITY.tsv",
+    "GROUPED_SPLIT_GROUPS.tsv",
+    "GROUPED_SPLIT_LEAKAGE_AUDIT.tsv",
+    "HUMAN_SEMANTIC_AUDIT_TEMPLATE.tsv",
+    "MACHINE_GOVERNED_MAPPING.tsv",
+    "NORMALIZATION_ENGINEERING_SMOKE_CANDIDATE_MANIFEST.json",
+    "ONTOLOGY_CONSOLIDATION_MAP.tsv",
     "ONTOLOGY_GAP_REGISTER.tsv",
+    "ONTOLOGY_GAP_REGISTER_V1_20K.tsv",
+    "PAIR_EVENT_CONTRIBUTION_DISTRIBUTION.tsv",
     "POST20K_EXTENSION_PROGRESS.tsv",
+    "PROJECT_OWNER_REVIEW_IMPORT_TEMPLATE.tsv",
+    "PROJECT_OWNER_REVIEW_PACKET.tsv",
+    "PURPOSE_SPECIFIC_RIGHTS_MATRIX.tsv",
     "REVIEW_CLUSTER_QUEUE.tsv",
     "REVIEW_QUEUE_RECEIPT.tsv",
+    "RIGHTS_PROPAGATION_RECEIPT.tsv",
     "SEGMENTATION_DECISION.tsv",
     "SEMANTIC_AUDIT_METRICS.json",
     "SEMANTIC_CLEANING_DECISION.tsv",
+    "SEMANTIC_CLEANING_V2_DECISION.tsv",
     "SHA256SUMS",
     "STRICTNESS_IMPACT_LOG.tsv",
     "SOURCE_FAMILY_BALANCE.tsv",
+    "SOURCE_FAMILY_HOLDOUT_PLAN.tsv",
     "SOURCE_STRATIFIED_SEMANTIC_AUDIT.tsv",
     "TARGETED_ACQUISITION_QUEUE.tsv",
     "TARGETED_ACQUISITION_RESULT.tsv",
     "TRAINING_GATE_STATUS.tsv",
+    "YEAR_HOLDOUT_PLAN.tsv",
 }
 
 
@@ -136,7 +160,8 @@ def main() -> None:
         "CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED",
         "CLEANING_PASS_COE_ROUTE_EXHAUSTED",
         "CLEANING_PASS_NON_COE_DIVERSIFICATION_GAPS",
-    }, "Batch 3 cleaning status absent")
+        "CLEANED_30K_AND_40K_ACQUISITION_CHECKPOINT_REACHED",
+    }, "current cleaning status absent")
 
     inventory = current_rows("DATASET_INVENTORY.tsv")
     check(len(inventory) == manifest["dataset_inventory_count"], "dataset inventory count drift")
@@ -319,6 +344,13 @@ def main() -> None:
 
     before = snapshot()
     subprocess.run([sys.executable, str(GENERATOR)], cwd=ROOT, check=True, capture_output=True, text=True)
+    subprocess.run(
+        [sys.executable, str(BATCH4_GENERATOR)],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
     check(before == snapshot(), "generator is not deterministic")
 
     print("CURRENT_DESCRIPTOR_DATA_CONTRACT_PASS=true")

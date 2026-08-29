@@ -1,8 +1,67 @@
 # Descriptor Data and ML Readiness
 
-Last updated: 29 August 2026  
+Last updated: 30 August 2026
 Active branch: `research/coffee-sensory-data-ml-readiness`  
-Current decision: `CLEANING_PASS_30K_CANDIDATE_CHECKPOINT_REACHED;MODEL_WORK_BLOCKED`
+Current decision: `CLEANED_30K_AND_40K_ACQUISITION_CHECKPOINT_REACHED;NO_MODEL_TRAINING`
+
+## Batch 4 current position
+
+The immutable acquisition snapshot
+`professional-descriptor-candidate-v1-30k` contains 30,010 mechanically
+de-inflated source assertions, 1,247 effective records, and seven source
+families. It preserves the earlier 20,003-assertion snapshot and its V1 cleaned
+view by hash. The post-30k extension is explicitly excluded, and neither
+snapshot is a training corpus.
+
+One V2 cleaner (`batch4.semantic-cleaner.v2`) was applied to the frozen 20k,
+the 10,007-assertion extension, and the combined 30k. It retains 26,956 valid
+source assertions and emits 27,472 cleaned descriptor output atoms, including
+24,132 record-unique record/concept targets. The remaining source dispositions
+are 3,014 non-descriptor, quality, modifier, or metadata rows and 40 ambiguous
+or unresolved rows. V2 raises the 20k valid-source count by 45 and the 20k
+output-atom count by 6 relative to the preserved V1 view; the full 20,003-row
+V1/V2 receipt is reversible to source assertion and restricted pointer.
+
+The 4,281 source-native hash identities consolidate to 2,860 valid cleaned
+forms and 2,208 reversible concept clusters. Machine-governed authority is
+limited to exact, approved-alias, and safe morphological mappings: 106 unique
+form/concept mappings and 9,579 output atoms. No mapping is owner-reviewed or
+expert-adjudicated. The 250-item project-owner packet and blind 900-item human
+audit template contain empty decision fields.
+
+Purpose-specific rights are complete for all 965 candidate-bearing source
+artifacts across eight purposes. For noncommercial model research, 4,431
+cleaned outputs are affirmative with conditions, 253 are pending, 22,788 are
+unknown, and none is recorded as prohibited. Commercial-model rights are more
+restrictive: 660 pending, 23,041 unknown, 3,771 prohibited, and no affirmative
+outputs. These purpose vectors propagate separately through source assertions,
+output atoms, clusters, and candidate subsets; general public access is not
+treated as commercial-model permission.
+
+Grouped-split feasibility passes for samples, effective records, held-out
+families, and held-out years on both all-candidate and noncommercial-permitted
+surfaces. The deterministic feasibility buckets have zero sample, coffee,
+publication-lineage, or duplicate-group leakage. They are engineering checks,
+not a train/evaluation split. The record-unique pair surface contains 301,648
+events and 127,176 unique pairs; per-record P50/P90/P95/P99 are
+153/528/903/1,485, the maximum is 2,346, and duplicate credit remains capped at
+one per record/pair.
+
+The engineering-smoke candidate manifest passes its feasibility thresholds
+with 206 grouped samples, three purpose-permitted professional families, 4,096
+strict outputs, 1,137 machine-governed outputs, and 60 concept targets. Its
+status is `ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING`: no model, weights, or
+actual split were created, and a later explicit authorization is still
+required.
+
+Post-30k acquisition resumed from the exact page-75/detail-2 CoE cursor and
+stopped at the first complete record boundary at 40,030 total candidates. The
+isolated extension contains 10,020 de-inflated assertions across 309 effective
+records: 8,101 CoE and 1,919 from a new CC BY 4.0 certified-Q-grader MDPI
+source family whose original Spanish narratives remain restricted and
+untranslated. Six of seven discovery attempts were non-CoE. The next cursor is
+page 100/detail 3; CoE is neither exhausted nor blocked. The acquisition was
+reproduced byte-identically from its restricted offline cache.
 
 ## Batch 3 current position
 

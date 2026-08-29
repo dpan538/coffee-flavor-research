@@ -1,0 +1,71 @@
+{
+  "checkpoint_40000_reached": true,
+  "coe_continuation_blocked": false,
+  "coe_route_exhausted": false,
+  "contract_version": "post30k-extension-manifest.v1",
+  "cursor_end": "archive-page=100;detail-index=3;url=https://farmdirectory.cupofexcellence.org/listing/2-la-lucuma-peru-2023/",
+  "cursor_start": "archive-page=75;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/2-don-dario-hacienda-san-isidro-labrador-costa-rica-2024-experimental/",
+  "exact_cursor_validated": true,
+  "extension_batch_id": "professional-descriptor-post30k-extension-20260829",
+  "extension_isolated_from_frozen_snapshot": true,
+  "files": [
+    {
+      "byte_count": 68380,
+      "data_row_count": 186,
+      "path": "POST30K_COE_IDENTITY_AUDIT.tsv",
+      "sha256": "ff322fd80852980dd6baa60a606e840b18f406d83b5874a4a2a6eb2c17cad55f"
+    },
+    {
+      "byte_count": 81228,
+      "data_row_count": 215,
+      "path": "POST30K_PUBLIC_ARTIFACT_RECEIPT.tsv",
+      "sha256": "cf50ce6e6eedac2a241d7f3ca5d1fc3591247e7be883cda351d493261ae68b77"
+    },
+    {
+      "byte_count": 15815166,
+      "data_row_count": 10185,
+      "path": "POST30K_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "d28e9eb275d8dcbe95522ed9decbed222d22afcd2ffb0d7304b99a9fcdfbfc43"
+    },
+    {
+      "byte_count": 2342,
+      "data_row_count": 7,
+      "path": "POST30K_SOURCE_ROUTE_DISCOVERY.tsv",
+      "sha256": "45879720eb2c3bcb2066d1fc3cf1a8c4473ee84975c5f7864986ab18e53bc533"
+    }
+  ],
+  "frozen_denominator_assertion_count": 30010,
+  "frozen_snapshot_version": "professional-descriptor-candidate-v1-30k",
+  "generated_at": "2026-08-29T00:00:00Z",
+  "hard_stop_rule": "FIRST_COMPLETE_EFFECTIVE_RECORD_BOUNDARY_AT_OR_ABOVE_TOTAL_40000",
+  "human_reviewed_assertion_count": 0,
+  "model_eligible_assertion_count": 0,
+  "net_new_deinflated_assertion_count": 10020,
+  "net_new_effective_record_count": 309,
+  "net_new_raw_assertion_count": 10185,
+  "net_new_record_unique_count": 9180,
+  "new_coe_assertion_count": 8101,
+  "new_migration_count": 0,
+  "new_non_coe_assertion_count": 1919,
+  "new_non_coe_assertion_target": 1500,
+  "new_non_coe_assertion_target_reached": true,
+  "new_non_coe_positive_families": [
+    "family.mdpi_certified_q_grader_storage_panel"
+  ],
+  "new_non_coe_positive_family_count": 1,
+  "new_non_coe_positive_family_target": 1,
+  "new_non_coe_positive_family_target_reached": true,
+  "new_rights_clearable_family_count": 1,
+  "non_coe_discovery_effort_count": 6,
+  "non_coe_discovery_effort_rate": 0.857143,
+  "non_coe_discovery_effort_unit": "SOURCE_ROUTE_ATTEMPT",
+  "offline_reproduction_policy": "PUBLIC_OUTPUTS_BYTE_IDENTICAL_FROM_RESTRICTED_CACHE",
+  "public_safe_sidecar_sha256": "d28e9eb275d8dcbe95522ed9decbed222d22afcd2ffb0d7304b99a9fcdfbfc43",
+  "restricted_artifact_receipt_sha256": "ecadd62926336d15ada27f40b01c9a6272a0e9b724d3a52d13afd31d8cbe4e3b",
+  "restricted_assertion_ledger_sha256": "3dbae919927ee589686bb216d29a1b20a0fe76b4d40e6f8908248370b08ceebf",
+  "run": true,
+  "schema_changed": false,
+  "status": "CLEANED_30K_AND_40K_ACQUISITION_CHECKPOINT_REACHED",
+  "total_candidate_count": 40030,
+  "total_discovery_effort_count": 7
+}

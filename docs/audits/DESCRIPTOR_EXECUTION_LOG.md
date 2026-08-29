@@ -1,5 +1,50 @@
 # Descriptor Execution Log
 
+## 2026-08-30 — Cleaned 30k integration and isolated 40k checkpoint Batch 4
+
+- Continued the existing branch from `3607297ef2b776be2e50ce7f71ce385ead8e2ae5`
+  after fetching remotes and confirming local/remote equality; remote `main`
+  remained `21d04f50952ac30ee13010ee26bae8a224ea9f71`.
+- Reproduced the committed Batch 3 generator and all baseline contracts before
+  changing artifacts. Preserved the immutable 20k snapshot and V1 outputs by
+  hash, then created immutable acquisition snapshot
+  `professional-descriptor-candidate-v1-30k` for exactly 30,010 de-inflated
+  source assertions, 1,247 effective records, and seven source families.
+- Applied `batch4.semantic-cleaner.v2` consistently to the frozen 20k and the
+  10,007-row extension. Produced 26,956 valid source assertions, 27,472 cleaned
+  descriptor output atoms, 24,132 record-unique targets, and a complete
+  20,003-row V1/V2 delta without exposing source-native text.
+- Consolidated 4,281 source-native hashes into 2,860 valid cleaned forms and
+  2,208 reversible clusters. Restricted machine-governed authority to 106
+  exact/alias/morphological form mappings; left 250 owner-review and 900 blind
+  human-audit items undecided and non-expert-adjudicated.
+- Recorded eight purpose-specific rights decisions for each of 965
+  candidate-bearing source artifacts and propagated purpose vectors through
+  source assertions, output atoms, clusters, and separable subsets. No scalar
+  rights state was promoted to commercial-model permission.
+- Verified grouped-split feasibility with zero sample, coffee, publication, or
+  duplicate-group leakage. Generated no actual train/evaluation split. Audited
+  301,648 record-unique pair events and capped duplicate pair credit at one per
+  record.
+- Produced `ENGINEERING_SMOKE_MANIFEST_READY_NO_TRAINING` from 206 grouped
+  samples, three purpose-permitted families, 1,137 machine-governed outputs,
+  and 60 targets. No model, weights, or model-eligible assertions were created.
+- Discovered and exhausted one new CC BY 4.0 MDPI source route with 123
+  certified-Q-grader panel narratives. Preserved the original Spanish only in
+  restricted storage and derived 1,919 de-inflated non-CoE source assertions;
+  six of seven post-30k route attempts were non-CoE.
+- Resumed CoE at the exact page-75/detail-2 cursor and stopped at the first
+  complete record boundary with 10,020 post-30k de-inflated assertions and
+  40,030 total candidates. Preserved page 100/detail 3 as the next cursor; CoE
+  is neither exhausted nor blocked.
+- Reproduced the post-30k public and restricted receipts byte-identically from
+  the offline cache. Added 22 Batch 4 cleaner/governance fixtures and seven
+  post-30k acquisition contracts. Changed no schema, migration, SQL gate,
+  application data model, frontend, main branch, or model artifact.
+
+Final Git SHA, push state, clean-worktree status, and remote CI result are
+reported after the final commit in the task response.
+
 ## 2026-08-29 — Candidate corpus cleaning and post-20k extension Batch 3
 
 - Reused the existing clean worktree and long-lived

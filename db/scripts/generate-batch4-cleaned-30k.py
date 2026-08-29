@@ -175,25 +175,48 @@ def percentile(values: list[int], quantile: float) -> int:
 def snapshot_manifest(staging_manifest: Mapping[str, Any]) -> dict[str, Any]:
     previous = json.loads((CURRENT / "CANDIDATE_20K_SNAPSHOT_MANIFEST.json").read_text())
     extension = json.loads((EXTENSION / "POST20K_EXTENSION_MANIFEST.json").read_text())
+    source = read_tsv(STAGING / "BATCH4_SOURCE_ASSERTION_METADATA.tsv")
+    snapshot_content_sha256 = sha256_text("\n".join(
+        "\t".join((
+            row["descriptor_assertion_id"], row["source_artifact_sha256"],
+            row["effective_record_id"], row["coffee_identity_id"],
+            row["atomic_source_text_sha256"],
+        ))
+        for row in source
+    ))
     return {
         "snapshot_version": SNAPSHOT_VERSION,
         "snapshot_role": "IMMUTABLE_ACQUISITION_SNAPSHOT_NOT_TRAINING_CORPUS",
         "created_at": GENERATED_AT,
+        "immutable": True,
+        "snapshot_content_sha256": snapshot_content_sha256,
         "candidate_20k_snapshot_preserved": True,
         "candidate_20k_snapshot_version": previous["snapshot_version"],
         "candidate_20k_snapshot_sha256": sha256_file(CURRENT / "CANDIDATE_20K_SNAPSHOT_MANIFEST.json"),
         "candidate_20k_v1_cleaned_ledger_sha256": sha256_file(CURRENT / "CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv"),
         "post20k_extension_manifest_sha256": sha256_file(EXTENSION / "POST20K_EXTENSION_MANIFEST.json"),
         "raw_candidate_source_assertion_count": previous["frozen_raw_candidate_assertion_count"] + extension["net_new_raw_assertion_count"],
-        "mechanically_deinflated_source_assertion_count": 30010,
+        "mechanically_deinflated_source_assertion_count": len(source),
         "frozen_20k_source_assertion_count": 20003,
         "post20k_extension_source_assertion_count": 10007,
-        "effective_record_count": 1247,
-        "source_family_count": 7,
+        "effective_record_count": len({row["effective_record_id"] for row in source}),
+        "source_family_count": len({row["source_family_id"] for row in source}),
         "candidate_source_artifact_count": staging_manifest["source_artifact_count"],
         "acquisition_artifact_receipt_row_count": 1377,
         "public_safe_cleaning_sidecar_sha256": sha256_file(STAGING / "BATCH4_PUBLIC_SAFE_CLEANING_V2.tsv"),
         "public_safe_output_atom_sidecar_sha256": sha256_file(STAGING / "BATCH4_PUBLIC_SAFE_OUTPUT_ATOMS.tsv"),
+        "public_safe_source_assertion_metadata_sha256": sha256_file(STAGING / "BATCH4_SOURCE_ASSERTION_METADATA.tsv"),
+        "source_family_distribution": dict(sorted(Counter(row["source_family_id"] for row in source).items())),
+        "year_distribution": dict(sorted(Counter(row["year_id"] for row in source).items())),
+        "preparation_distribution": dict(sorted(Counter(row["preparation_service_id"] for row in source).items())),
+        "evidence_tier_distribution": dict(sorted(Counter(row["evidence_tier"] for row in source).items())),
+        "collection_tier_distribution": dict(sorted(Counter(row["collection_tier"] for row in source).items())),
+        "rights_distribution": dict(sorted(Counter(row["rights_state"] for row in source).items())),
+        "publication_layer_distribution": dict(sorted(Counter(row["publication_layer"] for row in source).items())),
+        "duplicate_group_member_count": sum(bool(row["duplicate_group_id"]) for row in source),
+        "mirror_group_member_count": sum(bool(row["mirror_group_id"]) for row in source),
+        "provisional_normalization_layer": "PRESERVED_BY_REFERENCED_20K_AND_POST20K_EXTENSION_RECEIPTS_AND_SUPERSEDED_BY_V2_DERIVED_VIEW",
+        "snapshot_dimension_contract": "IDENTITY_FAMILY_ARTIFACT_EVIDENCE_COLLECTION_RIGHTS_PUBLICATION_DUPLICATE_PROVISIONAL_NORMALIZATION_CURSOR",
         "restricted_20k_receipt": "restricted://professional_descriptor_batch2/PROFESSIONAL_ASSERTIONS_RESTRICTED.tsv",
         "restricted_extension_receipt": "restricted://post20k_extension/POST20K_ASSERTIONS_RESTRICTED.tsv",
         "exact_continuation_cursor": extension["cursor_end"],
