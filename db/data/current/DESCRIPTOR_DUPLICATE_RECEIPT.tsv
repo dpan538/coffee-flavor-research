@@ -1,0 +1,6 @@
+duplicate_type	count	count_surface	disposition
+ROUND3M_EXACT_WITHIN_FIELD_REPEAT	1	ASSERTION_LEVEL	Removed from assertion-level count.
+ROUND3M_CROSS_OBSERVATION_REPEAT	2	EFFECTIVE_RECORD_UNIQUE	Retained as assertions; excluded from record-unique count.
+ROUND4A_DERIVED_PAIR_VIEW	508	PAIR_EVENT	Derived pair events add zero source observations.
+CURRENT_ARCHIVE_INDEX_REEXPORT	1	PRE_SEGMENTATION_PUBLICATION_LAYER	Index excerpt not segmented; detail field is canonical.
+CURRENT_TARGETED_ASSERTION_DUPLICATE_LOSS	0	ASSERTION_LEVEL	No repeat among the 18 canonical structured-field atoms.

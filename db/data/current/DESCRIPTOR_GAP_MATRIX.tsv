@@ -1,0 +1,11 @@
+distribution_cell	observed	next_checkpoint_required	gap	blocker	note
+reviewed_p1_p2_strict_assertions	0	500	500	REVIEW|RIGHTS	Minimum deterministic evaluation checkpoint
+reviewed_normalized_forms	0	75	75	REVIEW|NORMALIZATION	No reviewed mappings exist
+independent_core_source_families	0	3	3	ACQUISITION|RIGHTS|REVIEW	All candidates currently trace to one family
+descriptor_bearing_effective_records	9	500	491	ACQUISITION	Experimental normalization checkpoint
+multi_target_records	0	500	500	NORMALIZATION|REVIEW	Hash-only coassertion records are not reviewed multi-target labels
+direct_source_roast_records	0	1	1	ACQUISITION	No direct roast value in current descriptor records
+filter_or_pour_over_records	0	1	1	ACQUISITION	Preparation service unresolved
+espresso_records	0	1	1	ACQUISITION	Preparation service unresolved
+rights_affirmative_model_assertions	0	1	1	RIGHTS	No affirmative model-research decision
+held_out_source_family	0	1	1	DISTRIBUTION	One candidate source family and zero eligible families

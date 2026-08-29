@@ -1,0 +1,7 @@
+left_dataset	right_dataset	overlap_decision	basis
+ROUND3_EXTERNAL_DESCRIPTOR_RECEIPT	ROUND3M_LIVE_PILOT	OVERLAP_NOT_COMPUTABLE	Machine-readable census bundle missing; headline counts are not added.
+ROUND3M_LIVE_PILOT	ROUND3L_RESTRICTED_STAGING	PARTIAL_LINEAGE_RELATION_NOT_ARITHMETIC_MERGE	Round 3M review artifacts inherit Round 3L staging lineage; the 140 live assertions are separate governed captures.
+ROUND3M_LIVE_PILOT	ROUND4A_DERIVED_GRAPH	EXACT_DERIVED_SUBSET	Round 4A reuses 140 assertions, 8 records and 508 pair events; added observation count is zero.
+ROUND3M_LIVE_PILOT	CURRENT_NORMALIZED_EXPRESSION_ASSETS	REFERENCE_ONLY_NO_OBSERVATION_OVERLAP	Language expressions are not coffee observations and are not promoted.
+ROUND3M_LIVE_PILOT	CURRENT_TARGETED_ACQUISITION	NO_EFFECTIVE_RECORD_LOCATOR_OVERLAP_FOUND	The 2009 official listing is absent from the eight-record live pilot.
+CURRENT_TARGETED_ACQUISITION	CURRENT_TARGETED_ARCHIVE_INDEX	SAME_PUBLICATION_FIELD_REEXPORT	Archive excerpt was discovery-only; detail structured fields are the sole segmented source.
