@@ -179,7 +179,7 @@ test("project status is generated, keyboard reachable, and reduced-motion aware"
   ).toBeVisible();
   await expect(page.getByText("NOT_STARTED", { exact: true })).toHaveCount(2);
   await expect(
-    page.getByRole("link", { name: /Try the prototype/ }),
+    page.getByRole("link", { name: /Try the 5\+3 prototype/ }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: /Download public status JSON/ }),
@@ -202,7 +202,7 @@ test("project status is generated, keyboard reachable, and reduced-motion aware"
   expect(statusResponse.ok()).toBe(true);
   const status = await statusResponse.json();
   expect(status.ml.model_status).toBe("NOT_TRAINED");
-  expect(status.pwa.public_claim_allowed).toBe(false);
+  expect(status.pwa.public_claim_allowed).toBe(true);
   expect(status.first_party_user_research.user_data_collected).toBe(false);
 
   const hasHorizontalOverflow = await page.evaluate(
@@ -210,4 +210,68 @@ test("project status is generated, keyboard reachable, and reduced-motion aware"
   );
   expect(hasHorizontalOverflow).toBe(false);
   expect(consoleErrors).toEqual([]);
+});
+
+test("deterministic prototype completes C0, seven-level C1, Q1-Q4, and 5+3 output", async ({
+  page,
+}) => {
+  const consoleErrors = watchConsoleErrors(page);
+  await page.goto("/prototype");
+  await expect(
+    page.getByRole("heading", { name: /Evidence-connected candidates/ }),
+  ).toBeVisible();
+  await page.getByLabel("Filter / 手冲").check();
+  await page.getByRole("group", { name: /C1/ }).getByLabel("3").check();
+  await page
+    .getByRole("group", { name: /Q1/ })
+    .getByLabel(/Jasmine/)
+    .check();
+  await page
+    .getByRole("group", { name: /Q2/ })
+    .getByLabel(/Red Berries/)
+    .check();
+  await page.getByRole("group", { name: /Q3/ }).getByLabel(/Honey/).check();
+  await page.getByRole("group", { name: /Q4/ }).getByLabel(/Cedar/).check();
+  await expect(
+    page.getByRole("heading", { name: "Five primary candidates" }),
+  ).toBeVisible();
+  await expect(
+    page.locator(".candidate-list").first().locator("li"),
+  ).toHaveCount(5);
+  await expect(page.locator(".candidate-list--secondary li")).toHaveCount(3);
+  await expect(page.getByText(/No calibrated probabilities/)).toBeVisible();
+  expect(consoleErrors).toEqual([]);
+});
+
+test("PWA manifest, public snapshot, local consent default, and offline shell are available", async ({
+  page,
+  context,
+  request,
+}) => {
+  const manifestResponse = await request.get("/manifest.webmanifest");
+  expect(manifestResponse.ok()).toBe(true);
+  const manifest = await manifestResponse.json();
+  expect(manifest.display).toBe("standalone");
+  expect(manifest.icons).toHaveLength(2);
+  const snapshot = await request.get("/knowledge/round4a-public-v1.json");
+  expect(snapshot.ok()).toBe(true);
+  expect((await snapshot.json()).restricted_source_material_included).toBe(
+    false,
+  );
+
+  await page.goto("/prototype/");
+  await expect(
+    page.getByText("NO_REMOTE_COLLECTION", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /Create export preview/ }),
+  ).toBeDisabled();
+  await page.evaluate(() => navigator.serviceWorker.ready);
+  await page.reload();
+  await context.setOffline(true);
+  await page.goto("/prototype/");
+  await expect(
+    page.getByRole("heading", { name: /Evidence-connected candidates/ }),
+  ).toBeVisible();
+  await context.setOffline(false);
 });

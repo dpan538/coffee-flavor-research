@@ -53,7 +53,7 @@ C1 — Mandatory seven-level roast context
 
 Q1 — mandatory context-adaptive sensory question
 
-Q2–Q4 — conditional while additional discrimination is useful
+Q2–Q4 — required adaptive questions in the Round 4A prototype
 
 Q5 — exceptional maximum
 
@@ -69,7 +69,7 @@ C0 and C1 are required before sensory questions begin. C0 has no user-facing
 ordered project categories. C0 and C1 describe context and provide a soft
 candidate-space prior. They do not directly generate flavor labels. Q1 is
 mandatory and may be broad or fine-grained depending on the current candidate
-region. Q2 through Q4 are conditional, and Q5 is permitted only when an
+region. Q2 through Q4 are required in the Round 4A flow, and Q5 is permitted only when an
 additional low-burden discriminator is expected to improve a materially
 ambiguous result.
 

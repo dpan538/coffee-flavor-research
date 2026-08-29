@@ -1,0 +1,9 @@
+metric	value	status	split_scope	reason
+Reference Coverage@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+nDCG@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+Reference Supported Candidate Rate@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+Unsupported Candidate Rate@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+Isolated Outlier Rate@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+Candidate-Set Coherence@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+Redundancy Rate@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.
+Worst Held-Out Family nDCG@8	NOT_EVALUATED	BLOCKED_LABEL_HEALTH	coffee_identity|edition_year|source_family	No model-eligible normalized professional reference holdout exists.

@@ -6,6 +6,10 @@ those records.
 
 ## Current evidence package
 
+- [Round 4A executive receipt](./coffee-flavor-round4a/00_EXECUTIVE_RECEIPT.md)
+- [Round 4A main promotion audit](./coffee-flavor-round4a/01_MAIN_PROMOTION_AUDIT.md)
+- [Round 4A prototype tests](./coffee-flavor-round4a/04_DETERMINISTIC_PROTOTYPE_TESTS.md)
+- [Round 4A final training decision](./coffee-flavor-round4a/08_FINAL_TRAINING_DECISION.md)
 - [Portfolio and repository normalization receipt](./coffee-flavor-portfolio-repo-normalization/00_EXECUTIVE_RECEIPT.md)
 - [Round 3M executive receipt](./coffee-sensory-kb-v0-round3m/00_EXECUTIVE_RECEIPT.md)
 - [Baseline reconciliation](./coffee-sensory-kb-v0-round3m/01_BASELINE_RECONCILIATION.md)

@@ -33,6 +33,9 @@ printf 'CI_VERIFY_STEP=typecheck\n'
 printf 'CI_VERIFY_STEP=unit_tests\n'
 "$NPM_BIN" run test
 
+printf 'CI_VERIFY_STEP=round4a_pipeline_smoke\n'
+"$NPM_BIN" run test:round4a-smoke
+
 printf 'CI_VERIFY_STEP=production_build\n'
 "$NPM_BIN" run build
 

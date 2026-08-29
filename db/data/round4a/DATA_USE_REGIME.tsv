@@ -1,0 +1,6 @@
+regime	allowed_use	empirical_model_fitting_possible	automatic_widening_allowed
+REFERENCE_ONLY	Display, audit, source-frequency statistics, and candidate generation without gradient updates.	false	false
+PROJECT_EXPERIMENT_ALLOWED	Task-specific fitting only with complete rights, row/label provenance, project review, and grouped splits.	true	false
+FIRST_PARTY_BEHAVIORAL_ALLOWED	Consented pseudonymous behavioral fitting with withdrawal and participant grouping.	true	false
+DEPLOYMENT_ALLOWED	Deployment fitting only with commercial/model rights, privacy controls, model card, monitoring, and rollback.	true	false
+PROHIBITED	No model fitting, redistribution, or automated promotion.	false	false

@@ -23,6 +23,7 @@ import {
 import type { LinksFunction } from "react-router";
 import { useEffect, useMemo, useRef } from "react";
 import type { ReactNode } from "react";
+import { PwaRegistration } from "@/components/PwaRegistration";
 import {
   useCursorFollower,
   useCursorMode,
@@ -33,6 +34,8 @@ import { useRouteTransition } from "@/motion/routeTransitions";
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+  { rel: "manifest", href: "/manifest.webmanifest" },
+  { rel: "apple-touch-icon", href: "/icon-192.png" },
   {
     rel: "preconnect",
     href: "https://game-icons.net",
@@ -133,6 +136,7 @@ function AppChrome() {
       { to: "/", label: "FIELD", zh: "词场" },
       { to: "/atlas", label: "ATLAS", zh: "索引" },
       { to: "/methodology", label: "METHOD", zh: "方法" },
+      { to: "/prototype", label: "5+3", zh: "候选" },
       {
         to: "/methodology#project-status",
         label: "STATUS",
@@ -188,8 +192,9 @@ function AppChrome() {
       <footer className="publication-footer">
         <span>mobile-first research prototype</span>
         <span>project-curated draft sensory association profiles</span>
-        <span>planned PWA / model not trained</span>
+        <span>installable offline prototype / model not trained</span>
       </footer>
+      <PwaRegistration />
       <DevDebugPanel />
     </>
   );

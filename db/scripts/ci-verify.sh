@@ -5,6 +5,7 @@ set -euo pipefail
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
 python3 -B "$SCRIPT_DIR/test-round3m-artifact-contract.py"
+python3 -B "$SCRIPT_DIR/test-round4a-artifact-contract.py"
 env \
   -u ROUND3M_RESTRICTED_ROOT \
   -u ROUND3L_RESTRICTED_ROOT \

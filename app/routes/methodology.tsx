@@ -284,7 +284,10 @@ export default function MethodologyRoute() {
           <article>
             <span className="meta-label">PWA</span>
             <strong>{projectStatus.pwa.status}</strong>
-            <p>No manifest, service worker, installability or offline shell.</p>
+            <p>
+              Project-owned icons, manifest, service worker and public-only
+              offline shell; restricted research material is excluded.
+            </p>
           </article>
           <article>
             <span className="meta-label">MODEL ELIGIBILITY</span>
@@ -333,9 +336,9 @@ export default function MethodologyRoute() {
         </div>
 
         <div className="project-status-links" data-reveal>
-          <a href="/atlas">Try the prototype</a>
+          <a href="/prototype">Try the 5+3 prototype</a>
           <a href="/project-status.json">Download public status JSON</a>
-          <a href="https://github.com/dpan538/coffee-flavor-research/blob/codex/coffee-flavor-portfolio-repo-normalization-20260828/docs/portfolio/CASE_STUDY.md">
+          <a href="https://github.com/dpan538/coffee-flavor-research/blob/main/docs/portfolio/CASE_STUDY.md">
             Read the project case study
           </a>
         </div>

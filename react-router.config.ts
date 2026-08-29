@@ -7,5 +7,5 @@ const descriptorPaths = descriptors.map(
 
 export default {
   ssr: false,
-  prerender: ["/", "/atlas", "/methodology", ...descriptorPaths],
+  prerender: ["/", "/atlas", "/methodology", "/prototype", ...descriptorPaths],
 } satisfies Config;

@@ -1,0 +1,9 @@
+stage	system	status
+A	global descriptor frequency	PLANNED_REFERENCE
+B	C0/C1 context-only prior	DETERMINISTIC_FIXTURE_AVAILABLE
+C	deterministic C0/C1 + Q mapping	IMPLEMENTED
+D	independent-label ranker	BLOCKED_NO_ELIGIBLE_TRAINING_MANIFEST
+E	D + professional coherence	BLOCKED_NO_ELIGIBLE_NORMALIZED_GRAPH
+F	E + ontology connectivity	BLOCKED_EMPIRICAL_EVALUATION
+G	F + auxiliary community-language bridge	BLOCKED_ZERO_COMMUNITY_EDGES
+H	embedding or fine-tuned reranker	PROHIBITED_ROUND4A

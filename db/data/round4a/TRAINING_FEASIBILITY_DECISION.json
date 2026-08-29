@@ -1,0 +1,19 @@
+{
+  "decision": "CONTINUE_TASK_TARGETED_DATA_REVIEW",
+  "deep_learning_entry_ready": false,
+  "deterministic_baseline_allowed": true,
+  "empirical_classical_model_run": false,
+  "first_party_required_for_initial_professional_model": false,
+  "first_party_required_for_later_personalization": true,
+  "next_required_data_cell": "RIGHTS_CLEARED_PROJECT_OR_PROFESSIONALLY_REVIEWED_NORMALIZATION_TARGETS_WITH_GROUPED_SOURCE_FAMILY_AND_YEAR_KEYS",
+  "professional_gate": {
+    "eligible_strict_assertions": 0,
+    "pass": false,
+    "required": 2000
+  },
+  "ranking_gate": {
+    "eligible_strict_assertions": 0,
+    "pass": false,
+    "required": 5000
+  }
+}

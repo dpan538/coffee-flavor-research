@@ -6,6 +6,10 @@ material; consult its paired audit and rights receipts.
 
 ## Current interpretation
 
+- [Round 4A executive decision](./coffee-flavor-round4a/00_EXECUTIVE_DECISION.md)
+- [Round 4A task data health](./coffee-flavor-round4a/04_TASK_DATA_HEALTH.md)
+- [Round 4A archive versus model corpus](./coffee-flavor-round4a/ARCHIVE_VS_MODEL_CORPUS.md)
+- [Round 4A coherence hypothesis](./coffee-flavor-round4a/SEMANTIC_COHERENCE_HYPOTHESIS.md)
 - [Round 3M descriptor-first synthesis](./coffee-sensory-kb-v0-round3m/00_EXECUTIVE_SYNTHESIS.md)
 - [Round 3M open gaps](./coffee-sensory-kb-v0-round3m/15_OPEN_GAPS_AND_NEXT_DECISION.md)
 - [Research roadmap](./RESEARCH_ROADMAP.md)

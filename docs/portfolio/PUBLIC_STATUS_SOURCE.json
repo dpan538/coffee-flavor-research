@@ -1,30 +1,30 @@
 {
   "schema_version": "coffee-flavor-public-status-source-v1",
   "status_as_of": "2026-08-29",
-  "source_branch": "codex/coffee-sensory-kb-v0-round3m-descriptor-first-provenance-pilot-20260828",
-  "source_sha": "13b56d2c1d4beec3754ce53edec8954d4e034bce",
-  "work_branch": "codex/coffee-flavor-portfolio-repo-normalization-20260828",
-  "current_phase": "PORTFOLIO_AND_REPOSITORY_NORMALIZATION",
+  "source_branch": "main",
+  "source_sha": "21d04f50952ac30ee13010ee26bae8a224ea9f71",
+  "work_branch": "codex/coffee-flavor-round4a-prototype-training-readiness-20260829",
+  "current_phase": "ROUND4A_PROTOTYPE_AND_TASK_SPECIFIC_READINESS",
   "current_phase_status": "IMPLEMENTED",
   "round3m_remote_ci": {
-    "run_id": 33191901800,
-    "frontend_job_id": 98919216888,
+    "run_id": 33220393687,
+    "frontend_job_id": 99013013914,
     "frontend_status": "VALIDATED",
-    "postgres_job_id": 98919216718,
+    "postgres_job_id": 99013014147,
     "postgres_status": "VALIDATED"
   },
   "pwa_audit": {
-    "web_app_manifest": false,
-    "installable_icons": false,
-    "service_worker": false,
-    "offline_app_shell": false,
+    "web_app_manifest": true,
+    "installable_icons": true,
+    "service_worker": true,
+    "offline_app_shell": true,
     "responsive_mobile_layout": true,
     "keyboard_access": true,
     "accessible_names": true,
     "reduced_motion_behavior": true,
     "restricted_corpus_exposed_to_client": false,
-    "status": "PLANNED",
-    "public_claim_allowed": false
+    "status": "IMPLEMENTED",
+    "public_claim_allowed": true
   },
   "first_party_research": {
     "interview_count": 0,

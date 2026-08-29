@@ -16,11 +16,11 @@
     "rights_widened": false
   },
   "ci": {
-    "frontend_job_id": 98919216888,
+    "frontend_job_id": 99013013914,
     "frontend_status": "VALIDATED",
-    "postgres_job_id": 98919216718,
+    "postgres_job_id": 99013014147,
     "postgres_status": "VALIDATED",
-    "run_id": 33191901800
+    "run_id": 33220393687
   },
   "database": {
     "active_sensory_concept_count": 92,
@@ -49,9 +49,9 @@
   },
   "product": {
     "interaction_contract": {
-      "conditional_question_count": 3,
+      "conditional_question_count": 0,
       "exceptional_question_count": 1,
-      "mandatory_question_count": 1,
+      "mandatory_question_count": 4,
       "preparation_context": "C0",
       "primary_candidate_count": 5,
       "roast_context": "C1",
@@ -78,24 +78,24 @@
   },
   "pwa": {
     "accessible_names": true,
-    "installable_icons": false,
+    "installable_icons": true,
     "keyboard_access": true,
-    "offline_app_shell": false,
-    "public_claim_allowed": false,
+    "offline_app_shell": true,
+    "public_claim_allowed": true,
     "reduced_motion_behavior": true,
     "responsive_mobile_layout": true,
     "restricted_corpus_exposed_to_client": false,
-    "service_worker": false,
-    "status": "PLANNED",
-    "web_app_manifest": false
+    "service_worker": true,
+    "status": "IMPLEMENTED",
+    "web_app_manifest": true
   },
   "schema_version": "coffee-flavor-portfolio-facts-v1",
   "source": {
-    "branch": "codex/coffee-sensory-kb-v0-round3m-descriptor-first-provenance-pilot-20260828",
-    "phase": "PORTFOLIO_AND_REPOSITORY_NORMALIZATION",
+    "branch": "main",
+    "phase": "ROUND4A_PROTOTYPE_AND_TASK_SPECIFIC_READINESS",
     "phase_status": "IMPLEMENTED",
-    "sha": "13b56d2c1d4beec3754ce53edec8954d4e034bce",
-    "work_branch": "codex/coffee-flavor-portfolio-repo-normalization-20260828"
+    "sha": "21d04f50952ac30ee13010ee26bae8a224ea9f71",
+    "work_branch": "codex/coffee-flavor-round4a-prototype-training-readiness-20260829"
   },
   "status_as_of": "2026-08-29"
 }

@@ -1,0 +1,5 @@
+fixture_id	C0	C1	q_answers	expected_primary	expected_secondary	expected_behavior
+floral_citrus_tea	filter	3	floral|citrus|tea	floral|citrus|tea|honey|sweet	stone-fruit|cocoa|spice	SUPPORTED_SINGLE_CLUSTER
+fruit_chocolate_spice	espresso	5	fruit|chocolate|spice	dark-chocolate|red-berry|baking-spice|caramel|roasted	citrus|tea|honey	SUPPORTED_MULTI_CLUSTER
+rare_direct_answer	immersion	4	tropical-fruit	tropical-fruit|citrus|honey|tea|floral	stone-fruit|sweet|spice	DIRECT_Q_OVERRIDE
+insufficient_evidence	unknown	4				ABSTAIN_INSTEAD_OF_FILLER

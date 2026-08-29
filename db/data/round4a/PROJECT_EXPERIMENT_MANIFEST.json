@@ -1,0 +1,9 @@
+{
+  "eligible": false,
+  "exclusion_reason": "No rows satisfy task-specific rights, review, provenance, and grouped-split gates.",
+  "manifest_version": "round4a-project-experiment-v1",
+  "professional_ground_truth": false,
+  "review_regime": "PROJECT_REVIEWED_PROVISIONAL",
+  "rights_regime": "PROJECT_EXPERIMENT_ALLOWED",
+  "row_count": 0
+}

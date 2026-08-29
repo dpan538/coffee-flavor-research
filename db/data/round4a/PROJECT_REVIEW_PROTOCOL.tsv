@@ -1,0 +1,7 @@
+scope	allowed_decisions	boundary
+SOURCE_TEXT_IDENTITY	VERIFY	Source text and bounded locator match.
+FIELD_SEGMENTATION	VERIFY|CORRECT|ABSTAIN	Atomic field segmentation only.
+SPELLING_PLURAL	NORMALIZE|ABSTAIN	Obvious spelling or plural normalization.
+CANONICAL_CANDIDATE	MAP|MULTI_TARGET|UNRESOLVED|ABSTAIN	Provisional project mapping; not expert truth.
+PUBLICATION_LAYER	PRIMARY|MIRROR|REPEAT|UNRESOLVED	De-inflation disposition.
+TASK_RELEVANCE	IN_SCOPE|OUT_OF_SCOPE|ABSTAIN	Task relevance only.

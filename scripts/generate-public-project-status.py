@@ -146,8 +146,8 @@ def build_facts() -> dict[str, Any]:
             "interaction_contract": {
                 "preparation_context": "C0",
                 "roast_context": "C1",
-                "mandatory_question_count": 1,
-                "conditional_question_count": 3,
+                "mandatory_question_count": 4,
+                "conditional_question_count": 0,
                 "exceptional_question_count": 1,
                 "primary_candidate_count": 5,
                 "secondary_candidate_count": 3,
@@ -233,7 +233,7 @@ below by hand.
 | Surface | Status | Evidence-backed interpretation |
 | --- | --- | --- |
 | Mobile web prototype | IMPLEMENTED | Responsive React Router interface with keyboard and reduced-motion checks. |
-| Installable PWA | {pwa['status']} | No manifest, service worker, installability receipt, or offline app shell is present. |
+| Installable PWA | {pwa['status']} | Project-owned icons, a web app manifest, service worker, public app-shell cache, and offline fallback are present; restricted corpus files are excluded. |
 | PostgreSQL knowledge base | VALIDATED | Provenance, evidence, review, rights, duplicate, and gate contracts are executable. |
 | First-party user research | NOT_STARTED | Protocols exist; no user data was collected in this pass. |
 | Ranking or adaptive model | NOT_STARTED | `MODEL_STATUS={ml['model_status']}`; deterministic retrieval remains the baseline. |

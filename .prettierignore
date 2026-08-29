@@ -17,3 +17,7 @@ db/data/round3e/raw/mendeley_ftnir_v4/
 db/data/round3e/raw/mendeley_taste_sensitivity_v1/
 db/data/round3e/raw/usda_fdc_20260825/
 db/data/round3e/raw/wikidata_20260825/
+
+# Round 4A machine receipts retain generator-owned bytes because SHA256SUMS is
+# part of their deterministic contract.
+db/data/round4a/*.json

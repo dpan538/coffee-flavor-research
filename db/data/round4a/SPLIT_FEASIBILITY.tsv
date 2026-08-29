@@ -1,0 +1,9 @@
+task	coffee_identity_grouping	participant_grouping	source_family_grouping	year_holdout	feasible	reason
+professional descriptor normalization	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+source-local descriptor classification	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+consumer-language mapping	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+context-conditioned candidate retrieval	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+5+3 candidate ranking	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+co-assertion estimation	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+adaptive question selection	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST
+stopping policy	true	REQUIRED_WHERE_APPLICABLE	true	true	false	NO_ELIGIBLE_TASK_MANIFEST

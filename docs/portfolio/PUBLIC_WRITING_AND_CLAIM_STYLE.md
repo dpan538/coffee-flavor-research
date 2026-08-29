@@ -58,7 +58,7 @@ Reject or qualify:
 | unresolved fields called P1/P2                    | Provenance is not established                     | “provenance unresolved”                                      |
 | “production-ready ML”                             | No trained or evaluated model                     | “staged ML-readiness program”                                |
 | “deep-learning system”                            | No deep model was run                             | “deep-learning evaluation is planned behind gates”           |
-| unqualified “PWA”                                 | Installability is absent                          | “mobile-first web prototype” or “planned PWA”                |
+| unqualified “production PWA”                      | Deployment and production monitoring are absent   | “installable deterministic PWA prototype”                    |
 | “real-time personalization”                       | Not implemented                                   | “future adaptive interaction”                                |
 | “complete”                                        | Stages remain blocked                             | name the exact validated scope                               |
 

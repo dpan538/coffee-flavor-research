@@ -7,8 +7,8 @@
 
 **User Research · PostgreSQL Knowledge Base · Sensory Corpus · ML/DL Readiness**
 
-**Current phase:** IMPLEMENTED portfolio and repository normalization ·
-**PWA:** PLANNED · **ML status:** NOT_TRAINED
+**Current phase:** ROUND 4A deterministic prototype and task-specific readiness ·
+**PWA:** IMPLEMENTED · **ML status:** NOT_TRAINED
 
 Coffee Flavor Atlas is for people who can tell that two coffees taste
 different but do not always have words for the difference. The product concept
@@ -41,28 +41,27 @@ the references traceable and useful.
 
 ## The product experience
 
-The product contract begins with preparation context (C0) and roast context
-(C1). It then asks one mandatory sensory question, continues only while another
-answer may be useful, and reserves a fifth question for exceptional cases. The
-intended result is five primary and three secondary references for comparison
-and learning. <!-- claim: PRODUCT_INTERACTION_CONTRACT -->
+The product contract begins with preparation context (C0) and a required
+seven-level roast context (C1). It then asks Q1–Q4 and reserves Q5 for
+exceptional low-evidence cases. The result is five primary and three secondary
+references for comparison and learning. <!-- claim: PRODUCT_INTERACTION_CONTRACT -->
 
 ```mermaid
 flowchart LR
     C0["C0 · preparation"] --> C1["C1 · roast"]
-    C1 --> Q1["Q1 · mandatory"]
-    Q1 --> Q24["Q2–Q4 · conditional"]
+    C1 --> Q1["Q1 · required"]
+    Q1 --> Q24["Q2–Q4 · required"]
     Q24 --> Q5["Q5 · exceptional"]
     Q24 --> R["5 primary + 3 secondary references"]
     Q5 --> R
     R --> L["compare · learn · remember"]
 ```
 
-The interaction is designed to treat context as a soft prior. A user's sensory
-answers can override it. Candidate sets must support “none of these,” explicit
-uncertainty, and unresolved outcomes. The current frontend demonstrates the
-atlas, vocabulary, comparison, and methodology surfaces; the adaptive policy
-and model-ranked result flow are designed but not trained or validated.
+The interaction treats context as a soft prior. A user's sensory answers can
+override it. Candidate sets support explicit uncertainty, abstention, and
+unresolved outcomes. The current frontend implements a deterministic,
+coherence-aware 5+3 result flow; no statistical or learned ranking model has
+been trained or validated.
 
 ## What makes the project different
 
@@ -114,10 +113,10 @@ and no model was run. <!-- claim: USER_INTERVIEW_COUNT -->
 <!-- claim: USER_USABILITY_COUNT --> <!-- claim: MODEL_RUN_COUNT -->
 
 The application is responsive and supports keyboard and reduced-motion
-behavior. It does not currently include a web app manifest, installable icons,
-a service worker, or an offline app shell. Publicly, it is therefore described
-as a **mobile-first web prototype** and a **planned PWA**, not an implemented
-installable PWA.
+behavior. Round 4A adds a web app manifest, project-owned installable icons, a
+service worker, a public-only versioned knowledge snapshot, and an offline app
+shell. Restricted corpus, reviewer, and rights records are not cached or
+bundled.
 
 ## Research journey
 
@@ -276,7 +275,8 @@ does today from what future research and models may add.
 - The current frontend descriptor pilot is not connected to PostgreSQL.
 - No statistical, embedding, ranking, deep-learning, or adaptive-policy model
   has been run.
-- Installability and offline behavior remain planned PWA work.
+- The deterministic 5+3 engine is an auditable rule baseline, not calibrated
+  flavor prediction or an empirical model.
 
 ## Rights, attribution, and contribution scope
 

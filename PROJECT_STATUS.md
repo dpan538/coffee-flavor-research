@@ -10,7 +10,7 @@ below by hand.
 | Surface | Status | Evidence-backed interpretation |
 | --- | --- | --- |
 | Mobile web prototype | IMPLEMENTED | Responsive React Router interface with keyboard and reduced-motion checks. |
-| Installable PWA | PLANNED | No manifest, service worker, installability receipt, or offline app shell is present. |
+| Installable PWA | IMPLEMENTED | Project-owned icons, a web app manifest, service worker, public app-shell cache, and offline fallback are present; restricted corpus files are excluded. |
 | PostgreSQL knowledge base | VALIDATED | Provenance, evidence, review, rights, duplicate, and gate contracts are executable. |
 | First-party user research | NOT_STARTED | Protocols exist; no user data was collected in this pass. |
 | Ranking or adaptive model | NOT_STARTED | `MODEL_STATUS=NOT_TRAINED`; deterministic retrieval remains the baseline. |
@@ -70,9 +70,9 @@ not raw-row targets.
 ## Provenance
 
 ```text
-SOURCE_BRANCH=codex/coffee-sensory-kb-v0-round3m-descriptor-first-provenance-pilot-20260828
-SOURCE_SHA=13b56d2c1d4beec3754ce53edec8954d4e034bce
-WORK_BRANCH=codex/coffee-flavor-portfolio-repo-normalization-20260828
+SOURCE_BRANCH=main
+SOURCE_SHA=21d04f50952ac30ee13010ee26bae8a224ea9f71
+WORK_BRANCH=codex/coffee-flavor-round4a-prototype-training-readiness-20260829
 STATUS_AS_OF=2026-08-29
 ```
 

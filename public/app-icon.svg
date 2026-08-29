@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Coffee Flavor Atlas app icon</title>
+  <desc id="desc">A project-authored abstract coffee seed crossed by an atlas coordinate line.</desc>
+  <rect width="512" height="512" rx="96" fill="#080807"/>
+  <ellipse cx="256" cy="256" rx="126" ry="178" transform="rotate(34 256 256)" fill="#5cff7b"/>
+  <path d="M164 386C272 328 278 188 348 116" fill="none" stroke="#080807" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="145" cy="145" r="19" fill="#f2f0ea"/>
+  <circle cx="367" cy="367" r="19" fill="#f2f0ea"/>
+</svg>

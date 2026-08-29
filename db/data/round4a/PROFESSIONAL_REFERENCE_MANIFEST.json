@@ -1,0 +1,11 @@
+{
+  "data_role": "REFERENCE_ONLY",
+  "descriptor_assertion_count": 140,
+  "effective_record_count": 8,
+  "empirical_fitting_allowed": false,
+  "manifest_version": "round4a-professional-reference-v1",
+  "model_eligible_count": 0,
+  "professional_pair_event_count": 508,
+  "professional_reviewed_count": 0,
+  "unique_pair_count": 506
+}

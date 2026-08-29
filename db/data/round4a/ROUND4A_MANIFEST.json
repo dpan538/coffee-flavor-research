@@ -1,0 +1,16 @@
+{
+  "archive_primary_end_year": 2025,
+  "archive_primary_start_year": 1996,
+  "archive_rows_counted_as_model_labels": false,
+  "deep_learning_run": false,
+  "expected_series_year_count": 389,
+  "first_party_behavioral_ranking_phase": "POST_INITIAL_MODEL",
+  "first_party_data_required_for_initial_professional_model": false,
+  "first_party_data_required_for_later_personalization": true,
+  "migrations_000_059_modified": false,
+  "model_training_run": false,
+  "schema": "coffee-flavor-round4a-manifest-v1",
+  "source_sha": "21d04f50952ac30ee13010ee26bae8a224ea9f71",
+  "terminally_classified_series_year_count": 389,
+  "training_corpus_frozen": false
+}

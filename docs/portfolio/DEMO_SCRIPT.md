@@ -20,7 +20,7 @@ scientific measurements.
 
 Open `/methodology#project-status`. Point out the separation between the mobile
 web prototype, validated PostgreSQL foundation, planned user study, blocked
-model gates, and planned PWA shell. The values are generated from governed
+model gates, and implemented public-only PWA shell. The values are generated from governed
 repository receipts.
 
 **1:25–2:00 — research correction and next step**
@@ -35,10 +35,11 @@ review—not a decorative deep-learning run.”
 
 ### 1. User journey (45 seconds)
 
-Describe the intended C0 preparation → C1 roast → short adaptive question flow
-→ primary/secondary references → comparison and learning. Clarify that the
-current UI demonstrates vocabulary navigation and comparison; adaptive question
-selection and ranked results are not calibrated.
+Describe C0 preparation → seven-level C1 roast → adaptive Q1–Q4 → exceptional
+Q5 → five primary and three secondary references. Open `/prototype` and show
+that answers can override weak context priors. Clarify that the structured
+result is deterministic and auditable, not calibrated probability or a trained
+model.
 
 ### 2. Interface walkthrough (75 seconds)
 

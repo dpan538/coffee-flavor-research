@@ -1,6 +1,6 @@
 # Adaptive context and question architecture
 
-Status: Round 3C V0 architecture contract
+Status: Round 3C V0 architecture contract, updated by the Round 4A sequence
 
 ## Purpose
 
@@ -15,14 +15,14 @@ determines flavor.
 C0 mandatory preparation
 C1 mandatory seven-level roast
 Q1 mandatory adaptive question
-Q2-Q4 conditional
+Q2-Q4 required adaptive questions
 Q5 exceptional
 ```
 
-Question count is determined by residual uncertainty and an interaction budget.
-The product does not require four fixed questions. Every valid path contains C0,
-C1, and Q1; it may stop after Q1 or Q2 when the candidate region is sufficiently
-concentrated. Q5 is available only for exceptional residual ambiguity.
+Question content remains context-adaptive, while Round 4A requires Q1–Q4 in
+every completed prototype path. Q5 is available only for exceptional residual
+ambiguity. A future learned stopping policy may be evaluated only after the
+task-specific behavioral contract and data gates pass.
 
 ## Candidate flow
 
@@ -170,8 +170,8 @@ and the system may abstain when support is inadequate.
 Frozen in Round 3C:
 
 - C0 and C1 are soft contextual priors;
-- Q1 is mandatory and adaptive;
-- Q2-Q4 are conditional and Q5 is exceptional;
+- Q1-Q4 are required and adaptive in content;
+- Q5 is exceptional;
 - explicit sensory evidence may override weak context support;
 - roast and preparation do not hard-delete descriptors;
 - calibration and product-simulation modes are distinct; and

@@ -1,0 +1,117 @@
+{
+  "$id": "coffee-flavor-atlas:first-party-behavioral-event:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "collection_default": "NO_REMOTE_COLLECTION",
+  "first_party_behavioral_ranking_phase": "POST_INITIAL_MODEL",
+  "properties": {
+    "C0": {
+      "type": "string"
+    },
+    "C1": {
+      "maximum": 7,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "answer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "answer_latency_ms": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "candidate_rank": {
+      "maximum": 8,
+      "minimum": 1,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "candidate_rejected": {
+      "type": "boolean"
+    },
+    "candidate_selected": {
+      "type": "boolean"
+    },
+    "candidate_set_version": {
+      "type": "string"
+    },
+    "completion_state": {
+      "enum": [
+        "STARTED",
+        "COMPLETED",
+        "ABANDONED"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "consent_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "model_use_consent": {
+      "type": "boolean"
+    },
+    "none_of_these_selected": {
+      "type": "boolean"
+    },
+    "pseudonymous_participant_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "pseudonymous_session_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "question_id": {
+      "type": "string"
+    },
+    "question_order": {
+      "maximum": 5,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "question_version": {
+      "type": "string"
+    },
+    "withdrawal_state": {
+      "enum": [
+        "ACTIVE",
+        "WITHDRAWN",
+        "DELETED"
+      ]
+    }
+  },
+  "required": [
+    "pseudonymous_participant_id",
+    "pseudonymous_session_id",
+    "consent_version",
+    "model_use_consent",
+    "C0",
+    "C1",
+    "question_id",
+    "question_version",
+    "question_order",
+    "answer",
+    "answer_latency_ms",
+    "candidate_set_version",
+    "candidate_rank",
+    "candidate_selected",
+    "candidate_rejected",
+    "none_of_these_selected",
+    "confidence",
+    "completion_state",
+    "withdrawal_state"
+  ],
+  "storage_default": "LOCAL_ONLY_OR_NO_OP",
+  "title": "Consent-gated local-first candidate interaction event",
+  "type": "object"
+}

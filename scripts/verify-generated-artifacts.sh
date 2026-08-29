@@ -35,6 +35,8 @@ generate_active_artifacts() {
   if [[ -f "$REPOSITORY_ROOT/db/scripts/prepare-round3e-release.py" ]]; then
     python3 "$REPOSITORY_ROOT/db/scripts/prepare-round3e-release.py" >/dev/null
   fi
+
+  "$NPM_BIN" run round4a:generate >/dev/null
 }
 
 python3 "$REPOSITORY_ROOT/db/scripts/test-round3e-artifact-contract.py"
@@ -44,6 +46,7 @@ python3 "$REPOSITORY_ROOT/db/scripts/test-round3i-freeze-artifact-contract.py"
 python3 "$REPOSITORY_ROOT/scripts/generate-public-project-status.py" --check
 "$NPM_BIN" run test:round3k-governance-artifacts
 "$NPM_BIN" run test:round3k-adapter-contract
+"$NPM_BIN" run test:round4a-artifacts
 
 write_manifest() {
   local output_path=$1
@@ -68,6 +71,9 @@ write_manifest() {
       "$REPOSITORY_ROOT/db/data/round3h" \
       "$REPOSITORY_ROOT/db/data/model-prebuild/v0" \
       "$REPOSITORY_ROOT/db/data/freeze/coffee-sensory-research-db-v0" \
+      "$REPOSITORY_ROOT/db/data/round4a" \
+      "$REPOSITORY_ROOT/public/icon-192.png" \
+      "$REPOSITORY_ROOT/public/icon-512.png" \
       "$REPOSITORY_ROOT/data/calibration/releases/protocol-and-schema-v0.1.1" \
       -type f -print0 2>/dev/null | LC_ALL=C sort -z
   )
@@ -113,6 +119,9 @@ fi
 if [[ -d data/calibration/releases/protocol-and-schema-v0.1.1 ]]; then
   FORMAT_PATHS+=(data/calibration/releases/protocol-and-schema-v0.1.1)
 fi
+if [[ -d db/data/round4a ]]; then
+  FORMAT_PATHS+=(db/data/round4a)
+fi
 
 "$NPM_BIN" exec -- prettier "${FORMAT_PATHS[@]}" --check
 
@@ -123,7 +132,10 @@ git diff --exit-code -- \
   db/data/round3g \
   db/data/round3h \
   db/data/model-prebuild/v0 \
-  db/data/freeze/coffee-sensory-research-db-v0
+  db/data/freeze/coffee-sensory-research-db-v0 \
+  db/data/round4a \
+  public/icon-192.png \
+  public/icon-512.png
 
 printf 'GENERATED_ARTIFACT_DRIFT_GATE_PASS=true\n'
 printf 'GENERATED_ARTIFACT_NONDETERMINISM_COUNT=0\n'
