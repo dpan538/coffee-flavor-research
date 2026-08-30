@@ -1,0 +1,32 @@
+{
+  "contract_version": "ci-capability-matrix.v1",
+  "verification_layers": [
+    {
+      "verification_layer": "PUBLIC_FIXTURE_FULL_PIPELINE_REPLAY",
+      "required_in_public_ci": true,
+      "executed": true,
+      "pass": true,
+      "input_class": "PROJECT_OWNED_SYNTHETIC_TEST_FIXTURE",
+      "data_boundary": "fixture-source-artifact-to-temporary-restricted-style-root-to-public-hash-sidecars",
+      "reason_if_not_executed": ""
+    },
+    {
+      "verification_layer": "PUBLIC_SNAPSHOT_CONTRACT",
+      "required_in_public_ci": true,
+      "executed": true,
+      "pass": true,
+      "input_class": "COMMITTED_PUBLIC_SAFE_LEDGERS_MANIFESTS_AND_SHA256_RECEIPTS",
+      "data_boundary": "public-repository-only",
+      "reason_if_not_executed": ""
+    },
+    {
+      "verification_layer": "RESTRICTED_REAL_REPLAY",
+      "required_in_public_ci": false,
+      "executed": false,
+      "pass": false,
+      "input_class": "OWNER_CONTROLLED_RESTRICTED_SOURCE_TEXT",
+      "data_boundary": "local-or-owner-controlled-environment-only",
+      "reason_if_not_executed": "NOT_EXECUTED_PUBLIC_CI_RESTRICTED_INPUT_INTENTIONALLY_UNAVAILABLE"
+    }
+  ]
+}

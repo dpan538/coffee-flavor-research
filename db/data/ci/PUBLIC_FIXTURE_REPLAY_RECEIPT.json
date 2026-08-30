@@ -1,0 +1,16 @@
+{
+  "benchmark_row_count": 12,
+  "cleaned_output_atom_count": 15,
+  "contract_version": "ci-public-fixture-replay.v1",
+  "deterministic_offline_rerun_pass": true,
+  "fixture_path": "db/fixtures/ci/professional-descriptor-pipeline/fixture-observations.json",
+  "fixture_status": "TEST_FIXTURE_ONLY_PROJECT_OWNED_SYNTHETIC_TEST_CONTENT_NOT_CORPUS_DATA_NOT_TRAINING_DATA",
+  "mode": "public-fixture",
+  "model_eligible_assertion_count": 0,
+  "public_fixture_full_pipeline_replay_pass": true,
+  "public_fixture_full_pipeline_replay_required": true,
+  "raw_source_text_published": false,
+  "record_unique_cleaned_output_atom_count": 12,
+  "semantic_relation_count": 16,
+  "source_assertion_count": 12
+}

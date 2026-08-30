@@ -16,12 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = ROOT / "db" / "data" / "post40k-extension-staging"
 ACQUISITION = ROOT / "db" / "scripts" / "acquire-post40k-extension.py"
-RESTRICTED = Path(
-    os.environ.get(
-        "POST40K_RESTRICTED_ROOT",
-        "/private/tmp/coffee-flavor-round3m-post40k",
-    )
-)
+RESTRICTED = Path(os.environ["POST40K_RESTRICTED_ROOT"]) if os.environ.get("POST40K_RESTRICTED_ROOT") else None
 EXPECTED_START = "archive-page=100;detail-index=3;url=https://farmdirectory.cupofexcellence.org/listing/2-la-lucuma-peru-2023/"
 
 
@@ -67,7 +62,7 @@ class Post40kExtension(unittest.TestCase):
             for value, name in (line.split("  ", 1) for line in (PUBLIC / "SHA256SUMS").read_text().splitlines())
         }
         self.assertTrue(all(digest(PUBLIC / name) == value for name, value in listed.items()))
-        if not RESTRICTED.is_dir():
+        if RESTRICTED is None or not RESTRICTED.is_dir():
             self.skipTest("POST40K_RESTRICTED_ROOT not set; public receipts still verified")
         before = digest(PUBLIC / "SHA256SUMS")
         subprocess.run([sys.executable, "-B", str(ACQUISITION), "--restricted-root", str(RESTRICTED), "--offline"], cwd=ROOT, check=True, capture_output=True, text=True)

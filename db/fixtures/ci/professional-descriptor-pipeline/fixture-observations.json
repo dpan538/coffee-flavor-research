@@ -1,0 +1,144 @@
+{
+  "fixture_contract": {
+    "classification": "TEST_FIXTURE_ONLY",
+    "content_origin": "PROJECT_OWNED_SYNTHETIC_TEST_CONTENT",
+    "corpus_status": "NOT_CORPUS_DATA",
+    "training_status": "NOT_TRAINING_DATA",
+    "description": "Synthetic observations that exercise the public CI pipeline without carrying third-party or restricted coffee text."
+  },
+  "observations": [
+    {
+      "fixture_row_id": "fx-001",
+      "sample_id": "sample-a",
+      "publication_id": "publication-a-jury",
+      "source_family_id": "fixture.jury",
+      "field_kind": "JURY_LIKE_FIELD",
+      "observation_id": "jury-1",
+      "raw_text": "bright citrus; cocoa",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-002",
+      "sample_id": "sample-a",
+      "publication_id": "publication-a-official",
+      "source_family_id": "fixture.official",
+      "field_kind": "GENERIC_OFFICIAL_SENSORY_FIELD",
+      "observation_id": "official-1",
+      "raw_text": "citrus; dark chocolate",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-003",
+      "sample_id": "sample-b",
+      "publication_id": "publication-b-panel",
+      "source_family_id": "fixture.trained-panel",
+      "field_kind": "TRAINED_PANEL_OBSERVATION",
+      "observation_id": "panel-1",
+      "raw_text": "floral; red fruit",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-004",
+      "sample_id": "sample-b",
+      "publication_id": "publication-b-panel",
+      "source_family_id": "fixture.trained-panel",
+      "field_kind": "TRAINED_PANEL_OBSERVATION",
+      "observation_id": "panel-2",
+      "raw_text": "floral; tea-like",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-005",
+      "sample_id": "sample-c",
+      "publication_id": "publication-c",
+      "source_family_id": "fixture.catalogue",
+      "field_kind": "COMPOUND_DESCRIPTOR",
+      "observation_id": "catalogue-1",
+      "raw_text": "stone fruit",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-006",
+      "sample_id": "sample-c",
+      "publication_id": "publication-c",
+      "source_family_id": "fixture.catalogue",
+      "field_kind": "MODIFIER_BASE_CONCEPT",
+      "observation_id": "catalogue-2",
+      "raw_text": "ripe berry",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-007",
+      "sample_id": "sample-d",
+      "publication_id": "publication-d",
+      "source_family_id": "fixture.official",
+      "field_kind": "BROAD_SENSORY_ATTRIBUTE",
+      "observation_id": "official-2",
+      "raw_text": "balanced body",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-008",
+      "sample_id": "sample-d",
+      "publication_id": "publication-d",
+      "source_family_id": "fixture.official",
+      "field_kind": "NON_DESCRIPTOR_METADATA",
+      "observation_id": "official-3",
+      "raw_text": "rank 1",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-009",
+      "sample_id": "sample-a",
+      "publication_id": "publication-a-mirror",
+      "source_family_id": "fixture.mirror",
+      "field_kind": "DUPLICATE_PUBLICATION_LAYER",
+      "observation_id": "mirror-1",
+      "raw_text": "bright citrus; cocoa",
+      "rights_state": "AFFIRMATIVE",
+      "duplicate_of": "fx-001",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-010",
+      "sample_id": "sample-e",
+      "publication_id": "publication-e",
+      "source_family_id": "fixture.rights-clear",
+      "field_kind": "RIGHTS_PERMITTED_ROW",
+      "observation_id": "rights-1",
+      "raw_text": "caramel",
+      "rights_state": "AFFIRMATIVE",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-011",
+      "sample_id": "sample-f",
+      "publication_id": "publication-f",
+      "source_family_id": "fixture.rights-unknown",
+      "field_kind": "RIGHTS_UNKNOWN_ROW",
+      "observation_id": "rights-2",
+      "raw_text": "smoky",
+      "rights_state": "UNKNOWN",
+      "zero_yield": false
+    },
+    {
+      "fixture_row_id": "fx-012",
+      "sample_id": "sample-g",
+      "publication_id": "publication-g",
+      "source_family_id": "fixture.zero-yield",
+      "field_kind": "ZERO_YIELD_ARTIFACT",
+      "observation_id": "zero-1",
+      "raw_text": "",
+      "rights_state": "UNKNOWN",
+      "zero_yield": true
+    }
+  ]
+}

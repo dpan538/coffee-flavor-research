@@ -1,0 +1,11 @@
+{
+  "contract_version": "ci-environment-receipt.v1",
+  "public_ci_restricted_environment_variable": "COFFEE_FLAVOR_RESTRICTED_ROOT",
+  "public_ci_restricted_real_replay_executed": false,
+  "public_ci_restricted_real_replay_status": "NOT_EXECUTED_PUBLIC_CI_RESTRICTED_INPUT_INTENTIONALLY_UNAVAILABLE",
+  "mandatory_public_test_skip_count": 0,
+  "temporary_root_policy": "TEMPORARY_DIRECTORY_APIS_OR_REPOSITORY_RELATIVE_PROJECT_OWNED_FIXTURE_ONLY",
+  "hard_coded_restricted_root_used_by_required_public_tests": false,
+  "model_file_count": 0,
+  "raw_restricted_source_text_committed": false
+}

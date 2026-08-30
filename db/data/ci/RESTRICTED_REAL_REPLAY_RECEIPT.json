@@ -1,0 +1,11 @@
+{
+  "contract_version": "ci-restricted-real-replay.v1",
+  "local_restricted_public_byte_identity_pass": true,
+  "local_restricted_real_replay_executed": true,
+  "local_restricted_real_replay_pass": true,
+  "mode": "restricted-real",
+  "remote_restricted_real_replay_executed": false,
+  "remote_restricted_real_replay_status": "NOT_EXECUTED_PUBLIC_CI_RESTRICTED_INPUT_INTENTIONALLY_UNAVAILABLE",
+  "restricted_root_environment_variable": "COFFEE_FLAVOR_RESTRICTED_ROOT",
+  "restricted_source_text_published": false
+}
