@@ -38,6 +38,43 @@ ROUND3_EXTERNAL_REPORT_SHA256 = "d319236311f2abc5e15baaf70923b32e0a2bdbb5dc01072
 BATCH_ID = "professional-descriptor-scaleup-batch2-20260829"
 BATCH_DATE = "2026-08-29"
 
+# Later public-safe layers are additive to this baseline. Retaining this
+# explicit Batch 6 inventory lets the baseline/B3/B4 determinism sequence run
+# in CI without owner-controlled raw text: Batch 6 can replay its frozen 40k
+# sidecars without widening the public/restricted boundary.
+BATCH6_PRESERVED_OUTPUTS = {
+    "CANDIDATE_40K_SNAPSHOT_MANIFEST.json",
+    "CLEANED_40K_MANIFEST.json",
+    "CLEANED_40K_OUTPUT_ATOM_LEDGER.tsv",
+    "CLEANED_40K_SOURCE_ASSERTION_LEDGER.tsv",
+    "COMPOUND_COMPONENT.tsv",
+    "COMPOUND_MODIFIER_BENCHMARK.tsv",
+    "CONCEPT_CLUSTER_V2.tsv",
+    "CROSS_FAMILY_SHARED_TARGET_BENCHMARK.tsv",
+    "CROSS_FORM_BENCHMARK_CANDIDATE.tsv",
+    "CROSS_FORM_BENCHMARK_GROUP.tsv",
+    "CROSS_FORM_BENCHMARK_LEAKAGE_AUDIT.tsv",
+    "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
+    "CROSS_FORM_OWNER_REVIEW_IMPORT_TEMPLATE.tsv",
+    "CROSS_FORM_OWNER_REVIEW_PACKET.tsv",
+    "HUMAN_CROSS_FORM_BENCHMARK_TEMPLATE.tsv",
+    "MODIFIER_COMPONENT.tsv",
+    "ONTOLOGY_CONSOLIDATION_V2.tsv",
+    "OPEN_SET_UNSEEN_TARGET_BENCHMARK.tsv",
+    "SEMANTIC_CONCEPT_NODE.tsv",
+    "SEMANTIC_FORM_NODE.tsv",
+    "SEMANTIC_NOVELTY_DISTRIBUTION.tsv",
+    "SEMANTIC_REFERENCE_SOURCE.tsv",
+    "SEMANTIC_RELATION_CANDIDATE.tsv",
+    "SEMANTIC_RELATION_EDGE.tsv",
+    "SEMANTIC_RELATION_EVIDENCE.tsv",
+    "SEMANTIC_RELATION_REJECTION.tsv",
+    "SEMANTIC_RELATION_SUMMARY.tsv",
+    "SEMANTIC_SOURCE_ROUTE_YIELD.tsv",
+    "SMOKE_BENCHMARK_INTERPRETATION_ADDENDUM.json",
+    "SMOKE_TARGET_SUPPORT_CORRECTION.tsv",
+}
+
 NEW_SOURCE_URL = (
     "https://farmdirectory.cupofexcellence.org/listing/"
     "2009-brazil-pulped-naturals-84-96/"
@@ -1280,7 +1317,7 @@ def write_manifest(inventory_rows: list[dict[str, Any]], metrics: dict[str, Any]
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for path in OUT.iterdir():
-        if path.is_file():
+        if path.is_file() and path.name not in BATCH6_PRESERVED_OUTPUTS:
             path.unlink()
     inventory_rows = inventory()
     ledger = canonical_ledger()
