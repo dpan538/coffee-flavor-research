@@ -1,0 +1,10 @@
+{
+  "candidate_40k_snapshot_sha256": "963b9c7db4d956dd20f462da35fe462a4f93d4be9275232d5e2fa785c8406df5",
+  "cleaned_view_version": "professional-descriptor-cleaned-v2-40k",
+  "cleaner_version": "batch4.semantic-cleaner.v2",
+  "output_atom_count": 42007,
+  "record_unique_output_atom_count": 32365,
+  "source_assertion_count": 40030,
+  "source_assertion_reconciliation_pass": true,
+  "valid_source_assertion_count": 36346
+}

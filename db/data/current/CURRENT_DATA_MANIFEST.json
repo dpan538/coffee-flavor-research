@@ -278,12 +278,34 @@
       "snapshot_immutability_pass": true
     }
   },
+  "batch6_generator_version": "batch6.semantic-corpus-generator.v1",
+  "batch6_metrics": {
+    "candidate_50k_checkpoint_reached": true,
+    "cleaned_40k_lexical_form_count": 3581,
+    "cleaned_40k_output_atom_count": 36938,
+    "cleaned_40k_valid_source_assertion_count": 36346,
+    "concept_cluster_count": 2853,
+    "cross_form_benchmark_candidate_count": 6881,
+    "cross_form_benchmark_ready": true,
+    "genuine_ontology_candidate_cluster_count": 2078,
+    "human_benchmark_packet_count": 500,
+    "ml_model_run_count": 0,
+    "owner_review_packet_count": 200,
+    "post40k_extension_run": true,
+    "post40k_net_new_deinflated_assertion_count": 10004,
+    "post40k_total_acquired_candidate_count": 50034,
+    "semantic_relation_edge_count": 104236,
+    "smoke_benchmark_addendum_created": true
+  },
   "batch_id": "professional-descriptor-scaleup-batch2-20260829",
   "candidate_20k_snapshot_content_sha256": "c5f671ffba444a6372d014239914e52931d66b9c971a8c2421909f273cfd4067",
   "candidate_20k_snapshot_created": true,
   "candidate_20k_snapshot_version": "professional-descriptor-candidate-v0-20k",
   "candidate_30k_snapshot_created": true,
   "candidate_30k_snapshot_version": "professional-descriptor-candidate-v1-30k",
+  "candidate_40k_snapshot_created": true,
+  "candidate_40k_snapshot_version": "professional-descriptor-candidate-v2-40k",
+  "cleaned_40k_view_version": "professional-descriptor-cleaned-v2-40k",
   "cleaner_contract_version": "batch4.semantic-cleaner.v2",
   "cross_encoder_run": false,
   "dataset_inventory_count": 34,
@@ -322,6 +344,12 @@
       "sha256": "f30f7e03f7105d07defffe1a1b3f63c260c547cb4610db72ce3ceda8f2cf9daf"
     },
     {
+      "byte_count": 1154,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CANDIDATE_40K_SNAPSHOT_MANIFEST.json",
+      "sha256": "963b9c7db4d956dd20f462da35fe462a4f93d4be9275232d5e2fa785c8406df5"
+    },
+    {
       "byte_count": 30420247,
       "data_row_count": 20245,
       "path": "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
@@ -350,6 +378,24 @@
       "data_row_count": 30010,
       "path": "CLEANED_30K_SOURCE_ASSERTION_LEDGER.tsv",
       "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
+    },
+    {
+      "byte_count": 423,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CLEANED_40K_MANIFEST.json",
+      "sha256": "84a85498e3fead275059e14e6831ae559bbc4d4500073b25a8a25cc99a862933"
+    },
+    {
+      "byte_count": 37420593,
+      "data_row_count": 42007,
+      "path": "CLEANED_40K_OUTPUT_ATOM_LEDGER.tsv",
+      "sha256": "a12ecd15b8a8417d0fbc7d04f4c6d0bf7f56203b946455664306649e0a5567e8"
+    },
+    {
+      "byte_count": 48990157,
+      "data_row_count": 40030,
+      "path": "CLEANED_40K_SOURCE_ASSERTION_LEDGER.tsv",
+      "sha256": "a965000d47a75e231e9864aefdc31139cf5c3a909dd7260df4a2bc09061fe131"
     },
     {
       "byte_count": 19746521,
@@ -400,10 +446,70 @@
       "sha256": "f482e76548d5aa6cde61c84fe04427b5f922fe89df907e35a1013ece8aaf2543"
     },
     {
+      "byte_count": 1703599,
+      "data_row_count": 15178,
+      "path": "COMPOUND_COMPONENT.tsv",
+      "sha256": "d6169886d1925525cbfc76f4de82da07d3a9c982f9deda27f02e49465c5c1d1d"
+    },
+    {
+      "byte_count": 294922,
+      "data_row_count": 1079,
+      "path": "COMPOUND_MODIFIER_BENCHMARK.tsv",
+      "sha256": "d9bc7dfed20630bd47363d324180b3ef19e187de379bcc8b50ab6cb13aaec281"
+    },
+    {
       "byte_count": 1456136,
       "data_row_count": 2208,
       "path": "CONCEPT_CLUSTER.tsv",
       "sha256": "4229266ad354e23cebe06cf5e731f6acfb1006fd43abfeceb08146c9924946c8"
+    },
+    {
+      "byte_count": 1326292,
+      "data_row_count": 2853,
+      "path": "CONCEPT_CLUSTER_V2.tsv",
+      "sha256": "76ec771572dc66fdadc5d935066998c6ac9b939b97c5b83cb5c1128d3e5214c7"
+    },
+    {
+      "byte_count": 2713994,
+      "data_row_count": 11965,
+      "path": "CROSS_FAMILY_SHARED_TARGET_BENCHMARK.tsv",
+      "sha256": "ca3b053e68705ae2cfbb1733ee712781a93cb5b13dafa72a02942a007924bbb0"
+    },
+    {
+      "byte_count": 2601445,
+      "data_row_count": 6881,
+      "path": "CROSS_FORM_BENCHMARK_CANDIDATE.tsv",
+      "sha256": "c00870a0bbddce1ba8cadea187bc39a33d966e280bf8969fffb3beaa7c3fb573"
+    },
+    {
+      "byte_count": 4844,
+      "data_row_count": 25,
+      "path": "CROSS_FORM_BENCHMARK_GROUP.tsv",
+      "sha256": "a264789a7f33ebff8e557c6a6b64650376d0c404de611a7048a35e9aed6d0c3e"
+    },
+    {
+      "byte_count": 4682,
+      "data_row_count": 50,
+      "path": "CROSS_FORM_BENCHMARK_LEAKAGE_AUDIT.tsv",
+      "sha256": "4cc515becd1a5f8d200889e4958856f5c0ead9bff47998c1dfb11512468f4f5c"
+    },
+    {
+      "byte_count": 654,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
+      "sha256": "9e0d6d55a4d3055786fff946d95042e8c971d82b78c8df671c36b624c5070dba"
+    },
+    {
+      "byte_count": 10141,
+      "data_row_count": 200,
+      "path": "CROSS_FORM_OWNER_REVIEW_IMPORT_TEMPLATE.tsv",
+      "sha256": "3ee45161324b574ee5cd81f70dad07836e0a12043e8462dfa68b96720c2fcc17"
+    },
+    {
+      "byte_count": 84991,
+      "data_row_count": 200,
+      "path": "CROSS_FORM_OWNER_REVIEW_PACKET.tsv",
+      "sha256": "6525806664352ddb1e03376f84734e283aae646293ec447fc23edc7928462a4f"
     },
     {
       "byte_count": 18497,
@@ -508,6 +614,12 @@
       "sha256": "da72ce459579379f4b2f7513a6ebcc2a37cb8e9f4254bee27e6f960e34a713ee"
     },
     {
+      "byte_count": 117347,
+      "data_row_count": 500,
+      "path": "HUMAN_CROSS_FORM_BENCHMARK_TEMPLATE.tsv",
+      "sha256": "fe249f1a7586b11bb6a4cc858db59ca1126ec1e3b1fb86bb12f9c7982979bbd1"
+    },
+    {
       "byte_count": 558402,
       "data_row_count": 900,
       "path": "HUMAN_SEMANTIC_AUDIT_TEMPLATE.tsv",
@@ -518,6 +630,12 @@
       "data_row_count": 9579,
       "path": "MACHINE_GOVERNED_MAPPING.tsv",
       "sha256": "8217247ec2333211d5868f0ac1b02c2ab5a09447feb1d70184ad61da0c434fe3"
+    },
+    {
+      "byte_count": 951428,
+      "data_row_count": 4266,
+      "path": "MODIFIER_COMPONENT.tsv",
+      "sha256": "413fc927151d4f70050626b1fa10e3bcc3935772345c433e77a3543d142e702b"
     },
     {
       "byte_count": 1132,
@@ -532,6 +650,12 @@
       "sha256": "ba1b34275aa1d624088e0519340dde29d783e1be35cfb7c8d504482f6c766a66"
     },
     {
+      "byte_count": 13366359,
+      "data_row_count": 42007,
+      "path": "ONTOLOGY_CONSOLIDATION_V2.tsv",
+      "sha256": "b1410518e46917e258ac5f280e57e04eee408b5ce04ee4b89330c4e26ed1df0b"
+    },
+    {
       "byte_count": 1335494,
       "data_row_count": 2051,
       "path": "ONTOLOGY_GAP_REGISTER.tsv",
@@ -542,6 +666,12 @@
       "data_row_count": 2222,
       "path": "ONTOLOGY_GAP_REGISTER_V1_20K.tsv",
       "sha256": "29a73391280629aead00a3e7b3edf9f920212f5fffb511e672d5385022d30969"
+    },
+    {
+      "byte_count": 4874548,
+      "data_row_count": 18051,
+      "path": "OPEN_SET_UNSEEN_TARGET_BENCHMARK.tsv",
+      "sha256": "3e30895636fc055e7cf98fde0329e41e79027d0750ea4f9e9a311be186579c68"
     },
     {
       "byte_count": 5060,
@@ -616,6 +746,78 @@
       "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
     },
     {
+      "byte_count": 352860,
+      "data_row_count": 2943,
+      "path": "SEMANTIC_CONCEPT_NODE.tsv",
+      "sha256": "1a0e70e2e9225d087e61deac50e09b1b2dbe37c20b977d348edba962bfedbe3d"
+    },
+    {
+      "byte_count": 2255511,
+      "data_row_count": 3581,
+      "path": "SEMANTIC_FORM_NODE.tsv",
+      "sha256": "bb47cb588b9eb95c20783d44744b3af3bed4e744bddab8047af003e3252465c1"
+    },
+    {
+      "byte_count": 227,
+      "data_row_count": 3,
+      "path": "SEMANTIC_NOVELTY_DISTRIBUTION.tsv",
+      "sha256": "e812991372660cbf1886d8300856f0c26a960322dddf9bbfc0214aeb7b911b5e"
+    },
+    {
+      "byte_count": 628,
+      "data_row_count": 1,
+      "path": "SEMANTIC_REFERENCE_SOURCE.tsv",
+      "sha256": "427e30caf3cdb7da1afc6f55e06a2e23b3799378d3a22e3989bd281bb9438123"
+    },
+    {
+      "byte_count": 2820803,
+      "data_row_count": 18974,
+      "path": "SEMANTIC_RELATION_CANDIDATE.tsv",
+      "sha256": "ebff1aba9772ff7bd8b95f07e48bcc49689daa9d6132ae5d5d2fb29ee967e917"
+    },
+    {
+      "byte_count": 30695892,
+      "data_row_count": 104236,
+      "path": "SEMANTIC_RELATION_EDGE.tsv",
+      "sha256": "3745b0fa52299744d682e282e3685a2b227be7c323cf2590b621a22dbc652cae"
+    },
+    {
+      "byte_count": 1079,
+      "data_row_count": 3,
+      "path": "SEMANTIC_RELATION_EVIDENCE.tsv",
+      "sha256": "13aed97d34caeaabfd457824b5554c5246b723c4ba77409914552a5efbc1e342"
+    },
+    {
+      "byte_count": 59,
+      "data_row_count": 0,
+      "path": "SEMANTIC_RELATION_REJECTION.tsv",
+      "sha256": "f6142de1c684dea50836ee50822309a19e0057afdf8a14b7d2a6596f9f4dbca3"
+    },
+    {
+      "byte_count": 574,
+      "data_row_count": 17,
+      "path": "SEMANTIC_RELATION_SUMMARY.tsv",
+      "sha256": "6cb3063946c336fab31c43358a4309ed590c222a3714770e29594aeb5e9b7177"
+    },
+    {
+      "byte_count": 695,
+      "data_row_count": 8,
+      "path": "SEMANTIC_SOURCE_ROUTE_YIELD.tsv",
+      "sha256": "ecf33a527749cec5239ad9c2ea2f77dec4b040b811c23d724ce66a7093bae917"
+    },
+    {
+      "byte_count": 536,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "SMOKE_BENCHMARK_INTERPRETATION_ADDENDUM.json",
+      "sha256": "ebafc003065546db3c21b10e347c326514c923044d4a1ae2cf1b0518405369a2"
+    },
+    {
+      "byte_count": 3047,
+      "data_row_count": 29,
+      "path": "SMOKE_TARGET_SUPPORT_CORRECTION.tsv",
+      "sha256": "0b6b51fe80cf2abd08a39e7d20f5cd1f58853a4d71814e6c3a97c93c8fd7eff8"
+    },
+    {
       "byte_count": 717,
       "data_row_count": 5,
       "path": "SOURCE_FAMILY_BALANCE.tsv",
@@ -664,9 +866,9 @@
       "sha256": "3da8e80d3be5257ca230c6accd6fde56eec5f4145fd3fa2a49cce1898eedb152"
     }
   ],
-  "final_data_decision": "30K_CLEANED_GOVERNED_DERIVED_CORPUS_NO_MODEL_TRAINING_POST30K_ISOLATED",
+  "final_data_decision": "CLEANED_40K_SEMANTIC_LAYER_AND_CROSS_FORM_BENCHMARK_CANDIDATES_NO_MODEL_RUN",
   "full_clean_rebuild_required": false,
-  "generated_date": "2026-08-29",
+  "generated_date": "2026-08-30",
   "hard_stop_assertion_count": 20000,
   "metrics": {
     "assertion_deinflated": 20003,
@@ -716,7 +918,7 @@
   "model_weight_file_count": 0,
   "new_migration_count": 0,
   "normalization_disposition_completeness_rate": 1.0,
-  "phase_status": "CLEANED_30K_AND_40K_ACQUISITION_CHECKPOINT_REACHED",
+  "phase_status": "CLEANED_40K_SEMANTIC_LAYER_REVIEW_REQUIRED",
   "ranking_model_trained": false,
   "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",
   "round4a_implementation_sha": "3781afc46495ad4e6ad94e0d4dd238f6f71a293f",

@@ -482,3 +482,29 @@ Machine-readable evidence is in `db/data/current/`. The deterministic generator
 and fail-closed contract test are
 `db/scripts/generate-current-descriptor-data.py` and
 `db/scripts/test-current-descriptor-data.py`.
+
+## Batch 6 — 40k semantic corpus and cross-form benchmark construction
+
+Batch 6 freezes `professional-descriptor-candidate-v2-40k` as an acquisition
+checkpoint of 40,030 de-inflated assertions. It is not a training corpus and
+does not change the immutable 20k, 30k, or Batch 5 receipts. The existing
+`batch4.semantic-cleaner.v2` was reapplied to the isolated 10,020 post-30k
+assertions and reconciled with the 30k V2 view.
+
+The resulting public-safe semantic layer separates lexical equivalence,
+hierarchy, modifier/compound, observational co-assertion and contextual edges.
+Only S0 deterministic morphology and S1 governed mapping/alias edges are
+governed. S3 machine candidates remain explicitly review-required; no relation
+is marked project-owner reviewed or sensory-expert adjudicated.
+
+The future benchmark separates seen-form controls, known-target held-form
+cases, held-family shared-target cases, open-set targets and structured
+compound/modifier cases. The Batch 5 addendum records that its two unseen test
+forms were unseen targets, not known-target cross-form outputs. No model was
+run in Batch 6.
+
+The 40k semantic layer is review-required. A 200-item owner-review packet and
+500-item human benchmark template are public-safe/hash-only; restricted review
+context stays in the owner-controlled restricted root. The post-40k CoE
+continuation is isolated in `db/data/post40k-extension-staging/` and must not
+be merged into the frozen 40k cleaned view.

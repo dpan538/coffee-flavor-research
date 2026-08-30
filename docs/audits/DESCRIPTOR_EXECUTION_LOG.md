@@ -214,3 +214,24 @@ reported after the final commit in the task response.
 
 Final Git SHA, push state and remote CI result are reported in the final task
 response because they cannot be embedded in their own defining commit.
+
+## 2026-08-30 — Batch 6 semantic-corpus and benchmark construction
+
+- Fetched remotes and verified the existing long-lived research branch at the
+  required `d3670d8` tip; left the unrelated dirty `main` checkout untouched.
+- Preserved 20k, 30k and Batch 5 artifacts; created an immutable 40,030-row
+  acquisition snapshot and applied the unchanged Batch 4 V2 cleaner to the
+  isolated post-30k extension.
+- Generated public-safe form, concept, typed relation, evidence, candidate,
+  consolidation, compound/modifier, semantic-yield and benchmark receipts.
+- Corrected only the interpretation of the historical smoke benchmark through
+  a non-destructive addendum. The fixed Batch 5 model was not rerun.
+- Created a bounded 200-cluster owner-review packet and a 500-item human
+  benchmark template with all reviewer decisions empty.
+- Continued CoE only in post-40k staging from the exact page-100/index-3
+  cursor; reached the first complete effective-record boundary at 50,034
+  candidates (10,004 new de-inflated assertions). New acquisition remains
+  outside the frozen 40k semantic view.
+- Made no schema, migration, canonical ontology auto-promotion, evidence-tier
+  promotion, rights promotion, model training, model-weight, frontend, main
+  merge or force-push change.

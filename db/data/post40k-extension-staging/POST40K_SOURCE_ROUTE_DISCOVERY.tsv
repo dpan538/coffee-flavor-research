@@ -1,0 +1,2 @@
+source_family_id	source_route_id	discovery_lane	artifacts_inspected	descriptor_bearing_records	raw_assertion_count	deinflated_assertion_count	rights_state	disposition	basis
+family.ace_cup_of_excellence	route.coe.post40k-archive-continuation	COE_CONTINUATION	346	303	10087	10004	MIXED_PENDING_UNKNOWN	CHECKPOINT_50000_REACHED	EXACT_POST30K_CURSOR_CONTINUATION

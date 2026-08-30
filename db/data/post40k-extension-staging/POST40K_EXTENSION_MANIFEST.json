@@ -1,0 +1,59 @@
+{
+  "checkpoint_50000_reached": true,
+  "coe_continuation_blocked": false,
+  "coe_route_exhausted": false,
+  "contract_version": "post40k-extension-manifest.v1",
+  "cursor_end": "archive-page=142;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/abiyot-ethiopia-2022/",
+  "cursor_start": "archive-page=100;detail-index=3;url=https://farmdirectory.cupofexcellence.org/listing/2-la-lucuma-peru-2023/",
+  "exact_cursor_validated": true,
+  "extension_batch_id": "professional-descriptor-post40k-extension-20260830",
+  "extension_isolated_from_frozen_snapshot": true,
+  "files": [
+    {
+      "byte_count": 128120,
+      "data_row_count": 346,
+      "path": "POST40K_PUBLIC_ARTIFACT_RECEIPT.tsv",
+      "sha256": "8200419e2a3ade55919f53b5cc06fa52f2ca9c399f2d4329391d848623bae295"
+    },
+    {
+      "byte_count": 15201505,
+      "data_row_count": 10087,
+      "path": "POST40K_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "32e4c8266b100c14fa8825dfa21344413a3694a69db47d37b23c95bdce8dd326"
+    },
+    {
+      "byte_count": 297,
+      "data_row_count": 1,
+      "path": "POST40K_SEMANTIC_YIELD.tsv",
+      "sha256": "e6edef13ff81420a284921c7cef887a971206935ebea07a93524e652bd9b417e"
+    },
+    {
+      "byte_count": 359,
+      "data_row_count": 1,
+      "path": "POST40K_SOURCE_ROUTE_DISCOVERY.tsv",
+      "sha256": "75e1301bc08c163cea2a59ce9548c7e0252959209f2c0d3ea5a4bd962d65b610"
+    }
+  ],
+  "frozen_denominator_assertion_count": 40030,
+  "frozen_snapshot_version": "professional-descriptor-candidate-v2-40k",
+  "generated_at": "2026-08-30T00:00:00+10:00",
+  "hard_stop_rule": "FIRST_COMPLETE_EFFECTIVE_RECORD_BOUNDARY_AT_OR_ABOVE_TOTAL_50000",
+  "human_reviewed_assertion_count": 0,
+  "model_eligible_assertion_count": 0,
+  "model_training_run": false,
+  "net_new_deinflated_assertion_count": 10004,
+  "net_new_effective_record_count": 303,
+  "net_new_raw_assertion_count": 10087,
+  "new_coe_assertion_count": 10004,
+  "new_migration_count": 0,
+  "new_non_coe_assertion_count": 0,
+  "new_non_coe_positive_family_count": 0,
+  "new_rights_clearable_family_count": 0,
+  "non_coe_discovery_effort_rate": 0.0,
+  "non_coe_discovery_effort_shortfall": "NO_NEW_NON_COE_ROUTE_EXECUTED_DURING_COE_CONTINUATION",
+  "restricted_artifact_receipt_sha256": "aa620e8b7edc624d90a67cc71eb31b9519424485343fbb8afe9c55172d594534",
+  "restricted_assertion_ledger_sha256": "eefd57a988594b7b83dc375e3badfe64cbc612a64ffe2b0eb333eac818b47f5b",
+  "run": true,
+  "schema_changed": false,
+  "total_candidate_count": 50034
+}
