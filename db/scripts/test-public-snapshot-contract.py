@@ -92,8 +92,17 @@ def verify_semantics_and_benchmark() -> tuple[int, int]:
 
 
 def verify_model_audit() -> int:
-    tracked = subprocess.run(["git", "ls-files"], cwd=ROOT, check=True, capture_output=True, text=True).stdout.splitlines()
-    model_files = [name for name in tracked if Path(name).suffix.casefold() in MODEL_SUFFIXES]
+    # The PostgreSQL CI job runs inside the official database container, which
+    # deliberately has no Git executable. Audit the repository surfaces
+    # directly so this mandatory public check does not depend on a developer
+    # tool that is absent from its declared runtime.
+    audit_roots = [ROOT / name for name in ("app", "db", "docs", "packages", "scripts", ".github")]
+    audited = [
+        path.relative_to(ROOT).as_posix()
+        for base in audit_roots if base.exists()
+        for path in base.rglob("*") if path.is_file()
+    ]
+    model_files = [name for name in audited if Path(name).suffix.casefold() in MODEL_SUFFIXES]
     if model_files:
         raise RuntimeError(f"model files are not permitted: {model_files}")
     return 0
