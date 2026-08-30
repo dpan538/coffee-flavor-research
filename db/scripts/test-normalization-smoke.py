@@ -76,9 +76,25 @@ def main() -> None:
 
     manifest = document("SMOKE_INPUT_MANIFEST.json")
     check(manifest["project_owner_authorization"] == "NORMALIZATION_ENGINEERING_SMOKE_MODEL_RUN_APPROVED", "owner authorization absent")
+    # The Batch 5 receipt deliberately captured the then-current aggregate
+    # manifest. Later additive batches extend that aggregate with their own
+    # artifacts, while the Batch 5 smoke outputs must remain immutable. Check
+    # all stable governed inputs against disk and preserve the recorded
+    # historical aggregate-manifest digest rather than treating its expected
+    # Batch 6 extension as a rewrite of the smoke experiment.
+    stable_input_hashes = {
+        name: digest
+        for name, digest in manifest["input_file_sha256"].items()
+        if name != "CURRENT_DATA_MANIFEST.json"
+    }
     check(
-        all(sha(CURRENT / name) == digest for name, digest in manifest["input_file_sha256"].items()),
+        all(sha(CURRENT / name) == digest for name, digest in stable_input_hashes.items()),
         "governed smoke input hash drift",
+    )
+    check(
+        manifest["input_file_sha256"]["CURRENT_DATA_MANIFEST.json"]
+        == "489f3dd9b0ee9a17904c75a34742743a5da55b55d058de0fcebf23c06bc09820",
+        "historical Batch 5 aggregate-manifest digest drift",
     )
     check(manifest["smoke_source_corpus_version"] == "professional-descriptor-candidate-v1-30k", "source corpus version drift")
     check(manifest["smoke_source_corpus_sha256"] == sha(CURRENT / "CANDIDATE_30K_SNAPSHOT_MANIFEST.json"), "snapshot hash drift")

@@ -1,0 +1,20 @@
+{
+  "candidate_30k_snapshot_sha256": "f30f7e03f7105d07defffe1a1b3f63c260c547cb4610db72ce3ceda8f2cf9daf",
+  "contract_version": "candidate-40k-snapshot-manifest.v1",
+  "effective_record_count": 1556,
+  "exact_coe_continuation_cursor": "archive-page=100;detail-index=3;url=https://farmdirectory.cupofexcellence.org/listing/2-la-lucuma-peru-2023/",
+  "immutable": true,
+  "model_eligible_corpus_frozen": false,
+  "new_migration_count": 0,
+  "post30k_extension_manifest_sha256": "b6456dc8a04b39b5d62b536c8bd6983eb2d95cb358d26541b7fd03dfa674ae48",
+  "restricted_ledger_root_hash": "3dbae919927ee589686bb216d29a1b20a0fe76b4d40e6f8908248370b08ceebf",
+  "schema_changed": false,
+  "snapshot_content_sha256": "f19a9197a565080c04f5f5345d86a182060dcb7a426957da78f768e33b4eaaac",
+  "snapshot_role": "ACQUISITION_CHECKPOINT_NOT_TRAINING_CORPUS",
+  "snapshot_version": "professional-descriptor-candidate-v2-40k",
+  "source_assertion_count": 40030,
+  "source_family_count": 8,
+  "source_ledger": "CLEANED_40K_SOURCE_ASSERTION_LEDGER.tsv",
+  "source_ledger_sha256": "a965000d47a75e231e9864aefdc31139cf5c3a909dd7260df4a2bc09061fe131",
+  "training_corpus_frozen": false
+}

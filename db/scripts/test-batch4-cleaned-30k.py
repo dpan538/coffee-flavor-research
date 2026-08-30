@@ -19,6 +19,7 @@ CURRENT = ROOT / "db" / "data" / "current"
 STAGING = ROOT / "db" / "data" / "candidate-cleaning-v2-staging"
 BUILDER_PATH = ROOT / "db" / "scripts" / "build-batch4-cleaning-staging.py"
 GENERATOR = ROOT / "db" / "scripts" / "generate-batch4-cleaned-30k.py"
+BATCH6_GENERATOR = ROOT / "db" / "scripts" / "generate-batch6-semantic-corpus.py"
 
 
 def load_builder():
@@ -244,6 +245,7 @@ class ArtifactContract(unittest.TestCase):
         self.assertTrue(all(digest(CURRENT / name) == value for name, value in expected.items()))
         before = digest(CURRENT / "SHA256SUMS")
         subprocess.run([sys.executable, "-B", str(GENERATOR)], cwd=ROOT, check=True, capture_output=True, text=True)
+        subprocess.run([sys.executable, "-B", str(BATCH6_GENERATOR)], cwd=ROOT, check=True, capture_output=True, text=True)
         self.assertEqual(digest(CURRENT / "SHA256SUMS"), before)
 
 

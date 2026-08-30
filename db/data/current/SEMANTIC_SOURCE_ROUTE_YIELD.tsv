@@ -1,0 +1,9 @@
+source_family_id	deinflated_source_assertion_count	cleaned_lexical_form_count	known_target_form_count	cross_family_target_overlap_count	purpose_permitted_assertion_count	semantic_novelty_rate
+family.ace_cup_of_excellence	32228	2912	867	69	0	0.090356
+family.coffee_board_of_india_fine_cup	59	48	10	6	0	0.813559
+family.frontiers_cenicafe_lengupa_trained_cuppers	119	32	15	13	119	0.268908
+family.frontiers_inera_robusta_q_grader_panel	590	12	4	4	789	0.020339
+family.mdpi_certified_q_grader_storage_panel	1919	387	2	2	1919	0.201668
+family.project_origin	302	96	44	31	0	0.317881
+family.sheba_coffee_yemen_auction	28	28	6	5	0	1.0
+family.zenodo_golovinsky_q_grader_dataset	4785	681	202	63	5028	0.14232

@@ -1,0 +1,11 @@
+{
+  "SEEN_FORM_KNOWN_TARGET_OUTPUT_COUNT": 125,
+  "SMOKE_FINAL_STATUS": "ENGINEERING_SMOKE_PASS_LEXICAL_MEMORIZATION_ONLY",
+  "TRAIN_UNSUPPORTED_TARGET_COUNT": 2,
+  "UNSEEN_FORM_KNOWN_TARGET_OUTPUT_COUNT": 0,
+  "UNSEEN_TARGET_OPEN_SET_OUTPUT_COUNT": 2,
+  "contract_version": "batch6.smoke-benchmark-interpretation-addendum.v1",
+  "explicit_test_only_targets": "sensory.clove|sensory.hay",
+  "historical_artifacts_modified": false,
+  "interpretation": "The two test unseen forms are unseen targets, not known-target cross-form cases."
+}

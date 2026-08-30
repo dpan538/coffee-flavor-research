@@ -86,3 +86,17 @@ not human sensory, professional-judge, product, or deployment accuracy.
 
 Any work beyond this fixed normalization baseline requires a new explicit
 project-owner authorization.
+
+## Batch 6 status — no experiment run
+
+`MODEL_RUN_COUNT` remains `1`: the historical Batch 5 engineering smoke is
+unchanged. Batch 6 constructs `professional-descriptor-candidate-v2-40k`, a
+typed semantic relation layer, cross-form benchmark candidates and a leakage
+audit only. It does not train, select, rerun, serialize or release any model.
+
+The Batch 5 interpretation addendum classifies its 127 selected test outputs
+as 125 `SEEN_FORM_KNOWN_TARGET`, 0 `UNSEEN_FORM_KNOWN_TARGET`, and 2
+`UNSEEN_TARGET_OPEN_SET`; the test-only clove and hay targets are correctly
+recorded as train-unsupported. A later model authorization requires the
+governed/review-ready cross-form benchmark, a fresh leakage audit and explicit
+project-owner authorization.

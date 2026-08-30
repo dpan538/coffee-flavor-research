@@ -1,0 +1,21 @@
+{
+  "benchmark_tiers": [
+    "GOVERNED_CROSS_FORM_BENCHMARK_CANDIDATE",
+    "REVIEW_REQUIRED_CROSS_FORM_BENCHMARK_CANDIDATE"
+  ],
+  "candidate_count": 6881,
+  "contract_version": "batch6.cross-form-benchmark-candidate.v1",
+  "governed_relation_authorities": [
+    "S0_DETERMINISTIC_ORTHOGRAPHIC",
+    "S1_EXISTING_GOVERNED_ONTOLOGY_OR_ALIAS",
+    "S2_EXPLICIT_PROFESSIONAL_LEXICON_OR_GLOSSARY"
+  ],
+  "group_count": 25,
+  "largest_component_share": 1.0,
+  "leak_count": 0,
+  "model_run": false,
+  "review_required_relation_authority": "S3_MULTI_SOURCE_MACHINE_CANDIDATE",
+  "source_family_count": 8,
+  "target_count": 25,
+  "target_coverage": 0.316456
+}
