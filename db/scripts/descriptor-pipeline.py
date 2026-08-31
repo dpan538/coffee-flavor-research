@@ -523,7 +523,7 @@ def acquire_semantic_references(args: argparse.Namespace) -> tuple[int, int]:
         "target_concept_coverage_count": target_count,
         "raw_definition_published": False,
         "source_xml_committed": False,
-        "rights_states": ["CC_BY_4_0_ATTRIBUTION_REQUIRED"],
+        "rights_states": "CC_BY_4_0_ATTRIBUTION_REQUIRED",
         "model_run": False,
     })
     write_sums(STATE)

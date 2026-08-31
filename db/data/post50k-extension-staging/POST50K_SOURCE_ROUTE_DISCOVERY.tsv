@@ -1,0 +1,14 @@
+source_route_id	source_family_id	source_class	attempted	accessed	descriptor_bearing	row_level	semantic_reference_only	zero_yield	blocked	rights_state	continuation_state	deinflated_assertion_count
+route.epmc.pmc8774372.brewed-black-coffee	family.pmc8774372_brewed_black_coffee	TRAINED_PANEL_RESEARCH	true	true	true	true	false	false	false	CC_BY_4_0	ACQUISITION_ACTIVE	194
+route.epmc.pmc13163763.cafe-latte-lexicon	family.pmc13163763_cafe_latte	TRAINED_PANEL_RESEARCH	true	true	true	false	true	false	false	CC_BY_4_0	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.epmc.pmc6776322.retronasal-aroma	family.pmc6776322_retronasal_aroma	TRAINED_PANEL_RESEARCH	true	true	true	false	true	false	false	CC_BY_4_0	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.epmc.pmc11675256.storage-temperature-lexicon	family.pmc11675256_storage_temperature	TRAINED_PANEL_RESEARCH	true	true	true	false	true	false	false	CC_BY_4_0	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.epmc.pmc13279845.espresso-lexicon	family.pmc13279845_espresso	TRAINED_PANEL_RESEARCH	true	true	true	false	true	false	false	CC_BY_4_0	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.epmc.pmc3951592.storage-sensory	family.pmc3951592_storage_sensory	TRAINED_PANEL_RESEARCH	true	true	false	false	false	true	false	CC_BY_2_5_NONCOMMERCIAL	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.epmc.pmc9386398.yunnan-lexicon	family.pmc9386398_yunnan	TRAINED_PANEL_RESEARCH	true	true	false	false	false	true	false	CC_BY_NC_ND_4_0_CITATION_ONLY	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.iso.18794-2025.coffee-sensory-vocabulary	family.iso_18794_2025	STANDARD_OR_LEXICON	true	true	true	false	true	false	false	ALL_RIGHTS_RESERVED_HASH_AND_LOCATOR_ONLY	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.sca.cva-terminology-glossaries	family.sca_cva_glossaries	STANDARD_OR_LEXICON	true	true	true	false	true	false	false	ALL_RIGHTS_RESERVED_CITATION_ONLY	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.zenodo.20840464.q-grader-dataset	family.zenodo_golovinsky_q_grader_dataset	Q_GRADER_DATASET	true	true	true	true	false	false	false	EXISTING_GOVERNED_SNAPSHOT_NO_DUPLICATE_IMPORT	DUPLICATE_SATURATED	0
+route.coffee-board-india.fine-cup-2026	family.coffee_board_india_fine_cup_2026	OFFICIAL_COMPETITION	true	true	false	false	false	true	false	PUBLIC_DISCOVERY_ONLY_RIGHTS_UNCONFIRMED	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.wcc.wcrc-2026-rules	family.wcc_wcrc_2026	PROFESSIONAL_ROASTING_COMPETITION	true	true	true	false	true	false	false	ALL_RIGHTS_RESERVED_CITATION_ONLY	SEMANTIC_MINING_COMPLETE_OR_METADATA_ONLY	0
+route.coe.post50k-archive-continuation	family.ace_cup_of_excellence	COE_ANCHOR_CONTINUATION	true	true	true	true	false	false	false	MIXED_PENDING_UNKNOWN	ACQUISITION_PAUSED	9782

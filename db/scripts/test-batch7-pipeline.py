@@ -254,11 +254,17 @@ def restricted_offline_replay() -> None:
         "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv", "BATCH7_SEMANTIC_MANIFEST.json",
         "SEMANTIC_RELATION_SUPPORT.tsv", "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
     )}
+    post50_before = sha(POST50 / "SHA256SUMS")
     prefix = [sys.executable, "-B", str(RUNNER), "--restricted-root", restricted, "--prior-post40-root", prior, "--offline"]
-    for command in ("acquire", "clean", "semantic", "checkpoint"):
+    commands = ["acquire"]
+    if (POST50 / "POST50K_EXTENSION_MANIFEST.json").is_file():
+        commands.append("resume")
+    commands.extend(("clean", "semantic", "checkpoint"))
+    for command in commands:
         subprocess.run([*prefix, command], cwd=ROOT, check=True)
     after = {name: sha(CURRENT / name) for name in before}
     check(before == after, "restricted offline replay did not reproduce public bytes")
+    check(sha(POST50 / "SHA256SUMS") == post50_before, "post-50K offline replay did not reproduce public bytes")
 
 
 def main() -> int:

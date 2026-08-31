@@ -1,0 +1,15 @@
+{
+  "assertion_shortfall_count": 1306,
+  "contract_version": "batch7.non-coe-acquisition.v1",
+  "deinflated_source_assertion_count": 194,
+  "discovery_status": "NON_COE_DISCOVERY_RUN_POSITIVE",
+  "effective_record_count": 8,
+  "language_count": 11,
+  "model_eligible_assertion_count": 0,
+  "positive_observation_family_count": 1,
+  "raw_source_text_published": false,
+  "rights_clearable_family_count": 1,
+  "route_attempt_count": 12,
+  "source_class_count": 5,
+  "target_assertion_count": 1500
+}

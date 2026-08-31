@@ -1083,10 +1083,74 @@
   "model_weight_file_count": 0,
   "new_migration_count": 0,
   "normalization_disposition_completeness_rate": 1.0,
-  "phase_status": "BATCH7_50K_CLEANED_SEMANTIC_ENGINEERING_PASS",
+  "phase_status": "BATCH7_50K_AND_60K_ACQUISITION_CHECKPOINT_REACHED",
   "post50k_extension": {
-    "run": false,
-    "status": "NA_POST50K_EXTENSION_NOT_YET_RUN"
+    "candidate_60k_checkpoint_reached": true,
+    "coe_continuation_blocked": false,
+    "coe_route_exhausted": false,
+    "contract_version": "post50k-extension-manifest.v1",
+    "cursor_end": "archive-page=167;detail-index=6;url=https://farmdirectory.cupofexcellence.org/listing/17-i-wayan-parum-batukaang-indonesia-2021/",
+    "cursor_start": "archive-page=142;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/abiyot-ethiopia-2022/",
+    "exact_cursor_validated": true,
+    "extension_batch_id": "professional-descriptor-post50k-extension-20260831",
+    "extension_isolated_from_frozen_snapshot": true,
+    "files": [
+      {
+        "byte_count": 497,
+        "data_row_count": "NA_NOT_TABULAR",
+        "path": "NON_COE_ACQUISITION_RECEIPT.json",
+        "sha256": "d5a381607dc6655870ff7db56ceaeed049a2a837ecf886a53637c1a354bbf88c"
+      },
+      {
+        "byte_count": 282732,
+        "data_row_count": 194,
+        "path": "NON_COE_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+        "sha256": "dbc85d8d7c29deec56d88cc24293e76fc79caf84ef3f25d0843543afab19af61"
+      },
+      {
+        "byte_count": 15485684,
+        "data_row_count": 10055,
+        "path": "POST50K_COE_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+        "sha256": "66c872844735f598b915d909245efd3b1ba24cc4ec935354f41eea861d05ecda"
+      },
+      {
+        "byte_count": 111685,
+        "data_row_count": 267,
+        "path": "POST50K_PUBLIC_ARTIFACT_RECEIPT.tsv",
+        "sha256": "89e803a5973adc941b5c1beb002b0a21b69b39168168a6b56c7ef15b057f66e3"
+      },
+      {
+        "byte_count": 2748,
+        "data_row_count": 13,
+        "path": "POST50K_SOURCE_ROUTE_DISCOVERY.tsv",
+        "sha256": "06c798eedfc0dea0d21a9939e9520c2fce4940e1d073c5d8606544956adc9d90"
+      }
+    ],
+    "frozen_denominator_assertion_count": 50034,
+    "frozen_snapshot_version": "professional-descriptor-candidate-v3-50k",
+    "generated_at": "2026-08-31T00:00:00+10:00",
+    "hard_stop_rule": "FIRST_COMPLETE_EFFECTIVE_RECORD_BOUNDARY_AT_OR_ABOVE_60000",
+    "human_reviewed_assertion_count": 0,
+    "model_eligible_assertion_count": 0,
+    "model_training_run": false,
+    "new_migration_count": 0,
+    "new_positive_non_coe_observation_family_count": 1,
+    "new_rights_clearable_non_coe_family_count": 1,
+    "non_coe_attempts_completed_before_coe_continuation": true,
+    "non_coe_discovery_status": "NON_COE_DISCOVERY_RUN_POSITIVE",
+    "non_coe_language_count": 11,
+    "non_coe_route_attempt_count": 12,
+    "non_coe_source_class_count": 5,
+    "post50k_net_new_deinflated_assertion_count": 9976,
+    "post50k_net_new_effective_record_count": 249,
+    "post50k_new_coe_assertion_count": 9782,
+    "post50k_new_non_coe_assertion_count": 194,
+    "restricted_artifact_receipt_sha256": "51cb328c0326eded5653334f8fb6c85456b1e211229cda273004b0c085d9bd83",
+    "restricted_coe_assertion_ledger_sha256": "f7d96e56a26ffd0e96f8a52644e435998c15de5ab1e94d76afb1bad4260361be",
+    "restricted_non_coe_assertion_ledger_sha256": "bfb0653d739ad0bd79dda636b22ec90876a2cb3862bc62cc8ca49da64dc5a751",
+    "run": true,
+    "schema_changed": false,
+    "total_acquired_candidate_source_assertion_count": 60010
   },
   "ranking_model_trained": false,
   "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",

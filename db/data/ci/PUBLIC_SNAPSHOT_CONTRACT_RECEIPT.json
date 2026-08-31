@@ -9,7 +9,7 @@
   "mode": "public-snapshot",
   "model_file_count": 0,
   "post40k_sha256_receipt_file_count": 5,
-  "post50k_sha256_receipt_file_count": 2,
+  "post50k_sha256_receipt_file_count": 6,
   "public_snapshot_contract_pass": true,
   "public_snapshot_contract_required": true,
   "raw_source_text_published": false,
