@@ -25,6 +25,10 @@ from typing import Any
 from openpyxl import load_workbook
 
 
+# LEGACY_REPRODUCIBILITY_ENTRYPOINT: retained for the accepted 40K snapshot.
+LEGACY_REPRODUCIBILITY_ENTRYPOINT = True
+
+
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = ROOT / "db" / "data" / "post30k-extension-staging"
 FROZEN_20K = Path("/private/tmp/round3l-acquisition/professional_descriptor_batch2")

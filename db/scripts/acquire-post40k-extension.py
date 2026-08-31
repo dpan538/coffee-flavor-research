@@ -19,6 +19,10 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 
+# LEGACY_REPRODUCIBILITY_ENTRYPOINT: retained for the accepted 50K receipt.
+LEGACY_REPRODUCIBILITY_ENTRYPOINT = True
+
+
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = ROOT / "db" / "data" / "post40k-extension-staging"
 POST30_RESTRICTED = Path("/private/tmp/coffee-flavor-round3m-post30k/post30k_extension")

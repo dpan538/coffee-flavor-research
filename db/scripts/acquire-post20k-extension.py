@@ -25,6 +25,10 @@ from lxml import html as lxml_html
 from openpyxl import load_workbook
 
 
+# LEGACY_REPRODUCIBILITY_ENTRYPOINT: retained for the accepted 30K snapshot.
+LEGACY_REPRODUCIBILITY_ENTRYPOINT = True
+
+
 ROOT = Path(__file__).resolve().parents[2]
 PUBLIC = ROOT / "db" / "data" / "post20k-extension-staging"
 FROZEN_RESTRICTED = Path(
