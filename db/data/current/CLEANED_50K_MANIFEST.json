@@ -1,0 +1,17 @@
+{
+  "candidate_50k_snapshot_sha256": "d8a72ef4b27694178ce8721c61da88de44a455456ae762ac479b22e1df3a3f78",
+  "cleaned_view_version": "professional-descriptor-cleaned-v2-50k",
+  "cleaner_version": "batch4.semantic-cleaner.v2",
+  "contract_version": "cleaned-50k-manifest.v1",
+  "model_run": false,
+  "non_descriptor_source_assertion_count": 150,
+  "output_atom_count": 52511,
+  "output_atom_ledger_sha256": "000ff94d338486a5e50ac452f36638ea797c9af3ee81b5a7dfdb6826260166a4",
+  "record_unique_output_atom_count": 39907,
+  "source_assertion_count": 50034,
+  "source_assertion_reconciliation_pass": true,
+  "source_ledger_sha256": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4",
+  "unresolved_source_assertion_count": 59,
+  "valid_output_atom_count": 46587,
+  "valid_source_assertion_count": 45813
+}
