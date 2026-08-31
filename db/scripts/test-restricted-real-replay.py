@@ -26,6 +26,8 @@ def inventory() -> dict[str, str]:
         ROOT / "db" / "data" / "post20k-extension-staging",
         ROOT / "db" / "data" / "post30k-extension-staging",
         ROOT / "db" / "data" / "post40k-extension-staging",
+        ROOT / "db" / "data" / "post50k-extension-staging",
+        ROOT / "db" / "data" / "acquisition-state",
     ]
     return {
         path.relative_to(ROOT).as_posix(): sha(path)

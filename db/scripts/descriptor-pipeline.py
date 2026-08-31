@@ -399,12 +399,41 @@ S2_SOURCES = {
     "PMC11675256": "route.epmc.pmc11675256.storage-temperature-lexicon",
     "PMC13279845": "route.epmc.pmc13279845.espresso-lexicon",
 }
+S2_SOURCE_METADATA = {
+    "PMC8774372": {
+        "publisher": "Foods",
+        "title": "Sensory Drivers of Consumer Acceptance, Purchase Intent and Emotions toward Brewed Black Coffee",
+        "version_or_date": "2022",
+    },
+    "PMC13163763": {
+        "publisher": "Foods",
+        "title": "Effects of Cognitive Style and Evaluation Context on Hedonic and Sensory Perception of Café Latte: A Comparison of Sensory Booth, Real-Life, and Mixed Reality Environments",
+        "version_or_date": "2026",
+    },
+    "PMC6776322": {
+        "publisher": "PLoS ONE",
+        "title": "Impact of bitter tastant sub-qualities on retronasal coffee aroma perception",
+        "version_or_date": "2019",
+    },
+    "PMC11675256": {
+        "publisher": "Foods",
+        "title": "Effect of Temperature and Storage on Coffee’s Volatile Compound Profile and Sensory Characteristics",
+        "version_or_date": "2024",
+    },
+    "PMC13279845": {
+        "publisher": "Journal of Food Science",
+        "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee",
+        "version_or_date": "2026",
+    },
+}
 
 
-def acquire_semantic_references(args: argparse.Namespace) -> tuple[int, int]:
+def semantic_reference_source_rows(relation_rows: list[Mapping[str, str]]) -> list[dict[str, Any]]:
     routes = route_map()
-    relation_rows = []
-    source_rows = [{
+    by_source: dict[str, list[Mapping[str, str]]] = defaultdict(list)
+    for relation in relation_rows:
+        by_source[relation["semantic_reference_source_id"]].append(relation)
+    source_rows: list[dict[str, Any]] = [{
         "semantic_reference_source_id": "semantic-reference.existing-governed-ontology-v1",
         "publisher": "Coffee Flavor Atlas project",
         "title": "Existing governed ontology and approved alias rules",
@@ -420,6 +449,31 @@ def acquire_semantic_references(args: argparse.Namespace) -> tuple[int, int]:
         "relation_count": 0,
     }]
     for pmcid, route_id in S2_SOURCES.items():
+        source_id = f"semantic-reference.{pmcid.casefold()}"
+        relations = by_source[source_id]
+        if not relations:
+            raise RuntimeError(f"committed S2 relation seed lacks source: {source_id}")
+        metadata = S2_SOURCE_METADATA[pmcid]
+        source_rows.append({
+            "semantic_reference_source_id": source_id,
+            **metadata,
+            "language": "en",
+            "term_or_term_hash": "HASHES_IN_S2_REFERENCE_RELATION_SEED",
+            "definition_or_restricted_pointer": f"restricted://batch7_acquisition/raw/{route_id}",
+            "relation_supported": "EXPLICIT_DEFINITION_MATCH|EXPLICIT_BROADER_NARROWER",
+            "evidence_level": "S2_EXPLICIT_PROFESSIONAL_REFERENCE",
+            "rights_status": "CC_BY_4_0_ATTRIBUTION_REQUIRED",
+            "citation_or_locator": routes[route_id]["citation_locator"],
+            "artifact_hash": relations[0]["source_artifact_sha256"],
+            "relation_count": len(relations),
+        })
+    return source_rows
+
+
+def acquire_semantic_references(args: argparse.Namespace) -> tuple[int, int]:
+    routes = route_map()
+    relation_rows = []
+    for pmcid, route_id in S2_SOURCES.items():
         route = routes[route_id]
         artifact = raw_path_for(args.restricted_root, route_id, route["url"])
         if not artifact.is_file():
@@ -427,6 +481,9 @@ def acquire_semantic_references(args: argparse.Namespace) -> tuple[int, int]:
         metadata = jats.article_metadata(artifact)
         if "creative commons attribution" not in metadata["license"].casefold() and "creativecommons.org/licenses/by/4.0" not in metadata["license"].casefold():
             raise RuntimeError(f"S2 source is not verified CC BY 4.0: {pmcid}")
+        expected = S2_SOURCE_METADATA[pmcid]
+        if any(metadata[key] != expected[target] for key, target in (("journal", "publisher"), ("title", "title"), ("year", "version_or_date"))):
+            raise RuntimeError(f"S2 citation metadata drift: {pmcid}")
         extracted = jats.source_relations(artifact, pmcid)
         source_id = f"semantic-reference.{pmcid.casefold()}"
         for item in extracted:
@@ -451,22 +508,8 @@ def acquire_semantic_references(args: argparse.Namespace) -> tuple[int, int]:
                 "rights_state": "CC_BY_4_0_ATTRIBUTION_REQUIRED",
                 "raw_definition_published": "false",
             })
-        source_rows.append({
-            "semantic_reference_source_id": source_id,
-            "publisher": metadata["journal"],
-            "title": metadata["title"],
-            "version_or_date": metadata["year"],
-            "language": "en",
-            "term_or_term_hash": "HASHES_IN_S2_REFERENCE_RELATION_SEED",
-            "definition_or_restricted_pointer": f"restricted://batch7_acquisition/raw/{route_id}",
-            "relation_supported": "EXPLICIT_DEFINITION_MATCH|EXPLICIT_BROADER_NARROWER",
-            "evidence_level": "S2_EXPLICIT_PROFESSIONAL_REFERENCE",
-            "rights_status": "CC_BY_4_0_ATTRIBUTION_REQUIRED",
-            "citation_or_locator": route["citation_locator"],
-            "artifact_hash": sha_file(artifact),
-            "relation_count": len(extracted),
-        })
     relation_rows.sort(key=lambda row: row["semantic_relation_id"])
+    source_rows = semantic_reference_source_rows(relation_rows)
     if len(source_rows) - 1 < 5 or len(relation_rows) < 100:
         raise RuntimeError(f"S2 target shortfall after admitted extraction: sources={len(source_rows) - 1} relations={len(relation_rows)}")
     write_tsv(STATE / "S2_REFERENCE_RELATION_SEED.tsv", list(relation_rows[0]), relation_rows)
@@ -1259,6 +1302,8 @@ def command_semantic(args: argparse.Namespace) -> int:
     clusters = batch6.concept_clusters(atoms)
     form_nodes, concept_nodes, edge_rows, evidence_rows, candidates, rejections = batch6.semantic_graph(atoms, clusters)
     s2 = read_tsv(STATE / "S2_REFERENCE_RELATION_SEED.tsv")
+    source_rows = semantic_reference_source_rows(s2)
+    write_tsv(CURRENT / "SEMANTIC_REFERENCE_SOURCE.tsv", list(source_rows[0]), source_rows)
     known_nodes = {row["semantic_concept_node_id"] for row in concept_nodes}
     for relation in s2:
         for node_id, node_kind in ((relation["subject_node_id"], "SEMANTIC_REFERENCE_TERM"), (relation["object_node_id"], "SEMANTIC_REFERENCE_DEFINITION_OR_CATEGORY")):

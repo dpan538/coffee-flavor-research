@@ -1,21 +1,24 @@
 {
-  "benchmark_tiers": [
-    "GOVERNED_CROSS_FORM_BENCHMARK_CANDIDATE",
-    "REVIEW_REQUIRED_CROSS_FORM_BENCHMARK_CANDIDATE"
-  ],
-  "candidate_count": 6881,
-  "contract_version": "batch6.cross-form-benchmark-candidate.v1",
-  "governed_relation_authorities": [
-    "S0_DETERMINISTIC_ORTHOGRAPHIC",
-    "S1_EXISTING_GOVERNED_ONTOLOGY_OR_ALIAS",
-    "S2_EXPLICIT_PROFESSIONAL_LEXICON_OR_GLOSSARY"
-  ],
-  "group_count": 25,
-  "largest_component_share": 1.0,
+  "contract_version": "batch7.cross-form-benchmark.v2",
+  "global_component_count": 7,
+  "held_out_family_shared_target_count": 265,
+  "largest_global_component_share": 0.997057,
   "leak_count": 0,
+  "median_held_out_form_test_group_count": 17,
+  "minimum_held_out_form_test_group_count": 3,
   "model_run": false,
-  "review_required_relation_authority": "S3_MULTI_SOURCE_MACHINE_CANDIDATE",
-  "source_family_count": 8,
-  "target_count": 25,
-  "target_coverage": 0.316456
+  "open_set_unseen_target_count": 2931,
+  "p50_component_size": 3,
+  "p95_component_size": 5760,
+  "p99_component_size": 5760,
+  "preferred_held_out_form_test_group_count": 5,
+  "primary_governed_fold_count": 89,
+  "primary_governed_target_count": 69,
+  "primary_governed_test_output_count": 15370,
+  "primary_governed_train_output_count": 10005,
+  "relation_authority_pass": true,
+  "review_required_fold_count": 100,
+  "review_required_target_count": 49,
+  "review_required_test_output_count": 3811,
+  "target_known_condition_pass": true
 }

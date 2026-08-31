@@ -1,6 +1,7 @@
 {
   "active_research_branch": "research/coffee-sensory-data-ml-readiness",
-  "baseline_main_sha": "21d04f50952ac30ee13010ee26bae8a224ea9f71",
+  "artifact_retention_policy": "docs/research/CORPUS_ARTIFACT_RETENTION_POLICY.md",
+  "baseline_main_sha": "afde62ba0e957de959fd6127fc1e8b900814cbf4",
   "batch3_cleaning_metrics": {
     "active_review_cluster_count": 247,
     "alias_compression_count": 374,
@@ -297,6 +298,76 @@
     "semantic_relation_edge_count": 104236,
     "smoke_benchmark_addendum_created": true
   },
+  "batch7_cross_form_benchmark": {
+    "contract_version": "batch7.cross-form-benchmark.v2",
+    "global_component_count": 7,
+    "held_out_family_shared_target_count": 265,
+    "largest_global_component_share": 0.997057,
+    "leak_count": 0,
+    "median_held_out_form_test_group_count": 17,
+    "minimum_held_out_form_test_group_count": 3,
+    "model_run": false,
+    "open_set_unseen_target_count": 2931,
+    "p50_component_size": 3,
+    "p95_component_size": 5760,
+    "p99_component_size": 5760,
+    "preferred_held_out_form_test_group_count": 5,
+    "primary_governed_fold_count": 89,
+    "primary_governed_target_count": 69,
+    "primary_governed_test_output_count": 15370,
+    "primary_governed_train_output_count": 10005,
+    "relation_authority_pass": true,
+    "review_required_fold_count": 100,
+    "review_required_target_count": 49,
+    "review_required_test_output_count": 3811,
+    "target_known_condition_pass": true
+  },
+  "batch7_semantic_layer": {
+    "benchmark": {
+      "contract_version": "batch7.cross-form-benchmark.v2",
+      "global_component_count": 7,
+      "held_out_family_shared_target_count": 265,
+      "largest_global_component_share": 0.997057,
+      "leak_count": 0,
+      "median_held_out_form_test_group_count": 17,
+      "minimum_held_out_form_test_group_count": 3,
+      "model_run": false,
+      "open_set_unseen_target_count": 2931,
+      "p50_component_size": 3,
+      "p95_component_size": 5760,
+      "p99_component_size": 5760,
+      "preferred_held_out_form_test_group_count": 5,
+      "primary_governed_fold_count": 89,
+      "primary_governed_target_count": 69,
+      "primary_governed_test_output_count": 15370,
+      "primary_governed_train_output_count": 10005,
+      "relation_authority_pass": true,
+      "review_required_fold_count": 100,
+      "review_required_target_count": 49,
+      "review_required_test_output_count": 3811,
+      "target_known_condition_pass": true
+    },
+    "cleaned_output_atom_count": 52511,
+    "contract_version": "batch7.semantic-layer.v1",
+    "human_benchmark_completed_count": 0,
+    "human_benchmark_packet_count": 500,
+    "model_run": false,
+    "observational_context_relation_count": 118366,
+    "owner_review_decision_count": 0,
+    "owner_review_relation_cluster_count": 100,
+    "relation_level_support_row_count": 121040,
+    "relation_support_occurrence_count": 652676,
+    "s2_reference_source_count": 5,
+    "s2_target_concept_coverage_count": 78,
+    "s2_unique_relation_count": 108,
+    "s3_support_occurrence_count": 620850,
+    "s3_unique_relation_count": 120706,
+    "schema_changed": false,
+    "semantic_relation_count": 121040,
+    "source_assertion_count": 50034,
+    "unique_governed_relation_count": 334,
+    "unique_review_required_relation_count": 2340
+  },
   "batch_id": "professional-descriptor-scaleup-batch2-20260829",
   "candidate_20k_snapshot_content_sha256": "c5f671ffba444a6372d014239914e52931d66b9c971a8c2421909f273cfd4067",
   "candidate_20k_snapshot_created": true,
@@ -305,7 +376,51 @@
   "candidate_30k_snapshot_version": "professional-descriptor-candidate-v1-30k",
   "candidate_40k_snapshot_created": true,
   "candidate_40k_snapshot_version": "professional-descriptor-candidate-v2-40k",
+  "candidate_50k_snapshot": {
+    "candidate_40k_snapshot_sha256": "963b9c7db4d956dd20f462da35fe462a4f93d4be9275232d5e2fa785c8406df5",
+    "cleaner_changed": false,
+    "cleaner_contract_version": "batch4.semantic-cleaner.v2",
+    "contract_version": "candidate-50k-snapshot-manifest.v1",
+    "effective_record_count": 1828,
+    "exact_coe_continuation_cursor": "archive-page=142;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/abiyot-ethiopia-2022/",
+    "immutable": true,
+    "model_eligible_assertion_count": 0,
+    "model_eligible_corpus_frozen": false,
+    "new_migration_count": 0,
+    "post40k_extension_manifest_sha256": "c330d72daa8f1128fb8190537a8c609a2d0d47afded26ce1f5b6975f09fad474",
+    "post40k_identity_basis": "HISTORICAL_ASSERTION_ID+SOURCE_ARTIFACT_SHA256+SOURCE_LOCATOR",
+    "post40k_identity_namespace": "assertion-b7-post40",
+    "restricted_ledger_root_hash": "eefd57a988594b7b83dc375e3badfe64cbc612a64ffe2b0eb333eac818b47f5b",
+    "schema_changed": false,
+    "snapshot_content_sha256": "e35b31cb8dbbe24e3a9a55d9127781b25560dbdd908552bfec811ccd3c500f0b",
+    "snapshot_role": "IMMUTABLE_ACQUISITION_CHECKPOINT_NOT_TRAINING_CORPUS",
+    "snapshot_version": "professional-descriptor-candidate-v3-50k",
+    "source_assertion_count": 50034,
+    "source_family_count": 8,
+    "source_ledger": "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
+    "source_ledger_sha256": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4",
+    "training_corpus_frozen": false
+  },
+  "canonical_current_cleaned_output_ledger": "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
+  "canonical_current_source_assertion_ledger": "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
   "cleaned_40k_view_version": "professional-descriptor-cleaned-v2-40k",
+  "cleaned_50k_view": {
+    "candidate_50k_snapshot_sha256": "d8a72ef4b27694178ce8721c61da88de44a455456ae762ac479b22e1df3a3f78",
+    "cleaned_view_version": "professional-descriptor-cleaned-v2-50k",
+    "cleaner_version": "batch4.semantic-cleaner.v2",
+    "contract_version": "cleaned-50k-manifest.v1",
+    "model_run": false,
+    "non_descriptor_source_assertion_count": 150,
+    "output_atom_count": 52511,
+    "output_atom_ledger_sha256": "000ff94d338486a5e50ac452f36638ea797c9af3ee81b5a7dfdb6826260166a4",
+    "record_unique_output_atom_count": 39907,
+    "source_assertion_count": 50034,
+    "source_assertion_reconciliation_pass": true,
+    "source_ledger_sha256": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4",
+    "unresolved_source_assertion_count": 59,
+    "valid_output_atom_count": 46587,
+    "valid_source_assertion_count": 45813
+  },
   "cleaner_contract_version": "batch4.semantic-cleaner.v2",
   "cross_encoder_run": false,
   "dataset_inventory_count": 34,
@@ -332,6 +447,12 @@
   "embedding_model_trained": false,
   "files": [
     {
+      "byte_count": 1716,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "BATCH7_SEMANTIC_MANIFEST.json",
+      "sha256": "f0ffe7f593c939a6975b95439e8cce7de3047eed9ef722095334df315b9e8e5d"
+    },
+    {
       "byte_count": 1278,
       "data_row_count": "NA_NOT_TABULAR",
       "path": "CANDIDATE_20K_SNAPSHOT_MANIFEST.json",
@@ -348,6 +469,12 @@
       "data_row_count": "NA_NOT_TABULAR",
       "path": "CANDIDATE_40K_SNAPSHOT_MANIFEST.json",
       "sha256": "963b9c7db4d956dd20f462da35fe462a4f93d4be9275232d5e2fa785c8406df5"
+    },
+    {
+      "byte_count": 1438,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CANDIDATE_50K_SNAPSHOT_MANIFEST.json",
+      "sha256": "d8a72ef4b27694178ce8721c61da88de44a455456ae762ac479b22e1df3a3f78"
     },
     {
       "byte_count": 30420247,
@@ -396,6 +523,24 @@
       "data_row_count": 40030,
       "path": "CLEANED_40K_SOURCE_ASSERTION_LEDGER.tsv",
       "sha256": "a965000d47a75e231e9864aefdc31139cf5c3a909dd7260df4a2bc09061fe131"
+    },
+    {
+      "byte_count": 814,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CLEANED_50K_MANIFEST.json",
+      "sha256": "811c662d97d02a322197c1855460eac36839b2bf0421a652b31e5ec61175abdc"
+    },
+    {
+      "byte_count": 46571127,
+      "data_row_count": 52511,
+      "path": "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
+      "sha256": "000ff94d338486a5e50ac452f36638ea797c9af3ee81b5a7dfdb6826260166a4"
+    },
+    {
+      "byte_count": 61348620,
+      "data_row_count": 50034,
+      "path": "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
+      "sha256": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4"
     },
     {
       "byte_count": 19746521,
@@ -476,28 +621,28 @@
       "sha256": "ca3b053e68705ae2cfbb1733ee712781a93cb5b13dafa72a02942a007924bbb0"
     },
     {
-      "byte_count": 2601445,
-      "data_row_count": 6881,
+      "byte_count": 37568871,
+      "data_row_count": 73060,
       "path": "CROSS_FORM_BENCHMARK_CANDIDATE.tsv",
-      "sha256": "c00870a0bbddce1ba8cadea187bc39a33d966e280bf8969fffb3beaa7c3fb573"
+      "sha256": "18b260e931319f2bb4311f2fa17d8451e96493f9cc86de74f583182cb4010900"
     },
     {
-      "byte_count": 4844,
-      "data_row_count": 25,
+      "byte_count": 39221,
+      "data_row_count": 189,
       "path": "CROSS_FORM_BENCHMARK_GROUP.tsv",
-      "sha256": "a264789a7f33ebff8e557c6a6b64650376d0c404de611a7048a35e9aed6d0c3e"
+      "sha256": "745c7d5b07f17b1dbe504fc80e317860dd8b49f0cb44f54cc64efb0445cfa93d"
     },
     {
-      "byte_count": 4682,
-      "data_row_count": 50,
+      "byte_count": 10956,
+      "data_row_count": 189,
       "path": "CROSS_FORM_BENCHMARK_LEAKAGE_AUDIT.tsv",
-      "sha256": "4cc515becd1a5f8d200889e4958856f5c0ead9bff47998c1dfb11512468f4f5c"
+      "sha256": "1f3ef829987f469e3df4583e03cfae8db9e7b88d66e5f0b67766ffdd4f256b26"
     },
     {
-      "byte_count": 654,
+      "byte_count": 858,
       "data_row_count": "NA_NOT_TABULAR",
       "path": "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
-      "sha256": "9e0d6d55a4d3055786fff946d95042e8c971d82b78c8df671c36b624c5070dba"
+      "sha256": "a6dfe65f3355fabfea513c353c667b1b157e22dfc11c2d185313f1fa6f12d649"
     },
     {
       "byte_count": 10141,
@@ -614,10 +759,10 @@
       "sha256": "da72ce459579379f4b2f7513a6ebcc2a37cb8e9f4254bee27e6f960e34a713ee"
     },
     {
-      "byte_count": 117347,
+      "byte_count": 116670,
       "data_row_count": 500,
       "path": "HUMAN_CROSS_FORM_BENCHMARK_TEMPLATE.tsv",
-      "sha256": "fe249f1a7586b11bb6a4cc858db59ca1126ec1e3b1fb86bb12f9c7982979bbd1"
+      "sha256": "50e9c9233e005b4a882db3571c17f581e77d6d77051ad8212d476264720ed181"
     },
     {
       "byte_count": 558402,
@@ -650,10 +795,10 @@
       "sha256": "ba1b34275aa1d624088e0519340dde29d783e1be35cfb7c8d504482f6c766a66"
     },
     {
-      "byte_count": 13366359,
-      "data_row_count": 42007,
+      "byte_count": 1497474,
+      "data_row_count": 3215,
       "path": "ONTOLOGY_CONSOLIDATION_V2.tsv",
-      "sha256": "b1410518e46917e258ac5f280e57e04eee408b5ce04ee4b89330c4e26ed1df0b"
+      "sha256": "874d913c94b7477c05c455694385e3cd46e260f9dc79b04644b29170f7eed3d0"
     },
     {
       "byte_count": 1335494,
@@ -746,16 +891,16 @@
       "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
     },
     {
-      "byte_count": 352860,
-      "data_row_count": 2943,
+      "byte_count": 417830,
+      "data_row_count": 3485,
       "path": "SEMANTIC_CONCEPT_NODE.tsv",
-      "sha256": "1a0e70e2e9225d087e61deac50e09b1b2dbe37c20b977d348edba962bfedbe3d"
+      "sha256": "e83200ed7d928a711d3030c247853cff166d9238a9cea73c5b0771586453789c"
     },
     {
-      "byte_count": 2255511,
-      "data_row_count": 3581,
+      "byte_count": 2693175,
+      "data_row_count": 4092,
       "path": "SEMANTIC_FORM_NODE.tsv",
-      "sha256": "bb47cb588b9eb95c20783d44744b3af3bed4e744bddab8047af003e3252465c1"
+      "sha256": "e42830a4b3a3822529289c9b645548b9e098cfe3cb23df3033a710d378a3f4d0"
     },
     {
       "byte_count": 227,
@@ -764,40 +909,58 @@
       "sha256": "e812991372660cbf1886d8300856f0c26a960322dddf9bbfc0214aeb7b911b5e"
     },
     {
-      "byte_count": 628,
-      "data_row_count": 1,
+      "byte_count": 3129,
+      "data_row_count": 6,
       "path": "SEMANTIC_REFERENCE_SOURCE.tsv",
-      "sha256": "427e30caf3cdb7da1afc6f55e06a2e23b3799378d3a22e3989bd281bb9438123"
+      "sha256": "72f9867ca4bae39177ab7d035627e337616e9fbeb1049d1d124ef0dc1de7565a"
     },
     {
-      "byte_count": 2820803,
-      "data_row_count": 18974,
+      "byte_count": 354891,
+      "data_row_count": 2340,
       "path": "SEMANTIC_RELATION_CANDIDATE.tsv",
-      "sha256": "ebff1aba9772ff7bd8b95f07e48bcc49689daa9d6132ae5d5d2fb29ee967e917"
+      "sha256": "a7dde0adb8c63ee99b4116eec623b417573939d3c6bf3a95dc02c667e841ac6f"
     },
     {
-      "byte_count": 30695892,
-      "data_row_count": 104236,
+      "byte_count": 35650996,
+      "data_row_count": 121040,
       "path": "SEMANTIC_RELATION_EDGE.tsv",
-      "sha256": "3745b0fa52299744d682e282e3685a2b227be7c323cf2590b621a22dbc652cae"
+      "sha256": "669bf39a3209ab21bb424bb9bdc2c5c350e504c2c24249bf53f2f7530150afa7"
     },
     {
-      "byte_count": 1079,
-      "data_row_count": 3,
+      "byte_count": 34149,
+      "data_row_count": 111,
       "path": "SEMANTIC_RELATION_EVIDENCE.tsv",
-      "sha256": "13aed97d34caeaabfd457824b5554c5246b723c4ba77409914552a5efbc1e342"
+      "sha256": "d862e943746ce46e079a3100d7e00886e5df1143b09b04c287715a363de41699"
     },
     {
-      "byte_count": 59,
+      "byte_count": 13717,
+      "data_row_count": 100,
+      "path": "SEMANTIC_RELATION_OWNER_REVIEW_IMPORT_TEMPLATE.tsv",
+      "sha256": "f7522c872d85429fab2bd3cea7c299cb250ba3d2d39a46230d3e662b7749ff62"
+    },
+    {
+      "byte_count": 24983,
+      "data_row_count": 100,
+      "path": "SEMANTIC_RELATION_OWNER_REVIEW_PACKET.tsv",
+      "sha256": "37d547508f9030eaae1355068b3ef069e80f449bd40f9f877ca19f0d31c7e6ea"
+    },
+    {
+      "byte_count": 31,
       "data_row_count": 0,
       "path": "SEMANTIC_RELATION_REJECTION.tsv",
-      "sha256": "f6142de1c684dea50836ee50822309a19e0057afdf8a14b7d2a6596f9f4dbca3"
+      "sha256": "898baea5464f02af8ed2999f09975952129f598e53287047c25e4ebf5204fd47"
     },
     {
-      "byte_count": 574,
-      "data_row_count": 17,
+      "byte_count": 330,
+      "data_row_count": 8,
       "path": "SEMANTIC_RELATION_SUMMARY.tsv",
-      "sha256": "6cb3063946c336fab31c43358a4309ed590c222a3714770e29594aeb5e9b7177"
+      "sha256": "e6100fa0e6e655c1f5d7d46393c6029ec1ac737a2c0ffe99eb1f60166d4231c2"
+    },
+    {
+      "byte_count": 69184855,
+      "data_row_count": 121040,
+      "path": "SEMANTIC_RELATION_SUPPORT.tsv",
+      "sha256": "d7ce189b82cf61b01e1fc750dbca7f81c4afb98714265b9ec620cba582b173cd"
     },
     {
       "byte_count": 695,
@@ -870,6 +1033,7 @@
   "full_clean_rebuild_required": false,
   "generated_date": "2026-08-30",
   "hard_stop_assertion_count": 20000,
+  "manifest_driven_pipeline_entrypoint": "db/scripts/descriptor-pipeline.py",
   "metrics": {
     "assertion_deinflated": 20003,
     "broad": 4220,
@@ -914,11 +1078,16 @@
   },
   "milestone_10000_role": "HEALTHY_CANDIDATE_CORPUS_MILESTONE",
   "ml_baseline_run": false,
+  "model_eligible_assertion_count": 0,
   "model_training_run": false,
   "model_weight_file_count": 0,
   "new_migration_count": 0,
   "normalization_disposition_completeness_rate": 1.0,
-  "phase_status": "CLEANED_40K_SEMANTIC_LAYER_REVIEW_REQUIRED",
+  "phase_status": "BATCH7_50K_CLEANED_SEMANTIC_ENGINEERING_PASS",
+  "post50k_extension": {
+    "run": false,
+    "status": "NA_POST50K_EXTENSION_NOT_YET_RUN"
+  },
   "ranking_model_trained": false,
   "remote_ci_status": "NA_FINAL_REMOTE_SHA_NOT_AVAILABLE_INSIDE_SELF_REFERENTIAL_MANIFEST;REPORTED_IN_FINAL_RESPONSE",
   "round4a_implementation_sha": "3781afc46495ad4e6ad94e0d4dd238f6f71a293f",

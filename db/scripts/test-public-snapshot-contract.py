@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CURRENT = ROOT / "db" / "data" / "current"
 POST40 = ROOT / "db" / "data" / "post40k-extension-staging"
+POST50 = ROOT / "db" / "data" / "post50k-extension-staging"
 CI = ROOT / "db" / "data" / "ci"
 RECEIPT = ROOT / "db" / "data" / "ci" / "PUBLIC_SNAPSHOT_CONTRACT_RECEIPT.json"
 MODEL_SUFFIXES = {".pt", ".pth", ".onnx", ".safetensors", ".ckpt", ".h5", ".keras"}
@@ -42,17 +43,17 @@ def verify_sums(root: Path) -> int:
 
 
 def verify_public_ledgers() -> tuple[int, int]:
-    public_tsvs = sorted(CURRENT.glob("*.tsv")) + sorted(POST40.glob("*.tsv"))
+    public_tsvs = sorted(CURRENT.glob("*.tsv")) + sorted(POST40.glob("*.tsv")) + sorted(POST50.glob("*.tsv"))
     for path in public_tsvs:
         with path.open(encoding="utf-8", newline="") as handle:
             fields = set(csv.DictReader(handle, delimiter="\t").fieldnames or [])
         forbidden = RAW_FIELD_NAMES & fields
         if forbidden:
             raise RuntimeError(f"public ledger leaks raw source fields in {path.name}: {sorted(forbidden)}")
-    source = rows(CURRENT / "CLEANED_40K_SOURCE_ASSERTION_LEDGER.tsv")
-    atoms = rows(CURRENT / "CLEANED_40K_OUTPUT_ATOM_LEDGER.tsv")
-    if len(source) != 40030 or not atoms:
-        raise RuntimeError("frozen 40k ledgers do not reconcile")
+    source = rows(CURRENT / "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv")
+    atoms = rows(CURRENT / "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv")
+    if len(source) != 50034 or not atoms:
+        raise RuntimeError("frozen 50k ledgers do not reconcile")
     if len({row["descriptor_assertion_id"] for row in source}) != len(source):
         raise RuntimeError("source assertion identifiers are not stable and unique")
     if len({row["cleaned_output_atom_id"] for row in atoms}) != len(atoms):
@@ -64,10 +65,11 @@ def verify_public_ledgers() -> tuple[int, int]:
 
 def verify_semantics_and_benchmark() -> tuple[int, int]:
     edges = rows(CURRENT / "SEMANTIC_RELATION_EDGE.tsv")
-    allowed_layers = {"LEXICAL_EQUIVALENCE", "CONCEPT_HIERARCHY", "MODIFIER_COMPOUND", "OBSERVATIONAL", "CONTEXT"}
+    allowed_layers = {"LEXICAL_EQUIVALENCE", "LEXICAL_DEFINITION", "CONCEPT_HIERARCHY", "MODIFIER_COMPOUND", "OBSERVATIONAL", "CONTEXT"}
     allowed_authorities = {
         "S0_DETERMINISTIC_ORTHOGRAPHIC", "S1_EXISTING_GOVERNED_ONTOLOGY_OR_ALIAS",
         "S3_MULTI_SOURCE_MACHINE_CANDIDATE",
+        "S2_EXPLICIT_PROFESSIONAL_REFERENCE",
     }
     if not edges or any(row["relation_layer"] not in allowed_layers for row in edges):
         raise RuntimeError("semantic relation layer contract fails")
@@ -114,25 +116,27 @@ def main() -> int:
     args = parser.parse_args()
     current_files = verify_sums(CURRENT)
     post40_files = verify_sums(POST40)
+    post50_files = verify_sums(POST50)
     ci_files = verify_sums(CI)
     source_count, atom_count = verify_public_ledgers()
     edge_count, case_count = verify_semantics_and_benchmark()
     model_count = verify_model_audit()
-    manifest = json.loads((CURRENT / "CANDIDATE_40K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
+    manifest = json.loads((CURRENT / "CANDIDATE_50K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
     receipt = {
-        "contract_version": "ci-public-snapshot-contract.v1",
+        "contract_version": "ci-public-snapshot-contract.v2",
         "mode": "public-snapshot",
         "public_snapshot_contract_required": True,
         "public_snapshot_contract_pass": True,
         "restricted_source_text_independently_replayed": False,
         "restricted_source_text_status": "NOT_EXECUTED_PUBLIC_CI_RESTRICTED_INPUT_INTENTIONALLY_UNAVAILABLE",
-        "candidate_40k_snapshot_version": manifest["snapshot_version"],
-        "candidate_40k_source_assertion_count": source_count,
-        "cleaned_40k_output_atom_count": atom_count,
+        "candidate_50k_snapshot_version": manifest["snapshot_version"],
+        "candidate_50k_source_assertion_count": source_count,
+        "cleaned_50k_output_atom_count": atom_count,
         "semantic_relation_edge_count": edge_count,
         "cross_form_case_count": case_count,
         "current_sha256_receipt_file_count": current_files,
         "post40k_sha256_receipt_file_count": post40_files,
+        "post50k_sha256_receipt_file_count": post50_files,
         "ci_sha256_receipt_file_count": ci_files,
         "model_file_count": model_count,
         "raw_source_text_published": False,

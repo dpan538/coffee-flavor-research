@@ -19,12 +19,15 @@ CLEANING_STAGING = ROOT / "db" / "data" / "candidate-cleaning-staging"
 GENERATOR = ROOT / "db" / "scripts" / "generate-current-descriptor-data.py"
 BATCH4_GENERATOR = ROOT / "db" / "scripts" / "generate-batch4-cleaned-30k.py"
 BATCH6_GENERATOR = ROOT / "db" / "scripts" / "generate-batch6-semantic-corpus.py"
+BATCH7_RUNNER = ROOT / "db" / "scripts" / "descriptor-pipeline.py"
 
 EXPECTED_FILES = {
+    "BATCH7_SEMANTIC_MANIFEST.json",
     "CANONICAL_DESCRIPTOR_ASSERTION_LEDGER.tsv",
     "CANDIDATE_20K_SNAPSHOT_MANIFEST.json",
     "CANDIDATE_30K_SNAPSHOT_MANIFEST.json",
     "CANDIDATE_40K_SNAPSHOT_MANIFEST.json",
+    "CANDIDATE_50K_SNAPSHOT_MANIFEST.json",
     "CANONICAL_NORMALIZATION_MAP.tsv",
     "CLEANED_30K_OUTPUT_ATOM_LEDGER.tsv",
     "CLEANED_30K_PAIR_EVENT_RECEIPT.tsv",
@@ -32,6 +35,9 @@ EXPECTED_FILES = {
     "CLEANED_40K_MANIFEST.json",
     "CLEANED_40K_OUTPUT_ATOM_LEDGER.tsv",
     "CLEANED_40K_SOURCE_ASSERTION_LEDGER.tsv",
+    "CLEANED_50K_MANIFEST.json",
+    "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
+    "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
     "CLEANED_DESCRIPTOR_ASSERTION_LEDGER.tsv",
     "CLEANED_DESCRIPTOR_DISTRIBUTION.tsv",
     "CLEANED_DESCRIPTOR_SUPPORT_BANDS.tsv",
@@ -99,6 +105,9 @@ EXPECTED_FILES = {
     "SEMANTIC_RELATION_EDGE.tsv",
     "SEMANTIC_RELATION_EVIDENCE.tsv",
     "SEMANTIC_RELATION_REJECTION.tsv",
+    "SEMANTIC_RELATION_OWNER_REVIEW_IMPORT_TEMPLATE.tsv",
+    "SEMANTIC_RELATION_OWNER_REVIEW_PACKET.tsv",
+    "SEMANTIC_RELATION_SUPPORT.tsv",
     "SEMANTIC_RELATION_SUMMARY.tsv",
     "SEMANTIC_SOURCE_ROUTE_YIELD.tsv",
     "SHA256SUMS",
@@ -181,7 +190,7 @@ def main() -> None:
 
     manifest = json.loads((DATA / "CURRENT_DATA_MANIFEST.json").read_text(encoding="utf-8"))
     metrics = manifest["metrics"]
-    check(manifest["baseline_main_sha"] == "21d04f50952ac30ee13010ee26bae8a224ea9f71", "baseline SHA drift")
+    check(manifest["baseline_main_sha"] == "afde62ba0e957de959fd6127fc1e8b900814cbf4", "baseline SHA drift")
     check(manifest["round4a_product_files_imported"] == 0, "Round 4A product scope imported")
     check(manifest["schema_changed"] is False and manifest["new_migration_count"] == 0, "schema change claimed")
     check(manifest["model_training_run"] is False and manifest["model_weight_file_count"] == 0, "model training claimed")
@@ -193,6 +202,8 @@ def main() -> None:
         "CLEANING_PASS_NON_COE_DIVERSIFICATION_GAPS",
         "CLEANED_30K_AND_40K_ACQUISITION_CHECKPOINT_REACHED",
         "CLEANED_40K_SEMANTIC_LAYER_REVIEW_REQUIRED",
+        "BATCH7_50K_CLEANED_SEMANTIC_ENGINEERING_PASS",
+        "BATCH7_50K_AND_60K_ACQUISITION_CHECKPOINT_REACHED",
     }, "current cleaning status absent")
 
     inventory = current_rows("DATASET_INVENTORY.tsv")
@@ -385,6 +396,20 @@ def main() -> None:
     )
     subprocess.run(
         [sys.executable, "-B", str(BATCH6_GENERATOR)],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    subprocess.run(
+        [sys.executable, "-B", str(BATCH7_RUNNER), "semantic"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    subprocess.run(
+        [sys.executable, "-B", str(BATCH7_RUNNER), "checkpoint"],
         cwd=ROOT,
         check=True,
         capture_output=True,

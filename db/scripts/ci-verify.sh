@@ -15,6 +15,7 @@ python3 -B "$SCRIPT_DIR/test-batch4-cleaned-30k.py"
 env -u POST30K_RESTRICTED_ROOT python3 -B "$SCRIPT_DIR/test-post30k-extension.py"
 printf 'CI_PHASE=CORPUS_CONTRACTS\n'
 python3 -B "$SCRIPT_DIR/test-batch6-semantic-corpus.py"
+python3 -B "$SCRIPT_DIR/test-batch7-pipeline.py"
 env -u POST40K_RESTRICTED_ROOT python3 -B "$SCRIPT_DIR/test-post40k-extension.py"
 python3 -B "$SCRIPT_DIR/test-normalization-smoke.py"
 env \

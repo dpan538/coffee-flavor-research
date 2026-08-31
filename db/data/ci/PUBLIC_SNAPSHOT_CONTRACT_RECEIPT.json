@@ -1,18 +1,19 @@
 {
-  "candidate_40k_snapshot_version": "professional-descriptor-candidate-v2-40k",
-  "candidate_40k_source_assertion_count": 40030,
+  "candidate_50k_snapshot_version": "professional-descriptor-candidate-v3-50k",
+  "candidate_50k_source_assertion_count": 50034,
   "ci_sha256_receipt_file_count": 5,
-  "cleaned_40k_output_atom_count": 42007,
-  "contract_version": "ci-public-snapshot-contract.v1",
-  "cross_form_case_count": 25,
-  "current_sha256_receipt_file_count": 90,
+  "cleaned_50k_output_atom_count": 52511,
+  "contract_version": "ci-public-snapshot-contract.v2",
+  "cross_form_case_count": 189,
+  "current_sha256_receipt_file_count": 98,
   "mode": "public-snapshot",
   "model_file_count": 0,
   "post40k_sha256_receipt_file_count": 5,
+  "post50k_sha256_receipt_file_count": 2,
   "public_snapshot_contract_pass": true,
   "public_snapshot_contract_required": true,
   "raw_source_text_published": false,
   "restricted_source_text_independently_replayed": false,
   "restricted_source_text_status": "NOT_EXECUTED_PUBLIC_CI_RESTRICTED_INPUT_INTENTIONALLY_UNAVAILABLE",
-  "semantic_relation_edge_count": 104236
+  "semantic_relation_edge_count": 121040
 }

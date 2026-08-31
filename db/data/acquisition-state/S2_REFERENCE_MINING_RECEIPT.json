@@ -1,0 +1,13 @@
+{
+  "contract_version": "batch7.s2-reference-mining.v1",
+  "evidence_authority": "S2_EXPLICIT_PROFESSIONAL_REFERENCE",
+  "model_run": false,
+  "raw_definition_published": false,
+  "reference_source_count": 5,
+  "rights_states": [
+    "CC_BY_4_0_ATTRIBUTION_REQUIRED"
+  ],
+  "source_xml_committed": false,
+  "target_concept_coverage_count": 78,
+  "unique_relation_count": 108
+}

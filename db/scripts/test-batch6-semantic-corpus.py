@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CURRENT = ROOT / "db" / "data" / "current"
 POST40 = ROOT / "db" / "data" / "post40k-extension-staging"
 GENERATOR = ROOT / "db" / "scripts" / "generate-batch6-semantic-corpus.py"
+BATCH7_RUNNER = ROOT / "db" / "scripts" / "descriptor-pipeline.py"
 
 
 def rows(name: str, root: Path = CURRENT) -> list[dict[str, str]]:
@@ -52,11 +53,13 @@ class Batch6SemanticCorpus(unittest.TestCase):
             "EXACT_EQUIVALENT", "APPROVED_ALIAS_OF", "MORPHOLOGICAL_VARIANT_OF",
             "INSTANCE_OR_SPECIFIC_FORM_OF", "MODIFIES", "COMPONENT_OF",
             "COASSERTED_WITH", "OBSERVED_UNDER_PREPARATION", "OBSERVED_WITH_ROAST_EVIDENCE",
+            "EXPLICIT_DEFINITION_MATCH", "EXPLICIT_BROADER_NARROWER",
         }
         self.assertTrue(all(row["relation_type"] in allowed for row in edges))
         self.assertTrue(all(row["semantic_evidence_authority"] in {
             "S0_DETERMINISTIC_ORTHOGRAPHIC", "S1_EXISTING_GOVERNED_ONTOLOGY_OR_ALIAS",
             "S3_MULTI_SOURCE_MACHINE_CANDIDATE",
+            "S2_EXPLICIT_PROFESSIONAL_REFERENCE",
         } for row in edges))
         self.assertFalse(any(row["relation_layer"] == "LEXICAL_EQUIVALENCE" and row["relation_type"] == "COASSERTED_WITH" for row in edges))
         self.assertTrue(all(row["human_reviewed"] == "false" and row["sensory_expert_adjudicated"] == "false" for row in edges))
@@ -119,6 +122,8 @@ class Batch6SemanticCorpus(unittest.TestCase):
         self.assertTrue((POST40 / "SHA256SUMS").is_file())
         before = digest(CURRENT / "SHA256SUMS")
         subprocess.run([sys.executable, "-B", str(GENERATOR)], cwd=ROOT, check=True, capture_output=True, text=True)
+        subprocess.run([sys.executable, "-B", str(BATCH7_RUNNER), "semantic"], cwd=ROOT, check=True, capture_output=True, text=True)
+        subprocess.run([sys.executable, "-B", str(BATCH7_RUNNER), "checkpoint"], cwd=ROOT, check=True, capture_output=True, text=True)
         self.assertEqual(digest(CURRENT / "SHA256SUMS"), before)
 
 

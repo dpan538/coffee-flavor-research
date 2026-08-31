@@ -1,0 +1,2 @@
+cursor_id	source_route_id	cursor_contract	cursor_start	cursor_current	checkpoint_target	stop_rule	resume_validated	terminal_state
+cursor.coe.post50k	route.coe.post50k-archive-continuation	ARCHIVE_PAGE_DETAIL_INDEX_CANONICAL_URL	archive-page=142;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/abiyot-ethiopia-2022/	archive-page=142;detail-index=2;url=https://farmdirectory.cupofexcellence.org/listing/abiyot-ethiopia-2022/	60000	FIRST_COMPLETE_EFFECTIVE_RECORD_BOUNDARY_AT_OR_ABOVE_60000	false	ACQUISITION_PAUSED

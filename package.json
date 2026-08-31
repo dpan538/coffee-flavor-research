@@ -35,6 +35,7 @@
     "test:post40k-extension": "python3 -B db/scripts/test-post40k-extension.py",
     "test:normalization-smoke": "python3 -B db/scripts/test-normalization-smoke.py",
     "test:batch6-semantic-corpus": "python3 -B db/scripts/test-batch6-semantic-corpus.py",
+    "test:batch7-pipeline": "python3 -B db/scripts/test-batch7-pipeline.py",
     "test:public-fixture-replay": "python3 -B db/scripts/run-corpus-ci.py --public-fixture",
     "test:public-snapshot-contract": "python3 -B db/scripts/run-corpus-ci.py --public-snapshot",
     "test:restricted-real-replay": "python3 -B db/scripts/run-corpus-ci.py --require-restricted-real",
