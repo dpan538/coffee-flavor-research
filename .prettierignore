@@ -11,6 +11,10 @@ test-results/
 db/data/round2b/generation_receipt.json
 db/data/round2b/pilot_diagnostics.json
 
+# Round 3N product-policy artifacts retain generator-owned bytes because the
+# package is checksum-protected and tested for byte-identical regeneration.
+db/data/product-inference-v0/
+
 # Rights-reviewed Round 3E external snapshots retain the exact acquired bytes;
 # their SHA-256 values are validated against SOURCE_MANIFEST.json.
 db/data/round3e/raw/mendeley_ftnir_v4/

@@ -44,6 +44,8 @@ ci_timed ROUND3M_LIVE_ADAPTERS_PUBLIC \
   "$PYTHON_COMMAND" -B "$SCRIPT_DIR/test-round3m-live-adapters.py"
 ci_timed PUBLIC_SNAPSHOT_CONTRACT \
   "$PYTHON_COMMAND" -B "$SCRIPT_DIR/run-corpus-ci.py" --public-snapshot
+ci_timed PRODUCT_INFERENCE_V0 \
+  "$PYTHON_COMMAND" -B "$SCRIPT_DIR/test-product-inference-v0.py"
 ci_timed CI_WORKFLOW_CONTRACT \
   "$PYTHON_COMMAND" -B "$SCRIPT_DIR/test-ci-workflow-contract.py"
 

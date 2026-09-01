@@ -157,6 +157,17 @@
       "coverage": "checksums, leakage, model-file, and public-safe contracts"
     },
     {
+      "id": "product-inference-v0",
+      "old_command": "python3 -B db/scripts/test-product-inference-v0.py",
+      "new_command": "ci-verify-current-artifacts.sh: PRODUCT_INFERENCE_V0",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "versioned product inference contract, candidates, context priors, question axes, answer effects, policy cases, results, explanations, review templates, manifest, and checksums",
+      "expected_outputs": "product contract, negative-test, public-safe, and byte-reproducibility pass markers",
+      "coverage": "Round 3N deterministic 8 x 7 context representation, 120 policy cases, 5+3 limits, abstention, rights, provenance, and no-training invariants"
+    },
+    {
       "id": "current-database-contract",
       "old_command": "db/scripts/rebuild-twice.sh build step: apply.sh, load-round3m-artifacts.sh, test.sh",
       "new_command": "ci-verify-current-database.sh: one clean database build",

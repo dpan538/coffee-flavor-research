@@ -24,21 +24,22 @@ worktree. It completed in 113 seconds. Measured slower stages were:
 | `BATCH6_SEMANTIC_CORPUS`             |              25 | pass   |
 | all remaining public artifact stages |               8 | pass   |
 
-The one requested local PostgreSQL profile was attempted in a disposable
-`postgres:17-bookworm` Docker container. Image retrieval did not complete
-under the concurrent GitHub DNS failure, so no container was created and no
-database command ran. This failed environmental attempt is retained in the
-execution transcript; it is not presented as a passing profile.
+The local PostgreSQL parity attempt remained unavailable because the installed
+Docker Desktop API did not answer its Unix socket within a bounded five-second
+health probe. No local PostgreSQL 16 run is represented as version parity. The
+remote `postgres:17-bookworm` historical replay nevertheless passed at
+`898586d`. The current-database job passed at both `aaaa615` and `88cd394`; the
+latter completed in 18m19s, within its 20-minute budget.
 
 ## New execution structure
 
-| Verification job                | Trigger                                              |            Budget | Coverage                                                                              |
-| ------------------------------- | ---------------------------------------------------- | ----------------: | ------------------------------------------------------------------------------------- |
-| `checks`                        | push/PR                                              |            25 min | unchanged frontend CI                                                                 |
-| `database-artifacts`            | push/PR                                              |            15 min | all public corpus, generated-artifact, checksum, and public-snapshot contracts        |
-| `database-current`              | push/PR                                              |            20 min | one clean PostgreSQL 17 migration, Round 3M load, and complete SQL suite              |
-| `historical-replay`             | protected research push + dispatch + weekly schedule |            75 min | original public artifact path plus the two-clean-database byte-reproducibility replay |
-| `ci-verify-restricted-local.sh` | owner local                                          | no remote timeout | required real restricted-input replay, fail-closed when inputs are absent             |
+| Verification job                | Trigger                                              |            Budget | Coverage                                                                                       |
+| ------------------------------- | ---------------------------------------------------- | ----------------: | ---------------------------------------------------------------------------------------------- |
+| `checks`                        | push/PR                                              |            25 min | unchanged frontend CI                                                                          |
+| `database-artifacts`            | push/PR                                              |            15 min | all public corpus, generated-artifact, product-policy, checksum, and public-snapshot contracts |
+| `database-current`              | push/PR                                              |            20 min | one clean PostgreSQL 17 migration, Round 3M load, and complete SQL suite                       |
+| `historical-replay`             | protected research push + dispatch + weekly schedule |            75 min | original public artifact path plus the two-clean-database byte-reproducibility replay          |
+| `ci-verify-restricted-local.sh` | owner local                                          | no remote timeout | required real restricted-input replay, fail-closed when inputs are absent                      |
 
 The 75-minute dedicated replay limit follows the 1,920-second observed lower
 bound and reserves more than a full current push budget for the second clean
@@ -55,6 +56,11 @@ original nonzero status, so timing cannot turn a failure into a pass.
 
 ```text
 CI_RUNTIME_PROFILE_LOCAL_ARTIFACT_PASS=true
-CI_RUNTIME_PROFILE_LOCAL_DATABASE_PASS=NOT_EXECUTED_DOCKER_IMAGE_RETRIEVAL_UNAVAILABLE
-CI_RUNTIME_PROFILE_REMOTE_PASS=AWAITING_POST_PUSH_RUN
+CI_RUNTIME_PROFILE_LOCAL_DATABASE_PASS=NOT_EXECUTED_DOCKER_API_UNRESPONSIVE
+CI_HISTORICAL_REPLAY_RUN_33461527537_PASS=true
+CI_CURRENT_DATABASE_RUN_33470462970_PASS=true
+CI_CURRENT_DATABASE_ELAPSED=18m19s
+CI_HISTORICAL_REPLAY_RUN_33470462938_PASS=true
+CI_HISTORICAL_REPLAY_ELAPSED=35m01s
+CI_RUNTIME_PROFILE_REMOTE_RECOVERY_SHA=88cd394f96df0d409ea2b40b30396b314beecdd8
 ```

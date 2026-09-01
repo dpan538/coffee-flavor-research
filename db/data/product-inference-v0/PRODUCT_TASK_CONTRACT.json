@@ -1,0 +1,130 @@
+{
+  "answer_effect_types": [
+    "contradicts",
+    "insufficient_evidence",
+    "neutral",
+    "supports",
+    "unknown",
+    "weakly_contradicts",
+    "weakly_supports"
+  ],
+  "authoritative_inputs": {
+    "db/022_round3b_context_governance.sql": "62721e48aa0bf30976188a52e9bb363b45a3646d3b62c8b2850909b3da5f5d02",
+    "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv": "f76d66fb01abdac93e1619cbc02ee57f071d693a2874e029386a9e47cd8c9ccc",
+    "db/data/current/COMPOUND_COMPONENT.tsv": "d6169886d1925525cbfc76f4de82da07d3a9c982f9deda27f02e49465c5c1d1d",
+    "db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv": "874d913c94b7477c05c455694385e3cd46e260f9dc79b04644b29170f7eed3d0",
+    "db/data/current/SEMANTIC_RELATION_EDGE.tsv": "669bf39a3209ab21bb424bb9bdc2c5c350e504c2c24249bf53f2f7530150afa7",
+    "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv": "1ae24e67eb77ddcf7c85e6fc085a504e022d22df3642211d21d81ee23040066b",
+    "db/data/round3h/batch5/question_research_evidence.tsv": "71a7ba111b3f8ad84e28512a40e355a97350e44578e6f965b8222a423e25090c",
+    "db/data/round3h/batch5/relationship_evidence_claims.tsv": "0eff3ed15d13df238c8d8efd2ad8d39e71d9a7071c0ccf880ff5b9016dba207a",
+    "db/data/round3h/source_candidate_register.tsv": "9b51a3d01d9eb7c97535d14995b8a642e68eacf20d778c8a2bd0e8607a3c2176",
+    "db/data/round3m/C0_C1_EVIDENCE_RECEIPT.json": "aae32da71da7dcba575a82d3ceff1bde9a1105a67da19ef812afc2cb07f07242",
+    "docs/product/PRODUCT_CONTRACT_V0.md": "921684c76da96ec4d5bcaa59e350eb905aae6d2786c1782c93032c5ebfe6d176",
+    "packages/flavor-data/src/descriptors.ts": "6a36c5ea954a07c620adfcc476f908da92baf86dbf549ab32392832864f9c637"
+  },
+  "candidate_state_fields": [
+    "canonical_concept_id",
+    "display_label_en",
+    "language_label_zh_hans",
+    "top_level_descriptor_family",
+    "direct_professional_assertion_support",
+    "unique_effective_record_support",
+    "independent_source_family_support",
+    "governed_normalization_support",
+    "governed_semantic_relation_support",
+    "review_required_exploratory_relation_support",
+    "c0_compatibility",
+    "c1_compatibility",
+    "user_answer_compatibility",
+    "structured_contrast_evidence",
+    "contradiction_evidence",
+    "public_research_simulation_rights_eligible",
+    "product_deployment_rights_status",
+    "review_status",
+    "redundancy_group",
+    "uncertainty_flags",
+    "abstention_flags",
+    "score_components",
+    "base_decision_score",
+    "explanation_references",
+    "lineage_paths"
+  ],
+  "context_rules": {
+    "c0": "weak source-local adjustment or zero when missing",
+    "c1": "zero until source roast values receive reviewed seven-level mappings",
+    "cannot_generate_precise_descriptor": true,
+    "explicit_answer_can_override_weak_prior": true
+  },
+  "contract_version": "coffee-flavor-product-task-v0",
+  "evidence_precedence": [
+    "explicit_user_answer",
+    "direct_professional_descriptor_assertion",
+    "direct_structured_context_evidence",
+    "governed_semantic_or_normalization_evidence",
+    "weak_evidence_supported_context_prior",
+    "neutral_missing_evidence"
+  ],
+  "generated_at": "2026-09-01T00:00:00Z",
+  "inference_policy_version": "product-inference-policy-v0.1.0",
+  "input_contract": {
+    "c0_observation_unknown_is_not_user_choice": true,
+    "missing_context_fixture_behavior": "neutral_prior_for_policy_testing_only",
+    "question_fields": [
+      "question_instance_id",
+      "question_axis_id",
+      "selected_option_ids",
+      "unsure",
+      "no_selection"
+    ],
+    "required_product_fields": [
+      "c0_preparation_family_key",
+      "c1_roast_code",
+      "locale",
+      "product_contract_version",
+      "question_bank_version",
+      "inference_policy_version"
+    ],
+    "sensory_question_budget": {
+      "q1": "mandatory",
+      "q2_q4": "conditional",
+      "q5": "exceptional_maximum"
+    }
+  },
+  "output_rules": {
+    "exploratory_independently_main": false,
+    "force_fill": false,
+    "main_maximum": 5,
+    "secondary_maximum": 3
+  },
+  "owner_review_contract": {
+    "answer_effect_allowed_values": [
+      "supports",
+      "contradicts",
+      "insufficient evidence"
+    ],
+    "decision_allowed_values": [
+      "approve",
+      "reject",
+      "revise",
+      "defer"
+    ],
+    "decision_cells_must_start_blank": true,
+    "output_tier_allowed_values": [
+      "main",
+      "secondary",
+      "exploratory-only",
+      "neutral"
+    ]
+  },
+  "question_bank_version": "product-question-bank-v0.1.0",
+  "question_rules": {
+    "may_stop_before_q4": true,
+    "offline_eligibility": "at least two source families and at least two non-empty candidate partitions",
+    "product_eligibility": "false until user comprehension and information separation are validated"
+  },
+  "rights_scope": "PUBLIC_RESEARCH_SIMULATION_ONLY; PRODUCT_DEPLOYMENT_REMAINS_UNAUTHORIZED",
+  "score_semantics": "uncalibrated deterministic decision score; never a probability, likelihood, or confidence percentage",
+  "status": "OFFLINE_RESEARCH_POLICY_CHECKPOINT_NOT_PRODUCTION_VALIDATED",
+  "training_authorized": false,
+  "training_run_count": 0
+}

@@ -15,6 +15,7 @@ CURRENT_DATABASE = ROOT / "db" / "scripts" / "ci-verify-current-database.sh"
 RESTRICTED = ROOT / "db" / "scripts" / "ci-verify-restricted-local.sh"
 CI_WORKFLOW = ROOT / ".github" / "workflows" / "ci.yml"
 HISTORICAL_WORKFLOW = ROOT / ".github" / "workflows" / "historical-replay.yml"
+BATCH6_GENERATOR = ROOT / "db" / "scripts" / "generate-batch6-semantic-corpus.py"
 
 ALLOWED_CLASSES = {
     "PUSH_REQUIRED_CURRENT",
@@ -38,6 +39,7 @@ REQUIRED_IDS = {
     "normalization-smoke",
     "round3m-live-adapters-public",
     "public-snapshot-contract",
+    "product-inference-v0",
     "current-database-contract",
     "restricted-real-replay",
     "two-clean-database-historical-replay",
@@ -56,6 +58,7 @@ CURRENT_TOKENS = {
     "test-round3m-live-adapters.py",
     "--public-fixture",
     "--public-snapshot",
+    "test-product-inference-v0.py",
 }
 
 
@@ -85,6 +88,7 @@ def main() -> int:
     restricted = RESTRICTED.read_text(encoding="utf-8")
     ci_workflow = CI_WORKFLOW.read_text(encoding="utf-8")
     historical_workflow = HISTORICAL_WORKFLOW.read_text(encoding="utf-8")
+    batch6_generator = BATCH6_GENERATOR.read_text(encoding="utf-8")
     require(all(token in current for token in CURRENT_TOKENS), "current artifact entrypoint omits a public test")
     require("ci-verify-current-artifacts.sh" in historical, "historical entrypoint omits current artifact contracts")
     require("rebuild-twice.sh" in historical, "historical entrypoint omits two-build replay")
@@ -99,6 +103,8 @@ def main() -> int:
     require("python -X dev -B db/scripts/test-current-descriptor-data.py" in ci_workflow, "public artifact workflow omits current descriptor diagnostic")
     require("apt-get install --yes --no-install-recommends python3 ca-certificates" in ci_workflow, "current database job must install its Python runtime explicitly")
     require(all(token in current_database for token in ("python3", "psql", "createdb", "dropdb")), "current database preflight omits a required command")
+    require("tempfile.gettempdir()" in batch6_generator, "Batch 6 must select a platform-neutral temporary root")
+    require('"/private/tmp/coffee-flavor-round3m-post30k' not in batch6_generator, "Batch 6 must not require a macOS-only temporary path")
     require("workflow_dispatch:" in historical_workflow and "schedule:" in historical_workflow, "historical workflow must be dispatchable and scheduled")
     require("push:" in historical_workflow and "research/coffee-sensory-data-ml-readiness" in historical_workflow, "historical workflow must validate the protected research branch before main promotion")
     require("timeout-minutes: 75" in historical_workflow and "ci-verify.sh" in historical_workflow, "historical replay command or budget changed")

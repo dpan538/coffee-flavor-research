@@ -56,3 +56,33 @@ two-empty-database reproducibility replay last. The latter includes all
 migrations, artifact loading, SQL validation (including negative and query-plan
 contracts), and byte comparisons twice. It is historical replay, not a safe
 per-push latency budget.
+
+## Recovery amendment and product checkpoint
+
+The recovery amendment authorized continued work on the same long-lived
+research branch. Commits `63c39ad` and `898586d` decomposed CI; the full
+PostgreSQL 17 historical run `33461527537` passed at `898586d` in 35m52s. The
+first recovery commit `aaaa615` restores explicit Python runtimes, adds
+database command preflights, and surfaces complete generator diagnostics.
+The second recovery commit `88cd394` replaces the macOS-only Batch 6 staging
+default with `tempfile.gettempdir()`. Run `33470462970` passes all three normal
+jobs, and run `33470462938` passes the complete historical replay. Remote
+`main` was then fast-forwarded directly from the selected research worktree to
+`88cd394`; the unrelated local `main` checkout was not used.
+
+The local product checkpoint adds 15 checksum-protected artifacts and three
+scripts without changing a migration, historical corpus, semantic decision,
+rights decision, model file, or frontend. Product tests pass with 120 cases,
+56 context cells, zero rights leaks, complete explanations, and byte-identical
+regeneration.
+
+```text
+LOCAL_PRODUCT_INFERENCE_TEST_PASS=true
+LOCAL_BYTE_REPRODUCIBILITY_PASS=true
+LOCAL_PUBLIC_RESTRICTED_BOUNDARY_PASS=true
+LOCAL_MODEL_FILE_AUDIT_PASS=true
+TRAINING_RUN_COUNT=0
+TRAINING_AUTHORIZED=false
+PREVIOUS_ROUND_PROMOTED_TO_MAIN=true
+MAIN_AFTER_PREVIOUS_PROMOTION_SHA=88cd394f96df0d409ea2b40b30396b314beecdd8
+```

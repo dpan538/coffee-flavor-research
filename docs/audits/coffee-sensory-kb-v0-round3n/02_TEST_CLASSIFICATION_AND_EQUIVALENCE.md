@@ -1,14 +1,14 @@
 # Test classification and equivalence
 
 The machine-readable inventory is
-`db/data/ci/CI_TEST_CLASSIFICATION_AND_EQUIVALENCE.json`. It maps all 17
-existing CI verification contracts to a new command, class, required inputs,
+`db/data/ci/CI_TEST_CLASSIFICATION_AND_EQUIVALENCE.json`. It maps all 18
+current CI verification contracts to a command, class, required inputs,
 expected outputs, and asserted coverage.
 
 ```text
-CLASSIFICATION_COUNT=17
+CLASSIFICATION_COUNT=18
 MANDATORY_TEST_SKIP_COUNT=0
-PUSH_REQUIRED_CURRENT_COUNT=15
+PUSH_REQUIRED_CURRENT_COUNT=16
 RESTRICTED_LOCAL_REQUIRED_COUNT=1
 SCHEDULED_HISTORICAL_COUNT=1
 UNCLASSIFIED_TEST_COUNT=0
@@ -22,6 +22,11 @@ test command. `test-ci-workflow-contract.py` fails if an inventory row is
 missing, a class is invalid, a public test token is absent, the historical
 rebuild disappears, a restricted replay becomes permissive, or the workflow
 loses a bounded push job or dispatchable historical workflow.
+
+The added `product-inference-v0` row is push-required and release-required. It
+covers the 8 × 7 matrix, typed effects, 120 policy fixtures, output limits,
+abstention, rights, provenance, explanations, checksums, no-training state, and
+byte-identical regeneration.
 
 Restricted real-input replay was never a public GitHub Actions pass because
 the owner-controlled data is intentionally unavailable there. It now has an
