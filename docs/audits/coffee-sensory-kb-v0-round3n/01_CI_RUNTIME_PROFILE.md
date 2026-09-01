@@ -32,17 +32,22 @@ execution transcript; it is not presented as a passing profile.
 
 ## New execution structure
 
-| Verification job                | Trigger                    |            Budget | Coverage                                                                              |
-| ------------------------------- | -------------------------- | ----------------: | ------------------------------------------------------------------------------------- |
-| `checks`                        | push/PR                    |            25 min | unchanged frontend CI                                                                 |
-| `database-artifacts`            | push/PR                    |            15 min | all public corpus, generated-artifact, checksum, and public-snapshot contracts        |
-| `database-current`              | push/PR                    |            20 min | one clean PostgreSQL 17 migration, Round 3M load, and complete SQL suite              |
-| `historical-replay`             | dispatch + weekly schedule |            75 min | original public artifact path plus the two-clean-database byte-reproducibility replay |
-| `ci-verify-restricted-local.sh` | owner local                | no remote timeout | required real restricted-input replay, fail-closed when inputs are absent             |
+| Verification job                | Trigger                                              |            Budget | Coverage                                                                              |
+| ------------------------------- | ---------------------------------------------------- | ----------------: | ------------------------------------------------------------------------------------- |
+| `checks`                        | push/PR                                              |            25 min | unchanged frontend CI                                                                 |
+| `database-artifacts`            | push/PR                                              |            15 min | all public corpus, generated-artifact, checksum, and public-snapshot contracts        |
+| `database-current`              | push/PR                                              |            20 min | one clean PostgreSQL 17 migration, Round 3M load, and complete SQL suite              |
+| `historical-replay`             | protected research push + dispatch + weekly schedule |            75 min | original public artifact path plus the two-clean-database byte-reproducibility replay |
+| `ci-verify-restricted-local.sh` | owner local                                          | no remote timeout | required real restricted-input replay, fail-closed when inputs are absent             |
 
 The 75-minute dedicated replay limit follows the 1,920-second observed lower
 bound and reserves more than a full current push budget for the second clean
 database build. It is deliberately not applied to the normal push jobs.
+
+The protected research-branch push trigger is required for this checkpoint:
+GitHub only registers `workflow_dispatch` workflows from the default branch,
+which has not yet been promoted. It remains manually dispatchable after the
+validated fast-forward to `main`.
 
 Stage-level markers use `CI_STAGE_START` and `CI_STAGE_END` and emit elapsed
 seconds plus the wrapped command's exit status. A failed subcommand returns its

@@ -94,6 +94,7 @@ def main() -> int:
     require("database-artifacts:" in ci_workflow and "database-current:" in ci_workflow, "push workflow lacks decomposed database jobs")
     require("timeout-minutes: 15" in ci_workflow and "timeout-minutes: 20" in ci_workflow, "push database budgets changed")
     require("workflow_dispatch:" in historical_workflow and "schedule:" in historical_workflow, "historical workflow must be dispatchable and scheduled")
+    require("push:" in historical_workflow and "research/coffee-sensory-data-ml-readiness" in historical_workflow, "historical workflow must validate the protected research branch before main promotion")
     require("timeout-minutes: 75" in historical_workflow and "ci-verify.sh" in historical_workflow, "historical replay command or budget changed")
     print(f"CI_TEST_CLASSIFICATION_COUNT={len(tests)}")
     print("MANDATORY_TEST_SKIP_COUNT=0")

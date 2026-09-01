@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "17 3 * * 1"
+  # GitHub registers workflow_dispatch from the default branch. This single
+  # protected-branch trigger validates the checkpoint before promotion.
+  push:
+    branches: [research/coffee-sensory-data-ml-readiness]
 
 permissions:
   contents: read
