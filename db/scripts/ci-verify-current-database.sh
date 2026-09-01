@@ -13,6 +13,21 @@ DATABASE_CREATED=false
 
 source "$SCRIPT_DIR/ci-stage-timing.sh"
 
+missing_command=false
+for required_command in python3 psql createdb dropdb; do
+  if ! command -v "$required_command" >/dev/null 2>&1; then
+    printf 'ERROR: current database verification requires command: %s\n' "$required_command" >&2
+    missing_command=true
+  else
+    printf 'CI_CURRENT_DATABASE_COMMAND_%s=%s\n' \
+      "$(printf '%s' "$required_command" | tr '[:lower:]' '[:upper:]')" \
+      "$(command -v "$required_command")"
+  fi
+done
+if [[ "$missing_command" == true ]]; then
+  exit 69
+fi
+
 if [[ "${COFFEE_KB_ALLOW_DATABASE_DROP:-}" != 1 ]]; then
   printf 'ERROR: set COFFEE_KB_ALLOW_DATABASE_DROP=1 for the disposable current database.\n' >&2
   exit 77

@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from collections import Counter
@@ -148,6 +149,47 @@ def snapshot() -> dict[str, str]:
 
 def bool_count(values: list[dict[str, str]], field: str) -> int:
     return sum(row[field] == "true" for row in values)
+
+
+def run_checked(command: list[str]) -> None:
+    completed = subprocess.run(
+        command,
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if completed.returncode == 0:
+        return
+
+    relevant_environment = {
+        name: os.environ.get(name, "<unset>")
+        for name in (
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "PYTHON_COMMAND",
+            "PYTHONHASHSEED",
+            "PYTHONUTF8",
+            "TZ",
+        )
+    }
+    print(f"FAILED_COMMAND={command!r}", file=sys.stderr)
+    print(f"FAILED_RETURN_CODE={completed.returncode}", file=sys.stderr)
+    print(f"FAILED_PYTHON_VERSION={sys.version!r}", file=sys.stderr)
+    print(f"FAILED_WORKING_DIRECTORY={ROOT}", file=sys.stderr)
+    print(
+        "FAILED_RELEVANT_ENVIRONMENT="
+        + json.dumps(relevant_environment, sort_keys=True),
+        file=sys.stderr,
+    )
+    print("FAILED_STDOUT_BEGIN", file=sys.stderr)
+    print(completed.stdout, file=sys.stderr, end="" if completed.stdout.endswith("\n") else "\n")
+    print("FAILED_STDOUT_END", file=sys.stderr)
+    print("FAILED_STDERR_BEGIN", file=sys.stderr)
+    print(completed.stderr, file=sys.stderr, end="" if completed.stderr.endswith("\n") else "\n")
+    print("FAILED_STDERR_END", file=sys.stderr)
+    completed.check_returncode()
 
 
 def main() -> None:
@@ -386,35 +428,11 @@ def main() -> None:
     check(not any(path.suffix.lower() in forbidden_suffixes for path in DATA.rglob("*")), "model weight persisted")
 
     before = snapshot()
-    subprocess.run([sys.executable, str(GENERATOR)], cwd=ROOT, check=True, capture_output=True, text=True)
-    subprocess.run(
-        [sys.executable, str(BATCH4_GENERATOR)],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    subprocess.run(
-        [sys.executable, "-B", str(BATCH6_GENERATOR)],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    subprocess.run(
-        [sys.executable, "-B", str(BATCH7_RUNNER), "semantic"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    subprocess.run(
-        [sys.executable, "-B", str(BATCH7_RUNNER), "checkpoint"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
+    run_checked([sys.executable, str(GENERATOR)])
+    run_checked([sys.executable, str(BATCH4_GENERATOR)])
+    run_checked([sys.executable, "-B", str(BATCH6_GENERATOR)])
+    run_checked([sys.executable, "-B", str(BATCH7_RUNNER), "semantic"])
+    run_checked([sys.executable, "-B", str(BATCH7_RUNNER), "checkpoint"])
     check(before == snapshot(), "generator is not deterministic")
 
     print("CURRENT_DESCRIPTOR_DATA_CONTRACT_PASS=true")

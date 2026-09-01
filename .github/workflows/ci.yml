@@ -39,10 +39,32 @@ jobs:
     name: Public artifact and corpus contracts
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      PYTHON_COMMAND: python
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Record public-artifact Python runtime
+        run: |
+          python --version
+          python3 --version
+          command -v python
+          command -v python3
+
+      - name: Run direct Batch 6 diagnostic
+        run: |
+          trap 'git restore --source=HEAD --worktree -- db/data/current' EXIT
+          python -X dev -B db/scripts/generate-batch6-semantic-corpus.py
+
+      - name: Run current descriptor diagnostic
+        run: python -X dev -B db/scripts/test-current-descriptor-data.py
 
       - name: Run current public artifact verification
         run: bash db/scripts/ci-verify-current-artifacts.sh
@@ -69,6 +91,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install deterministic database-test runtime
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends python3 ca-certificates
+          command -v python3
+          python3 --version
 
       - name: Run current database verification
         env:
