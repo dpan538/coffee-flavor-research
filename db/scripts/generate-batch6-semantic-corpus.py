@@ -14,6 +14,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import tempfile
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping
@@ -26,7 +27,7 @@ POST40 = ROOT / "db" / "data" / "post40k-extension-staging"
 POST30_RESTRICTED = Path(
     os.environ.get(
         "BATCH6_POST30_RESTRICTED_ROOT",
-        "/private/tmp/coffee-flavor-round3m-post30k/post30k_extension",
+        str(Path(tempfile.gettempdir()) / "coffee-flavor-round3m-post30k" / "post30k_extension"),
     )
 )
 RESTRICTED_REVIEW = POST30_RESTRICTED / "batch6_semantic_review"
