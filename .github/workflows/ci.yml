@@ -35,10 +35,22 @@ jobs:
       - name: Run unified web verification
         run: npm run ci:verify:web
 
-  database:
-    name: PostgreSQL 17 ontology and corpus gates
+  database-artifacts:
+    name: Public artifact and corpus contracts
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run current public artifact verification
+        run: bash db/scripts/ci-verify-current-artifacts.sh
+
+  database-current:
+    name: PostgreSQL 17 current schema and SQL contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     container:
       image: postgres:17-bookworm
@@ -58,12 +70,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Python for deterministic freeze exports
-        run: |
-          apt-get update
-          apt-get install --yes --no-install-recommends python3
-
-      - name: Run unified database verification
+      - name: Run current database verification
         env:
           PGHOST: postgres
           PGPORT: 5432
@@ -71,6 +78,5 @@ jobs:
           PGPASSWORD: postgres
           PGDATABASE: postgres
           COFFEE_KB_ALLOW_DATABASE_DROP: 1
-          COFFEE_KB_REBUILD_DB_ONE: coffee_sensory_kb_v0_ci_one
-          COFFEE_KB_REBUILD_DB_TWO: coffee_sensory_kb_v0_ci_two
-        run: bash db/scripts/ci-verify.sh
+          COFFEE_KB_CURRENT_DB: coffee_sensory_kb_v0_ci_current
+        run: bash db/scripts/ci-verify-current-database.sh

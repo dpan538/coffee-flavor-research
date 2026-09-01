@@ -1,0 +1,53 @@
+name: Historical replay
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  historical-replay:
+    name: PostgreSQL 17 full two-clean-database replay
+    runs-on: ubuntu-latest
+    # The prior 35-minute job reached its final replay at 1,920 seconds. This
+    # dedicated 75-minute budget leaves room for the two clean builds while
+    # keeping all per-push jobs bounded below 20 minutes.
+    timeout-minutes: 75
+
+    container:
+      image: postgres:17-bookworm
+
+    services:
+      postgres:
+        image: postgres:17-bookworm
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python for deterministic artifact verification
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends python3
+
+      - name: Run full historical replay
+        env:
+          PGHOST: postgres
+          PGPORT: 5432
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          PGDATABASE: postgres
+          COFFEE_KB_ALLOW_DATABASE_DROP: 1
+          COFFEE_KB_REBUILD_DB_ONE: coffee_sensory_kb_v0_historical_one
+          COFFEE_KB_REBUILD_DB_TWO: coffee_sensory_kb_v0_historical_two
+        run: bash db/scripts/ci-verify.sh

@@ -1,0 +1,193 @@
+{
+  "contract_version": "ci-test-classification-and-equivalence.v1",
+  "mandatory_test_skip_count": 0,
+  "tests": [
+    {
+      "id": "web-verification",
+      "old_command": "bash scripts/ci-verify-web.sh",
+      "new_command": "CI workflow checks job: npm run ci:verify:web",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "committed web application and package lock",
+      "expected_outputs": "format, type, unit, build, and Playwright pass markers",
+      "coverage": "unchanged web verification contract"
+    },
+    {
+      "id": "public-fixture-replay",
+      "old_command": "python3 -B db/scripts/run-corpus-ci.py --public-fixture",
+      "new_command": "ci-verify-current-artifacts.sh: PUBLIC_FIXTURE_REPLAY",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "committed fixture and public-safe scripts",
+      "expected_outputs": "PUBLIC_FIXTURE_REPLAY receipt",
+      "coverage": "public full-pipeline fixture replay"
+    },
+    {
+      "id": "round3m-artifact-contract",
+      "old_command": "python3 -B db/scripts/test-round3m-artifact-contract.py",
+      "new_command": "ci-verify-current-artifacts.sh: ROUND3M_ARTIFACT_CONTRACT",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "db/data/round3m public artifacts and checksums",
+      "expected_outputs": "ROUND3M_ARTIFACT_CONTRACT_PASS",
+      "coverage": "artifact lineage, counts, checksums, and public boundary"
+    },
+    {
+      "id": "current-descriptor-data",
+      "old_command": "python3 -B db/scripts/test-current-descriptor-data.py",
+      "new_command": "ci-verify-current-artifacts.sh: CURRENT_DESCRIPTOR_DATA",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "current descriptor artifacts",
+      "expected_outputs": "current descriptor contract pass",
+      "coverage": "current generated descriptor state"
+    },
+    {
+      "id": "batch3-cleaning",
+      "old_command": "python3 -B db/scripts/test-batch3-candidate-cleaning.py",
+      "new_command": "ci-verify-current-artifacts.sh: BATCH3_CANDIDATE_CLEANING",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "Batch 3 frozen/public artifacts",
+      "expected_outputs": "Batch 3 contract pass",
+      "coverage": "historical 20K snapshot preservation"
+    },
+    {
+      "id": "post20k-public-extension",
+      "old_command": "env -u POST20K_RESTRICTED_ROOT python3 -B db/scripts/test-post20k-extension.py",
+      "new_command": "ci-verify-current-artifacts.sh: POST20K_PUBLIC_EXTENSION",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "public post20K sidecars",
+      "expected_outputs": "public extension contract pass",
+      "coverage": "public isolation and restricted-locator boundary"
+    },
+    {
+      "id": "batch4-cleaned-30k",
+      "old_command": "python3 -B db/scripts/test-batch4-cleaned-30k.py",
+      "new_command": "ci-verify-current-artifacts.sh: BATCH4_CLEANED_30K",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "Batch 4 generator, 30K artifacts, Batch 6 and 7 generators",
+      "expected_outputs": "byte-identical current SHA256 receipt",
+      "coverage": "historical replay regeneration and Batch 7 restoration"
+    },
+    {
+      "id": "post30k-public-extension",
+      "old_command": "env -u POST30K_RESTRICTED_ROOT python3 -B db/scripts/test-post30k-extension.py",
+      "new_command": "ci-verify-current-artifacts.sh: POST30K_PUBLIC_EXTENSION",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "public post30K sidecars",
+      "expected_outputs": "public extension contract pass",
+      "coverage": "30K snapshot isolation"
+    },
+    {
+      "id": "batch6-semantic-corpus",
+      "old_command": "python3 -B db/scripts/test-batch6-semantic-corpus.py",
+      "new_command": "ci-verify-current-artifacts.sh: BATCH6_SEMANTIC_CORPUS",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "40K semantic corpus artifacts",
+      "expected_outputs": "Batch 6 contract pass",
+      "coverage": "semantic corpus reproducibility"
+    },
+    {
+      "id": "batch7-pipeline",
+      "old_command": "python3 -B db/scripts/test-batch7-pipeline.py",
+      "new_command": "ci-verify-current-artifacts.sh: BATCH7_PIPELINE",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "descriptor pipeline and current outputs",
+      "expected_outputs": "Batch 7 pipeline contract pass",
+      "coverage": "accepted 50K semantic and checkpoint outputs"
+    },
+    {
+      "id": "post40k-public-extension",
+      "old_command": "env -u POST40K_RESTRICTED_ROOT python3 -B db/scripts/test-post40k-extension.py",
+      "new_command": "ci-verify-current-artifacts.sh: POST40K_PUBLIC_EXTENSION",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "public post40K sidecars",
+      "expected_outputs": "public extension contract pass",
+      "coverage": "40K snapshot isolation"
+    },
+    {
+      "id": "normalization-smoke",
+      "old_command": "python3 -B db/scripts/test-normalization-smoke.py",
+      "new_command": "ci-verify-current-artifacts.sh: NORMALIZATION_SMOKE",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "committed normalization smoke artifact package",
+      "expected_outputs": "normalization smoke contract pass",
+      "coverage": "no training artifact and immutable smoke baseline"
+    },
+    {
+      "id": "round3m-live-adapters-public",
+      "old_command": "env -u ROUND3M_RESTRICTED_ROOT -u ROUND3L_RESTRICTED_ROOT python3 -B db/scripts/test-round3m-live-adapters.py",
+      "new_command": "ci-verify-current-artifacts.sh: ROUND3M_LIVE_ADAPTERS_PUBLIC",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "public adapter fixtures and public-safe artifacts",
+      "expected_outputs": "public adapter tests and explicit restricted skips",
+      "coverage": "professional-tier, rights, source-text, C0, and C1 safeguards"
+    },
+    {
+      "id": "public-snapshot-contract",
+      "old_command": "python3 -B db/scripts/run-corpus-ci.py --public-snapshot",
+      "new_command": "ci-verify-current-artifacts.sh: PUBLIC_SNAPSHOT_CONTRACT",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "committed public ledgers, manifests, and SHA256 receipts",
+      "expected_outputs": "PUBLIC_SNAPSHOT_CONTRACT_PASS",
+      "coverage": "checksums, leakage, model-file, and public-safe contracts"
+    },
+    {
+      "id": "current-database-contract",
+      "old_command": "db/scripts/rebuild-twice.sh build step: apply.sh, load-round3m-artifacts.sh, test.sh",
+      "new_command": "ci-verify-current-database.sh: one clean database build",
+      "classification": "PUSH_REQUIRED_CURRENT",
+      "push_required": true,
+      "release_required": true,
+      "expected_inputs": "all SQL migrations, seeds, Round3M artifacts, PostgreSQL 17",
+      "expected_outputs": "migration, artifact-load, positive, negative, semantic, retrieval, and query-plan passes",
+      "coverage": "complete current database contract once per push"
+    },
+    {
+      "id": "restricted-real-replay",
+      "old_command": "python3 -B db/scripts/run-corpus-ci.py --restricted-real",
+      "new_command": "ci-verify-restricted-local.sh: --require-restricted-real; historical workflow retains public declaration",
+      "classification": "RESTRICTED_LOCAL_REQUIRED",
+      "push_required": false,
+      "release_required": true,
+      "expected_inputs": "owner-controlled COFFEE_FLAVOR_RESTRICTED_ROOT",
+      "expected_outputs": "LOCAL_RESTRICTED_REAL_REPLAY_PASS and public SHA identity",
+      "coverage": "real restricted replay; never represented as a public CI pass"
+    },
+    {
+      "id": "two-clean-database-historical-replay",
+      "old_command": "python3 -B db/scripts/run-with-heartbeat.py -- bash db/scripts/rebuild-twice.sh",
+      "new_command": "historical-replay.yml: ci-verify.sh HISTORICAL_TWO_CLEAN_DATABASE_REPLAY",
+      "classification": "SCHEDULED_HISTORICAL",
+      "push_required": false,
+      "release_required": true,
+      "expected_inputs": "all current SQL migrations, seeds, artifacts, PostgreSQL 17",
+      "expected_outputs": "two separate clean database inventories with byte-identical comparisons",
+      "coverage": "complete historical migration replay and reproducibility"
+    }
+  ]
+}
