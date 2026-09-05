@@ -355,16 +355,12 @@ describe("local research export", () => {
       sessionExportSchema.parse({ ...record, c1Unsure: false }),
     ).toThrow();
   });
-  it("contains no transmission or persistent identity collection in the route", () => {
-    const route = readFileSync(
-      new URL("../app/routes/research.tsx", import.meta.url),
-      "utf8",
-    );
-    expect(route).not.toMatch(
-      /\bfetch\s*\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket|action\s*=/,
-    );
-    expect(route).toContain("URL.createObjectURL");
-    expect(route).toContain("URL.revokeObjectURL");
+  it("rejects unrecognized identity and endpoint fields in the retained contract", () => {
+    for (const key of ["personalName", "remoteEndpoint"])
+      expect(
+        sessionExportSchema.safeParse({ ...fixture(), [key]: "disallowed" })
+          .success,
+      ).toBe(false);
   });
   it("rejects tampered event IDs, counters, output and replay states", () => {
     const record = fixture();

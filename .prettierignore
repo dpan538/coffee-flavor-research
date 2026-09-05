@@ -21,6 +21,9 @@ db/data/product-inference-v0.2/
 db/data/product-benchmark-v0.2/
 db/data/product-gap-mining-v0.2/
 
+# Backend experiment files retain generator-owned serialization and hashes.
+db/data/backend-model-20260905/
+
 # Rights-reviewed Round 3E external snapshots retain the exact acquired bytes;
 # their SHA-256 values are validated against SOURCE_MANIFEST.json.
 db/data/round3e/raw/mendeley_ftnir_v4/

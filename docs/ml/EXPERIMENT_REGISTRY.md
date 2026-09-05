@@ -1,6 +1,27 @@
 # Experiment registry
 
-## Current receipt
+## Backend flavor recovery — 2026-09-05 (current)
+
+The owner authorized backend fitting for personal noncommercial research on
+2026-09-05. Earlier no-training receipts below describe historical scope.
+
+`backend-flavor-record-recovery-20260905` fits a regularized linear candidate
+scorer on 79 records / 77 coffee groups, with 16 development and 17 locked test
+groups. The task is `RECORD_RECOVERY_PROXY`; independent user-answer labels are
+not available. Three regularization settings were actually fitted; development
+data selected the retained M1 model. Test observed-descriptor recovery NDCG@5 is
+0.495329 for M1 versus 0.465651 for B1/B2. The paired coffee-group difference is
+0.029679, with 95% bootstrap interval [-0.037823, 0.097955]: `INCONCLUSIVE`.
+All models cover every test case. Weights remain in owner-controlled local
+storage. The core run is frozen; bounded balanced/auxiliary comparisons will be
+recorded in the same experiment directory.
+
+Authoritative records: [manifest](../../db/data/backend-model-20260905/dataset_manifest.json),
+[configuration](../../db/data/backend-model-20260905/experiment_config.json),
+[metrics](../../db/data/backend-model-20260905/metrics.json), and
+[run receipt](../../db/data/backend-model-20260905/run_receipt.json).
+
+## Historical Batch 5 receipt
 
 ```text
 MODEL_RUN_COUNT=1

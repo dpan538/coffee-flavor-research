@@ -1,0 +1,105 @@
+{
+  "all_legal_test_cases_reported": true,
+  "candidate_count": 52,
+  "conclusion": "INCONCLUSIVE",
+  "dev_trials": [
+    {
+      "C": 0.1,
+      "dev_ndcg": 0.5619933514148152,
+      "iterations": [165],
+      "training_groups": 77,
+      "training_rows": 1040
+    },
+    {
+      "C": 1.0,
+      "dev_ndcg": 0.5191511133743923,
+      "iterations": [152],
+      "training_groups": 77,
+      "training_rows": 1040
+    },
+    {
+      "C": 10.0,
+      "dev_ndcg": 0.474574309747517,
+      "iterations": [195],
+      "training_groups": 77,
+      "training_rows": 1040
+    }
+  ],
+  "interpretation": "Recovery of recorded positive descriptions only; unlabelled candidates are not scored as true sensory errors. No real question-answer policy validation.",
+  "models": {
+    "B0": {
+      "coverage": 1.0,
+      "direct_restatement_recall_at_5": 0.4509803921568627,
+      "duplicate_rate": 0.0,
+      "latency_p50_ms": 0.10329089127480984,
+      "latency_p95_ms": 0.2541914582252502,
+      "observed_recovery_ndcg_at_5": 0.46565090435937834,
+      "observed_recovery_recall_at_5": 0.5413632119514472,
+      "observed_recovery_recall_at_8": 0.6936507936507937
+    },
+    "B1": {
+      "coverage": 1.0,
+      "direct_restatement_recall_at_5": 1.0,
+      "duplicate_rate": 0.0,
+      "latency_p50_ms": 0.26008300483226776,
+      "latency_p95_ms": 0.5150164011865854,
+      "observed_recovery_ndcg_at_5": 0.46565090435937834,
+      "observed_recovery_recall_at_5": 0.5413632119514472,
+      "observed_recovery_recall_at_8": 0.6936507936507937
+    },
+    "B2": {
+      "coverage": 1.0,
+      "direct_restatement_recall_at_5": 0.9019607843137254,
+      "duplicate_rate": 0.0,
+      "latency_p50_ms": 0.2038339152932167,
+      "latency_p95_ms": 0.34031639806926234,
+      "observed_recovery_ndcg_at_5": 0.46565090435937834,
+      "observed_recovery_recall_at_5": 0.5413632119514472,
+      "observed_recovery_recall_at_8": 0.6936507936507937
+    },
+    "M1": {
+      "coverage": 1.0,
+      "direct_restatement_recall_at_5": 0.7745098039215685,
+      "duplicate_rate": 0.0,
+      "latency_p50_ms": 3.2573749776929617,
+      "latency_p95_ms": 3.897283598780632,
+      "observed_recovery_ndcg_at_5": 0.495329486392799,
+      "observed_recovery_recall_at_5": 0.608029878618114,
+      "observed_recovery_recall_at_8": 0.6871148459383754
+    }
+  },
+  "no_test_tuning": true,
+  "paired_group_uncertainty": {
+    "B0": {
+      "bootstrap_resamples": 5000,
+      "delta": 0.029678582033420626,
+      "group_count": 17,
+      "paired_group_bootstrap_95_interval": [
+        -0.03782306600203098, 0.09795510851865853
+      ]
+    },
+    "B1": {
+      "bootstrap_resamples": 5000,
+      "delta": 0.029678582033420626,
+      "group_count": 17,
+      "paired_group_bootstrap_95_interval": [
+        -0.03782306600203098, 0.09795510851865853
+      ]
+    },
+    "B2": {
+      "bootstrap_resamples": 5000,
+      "delta": 0.029678582033420626,
+      "group_count": 17,
+      "paired_group_bootstrap_95_interval": [
+        -0.03782306600203098, 0.09795510851865853
+      ]
+    }
+  },
+  "real_independent_answer_cases": 0,
+  "real_product_conclusion": "INCONCLUSIVE",
+  "selected_C": 0.1,
+  "task": "RECORD_RECOVERY_PROXY",
+  "test_group_count": 17,
+  "test_record_count": 17,
+  "unseen_test_hidden_descriptor_count": 0
+}

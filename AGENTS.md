@@ -58,6 +58,28 @@ an entire frontend package. There are currently no shared frontend exceptions.
 
 ## Product
 
+Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;
+monetization, commercial training and commercial deployment are not required.
+Resume discussion of the research does not authorize portfolio or PWA work.
+Admit source material for `NONCOMMERCIAL_RESEARCH_USE` under its actual applicable
+license and satisfied conditions; commercial use, raw-data release and weight
+release are separate decisions. Standard licenses need not explicitly name ML.
+Do not grant permission to unknown, unlicensed, training-prohibited or approval-
+required sources. Keep original machine-license fields and author notices;
+enforce their shared permitted noncommercial scope without rewriting either.
+
+Keep data roles explicit: `CORE_PROFESSIONAL`, `AUX_COFFEE_WEAK_LABEL`,
+`AUX_SEMANTIC`, `AUX_CONTEXT`, `AUX_USER_RESEARCH`. Auxiliary data must not enter
+the core evaluation or acquire a higher evidence grade by association. Compound
+source categories remain compound. Other-food semantics do not become coffee
+observations. Source-native roast terms do not automatically establish calibrated
+seven-level C1 mappings. Freeze the core split/configuration before at most two
+additional balanced/auxiliary comparisons; use DEV decisions and the unchanged
+locked TEST scope, never TEST-driven iteration. Cache sources and models in
+persistent owner-controlled storage. Do not create additional design/license
+report hierarchies or broaden source discovery beyond eight targeted routes and
+90 minutes for the current experiment.
+
 Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
 system for ordinary coffee tasting. The intended product uses low-burden
 context and perception questions to return sensory candidates that help users

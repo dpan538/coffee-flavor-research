@@ -1,0 +1,25 @@
+{
+  "code_hashes": {
+    "db/scripts/flavor_backend.py": "1acc5c7f5e01a8a65092353ebda082d3c619f3bdda3551bfd31d66abd6e442cc",
+    "db/scripts/prepare-backend-model-data.py": "aa58681f77b92330696140c249d2b62b05f59b0ffe9959d5864fdae6c32065f7",
+    "db/scripts/run-backend-model.py": "21f535ac710cfa3e179bca076f3fc8fffb0b26b52e6460f698fd9a90b3372568"
+  },
+  "code_sha": "303e9d7f36b544b921cf04deabb674908ea9247f",
+  "code_worktree_status": "Development code hashes are authoritative until incremental commit; no test-label-based tuning",
+  "command": "python db/scripts/run-backend-model.py --owner-root \"$COFFEE_BACKEND_MODEL_ROOT\"",
+  "completed_at_unix": 1788592418.15136,
+  "conclusion": "INCONCLUSIVE",
+  "elapsed_seconds": 1.3726511001586914,
+  "experiment_id": "backend-flavor-record-recovery-20260905",
+  "frontend_authorized": false,
+  "model_fits": 3,
+  "model_path": "$COFFEE_BACKEND_MODEL_ROOT/models/M1.model.json",
+  "model_retained_and_reloaded": true,
+  "model_sha256": "f13dfc7e5b920d4eafbe81f4fe10bbda33df496b68a5446cde4b765981304f5b",
+  "product_evidence_status": "INCONCLUSIVE; proxy only; no independent answer labels",
+  "started_at_unix": 1788592416.778709,
+  "training_episode_count": 316,
+  "training_independent_group_count": 77,
+  "training_record_count": 79,
+  "training_target_rows": 1040
+}

@@ -1,0 +1,735 @@
+{
+  "admitted_source": {
+    "author_usage_notice": "Non-commercial research only (Creative Commons Attribution Non Commercial 4.0 International)",
+    "conditions_checked": {
+      "attribution_in_manifest": true,
+      "changes_disclosed": "Exact/alias/morphological governed descriptors deduplicated within coffee; modifiers/compounds excluded; identity grouping; masked record-recovery episodes",
+      "model_weights_not_released": true,
+      "noncommercial_local_research_only": true,
+      "raw_data_not_redistributed": true,
+      "separate_source_permission_propagation": false
+    },
+    "creators": [
+      "Golovinsky, Rodion",
+      "Ivanov, Ilya",
+      "Aglikov, Aleksandr",
+      "Aliev, Timur",
+      "Timofeenko, Ivan",
+      "Novikov, Alexander",
+      "Zayats, Mikhail",
+      "Ashikhmina, Mariia",
+      "Orlova, Olga",
+      "Masalovich, Maria",
+      "Ekaterina, Skorb"
+    ],
+    "current_experiment_use_basis": "NONCOMMERCIAL_RESEARCH_USE under the shared scope of machine license and author notice",
+    "family": "family.zenodo_golovinsky_q_grader_dataset",
+    "license": "Machine: CC BY 4.0; author notice: CC BY-NC 4.0; both preserved",
+    "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "machine_license_field": "CC BY 4.0",
+    "metadata_sha256": "76308a42667d93de70017ad6c570b60ab3f31ac7d3f24d556d4a3e592c8e6f9b",
+    "source_record_id": "20840464",
+    "source_sha256": "85df699ea18f5849ef3104100a20570d5df13e7d6cc7ce53e20c3df8a5219150",
+    "title": "Electrochemical profiles of coffee drink samples",
+    "url": "https://zenodo.org/records/20840464",
+    "version": "1.1"
+  },
+  "authorization": "Explicit owner backend-model instruction 2026-09-05; noncommercial local comparative research only; no deployment or weight release",
+  "c1_mapping": {
+    "basis": "Literal package/source label equality only; not calibrated seven-bin Agtron mapping; all other roast strings remain source-missing for features",
+    "mapping": {
+      "Dark roast": "dark",
+      "Light roast": "light",
+      "Medium roast": "medium"
+    }
+  },
+  "core_freeze": {
+    "files": {
+      "M1.model.json": "f13dfc7e5b920d4eafbe81f4fe10bbda33df496b68a5446cde4b765981304f5b",
+      "dataset_manifest.json": "f5f270f54add8edcffea7041872496cc5d2ebf46693583256294325a7323667d",
+      "experiment_config.json": "650e0d86fbd75a1ea7475d000ca73b7238f1b05aff692bfa3b610899970cabba",
+      "flavor_backend.py": "1acc5c7f5e01a8a65092353ebda082d3c619f3bdda3551bfd31d66abd6e442cc",
+      "metrics.json": "ddc994892b142377baf21fe97f4cee1d48fcacd84674424340362dd6bc2a109c",
+      "predictions.tsv": "4f6050b9f438167870a38b8b3f91ac0d9c8fb52ec67054d7195f300d529aeebf",
+      "prepare-backend-model-data.py": "aa58681f77b92330696140c249d2b62b05f59b0ffe9959d5864fdae6c32065f7",
+      "run-backend-model.py": "21f535ac710cfa3e179bca076f3fc8fffb0b26b52e6460f698fd9a90b3372568",
+      "run_receipt.json": "f2f71cb5874121a3e70e4b5607f2e7ae04394f38e68964a31fc765f4743a6979"
+    },
+    "serialization_note": "One Prettier serialization pass occurred after fit, before this snapshot; JSON values, parameters, groups, metrics and model weights unchanged. This snapshot supersedes earlier byte hashes only.",
+    "status": "FROZEN_AFTER_CORE_FIT_BEFORE_RUNTIME_EXTENSION"
+  },
+  "data_roles": {
+    "core_training": "CORE_PROFESSIONAL",
+    "existing_questionnaires": "AUX_USER_RESEARCH; excluded from sensory supervision",
+    "inera_frequency_source": "CORE_PROFESSIONAL; not pooled into fine-label core",
+    "source_codebook_relations": "AUX_SEMANTIC",
+    "source_roast_literals": "AUX_CONTEXT; nominal source labels only, not a calibrated seven-bin mapping",
+    "weak_label_sources_admitted": []
+  },
+  "experiment_id": "backend-flavor-record-recovery-20260905",
+  "filter_exclusions": {
+    "NOT_EXACT_EQUIVALENT_MAPPING": 2651,
+    "NOT_STRICT_FLAVOR": 1488
+  },
+  "group_policy": "Same sample ID, all panelists and exact normalized coffee-name duplicates kept together. Two duplicate-name sample IDs collapse conservatively. No panelist ID is a model feature.",
+  "independent_group_count": 110,
+  "label_limit": "Observed descriptor recovery only; absent words are unlabelled, not sensory negatives. Scores/quality fields and questionnaire answers are not labels.",
+  "license_metadata_discrepancy": {
+    "depositor_description_and_record_copyright": "CC BY-NC 4.0; noncommercial research only",
+    "enforced_scope": "Restrictive intersection: attribution and noncommercial local research; no commercial training, deployment or weight release inferred",
+    "machine_field": "CC BY 4.0"
+  },
+  "lineage_hashes": {
+    "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv": "000ff94d338486a5e50ac452f36638ea797c9af3ee81b5a7dfdb6826260166a4",
+    "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4",
+    "PURPOSE_SPECIFIC_RIGHTS_MATRIX.tsv": "9d056f851183f72609e4ca7727b2a4e06bb02a197dc509d62943825c085e054e"
+  },
+  "other_audited_source": {
+    "disposition": "Coded panel-consensus observations retained as source evidence; not pooled into this first source-specific experiment or used as fabricated complete negatives",
+    "record_count": 21,
+    "url": "https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2026.1809471/full"
+  },
+  "pre_split_statistics_estimated": false,
+  "project_purpose": {
+    "COMMERCIAL_DEPLOYMENT_REQUIRED": false,
+    "COMMERCIAL_TRAINING_REQUIRED": false,
+    "MONETIZATION": false,
+    "PROJECT_PURPOSE": "PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH",
+    "current_use_basis": "NONCOMMERCIAL_RESEARCH_USE"
+  },
+  "source_classes": {
+    "complete_c0_c1_records": {
+      "count": 0,
+      "reason": "No reviewed source C0 family in this subset; source C1 literal matches are partial only"
+    },
+    "complete_structured_frequency_observations": {
+      "artifact_sha256": "4ca2bff21183d2615e244f68b330ba23282f56e6d012c7be762f04baa19abb0a",
+      "complete_nine_attribute_record_count": 94,
+      "disposition": "Available for a source-category head; not recoded to fine sensory labels. Nutty/Cocoa is a combined source category, not independent cocoa or dark chocolate truth.",
+      "explicit_missing_cell_count": 1,
+      "genotype_groups": 73,
+      "license": "CC BY 4.0",
+      "record_count": 95,
+      "source": "https://doi.org/10.3389/fsufs.2024.1382976.s002"
+    },
+    "incomplete_context_auxiliary_records": {
+      "c0_present": 0,
+      "count": 112,
+      "literal_c1_present": 31,
+      "use": "Context-independent answer/descriptor recovery; missing source context is masked, never a production input branch"
+    },
+    "positive_only_records": {
+      "readable_source_assertion_count": 4785,
+      "retained_record_count": 112,
+      "retained_unique_descriptor_count": 610,
+      "source": "family.zenodo_golovinsky_q_grader_dataset"
+    }
+  },
+  "source_context_limit": "31 source records have consistent nominal Light/Medium/Dark labels, not validated seven-level production C1. The frozen proxy used nominal matches; production inference masks learned C0/C1 effects until a source protocol mapping is validated.",
+  "source_exclusions": [
+    {
+      "artifact_count": 19,
+      "family": "family.ace_cup_of_excellence",
+      "reason": "No affirmative model-use permission with satisfied conditions",
+      "rights_state": "PENDING"
+    },
+    {
+      "artifact_count": 940,
+      "family": "family.ace_cup_of_excellence",
+      "reason": "No affirmative model-use permission with satisfied conditions",
+      "rights_state": "UNKNOWN"
+    },
+    {
+      "artifact_count": 1,
+      "family": "family.coffee_board_of_india_fine_cup",
+      "reason": "No affirmative model-use permission with satisfied conditions",
+      "rights_state": "UNKNOWN"
+    },
+    {
+      "artifact_count": 1,
+      "family": "family.project_origin",
+      "reason": "No affirmative model-use permission with satisfied conditions",
+      "rights_state": "UNKNOWN"
+    },
+    {
+      "artifact_count": 1,
+      "family": "family.sheba_coffee_yemen_auction",
+      "reason": "No affirmative model-use permission with satisfied conditions",
+      "rights_state": "UNKNOWN"
+    }
+  ],
+  "split_counts": {
+    "DEV": 16,
+    "TEST": 17,
+    "TRAIN": 79
+  },
+  "split_group_counts": {
+    "DEV": 16,
+    "TEST": 17,
+    "TRAIN": 77
+  },
+  "split_membership": [
+    {
+      "group_id": "coffee-group:0d78b35520dcc6262728743e",
+      "record_id": "effective-b2:017e6049c0e13a26c75583b8",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:3c1dc61e904a0a3eb8c5df33",
+      "record_id": "effective-b2:031981af7b533f0d631c1485",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:a7e6485fab6a2cad46f63a0f",
+      "record_id": "effective-b2:08757c84e17a89f3d4e8cc71",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:b2c1e2cd7d22a85bb6408968",
+      "record_id": "effective-b2:0b99f5b68c1c37a4859e38f7",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:b45dbd83f4bc2464168b1e59",
+      "record_id": "effective-b2:0dd051c783f619899fbafaca",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:4822774edd6c2b43c84ad57a",
+      "record_id": "effective-b2:103f890ccce8dffd9403d45c",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:923485ed24926aad86a2082c",
+      "record_id": "effective-b2:1078bce0e41f3c346ea005be",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:3547cd5eaa341ad4695764bb",
+      "record_id": "effective-b2:153e59684061d91715b735c9",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:8a8645e21eaf8b61e8cf5331",
+      "record_id": "effective-b2:17403d08113dfbbfc89fff7d",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:08b19275aa9d6c3f1e15c6ef",
+      "record_id": "effective-b2:17455893ca9329468f7c1523",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:a51777bde91c73f27b5a2987",
+      "record_id": "effective-b2:1a1f1b29ea02d25f4230afce",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:cc66e8b173ba831b754e8e73",
+      "record_id": "effective-b2:1d39ea54f23390683f70ef57",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:777ef83a2c032ce9225ed327",
+      "record_id": "effective-b2:1e94612c7f0e1813d12c3dfe",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:2f490f34086c82b52611e86a",
+      "record_id": "effective-b2:24ac63f4a57887546aa63604",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:2f3b1d059474f5140b72f7a9",
+      "record_id": "effective-b2:252af432dcef188be83f40dc",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:90b9d7e216660b92c4c5062c",
+      "record_id": "effective-b2:2811c39d24e2ae3ec44edccc",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:82f0e9efbf26413f6e328295",
+      "record_id": "effective-b2:28705b2f691bd7e5f23b8454",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:b2bf63ad09589d48a532bb5e",
+      "record_id": "effective-b2:29d927c58adf72fd3313c35c",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:95c287645485914165b7799c",
+      "record_id": "effective-b2:2ba503d2c811d2f5c10662d9",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:718c13cc79438bdc8e4467af",
+      "record_id": "effective-b2:2d36203966d6cfe70047cdbc",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:7b814017ab37fb579e488aa5",
+      "record_id": "effective-b2:2d79059b035ceacd773ce7af",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:092707bf6abca59f1f6e13c5",
+      "record_id": "effective-b2:30e3731bbf6cff9b7ad4602a",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:c013416d23f1c4c2a798fb23",
+      "record_id": "effective-b2:34092cb3c77ba8349fb48511",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:2b26672df187e89a66dee981",
+      "record_id": "effective-b2:346db75ea2159d24c835250c",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:87fdeba014977d47dfebdeb4",
+      "record_id": "effective-b2:36f0a3b660e5563466107f31",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:6b868390927bfb7fed31707e",
+      "record_id": "effective-b2:389b292a01538640e3b9ba12",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:25b19f97c7e178a28c9a77cc",
+      "record_id": "effective-b2:39ce2418b4d4666d31c1a942",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:20e32dce254bcec4fae3bd93",
+      "record_id": "effective-b2:40e86235997c25a5da2b2f91",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:81ae7ba86e3fbdfee6598db0",
+      "record_id": "effective-b2:40e96fc67a12a8e9756d94fd",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:38c4cb9a206f8bf8ca771199",
+      "record_id": "effective-b2:48db3d3b6dd66ab9e20f4236",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:023afd31dce17852c441c894",
+      "record_id": "effective-b2:4d9aea32f4a97e154de34a8f",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:25eb29d5ceeb33259b1ec5fc",
+      "record_id": "effective-b2:507c4d0ea4de1532416cb7ce",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:1d19dd625e9bd9054fbb4cd4",
+      "record_id": "effective-b2:51095fb25e821a34bb49ae51",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:dc6755f1309576b60ec92a63",
+      "record_id": "effective-b2:523a3e7dd226c4c2eccc540e",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:e62fcaf3ad929aeb3c338aaa",
+      "record_id": "effective-b2:528b35ff0427ba0d103b481f",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:78913dcb6af48a1d72e7227c",
+      "record_id": "effective-b2:5a5894edb1731d8ba71f03b6",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:de98f64b2311ef0e0a36bca7",
+      "record_id": "effective-b2:5dc1ec638b1b96cf1beffd5b",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:f04e86199c45089c9e32c803",
+      "record_id": "effective-b2:5e07fc42cfb662f087f9a107",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:c7a506ad621651111e2194fe",
+      "record_id": "effective-b2:61e9d27238c9019e0520b29b",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:baa418e756c38a5129cb0ccf",
+      "record_id": "effective-b2:6333e2b0f59e6c4e9f7e36a4",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:0752306253535819cded0e6e",
+      "record_id": "effective-b2:63f7e8e8ebeaddd1c8f6abcc",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:76df34e09dff6243c730d8c2",
+      "record_id": "effective-b2:659150ac846201445363ce24",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:d3a64233c3df59a7ad3d7b07",
+      "record_id": "effective-b2:660abd302bc781bd6c90c792",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:d52ed136078e38701523ffcc",
+      "record_id": "effective-b2:66552a0c9bfe8e60cb2740df",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:16865f3ec8102ce549408cea",
+      "record_id": "effective-b2:672bbe8d15cde9a601aac842",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:e1aadb515c3164aacb49b38e",
+      "record_id": "effective-b2:6b247f1eea4fa67bf6419932",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:d64720ae823b01823de92caa",
+      "record_id": "effective-b2:6d22ae80bd3eee29600004eb",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:d93ab0128b6c17dba02c66c5",
+      "record_id": "effective-b2:6fc7857aa42dcf3bf430edc6",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:f27d89381ece9369c8360256",
+      "record_id": "effective-b2:70bde51b52c42b72f82dc562",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:240fd2a8f4c3e0a4cc6b33d8",
+      "record_id": "effective-b2:744b667ff8500da9c1593ad4",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:b173c5ce19b9da1a8918ef2b",
+      "record_id": "effective-b2:74e254d3f022725a67918dd7",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:12c5cc6f45414e6a619cac60",
+      "record_id": "effective-b2:751febf2c66f79443ba48f65",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:751e0134eb92d3fb2343de58",
+      "record_id": "effective-b2:777040d177e208d78ebf79d3",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:317d29a2dda03dc82d8f8e70",
+      "record_id": "effective-b2:77c9c315fc9eaa6ee8864bf0",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:5fdfa82cd77dbbf1c641d34f",
+      "record_id": "effective-b2:786978073da4c0cb373cea50",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:9a5b30099201e98ebf9574b0",
+      "record_id": "effective-b2:79476fcb664e34248fb08fe6",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:2bb8b668d816be96cc8f7c42",
+      "record_id": "effective-b2:7b873024fae68473988c40a1",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:6c3d0e13e0a6b454cf8e0b6d",
+      "record_id": "effective-b2:7ea70374ea0e51954d4325b0",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:92923e4624d43dd942dd9434",
+      "record_id": "effective-b2:7f8b812236f175a5c58bc23c",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:3f81c39655f96dec5403d8e5",
+      "record_id": "effective-b2:816484c0cdb598e820cf21fe",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:69a5453d80bfb6b0192e1422",
+      "record_id": "effective-b2:81ef8e5436f62267dfe57266",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:306a43a43fd8ea161faa4bcb",
+      "record_id": "effective-b2:82cceb4598a428b55130191b",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:d8bfffb271cdc16bc7a78f5a",
+      "record_id": "effective-b2:86d35964faf062b12363bd24",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:4e854c5d8bfac29d62365fb0",
+      "record_id": "effective-b2:89b71f0b2f9f6144277f4948",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:0f43cddde2e10db619f6d654",
+      "record_id": "effective-b2:89fba010c6b754358c14b669",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:7fc4d531f562aeb21b87d875",
+      "record_id": "effective-b2:8baf32203afe5f817e00fde9",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:bcbafa6edf759d95a49f9813",
+      "record_id": "effective-b2:8daa37c777be724366bf3a06",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:e9bfc1965479a1a6b4093106",
+      "record_id": "effective-b2:909775085bf2ce58bfd04158",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:92923e4624d43dd942dd9434",
+      "record_id": "effective-b2:91b7b2d1e789759f190f3d2f",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:de23b1e359970471bc04ceb7",
+      "record_id": "effective-b2:923b4e51db1d3f9dc94dc2f2",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:c3f9b64739b6a443e77d13d9",
+      "record_id": "effective-b2:9a8d5ad592baf8c622abb2b9",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:1881ff62f6a193c86ade7f53",
+      "record_id": "effective-b2:9cbba0db2c5ebc59d3a68d00",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:f6fb0cf158f58762b487912b",
+      "record_id": "effective-b2:9f75bc3cffa41f9be059e112",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:228ebf8a828960c5ebe81296",
+      "record_id": "effective-b2:a01716b6832f3cb461ef5f53",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:7d7d10a6a75acd489bc827e1",
+      "record_id": "effective-b2:a06dbe1ff634c26757784a4d",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:9e866ad3d8c3b2d828da62f4",
+      "record_id": "effective-b2:a2a511ad5fb05627ba7de7f9",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:26c0fb42744cb0b06553f5b2",
+      "record_id": "effective-b2:a8d619585afbdb4cec2293d9",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:9f0268bdc601a1c537ea44cb",
+      "record_id": "effective-b2:a92ea3b53ddae2f2705e0bab",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:2f5fcd0534ac1aa06bbe3077",
+      "record_id": "effective-b2:b3d50faeba4f6a2678496ae7",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:e703b65cf511b4dfc6ed2cb3",
+      "record_id": "effective-b2:b7fb9b562e4af14d74f5efdc",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:3f6bf93b935fb057738dbf79",
+      "record_id": "effective-b2:bfbb3d3eac0a951aa3c169fa",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:4282fcad4e5447b74d1072d3",
+      "record_id": "effective-b2:c39da4ecabf61b39d3e20ba1",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:823888bb9643bb86ab658cdd",
+      "record_id": "effective-b2:c5b144064b488597f6845529",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:3ad8b8fbbcabd237c6adcd0d",
+      "record_id": "effective-b2:c601a11376ce73da899cd795",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:3af0edca5c82a5ebdbb03089",
+      "record_id": "effective-b2:c743d36e9de2b2c0ac644f7c",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:cc66e8b173ba831b754e8e73",
+      "record_id": "effective-b2:c824f432f14a03e6a9077a27",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:2bb87dbec7d42136e8cf5f78",
+      "record_id": "effective-b2:c8346634320b534913fc9629",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:8dd24a6e27c416330fbf7954",
+      "record_id": "effective-b2:c9b9b02cd6bd841b7d5d565f",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:ea6b4cb0bddcccbf0dd9db9d",
+      "record_id": "effective-b2:ca0c60a25fb02be913452c0b",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:be8bf3aadfb2a01fecced5aa",
+      "record_id": "effective-b2:cc8c82e9549c51a6abcc1175",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:a5b0d86dbfc99a24f49f6646",
+      "record_id": "effective-b2:d2996dd48cd9e60eb93dbb8e",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:fa713e0c40870a2f4f46a350",
+      "record_id": "effective-b2:d317670a5472aba663c5fcd6",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:d3908928975dc0107d097d51",
+      "record_id": "effective-b2:d686b6b920a0d1f3928945eb",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:9839486d8b5cdd902f3b0d09",
+      "record_id": "effective-b2:d8c4851840532c56199ea190",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:a83a84284e203bed4f08aed4",
+      "record_id": "effective-b2:dbb6d88f4070c314873d5023",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:c0324cefbf9e26aa7770674a",
+      "record_id": "effective-b2:dd55c85ab0e0cddd7fe8d195",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:dc6e42b04dee74c7c69afe91",
+      "record_id": "effective-b2:e13db948d170c360d18007b4",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:e16d4dce79ced77432a94430",
+      "record_id": "effective-b2:e2f2a9902d10cb8698c0235c",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:4d155f43026d71b94d634b0a",
+      "record_id": "effective-b2:e3fb9fa47f458ba896ce6703",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:241480ab35f35abfdfa832ab",
+      "record_id": "effective-b2:e6870e6c8fb7cbba0deb1557",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:0fe13332c50a6e9395c2e5de",
+      "record_id": "effective-b2:e6b8b1ebd3a29aa5fff2f0ac",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:b41a84414e158af7cde091ba",
+      "record_id": "effective-b2:e7105ff063a2e45ce5c9feb7",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:aed98a7e76876ca5e8905ff7",
+      "record_id": "effective-b2:e88797606e92d3243c9e3db8",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:a3a4c45eaef5e2ead155114f",
+      "record_id": "effective-b2:ea8e91844a406a1293192841",
+      "split": "TEST"
+    },
+    {
+      "group_id": "coffee-group:4d86abdf9fcb91c48c518651",
+      "record_id": "effective-b2:ec51c3631c0cdca66682bd42",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:de7e8dc54f6eeaa39391b209",
+      "record_id": "effective-b2:ed17fbcc881df566842277ed",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:f2d10f7fe1dc82e57ab572e2",
+      "record_id": "effective-b2:efe30a84be04fb7291d53c31",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:239ba4a5be7a4380a0f4edd9",
+      "record_id": "effective-b2:f15937a77056f54cb513b8a8",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:c795433a645bc998e407be74",
+      "record_id": "effective-b2:f6aa77e26a9bd04b569431f2",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:942bfa1ad0ffcbfb0b185ed4",
+      "record_id": "effective-b2:fc30d7cc20260d19a75abcd2",
+      "split": "TRAIN"
+    },
+    {
+      "group_id": "coffee-group:bf50a5442d326a3361cfb4a3",
+      "record_id": "effective-b2:fc4efa823e6b6ca9f4e5e765",
+      "split": "DEV"
+    },
+    {
+      "group_id": "coffee-group:013b392aecd6f15d8ea97ad6",
+      "record_id": "effective-b2:fdf2646324eb3b829282cde3",
+      "split": "DEV"
+    }
+  ],
+  "split_seed": 20260905,
+  "task": "RECORD_RECOVERY_PROXY"
+}
