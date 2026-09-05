@@ -81,6 +81,23 @@ only to the frozen v1 experiment. V2 targeted source discovery is limited to
 12 high-relevance sources in one bounded block, approximately three hours.
 No CI restructuring or frontend work is authorized.
 
+### Active M2 R1 repair and foundation check — 2026-09-05
+
+Continue the same M2 lineage on the existing research branch. Preserve D0,
+historical models and evaluation files. Separate mechanism repair, foundation
+ablation and D1 expansion under `backend-sequential-model-v2/revisions/r1`.
+FOUNDATION_CHECK is one backend validation role within Q0–Q5 (primary Q3),
+not a new slot or user state. Freeze the provisional sensory profile before
+revealing its new evidence; compare ordinary refinement at the same budget.
+Split coffee groups before A/B/T evidence partitioning; targets never generate
+questions or answers. Reused evidence is DERIVED_REUSE, not corroboration.
+Real validation without independent answers remains NOT_EVALUATED. Attribute,
+specific-descriptor and recovery supervision use explicit masks; unmentioned
+fields are not zeros. Keep the backend default separate from research candidates.
+This round permits one focused 3–4 hour source block and parallel, disjoint agent
+work. Do not start M3, alter frontend/CI, release weights, merge main or rewrite
+history. The R1 receipt is the current compact delivery record.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;

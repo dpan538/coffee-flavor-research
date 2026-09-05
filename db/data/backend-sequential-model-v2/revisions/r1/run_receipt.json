@@ -1,0 +1,39 @@
+{
+  "actual_fit_counts": {
+    "conditional_recovery": 7,
+    "native_context": 60,
+    "repair": 18
+  },
+  "backend_default": "B2 unchanged",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "checkpoint": "REPAIR_RETRAINING_COMPLETED; FOUNDATION_AND_SOURCE_WORK_ACTIVE",
+  "commands": [
+    "python db/scripts/run_m2_r1.py --owner-dir <existing-private-v2-root> --phase reproduce",
+    "python db/scripts/run_m2_r1.py --owner-dir <existing-private-v2-root> --phase repair",
+    "python db/scripts/conditional_m2_r1.py --owner-dir <existing-private-v2-root>",
+    "python db/scripts/context_m2_r1.py --owner-dir <existing-private-v2-root>"
+  ],
+  "dirty_main_actual_sha": "1755915d3918013c8bd7c5f744e5ce8a0e972167",
+  "expected_main_sha": "e4eced41e2233c76c4645287fba2ecedddd03561",
+  "experiment_id": "M2_R1_REPAIR_FOUNDATION_20260905",
+  "frontend_changes": 0,
+  "model_paths": {
+    "repaired_layered_candidate": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_CONDITIONAL_C0.1.model.json"
+  },
+  "old_models_and_results_byte_identical": true,
+  "real_independent_answers": "NOT_EVALUATED",
+  "source_sha": "fb29b8c80aae29b9dacce039d728d9dc1efa5769",
+  "updated_utc": "2026-09-05T11:03:16Z",
+  "validation": {
+    "legacy_sequential_including_retained_owner_models": {
+      "passed": 24,
+      "skipped": 0
+    },
+    "new_mechanism_tests": {
+      "passed": 12,
+      "skipped": 0
+    },
+    "old_cv_exact_reproduction_records": 211,
+    "remote_ci": "NOT_OBSERVED_FOR_THIS_CHECKPOINT"
+  }
+}

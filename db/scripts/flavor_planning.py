@@ -4,9 +4,17 @@ from __future__ import annotations
 import copy, math, random
 from collections import defaultdict
 import numpy as np
-import flavor_sequential as s
+import flavor_sequential as legacy_s
 
 _CACHE = {}
+
+
+def backend(bundle):
+    if bundle.get("semantic_version") == "typed-support.v2.r1":
+        import flavor_m2_r1
+
+        return flavor_m2_r1
+    return legacy_s
 
 
 def future_slots(state):
@@ -20,18 +28,35 @@ def future_slots(state):
 
 
 def soft_weights(state, bundle):
+    s = backend(bundle)
     ev = s.evidence(state, bundle)
     rows = bundle["statistics"]["planning_records"]
     scores = []
     for r in rows:
         targets = set(r["targets"])
         attrs = {a for c in targets for a in bundle["candidate_attributes"].get(c, [])}
-        value = (
-            sum(1.0 if c in targets else -0.15 for c in ev["specific"])
-            + sum(0.5 if a in attrs else -0.075 for a in ev["independent_broad"])
-            + sum(1.25 if c in targets else -0.15 for c in ev["feedback"])
-            - sum(0.25 for c in ev["explicit_none"] if c in targets)
-        )
+        if bundle.get("semantic_version") == "typed-support.v2.r1":
+            # Positive-only source records offer positive matching support;
+            # missing mentions do not establish contradictory sensory evidence.
+            # Final selections merge with direct concepts once, and explicit
+            # NONE retains the actual exposed broad or concrete scope.
+            value = (
+                sum(1.0 for c in ev["confirmed"] if c in targets)
+                + sum(0.5 for a in ev["independent_broad"] if a in attrs)
+                - sum(0.25 for c in ev["explicit_none"] if c in targets)
+                - sum(
+                    0.25
+                    for a in ev["negative_broad"]
+                    if a in attrs and "attribute." + a not in targets
+                )
+            )
+        else:
+            value = (
+                sum(1.0 if c in targets else -0.15 for c in ev["specific"])
+                + sum(0.5 if a in attrs else -0.075 for a in ev["independent_broad"])
+                + sum(1.25 if c in targets else -0.15 for c in ev["feedback"])
+                - sum(0.25 for c in ev["explicit_none"] if c in targets)
+            )
         scores.append(value)
     if not scores:
         return np.array([])
@@ -44,6 +69,7 @@ def soft_weights(state, bundle):
 
 
 def available(state, bundle):
+    s = backend(bundle)
     used = {a["axis"] for a in state["answers_by_question"].values()}
     already = {
         x
@@ -58,6 +84,7 @@ def available(state, bundle):
 
 
 def simulate_answer(state, q, pattern, bundle):
+    s = backend(bundle)
     st = copy.deepcopy(state)
     slot = future_slots(st)[0]
     instance = s.make_instance(slot, q, st, bundle)
@@ -70,6 +97,7 @@ def simulate_answer(state, q, pattern, bundle):
 
 
 def response_groups(state, q, bundle):
+    s = backend(bundle)
     weights = soft_weights(state, bundle)
     parts = defaultdict(list)
     for i, r in enumerate(bundle["statistics"]["planning_records"]):
@@ -108,6 +136,7 @@ def utility(rank, rows, weights, exclude):
 
 
 def question_value(state, q, bundle, depth=1):
+    s = backend(bundle)
     train = bundle["statistics"]["planning_records"]
     weights = soft_weights(state, bundle)
     exclude = set(s.evidence(state, bundle)["specific"])
@@ -149,6 +178,7 @@ def question_value(state, q, bundle, depth=1):
 
 
 def choose(state, bundle):
+    s = backend(bundle)
     questions = available(state, bundle)
     if not questions:
         return None
@@ -180,6 +210,7 @@ def choose(state, bundle):
 
 
 def plan_stage(state, bundle):
+    s = backend(bundle)
     if state["final_comparison"]:
         return {
             "action": "FINAL_RESULT",
@@ -261,4 +292,5 @@ def plan_stage(state, bundle):
 
 
 def select_next_question(state, bundle):
+    s = backend(bundle)
     return plan_stage(state, bundle)

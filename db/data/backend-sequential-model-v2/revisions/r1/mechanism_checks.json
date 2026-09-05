@@ -1,0 +1,630 @@
+{
+  "broad_support": {
+    "after": {
+      "floral": [
+        {
+          "candidate_id": "sensory.chamomile",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.jasmine",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.rose",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "fruity": [
+        {
+          "candidate_id": "sensory.apple",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.banana",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.bergamot",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.blackberry",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.blackcurrant",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.blueberry",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.cherry",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.grape",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.grapefruit",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.lemon",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.lemongrass",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.lime",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.mango",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.orange",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.peach",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.pear",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.pineapple",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.plum",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.pomegranate",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.prune",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.raisin",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.raspberry",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.strawberry",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "green_vegetative": [
+        {
+          "candidate_id": "sensory.black_tea",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.earthy",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.green_tea",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.hay",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.lemongrass",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.woody",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "nutty_cocoa": [
+        {
+          "candidate_id": "sensory.almond",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.cocoa",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.dark_chocolate",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.hazelnut",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.peanut",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.walnut",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "roasted": [
+        {
+          "candidate_id": "sensory.dark_chocolate",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.malt",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.smoky",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.tobacco",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "sour_fermented": [
+        {
+          "candidate_id": "sensory.alcoholic",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.wine_like_character",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "spices": [
+        {
+          "candidate_id": "sensory.black_pepper",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.cardamom",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.cinnamon",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.clove",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.nutmeg",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "sweet": [
+        {
+          "candidate_id": "sensory.caramel",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.honey",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.molasses",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        },
+        {
+          "candidate_id": "sensory.vanilla",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ],
+      "taste": [
+        {
+          "candidate_id": "sensory.bitter",
+          "score_delta": 0.0,
+          "semantic_component_delta": 0.0
+        }
+      ]
+    },
+    "before": {
+      "floral": [
+        {
+          "candidate_id": "sensory.chamomile",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.jasmine",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.rose",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "fruity": [
+        {
+          "candidate_id": "sensory.apple",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.banana",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.bergamot",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.blackberry",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.blackcurrant",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.blueberry",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.cherry",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.grape",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.grapefruit",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.lemon",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.lemongrass",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.lime",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.mango",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.orange",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.peach",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.pear",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.pineapple",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.plum",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.pomegranate",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.prune",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.raisin",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.raspberry",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.strawberry",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "green_vegetative": [
+        {
+          "candidate_id": "sensory.black_tea",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.earthy",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.green_tea",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.hay",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.lemongrass",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.woody",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "nutty_cocoa": [
+        {
+          "candidate_id": "sensory.almond",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.cocoa",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.dark_chocolate",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.hazelnut",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.peanut",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.walnut",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "roasted": [
+        {
+          "candidate_id": "sensory.dark_chocolate",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.malt",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.smoky",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.tobacco",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "sour_fermented": [
+        {
+          "candidate_id": "sensory.alcoholic",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.wine_like_character",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "spices": [
+        {
+          "candidate_id": "sensory.black_pepper",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.cardamom",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.cinnamon",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.clove",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.nutmeg",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "sweet": [
+        {
+          "candidate_id": "sensory.caramel",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.honey",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.molasses",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        },
+        {
+          "candidate_id": "sensory.vanilla",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ],
+      "taste": [
+        {
+          "candidate_id": "sensory.bitter",
+          "score_delta": -0.5460068458098843,
+          "semantic_component_delta": -0.5460068458098843
+        }
+      ]
+    },
+    "old_negative_child_contribution_count": 54,
+    "passed": true,
+    "r1_negative_child_contribution_count": 0
+  },
+  "cluster_dependency": {
+    "legacy_hier": "RETAINED_UNCHANGED",
+    "r1": "NOT_USED"
+  },
+  "confirmation_is_not_negative_evidence": true,
+  "exposure_and_none": [
+    {
+      "explicit_none_candidates_with_negative_score_delta": 0,
+      "local_all_shown_selected_changes_features": false,
+      "local_all_shown_selected_support_count": 0,
+      "model": "old",
+      "unselected_choices_automatically_negative": false
+    },
+    {
+      "explicit_none_candidates_with_negative_score_delta": 43,
+      "local_all_shown_selected_changes_features": true,
+      "local_all_shown_selected_support_count": 4,
+      "model": "r1",
+      "unselected_choices_automatically_negative": false
+    }
+  ],
+  "mask_summary": {
+    "attr": {
+      "excluded_cells": 98920,
+      "observed_cells": 6920,
+      "observed_zero_cells": 1832
+    },
+    "leaf": {
+      "excluded_cells": 105482,
+      "observed_cells": 358,
+      "observed_zero_cells": 0
+    },
+    "recovery": {
+      "excluded_cells": 101800,
+      "observed_cells": 4040,
+      "observed_zero_cells": 0
+    }
+  },
+  "q01_training_selection": {
+    "status": "FROZEN_LEGACY_BANK_FOR_MATCHED_REPAIR"
+  },
+  "scope": "AUTOMATED_SEMANTIC_INVARIANTS_SYNTHETIC_STATES_NOT_SENSORY_EVALUATION",
+  "score_and_postprocessing_separate": true
+}

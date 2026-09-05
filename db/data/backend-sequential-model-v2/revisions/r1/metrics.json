@@ -1,0 +1,2583 @@
+{
+  "D0_old_reproduction": {
+    "B2": {
+      "candidate_target_coverage": 0.4000830859701827,
+      "coverage": 1.0,
+      "direct_retention8": 1.0,
+      "groups": 187,
+      "labelled_records": 210,
+      "latency_ms": null,
+      "ndcg5": 0.21416067812387443,
+      "option_budget": 19.668449197860962,
+      "per_source": {
+        "inera": {
+          "candidate_target_coverage": 0.0,
+          "coverage": 1.0,
+          "direct_retention8": null,
+          "groups": 73,
+          "latency_ms": null,
+          "ndcg5": 0.0,
+          "option_budget": 19.671232876712327,
+          "question_count": 5.0,
+          "raw_direct_retention8": null,
+          "recall5": 0.0,
+          "recall8": 0.0
+        },
+        "lengupa": {
+          "candidate_target_coverage": 0.3958333333333333,
+          "coverage": 1.0,
+          "direct_retention8": 1.0,
+          "groups": 21,
+          "latency_ms": null,
+          "ndcg5": 0.06644687510188073,
+          "option_budget": 19.666666666666668,
+          "question_count": 5.0,
+          "raw_direct_retention8": null,
+          "recall5": 0.04583333333333333,
+          "recall8": 0.07083333333333333
+        },
+        "zenodo": {
+          "candidate_target_coverage": 0.7150407239116915,
+          "coverage": 1.0,
+          "direct_retention8": 1.0,
+          "groups": 93,
+          "latency_ms": null,
+          "ndcg5": 0.4140317056882046,
+          "option_budget": 19.666666666666668,
+          "question_count": 5.0,
+          "raw_direct_retention8": null,
+          "recall5": 0.35460951831919574,
+          "recall8": 0.4469813937555873
+        }
+      },
+      "question_count": 5.0,
+      "raw_direct_retention8": null,
+      "recall5": 0.18223307457178428,
+      "recall8": 0.2311071843329908,
+      "records": 211
+    },
+    "M2_JOINT": {
+      "candidate_target_coverage": 0.9911951399854625,
+      "coverage": 1.0,
+      "direct_retention8": 1.0,
+      "groups": 187,
+      "labelled_records": 210,
+      "latency_ms": 19.859462554372328,
+      "ndcg5": 0.5369256946604254,
+      "option_budget": 19.668449197860962,
+      "per_source": {
+        "inera": {
+          "candidate_target_coverage": 1.0,
+          "coverage": 1.0,
+          "direct_retention8": null,
+          "groups": 73,
+          "latency_ms": 20.077379013743403,
+          "ndcg5": 0.6818149061482773,
+          "option_budget": 19.671232876712327,
+          "question_count": 5.0,
+          "raw_direct_retention8": null,
+          "recall5": 0.8358447488584475,
+          "recall8": 0.9937214611872145
+        },
+        "lengupa": {
+          "candidate_target_coverage": 1.0,
+          "coverage": 1.0,
+          "direct_retention8": 1.0,
+          "groups": 21,
+          "latency_ms": 18.398688429789175,
+          "ndcg5": 0.3560126987527649,
+          "option_budget": 19.666666666666668,
+          "question_count": 5.0,
+          "raw_direct_retention8": 1.0,
+          "recall5": 0.425,
+          "recall8": 0.525
+        },
+        "zenodo": {
+          "candidate_target_coverage": 0.9823902799709251,
+          "coverage": 1.0,
+          "direct_retention8": 1.0,
+          "groups": 93,
+          "latency_ms": 20.01826207138478,
+          "ndcg5": 0.46210147401031837,
+          "option_budget": 19.666666666666668,
+          "question_count": 5.0,
+          "raw_direct_retention8": 1.0,
+          "recall5": 0.3766525887493629,
+          "recall8": 0.47314483604806185
+        }
+      },
+      "question_count": 5.0,
+      "raw_direct_retention8": 1.0,
+      "recall5": 0.5620718140879432,
+      "recall8": 0.6830329915007335,
+      "records": 211
+    },
+    "basis": "Retained fold bundles; original grouped data, catalog and target partition.",
+    "identical_ranking_and_utility": true
+  },
+  "conditional_recovery_repair": {
+    "all_variants_retained": true,
+    "fit_count": 7,
+    "historical": {
+      "candidate_target_coverage": 1.0,
+      "coverage": 1.0,
+      "direct_retention8": 1.0,
+      "groups": 17,
+      "labelled_records": 17,
+      "latency_ms": 20.23715929895201,
+      "ndcg5": 0.4488268187825168,
+      "option_budget": 20.0,
+      "per_source": {
+        "zenodo": {
+          "candidate_target_coverage": 1.0,
+          "coverage": 1.0,
+          "direct_retention8": 1.0,
+          "groups": 17,
+          "latency_ms": 20.23715929895201,
+          "ndcg5": 0.4488268187825168,
+          "option_budget": 20.0,
+          "question_count": 5.0,
+          "raw_direct_retention8": 1.0,
+          "recall5": 0.3916475681181564,
+          "recall8": 0.5226699770817418
+        }
+      },
+      "question_count": 5.0,
+      "raw_direct_retention8": 1.0,
+      "recall5": 0.3916475681181564,
+      "recall8": 0.5226699770817418,
+      "records": 17
+    },
+    "models": {
+      "M2_R1_CONDITIONAL_C0.01": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.50230534539563,
+        "ndcg5": 0.45115363371567874,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 19.409321293183794,
+            "ndcg5": 0.4160965199622988,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.5986301369863014,
+            "recall8": 0.8747716894977168
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.503041724896146,
+            "ndcg5": 0.2944203680882049,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3625,
+            "recall8": 0.5041666666666667
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 19.575126547997275,
+            "ndcg5": 0.5123776618505842,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.41183816183816185,
+            "recall8": 0.5396761243535437
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.47984381210187665,
+        "recall8": 0.6673739044706787,
+        "records": 211
+      },
+      "M2_R1_CONDITIONAL_C0.1": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 20.585995000030067,
+        "ndcg5": 0.4714411385113109,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 20.96960297147807,
+            "ndcg5": 0.4708469804660877,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.6424657534246574,
+            "recall8": 0.9249999999999999
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 18.935392865733732,
+            "ndcg5": 0.31951090521488423,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.37916666666666665,
+            "recall8": 0.5375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 20.657599977498013,
+            "ndcg5": 0.5045806890836747,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.4123719172106269,
+            "recall8": 0.5068203600461665
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.4991071055587185,
+        "recall8": 0.6742435133564166,
+        "records": 211
+      }
+    },
+    "original_binary_failure_unchanged": true,
+    "same_C_minus_binary": {
+      "delta": 0.11739605832840673,
+      "groups": 186,
+      "inference": "Development selection or historical record proxy; not independent product efficacy.",
+      "paired_group_95_interval": [
+        0.09015827080039092,
+        0.14574556795241014
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "PROXY_IMPROVEMENT_SUPPORTED"
+    },
+    "selected_C": 0.1,
+    "selected_minus_old": {
+      "delta": -0.06548455614911455,
+      "groups": 186,
+      "inference": "Development selection or historical record proxy; not independent product efficacy.",
+      "paired_group_95_interval": [
+        -0.09526409116430691,
+        -0.03565673019612139
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "NO_IMPROVEMENT"
+    },
+    "selected_minus_semantic_legacy": {
+      "delta": -0.017295113747860795,
+      "groups": 186,
+      "inference": "Development selection or historical record proxy; not independent product efficacy.",
+      "paired_group_95_interval": [
+        -0.03005542790445478,
+        -0.004563927093183933
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "NO_IMPROVEMENT"
+    },
+    "selected_model": "M2_R1_CONDITIONAL_C0.1"
+  },
+  "context": {
+    "actual_fits": 60,
+    "datasets": 4,
+    "means": {
+      "iswaldi_chemical": {
+        "C_ADD": 0.9561715889767676,
+        "C_BASE": 1.2329764725760934,
+        "C_C0": 1.142430699421936,
+        "C_C1": 1.0492563113331417,
+        "C_JOINT": 0.9514387133704845
+      },
+      "iswaldi_consumer_sensory": {
+        "C_ADD": 0.44140953082527057,
+        "C_BASE": 0.8900104921971342,
+        "C_C0": 0.8248130572461443,
+        "C_C1": 0.5744165805886725,
+        "C_JOINT": 0.43561417425367477
+      },
+      "stanek_chemical": {
+        "C_ADD": 1.045814486173006,
+        "C_BASE": 1.0734866145673132,
+        "C_C0": 1.045814486173006,
+        "C_C1": 1.0734866145673132,
+        "C_JOINT": 1.045814486173006
+      },
+      "vezzulli_panel": {
+        "C_ADD": 1.065750145673372,
+        "C_BASE": 1.1909402134626426,
+        "C_C0": 1.065750145673372,
+        "C_C1": 1.1909402134626426,
+        "C_JOINT": 1.065750145673372
+      }
+    },
+    "per_group_table": "context_effects.tsv",
+    "production_C1_to_leaf": "NOT_ESTIMABLE",
+    "source_native_small_groups": "Report group deltas/range, not robust generalization."
+  },
+  "feedback_r1": {
+    "duplicate_replay_all_zero_change": true,
+    "duplicate_replay_cases": 211,
+    "exposure_and_generation_saved": true,
+    "groups": {
+      "BROAD_TO_SPECIFIC:ALL": {
+        "F2_minus_F0": {
+          "delta": 0.3073350148483058,
+          "groups": 154,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.23943261135396082,
+            0.37521450482723384
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "PROXY_IMPROVEMENT_SUPPORTED"
+        },
+        "F2_minus_F1": {
+          "delta": 0.3073350148483058,
+          "groups": 154,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.23943261135396082,
+            0.37521450482723384
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "PROXY_IMPROVEMENT_SUPPORTED"
+        },
+        "models": {
+          "F0": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 154,
+            "labelled_records": 177,
+            "latency_ms": null,
+            "ndcg5": 0.30358231314042816,
+            "option_budget": null,
+            "per_source": {
+              "inera": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 73,
+                "latency_ms": null,
+                "ndcg5": 0.16193466096660886,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.605365296803653
+              },
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 13,
+                "latency_ms": null,
+                "ndcg5": 0.3316847395763345,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6538461538461539
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 68,
+                "latency_ms": null,
+                "ndcg5": 0.45027271115545797,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5635840874811462
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5910089910089911,
+            "records": 177
+          },
+          "F1": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 154,
+            "labelled_records": 177,
+            "latency_ms": null,
+            "ndcg5": 0.30358231314042816,
+            "option_budget": null,
+            "per_source": {
+              "inera": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 73,
+                "latency_ms": null,
+                "ndcg5": 0.16193466096660886,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.605365296803653
+              },
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 13,
+                "latency_ms": null,
+                "ndcg5": 0.3316847395763345,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6538461538461539
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 68,
+                "latency_ms": null,
+                "ndcg5": 0.45027271115545797,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5635840874811462
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5910089910089911,
+            "records": 177
+          },
+          "F2": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 154,
+            "labelled_records": 177,
+            "latency_ms": null,
+            "ndcg5": 0.6109173279887339,
+            "option_budget": null,
+            "per_source": {
+              "inera": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 73,
+                "latency_ms": null,
+                "ndcg5": 0.8200642785194074,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.9909817351598174
+              },
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 13,
+                "latency_ms": null,
+                "ndcg5": 0.33814746077221847,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.7884615384615384
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 68,
+                "latency_ms": null,
+                "ndcg5": 0.43853910571043303,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.551404600301659
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.7797868797868799,
+            "records": 177
+          }
+        },
+        "score_change_max_F2": 3.491037903105014
+      },
+      "BROAD_TO_SPECIFIC:LARGE_DISCREPANCY_PROXY": {
+        "F2_minus_F0": {
+          "delta": 0.46254541622787626,
+          "groups": 116,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.3960170716096605,
+            0.5283941725105769
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "PROXY_IMPROVEMENT_SUPPORTED"
+        },
+        "F2_minus_F1": {
+          "delta": 0.46254541622787626,
+          "groups": 116,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.3960170716096605,
+            0.5283941725105769
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "PROXY_IMPROVEMENT_SUPPORTED"
+        },
+        "models": {
+          "F0": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 116,
+            "labelled_records": 137,
+            "latency_ms": null,
+            "ndcg5": 0.1667581597367881,
+            "option_budget": null,
+            "per_source": {
+              "inera": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 70,
+                "latency_ms": null,
+                "ndcg5": 0.13722491070935494,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5860714285714286
+              },
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 9,
+                "latency_ms": null,
+                "ndcg5": 0.16056574299915416,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6111111111111112
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 37,
+                "latency_ms": null,
+                "ndcg5": 0.22413813764378898,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5272737022737023
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5692597153804051,
+            "records": 137
+          },
+          "F1": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 116,
+            "labelled_records": 137,
+            "latency_ms": null,
+            "ndcg5": 0.1667581597367881,
+            "option_budget": null,
+            "per_source": {
+              "inera": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 70,
+                "latency_ms": null,
+                "ndcg5": 0.13722491070935494,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5860714285714286
+              },
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 9,
+                "latency_ms": null,
+                "ndcg5": 0.16056574299915416,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6111111111111112
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 37,
+                "latency_ms": null,
+                "ndcg5": 0.22413813764378898,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5272737022737023
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5692597153804051,
+            "records": 137
+          },
+          "F2": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 116,
+            "labelled_records": 137,
+            "latency_ms": null,
+            "ndcg5": 0.6293035759646645,
+            "option_budget": null,
+            "per_source": {
+              "inera": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 70,
+                "latency_ms": null,
+                "ndcg5": 0.8213310616879672,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.9905952380952381
+              },
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 9,
+                "latency_ms": null,
+                "ndcg5": 0.2856614388366458,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.8333333333333334
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 37,
+                "latency_ms": null,
+                "ndcg5": 0.3495969606544203,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5399506649506651
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.8346538040503558,
+            "records": 137
+          }
+        },
+        "score_change_max_F2": 3.491037903105014
+      },
+      "NEW_VISIBLE_JUDGMENT:ALL": {
+        "F2_minus_F0": {
+          "delta": null,
+          "groups": 0,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "status": "NOT_EVALUATED"
+        },
+        "F2_minus_F1": {
+          "delta": null,
+          "groups": 0,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "status": "NOT_EVALUATED"
+        },
+        "models": {
+          "F0": {
+            "candidate_target_coverage": null,
+            "coverage": null,
+            "direct_retention8": null,
+            "groups": 0,
+            "labelled_records": 0,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": null,
+            "per_source": {},
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null,
+            "records": 0
+          },
+          "F1": {
+            "candidate_target_coverage": null,
+            "coverage": null,
+            "direct_retention8": null,
+            "groups": 0,
+            "labelled_records": 0,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": null,
+            "per_source": {},
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null,
+            "records": 0
+          },
+          "F2": {
+            "candidate_target_coverage": null,
+            "coverage": null,
+            "direct_retention8": null,
+            "groups": 0,
+            "labelled_records": 0,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": null,
+            "per_source": {},
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null,
+            "records": 0
+          }
+        },
+        "score_change_max_F2": null
+      },
+      "NEW_VISIBLE_JUDGMENT:LARGE_DISCREPANCY_PROXY": {
+        "F2_minus_F0": {
+          "delta": null,
+          "groups": 0,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "status": "NOT_EVALUATED"
+        },
+        "F2_minus_F1": {
+          "delta": null,
+          "groups": 0,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "status": "NOT_EVALUATED"
+        },
+        "models": {
+          "F0": {
+            "candidate_target_coverage": null,
+            "coverage": null,
+            "direct_retention8": null,
+            "groups": 0,
+            "labelled_records": 0,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": null,
+            "per_source": {},
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null,
+            "records": 0
+          },
+          "F1": {
+            "candidate_target_coverage": null,
+            "coverage": null,
+            "direct_retention8": null,
+            "groups": 0,
+            "labelled_records": 0,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": null,
+            "per_source": {},
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null,
+            "records": 0
+          },
+          "F2": {
+            "candidate_target_coverage": null,
+            "coverage": null,
+            "direct_retention8": null,
+            "groups": 0,
+            "labelled_records": 0,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": null,
+            "per_source": {},
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null,
+            "records": 0
+          }
+        },
+        "score_change_max_F2": null
+      },
+      "REPEATED_EXPLICIT:ALL": {
+        "F2_minus_F0": {
+          "delta": 0.0,
+          "groups": 66,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.0,
+            0.0
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "INCONCLUSIVE"
+        },
+        "F2_minus_F1": {
+          "delta": 0.0,
+          "groups": 66,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.0,
+            0.0
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "INCONCLUSIVE"
+        },
+        "models": {
+          "F0": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 66,
+            "labelled_records": 67,
+            "latency_ms": null,
+            "ndcg5": 0.5951698073530577,
+            "option_budget": null,
+            "per_source": {
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 5,
+                "latency_ms": null,
+                "ndcg5": 0.5910494814012872,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6666666666666666
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 61,
+                "latency_ms": null,
+                "ndcg5": 0.5955075389884489,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5669031787884247
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5744610187792006,
+            "records": 67
+          },
+          "F1": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 66,
+            "labelled_records": 67,
+            "latency_ms": null,
+            "ndcg5": 0.5951698073530577,
+            "option_budget": null,
+            "per_source": {
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 5,
+                "latency_ms": null,
+                "ndcg5": 0.5910494814012872,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6666666666666666
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 61,
+                "latency_ms": null,
+                "ndcg5": 0.5955075389884489,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5669031787884247
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5744610187792006,
+            "records": 67
+          },
+          "F2": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 66,
+            "labelled_records": 67,
+            "latency_ms": null,
+            "ndcg5": 0.5951698073530577,
+            "option_budget": null,
+            "per_source": {
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 5,
+                "latency_ms": null,
+                "ndcg5": 0.5910494814012872,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.6666666666666666
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 61,
+                "latency_ms": null,
+                "ndcg5": 0.5955075389884489,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5669031787884247
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5744610187792006,
+            "records": 67
+          }
+        },
+        "score_change_max_F2": 0.0
+      },
+      "REPEATED_EXPLICIT:LARGE_DISCREPANCY_PROXY": {
+        "F2_minus_F0": {
+          "delta": 0.0,
+          "groups": 22,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.0,
+            0.0
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "INCONCLUSIVE"
+        },
+        "F2_minus_F1": {
+          "delta": 0.0,
+          "groups": 22,
+          "inference": "Development selection or historical record proxy; not independent product efficacy.",
+          "paired_group_95_interval": [
+            0.0,
+            0.0
+          ],
+          "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+          "status": "INCONCLUSIVE"
+        },
+        "models": {
+          "F0": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 22,
+            "labelled_records": 23,
+            "latency_ms": null,
+            "ndcg5": 0.32907595142585344,
+            "option_budget": null,
+            "per_source": {
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 3,
+                "latency_ms": null,
+                "ndcg5": 0.4143281134972799,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.4444444444444444
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 19,
+                "latency_ms": null,
+                "ndcg5": 0.31561508373036506,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5456140350877192
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5318181818181817,
+            "records": 23
+          },
+          "F1": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 22,
+            "labelled_records": 23,
+            "latency_ms": null,
+            "ndcg5": 0.32907595142585344,
+            "option_budget": null,
+            "per_source": {
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 3,
+                "latency_ms": null,
+                "ndcg5": 0.4143281134972799,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.4444444444444444
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 19,
+                "latency_ms": null,
+                "ndcg5": 0.31561508373036506,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5456140350877192
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5318181818181817,
+            "records": 23
+          },
+          "F2": {
+            "candidate_target_coverage": null,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 22,
+            "labelled_records": 23,
+            "latency_ms": null,
+            "ndcg5": 0.32907595142585344,
+            "option_budget": null,
+            "per_source": {
+              "lengupa": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 3,
+                "latency_ms": null,
+                "ndcg5": 0.4143281134972799,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.4444444444444444
+              },
+              "zenodo": {
+                "candidate_target_coverage": null,
+                "coverage": 1.0,
+                "direct_retention8": null,
+                "groups": 19,
+                "latency_ms": null,
+                "ndcg5": 0.31561508373036506,
+                "option_budget": null,
+                "question_count": null,
+                "raw_direct_retention8": null,
+                "recall5": null,
+                "recall8": 0.5456140350877192
+              }
+            },
+            "question_count": null,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": 0.5318181818181817,
+            "records": 23
+          }
+        },
+        "score_change_max_F2": 0.0
+      }
+    },
+    "large_discrepancy_definition": "Preregistered proxy hidden-recovery NDCG@5 < 0.5; not an observed user complaint.",
+    "real_feedback": "NOT_EVALUATED",
+    "targets_fixed": true
+  },
+  "question_diagnostics": {
+    "Q1_conditional_response_entropy_given_Q0_bits": 2.3204747150781135,
+    "interpretation": "Record-derived visible-answer patterns; coverage and fitted feature effects, not measured user question utility.",
+    "prefixes": {
+      "CONTEXT": {
+        "delta": null,
+        "ndcg5": 0.4115795727266788,
+        "records": 211
+      },
+      "Q0": {
+        "delta": -0.09023191703825201,
+        "ndcg5": 0.32134765568842677,
+        "records": 211
+      },
+      "Q1": {
+        "delta": -0.024148826439783198,
+        "ndcg5": 0.29719882924864355,
+        "records": 211
+      },
+      "Q1_ONLY": {
+        "delta": null,
+        "ndcg5": 0.36055727294978773,
+        "records": 211
+      },
+      "Q2": {
+        "delta": 0.019062618699446643,
+        "ndcg5": 0.3162614479480902,
+        "records": 211
+      },
+      "Q3": {
+        "delta": 0.005475860084166556,
+        "ndcg5": 0.32173730803225675,
+        "records": 211
+      },
+      "Q4": {
+        "delta": 0.01202026735501524,
+        "ndcg5": 0.33375757538727197,
+        "records": 211
+      }
+    },
+    "response_analysis": {
+      "Q0": {
+        "effective_selection_rate": 0.8529411764705882,
+        "feature_change_rate": 0.8529411764705882,
+        "patterns": {
+          "UNSURE": 30,
+          "attribute.floral|attribute.fruity": 4,
+          "attribute.floral|attribute.fruity|attribute.nutty_cocoa": 4,
+          "attribute.floral|attribute.nutty_cocoa": 2,
+          "attribute.fruity": 39,
+          "attribute.fruity|attribute.nutty_cocoa": 40,
+          "attribute.fruity|attribute.nutty_cocoa|attribute.sour_fermented": 1,
+          "attribute.fruity|attribute.nutty_cocoa|attribute.sweet": 3,
+          "attribute.fruity|attribute.sour_fermented": 6,
+          "attribute.fruity|attribute.sweet": 18,
+          "attribute.nutty_cocoa": 29,
+          "attribute.nutty_cocoa|attribute.sour_fermented": 2,
+          "attribute.nutty_cocoa|attribute.sweet": 11,
+          "attribute.sour_fermented": 6,
+          "attribute.sweet": 16
+        },
+        "score_change_rate": 0.8529411764705882
+      },
+      "Q1": {
+        "effective_selection_rate": 0.6149732620320856,
+        "feature_change_rate": 0.6149732620320856,
+        "patterns": {
+          "UNSURE": 75,
+          "attribute.green_vegetative": 29,
+          "attribute.green_vegetative|attribute.roasted": 5,
+          "attribute.green_vegetative|attribute.roasted|attribute.spices": 2,
+          "attribute.green_vegetative|attribute.sour_fermented": 1,
+          "attribute.green_vegetative|attribute.sour_fermented|attribute.spices": 1,
+          "attribute.green_vegetative|attribute.spices": 14,
+          "attribute.green_vegetative|attribute.sweet": 5,
+          "attribute.roasted": 32,
+          "attribute.roasted|attribute.spices": 11,
+          "attribute.roasted|attribute.sweet": 2,
+          "attribute.sour_fermented": 6,
+          "attribute.sour_fermented|attribute.spices": 2,
+          "attribute.spices": 13,
+          "attribute.spices|attribute.sweet": 2,
+          "attribute.sweet": 11
+        },
+        "score_change_rate": 0.6149732620320856
+      },
+      "Q2": {
+        "effective_selection_rate": 0.14171122994652408,
+        "feature_change_rate": 0.14171122994652408,
+        "patterns": {
+          "UNSURE": 184,
+          "sensory.apple": 12,
+          "sensory.cherry": 4,
+          "sensory.lemon": 3,
+          "sensory.orange": 5,
+          "sensory.orange|sensory.cherry": 1,
+          "sensory.orange|sensory.lemon": 1,
+          "sensory.raisin": 1
+        },
+        "score_change_rate": 0.14171122994652408
+      },
+      "Q3": {
+        "effective_selection_rate": 0.16310160427807488,
+        "feature_change_rate": 0.16310160427807488,
+        "patterns": {
+          "UNSURE": 180,
+          "sensory.cocoa": 10,
+          "sensory.cocoa|sensory.dark_chocolate": 1,
+          "sensory.cocoa|sensory.hazelnut": 1,
+          "sensory.dark_chocolate": 15,
+          "sensory.hazelnut": 1,
+          "sensory.walnut": 3
+        },
+        "score_change_rate": 0.16310160427807488
+      },
+      "Q4": {
+        "effective_selection_rate": 0.12566844919786097,
+        "feature_change_rate": 0.12566844919786097,
+        "patterns": {
+          "UNSURE": 187,
+          "sensory.caramel": 21,
+          "sensory.honey": 2,
+          "sensory.vanilla": 1
+        },
+        "score_change_rate": 0.12566844919786097
+      }
+    }
+  },
+  "repair": {
+    "M1_development": "NOT_EVALUATED: original M1 training overlaps D0 development; unchanged weights evaluated only on historical regression.",
+    "broad": {
+      "M2_R1_FIXED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 185,
+        "latency_ms": 22.188449521265166,
+        "ndcg5": 0.6395948335082954,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 23.93934704293178,
+            "ndcg5": 0.4873309152938846,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.7189497716894977,
+            "recall8": 1.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.539894868752786,
+            "ndcg5": 0.5196933851395725,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.71875,
+            "recall8": 0.9375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.4121498290189,
+            "ndcg5": 0.8181385212281798,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.9383561643835616,
+            "recall8": 0.9931506849315068
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.8177983539094651,
+        "recall8": 0.9907407407407407,
+        "records": 211
+      },
+      "M2_R1_FIXED_C0.1": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 185,
+        "latency_ms": 21.298176720414688,
+        "ndcg5": 0.5858210349326308,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 21.569365651461563,
+            "ndcg5": 0.4808312237605626,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.7189497716894977,
+            "recall8": 1.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.660075405789982,
+            "ndcg5": 0.5427602755413564,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.71875,
+            "recall8": 0.9375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.455201834830785,
+            "ndcg5": 0.7002488207658005,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.8127853881278538,
+            "recall8": 0.9908675799086757
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.7612139917695473,
+        "recall8": 0.9897119341563785,
+        "records": 211
+      },
+      "M2_R1_FIXED_C1.0": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 185,
+        "latency_ms": 20.116609452730593,
+        "ndcg5": 0.5823928807536989,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 19.64603229553426,
+            "ndcg5": 0.4808312237605626,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.7189497716894977,
+            "recall8": 1.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 18.95654756974961,
+            "ndcg5": 0.5427602755413564,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.71875,
+            "recall8": 0.9375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 20.74793667872987,
+            "ndcg5": 0.6926411361495406,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.8105022831050228,
+            "recall8": 0.9726027397260274
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.7601851851851852,
+        "recall8": 0.9814814814814815,
+        "records": 211
+      },
+      "M2_R1_FIXED_LAYERED_LOCKED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 185,
+        "latency_ms": 21.767719784492556,
+        "ndcg5": 0.6395948335082954,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 19.75344434820677,
+            "ndcg5": 0.4873309152938846,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.7189497716894977,
+            "recall8": 1.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 18.894009779961337,
+            "ndcg5": 0.5196933851395725,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.71875,
+            "recall8": 0.9375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 23.9977199666863,
+            "ndcg5": 0.8181385212281798,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.9383561643835616,
+            "recall8": 0.9931506849315068
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.8177983539094651,
+        "recall8": 0.9907407407407407,
+        "records": 211
+      },
+      "M2_R1_FIXED_LEGACY_LOCKED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 185,
+        "latency_ms": 20.470320765691046,
+        "ndcg5": 0.6755823637644763,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 20.038206922847216,
+            "ndcg5": 0.6227526642035314,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.8192922374429223,
+            "recall8": 1.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.52302988086428,
+            "ndcg5": 0.52192002515473,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.6875,
+            "recall8": 0.9375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.0234112937444,
+            "ndcg5": 0.7620914800070094,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.8858447488584476,
+            "recall8": 0.9885844748858448
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.8362654320987654,
+        "recall8": 0.9886831275720164,
+        "records": 211
+      }
+    },
+    "comparisons": {
+      "Q01_pair_only": {
+        "delta": 0.0,
+        "groups": 186,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          0.0,
+          0.0
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "layered_minus_legacy": {
+        "delta": -0.15497867687189967,
+        "groups": 186,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.19181007775803885,
+          -0.11640331522802466
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      },
+      "repair_legacy_minus_old": {
+        "delta": -0.04818944240125376,
+        "groups": 186,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.07220656137521012,
+          -0.02497673430619368
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      },
+      "selected_minus_B2_full": {
+        "delta": 0.11959689726339759,
+        "groups": 186,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          0.07385822060276018,
+          0.16492176089935956
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "PROXY_IMPROVEMENT_SUPPORTED"
+      },
+      "selected_minus_B2_matched_fine": {
+        "delta": -0.06705447550501055,
+        "groups": 104,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.10956426822995163,
+          -0.02666238868972095
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      },
+      "selected_minus_old": {
+        "delta": -0.20316811927315345,
+        "groups": 186,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.25513292288845596,
+          -0.15101004042661817
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      }
+    },
+    "fit_count": 18,
+    "fixed_model_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FIXED.model.json",
+    "historical_comparisons": {
+      "B2": {
+        "delta": -0.017848648311202617,
+        "groups": 17,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.11846417712408884,
+          0.07752748766320001
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "M1": {
+        "delta": -0.020177943309467556,
+        "groups": 17,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.10740567862509433,
+          0.06493896730822046
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "M2_JOINT": {
+        "delta": 0.057080566163242724,
+        "groups": 17,
+        "inference": "Development selection or historical record proxy; not independent product efficacy.",
+        "paired_group_95_interval": [
+          -0.06696500912606657,
+          0.20100189035009158
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      }
+    },
+    "historical_full": {
+      "B0": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 0.75,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.41114705588501915,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 0.75,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.41114705588501915,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.3570282658517953,
+            "recall8": 0.4017061370002547
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.3570282658517953,
+        "recall8": 0.4017061370002547,
+        "records": 17
+      },
+      "B1": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.3606702197039836,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.3606702197039836,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.28739495798319326,
+            "recall8": 0.3123949579831933
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.28739495798319326,
+        "recall8": 0.3123949579831933,
+        "records": 17
+      },
+      "B2": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.41114705588501915,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.41114705588501915,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.3570282658517953,
+            "recall8": 0.4017061370002547
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.3570282658517953,
+        "recall8": 0.4017061370002547,
+        "records": 17
+      },
+      "M1": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.40919359356613444,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.40919359356613444,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.3398714031066972,
+            "recall8": 0.4213139801375096
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.3398714031066972,
+        "recall8": 0.4213139801375096,
+        "records": 17
+      },
+      "M2_JOINT": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 21.004597820779857,
+        "ndcg5": 0.4321586273966316,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 21.004597820779857,
+            "ndcg5": 0.4321586273966316,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3852750190985485,
+            "recall8": 0.5039279348102879
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.3852750190985485,
+        "recall8": 0.5039279348102879,
+        "records": 17
+      },
+      "M2_R1_FIXED": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 20.519808866083622,
+        "ndcg5": 0.5179509056578361,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 20.519808866083622,
+            "ndcg5": 0.5179509056578361,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.40065571683218737,
+            "recall8": 0.6163674560733384
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.40065571683218737,
+        "recall8": 0.6163674560733384,
+        "records": 17
+      },
+      "M2_R1_FIXED_LAYERED_LOCKED": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 25.96474760759841,
+        "ndcg5": 0.5179509056578361,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 25.96474760759841,
+            "ndcg5": 0.5179509056578361,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.40065571683218737,
+            "recall8": 0.6163674560733384
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.40065571683218737,
+        "recall8": 0.6163674560733384,
+        "records": 17
+      },
+      "M2_R1_FIXED_LEGACY_LOCKED": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 22.373757475767942,
+        "ndcg5": 0.47784634470759774,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 22.373757475767942,
+            "ndcg5": 0.47784634470759774,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.4088044308632544,
+            "recall8": 0.5324738986503693
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.4088044308632544,
+        "recall8": 0.5324738986503693,
+        "records": 17
+      }
+    },
+    "historical_matched_fine": {
+      "B0": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 0.75,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.5183780783323936,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 0.75,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.5183780783323936,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.5136087768440709,
+            "recall8": 0.5707983193277311
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.5136087768440709,
+        "recall8": 0.5707983193277311,
+        "records": 17
+      },
+      "B1": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.46994938861487917,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.46994938861487917,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.4245564892623716,
+            "recall8": 0.4556022408963585
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.4245564892623716,
+        "recall8": 0.4556022408963585,
+        "records": 17
+      },
+      "B2": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.5183780783323936,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.5183780783323936,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.5136087768440709,
+            "recall8": 0.5707983193277311
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.5136087768440709,
+        "recall8": 0.5707983193277311,
+        "records": 17
+      },
+      "M1": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.5207073733306584,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": null,
+            "ndcg5": 0.5207073733306584,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.5003034547152195,
+            "recall8": 0.6002100840336134
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.5003034547152195,
+        "recall8": 0.6002100840336134,
+        "records": 17
+      },
+      "M2_JOINT": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 21.004597820779857,
+        "ndcg5": 0.44344886385794824,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 21.004597820779857,
+            "ndcg5": 0.44344886385794824,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.4332166199813258,
+            "recall8": 0.5239028944911298
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.4332166199813258,
+        "recall8": 0.5239028944911298,
+        "records": 17
+      },
+      "M2_R1_FIXED": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 20.519808866083622,
+        "ndcg5": 0.500529430021191,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 20.519808866083622,
+            "ndcg5": 0.500529430021191,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.5127917833800187,
+            "recall8": 0.6544584500466852
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.5127917833800187,
+        "recall8": 0.6544584500466852,
+        "records": 17
+      },
+      "M2_R1_FIXED_LAYERED_LOCKED": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 25.96474760759841,
+        "ndcg5": 0.500529430021191,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 25.96474760759841,
+            "ndcg5": 0.500529430021191,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.5127917833800187,
+            "recall8": 0.6544584500466852
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.5127917833800187,
+        "recall8": 0.6544584500466852,
+        "records": 17
+      },
+      "M2_R1_FIXED_LEGACY_LOCKED": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 22.373757475767942,
+        "ndcg5": 0.5318938192969894,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 17,
+            "latency_ms": 22.373757475767942,
+            "ndcg5": 0.5318938192969894,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.5136087768440709,
+            "recall8": 0.5707983193277311
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.5136087768440709,
+        "recall8": 0.5707983193277311,
+        "records": 17
+      }
+    },
+    "independent_product_evaluation": "NOT_EVALUATED",
+    "matched_fine": {
+      "B2": {
+        "candidate_target_coverage": 0.4000830859701827,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 106,
+        "latency_ms": null,
+        "ndcg5": 0.4867666360439854,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 0.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": null,
+            "ndcg5": null,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null
+          },
+          "lengupa": {
+            "candidate_target_coverage": 0.3958333333333333,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": null,
+            "ndcg5": 0.1899445173863659,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.1794871794871795,
+            "recall8": 0.25641025641025644
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.7150407239116915,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": null,
+            "ndcg5": 0.5291697958522167,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.5032705389848248,
+            "recall8": 0.626399790685505
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": null,
+        "recall5": 0.462797619047619,
+        "recall8": 0.580151098901099,
+        "records": 211
+      },
+      "M2_R1_FIXED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 106,
+        "latency_ms": 22.188449521265166,
+        "ndcg5": 0.41971216053897487,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 23.93934704293178,
+            "ndcg5": null,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": null,
+            "recall8": null
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.539894868752786,
+            "ndcg5": 0.11302144046328896,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.10256410256410256,
+            "recall8": 0.25641025641025644
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.4121498290189,
+            "ndcg5": 0.4635251205497871,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.4925431711145997,
+            "recall8": 0.5994287458573173
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.4437957875457875,
+        "recall8": 0.5565514346764346,
+        "records": 211
+      }
+    },
+    "models": {
+      "M2_R1_FIXED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 22.188449521265166,
+        "ndcg5": 0.33375757538727197,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 23.93934704293178,
+            "ndcg5": 0.16193466096660886,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.28025114155251135,
+            "recall8": 0.605365296803653
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.539894868752786,
+            "ndcg5": 0.25428036144807165,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3083333333333333,
+            "recall8": 0.475
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.4121498290189,
+            "ndcg5": 0.4857211993818141,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3828400989691312,
+            "recall8": 0.5481079852047595
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.3345652107748882,
+        "recall8": 0.562718867154351,
+        "records": 211
+      },
+      "M2_R1_FIXED_C0.1": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 21.298176720414688,
+        "ndcg5": 0.2839664783986821,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 21.569365651461563,
+            "ndcg5": 0.12025735954308286,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.21575342465753422,
+            "recall8": 0.5128995433789955
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.660075405789982,
+            "ndcg5": 0.25009351910948685,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3083333333333333,
+            "recall8": 0.4416666666666666
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.455201834830785,
+            "ndcg5": 0.4197538425088181,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3481160715031682,
+            "recall8": 0.48823001968163265
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.2918895769702221,
+        "recall8": 0.49290533242146134,
+        "records": 211
+      },
+      "M2_R1_FIXED_C1.0": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 20.116609452730593,
+        "ndcg5": 0.27288499930909793,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 19.64603229553426,
+            "ndcg5": 0.09336859318346319,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.17294520547945205,
+            "recall8": 0.47351598173515985
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 18.95654756974961,
+            "ndcg5": 0.25009351910948685,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3083333333333333,
+            "recall8": 0.375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 20.74793667872987,
+            "ndcg5": 0.4186971202893513,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3466823797468958,
+            "recall8": 0.45993600187148576
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.2743716558232687,
+        "recall8": 0.4561328754877142,
+        "records": 211
+      },
+      "M2_R1_FIXED_LAYERED_LOCKED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 21.767719784492556,
+        "ndcg5": 0.33375757538727197,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 19.75344434820677,
+            "ndcg5": 0.16193466096660886,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.28025114155251135,
+            "recall8": 0.605365296803653
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 18.894009779961337,
+            "ndcg5": 0.25428036144807165,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3083333333333333,
+            "recall8": 0.475
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 23.9977199666863,
+            "ndcg5": 0.4857211993818141,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.3828400989691312,
+            "recall8": 0.5481079852047595
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.3345652107748882,
+        "recall8": 0.562718867154351,
+        "records": 211
+      },
+      "M2_R1_FIXED_LEGACY_LOCKED": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 20.470320765691046,
+        "ndcg5": 0.48873625225917167,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 20.038206922847216,
+            "ndcg5": 0.521070604040133,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.6595890410958903,
+            "recall8": 0.9692922374429223
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.52302988086428,
+            "ndcg5": 0.3221657837385855,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.37916666666666665,
+            "recall8": 0.5375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 21.0234112937444,
+            "ndcg5": 0.49917713065058633,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.40990562603465835,
+            "recall8": 0.5107505397827978
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.504594390078261,
+        "recall8": 0.6935921157695352,
+        "records": 211
+      }
+    },
+    "selected_C": 0.01,
+    "selected_model": "M2_R1_FIXED",
+    "selection_scope": "Grouped development CV, reused for selection; historical 17 groups never tune."
+  }
+}

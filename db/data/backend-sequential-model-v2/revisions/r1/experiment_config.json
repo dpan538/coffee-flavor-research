@@ -1,0 +1,169 @@
+{
+  "D0": {
+    "development_groups": 187,
+    "development_records": 211,
+    "groups": 204,
+    "historical_groups": 17,
+    "immutable_file_sha256": {
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-model-20260905/models/M1.model.json": "f13dfc7e5b920d4eafbe81f4fe10bbda33df496b68a5446cde4b765981304f5b",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-model-20260905/models/M1_AUX.model.json": "84b658c37ad850fb7e8b51fcefdab39a24c6381bb7370e3cb9bdfdeb5d151bd5",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-model-20260905/models/M1_BALANCED.model.json": "d615759300538495fe2a9f9eb58ae2cd517072b30b4f1ebeaf338c7ee533deff",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C0.01_fold0.model.json": "6eb95ed0745c732f6039c6a95cb1fd068b0942db5552b420c2cd7ac6592da505",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C0.01_fold1.model.json": "c864c4afc6edbc9d64e5ef04ba73a0c6df69ceaa9499d2f23c35828dc4d976c8",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C0.01_fold2.model.json": "87224dd4cb16cc4a5a38969ccba207e2dd973ecb50a38c21f13f0e599ec527f6",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C0.1_fold0.model.json": "cfc706c8304d953e7dbdb1c90b03ff45d3bc7aad2bfa056bd8a83979759ca754",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C0.1_fold1.model.json": "c35080eec250e8bb17088fa8d25ef73950aeeec5ce7085f95afeb3abb0a84770",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C0.1_fold2.model.json": "b09b9196e26638e8c0bef6fc5021922a7ff2bdd653c8e6a6bbc0feefb1f26048",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C1.0_fold0.model.json": "301c3b3684bebbb7eee2728a4450eb7c1a997d44d8051b54f9e3c8351f82c05b",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C1.0_fold1.model.json": "8e3d5577f46036ebae853ad6c7d3867ce175d5aefd917611053e94715a5bc9f7",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_ADD_C1.0_fold2.model.json": "c2f2d84eff81901ed12dd619a7b06c65ad3471c4d853a00c009118e9f18414a5",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_HIER_fold0.model.json": "9c011a20fdadb1bbc37c4b2f68c8982ddc3f2d4885d459b65af434946ee2a48a",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_HIER_fold1.model.json": "2e181ecb09791b3f5c07bab08a775f3b6cc427ae2372ce44aaafa23dbc4896a0",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_HIER_fold2.model.json": "3003af9273f4e5dd9227fcbaf8724b4508cd40ae90c32bddd36e0644a5d06ea9",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_JOINT_fold0.model.json": "5576cae43ec422b34b6259a12e3011daec3204031dc04f488cfcd6091c147eb4",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_JOINT_fold1.model.json": "4ff8fbb7a054c29583b00e2ddee5abf9eab85f45628de87ff498ba2db2bbe82e",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/cv/M2_JOINT_fold2.model.json": "6bb6728a453d4f3c2b84d4b156f7ac02170e34bb2e9e634f73d4e21bd359bcc4",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_ADD.model.json": "3373347bfa10c07f8655e26af2bf5695372a6bd3786b85f326e0c9f8aa258a1b",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_HIER.model.json": "d9bbc2fb4bb27bc40897a035b1465c1676b6a9a0c207835d2a4ea844b2208ebc",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_JOINT.model.json": "adc4ab99870d3e8662458851fac5e1fae80ee744a95b0a3bbac9418af6084cd8",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/context_models.model.json": "4e89b2916a67a5ab57128d0b8ab666ebcb223ea8cb3a69ca586001ffb6c6327d",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/selected_bundle.model.json": "c74008be94d22b47655df2c108b7f01235a245f47986d68d1db82669b9f9091a",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/recovery_records.json": "fb59297faf1e9346c1fba8d4bc3439eb7f5b261300345f1c07a2a2f8d01efc11",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/backend_contract.json": "0f557cfa4f2a045209462736b3f6e205d65ac6d4c36329e45a80d36547230032",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/context_effects.tsv": "c61bb9a09c8c8aada719b6d1bd5320f59382374ff52f276fd391de9d7f53f540",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/context_robustness.tsv": "91d098da8f77165f5bdf3c4e9f7d889673a99b8d609bca44d15e3c90e0576d5e",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/dataset_manifest.json": "fad360ab49b36d33d28b00e6cfdd965dac7f02740d1fb51c9fd6a41e8908a3f2",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/errors.json": "3fcd87fea27db31fcddfc6fea2fadfe535212b924e790ebd19b6b525727559af",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/experiment_config.json": "a14ee46a6ba4cb9e72660c3f375666c8764404874277d84eea59f930d6cca061",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/feedback_effects.tsv": "6b609252dadebb2b407d76a0f1104a5bb40999e9e07f49a8843ce932e469bf37",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/metrics.json": "ff5b662958ca9bd7d8981a894622c884224c6fdc947d90eb20e85108a760ae96",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/run_receipt.json": "a2dab87590ab9fcb80cfed4a086dd38d487a6348d5dfe71793ea7894eab63ee1",
+      "/private/tmp/coffee-flavor-round3m/db/data/backend-sequential-model-v2/stage_effects.tsv": "dfe2a6d068c6d0e618071e986b5a6ee86c41256bb93e9bab359340384ceceb69"
+    },
+    "records": 228,
+    "split_sha256": "48736f8e26737e1312c990c84eb9e1911bfe86fc498751a9be3992d3beb7056e"
+  },
+  "M1_fairness": "Frozen old M1 evaluated on 17 historical groups only; do not evaluate old training groups as CV holdouts.",
+  "backend_default": "B2 (unchanged pending evidence)",
+  "bounded_followup_after_failure": {
+    "C": [
+      0.01,
+      0.1
+    ],
+    "bank": "Frozen old M2 per-fold question bank; old candidate vocabulary, episodes, split and targets.",
+    "changes": "Only recovery objective compared with M2_R1_FIXED_LAYERED_LOCKED at C=.01; C=.1 is separate regularization ablation.",
+    "decision_metric": "grouped development NDCG@5; retain all models; no historical tuning",
+    "loss": "layered_conditional",
+    "registered_utc": "2026-09-05T10:58:40Z",
+    "trigger": "Binary positive-only layered recovery regressed in D0 CV; preserve that failure."
+  },
+  "bounded_search": {
+    "C": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "foundation_fusion_strength": [
+      0.0,
+      0.15
+    ],
+    "foundation_rank": [
+      2,
+      3
+    ],
+    "policy": "Sequential stages, no Cartesian search; CV choice never historical or confirmation."
+  },
+  "code_baseline_sha": "fb29b8c80aae29b9dacce039d728d9dc1efa5769",
+  "context": "Preserve native C0/C1 experiments; source roast labels never fabricate seven production bins.",
+  "dirty_main_policy": "Read only; no reset, stash, edits or commits.",
+  "dirty_main_sha": "1755915d3918013c8bd7c5f744e5ce8a0e972167",
+  "experiment_id": "M2_R1_REPAIR_FOUNDATION_20260905",
+  "feedback": "F0/F1/F2; selected exposure-only; repeated/specificization/new evidence separated; once then terminal",
+  "group_folds": 3,
+  "initial_plan_hash": "a7abb9a5325881beed2d0e13f2577b5f6c0e7ac7123d3d39cb77b3c3321dcc70",
+  "inner_feature_folds": 2,
+  "lineage": "M2 revision; no M3",
+  "loss_policy": "Separate masked attribute, leaf, positive recovery and consistency tasks. Missing is not negative.",
+  "metrics": [
+    "NDCG@5",
+    "Recall@5",
+    "Recall@8",
+    "raw/direct retention",
+    "coverage",
+    "source/group deltas"
+  ],
+  "preregistered_utc": "2026-09-05T10:47:52Z",
+  "real_answers": "NOT_EVALUATED",
+  "remote_main_sha": "e4eced41e2233c76c4645287fba2ecedddd03561",
+  "remote_research_sha": "fb29b8c80aae29b9dacce039d728d9dc1efa5769",
+  "scope_policy": "Full, fine common-vocabulary, and broad scopes reported separately; no-output rows retained.",
+  "seed": 20260905,
+  "stages": [
+    {
+      "C": "old selected C",
+      "bank": "old train-fold bank locked",
+      "data": "D0",
+      "id": "repair_checkpoint",
+      "models": [
+        "M2_JOINT",
+        "M2_R1_FIXED_LEGACY_LOCKED",
+        "B2"
+      ],
+      "purpose": "Isolate repaired evidence/features from catalog and objective changes",
+      "targets": "old visible_episode fixed hidden recovery"
+    },
+    {
+      "bank": "same old bank",
+      "data": "D0",
+      "id": "layered_loss",
+      "models": [
+        "M2_R1_FIXED_LEGACY_LOCKED",
+        "M2_R1_FIXED_LAYERED_LOCKED"
+      ],
+      "purpose": "Isolate supervision masks and separate attribute/leaf/recovery objectives"
+    },
+    {
+      "bank": "Only initial pair selected from training-side complementarity; correction pool fixed",
+      "data": "D0",
+      "id": "complementary_Q01",
+      "models": [
+        "M2_R1_FIXED_LAYERED_LOCKED",
+        "M2_R1_FIXED"
+      ]
+    },
+    {
+      "budget": "Equal question count and actually offered option count; Q0-Q5 max; once check",
+      "data": "D0",
+      "id": "foundation",
+      "models": [
+        "V0_FIXED",
+        "V1_FOUNDATION_ORDINARY",
+        "V2_FOUNDATION_CHECK"
+      ],
+      "optional_control_slot": "Q4 only if preregistered before run",
+      "representations": [
+        "explicit_attributes",
+        "nmf_projection",
+        "supervised_soft_profile"
+      ],
+      "slot": "Q3",
+      "targets": "Group split before deterministic A/B/T; fixed T excluded from all question/answer generation"
+    },
+    {
+      "id": "expansion",
+      "locked": [
+        "candidate vocabulary",
+        "question bank",
+        "hyperparameters",
+        "target hierarchy",
+        "denominator"
+      ],
+      "models": [
+        "M2_R1_FIXED_D0",
+        "M2_R1_FIXED_D0_D1"
+      ],
+      "new_confirmation": "source+group hash 20% before examining predictions; never fit on confirmation"
+    }
+  ],
+  "weights_release": false
+}
