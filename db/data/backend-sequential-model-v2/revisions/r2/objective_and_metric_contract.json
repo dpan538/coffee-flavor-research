@@ -1,0 +1,264 @@
+{
+  "allowed_conclusions": [
+    "SUPPORTED_IN_DECLARED_SCOPE",
+    "NO_IMPROVEMENT",
+    "INCONCLUSIVE",
+    "NOT_ESTIMABLE",
+    "NOT_EVALUATED"
+  ],
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "code_baseline_sha": "8c41e89214229c56849f04efaf61162c38b757d2",
+  "coordination": {
+    "G0": "Best eligible single expert selected only on inner coffee-group OOF",
+    "G1": {
+      "global_R1_weight_grid": [
+        0.0,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ]
+    },
+    "G2": {
+      "shrinkage_pseudogroups": 50,
+      "stages": [
+        "INITIAL",
+        "CORRECTION",
+        "FINAL"
+      ],
+      "weight_grid": [
+        0.0,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ]
+    },
+    "G3": {
+      "parameter_search": "NONE",
+      "response": "inner OOF primary gap advantage of R1 versus B2",
+      "ridge": 10.0,
+      "shrinkage_pseudogroups": 50,
+      "sigmoid_temperature": 0.1,
+      "source_or_identity_features": false
+    },
+    "diagnostics": [
+      "G1_minus_G0",
+      "G2_minus_G1",
+      "G3_minus_G0",
+      "oracle_gap",
+      "expert_error_overlap",
+      "source_stage_strata"
+    ],
+    "eligible_experts": [
+      "B2_TYPED_PRIOR_COMPONENT",
+      "M2_R1_FINAL_FIXED_RESIDUAL"
+    ],
+    "excluded_M1_reason": "Retained training overlaps development; no raw retained M1 development OOF claim",
+    "historical_originals": "Unchanged B2 and R1 outputs retained as controls, not known-error components of deployed ensemble",
+    "in_session_parameter_updates": false,
+    "primary_dynamic_contrast": "G3 minus G1 at P1 PRELIMINARY_RESULT, fixed information and five recovery results",
+    "score_alignment": "Expertwise midrank percentile over identical candidate universe; not probabilities",
+    "shared_semantics": "Canonical direct priority once, compatible broad support +0.25 once, actually exposed NONE -1 once; deduplicate parent/child and feedback paths"
+  },
+  "cost_fields": [
+    "ordinary_questions",
+    "ordinary_options",
+    "final_comparison_candidates",
+    "human_response_seconds"
+  ],
+  "data": {
+    "base_model_internal_feature_folds": 2,
+    "development_coffee_groups": 187,
+    "development_folds_sha256": "7a72cd38bd9b216cdcf22474e83a444b7436be7bfd845ea420efe608f2f5f49c",
+    "development_records": 211,
+    "old_17_and_all_viewed_R1_confirmation": "HISTORICAL_REGRESSION_ONLY",
+    "outer_folds": 3,
+    "outer_scope": "Nested development evaluation of a new frozen objective; old D0 results previously inspected, not fresh confirmation",
+    "router_training_expert_OOF_folds": 2
+  },
+  "default": "B2_UNCHANGED_UNLESS_DECLARED_COMPARISON_SUPPORTS_CHANGE",
+  "descriptor_inputs": {
+    "candidate_scope": "Per outer-train qualified R1 vocabulary intersect legacy FAMILY fine IDs; frozen for all experts and variants; target coverage retained",
+    "feedback": "One 3–8 candidate exposure after legal preliminary endpoint; choices only from visible A; hidden T never chooses feedback",
+    "forbidden_router_fields": [
+      "coffee_id",
+      "source_family",
+      "future_answers",
+      "hidden_targets",
+      "oracle_expert_id",
+      "measured_lab_values"
+    ],
+    "missing_source_context": "Not fabricated; existing source masks retained; synthetic valid context is engineering only",
+    "paths": [
+      "P1",
+      "P4"
+    ],
+    "primary_path": "P1",
+    "question_policy": "Existing fixed R1 planner; all coordination variants share each record/path's actual questions and answers",
+    "runtime": "Required C0/C1, actually answered options and previously exposed final candidates only"
+  },
+  "experiment_id": "M2_R2_PERCEPTUAL_ALIGNMENT_INFORMATION_EFFICIENCY",
+  "foundation": {
+    "CHECK": "R1 retained; no initial inclusion in coordinator pool or post-hoc hunt for favorable subgroups",
+    "default": "OFF",
+    "simple_attributes": "SEPARATE_MAIN_PROFILE_CONTROL"
+  },
+  "human_response_seconds": "NULL_UNLESS_ACTUALLY_MEASURED; NO_INFERRED_SECONDS_FROM_COMPUTE_LATENCY",
+  "information_efficiency": {
+    "alignment_threshold_gap": 0.5,
+    "diagnostic_prefixes": "All existing stages, including context and Q0/Q1, are curve observations, not new permitted stops",
+    "final_comparison": "Candidate count separately included; pre-final and post-final curves separate, no free final correction",
+    "noninferiority_absolute_gap_margin": 0.02,
+    "primary_cost_claim": "Require lower ordinary option cost and upper paired gap-difference interval <=0.02 on common groups at existing legal endpoints",
+    "real_sessions_absent_label": "PROXY_INFORMATION_BUDGET_GAIN_ONLY",
+    "target_driven_stopping": "FORBIDDEN; thresholds evaluated retrospectively, never control runtime",
+    "threshold_basis": "R2 operational research thresholds fixed before results; not validated human acceptability",
+    "threshold_cost": "Earliest observed legal terminal endpoint reaching gap<=0.5; failures retained as not reached, never dropped from cost denominator"
+  },
+  "lineage": "M2 revision; not M3",
+  "new_data_policy": "New retrieval directions allowed; actual files and rights required. Freeze task-specific incremental controls and confirmation groups before viewing results. No synthetic sample reconstruction from papers.",
+  "new_objective_policy": "Introduced in R2 before new fits; R1 ranking regressions remain regressions.",
+  "per_source_and_subgroups": "Diagnostic and exploratory; no unregistered product-wide promotion from nominal local intervals",
+  "primary_alignment": {
+    "aggregation": "Coffee-group macro mean after equal record/path/stage weighting within a declared contrast",
+    "explicit_repetition": "Entire fixed visible A excluded before taking five; no direct-A identity is counted as new recovery",
+    "formula": "1 - maximum one-to-one matching weight(top5 recovery fine candidates, distinct positive fine T) / number of fine T",
+    "granularity": "sensory.* only; compound IDs stay whole; broad descriptors and attributes receive no primary credit",
+    "metric_version": "r2.fixed-taxonomy-one-to-one-recovery.v1",
+    "name": "FIXED_TAXONOMY_ONE_TO_ONE_FINE_RECOVERY_GAP_AT_5",
+    "output_interpretation": "Counterfactual five-item completion panel; actual full top5/direct retention reported separately; not actual user-display accuracy",
+    "reference": "Fixed R1 record-derived hidden T; same positive observations throughout trajectory",
+    "relation_sha256": "b0dc8e00bd232498d69caaeaf71f69a9880b149036b272382e24c900808f77a1",
+    "scale": "Authored semantic proxy; not calibrated psychological distance or flavor probability",
+    "similarity": {
+      "distinct_fine_shared_fixed_R1_parent": 0.25,
+      "exact_fine_identity": 1.0,
+      "otherwise": 0.0
+    },
+    "target_mask": "No fine T => null/unidentifiable; no prediction with fine T => gap 1; vocabulary-excluded T remains in denominator"
+  },
+  "primary_cost": "ACTUALLY_OFFERED_ORDINARY_OPTION_COUNT",
+  "primary_task": "OBSERVED_DESCRIPTOR_RECOVERY",
+  "prior_preservation": {
+    "D0_additionally_verified_by_R1_freeze": true,
+    "files": 247,
+    "manifest_sha256": "051ba2e9700ca5e3ee80c201220f2e315d06b3a61a8e6ac06ef4b7234dc48359",
+    "private_manifest": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2/immutable_prior_artifacts.private.json"
+  },
+  "profiles": {
+    "cost": {
+      "final_candidates": null,
+      "fixed_budget": "SAME_OTHER_VIEW_OBSERVED_CELL_COUNT_FOR_P1_AND_P2",
+      "offered_options": null,
+      "ordinary_question_count": null,
+      "production_question_efficiency": "NOT_EVALUATED",
+      "real_answer_time": "NOT_EVALUATED"
+    },
+    "cotter": {
+      "coffees": 1,
+      "cross_coffee": "NOT_ESTIMABLE",
+      "holdout_axes": [
+        "panelist_id",
+        "condition_id"
+      ],
+      "opposite_axis": "SHARED_WITH_TRAIN_CONDITIONAL_SCOPE_ONLY",
+      "outer_folds": "R1_THREE_FOLDS_SEPARATELY_BY_PARTICIPANT_AND_CONDITION",
+      "overlapping_author_derivative": "NOT_CONCATENATED",
+      "participants": 118,
+      "preparation_conditions": 27,
+      "primary_metric": "HELD_IDENTITY_MACRO_COMPLETE_BALLOT_BRIER",
+      "ridge_grid": [
+        0.005,
+        0.05,
+        0.5
+      ],
+      "task": "RECORDED_RESPONSE_PREDICTION",
+      "view_masks": {
+        "basic_tastes": [
+          "taste.sweetness",
+          "taste.sourness",
+          "taste.bitterness"
+        ],
+        "descriptor_associations": [
+          "attribute.fruity",
+          "attribute.roasted",
+          "broad.nutty",
+          "compound.tea_floral",
+          "native.burnt",
+          "native.rubber",
+          "sensory.caramel",
+          "sensory.dark_chocolate",
+          "broad.citrus",
+          "compound.green_vegetative",
+          "compound.paper_wood",
+          "native.cereal"
+        ],
+        "mouthfeel": [
+          "mouthfeel.astringent",
+          "mouthfeel.thick_viscous"
+        ]
+      }
+    },
+    "fixed_R1_ridge": 0.05,
+    "input": "OBSERVED_CELLS_IN_OTHER_ENTIRE_VIEWS_ONLY_NO_IDS_OR_METADATA",
+    "main_M2_scoring_changed": false,
+    "mask": "EXACT_SOURCE_DIMENSIONS_COMPLETE_OBSERVED_BALLOT;NO_IMPUTATION",
+    "models": [
+      "P0_TRAIN_PRIOR",
+      "P1_FIXED_R1",
+      "P2_NESTED_RIDGE"
+    ],
+    "per_target_results": "EXPLORATORY_NOMINAL_NO_MULTIPLICITY_CLAIM",
+    "primary_contrast": "P2_NESTED_RIDGE_MINUS_P1_FIXED_R1_LOWER_IS_BETTER",
+    "rocchetti": {
+      "development_products": 38,
+      "historical_products": 9,
+      "historical_status": "PREVIOUSLY_INSPECTED_R1_CONFIRMATION_NOT_FRESH",
+      "outer_folds": "R1_THREE_PRODUCT_FOLDS_UNCHANGED",
+      "primary_metric": "PRODUCT_MACRO_NATIVE_0_TO_9_CODE_MAE",
+      "ridge_grid": [
+        0.05,
+        0.5,
+        5.0
+      ],
+      "scale_interpretation": "SOURCE_CODING_RECONSTRUCTION_NOT_PSYCHOLOGICAL_DISTANCE",
+      "task": "PROFESSIONAL_PROFILE_ALIGNMENT",
+      "view_masks": {
+        "aroma": [
+          "native.olfactory_intensity",
+          "native.flowers_and_fresh_fruit",
+          "native.vegetable",
+          "native.dried_fruits_and_nuts",
+          "native.roasted_composite",
+          "native.spicy",
+          "native.empyreumatic",
+          "native.biochemical"
+        ],
+        "basic_taste": [
+          "native.acidity_intensity",
+          "taste.bitterness"
+        ],
+        "mouthfeel": [
+          "mouthfeel.body",
+          "mouthfeel.astringency"
+        ]
+      }
+    },
+    "seed": 20260905,
+    "selection": "THREE_INNER_GROUP_FOLDS_GLOBAL_ALL_TARGET_MACRO_LOSS;TIES_WITHIN_1E-12_STRONGEST_RIDGE",
+    "target_search": "NONE_NO_PER_TARGET_SELECTION",
+    "uncertainty": "5000_FIXED_OOF_PREDICTION_PAIRED_HELD_UNIT_BOOTSTRAPS;NO_REFIT_OR_NEW_SOURCE_UNCERTAINTY",
+    "version": "m2-r2-profile-alignment.v1"
+  },
+  "publication": "Code, permissible configuration, aggregate metrics and hashes only; raw data, trajectories and weights stay private",
+  "registered_utc": "2026-09-05T13:25:10.621930+00:00",
+  "task_registry": {
+    "INDIVIDUAL_PERCEPTUAL_ALIGNMENT": "Requires imported actual judgments independent of corrective selections; currently NOT_EVALUATED",
+    "INFORMATION_EFFICIENCY": "Actual offered information budget in fixed legal paths; user-time efficacy NOT_EVALUATED without measured sessions",
+    "OBSERVED_DESCRIPTOR_RECOVERY": "Positive-only source descriptions, fixed A/T; no unmentioned sensory negatives",
+    "PROFESSIONAL_PROFILE_ALIGNMENT": "Native source-coded profile reconstruction MAE, product unit, other-view cells only; separate from descriptor ranks",
+    "RECORDED_RESPONSE_PREDICTION": "Complete CATA ballots with true binary zeros, held participant and held condition separately; no cross-coffee claim from one coffee"
+  },
+  "uncertainty": "Paired independent coffee/participant/condition unit as declared; 2000 fixed-prediction bootstraps for descriptor tasks; <10 groups show range and INCONCLUSIVE, not narrow generalization CI"
+}

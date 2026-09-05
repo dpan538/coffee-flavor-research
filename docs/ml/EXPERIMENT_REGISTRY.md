@@ -1,5 +1,27 @@
 # Experiment registry
 
+## M2 R2 perceptual alignment and information efficiency — 2026-09-05
+
+R2 introduces its [frozen objective contract](../../db/data/backend-sequential-model-v2/revisions/r2/objective_and_metric_contract.json)
+before new fits. The primary descriptor measure is a fixed-taxonomy one-to-one
+fine recovery gap at five, with actual ordinary options as the primary cost.
+Professional source-code MAE, complete CATA Brier and real user judgments remain
+separate tasks. No new objective changes the meaning of R1's ranking regressions.
+
+On the untouched R1/B2 outer-held outputs, the new gap is 0.461202/0.466110;
+the paired difference is inconclusive. First nested source-native refits reduce
+Rocchetti 38-product MAE from 0.752240 to 0.707511, and Cotter same-coffee Brier
+from 0.145570 to 0.143773 under participant holdout and 0.144950 to 0.142613
+under preparation-condition holdout. These are improvements within declared
+recorded-view reconstruction tasks; they do not establish individual perceptual
+alignment or real user time savings. Declining individual attributes and the
+previously inspected nine-product historical result remain in the summaries.
+
+Nested expert coordination and new-source acquisition are active. B2 remains
+default and CHECK remains off. The [R2 receipt](../../db/data/backend-sequential-model-v2/revisions/r2/run_receipt.json)
+and [alignment/cost results](../../db/data/backend-sequential-model-v2/revisions/r2/alignment_cost_results.json)
+index the current checkpoint; detailed rows and fitted weights stay private.
+
 ## M2 R1 repair and sensory foundation — 2026-09-05
 
 R1 preserves D0 and all earlier weights/results. The preferred valid repaired

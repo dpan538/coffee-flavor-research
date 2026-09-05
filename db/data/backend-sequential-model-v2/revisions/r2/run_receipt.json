@@ -1,0 +1,27 @@
+{
+  "baseline_sha": "8c41e89214229c56849f04efaf61162c38b757d2",
+  "contract_sha256": "4538db4be85e5d33a3a6b7db004c2f54c53a9783177d525c689ea96d252507ba",
+  "default": "B2_UNCHANGED",
+  "experiment_id": "M2_R2_PERCEPTUAL_ALIGNMENT_INFORMATION_EFFICIENCY",
+  "first_validation": {
+    "frozen_prior_files": 247,
+    "native_profile_tests_passed": 8,
+    "new_metric_tests_passed": 6,
+    "old_R1_untouched": true
+  },
+  "human_comparison_cases": {
+    "count": 20,
+    "originals_preserved": true,
+    "path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2/human_comparison_cases_r2.private.json",
+    "real_judgments": 0,
+    "real_times": 0
+  },
+  "native_profile_summary_private_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2/profiles_public_summary.private.json",
+  "native_profile_summary_sha256": "891870d3dc904418d47821fa5847fdd954838da5c57e59790189c0027cd1d513",
+  "old_results_reinterpreted": false,
+  "private_root": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2",
+  "real_user_alignment": "NOT_EVALUATED",
+  "real_user_time_efficiency": "NOT_EVALUATED",
+  "registered_utc": "2026-09-05T13:25:10.626093+00:00",
+  "status": "NATIVE_PROFILE_FITS_COMPLETE; COORDINATION_AND_DATA_WORK_ACTIVE"
+}

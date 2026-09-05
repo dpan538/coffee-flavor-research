@@ -98,6 +98,20 @@ This round permits one focused 3–4 hour source block and parallel, disjoint ag
 work. Do not start M3, alter frontend/CI, release weights, merge main or rewrite
 history. The R1 receipt is the current compact delivery record.
 
+### Active M2 R2 alignment and coordination — 2026-09-05
+
+Preserve R1 objectives, results and models. Freeze new task-specific alignment
+metrics and actual information-cost budgets before R2 fits; never reinterpret
+R1 ranking regressions as successes. Separate professional profiles, descriptor
+recovery, recorded responses and real individual judgments. Fit only a small
+expert pool with nested group-isolated coordinator training; shared semantic
+evidence is applied once. No source/coffee identity or future-answer routing.
+Use `revisions/r2`, private raw data/weights, existing legal paths and one final
+comparison. New source directions are authorized beyond R1's exhausted routes;
+actual acquisitions and contributions matter, not elapsed search time or quotas.
+B2 remains default and CHECK stays off pending declared evidence. R2 permits
+parallel disjoint backend work and normal research-branch checkpoint pushes.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;

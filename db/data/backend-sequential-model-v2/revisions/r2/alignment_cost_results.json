@@ -1,0 +1,3055 @@
+{
+  "frozen_output_baselines": {
+    "R1_minus_B2": {
+      "delta": -0.004907852564102565,
+      "groups": 104,
+      "paired_group_95_interval": [
+        -0.027084334935897444,
+        0.01762870592948718
+      ],
+      "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+      "status": "INCONCLUSIVE"
+    },
+    "R1_original_objective_results": "UNCHANGED; retained in revisions/r1",
+    "costs": {
+      "ORIGINAL_B2_CONTROL": {
+        "final_comparison_candidates": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.0,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "ordinary_options": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 19.668449197860962,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "ordinary_questions": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 5.0,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        }
+      },
+      "ORIGINAL_R1_CONTROL": {
+        "final_comparison_candidates": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.0,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "ordinary_options": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 19.668449197860962,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "ordinary_questions": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 5.0,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        }
+      }
+    },
+    "models": {
+      "ORIGINAL_B2_CONTROL": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46610958485958487,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "ORIGINAL_R1_CONTROL": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.4612017322954823,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      }
+    },
+    "per_source": {
+      "inera": {
+        "ORIGINAL_B2_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": null,
+          "groups": 73,
+          "labelled_groups": 0,
+          "labelled_records": 0,
+          "records": 95
+        },
+        "ORIGINAL_R1_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": null,
+          "groups": 73,
+          "labelled_groups": 0,
+          "labelled_records": 0,
+          "records": 95
+        }
+      },
+      "lengupa": {
+        "ORIGINAL_B2_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.6217948717948718,
+          "groups": 21,
+          "labelled_groups": 13,
+          "labelled_records": 13,
+          "records": 21
+        },
+        "ORIGINAL_R1_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.6217948717948718,
+          "groups": 21,
+          "labelled_groups": 13,
+          "labelled_records": 13,
+          "records": 21
+        }
+      },
+      "zenodo": {
+        "ORIGINAL_B2_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.44386882958311524,
+          "groups": 93,
+          "labelled_groups": 91,
+          "labelled_records": 93,
+          "records": 95
+        },
+        "ORIGINAL_R1_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.43825985522414096,
+          "groups": 93,
+          "labelled_groups": 91,
+          "labelled_records": 93,
+          "records": 95
+        }
+      }
+    },
+    "real_user_alignment": "NOT_EVALUATED",
+    "scope": "New R2 metric applied to preserved R1 outer-held P1 outputs; not fresh validation or a refit"
+  },
+  "native_profiles_and_responses": {
+    "data_expansion_contribution": "NOT_EVALUATED_PENDING_ADMITTED_COMPATIBLE_DATA",
+    "elapsed_seconds": 179.72282458283007,
+    "execution": {
+      "all_saved_hashes_verified": true,
+      "binary_logistic_target_fits": 1496,
+      "bundle_fits": 132,
+      "individual_target_fits": 2024,
+      "native_linear_target_fits": 528,
+      "outer_inner_identity_overlap": 0,
+      "rerun_reuses_retained_results_without_fitting": true,
+      "retained_models": 24,
+      "unit_tests": 8
+    },
+    "main_M2_scoring_changed": false,
+    "plan_hash": "b0868602d39b6e4ebbbda25466c90bb178bd6fdd6c5d23271d291b394b310dd4",
+    "protocol": {
+      "cost": {
+        "final_candidates": null,
+        "fixed_budget": "SAME_OTHER_VIEW_OBSERVED_CELL_COUNT_FOR_P1_AND_P2",
+        "offered_options": null,
+        "ordinary_question_count": null,
+        "production_question_efficiency": "NOT_EVALUATED",
+        "real_answer_time": "NOT_EVALUATED"
+      },
+      "cotter": {
+        "coffees": 1,
+        "cross_coffee": "NOT_ESTIMABLE",
+        "holdout_axes": [
+          "panelist_id",
+          "condition_id"
+        ],
+        "opposite_axis": "SHARED_WITH_TRAIN_CONDITIONAL_SCOPE_ONLY",
+        "outer_folds": "R1_THREE_FOLDS_SEPARATELY_BY_PARTICIPANT_AND_CONDITION",
+        "overlapping_author_derivative": "NOT_CONCATENATED",
+        "participants": 118,
+        "preparation_conditions": 27,
+        "primary_metric": "HELD_IDENTITY_MACRO_COMPLETE_BALLOT_BRIER",
+        "ridge_grid": [
+          0.005,
+          0.05,
+          0.5
+        ],
+        "task": "RECORDED_RESPONSE_PREDICTION",
+        "view_masks": {
+          "basic_tastes": [
+            "taste.sweetness",
+            "taste.sourness",
+            "taste.bitterness"
+          ],
+          "descriptor_associations": [
+            "attribute.fruity",
+            "attribute.roasted",
+            "broad.nutty",
+            "compound.tea_floral",
+            "native.burnt",
+            "native.rubber",
+            "sensory.caramel",
+            "sensory.dark_chocolate",
+            "broad.citrus",
+            "compound.green_vegetative",
+            "compound.paper_wood",
+            "native.cereal"
+          ],
+          "mouthfeel": [
+            "mouthfeel.astringent",
+            "mouthfeel.thick_viscous"
+          ]
+        }
+      },
+      "fixed_R1_ridge": 0.05,
+      "input": "OBSERVED_CELLS_IN_OTHER_ENTIRE_VIEWS_ONLY_NO_IDS_OR_METADATA",
+      "main_M2_scoring_changed": false,
+      "mask": "EXACT_SOURCE_DIMENSIONS_COMPLETE_OBSERVED_BALLOT;NO_IMPUTATION",
+      "models": [
+        "P0_TRAIN_PRIOR",
+        "P1_FIXED_R1",
+        "P2_NESTED_RIDGE"
+      ],
+      "per_target_results": "EXPLORATORY_NOMINAL_NO_MULTIPLICITY_CLAIM",
+      "primary_contrast": "P2_NESTED_RIDGE_MINUS_P1_FIXED_R1_LOWER_IS_BETTER",
+      "rocchetti": {
+        "development_products": 38,
+        "historical_products": 9,
+        "historical_status": "PREVIOUSLY_INSPECTED_R1_CONFIRMATION_NOT_FRESH",
+        "outer_folds": "R1_THREE_PRODUCT_FOLDS_UNCHANGED",
+        "primary_metric": "PRODUCT_MACRO_NATIVE_0_TO_9_CODE_MAE",
+        "ridge_grid": [
+          0.05,
+          0.5,
+          5.0
+        ],
+        "scale_interpretation": "SOURCE_CODING_RECONSTRUCTION_NOT_PSYCHOLOGICAL_DISTANCE",
+        "task": "PROFESSIONAL_PROFILE_ALIGNMENT",
+        "view_masks": {
+          "aroma": [
+            "native.olfactory_intensity",
+            "native.flowers_and_fresh_fruit",
+            "native.vegetable",
+            "native.dried_fruits_and_nuts",
+            "native.roasted_composite",
+            "native.spicy",
+            "native.empyreumatic",
+            "native.biochemical"
+          ],
+          "basic_taste": [
+            "native.acidity_intensity",
+            "taste.bitterness"
+          ],
+          "mouthfeel": [
+            "mouthfeel.body",
+            "mouthfeel.astringency"
+          ]
+        }
+      },
+      "seed": 20260905,
+      "selection": "THREE_INNER_GROUP_FOLDS_GLOBAL_ALL_TARGET_MACRO_LOSS;TIES_WITHIN_1E-12_STRONGEST_RIDGE",
+      "target_search": "NONE_NO_PER_TARGET_SELECTION",
+      "uncertainty": "5000_FIXED_OOF_PREDICTION_PAIRED_HELD_UNIT_BOOTSTRAPS;NO_REFIT_OR_NEW_SOURCE_UNCERTAINTY",
+      "version": "m2-r2-profile-alignment.v1"
+    },
+    "real_user_alignment": "NOT_EVALUATED",
+    "real_user_time_efficiency": "NOT_EVALUATED",
+    "tasks": {
+      "cotter_brew_condition": {
+        "cost_interpretation": {
+          "final_candidates": null,
+          "fixed_budget": "SAME_OTHER_VIEW_OBSERVED_CELL_COUNT_FOR_P1_AND_P2",
+          "offered_options": null,
+          "ordinary_question_count": null,
+          "production_question_efficiency": "NOT_EVALUATED",
+          "real_answer_time": "NOT_EVALUATED"
+        },
+        "development": {
+          "by_target": {
+            "attribute.fruity": {
+              "P1_minus_P0": {
+                "delta": -0.0034341109527684824,
+                "paired_unit_95_interval": [
+                  -0.004248094484745569,
+                  -0.0026082652907720395
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0059446211872758205,
+                "paired_unit_95_interval": [
+                  -0.008075747002079641,
+                  -0.0037940101766369342
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.002510510234507338,
+                "paired_unit_95_interval": [
+                  -0.003830317410830061,
+                  -0.001179857536799726
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.13280456635255702,
+                "P1_FIXED_R1": 0.12937045539978856,
+                "P2_NESTED_RIDGE": 0.12685994516528126
+              },
+              "observations": 3186
+            },
+            "attribute.roasted": {
+              "P1_minus_P0": {
+                "delta": -0.00524093323407661,
+                "paired_unit_95_interval": [
+                  -0.0068115143161350325,
+                  -0.0037569505847253773
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.007155292199306161,
+                "paired_unit_95_interval": [
+                  -0.00993919979617822,
+                  -0.0045583257105832175
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0019143589652295503,
+                "paired_unit_95_interval": [
+                  -0.00310436664162637,
+                  -0.0007486804979531354
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.2485054079583108,
+                "P1_FIXED_R1": 0.2432644747242343,
+                "P2_NESTED_RIDGE": 0.24135011575900472
+              },
+              "observations": 3186
+            },
+            "broad.citrus": {
+              "P1_minus_P0": {
+                "delta": -0.002401920964367663,
+                "paired_unit_95_interval": [
+                  -0.003018069722001353,
+                  -0.0017782599347799374
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.003775294514272837,
+                "paired_unit_95_interval": [
+                  -0.005250320824107559,
+                  -0.002296229726132239
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0013733735499051741,
+                "paired_unit_95_interval": [
+                  -0.0022413085198137073,
+                  -0.0005085813457573949
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.14869772178894725,
+                "P1_FIXED_R1": 0.14629580082457957,
+                "P2_NESTED_RIDGE": 0.14492242727467436
+              },
+              "observations": 3186
+            },
+            "broad.nutty": {
+              "P1_minus_P0": {
+                "delta": -0.005525328814152893,
+                "paired_unit_95_interval": [
+                  -0.007031816283568834,
+                  -0.004008561551068693
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.007372570746965086,
+                "paired_unit_95_interval": [
+                  -0.010119418367392587,
+                  -0.004623111092399599
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0018472419328121933,
+                "paired_unit_95_interval": [
+                  -0.0031105446548783805,
+                  -0.0005716205505047439
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.2085124361170518,
+                "P1_FIXED_R1": 0.2029871073028989,
+                "P2_NESTED_RIDGE": 0.20113986537008677
+              },
+              "observations": 3186
+            },
+            "compound.green_vegetative": {
+              "P1_minus_P0": {
+                "delta": -0.0005548988790126926,
+                "paired_unit_95_interval": [
+                  -0.0007199565069280639,
+                  -0.0003728465333289353
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0011089771006161488,
+                "paired_unit_95_interval": [
+                  -0.001673719134306353,
+                  -0.0005239427518984586
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0005540782216034563,
+                "paired_unit_95_interval": [
+                  -0.0009588267589577417,
+                  -0.00014792699372451955
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.11371549020372776,
+                "P1_FIXED_R1": 0.11316059132471505,
+                "P2_NESTED_RIDGE": 0.11260651310311162
+              },
+              "observations": 3186
+            },
+            "compound.paper_wood": {
+              "P1_minus_P0": {
+                "delta": -0.0020800120110031455,
+                "paired_unit_95_interval": [
+                  -0.0026606718322456603,
+                  -0.0014720457194979104
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0033143804530890433,
+                "paired_unit_95_interval": [
+                  -0.004677973639828244,
+                  -0.0018988769186917501
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0012343684420858978,
+                "paired_unit_95_interval": [
+                  -0.0020373752128782056,
+                  -0.000431771027796831
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.17822160393340442,
+                "P1_FIXED_R1": 0.17614159192240125,
+                "P2_NESTED_RIDGE": 0.17490722348031543
+              },
+              "observations": 3186
+            },
+            "compound.tea_floral": {
+              "P1_minus_P0": {
+                "delta": -0.0032988942555421054,
+                "paired_unit_95_interval": [
+                  -0.00389944197799771,
+                  -0.0026947181108036714
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.004926148444701389,
+                "paired_unit_95_interval": [
+                  -0.0062818177792364075,
+                  -0.0035544323239484824
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0016272541891592842,
+                "paired_unit_95_interval": [
+                  -0.002409287188750857,
+                  -0.0008358017668972397
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.1580722452159458,
+                "P1_FIXED_R1": 0.15477335096040368,
+                "P2_NESTED_RIDGE": 0.1531460967712444
+              },
+              "observations": 3186
+            },
+            "mouthfeel.astringent": {
+              "P1_minus_P0": {
+                "delta": -0.001989359471385468,
+                "paired_unit_95_interval": [
+                  -0.002489032424542446,
+                  -0.0015058906051701475
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.003106534960285831,
+                "paired_unit_95_interval": [
+                  -0.004373769263172409,
+                  -0.0018923567818387014
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.001117175488900363,
+                "paired_unit_95_interval": [
+                  -0.0019115988292848502,
+                  -0.00035158547116107236
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.10063891814825456,
+                "P1_FIXED_R1": 0.0986495586768691,
+                "P2_NESTED_RIDGE": 0.09753238318796872
+              },
+              "observations": 3186
+            },
+            "mouthfeel.thick_viscous": {
+              "P1_minus_P0": {
+                "delta": -0.0008688504007934596,
+                "paired_unit_95_interval": [
+                  -0.0011879684843562745,
+                  -0.0005672337028375706
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0017213772128170718,
+                "paired_unit_95_interval": [
+                  -0.002708946091970695,
+                  -0.0007828133731310515
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0008525268120236125,
+                "paired_unit_95_interval": [
+                  -0.0015182089423880925,
+                  -0.00020697034530820182
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.07084564295534962,
+                "P1_FIXED_R1": 0.06997679255455616,
+                "P2_NESTED_RIDGE": 0.06912426574253255
+              },
+              "observations": 3186
+            },
+            "native.burnt": {
+              "P1_minus_P0": {
+                "delta": -0.009901186044636039,
+                "paired_unit_95_interval": [
+                  -0.011462914827283942,
+                  -0.0084761295901812
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.01504890514647892,
+                "paired_unit_95_interval": [
+                  -0.018253540856780947,
+                  -0.012084330306810326
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0051477191018428825,
+                "paired_unit_95_interval": [
+                  -0.00681997796794018,
+                  -0.0036141876793579883
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.1477283205833429,
+                "P1_FIXED_R1": 0.13782713453870685,
+                "P2_NESTED_RIDGE": 0.13267941543686393
+              },
+              "observations": 3186
+            },
+            "native.cereal": {
+              "P1_minus_P0": {
+                "delta": -0.001040135117425539,
+                "paired_unit_95_interval": [
+                  -0.0013296979549430737,
+                  -0.0007253790228582087
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0019196490630805146,
+                "paired_unit_95_interval": [
+                  -0.002690742448860685,
+                  -0.0010941877091306669
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0008795139456549756,
+                "paired_unit_95_interval": [
+                  -0.0013659858211126047,
+                  -0.00036684454227166644
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.09760318507405873,
+                "P1_FIXED_R1": 0.0965630499566332,
+                "P2_NESTED_RIDGE": 0.09568353601097819
+              },
+              "observations": 3186
+            },
+            "native.rubber": {
+              "P1_minus_P0": {
+                "delta": -0.0006224236724712118,
+                "paired_unit_95_interval": [
+                  -0.000784525530001912,
+                  -0.0004609223542764286
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0015422827798574938,
+                "paired_unit_95_interval": [
+                  -0.0021265588048551423,
+                  -0.0009692030777347248
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0009198591073862818,
+                "paired_unit_95_interval": [
+                  -0.0013440578399724554,
+                  -0.0005091098197048188
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.06548364253685204,
+                "P1_FIXED_R1": 0.06486121886438083,
+                "P2_NESTED_RIDGE": 0.06394135975699453
+              },
+              "observations": 3186
+            },
+            "sensory.caramel": {
+              "P1_minus_P0": {
+                "delta": -0.0019253705034908435,
+                "paired_unit_95_interval": [
+                  -0.002441721592737912,
+                  -0.0014470688706518416
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0033537808875176546,
+                "paired_unit_95_interval": [
+                  -0.004755469499247507,
+                  -0.002021181630917841
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0014284103840268112,
+                "paired_unit_95_interval": [
+                  -0.0023077142910561343,
+                  -0.0005787218500559321
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.11295459892207328,
+                "P1_FIXED_R1": 0.11102922841858241,
+                "P2_NESTED_RIDGE": 0.1096008180345556
+              },
+              "observations": 3186
+            },
+            "sensory.dark_chocolate": {
+              "P1_minus_P0": {
+                "delta": -0.002865931951734831,
+                "paired_unit_95_interval": [
+                  -0.0036610705547321823,
+                  -0.0020957621565711694
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.004472631560542165,
+                "paired_unit_95_interval": [
+                  -0.006095472616263418,
+                  -0.002892889601668998
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0016066996088073343,
+                "paired_unit_95_interval": [
+                  -0.0024558498287548546,
+                  -0.0007510240950597378
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.16770670411865463,
+                "P1_FIXED_R1": 0.16484077216691978,
+                "P2_NESTED_RIDGE": 0.1632340725581124
+              },
+              "observations": 3186
+            },
+            "taste.bitterness": {
+              "P1_minus_P0": {
+                "delta": -0.017032806116535452,
+                "paired_unit_95_interval": [
+                  -0.019757631799564912,
+                  -0.014545961161376082
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.02282014414045122,
+                "paired_unit_95_interval": [
+                  -0.027739510273935876,
+                  -0.01832925812485031
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.005787338023915769,
+                "paired_unit_95_interval": [
+                  -0.008018406900934517,
+                  -0.0036984250997746018
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.21582639088384578,
+                "P1_FIXED_R1": 0.19879358476731032,
+                "P2_NESTED_RIDGE": 0.1930062467433945
+              },
+              "observations": 3186
+            },
+            "taste.sourness": {
+              "P1_minus_P0": {
+                "delta": -0.014177285236255634,
+                "paired_unit_95_interval": [
+                  -0.017539137169336423,
+                  -0.010924158082428807
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.019030522429060007,
+                "paired_unit_95_interval": [
+                  -0.024873554477890737,
+                  -0.013287560164903596
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.00485323719280437,
+                "paired_unit_95_interval": [
+                  -0.007420697617404525,
+                  -0.002168137245023425
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.22423387749842483,
+                "P1_FIXED_R1": 0.21005659226216927,
+                "P2_NESTED_RIDGE": 0.20520335506936488
+              },
+              "observations": 3186
+            },
+            "taste.sweetness": {
+              "P1_minus_P0": {
+                "delta": -0.009512287205080112,
+                "paired_unit_95_interval": [
+                  -0.010857467958838594,
+                  -0.0082816155005627
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.015590279905691725,
+                "paired_unit_95_interval": [
+                  -0.018749862489683366,
+                  -0.01273651163005785
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.006077992700611611,
+                "paired_unit_95_interval": [
+                  -0.00796476310862216,
+                  -0.004427333864692914
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.1550682836751656,
+                "P1_FIXED_R1": 0.14555599647008546,
+                "P2_NESTED_RIDGE": 0.13947800376947384
+              },
+              "observations": 3186
+            }
+          },
+          "by_view": {
+            "basic_tastes": {
+              "P1_minus_P0": {
+                "delta": -0.013574126185956877,
+                "paired_unit_95_interval": [
+                  -0.015161778453299723,
+                  -0.012146715317473288
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.019146982158400765,
+                "paired_unit_95_interval": [
+                  -0.021922588408691088,
+                  -0.01658826437268163
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.005572855972443885,
+                "paired_unit_95_interval": [
+                  -0.006875889307096248,
+                  -0.004328255149246727
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 9558,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.19837618401914517,
+                "P1_FIXED_R1": 0.18480205783318834,
+                "P2_NESTED_RIDGE": 0.17922920186074442
+              },
+              "observations": 3186
+            },
+            "descriptor_associations": {
+              "P1_minus_P0": {
+                "delta": -0.0032409288667235325,
+                "paired_unit_95_interval": [
+                  -0.003612468837137687,
+                  -0.0029008039663239804
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0049945445069752605,
+                "paired_unit_95_interval": [
+                  -0.0057026561067663505,
+                  -0.0043564051625188446
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0017536156402517278,
+                "paired_unit_95_interval": [
+                  -0.0020914054041129664,
+                  -0.0014425056287657705
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 38232,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.14833382690041055,
+                "P1_FIXED_R1": 0.14509289803368702,
+                "P2_NESTED_RIDGE": 0.14333928239343527
+              },
+              "observations": 3186
+            },
+            "mouthfeel": {
+              "P1_minus_P0": {
+                "delta": -0.0014291049360894083,
+                "paired_unit_95_interval": [
+                  -0.0017282233971365108,
+                  -0.0011271052501864087
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0024139560865513885,
+                "paired_unit_95_interval": [
+                  -0.0031802449557364384,
+                  -0.0016183613214982764
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0009848511504619805,
+                "paired_unit_95_interval": [
+                  -0.0014665867959694264,
+                  -0.0004828117360548972
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 6372,
+              "held_units": 27,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.08574228055180205,
+                "P1_FIXED_R1": 0.08431317561571262,
+                "P2_NESTED_RIDGE": 0.08332832446525062
+              },
+              "observations": 3186
+            }
+          },
+          "coverage": 1.0,
+          "macro": {
+            "P1_minus_P0": {
+              "delta": -0.004851278519454821,
+              "paired_unit_95_interval": [
+                -0.005396767846892182,
+                -0.0043586768587466265
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "P2_minus_P0": {
+              "delta": -0.007188434866588724,
+              "paired_unit_95_interval": [
+                -0.008169583148148965,
+                -0.00629470865583022
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "P2_minus_P1": {
+              "delta": -0.0023371563471339036,
+              "paired_unit_95_interval": [
+                -0.0027978425954898454,
+                -0.0019209948213898867
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "evaluated_cells": 54162,
+            "held_units": 27,
+            "loss": {
+              "P0_TRAIN_PRIOR": 0.14980111976270394,
+              "P1_FIXED_R1": 0.14494984124324908,
+              "P2_NESTED_RIDGE": 0.1426126848961152
+            },
+            "observations": 3186
+          },
+          "per_target_intervals": "EXPLORATORY_NOMINAL_NO_MULTIPLICITY_CLAIM",
+          "uncertainty": "5000_FIXED_OOF_PREDICTION_PAIRED_HELD_UNIT_BOOTSTRAPS;NO_REFIT_OR_NEW_SOURCE_UNCERTAINTY"
+        },
+        "final_ridge": 0.005,
+        "historical_regression": null,
+        "historical_status": "NOT_EVALUATED",
+        "holdout_axis": "condition_id",
+        "kind": "cotter",
+        "main_M2_scoring_changed": false,
+        "model_artifacts": [
+          {
+            "relative_path": "profiles_cotter_brew_condition_fold0_fixed.model.json",
+            "sha256": "d9854d0b57fc5f182193ca8218922f3d943340f4ecd0a6d8b1d87ec85074d17c"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_fold0_selected.model.json",
+            "sha256": "6b254f937650b79750816ee43aaa25a88cc920b8bda6f45ce47bb8e010d05e6e"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_fold1_fixed.model.json",
+            "sha256": "056bca9e04f7413c263cf989b2d8d8fccc9cf286f39606e0b9a6c407916ca620"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_fold1_selected.model.json",
+            "sha256": "62d28189b782f9dde661fc00dfb154bef93d0c350aa79a371fdd20f5b36b8f60"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_fold2_fixed.model.json",
+            "sha256": "e0e27c398126db757bf0f347715b81d1e5b47acb5a18e964a7637d7f0aab680a"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_fold2_selected.model.json",
+            "sha256": "35b94503cb9ce598078caae955d80fd1b6b546a6bff27ff60b1e56ed592aa586"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_final_fixed.model.json",
+            "sha256": "b62ec9b3e348c185e3e8ee090ba2296d2b1921af81284b2a4751a59827361390"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_final_selected.model.json",
+            "sha256": "b4a501643147a8b9bd69700a6ccb53d67b9203aee995929ef405b79e9fae1fe8"
+          },
+          {
+            "relative_path": "profiles_cotter_brew_condition_evaluation.private.json",
+            "sha256": "87803d2d0dffb94cd60bff9703f6bb138039bc7142ed2839f1ae99149b09b466"
+          }
+        ],
+        "new_independent_products": 0,
+        "other_view_cell_cost_per_target": {
+          "attribute.fruity": 5,
+          "attribute.roasted": 5,
+          "broad.citrus": 5,
+          "broad.nutty": 5,
+          "compound.green_vegetative": 5,
+          "compound.paper_wood": 5,
+          "compound.tea_floral": 5,
+          "mouthfeel.astringent": 15,
+          "mouthfeel.thick_viscous": 15,
+          "native.burnt": 5,
+          "native.cereal": 5,
+          "native.rubber": 5,
+          "sensory.caramel": 5,
+          "sensory.dark_chocolate": 5,
+          "taste.bitterness": 14,
+          "taste.sourness": 14,
+          "taste.sweetness": 14
+        },
+        "selected_ridges": [
+          0.005,
+          0.005,
+          0.005
+        ]
+      },
+      "cotter_judge": {
+        "cost_interpretation": {
+          "final_candidates": null,
+          "fixed_budget": "SAME_OTHER_VIEW_OBSERVED_CELL_COUNT_FOR_P1_AND_P2",
+          "offered_options": null,
+          "ordinary_question_count": null,
+          "production_question_efficiency": "NOT_EVALUATED",
+          "real_answer_time": "NOT_EVALUATED"
+        },
+        "development": {
+          "by_target": {
+            "attribute.fruity": {
+              "P1_minus_P0": {
+                "delta": -0.0032471153496489045,
+                "paired_unit_95_interval": [
+                  -0.004449464244935041,
+                  -0.002077172420201773
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.005328976473675443,
+                "paired_unit_95_interval": [
+                  -0.008391615505640965,
+                  -0.0023342815681843625
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.00208186112402654,
+                "paired_unit_95_interval": [
+                  -0.00396812327804812,
+                  -0.00024635029592144566
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.13343375945302524,
+                "P1_FIXED_R1": 0.13018664410337638,
+                "P2_NESTED_RIDGE": 0.12810478297934982
+              },
+              "observations": 3186
+            },
+            "attribute.roasted": {
+              "P1_minus_P0": {
+                "delta": -0.004576732475668751,
+                "paired_unit_95_interval": [
+                  -0.006719394647117349,
+                  -0.0025642790925479997
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.005629153344311898,
+                "paired_unit_95_interval": [
+                  -0.009678824609374933,
+                  -0.0017804607070039497
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0010524208686431482,
+                "paired_unit_95_interval": [
+                  -0.0030175867357585305,
+                  0.0008274464805269226
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.24903582894267576,
+                "P1_FIXED_R1": 0.24445909646700686,
+                "P2_NESTED_RIDGE": 0.24340667559836368
+              },
+              "observations": 3186
+            },
+            "broad.citrus": {
+              "P1_minus_P0": {
+                "delta": -0.002224669287176772,
+                "paired_unit_95_interval": [
+                  -0.0033004502795756685,
+                  -0.0012164273452133553
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0032758912941805883,
+                "paired_unit_95_interval": [
+                  -0.005873187484661068,
+                  -0.0008871154192688841
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0010512220070038165,
+                "paired_unit_95_interval": [
+                  -0.002555902635476332,
+                  0.0003503950929834648
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.14852231690815515,
+                "P1_FIXED_R1": 0.14629764762097835,
+                "P2_NESTED_RIDGE": 0.14524642561397458
+              },
+              "observations": 3186
+            },
+            "broad.nutty": {
+              "P1_minus_P0": {
+                "delta": -0.005003265742149616,
+                "paired_unit_95_interval": [
+                  -0.007056888791778348,
+                  -0.002829105825761468
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.006023644258691744,
+                "paired_unit_95_interval": [
+                  -0.009810753164840015,
+                  -0.0020074098368244183
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0010203785165421272,
+                "paired_unit_95_interval": [
+                  -0.0027936020354012597,
+                  0.0008530792651484921
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.2072229438771843,
+                "P1_FIXED_R1": 0.20221967813503453,
+                "P2_NESTED_RIDGE": 0.20119929961849237
+              },
+              "observations": 3186
+            },
+            "compound.green_vegetative": {
+              "P1_minus_P0": {
+                "delta": -0.0005014033479458167,
+                "paired_unit_95_interval": [
+                  -0.0008128108922222039,
+                  -0.00019818415590644085
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0009998655520117136,
+                "paired_unit_95_interval": [
+                  -0.0019317236513401923,
+                  -8.789991040386828e-05
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.000498462204065897,
+                "paired_unit_95_interval": [
+                  -0.0011339293027572731,
+                  0.00011845498265388091
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.11370091003165649,
+                "P1_FIXED_R1": 0.11319950668371061,
+                "P2_NESTED_RIDGE": 0.11270104447964475
+              },
+              "observations": 3186
+            },
+            "compound.paper_wood": {
+              "P1_minus_P0": {
+                "delta": -0.0017313921002073546,
+                "paired_unit_95_interval": [
+                  -0.002672008033889529,
+                  -0.0008056902015856525
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0025122760714466237,
+                "paired_unit_95_interval": [
+                  -0.004676426153067283,
+                  -0.00036596545360306976
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0007808839712392682,
+                "paired_unit_95_interval": [
+                  -0.0020234092699662363,
+                  0.00044858137341758275
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.17817613714287545,
+                "P1_FIXED_R1": 0.17644474504266797,
+                "P2_NESTED_RIDGE": 0.1756638610714287
+              },
+              "observations": 3186
+            },
+            "compound.tea_floral": {
+              "P1_minus_P0": {
+                "delta": -0.002832153748989237,
+                "paired_unit_95_interval": [
+                  -0.004057023973456959,
+                  -0.0016410113312835496
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.004017704171475092,
+                "paired_unit_95_interval": [
+                  -0.006598716405393399,
+                  -0.0014555671618419516
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0011855504224858558,
+                "paired_unit_95_interval": [
+                  -0.0025875810589055656,
+                  0.0001958477953335866
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.15885474127181284,
+                "P1_FIXED_R1": 0.15602258752282364,
+                "P2_NESTED_RIDGE": 0.15483703710033783
+              },
+              "observations": 3186
+            },
+            "mouthfeel.astringent": {
+              "P1_minus_P0": {
+                "delta": -0.00173023299660357,
+                "paired_unit_95_interval": [
+                  -0.002521110256466311,
+                  -0.0009812460620649216
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.002314132365432891,
+                "paired_unit_95_interval": [
+                  -0.004194481898071027,
+                  -0.0004930386820242789
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0005838993688293212,
+                "paired_unit_95_interval": [
+                  -0.0016931959903366798,
+                  0.0005203833157615571
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.10047625656568406,
+                "P1_FIXED_R1": 0.09874602356908052,
+                "P2_NESTED_RIDGE": 0.09816212420025114
+              },
+              "observations": 3186
+            },
+            "mouthfeel.thick_viscous": {
+              "P1_minus_P0": {
+                "delta": -0.0007598392671591666,
+                "paired_unit_95_interval": [
+                  -0.001234549719020026,
+                  -0.0003501240471263427
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0014375813205912162,
+                "paired_unit_95_interval": [
+                  -0.0028573500721490314,
+                  -0.0002225254390877008
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0006777420534320491,
+                "paired_unit_95_interval": [
+                  -0.0016255472366970584,
+                  0.00012787982421165356
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.07109221466419234,
+                "P1_FIXED_R1": 0.07033237539703313,
+                "P2_NESTED_RIDGE": 0.0696546333436011
+              },
+              "observations": 3186
+            },
+            "native.burnt": {
+              "P1_minus_P0": {
+                "delta": -0.009748609866390973,
+                "paired_unit_95_interval": [
+                  -0.012065352714723532,
+                  -0.007545978571668937
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.014625979499710845,
+                "paired_unit_95_interval": [
+                  -0.01940374131104728,
+                  -0.009938719370810617
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.004877369633319873,
+                "paired_unit_95_interval": [
+                  -0.007392624781134421,
+                  -0.002366316310272096
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.14797295531132207,
+                "P1_FIXED_R1": 0.13822434544493112,
+                "P2_NESTED_RIDGE": 0.13334697581161117
+              },
+              "observations": 3186
+            },
+            "native.cereal": {
+              "P1_minus_P0": {
+                "delta": -0.0010185917066484064,
+                "paired_unit_95_interval": [
+                  -0.0014593239688486036,
+                  -0.0005915684180121923
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0018629434705162847,
+                "paired_unit_95_interval": [
+                  -0.003011750047797387,
+                  -0.0007580522006303895
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0008443517638678784,
+                "paired_unit_95_interval": [
+                  -0.0015522154703834477,
+                  -0.0001533977006234585
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.09754933913067025,
+                "P1_FIXED_R1": 0.09653074742402186,
+                "P2_NESTED_RIDGE": 0.09568639566015404
+              },
+              "observations": 3186
+            },
+            "native.rubber": {
+              "P1_minus_P0": {
+                "delta": -0.0006182215116250152,
+                "paired_unit_95_interval": [
+                  -0.0008920632926629535,
+                  -0.00037762374716524173
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.001466984091381072,
+                "paired_unit_95_interval": [
+                  -0.002423218690816872,
+                  -0.0006260185058653106
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.000848762579756057,
+                "paired_unit_95_interval": [
+                  -0.0015361494904197368,
+                  -0.0002415704187661391
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.06568695811769054,
+                "P1_FIXED_R1": 0.06506873660606556,
+                "P2_NESTED_RIDGE": 0.06421997402630954
+              },
+              "observations": 3186
+            },
+            "sensory.caramel": {
+              "P1_minus_P0": {
+                "delta": -0.0016769439750969211,
+                "paired_unit_95_interval": [
+                  -0.0023989557847415364,
+                  -0.0009468418876272197
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0029113189402820657,
+                "paired_unit_95_interval": [
+                  -0.004742247528629417,
+                  -0.0011262842298813856
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0012343749651851444,
+                "paired_unit_95_interval": [
+                  -0.0023621074803983756,
+                  -0.00013286778145070688
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.11315217019728148,
+                "P1_FIXED_R1": 0.11147522622218468,
+                "P2_NESTED_RIDGE": 0.11024085125699948
+              },
+              "observations": 3186
+            },
+            "sensory.dark_chocolate": {
+              "P1_minus_P0": {
+                "delta": -0.002708890532170246,
+                "paired_unit_95_interval": [
+                  -0.0037650849753894833,
+                  -0.0016571427183125975
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.004148567384532518,
+                "paired_unit_95_interval": [
+                  -0.006473835401805291,
+                  -0.001848466789515634
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.001439676852362272,
+                "paired_unit_95_interval": [
+                  -0.002764839480300041,
+                  -0.0001420185162571678
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.16821644607953695,
+                "P1_FIXED_R1": 0.16550755554736665,
+                "P2_NESTED_RIDGE": 0.16406787869500436
+              },
+              "observations": 3186
+            },
+            "taste.bitterness": {
+              "P1_minus_P0": {
+                "delta": -0.01557277724672563,
+                "paired_unit_95_interval": [
+                  -0.019018735435394944,
+                  -0.012030401206874547
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.020017456695666683,
+                "paired_unit_95_interval": [
+                  -0.02618682182703997,
+                  -0.013629544126044273
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.004444679448941054,
+                "paired_unit_95_interval": [
+                  -0.0073427884799478205,
+                  -0.0014317049767663774
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.21618734398036385,
+                "P1_FIXED_R1": 0.20061456673363826,
+                "P2_NESTED_RIDGE": 0.19616988728469714
+              },
+              "observations": 3186
+            },
+            "taste.sourness": {
+              "P1_minus_P0": {
+                "delta": -0.01286677895564535,
+                "paired_unit_95_interval": [
+                  -0.016184515084794713,
+                  -0.009556161750096806
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.016230138602174315,
+                "paired_unit_95_interval": [
+                  -0.022023617512410356,
+                  -0.010568941011796883
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0033633596465289677,
+                "paired_unit_95_interval": [
+                  -0.005925077282740954,
+                  -0.0008242510666296988
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.2253229873929264,
+                "P1_FIXED_R1": 0.21245620843728114,
+                "P2_NESTED_RIDGE": 0.20909284879075207
+              },
+              "observations": 3186
+            },
+            "taste.sweetness": {
+              "P1_minus_P0": {
+                "delta": -0.009072814264052629,
+                "paired_unit_95_interval": [
+                  -0.011475450368324902,
+                  -0.00683115478898733
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.013640369031580933,
+                "paired_unit_95_interval": [
+                  -0.018915314582310647,
+                  -0.008432329399203782
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.004567554767528305,
+                "paired_unit_95_interval": [
+                  -0.0075800051046318725,
+                  -0.0015037592341821306
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 3186,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.15597854113175366,
+                "P1_FIXED_R1": 0.14690572686770104,
+                "P2_NESTED_RIDGE": 0.14233817210017277
+              },
+              "observations": 3186
+            }
+          },
+          "by_view": {
+            "basic_tastes": {
+              "P1_minus_P0": {
+                "delta": -0.012504123488807879,
+                "paired_unit_95_interval": [
+                  -0.014479584990979814,
+                  -0.01050371279217544
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.01662932144314065,
+                "paired_unit_95_interval": [
+                  -0.020196810582181323,
+                  -0.012979300193490398
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.004125197954332773,
+                "paired_unit_95_interval": [
+                  -0.005825851626606752,
+                  -0.0023859666363946932
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 9558,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.19916295750168125,
+                "P1_FIXED_R1": 0.18665883401287345,
+                "P2_NESTED_RIDGE": 0.18253363605854064
+              },
+              "observations": 3186
+            },
+            "descriptor_associations": {
+              "P1_minus_P0": {
+                "delta": -0.0029906658036431676,
+                "paired_unit_95_interval": [
+                  -0.003486318621925759,
+                  -0.002520068567163313
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.004400275379351322,
+                "paired_unit_95_interval": [
+                  -0.0054748557182999515,
+                  -0.0033742248854610286
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0014096095757081548,
+                "paired_unit_95_interval": [
+                  -0.0019863283996536803,
+                  -0.0008515434169159131
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 38232,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.14846037553865718,
+                "P1_FIXED_R1": 0.14546970973501394,
+                "P2_NESTED_RIDGE": 0.1440601001593059
+              },
+              "observations": 3186
+            },
+            "mouthfeel": {
+              "P1_minus_P0": {
+                "delta": -0.0012450361318813545,
+                "paired_unit_95_interval": [
+                  -0.0017220816992319767,
+                  -0.0007882406395738766
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.0018758568430120408,
+                "paired_unit_95_interval": [
+                  -0.0030891603264887896,
+                  -0.0007325545712098722
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0006308207111306862,
+                "paired_unit_95_interval": [
+                  -0.001378290886393429,
+                  7.728431669871885e-05
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 6372,
+              "held_units": 118,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.08578423561493817,
+                "P1_FIXED_R1": 0.0845391994830568,
+                "P2_NESTED_RIDGE": 0.08390837877192614
+              },
+              "observations": 3186
+            }
+          },
+          "coverage": 1.0,
+          "macro": {
+            "P1_minus_P0": {
+              "delta": -0.0044641430808178995,
+              "paired_unit_95_interval": [
+                -0.005168011696405347,
+                -0.0037744509789738798
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "P2_minus_P0": {
+              "delta": -0.006261351915744825,
+              "paired_unit_95_interval": [
+                -0.0076226279821662865,
+                -0.0048985579148331055
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "P2_minus_P1": {
+              "delta": -0.001797208834926923,
+              "paired_unit_95_interval": [
+                -0.0024740041280912053,
+                -0.0011244570993719442
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "evaluated_cells": 54162,
+            "held_units": 118,
+            "loss": {
+              "P0_TRAIN_PRIOR": 0.1500342264822829,
+              "P1_FIXED_R1": 0.14557008340146482,
+              "P2_NESTED_RIDGE": 0.14377287456653795
+            },
+            "observations": 3186
+          },
+          "per_target_intervals": "EXPLORATORY_NOMINAL_NO_MULTIPLICITY_CLAIM",
+          "uncertainty": "5000_FIXED_OOF_PREDICTION_PAIRED_HELD_UNIT_BOOTSTRAPS;NO_REFIT_OR_NEW_SOURCE_UNCERTAINTY"
+        },
+        "final_ridge": 0.005,
+        "historical_regression": null,
+        "historical_status": "NOT_EVALUATED",
+        "holdout_axis": "panelist_id",
+        "kind": "cotter",
+        "main_M2_scoring_changed": false,
+        "model_artifacts": [
+          {
+            "relative_path": "profiles_cotter_judge_fold0_fixed.model.json",
+            "sha256": "ca8b07a9c471e6216a478692df863d8b1ea6aeb8f142f4712c89a02e4a63c9db"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_fold0_selected.model.json",
+            "sha256": "35deb0e74b89e07832bacbb704c70cf2d1677f11d7a28574678b2eec6c70fe89"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_fold1_fixed.model.json",
+            "sha256": "bbb4086162384c84b1d2ab7658ed32b97bd8e892b2b3d0678d8479b01c328d10"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_fold1_selected.model.json",
+            "sha256": "5e7947f327aa78b8554c8decb0cb45f921f74126fd200a20c298662b57fc0163"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_fold2_fixed.model.json",
+            "sha256": "9c7f499da9a479007c839ee8fbbb4948cbb3b4356d4fc1617b4d174bee48600b"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_fold2_selected.model.json",
+            "sha256": "3701a1f21f9ebeb97d68e7881579de927c9f5b2c75dcd3e8807f1fe415264959"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_final_fixed.model.json",
+            "sha256": "b62ec9b3e348c185e3e8ee090ba2296d2b1921af81284b2a4751a59827361390"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_final_selected.model.json",
+            "sha256": "b4a501643147a8b9bd69700a6ccb53d67b9203aee995929ef405b79e9fae1fe8"
+          },
+          {
+            "relative_path": "profiles_cotter_judge_evaluation.private.json",
+            "sha256": "cbba2eb08765074a371114b87ec62d1229bc7c2cdc7becc9778931a96f140836"
+          }
+        ],
+        "new_independent_products": 0,
+        "other_view_cell_cost_per_target": {
+          "attribute.fruity": 5,
+          "attribute.roasted": 5,
+          "broad.citrus": 5,
+          "broad.nutty": 5,
+          "compound.green_vegetative": 5,
+          "compound.paper_wood": 5,
+          "compound.tea_floral": 5,
+          "mouthfeel.astringent": 15,
+          "mouthfeel.thick_viscous": 15,
+          "native.burnt": 5,
+          "native.cereal": 5,
+          "native.rubber": 5,
+          "sensory.caramel": 5,
+          "sensory.dark_chocolate": 5,
+          "taste.bitterness": 14,
+          "taste.sourness": 14,
+          "taste.sweetness": 14
+        },
+        "selected_ridges": [
+          0.005,
+          0.005,
+          0.005
+        ]
+      },
+      "rocchetti": {
+        "cost_interpretation": {
+          "final_candidates": null,
+          "fixed_budget": "SAME_OTHER_VIEW_OBSERVED_CELL_COUNT_FOR_P1_AND_P2",
+          "offered_options": null,
+          "ordinary_question_count": null,
+          "production_question_efficiency": "NOT_EVALUATED",
+          "real_answer_time": "NOT_EVALUATED"
+        },
+        "development": {
+          "by_target": {
+            "mouthfeel.astringency": {
+              "P1_minus_P0": {
+                "delta": 0.11030218075250244,
+                "paired_unit_95_interval": [
+                  -0.03294589479752855,
+                  0.25001453154779235
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.03869204537147248,
+                "paired_unit_95_interval": [
+                  -0.1271075228036441,
+                  0.04979563355125575
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.1489942261239749,
+                "paired_unit_95_interval": [
+                  -0.23495994045896465,
+                  -0.06976872264552347
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.5260323886639675,
+                "P1_FIXED_R1": 0.63633456941647,
+                "P2_NESTED_RIDGE": 0.4873403432924952
+              },
+              "observations": 38
+            },
+            "mouthfeel.body": {
+              "P1_minus_P0": {
+                "delta": -0.13568616498648908,
+                "paired_unit_95_interval": [
+                  -0.40840459190725736,
+                  0.1445342099384047
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.23258879515029796,
+                "paired_unit_95_interval": [
+                  -0.41312693340042445,
+                  -0.04981706998766313
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.0969026301638089,
+                "paired_unit_95_interval": [
+                  -0.2889460251213468,
+                  0.0902452877835985
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.0666396761133603,
+                "P1_FIXED_R1": 0.9309535111268709,
+                "P2_NESTED_RIDGE": 0.8340508809630623
+              },
+              "observations": 38
+            },
+            "native.acidity_intensity": {
+              "P1_minus_P0": {
+                "delta": -0.13441557756021902,
+                "paired_unit_95_interval": [
+                  -0.47540190853253095,
+                  0.19763054415575795
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.12590307128946393,
+                "paired_unit_95_interval": [
+                  -0.2931303238387243,
+                  0.03836494878852104
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.008512506270755112,
+                "paired_unit_95_interval": [
+                  -0.20164530249519644,
+                  0.24563587404757212
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.2047368421052636,
+                "P1_FIXED_R1": 1.070321264545044,
+                "P2_NESTED_RIDGE": 1.0788337708157993
+              },
+              "observations": 38
+            },
+            "native.biochemical": {
+              "P1_minus_P0": {
+                "delta": -0.07175173409710169,
+                "paired_unit_95_interval": [
+                  -0.17649263143084826,
+                  0.03217250069258031
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.04265993074282835,
+                "paired_unit_95_interval": [
+                  -0.11232177380580806,
+                  0.022411786546748972
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.029091803354273315,
+                "paired_unit_95_interval": [
+                  -0.027794238683825426,
+                  0.08771668101171762
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.5251417004048583,
+                "P1_FIXED_R1": 0.4533899663077567,
+                "P2_NESTED_RIDGE": 0.48248176966203005
+              },
+              "observations": 38
+            },
+            "native.dried_fruits_and_nuts": {
+              "P1_minus_P0": {
+                "delta": 0.03046061367809972,
+                "paired_unit_95_interval": [
+                  -0.09175473847116143,
+                  0.15634285786165084
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": 0.01486989822809832,
+                "paired_unit_95_interval": [
+                  -0.07203722457845611,
+                  0.10408440640226632
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.015590715450001399,
+                "paired_unit_95_interval": [
+                  -0.06379111429063902,
+                  0.031070660399881742
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.8736842105263161,
+                "P1_FIXED_R1": 0.9041448242044154,
+                "P2_NESTED_RIDGE": 0.888554108754414
+              },
+              "observations": 38
+            },
+            "native.empyreumatic": {
+              "P1_minus_P0": {
+                "delta": -0.03739987651719454,
+                "paired_unit_95_interval": [
+                  -0.10052594765256014,
+                  0.02639405014779697
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.04211133749938885,
+                "paired_unit_95_interval": [
+                  -0.09780062428923408,
+                  0.009776934240648861
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.00471146098219432,
+                "paired_unit_95_interval": [
+                  -0.026264429902600375,
+                  0.01615606453341818
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.39761133603238863,
+                "P1_FIXED_R1": 0.360211459515194,
+                "P2_NESTED_RIDGE": 0.35549999853299985
+              },
+              "observations": 38
+            },
+            "native.flowers_and_fresh_fruit": {
+              "P1_minus_P0": {
+                "delta": -0.3491757181541007,
+                "paired_unit_95_interval": [
+                  -0.6104240362438369,
+                  -0.10285479711855658
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.21427863713773954,
+                "paired_unit_95_interval": [
+                  -0.35909789210522014,
+                  -0.0694730449563914
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.13489708101636114,
+                "paired_unit_95_interval": [
+                  -0.0335332834605898,
+                  0.3199657768885082
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.266234817813765,
+                "P1_FIXED_R1": 0.9170590996596645,
+                "P2_NESTED_RIDGE": 1.0519561806760258
+              },
+              "observations": 38
+            },
+            "native.olfactory_intensity": {
+              "P1_minus_P0": {
+                "delta": 0.05186263258685118,
+                "paired_unit_95_interval": [
+                  -0.06854650341010649,
+                  0.17272559851652186
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.021097447106965466,
+                "paired_unit_95_interval": [
+                  -0.10141118570122695,
+                  0.056946339715208
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.07296007969381664,
+                "paired_unit_95_interval": [
+                  -0.1424332430332544,
+                  -0.007986307157517306
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.51417004048583,
+                "P1_FIXED_R1": 0.5660326730726812,
+                "P2_NESTED_RIDGE": 0.49307259337886467
+              },
+              "observations": 38
+            },
+            "native.roasted_composite": {
+              "P1_minus_P0": {
+                "delta": -0.10829390956665585,
+                "paired_unit_95_interval": [
+                  -0.2778439445064831,
+                  0.08211148505772554
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.07642681834652344,
+                "paired_unit_95_interval": [
+                  -0.19958750164300085,
+                  0.06125446978458868
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.03186709122013244,
+                "paired_unit_95_interval": [
+                  -0.04606331192354445,
+                  0.11221147913028204
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.9742510121457485,
+                "P1_FIXED_R1": 0.8659571025790931,
+                "P2_NESTED_RIDGE": 0.8978241937992258
+              },
+              "observations": 38
+            },
+            "native.spicy": {
+              "P1_minus_P0": {
+                "delta": 0.07498187647054624,
+                "paired_unit_95_interval": [
+                  -0.0037514767516688362,
+                  0.15852403380697608
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": 0.028231761426410713,
+                "paired_unit_95_interval": [
+                  -0.005318877104219017,
+                  0.06501618578999606
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.04675011504413553,
+                "paired_unit_95_interval": [
+                  -0.09947868936337705,
+                  0.005051605923932331
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.5187449392712552,
+                "P1_FIXED_R1": 0.5937268157418013,
+                "P2_NESTED_RIDGE": 0.5469767006976658
+              },
+              "observations": 38
+            },
+            "native.vegetable": {
+              "P1_minus_P0": {
+                "delta": -0.12127137185402347,
+                "paired_unit_95_interval": [
+                  -0.23997595965421717,
+                  8.482749323036637e-05
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.10118610002780236,
+                "paired_unit_95_interval": [
+                  -0.1788570667076788,
+                  -0.02202350739444377
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.020085271826221125,
+                "paired_unit_95_interval": [
+                  -0.04234705262731809,
+                  0.09022325445602643
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.6099190283400812,
+                "P1_FIXED_R1": 0.48864765648605746,
+                "P2_NESTED_RIDGE": 0.5087329283122785
+              },
+              "observations": 38
+            },
+            "taste.bitterness": {
+              "P1_minus_P0": {
+                "delta": 0.24755174987902018,
+                "paired_unit_95_interval": [
+                  -0.058043688508631716,
+                  0.5731347242103676
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.12773686259561137,
+                "paired_unit_95_interval": [
+                  -0.2947148732838529,
+                  0.043082841959574236
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.37528861247463163,
+                "paired_unit_95_interval": [
+                  -0.6015552258653729,
+                  -0.17029543507748882
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 38,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.9925506072874491,
+                "P1_FIXED_R1": 1.2401023571664689,
+                "P2_NESTED_RIDGE": 0.864813744691838
+              },
+              "observations": 38
+            }
+          },
+          "by_view": {
+            "aroma": {
+              "P1_minus_P0": {
+                "delta": -0.06632343593169736,
+                "paired_unit_95_interval": [
+                  -0.12492549260942722,
+                  -0.006811909851707156
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.056832326400842334,
+                "paired_unit_95_interval": [
+                  -0.09445263515218401,
+                  -0.02073201044314481
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.009491109530855026,
+                "paired_unit_95_interval": [
+                  -0.026303710412869417,
+                  0.047825854250025154
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 304,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.7099696356275302,
+                "P1_FIXED_R1": 0.643646199695833,
+                "P2_NESTED_RIDGE": 0.6531373092266879
+              },
+              "observations": 38
+            },
+            "basic_taste": {
+              "P1_minus_P0": {
+                "delta": 0.05656808615940063,
+                "paired_unit_95_interval": [
+                  -0.1476755555071076,
+                  0.2579506314440879
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.12681996694253764,
+                "paired_unit_95_interval": [
+                  -0.25592880275265745,
+                  -0.009017411118983047
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.18338805310193826,
+                "paired_unit_95_interval": [
+                  -0.3044908518019182,
+                  -0.06893720767002015
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 76,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.0986437246963565,
+                "P1_FIXED_R1": 1.155211810855757,
+                "P2_NESTED_RIDGE": 0.9718237577538187
+              },
+              "observations": 38
+            },
+            "mouthfeel": {
+              "P1_minus_P0": {
+                "delta": -0.01269199211699333,
+                "paired_unit_95_interval": [
+                  -0.18018698402376793,
+                  0.16085690100837843
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.13564042026088527,
+                "paired_unit_95_interval": [
+                  -0.2500732905726287,
+                  -0.014566466634759072
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.12294842814389191,
+                "paired_unit_95_interval": [
+                  -0.2344141791762737,
+                  -0.019885232418792184
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 76,
+              "held_units": 38,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.796336032388664,
+                "P1_FIXED_R1": 0.7836440402716707,
+                "P2_NESTED_RIDGE": 0.6606956121277786
+              },
+              "observations": 38
+            }
+          },
+          "coverage": 1.0,
+          "macro": {
+            "P1_minus_P0": {
+              "delta": -0.03690294161406368,
+              "paired_unit_95_interval": [
+                -0.10871222553674251,
+                0.03505580851678357
+              ],
+              "status": "INCONCLUSIVE"
+            },
+            "P2_minus_P0": {
+              "delta": -0.08163161546779871,
+              "paired_unit_95_interval": [
+                -0.12843495074020198,
+                -0.038240796482806066
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "P2_minus_P1": {
+              "delta": -0.04472867385373503,
+              "paired_unit_95_interval": [
+                -0.08623199977688654,
+                -0.0025899131392979873
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "evaluated_cells": 456,
+            "held_units": 38,
+            "loss": {
+              "P0_TRAIN_PRIOR": 0.7891430499325234,
+              "P1_FIXED_R1": 0.7522401083184598,
+              "P2_NESTED_RIDGE": 0.707511434464725
+            },
+            "observations": 38
+          },
+          "per_target_intervals": "EXPLORATORY_NOMINAL_NO_MULTIPLICITY_CLAIM",
+          "uncertainty": "5000_FIXED_OOF_PREDICTION_PAIRED_HELD_UNIT_BOOTSTRAPS;NO_REFIT_OR_NEW_SOURCE_UNCERTAINTY"
+        },
+        "final_ridge": 0.5,
+        "historical_regression": {
+          "by_target": {
+            "mouthfeel.astringency": {
+              "P1_minus_P0": {
+                "delta": 0.12015248838648418,
+                "paired_unit_95_interval": [
+                  -0.19179441446139986,
+                  0.4116460945865102
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.008448619545985957,
+                "paired_unit_95_interval": [
+                  -0.23914633372452748,
+                  0.21469790115980356
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.12860110793247012,
+                "paired_unit_95_interval": [
+                  -0.22178248091691968,
+                  -0.01908859314505888
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.726608187134503,
+                "P1_FIXED_R1": 0.846760675520987,
+                "P2_NESTED_RIDGE": 0.7181595675885171
+              },
+              "observations": 9
+            },
+            "mouthfeel.body": {
+              "P1_minus_P0": {
+                "delta": -0.28168286134397186,
+                "paired_unit_95_interval": [
+                  -1.2095973710121182,
+                  0.3625517452780451
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.25467958828165144,
+                "paired_unit_95_interval": [
+                  -0.948232702724113,
+                  0.2541017344492383
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.02700327306232042,
+                "paired_unit_95_interval": [
+                  -0.13091349739118036,
+                  0.2720246269219598
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.2690058479532165,
+                "P1_FIXED_R1": 0.9873229866092446,
+                "P2_NESTED_RIDGE": 1.014326259671565
+              },
+              "observations": 9
+            },
+            "native.acidity_intensity": {
+              "P1_minus_P0": {
+                "delta": -0.46513742194608454,
+                "paired_unit_95_interval": [
+                  -0.9477838659061598,
+                  0.004869266741983976
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.4917560102826587,
+                "paired_unit_95_interval": [
+                  -0.7725006837403178,
+                  -0.20648967124129136
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.026618588336574205,
+                "paired_unit_95_interval": [
+                  -0.2674667967168844,
+                  0.2615576627288723
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.1695906432748542,
+                "P1_FIXED_R1": 0.7044532213287696,
+                "P2_NESTED_RIDGE": 0.6778346329921954
+              },
+              "observations": 9
+            },
+            "native.biochemical": {
+              "P1_minus_P0": {
+                "delta": 0.06340769701619249,
+                "paired_unit_95_interval": [
+                  -0.19040620976746958,
+                  0.37553569990718966
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.008181030207419017,
+                "paired_unit_95_interval": [
+                  -0.21715422757767783,
+                  0.21638724551872376
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.07158872722361154,
+                "paired_unit_95_interval": [
+                  -0.20928520004407325,
+                  0.051123307253760075
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.513157894736842,
+                "P1_FIXED_R1": 0.5765655917530346,
+                "P2_NESTED_RIDGE": 0.504976864529423
+              },
+              "observations": 9
+            },
+            "native.dried_fruits_and_nuts": {
+              "P1_minus_P0": {
+                "delta": -0.03482237512010257,
+                "paired_unit_95_interval": [
+                  -0.3448307531612705,
+                  0.17514836118761373
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.06900548650262056,
+                "paired_unit_95_interval": [
+                  -0.28949397229086404,
+                  0.08048586980032346
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.034183111382518,
+                "paired_unit_95_interval": [
+                  -0.10327290731435321,
+                  0.061156712802400225
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.9883040935672516,
+                "P1_FIXED_R1": 0.9534817184471489,
+                "P2_NESTED_RIDGE": 0.919298607064631
+              },
+              "observations": 9
+            },
+            "native.empyreumatic": {
+              "P1_minus_P0": {
+                "delta": -0.1674230732101093,
+                "paired_unit_95_interval": [
+                  -0.2983942830918808,
+                  -0.03338851448625697
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.12610026625795145,
+                "paired_unit_95_interval": [
+                  -0.22484528418614042,
+                  -0.023370820613390603
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.04132280695215787,
+                "paired_unit_95_interval": [
+                  0.006524148649463362,
+                  0.0755591177775019
+                ],
+                "status": "NO_IMPROVEMENT"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.5804093567251462,
+                "P1_FIXED_R1": 0.4129862835150368,
+                "P2_NESTED_RIDGE": 0.4543090904671947
+              },
+              "observations": 9
+            },
+            "native.flowers_and_fresh_fruit": {
+              "P1_minus_P0": {
+                "delta": -0.398717432119049,
+                "paired_unit_95_interval": [
+                  -0.7783128256048366,
+                  0.024772570643483954
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.42835831166975996,
+                "paired_unit_95_interval": [
+                  -0.8635961779070926,
+                  -0.0017968041315729677
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.029640879550710993,
+                "paired_unit_95_interval": [
+                  -0.20715437243318502,
+                  0.13505956209859593
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.1111111111111112,
+                "P1_FIXED_R1": 0.7123936789920622,
+                "P2_NESTED_RIDGE": 0.6827527994413511
+              },
+              "observations": 9
+            },
+            "native.olfactory_intensity": {
+              "P1_minus_P0": {
+                "delta": -0.04768941340844742,
+                "paired_unit_95_interval": [
+                  -0.382542905869162,
+                  0.18630309865282177
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.06895146887282896,
+                "paired_unit_95_interval": [
+                  -0.30005110053617545,
+                  0.09633882333711706
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.02126205546438155,
+                "paired_unit_95_interval": [
+                  -0.12480385053447424,
+                  0.0977554164708537
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.5730994152046783,
+                "P1_FIXED_R1": 0.525410001796231,
+                "P2_NESTED_RIDGE": 0.5041479463318495
+              },
+              "observations": 9
+            },
+            "native.roasted_composite": {
+              "P1_minus_P0": {
+                "delta": -0.4970974636311797,
+                "paired_unit_95_interval": [
+                  -0.7987120987029039,
+                  -0.19551397965290324
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.38844680599616704,
+                "paired_unit_95_interval": [
+                  -0.6207815100810189,
+                  -0.16889931715206946
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": 0.10865065763501264,
+                "paired_unit_95_interval": [
+                  0.010383026642797614,
+                  0.20413855361502994
+                ],
+                "status": "NO_IMPROVEMENT"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 1.663742690058479,
+                "P1_FIXED_R1": 1.1666452264272997,
+                "P2_NESTED_RIDGE": 1.275295884062312
+              },
+              "observations": 9
+            },
+            "native.spicy": {
+              "P1_minus_P0": {
+                "delta": 0.0036491137215520653,
+                "paired_unit_95_interval": [
+                  -0.06941113471849328,
+                  0.05690564776218504
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.00827557112980474,
+                "paired_unit_95_interval": [
+                  -0.060741695911051725,
+                  0.0272243729355978
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.011924684851356806,
+                "paired_unit_95_interval": [
+                  -0.03187154739119191,
+                  0.010895631688219831
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.8114035087719298,
+                "P1_FIXED_R1": 0.815052622493482,
+                "P2_NESTED_RIDGE": 0.803127937642125
+              },
+              "observations": 9
+            },
+            "native.vegetable": {
+              "P1_minus_P0": {
+                "delta": 0.24232177325515844,
+                "paired_unit_95_interval": [
+                  -0.1198811555167909,
+                  0.6195610594919364
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": 0.19742622003535415,
+                "paired_unit_95_interval": [
+                  -0.05883513974285034,
+                  0.4640354814916327
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.04489555321980427,
+                "paired_unit_95_interval": [
+                  -0.1649065947741008,
+                  0.06265349417676729
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.554093567251462,
+                "P1_FIXED_R1": 0.7964153405066204,
+                "P2_NESTED_RIDGE": 0.751519787286816
+              },
+              "observations": 9
+            },
+            "taste.bitterness": {
+              "P1_minus_P0": {
+                "delta": 0.21731641792570017,
+                "paired_unit_95_interval": [
+                  -0.40898150617543955,
+                  0.7683146533520256
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.03870396351423376,
+                "paired_unit_95_interval": [
+                  -0.6517468600765376,
+                  0.4591479809042178
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.25602038143993394,
+                "paired_unit_95_interval": [
+                  -0.4065276287420221,
+                  -0.09573097762309081
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "evaluated_cells": 9,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.6242690058479532,
+                "P1_FIXED_R1": 0.8415854237736533,
+                "P2_NESTED_RIDGE": 0.5855650423337194
+              },
+              "observations": 9
+            }
+          },
+          "by_view": {
+            "aroma": {
+              "P1_minus_P0": {
+                "delta": -0.1045463966869981,
+                "paired_unit_95_interval": [
+                  -0.21282692525623212,
+                  -0.0009952150707803738
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.11248659007514974,
+                "paired_unit_95_interval": [
+                  -0.1909123368775834,
+                  -0.03532904372804859
+                ],
+                "status": "SUPPORTED_IN_DECLARED_SCOPE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.007940193388151643,
+                "paired_unit_95_interval": [
+                  -0.06643339188368241,
+                  0.04993810119373651
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 72,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.8494152046783625,
+                "P1_FIXED_R1": 0.7448688079913646,
+                "P2_NESTED_RIDGE": 0.7369286146032129
+              },
+              "observations": 9
+            },
+            "basic_taste": {
+              "P1_minus_P0": {
+                "delta": -0.12391050201019217,
+                "paired_unit_95_interval": [
+                  -0.5683681043930708,
+                  0.26098454576311536
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.26522998689844623,
+                "paired_unit_95_interval": [
+                  -0.6118091947328562,
+                  0.03309995576674979
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.14131948488825408,
+                "paired_unit_95_interval": [
+                  -0.2824489853592144,
+                  0.008705792622054695
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 18,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.8969298245614036,
+                "P1_FIXED_R1": 0.7730193225512115,
+                "P2_NESTED_RIDGE": 0.6316998376629575
+              },
+              "observations": 9
+            },
+            "mouthfeel": {
+              "P1_minus_P0": {
+                "delta": -0.08076518647874381,
+                "paired_unit_95_interval": [
+                  -0.6002887552599128,
+                  0.313048668916196
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P0": {
+                "delta": -0.13156410391381865,
+                "paired_unit_95_interval": [
+                  -0.518567042258971,
+                  0.17380527393422793
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "P2_minus_P1": {
+                "delta": -0.05079891743507486,
+                "paired_unit_95_interval": [
+                  -0.14679467786844363,
+                  0.0858111030732733
+                ],
+                "status": "INCONCLUSIVE"
+              },
+              "evaluated_cells": 18,
+              "held_units": 9,
+              "loss": {
+                "P0_TRAIN_PRIOR": 0.9978070175438596,
+                "P1_FIXED_R1": 0.9170418310651159,
+                "P2_NESTED_RIDGE": 0.8662429136300411
+              },
+              "observations": 9
+            }
+          },
+          "coverage": 1.0,
+          "macro": {
+            "P1_minus_P0": {
+              "delta": -0.10381021253948804,
+              "paired_unit_95_interval": [
+                -0.3202952894135073,
+                0.0811386037493551
+              ],
+              "status": "INCONCLUSIVE"
+            },
+            "P2_minus_P0": {
+              "delta": -0.1411234085188106,
+              "paired_unit_95_interval": [
+                -0.30017537878643535,
+                -0.002436447971601721
+              ],
+              "status": "SUPPORTED_IN_DECLARED_SCOPE"
+            },
+            "P2_minus_P1": {
+              "delta": -0.03731319597932259,
+              "paired_unit_95_interval": [
+                -0.10819585928966799,
+                0.039689070203501875
+              ],
+              "status": "INCONCLUSIVE"
+            },
+            "evaluated_cells": 108,
+            "held_units": 9,
+            "loss": {
+              "P0_TRAIN_PRIOR": 0.882066276803119,
+              "P1_FIXED_R1": 0.7782560642636308,
+              "P2_NESTED_RIDGE": 0.7409428682843083
+            },
+            "observations": 9
+          },
+          "per_target_intervals": "EXPLORATORY_NOMINAL_NO_MULTIPLICITY_CLAIM",
+          "uncertainty": "5000_FIXED_OOF_PREDICTION_PAIRED_HELD_UNIT_BOOTSTRAPS;NO_REFIT_OR_NEW_SOURCE_UNCERTAINTY"
+        },
+        "historical_status": "PREVIOUSLY_INSPECTED_NOT_FRESH",
+        "holdout_axis": "group_id",
+        "kind": "rocchetti",
+        "main_M2_scoring_changed": false,
+        "model_artifacts": [
+          {
+            "relative_path": "profiles_rocchetti_fold0_fixed.model.json",
+            "sha256": "f81ef0b035cd7716400196c6a9a8dc500e1f4555d7987284817b215277250ef6"
+          },
+          {
+            "relative_path": "profiles_rocchetti_fold0_selected.model.json",
+            "sha256": "d0205614dac2bc7d99c0acebe675f121324febda5a3350e6d6484f2c56be186a"
+          },
+          {
+            "relative_path": "profiles_rocchetti_fold1_fixed.model.json",
+            "sha256": "9aeae82675d561afd7a1a17bf097f551adaa527303bcd1d688f8dddb83dceb02"
+          },
+          {
+            "relative_path": "profiles_rocchetti_fold1_selected.model.json",
+            "sha256": "375ba773662085e444bab94e80fffe216921beb26883a93ea3dd8717c68c4d23"
+          },
+          {
+            "relative_path": "profiles_rocchetti_fold2_fixed.model.json",
+            "sha256": "40f44ca081c0b215af9a5c23a325d480133fcd45d9fcdc6af569001742189ab7"
+          },
+          {
+            "relative_path": "profiles_rocchetti_fold2_selected.model.json",
+            "sha256": "3cccca8f636f36718d097fd428740c6055e369a5e6816df6154a2d0c405b1b6d"
+          },
+          {
+            "relative_path": "profiles_rocchetti_final_fixed.model.json",
+            "sha256": "5b814ca70b968f512904910b55eb4629984dd5a41465cabcc18d9e15d1e80713"
+          },
+          {
+            "relative_path": "profiles_rocchetti_final_selected.model.json",
+            "sha256": "13f6b24dfda6c05966337cb774c44bc60fb1097b20c220b0d3583c228121f7eb"
+          },
+          {
+            "relative_path": "profiles_rocchetti_evaluation.private.json",
+            "sha256": "35b4655dd18b36cfe2d03487df4f0960624a4b00998e7db9e9bfea23475a415c"
+          }
+        ],
+        "new_independent_products": 0,
+        "other_view_cell_cost_per_target": {
+          "mouthfeel.astringency": 10,
+          "mouthfeel.body": 10,
+          "native.acidity_intensity": 10,
+          "native.biochemical": 4,
+          "native.dried_fruits_and_nuts": 4,
+          "native.empyreumatic": 4,
+          "native.flowers_and_fresh_fruit": 4,
+          "native.olfactory_intensity": 4,
+          "native.roasted_composite": 4,
+          "native.spicy": 4,
+          "native.vegetable": 4,
+          "taste.bitterness": 10
+        },
+        "selected_ridges": [
+          0.5,
+          0.5,
+          5.0
+        ]
+      }
+    },
+    "version": "m2-r2-profile-alignment.v1"
+  }
+}
