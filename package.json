@@ -17,6 +17,8 @@
     "preview": "vite preview --outDir build/client",
     "check": "react-router typegen && tsc --noEmit",
     "test": "vitest run",
+    "test:product-research": "vitest run tests/product-research.test.ts tests/user-research.test.ts",
+    "research:generate": "python3 db/scripts/generate-product-inference-v02.py && node scripts/generate-product-benchmark.mjs && python3 scripts/seal-round3o.py",
     "test:smoke": "playwright test",
     "test:ci-contract": "bash scripts/test-ci-fail-fast.sh",
     "test:round3e-artifacts": "python3 db/scripts/test-round3e-artifact-contract.py",

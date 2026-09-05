@@ -1,0 +1,4 @@
+tier	maximum	label	rule
+HEADLINE	3	目前最明确	positive explicit support, direct and governed support, rights eligible, resolved; deduplicate
+EXPANDED_MAIN	2	其他有支持的联想	same eligibility as headlines; initially collapsed
+EXPLORE	3	还可以继续留意	remaining supported eligible candidates, or review-only support; never independently headline

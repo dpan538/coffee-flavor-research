@@ -214,6 +214,17 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function Root() {
+  const location = useLocation();
+  if (
+    import.meta.env.VITE_COFFEE_RESEARCH === "1" &&
+    location.pathname.startsWith("/research/")
+  ) {
+    return (
+      <main id="main-content">
+        <Outlet />
+      </main>
+    );
+  }
   return <AppChrome />;
 }
 

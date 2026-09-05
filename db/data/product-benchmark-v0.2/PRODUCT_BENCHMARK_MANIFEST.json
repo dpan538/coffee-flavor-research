@@ -1,0 +1,12 @@
+{
+  "version": "product-benchmark-v0.2",
+  "case_count": 28,
+  "harness_reachable_case_count": 11,
+  "owner_decision_count": 0,
+  "human_final_decision_count": 0,
+  "agent_majority_auto_approval": false,
+  "final_human_decision_required": true,
+  "model_training_authorized": false,
+  "generated_at": "2026-09-05T00:00:00Z",
+  "status": "PRODUCT_BENCHMARK_REVIEW_REQUIRED"
+}

@@ -1,0 +1,4 @@
+state	label	meaning	adjustment	scope
+UNSURE	不确定	可能感觉到了，但分不清	0	neutral
+NONE_OF_THESE	都不像	当前显示的这些例子都不像	-1.25	union_of_explicitly_displayed_option_concepts_only; heuristic_not_sensory_ground_truth
+SKIP	跳过	不想回答或暂时无法判断	0	neutral

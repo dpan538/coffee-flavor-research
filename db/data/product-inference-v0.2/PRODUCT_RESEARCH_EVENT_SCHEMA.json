@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "averageSelectedCount": {
+      "minimum": 0,
+      "type": "number"
+    },
+    "c0Selection": {
+      "enum": [
+        "preparation.family.filter_percolation",
+        "preparation.family.immersion",
+        "preparation.family.hybrid",
+        "preparation.family.espresso_pressure",
+        "preparation.family.diluted_espresso",
+        "preparation.family.stovetop_boiled",
+        "preparation.family.cold_extraction",
+        "preparation.family.espresso_milk"
+      ]
+    },
+    "c0SelectionTimeMs": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "c1Selection": {
+      "enum": [
+        "extremely_light",
+        "light",
+        "medium_light",
+        "medium",
+        "medium_dark",
+        "dark",
+        "extremely_dark",
+        null
+      ]
+    },
+    "c1SelectionTimeMs": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "c1Unsure": {
+      "type": "boolean"
+    },
+    "coffeeExposureStratum": {
+      "enum": [
+        "novice",
+        "regular",
+        "experienced"
+      ]
+    },
+    "completionTimeMs": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "earlyStopReason": {
+      "type": "string"
+    },
+    "expandClicked": {
+      "type": "boolean"
+    },
+    "expandedMainCount": {
+      "maximum": 2,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "explorationCount": {
+      "maximum": 3,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "extraQuestionClicked": {
+      "type": "boolean"
+    },
+    "headlineResultCount": {
+      "maximum": 3,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "languageVariant": {
+      "enum": [
+        "A",
+        "B"
+      ]
+    },
+    "openSet": {
+      "type": "boolean"
+    },
+    "participantResearchId": {
+      "pattern": "^R3O-[0-9]{3}$",
+      "type": "string"
+    },
+    "postTask": {
+      "additionalProperties": false,
+      "properties": {
+        "completedWithoutHelp": {
+          "type": "boolean"
+        },
+        "difficulty": {
+          "enum": [
+            "none",
+            "context",
+            "wording",
+            "choices",
+            "results"
+          ]
+        },
+        "firstQuestionComprehension": {
+          "enum": [
+            "clear",
+            "partial",
+            "unclear"
+          ]
+        },
+        "partialOutputAcceptance": {
+          "enum": [
+            "accept",
+            "unsure",
+            "reject",
+            "not_applicable"
+          ]
+        },
+        "reuseIntent": {
+          "enum": [
+            "yes",
+            "maybe",
+            "no"
+          ]
+        }
+      },
+      "required": [
+        "firstQuestionComprehension",
+        "partialOutputAcceptance",
+        "reuseIntent",
+        "completedWithoutHelp",
+        "difficulty"
+      ],
+      "type": "object"
+    },
+    "q5Accepted": {
+      "type": "boolean"
+    },
+    "q5Offered": {
+      "type": "boolean"
+    },
+    "q5TriggerReason": {
+      "type": "string"
+    },
+    "questions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "allOptionsSelected": {
+            "type": "boolean"
+          },
+          "candidateCountAfter": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "candidateCountBefore": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "candidateIdsAfter": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "candidateIdsBefore": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "optionIdsShown": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "questionId": {
+            "type": "string"
+          },
+          "remainingEligibleAxes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "responseState": {
+            "enum": [
+              "SELECTED",
+              "UNSURE",
+              "NONE_OF_THESE",
+              "SKIP"
+            ]
+          },
+          "responseTimeMs": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "selectedOptionCount": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "selectedOptionIds": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "selectionReason": {
+            "type": "string"
+          },
+          "semanticKey": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "questionId",
+          "semanticKey",
+          "optionIdsShown",
+          "selectedOptionIds",
+          "responseState",
+          "responseTimeMs",
+          "candidateIdsBefore",
+          "candidateIdsAfter",
+          "candidateCountBefore",
+          "candidateCountAfter",
+          "selectedOptionCount",
+          "allOptionsSelected",
+          "remainingEligibleAxes",
+          "selectionReason"
+        ],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "type": "array"
+    },
+    "resultHelpfulness": {
+      "maximum": 5,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "resultState": {
+      "type": "string"
+    },
+    "sessionId": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "totalQuestionCount": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "valuePropositionParaphraseResult": {
+      "enum": [
+        "correct",
+        "partial",
+        "incorrect",
+        "not_assessed"
+      ]
+    },
+    "version": {
+      "const": "product-inference-v0.2"
+    }
+  },
+  "required": [
+    "version",
+    "sessionId",
+    "participantResearchId",
+    "coffeeExposureStratum",
+    "languageVariant",
+    "c0Selection",
+    "c0SelectionTimeMs",
+    "c1Selection",
+    "c1Unsure",
+    "c1SelectionTimeMs",
+    "questions",
+    "totalQuestionCount",
+    "averageSelectedCount",
+    "q5Offered",
+    "q5Accepted",
+    "headlineResultCount",
+    "expandedMainCount",
+    "explorationCount",
+    "expandClicked",
+    "extraQuestionClicked",
+    "resultHelpfulness",
+    "valuePropositionParaphraseResult",
+    "completionTimeMs",
+    "earlyStopReason",
+    "q5TriggerReason",
+    "openSet",
+    "resultState",
+    "postTask"
+  ],
+  "type": "object"
+}

@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
@@ -14,6 +15,17 @@ const rows = (name: string) => {
 };
 
 describe("restricted-source public survey receipt", () => {
+  it("keeps single-digit note artifacts out of qualitative interpretation", () => {
+    const result = execFileSync(
+      "python3",
+      [
+        "-c",
+        "import importlib.util,json; s=importlib.util.spec_from_file_location('intake','db/scripts/ingest-user-research-round1.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); print(json.dumps([m.is_format_artifact_candidate(v) for v in ('3',' 4 ',5,'B','8-10','')]))",
+      ],
+      { encoding: "utf8" },
+    );
+    expect(JSON.parse(result)).toEqual([true, true, true, false, false, false]);
+  });
   it("reconciles 11 source events, 10 payloads and all 220 question records", () => {
     const files = rows("USER_TEST_FILE_AUDIT.tsv");
     const answers = rows("USER_TEST_RESPONSE_LEDGER.tsv");

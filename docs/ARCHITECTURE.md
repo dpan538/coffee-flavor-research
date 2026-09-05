@@ -146,6 +146,16 @@ dataset or make PostgreSQL a hidden build dependency.
 - `/flavor/:slug`: statically prerendered descriptor specimen pages.
 - `/methodology`: public-baseline methodology and provenance display.
 
+Round 3O adds `/research/user-study` only when `VITE_COFFEE_RESEARCH=1` is set
+at build time. This unlinked local participant route uses a pure deterministic
+engine and strict replay-checked export schema in
+`packages/flavor-data/src/research`, with generated public-safe v0.2 policy
+artifacts under `db/data/product-inference-v0.2`. It does not connect to the
+database, add an API, transmit participant data or modify the service worker.
+The ordinary build omits it. See
+[`../db/data/product-inference-v0.2/README.md`](../db/data/product-inference-v0.2/README.md)
+and the next-study protocol for research authorization and evidence limits.
+
 Motion remains scoped to `app/motion/`, supports reduced motion, and does not
 affect the database substrate. UI redesign is out of scope for KB V0.
 

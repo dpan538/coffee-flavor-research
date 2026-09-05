@@ -22,6 +22,12 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def is_format_artifact_candidate(value):
+    """Preserve ambiguous single-digit notes privately; never invent meaning."""
+    text = str(value).strip()
+    return len(text) == 1 and text.isdigit()
+
+
 def write_json(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + "\n")
 
@@ -125,7 +131,7 @@ def generate():
                 if text in ("N/A", "NA"):
                     anomaly(fid, qid, "NONRESPONSE_MARKER", "RETAIN_RESTRICTED_EXCLUDE_QUALITATIVE")
                     continue
-                if text.isdigit() and len(text)==1:
+                if is_format_artifact_candidate(text):
                     anomaly(fid, qid, "SINGLE_DIGIT_FORMAT_ARTIFACT_CANDIDATE", "RETAIN_RESTRICTED_EXCLUDE_QUALITATIVE")
                     continue
                 if supplemental:
@@ -195,7 +201,8 @@ def generate():
             comparison.append(dict(question_id=qid,code=code,recomputed_count=actual,review_aid_count=values[col],matches=actual==values[col]))
     if any(not r["matches"] for r in comparison):
         anomaly("REVIEW_AID","ALL","AGGREGATE_DISCREPANCY","ORIGINAL_SOURCE_COUNTS_PREVAIL_SEE_RESTRICTED_RECONCILIATION")
-    anomaly("REVIEW_AID","NOTES","UNVERIFIED_REPEATED_DIGIT_CLAIM","NO_SINGLE_DIGIT_NOTE_VALUES_OBSERVED_IN_SUPPLIED_SOURCES; DO_NOT_REPRODUCE_CLAIM")
+    if not any(a["anomaly_type"]=="SINGLE_DIGIT_FORMAT_ARTIFACT_CANDIDATE" for a in anomalies):
+        anomaly("REVIEW_AID","NOTES","UNVERIFIED_REPEATED_DIGIT_CLAIM","NO_SINGLE_DIGIT_NOTE_VALUES_OBSERVED_IN_SUPPLIED_SOURCES; DO_NOT_REPRODUCE_CLAIM")
     write_json(restricted / "review-aid-reconciliation.json",comparison)
     table("USER_TEST_FORMAT_ANOMALY_REGISTER.tsv",list(anomalies[0]),anomalies)
     decision_specs=[

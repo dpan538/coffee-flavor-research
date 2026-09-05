@@ -1,0 +1,2 @@
+rule_id	trigger	gate	primary_action	secondary_action	force_fill	requires_explicit_acceptance
+RECOVERY01	ordinary flow completed four questions and headlines <3	material separating governed unused axis; no open/conflict state	再回答一题，让结果更具体	先看当前结果	false	true

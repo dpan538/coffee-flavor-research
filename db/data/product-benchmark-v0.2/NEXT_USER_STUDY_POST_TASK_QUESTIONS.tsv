@@ -1,0 +1,7 @@
+question_id	prompt_zh	answer_codes	measurement
+PTQ1	当前结果对你描述这杯咖啡有多大帮助？	1|2|3|4|5	resultHelpfulness; ordinal from no help to very helpful
+PTQ2	第一道风味题的意思清楚吗？	clear|partial|unclear	firstQuestionComprehension
+PTQ3	结果少于三个时，你能接受吗？	accept|unsure|reject|not_applicable	partialOutputAcceptance
+PTQ4	下次喝不熟悉的咖啡，你还会使用吗？	yes|maybe|no	reuseIntent; intention not retention
+PTQ5	除了记录复述，你是否独立完成了任务？	yes|no	completedWithoutHelp
+PTQ6	哪一部分最费力？	none|context|wording|choices|results	difficulty

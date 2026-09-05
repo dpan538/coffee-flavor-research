@@ -1,0 +1,146 @@
+.research-shell {
+  width: min(100% - 32px, 560px);
+  margin: 24px auto;
+  padding: 24px;
+  color: #25231f;
+  background: #fffdf8;
+  border: 1px solid #ccc6bc;
+  font-family: system-ui, sans-serif;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.research-shell h1 {
+  font:
+    700 1.75rem/1.35 system-ui,
+    sans-serif;
+  margin: 12px 0 24px;
+}
+.research-shell h2 {
+  font:
+    700 1.2rem/1.4 system-ui,
+    sans-serif;
+  margin: 24px 0 12px;
+}
+.research-shell h3 {
+  font:
+    700 1rem/1.4 system-ui,
+    sans-serif;
+}
+.research-shell p {
+  margin: 12px 0;
+}
+.research-shell label:not(.research-option) {
+  display: block;
+  margin: 20px 0;
+}
+.research-shell select,
+.research-shell input:not([type="checkbox"]):not([type="radio"]) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #756e63;
+  border-radius: 4px;
+  background: white;
+  color: #25231f;
+  font: inherit;
+}
+.research-shell button,
+.research-download {
+  display: inline-block;
+  min-height: 44px;
+  padding: 10px 16px;
+  margin: 8px 8px 8px 0;
+  border: 1px solid #39372f;
+  border-radius: 4px;
+  background: #39372f;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.research-shell button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.research-shell .research-secondary {
+  background: transparent;
+  color: #25231f;
+}
+.research-shell fieldset {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  margin: 16px 0;
+}
+.research-option {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 12px;
+  margin: 10px 0;
+  border: 1px solid #c9c3b8;
+  border-radius: 4px;
+}
+.research-option input {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin: 3px 0 0;
+  accent-color: #514c3d;
+}
+.research-option span {
+  min-width: 0;
+}
+.research-option small {
+  display: block;
+  color: #625e54;
+  font-size: 0.875rem;
+}
+.research-shell .research-kicker,
+.research-shell .research-note {
+  color: #625e54;
+  font-size: 0.875rem;
+}
+.research-lead {
+  font-size: 1.2rem;
+}
+.research-results {
+  list-style: none;
+  padding: 0;
+}
+.research-results li {
+  padding: 12px 0;
+  border-bottom: 1px solid #d9d4c8;
+}
+.research-escapes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.research-recovery {
+  padding: 14px;
+  margin: 24px 0;
+  border: 1px solid #c9c3b8;
+}
+.research-shell :focus-visible {
+  outline: 3px solid #88611c;
+  outline-offset: 3px;
+}
+.research-shell h1:focus {
+  outline: none;
+}
+.research-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+@media (max-width: 420px) {
+  .research-shell {
+    padding: 20px 16px;
+    margin-top: 16px;
+  }
+}

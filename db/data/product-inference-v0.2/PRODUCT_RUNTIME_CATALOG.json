@@ -1,0 +1,847 @@
+{
+  "c0Priors": [
+    {
+      "adjustment": -0.05,
+      "conceptId": "sensory.honey",
+      "lineage": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+      "preparation": "preparation.family.filter_percolation"
+    },
+    {
+      "adjustment": -0.065,
+      "conceptId": "sensory.caramel",
+      "lineage": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+      "preparation": "preparation.family.filter_percolation"
+    },
+    {
+      "adjustment": -0.05,
+      "conceptId": "sensory.honey",
+      "lineage": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+      "preparation": "preparation.family.espresso_pressure"
+    },
+    {
+      "adjustment": 0.08,
+      "conceptId": "sensory.caramel",
+      "lineage": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+      "preparation": "preparation.family.espresso_pressure"
+    },
+    {
+      "adjustment": 0.05,
+      "conceptId": "sensory.honey",
+      "lineage": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+      "preparation": "preparation.family.stovetop_boiled"
+    },
+    {
+      "adjustment": -0.0075,
+      "conceptId": "sensory.caramel",
+      "lineage": "db/data/round3h/batch1/vezzulli_2022_table2_sensory_medians.tsv",
+      "preparation": "preparation.family.stovetop_boiled"
+    }
+  ],
+  "candidates": [
+    {
+      "baseScore": 5.640823,
+      "directSupport": 183,
+      "explanation": "可试着用“茉莉花香”描述这份花香；不需要同时有水果香或酸味。",
+      "governedSupport": 1,
+      "id": "sensory.jasmine",
+      "label": "茉莉花香",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Jasmine",
+      "questionLanguage": "闻起来会让你想到茉莉花的香气吗？",
+      "redundancyGroup": "white_floral",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 4.056629,
+      "directSupport": 59,
+      "explanation": "可试着用“玫瑰花香”描述这份花香，看看是否贴近你的感觉。",
+      "governedSupport": 1,
+      "id": "sensory.rose",
+      "label": "玫瑰花香",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Rose",
+      "questionLanguage": "闻起来会让你想到玫瑰花的香气吗？",
+      "redundancyGroup": "rose_floral",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 3.247088,
+      "directSupport": 27,
+      "explanation": "“橙花香”可作为花香参照；它不表示橙子果肉的味道或酸味。",
+      "governedSupport": 1,
+      "id": "sensory.orange_blossom",
+      "label": "橙花香",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Orange Blossom",
+      "questionLanguage": "闻起来会让你想到橙树开花的香气吗？",
+      "redundancyGroup": "citrus_blossom",
+      "reviewOnly": false,
+      "rightsEligible": false,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 5.115262,
+      "directSupport": 274,
+      "explanation": "可把“柠檬”作为参照；有酸味并不一定就像柠檬。",
+      "governedSupport": 1,
+      "id": "sensory.lemon",
+      "label": "柠檬般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Lemon",
+      "questionLanguage": "闻起来或喝起来，有让你想到柠檬的地方吗？",
+      "redundancyGroup": "citrus",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 5.501765,
+      "directSupport": 315,
+      "explanation": "可把“橙子”作为参照，看看是否贴近你的感觉；它与橙花香分开描述。",
+      "governedSupport": 1,
+      "id": "sensory.orange",
+      "label": "橙子般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Orange",
+      "questionLanguage": "闻起来或喝起来，有让你想到橙子的地方吗？",
+      "redundancyGroup": "citrus",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 5.031422,
+      "directSupport": 115,
+      "explanation": "可把“蓝莓”作为参照；如果你只感觉像某种莓果，也可以先保留宽泛说法。",
+      "governedSupport": 1,
+      "id": "sensory.blueberry",
+      "label": "蓝莓般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Blueberry",
+      "questionLanguage": "闻起来或喝起来，有让你想到蓝莓的地方吗？",
+      "redundancyGroup": "berry",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 5.912951,
+      "directSupport": 265,
+      "explanation": "可把“蜂蜜香”作为参照；闻着甜不代表含糖量高，也不一定喝着甜。",
+      "governedSupport": 1,
+      "id": "sensory.honey",
+      "label": "蜂蜜般的香气",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Honey",
+      "questionLanguage": "闻起来会让你想到蜂蜜的香气吗？",
+      "redundancyGroup": "honey",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 6.25,
+      "directSupport": 461,
+      "explanation": "可把“焦糖香”作为参照；它不表示加了糖，也不等于烟熏味。",
+      "governedSupport": 1,
+      "id": "sensory.caramel",
+      "label": "焦糖般的香气",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Caramel",
+      "questionLanguage": "闻起来会让你想到焦糖的香气吗？",
+      "redundancyGroup": "browned_sweet",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 5.01454,
+      "directSupport": 220,
+      "explanation": "可把“红糖香”作为参照；闻着甜不等于喝着甜，也不能说明糖分多少。",
+      "governedSupport": 1,
+      "id": "sensory.brown_sugar",
+      "label": "红糖般的香气",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Brown Sugar",
+      "questionLanguage": "闻起来会让你想到红糖的香气吗？",
+      "redundancyGroup": "browned_sweet",
+      "reviewOnly": false,
+      "rightsEligible": false,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 4.293865,
+      "directSupport": 81,
+      "explanation": "可把“杏仁”作为参照，看看是否贴近你的感觉；这个名称不表示添加了杏仁。",
+      "governedSupport": 1,
+      "id": "sensory.almond",
+      "label": "杏仁般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Almond",
+      "questionLanguage": "闻起来或喝起来，有让你想到杏仁的地方吗？",
+      "redundancyGroup": "tree_nut",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 4.06999,
+      "directSupport": 61,
+      "explanation": "可把“榛子”作为参照，看看是否贴近你的感觉；也可以先记作坚果般的风味。",
+      "governedSupport": 1,
+      "id": "sensory.hazelnut",
+      "label": "榛子般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Hazelnut",
+      "questionLanguage": "闻起来或喝起来，有让你想到榛子的地方吗？",
+      "redundancyGroup": "tree_nut",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 5.877524,
+      "directSupport": 191,
+      "explanation": "可把“黑巧克力”作为参照；只有苦味，还不足以描述这种联想。",
+      "governedSupport": 1,
+      "id": "sensory.dark_chocolate",
+      "label": "黑巧克力般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Dark Chocolate",
+      "questionLanguage": "喝起来有没有让你想到黑巧克力的地方？",
+      "redundancyGroup": "cocoa",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 4.34271,
+      "directSupport": 86,
+      "explanation": "可把“肉桂香”作为参照，看看是否贴近你的感觉。",
+      "governedSupport": 1,
+      "id": "sensory.cinnamon",
+      "label": "肉桂般的香气",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Cinnamon",
+      "questionLanguage": "闻起来会让你想到肉桂的香气吗？",
+      "redundancyGroup": "warming_spice",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 3.853738,
+      "directSupport": 51,
+      "explanation": "可把“烟草”作为气味参照；它与烟熏感分开描述。",
+      "governedSupport": 1,
+      "id": "sensory.tobacco",
+      "label": "烟草般的气味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Tobacco",
+      "questionLanguage": "闻起来会让你想到烟草叶的气味吗？",
+      "redundancyGroup": "wood_tobacco",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 2.238862,
+      "directSupport": 3,
+      "explanation": "可试着用“烟熏感”描述这份气味；它本身不能说明烘焙深浅或制作方式。",
+      "governedSupport": 1,
+      "id": "sensory.smoky",
+      "label": "烟熏感",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Smoky",
+      "questionLanguage": "闻起来有没有像烟熏过的气味？",
+      "redundancyGroup": "smoke",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 3.941377,
+      "directSupport": 52,
+      "explanation": "可把“绿茶”作为参照；如果只感觉像茶，也可以先保留“茶感”。",
+      "governedSupport": 1,
+      "id": "sensory.green_tea",
+      "label": "绿茶般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Green Tea",
+      "questionLanguage": "闻起来或喝起来，有让你想到绿茶的地方吗？",
+      "redundancyGroup": "tea",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 3.620214,
+      "directSupport": 32,
+      "explanation": "可把“雪松”作为气味参照；如果不熟悉这种木头，也可以先记下自己的联想。",
+      "governedSupport": 1,
+      "id": "sensory.cedar",
+      "label": "雪松般的气味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Cedar",
+      "questionLanguage": "闻起来会让你想到雪松木的气味吗？",
+      "redundancyGroup": "wood_tobacco",
+      "reviewOnly": false,
+      "rightsEligible": false,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 1.823278,
+      "directSupport": 2,
+      "explanation": "可试着用“土壤感”描述泥土般的气味；它本身不能判断咖啡是否变质。",
+      "governedSupport": 1,
+      "id": "sensory.earthy",
+      "label": "土壤感",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Earthy",
+      "questionLanguage": "闻起来会让你想到泥土的气味吗？",
+      "redundancyGroup": "earth",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 1.769431,
+      "directSupport": 1,
+      "explanation": "可试着用“发酵感”描述这份气味；这不能说明咖啡采用了哪种发酵工艺。",
+      "governedSupport": 1,
+      "id": "sensory.fermented_character",
+      "label": "发酵感",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Fermented",
+      "questionLanguage": "闻起来会让你想到发酵食物的气味吗？",
+      "redundancyGroup": "fermented",
+      "reviewOnly": false,
+      "rightsEligible": false,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    },
+    {
+      "baseScore": 4.247693,
+      "directSupport": 55,
+      "explanation": "可把“葡萄酒感”作为参照；它不表示含有酒精，也不能说明咖啡的处理工艺。",
+      "governedSupport": 1,
+      "id": "sensory.wine_like_character",
+      "label": "葡萄酒般的风味",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
+      "professionalLabel": "Winey",
+      "questionLanguage": "闻起来或喝起来，有让你想到葡萄酒的地方吗？",
+      "redundancyGroup": "winey",
+      "reviewOnly": false,
+      "rightsEligible": true,
+      "unresolved": false,
+      "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
+    }
+  ],
+  "policy": {
+    "boundedNone": -1.25,
+    "c1Prior": 0,
+    "expandedMainMax": 2,
+    "explorationMax": 3,
+    "forceFill": false,
+    "headlineMax": 3,
+    "mainDirectSupportMin": 1,
+    "ordinaryMax": 4,
+    "positive": 3,
+    "productionAuthorized": false,
+    "recoveryMax": 5,
+    "trainingAuthorized": false
+  },
+  "preparations": [
+    {
+      "examples": "V60、滤杯、滴滤机；水流过咖啡粉",
+      "id": "preparation.family.filter_percolation",
+      "label": "手冲 / 滴滤"
+    },
+    {
+      "examples": "法压壶、杯测；咖啡粉先浸在水里",
+      "id": "preparation.family.immersion",
+      "label": "浸泡"
+    },
+    {
+      "examples": "AeroPress 等手压器具",
+      "id": "preparation.family.hybrid",
+      "label": "手压 / 混合"
+    },
+    {
+      "examples": "Espresso；这里不包括摩卡壶",
+      "id": "preparation.family.espresso_pressure",
+      "label": "浓缩"
+    },
+    {
+      "examples": "美式、Long Black",
+      "id": "preparation.family.diluted_espresso",
+      "label": "浓缩加水"
+    },
+    {
+      "examples": "Moka、土耳其咖啡；使用炉上器具",
+      "id": "preparation.family.stovetop_boiled",
+      "label": "炉煮 / 摩卡壶"
+    },
+    {
+      "examples": "Cold Brew；冷水或室温长时间浸泡",
+      "id": "preparation.family.cold_extraction",
+      "label": "冷萃"
+    },
+    {
+      "examples": "拿铁、Flat White、卡布奇诺",
+      "id": "preparation.family.espresso_milk",
+      "label": "奶咖"
+    }
+  ],
+  "questions": [
+    {
+      "evidenceStatus": "GOVERNED_AXIS_FORMATIVE_WORDING_NOT_USER_VALIDATED",
+      "governed": true,
+      "id": "fruit_region",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.blueberry"
+          ],
+          "examples": "",
+          "id": "berry",
+          "label": "蓝莓这类小浆果"
+        },
+        {
+          "conceptIds": [
+            "sensory.lemon",
+            "sensory.orange"
+          ],
+          "examples": "",
+          "id": "citrus",
+          "label": "柠檬、橙这类水果"
+        }
+      ],
+      "prompt": "水果的感觉更接近哪些例子？",
+      "semanticKey": "fruit-region",
+      "variants": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_AXIS_FORMATIVE_WORDING_NOT_USER_VALIDATED",
+      "governed": true,
+      "id": "browned_sweet_reference",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.brown_sugar"
+          ],
+          "examples": "",
+          "id": "brown_sugar",
+          "label": "红糖的浓厚甜香"
+        },
+        {
+          "conceptIds": [
+            "sensory.honey",
+            "sensory.caramel"
+          ],
+          "examples": "",
+          "id": "caramel_honey",
+          "label": "蜂蜜，或糖加热后的香气"
+        },
+        {
+          "conceptIds": [
+            "sensory.dark_chocolate"
+          ],
+          "examples": "",
+          "id": "dark_chocolate",
+          "label": "甜味较少的黑巧克力"
+        },
+        {
+          "conceptIds": [
+            "sensory.almond",
+            "sensory.hazelnut"
+          ],
+          "examples": "",
+          "id": "nuts",
+          "label": "杏仁、榛子这类坚果"
+        }
+      ],
+      "prompt": "下面哪些香气让你有相似的联想？",
+      "semanticKey": "browned_sweet_reference",
+      "variants": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_AXIS_FORMATIVE_WORDING_NOT_USER_VALIDATED",
+      "governed": true,
+      "id": "floral_tea_reference",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.orange_blossom"
+          ],
+          "examples": "",
+          "id": "citrus_blossom",
+          "label": "柑橘树开花时的花香"
+        },
+        {
+          "conceptIds": [
+            "sensory.rose"
+          ],
+          "examples": "",
+          "id": "rose_floral",
+          "label": "玫瑰花的香气"
+        },
+        {
+          "conceptIds": [
+            "sensory.green_tea"
+          ],
+          "examples": "",
+          "id": "tea",
+          "label": "泡开绿茶后的香气"
+        },
+        {
+          "conceptIds": [
+            "sensory.jasmine"
+          ],
+          "examples": "",
+          "id": "white_floral",
+          "label": "茉莉这类轻柔花香"
+        }
+      ],
+      "prompt": "再想想香气，下面哪些例子比较接近？",
+      "semanticKey": "floral_tea_reference",
+      "variants": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_AXIS_FORMATIVE_WORDING_NOT_USER_VALIDATED",
+      "governed": true,
+      "id": "roast_smoke_reference",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.smoky"
+          ],
+          "examples": "",
+          "id": "smoke",
+          "label": "木柴燃烧留下的烟气"
+        },
+        {
+          "conceptIds": [
+            "sensory.cinnamon"
+          ],
+          "examples": "",
+          "id": "warming_spice",
+          "label": "肉桂这类温暖香料"
+        },
+        {
+          "conceptIds": [
+            "sensory.tobacco",
+            "sensory.cedar"
+          ],
+          "examples": "",
+          "id": "wood_tobacco",
+          "label": "干木头，或干烟叶的香气"
+        }
+      ],
+      "prompt": "这些香气中，哪些让你有联想？",
+      "semanticKey": "roast_smoke_reference",
+      "variants": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_AXIS_FORMATIVE_WORDING_NOT_USER_VALIDATED",
+      "governed": true,
+      "id": "fermentation_character",
+      "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/round3g/question_target_reviews.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.earthy"
+          ],
+          "examples": "",
+          "id": "earthy",
+          "label": "雨后泥土的气味"
+        },
+        {
+          "conceptIds": [
+            "sensory.fermented_character"
+          ],
+          "examples": "",
+          "id": "fermented",
+          "label": "熟透水果带一点发酵的气味"
+        },
+        {
+          "conceptIds": [
+            "sensory.wine_like_character"
+          ],
+          "examples": "",
+          "id": "winey",
+          "label": "葡萄酒的果香和发酵香"
+        }
+      ],
+      "prompt": "下面哪些气味联想比较接近？",
+      "semanticKey": "fermentation_character",
+      "variants": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_AXIS_FORMATIVE_WORDING_NOT_USER_VALIDATED",
+      "governed": true,
+      "id": "acidity_character",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.blueberry"
+          ],
+          "examples": "",
+          "id": "berry_like",
+          "label": "蓝莓这类小浆果"
+        },
+        {
+          "conceptIds": [
+            "sensory.lemon",
+            "sensory.orange"
+          ],
+          "examples": "",
+          "id": "citrus_like",
+          "label": "柠檬、橙这类水果"
+        }
+      ],
+      "prompt": "水果的联想更像哪些例子？",
+      "semanticKey": "fruit-region",
+      "variants": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_PARENT_AXIS_RESEARCH_RECOMBINATION",
+      "governed": true,
+      "id": "direction_A",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.lemon",
+            "sensory.orange",
+            "sensory.blueberry"
+          ],
+          "examples": "例如柠檬、橙、莓果",
+          "id": "fruit",
+          "label": "水果"
+        },
+        {
+          "conceptIds": [
+            "sensory.jasmine",
+            "sensory.rose",
+            "sensory.orange_blossom",
+            "sensory.green_tea"
+          ],
+          "examples": "例如茉莉、轻柔花香、绿茶",
+          "id": "floral_tea",
+          "label": "花香或茶"
+        },
+        {
+          "conceptIds": [
+            "sensory.honey",
+            "sensory.caramel",
+            "sensory.brown_sugar",
+            "sensory.almond",
+            "sensory.hazelnut",
+            "sensory.dark_chocolate"
+          ],
+          "examples": "例如蜂蜜、焦糖、杏仁、巧克力",
+          "id": "sweet_nut_cocoa",
+          "label": "甜香、坚果或巧克力"
+        },
+        {
+          "conceptIds": [
+            "sensory.cinnamon",
+            "sensory.tobacco",
+            "sensory.smoky",
+            "sensory.cedar",
+            "sensory.earthy",
+            "sensory.fermented_character",
+            "sensory.wine_like_character"
+          ],
+          "examples": "例如肉桂、烟熏、酒香、土壤感",
+          "id": "roast_spice_ferment",
+          "label": "烘烤、香料或发酵"
+        }
+      ],
+      "prompt": "这杯咖啡最先让你想到哪些方向？",
+      "semanticKey": "family-direction",
+      "variants": [
+        "A"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_PARENT_AXIS_RESEARCH_RECOMBINATION",
+      "governed": true,
+      "id": "direction_B",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.lemon",
+            "sensory.orange",
+            "sensory.blueberry",
+            "sensory.jasmine",
+            "sensory.rose",
+            "sensory.orange_blossom",
+            "sensory.green_tea"
+          ],
+          "examples": "也可以包含茶的香气",
+          "id": "fruit_flower",
+          "label": "像水果或花"
+        },
+        {
+          "conceptIds": [
+            "sensory.honey",
+            "sensory.caramel",
+            "sensory.brown_sugar",
+            "sensory.almond",
+            "sensory.hazelnut",
+            "sensory.dark_chocolate"
+          ],
+          "examples": "例如蜂蜜、焦糖、杏仁、巧克力",
+          "id": "sweet_nut_cocoa",
+          "label": "像糖、坚果或巧克力"
+        },
+        {
+          "conceptIds": [
+            "sensory.cinnamon",
+            "sensory.tobacco",
+            "sensory.smoky",
+            "sensory.cedar",
+            "sensory.earthy",
+            "sensory.fermented_character",
+            "sensory.wine_like_character"
+          ],
+          "examples": "例如肉桂、烟熏、酒香、土壤感",
+          "id": "roast_spice_ferment",
+          "label": "像烘烤、香料或发酵"
+        }
+      ],
+      "prompt": "这杯咖啡最先让你想到哪些方向？",
+      "semanticKey": "family-direction",
+      "variants": [
+        "B"
+      ]
+    },
+    {
+      "evidenceStatus": "GOVERNED_PARENT_AXIS_RESEARCH_RECOMBINATION",
+      "governed": true,
+      "id": "fruit_flower_branch",
+      "lineage": "db/data/round3h/batch5/question_research_evidence.tsv|db/data/round3e/generated/question_candidates.tsv",
+      "options": [
+        {
+          "conceptIds": [
+            "sensory.lemon",
+            "sensory.orange",
+            "sensory.blueberry"
+          ],
+          "examples": "",
+          "id": "fruit",
+          "label": "柠檬、橙或蓝莓的果香"
+        },
+        {
+          "conceptIds": [
+            "sensory.jasmine",
+            "sensory.rose",
+            "sensory.orange_blossom"
+          ],
+          "examples": "",
+          "id": "flower",
+          "label": "茉莉、玫瑰这类花香"
+        },
+        {
+          "conceptIds": [
+            "sensory.green_tea"
+          ],
+          "examples": "",
+          "id": "tea",
+          "label": "泡开绿茶后的香气"
+        }
+      ],
+      "prompt": "再分开想想，哪些例子比较接近？",
+      "semanticKey": "fruit-flower-branch",
+      "variants": [
+        "B"
+      ]
+    }
+  ],
+  "roasts": [
+    {
+      "id": "extremely_light",
+      "label": "极浅",
+      "ordinal": 1
+    },
+    {
+      "id": "light",
+      "label": "浅",
+      "ordinal": 2
+    },
+    {
+      "id": "medium_light",
+      "label": "中浅",
+      "ordinal": 3
+    },
+    {
+      "id": "medium",
+      "label": "中",
+      "ordinal": 4
+    },
+    {
+      "id": "medium_dark",
+      "label": "中深",
+      "ordinal": 5
+    },
+    {
+      "id": "dark",
+      "label": "深",
+      "ordinal": 6
+    },
+    {
+      "id": "extremely_dark",
+      "label": "极深",
+      "ordinal": 7
+    }
+  ],
+  "version": "product-inference-v0.2"
+}

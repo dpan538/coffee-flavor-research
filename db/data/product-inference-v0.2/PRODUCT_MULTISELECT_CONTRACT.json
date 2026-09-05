@@ -1,0 +1,15 @@
+{
+  "all_selected_is_not_conflict": true,
+  "hard_maximum": null,
+  "instruction": "选择所有明显符合的项目，通常 1–2 项就够了。",
+  "instrument": [
+    "selected_option_count",
+    "all_options_selected",
+    "average_selected_count",
+    "candidate_reduction",
+    "remaining_eligible_axes"
+  ],
+  "selected": "supports_once_per_concept_per_question",
+  "unselected": "neutral",
+  "weight_status": "UNCALIBRATED_RESEARCH_HEURISTIC_OWNER_REVIEW_PENDING"
+}
