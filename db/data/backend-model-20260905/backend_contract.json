@@ -1,0 +1,897 @@
+{
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "type": "string"
+        },
+        "selected_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "shown_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "state": {
+          "enum": [
+            "NONE_OF_THESE",
+            "SELECTED",
+            "SKIP",
+            "UNSURE"
+          ]
+        }
+      },
+      "required": [
+        "question_id",
+        "shown_option_ids",
+        "selected_option_ids",
+        "state"
+      ],
+      "type": "object"
+    },
+    "AnswerUpdate": {
+      "additionalProperties": false,
+      "properties": {
+        "base_component": {
+          "type": "number"
+        },
+        "candidate_id": {
+          "type": "string"
+        },
+        "context_component": {
+          "type": "number"
+        },
+        "direct_answer_component": {
+          "type": "number"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "interaction_component": {
+          "type": "number"
+        },
+        "question_id": {
+          "type": "string"
+        },
+        "rank_after": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rank_before": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "score_after": {
+          "type": "number"
+        },
+        "score_before": {
+          "type": "number"
+        },
+        "selected_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "semantic_component": {
+          "type": "number"
+        },
+        "shown_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "update_reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "shown_option_ids",
+        "selected_option_ids",
+        "candidate_id",
+        "score_before",
+        "base_component",
+        "context_component",
+        "direct_answer_component",
+        "semantic_component",
+        "interaction_component",
+        "score_after",
+        "rank_before",
+        "rank_after",
+        "evidence_ids",
+        "update_reason"
+      ],
+      "type": "object"
+    },
+    "CandidateScore": {
+      "additionalProperties": false,
+      "properties": {
+        "base_component": {
+          "type": "number"
+        },
+        "candidate_id": {
+          "type": "string"
+        },
+        "context_component": {
+          "type": "number"
+        },
+        "direct_answer_component": {
+          "type": "number"
+        },
+        "directly_expressed": {
+          "type": "boolean"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "interaction_component": {
+          "type": "number"
+        },
+        "rank": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "score": {
+          "type": "number"
+        },
+        "semantic_component": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "base_component",
+        "context_component",
+        "direct_answer_component",
+        "semantic_component",
+        "interaction_component",
+        "score",
+        "rank",
+        "evidence_ids",
+        "directly_expressed"
+      ],
+      "type": "object"
+    },
+    "CandidateState": {
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/Answer"
+          },
+          "maxItems": 5,
+          "type": "array"
+        },
+        "bundle_id": {
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/CandidateScore"
+          },
+          "type": "array"
+        },
+        "context": {
+          "$ref": "#/$defs/Context"
+        },
+        "context_effect_status": {
+          "type": "string"
+        },
+        "model": {
+          "enum": [
+            "B0",
+            "B1",
+            "B2",
+            "M1"
+          ]
+        },
+        "updates": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/AnswerUpdate"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "context",
+        "model",
+        "answers",
+        "candidates",
+        "updates",
+        "bundle_id",
+        "context_effect_status"
+      ],
+      "type": "object"
+    },
+    "Context": {
+      "additionalProperties": false,
+      "properties": {
+        "c0": {
+          "enum": [
+            "preparation.family.filter_percolation",
+            "preparation.family.immersion",
+            "preparation.family.hybrid",
+            "preparation.family.espresso_pressure",
+            "preparation.family.diluted_espresso",
+            "preparation.family.stovetop_boiled",
+            "preparation.family.cold_extraction",
+            "preparation.family.espresso_milk"
+          ]
+        },
+        "c1": {
+          "enum": [
+            "extremely_light",
+            "light",
+            "medium_light",
+            "medium",
+            "medium_dark",
+            "dark",
+            "extremely_dark"
+          ]
+        }
+      },
+      "required": [
+        "c0",
+        "c1"
+      ],
+      "type": "object"
+    },
+    "FinalResult": {
+      "additionalProperties": false,
+      "properties": {
+        "abstention": {
+          "type": "boolean"
+        },
+        "answer_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "interpretation": {
+          "type": "string"
+        },
+        "main": {
+          "items": {
+            "$ref": "#/$defs/CandidateScore"
+          },
+          "maxItems": 5,
+          "type": "array"
+        },
+        "next": {
+          "$ref": "#/$defs/NextQuestion"
+        },
+        "secondary": {
+          "items": {
+            "$ref": "#/$defs/CandidateScore"
+          },
+          "maxItems": 3,
+          "type": "array"
+        }
+      },
+      "required": [
+        "main",
+        "secondary",
+        "next",
+        "answer_count",
+        "interpretation",
+        "abstention"
+      ],
+      "type": "object"
+    },
+    "InterpretedAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "type": "string"
+        },
+        "relations": {
+          "items": {
+            "$ref": "#/$defs/SemanticRelation"
+          },
+          "type": "array"
+        },
+        "selected_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "semantic_key": {
+          "type": "string"
+        },
+        "shown_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "state": {
+          "enum": [
+            "NONE_OF_THESE",
+            "SELECTED",
+            "SKIP",
+            "UNSURE"
+          ]
+        }
+      },
+      "required": [
+        "question_id",
+        "shown_option_ids",
+        "selected_option_ids",
+        "state",
+        "semantic_key",
+        "relations"
+      ],
+      "type": "object"
+    },
+    "ModelBundle": {
+      "additionalProperties": true,
+      "properties": {
+        "bundle_id": {
+          "type": "string"
+        },
+        "candidate_rights": {
+          "type": "object"
+        },
+        "conditional": {
+          "type": "object"
+        },
+        "evidence_by_candidate": {
+          "type": "object"
+        },
+        "priors": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "type": "object"
+        },
+        "train_records": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "group_id": {
+                "type": "string"
+              },
+              "targets": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "group_id",
+              "targets"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "vocabulary": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "bundle_id",
+        "vocabulary",
+        "priors",
+        "conditional",
+        "candidate_rights",
+        "evidence_by_candidate",
+        "train_records"
+      ],
+      "type": "object"
+    },
+    "NextQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "ASK",
+            "STOP"
+          ]
+        },
+        "estimated_gain_bits": {
+          "type": "number"
+        },
+        "question": {
+          "$ref": "#/$defs/Question"
+        },
+        "question_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "source_group_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "supported_response_patterns": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "question_id"
+      ],
+      "type": "object"
+    },
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "concept_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "option_id": {
+          "type": "string"
+        },
+        "relation_type": {
+          "enum": [
+            "EQUIVALENT",
+            "HIERARCHICAL",
+            "MODIFIER",
+            "COMPOUND",
+            "COOCCURRENCE",
+            "DIRECT_OBSERVATION"
+          ]
+        }
+      },
+      "required": [
+        "option_id",
+        "concept_ids",
+        "relation_type"
+      ],
+      "type": "object"
+    },
+    "Question": {
+      "additionalProperties": false,
+      "properties": {
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Option"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "question_id": {
+          "type": "string"
+        },
+        "semantic_key": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "semantic_key",
+        "options"
+      ],
+      "type": "object"
+    },
+    "RankResult": {
+      "items": {
+        "$ref": "#/$defs/CandidateScore"
+      },
+      "type": "array"
+    },
+    "Request": {
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/Answer"
+          },
+          "type": "array"
+        },
+        "context": {
+          "$ref": "#/$defs/Context"
+        },
+        "model": {
+          "enum": [
+            "B0",
+            "B1",
+            "B2",
+            "M1"
+          ]
+        }
+      },
+      "required": [
+        "context"
+      ],
+      "type": "object"
+    },
+    "Response": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_state": {
+          "$ref": "#/$defs/CandidateState"
+        },
+        "final_result": {
+          "$ref": "#/$defs/FinalResult"
+        }
+      },
+      "required": [
+        "final_result",
+        "candidate_state"
+      ],
+      "type": "object"
+    },
+    "SemanticRelation": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "type": "string"
+        },
+        "evidence_id": {
+          "type": "string"
+        },
+        "option_id": {
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            -1,
+            1
+          ]
+        },
+        "relation_type": {
+          "enum": [
+            "EQUIVALENT",
+            "HIERARCHICAL",
+            "MODIFIER",
+            "COMPOUND",
+            "COOCCURRENCE",
+            "DIRECT_OBSERVATION"
+          ]
+        }
+      },
+      "required": [
+        "candidate_id",
+        "option_id",
+        "relation_type",
+        "polarity",
+        "evidence_id"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:coffee:backend-contract:20260905",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "cli": {
+    "argv": [
+      "python",
+      "db/scripts/flavor_backend.py",
+      "--model-file",
+      "$COFFEE_BACKEND_MODEL_ROOT/models/M1_BALANCED.model.json"
+    ],
+    "exit_codes": {
+      "0": "computed result",
+      "2": "input validation error"
+    },
+    "input_has_no_case_id": true,
+    "stdin": "A JSON Request; use example_request or a new valid catalog answer sequence"
+  },
+  "components": {
+    "build_candidate_state": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "context": {
+            "$ref": "#/$defs/Context"
+          },
+          "model": {
+            "enum": [
+              "B0",
+              "B1",
+              "B2",
+              "M1"
+            ]
+          }
+        },
+        "required": [
+          "context",
+          "bundle",
+          "model"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/CandidateState"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    },
+    "finalize_result": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "state",
+          "bundle"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/FinalResult"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    },
+    "interpret_answer": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "answer": {
+            "$ref": "#/$defs/Answer"
+          },
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          }
+        },
+        "required": [
+          "answer",
+          "bundle"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/InterpretedAnswer"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    },
+    "rank_candidates": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "state",
+          "bundle"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/RankResult"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    },
+    "select_next_question": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "state",
+          "bundle"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/NextQuestion"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    },
+    "update_candidate_state": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "answer": {
+            "$ref": "#/$defs/Answer"
+          },
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "state",
+          "answer",
+          "bundle"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/CandidateState"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    },
+    "validate_context": {
+      "data_sources": [
+        "dataset_manifest.json admitted artifact(s)",
+        "TRAIN coffee groups only for learned statistics",
+        "project-authored question routing; directions are exploratory support, not child confirmation"
+      ],
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "context": {
+            "$ref": "#/$defs/Context"
+          }
+        },
+        "required": [
+          "context"
+        ],
+        "type": "object"
+      },
+      "module": "db/scripts/flavor_backend.py",
+      "output_schema": {
+        "$ref": "#/$defs/Context"
+      },
+      "runtime_dependencies": [
+        "Python >=3.12 standard library",
+        "locally retained bundle; no network, database, frontend or case table"
+      ],
+      "tests": "db/tests/test_flavor_backend.py"
+    }
+  },
+  "contract_version": "backend-live.v1.1",
+  "example_request": {
+    "answers": [
+      {
+        "question_id": "q.fruit",
+        "selected_option_ids": [
+          "sensory.apple",
+          "sensory.lemon"
+        ],
+        "shown_option_ids": [
+          "sensory.apple",
+          "sensory.orange",
+          "sensory.lemon"
+        ],
+        "state": "SELECTED"
+      }
+    ],
+    "context": {
+      "c0": "preparation.family.immersion",
+      "c1": "medium_dark"
+    },
+    "model": "B2"
+  },
+  "flow": [
+    "Context",
+    "Question",
+    "Answer",
+    "SemanticRelation",
+    "CandidateState",
+    "RankResult",
+    "NextQuestion/Stop",
+    "FinalResult"
+  ],
+  "request": {
+    "$ref": "#/$defs/Request"
+  },
+  "response": {
+    "$ref": "#/$defs/Response"
+  },
+  "semantics": {
+    "context": "C0/C1 mandatory enums. Learned context effects masked in live API until a documented source-to-product mapping exists. Missing source context stays missing internally. Frozen proxy source-roast matches are nominal, not seven-level production labels.",
+    "multi_select": "Unique selected IDs subset of shown IDs; all selected are legitimate; no inferred exclusivity. Per-question direct evidence budget 3.0; displayed unselected options neutral unless explicit NONE_OF_THESE.",
+    "question_selection": "TRAIN-only empirical information gain, >=2 response patterns each supported by >=2 coffee groups, nonzero gain and materially different possible top-5 rankings; <=5 questions. Record proxy, not validated real answers.",
+    "result": "Unique main<=5 and secondary<=3, no display-policy fields. A candidate rank is not confidence or a confirmed identification.",
+    "retry": "Canonical identical answer is idempotent including trace. Correction replaces the question answer and recomputes effects from active answers.",
+    "score_trace": "Components describe the complete active state after the update. score_after=sum(components); delta=score_after-score_before. Source evidence IDs describe TRAIN provenance, not judge support for the requested coffee.",
+    "training": "RECORD_RECOVERY_PROXY only. Frozen core runtime is in owner/core-freeze and commit d2e1676; present live semantic guard fixes do not retroactively change core metrics."
+  }
+}

@@ -299,10 +299,69 @@
   "max_iter": 1000,
   "model": "M1 regularized linear candidate logit scorer plus explicitly separate direct-answer reference effect",
   "parameter_candidates": {
-    "C": [0.1, 1.0, 10.0]
+    "C": [
+      0.1,
+      1.0,
+      10.0
+    ]
   },
   "policy_simulation": "When reported, answers are generated solely from a pre-frozen visible descriptor subset; no selected unseen target, unknown outcome is UNSURE, never a fabricated negative",
   "primary_metric": "coffee-group-mean observed descriptor recovery NDCG@5; not real sensory accuracy",
+  "reproduction_runtime": {
+    "core_reproduction": "Frozen core files are preserved under $COFFEE_BACKEND_MODEL_ROOT/core-freeze and core code is committed at d2e1676. Never rerun fitting into the retained owner directory. Reproduce in an isolated local directory with the recorded versions.",
+    "dependencies": {
+      "beautifulsoup4": "4.15.0",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "lxml": "6.1.3",
+      "numpy": "2.5.2",
+      "openpyxl": "3.1.5",
+      "requests": "2.34.2",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.1",
+      "threadpoolctl": "3.6.0"
+    },
+    "extension_reproduction": "Two fits only, using frozen core code, grouping, masks, C and features. Exact executed pre-format code hashes are retained in $COFFEE_BACKEND_MODEL_ROOT/execution-code.",
+    "inference_only": "Python standard library; no server, frontend or network dependency",
+    "python": "3.12.14",
+    "reproduction_checked": "TRAIN statistics reconstructed from TRAIN-only records; reloaded all 68 core case/model predictions without fitting; balanced weights exactly equal original M1."
+  },
+  "runtime_extension": {
+    "C": 0.1,
+    "auxiliary_blend": 0.2,
+    "auxiliary_component": "Conditional cooccurrence features only, same frozen feature names. For an observed descriptor with >=2 auxiliary sample supports, blend 0.8 core conditional + 0.2 auxiliary conditional; target pair also requires >=2 auxiliary samples. Otherwise keep core feature unchanged. No auxiliary labels, priors, vocabulary, interactions or question-policy changes.",
+    "comparisons": [
+      "M1_BALANCED vs frozen M1",
+      "M1_AUX vs M1_BALANCED"
+    ],
+    "core_commit": "d2e1676",
+    "core_model_sha256": "f13dfc7e5b920d4eafbe81f4fe10bbda33df496b68a5446cde4b765981304f5b",
+    "evaluation_scope": "RECORD_RECOVERY_PROXY, observed positives only. Nominal source roast matches reproduce core; no production seven-bin context validation.",
+    "fits_allowed": 2,
+    "hyperparameter_search": false,
+    "selection_before_test": "Keep M1_AUX only if DEV observed recovery NDCG@5 is strictly above BALANCED and DEV Recall@8 and coverage do not fall; otherwise reject auxiliary branch. No TEST-based tuning.",
+    "test_group_ids": [
+      "coffee-group:0d78b35520dcc6262728743e",
+      "coffee-group:2f3b1d059474f5140b72f7a9",
+      "coffee-group:f04e86199c45089c9e32c803",
+      "coffee-group:0752306253535819cded0e6e",
+      "coffee-group:d3a64233c3df59a7ad3d7b07",
+      "coffee-group:e1aadb515c3164aacb49b38e",
+      "coffee-group:b173c5ce19b9da1a8918ef2b",
+      "coffee-group:751e0134eb92d3fb2343de58",
+      "coffee-group:2f5fcd0534ac1aa06bbe3077",
+      "coffee-group:e703b65cf511b4dfc6ed2cb3",
+      "coffee-group:4282fcad4e5447b74d1072d3",
+      "coffee-group:823888bb9643bb86ab658cdd",
+      "coffee-group:2bb87dbec7d42136e8cf5f78",
+      "coffee-group:c0324cefbf9e26aa7770674a",
+      "coffee-group:4d155f43026d71b94d634b0a",
+      "coffee-group:b41a84414e158af7cde091ba",
+      "coffee-group:a3a4c45eaef5e2ead155114f"
+    ],
+    "test_plan": "Evaluate both retained extension fits once on unchanged TEST masks after recording DEV decision; compare paired coffee-group intervals with frozen core and B1. No further configurations.",
+    "weighting": "Equal total core coffee-group mass; equal source-family mass after sample normalization. Core has one family so M1_BALANCED is a deliberate identity control. No source duplication."
+  },
   "seed": 20260905,
   "selection": "DEV observed-recovery NDCG@5; smallest C on tie; TEST not consulted",
   "solver": "lbfgs",

@@ -25,6 +25,15 @@ db/.test-output/
 __pycache__/
 *.py[cod]
 
+# Owner-controlled model weights and source-derived private experiment records.
+# The actual files live outside this repository; these guards prevent accidents.
+*.model.json
+*.private.json
+*.private.tsv
+*.joblib
+*.safetensors
+db/models/
+
 # OS, editor, and logs
 .DS_Store
 npm-debug.log*

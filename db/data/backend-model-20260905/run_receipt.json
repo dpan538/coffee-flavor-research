@@ -8,18 +8,128 @@
   "code_worktree_status": "Development code hashes are authoritative until incremental commit; no test-label-based tuning",
   "command": "python db/scripts/run-backend-model.py --owner-root \"$COFFEE_BACKEND_MODEL_ROOT\"",
   "completed_at_unix": 1788592418.15136,
+  "completed_at_utc": "2026-09-05T07:53:03.326754+00:00",
+  "completion": {
+    "AUXILIARY_DATA_ROLES": [
+      "CORE_PROFESSIONAL observations used for AUX_SEMANTIC coffee cooccurrence features only"
+    ],
+    "AUXILIARY_GAIN_OR_REGRESSION": "Recovery NDCG@5 delta=0 versus balanced at equal 100% coverage; auxiliary branch rejected by predeclared DEV gate. Direct restatement is reported separately and does not justify adoption.",
+    "AUXILIARY_SOURCES_ADMITTED": [
+      "family.frontiers_cenicafe_lengupa_trained_cuppers"
+    ],
+    "BALANCED_CORE_RESULT": "INCONCLUSIVE; same core weights and observed-recovery metrics as M1",
+    "CORE_ONLY_RESULT": "INCONCLUSIVE; RECORD_RECOVERY_PROXY NDCG@5=0.4953294864, B1=0.4656509044; delta=0.0296785820, 95% paired coffee-group CI [-0.0378230660,0.0979551085]",
+    "CORE_PLUS_AUX_RESULT": "NO_IMPROVEMENT; DEV recovery NDCG and Recall@8 unchanged; TEST NDCG@5=0.4953294864",
+    "CURRENT_CORE_TRAINING_COMPLETED": true,
+    "INDEPENDENT_SOURCE_FAMILY_COUNT": {
+      "core_evaluation": 1,
+      "with_auxiliary_training_features": 2
+    },
+    "MODEL_LOCAL_PATH": "$COFFEE_BACKEND_MODEL_ROOT/models/M1_BALANCED.model.json",
+    "NONCOMMERCIAL_ONLY_SOURCES_NEWLY_ADMITTED": 0,
+    "NONCOMMERCIAL_SOURCE_NOTE": "Runtime amendment admits no additional NC-only source; Zenodo was already included in the preserved NC core.",
+    "PUBLIC_RELEASE_LIMITATIONS": "Only own code, executable contracts and non-raw evaluation summaries committed. Raw source cache, source-derived answer traces, human-review evidence and all weights remain local. No commercial permission, public weight release, merge to main or frontend deployment claimed.",
+    "SELECTED_MODEL": "B2 guarded deterministic backend fallback; M1_BALANCED retained as research proxy only; original B1 and M1 retained",
+    "dev_groups": 16,
+    "fit_count_total_current_experiment": 5,
+    "human_review_completed": 0,
+    "human_review_prepared": 20,
+    "independent_coffee_groups": 110,
+    "independent_real_answer_evaluation_cases": 0,
+    "product_evidence_conclusion": "INCONCLUSIVE",
+    "qualified_core_records": 112,
+    "source_complete_production_C0_C1_records": 0,
+    "test_groups": 17,
+    "train_groups": 77
+  },
   "conclusion": "INCONCLUSIVE",
+  "delivery_code_base_sha": "d2e167670f51172cffe15e237cab2b16a3991d2b",
+  "delivery_code_hashes": {
+    "db/scripts/analyze-backend-model.py": "752a9c68b1aedce7c5a29e160db6150ea4a35443faabaaac724441e57aa7e038",
+    "db/scripts/check-backend-model-scope.py": "33623233b950e97ed8da1ea47c863bfae3e5562107c35c50ad413ca3a2af65db",
+    "db/scripts/extend-backend-model.py": "799aeebeb1c4e4bcbd885fe41fce9467ca4737235511fd49f7b7e87b96844da0",
+    "db/scripts/flavor_backend.py": "802d56c8cbd527e4bd945f97a63dd436129a6f44a0707ee326239d6f5770b08b",
+    "db/scripts/prepare-backend-model-data.py": "ae8968ea5ea41eed396ec94cdf8af7ab776f1f96c825cb3e59bdf9e0a67c8458",
+    "db/scripts/run-backend-model.py": "45d476ed0c1856c13c7a09d4b98e0eb3d7353346e620dcc1d959ca9173d34dd8",
+    "db/tests/test_backend_model_artifacts.py": "4df15d1220f93adcd50bc769e835c6f51cf6b3001bc780dc39e5746a3b6d5c65",
+    "db/tests/test_flavor_backend.py": "782d43404bf52b8cfa61571bd675f08881c5f56582c9ce147506e0470abb878f"
+  },
+  "diagnostics": {
+    "code_sha256": "9ddb410a23ff93220dde94eff8bce06419afc99829820a2335e28bb0574e1bdd",
+    "command": "python db/scripts/analyze-backend-model.py --owner-root \"$COFFEE_BACKEND_MODEL_ROOT\"",
+    "elapsed_seconds": 27.846181869506836,
+    "human_judgments": 0,
+    "legal_live_cases": 56,
+    "model_fits": 0,
+    "per_question_cases": 128,
+    "review_cases": 20,
+    "trace_rows": 6656
+  },
   "elapsed_seconds": 1.3726511001586914,
+  "execution_source_retention": "Original core in core-freeze; exact executed extension and diagnosis code in execution-code, keyed by SHA256. Formatting and DEV-record copy isolation do not refit or change model values.",
   "experiment_id": "backend-flavor-record-recovery-20260905",
   "frontend_authorized": false,
+  "frontend_correction": {
+    "AGENTS_enforced": true,
+    "agent_frontend_removed": true,
+    "correction_commit": "303e9d7f36b544b921cf04deabb674908ea9247f",
+    "correction_test_note": "The correction commit body initially reported the prior targeted test result before an obsolete route-file assertion was detected. That remaining non-UI test was fixed in d2e1676; the current 21-test retained research suite and 28 backend tests pass. No earlier result is treated as current validation.",
+    "preserved_A": "Questionnaire extraction, backend semantics/session code and non-UI tests",
+    "preserved_C": "Dirty desktop main worktree remains untouched; no stash, clean, reset, branch creation, directory restore or force push",
+    "recoverable_patch_directory": "$COFFEE_BACKEND_MODEL_ROOT",
+    "scope_check": "python db/scripts/check-backend-model-scope.py --base 303e9d7"
+  },
   "model_fits": 3,
   "model_path": "$COFFEE_BACKEND_MODEL_ROOT/models/M1.model.json",
   "model_retained_and_reloaded": true,
   "model_sha256": "f13dfc7e5b920d4eafbe81f4fe10bbda33df496b68a5446cde4b765981304f5b",
   "product_evidence_status": "INCONCLUSIVE; proxy only; no independent answer labels",
+  "runtime_extension": {
+    "code_sha": "d2e1676 plus extension source hash",
+    "command": "python db/scripts/extend-backend-model.py --owner-root \"$COFFEE_BACKEND_MODEL_ROOT\"",
+    "conclusion": "NO_IMPROVEMENT",
+    "core_model_hash_unchanged": true,
+    "dev_decision_record_sha256": "bc50ced6ef7461410d5d03f369f372a54d6991d96df588b447d0854263de12bf",
+    "elapsed_seconds": 0.923069953918457,
+    "extension_code_sha256": "727fda23cc48894e2084568c2454974a042687a541ddd4d4f0d5e3a8d2127bde",
+    "fits": 2,
+    "model_paths": [
+      "$COFFEE_BACKEND_MODEL_ROOT/models/M1_BALANCED.model.json",
+      "$COFFEE_BACKEND_MODEL_ROOT/models/M1_AUX.model.json"
+    ]
+  },
   "started_at_unix": 1788592416.778709,
   "training_episode_count": 316,
   "training_independent_group_count": 77,
   "training_record_count": 79,
-  "training_target_rows": 1040
+  "training_target_rows": 1040,
+  "validation": {
+    "all_56_context_combinations": "PASS",
+    "backend_unit_and_retained_model_tests": {
+      "command": "COFFEE_BACKEND_MODEL_ROOT=... python -m unittest discover -s db/tests -p test_*backend*.py",
+      "status": "PASS",
+      "tests": 28
+    },
+    "current_backend_artifact_contract": "PASS",
+    "database_schema_changed": false,
+    "historical_generators_rebuilt": "Only the relevant legacy inference generator once for byte reproduction; no all-history corpus rebuild",
+    "legacy_B1_generator_contract_and_byte_reproduction": "PASS, historical 120 cases unchanged",
+    "live_cli_invalid_C1": "PASS; unsure returns INPUT_VALIDATION_ERROR with exit 2",
+    "live_cli_new_input": "PASS; new immersion / medium_dark multiselect produces 52 candidate updates and structured 5+3 results",
+    "owner_model_hash_and_train_split_reproduction": "PASS; original retained model unchanged",
+    "public_snapshot_contract": "PASS; restricted real replay intentionally not executed by public snapshot test",
+    "remote_reference_before_final_commit": {
+      "core_checkpoint_pushed": "d2e1676",
+      "last_observed_completed_ci_conclusion": "success",
+      "last_observed_completed_ci_run": 33950420747,
+      "last_observed_completed_ci_sha": "5d9cd46db4eb65e94715796dcfdc52acb9cde0b7",
+      "main": "e4eced41e2233c76c4645287fba2ecedddd03561",
+      "research_initial": "5d9cd46db4eb65e94715796dcfdc52acb9cde0b7",
+      "this_final_commit_ci": "NOT_YET_OBSERVED; no remote acceptance claim"
+    },
+    "retained_research_tests": {
+      "status": "PASS",
+      "tests": 21
+    }
+  }
 }

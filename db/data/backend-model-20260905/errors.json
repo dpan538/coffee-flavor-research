@@ -1,0 +1,1531 @@
+{
+  "false_specificity_rate_real_cases": null,
+  "false_specificity_reason": "No independent reviewed negative/specificity labels; not inferred from unmentioned words. Counterexamples test explicit semantic invariants only.",
+  "material_limitations": [
+    "No coffee record in this core has reviewed complete production C0/C1; source-native roast matches are nominal only.",
+    "Only one professional source family in core TEST; auxiliary second family has no independent evaluation split.",
+    "B1 comparison transports legacy +3/-1.25 answer effect recipe onto common TRAIN-only candidates/priors. It is not a numerical reproduction of the old full-corpus 20-candidate product fixture. Old generator remains available only as a historical baseline.",
+    "Three M1 parameter settings selected on DEV; only 17 independent TEST groups; interval crosses zero.",
+    "Direct restatement Recall@5 and recovery Recall@8 regress relative to B1 despite a higher recovery NDCG@5.",
+    "Broad direction support and train cooccurrence do not constitute confirmation of specific sensory properties.",
+    "Source field authority is limited to reported trained-panel descriptor observations; quality scores, methods, package metadata and user questionnaires are not sensory labels."
+  ],
+  "observed_test_unseen_descriptors": 0,
+  "question_actions": {
+    "implemented": "Semantic support bounded and deduplicated; actual supported outcome change required for asking; bitter removed from fermented hierarchy; source context mapping masked.",
+    "not_implemented_from_test": "No question coefficient, feature, or question removal tuned on TEST. Per-question deltas below are exploratory; zero/sparse evidence does not prove a question useless."
+  },
+  "real_question_answer_evaluation_cases": 0,
+  "review_pack": {
+    "case_count": 20,
+    "development_count": 12,
+    "files": [
+      "$COFFEE_BACKEND_MODEL_ROOT/human_comparison_cases.private.json",
+      "$COFFEE_BACKEND_MODEL_ROOT/human_comparison_key.private.json"
+    ],
+    "human_completed": 0,
+    "locked_evaluation_count": 8,
+    "no_training_use_of_locked_review": true,
+    "selection": "Highest-impact disagreements; targeted audit, not a randomly sampled gold set. No manual judgments entered. Complete production C0/C1 unavailable in source observations."
+  },
+  "semantic_counterexamples": [
+    {
+      "after_candidates": [
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:43bd970e7e909d83ff6afc9c1ccd8f90ffc6bec5a1e1b94df010e714b55e464f:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 0.525,
+          "semantic_component": 0.625
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:43bd970e7e909d83ff6afc9c1ccd8f90ffc6bec5a1e1b94df010e714b55e464f:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 0.475,
+          "semantic_component": 0.625
+        },
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.2,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.25,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.3,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "answers": [
+        {
+          "question_id": "q.direction",
+          "selected_option_ids": [
+            "family.floral"
+          ],
+          "shown_option_ids": [
+            "family.fruit",
+            "family.floral",
+            "family.sweet",
+            "family.nut_cocoa",
+            "family.fermented",
+            "family.taste"
+          ],
+          "state": "SELECTED"
+        }
+      ],
+      "before_candidates": [
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:43bd970e7e909d83ff6afc9c1ccd8f90ffc6bec5a1e1b94df010e714b55e464f:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 2.9,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:43bd970e7e909d83ff6afc9c1ccd8f90ffc6bec5a1e1b94df010e714b55e464f:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 2.85,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.2,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.25,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.3,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "context": {
+        "c0": "preparation.family.filter_percolation",
+        "c1": "medium"
+      },
+      "id": "broad_floral_is_not_jasmine",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidates": [
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:ddb114aca89ba76ce144db3ad9ed33961a07af2a7871065f452887d28bbaabb4:sensory.cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 2.8,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": -0.1,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.15,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.25,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.3,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "answers": [
+        {
+          "question_id": "q.nut_cocoa",
+          "selected_option_ids": [
+            "sensory.cocoa"
+          ],
+          "shown_option_ids": [
+            "sensory.cocoa",
+            "sensory.dark_chocolate",
+            "sensory.almond"
+          ],
+          "state": "SELECTED"
+        }
+      ],
+      "before_candidates": [
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:ddb114aca89ba76ce144db3ad9ed33961a07af2a7871065f452887d28bbaabb4:sensory.cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 2.8,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": -0.1,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.15,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.25,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.3,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "context": {
+        "c0": "preparation.family.filter_percolation",
+        "c1": "medium"
+      },
+      "id": "cocoa_is_not_dark_chocolate",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidates": [
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 1.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:af5ae1d92287fa19b27f71e28ec02a0b674accacbe7de552d1583f638d23efb5:sensory.cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 0.8,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 1.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:af5ae1d92287fa19b27f71e28ec02a0b674accacbe7de552d1583f638d23efb5:sensory.dark_chocolate",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 0.75,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 1.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:af5ae1d92287fa19b27f71e28ec02a0b674accacbe7de552d1583f638d23efb5:sensory.almond",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": 0.7,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.1,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.15,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "answers": [
+        {
+          "question_id": "q.nut_cocoa",
+          "selected_option_ids": [
+            "sensory.cocoa",
+            "sensory.dark_chocolate",
+            "sensory.almond"
+          ],
+          "shown_option_ids": [
+            "sensory.cocoa",
+            "sensory.dark_chocolate",
+            "sensory.almond"
+          ],
+          "state": "SELECTED"
+        }
+      ],
+      "before_candidates": [
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:af5ae1d92287fa19b27f71e28ec02a0b674accacbe7de552d1583f638d23efb5:sensory.cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 2.8,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:af5ae1d92287fa19b27f71e28ec02a0b674accacbe7de552d1583f638d23efb5:sensory.dark_chocolate",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 2.75,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": true,
+          "evidence_ids": [
+            "answer:af5ae1d92287fa19b27f71e28ec02a0b674accacbe7de552d1583f638d23efb5:sensory.almond",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": 2.7,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.1,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.15,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "context": {
+        "c0": "preparation.family.filter_percolation",
+        "c1": "medium"
+      },
+      "id": "multi_select_bounded_total_effect",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidates": [
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.fruit",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 0.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.fruit",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": -0.05,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": -0.1,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": -0.15,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.nut_cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": -0.2,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.nut_cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": -0.25,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.nut_cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": -0.3,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.sweet",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": -0.35,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.sweet",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": -0.4,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.taste",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": -0.45,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 0.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.fermented",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": -0.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "answers": [
+        {
+          "question_id": "q.direction",
+          "selected_option_ids": [
+            "family.fruit",
+            "family.floral",
+            "family.sweet",
+            "family.nut_cocoa",
+            "family.fermented",
+            "family.taste"
+          ],
+          "shown_option_ids": [
+            "family.fruit",
+            "family.floral",
+            "family.sweet",
+            "family.nut_cocoa",
+            "family.fermented",
+            "family.taste"
+          ],
+          "state": "SELECTED"
+        }
+      ],
+      "before_candidates": [
+        {
+          "base_component": 0.0,
+          "candidate_id": "sensory.apple",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.fruit",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 1,
+          "score": 3.0,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.05,
+          "candidate_id": "sensory.orange",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.fruit",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 2,
+          "score": 2.95,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.1,
+          "candidate_id": "sensory.jasmine",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 3,
+          "score": 2.9,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.15,
+          "candidate_id": "sensory.rose",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.floral",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 4,
+          "score": 2.85,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.2,
+          "candidate_id": "sensory.cocoa",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.nut_cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 5,
+          "score": 2.8,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.25,
+          "candidate_id": "sensory.dark_chocolate",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.nut_cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 6,
+          "score": 2.75,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.3,
+          "candidate_id": "sensory.almond",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.nut_cocoa",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 7,
+          "score": 2.7,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.35,
+          "candidate_id": "sensory.caramel",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.sweet",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 8,
+          "score": 2.65,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.4,
+          "candidate_id": "sensory.honey",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.sweet",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 9,
+          "score": 2.6,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.45,
+          "candidate_id": "sensory.bitter",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.taste",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 10,
+          "score": 2.55,
+          "semantic_component": 0.0
+        },
+        {
+          "base_component": -0.5,
+          "candidate_id": "sensory.wine_like_character",
+          "context_component": 0.0,
+          "direct_answer_component": 3.0,
+          "directly_expressed": false,
+          "evidence_ids": [
+            "answer:74910e24892b01025bd5ce2d00e400e7ecf63dc896f69597debe2bbc1af0b701:family.fermented",
+            "fixture:source"
+          ],
+          "interaction_component": 0.0,
+          "rank": 11,
+          "score": 2.5,
+          "semantic_component": 0.0
+        }
+      ],
+      "context": {
+        "c0": "preparation.family.filter_percolation",
+        "c1": "medium"
+      },
+      "id": "all_broad_no_information",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidate_support": {},
+      "before_candidate_support": {
+        "sensory.dark_chocolate": 1,
+        "sensory.jasmine": 1
+      },
+      "id": "method_keyword_without_observation",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "reason": "No typed direct observation or reviewed equivalent to any specific candidate; retain broad/combined source term separately",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "source_claim": {
+        "evidence_direction": "SUPPORTS",
+        "method": "floral cocoa tokens",
+        "review_status": "REVIEWED",
+        "source_family_key": "fixture",
+        "support_count": "1",
+        "target_entity_key": "instrument.calibration"
+      },
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidate_support": {},
+      "before_candidate_support": {
+        "sensory.jasmine": 1
+      },
+      "id": "floral_structured_claim",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "reason": "No typed direct observation or reviewed equivalent to any specific candidate; retain broad/combined source term separately",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "source_claim": {
+        "evidence_direction": "SUPPORTS",
+        "method": "panel frequency",
+        "review_status": "REVIEWED",
+        "source_family_key": "fixture",
+        "support_count": "1",
+        "target_entity_key": "floral"
+      },
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidate_support": {},
+      "before_candidate_support": {
+        "sensory.dark_chocolate": 1
+      },
+      "id": "cocoa_structured_claim",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "reason": "No typed direct observation or reviewed equivalent to any specific candidate; retain broad/combined source term separately",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "source_claim": {
+        "evidence_direction": "SUPPORTS",
+        "method": "panel frequency",
+        "review_status": "REVIEWED",
+        "source_family_key": "fixture",
+        "support_count": "1",
+        "target_entity_key": "cocoa"
+      },
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidate_support": {},
+      "before_candidate_support": {
+        "sensory.dark_chocolate": 1
+      },
+      "id": "compound_nutty_cocoa",
+      "judgment_status": "AUTOMATED_INVARIANT_ONLY",
+      "reason": "No typed direct observation or reviewed equivalent to any specific candidate; retain broad/combined source term separately",
+      "scope": "DEVELOPMENT_POLICY_FIXTURE_NOT_EMPIRICAL_LABEL",
+      "source_claim": {
+        "evidence_direction": "SUPPORTS",
+        "method": "panel frequency",
+        "review_status": "REVIEWED",
+        "source_family_key": "fixture",
+        "support_count": "1",
+        "target_entity_key": "Nutty/Cocoa"
+      },
+      "test": "db/tests/test_flavor_backend.py"
+    },
+    {
+      "after_candidate_support": {
+        "sensory.cocoa": 1
+      },
+      "before_candidate_support": {
+        "sensory.cocoa": 2
+      },
+      "id": "duplicate_semantic_paths",
+      "reason": "Same artifact/observation/target counted once, regardless of method/path",
+      "test": "test_source_permission_does_not_propagate_and_paths_deduplicate"
+    },
+    {
+      "after": "STOP unless two patterns each have two independent training groups, positive gain and changing possible top5",
+      "before": "Historical eligibility requires two source families and two nonempty candidate partitions, without empirical response support or measured information gain",
+      "id": "nonempty_singleton_partitions",
+      "test": "test_question_requires_supported_material_outcomes_and_stops"
+    },
+    {
+      "after": "Exact artifact with unsatisfied conditions withheld; eligible artifact retained",
+      "before": "Concept-level permission could admit another source",
+      "id": "source_rights_propagation",
+      "test": "test_source_permission_does_not_propagate_and_paths_deduplicate"
+    },
+    {
+      "after": "Dedicated taste routing; no fermented hierarchical support",
+      "before": "Bitter in fermented routing bucket",
+      "id": "bitter_not_fermentation",
+      "test": "test_bitter_is_not_fermented_child"
+    }
+  ],
+  "task": "RECORD_RECOVERY_PROXY"
+}

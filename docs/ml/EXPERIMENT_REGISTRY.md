@@ -13,8 +13,32 @@ data selected the retained M1 model. Test observed-descriptor recovery NDCG@5 is
 0.495329 for M1 versus 0.465651 for B1/B2. The paired coffee-group difference is
 0.029679, with 95% bootstrap interval [-0.037823, 0.097955]: `INCONCLUSIVE`.
 All models cover every test case. Weights remain in owner-controlled local
-storage. The core run is frozen; bounded balanced/auxiliary comparisons will be
-recorded in the same experiment directory.
+storage. The core run remains frozen. Two additional fits completed with the
+same core configuration: M1_BALANCED reproduces M1 because its one source was
+already weighted equally by coffee group; M1_AUX adds allowed coffee cooccurrence
+features from 21 Lengupá samples (15 have exact in-vocabulary leaf descriptions).
+Both score 0.495329 on unchanged TEST. DEV did not improve, so the auxiliary
+branch is rejected (`NO_IMPROVEMENT`). This is two source families used in
+training features, with only the original source represented in TEST.
+
+The live backend accepts required C0/C1 and arbitrary valid catalog answers,
+recomputes idempotent answer updates and returns main ≤ 5 / secondary ≤ 3 with
+an evidence-based next question or stop. Source-native roast text is not a
+validated seven-level C1 mapping; live learned context effects are masked.
+The frozen proxy's nominal roast features are reported as a limitation, not
+as validated product context. B2 remains the guarded deterministic fallback;
+M1_BALANCED is retained for proxy research, without a product promotion.
+
+Question diagnostics show positive mean recovery changes for fruit (+0.03365)
+and nut/cocoa (+0.01503), a small negative change for sweet (-0.00289), and zero
+measured change in three other observed axes. Floral has no frozen answer
+cases. These small-group intervals do not establish question value. Adaptive
+versus fixed qualified order differs by +0.00260 at five questions under an
+explicit visible-descriptor oracle; this is not real-user validation.
+
+Twenty anonymous record comparisons (12 development / 8 locked evaluation)
+are prepared locally; no human judgments have been entered. Complete validated
+C0/C1 product cases and independent user-answer judgments remain unavailable.
 
 Authoritative records: [manifest](../../db/data/backend-model-20260905/dataset_manifest.json),
 [configuration](../../db/data/backend-model-20260905/experiment_config.json),

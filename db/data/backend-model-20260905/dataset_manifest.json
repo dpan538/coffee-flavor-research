@@ -35,13 +35,71 @@
     "version": "1.1"
   },
   "authorization": "Explicit owner backend-model instruction 2026-09-05; noncommercial local comparative research only; no deployment or weight release",
+  "auxiliary_source": {
+    "admitted_samples": 21,
+    "artifact_sha256": "a410a8e84754a5a3cceb6489a30053bddfacbd518cb926f822c197f5772a7191",
+    "author": "Diego Alejandro Benavides Sánchez",
+    "author_usage_notice": "Article copyright © 2026 Benavides Sánchez; Creative Commons Attribution License (CC BY)",
+    "conditions_satisfied": {
+      "attribution": true,
+      "changes_disclosed": true,
+      "local_retention": true,
+      "no_raw_republication": true
+    },
+    "current_experiment_use_basis": "NONCOMMERCIAL_RESEARCH_USE under CC BY 4.0",
+    "derived_relation_limit": "Coffee cooccurrence features only; not equivalence, core labels or gold evaluation",
+    "derived_relation_role": "AUX_SEMANTIC",
+    "experiment_role": "AUXILIARY_TRAINING_FEATURES_ONLY; not core labels or gold evaluation",
+    "family": "family.frontiers_cenicafe_lengupa_trained_cuppers",
+    "fine_label_samples": 15,
+    "identity_audit": {
+      "admitted_group_ids": [
+        "lengupa:ea748829cf8ae8c6be4997e1",
+        "lengupa:3d578f20bcf5ee85d0750204",
+        "lengupa:60bb512bbfd6b0b88d3cdf51",
+        "lengupa:4995bd0913ef62895a97291a",
+        "lengupa:7cbca4be46c0e11447db8827",
+        "lengupa:60ec104cad2849ef60b2a0f7",
+        "lengupa:7f8e6660c8f95329e92823cb",
+        "lengupa:b391edb73fe59dcd2a0fb7e4",
+        "lengupa:b8af53be3f9c0e55dfa1398c",
+        "lengupa:e329f15f9d3b7f6f0894c19c",
+        "lengupa:def9474517486a69b1539b25",
+        "lengupa:8d7321e919210d013cf65dec",
+        "lengupa:7320bb79e2d54e5de92a5063",
+        "lengupa:4b112158846449aaaeaec90a",
+        "lengupa:c32c540275391219f6e52e65",
+        "lengupa:3a2727f0bb05b12f15cd09e3",
+        "lengupa:645d57f2fec44a1f3fb159a1",
+        "lengupa:e589443479c8248c6029aacf",
+        "lengupa:d13dcacaf07deab421f83c44",
+        "lengupa:ee74be129bc4bbdfc7ded5ab",
+        "lengupa:40d5b32a735a7c2576971bcc"
+      ],
+      "cross_source_exact_group_overlap": 0,
+      "known_cross_study_duplicate_samples_excluded": 0,
+      "limitations": "No shared global lot identifier is published. This is a distinct-study auxiliary comparison; universal absence of commercial supply-chain overlap cannot be proved. Core and auxiliary source identifiers, artifact hashes, collection study batches and publication mirrors were checked before auxiliary statistics. No descriptor statistics or target-similarity filtering from DEV/TEST used in features.",
+      "study_batch": "One Lengupá producer study, one publication family; article mirrors/republished old ledger rows are not additional families. Core is the distinct Golovinsky electrochemical/commercial-coffee study.",
+      "within_source_duplicate_ids": 0
+    },
+    "machine_license_field": null,
+    "multi_leaf_samples": 5,
+    "parsed_samples": 21,
+    "processing": "Source Table 3 D.FA and D.F codebook: retain 9 unambiguous exact leaf terms only; union per sample, repeated codes/fields do not inflate counts; broad chocolate/nutty/floral never specialized",
+    "public_release": "Original source text, sample code rows and model weights retained locally; only code and aggregate evaluation records committed",
+    "role": "CORE_PROFESSIONAL",
+    "source_record_id": "doi:10.3389/fsufs.2026.1809471",
+    "url": "https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2026.1809471/full",
+    "version": "article published 2026-07-01; retrieved 2026-09-05"
+  },
   "c1_mapping": {
     "basis": "Literal package/source label equality only; not calibrated seven-bin Agtron mapping; all other roast strings remain source-missing for features",
     "mapping": {
       "Dark roast": "dark",
       "Light roast": "light",
       "Medium roast": "medium"
-    }
+    },
+    "status": "HISTORICAL_FROZEN_PROXY_NOMINAL_ENCODING_ONLY_NOT_PRODUCT_MAPPING"
   },
   "core_freeze": {
     "files": {
@@ -84,6 +142,13 @@
     "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4",
     "PURPOSE_SPECIFIC_RIGHTS_MATRIX.tsv": "9d056f851183f72609e4ca7727b2a4e06bb02a197dc509d62943825c085e054e"
   },
+  "model_source_purposes": {
+    "commercial_deployment": "NOT_REQUIRED_NOT_CLAIMED",
+    "commercial_training": "NOT_REQUIRED_NOT_CLAIMED",
+    "local_noncommercial_research": "ALLOWED_WITH_SATISFIED_SOURCE_CONDITIONS",
+    "model_weight_publication": "NOT_AUTHORIZED_BY_THIS_RUN",
+    "raw_source_publication": "NOT_AUTHORIZED_BY_THIS_RUN"
+  },
   "other_audited_source": {
     "disposition": "Coded panel-consensus observations retained as source evidence; not pooled into this first source-specific experiment or used as fabricated complete negatives",
     "record_count": 21,
@@ -96,6 +161,19 @@
     "MONETIZATION": false,
     "PROJECT_PURPOSE": "PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH",
     "current_use_basis": "NONCOMMERCIAL_RESEARCH_USE"
+  },
+  "runtime_source_admission": {
+    "auxiliary_roles": [
+      "CORE_PROFESSIONAL source observations used only for AUX_SEMANTIC cooccurrence features"
+    ],
+    "auxiliary_sources_admitted": [
+      "family.frontiers_cenicafe_lengupa_trained_cuppers"
+    ],
+    "core_gold_source_count": 1,
+    "explanation": "Zenodo was already admitted to the completed noncommercial core; runtime purpose confirmation does not create a second admission. Existing UNKNOWN/PENDING remain excluded.",
+    "newly_discovered_sources": 0,
+    "noncommercial_only_sources_newly_admitted": 0,
+    "source_family_count_with_aux": 2
   },
   "source_classes": {
     "complete_c0_c1_records": {
@@ -126,6 +204,40 @@
     }
   },
   "source_context_limit": "31 source records have consistent nominal Light/Medium/Dark labels, not validated seven-level production C1. The frozen proxy used nominal matches; production inference masks learned C0/C1 effects until a source protocol mapping is validated.",
+  "source_contribution": {
+    "all_other_components": {
+      "aux": 0.0,
+      "core": 1.0
+    },
+    "conditional_feature_mix_where_aux_supported": {
+      "aux": 0.2,
+      "core": 0.8
+    },
+    "effective_supervision_mass": {
+      "aux_label_mass": 0,
+      "core_coffee_groups": 77
+    },
+    "independent_sample_shares": {
+      "aux": 0.16030534351145037,
+      "core": 0.8396946564885496
+    },
+    "raw_sample_record_shares": {
+      "aux": 0.15789473684210525,
+      "core": 0.8421052631578947
+    },
+    "training_independent_sample_shares": {
+      "aux": 0.21428571428571427,
+      "core": 0.7857142857142857
+    },
+    "training_label_weight_shares": {
+      "aux": 0.0,
+      "core": 1.0
+    },
+    "training_raw_sample_record_shares": {
+      "aux": 0.21,
+      "core": 0.79
+    }
+  },
   "source_exclusions": [
     {
       "artifact_count": 19,
