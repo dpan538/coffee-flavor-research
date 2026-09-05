@@ -1,0 +1,9 @@
+decision_id	question_ids	proposal	evidence_limit	status	final_owner_decision
+D01	Q5|Q6	Retain eight C0 families; clarify immersion and stovetop examples	C0 self-reported findability; sparse experience outside common methods	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D02	Q7|Q8|Q9	Retain seven C1 levels and separate unsure state; package-name guidance	No direct reviewed seven-level mappings; C1 remains neutral	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D03	Q10|Q11|Q12|Q13	Test examples-first and progressive-branch wording between subjects	Small-sample comprehension preferences; neither variant validated	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D04	Q15	Enable multi-select with a soft 1–2 suggestion; leave unselected options neutral	Preference does not prove efficiency	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D05	Q17	Keep UNSURE, NONE_OF_THESE and SKIP distinct	Different intended meanings; no single winning label	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D06	Q16|Q19	Q1 mandatory; conditional Q2–Q4 and optional governed Q5 recovery	Measure burden, separation and acceptance in actual tasks	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D07	Q18	Up to three headlines with additional main and exploration collapsed	No force-fill; stated preference is not a comparative task result	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	
+D08	Q20|OVERALL	Add value-proposition paraphrase and repeat-use measurement	Trial interest does not establish retention	RESEARCH_CANDIDATE_OWNER_REVIEW_PENDING	

@@ -1,0 +1,131 @@
+{
+  "artifact_version": "user-research-round1",
+  "coded_data_scope": "Owner-authorized public-safe codes and aggregates; raw files and free text remain restricted",
+  "duplicate_file_cluster_count": 1,
+  "format_anomaly_count": 6,
+  "generated_at": "2026-09-05T00:00:00Z",
+  "metrics": {
+    "ACTIVE_USE_INTENT_COUNT": {
+      "codes": "A",
+      "count": 2,
+      "denominator": 10,
+      "interpretation": "Stated active-use intention",
+      "question_id": "Q20",
+      "raw_count": 2,
+      "raw_denominator": 11
+    },
+    "C0_FINDABLE_COUNT": {
+      "codes": "AB",
+      "count": 10,
+      "denominator": 10,
+      "interpretation": "Self-reported findability, not method experience coverage",
+      "question_id": "Q5",
+      "raw_count": 11,
+      "raw_denominator": 11
+    },
+    "C1_ROUGHLY_SELECTABLE_COUNT": {
+      "codes": "AB",
+      "count": 9,
+      "denominator": 10,
+      "interpretation": "Self-reported selectability, not correct roast classification",
+      "question_id": "Q7",
+      "raw_count": 10,
+      "raw_denominator": 11
+    },
+    "COFFEE_WEEKLY_OR_MORE_COUNT": {
+      "codes": "AB",
+      "count": 9,
+      "denominator": 10,
+      "interpretation": "A/B guarantees at least twice weekly; C may include once weekly, so count is a lower bound",
+      "question_id": "Q1",
+      "raw_count": 10,
+      "raw_denominator": 11
+    },
+    "EXTRA_QUESTION_PREFERENCE_COUNT": {
+      "codes": "B",
+      "count": 6,
+      "denominator": 10,
+      "interpretation": "Prefers additional question as explanation/recovery",
+      "question_id": "Q19",
+      "raw_count": 6,
+      "raw_denominator": 11
+    },
+    "FIRST_QUESTION_ANSWERABLE_COUNT": {
+      "codes": "AB",
+      "count": 9,
+      "denominator": 10,
+      "interpretation": "Easy or broadly answerable",
+      "question_id": "Q10",
+      "raw_count": 10,
+      "raw_denominator": 11
+    },
+    "FLAVOR_DESCRIPTION_EXPOSURE_COUNT": {
+      "codes": "AB",
+      "count": 9,
+      "denominator": 10,
+      "interpretation": "At least sometimes reads descriptions",
+      "question_id": "Q3",
+      "raw_count": 10,
+      "raw_denominator": 11
+    },
+    "FRUIT_LANGUAGE_DIFFICULTY_COUNT": {
+      "codes": "CD",
+      "count": 4,
+      "denominator": 10,
+      "interpretation": "Only one or two distinctions, or basically cannot distinguish",
+      "question_id": "Q12",
+      "raw_count": 4,
+      "raw_denominator": 11
+    },
+    "SEVEN_LEVEL_ACCEPTANCE_COUNT": {
+      "codes": "A",
+      "count": 8,
+      "denominator": 10,
+      "interpretation": "Preference, not validated computational usefulness",
+      "question_id": "Q9",
+      "raw_count": 9,
+      "raw_denominator": 11
+    },
+    "UNLIMITED_MULTISELECT_PREFERENCE_COUNT": {
+      "codes": "C",
+      "count": 8,
+      "denominator": 10,
+      "interpretation": "Preference does not establish information efficiency",
+      "question_id": "Q15",
+      "raw_count": 9,
+      "raw_denominator": 11
+    },
+    "WHITE_FLORAL_EXPLANATION_COUNT": {
+      "count": 8,
+      "denominator": 10,
+      "interpretation": "Union of primary A and explicitly coded open feedback, each file payload counted once",
+      "question_id": "Q13"
+    },
+    "WILLING_TO_TRY_OR_USE_COUNT": {
+      "codes": "AB",
+      "count": 9,
+      "denominator": 10,
+      "interpretation": "Stated intention; no retention evidence",
+      "question_id": "Q20",
+      "raw_count": 9,
+      "raw_denominator": 11
+    }
+  },
+  "ml_training_role": false,
+  "numbers_file_included": true,
+  "open_primary_response_count": 1,
+  "population_generalization_allowed": false,
+  "primary_analysis_n": 10,
+  "professional_sensory_label_role": false,
+  "qualitative_code_count": 11,
+  "raw_sensitivity_n": 11,
+  "raw_submission_count": 11,
+  "review_aid_option_count_comparisons": 80,
+  "review_aid_option_count_matches": 80,
+  "review_aid_sha256": "646fd961d9195a80a2f5bf0495b975d314c72034d732059f763899f4f9cbf050",
+  "single_digit_note_artifact_candidate_count": 0,
+  "source_of_truth": "Original restricted submissions; native Numbers export used to overcome reader loss",
+  "study_type": "FORMATIVE_SMALL_SAMPLE",
+  "unique_file_payload_count": 10,
+  "user_research_role": "FORMATIVE_UX_AND_PRODUCT_POLICY_EVIDENCE"
+}
