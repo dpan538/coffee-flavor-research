@@ -7,13 +7,5 @@ const descriptorPaths = descriptors.map(
 
 export default {
   ssr: false,
-  prerender: [
-    "/",
-    "/atlas",
-    "/methodology",
-    ...descriptorPaths,
-    ...(process.env.VITE_COFFEE_RESEARCH === "1"
-      ? ["/research/user-study"]
-      : []),
-  ],
+  prerender: ["/", "/atlas", "/methodology", ...descriptorPaths],
 } satisfies Config;

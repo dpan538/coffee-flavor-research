@@ -404,18 +404,6 @@ describe("local research export", () => {
       }).success,
     ).toBe(false);
   });
-  it("keeps the research route flag-gated and absent from production navigation", () => {
-    const routes = readFileSync(
-      new URL("../app/routes.ts", import.meta.url),
-      "utf8",
-    );
-    expect(routes).toContain('process.env.VITE_COFFEE_RESEARCH === "1"');
-    const root = readFileSync(
-      new URL("../app/root.tsx", import.meta.url),
-      "utf8",
-    );
-    expect(root).not.toMatch(/to:\s*"\/research/);
-  });
 });
 
 describe("public checkpoint package", () => {

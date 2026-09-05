@@ -5,7 +5,4 @@ export default [
   route("atlas", "routes/atlas.tsx"),
   route("methodology", "routes/methodology.tsx"),
   route("flavor/:slug", "routes/flavor.tsx"),
-  ...(process.env.VITE_COFFEE_RESEARCH === "1"
-    ? [route("research/user-study", "routes/research.tsx")]
-    : []),
 ] satisfies RouteConfig;

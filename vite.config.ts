@@ -17,7 +17,6 @@ export default defineConfig({
           const shouldRedirectToDirectory =
             pathname === "/atlas" ||
             pathname === "/methodology" ||
-            pathname === "/research/user-study" ||
             /^\/flavor\/[^/]+$/.test(pathname ?? "");
 
           if (shouldRedirectToDirectory) {

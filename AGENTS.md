@@ -1,5 +1,61 @@
 # AGENTS.md
 
+## [CODEX EXECUTION SCOPE — BACKEND MODEL ONLY]
+
+Effective 2026-09-05. This section governs active execution and supersedes older
+research-front-end, novice-study, C1-unsure and no-training authorizations in
+historical contracts and receipts. Preserve those receipts as historical facts.
+
+Target users are coffee enthusiasts interested in flavor exploration. Complete
+coffee beginners are outside the product scope. Do not optimize around novice
+onboarding or novice completion.
+
+Authorized work: professional sensory data engineering; semantic analysis and
+governed normalization; question/option semantic models; sequential answer-effect
+algorithms; candidate retrieval and flavor ranking; question-selection and
+stopping models; backend information architecture and executable contracts;
+training, evaluation, error analysis and reproducibility.
+
+Forbidden work: frontend, UI/UX layouts or page structure; participant-facing
+research harnesses; hidden/test/demo routes; React components, CSS, visual assets
+or result-page design; PWA/service workers; new onboarding, novice studies or
+presentation variants. Research-only, temporary, unlinked and feature-flagged
+status do not exempt frontend work. Even successful model validation does not
+authorize building a frontend or PWA; a separate explicit owner assignment is
+required. One owner-authorized corrective commit may remove verified agent-added
+frontend changes after an external recoverable patch is saved.
+
+C0 is required and must be exactly one existing eight-family ID. C1 is required
+and must be exactly one of `extremely_light`, `light`, `medium_light`, `medium`,
+`medium_dark`, `dark`, `extremely_dark`. No unknown, unsure, null, skip, eighth
+class or automatic default is allowed. Missing/invalid C1 is an input-validation
+error. Source-side missing roast metadata must not be fabricated.
+
+Backend model fitting and bounded comparative experiments are authorized.
+Training-data rights, satisfied source-specific permission conditions, provenance
+and split isolation remain mandatory. Split coffee/sample/lot and duplicate
+source groups before estimating features, priors, co-occurrences or weights.
+Questionnaire preferences are not sensory truth or training labels. Positive-only
+records must not turn all unmentioned descriptors into sensory negatives.
+Historical no-training receipts do not block this explicitly authorized work.
+
+The primary task is `(C0, C1, question/option answer sets)` to candidate ranking,
+next valuable question or stop, and structured `main <= 5`, `secondary <= 3`.
+Lexical normalization is auxiliary. A task is complete only with executable
+backend behavior and measured comparative results, not categories or fixtures.
+
+Write only necessary execution constraints, processing provenance, experiment
+configuration, training records, evaluation and error analysis. Use one current
+experiment directory and the existing experiment register; no new design-document
+hierarchy. Retain reloadable models in owner-controlled storage outside public
+Git and CI attachments. Use the existing long-lived research branch; do not
+rewrite history, merge main, or touch another dirty checkout.
+
+Subsequent model commits must pass `db/scripts/check-backend-model-scope.py`.
+No app/public/style/page/component/service-worker or frontend dependency changes
+are permitted. Any required shared-module exception must list exact files, never
+an entire frontend package. There are currently no shared frontend exceptions.
+
 ## Product
 
 Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
@@ -8,9 +64,9 @@ context and perception questions to return sensory candidates that help users
 name, refine, compare, and remember their own impressions. Treat candidates as
 references, not correct answers, true flavor probabilities, or a sensory exam.
 
-The current product semantics are governed by
-`docs/product/PRODUCT_CONTRACT_V0.md`. Preparation and roast taxonomies,
-Q1–Q5, consumer ranking, the API, and the final frontend remain research work.
+Historical semantics and evidence lineage are recorded in
+`docs/product/PRODUCT_CONTRACT_V0.md`. Active execution follows the backend-only
+scope above and the current experiment's machine-readable backend contract.
 
 ## Repository Purpose
 
@@ -26,8 +82,8 @@ PostgreSQL is the canonical architecture for future knowledge, corpus, NLP/ML,
 and evaluation work. The static TypeScript data remains a compatibility
 dependency of the existing interface and is not canonical KB knowledge.
 
-UI redesign, knowledge/research work, and repository metadata work should stay
-separate unless a task explicitly asks to combine them.
+The public-baseline interface is preserved as a historical compatibility layer;
+its existence does not authorize frontend modifications in a model task.
 
 ## Current Architecture
 
@@ -159,19 +215,21 @@ entries, or "free download" assets with unverified licenses.
 - Do not invent papers, studies, sample counts, institutions, DOI values, ORCID
   IDs, author names, licenses, or attributions.
 
-## Done Standard
+## Done Standard for Current Backend Model Work
 
-- `npm run format:check`, `npm run check`, `npm run test`,
-  `npm run test:smoke`, and `npm run build` pass for functional changes.
+- Run corresponding backend unit/data tests after local changes, then current
+  backend validation after reproducibility. Do not repeatedly run all historical
+  corpus generators for pure model changes.
 - Database changes remain forward-only and pass the applicable PostgreSQL
   validation and reproducibility gates.
-- Home, Atlas, descriptor detail, and methodology routes remain statically
-  buildable.
-- Atlas search, aliases, category filters, FIELD/INDEX/MAP, detail navigation,
-  and comparison remain available.
-- 390px, 768px, and 1440px smoke paths avoid horizontal overflow and console
-  errors.
-- Documentation is updated when architecture, data, motion, licensing, or asset
-  policy changes.
-- Significant rounds include an executive receipt and follow
-  `docs/engineering/GIT_CHECKPOINT_POLICY.md`.
+- Report B0/B1/B2/M1 results on the same locked scope and input budget, with
+  coffee/sample-level paired uncertainty, coverage, errors and question deltas.
+- Real independent evaluations and record-recovery proxy results remain distinct.
+  No agent opinion, generated rule target or questionnaire preference is sensory
+  ground truth. No fabricated human review decisions.
+- Rights, leakage or evaluation contamination block the affected result. Remote
+  infrastructure failures remain explicitly unpassed but need not block isolated
+  locally verified research. Never claim an unobserved CI outcome.
+- Follow the incremental commit and dirty-worktree protections in
+  `docs/engineering/GIT_CHECKPOINT_POLICY.md`; the experiment run receipt replaces
+  a new audit/design-document hierarchy for this model round.
