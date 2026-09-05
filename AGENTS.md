@@ -112,6 +112,28 @@ actual acquisitions and contributions matter, not elapsed search time or quotas.
 B2 remains default and CHECK stays off pending declared evidence. R2 permits
 parallel disjoint backend work and normal research-branch checkpoint pushes.
 
+### Active M2 R3 constraint, relation and trigger revision
+
+The R3 contract records actual execution/registration time; no prompt-date
+backdating. Preserve all earlier M1/M2/R1/R2 results, raw data and weights.
+Use only `revisions/r3` for new experiment records. Typed K1 hypotheses are
+revisable: empirical compatibility never hard-deletes a legal flavor because
+of roast/brew context or a low score. Direct evidence is counted once.
+
+R3 explicitly authorizes Q2 → ASK_Q3_REFINE_CONSTRAINT or
+SKIP_Q3_AND_CONTINUE_TO_Q4. A skipped Q3 has no fabricated answer. Both paths
+still reach the established Q4/Q5 closure and at most one final comparison;
+Q2 is not a terminal product state. C0/C1 remain required with exactly eight
+and seven existing choices respectively. Earlier mandatory-Q3 restrictions
+remain historical contracts and do not prohibit this R3 versioned revision.
+
+Fit bounded sparse pair/triple relations and separately isolated triggers;
+freeze metrics, support rules and operational tolerances before fitting.
+Research, source acquisition and disjoint agent work may run in parallel.
+No frontend, new questionnaire, framework, RL platform, CI restructuring,
+default promotion or cleanup of unrelated dirty-worktree changes is authorized.
+B2 remains default and FOUNDATION_CHECK remains off.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;

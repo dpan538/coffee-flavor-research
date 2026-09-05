@@ -1,0 +1,501 @@
+{
+  "baseline_sha": "73dcea4cf59ae2d4e11d820b690fda56b8cee503",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "constraints": {
+    "K1_states": [
+      "PROPOSED",
+      "SUPPORTED_WITHIN_SCOPE",
+      "REVISED"
+    ],
+    "empirical_priority": "Reversible; legal universe retained; low score/context never hard deletes flavor",
+    "groups": "One justified overlapping explanation group unless evidence supports more; unique descriptor identity and totalmain<=5/secondary<=3 budget",
+    "provenance": "ID,type,target,source,actualanswer/evidenceIDs,applicability,status,revisinginformation",
+    "types": [
+      "HARD_CONTRACT",
+      "SEMANTIC_ENTAILMENT",
+      "EMPIRICAL_COMPATIBILITY"
+    ]
+  },
+  "coverage": "Preserve all211DEVrecords/187groups, emptyT, OOVT, ties and failed outputs; report identifiable-gap cohort alongside all-case costs and missing-target coverage",
+  "date_policy": "Actual environment time; no backdating registration to prompt date",
+  "default": "B2_UNCHANGED",
+  "experiment_id": "M2_R3_CONSTRAINT_RELATION_TRIGGER",
+  "external_construct": {
+    "empty_or_constant": "ZERO_MASS_PROFILE_OR_CONSTANT_EDGE_RANK_VECTOR_IS_UNIDENTIFIABLE;DO_NOT_FILL_OR_DROP_COFFEES;REPORT_VALID_BOOTSTRAP_COUNT",
+    "expression_encoding": "SOURCE_SA_TOKENS_NL_UNIQUE_PRESENCE_PER_RESPONSE;UNICODE_NFC_CASEFOLD_WHITESPACE_ONLY;NO_TRANSLATION_STEMMING_OR_SIGNED_SENSORY_LABELS",
+    "expression_profiles": "EQUAL_PARTICIPANT_MEAN_TOKEN_PRESENCE_BY_COFFEE_AND_MODALITY_THEN_L1_NORMALIZE",
+    "expression_subset": "308_COMPLETE_PARTICIPANT_COFFEE_SMELL_TASTE_PAIRS;BOTH_MODALITIES_SAME_CASES;THREE_UNPAIRED_CLEAN_RESPONSES_EXCLUDED",
+    "fixed_sensitivity": {
+      "distances": [
+        "sqrt_jensen_shannon",
+        "cosine"
+      ],
+      "selection": "NONE_ALL_SIX_REPORTED_PRIMARY_FIXED_BEFORE_RESULTS",
+      "smell_weights": [
+        0.25,
+        0.5,
+        0.75
+      ]
+    },
+    "generalization": "ONLY_THESE_FIVE_COFFEES;NO_NEW_COFFEE_OR_LOT_GENERALIZATION;NO_SOURCE_POPULATION_SUBGROUP_SEARCH",
+    "implementation_status": "METRIC_IMPLEMENTATION_VERIFIED_AFTER_TESTS_ONLY",
+    "interpretation": "NOMINAL_EXPRESSION_GEOMETRY_VS_INDEPENDENT_SOURCE_SORTING_GEOMETRY;NOT_POSITIVE_FLAVOR_TRUTH_NOT_CALIBRATED_PSYCHOLOGICAL_DISTANCE_NOT_INDIVIDUAL_SYSTEM_ALIGNMENT",
+    "main_M2_scoring_changed": false,
+    "permutation": "ALL_120_BIJECTIVE_COFFEE_NODE_RELABELINGS_OF_EXPRESSION_MATRIX;TWO_SIDED_ABSOLUTE_RHO;EXACT_COUNT_DIVIDED_BY_120_INCLUDING_IDENTITY;NO_EDGEWISE_PERMUTATION",
+    "primary_distance": "0.5_SQRT_JENSEN_SHANNON_SMELL_PLUS_0.5_SQRT_JENSEN_SHANNON_TASTE;NATURAL_LOG",
+    "seed": 20260906,
+    "sorting_reference": "TWENTY_INDEPENDENT_SORTING_PARTICIPANTS;DIVIDE_EACH_TEN_DISTANCE_VECTOR_BY_ITS_OWN_MEAN_THEN_EQUAL_PARTICIPANT_AVERAGE",
+    "sources": {
+      "expressions": {
+        "path": "revisions/r2/croijmans_paired_responses.private.json",
+        "sha256": "6536320695a7629b890ab9050e75ecf84468229721cc4193b06c029eac9c95c8"
+      },
+      "sorting": {
+        "path": "revisions/r2/croijmans_sorting_distances.private.json",
+        "sha256": "d37052cc5ef4c05a43668be254df7d71a3f32a80054e6726ba8c4a77d1636baa"
+      }
+    },
+    "statistic": "SPEARMAN_OF_TEN_UPPER_TRIANGLE_EDGES;AVERAGE_RANK_TIES",
+    "status": "EXTERNAL_CONSTRUCT_CHECK_PILOT",
+    "stimuli": "ALL_FIVE_EXISTING_COFFEES_AND_TEN_UNORDERED_PAIRS;R2_CONFIRMATION_PREVIOUSLY_VIEWED_HISTORICAL",
+    "uncertainty": "2000_INDEPENDENT_PARTICIPANT_BLOCK_RESAMPLES_OF_LANGUAGE_AND_SORTING_COHORTS;ALL_COFFEE_MODALITY_ROWS_FOR_SAMPLED_PERSON_TRAVEL_TOGETHER;FIXED_VOCABULARY_AND_FIVE_COFFEES;PERCENTILE_95_INTERVAL",
+    "version": "m2-r3-croijmans-fixed-five-construct.v1",
+    "vocabulary": "FIXED_ALL_PAIRED_EXPRESSION_TOKENS_ONLY;NO_SORTING_VALUES_OR_COFFEE_ID_FEATURES"
+  },
+  "final_feedback": "F0/F1/F2 from same actual exposed pool; selection retention separate from hidden not-directly-selected recovery; nonshown nofeedback and unselected not universal sensorynegative",
+  "forbidden_inference_claims": [
+    "CRF_OR_MEMM_IMPLEMENTED",
+    "CALIBRATED_PERCEPTUAL_DISTANCE",
+    "RANK_SOFTMAX_IS_FLAVOR_PROBABILITY",
+    "SCORER_IS_ANSWER_WORLD_MODEL",
+    "DR_OR_IPS_WITHOUT_LOGGED_PROPENSITIES",
+    "REINFORCEMENT_LEARNING"
+  ],
+  "foundation_check": "OFF",
+  "legal_path_revision": {
+    "C0": "Required existing8familyIDs",
+    "C1": "Required existing7roastIDs; no unknown/unsure/null/eighth class",
+    "after_Q2": [
+      "ASK_Q3_REFINE_CONSTRAINT",
+      "SKIP_Q3_AND_CONTINUE_TO_Q4"
+    ],
+    "early_Q2_end": false,
+    "fake_Q3_answer": false,
+    "final": "Existing Q4/Q5 closure, at most one actually exposed3–8candidate FINAL_COMPARISON, then terminate",
+    "ordinary_unknown": "Existing ordinary UNSURE state for absent record information, never fabricated NONE_OF_THESE"
+  },
+  "lineage": "M2 revision R3, not M3",
+  "local_timezone": "Australia/Brisbane",
+  "mechanisms": {
+    "K1": {
+      "broad_parent": "POSITIVE_PARENT_SUPPORT_WITHOUT_CHILD_ABSENCE_OR_DUPLICATE_UPGRADE",
+      "empirical_effect": "REVERSIBLE_SOFT_PRIORITY_NO_MEASURED_EXCLUSION_ACCURACY_CLAIM",
+      "hard_delete": "INVALID_CONTRACT_OR_LOGIC_ONLY_NEVER_CONTEXT_LOW_SCORE_OR_UNKNOWN_COMPATIBILITY",
+      "provenance": "CANONICAL_CURRENT_ANSWER_EVIDENCE_IDS_OR_PRIVATE_TRAIN_SUPPORT_IDS",
+      "statuses": [
+        "PROPOSED",
+        "SUPPORTED_WITHIN_SCOPE",
+        "REVISED"
+      ],
+      "types": [
+        "HARD_CONTRACT",
+        "SEMANTIC_ENTAILMENT",
+        "EMPIRICAL_COMPATIBILITY"
+      ]
+    },
+    "base_expert": {
+      "C": 0.1,
+      "E1": "ORIGINAL_RAW_R1_SCORES_AND_EXPLICIT_PRIORITY_WITH_TYPED_K1_AUDIT",
+      "canonical_broad_feedback": true,
+      "id": "M2_R1_FINAL_FIXED",
+      "loss_mode": "layered_conditional",
+      "prior_selection_scope": "R1_SETTINGS_ALREADY_INSPECTED_NOT_FRESH_CONFIRMATION",
+      "score_normalization": "NONE",
+      "shared_evidence": "R1_CANONICAL_ENCODING_ONCE_NO_EXTRA_DIRECT_BROAD_NONE_BONUS"
+    },
+    "data": {
+      "base_expert_internal_feature_folds": 2,
+      "development_coffee_groups": 187,
+      "development_records": 211,
+      "history_groups": 17,
+      "history_role": "ALREADY_INSPECTED_REGRESSION_ONLY_NO_FIT_OR_SELECTION",
+      "nested_scope": "TRIGGER_LABELS_FROM_INNER_HELD_RELATIONS;RELATION_TRAIN_STATES_FROM_BASE_EXPERT_OOF;OUTER_HELD_NEVER_SELECTS",
+      "outer_folds": "FROZEN_R1_D0_THREE_COFFEE_GROUP_FOLDS",
+      "relation_inner_folds": 2,
+      "reuse": "EXACT_TRAIN_RECORD_STATISTICS_BANK_AND_INTERNAL_SCALER_AUDIT_REQUIRED",
+      "trigger_inner_folds": 2
+    },
+    "formal_fit_requires_frozen_contract_sha256": true,
+    "metric": {
+      "M_star": "DIAGNOSTIC_FIXED_CANDIDATE_SUPERSET_ONLY_NOT_SELECTION",
+      "NI_margin": 0.02,
+      "NI_scope": "RESEARCH_OPERATIONAL_MARGIN_NOT_USER_ACCEPTANCE_THRESHOLD",
+      "actual_main5": "SEPARATE_ACTUAL_DISPLAY_AND_DIRECT_RETENTION_PANEL",
+      "excluded_visible": "ENTIRE_FROZEN_A_FOR_COUNTERFACTUAL_COMPLETION_PANEL_ONLY",
+      "fixed_candidates": "PRE_SOFT_E1_UNIVERSE_IDENTICAL_ACROSS_E1_E2_E3",
+      "primary": "alignment_metrics_r3.evaluate.raw_gap_FINE_K5_EXACT1_REGISTERED_SHARED_PARENT0.25_OTHER0",
+      "primary_information_cost": "ACTUALLY_EXPOSED_ORDINARY_OPTION_COUNT"
+    },
+    "public_release": "AGGREGATES_PROTOCOL_HASHES_ONLY_NO_RAW_ROWS_OR_MODEL_WEIGHTS",
+    "relation": {
+      "E3": "FREEZE_E1_AND_E2_PAIR_COEFFICIENTS_FIT_ONLY_TRIPLE_COEFFICIENTS",
+      "answer_pattern": "EXACT_CANONICAL_POSITIVE_SELECTED_CONCEPT_SET;UNSURE_NONE_EMPTY_HAVE_NO_POSITIVE_TERM",
+      "candidate_scope": "EXPERT_TRAIN_QUALIFIED_FINE_IDS_FIXED_BEFORE_ANY_SOFT_RELATION_EFFECT",
+      "compounds": "WHOLE_CONCEPT_ONLY",
+      "max_pairs": 12,
+      "max_pairs_per_slot_pair": 4,
+      "max_triples": 4,
+      "minimum_term_candidate_positive_mention_groups": 3,
+      "minimum_term_training_coffee_groups": 4,
+      "missing_or_oov_only_hidden_targets": "NO_SUPERVISED_LOSS_BUT_RETAIN_ALL_COVERAGE_AND_EVALUATION_ROWS",
+      "normalizer_semantics": "UNMENTIONED_CANDIDATES_ARE_RETRIEVAL_CONTRASTS_NOT_SENSORY_ABSENCE_LABELS",
+      "objective": "SUM_g MEAN_record_stage[LOGSUMEXP_c(z_ic)-SUM_c(q_ic*z_ic)]+10/2*SUM(theta^2)",
+      "optimizer": {
+        "ftol": 1e-10,
+        "gtol": 1e-07,
+        "maxiter": 150,
+        "method": "L-BFGS-B"
+      },
+      "pair_slots": [
+        [
+          "Q0",
+          "Q1"
+        ],
+        [
+          "Q0",
+          "Q2"
+        ],
+        [
+          "Q1",
+          "Q2"
+        ]
+      ],
+      "primary_contrast": "E2_MINUS_E1_AT_FIXED_ASK_Q4_EQUAL_BUDGET",
+      "q": "POSITIVE_SOURCE_RELEVANCE_OF_HIDDEN_FINE_MENTIONS_NORMALIZED_WITHIN_FIXED_CANDIDATES",
+      "ridge": 10.0,
+      "secondary": "E3_MINUS_E2_AT_FIXED_ASK_Q4_EQUAL_BUDGET",
+      "selection": "INNER_HELD_GROUP_MACRO_RAW_GAP_AT_FIXED_ASK_Q4_ONLY",
+      "selection_tie": "LOSS_WITHIN_1E-12_COMPLEXITY_E1_THEN_E2_THEN_E3",
+      "semantic_question_key": "SLOT_AXIS_SORTED_TYPED_OFFERED_CONCEPT_IDS",
+      "source_native_attribute_frequency_quality": "EXCLUDED_FROM_FINE_MENTION_LOSS",
+      "term_selection": "DESCENDING_DISTINCT_TRAIN_GROUP_SUPPORT_THEN_SUPPORTED_CANDIDATE_COUNT_THEN_CANONICAL_TERM_KEY",
+      "training_stages": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "triple_slots": [
+        [
+          "Q0",
+          "Q1",
+          "Q2"
+        ]
+      ],
+      "variants": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "z": "FROZEN_ORIGINAL_R1_RAW_SCORE_PLUS_ACTIVE_TERM_CANDIDATE_DELTAS;DELTA_ZERO_FOR_EXPLICIT_CANDIDATES"
+    },
+    "runtime": {
+      "default_B2_changed": false,
+      "final_comparison_candidates": [
+        3,
+        8
+      ],
+      "final_comparison_count": 1,
+      "final_comparison_then": "FINAL_RESULT_TERMINAL",
+      "foundation_check_enabled": false,
+      "human_time": null,
+      "main_limit": 5,
+      "mandatory_C0_families": 8,
+      "mandatory_C1_levels": 7,
+      "options_per_question_limit": 4,
+      "path": "P1_WITH_EXPLICIT_R3_Q2_ASK_OR_SKIP_Q3_TO_Q4",
+      "question_limit": 6,
+      "secondary_limit": 3,
+      "session_parameters": "FROZEN_HASH_VALIDATED;REPLAY_REPLACEMENT_IDEMPOTENT_CANONICAL_EVIDENCE"
+    },
+    "trigger_A": {
+      "ask_if_prediction_strictly_greater_than": 0.01,
+      "features": [
+        "stage_q2",
+        "k1_supported_count",
+        "k1_empirical_count",
+        "k1_revised_count",
+        "independent_broad_count",
+        "explicit_fine_count",
+        "dimension_count",
+        "log_training_support",
+        "relation_top5_disagreement",
+        "previous_answer_top5_change"
+      ],
+      "forbidden_features": [
+        "coffee_id",
+        "record_id",
+        "source_family",
+        "future_answer",
+        "hidden_target",
+        "laboratory_value"
+      ],
+      "margin_semantics": "OPERATIONAL_ONE_ADDITIONAL_QUESTION_PENALTY_NOT_USER_ACCEPTABILITY_OR_TIME",
+      "model": "GROUP_WEIGHTED_STANDARDIZED_RIDGE",
+      "policies": [
+        "ALWAYS_ASK",
+        "SIMPLE_RULE",
+        "LEARNED",
+        "TWO_STEP_EMPIRICAL"
+      ],
+      "positive_target_means": "ASK_GAIN",
+      "prediction_shrinkage": "N_LABELLED_UNIQUE_TRAIN_GROUPS/(N+50)_TO_TRAIN_GLOBAL_MEAN_GAIN",
+      "primary": "LEARNED_VERSUS_ALWAYS_ASK_ALL_CASES_AT_Q4",
+      "ridge": 10.0,
+      "simple_rule": "ASK_IF_INDEPENDENT_DIMENSIONS_LE_1_OR_NO_EXPLICIT_FINE_ELSE_SKIP",
+      "target": "RAW_GAP_SKIP_Q3_TO_Q4_MINUS_RAW_GAP_ASK_Q3_THEN_Q4",
+      "ties": "RETAIN_GAIN_ZERO_IN_TRAINING_AND_ALL_CASE_EVALUATION",
+      "undefined_training_label": "NO_REGRESSION_LABEL_RETAIN_CASE_IN_POLICY_COVERAGE"
+    },
+    "trigger_B": {
+      "activate_if_prediction_strictly_greater_than": 0.0,
+      "minimum_labelled_unique_groups": 20,
+      "model": "GROUP_WEIGHTED_STANDARDIZED_RIDGE",
+      "ridge": 10.0,
+      "role": "SEPARATE_RELATION_COMPONENT_ACTIVATION_NOT_TRIGGER_A",
+      "selection": "NO_ADDITIONAL_GRID_OR_OUTER_HELD_SELECTION",
+      "support_gate": "BOTH_POSITIVE_AND_NONPOSITIVE_GROUP_OUTCOMES_REQUIRED_ELSE_FIXED_OFF",
+      "target": "E1_RAW_GAP_MINUS_SELECTED_RELATION_RAW_GAP_AT_SAME_Q4"
+    },
+    "two_step": {
+      "actions": {
+        "ASK": [
+          "Q3",
+          "Q4"
+        ],
+        "SKIP": [
+          "Q4"
+        ]
+      },
+      "aggregation": "NORMALIZE_RECORD_WEIGHTS_WITHIN_COFFEE_THEN_EQUAL_COFFEE_WEIGHT",
+      "answers": "TRAIN_A_SELECTED_POSITIVE_OPTIONS;NO_MATCH_IS_ORDINARY_UNSURE_NEVER_NONE_OF_THESE",
+      "branch_support": "ALL_TRAIN_FROZEN_A_RECORDS_ONLY;NO_HELD_ANSWERS_OR_TARGETS",
+      "decision_stage": "AFTER_Q2_ONLY",
+      "matching_units": "CANONICAL_POSITIVE_CONCEPTS_AND_ENTAILED_PARENT_DIMENSIONS_FROM_CURRENT_EVIDENCE",
+      "matching_weight": "ONE_PLUS_CARDINALITY_CURRENT_POSITIVE_UNITS_INTERSECT_TRAIN_A_POSITIVE_UNITS",
+      "maximum_simulated_followup_questions_per_action_per_train_record": 2,
+      "question_policy": "EXISTING_FIXED_TRAIN_QUALIFIED_R1_BANK",
+      "scope": "TRAIN_EMPIRICAL_PROXY_BRANCH_EXPECTATION_NOT_WORLD_MODEL_NOT_RESPONSE_PROBABILITY",
+      "tie": "WITHIN_1E-12_FEWER_QUESTIONS_SKIP",
+      "undefined_support": "REPORT_NOT_ESTIMABLE_AND_DETERMINISTIC_SKIP",
+      "utility": "TRAIN_HIDDEN_T_MEAN_RAW_GAP_AT_Q4_PLUS_0.01_TIMES_FOLLOWUP_QUESTIONS"
+    },
+    "version": "m2-constraints.r3.v1"
+  },
+  "metrics": {
+    "batch_alignment": "Exact unique IDs and equal lengths; explicit error instead of zip truncation or incidental row order",
+    "candidate_universe": "Frozen base-expert legal fine universe before any model soft priority/filter; exclude fixed visible A for all variants",
+    "capacity_floor": "1-min(k,|T|)/|T|, a capacity-only ideal with hypothetical exact coverage",
+    "duplicate_ids": "Predictions deduplicated before k; fixed candidate duplicates rejected; duplicate target list entries collapse once",
+    "empty_targets": "Unidentifiable: null gaps/NDCG/Recall; retained full-case coverage",
+    "external_relation_partial_credit": "Separate diagnostic only; empty until independent relations are registered; training associations cannot grade themselves",
+    "matching": "One-to-one maximum-weight bipartite assignment; k-cardinality assignment for fixed-universe M_star",
+    "missing_output": "With target: gap1/Recall0/NDCG0, retained as failure",
+    "opportunity_gap": "1-M/M_star only if M_star>0; diagnostic, not a replacement denominator for primary raw_gap",
+    "primary": "raw_gap=1-M/number_of_distinct_positive_fine_hidden_targets",
+    "primary_k": 5,
+    "primary_similarity": {
+      "exact_fine": 1.0,
+      "otherwise": 0.0,
+      "registered_shared_parent": 0.25
+    },
+    "rank_metric": "Linear positive target relevance DCG by predicted rank / ideal sorted target DCG at same k; deduplicated predictions; all fixed targets retained in IDCG",
+    "relation_hash": "b0dc8e00bd232498d69caaeaf71f69a9880b149036b272382e24c900808f77a1",
+    "threshold": "Raw gap<=0.5 reachable iff M_star>=0.5*|T|; target_count>5 alone is insufficient",
+    "unknown_parents": "No partial credit, including None==None",
+    "version": "m2-r3.fixed-universe-matching-and-ranked-recovery.v1",
+    "vocabulary_relation_extra_floor": "(min(k,|T|)-M_star)/|T|",
+    "wrong_pruning_extra_floor": "(M_star-M_star_after_soft_filter)/|T|; denominator always original fixed universe"
+  },
+  "multi_view": {
+    "CATA": "NOT_IN_THIS_BOUNDED_FIT;EXISTING_COMPLETE_BINARY_CATA_ZERO_SEMANTICS_REMAIN_SEPARATE_FROM_LIBERICA",
+    "cross_source_score_average": "FORBIDDEN",
+    "deployment": "RETAIN_ALL_FAMILIES_AND_UNSELECTED_INNER_SCORES_PRIVATE;NO_MAIN_M2_SCORING_CHANGE_OR_CALIBRATED_PSYCHOLOGICAL_DISTANCE_CLAIM",
+    "families": [
+      "H0_MAIN",
+      "H1_PAIRS",
+      "H2_PAIRS_TRIPLES"
+    ],
+    "historical": "ALL_R2_CONFIRMATION_PREVIOUSLY_VIEWED;HISTORICAL_REGRESSION_ONLY_AFTER_ALL_FINAL_MODELS_FROZEN;NO_MODEL_FAMILY_SELECTION_OR_FRESH_CONFIRMATION_CLAIM;FEWER_THAN_FIVE_GROUPS_DESCRIPTIVE_ONLY",
+    "input_and_mask": "ONLY_ACTUALLY_OBSERVED_OTHER_ENTIRE_VIEWS;REJECT_MISSING_OR_FALSE_MASKS;NO_IDENTITIES_SOURCE_CONTEXT_LIKING_QUALITY_OR_TARGET_BLOCK_IN_FEATURES",
+    "interaction_selection": {
+      "pair_screen": "RANK_TRAIN_ONLY_ABSOLUTE_RESIDUAL_ASSOCIATION_AFTER_MAIN_MODEL_FIT_AT_CANDIDATE_RIDGE;NUMERIC_PEARSON_ABS_OR_NOMINAL_L2_SIX_CLASS_RESIDUAL_COVARIANCE_WITH_STD_TERM",
+      "pairs_max_per_target": 4,
+      "support": "AT_LEAST_THREE_INDEPENDENT_TRAIN_AXIS_GROUPS_WITH_NONZERO_TERM;NOMINAL_ALSO_AT_LEAST_THREE_GROUPS_WITH_ZERO_TERM;NUMERIC_AT_LEAST_THREE_DISTINCT_TERM_VALUES_AND_NONZERO_VARIANCE;REPORT_GROUPS_TOTAL_NONZERO_AND_NUMERIC_JOINT_ABOVE_MEDIAN",
+      "ties": "LEXICOGRAPHIC_SOURCE_FIELD_CATEGORY_SPECIFICATION;NO_HELD_DATA_IN_SELECTION",
+      "triple_screen": "AFTER_REFITTING_SELECTED_PAIRS_RANK_SAME_RESIDUAL_ASSOCIATION;WEAK_HEREDITY_REQUIRES_AT_LEAST_ONE_SELECTED_EXACT_PAIR_SUBTERM;ALL_MAIN_EFFECTS_RETAINED",
+      "triples_max_per_target": 2
+    },
+    "multinomial_optimizer": "L_BFGS_B_SOFTMAX_SIX_CLASSES_MEAN_NLL_PLUS_RIDGE_HALF_COEFFICIENT_SQUARE_SUM;UNPENALIZED_INTERCEPT;MAXITER1000_FTOL1E-11_GTOL1E-7;REPORT_CONVERGENCE",
+    "nested_selection": "THREE_INNER_GROUP_FOLDS_WITH_SHA256_VERSION_SEED_AXIS_ID_SORT_ROUND_ROBIN;ONE_SHARED_RIDGE_PER_SOURCE_AXIS_FAMILY_BY_ALL_TARGET_GROUP_MACRO_LOSS;REPEAT_EVERY_SCALER_SCREEN_AND_FIT_WITHIN_INNER_TRAIN;TIE_1E-12_STRONGEST_RIDGE",
+    "new_source_increment": "DEFERRED_UNTIL_ACTUAL_SOURCE_ADMISSION_AND_SEPARATE_FIXED_MODEL_CONTRACT;NO_INCOMPATIBLE_POOLING",
+    "nominal_encoding": "SIX_RAW_ONE_HOT_MAIN_COLUMNS_PER_SOURCE_FIELD;PAIR_TRIPLE_INDICATOR_CONJUNCTIONS_OF_DIFFERENT_FIELDS_AND_CATEGORY_IDS;NO_NUMERIC_CODE_MULTIPLICATION;NO_IMPUTATION",
+    "numeric_encoding": "TRAIN_ONLY_POPULATION_MEAN_SD_MAIN_EFFECTS;PAIR_AND_TRIPLE_PRODUCTS_OF_STANDARDIZED_DIFFERENT_SOURCE_FIELDS;STANDARDIZE_EACH_INTERACTION_ON_TRAIN;TRAIN_ONLY_TARGET_STANDARDIZATION",
+    "primary_contrasts": [
+      "H1_PAIRS_MINUS_H0_MAIN",
+      "H2_PAIRS_TRIPLES_MINUS_H1_PAIRS"
+    ],
+    "ridge_grids": {
+      "barahona": [
+        0.5,
+        5.0
+      ],
+      "liberica": [
+        0.05,
+        0.5
+      ],
+      "rocchetti": [
+        0.5,
+        5.0
+      ]
+    },
+    "same_budget": "IDENTICAL_HELD_CASES_TARGET_DIMENSIONS_MASKS_AND_OBSERVED_OTHER_VIEW_CELLS;NO_NEW_QUESTION_OR_REAL_TIME_CLAIM",
+    "secondary_contrasts": [
+      "EACH_H_FAMILY_MINUS_RETAINED_R2_MODEL"
+    ],
+    "seed": 20260906,
+    "tasks": {
+      "barahona": {
+        "clip": [
+          1,
+          10
+        ],
+        "development_products": 14,
+        "historical_products": 4,
+        "metric": "PRODUCT_MACRO_NATIVE_CODE_MAE",
+        "outer_folds": "UNCHANGED_R2_PRODUCT_FOLDS",
+        "prior": "RELOAD_R2_FIXED_RIDGE_0.5_MODELS",
+        "source_path": "revisions/r2/barahona_ordinal_means.private.json",
+        "source_sha256": "5173db2d83620892eb4cfd1eba0f0a94e8f369a671fa3bc4c66d84414f6256e3",
+        "target": "PUBLISHED_CONSUMER_1_TO_10_ORDINAL_CATEGORY_MEANS_NOT_PROFESSIONAL",
+        "view_masks": {
+          "aroma_fragrance_residual_flavor": [
+            "aroma",
+            "fragrance",
+            "residual_flavor"
+          ],
+          "body": [
+            "body"
+          ],
+          "taste_named": [
+            "acidity",
+            "bitter",
+            "sweet"
+          ]
+        }
+      },
+      "liberica": {
+        "cross_coffee": "NOT_ESTIMABLE_SINGLE_STUDY_COFFEE_LEAF_MATERIALS",
+        "development_intersection": {
+          "conditions": 8,
+          "participants": 23,
+          "records": 184
+        },
+        "metric": "HELD_AXIS_MACRO_BRIER_SUM_SIX_CLASS_SQUARED_ERRORS_DIVIDED_BY_SIX",
+        "opposite_axis": "SHARED_WITH_TRAIN_CONDITIONAL_SCOPE_ONLY",
+        "outer_folds": "UNCHANGED_R2_SEPARATE_PARTICIPANT_AND_CONDITION_THREE_FOLDS",
+        "prior": "RELOAD_R2_FIXED_RIDGE_0.05_MODELS",
+        "source_path": "revisions/r2/liberica_rata_records.private.json",
+        "source_sha256": "708fe96a5ac8cefdd758bd391ad55cc325736721afdcf4f346125d77edf93b6d",
+        "target": "TEN_NOMINAL_SIX_CATEGORY_SOURCE_CODES;ZERO_NOT_ABSENCE_OR_ORDINAL_INTENSITY",
+        "view_masks": {
+          "aroma_named_and_roasty_flavor": [
+            "green_aroma",
+            "jackfruit_aroma",
+            "smoky_aroma",
+            "roasty_flavor"
+          ],
+          "body_and_astringent_aftertaste": [
+            "body",
+            "astringent_aftertaste"
+          ],
+          "taste_named_and_bitter_aftertaste": [
+            "sweet",
+            "sour",
+            "bitter",
+            "bitter_aftertaste"
+          ]
+        }
+      },
+      "rocchetti": {
+        "clip": [
+          0,
+          9
+        ],
+        "development_products": 38,
+        "historical_products": 9,
+        "metric": "PRODUCT_MACRO_NATIVE_CODE_MAE",
+        "outer_folds": "UNCHANGED_R1_PRODUCT_FOLDS",
+        "prior": "RELOAD_R2_SELECTED_OUTER_AND_FINAL_MODELS",
+        "source_path": "revisions/r1/rocchetti_attribute_observations.private.json",
+        "target": "PUBLISHED_PROFESSIONAL_SOURCE_NATIVE_0_TO_9_CODES",
+        "view_masks": {
+          "aroma": [
+            "native.olfactory_intensity",
+            "native.flowers_and_fresh_fruit",
+            "native.vegetable",
+            "native.dried_fruits_and_nuts",
+            "native.roasted_composite",
+            "native.spicy",
+            "native.empyreumatic",
+            "native.biochemical"
+          ],
+          "basic_taste": [
+            "native.acidity_intensity",
+            "taste.bitterness"
+          ],
+          "mouthfeel": [
+            "mouthfeel.body",
+            "mouthfeel.astringency"
+          ]
+        }
+      }
+    },
+    "uncertainty": "2000_FIXED_OOF_PREDICTION_PAIRED_HELD_AXIS_GROUP_BOOTSTRAPS;NO_REFIT;NO_NEW_SOURCE_OR_INDIVIDUAL_UNCERTAINTY;PER_TARGET_EXPLORATORY_NO_MULTIPLICITY_CORRECTION",
+    "version": "m2-r3-source-native-sparse-interactions.v1"
+  },
+  "new_data": "Actual files/keys/scales/rights then separate frozen fixed-model increment protocol before fresh confirmation evaluation; no many-to-many synthetic joins",
+  "noninferiority": {
+    "basis": "R3 predeclared operational research tolerance; not established user-acceptable difference",
+    "raw_gap_margin": 0.02,
+    "requirement": "Upper paired coffee-group gap-difference95 interval<=0.02 AND lower actual option budget on same identifiable cohort; no equivalence claim from nonsignificance"
+  },
+  "preservation": {
+    "all_R1_R2_results_unchanged": true,
+    "files": 516,
+    "manifest_sha256": "823d17d068ed110d3ba5b57e4ce4c6222dae28255d9293421eace67fc59bf2b7",
+    "unrelated_missing_tracked_files_excluded": 135
+  },
+  "primary_descriptor_target": "Fixed source-record A/T positive fine descriptor recovery; no unmentioned sensory absence and no independent new human tasting claim",
+  "primary_information_cost": "ACTUAL_ORDINARY_OFFERED_OPTIONS",
+  "primary_relation_contrast": "E2 minus E1 raw fine gap at5, same fixed ASK_Q3 path through Q4, all outer-held cases retained",
+  "primary_trigger_contrast": "Learned TriggerA policy minus ALWAYS_ASK_Q3 on same outer-held cases at legal Q4 endpoint",
+  "publication": "Code, allowed configuration, aggregates and hashes only; raw data, individual rows, trajectories and fitted parameters private",
+  "registered_utc": "2026-09-05T15:40:49.619606+00:00",
+  "separate_costs": [
+    "ordinary_questions",
+    "ordinary_options",
+    "final_comparison_candidates",
+    "actual_human_response_seconds"
+  ],
+  "task_separation": {
+    "alignment": "Set matching, exact ranking, specificity and coverage separate; authored semantic proxy and external five-coffee pilot separate",
+    "constraint": "Legal-state validation plus target direction retention/pruning/correction proxy; incompatible-negative accuracy NOT_ESTIMABLE without comparable negative observations",
+    "real_users": "NOT_EVALUATED without actual independent system judgments/timing; reuse original20comparison cases, no generatedparticipants or new questionnaire",
+    "relation": "Conditional predictive increment over lower-order model, grouped OOF, not causality",
+    "source_native_views": "Native professional codes, consumer aggregate codes and nominal recorded categories evaluated separately; no cross-task accuracy average",
+    "trigger": "Whole-policy loss/cost/coverage, wrong-trigger harm and missed gains including ties; AUC only optional diagnostic"
+  },
+  "triple_contrast": "E3 minus E2 secondary; lower-order terms retained; no rename of pair-only model as triple",
+  "uncertainty": "Fixed-prediction coffee/participant/condition group bootstrap in declared task; no source/population generalization; historical17 and prior-viewedconfirmation not fresh"
+}

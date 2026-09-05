@@ -1,0 +1,112 @@
+{
+  "R2_G3_P1_reachability": {
+    "M_star_zero_cases": 0,
+    "additional_vocabulary_relation_limited_cases": 4,
+    "all_coffee_groups": 187,
+    "all_records": 211,
+    "capacity_limited_cases": 16,
+    "currently_over_threshold_but_reachable_cases": 59,
+    "fine_target_identifiable_records": 106,
+    "labelled_coffee_groups": 104,
+    "opportunity_metric_role": "Diagnostic only; raw gap always retained; no retroactive success reclassification",
+    "target_count_above5_but_threshold_reachable": 16,
+    "threshold_unreachable_cases": 0,
+    "unidentifiable_retained": 105
+  },
+  "R2_expert_tie_audit": {
+    "by_slot": {
+      "CONTEXT": {
+        "IDENTICAL_FINE_PANEL_ORDER": 212,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 210
+      },
+      "Q0": {
+        "IDENTICAL_FINE_PANEL_ORDER": 212,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 210
+      },
+      "Q1": {
+        "IDENTICAL_FINE_PANEL_ORDER": 212,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 210
+      },
+      "Q2": {
+        "DIFFERENT_FINE_SETS_SAME_MATCHING_LOSS": 10,
+        "DIFFERENT_SET_MATCHING_LOSS": 34,
+        "IDENTICAL_FINE_PANEL_ORDER": 160,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 210,
+        "SAME_FINE_SET_DIFFERENT_ORDER": 8
+      },
+      "Q3": {
+        "DIFFERENT_FINE_SETS_SAME_MATCHING_LOSS": 34,
+        "DIFFERENT_SET_MATCHING_LOSS": 44,
+        "IDENTICAL_FINE_PANEL_ORDER": 114,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 210,
+        "SAME_FINE_SET_DIFFERENT_ORDER": 20
+      },
+      "Q4": {
+        "DIFFERENT_FINE_SETS_SAME_MATCHING_LOSS": 44,
+        "DIFFERENT_SET_MATCHING_LOSS": 56,
+        "IDENTICAL_FINE_PANEL_ORDER": 92,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 210,
+        "SAME_FINE_SET_DIFFERENT_ORDER": 20
+      },
+      "Q5": {
+        "DIFFERENT_FINE_SETS_SAME_MATCHING_LOSS": 23,
+        "DIFFERENT_SET_MATCHING_LOSS": 28,
+        "IDENTICAL_FINE_PANEL_ORDER": 43,
+        "NO_FINE_TARGET_UNIDENTIFIABLE": 105,
+        "SAME_FINE_SET_DIFFERENT_ORDER": 12
+      }
+    },
+    "counts": {
+      "DIFFERENT_FINE_SETS_SAME_MATCHING_LOSS": 111,
+      "DIFFERENT_SET_MATCHING_LOSS": 162,
+      "IDENTICAL_FINE_PANEL_ORDER": 1045,
+      "NO_FINE_TARGET_UNIDENTIFIABLE": 1365,
+      "SAME_FINE_SET_DIFFERENT_ORDER": 60
+    },
+    "not_independent_sample_size": true,
+    "ranking_informative_among_equal_set_losses": 68,
+    "scope": "Common fine five-item counterfactual completion panels; identity here is panel identity, not equality of all scores or runtime state",
+    "state_rows": 2743
+  },
+  "construct_status": "EXTERNAL_CONSTRUCT_CHECK_PILOT_PENDING_SEPARATE_FROZEN_RUN",
+  "implementation_tests": {
+    "passed_before_empirical_audit": true,
+    "test_count": 12,
+    "test_file": "db/tests/test_alignment_metrics_r3.py"
+  },
+  "input_sha256": "c0750fa4995a7d6c0de250a9cb473a0a26e62fea89315237418ca5e89e1f23b9",
+  "prior_implementation_findings": {
+    "R2_one_to_one_matching": "Already correct, preserved unchanged",
+    "R2_original_numeric_results": "UNCHANGED; primary matching reproduced on all declared G3 P1 endpoint cases",
+    "R2_unknown_parent_match": "Already rejects unknown/empty shared parents, no None==None credit observed",
+    "legacy_ndcg": "Uses predicted rank and sorted ideal relevance correctly; legacy empty-target0 behavior preserved historically, new R3 returnsnull",
+    "new_R3_work": "Explicit ID/length checks; exact k-cardinality reachability decomposition; distinguish set equivalence from rank equivalence"
+  },
+  "protocol": {
+    "batch_alignment": "Exact unique IDs and equal lengths; explicit error instead of zip truncation or incidental row order",
+    "candidate_universe": "Frozen base-expert legal fine universe before any model soft priority/filter; exclude fixed visible A for all variants",
+    "capacity_floor": "1-min(k,|T|)/|T|, a capacity-only ideal with hypothetical exact coverage",
+    "duplicate_ids": "Predictions deduplicated before k; fixed candidate duplicates rejected; duplicate target list entries collapse once",
+    "empty_targets": "Unidentifiable: null gaps/NDCG/Recall; retained full-case coverage",
+    "external_relation_partial_credit": "Separate diagnostic only; empty until independent relations are registered; training associations cannot grade themselves",
+    "matching": "One-to-one maximum-weight bipartite assignment; k-cardinality assignment for fixed-universe M_star",
+    "missing_output": "With target: gap1/Recall0/NDCG0, retained as failure",
+    "opportunity_gap": "1-M/M_star only if M_star>0; diagnostic, not a replacement denominator for primary raw_gap",
+    "primary": "raw_gap=1-M/number_of_distinct_positive_fine_hidden_targets",
+    "primary_k": 5,
+    "primary_similarity": {
+      "exact_fine": 1.0,
+      "otherwise": 0.0,
+      "registered_shared_parent": 0.25
+    },
+    "rank_metric": "Linear positive target relevance DCG by predicted rank / ideal sorted target DCG at same k; deduplicated predictions; all fixed targets retained in IDCG",
+    "relation_hash": "b0dc8e00bd232498d69caaeaf71f69a9880b149036b272382e24c900808f77a1",
+    "threshold": "Raw gap<=0.5 reachable iff M_star>=0.5*|T|; target_count>5 alone is insufficient",
+    "unknown_parents": "No partial credit, including None==None",
+    "version": "m2-r3.fixed-universe-matching-and-ranked-recovery.v1",
+    "vocabulary_relation_extra_floor": "(min(k,|T|)-M_star)/|T|",
+    "wrong_pruning_extra_floor": "(M_star-M_star_after_soft_filter)/|T|; denominator always original fixed universe"
+  },
+  "psychological_distance_calibration": "NOT_ESTABLISHED",
+  "status": "METRIC_IMPLEMENTATION_VERIFIED"
+}

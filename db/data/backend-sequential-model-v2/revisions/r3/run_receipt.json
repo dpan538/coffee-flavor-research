@@ -1,0 +1,32 @@
+{
+  "baseline_sha": "73dcea4cf59ae2d4e11d820b690fda56b8cee503",
+  "checkpoint_1": "METRIC_K1_Q2_AND_THREE_OUTER_RELATION_FITS_COMPLETED",
+  "contract_sha256": "a2266a2fd4f4246bc18a99ecc97214121e077ffb8075419e320d86c708ceed16",
+  "default": "B2_UNCHANGED",
+  "experiment_id": "M2_R3_CONSTRAINT_RELATION_TRIGGER",
+  "foundation_check": "OFF",
+  "internal_feature_amendment": {
+    "original_contract_unchanged": true,
+    "protocol": {
+      "failure_if_fewer_than_three": "STOP_AND_REPORT_NOT_ESTIMABLE_NO_BORROWED_BANK",
+      "feature_and_loss": "UNCHANGED_R1_SHARED_ENCODER_MASKS_LAYERED_CONDITIONAL_C0.1_RMS_INNER_OOF",
+      "individual_axis_qualification": "UNCHANGED_AT_LEAST_TWO_RESPONSE_PATTERNS_EACH_WITH_TWO_TRAIN_GROUP_RECORDS",
+      "internal_feature_folds": 2,
+      "leakage": "ALL_BANK_COUNTS_PATTERNS_AND_SCALER_FROM_RESPECTIVE_INTERNAL_TRAIN_GROUPS_ONLY",
+      "minimum_correction_axes": 3,
+      "outer_and_relation_contract": "UNCHANGED",
+      "question_option_selection": "UNCHANGED_TRAIN_COUNTS_PRIORITY_AND_FOUR_OPTION_LIMIT",
+      "reason": "FOUR_OF_24_DEEPEST_INTERNAL_TRAIN_FOLDS_HAVE_THREE_QUALIFIED_AXES_OLD_P4_REQUIRES_FOUR",
+      "retained_attempt": "ORIGINAL_ONE_DEEPER_P4_FIT_RETAINED_EXCLUDED_NEW_MODELS_USE_P1_INTERNAL_SUFFIX",
+      "scope": "ALL_12_NEW_DEEPEST_BASE_EXPERT_FITS_ONLY",
+      "training_feature_trajectory": "P1_Q0_Q1_Q2_Q3_Q4_THEN_EXISTING_A_DERIVED_FINAL_F2",
+      "version": "r3-deepest-base-p1-feature-path.v1"
+    },
+    "registered_utc": "2026-09-05T16:05:52.724648+00:00",
+    "sha256": "b81c2e70bfba1e1a28c9042eb12a499bd13155c27f86f9efcaced156bd90beb1",
+    "timing": "AFTER_OBSERVED_SUPPORT_FAILURE_BEFORE_AMENDED_FITS"
+  },
+  "old_results_reinterpreted": false,
+  "registered_utc": "2026-09-05T15:40:49.619606+00:00",
+  "status": "CHECKPOINT_1_COMPLETED_TRIGGER_AND_NEW_INCREMENT_IN_PROGRESS"
+}
