@@ -224,6 +224,33 @@ class R1MechanismTests(unittest.TestCase):
             [r["score"] for r in end["candidate_scores"]],
         )
 
+    def test_repeated_broad_final_feedback_is_identical_in_final_revision(self):
+        old = copy.deepcopy(self.bundle)
+        fixed = copy.deepcopy(old)
+        fixed["evidence_policy"]["canonical_broad_feedback"] = True
+        state = self.initial()
+        self.inject(state, "Q0", ["attribute.fruity"], "broad", "fruity")
+        before = s.encode_features(state, fixed)
+        state["final_comparison"] = {"selected_candidates": ["attribute.fruity"]}
+        after = s.encode_features(state, fixed)
+        self.assertEqual(before["features"], after["features"])
+        self.assertEqual(
+            before["interpreted_evidence"]["relations"],
+            after["interpreted_evidence"]["relations"],
+        )
+        self.assertNotEqual(
+            before["features"], s.encode_features(state, old)["features"]
+        )
+        model, receipt = t.fit(
+            self.records,
+            "broad-feedback-unit",
+            C=0.01,
+            bank_override=self.old["question_bank"],
+            loss_mode="layered_conditional",
+            canonical_broad_feedback=True,
+        )
+        self.assertTrue(model["evidence_policy"]["canonical_broad_feedback"])
+
     def test_layer_masks_never_make_unmentioned_leaves_negative(self):
         state = self.initial()
         record = self.records[0]
@@ -270,6 +297,52 @@ class R1MechanismTests(unittest.TestCase):
             ],
             0,
         )
+
+    def test_data_ablation_locks_inner_catalogs_without_held_group_statistics(self):
+        from expansion_m2_r1 import d0_inner_banks
+
+        vocab = self.bundle["candidate_vocabulary"]
+        outer = self.old["question_bank"]
+        banks = d0_inner_banks(self.records, vocab, outer)
+        folds = t.split_groups(self.records, 2)
+        for fold, bank in banks.items():
+            train = [r for r in self.records if folds[r["group_id"]] != fold]
+            expected = legacy_t.make_bank(
+                t.statistics(train, vocab), {c: s.PARENTS.get(c, []) for c in vocab}
+            )
+            self.assertEqual(bank, expected)
+        added = [
+            {
+                **r,
+                "record_id": "aux:" + str(i),
+                "group_id": "aux:" + str(i),
+                "source_family": "aux_positive_only",
+            }
+            for i, r in enumerate(self.records[:8])
+        ]
+        expanded = t.make_bundle(
+            self.records + added,
+            vocabulary=vocab,
+            manifest_hash="SYNTHETIC_DATA_ABLATION",
+            bank_override=outer,
+        )
+        _, _, _, audit, _ = t.training_arrays(
+            self.records + added,
+            expanded,
+            "SYNTHETIC_DATA_ABLATION",
+            bank_override=outer,
+            inner_bank_overrides=banks,
+        )
+        for fold, entry in enumerate(audit):
+            self.assertEqual(entry["question_bank_hash"], s.digest(banks[fold]))
+            self.assertEqual(
+                entry["question_bank_scope"],
+                "INNER_D0_TRAIN_ONLY_FROZEN_FOR_DATA_ABLATION",
+            )
+            self.assertFalse(
+                set(entry["feature_training_groups"])
+                & set(entry["feature_output_groups"])
+            )
 
     def test_q01_fitted_from_training_only_and_complementary(self):
         train = self.records[:32]

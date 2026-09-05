@@ -107,6 +107,7 @@ def make_bundle(
     vocabulary=None,
     tag="",
     bank_override=None,
+    canonical_broad_feedback=False,
 ):
     if kind not in {
         "M2_R1_FIXED",
@@ -164,6 +165,7 @@ def make_bundle(
             else "TRAIN_ONLY_COMPLEMENTARITY_SEARCH"
         ),
         "evidence_policy": {
+            "canonical_broad_feedback": bool(canonical_broad_feedback),
             "exposed_rejection_coefficient": -1.0,
             "exposed_rejection_basis": "REGISTERED_SEMANTIC_CONSTRAINT_NOT_FITTED_FROM_UNMENTIONED_TARGETS",
             "specific_confirmation": "ELIGIBILITY_METADATA_SEPARATE_FROM_NEGATIVE_EVIDENCE",
@@ -247,7 +249,12 @@ def supervision_targets(record, episode, state, bundle):
 
 
 def training_arrays(
-    records, outer_bundle, manifest_hash, loss_mode="layered", bank_override=None
+    records,
+    outer_bundle,
+    manifest_hash,
+    loss_mode="layered",
+    bank_override=None,
+    inner_bank_overrides=None,
 ):
     if loss_mode not in {"legacy", "layered", "layered_conditional"}:
         raise ValueError("UNKNOWN_LOSS_MODE")
@@ -268,10 +275,14 @@ def training_arrays(
         inner_stats = statistics(train, vocab)
         inner_attrs = {c: s.PARENTS.get(c, []) for c in vocab}
         inner_bank = (
-            legacy.make_bank(inner_stats, inner_attrs)
-            if bank_override is not None
-            and "initial_pair_selection" not in bank_override
-            else make_bank(inner_stats, inner_attrs)
+            copy.deepcopy(inner_bank_overrides[fold])
+            if inner_bank_overrides is not None
+            else (
+                legacy.make_bank(inner_stats, inner_attrs)
+                if bank_override is not None
+                and "initial_pair_selection" not in bank_override
+                else make_bank(inner_stats, inner_attrs)
+            )
         )
         inner = make_bundle(
             train,
@@ -280,11 +291,18 @@ def training_arrays(
             vocab,
             "inner" + str(fold),
             inner_bank,
+            canonical_broad_feedback=outer_bundle.get("evidence_policy", {}).get(
+                "canonical_broad_feedback", False
+            ),
         )
         inner["bank_scope"] = (
-            "INNER_TRAIN_ONLY_LEGACY_PARTITION"
-            if "initial_pair_selection" not in inner_bank
-            else "INNER_TRAIN_ONLY_COMPLEMENTARITY"
+            "INNER_D0_TRAIN_ONLY_FROZEN_FOR_DATA_ABLATION"
+            if inner_bank_overrides is not None
+            else (
+                "INNER_TRAIN_ONLY_LEGACY_PARTITION"
+                if "initial_pair_selection" not in inner_bank
+                else "INNER_TRAIN_ONLY_COMPLEMENTARITY"
+            )
         )
         audit.append(
             {
@@ -292,6 +310,7 @@ def training_arrays(
                 "feature_output_groups": sorted({r["group_id"] for r in held}),
                 "cluster_fit": "NOT_USED",
                 "question_bank_scope": inner["bank_scope"],
+                "question_bank_hash": s.digest(inner_bank),
                 "source_truth_as_runtime_features": False,
             }
         )
@@ -536,10 +555,27 @@ def fit(
     loss_mode="layered",
     task_weights=None,
     arrays=None,
+    canonical_broad_feedback=False,
+    inner_bank_overrides=None,
 ):
-    bundle = make_bundle(records, kind, manifest_hash, vocabulary, tag, bank_override)
+    bundle = make_bundle(
+        records,
+        kind,
+        manifest_hash,
+        vocabulary,
+        tag,
+        bank_override,
+        canonical_broad_feedback=canonical_broad_feedback,
+    )
     X, Y, w, audit, tasks = (
-        training_arrays(records, bundle, manifest_hash, loss_mode, bank_override)
+        training_arrays(
+            records,
+            bundle,
+            manifest_hash,
+            loss_mode,
+            bank_override,
+            inner_bank_overrides,
+        )
         if arrays is None
         else arrays
     )
@@ -797,9 +833,18 @@ def initial_stage_diagnostics(records, bundle):
                 if r["candidate_id"] not in exclude
             ]
             stage_rows[label] = {
-                "ndcg5": ndcg(rank, ep["relevance"]),
-                "recall8": len(set(rank[:8]) & set(ep["hidden"]))
-                / max(len(ep["hidden"]), 1),
+                "ndcg5": ndcg(rank, ep["relevance"]) if ep["hidden"] else None,
+                "recall5": (
+                    len(set(rank[:5]) & set(ep["hidden"])) / len(ep["hidden"])
+                    if ep["hidden"]
+                    else None
+                ),
+                "recall8": (
+                    len(set(rank[:8]) & set(ep["hidden"])) / len(ep["hidden"])
+                    if ep["hidden"]
+                    else None
+                ),
+                "coverage": 1.0,
             }
         attrs0 = set(q0["sensory_attribute_state"]["observed_or_supported_attributes"])
         attrs01 = set(
@@ -837,7 +882,16 @@ def initial_stage_diagnostics(records, bundle):
             "|".join(k) or "UNSURE": n for k, n in sorted(Counter(patterns1).items())
         },
         "relevant_coefficient_directions": {
-            name: bundle["model_parameters"]["weights"][s.FEATURES.index(name)]
+            name: (
+                "POSITIVE"
+                if bundle["model_parameters"]["weights"][s.FEATURES.index(name)] > 1e-12
+                else (
+                    "NEGATIVE"
+                    if bundle["model_parameters"]["weights"][s.FEATURES.index(name)]
+                    < -1e-12
+                    else "ZERO"
+                )
+            )
             for name in [
                 "broad_related_support",
                 "broad_candidate_direct",

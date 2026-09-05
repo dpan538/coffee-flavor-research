@@ -73,6 +73,14 @@
     ],
     "policy": "Sequential stages, no Cartesian search; CV choice never historical or confirmation."
   },
+  "broad_feedback_followup": {
+    "C": 0.1,
+    "change": "canonical_broad_feedback=true; exactly same data, bank, C and layered conditional loss",
+    "loss_mode": "layered_conditional",
+    "registered_utc": "2026-09-05T11:10:51Z",
+    "source_model": "M2_R1_CONDITIONAL_C0.1",
+    "trigger": "Final selection of an already selected attribute was recoded as a new concrete observation; preserve earlier R1 variants as failure controls."
+  },
   "code_baseline_sha": "fb29b8c80aae29b9dacce039d728d9dc1efa5769",
   "context": "Preserve native C0/C1 experiments; source roast labels never fabricate seven production bins.",
   "dirty_main_policy": "Read only; no reset, stash, edits or commits.",

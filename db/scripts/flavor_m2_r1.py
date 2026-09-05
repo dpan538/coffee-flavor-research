@@ -201,9 +201,20 @@ def evidence(state, bundle):
         if state.get("final_comparison")
         else set()
     )
-    confirmed = direct | feedback
+    ordinary_broad = set(broad)
+    # Later R1 bundles fix repeated broad final feedback without changing the
+    # semantics of retained early R1 model artifacts.
+    if bundle.get("evidence_policy", {}).get("canonical_broad_feedback", False):
+        broad.update(c.split(".", 1)[1] for c in feedback if c.startswith("attribute."))
+        canonical_feedback = {c for c in feedback if not c.startswith("attribute.")}
+    else:
+        canonical_feedback = feedback
+    confirmed = direct | canonical_feedback
     parents = {a for c in confirmed for a in bundle["candidate_attributes"].get(c, [])}
     independent_broad = broad - parents
+    novel_feedback = feedback - direct
+    if bundle.get("evidence_policy", {}).get("canonical_broad_feedback", False):
+        novel_feedback -= {"attribute." + a for a in ordinary_broad | parents}
     # A source concept, repeated question, parent inference, or repeated final
     # comparison selection cannot become a second independent observation.
     for concept in sorted(confirmed):
@@ -238,7 +249,7 @@ def evidence(state, bundle):
         "explicit_none": sorted(none),
         "negative_broad": sorted(negative_broad),
         "feedback": sorted(feedback),
-        "novel_feedback": sorted(feedback - direct),
+        "novel_feedback": sorted(novel_feedback),
         "relations": list(relations.values()),
         "exposure_scopes": exposure_scopes,
         "all_broad_is_nondiscriminating": False,
@@ -267,9 +278,15 @@ def encode_features(payload_or_state, bundle):
     for c in bundle["candidate_vocabulary"]:
         ca = set(bundle["candidate_attributes"].get(c, []))
         association = [
-            stats["conditional"].get(x, {}).get(c, 0.0) for x in observed if x != c
+            stats["conditional"].get(x, {}).get(c, 0.0)
+            for x in sorted(observed)
+            if x != c
         ]
-        fba = [stats["conditional"].get(x, {}).get(c, 0.0) for x in feedback if x != c]
+        fba = [
+            stats["conditional"].get(x, {}).get(c, 0.0)
+            for x in sorted(feedback)
+            if x != c
+        ]
         pairs = [
             stats["pair_conditional"].get("|".join(sorted([a, b])), {}).get(c, 0.0)
             for i, a in enumerate(sorted(observed))

@@ -1,39 +1,428 @@
 {
   "actual_fit_counts": {
+    "Peru_Condelli_D1_mixed_catalog_control": 4,
+    "Peru_Condelli_D1_strict_control": 4,
+    "Peru_D1_mixed_catalog_control": 4,
+    "canonical_final_feedback": 4,
+    "conditional_Q01": 3,
     "conditional_recovery": 7,
-    "native_context": 60,
-    "repair": 18
+    "initial_repair": 18,
+    "source_native_context": 60
+  },
+  "actual_sample_increment": {
+    "fresh_brew_eligibility": "NOT_FULLY_DOCUMENTED",
+    "new_complete_CATA_auxiliary_records": 3186,
+    "new_complete_native_intensity_cells": 564,
+    "new_complete_native_intensity_records": 47,
+    "new_confirmation_groups": 12,
+    "new_core_professional_product_groups": 47,
+    "new_fine_recovery_auxiliary_records": 124,
+    "new_independent_coffee_lot_or_product_groups": 69,
+    "new_known_condition_observations": 104,
+    "new_production_C0_C1_paired_records": 0,
+    "new_source_defined_coffee_product_groups": 67,
+    "new_study_coffee_lot_groups": 2,
+    "new_to_D0_independent_collection_studies": 4,
+    "newly_acquired_collection_studies_this_block": 3,
+    "quarantined_anonymous_source_sample_ids": 84,
+    "reused_existing_collection_studies": 1
   },
   "backend_default": "B2 unchanged",
   "branch": "research/coffee-sensory-data-ml-readiness",
-  "checkpoint": "REPAIR_RETRAINING_COMPLETED; FOUNDATION_AND_SOURCE_WORK_ACTIVE",
+  "checkpoint": "FOUNDATION_AND_REPAIR_VERIFIED; SOURCE_WORK_ACTIVE",
+  "code_sha_at_seal": "69d15ae3fd8273d261befb7b31a089d7e1ab0453",
   "commands": [
-    "python db/scripts/run_m2_r1.py --owner-dir <existing-private-v2-root> --phase reproduce",
-    "python db/scripts/run_m2_r1.py --owner-dir <existing-private-v2-root> --phase repair",
-    "python db/scripts/conditional_m2_r1.py --owner-dir <existing-private-v2-root>",
-    "python db/scripts/context_m2_r1.py --owner-dir <existing-private-v2-root>"
+    "python db/scripts/run_m2_r1.py --owner-dir <owner-v2-root> --phase reproduce",
+    "python db/scripts/run_m2_r1.py --owner-dir <owner-v2-root> --phase repair",
+    "python db/scripts/conditional_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/context_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/final_feedback_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/q01_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/evaluate_r1_final.py --owner-dir <owner-v2-root>",
+    "python db/scripts/evaluate_foundation_r1.py --owner <owner-v2-root> --base-name M2_R1_FINAL_FIXED",
+    "python db/scripts/acquire_m2_r1.py --owner <owner-v2-root>/revisions/r1",
+    "python db/scripts/expansion_m2_r1.py --owner-dir <owner-v2-root> --expanded --controlled",
+    "python db/scripts/sensory_views_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/sensory_views_m2_r1.py --owner-dir <owner-v2-root> --full-cata",
+    "python db/scripts/professional_views_m2_r1.py --owner-dir <owner-v2-root>/revisions/r1",
+    "python db/scripts/verify_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/infer_m2_r1.py --model-file <private-model> --input <request-json>"
   ],
   "dirty_main_actual_sha": "1755915d3918013c8bd7c5f744e5ce8a0e972167",
+  "executed_code_sha256": {
+    "db/scripts/acquire_m2_r1.py": "884772993b6b75bb84ff356e4777d4bc9ac1ce5f46377f9efe31ee44763792c3",
+    "db/scripts/conditional_m2_r1.py": "daaff4f5f7900e6585484288cbda6bd8bb71a9bddadb59750484f391ab8bfe13",
+    "db/scripts/context_m2_r1.py": "85260333859e421e11ed5f0970fb881590dcc0e61f3122ae992257ca18d802d2",
+    "db/scripts/evaluate_foundation_r1.py": "9d4a87a09a0b56d2db8b6fe742014a61d5f62f11aba38ed758922fd98d4bdf8c",
+    "db/scripts/evaluate_r1_final.py": "c24e5568bfc381933b599452fae012c7510186a908bb9faba214026ba30420c5",
+    "db/scripts/expansion_m2_r1.py": "5a83e8efd88101af69ed0f0492a547e2d236cbd71594516193c8f4ffb982abd4",
+    "db/scripts/final_feedback_m2_r1.py": "1c85db6ae787a49e1ca789a70fe03ed3b81462a3f2cc2b4dc0370613ac5370f2",
+    "db/scripts/flavor_foundation_r1.py": "fd9a5b8c206059693b0dcca2900fc0de2252b1f58d1aee417bc92f08b70513c6",
+    "db/scripts/flavor_m2_r1.py": "cfec9eafcf0803d54a02d7322e31c03367c54df0da1faa50be57f9a8480247e9",
+    "db/scripts/infer_m2_r1.py": "c944a9f963c8a7e2f19a6a68a53b9b3de07a182600e7dd12f320458060c7f66e",
+    "db/scripts/professional_views_m2_r1.py": "20a683e90b931ac11dfedb588b5dbb3b6ae166961adb4fe5698d94fb82e29b2e",
+    "db/scripts/q01_m2_r1.py": "4978833bd849e7f821538db73b331191f134b1d35e60b8b919196a34421b7d01",
+    "db/scripts/run_m2_r1.py": "c069b7b8f5e43dd8af1a0d29d8465f20c2d748d9dee2387c633630f47e8142ec",
+    "db/scripts/seal_m2_r1.py": "6c3480c6ca1f1360b69d09ac7790cb3eb6898582ce37c49d0b86c97e45de428a",
+    "db/scripts/sensory_views_m2_r1.py": "dfa9c385d0f870eff5da157ceef5faaa5bcb0a7a12dc9350b10d2928ae63a5dd",
+    "db/scripts/train_m2_r1.py": "11d363fe54e68e36be320ae69d062c93cc6ffd0f1b865b5b1eea4ecfc45cf5cd",
+    "db/scripts/verify_m2_r1.py": "a777eced07139e746ebbe27637a46a9c73ae0e46bba199a15d2c53bdaf9fadbd"
+  },
   "expected_main_sha": "e4eced41e2233c76c4645287fba2ecedddd03561",
   "experiment_id": "M2_R1_REPAIR_FOUNDATION_20260905",
+  "foundation_fit_scope": {
+    "fit_audit_private_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/foundation/fit_audit.private.json",
+    "inner_folds": 3,
+    "outer_folds": 3,
+    "representations": 4,
+    "retained_full_development_bundles": 2
+  },
   "frontend_changes": 0,
+  "immutable_D0_file_count": 34,
+  "independent_evidence": {
+    "CATA": "ACTUAL_RECORDED_CATA_VIEW_PREDICTION; ONE_COFFEE",
+    "Condelli_3_groups": "PREASSIGNED_HELD_OUT; NOW_VIEWED; NOT_FRESH_CONFIRMATION",
+    "foundation_and_ranking": "DERIVED_RECORD_PROXY",
+    "original_17_groups": "PREVIOUSLY_VIEWED_HISTORICAL_REGRESSION",
+    "professional_attributes": "SOURCE_NATIVE_PANEL_AGGREGATES; NOT_USER_ANSWERS",
+    "real_independent_answers": "NOT_EVALUATED"
+  },
+  "model_inventory": {
+    "cv/M2_R1_CONDITIONAL_C0.01_fold0.model.json": {
+      "bytes": 173993,
+      "sha256": "1d9c8543f212d7273425f8300255345ee2432883bf74faa57a1c66086c7d3be5"
+    },
+    "cv/M2_R1_CONDITIONAL_C0.01_fold1.model.json": {
+      "bytes": 193132,
+      "sha256": "50878757bf586722dc17e9a93048609f1bec4c51a601d8ce6c677e8757f7dc63"
+    },
+    "cv/M2_R1_CONDITIONAL_C0.01_fold2.model.json": {
+      "bytes": 177311,
+      "sha256": "c11a0df9b968644503a88b7b92a6c7f41acce5eb37d97ad85237127fd760259c"
+    },
+    "cv/M2_R1_CONDITIONAL_C0.1_fold0.model.json": {
+      "bytes": 174003,
+      "sha256": "066e4726b639e69756ab5827055a6bf5e9821b3bdac884d78c998c70180bab2a"
+    },
+    "cv/M2_R1_CONDITIONAL_C0.1_fold1.model.json": {
+      "bytes": 193142,
+      "sha256": "073530bb595c6b4d5bafa998dc74793abf0a36b56a069dcaec2ab4f546be46ed"
+    },
+    "cv/M2_R1_CONDITIONAL_C0.1_fold2.model.json": {
+      "bytes": 177322,
+      "sha256": "a7b2429c1c38a042a9778a23468c4574a6eb41f2e3ec3fb81d0416467afdd5b6"
+    },
+    "cv/M2_R1_CONDITIONAL_Q01_fold0.model.json": {
+      "bytes": 181353,
+      "sha256": "14ed9577ae36a325b317a08d79a083b3412d93eff2bc929ba673e37f65faad87"
+    },
+    "cv/M2_R1_CONDITIONAL_Q01_fold1.model.json": {
+      "bytes": 200712,
+      "sha256": "8330c4a621151b04fca76c74198a6ede5731372d04a3921adc7a30f45d831359"
+    },
+    "cv/M2_R1_CONDITIONAL_Q01_fold2.model.json": {
+      "bytes": 184843,
+      "sha256": "bbb2460467a623a68f995de2e900253d2ded10d95a86f4de90dcc12648dc1694"
+    },
+    "cv/M2_R1_CONTROLLED_D0_D1_fold0.model.json": {
+      "bytes": 223235,
+      "sha256": "bd36cacc6cf6e3c88ff86e67516ac30ec36fb21f299648deb9614e5a76d21d20"
+    },
+    "cv/M2_R1_CONTROLLED_D0_D1_fold1.model.json": {
+      "bytes": 241058,
+      "sha256": "87326777a7088354f3723140429ca6c591f220fc3daa518e8cc5deb625c448f8"
+    },
+    "cv/M2_R1_CONTROLLED_D0_D1_fold2.model.json": {
+      "bytes": 221295,
+      "sha256": "5ba4846734195b28ef450bcedaa10ea2656cff0b79b08d5afa8695b7ad883c24"
+    },
+    "cv/M2_R1_D0_D1_fold0.model.json": {
+      "bytes": 200954,
+      "sha256": "f7a0bc74805ccf5cc6c84d0f4a3535ffc70480cae05079a7d74a40c3fe1466c3"
+    },
+    "cv/M2_R1_D0_D1_fold1.model.json": {
+      "bytes": 218999,
+      "sha256": "a84dee8b1ef2a80791233a890f54316b5231690a553254fe071abe3dea7989aa"
+    },
+    "cv/M2_R1_D0_D1_fold2.model.json": {
+      "bytes": 197721,
+      "sha256": "b565d5c7a576407c16da4df616ddb63adcad5bce1de9a72235cec9654171b36e"
+    },
+    "cv/M2_R1_FINAL_D0_D1_fold0.model.json": {
+      "bytes": 223008,
+      "sha256": "37bb6859578005ed9e22f168947cd84e36019a662934138215bb1ef48edbe82a"
+    },
+    "cv/M2_R1_FINAL_D0_D1_fold1.model.json": {
+      "bytes": 240829,
+      "sha256": "5e7ee48a036c79b5776544b717d845ead0473661a9be8e8cdd0d011998d84ce4"
+    },
+    "cv/M2_R1_FINAL_D0_D1_fold2.model.json": {
+      "bytes": 221065,
+      "sha256": "c2384f210105feab14c11bedd5352982cc46845ab96c1f869751f63f016e64f4"
+    },
+    "cv/M2_R1_FINAL_FIXED_fold0.model.json": {
+      "bytes": 174031,
+      "sha256": "4d597f6265a2045896837f71a526331f9e7dd683004c719462a2ccc85be35121"
+    },
+    "cv/M2_R1_FINAL_FIXED_fold1.model.json": {
+      "bytes": 193150,
+      "sha256": "8d51c657a49fee96d3e0053df835bc3f607c4ebe1cafb08ab318c1efce2f32e1"
+    },
+    "cv/M2_R1_FINAL_FIXED_fold2.model.json": {
+      "bytes": 177342,
+      "sha256": "4dd4abd59c8302af41f129bd52ebdb6e07db436d6130044a046ccfc365da5022"
+    },
+    "cv/M2_R1_FIXED_C0.1_fold0.model.json": {
+      "bytes": 180698,
+      "sha256": "1d019e1b271a4b8f77dff4d5c84ede364fb52cd5fc9e7ef59811370f321b281b"
+    },
+    "cv/M2_R1_FIXED_C0.1_fold1.model.json": {
+      "bytes": 200056,
+      "sha256": "79bfd5a427d0dac22143102aacbf4c520d030ef422c0757ddcde8961b6bdb22e"
+    },
+    "cv/M2_R1_FIXED_C0.1_fold2.model.json": {
+      "bytes": 184202,
+      "sha256": "54ad686c2c95418395af82380a91e06fd07649c6c7b2ef66a1c8202e9e5611ce"
+    },
+    "cv/M2_R1_FIXED_C1.0_fold0.model.json": {
+      "bytes": 180696,
+      "sha256": "43a27473e0429a0fcd1b087a6af4d378345712021c53aa4a2ac36bf39b612441"
+    },
+    "cv/M2_R1_FIXED_C1.0_fold1.model.json": {
+      "bytes": 200053,
+      "sha256": "0993a1b8555449435f18318a2a19da72867a16978f39ef6ee765734d3bbe6cae"
+    },
+    "cv/M2_R1_FIXED_C1.0_fold2.model.json": {
+      "bytes": 184199,
+      "sha256": "ace02a927b7bfaa177bb3fe2bf89c7e8e4df7d8eaaacca81564539d93ba81c9d"
+    },
+    "cv/M2_R1_FIXED_LAYERED_LOCKED_fold0.model.json": {
+      "bytes": 173379,
+      "sha256": "802abc980520aba5b0a211cd5bd9d3aee8cbfa440e6060950026c213873040d9"
+    },
+    "cv/M2_R1_FIXED_LAYERED_LOCKED_fold1.model.json": {
+      "bytes": 192516,
+      "sha256": "1d706e26efa033dfba043242dc2449b1227d2eb0aadba9c8d34eeb0039211a37"
+    },
+    "cv/M2_R1_FIXED_LAYERED_LOCKED_fold2.model.json": {
+      "bytes": 176716,
+      "sha256": "1472b54c709ad87d18d2551990bbed2c626da75bb3c5ed9cabbfdedd6d869a24"
+    },
+    "cv/M2_R1_FIXED_LEGACY_LOCKED_fold0.model.json": {
+      "bytes": 173355,
+      "sha256": "25ff84fa4b8a8319911b1c86eedaf16f7ad0ab4b1ab125828a730e31db6b23e3"
+    },
+    "cv/M2_R1_FIXED_LEGACY_LOCKED_fold1.model.json": {
+      "bytes": 192491,
+      "sha256": "f16cb476f6462220d035045b5d9f82bc1aff1dcd28ebdb36820f1f23601ff4dd"
+    },
+    "cv/M2_R1_FIXED_LEGACY_LOCKED_fold2.model.json": {
+      "bytes": 176689,
+      "sha256": "cb0f8232ab03c0a7a0cafda977285c1458756c956a23a576d452c766890ae10c"
+    },
+    "cv/M2_R1_FIXED_fold0.model.json": {
+      "bytes": 180702,
+      "sha256": "7abb6684464090d3ca59b7e682b6ad1f83d48d5bc694701c758188a4d7d430c0"
+    },
+    "cv/M2_R1_FIXED_fold1.model.json": {
+      "bytes": 200065,
+      "sha256": "e8b258249b5a46845804926d1901b4251c4653c6cbef0438957ff0d3462f804b"
+    },
+    "cv/M2_R1_FIXED_fold2.model.json": {
+      "bytes": 184209,
+      "sha256": "3b88b17ab25e55e92e976d9473be4640df56c030de5f0d135f6ed02deafc9ea4"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES.model.json": {
+      "bytes": 9435,
+      "sha256": "8fdf0a975a755d8dd6dbe7da32a8fc794f341d17dfa7901d0c9f67c0ad3ab951"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL.model.json": {
+      "bytes": 121713,
+      "sha256": "25182bbe582225f191384f29a13942a0ee75ba3306b8f74b951ececfa17033f6"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL_brew_condition_fold0.model.json": {
+      "bytes": 87893,
+      "sha256": "e582d05298dc6a2366c5a00d854206d8b3b2d5ccbfcffed6683ca0e61de3a761"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL_brew_condition_fold1.model.json": {
+      "bytes": 87884,
+      "sha256": "5da7bb630b2d4a66b6bbb355d8a0e9ed84808d2fd96813b6d0eb326a67cbc62d"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL_brew_condition_fold2.model.json": {
+      "bytes": 87885,
+      "sha256": "0bd71a2844a780d59bf8fcc6c74b603b3c5a1c5c4843f6ceff88aa6ae0e4ca86"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL_judge_fold0.model.json": {
+      "bytes": 86653,
+      "sha256": "83d69887e8845831446e59e825771e92ee9f1bf4d7b1e35784f69724741ff7ef"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL_judge_fold1.model.json": {
+      "bytes": 87584,
+      "sha256": "1276a55ddb01b3671f22bd00bb36bed821e2123f0cfbadb910bfa3c3ac734213"
+    },
+    "models/M2_R1_CATA_AUX_ATTRIBUTES_FULL_judge_fold2.model.json": {
+      "bytes": 87438,
+      "sha256": "e9608e8081ba9f5b8609a29a17ee0f2bf3b16b0e8fc5ff1234f4a94c9bd5e7a2"
+    },
+    "models/M2_R1_CONDITIONAL_C0.1.model.json": {
+      "bytes": 266272,
+      "sha256": "22ebdd33fee6c1c2ddcb2a563b1b7d8ef0887807733fe7f4236293c4e9b588ed"
+    },
+    "models/M2_R1_CONTROLLED_D0_D1.model.json": {
+      "bytes": 318734,
+      "sha256": "951f06544933a060b928efb21a67a23df3d70587892cac91caffd2ba16801267"
+    },
+    "models/M2_R1_D0_D1.model.json": {
+      "bytes": 295674,
+      "sha256": "d8dbb0f523032fc427fafb37f89fa2f64719f586883a995d4a2fc374a2f67c1d"
+    },
+    "models/M2_R1_FINAL_D0_D1.model.json": {
+      "bytes": 318506,
+      "sha256": "5cc6bccd6da10445bc772a8c78fc5c6c8a48275812e8d910eebfdcdf3f24fecb"
+    },
+    "models/M2_R1_FINAL_FIXED.model.json": {
+      "bytes": 266284,
+      "sha256": "dabb704ea0e71bea69baf3beebf94e6e9480e87cd2e8f9039a72174a171ccb7f"
+    },
+    "models/M2_R1_FIXED.model.json": {
+      "bytes": 275484,
+      "sha256": "1bca1ade37bdba33ab56c6cd8ba2674fb7ae290b409807bc863d9fd0f9e5797f"
+    },
+    "models/M2_R1_FIXED_LAYERED_LOCKED.model.json": {
+      "bytes": 265652,
+      "sha256": "828e53ac416c98136ba95c9aeaeb40908c68d54bd1df48a65faf7741398a5e0e"
+    },
+    "models/M2_R1_FIXED_LEGACY_LOCKED.model.json": {
+      "bytes": 265625,
+      "sha256": "8d2afdc118bb3f1551d0adc8b2b95eed563c186297c21c959d200b74afb664c3"
+    },
+    "models/M2_R1_FOUNDATION.model.json": {
+      "bytes": 282906,
+      "sha256": "dc7835db967c64c828bef06188b73a18f4cb4e06104104152312262939d00450"
+    },
+    "models/M2_R1_FOUNDATION_CHECK.model.json": {
+      "bytes": 282905,
+      "sha256": "1fc058c996e8cadbcc0f7a550e8f1e0cab597203a36eae28d14c88aabfdec3ae"
+    },
+    "models/M2_R1_ORDINAL_ATTRIBUTES.model.json": {
+      "bytes": 35240,
+      "sha256": "e0c404a0636b28a983d6a6f3583b01c47e4e278ad2c4cb0bacc3d606d9c232a9"
+    },
+    "models/M2_R1_ORDINAL_ATTRIBUTES_fold0.model.json": {
+      "bytes": 32561,
+      "sha256": "6b83863689d18119c5294ede6a464709e675e1b8b314ae0fc0fbacd0e08cbf33"
+    },
+    "models/M2_R1_ORDINAL_ATTRIBUTES_fold1.model.json": {
+      "bytes": 32595,
+      "sha256": "75f3e2979e43b7d337103599d27b89c6576cc44a7a7fa9251dc6e83a7c7fb596"
+    },
+    "models/M2_R1_ORDINAL_ATTRIBUTES_fold2.model.json": {
+      "bytes": 33017,
+      "sha256": "cfd535423bc35efa3cb3a3163a98eb53ea60e8da35e809e9d5612ee19017c15e"
+    },
+    "models/M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI.model.json": {
+      "bytes": 35575,
+      "sha256": "1537ff94961f8fffbbaa186144dfdc3e38d1c472fb740afefb1fcb735d736fce"
+    },
+    "models/M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI_fold0.model.json": {
+      "bytes": 27178,
+      "sha256": "bfe25fe660f875a5bc19120b2eeb2f6f0d788507769f10b8fafc5689838ee94c"
+    },
+    "models/M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI_fold1.model.json": {
+      "bytes": 27107,
+      "sha256": "c6cab5187b35f1b77ac32a1c28c3de119a286eca72e1a6091cfe02759f27c1f6"
+    },
+    "models/M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI_fold2.model.json": {
+      "bytes": 28981,
+      "sha256": "3576c0f84f17a3d06d60d4d875c9a3205188d51153c6eaa51b69a48447789205"
+    },
+    "models/context_native.model.json": {
+      "bytes": 365992,
+      "sha256": "151257de65bf4ce4de287711d84c519cbd435c168e97aaf6536b11fe36ec3475"
+    }
+  },
   "model_paths": {
-    "repaired_layered_candidate": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_CONDITIONAL_C0.1.model.json"
+    "M2_R1_CATA_AUX_ATTRIBUTES_FULL": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_CATA_AUX_ATTRIBUTES_FULL.model.json",
+    "M2_R1_CONTROLLED_D0_D1": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_CONTROLLED_D0_D1.model.json",
+    "M2_R1_FINAL_FIXED": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FINAL_FIXED.model.json",
+    "M2_R1_FOUNDATION": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FOUNDATION.model.json",
+    "M2_R1_FOUNDATION_CHECK": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FOUNDATION_CHECK.model.json",
+    "M2_R1_ORDINAL_ATTRIBUTES": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_ORDINAL_ATTRIBUTES.model.json"
   },
   "old_models_and_results_byte_identical": true,
+  "private_artifact_root": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1",
   "real_independent_answers": "NOT_EVALUATED",
+  "runtime_versions": {
+    "jsonschema": "4.26.0",
+    "lxml": "6.1.3",
+    "numpy": "2.5.2",
+    "openpyxl": "3.1.5",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1"
+  },
+  "selection": {
+    "D1_ranking_promotion": "INCONCLUSIVE; NOT_SELECTED",
+    "backend_default": "B2",
+    "foundation_check": "RESEARCH_ONLY_NO_IMPROVEMENT_IN_RECORD_PROXY",
+    "foundation_representation": "explicit_attributes",
+    "foundation_scoring_fusion": 0,
+    "preferred_valid_repaired_M2": "M2_R1_FINAL_FIXED",
+    "rationale": "Semantics were repaired, but common fine-descriptor gains over B2/M1 remain uncertain and old M2 full recovery is higher. The old proxy can reward suppression of observed broad categories. Do not promote a model from vocabulary coverage or auxiliary attribute accuracy alone.",
+    "real_independent_answer_efficacy": "NOT_EVALUATED",
+    "replace_B2_or_M1": false,
+    "retain_legacy_loss_as_control_only": "M2_R1_FIXED_LEGACY_LOCKED",
+    "source_native_attribute_heads": "SEPARATE_RESEARCH_TASKS; NOT_RUNTIME_FEATURES"
+  },
   "source_sha": "fb29b8c80aae29b9dacce039d728d9dc1efa5769",
-  "updated_utc": "2026-09-05T11:03:16Z",
+  "source_work_block": {
+    "authorized_duration_hours": [
+      3,
+      4
+    ],
+    "elapsed_minutes": 62.8,
+    "ended_utc": null,
+    "last_updated_utc": "2026-09-05T11:44:45.956749+00:00",
+    "policy": "Continue useful acquisition and validation within existing routes; no additional broad source discovery, author requests, or idle time padding.",
+    "start_time_precision": "minute; approximately 10:42 UTC recorded by coordinating task",
+    "started_utc": "2026-09-05T10:42:00+00:00",
+    "status": "IN_PROGRESS",
+    "targeted_data_routes_limit": 12,
+    "targeted_data_routes_used": 12
+  },
+  "updated_utc": "2026-09-05T11:57:20Z",
   "validation": {
+    "backend_unit_suite_with_retained_owner_models": {
+      "passed": 97,
+      "skipped": 0
+    },
+    "cross_process_hash_seed_cli_exact_matches": 6,
+    "foundation_tests": {
+      "passed": 13,
+      "skipped": 0
+    },
+    "foundation_three_fold_review_replay": "PASSED_RANKINGS_AND_METRICS_UNCHANGED",
+    "full_CATA_tests": {
+      "passed": 8,
+      "skipped": 0
+    },
     "legacy_sequential_including_retained_owner_models": {
       "passed": 24,
       "skipped": 0
     },
     "new_mechanism_tests": {
-      "passed": 12,
+      "passed": 14,
       "skipped": 0
     },
     "old_cv_exact_reproduction_records": 211,
-    "remote_ci": "NOT_OBSERVED_FOR_THIS_CHECKPOINT"
+    "professional_source_view_tests": {
+      "passed": 6,
+      "skipped": 0
+    },
+    "public_artifact_and_context_tests": {
+      "passed": 4,
+      "skipped": 0
+    },
+    "remote_ci": "NOT_OBSERVED_FOR_THIS_CHECKPOINT",
+    "saved_model_full_contract_sessions": 504
   }
 }

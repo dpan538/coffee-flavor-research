@@ -1,5 +1,38 @@
 # Experiment registry
 
+## M2 R1 repair and sensory foundation — 2026-09-05
+
+R1 preserves D0 and all earlier weights/results. The preferred valid repaired
+candidate is `M2_R1_FINAL_FIXED`; B2 remains the backend default. Positive broad
+support no longer produces the diagnosed negative child contribution (54 to 0
+synthetic cases), repeated evidence has zero gain, and direct-answer retention
+is 1.0 before and after postprocessing. Full D0 recovery NDCG@5 is 0.475626,
+below old JOINT's 0.536926. Common fine-descriptor comparisons with B2 in grouped
+development CV and frozen M1 on the 17 historical groups remain inconclusive.
+
+The separate, fixed A/B/T foundation experiment gives V0/V1-explicit/V2-CHECK
+NDCG@5 of 0.444088/0.446288/0.425308. Explicit native-attribute MAE is 0.172885,
+versus NMF's 0.249060. More complex profiles do not improve on the simple
+attribute representation. CHECK corrects 2/90 initially wrong proxy directions
+and loses 2/105 initially correct ones; 16 records are not identifiable for
+directional evaluation. Both reloadable foundation bundles retain zero scoring
+fusion, and CHECK remains a research component. Real-answer efficacy is not
+evaluated. These A/B/T numbers cannot be directly compared to the earlier
+visible/hidden recovery protocol's scores.
+
+Strictly locked D0/D0+D1 vocabulary, outer/inner question catalogs and objectives
+give 0.475626/0.459685 recovery NDCG@5; the interval crosses zero. New professional
+source-native attributes and complete CATA support separate measured-view tasks,
+without becoming runtime inputs or fine-descriptor negatives. Source products,
+coffee lots, conditions and assessor observations are counted separately.
+Acquisition and protocol checks continue within the authorized source block.
+
+The single [R1 receipt](../../db/data/backend-sequential-model-v2/revisions/r1/run_receipt.json)
+indexes retained local models, validation and actual data increments; the
+[metrics](../../db/data/backend-sequential-model-v2/revisions/r1/metrics.json)
+retain successful, failed and inconclusive comparisons. No frontend, CI
+architecture, main-branch merge or weight release is part of this revision.
+
 ## Context-Validated Sequential Flavor Model v2 — active
 
 V2 preserves the 973f814 experiment and treats its inspected 17 groups as
