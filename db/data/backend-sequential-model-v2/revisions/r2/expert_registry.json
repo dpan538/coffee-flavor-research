@@ -1,0 +1,35 @@
+{
+  "M1": "EXCLUDED_RETAINED_MODEL_TRAIN_OVERLAP_WITH_DEVELOPMENT",
+  "attribute_models": "SEPARATE_TARGET_LAYERS_NOT_DESCRIPTOR_EXPERTS",
+  "eligible": [
+    {
+      "estimated_components": "TRAIN_GROUP_COUNTS_ONLY",
+      "id": "B2_TYPED_PRIOR_COMPONENT",
+      "responsibility": "TRAIN_GROUP_LOG_PRIOR_WITH_SHARED_R2_TYPED_SEMANTICS",
+      "retained_B2_default_changed": false
+    },
+    {
+      "excluded_components": "DIRECT_BROAD_REJECTION_FEEDBACK_TERMS_REMOVED_BEFORE_COMBINATION",
+      "id": "M2_R1_FINAL_FIXED_RESIDUAL",
+      "inner_fit": "NEW_GROUP_OOF_R1_C_0.1_LAYERED_CONDITIONAL_CANONICAL_BROAD_TRUE",
+      "outer_reuse": "ONLY_EXACT_TRAIN_GROUP_STATISTICS_BANK_SPLIT_AND_C_VALIDATED",
+      "residual_feature_names": [
+        "answer_pair_affinity",
+        "cooccurrence_max",
+        "cooccurrence_mean",
+        "log_prior",
+        "source_support_log"
+      ],
+      "responsibility": "R1_FIXED_TRAINED_RESIDUAL_LOG_PRIOR_CONDITIONAL_PAIR_SUPPORT"
+    }
+  ],
+  "foundation_check_enabled": false,
+  "historical_controls": [
+    "B2_ORIGINAL_CONTROL",
+    "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL"
+  ],
+  "oracle": "RETROSPECTIVE_NONDEPLOYABLE_DIAGNOSTIC_ONLY",
+  "score_alignment": "MIDRANK_PERCENTILE_NO_CALIBRATED_PROBABILITY",
+  "version": "m2-coordination.r2.v1",
+  "weight_release": "PRIVATE_ONLY"
+}

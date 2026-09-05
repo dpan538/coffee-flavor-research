@@ -1,0 +1,2077 @@
+{
+  "coordination": {
+    "all_prefix_mean_is_not_primary_equal_budget_comparison": true,
+    "complementarity": {
+      "B2_component_better_states": 65,
+      "R1_component_better_states": 97,
+      "labelled_paired_states": 1378,
+      "not_independent_state_sample_size": true,
+      "oracle_is_retrospective_only": true,
+      "state_loss_correlation_diagnostic": 0.9565582276925515,
+      "tied_states": 1216
+    },
+    "config": {
+      "G3_local_alpha": "SIGMOID(PREDICTED_GAP_ADVANTAGE/0.1)",
+      "G3_ridge_alpha": 10.0,
+      "G3_ridge_convention": "GROUP_WEIGHTED_ERROR_SUM_PLUS_10_TIMES_BETA_SQUARED",
+      "G3_shrinkage": "STAGE_LOCAL_N/(N+50)_TO_G1",
+      "G3_target": "B2_TYPED_GAP_MINUS_R1_RESIDUAL_GAP;POSITIVE_FAVORS_R1",
+      "R1_internal_feature_folds": 2,
+      "candidate_scope": "COMMON_FINE_IDS_FROM_OUTER_TRAIN_QUALIFIED_ONTOLOGY",
+      "expert_fit_C": 0.1,
+      "expert_fit_canonical_broad_feedback": true,
+      "expert_fit_loss": "layered_conditional",
+      "expert_ids": [
+        "B2_TYPED_PRIOR_COMPONENT",
+        "M2_R1_FINAL_FIXED_RESIDUAL"
+      ],
+      "experts_have_direct_broad_rejection_feedback_terms_removed": true,
+      "feature_names": [
+        "stage_initial",
+        "stage_correction",
+        "stage_final",
+        "known_broad_count",
+        "explicit_specific_count",
+        "independent_dimension_count",
+        "log_mean_training_support",
+        "rank_disagreement_mean",
+        "top5_disagreement",
+        "novel_final_feedback"
+      ],
+      "feature_scaler": "GROUP_WEIGHTED_INNER_OOF_TRAIN_MEAN_STD_ONLY",
+      "final_novelty_coefficient": "ZERO_IF_UNOBSERVED_IN_TRAINING",
+      "formal_fit_requires_frozen_objective_contract_hash": true,
+      "foundation_check_enabled": false,
+      "global_tie_break": "LOWER_R1_ALPHA_AFTER_LOSS_TIE_WITHIN_1E-12",
+      "global_weight_grid": [
+        0.0,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "historical_prior_selection": "R1_C_AND_OLD_OUTER_RESULTS_ALREADY_INSPECTED;NOT_FRESH_CONFIRMATION",
+      "inner_training_aggregation": "EQUAL_COFFEE_THEN_RECORD_THEN_PATH_THEN_STAGE;EQUAL_PREFIX_WITHIN_STAGE",
+      "outer_coffee_group_folds": 3,
+      "paths": [
+        "P1",
+        "P4"
+      ],
+      "policy": "fixed",
+      "router_inner_coffee_group_folds": 2,
+      "router_training_states": "ORDINARY_PREFIXES_ONLY_NO_FINAL_FEEDBACK_LABELS",
+      "shared_semantics": {
+        "broad_compatibility": 0.25,
+        "exposed_rejection": -1.0
+      },
+      "stage_names": [
+        "INITIAL",
+        "CORRECTION",
+        "FINAL"
+      ],
+      "stage_shrinkage": "UNIQUE_LABELLED_INNER_OOF_GROUPS/(GROUPS+50)",
+      "version": "m2-coordination.r2.v1",
+      "weights_public_release": false
+    },
+    "descriptive_all_prefix_results": {
+      "B2_ORIGINAL_CONTROL": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46610958485958487,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "B2_TYPED_PRIOR_COMPONENT": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5415490425706773,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "G0": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5400543433596318,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "G1": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5374614034469805,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "G2": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5370915809617733,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "G3": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5392457969381046,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46182338628252084,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "M2_R1_FINAL_FIXED_RESIDUAL": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5402865830750446,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.5296511047712971,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      }
+    },
+    "development_groups": 187,
+    "elapsed_seconds": 160.6180045409128,
+    "expert_group_isolation_verified": true,
+    "full_development_research_model": {
+      "model_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/models/R2_COORDINATOR_ALL_DEVELOPMENT.model.json",
+      "model_sha256": "21d1e90b7a769d10ae0d7ba7b7aa877063f421921d5aac2b8e10e54ae0458791",
+      "not_a_generalization_evaluation": true,
+      "reload_predictions_identical": true
+    },
+    "models": [
+      {
+        "model_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/models/R2_COORDINATOR_outer0.model.json",
+        "outer_fold": 0,
+        "sha256": "50eb3ce09f28dac536cdc945d4f49f1d76da11bb07aadbaf77eedfc25c7a570f"
+      },
+      {
+        "model_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/models/R2_COORDINATOR_outer1.model.json",
+        "outer_fold": 1,
+        "sha256": "e61c529a7251667660eec0e47ad10ed6851cfe15208a1ac348d9899e6db261a8"
+      },
+      {
+        "model_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/models/R2_COORDINATOR_outer2.model.json",
+        "outer_fold": 2,
+        "sha256": "acf6904a85c8779b164f35faba2727a0f4402eadab50fbedbc7caa03d19d424c"
+      }
+    ],
+    "nested_router_fits": 3,
+    "new_inner_expert_fits": 6,
+    "objective_contract_sha256": "4538db4be85e5d33a3a6b7db004c2f54c53a9783177d525c689ea96d252507ba",
+    "primary_result_aggregation": "PARENT_FIXED_PATH_SLOT_AND_OPTION_BUDGET_AGGREGATION",
+    "reload_predictions_identical": true,
+    "reused_outer_experts": 3,
+    "router_fit_counts": {
+      "all_development_research": 1,
+      "nested_outer": 3,
+      "total": 4
+    },
+    "router_inner_OOF_only_verified": true,
+    "same_runtime_feature_and_score_path": true,
+    "version": "m2-coordination.r2.v1"
+  },
+  "engineering_parity": {
+    "all_held_states": 2743,
+    "all_model_rows": 24687,
+    "cross_process_cli": {
+      "P1": {
+        "PYTHONHASHSEED_values": [
+          1,
+          27,
+          314159
+        ],
+        "actually_exposed_final_candidates": 8,
+        "byte_identical": true,
+        "fixture_scope": "ENGINEERING_REPLAY_OF_RECORDED_A_NOT_INDEPENDENT_REAL_USER_VALIDATION",
+        "full_output_sha256": "999d1a30b6d71b2e4966fb48320ee5b862b0009a2037f0c631ccdd60a41091fc",
+        "ordinary_questions": 5,
+        "terminal_stage": "FINAL_RESULT"
+      },
+      "P4": {
+        "PYTHONHASHSEED_values": [
+          1,
+          27,
+          314159
+        ],
+        "actually_exposed_final_candidates": 8,
+        "byte_identical": true,
+        "fixture_scope": "ENGINEERING_REPLAY_OF_RECORDED_A_NOT_INDEPENDENT_REAL_USER_VALIDATION",
+        "full_output_sha256": "0573334d743812d1a890eb4299f6a21be491d95b4328ddd5aca4825aade5ea4f",
+        "ordinary_questions": 6,
+        "terminal_stage": "FINAL_RESULT"
+      }
+    },
+    "folds": [
+      {
+        "changed_expert_percentile_states": 0,
+        "changed_live_features": 0,
+        "evaluation_rows": 8541,
+        "fold": 0,
+        "held_states": 949,
+        "max_raw_residual_roundoff": 0.0,
+        "metric_changes": [],
+        "ranking_changes": []
+      },
+      {
+        "changed_expert_percentile_states": 0,
+        "changed_live_features": 0,
+        "evaluation_rows": 7956,
+        "fold": 1,
+        "held_states": 884,
+        "max_raw_residual_roundoff": 0.0,
+        "metric_changes": [],
+        "ranking_changes": []
+      },
+      {
+        "changed_expert_percentile_states": 0,
+        "changed_live_features": 0,
+        "evaluation_rows": 8190,
+        "fold": 2,
+        "held_states": 910,
+        "max_raw_residual_roundoff": 0.0,
+        "metric_changes": [],
+        "ranking_changes": []
+      }
+    ],
+    "model_weights_unchanged": true,
+    "raw_residual_float_deltas_do_not_automatically_mean_ranking_change": true,
+    "runtime_sha256": "6695cdc998072178f25c376fdf743765bde9dd16cf8b88ce2253339b8685762c",
+    "sorted_residual_feature_order": true
+  },
+  "historical_regression": {
+    "G3_minus_G1": {
+      "P1": {
+        "delta": 0.0,
+        "groups": 17,
+        "paired_group_95_interval": [
+          0.0,
+          0.0
+        ],
+        "scope": "ALREADY_VIEWED_HISTORICAL_REGRESSION_ONLY",
+        "status": "INCONCLUSIVE"
+      },
+      "P4": {
+        "delta": 0.0,
+        "groups": 17,
+        "paired_group_95_interval": [
+          0.0,
+          0.0
+        ],
+        "scope": "ALREADY_VIEWED_HISTORICAL_REGRESSION_ONLY",
+        "status": "INCONCLUSIVE"
+      }
+    },
+    "audit_sha256": "5860b279b048b2ab3c1f217b9442ed84df91a807089329228f32178029256ba7",
+    "groups": 17,
+    "model_sha256": "21d1e90b7a769d10ae0d7ba7b7aa877063f421921d5aac2b8e10e54ae0458791",
+    "model_unchanged": true,
+    "private_trajectory_sha256": "14b5885b7315cff28f346c83fafd425164ec8256dcb320acdab9a1ec10aecedb",
+    "records": 17,
+    "same_budget_endpoints": {
+      "P1": {
+        "B2_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.45715452847805793,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5821136788048552,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G0": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G2": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.44875116713352003,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        }
+      },
+      "P4": {
+        "B2_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.45715452847805793,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5821136788048552,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G0": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G2": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.44875116713352003,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        }
+      }
+    },
+    "scope": "ALREADY_VIEWED_HISTORICAL_REGRESSION; NOT_FRESH_CONFIRMATION; NO_FIT_OR_SELECTION"
+  },
+  "interpretation": "The eligible residual components are not unchanged B2/R1. Their oracle is worse than the original controls; original controls have some retrospective complementarity whose live detectability remains untested. Neither oracle is a deployable policy. All-prefix means are diagnostic.",
+  "isolation": {
+    "audited_expert_fits": 9,
+    "inner_expert_OOF_only_for_router": true,
+    "outer_groups_excluded_from_experts_router_and_scaler": true,
+    "private_audit_sha256": "299df8543d3bd6c523f9b66a96739796e70643e824aee177f3f7bfea4d28df78",
+    "training_held_overlap": 0
+  },
+  "original_control_complementarity": {
+    "P1_endpoint": {
+      "coffee_mean_loss_correlation": 0.9076096806394051,
+      "coffee_mean_registered_threshold_overlap": {
+        "both_gap_above_0.5": 43,
+        "neither_above_0.5": 53,
+        "only_B2_above_0.5": 5,
+        "only_R1_above_0.5": 3
+      },
+      "labelled_coffee_groups": 104,
+      "labelled_record_stage_rows": 106,
+      "oracle_minus_B2": {
+        "delta": -0.025260416666666667,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.04148888221153846,
+          -0.011437299679487188
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "SUPPORTED_IN_DECLARED_SCOPE"
+      },
+      "oracle_minus_R1": {
+        "delta": -0.020352564102564103,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.0370292467948718,
+          -0.006810897435897436
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "SUPPORTED_IN_DECLARED_SCOPE"
+      },
+      "original_B2": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46610958485958487,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "original_R1": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.4612017322954823,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "original_R1_minus_B2": {
+        "delta": -0.004907852564102565,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.027084334935897444,
+          0.01762870592948718
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "INCONCLUSIVE"
+      },
+      "original_oracle": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.4408491681929182,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "paired_record_stage_rows": 211,
+      "record_stage_winner_counts_diagnostic_not_independent_n": {
+        "B2_better": 8,
+        "R1_better": 16,
+        "tie": 82
+      },
+      "residual_pool_comparison": {
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5598300137362637,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5504635989010989,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5527472527472527,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5585813492063493,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5314178876678877,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        }
+      },
+      "unidentifiable_record_stage_rows_retained": 105
+    },
+    "P4_endpoint": {
+      "coffee_mean_loss_correlation": 0.9076096806394051,
+      "coffee_mean_registered_threshold_overlap": {
+        "both_gap_above_0.5": 43,
+        "neither_above_0.5": 53,
+        "only_B2_above_0.5": 5,
+        "only_R1_above_0.5": 3
+      },
+      "labelled_coffee_groups": 104,
+      "labelled_record_stage_rows": 106,
+      "oracle_minus_B2": {
+        "delta": -0.025260416666666667,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.04148888221153846,
+          -0.011437299679487188
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "SUPPORTED_IN_DECLARED_SCOPE"
+      },
+      "oracle_minus_R1": {
+        "delta": -0.020352564102564103,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.0370292467948718,
+          -0.006810897435897436
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "SUPPORTED_IN_DECLARED_SCOPE"
+      },
+      "original_B2": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46610958485958487,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "original_R1": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.4612017322954823,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "original_R1_minus_B2": {
+        "delta": -0.004907852564102565,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.027084334935897444,
+          0.01762870592948718
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "INCONCLUSIVE"
+      },
+      "original_oracle": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.4408491681929182,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 106,
+        "records": 211
+      },
+      "paired_record_stage_rows": 211,
+      "record_stage_winner_counts_diagnostic_not_independent_n": {
+        "B2_better": 8,
+        "R1_better": 16,
+        "tie": 82
+      },
+      "residual_pool_comparison": {
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5606312957875458,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5512648809523809,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5535485347985347,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5593826312576313,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5322191697191697,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        }
+      },
+      "unidentifiable_record_stage_rows_retained": 105
+    },
+    "all_prefixes_diagnostic": {
+      "coffee_mean_loss_correlation": 0.9796624035079179,
+      "coffee_mean_registered_threshold_overlap": {
+        "both_gap_above_0.5": 46,
+        "neither_above_0.5": 54,
+        "only_B2_above_0.5": 2,
+        "only_R1_above_0.5": 2
+      },
+      "labelled_coffee_groups": 104,
+      "labelled_record_stage_rows": 1378,
+      "oracle_minus_B2": {
+        "delta": -0.014625818892645815,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.02226132691427163,
+          -0.007682445759368844
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "SUPPORTED_IN_DECLARED_SCOPE"
+      },
+      "oracle_minus_R1": {
+        "delta": -0.010339620315581853,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.01815782174556213,
+          -0.004085074580867857
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "SUPPORTED_IN_DECLARED_SCOPE"
+      },
+      "original_B2": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46610958485958487,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "original_R1": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.46182338628252084,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "original_R1_minus_B2": {
+        "delta": -0.0042861985770639615,
+        "groups": 104,
+        "paired_group_95_interval": [
+          -0.014773604800648075,
+          0.006414224297337267
+        ],
+        "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+        "status": "INCONCLUSIVE"
+      },
+      "original_oracle": {
+        "full_coverage_denominator_retained": true,
+        "group_macro_mean": 0.451483765966939,
+        "groups": 187,
+        "labelled_groups": 104,
+        "labelled_records": 1378,
+        "records": 2743
+      },
+      "paired_record_stage_rows": 2743,
+      "record_stage_winner_counts_diagnostic_not_independent_n": {
+        "B2_better": 62,
+        "R1_better": 146,
+        "tie": 1170
+      },
+      "residual_pool_comparison": {
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5415490425706773,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 1378,
+          "records": 2743
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5374614034469805,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 1378,
+          "records": 2743
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5392457969381046,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 1378,
+          "records": 2743
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5402865830750446,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 1378,
+          "records": 2743
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5296511047712971,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 1378,
+          "records": 2743
+        }
+      },
+      "unidentifiable_record_stage_rows_retained": 1365
+    },
+    "interpretation": {
+      "constrained_residual_pool": "ORACLE_REMAINS_WORSE_THAN_EITHER_ORIGINAL_CONTROL;POOL_ADAPTATION_LOSS_MUST_NOT_BE_GENERALIZED_TO_ALL_ORIGINAL_MODELS",
+      "oracle_status_values": "DESCRIBE_PAIRED_RETROSPECTIVE_CEILING_ONLY_NEVER_PRODUCT_OR_DEPLOYABLE_COORDINATION_SUCCESS",
+      "original_models": "SMALL_RETROSPECTIVE_ERROR_COMPLEMENTARITY_PRESENT;LIVE_STATE_IDENTIFIABILITY_NOT_TESTED",
+      "parameters_or_pool_changed": false
+    },
+    "oracle_use": "RETROSPECTIVE_DIAGNOSTIC_UPPER_BOUND_NOT_ROUTING_FEATURE_OR_DEPLOYABLE_POLICY",
+    "scope": "EXISTING_FROZEN_ORIGINAL_CONTROL_ROWS_ONLY_NO_REFIT_NO_SELECTION_CHANGE",
+    "task": "COMMON_FINE_HIDDEN_T_RECOVERY_GAP"
+  },
+  "primary_dynamic_contrast": {
+    "delta": 0.0022836538461538454,
+    "groups": 104,
+    "paired_group_95_interval": [
+      0.0,
+      0.006850961538461537
+    ],
+    "scope": "NESTED_DEVELOPMENT_RECORD_PROXY; NOT_REAL_USER_EFFICACY",
+    "status": "INCONCLUSIVE"
+  },
+  "same_budget_endpoints": {
+    "P1": {
+      "B2_ORIGINAL_CONTROL": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.4928428342490842,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.46610958485958487,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "B2_TYPED_PRIOR_COMPONENT": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5904132326007326,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5598300137362637,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G0": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5976247710622711,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5568252060439561,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G1": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.590738514957265,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5504635989010989,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G2": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.590738514957265,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5504635989010989,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G3": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5901375534188035,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5527472527472527,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.7905563186813188,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.4612017322954823,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "M2_R1_FINAL_FIXED_RESIDUAL": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.6014470772283272,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5585813492063493,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5789797008547009,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5314178876678877,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 19.668449197860962,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 5.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 66,
+          "labelled_records": 67,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      }
+    },
+    "P4": {
+      "B2_ORIGINAL_CONTROL": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.4992931547619047,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.46610958485958487,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "B2_TYPED_PRIOR_COMPONENT": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5944597069597071,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5606312957875458,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G0": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.6016712454212455,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5576264880952381,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G1": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5947849893162394,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5512648809523809,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G2": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5947849893162394,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5512648809523809,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "G3": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5941840277777778,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5535485347985347,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.7827438186813188,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.4612017322954823,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "M2_R1_FINAL_FIXED_RESIDUAL": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.604051243894994,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5593826312576313,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      },
+      "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+        "actual_top5_alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5830261752136752,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "alignment": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5322191697191697,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "candidate_target_coverage": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.980303724053724,
+          "groups": 187,
+          "labelled_groups": 104,
+          "labelled_records": 106,
+          "records": 211
+        },
+        "cost": {
+          "final_comparison_candidates": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 0.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_options": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 23.336898395721924,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          },
+          "ordinary_questions": {
+            "full_coverage_denominator_retained": true,
+            "group_macro_mean": 6.0,
+            "groups": 187,
+            "labelled_groups": 187,
+            "labelled_records": 211,
+            "records": 211
+          }
+        },
+        "direct_retention5": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.0,
+          "groups": 187,
+          "labelled_groups": 69,
+          "labelled_records": 70,
+          "records": 211
+        },
+        "fine_target_count": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 1.8823529411764706,
+          "groups": 187,
+          "labelled_groups": 187,
+          "labelled_records": 211,
+          "records": 211
+        },
+        "human_response_seconds": null,
+        "output_coverage": 1.0
+      }
+    }
+  }
+}

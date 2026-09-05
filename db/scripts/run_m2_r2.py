@@ -288,9 +288,93 @@ def freeze(owner):
     return contract
 
 
+def freeze_increment(owner):
+    """Register source-specific new-data tasks without editing the main contract."""
+    from profile_increment_r2 import increment_protocol
+
+    verify_frozen(owner)
+    private = owner / "revisions/r2"
+    path = OUT / "data_increment_experiment_contract.json"
+    source_names = [
+        "liberica_rata_records.private.json",
+        "barahona_ordinal_means.private.json",
+    ]
+    source_hashes = {name: sha(private / name) for name in source_names}
+    if path.exists():
+        existing = read(path)
+        if (
+            existing["source_sha256"] != source_hashes
+            or existing["profiles_increment"] != increment_protocol()
+        ):
+            raise ValueError("FROZEN_INCREMENT_DATA_OR_PROTOCOL_CHANGED")
+        if sha(path) != sha(private / "data_increment_experiment_contract.frozen.json"):
+            raise ValueError("FROZEN_INCREMENT_CONTRACT_CHANGED")
+        return existing
+    contract = {
+        "registered_utc": now(),
+        "code_baseline_sha": subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+        ).strip(),
+        "main_contract_sha256": sha(OUT / "objective_and_metric_contract.json"),
+        "source_sha256": source_hashes,
+        "profiles_increment": increment_protocol(),
+        "interpretation": "Two new source-native response tasks with preallocated confirmation; no cross-source scale pooling or claim of D0/D1 descriptor-ranking data-size effect",
+        "source_masks": "Liberica zero is an observed nominal category; Barahona published source category means are neither individual observations nor professional truth",
+        "fresh_confirmation": "Each source's preassigned held identities excluded from every fit; evaluate once after freezing parameters and preserve viewed status thereafter",
+        "default": "B2_UNCHANGED; NO_AUTOMATIC_RUNTIME_PROMOTION",
+    }
+    save(path, contract)
+    private_save(private / "data_increment_experiment_contract.frozen.json", contract)
+    print("R2_INCREMENT_PROTOCOL_FROZEN_FOR_TWO_SOURCE_TASKS")
+    return contract
+
+
+def freeze_learning_curve(owner):
+    from profile_increment_r2 import learning_curve_protocol
+
+    freeze_increment(owner)
+    private = owner / "revisions/r2"
+    path = OUT / "data_increment_learning_curve_contract.json"
+    fields = {
+        "profiles_learning_curve": learning_curve_protocol(),
+        "source_sha256": sha(private / "barahona_ordinal_means.private.json"),
+        "parent_increment_contract_sha256": sha(
+            OUT / "data_increment_experiment_contract.json"
+        ),
+    }
+    if path.exists():
+        value = read(path)
+        if any(value[k] != v for k, v in fields.items()):
+            raise ValueError("FROZEN_LEARNING_CURVE_CONTROL_CHANGED")
+        if sha(path) != sha(
+            private / "data_increment_learning_curve_contract.frozen.json"
+        ):
+            raise ValueError("LEARNING_CURVE_CONTRACT_HASH_CHANGED")
+        return value
+    value = {
+        **fields,
+        "registered_utc": now(),
+        "registration_scope": "Before any new-source model fit or confirmation result inspection",
+        "purpose": "Isolate added training products under the same source, input views, targets, mask, ridge and held cases; not a pooled D0/D1 descriptor-model effect",
+    }
+    save(path, value)
+    private_save(private / "data_increment_learning_curve_contract.frozen.json", value)
+    print("R2_WITHIN_SOURCE_TRAINING_INCREMENT_CONTROL_FROZEN")
+    return value
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--owner-dir", type=Path, required=True)
-    parser.add_argument("--phase", choices=["freeze", "verify"], default="freeze")
+    parser.add_argument(
+        "--phase",
+        choices=["freeze", "verify", "freeze-increment", "freeze-learning-curve"],
+        default="freeze",
+    )
     args = parser.parse_args()
-    (freeze if args.phase == "freeze" else verify_frozen)(args.owner_dir)
+    {
+        "freeze": freeze,
+        "verify": verify_frozen,
+        "freeze-increment": freeze_increment,
+        "freeze-learning-curve": freeze_learning_curve,
+    }[args.phase](args.owner_dir)

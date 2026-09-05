@@ -1,7 +1,155 @@
 {
+  "actual_fit_accounting": {
+    "counting_note": "Component bundle, target-head and router fit counts are different units; not summed into an inflated model total",
+    "native_profiles": {
+      "all_saved_hashes_verified": true,
+      "binary_logistic_target_fits": 1496,
+      "bundle_fits": 132,
+      "individual_target_fits": 2024,
+      "native_linear_target_fits": 528,
+      "outer_inner_identity_overlap": 0,
+      "rerun_reuses_retained_results_without_fitting": true,
+      "retained_models": 24,
+      "unit_tests": 8
+    },
+    "new_nested_inner_R1_expert_fits": 6,
+    "new_source_bundle_fits": 15,
+    "new_source_target_fits": 126,
+    "reused_outer_R1_experts": 3,
+    "router_fits": {
+      "all_development_research": 1,
+      "nested_outer": 3,
+      "total": 4
+    }
+  },
   "baseline_sha": "8c41e89214229c56849f04efaf61162c38b757d2",
+  "code_parent_commit_at_seal": "7b870828dd47c5619eaf11f113865894cf136f29",
+  "code_sha256": {
+    "db/scripts/acquire_m2_r2.py": "2c55d859f4c1c69aeb8cf991d6bed8edb925f07ba38947da301b1c984f541579",
+    "db/scripts/alignment_metrics_r2.py": "eae6fd3e2d5c6f0dba7823f565d498e4d69eb02ecfd54e33b17d8fbfb9ca402f",
+    "db/scripts/evaluate_alignment_baselines_r2.py": "76df5c2f7bcba99fc19f75ac00ebee7baca3844f712efa7808dea9291d81fbcf",
+    "db/scripts/evaluate_alignment_cost_r2.py": "7e01b1855e5ba466c2c3e2e5d1a00094868b8c617aa3ecfd3f8d8e07aec81b9b",
+    "db/scripts/evaluate_coordination_history_r2.py": "79c8225dc406202c06e7938667eeeaab70bdf9bc3ac7dd7325ab24627494c30b",
+    "db/scripts/flavor_coordination_r2.py": "6695cdc998072178f25c376fdf743765bde9dd16cf8b88ce2253339b8685762c",
+    "db/scripts/profile_alignment_r2.py": "902da3c29e2447048704ce7307c9f422bfd2559011ed7d2220ba78605bd40af7",
+    "db/scripts/profile_increment_r2.py": "fea388a3cbdd1c82ca6a66908f98465ebffa1b03e4eb7fe3117a894c05d2e25c",
+    "db/scripts/run_m2_r2.py": "3a0e40881e6cc6f2724817f4f1ff03ea27010e99e668e01579c9975976985f18",
+    "db/scripts/seal_m2_r2.py": "be15ff81f9dffef2c7c673e3f8ed9f496b3c4e7fd095363f8344f89287e2c5e8",
+    "db/scripts/train_coordination_r2.py": "7c08b5acf37f907653328a51c11a3e4d893b222207bf6cf2aef3e9fdc6455734",
+    "db/tests/test_alignment_cost_r2.py": "9e1cec13cf7033015e06be059787b9e17514f4b5072bc94506d4425533d7a3ca",
+    "db/tests/test_alignment_metrics_r2.py": "d81a811db6083c506301516d2d8655a56c4eafea7427a6364ef958b5642bc9f9",
+    "db/tests/test_coordination_r2.py": "8e1fd52f4ed04fe300978787f31887f95e92703f2033e9d4475a5a2feac53175",
+    "db/tests/test_profile_alignment_r2.py": "15ca2b7870d2ab8535db3601b2a4cbf8f6fe0d1761abf8409b51c82921d05479",
+    "db/tests/test_profile_increment_r2.py": "6a541cd8156655a6a6be787d0d7f4d367ace8d7309a36084050ddc3d66d86ec4",
+    "db/tests/test_r2_public_artifacts.py": "d02c8ae1c21a70a128fb3d6e458e38b2fd65b6ac0d06afb0189d7f43b1cfaa08"
+  },
   "contract_sha256": "4538db4be85e5d33a3a6b7db004c2f54c53a9783177d525c689ea96d252507ba",
+  "data_acquired": {
+    "actual_product_question_response_times": 0,
+    "additional_coffees_from_sorting": 0,
+    "admitted_expression_groups": 619,
+    "admitted_measurement_adapters": 4,
+    "anonymous_product_groups": 18,
+    "clean_expression_recording_durations": 616,
+    "clean_unpaired_expression_groups": 3,
+    "complete_clean_smell_taste_pairs": 308,
+    "consumer_product_mean_cells": 126,
+    "consumer_product_mean_records": 18,
+    "design_expression_groups_if_complete_63x5x2": 630,
+    "distinct_sorting_coffee_pairs": 10,
+    "inconsistent_expression_timing_records": 3,
+    "independent_sorting_participants": 20,
+    "liberica_material_lots": "UNDOCUMENTED_NOT_COUNTED_AS_NINE_COFFEES",
+    "liberica_observed_categorical_cells": 2250,
+    "liberica_participant_condition_records": 225,
+    "liberica_treatment_conditions": 9,
+    "new_admitted_source_families": 3,
+    "new_complete_production_C0_C1_joint_groups": 0,
+    "new_professional_intensity_profile_groups": 0,
+    "professional_source_expressions": 197,
+    "quarantined_expression_groups": 8,
+    "quarantined_participant_coffee_pairs": 4,
+    "raw_expression_groups": 627,
+    "single_estate_coffee_identities": 5,
+    "sorting_distances": 200,
+    "source_defined_coffee_product_groups": 23,
+    "traceable_independent_green_lots": null,
+    "unrecorded_design_expression_groups": 3
+  },
+  "data_trained": {
+    "barahona": "14 development product means; four once-only confirmation products; fixed half/full training-size control",
+    "croijmans": "ADMITTED_REFERENCE_ONLY; no language or distance model fitted",
+    "liberica": "184 development observations (23 people x 8 conditions); 41 once-only held observations across three declared slices"
+  },
   "default": "B2_UNCHANGED",
+  "engineering_parity": {
+    "all_held_states": 2743,
+    "all_model_rows": 24687,
+    "cross_process_cli": {
+      "P1": {
+        "PYTHONHASHSEED_values": [
+          1,
+          27,
+          314159
+        ],
+        "actually_exposed_final_candidates": 8,
+        "byte_identical": true,
+        "fixture_scope": "ENGINEERING_REPLAY_OF_RECORDED_A_NOT_INDEPENDENT_REAL_USER_VALIDATION",
+        "full_output_sha256": "999d1a30b6d71b2e4966fb48320ee5b862b0009a2037f0c631ccdd60a41091fc",
+        "ordinary_questions": 5,
+        "terminal_stage": "FINAL_RESULT"
+      },
+      "P4": {
+        "PYTHONHASHSEED_values": [
+          1,
+          27,
+          314159
+        ],
+        "actually_exposed_final_candidates": 8,
+        "byte_identical": true,
+        "fixture_scope": "ENGINEERING_REPLAY_OF_RECORDED_A_NOT_INDEPENDENT_REAL_USER_VALIDATION",
+        "full_output_sha256": "0573334d743812d1a890eb4299f6a21be491d95b4328ddd5aca4825aade5ea4f",
+        "ordinary_questions": 6,
+        "terminal_stage": "FINAL_RESULT"
+      }
+    },
+    "folds": [
+      {
+        "changed_expert_percentile_states": 0,
+        "changed_live_features": 0,
+        "evaluation_rows": 8541,
+        "fold": 0,
+        "held_states": 949,
+        "max_raw_residual_roundoff": 0.0,
+        "metric_changes": [],
+        "ranking_changes": []
+      },
+      {
+        "changed_expert_percentile_states": 0,
+        "changed_live_features": 0,
+        "evaluation_rows": 7956,
+        "fold": 1,
+        "held_states": 884,
+        "max_raw_residual_roundoff": 0.0,
+        "metric_changes": [],
+        "ranking_changes": []
+      },
+      {
+        "changed_expert_percentile_states": 0,
+        "changed_live_features": 0,
+        "evaluation_rows": 8190,
+        "fold": 2,
+        "held_states": 910,
+        "max_raw_residual_roundoff": 0.0,
+        "metric_changes": [],
+        "ranking_changes": []
+      }
+    ],
+    "model_weights_unchanged": true,
+    "raw_residual_float_deltas_do_not_automatically_mean_ranking_change": true,
+    "runtime_sha256": "6695cdc998072178f25c376fdf743765bde9dd16cf8b88ce2253339b8685762c",
+    "sorted_residual_feature_order": true
+  },
   "experiment_id": "M2_R2_PERCEPTUAL_ALIGNMENT_INFORMATION_EFFICIENCY",
   "first_validation": {
     "frozen_prior_files": 247,
@@ -9,19 +157,571 @@
     "new_metric_tests_passed": 6,
     "old_R1_untouched": true
   },
+  "foundation_check": "OFF",
+  "historical_coordinator_regression": {
+    "G3_minus_G1": {
+      "P1": {
+        "delta": 0.0,
+        "groups": 17,
+        "paired_group_95_interval": [
+          0.0,
+          0.0
+        ],
+        "scope": "ALREADY_VIEWED_HISTORICAL_REGRESSION_ONLY",
+        "status": "INCONCLUSIVE"
+      },
+      "P4": {
+        "delta": 0.0,
+        "groups": 17,
+        "paired_group_95_interval": [
+          0.0,
+          0.0
+        ],
+        "scope": "ALREADY_VIEWED_HISTORICAL_REGRESSION_ONLY",
+        "status": "INCONCLUSIVE"
+      }
+    },
+    "audit_sha256": "5860b279b048b2ab3c1f217b9442ed84df91a807089329228f32178029256ba7",
+    "groups": 17,
+    "model_sha256": "21d1e90b7a769d10ae0d7ba7b7aa877063f421921d5aac2b8e10e54ae0458791",
+    "model_unchanged": true,
+    "private_trajectory_sha256": "14b5885b7315cff28f346c83fafd425164ec8256dcb320acdab9a1ec10aecedb",
+    "records": 17,
+    "same_budget_endpoints": {
+      "P1": {
+        "B2_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.45715452847805793,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5821136788048552,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G0": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G2": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.44875116713352003,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        }
+      },
+      "P4": {
+        "B2_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.45715452847805793,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "B2_TYPED_PRIOR_COMPONENT": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5821136788048552,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G0": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G1": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G2": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "G3": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5674077964519141,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_ORIGINAL_CONTROL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.44875116713352003,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "M2_R1_FINAL_FIXED_RESIDUAL": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        },
+        "ORACLE_DIAGNOSTIC_UPPER_BOUND_NOT_DEPLOYABLE": {
+          "full_coverage_denominator_retained": true,
+          "group_macro_mean": 0.5590044351073763,
+          "groups": 17,
+          "labelled_groups": 17,
+          "labelled_records": 17,
+          "records": 17
+        }
+      }
+    },
+    "scope": "ALREADY_VIEWED_HISTORICAL_REGRESSION; NOT_FRESH_CONFIRMATION; NO_FIT_OR_SELECTION"
+  },
   "human_comparison_cases": {
     "count": 20,
     "originals_preserved": true,
-    "path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2/human_comparison_cases_r2.private.json",
+    "path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/human_comparison_cases_r2.private.json",
     "real_judgments": 0,
     "real_times": 0
   },
-  "native_profile_summary_private_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2/profiles_public_summary.private.json",
+  "model_inventory": [
+    {
+      "private_relative_path": "models/R2_COORDINATOR_ALL_DEVELOPMENT.model.json",
+      "sha256": "21d1e90b7a769d10ae0d7ba7b7aa877063f421921d5aac2b8e10e54ae0458791"
+    },
+    {
+      "private_relative_path": "models/R2_COORDINATOR_outer0.model.json",
+      "sha256": "50eb3ce09f28dac536cdc945d4f49f1d76da11bb07aadbaf77eedfc25c7a570f"
+    },
+    {
+      "private_relative_path": "models/R2_COORDINATOR_outer1.model.json",
+      "sha256": "e61c529a7251667660eec0e47ad10ed6851cfe15208a1ac348d9899e6db261a8"
+    },
+    {
+      "private_relative_path": "models/R2_COORDINATOR_outer2.model.json",
+      "sha256": "acf6904a85c8779b164f35faba2727a0f4402eadab50fbedbc7caa03d19d424c"
+    },
+    {
+      "private_relative_path": "models/R2_R1_EXPERT_outer0_inner0.model.json",
+      "sha256": "74324ed7853961f880da1dd4d53ce51d7cb6dfe1d870ccce7326fbfe986bb99f"
+    },
+    {
+      "private_relative_path": "models/R2_R1_EXPERT_outer0_inner1.model.json",
+      "sha256": "d2ed7ca507a7965040782565fe878bdd5935eab4d43a16227525270b8d48b83c"
+    },
+    {
+      "private_relative_path": "models/R2_R1_EXPERT_outer1_inner0.model.json",
+      "sha256": "17ea3c785b6dbee875f7b268b956e698abc860daa7e167cf6b47e0ec20809e63"
+    },
+    {
+      "private_relative_path": "models/R2_R1_EXPERT_outer1_inner1.model.json",
+      "sha256": "1190f7cd4a51ae0abeacb89d81423e06c0db88f4df8a320355badc1783cd9569"
+    },
+    {
+      "private_relative_path": "models/R2_R1_EXPERT_outer2_inner0.model.json",
+      "sha256": "2f03c535ec743b8fb177a0919eac96ddc0ee8265c7a4fbf5dbc25265b14b1b51"
+    },
+    {
+      "private_relative_path": "models/R2_R1_EXPERT_outer2_inner1.model.json",
+      "sha256": "282e317161ef2c09be1a52d78f816b54fbcd455ad59907eac810219764f567e2"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_final_fixed.model.json",
+      "sha256": "b62ec9b3e348c185e3e8ee090ba2296d2b1921af81284b2a4751a59827361390"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_final_selected.model.json",
+      "sha256": "b4a501643147a8b9bd69700a6ccb53d67b9203aee995929ef405b79e9fae1fe8"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_fold0_fixed.model.json",
+      "sha256": "d9854d0b57fc5f182193ca8218922f3d943340f4ecd0a6d8b1d87ec85074d17c"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_fold0_selected.model.json",
+      "sha256": "6b254f937650b79750816ee43aaa25a88cc920b8bda6f45ce47bb8e010d05e6e"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_fold1_fixed.model.json",
+      "sha256": "056bca9e04f7413c263cf989b2d8d8fccc9cf286f39606e0b9a6c407916ca620"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_fold1_selected.model.json",
+      "sha256": "62d28189b782f9dde661fc00dfb154bef93d0c350aa79a371fdd20f5b36b8f60"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_fold2_fixed.model.json",
+      "sha256": "e0e27c398126db757bf0f347715b81d1e5b47acb5a18e964a7637d7f0aab680a"
+    },
+    {
+      "private_relative_path": "profiles_cotter_brew_condition_fold2_selected.model.json",
+      "sha256": "35b94503cb9ce598078caae955d80fd1b6b546a6bff27ff60b1e56ed592aa586"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_final_fixed.model.json",
+      "sha256": "b62ec9b3e348c185e3e8ee090ba2296d2b1921af81284b2a4751a59827361390"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_final_selected.model.json",
+      "sha256": "b4a501643147a8b9bd69700a6ccb53d67b9203aee995929ef405b79e9fae1fe8"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_fold0_fixed.model.json",
+      "sha256": "ca8b07a9c471e6216a478692df863d8b1ea6aeb8f142f4712c89a02e4a63c9db"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_fold0_selected.model.json",
+      "sha256": "35deb0e74b89e07832bacbb704c70cf2d1677f11d7a28574678b2eec6c70fe89"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_fold1_fixed.model.json",
+      "sha256": "bbb4086162384c84b1d2ab7658ed32b97bd8e892b2b3d0678d8479b01c328d10"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_fold1_selected.model.json",
+      "sha256": "5e7947f327aa78b8554c8decb0cb45f921f74126fd200a20c298662b57fc0163"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_fold2_fixed.model.json",
+      "sha256": "9c7f499da9a479007c839ee8fbbb4948cbb3b4356d4fc1617b4d174bee48600b"
+    },
+    {
+      "private_relative_path": "profiles_cotter_judge_fold2_selected.model.json",
+      "sha256": "3701a1f21f9ebeb97d68e7881579de927c9f5b2c75dcd3e8807f1fe415264959"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_final.model.json",
+      "sha256": "5ec56092922425466f7658116604e5d31c5b4696d64bec9a01dd6318782a278b"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_fold0.model.json",
+      "sha256": "031c27969c0ccdeae4f0f466dcaab17716708dd3b2fa100debda15cfce1b0232"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_fold1.model.json",
+      "sha256": "564233711fc76c6a7211f3430a99cd0a127b89abee75591700b30e258525575a"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_fold2.model.json",
+      "sha256": "b63cfb3a50fc7517c7d4c08af51c969f96a677628c0c8d87570f88140677411a"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_half_final.model.json",
+      "sha256": "e36a21ff5960e6ac107fada9ed2f48c178d23877c235a1a29acc2abfcf3c046a"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_half_fold0.model.json",
+      "sha256": "4586b9fe3a01120a5d9e7c9e1b412aef666b829f69cc29016bd0e7ebbd27e024"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_half_fold1.model.json",
+      "sha256": "b460343dca5cba6f21c5d43874395f38a26f3e582e6b3bde496cbc80f762009c"
+    },
+    {
+      "private_relative_path": "profiles_increment_barahona_half_fold2.model.json",
+      "sha256": "cb1027a5c0386b6930645d3f415f501a3a4754787ef7398a15b1407ada8a1088"
+    },
+    {
+      "private_relative_path": "profiles_increment_condition_id_fold0.model.json",
+      "sha256": "b65f00a8b2cf13c5bbf76e6e06ee374282f526d38f0186ae0b95975b96a39669"
+    },
+    {
+      "private_relative_path": "profiles_increment_condition_id_fold1.model.json",
+      "sha256": "2bec83a0631895a14a1622ea9823b3d6d3b4b8392caeffe242293c6ca91a068b"
+    },
+    {
+      "private_relative_path": "profiles_increment_condition_id_fold2.model.json",
+      "sha256": "36beef94da95dd478d828f17c2214255cd2774b1417b8148b97bd962a05b3b05"
+    },
+    {
+      "private_relative_path": "profiles_increment_final.model.json",
+      "sha256": "49f486228c0ef1e04cfa07ca36120c1992465e6964008ec42bd37dfff91e93c6"
+    },
+    {
+      "private_relative_path": "profiles_increment_participant_id_fold0.model.json",
+      "sha256": "631ab33de3de3492d6c5ac7d4ca64e39deb343b92e42a75eca60450d45621417"
+    },
+    {
+      "private_relative_path": "profiles_increment_participant_id_fold1.model.json",
+      "sha256": "84dac8e6b9c20f8a0db196b6c471fac3ed029dfdc0e8205760f6950e01c0e08f"
+    },
+    {
+      "private_relative_path": "profiles_increment_participant_id_fold2.model.json",
+      "sha256": "86b2959759dd74165c31984bb4b9b548d0fa7d89b4f0a3e81dc765c3860dbd59"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_final_fixed.model.json",
+      "sha256": "5b814ca70b968f512904910b55eb4629984dd5a41465cabcc18d9e15d1e80713"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_final_selected.model.json",
+      "sha256": "13f6b24dfda6c05966337cb774c44bc60fb1097b20c220b0d3583c228121f7eb"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_fold0_fixed.model.json",
+      "sha256": "f81ef0b035cd7716400196c6a9a8dc500e1f4555d7987284817b215277250ef6"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_fold0_selected.model.json",
+      "sha256": "d0205614dac2bc7d99c0acebe675f121324febda5a3350e6d6484f2c56be186a"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_fold1_fixed.model.json",
+      "sha256": "9aeae82675d561afd7a1a17bf097f551adaa527303bcd1d688f8dddb83dceb02"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_fold1_selected.model.json",
+      "sha256": "375ba773662085e444bab94e80fffe216921beb26883a93ea3dd8717c68c4d23"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_fold2_fixed.model.json",
+      "sha256": "40f44ca081c0b215af9a5c23a325d480133fcd45d9fcdc6af569001742189ab7"
+    },
+    {
+      "private_relative_path": "profiles_rocchetti_fold2_selected.model.json",
+      "sha256": "3cccca8f636f36718d097fd428740c6055e369a5e6816df6154a2d0c405b1b6d"
+    }
+  ],
+  "native_profile_summary_private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/profiles_public_summary.private.json",
   "native_profile_summary_sha256": "891870d3dc904418d47821fa5847fdd954838da5c57e59790189c0027cd1d513",
+  "new_model_disposition": "RESEARCH_ONLY; NO_RUNTIME_DEFAULT_OR_PUBLIC_WEIGHT_PROMOTION",
+  "new_retained_model_count": 49,
+  "new_search_directions": 12,
   "old_results_reinterpreted": false,
-  "private_root": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r2",
+  "prior_immutable_files_verified": 247,
+  "private_root": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2",
+  "private_source_summary_hashes": {
+    "coordination_summary.private.json": "f0af9a705d9687edcd866efe7db8d4ed733687645103208e8b71869aaffc6828",
+    "original_complementarity.private.json": "37062e01ede1d16a8c588ffbad3094af9b0f9e5a2ab480fa0ff37539a7e1fe97",
+    "profiles_increment_public_summary.private.json": "089bc3e6334e5525d8d86cd8201b9d5742871f524fc3b1e6eb222247b6473622",
+    "profiles_public_summary.private.json": "891870d3dc904418d47821fa5847fdd954838da5c57e59790189c0027cd1d513",
+    "residual_order_parity.private.json": "6de9c3c828c98a1fec9ef86570c62642f73b5388973a0b4dde21ab656d5b81ba"
+  },
+  "public_artifact_sha256": {
+    "alignment_cost_results.json": "01470fbaaa363d432692941aff205c343dcebddcc3689f61e30722c430e86bbb",
+    "data_increment_experiment_contract.json": "c3ea74764d18baf2603a4be1b685e1123265ad62dc12823a1a8b2f39d3c4bee9",
+    "data_increment_learning_curve_contract.json": "08bfb2c212decd850a9f57ffa21332e0343f18239142d2ce091a31b07894adec",
+    "data_increment_manifest.json": "fec6e5eef303b560000b120726299ce89875018c06d3aea626b2cea54f077d14",
+    "error_analysis.json": "bad57abe315b723c6e0b50d724e9af8ea6701b063532768068a710d1a797bc95",
+    "expert_registry.json": "35770a5f5613b9ed9ecb26d3d065b018e8d949052c463e53c5280bf5d6f9126e",
+    "objective_and_metric_contract.json": "4538db4be85e5d33a3a6b7db004c2f54c53a9783177d525c689ea96d252507ba",
+    "oof_expert_results.json": "0cda4002225d88c41a6f5730b924152998a165c97f7929a2f12f0883c3085820",
+    "paper_to_experiment.tsv": "3fadfaffa199d1ea72d6487dd7b945cb19838fa8eee0b9768dbd4383a8c1a72f",
+    "router_config.json": "523cd99d0b87cafdac8330363fdbc16a6162e54a74cb5f81277b9c456479b08b"
+  },
   "real_user_alignment": "NOT_EVALUATED",
   "real_user_time_efficiency": "NOT_EVALUATED",
   "registered_utc": "2026-09-05T13:25:10.626093+00:00",
-  "status": "NATIVE_PROFILE_FITS_COMPLETE; COORDINATION_AND_DATA_WORK_ACTIVE"
+  "reporting_categories": {
+    "DATA_EXPANSION_CONTRIBUTION": {
+      "scope": "Fixed-model within-Barahona development training-product increment only; four-product confirmation reverses direction and is inconclusive; old M2 pooled D0/D1 effect not estimable",
+      "status": "SUPPORTED_IN_DECLARED_SCOPE"
+    },
+    "DYNAMIC_COORDINATION_GAIN": {
+      "scope": "G3 minus G1 P1 gap is positive; no observed improvement and no promotion",
+      "status": "INCONCLUSIVE"
+    },
+    "MECHANISM_VALIDATION": {
+      "scope": "Nested OOF isolation, deterministic semantic deduplication, legal final feedback and source-native cross-view predictability; not global product efficacy",
+      "status": "SUPPORTED_IN_DECLARED_SCOPE"
+    },
+    "OBSERVED_DESCRIPTOR_RECOVERY": {
+      "scope": "Original R1 versus B2 fine-gap difference inconclusive; R2 restricted coordinator is worse than both original controls; R1 NDCG regression preserved",
+      "status": "INCONCLUSIVE"
+    },
+    "PROFESSIONAL_PROFILE_ALIGNMENT": {
+      "scope": "Rocchetti 38-product development OOF source-code profile MAE; historical nine-product result inconclusive",
+      "status": "SUPPORTED_IN_DECLARED_SCOPE"
+    },
+    "PROXY_INFORMATION_EFFICIENCY": {
+      "scope": "PROXY_INFORMATION_BUDGET_GAIN for G3 existing P1 versus P4 closure, frozen 0.02 margin, same labelled cohort; coordinator itself is not promoted",
+      "status": "SUPPORTED_IN_DECLARED_SCOPE"
+    },
+    "REAL_USER_ALIGNMENT": {
+      "scope": "No actual system-user independent judgments",
+      "status": "NOT_EVALUATED"
+    },
+    "REAL_USER_TIME_EFFICIENCY": {
+      "scope": "No actual product session times",
+      "status": "NOT_EVALUATED"
+    },
+    "RESPONSE_MODEL_GAIN": {
+      "scope": "Cotter held-person/condition CATA and new Liberica/Barahona source-native development tasks; small new confirmation results mixed and not established",
+      "status": "SUPPORTED_IN_DECLARED_SCOPE"
+    }
+  },
+  "runtime_versions": {
+    "lxml": "6.1.3",
+    "numpy": "2.5.2",
+    "openpyxl": "3.1.5",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.6.0"
+  },
+  "sealed_utc": "2026-09-05T14:18:56.197247+00:00",
+  "source_work_block": {
+    "elapsed_minutes": 34.55,
+    "ended_utc": "2026-09-05T13:54:21.862402+00:00",
+    "started_utc": "2026-09-05T13:19:48.807043+00:00",
+    "status": "COMPLETE",
+    "stop_reason": "Completed three new licensed data sources including actual multi-coffee paired language and independent perceptual distances; closed already-open routes after inspecting their actual attachments. No idle wait or quota-driven unusable samples.",
+    "timestamp_basis": "Exact earliest acquired source-file timestamp; preparatory reading/search began earlier, approximately13:15UTC and is not included in measured acquisition elapsed time."
+  },
+  "status": "COMPLETE_LOCAL_RESEARCH",
+  "validation": {
+    "R2_adapter_replay": "PASS:four exact frozen adapter byte hashes; current formatted parser recorded in manifest",
+    "application_checks": {
+      "npm run build": "PASS",
+      "npm run check": "PASS",
+      "npm run format:check": "PASS",
+      "npm run test": "PASS:34",
+      "npm run test:smoke": "PASS:15;390/768/1440px"
+    },
+    "backend_scope_check": "PASS:22 staged R2 files; zero staged deletions; no frontend or CI edits",
+    "black_check": "PASS:17 R2 Python files",
+    "candidate_export_directory": "/private/tmp/coffee-m2-r2-validation-20260906",
+    "candidate_scope": "git archive of 7b870828dd47c5619eaf11f113865894cf136f29 plus exact R2 code/data/registry overlay; final receipt validation metadata appended after checks",
+    "candidate_validation_status": "PASS",
+    "completed_utc": "2026-09-05T14:18:53.954693+00:00",
+    "environment_notes": [
+      "Existing Node22.21.0 emits a React Router >22.22.0 version warning; type/build/smoke completed successfully. No dependency changes.",
+      "Initial sandbox build could not bind local preview port (EPERM); authorized localhost rerun passed."
+    ],
+    "final_review": {
+      "public_projection": "PASS:owner-relative references in new summaries; original frozen objective contract bytes preserved",
+      "router_count": "PASS:3 nested +1 full-development =4",
+      "sorting_dependence": "PASS:200 ratings from20 participants over10 shared-coffee pairs, not200 independent samples"
+    },
+    "frozen_prior_hash_audit": "PASS:247 R1/prior files plus original D0 freeze",
+    "historical_coordinator_replay": "PASS:17 prior-viewed groups, full model hash unchanged, no fit or selection",
+    "json_finite_values": "PASS:10 public JSON artifacts",
+    "logs": {
+      "build": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-build.log",
+        "sha256": "9eb48d8e1b8809c296cce136b8e797475a2d52b61099db2c23848f0bbf8560d3"
+      },
+      "candidate-tests": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-candidate-tests.log",
+        "sha256": "834e9b06db3a6ac7e8c8eef0cb46f5be54f8476ed4eb06bb0ee6f61130a06232"
+      },
+      "format": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-format.log",
+        "sha256": "d042dcae96f2e67395c6ed6de1c32982f0a3207775cb353d2c69dc6a59331b30"
+      },
+      "full-tests": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-full-tests.log",
+        "sha256": "c51634c0f4b3e1bca2748d6c56b51f7aff08289e2cc18ca7ee1255c0201971a8"
+      },
+      "smoke": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-smoke.log",
+        "sha256": "990b75885f404c262caa3df3ac7b60e8b37a3fd2fbf8a7ebd29a7c741c6b1770"
+      },
+      "types": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-types.log",
+        "sha256": "54550296702f2cc938fd1638953e87338e4a32eff8f78fcacff9e2ea57f3d6a8"
+      },
+      "vitest": {
+        "private_path": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation/m2-r2-vitest.log",
+        "sha256": "149d89c90d3cedd3e43aeff6d23caf0bb3aec22ee9f5f4d9fc12beab348193bb"
+      }
+    },
+    "overlay_manifest_sha256": "2e69ad3306178083ff73f93bd20ef595f5408291f256c7891a378c152aee3ae3",
+    "private_validation_directory": "<OWNER_RESEARCH_ROOT>/backend-sequential-model-v2/revisions/r2/validation",
+    "python_backend_suite": {
+      "R2_tests_included": 40,
+      "command": "COFFEE_SEQUENTIAL_V2_ROOT=<owner-v2> COFFEE_BACKEND_MODEL_ROOT=<owner-v1> python -m unittest discover -s db/tests -p 'test_*.py' -q",
+      "status": "PASS",
+      "tests": 137
+    },
+    "remote_final_checkpoint": "NOT_YET_PUSHED_AT_SEAL; final commit and CI observation reported in task response",
+    "remote_previous_checkpoint": [
+      {
+        "conclusion": "success",
+        "databaseId": 33969368384,
+        "headSha": "7b870828dd47c5619eaf11f113865894cf136f29",
+        "status": "completed",
+        "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33969368384",
+        "workflowName": "Historical replay"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 33969368403,
+        "headSha": "7b870828dd47c5619eaf11f113865894cf136f29",
+        "status": "completed",
+        "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33969368403",
+        "workflowName": "CI"
+      }
+    ],
+    "working_tree_suite": {
+      "errors": 1,
+      "handling": "No restore/reset/stash; validate committed baseline plus only R2 changes in isolated export",
+      "missing_tracked_file": "db/scripts/generate-product-inference-v0.py",
+      "passed": 136,
+      "status": "ONE_UNRELATED_MISSING_FILE_ERROR",
+      "tests_run": 137,
+      "unrelated_tracked_deletions_preserved_and_excluded": 135
+    }
+  }
 }

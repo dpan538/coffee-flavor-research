@@ -1,0 +1,63 @@
+{
+  "G3_local_alpha": "SIGMOID(PREDICTED_GAP_ADVANTAGE/0.1)",
+  "G3_ridge_alpha": 10.0,
+  "G3_ridge_convention": "GROUP_WEIGHTED_ERROR_SUM_PLUS_10_TIMES_BETA_SQUARED",
+  "G3_shrinkage": "STAGE_LOCAL_N/(N+50)_TO_G1",
+  "G3_target": "B2_TYPED_GAP_MINUS_R1_RESIDUAL_GAP;POSITIVE_FAVORS_R1",
+  "R1_internal_feature_folds": 2,
+  "candidate_scope": "COMMON_FINE_IDS_FROM_OUTER_TRAIN_QUALIFIED_ONTOLOGY",
+  "expert_fit_C": 0.1,
+  "expert_fit_canonical_broad_feedback": true,
+  "expert_fit_loss": "layered_conditional",
+  "expert_ids": [
+    "B2_TYPED_PRIOR_COMPONENT",
+    "M2_R1_FINAL_FIXED_RESIDUAL"
+  ],
+  "experts_have_direct_broad_rejection_feedback_terms_removed": true,
+  "feature_names": [
+    "stage_initial",
+    "stage_correction",
+    "stage_final",
+    "known_broad_count",
+    "explicit_specific_count",
+    "independent_dimension_count",
+    "log_mean_training_support",
+    "rank_disagreement_mean",
+    "top5_disagreement",
+    "novel_final_feedback"
+  ],
+  "feature_scaler": "GROUP_WEIGHTED_INNER_OOF_TRAIN_MEAN_STD_ONLY",
+  "final_novelty_coefficient": "ZERO_IF_UNOBSERVED_IN_TRAINING",
+  "formal_fit_requires_frozen_objective_contract_hash": true,
+  "foundation_check_enabled": false,
+  "global_tie_break": "LOWER_R1_ALPHA_AFTER_LOSS_TIE_WITHIN_1E-12",
+  "global_weight_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "historical_prior_selection": "R1_C_AND_OLD_OUTER_RESULTS_ALREADY_INSPECTED;NOT_FRESH_CONFIRMATION",
+  "inner_training_aggregation": "EQUAL_COFFEE_THEN_RECORD_THEN_PATH_THEN_STAGE;EQUAL_PREFIX_WITHIN_STAGE",
+  "outer_coffee_group_folds": 3,
+  "paths": [
+    "P1",
+    "P4"
+  ],
+  "policy": "fixed",
+  "router_inner_coffee_group_folds": 2,
+  "router_training_states": "ORDINARY_PREFIXES_ONLY_NO_FINAL_FEEDBACK_LABELS",
+  "shared_semantics": {
+    "broad_compatibility": 0.25,
+    "exposed_rejection": -1.0
+  },
+  "stage_names": [
+    "INITIAL",
+    "CORRECTION",
+    "FINAL"
+  ],
+  "stage_shrinkage": "UNIQUE_LABELLED_INNER_OOF_GROUPS/(GROUPS+50)",
+  "version": "m2-coordination.r2.v1",
+  "weights_public_release": false
+}

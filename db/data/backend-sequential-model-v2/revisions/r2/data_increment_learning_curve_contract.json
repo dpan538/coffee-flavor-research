@@ -1,0 +1,95 @@
+{
+  "parent_increment_contract_sha256": "c3ea74764d18baf2603a4be1b685e1123265ad62dc12823a1a8b2f39d3c4bee9",
+  "profiles_learning_curve": {
+    "base_protocol": {
+      "confirmation_policy": "ONE_FROZEN_EVALUATION_NO_TUNING;FOUR_PRODUCT_DESCRIPTIVE_MEAN_AND_RANGE_NO_ROBUST_CONFIRMATION_CLAIM",
+      "confirmation_products": 4,
+      "development_products": 14,
+      "fixed_ridge": 0.5,
+      "independent_individual_responses": "NOT_OBTAINED_PUBLISHED_MEANS_ONLY",
+      "input": "ONLY_MEASURED_OTHER_ENTIRE_VIEWS;NO_PRICE_LIKING_QUALITY_IDS_CONTEXT",
+      "main_M2_scoring_changed": false,
+      "mask": "ALL_SEVEN_SOURCE_SENSORY_MEANS_OBSERVED_NO_IMPUTATION",
+      "models": [
+        "P0_TRAIN_TARGET_MEAN",
+        "P1_FIXED_RIDGE_0.5"
+      ],
+      "outer_folds": 3,
+      "parameter_search": "NONE",
+      "pooled_with_Rocchetti_or_Liberica": false,
+      "prediction_clip": [
+        1,
+        10
+      ],
+      "primary_contrast": "P1_MINUS_P0_LOWER_IS_BETTER",
+      "primary_metric": "PRODUCT_MACRO_SOURCE_CODE_MAE",
+      "professional_profile": "NOT_EVALUATED",
+      "raw_lot_identity": "NOT_VERIFIED_SOURCE_PRODUCT_IDS_ONLY",
+      "role": "AUX_COFFEE_WEAK_LABEL",
+      "same_budget": "SAME_OTHER_VIEW_PUBLISHED_CODE_CELLS;NO_REAL_QUESTION_OR_TIME_CLAIM",
+      "scale": "SOURCE_1_TO_10_CATEGORY_MEANS_NOT_PSYCHOLOGICAL_DISTANCE",
+      "seed": 20260905,
+      "source_doi": "10.1002/fsn3.1404",
+      "standardization": "TRAIN_ONLY_INPUT_AND_TARGET_POPULATION_MEAN_SD",
+      "target": "PUBLISHED_CONSUMER_ORDINAL_CATEGORY_MEANS",
+      "task": "RECORDED_RESPONSE_PREDICTION",
+      "uncertainty": "DEVELOPMENT_5000_FIXED_PREDICTION_PRODUCT_BOOTSTRAPS;NO_REFIT_SOURCE_OR_INDIVIDUAL_ASSESSOR_UNCERTAINTY",
+      "version": "m2-r2-barahona-consumer-mean.v1",
+      "view_masks": {
+        "aroma_fragrance_residual_flavor": [
+          "aroma",
+          "fragrance",
+          "residual_flavor"
+        ],
+        "body": [
+          "body"
+        ],
+        "taste_named": [
+          "acidity",
+          "bitter",
+          "sweet"
+        ]
+      }
+    },
+    "confirmation": "FOUR_PRODUCTS_ONCE_AFTER_BOTH_MODELS_FROZEN;DESCRIPTIVE_NO_ROBUST_CONFIRMATION_CLAIM",
+    "final_training_counts": {
+      "full": 14,
+      "half": 7
+    },
+    "fixed_dimensions_masks_and_inputs": {
+      "aroma_fragrance_residual_flavor": [
+        "aroma",
+        "fragrance",
+        "residual_flavor"
+      ],
+      "body": [
+        "body"
+      ],
+      "taste_named": [
+        "acidity",
+        "bitter",
+        "sweet"
+      ]
+    },
+    "interpretation": "SOURCE_SPECIFIC_TRAINING_PRODUCT_COUNT_EFFECT_NOT_D0_PLUS_D1_M2_GAIN",
+    "models": [
+      "SAME_RIDGE_0.5_HALF_TRAIN_PRODUCTS",
+      "SAME_RIDGE_0.5_FULL_TRAIN_PRODUCTS"
+    ],
+    "outer_folds": "SAME_THREE_PRODUCT_FOLDS_AS_FULL_SOURCE_TASK",
+    "parameters": "RIDGE_0.5_REUSED_NO_PARAMETER_SEARCH;ALL_STATISTICS_FIT_WITHIN_EACH_TRAIN_SUBSET",
+    "primary_contrast": "FULL_MINUS_HALF_LOWER_IS_BETTER",
+    "primary_metric": "SAME_HELD_PRODUCT_MACRO_SOURCE_CODE_MAE",
+    "seed": 20260905,
+    "selection_scope": "OUTER_TRAIN_ONLY_NO_HELD_LABELS_OR_SELECTION",
+    "source_condition_controls": "SAME_SOURCE_SENSORY_COLUMNS_NATIVE_SCALE_TARGETS_INPUT_BUDGET_AND_HELD_PRODUCTS",
+    "source_doi": "10.1002/fsn3.1404",
+    "subset": "SORT_GROUPS_BY_SHA256_OF_VERSION_SEED_HALF_PRODUCT_ID;TAKE_CEILING_N_TRAIN_DIVIDED_BY_TWO",
+    "task": "WITHIN_SOURCE_TRAINING_PRODUCT_INCREMENT",
+    "version": "m2-r2-barahona-fixed-data-size-control.v1"
+  },
+  "purpose": "Isolate added training products under the same source, input views, targets, mask, ridge and held cases; not a pooled D0/D1 descriptor-model effect",
+  "registered_utc": "2026-09-05T13:52:33.046959+00:00",
+  "registration_scope": "Before any new-source model fit or confirmation result inspection",
+  "source_sha256": "5173db2d83620892eb4cfd1eba0f0a94e8f369a671fa3bc4c66d84414f6256e3"
+}

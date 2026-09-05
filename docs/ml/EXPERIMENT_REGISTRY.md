@@ -17,10 +17,51 @@ recorded-view reconstruction tasks; they do not establish individual perceptual
 alignment or real user time savings. Declining individual attributes and the
 previously inspected nine-product historical result remain in the summaries.
 
-Nested expert coordination and new-source acquisition are active. B2 remains
-default and CHECK remains off. The [R2 receipt](../../db/data/backend-sequential-model-v2/revisions/r2/run_receipt.json)
+Nested coordination fitted six inner R1 experts and four routers (three outer,
+one all-development research fit). G0/G1/G2/G3 P1 gaps are
+0.556825/0.550464/0.550464/0.552747. G3 minus G1 is +0.002284
+[0, 0.006851], inconclusive with no observed gain. The restricted residual pool
+is weaker than unchanged B2/R1, including its retrospective oracle. Original
+B2/R1 retain some oracle complementarity; live detection of that advantage was
+not established. Neither oracle is a deployable strategy. A no-fit replay on
+the old 17 historical groups also retains the coordinator regression:
+G3 gap 0.567408 versus original B2/R1 0.457155/0.448751. These remain
+already-viewed historical cases, with no new selection or confirmation claim.
+
+For G3, existing Q4 closure versus Q5 closure costs one fewer ordinary question
+and 3.673 fewer offered options per coffee group on the same 104 identifiable
+groups. The gap difference is -0.000801 [-0.002404, 0], within the frozen 0.02
+margin. This supports only `PROXY_INFORMATION_BUDGET_GAIN` for those legal
+paths. All 211 cases / 187 groups remain in coverage and cost diagnostics;
+105 cases lack fine targets. One actual eight-candidate final comparison is
+charged separately and shows no established recovery improvement.
+
+Twelve new retrieval directions yielded three admitted study families, 23
+source-defined coffee/product groups, 308 complete clean smell/taste pairs,
+and 200 pairwise sorting ratings from 20 participants over 10 pairs of the same
+five coffees. Ratings share participants and coffees. No new
+professional intensity profiles or complete production C0/C1 pairs were
+obtained; raw-lot independence is unverified. Croijmans mentions and sorting
+remain reference data, not positive sensory truth or trained system-user
+alignment. Liberica nominal response and Barahona consumer-mean tasks were
+actually fitted with confirmation identities excluded. Their development
+results improve over prior controls; tiny confirmation slices are mixed.
+
+The fixed-model Barahona training-size control isolates added source products:
+half/full development MAE is 0.413887/0.359892, delta -0.053995
+[-0.090791, -0.017694]. Four once-only confirmation products reverse direction,
+0.350421/0.385849, delta +0.035428 (`INCONCLUSIVE`). This supports a local
+within-source development data contribution, not a pooled D0/D1 M2 effect.
+All new raw files, trajectories and 49 retained model files stay private.
+
+B2 remains default and CHECK remains off. Real user alignment and real user time
+efficiency are `NOT_EVALUATED`. The [R2 receipt](../../db/data/backend-sequential-model-v2/revisions/r2/run_receipt.json)
 and [alignment/cost results](../../db/data/backend-sequential-model-v2/revisions/r2/alignment_cost_results.json)
-index the current checkpoint; detailed rows and fitted weights stay private.
+index the completed experiments. [Expert OOF results](../../db/data/backend-sequential-model-v2/revisions/r2/oof_expert_results.json)
+and [error analysis](../../db/data/backend-sequential-model-v2/revisions/r2/error_analysis.json)
+preserve component limitations, adverse attributes and confirmation reversals.
+The compact [paper-to-experiment record](../../db/data/backend-sequential-model-v2/revisions/r2/paper_to_experiment.tsv)
+connects the five requested methods to their actual use and limits.
 
 ## M2 R1 repair and sensory foundation — 2026-09-05
 

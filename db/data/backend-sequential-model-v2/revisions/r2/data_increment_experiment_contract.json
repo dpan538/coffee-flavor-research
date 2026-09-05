@@ -1,0 +1,165 @@
+{
+  "code_baseline_sha": "7b870828dd47c5619eaf11f113865894cf136f29",
+  "default": "B2_UNCHANGED; NO_AUTOMATIC_RUNTIME_PROMOTION",
+  "fresh_confirmation": "Each source's preassigned held identities excluded from every fit; evaluate once after freezing parameters and preserve viewed status thereafter",
+  "interpretation": "Two new source-native response tasks with preallocated confirmation; no cross-source scale pooling or claim of D0/D1 descriptor-ranking data-size effect",
+  "main_contract_sha256": "4538db4be85e5d33a3a6b7db004c2f54c53a9783177d525c689ea96d252507ba",
+  "profiles_increment": {
+    "barahona": {
+      "confirmation_policy": "ONE_FROZEN_EVALUATION_NO_TUNING;FOUR_PRODUCT_DESCRIPTIVE_MEAN_AND_RANGE_NO_ROBUST_CONFIRMATION_CLAIM",
+      "confirmation_products": 4,
+      "development_products": 14,
+      "fixed_ridge": 0.5,
+      "independent_individual_responses": "NOT_OBTAINED_PUBLISHED_MEANS_ONLY",
+      "input": "ONLY_MEASURED_OTHER_ENTIRE_VIEWS;NO_PRICE_LIKING_QUALITY_IDS_CONTEXT",
+      "main_M2_scoring_changed": false,
+      "mask": "ALL_SEVEN_SOURCE_SENSORY_MEANS_OBSERVED_NO_IMPUTATION",
+      "models": [
+        "P0_TRAIN_TARGET_MEAN",
+        "P1_FIXED_RIDGE_0.5"
+      ],
+      "outer_folds": 3,
+      "parameter_search": "NONE",
+      "pooled_with_Rocchetti_or_Liberica": false,
+      "prediction_clip": [
+        1,
+        10
+      ],
+      "primary_contrast": "P1_MINUS_P0_LOWER_IS_BETTER",
+      "primary_metric": "PRODUCT_MACRO_SOURCE_CODE_MAE",
+      "professional_profile": "NOT_EVALUATED",
+      "raw_lot_identity": "NOT_VERIFIED_SOURCE_PRODUCT_IDS_ONLY",
+      "role": "AUX_COFFEE_WEAK_LABEL",
+      "same_budget": "SAME_OTHER_VIEW_PUBLISHED_CODE_CELLS;NO_REAL_QUESTION_OR_TIME_CLAIM",
+      "scale": "SOURCE_1_TO_10_CATEGORY_MEANS_NOT_PSYCHOLOGICAL_DISTANCE",
+      "seed": 20260905,
+      "source_doi": "10.1002/fsn3.1404",
+      "standardization": "TRAIN_ONLY_INPUT_AND_TARGET_POPULATION_MEAN_SD",
+      "target": "PUBLISHED_CONSUMER_ORDINAL_CATEGORY_MEANS",
+      "task": "RECORDED_RESPONSE_PREDICTION",
+      "uncertainty": "DEVELOPMENT_5000_FIXED_PREDICTION_PRODUCT_BOOTSTRAPS;NO_REFIT_SOURCE_OR_INDIVIDUAL_ASSESSOR_UNCERTAINTY",
+      "version": "m2-r2-barahona-consumer-mean.v1",
+      "view_masks": {
+        "aroma_fragrance_residual_flavor": [
+          "aroma",
+          "fragrance",
+          "residual_flavor"
+        ],
+        "body": [
+          "body"
+        ],
+        "taste_named": [
+          "acidity",
+          "bitter",
+          "sweet"
+        ]
+      }
+    },
+    "cross_source_score_average": "FORBIDDEN_DIFFERENT_TARGET_SPACES_AND_UNITS",
+    "liberica": {
+      "actual_answer_time": "NOT_EVALUATED",
+      "confirmation": {
+        "both_axes_held": {
+          "conditions": 1,
+          "participants": 2,
+          "records": 2
+        },
+        "held_condition": {
+          "conditions": 1,
+          "participants": 23,
+          "records": 23
+        },
+        "held_participant": {
+          "conditions": 8,
+          "participants": 2,
+          "records": 16
+        },
+        "policy": "ALL_FITS_FROZEN_FIRST_ONE_EVALUATION_RETAIN_AND_REUSE_NO_SELECTION",
+        "small_n": "NO_BOOTSTRAP_FOR_FEWER_THAN_THREE_HELD_UNITS;PER_UNIT_DESCRIPTIVE_DELTAS"
+      },
+      "cross_coffee_generalization": "NOT_ESTIMABLE",
+      "data_increment_scope": "NEW_ADMITTED_RESPONSE_TASK_AND_PAIRED_OBSERVATIONS;NOT_POOLED_OLD_TASK_DATA_SIZE_EFFECT",
+      "development": {
+        "conditions": 8,
+        "holdout_axes": [
+          "participant_id",
+          "condition_id"
+        ],
+        "outer_folds": 3,
+        "participants": 23,
+        "records": 184
+      },
+      "fixed_ridge": 0.05,
+      "input_encoding": "ONE_HOT_SIX_CATEGORIES_FOR_OTHER_ENTIRE_VIEW_FIELDS_ONLY",
+      "input_exclusions": [
+        "target_view",
+        "identities",
+        "source_condition_codes",
+        "C0_C1",
+        "hedonic",
+        "quality",
+        "chemistry",
+        "Excel_derived_recodes_or_averages"
+      ],
+      "main_M2_scoring_changed": false,
+      "mask": "ALL_TEN_RECORDED_FIELDS_OBSERVED_NO_ZERO_FILL_OR_RECODE",
+      "models": [
+        "P0_TRAIN_CATEGORY_FREQUENCIES",
+        "P1_FIXED_RIDGE_MULTINOMIAL"
+      ],
+      "parameter_search": "NONE",
+      "per_target_results": "EXPLORATORY_NOMINAL_NOT_MULTIPLICITY_ADJUSTED",
+      "primary_contrast": "P1_MINUS_P0_LOWER_IS_BETTER",
+      "primary_metric": "IDENTITY_MACRO_MULTICLASS_BRIER_SUM_SIX_SQUARED_ERRORS_DIVIDED_BY_SIX",
+      "professional_profile_alignment": "NOT_EVALUATED",
+      "real_user_alignment": "NOT_EVALUATED",
+      "recorded_categories": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "role": "AUX_COFFEE_WEAK_LABEL",
+      "same_budget": "SAME_ACTUALLY_OBSERVED_OTHER_VIEW_CODE_FIELDS;NO_PRODUCTION_QUESTION_OR_TIME_CLAIM",
+      "scale_interpretation": "NO_ORDINAL_DISTANCE_NO_PSYCHOLOGICAL_DISTANCE",
+      "seed": 20260905,
+      "source": "MEILINA_LIBERICA_BAGS_2025",
+      "source_doi": "10.17632/m3n2gc4dv6.1",
+      "target": "TEN_NOMINAL_SOURCE_RESPONSE_CODES_WHOLE_VIEW_MASKED",
+      "task": "RECORDED_RESPONSE_PREDICTION",
+      "training": "INTERSECTION_OF_SOURCE_FROZEN_DEVELOPMENT_PARTICIPANTS_AND_CONDITIONS",
+      "uncertainty": "5000_FIXED_OOF_PREDICTION_HELD_AXIS_BOOTSTRAPS;OPPOSITE_AXIS_SHARED;NO_REFIT_OR_CROSS_COFFEE_CLAIM",
+      "version": "m2-r2-liberica-nominal-response.v1",
+      "view_masks": {
+        "aroma_named_and_roasty_flavor": [
+          "green_aroma",
+          "jackfruit_aroma",
+          "smoky_aroma",
+          "roasty_flavor"
+        ],
+        "body_and_astringent_aftertaste": [
+          "body",
+          "astringent_aftertaste"
+        ],
+        "taste_named_and_bitter_aftertaste": [
+          "sweet",
+          "sour",
+          "bitter",
+          "bitter_aftertaste"
+        ]
+      },
+      "view_provenance": "RESEARCHER_REGISTERED_CONSERVATIVE_BLOCKS_NOT_VALIDATED_SENSORY_MODALITIES",
+      "zero_semantics": "OBSERVED_CATEGORY_ZERO_NOT_ASSUMED_ABSENCE_OR_INTENSITY"
+    },
+    "main_M2_scoring_changed": false,
+    "version": "m2-r2-independent-new-response-tasks.v1"
+  },
+  "registered_utc": "2026-09-05T13:45:23.420454+00:00",
+  "source_masks": "Liberica zero is an observed nominal category; Barahona published source category means are neither individual observations nor professional truth",
+  "source_sha256": {
+    "barahona_ordinal_means.private.json": "5173db2d83620892eb4cfd1eba0f0a94e8f369a671fa3bc4c66d84414f6256e3",
+    "liberica_rata_records.private.json": "708fe96a5ac8cefdd758bd391ad55cc325736721afdcf4f346125d77edf93b6d"
+  }
+}

@@ -1,0 +1,679 @@
+{
+  "acquisition_routes": [
+    {
+      "actual_files": [
+        {
+          "bytes": 764662,
+          "download_url": "https://data.mendeley.com/public-api/zip/m3n2gc4dv6/download/1",
+          "private_filename": "liberica-data.zip",
+          "sha256": "4d56b9005fb57690d2ccd80f5f62b411ffa17bfcf2a34d6371525bfd9e0428dc"
+        },
+        {
+          "bytes": 117878,
+          "download_url": "https://data.mendeley.com/datasets/m3n2gc4dv6/1",
+          "private_filename": "liberica-mendeley.html",
+          "sha256": "f7407e587e5b07f99ee9b162a6b2cef55a122feb2d001ed9ee1bebaf22929cc7"
+        }
+      ],
+      "actual_outcome_and_model_use": "Original RATA respondent blocks225x10 parsed. Native0..5 codes have no verified anchor definitions; nominal recorded-response only. Nine treatments are not nine independent coffees.",
+      "doi": "10.17632/m3n2gc4dv6.1",
+      "license_scope": "CC-BY-4.0",
+      "new_direction_vs_R1": true,
+      "result": "ADMITTED",
+      "route_id": "LIBERICA_RATA",
+      "source_url": "https://data.mendeley.com/datasets/m3n2gc4dv6/1"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 144407,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7020298/fullTextXML",
+          "private_filename": "barahona2020.xml",
+          "sha256": "9bfc04c994bfab6a9a54109ec1f69d3aef174471cb861d647072976cfaf69aef"
+        },
+        {
+          "bytes": 462820,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7020298/supplementaryFiles",
+          "private_filename": "barahona2020-supp.zip",
+          "sha256": "db6b73c4ac0a19ed84263a60504eedd8004f7d94f0c4883c96715375efcf37a8"
+        }
+      ],
+      "actual_outcome_and_model_use": "Original Table4 provides18 product meansx7 sensory columns. Original form embedded EMF verifies1..10 Lowest/Highest response scale. Overall impression/liking, price and quality excluded; individual respondent matrix not obtained.",
+      "doi": "10.1002/fsn3.1404",
+      "license_scope": "CC-BY-4.0",
+      "new_direction_vs_R1": true,
+      "result": "ADMITTED",
+      "route_id": "BARAHONA_PRODUCTS",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7020298/"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 49346,
+          "download_url": "https://ssh.datastations.nl/api/datasets/:persistentId/?persistentId=doi:10.17026/DANS-ZKE-2WGQ",
+          "private_filename": "croijmans-dans-api.json",
+          "sha256": "40048d51dee282ee30ad9bc028c1b74969cc698b14fd013d97b13dd59e79f826"
+        },
+        {
+          "bytes": 12440,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176225",
+          "private_filename": "croijmans-readme.txt",
+          "sha256": "d3d0cbb48af148503db7d23c27f6734700a69da26c4a8c37d29909f017143cf4"
+        },
+        {
+          "bytes": 140385,
+          "download_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0155845&type=manuscript",
+          "private_filename": "croijmans2016.xml",
+          "sha256": "6c0868552e5246b80d1e1bfcb8fa6b7ab391fa7d227854b2d38cff65cc25c42f"
+        },
+        {
+          "bytes": 195537,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176237",
+          "private_filename": "croijmans-methods.pdf",
+          "sha256": "7d76bd22eadb3e28db0ef8338d6eeb33d940192ee11d36cb90c7261c777afbfc"
+        },
+        {
+          "bytes": 170874,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176238?format=original",
+          "private_filename": "croijmans-coffee-experts.xlsx",
+          "sha256": "80377fdaced0ada4511e321ef7c40e2b784c3cedeca062889af0376f278a39d8"
+        },
+        {
+          "bytes": 176510,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176235?format=original",
+          "private_filename": "croijmans-coffee-wineexperts.xlsx",
+          "sha256": "6efe3ba18f841ecf53a1babf33c0d8316f86089225810747d65b9e60f8fc73e5"
+        },
+        {
+          "bytes": 146188,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176226?format=original",
+          "private_filename": "croijmans-coffee-novices.xlsx",
+          "sha256": "7ca63baecb3f77cdca4a88780e94dfb81079d35c8fa2db97abe383aa5a09588a"
+        },
+        {
+          "bytes": 14421,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176227?format=original",
+          "private_filename": "croijmans-stimuli-sorting.xlsx",
+          "sha256": "ec99a904ce75f70e7fcaec7897484f4940e315b625b77850a3c60dc596bbe9cc"
+        },
+        {
+          "bytes": 6788,
+          "download_url": "https://ssh.datastations.nl/api/access/datafile/176298",
+          "private_filename": "croijmans-stimulus-comparisons.tab",
+          "sha256": "a8ba7d75bd9bd3ceee2a760a712257ae120d57d257f60b375e232ac0bd0b4c3d"
+        }
+      ],
+      "actual_outcome_and_model_use": "Five coffees paired with independent coffee-expert/wine-expert/novice recorded language, plus separate20-person similarity sorting.8 conflicting response groups quarantined, not repaired; same source/coffee count for both measurements.",
+      "doi": "10.17026/dans-zke-2wgq",
+      "license_scope": "CC0-1.0",
+      "new_direction_vs_R1": true,
+      "result": "ADMITTED",
+      "route_id": "CROIJMANS_PAIRED_LANGUAGE_AND_SORTING",
+      "source_url": "https://ssh.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/DANS-ZKE-2WGQ"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 1250993,
+          "download_url": "https://www.colibri.udelar.edu.uy/jspui/bitstream/20.500.12008/41076/1/AA%20Jaeger%2C%20S.%20R.%20et%20al%20Sensory%20Studies%202023.pdf",
+          "private_filename": "jaeger12833.pdf",
+          "sha256": "32783e6699bcb51ef20d68e9f693a79abc84b49c802c5822d786cae0634fdc3f"
+        },
+        {
+          "bytes": 54645,
+          "download_url": "https://www.colibri.udelar.edu.uy/jspui/handle/20.500.12008/41076?mode=full",
+          "private_filename": "jaeger12833-record.html",
+          "sha256": "993aedf421d60ba60422c7c44d041dafff4d6aa8ec57c3313d997cc6643b4b21"
+        }
+      ],
+      "actual_outcome_and_model_use": "Original full paper body read. Seven online pictured-food studies, not coffee tasting. CATA selection probability and expected intensity are distinct; raw responses available only by author request. No requests sent.",
+      "doi": "10.1111/joss.12833",
+      "license_scope": "CC-BY-4.0",
+      "new_direction_vs_R1": true,
+      "result": "METHOD_EVIDENCE_ONLY",
+      "route_id": "CATA_INTENSITY_METHOD",
+      "source_url": "https://www.colibri.udelar.edu.uy/jspui/handle/20.500.12008/41076"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 10832,
+          "download_url": "https://api.crossref.org/works/10.1111/joss.12839",
+          "private_filename": "yoon12839-crossref.json",
+          "sha256": "a144a3526c271e3af1fbf4a00798587b03e500adb4a2139f502abbac69d2fb72"
+        },
+        {
+          "bytes": 19037,
+          "download_url": "https://api.openalex.org/works/https://doi.org/10.1111/joss.12839",
+          "private_filename": "yoon12839-openalex.json",
+          "sha256": "9c9b20a92d6e81bfa762908ad949cbc72f82b3d9ec8ccda62f85efd871ee15f7"
+        }
+      ],
+      "actual_outcome_and_model_use": "Original author-uploaded paper methods/results/tables/limitations read through web text; publisher closed, no local original full-PDF hash. Six milk-based RTD products;10 DA panelists and separate70-person CATA/FP/FL groups. Raw matrix only by request; group configuration agreement is not individual truth, protocol-level duration not product-question duration.",
+      "doi": "10.1111/joss.12839",
+      "license_scope": "STANDARD_PUBLISHER_COPYRIGHT_NO_RAW_REUSE_LICENSE_VERIFIED",
+      "new_direction_vs_R1": true,
+      "result": "METHOD_EVIDENCE_ONLY",
+      "route_id": "RTD_PROFILING_METHOD",
+      "source_url": "https://www.researchgate.net/publication/370609890_Comparison_of_conventional_and_consumer-based_sensory_profiling_methods_for_ready-to-drink_coffee_beverages"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 99578,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6723667/fullTextXML",
+          "private_filename": "heo2019.xml",
+          "sha256": "5dbf822580b45d3990b90c0a7bf9f962e1cb9f4af5f4b099909f9751d345e65f"
+        },
+        {
+          "bytes": 338172,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6723667/supplementaryFiles",
+          "private_filename": "heo2019-supp.zip",
+          "sha256": "efba925cfc2e295b3aceafbea01e9a36056dee0084856b088de7ae960de85349"
+        }
+      ],
+      "actual_outcome_and_model_use": "Actual supplement contains figures, no participant CATA matrix. Article Table3 has3 intensity-code means plus liking; source prose13 samples versus14 table rows includes repeated commercial control. Four bean materials have paired brewing conditions, but cold storage and aggregation limit additional value; aggregate adapter deferred after stronger paired source obtained, not claimed inaccessible.",
+      "doi": "10.3390/foods8080344",
+      "license_scope": "CC-BY-4.0",
+      "new_direction_vs_R1": true,
+      "result": "NOT_ADMITTED_LIMITED_AGGREGATE_ONLY",
+      "route_id": "COLD_BREW_CONSUMER_2019",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6723667/"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 140564,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12546097/fullTextXML",
+          "private_filename": "eeg2025.xml",
+          "sha256": "9ddf8ff315413e9b52ede3693bdf2afdfedc343350c1c007a6157be38a3c26f0"
+        },
+        {
+          "bytes": 428888,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12546097/supplementaryFiles",
+          "private_filename": "eeg2025-supp.zip",
+          "sha256": "a7d23c83afd414c61ae07be92ec5a5a451915b467b8b245df0b23d61952049f4"
+        }
+      ],
+      "actual_outcome_and_model_use": "Actual supplementary archive contains images, not coffee-panel response matrix; raw data by request. No EEG/liking proxies become sensory labels.",
+      "doi": "10.3389/fnhum.2025.1661214",
+      "license_scope": "CC-BY-4.0_ARTICLE",
+      "new_direction_vs_R1": true,
+      "result": "NO_ADMISSIBLE_ROW_MATRIX",
+      "route_id": "EEG_DESCRIPTIVE_PANEL_2025",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12546097/"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 123375,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12938992/fullTextXML",
+          "private_filename": "cuality2026.xml",
+          "sha256": "ac87a0e8db7cf6c8ba098d43d15b701f9f2271d53ad52b73cef1478afeb07a2a"
+        },
+        {
+          "bytes": 1222703,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12938992/supplementaryFiles",
+          "private_filename": "cuality2026-supp.zip",
+          "sha256": "fd4c81c362bd8c860b787a5112be11d7ebe9b17d62b3742d82445a9fc5b0de5b"
+        }
+      ],
+      "actual_outcome_and_model_use": "Actual nested supplement PDF contains scorecards, not response rows.56 professionals/12 coffees are study counts only, not acquired observations. Quality/JAR scores not sensory intensity; no proprietary form republished.",
+      "doi": "10.3390/foods15040678",
+      "license_scope": "CC-BY-4.0_ARTICLE_THIRD_PARTY_FORMS_NOT_IMPORTED",
+      "new_direction_vs_R1": true,
+      "result": "NO_ADMISSIBLE_ROW_MATRIX",
+      "route_id": "COFFEE_CUALITY_2026",
+      "source_url": "https://doi.org/10.3390/foods15040678"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 180141,
+          "download_url": "https://mdpi-res.com/d_attachment/foods/foods-14-00593/article_deploy/foods-14-00593.xml",
+          "private_filename": "crossculture2025.xml",
+          "sha256": "1ff885d440f332093f51773f62afd8b0f57ec3c580e1aa28b11aa7de0dc2839f"
+        },
+        {
+          "bytes": 158155,
+          "download_url": "https://mdpi-res.com/d_attachment/foods/foods-14-00593/article_deploy/foods-14-00593-s001.zip",
+          "private_filename": "crossculture2025-supp.zip",
+          "sha256": "7762a1988bfc1a110c671f066bb870883f8591e673d433d1dc9384912eec84e7"
+        }
+      ],
+      "actual_outcome_and_model_use": "Actual supplement is roast table only. Article explicitly restricts raw dataset for ethics/privacy.46 experts and8 coffees not acquired; no additional requests or circumvention.",
+      "doi": "10.3390/foods14040593",
+      "license_scope": "CC-BY-4.0_ARTICLE_DATA_RESTRICTED",
+      "new_direction_vs_R1": true,
+      "result": "RESTRICTED_DATA_NOT_ACQUIRED",
+      "route_id": "CROSS_CULTURE_ESPRESSO_2025",
+      "source_url": "https://doi.org/10.3390/foods14040593"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 119689,
+          "download_url": "https://mdpi-res.com/d_attachment/applsci/applsci-15-00948/article_deploy/applsci-15-00948.xml",
+          "private_filename": "crossbrand2025.xml",
+          "sha256": "a09d1f330ecd3b3949ec98c8853b5cc71f16eeef7f6ffc769dce3c4811a5c201"
+        }
+      ],
+      "actual_outcome_and_model_use": "Four RTD coffees, temporal liking is separate target. Dataset upon request subject to intended-use approval, no raw matrix obtained or requests sent.",
+      "doi": "10.3390/app15020948",
+      "license_scope": "CC-BY-4.0_ARTICLE",
+      "new_direction_vs_R1": true,
+      "result": "NO_ADMISSIBLE_ROW_MATRIX",
+      "route_id": "CROSS_BRAND_TEMPORAL_LIKING_2025",
+      "source_url": "https://doi.org/10.3390/app15020948"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 202762,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6863779/fullTextXML",
+          "private_filename": "processing2019.xml",
+          "sha256": "43aeb86ec49a9aa99ed3cb0ff7bb24221be135bf830ddff4279d2d9edf9817f7"
+        },
+        {
+          "bytes": 3099040,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6863779/supplementaryFiles",
+          "private_filename": "processing2019-supp.zip",
+          "sha256": "d75dc983968ac02dec1e611f4148ed8bff58cb7764a82d067fbf6fcd9e73d33c"
+        }
+      ],
+      "actual_outcome_and_model_use": "Trained panel27 sensory attributes in article; actual16-page supplement contains genetic/processing tables and plots, no joint sensory rows. No matrix digitized or fabricated from PCA.",
+      "doi": "10.3389/fmicb.2019.02621",
+      "license_scope": "CC-BY-4.0",
+      "new_direction_vs_R1": true,
+      "result": "NO_ADMISSIBLE_ROW_MATRIX",
+      "route_id": "WET_PROCESSING_PANEL_2019",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6863779/"
+    },
+    {
+      "actual_files": [
+        {
+          "bytes": 133556,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8548442/fullTextXML",
+          "private_filename": "remote2021.xml",
+          "sha256": "91ac409165851c01957485f065bbc72420ea0c808cad556caf9814dbe0810df2"
+        },
+        {
+          "bytes": 700790,
+          "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8548442/supplementaryFiles",
+          "private_filename": "remote2021-supp.zip",
+          "sha256": "433f782d75e017523f7b2d961f29b2c5c9e25df071bf5bc6eec8c2e71d19c110"
+        }
+      ],
+      "actual_outcome_and_model_use": "Original full-text protocol and actual supplement inspected. Three mocha brands across historical batches/lab versus remote; DOCX supplement is ANOVA for other foods, not individual coffee matrix. Conditional reuse not needed because no data admitted.",
+      "doi": "10.1016/j.foodqual.2021.104437",
+      "license_scope": "ELSEVIER_COVID_RESOURCE_CONDITIONAL_RESEARCH_PERMISSION_NOT_ASSUMED_CC",
+      "new_direction_vs_R1": true,
+      "result": "NO_ADMISSIBLE_ROW_MATRIX",
+      "route_id": "REMOTE_TESTING_2021",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8548442/"
+    }
+  ],
+  "actual_increment": {
+    "actual_product_question_response_times": 0,
+    "additional_coffees_from_sorting": 0,
+    "admitted_expression_groups": 619,
+    "admitted_measurement_adapters": 4,
+    "anonymous_product_groups": 18,
+    "clean_expression_recording_durations": 616,
+    "clean_unpaired_expression_groups": 3,
+    "complete_clean_smell_taste_pairs": 308,
+    "consumer_product_mean_cells": 126,
+    "consumer_product_mean_records": 18,
+    "design_expression_groups_if_complete_63x5x2": 630,
+    "distinct_sorting_coffee_pairs": 10,
+    "inconsistent_expression_timing_records": 3,
+    "independent_sorting_participants": 20,
+    "liberica_material_lots": "UNDOCUMENTED_NOT_COUNTED_AS_NINE_COFFEES",
+    "liberica_observed_categorical_cells": 2250,
+    "liberica_participant_condition_records": 225,
+    "liberica_treatment_conditions": 9,
+    "new_admitted_source_families": 3,
+    "new_complete_production_C0_C1_joint_groups": 0,
+    "new_professional_intensity_profile_groups": 0,
+    "professional_source_expressions": 197,
+    "quarantined_expression_groups": 8,
+    "quarantined_participant_coffee_pairs": 4,
+    "raw_expression_groups": 627,
+    "single_estate_coffee_identities": 5,
+    "sorting_distances": 200,
+    "source_defined_coffee_product_groups": 23,
+    "traceable_independent_green_lots": null,
+    "unrecorded_design_expression_groups": 3
+  },
+  "adapters": [
+    {
+      "actual_fields": [
+        {
+          "first_data_column": 3,
+          "header_row": 3,
+          "id": "green_aroma",
+          "sheet": "RATA Test",
+          "source_header": "Green",
+          "source_summary_label": "Green Aroma"
+        },
+        {
+          "first_data_column": 15,
+          "header_row": 3,
+          "id": "jackfruit_aroma",
+          "sheet": "RATA Test",
+          "source_header": "Jackfruit",
+          "source_summary_label": "Jackfruit Aroma"
+        },
+        {
+          "first_data_column": 3,
+          "header_row": 34,
+          "id": "smoky_aroma",
+          "sheet": "RATA Test",
+          "source_header": "Smoky Aroma",
+          "source_summary_label": "Smoky Aroma"
+        },
+        {
+          "first_data_column": 15,
+          "header_row": 34,
+          "id": "sweet",
+          "sheet": "RATA Test",
+          "source_header": "Sweet",
+          "source_summary_label": "Sweet"
+        },
+        {
+          "first_data_column": 3,
+          "header_row": 65,
+          "id": "sour",
+          "sheet": "RATA Test",
+          "source_header": "Sour",
+          "source_summary_label": "Sour"
+        },
+        {
+          "first_data_column": 15,
+          "header_row": 65,
+          "id": "bitter",
+          "sheet": "RATA Test",
+          "source_header": "Bitter",
+          "source_summary_label": "Bitter"
+        },
+        {
+          "first_data_column": 3,
+          "header_row": 96,
+          "id": "roasty_flavor",
+          "sheet": "RATA Test",
+          "source_header": "Roasty Flavor",
+          "source_summary_label": "Roasty Flavor"
+        },
+        {
+          "first_data_column": 15,
+          "header_row": 96,
+          "id": "bitter_aftertaste",
+          "sheet": "RATA Test",
+          "source_header": "Bitter Aftertaste",
+          "source_summary_label": "Bitter Aftertaste"
+        },
+        {
+          "first_data_column": 3,
+          "header_row": 127,
+          "id": "astringent_aftertaste",
+          "sheet": "RATA Test",
+          "source_header": "Astringent Aftertaste",
+          "source_summary_label": "Astringent Aftertaste"
+        },
+        {
+          "first_data_column": 15,
+          "header_row": 127,
+          "id": "body",
+          "sheet": "RATA Test",
+          "source_header": "Body",
+          "source_summary_label": "Body"
+        }
+      ],
+      "admitted_records": 225,
+      "attribution": "Meilina, L.; Ulya Auliya, R.; Widya Palupi, N. (2025). Liberica Coffee Sensory. Mendeley Data V1. doi:10.17632/m3n2gc4dv6.1. Modified: respondent sensory-block extraction and pseudonymous IDs.",
+      "bytes": 444464,
+      "independence": {
+        "coffee_materials": "One study of Liberica coffee bags; three native roast labels crossed with 0/5/10 leaf-condition codes; raw lot identity and preparation protocol not documented.",
+        "cross_coffee_generalization": "NOT_EVALUABLE",
+        "duplicate_review": "New source family and 2025 repository, distinct from D0 and R1; no claim that nine treatments are independent beans.",
+        "observed_cells": 2250,
+        "participants": 25,
+        "records": 225,
+        "source_defined_conditions": 9,
+        "traceable_independent_coffee_lots": null
+      },
+      "license": "CC-BY-4.0",
+      "measurement_semantics": "Native recorded RATA category code; NOT calibrated perceived intensity.",
+      "measurement_task": "RECORDED_RESPONSE_PREDICTION",
+      "path": "<OWNER_V2>/revisions/r2/liberica_rata_records.private.json",
+      "sha256": "708fe96a5ac8cefdd758bd391ad55cc325736721afdcf4f346125d77edf93b6d",
+      "source_id": "MEILINA_LIBERICA_BAGS_2025",
+      "split_counts": {
+        "condition_assignment": {
+          "CONFIRMATION": 1,
+          "DEVELOPMENT": 8
+        },
+        "participant_assignment": {
+          "CONFIRMATION": 2,
+          "DEVELOPMENT": 23
+        }
+      },
+      "split_frozen_before_model_fit": true,
+      "task_masks": {
+        "actual_answer_time": false,
+        "individual_perceptual_alignment": false,
+        "professional_profile": false,
+        "recorded_response": true,
+        "sensory_absence": false,
+        "sensory_intensity": false
+      }
+    },
+    {
+      "actual_fields": [
+        {
+          "id": "aroma",
+          "source_label": "Aroma"
+        },
+        {
+          "id": "acidity",
+          "source_label": "Acidity"
+        },
+        {
+          "id": "fragrance",
+          "source_label": "Fragrance"
+        },
+        {
+          "id": "bitter",
+          "source_label": "Bitter"
+        },
+        {
+          "id": "body",
+          "source_label": "Body"
+        },
+        {
+          "id": "sweet",
+          "source_label": "Sweet"
+        },
+        {
+          "id": "residual_flavor",
+          "source_label": "Residual flavor"
+        }
+      ],
+      "admitted_records": 18,
+      "attribution": "Barahona, I.; Sanmiguel Jaimes, E.M.; Yang, J.-B. (2020). Sensory attributes of coffee beverages and their relation to price and package information. Food Science & Nutrition 8:1173–1186. doi:10.1002/fsn3.1404. Modified: sensory-only Table4 extraction and fixed grouped splits.",
+      "bytes": 23736,
+      "independence": {
+        "observed_cells": 126,
+        "original_individual_assessments_obtained": 0,
+        "records": 18,
+        "source_defined_coffee_product_groups": 18,
+        "traceable_independent_coffee_lots": null,
+        "unit": "Anonymous brand/product IDs, pooled across cities and participants; underlying lots/batches unverified."
+      },
+      "license": "CC-BY-4.0",
+      "measurement_semantics": "Published consumer mean of ordinal sensory attribute presence, not preference, quality, expert consensus or calibrated mental distance.",
+      "measurement_task": "RECORDED_RESPONSE_PREDICTION",
+      "path": "<OWNER_V2>/revisions/r2/barahona_ordinal_means.private.json",
+      "sha256": "5173db2d83620892eb4cfd1eba0f0a94e8f369a671fa3bc4c66d84414f6256e3",
+      "source_id": "BARAHONA_COLOMBIAN_CONSUMERS_2020",
+      "split_counts": {
+        "product_assignment": {
+          "CONFIRMATION": 4,
+          "DEVELOPMENT": 14
+        }
+      },
+      "split_frozen_before_model_fit": true,
+      "task_masks": {
+        "actual_answer_time": false,
+        "consumer_ordinal_mean_reconstruction": true,
+        "descriptor_recovery": false,
+        "individual_perceptual_alignment": false,
+        "professional_profile": false
+      }
+    },
+    {
+      "actual_fields": "See private source contract; raw expressions and coded vocabulary remain private.",
+      "admitted_records": 619,
+      "attribution": "Majid, A.; Croijmans, I. (2016). Human olfaction at the intersection of language, culture and biology. DANS. doi:10.17026/dans-zke-2wgq. Article: Croijmans & Majid, PLoS ONE11(6):e0155845. Modified: coffee-only extraction, grouped source-code QA and split assignments; Dutch text preserved.",
+      "bytes": 4561378,
+      "independence": {
+        "admitted_response_groups": 619,
+        "complete_smell_taste_pairs": 308,
+        "original_physical_lot_ids": null,
+        "quarantined_participant_coffee_pairs": 4,
+        "quarantined_response_groups": 8,
+        "raw_coded_term_rows": 3467,
+        "raw_participants": 63,
+        "raw_response_groups": 627,
+        "source_defined_single_estate_coffees": 5
+      },
+      "license": "CC0-1.0",
+      "measurement_semantics": "Independent observed professional expressions or independent consumer expressions, not calibrated professional intensity or unique coffee truth. Original paper explicitly says no correct answer for coffee/wine descriptions.",
+      "measurement_task": [
+        "OBSERVED_DESCRIPTOR_RECOVERY",
+        "RECORDED_RESPONSE_PREDICTION"
+      ],
+      "path": "<OWNER_V2>/revisions/r2/croijmans_paired_responses.private.json",
+      "sha256": "6536320695a7629b890ab9050e75ecf84468229721cc4193b06c029eac9c95c8",
+      "source_id": "CROIJMANS_MAJID_COFFEE_LANGUAGE_2016",
+      "split_counts": {
+        "coffee_assignment": {
+          "CONFIRMATION": 2,
+          "DEVELOPMENT": 3
+        },
+        "participant_assignment": {
+          "CONFIRMATION": 13,
+          "DEVELOPMENT": 50
+        }
+      },
+      "split_frozen_before_model_fit": true,
+      "task_masks": {
+        "actual_product_answer_time": false,
+        "individual_perceptual_alignment": false,
+        "native_recorded_language": true,
+        "paired_independent_expert_consumer_expressions": true,
+        "positive_sensory_truth": false,
+        "professional_intensity": false,
+        "whole_description_recording_time": true
+      }
+    },
+    {
+      "actual_fields": "See private source contract; raw expressions and coded vocabulary remain private.",
+      "admitted_records": 200,
+      "attribution": "Majid, A.; Croijmans, I. (2016), DANS doi:10.17026/dans-zke-2wgq; Croijmans & Majid (2016), PLoS ONE doi:10.1371/journal.pone.0155845. Modified: coffee-only original distance extraction, decimal-comma parsing and frozen grouped splits.",
+      "bytes": 181369,
+      "independence": {
+        "coffee_pairs_per_participant": 10,
+        "independent_sorting_participants": 20,
+        "new_coffee_groups": 0,
+        "new_source_families": 0,
+        "observed_pair_distances": 200,
+        "original_physical_lot_ids": null,
+        "raw_coordinates_available": false,
+        "same_five_coffees_as_expression_study": true
+      },
+      "license": "CC0-1.0",
+      "measurement_semantics": "Source-native participant-specific spatial dissimilarity in millimeters; low means glasses were placed closer. Not descriptor intensity, ordinal CATA code, calibrated sensory metric, or physical coffee distance.",
+      "measurement_task": "INDEPENDENT_RECORDED_PERCEPTUAL_GEOMETRY_REFERENCE",
+      "path": "<OWNER_V2>/revisions/r2/croijmans_sorting_distances.private.json",
+      "sha256": "d37052cc5ef4c05a43668be254df7d71a3f32a80054e6726ba8c4a77d1636baa",
+      "source_id": "CROIJMANS_MAJID_INDEPENDENT_SORTING_2016",
+      "split_counts": {
+        "coffee_assignment": {
+          "CONFIRMATION": 2,
+          "DEVELOPMENT": 3
+        },
+        "participant_assignment": {
+          "CONFIRMATION": 2,
+          "DEVELOPMENT": 18
+        }
+      },
+      "split_frozen_before_model_fit": true,
+      "task_masks": {
+        "actual_product_answer_time": false,
+        "individual_perceptual_alignment_of_this_system": false,
+        "observed_descriptor_recovery": false,
+        "professional_profile_alignment": false,
+        "source_native_perceptual_dissimilarity": true
+      }
+    }
+  ],
+  "base_checkpoint": "8c41e89214229c56849f04efaf61162c38b757d2",
+  "global_masks_and_limits": [
+    "Unmentioned is NOT_MENTIONED, never absent or zero.",
+    "Native intensity codes, citation, spatial distance, quality, liking and free expression remain separate units/tasks.",
+    "Croijmans coded MainResponse may contain negation/comparison; native token occurrence is not signed positive sensory truth.",
+    "Liberica original0..5 are nominal response categories while anchors remain undocumented; no interval/ordinal assumption.",
+    "Barahona means retain original1..10 source coding; no professional or individual perception claim.",
+    "Sorting references come from separate people, but they did not use this system; no claim of system individual perceptual alignment.",
+    "All new participant/product/coffee splits were written before model evaluation. Previously viewed R1/D0 confirmations remain historical.",
+    "Native roast labels are not automatically converted into the production seven-bin taxonomy; missing C0/C1 remain null.",
+    "Whole-expression recording durations are not product question times and are forbidden router features."
+  ],
+  "parser": {
+    "assertions": [
+      "Frozen original source SHA256; no silent refresh",
+      "Frozen adapter bytes on replay",
+      "Participant and condition alignment across all10 Liberica original blocks",
+      "Source form scale anchors verified before Barahona parsing",
+      "Source modality/full-answer conflicts quarantined at entire participant-coffee pair",
+      "Sorting200 original cells identical to independent repository TSV mirror and source mean rounding",
+      "Complete native numeric response masks, missing not silently zero",
+      "C0/C1 and forbidden task semantics explicit"
+    ],
+    "path": "db/scripts/acquire_m2_r2.py",
+    "replay": [
+      "python db/scripts/acquire_m2_r2.py --source liberica",
+      "python db/scripts/acquire_m2_r2.py --source barahona",
+      "python db/scripts/acquire_m2_r2.py --source croijmans",
+      "python db/scripts/acquire_m2_r2.py --source croijmans_sorting"
+    ],
+    "runtime": "Python3 with openpyxl and lxml",
+    "sha256": "2c55d859f4c1c69aeb8cf991d6bed8edb925f07ba38947da301b1c984f541579",
+    "verification": "All four source adapters replayed byte-identically; Python compilation passed."
+  },
+  "private_owner_root": "<OWNER_V2>/revisions/r2",
+  "public_scope": "Only source/rights/count/mask/split receipt and acquisition adapter; no source row matrix, free text, participant data, weights, model outputs or proprietary forms copied to public Git.",
+  "schema_version": "M2_R2_DATA_INCREMENT_1",
+  "source_work_block": {
+    "elapsed_minutes": 34.55,
+    "ended_utc": "2026-09-05T13:54:21.862402+00:00",
+    "started_utc": "2026-09-05T13:19:48.807043+00:00",
+    "status": "COMPLETE",
+    "stop_reason": "Completed three new licensed data sources including actual multi-coffee paired language and independent perceptual distances; closed already-open routes after inspecting their actual attachments. No idle wait or quota-driven unusable samples.",
+    "timestamp_basis": "Exact earliest acquired source-file timestamp; preparatory reading/search began earlier, approximately13:15UTC and is not included in measured acquisition elapsed time."
+  },
+  "target_gap": {
+    "multi_coffee_paired_source_obtained": true,
+    "paired_cases_are_independent_coffees": false,
+    "product_group_shortfall_to_30": 7,
+    "quota_status": "Nonblocking goal: multi-coffee paired source and useful cases obtained;30 independent products not reached. Do not sum unlike response units into a coffee count.",
+    "requested_source_product_or_useful_case_range": [
+      30,
+      60
+    ],
+    "source_product_groups_obtained": 23,
+    "strict_traceable_lot_target_status": "NOT_VERIFIED; product/condition/participant counts cannot prove independent green lots.",
+    "useful_paired_expression_cases_obtained": 308
+  }
+}
