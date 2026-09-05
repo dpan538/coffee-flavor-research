@@ -6,7 +6,7 @@ V2 preserves the 973f814 experiment and treats its inspected 17 groups as
 historical regression only. The first actual numerical checkpoint fits
 C_BASE/C_C0/C_C1/C_ADD/C_JOINT with leave-one-coffee-group-out evaluation on
 separate source-native aggregate targets. C0 standardized MAE reductions are
-0.09055 (Iswaldi chemistry, two coffees), 0.05414 (Iswaldi consumer sensory,
+0.09055 (Iswaldi chemistry, two coffees), 0.06520 (Iswaldi consumer sensory,
 same two coffees), 0.02767 (Stanek chemistry, six coffees), and 0.12519
 (Vezzulli professional panel, two coffees). Source-native roast effects are
 estimable only in Iswaldi's two-coffee crossed study; production seven-bin C1
@@ -17,8 +17,18 @@ accuracy claim follows from these numerical results.
 The five model forms and all raw-unit errors, group intervals, perturbations,
 source conditions and persistent model paths are recorded in the single
 [v2 experiment](../../db/data/backend-sequential-model-v2/run_receipt.json).
-Sequential M2 fitting, cluster/planning and final-comparison work continues
-under the shared versioned feature/inference contract.
+M2 actual fitting is complete on 211 development records / 187 coffee groups
+from Zenodo, INERA and Lengupá; one record lacks an interpretable target and
+remains in the coverage denominator. Three-fold development recovery NDCG@5
+is 0.534871 (ADD), 0.536926 (JOINT), and 0.528348 (HIER). JOINT minus ADD
+is +0.002055, group 95% interval [-0.001821, 0.005967]: INCONCLUSIVE. HIER
+minus JOINT is -0.008578 [-0.014935, -0.002840]: NO_IMPROVEMENT; the factor
+branch is not selected. These are positive-description recovery proxies,
+not independent product confirmation. Six-slot execution, feature parity,
+answer replacement and terminal one-time feedback pass local unit tests.
+Same-budget policy and F0/F1/F2 diagnostics continue. The initial numerical
+checkpoint is preserved externally; overall_liking was removed from the
+consumer sensory-attribute block because it is a hedonic target.
 
 ## Backend flavor recovery — 2026-09-05 (current)
 

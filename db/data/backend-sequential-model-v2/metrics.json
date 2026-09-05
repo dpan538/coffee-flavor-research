@@ -101,29 +101,29 @@
     "iswaldi_consumer_sensory": {
       "comparisons": {
         "C_C0_minus_C_BASE": {
-          "error_reduction": 0.054138566860091025,
+          "error_reduction": 0.06519743495099004,
           "groups": 2,
           "paired_group_95_interval": [
-            0.03251271190041929,
-            0.07576442181976277
+            0.039015254280503175,
+            0.09137961562147691
           ],
           "status": "INCONCLUSIVE"
         },
         "C_C1_minus_C_BASE": {
-          "error_reduction": 0.3245521718332173,
+          "error_reduction": 0.31559391160846173,
           "groups": 2,
           "paired_group_95_interval": [
-            0.28152921208614146,
-            0.3675751315802931
+            0.30454877498453187,
+            0.32663904823239165
           ],
           "status": "INCONCLUSIVE"
         },
         "C_JOINT_minus_C_ADD": {
-          "error_reduction": 0.005316075670479351,
+          "error_reduction": 0.005795356571595828,
           "groups": 2,
           "paired_group_95_interval": [
-            0.004639107986484888,
-            0.005993043354473815
+            0.0055669295837819,
+            0.006023783559409755
           ],
           "status": "INCONCLUSIVE"
         }
@@ -140,10 +140,9 @@
             "aroma": 0.25305555555555564,
             "bitterness": 0.36666666666666675,
             "colour": 0.4729629629629628,
-            "mouthfeel": 0.25898148148148153,
-            "overall_liking": 0.20111111111111105
+            "mouthfeel": 0.25898148148148153
           },
-          "standardized_mae": 0.4886645451802401
+          "standardized_mae": 0.44140953082527057
         },
         "C_BASE": {
           "estimable_c0": true,
@@ -153,10 +152,9 @@
             "aroma": 0.45555555555555555,
             "bitterness": 0.8194444444444446,
             "colour": 1.0877777777777775,
-            "mouthfeel": 0.57,
-            "overall_liking": 0.29999999999999993
+            "mouthfeel": 0.57
           },
-          "standardized_mae": 0.9240559251496258
+          "standardized_mae": 0.8900104921971342
         },
         "C_C0": {
           "estimable_c0": true,
@@ -166,10 +164,9 @@
             "aroma": 0.37027777777777793,
             "bitterness": 0.7806944444444447,
             "colour": 1.038611111111111,
-            "mouthfeel": 0.5,
-            "overall_liking": 0.30041666666666667
+            "mouthfeel": 0.5
           },
-          "standardized_mae": 0.8699173582895349
+          "standardized_mae": 0.8248130572461442
         },
         "C_C1": {
           "estimable_c0": true,
@@ -179,10 +176,9 @@
             "aroma": 0.4066666666666667,
             "bitterness": 0.43018518518518517,
             "colour": 0.5548148148148148,
-            "mouthfeel": 0.44666666666666677,
-            "overall_liking": 0.20111111111111105
+            "mouthfeel": 0.44666666666666677
           },
-          "standardized_mae": 0.5995037533164085
+          "standardized_mae": 0.5744165805886724
         },
         "C_JOINT": {
           "estimable_c0": true,
@@ -192,10 +188,9 @@
             "aroma": 0.24357706159386835,
             "bitterness": 0.3647659063625452,
             "colour": 0.46746031746031735,
-            "mouthfeel": 0.25726347975087477,
-            "overall_liking": 0.20040816326530608
+            "mouthfeel": 0.25726347975087477
           },
-          "standardized_mae": 0.48334846950976074
+          "standardized_mae": 0.43561417425367477
         }
       },
       "observation_unit": "AGGREGATE_ONLY",
@@ -471,5 +466,461 @@
       "role": "CORE_PROFESSIONAL"
     }
   },
-  "independent_product_confirmation": "NOT_EVALUATED"
+  "independent_product_confirmation": "NOT_EVALUATED",
+  "sequential": {
+    "C_search": {
+      "M2_ADD_C0.01": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.71251705604142,
+        "ndcg5": 0.5348705350405708,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 17.153832795136697,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 22.019535746602784,
+            "ndcg5": 0.3560126987527649,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.525
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 21.20000693286138,
+            "ndcg5": 0.4579911547706089,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.3682893868377739,
+            "recall8": 0.47003850390947166
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5578902131321486,
+        "recall8": 0.6814798254314384,
+        "records": 211,
+        "worst_source_ndcg5": 0.3560126987527649
+      },
+      "M2_ADD_C0.1": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.081410127667024,
+        "ndcg5": 0.5126314222990294,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 18.562006657266963,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 16.941591232482875,
+            "ndcg5": 0.3536253390357159,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.5375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 19.97229883882908,
+            "ndcg5": 0.41402633997936467,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.3233026531413628,
+            "recall8": 0.41971881165429553
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.535396846283943,
+        "recall8": 0.6576640653253556,
+        "records": 211,
+        "worst_source_ndcg5": 0.3536253390357159
+      },
+      "M2_ADD_C1.0": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.1812891628902,
+        "ndcg5": 0.5053851988081244,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 18.396353331547587,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 16.414547638435447,
+            "ndcg5": 0.33365077900632545,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.5375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 20.422169675810203,
+            "ndcg5": 0.4038294973049503,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.3162319460706557,
+            "recall8": 0.4087570434344628
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5318614927485895,
+        "recall8": 0.6521831812154393,
+        "records": 211,
+        "worst_source_ndcg5": 0.33365077900632545
+      }
+    },
+    "comparisons": {
+      "HIER_minus_JOINT": {
+        "delta": -0.008578053505106775,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.014934648655003852,
+          -0.002839861570547326
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      },
+      "JOINT_minus_ADD": {
+        "delta": 0.00205515961985469,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.001820670316695052,
+          0.005966654933703252
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      }
+    },
+    "error_specificity_sensory_truth": "NOT_EVALUATED: incomplete positive labels; no false negatives inferred from unmentioned concepts",
+    "evaluation_scope": "DEVELOPMENT_GROUP_CV; model and C selected here, not independent confirmation",
+    "historical_regression": {
+      "M2_ADD": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 20.22061768152258,
+        "ndcg5": 0.4224485845898971,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 20.22061768152258,
+            "ndcg5": 0.4224485845898971,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3852750190985485,
+            "recall8": 0.5039279348102879
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.3852750190985485,
+        "recall8": 0.5039279348102879,
+        "records": 17,
+        "worst_source_ndcg5": 0.4224485845898971
+      },
+      "M2_HIER": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 48.28095581272946,
+        "ndcg5": 0.41848665449272016,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 48.28095581272946,
+            "ndcg5": 0.41848665449272016,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3852750190985485,
+            "recall8": 0.49657499363381724
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.3852750190985485,
+        "recall8": 0.49657499363381724,
+        "records": 17,
+        "worst_source_ndcg5": 0.41848665449272016
+      },
+      "M2_JOINT": {
+        "candidate_target_coverage": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": 30.989205848206492,
+        "ndcg5": 0.4321586273966316,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 30.989205848206492,
+            "ndcg5": 0.4321586273966316,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3852750190985485,
+            "recall8": 0.5039279348102879
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.3852750190985485,
+        "recall8": 0.5039279348102879,
+        "records": 17,
+        "worst_source_ndcg5": 0.4321586273966316
+      }
+    },
+    "independent_product_confirmation": "NOT_EVALUATED",
+    "models": {
+      "M2_ADD": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.71251705604142,
+        "ndcg5": 0.5348705350405708,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 17.153832795136697,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 22.019535746602784,
+            "ndcg5": 0.3560126987527649,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.525
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 21.20000693286138,
+            "ndcg5": 0.4579911547706089,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.3682893868377739,
+            "recall8": 0.47003850390947166
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5578902131321486,
+        "recall8": 0.6814798254314384,
+        "records": 211,
+        "worst_source_ndcg5": 0.3560126987527649
+      },
+      "M2_HIER": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 15.697369220004203,
+        "ndcg5": 0.5283476411553186,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 14.705776803080656,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9982876712328768
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 14.394509827806836,
+            "ndcg5": 0.3560126987527649,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.525
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 16.769910012171554,
+            "ndcg5": 0.4449453670001048,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.3638688372559341,
+            "recall8": 0.4624518850325302
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5556799383412286,
+        "recall8": 0.6794786306883082,
+        "records": 211,
+        "worst_source_ndcg5": 0.3560126987527649
+      },
+      "M2_JOINT": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.9227511987369,
+        "ndcg5": 0.5369256946604254,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 18.48810926169055,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 16.935343388468027,
+            "ndcg5": 0.3560126987527649,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.525
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 21.723443945188837,
+            "ndcg5": 0.46210147401031837,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.3766525887493629,
+            "recall8": 0.47314483604806185
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5620718140879432,
+        "recall8": 0.6830329915007335,
+        "records": 211,
+        "worst_source_ndcg5": 0.3560126987527649
+      }
+    },
+    "real_QA": "NOT_EVALUATED",
+    "retained_models": [
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_ADD.model.json",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_JOINT.model.json",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_HIER.model.json"
+    ],
+    "selected_C": 0.01,
+    "selected_model": "M2_JOINT",
+    "task": "RECORD_RECOVERY_PROXY"
+  }
 }

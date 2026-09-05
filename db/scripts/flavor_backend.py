@@ -435,6 +435,14 @@ def update_candidate_state(state, answer, bundle):
 
 
 def rank_candidates(state, bundle, ablate=()):
+    if bundle.get("contract_version") == "sequential.v2":
+        if ablate:
+            raise ValueError(
+                "V2 ablations require an explicit versioned experimental bundle"
+            )
+        from flavor_sequential import rank_candidates as v2_rank
+
+        return v2_rank(state, bundle)
     return _scores(
         state["answers"],
         state["context"],
@@ -455,6 +463,10 @@ def _entropy(rows, vocabulary):
 
 
 def select_next_question(state, bundle):
+    if bundle.get("contract_version") == "sequential.v2":
+        from flavor_planning import select_next_question as v2_select
+
+        return v2_select(state, bundle)
     if len(state["answers"]) >= 5:
         return {"action": "STOP", "reason": "QUESTION_BUDGET", "question_id": None}
     observed, _, _ = observations(state["answers"], bundle)
@@ -524,6 +536,10 @@ def select_next_question(state, bundle):
 
 
 def finalize_result(state, bundle):
+    if bundle.get("contract_version") == "sequential.v2":
+        from flavor_sequential import finalize_result as v2_finalize
+
+        return v2_finalize(state, bundle)
     ranked = rank_candidates(state, bundle)
     vocabulary = set(bundle["vocabulary"])
     eligible = [
@@ -544,6 +560,12 @@ def finalize_result(state, bundle):
 
 
 def run(payload, bundle):
+    if "contract_version" in bundle or (
+        isinstance(payload, dict) and "contract_version" in payload
+    ):
+        from flavor_sequential import run as v2_run
+
+        return v2_run(payload, bundle)
     if (
         not isinstance(payload, dict)
         or set(payload) - {"context", "answers", "model"}
@@ -559,6 +581,38 @@ def run(payload, bundle):
     for answer in answers:
         state = update_candidate_state(state, answer, bundle)
     return {"final_result": finalize_result(state, bundle), "candidate_state": state}
+
+
+def encode_features(payload_or_state, bundle):
+    from flavor_sequential import encode_features as encode
+
+    return encode(payload_or_state, bundle)
+
+
+def estimate_context_attributes(context, bundle):
+    from flavor_context import estimate_context_attributes as estimate
+
+    return estimate(context, bundle.get("context_attribute_models", {}))
+
+
+def update_joint_state(state, answer, bundle):
+    from flavor_sequential import update_joint_state as update
+
+    return update(state, answer, bundle)
+
+
+def plan_stage(state, bundle):
+    from flavor_planning import plan_stage as plan
+
+    return plan(state, bundle)
+
+
+def apply_final_comparison(
+    state, exposed_candidates, selected_candidates, bundle, **metadata
+):
+    from flavor_sequential import apply_final_comparison as apply
+
+    return apply(state, exposed_candidates, selected_candidates, bundle, **metadata)
 
 
 def main():

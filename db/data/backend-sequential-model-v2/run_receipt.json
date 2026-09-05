@@ -1,9 +1,22 @@
 {
+  "M2": {
+    "code_base_sha": "206af96b4a52a526b2bcd68c1aed1568a4369d8f",
+    "command": "/private/tmp/coffee-backend-model-venv/bin/python db/scripts/run_sequential_v2.py --owner-dir \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2\"",
+    "fit_count": 18,
+    "model_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_JOINT.model.json",
+    "numpy": "2.5.2",
+    "python": "3.12.14",
+    "scipy": "1.18.1",
+    "seconds": 127.69222688674927,
+    "selected_model": "M2_JOINT",
+    "sklearn": "1.9.0",
+    "status": "ACTUAL_FITTING_COMPLETED; policy and feedback diagnostic checkpoint pending"
+  },
   "command": "python db/scripts/run_context_v2.py --owner-root \"$COFFEE_SEQUENTIAL_V2_ROOT\"",
-  "context_elapsed_seconds": 0.1073918342590332,
+  "context_elapsed_seconds": 0.10233807563781738,
   "context_fit_count": 80,
   "context_model_path": "$COFFEE_SEQUENTIAL_V2_ROOT/models/context_models.model.json",
-  "context_model_sha256": "070a5fddb33c9a5b50e914b6ceb632a1925f53e26fc6a7149fec4f862964fd57",
+  "context_model_sha256": "4e89b2916a67a5ab57128d0b8ab666ebcb223ea8cb3a69ca586001ffb6c6327d",
   "errors": [
     "Source C1 classes are coarse native labels, not validated production bins.",
     "Only 2 coffee groups in each sensory study; grouped intervals do not establish broad generalization.",

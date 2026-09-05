@@ -61,6 +61,50 @@
     "vezzulli_panel": 8
   },
   "project_purpose": "PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH",
+  "record_recovery": {
+    "coffee_group_leakage_policy": "All sample aliases and genotypes stay grouped; outer and inner features are fitted on train groups only.",
+    "development_groups": 187,
+    "development_records": 211,
+    "groups": 204,
+    "historical_regression_groups": 17,
+    "historical_regression_records": 17,
+    "historical_rights_reference": "db/data/backend-model-20260905/dataset_manifest.json",
+    "label_structure": "Incomplete positive descriptions and native mention frequencies. Missing descriptors are not sensory negative labels. Nutty/Cocoa is one dimension. One uninterpretable Lengupa row is retained in coverage, excluded from labelled utility.",
+    "missing_source_c0_count": 228,
+    "missing_source_c1_count": 228,
+    "new_confirmation": "NOT_EVALUATED",
+    "private_input_sha256": "fb59297faf1e9346c1fba8d4bc3439eb7f5b261300345f1c07a2a2f8d01efc11",
+    "production_paired_context_records": 0,
+    "records": 228,
+    "rights_unchanged": true,
+    "roles": [
+      "CORE_PROFESSIONAL"
+    ],
+    "source_families": [
+      "inera",
+      "lengupa",
+      "zenodo"
+    ],
+    "source_share": {
+      "inera": {
+        "effective_training_source_contribution": 0.3333333333333333,
+        "independent_groups": 73,
+        "raw_records": 95
+      },
+      "lengupa": {
+        "effective_training_source_contribution": 0.3333333333333333,
+        "independent_groups": 21,
+        "raw_records": 21
+      },
+      "zenodo": {
+        "effective_training_source_contribution": 0.3333333333333333,
+        "independent_groups": 93,
+        "raw_records": 95
+      }
+    },
+    "split_hash": "48736f8e26737e1312c990c84eb9e1911bfe86fc498751a9be3992d3beb7056e",
+    "uninterpretable_target_records_retained_in_coverage": 1
+  },
   "source_discovery": {
     "closed_after_one_targeted_block": true,
     "existing_registered_sources_rechecked": [

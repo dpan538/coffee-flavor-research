@@ -24,5 +24,59 @@
     "seed": 20260905,
     "source_native_roast_not_seven_bin": true,
     "task": "NUMERICAL_CONTEXT_AUXILIARY"
+  },
+  "sequential": {
+    "ADD_C_search": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "Q0_Q1_included_in_fit": true,
+    "candidate_features": [
+      "log_prior",
+      "specific_direct",
+      "broad_candidate_direct",
+      "broad_related_support",
+      "cooccurrence_mean",
+      "cooccurrence_max",
+      "source_support_log",
+      "unsupported_specificity",
+      "context_c0",
+      "context_c1",
+      "answer_pair_affinity",
+      "context_answer_interaction",
+      "cluster_affinity",
+      "attribute_overlap",
+      "feedback_direct",
+      "feedback_association"
+    ],
+    "cluster": "3 nonnegative factors fit only complete INERA native frequency TRAIN matrix; overlapping semantic projection.",
+    "context_descriptor_effect": "NOT_ESTIMABLE: no validated paired context. Both training and runtime mask descriptor context identically; no seven-bin source label fabrication.",
+    "development_only": true,
+    "diagnostics_preregistered_before_execution": [
+      "all development records, no performance filtering",
+      "F0/F1/F2 visible-only simulated selection, fixed hidden targets",
+      "20 anonymous human review cases:10 development,10 historical regression; none claimed fresh locked confirmation",
+      "source-native cluster bootstrap alignment, and missing-context limitation"
+    ],
+    "feedback_simulation": "Only exposed candidates intersecting frozen visible evidence; hidden targets never select feedback.",
+    "fixed_target_through_trajectory": true,
+    "folds": 3,
+    "graded_relevance": "Distinct panel mention counts or native frequency, conditional on observed positive descriptors only",
+    "held_visible_evidence_max": 3,
+    "inner_feature_folds": 2,
+    "loss": "Positive conditional token cross entropy; 0.7 hidden recovery and 0.3 explicit-retention mass when available. Unmentioned descriptors are not labelled sensory absences.",
+    "ordinary_option_budget": 4,
+    "ordinary_path_for_primary_comparison": "P1",
+    "policy_evaluation": "Fixed, fixed-seeded random, one-step and bounded two-step on identical P1 question/option budgets. Response distributions from TRAIN only.",
+    "policy_exact_budget": "P1, exactly 5 ordinary questions and 20 shown options; shared TRAIN-qualified axes having exactly four actual options. Full-pool primary ranking result kept separately.",
+    "preregistered_before_fit": true,
+    "primary_metric": "observed_descriptor_recovery_NDCG@5",
+    "recovery_excludes_visible_and_entailed_parent_restatement": true,
+    "seed": 20260905,
+    "source_weighting": "Equal source; equal independent coffee group; equal records/states within group.",
+    "staged_search": "Choose ADD C on development CV, reuse C for JOINT then HIER; no Cartesian search. Final model choose best CV, retain all alternatives. No tuning on historical 17 groups.",
+    "task": "RECORD_RECOVERY_PROXY",
+    "truth_measurements_in_live_features": false
   }
 }

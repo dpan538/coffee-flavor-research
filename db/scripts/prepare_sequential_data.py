@@ -128,7 +128,7 @@ def numerical(owner):
     )
     rows = []
     for r in native:
-        if r["sensory_attribute"] == "liking":
+        if r["sensory_attribute"] in {"liking", "overall_liking"}:
             continue
         rows.append(
             {
@@ -268,3 +268,201 @@ def numerical(owner):
     save(owner / "numeric_context_records.json", result)
     (owner / "numeric_context_records.json").chmod(0o600)
     return result
+
+
+# These exact source words remain broad concepts. No slash-splitting and no
+# florals->jasmine or generic chocolate->dark chocolate conversion.
+BROAD_WORDS = {
+    "floral": "attribute.floral",
+    "flowers": "attribute.floral",
+    "fruity": "attribute.fruity",
+    "fruit": "attribute.fruity",
+    "sweet": "attribute.sweet",
+    "nutty/cocoa": "attribute.nutty_cocoa",
+    "nutty": "broad.nutty",
+    "chocolate": "broad.chocolate",
+    "citrus": "broad.citrus",
+    "spicy": "attribute.spices",
+    "roasted": "attribute.roasted",
+    "herbal": "attribute.green_vegetative",
+    "fermented": "attribute.sour_fermented",
+}
+
+
+def record_recovery(owner, prior_owner):
+    import openpyxl
+    from collections import Counter
+
+    old = json.loads((prior_owner / "records.json").read_text())
+    by_coffee = {r["coffee_id"]: r for r in old}
+    evidence_to_record = {x: r for r in old for x in r["evidence_ids"]}
+    sources = {
+        r["descriptor_assertion_id"]: r
+        for r in tsv(ROOT / "db/data/current/CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv")
+        if r["source_family_id"] == "family.zenodo_golovinsky_q_grader_dataset"
+    }
+    atoms = tsv(ROOT / "db/data/current/CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv")
+    panelists = defaultdict(lambda: defaultdict(set))
+    broad = defaultdict(set)
+    for r in atoms:
+        if r["cleaned_output_atom_id"] not in evidence_to_record:
+            continue
+        original = evidence_to_record[r["cleaned_output_atom_id"]]
+        panelists[original["coffee_id"]][r["judge_observation_id_sha256"]].add(
+            r["canonical_concept_id"]
+        )
+    cells = list(
+        openpyxl.load_workbook(
+            prior_owner / "sources/zenodo-panelists.xlsx",
+            read_only=True,
+            data_only=True,
+        )["All Panelists"].values
+    )
+    for r in sources.values():
+        if r["coffee_identity_id"] not in by_coffee:
+            continue
+        m = re.fullmatch(
+            r"sheet:All Panelists#row=(\d+);column=(\d+)", r["source_locator"]
+        )
+        assert m
+        raw = str(cells[int(m[1]) - 1][int(m[2]) - 1] or "")
+        # Scan only actual sensory text, retaining broad fragments as broad.
+        # A method name never supplies descriptor evidence.
+        for part in re.split(r"[,;\n]", raw):
+            term = part.strip().lower().strip(". ")
+            if term in BROAD_WORDS:
+                target = BROAD_WORDS[term]
+                broad[r["coffee_identity_id"]].add(target)
+                panelists[r["coffee_identity_id"]][
+                    r["judge_observation_id_sha256"]
+                ].add(target)
+    records = []
+    for r in old:
+        targets = set(r["targets"]) | broad[r["coffee_id"]]
+        mentions = Counter(
+            c for terms in panelists[r["coffee_id"]].values() for c in terms
+        )
+        records.append(
+            {
+                "record_id": r["record_id"],
+                "group_id": r["group_id"],
+                "source_family": "zenodo",
+                "targets": sorted(targets),
+                "relevance": {c: max(1, mentions[c]) for c in targets},
+                "panelist_mention_sets": [
+                    sorted(x) for x in panelists[r["coffee_id"]].values()
+                ],
+                "source_C0": None,
+                "source_C1": None,
+                "source_native_C1_historical": r["c1"],
+                "split": (
+                    "HISTORICAL_REGRESSION" if r["split"] == "TEST" else "DEVELOPMENT"
+                ),
+                "role": "CORE_PROFESSIONAL",
+                "supervision": "INCOMPLETE_OBSERVED_PANELIST_MENTIONS",
+                "broad_raw_count": len(broad[r["coffee_id"]]),
+            }
+        )
+    tree = html.parse(str(prior_owner / "sources/lengupa-article.html"))
+    table = next(
+        t for t in tree.xpath("//table") if "D.FA" in " ".join(t.xpath(".//text()"))
+    )
+    gr = grid(table)
+    header = gr[0]
+    code_map = {
+        "1": "broad.citrus",
+        "2": "attribute.fruity",
+        "3": "attribute.green_vegetative",
+        "4": "broad.chocolate",
+        "5": "broad.nutty",
+        "6": "attribute.sweet",
+        "7": "sensory.almond",
+        "8": "sensory.caramel",
+        "10": "attribute.spices",
+        "11": "sensory.honey",
+        "13": "sensory.lemongrass",
+        "15": "attribute.sour_fermented",
+        "16": "sensory.earthy",
+        "19": "sensory.hazelnut",
+        "20": "sensory.woody",
+        "22": "sensory.banana",
+        "23": "sensory.peanut",
+        "24": "attribute.fruity",
+        "27": "attribute.green_vegetative",
+    }
+    for row in gr[1:]:
+        sid = row[0]
+        codes = set(
+            re.findall(r"\d+", row[header.index("D.FA")])
+            + re.findall(r"\d+", row[header.index("D.F")])
+        )
+        targets = sorted({code_map[c] for c in codes if c in code_map})
+        records.append(
+            {
+                "record_id": "lengupa:" + sid,
+                "group_id": "lengupa:" + sid,
+                "source_family": "lengupa",
+                "targets": targets,
+                "relevance": {c: 1 for c in targets},
+                "source_C0": None,
+                "source_C1": None,
+                "split": "DEVELOPMENT",
+                "role": "CORE_PROFESSIONAL",
+                "supervision": "INCOMPLETE_SOURCE_CODED_DESCRIPTIONS",
+                "raw_codes": sorted(codes),
+                "source_native_C1_historical": None,
+            }
+        )
+    attributes = [
+        "green_vegetative",
+        "roasted",
+        "spices",
+        "nutty_cocoa",
+        "sweet",
+        "floral",
+        "fruity",
+        "sour_fermented",
+    ]
+    inera = []
+    for i, row in enumerate(
+        tsv(ROOT / "db/data/round3h/batch1/bollen_2024_sensory_scores.tsv")
+    ):
+        values = []
+        for name in attributes:
+            try:
+                values.append(float(row[name]))
+            except ValueError:
+                values.append(None)
+        targets = [
+            "attribute." + a
+            for a, v in zip(attributes, values)
+            if v is not None and v > 0
+        ]
+        rec = {
+            "record_id": "inera:" + str(i),
+            "group_id": "inera:" + row["genotype"],
+            "source_family": "inera",
+            "targets": targets,
+            "relevance": {
+                "attribute." + a: v
+                for a, v in zip(attributes, values)
+                if v is not None and v > 0
+            },
+            "source_C0": None,
+            "source_C1": None,
+            "split": "DEVELOPMENT",
+            "role": "CORE_PROFESSIONAL",
+            "supervision": "SOURCE_NATIVE_STRUCTURED_MENTION_FREQUENCIES",
+            "attribute_values": values,
+            "attribute_names": attributes,
+            "harvest": row["harvest"],
+            "source_native_C1_historical": "medium_source_native_unmapped",
+        }
+        records.append(rec)
+        inera.append(rec)
+    for r in records:
+        r["evaluation_group"] = r["group_id"]
+        r["recovery_target_available"] = bool(r["targets"])
+    save(owner / "recovery_records.json", records)
+    (owner / "recovery_records.json").chmod(0o600)
+    return records

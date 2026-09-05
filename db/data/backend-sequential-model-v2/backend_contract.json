@@ -1,0 +1,381 @@
+{
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "axis": {
+          "type": "string"
+        },
+        "question_id": {
+          "type": "string"
+        },
+        "selected_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 4,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "shown_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "slot": {
+          "enum": [
+            "Q0",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ]
+        },
+        "state": {
+          "enum": [
+            "NONE_OF_THESE",
+            "SELECTED",
+            "SKIP",
+            "UNSURE"
+          ]
+        }
+      },
+      "required": [
+        "slot",
+        "question_id",
+        "axis",
+        "shown_option_ids",
+        "selected_option_ids",
+        "state"
+      ],
+      "type": "object"
+    },
+    "Context": {
+      "additionalProperties": false,
+      "properties": {
+        "c0": {
+          "enum": [
+            "preparation.family.filter_percolation",
+            "preparation.family.immersion",
+            "preparation.family.hybrid",
+            "preparation.family.espresso_pressure",
+            "preparation.family.diluted_espresso",
+            "preparation.family.stovetop_boiled",
+            "preparation.family.cold_extraction",
+            "preparation.family.espresso_milk"
+          ]
+        },
+        "c1": {
+          "enum": [
+            "extremely_light",
+            "light",
+            "medium_light",
+            "medium",
+            "medium_dark",
+            "dark",
+            "extremely_dark"
+          ]
+        }
+      },
+      "required": [
+        "c0",
+        "c1"
+      ],
+      "type": "object"
+    },
+    "FinalComparison": {
+      "additionalProperties": false,
+      "properties": {
+        "exposed_candidates": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "minItems": 3,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "feedback_source": {
+          "enum": [
+            "REAL_HUMAN",
+            "SIMULATED"
+          ]
+        },
+        "generation_version": {
+          "type": "string"
+        },
+        "selected_candidates": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "exposed_candidates",
+        "selected_candidates",
+        "feedback_source",
+        "generation_version"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "answers": {
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Answer"
+          },
+          {
+            "items": {
+              "$ref": "#/$defs/Answer"
+            },
+            "type": "array"
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
+    "contract_version": {
+      "const": "sequential.v2"
+    },
+    "final_comparison": {
+      "$ref": "#/$defs/FinalComparison"
+    },
+    "path": {
+      "enum": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    "policy": {
+      "enum": [
+        "fixed",
+        "one_step",
+        "random",
+        "two_step"
+      ]
+    }
+  },
+  "required": [
+    "contract_version",
+    "context"
+  ],
+  "type": "object",
+  "x_bundle_required": [
+    "contract_version",
+    "feature_spec_version",
+    "context_mapping_version",
+    "question_bank_version",
+    "semantic_version",
+    "cluster_version",
+    "bundle_id",
+    "model_kind",
+    "scaler_parameters",
+    "model_parameters",
+    "candidate_vocabulary",
+    "training_split_hash",
+    "data_manifest_hash",
+    "statistics",
+    "question_bank",
+    "candidate_attributes",
+    "candidate_clusters"
+  ],
+  "x_components": {
+    "apply_final_comparison": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "CandidateState + FinalComparison + ModelBundle",
+      "module": "flavor_sequential",
+      "output": "TerminalCandidateState",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "encode_features": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "Request | CandidateState + ModelBundle",
+      "module": "flavor_sequential",
+      "output": "FeatureMatrix",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "estimate_context_attributes": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "Context + ModelBundle",
+      "module": "flavor_context",
+      "output": "PredictedSourceAttributesWithSupportMask",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "finalize_result": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "CandidateState + ModelBundle",
+      "module": "flavor_sequential",
+      "output": "Result",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "plan_stage": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "CandidateState + ModelBundle",
+      "module": "flavor_planning",
+      "output": "NextQuestion | Preliminary | Final",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "rank_candidates": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "CandidateState + ModelBundle",
+      "module": "flavor_sequential",
+      "output": "RankResult",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "select_next_question": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "CandidateState + ModelBundle",
+      "module": "flavor_planning",
+      "output": "NextQuestion | Preliminary | Final",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "update_joint_state": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy",
+        "train-only statistical bundle"
+      ],
+      "input": "CandidateState + Answer + ModelBundle",
+      "module": "flavor_sequential",
+      "output": "CandidateState",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    },
+    "validate_context": {
+      "data_sources": "Versioned model bundle and actual submitted answers; no held-out labels or real laboratory truths",
+      "dependencies": [
+        "numpy"
+      ],
+      "input": "Context",
+      "module": "flavor_backend",
+      "output": "Context",
+      "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
+    }
+  },
+  "x_development_status": "Actual fitted record recovery; independent product and real human comparison effects NOT_EVALUATED",
+  "x_information_chain": [
+    "Context",
+    "QuestionInstance",
+    "Answer",
+    "TypedSemanticRelations",
+    "SensoryAttributeState",
+    "CandidateState",
+    "RankResult",
+    "NextQuestionOrPreliminary",
+    "OptionalFinalComparison",
+    "FinalResult"
+  ],
+  "x_output_contract": {
+    "final_comparison_count_max": 1,
+    "final_comparison_options_max": 8,
+    "final_comparison_options_min": 3,
+    "insufficient_candidates": "Case cannot perform specified comparison; count in denominator, no invented candidates or new path",
+    "main_max": 5,
+    "no_duplicates": true,
+    "ordinary_options_max": 4,
+    "ordinary_questions_max": 6,
+    "predicted_candidates_not_sensory_truth": true,
+    "scores_not_calibrated_probabilities": true,
+    "secondary_max": 3
+  },
+  "x_paths": {
+    "P1": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+    ],
+    "P2": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "conditional Q3",
+      "Q4"
+    ],
+    "P3": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "Q3",
+      "conditionally planned Q4, mandatory closure under no-Q3-early-exit rule"
+    ],
+    "P4": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "conditional Q3",
+      "Q4",
+      "conditional Q5"
+    ]
+  },
+  "x_runtime_invariants": [
+    "C0/C1 are required; source missing values never fabricated",
+    "Version mismatch is a technical error; no fallback parameters",
+    "Later conditional question follows actual earlier answer",
+    "No repeated question axis or repeated Q3",
+    "Selection is subset of actual shown option IDs",
+    "Unselected ordinary options are not sensory negatives",
+    "All-broad selection conveys no extra discrimination",
+    "Specific multi-selection is not divided by count",
+    "Correction replaces old effect; repeated identical answer is idempotent",
+    "Feedback matches current ordered exposure and generation version",
+    "After comparison, no more questions or comparison",
+    "Q0/Q1 sampled from frozen visible record evidence; hidden targets cannot produce answers",
+    "Context feature support mask identical in fitting, evaluation and live entry",
+    "No runtime laboratory measurement or study/coffee ID feature"
+  ],
+  "x_scope_check": "python db/scripts/check-backend-model-scope.py --base 973f814",
+  "x_versions": {
+    "cluster_version": "overlapping-attributes.v2",
+    "context_mapping_version": "context.v2.source-native-separated",
+    "contract_version": "sequential.v2",
+    "feature_spec_version": "shared-candidate.v2",
+    "question_bank_version": "limited-four-options.v2",
+    "semantic_version": "typed-support.v2"
+  }
+}
