@@ -193,7 +193,9 @@ def emit_public(report):
         "real_answer_evaluation",
     ]
     with (PUBLIC / "foundation_checks.tsv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields, delimiter="\t", lineterminator="\n")
+        writer = csv.DictWriter(
+            stream, fieldnames=fields, delimiter="\t", lineterminator="\n"
+        )
         writer.writeheader()
         for key, summary in report["summaries"].items():
             name, variant = key.split(":") if ":" in key else ("M2_R1_FIXED", "V0")

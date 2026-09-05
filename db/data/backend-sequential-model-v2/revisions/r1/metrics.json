@@ -1724,6 +1724,386 @@
     "real_feedback": "NOT_EVALUATED",
     "targets_fixed": true
   },
+  "final_Q01": {
+    "diagnostics_by_fold": {
+      "complementary": [
+        {
+          "q1_conditional_response_entropy_bits": 2.1424569083393816,
+          "q1_effective_selection_rate": 0.6986301369863014,
+          "q1_feature_change_rate": 0.6986301369863014,
+          "q1_option_target_scope": {
+            "attribute.green_vegetative": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 22
+            },
+            "attribute.roasted": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 30
+            },
+            "attribute.spices": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 28
+            },
+            "attribute.sweet": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 39
+            }
+          },
+          "q1_response_patterns": {
+            "UNSURE": 22,
+            "attribute.green_vegetative": 10,
+            "attribute.green_vegetative|attribute.roasted": 1,
+            "attribute.green_vegetative|attribute.spices": 5,
+            "attribute.green_vegetative|attribute.sweet": 5,
+            "attribute.roasted": 9,
+            "attribute.roasted|attribute.spices": 3,
+            "attribute.roasted|attribute.sweet": 2,
+            "attribute.spices": 3,
+            "attribute.spices|attribute.sweet": 2,
+            "attribute.sweet": 11
+          },
+          "relevant_coefficient_directions": {
+            "broad_candidate_direct": "POSITIVE",
+            "broad_related_support": "POSITIVE",
+            "exposed_rejection": "NEGATIVE"
+          },
+          "scope": "DERIVED_RECORD_PROXY; Q1_ONLY_IS_EVIDENCE_ABLATION_NOT_A_NEW_PRODUCT_PATH"
+        },
+        {
+          "q1_conditional_response_entropy_bits": 1.7946926473133495,
+          "q1_effective_selection_rate": 0.5735294117647058,
+          "q1_feature_change_rate": 0.5735294117647058,
+          "q1_option_target_scope": {
+            "attribute.green_vegetative": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 25
+            },
+            "attribute.roasted": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 28
+            },
+            "attribute.sour_fermented": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 13
+            },
+            "attribute.spices": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 25
+            }
+          },
+          "q1_response_patterns": {
+            "UNSURE": 29,
+            "attribute.green_vegetative": 10,
+            "attribute.green_vegetative|attribute.roasted": 3,
+            "attribute.green_vegetative|attribute.roasted|attribute.spices": 2,
+            "attribute.green_vegetative|attribute.sour_fermented": 1,
+            "attribute.green_vegetative|attribute.spices": 2,
+            "attribute.roasted": 13,
+            "attribute.roasted|attribute.spices": 4,
+            "attribute.sour_fermented": 2,
+            "attribute.sour_fermented|attribute.spices": 1,
+            "attribute.spices": 1
+          },
+          "relevant_coefficient_directions": {
+            "broad_candidate_direct": "POSITIVE",
+            "broad_related_support": "ZERO",
+            "exposed_rejection": "NEGATIVE"
+          },
+          "scope": "DERIVED_RECORD_PROXY; Q1_ONLY_IS_EVIDENCE_ABLATION_NOT_A_NEW_PRODUCT_PATH"
+        },
+        {
+          "q1_conditional_response_entropy_bits": 2.000728030555746,
+          "q1_effective_selection_rate": 0.6571428571428571,
+          "q1_feature_change_rate": 0.6571428571428571,
+          "q1_option_target_scope": {
+            "attribute.green_vegetative": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 23
+            },
+            "attribute.roasted": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 29
+            },
+            "attribute.sour_fermented": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 15
+            },
+            "attribute.spices": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 30
+            }
+          },
+          "q1_response_patterns": {
+            "UNSURE": 24,
+            "attribute.green_vegetative": 9,
+            "attribute.green_vegetative|attribute.roasted": 1,
+            "attribute.green_vegetative|attribute.sour_fermented|attribute.spices": 1,
+            "attribute.green_vegetative|attribute.spices": 7,
+            "attribute.roasted": 10,
+            "attribute.roasted|attribute.spices": 4,
+            "attribute.sour_fermented": 4,
+            "attribute.sour_fermented|attribute.spices": 1,
+            "attribute.spices": 9
+          },
+          "relevant_coefficient_directions": {
+            "broad_candidate_direct": "POSITIVE",
+            "broad_related_support": "ZERO",
+            "exposed_rejection": "NEGATIVE"
+          },
+          "scope": "DERIVED_RECORD_PROXY; Q1_ONLY_IS_EVIDENCE_ABLATION_NOT_A_NEW_PRODUCT_PATH"
+        }
+      ],
+      "original": [
+        {
+          "q1_conditional_response_entropy_bits": 1.7283388309839625,
+          "q1_effective_selection_rate": 0.5342465753424658,
+          "q1_feature_change_rate": 0.5342465753424658,
+          "q1_option_target_scope": {
+            "attribute.floral": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 6
+            },
+            "attribute.green_vegetative": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 22
+            },
+            "attribute.sour_fermented": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 23
+            },
+            "attribute.spices": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 28
+            }
+          },
+          "q1_response_patterns": {
+            "UNSURE": 34,
+            "attribute.floral": 3,
+            "attribute.green_vegetative": 12,
+            "attribute.green_vegetative|attribute.floral": 1,
+            "attribute.green_vegetative|attribute.sour_fermented": 3,
+            "attribute.green_vegetative|attribute.spices": 4,
+            "attribute.green_vegetative|attribute.spices|attribute.sour_fermented": 1,
+            "attribute.sour_fermented": 7,
+            "attribute.spices": 4,
+            "attribute.spices|attribute.sour_fermented": 4
+          },
+          "relevant_coefficient_directions": {
+            "broad_candidate_direct": "POSITIVE",
+            "broad_related_support": "POSITIVE",
+            "exposed_rejection": "NEGATIVE"
+          },
+          "scope": "DERIVED_RECORD_PROXY; Q1_ONLY_IS_EVIDENCE_ABLATION_NOT_A_NEW_PRODUCT_PATH"
+        },
+        {
+          "q1_conditional_response_entropy_bits": 1.1773214178083813,
+          "q1_effective_selection_rate": 0.4264705882352941,
+          "q1_feature_change_rate": 0.4264705882352941,
+          "q1_option_target_scope": {
+            "attribute.floral": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 4
+            },
+            "attribute.green_vegetative": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 25
+            },
+            "attribute.sour_fermented": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 13
+            },
+            "attribute.spices": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 25
+            }
+          },
+          "q1_response_patterns": {
+            "UNSURE": 39,
+            "attribute.floral": 3,
+            "attribute.green_vegetative": 13,
+            "attribute.green_vegetative|attribute.sour_fermented": 1,
+            "attribute.green_vegetative|attribute.spices": 4,
+            "attribute.sour_fermented": 2,
+            "attribute.spices": 5,
+            "attribute.spices|attribute.sour_fermented": 1
+          },
+          "relevant_coefficient_directions": {
+            "broad_candidate_direct": "POSITIVE",
+            "broad_related_support": "ZERO",
+            "exposed_rejection": "NEGATIVE"
+          },
+          "scope": "DERIVED_RECORD_PROXY; Q1_ONLY_IS_EVIDENCE_ABLATION_NOT_A_NEW_PRODUCT_PATH"
+        },
+        {
+          "q1_conditional_response_entropy_bits": 1.5035677010569204,
+          "q1_effective_selection_rate": 0.5428571428571428,
+          "q1_feature_change_rate": 0.5428571428571428,
+          "q1_option_target_scope": {
+            "attribute.floral": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 7
+            },
+            "attribute.green_vegetative": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 23
+            },
+            "attribute.sour_fermented": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 15
+            },
+            "attribute.spices": {
+              "in_candidate_vocabulary": true,
+              "records_with_direct_same_level_target": 30
+            }
+          },
+          "q1_response_patterns": {
+            "UNSURE": 32,
+            "attribute.floral": 2,
+            "attribute.green_vegetative": 9,
+            "attribute.green_vegetative|attribute.floral": 1,
+            "attribute.green_vegetative|attribute.spices": 7,
+            "attribute.green_vegetative|attribute.spices|attribute.sour_fermented": 1,
+            "attribute.sour_fermented": 4,
+            "attribute.spices": 13,
+            "attribute.spices|attribute.sour_fermented": 1
+          },
+          "relevant_coefficient_directions": {
+            "broad_candidate_direct": "POSITIVE",
+            "broad_related_support": "ZERO",
+            "exposed_rejection": "NEGATIVE"
+          },
+          "scope": "DERIVED_RECORD_PROXY; Q1_ONLY_IS_EVIDENCE_ABLATION_NOT_A_NEW_PRODUCT_PATH"
+        }
+      ]
+    },
+    "fit_count": 3,
+    "interpretation": "Fixed A/T and correction pool; Q1 response/information effects are record-derived proxies; does not remove Q1.",
+    "models": {
+      "complementary_pair": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 18.636249738526256,
+        "ndcg5": 0.474674030130038,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 18.304395459094785,
+            "ndcg5": 0.4844919085211506,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.6470319634703197,
+            "recall8": 0.9517123287671232
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.026799548772118,
+            "ndcg5": 0.3221657837385855,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.37916666666666665,
+            "recall8": 0.5208333333333333
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 18.808548839422322,
+            "ndcg5": 0.49976499577818667,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.40506691635723896,
+            "recall8": 0.531462265333233
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.49724671982736496,
+        "recall8": 0.6952562222723512,
+        "records": 211
+      },
+      "original_pair": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 19.05418470325098,
+        "ndcg5": 0.4756255679145357,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "groups": 73,
+            "latency_ms": 18.991347601675518,
+            "ndcg5": 0.48199963506356847,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "raw_direct_retention8": null,
+            "recall5": 0.6470319634703197,
+            "recall8": 0.931849315068493
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 21,
+            "latency_ms": 19.18803984742789,
+            "ndcg5": 0.3221657837385855,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.37916666666666665,
+            "recall8": 0.5208333333333333
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "groups": 93,
+            "latency_ms": 19.0732830945122,
+            "ndcg5": 0.5036243720181874,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "raw_direct_retention8": 1.0,
+            "recall5": 0.41581960452928196,
+            "recall8": 0.531462265333233
+          }
+        },
+        "question_count": 5.0,
+        "raw_direct_retention8": 1.0,
+        "recall5": 0.5026230639133864,
+        "recall8": 0.6874605233476201,
+        "records": 211
+      }
+    },
+    "same_C_same_objective_minus_original_pair": {
+      "delta": -0.0009515377844976962,
+      "groups": 186,
+      "inference": "Development selection or historical record proxy; not independent product efficacy.",
+      "paired_group_95_interval": [
+        -0.006415271881270296,
+        0.0023807401862039946
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "INCONCLUSIVE"
+    }
+  },
   "final_feedback": {
     "categories": {
       "BROAD_TO_SPECIFIC": {
@@ -10890,6 +11270,7 @@
   "selection_decision": {
     "D1_ranking_promotion": "INCONCLUSIVE; NOT_SELECTED",
     "backend_default": "B2",
+    "complementary_Q01_promotion": "INCONCLUSIVE; RETAIN_FINAL_FIXED_QUESTION_PAIR",
     "foundation_check": "RESEARCH_ONLY_NO_IMPROVEMENT_IN_RECORD_PROXY",
     "foundation_representation": "explicit_attributes",
     "foundation_scoring_fusion": 0,

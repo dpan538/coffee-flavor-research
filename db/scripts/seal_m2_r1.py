@@ -38,6 +38,7 @@ def seal(owner, completed=False):
         "foundation_scoring_fusion": 0,
         "foundation_check": "RESEARCH_ONLY_NO_IMPROVEMENT_IN_RECORD_PROXY",
         "D1_ranking_promotion": "INCONCLUSIVE; NOT_SELECTED",
+        "complementary_Q01_promotion": "INCONCLUSIVE; RETAIN_FINAL_FIXED_QUESTION_PAIR",
         "source_native_attribute_heads": "SEPARATE_RESEARCH_TASKS; NOT_RUNTIME_FEATURES",
         "real_independent_answer_efficacy": "NOT_EVALUATED",
         "rationale": "Semantics were repaired, but common fine-descriptor gains over B2/M1 remain uncertain and old M2 full recovery is higher. The old proxy can reward suppression of observed broad categories. Do not promote a model from vocabulary coverage or auxiliary attribute accuracy alone.",
@@ -106,6 +107,7 @@ def seal(owner, completed=False):
         "initial_repair": "fit_log.private.json",
         "conditional_recovery": "conditional_fit_log.private.json",
         "conditional_Q01": "q01_fit_log.private.json",
+        "final_repaired_Q01": "q01_final_fit_log.private.json",
         "canonical_final_feedback": "final_feedback_fit_log.private.json",
         "Peru_D1_mixed_catalog_control": "expansion_fit_log.private.json",
         "Peru_Condelli_D1_mixed_catalog_control": "expansion_fit_log_expanded.private.json",
@@ -153,6 +155,7 @@ def seal(owner, completed=False):
                 "M2_R1_CONTROLLED_D0_D1",
                 "M2_R1_ORDINAL_ATTRIBUTES",
                 "M2_R1_CATA_AUX_ATTRIBUTES_FULL",
+                "M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI",
             ]
         },
         private_artifact_root=str(private),
@@ -188,6 +191,9 @@ def seal(owner, completed=False):
             ),
             "foundation_three_fold_review_replay": "PASSED_RANKINGS_AND_METRICS_UNCHANGED",
             "full_CATA_tests": {"passed": 8, "skipped": 0},
+            "source_adapter_final_replay": "PASSED; 11_ORIGINAL_ARTIFACT_HASHES_AND_RECORD_GROUP_MASK_ZERO_CHECKS",
+            "professional_saved_model_replay": "PASSED; RETAINED_HASHES_AND_CACHED_CONFIRMATION_SUMMARY",
+            "latency_scope": "Full synthetic session in-process; excludes Python startup, model loading and file IO.",
         },
         runtime_versions={
             name: importlib.metadata.version(name)
@@ -212,14 +218,17 @@ def seal(owner, completed=False):
         "python db/scripts/context_m2_r1.py --owner-dir <owner-v2-root>",
         "python db/scripts/final_feedback_m2_r1.py --owner-dir <owner-v2-root>",
         "python db/scripts/q01_m2_r1.py --owner-dir <owner-v2-root>",
+        "python db/scripts/q01_m2_r1.py --owner-dir <owner-v2-root> --final-repair",
         "python db/scripts/evaluate_r1_final.py --owner-dir <owner-v2-root>",
         "python db/scripts/evaluate_foundation_r1.py --owner <owner-v2-root> --base-name M2_R1_FINAL_FIXED",
         "python db/scripts/acquire_m2_r1.py --owner <owner-v2-root>/revisions/r1",
+        "python db/scripts/acquire_m2_r1.py --owner <owner-v2-root>/revisions/r1 --close-source-block",
         "python db/scripts/expansion_m2_r1.py --owner-dir <owner-v2-root> --expanded --controlled",
         "python db/scripts/sensory_views_m2_r1.py --owner-dir <owner-v2-root>",
         "python db/scripts/sensory_views_m2_r1.py --owner-dir <owner-v2-root> --full-cata",
         "python db/scripts/professional_views_m2_r1.py --owner-dir <owner-v2-root>/revisions/r1",
         "python db/scripts/verify_m2_r1.py --owner-dir <owner-v2-root>",
+        "python db/scripts/context_m2_r1.py --owner-dir <owner-v2-root> --reuse-models",
         "python db/scripts/infer_m2_r1.py --model-file <private-model> --input <request-json>",
     ]
     manifest_path = OUT / "sample_expansion_manifest.json"

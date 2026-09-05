@@ -69,14 +69,23 @@
       "source_url": "https://doi.org/10.1016/j.dib.2025.111609"
     },
     {
-      "actual_cached_artifacts": {},
+      "actual_cached_artifacts": {
+        "frontiers-ccc.xml": {
+          "bytes": 96993,
+          "sha256": "61fce2319c1c3e6c33e99a4a81de5b4f735f5cbfe17899400c25598bbd156f29"
+        }
+      },
       "doi": "10.3389/fsufs.2025.1497350",
-      "model_use_or_obstacle": "Original study reports 378 accessions; accessible paper has no individual eligible sensory matrix. No data request sent; zero admitted groups.",
+      "model_use_or_obstacle": "Original full XML acquired: 378 analyzed accessions, 10 ordinal quality dimensions plus descriptors; tables are cluster/region summaries, no per-accession matrix. Body/acidity/sweetness are quality assessments, not intensity. No data request sent; zero admitted groups.",
       "result": "DATA_AVAILABLE_ON_REQUEST_ONLY",
       "source_url": "https://doi.org/10.3389/fsufs.2025.1497350"
     },
     {
       "actual_cached_artifacts": {
+        "carvalho-datacite-exact.json": {
+          "bytes": 168,
+          "sha256": "2119c892017cbfe5cd9635067a198b77a0694fd30af214f2a814fc15fac6ebde"
+        },
         "carvalho-dryad-search.json": {
           "bytes": 104273,
           "sha256": "5dbfa52a365032fead61ef16838a21e431b7ba301b95c46af8442e5e8ce432a7"
@@ -91,7 +100,7 @@
         }
       },
       "doi": "10.1038/s41598-025-99921-w",
-      "model_use_or_obstacle": "67 professional RATA coffees described; public Dryad share returns 404, original supplementary DOCX contains grader demographics and water composition only. No sensory matrix and no admitted rows; article CC BY NC ND does not itself authorize adapted data.",
+      "model_use_or_obstacle": "67 professional RATA coffees described; public Dryad share returns 404, original supplementary DOCX contains grader demographics and water composition only. Exact article-DOI DataCite search returned no dataset; no sensory matrix and no admitted rows. Native article license is CC BY NC ND; a separate public data license was unavailable.",
       "result": "SUPPLEMENT_ACQUIRED_NO_SENSORY_ROWS",
       "source_url": "https://doi.org/10.1038/s41598-025-99921-w"
     },
@@ -100,10 +109,14 @@
         "williams-crossref.json": {
           "bytes": 9089,
           "sha256": "ab24e01505742b5a006151dbf0b32210fe59ac2d78fc45edd17d0e2d8b2ef770"
+        },
+        "williams-institutional.html": {
+          "bytes": 2328,
+          "sha256": "83a1a51fd1315277c92e1d438a1f9e8eb3bc2e19f2a362bd53450117fa39d330"
         }
       },
       "doi": "10.1111/joss.12886",
-      "model_use_or_obstacle": "71 professional coffees and 179 follow-on validation samples described. Public original CC BY NC full text read; XLSX HTTP403; browser download emitted an event but no accessible artifact. Mixed original-panel and third-party text must be separated if obtained; zero rows counted.",
+      "model_use_or_obstacle": "71 professional coffees and 179 follow-on validation samples described. Public original CC BY NC full text read; XLSX HTTP403; browser download emitted an event but no accessible artifact. Institutional SCU inventory lists article PDF and wheel PPTX only, no XLSX. Mixed original-panel and third-party text would need separation; zero rows counted.",
       "result": "FULL_TEXT_READ_SUPPLEMENT_NOT_RETRIEVABLE",
       "source_url": "https://doi.org/10.1111/joss.12886"
     },
@@ -193,22 +206,26 @@
     }
   ],
   "actual_increment": {
+    "admitted_recovery_records": 124,
+    "fine_descriptor_records": 121,
     "fresh_brew_eligibility": "NOT_FULLY_DOCUMENTED",
     "new_complete_CATA_auxiliary_records": 3186,
     "new_complete_native_intensity_cells": 564,
     "new_complete_native_intensity_records": 47,
     "new_confirmation_groups": 12,
     "new_core_professional_product_groups": 47,
-    "new_fine_recovery_auxiliary_records": 124,
     "new_independent_coffee_lot_or_product_groups": 69,
     "new_known_condition_observations": 104,
     "new_production_C0_C1_paired_records": 0,
     "new_source_defined_coffee_product_groups": 67,
     "new_study_coffee_lot_groups": 2,
     "new_to_D0_independent_collection_studies": 4,
+    "newly_acquired_coffee_product_or_study_groups_this_block": 68,
     "newly_acquired_collection_studies_this_block": 3,
+    "nonempty_positive_recovery_records": 123,
     "quarantined_anonymous_source_sample_ids": 84,
-    "reused_existing_collection_studies": 1
+    "reused_existing_collection_studies": 1,
+    "reused_groups_new_to_D0": 1
   },
   "confirmation_cohorts": {
     "consumer_condelli": {
@@ -239,6 +256,18 @@
     "REAL_ANSWER_EVALUATION",
     "NEW_CONFIRMATION_RESULTS_AT_ACQUISITION_TIME"
   ],
+  "paper_reading_scope": {
+    "additional_original_full_texts_in_compact_table": [
+      "Batali2020"
+    ],
+    "compact_table_full_original_texts_read": 7,
+    "limitation": "Six of the seven requested original full texts read; do not count supplementary Batali2020 as completing Frost.",
+    "requested_abstract_only": [
+      "Frost2020"
+    ],
+    "requested_full_texts_read": 6,
+    "requested_original_papers": 7
+  },
   "private_artifacts": {
     "condelli_native_citation_observations.private.json": {
       "path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/condelli_native_citation_observations.private.json",
@@ -316,32 +345,41 @@
       3,
       4
     ],
-    "elapsed_minutes": 62.8,
-    "ended_utc": null,
-    "last_updated_utc": "2026-09-05T11:44:45.956749+00:00",
+    "closure_reason": "Twelve registered data routes were actually checked; final narrow repository checks found no further accessible eligible joint matrix. Three new collections and one governed cache were parsed and handed to training. Closed early without idle waiting or adding unregistered broad searches.",
+    "duration_budget_used_in_full": false,
+    "elapsed_minutes": 79.0,
+    "ended_utc": "2026-09-05T12:01:00.676024+00:00",
+    "last_updated_utc": "2026-09-05T12:01:00.676024+00:00",
     "policy": "Continue useful acquisition and validation within existing routes; no additional broad source discovery, author requests, or idle time padding.",
     "start_time_precision": "minute; approximately 10:42 UTC recorded by coordinating task",
     "started_utc": "2026-09-05T10:42:00+00:00",
-    "status": "IN_PROGRESS",
+    "status": "CLOSED_REGISTERED_ROUTES_EXHAUSTED",
     "targeted_data_routes_limit": 12,
     "targeted_data_routes_used": 12
   },
   "sources": {
     "condelli_2022": {
       "admitted_positive_recovery_rows": 20,
+      "admitted_recovery_records": 20,
       "artifact_sha256": "3ed6655b9fd5c9d53e4c4a7967c566d56576bd90100d6589f44be8bd04b2a785",
       "artifact_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9826037/supplementaryFiles",
       "attribution_required": true,
       "author": "Nicola Condelli; Nazarena Cela; Maria Di Cairano; Teresa Scarpa; Luigi Milella; Roberta Ascrizzi; Guido Flamini; Fernanda Galgano",
       "conditions_satisfied": true,
       "confirmation_groups": 3,
+      "coverage_note": "Rows with no accepted parsed targets remain in the coverage denominator. Prefix counts overlap and are not added; broad classes inferred later from leaves are not counted as direct broad mentions.",
+      "direct_attribute_prefix_records": 20,
+      "direct_broad_prefix_records": 20,
       "docx_sha256": "8289e645bcba01e13d8faaf2b4b057f799886c7955d5052ee54d1040d9aa7309",
+      "empty_parsed_target_records": 0,
+      "fine_descriptor_records": 20,
       "independent_collection_studies": 1,
       "intensity_cells": 0,
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "limitation": "Consumer auxiliary; published aggregate percentages only, no independent answer rows; 4 blend constituents unspecified; not 20 traceable independent raw lots; source-native roast unmapped.",
       "modifications": "Table S1 identity and S8 values transcribed programmatically; strip significance stars from names; canonical positives only; never convert rounded zero to absence; quality/hedonic fields excluded.",
+      "nonempty_positive_recovery_records": 20,
       "production_C0_C1_paired_records": 0,
       "raw_panelist_records_acquired": 0,
       "retained_sensory_citation_cells": 280,
@@ -527,6 +565,7 @@
       "version": "Dryad v4 2023-01-16; data collected April–June 2019"
     },
     "peru_2026": {
+      "admitted_recovery_records": 104,
       "archive_sha256": "f5601020e583172d865ae9c040d3c18781a412fd43351e2c89164c36acc3409e",
       "artifact_url": "https://mdpi-res.com/d_attachment/foods/foods-15-02756/article_deploy/foods-15-02756-s001.zip",
       "attribution_required": true,
@@ -534,8 +573,12 @@
       "complete_intensity_records": 0,
       "conditions_satisfied": true,
       "confirmation_groups": 0,
+      "coverage_note": "Rows with no accepted parsed targets remain in the coverage denominator. Prefix counts overlap and are not added; broad classes inferred later from leaves are not counted as direct broad mentions.",
+      "direct_attribute_prefix_records": 54,
+      "direct_broad_prefix_records": 74,
       "duplicate_baseline_descriptor_cells": 16,
-      "fine_grained_recovery_records": 103,
+      "empty_parsed_target_records": 1,
+      "fine_descriptor_records": 101,
       "grader_mean_quality_observations": 624,
       "group_id": "peru_2026:single_blend_lot",
       "independent_coffee_lot_groups": 1,
@@ -544,6 +587,7 @@
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "limitation": "One blended lot under accelerated storage; packaging/product/roast factors confounded; not fresh-brew core truth.",
       "modifications": "Source language retained privately; conservative project-authored exact Spanish mappings; duplicate day-zero narratives removed; cupping quality not used as intensity.",
+      "nonempty_positive_recovery_records": 103,
       "production_C0_C1_paired_records": 0,
       "raw_descriptor_cells": 120,
       "role": "AUX_COFFEE_WEAK_LABEL",
@@ -655,11 +699,28 @@
     "legacy_attribute_field": "Legacy field refers to complete numeric measurement supervision, never a blanket prohibition on positive broad mentions."
   },
   "target_gap": {
+    "broad_group_target_status": "MET_USING_SOURCE_DEFINED_PRODUCT_GROUPS",
+    "broad_product_group_shortfall_to_50": 0,
+    "broad_source_defined_coffee_or_product_groups": 69,
     "explanation": "Two studies each used one coffee lot; two further studies provide 20 consumer and 47 professional source-defined coffee products. Count reaches 69 product/lot groups, not 69 traceable independent raw lots; sensory labels and professional provenance remain role-specific.",
+    "explicit_single_study_coffee_or_lot_groups": 2,
     "independent_group_target": [
       50,
       100
     ],
-    "shortfall_to_50": 0
+    "other_product_groups_with_unverified_raw_lot_independence": 67,
+    "strict_raw_lot_shortfall_to_50": null,
+    "strict_raw_lot_target_status": "NOT_ESTABLISHED_AS_MET; traceable lot identity and independent ingredients unavailable for product groups",
+    "strict_traceable_raw_lot_count": null
+  },
+  "verification": {
+    "Condelli_rounded_zeros_not_negative_labels": true,
+    "Rocchetti_targets_empty_attribute_only": true,
+    "coffee_groups_do_not_cross_splits": true,
+    "compound_categories_remain_whole": true,
+    "frozen_D1_v1_preserved": true,
+    "missing_is_not_zero": true,
+    "original_source_sha256_assertions": 11,
+    "record_ids_unique": true
   }
 }

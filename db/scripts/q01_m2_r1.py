@@ -1,7 +1,7 @@
 """Complementary initial-question ablation on the repaired conditional objective."""
 
 from __future__ import annotations
-import argparse, copy, json
+import argparse, copy, json, time
 from pathlib import Path
 import train_m2_r1 as tr
 import flavor_m2_r1 as rt
@@ -17,14 +17,44 @@ from run_m2_r1 import (
 )
 
 
-def run(owner):
+def run(owner, final_repair=False):
     cfg = freeze(owner)
     dst = owner / "revisions/r1"
-    sel = read(dst / "conditional_selection.private.json")
+    sel = read(
+        dst
+        / (
+            "final_fixed_selection.private.json"
+            if final_repair
+            else "conditional_selection.private.json"
+        )
+    )
     data = read(owner / "recovery_records.json")
     dev = [r for r in data if r["split"] == "DEVELOPMENT"]
     folds = read(dst / "D0_folds.private.json")
-    label = "M2_R1_CONDITIONAL_Q01"
+    label = "M2_R1_FINAL_Q01" if final_repair else "M2_R1_CONDITIONAL_Q01"
+    result_key = "final_Q01" if final_repair else "conditional_Q01"
+    suffix = "_final" if final_repair else ""
+    if final_repair:
+        plan_path = dst / "q01_final_plan.private.json"
+        plan = {
+            "model": label,
+            "base_model": sel["model"],
+            "C": sel["C"],
+            "canonical_broad_feedback": True,
+            "data": "FROZEN_D0_ONLY",
+            "outer_folds": 3,
+            "only_changed_factor": "Training-only complementary Q0/Q1 construction; fixed vocabulary, correction pool, objective, A/T and full group denominator",
+            "decision": "Retain final fixed baseline unless paired development interval supports improvement; never use historical or confirmation data for this decision.",
+        }
+        if plan_path.exists():
+            assert {
+                k: v for k, v in read(plan_path).items() if k != "registered_utc"
+            } == plan
+        else:
+            plan["registered_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            save(plan_path, plan)
+            cfg["final_Q01_followup"] = plan
+            save(OUT / "experiment_config.json", cfg)
     rows = []
     detail = []
     old_detail = []
@@ -53,9 +83,18 @@ def run(owner):
                 tag=label + ":fold" + str(fold),
                 bank_override=bank,
                 loss_mode=sel["loss_mode"],
+                canonical_broad_feedback=sel.get("canonical_broad_feedback", False),
             )
             b["experiment_variant"] = label
             save(path, b)
+        assert (
+            b["fit_receipt"]["C"] == sel["C"]
+            and b["fit_receipt"]["loss_mode"] == sel["loss_mode"]
+        )
+        assert b["data_manifest_hash"] == sel["manifest_hash"]
+        assert b["evidence_policy"].get("canonical_broad_feedback", False) == sel.get(
+            "canonical_broad_feedback", False
+        )
         fits.append({"fold": fold, **b["fit_receipt"]})
         detail.append(tr.initial_stage_diagnostics(held, b))
         old_detail.append(tr.initial_stage_diagnostics(held, old))
@@ -67,7 +106,7 @@ def run(owner):
         print(
             json.dumps(
                 {
-                    "phase": "conditional_Q01",
+                    "phase": result_key,
                     "fold": fold,
                     "ndcg5": compact_summary(rows)["ndcg5"],
                 }
@@ -76,10 +115,10 @@ def run(owner):
         )
     save(dst / f"cv/{label}.private.json", rows)
     save(
-        dst / "q01_diagnostics.private.json",
+        dst / ("q01" + suffix + "_diagnostics.private.json"),
         {"original": old_detail, "complementary": detail},
     )
-    save(dst / "q01_fit_log.private.json", fits)
+    save(dst / ("q01" + suffix + "_fit_log.private.json"), fits)
     base = read(dst / f"cv/{sel['model']}.private.json")
     metrics = read(OUT / "metrics.json")
 
@@ -94,7 +133,7 @@ def run(owner):
             return [remove_private(v) for v in x]
         return x
 
-    metrics["conditional_Q01"] = {
+    metrics[result_key] = {
         "same_C_same_objective_minus_original_pair": comparison(rows, base),
         "models": {
             "original_pair": compact_summary(base),
@@ -112,7 +151,7 @@ def run(owner):
         json.dumps(
             {
                 "phase": "Q01_complete",
-                "delta": metrics["conditional_Q01"][
+                "delta": metrics[result_key][
                     "same_C_same_objective_minus_original_pair"
                 ],
             }
@@ -124,4 +163,6 @@ def run(owner):
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--owner-dir", type=Path, required=True)
-    run(p.parse_args().owner_dir)
+    p.add_argument("--final-repair", action="store_true")
+    args = p.parse_args()
+    run(args.owner_dir, args.final_repair)

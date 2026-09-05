@@ -6,31 +6,36 @@
     "canonical_final_feedback": 4,
     "conditional_Q01": 3,
     "conditional_recovery": 7,
+    "final_repaired_Q01": 3,
     "initial_repair": 18,
     "source_native_context": 60
   },
   "actual_sample_increment": {
+    "admitted_recovery_records": 124,
+    "fine_descriptor_records": 121,
     "fresh_brew_eligibility": "NOT_FULLY_DOCUMENTED",
     "new_complete_CATA_auxiliary_records": 3186,
     "new_complete_native_intensity_cells": 564,
     "new_complete_native_intensity_records": 47,
     "new_confirmation_groups": 12,
     "new_core_professional_product_groups": 47,
-    "new_fine_recovery_auxiliary_records": 124,
     "new_independent_coffee_lot_or_product_groups": 69,
     "new_known_condition_observations": 104,
     "new_production_C0_C1_paired_records": 0,
     "new_source_defined_coffee_product_groups": 67,
     "new_study_coffee_lot_groups": 2,
     "new_to_D0_independent_collection_studies": 4,
+    "newly_acquired_coffee_product_or_study_groups_this_block": 68,
     "newly_acquired_collection_studies_this_block": 3,
+    "nonempty_positive_recovery_records": 123,
     "quarantined_anonymous_source_sample_ids": 84,
-    "reused_existing_collection_studies": 1
+    "reused_existing_collection_studies": 1,
+    "reused_groups_new_to_D0": 1
   },
   "backend_default": "B2 unchanged",
   "branch": "research/coffee-sensory-data-ml-readiness",
-  "checkpoint": "FOUNDATION_AND_REPAIR_VERIFIED; SOURCE_WORK_ACTIVE",
-  "code_sha_at_seal": "69d15ae3fd8273d261befb7b31a089d7e1ab0453",
+  "checkpoint": "COMPLETED",
+  "code_sha_at_seal": "e47ffc90d8bb9056041d625991b7eb74cb8f845d",
   "commands": [
     "python db/scripts/run_m2_r1.py --owner-dir <owner-v2-root> --phase reproduce",
     "python db/scripts/run_m2_r1.py --owner-dir <owner-v2-root> --phase repair",
@@ -38,22 +43,25 @@
     "python db/scripts/context_m2_r1.py --owner-dir <owner-v2-root>",
     "python db/scripts/final_feedback_m2_r1.py --owner-dir <owner-v2-root>",
     "python db/scripts/q01_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/q01_m2_r1.py --owner-dir <owner-v2-root> --final-repair",
     "python db/scripts/evaluate_r1_final.py --owner-dir <owner-v2-root>",
     "python db/scripts/evaluate_foundation_r1.py --owner <owner-v2-root> --base-name M2_R1_FINAL_FIXED",
     "python db/scripts/acquire_m2_r1.py --owner <owner-v2-root>/revisions/r1",
+    "python db/scripts/acquire_m2_r1.py --owner <owner-v2-root>/revisions/r1 --close-source-block",
     "python db/scripts/expansion_m2_r1.py --owner-dir <owner-v2-root> --expanded --controlled",
     "python db/scripts/sensory_views_m2_r1.py --owner-dir <owner-v2-root>",
     "python db/scripts/sensory_views_m2_r1.py --owner-dir <owner-v2-root> --full-cata",
     "python db/scripts/professional_views_m2_r1.py --owner-dir <owner-v2-root>/revisions/r1",
     "python db/scripts/verify_m2_r1.py --owner-dir <owner-v2-root>",
+    "python db/scripts/context_m2_r1.py --owner-dir <owner-v2-root> --reuse-models",
     "python db/scripts/infer_m2_r1.py --model-file <private-model> --input <request-json>"
   ],
   "dirty_main_actual_sha": "1755915d3918013c8bd7c5f744e5ce8a0e972167",
   "executed_code_sha256": {
-    "db/scripts/acquire_m2_r1.py": "884772993b6b75bb84ff356e4777d4bc9ac1ce5f46377f9efe31ee44763792c3",
+    "db/scripts/acquire_m2_r1.py": "bdc5726398314de1e920f12395362e268c1b733e82d608ee44bc3c9d9fe7f7e2",
     "db/scripts/conditional_m2_r1.py": "daaff4f5f7900e6585484288cbda6bd8bb71a9bddadb59750484f391ab8bfe13",
     "db/scripts/context_m2_r1.py": "85260333859e421e11ed5f0970fb881590dcc0e61f3122ae992257ca18d802d2",
-    "db/scripts/evaluate_foundation_r1.py": "9d4a87a09a0b56d2db8b6fe742014a61d5f62f11aba38ed758922fd98d4bdf8c",
+    "db/scripts/evaluate_foundation_r1.py": "3943d5383823eff40709c1f6760231034c240070ec67318e5c5679b35543b1c7",
     "db/scripts/evaluate_r1_final.py": "c24e5568bfc381933b599452fae012c7510186a908bb9faba214026ba30420c5",
     "db/scripts/expansion_m2_r1.py": "5a83e8efd88101af69ed0f0492a547e2d236cbd71594516193c8f4ffb982abd4",
     "db/scripts/final_feedback_m2_r1.py": "1c85db6ae787a49e1ca789a70fe03ed3b81462a3f2cc2b4dc0370613ac5370f2",
@@ -61,9 +69,9 @@
     "db/scripts/flavor_m2_r1.py": "cfec9eafcf0803d54a02d7322e31c03367c54df0da1faa50be57f9a8480247e9",
     "db/scripts/infer_m2_r1.py": "c944a9f963c8a7e2f19a6a68a53b9b3de07a182600e7dd12f320458060c7f66e",
     "db/scripts/professional_views_m2_r1.py": "20a683e90b931ac11dfedb588b5dbb3b6ae166961adb4fe5698d94fb82e29b2e",
-    "db/scripts/q01_m2_r1.py": "4978833bd849e7f821538db73b331191f134b1d35e60b8b919196a34421b7d01",
+    "db/scripts/q01_m2_r1.py": "79051e84ac16911c7debd26ed105715132edf34cffa26b37055ce5e17324ab36",
     "db/scripts/run_m2_r1.py": "c069b7b8f5e43dd8af1a0d29d8465f20c2d748d9dee2387c633630f47e8142ec",
-    "db/scripts/seal_m2_r1.py": "6c3480c6ca1f1360b69d09ac7790cb3eb6898582ce37c49d0b86c97e45de428a",
+    "db/scripts/seal_m2_r1.py": "bec8094d85874764d3e30f2699768588e8e6e66c5e960d03d8ff4b22761727ca",
     "db/scripts/sensory_views_m2_r1.py": "dfa9c385d0f870eff5da157ceef5faaa5bcb0a7a12dc9350b10d2928ae63a5dd",
     "db/scripts/train_m2_r1.py": "11d363fe54e68e36be320ae69d062c93cc6ffd0f1b865b5b1eea4ecfc45cf5cd",
     "db/scripts/verify_m2_r1.py": "a777eced07139e746ebbe27637a46a9c73ae0e46bba199a15d2c53bdaf9fadbd"
@@ -171,6 +179,18 @@
     "cv/M2_R1_FINAL_FIXED_fold2.model.json": {
       "bytes": 177342,
       "sha256": "4dd4abd59c8302af41f129bd52ebdb6e07db436d6130044a046ccfc365da5022"
+    },
+    "cv/M2_R1_FINAL_Q01_fold0.model.json": {
+      "bytes": 181576,
+      "sha256": "431f0e3033acd130878b7a4205d1b0a786187a35c1e903c0f7debcb672ec5ca5"
+    },
+    "cv/M2_R1_FINAL_Q01_fold1.model.json": {
+      "bytes": 200919,
+      "sha256": "85c01844dc93552f14b59c2ec2748d7545128dd7641875244f27c1ebf8a4b473"
+    },
+    "cv/M2_R1_FINAL_Q01_fold2.model.json": {
+      "bytes": 185065,
+      "sha256": "39e0eb79a9e1b162d828da6998c03ba5de45f4af530b7eeb8cbbed2f2bc7ccdb"
     },
     "cv/M2_R1_FIXED_C0.1_fold0.model.json": {
       "bytes": 180698,
@@ -347,7 +367,8 @@
     "M2_R1_FINAL_FIXED": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FINAL_FIXED.model.json",
     "M2_R1_FOUNDATION": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FOUNDATION.model.json",
     "M2_R1_FOUNDATION_CHECK": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_FOUNDATION_CHECK.model.json",
-    "M2_R1_ORDINAL_ATTRIBUTES": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_ORDINAL_ATTRIBUTES.model.json"
+    "M2_R1_ORDINAL_ATTRIBUTES": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_ORDINAL_ATTRIBUTES.model.json",
+    "M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1/models/M2_R1_PROFESSIONAL_VIEWS_ROCCHETTI.model.json"
   },
   "old_models_and_results_byte_identical": true,
   "private_artifact_root": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/revisions/r1",
@@ -363,6 +384,7 @@
   "selection": {
     "D1_ranking_promotion": "INCONCLUSIVE; NOT_SELECTED",
     "backend_default": "B2",
+    "complementary_Q01_promotion": "INCONCLUSIVE; RETAIN_FINAL_FIXED_QUESTION_PAIR",
     "foundation_check": "RESEARCH_ONLY_NO_IMPROVEMENT_IN_RECORD_PROXY",
     "foundation_representation": "explicit_attributes",
     "foundation_scoring_fusion": 0,
@@ -379,23 +401,41 @@
       3,
       4
     ],
-    "elapsed_minutes": 62.8,
-    "ended_utc": null,
-    "last_updated_utc": "2026-09-05T11:44:45.956749+00:00",
+    "closure_reason": "Twelve registered data routes were actually checked; final narrow repository checks found no further accessible eligible joint matrix. Three new collections and one governed cache were parsed and handed to training. Closed early without idle waiting or adding unregistered broad searches.",
+    "duration_budget_used_in_full": false,
+    "elapsed_minutes": 79.0,
+    "ended_utc": "2026-09-05T12:01:00.676024+00:00",
+    "last_updated_utc": "2026-09-05T12:01:00.676024+00:00",
     "policy": "Continue useful acquisition and validation within existing routes; no additional broad source discovery, author requests, or idle time padding.",
     "start_time_precision": "minute; approximately 10:42 UTC recorded by coordinating task",
     "started_utc": "2026-09-05T10:42:00+00:00",
-    "status": "IN_PROGRESS",
+    "status": "CLOSED_REGISTERED_ROUTES_EXHAUSTED",
     "targeted_data_routes_limit": 12,
     "targeted_data_routes_used": 12
   },
-  "updated_utc": "2026-09-05T11:57:20Z",
+  "updated_utc": "2026-09-05T12:17:49Z",
   "validation": {
+    "backend_scope": {
+      "changed_files_checked": 33,
+      "compared_to": "fb29b8c80aae29b9dacce039d728d9dc1efa5769",
+      "status": "PASSED"
+    },
     "backend_unit_suite_with_retained_owner_models": {
       "passed": 97,
       "skipped": 0
     },
     "cross_process_hash_seed_cli_exact_matches": 6,
+    "final_repaired_Q01_saved_model_audit": {
+      "coffee_groups": 187,
+      "coverage_records": 211,
+      "folds": 3,
+      "status": "PASSED; MATCHED_DATA_OBJECTIVE_VOCABULARY_CORRECTION_CATALOG_AND_GROUP_ISOLATION; ZERO_NEGATIVE_BROAD_CHILD_CONTRIBUTIONS"
+    },
+    "format_checks": {
+      "black_22_R1_python_files": "PASSED",
+      "git_diff_check": "PASSED",
+      "npm_run_format_check": "PASSED"
+    },
     "foundation_tests": {
       "passed": 13,
       "skipped": 0
@@ -405,6 +445,7 @@
       "passed": 8,
       "skipped": 0
     },
+    "latency_scope": "Full synthetic session in-process; excludes Python startup, model loading and file IO.",
     "legacy_sequential_including_retained_owner_models": {
       "passed": 24,
       "skipped": 0
@@ -414,6 +455,7 @@
       "skipped": 0
     },
     "old_cv_exact_reproduction_records": 211,
+    "professional_saved_model_replay": "PASSED; RETAINED_HASHES_AND_CACHED_CONFIRMATION_SUMMARY",
     "professional_source_view_tests": {
       "passed": 6,
       "skipped": 0
@@ -422,7 +464,45 @@
       "passed": 4,
       "skipped": 0
     },
-    "remote_ci": "NOT_OBSERVED_FOR_THIS_CHECKPOINT",
-    "saved_model_full_contract_sessions": 504
+    "remote_ci": {
+      "observed_utc": "2026-09-05T12:19:31.545356+00:00",
+      "runs": [
+        {
+          "conclusion": "",
+          "databaseId": 33964718645,
+          "headSha": "e47ffc90d8bb9056041d625991b7eb74cb8f845d",
+          "name": "Historical replay",
+          "status": "in_progress",
+          "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33964718645"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 33964718638,
+          "headSha": "e47ffc90d8bb9056041d625991b7eb74cb8f845d",
+          "name": "CI",
+          "status": "completed",
+          "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33964718638"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 33962320701,
+          "headSha": "69d15ae3fd8273d261befb7b31a089d7e1ab0453",
+          "name": "CI",
+          "status": "completed",
+          "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33962320701"
+        },
+        {
+          "conclusion": "success",
+          "databaseId": 33962320715,
+          "headSha": "69d15ae3fd8273d261befb7b31a089d7e1ab0453",
+          "name": "Historical replay",
+          "status": "completed",
+          "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33962320715"
+        }
+      ],
+      "scope": "Observed before final receipt commit; final commit CI is not claimed by this receipt."
+    },
+    "saved_model_full_contract_sessions": 504,
+    "source_adapter_final_replay": "PASSED; 11_ORIGINAL_ARTIFACT_HASHES_AND_RECORD_GROUP_MASK_ZERO_CHECKS"
   }
 }

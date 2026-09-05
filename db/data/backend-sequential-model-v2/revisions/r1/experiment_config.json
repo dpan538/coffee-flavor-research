@@ -87,6 +87,17 @@
   "dirty_main_sha": "1755915d3918013c8bd7c5f744e5ce8a0e972167",
   "experiment_id": "M2_R1_REPAIR_FOUNDATION_20260905",
   "feedback": "F0/F1/F2; selected exposure-only; repeated/specificization/new evidence separated; once then terminal",
+  "final_Q01_followup": {
+    "C": 0.1,
+    "base_model": "M2_R1_FINAL_FIXED",
+    "canonical_broad_feedback": true,
+    "data": "FROZEN_D0_ONLY",
+    "decision": "Retain final fixed baseline unless paired development interval supports improvement; never use historical or confirmation data for this decision.",
+    "model": "M2_R1_FINAL_Q01",
+    "only_changed_factor": "Training-only complementary Q0/Q1 construction; fixed vocabulary, correction pool, objective, A/T and full group denominator",
+    "outer_folds": 3,
+    "registered_utc": "2026-09-05T12:10:30Z"
+  },
   "group_folds": 3,
   "initial_plan_hash": "a7abb9a5325881beed2d0e13f2577b5f6c0e7ac7123d3d39cb77b3c3321dcc70",
   "inner_feature_folds": 2,

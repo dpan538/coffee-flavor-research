@@ -9,6 +9,8 @@ synthetic cases), repeated evidence has zero gain, and direct-answer retention
 is 1.0 before and after postprocessing. Full D0 recovery NDCG@5 is 0.475626,
 below old JOINT's 0.536926. Common fine-descriptor comparisons with B2 in grouped
 development CV and frozen M1 on the 17 historical groups remain inconclusive.
+The final repaired complementary Q0/Q1 control changes NDCG@5 by -0.000952
+[-0.006415, 0.002381]; retain the fixed pair without deleting Q1.
 
 The separate, fixed A/B/T foundation experiment gives V0/V1-explicit/V2-CHECK
 NDCG@5 of 0.444088/0.446288/0.425308. Explicit native-attribute MAE is 0.172885,
@@ -25,7 +27,19 @@ give 0.475626/0.459685 recovery NDCG@5; the interval crosses zero. New professio
 source-native attributes and complete CATA support separate measured-view tasks,
 without becoming runtime inputs or fine-descriptor negatives. Source products,
 coffee lots, conditions and assessor observations are counted separately.
-Acquisition and protocol checks continue within the authorized source block.
+Three newly acquired studies plus one reused source cache add 69 source-defined
+study/product groups, including 68 newly acquired groups. They are not 69
+verified independent raw lots; the strict 50–100 lot goal is not established.
+Admitted data include 124 recovery records (121 with fine descriptors), 47
+professional product profiles / 564 native attribute cells, and 3,186 CATA
+observations from one coffee. New complete production C0/C1 pairs remain zero.
+Professional held-out nine-product MAE is 0.778256 versus a 0.882066 training
+mean prior, but its interval crosses zero. Native CATA view prediction improves
+within the same coffee; neither result establishes user CHECK efficacy.
+The 12 registered acquisition routes closed after 79 minutes, earlier than
+the requested approximately 3–4 hour block, with no further accessible eligible
+joint matrix on those routes. The compact paper table contains seven full
+original texts; the specifically requested Frost paper remains abstract-only.
 
 The single [R1 receipt](../../db/data/backend-sequential-model-v2/revisions/r1/run_receipt.json)
 indexes retained local models, validation and actual data increments; the
