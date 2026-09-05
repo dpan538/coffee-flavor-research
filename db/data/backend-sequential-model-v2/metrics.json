@@ -900,6 +900,7 @@
       "truth_unchanged": true
     }
   ],
+  "engineering_latency_protocol": "latency_ms is warm JSON replay after trajectory construction. full_chain_latency_ms includes simulated answer construction and initial planning computation; it is not an API-service latency benchmark.",
   "feedback": {
     "F1_minus_F0": {
       "delta": 0.0,
@@ -1095,6 +1096,7 @@
       }
     },
     "real_feedback_effect": "NOT_EVALUATED",
+    "retention_caveat": "Selected feedback candidates come from the original top-eight exposure; F0 retention@8 is tautological, not evidence of improvement. F2 versus F1 hidden recovery is reported separately.",
     "scope": "VISIBLE_ONLY_SIMULATION; no actual human responses"
   },
   "historical_same_information_comparison": {
@@ -1275,6 +1277,11 @@
   },
   "independent_product_confirmation": "NOT_EVALUATED",
   "legacy_baseline_development": {
+    "fine_only_scope": {
+      "all_case_groups": 187,
+      "eligible_groups": 104,
+      "exclusion_reason": "No hidden fine descriptor after frozen visible/entailed-parent exclusion; no performance-based filtering. Full-scope results and case coverage also reported."
+    },
     "models": {
       "B0": {
         "candidate_target_coverage": 0.4000830859701827,

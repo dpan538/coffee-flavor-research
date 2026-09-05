@@ -18,7 +18,9 @@
   "context_model_path": "$COFFEE_SEQUENTIAL_V2_ROOT/models/context_models.model.json",
   "context_model_sha256": "4e89b2916a67a5ab57128d0b8ab666ebcb223ea8cb3a69ca586001ffb6c6327d",
   "delivery": {
-    "code_sha": "de4dc3a3c4ee0959cde2594dc71f3ba886668f4a",
+    "code_sha": "5330484a569ef1ef0f384e8ec32bd8907c083b64",
+    "frozen_input_sha256_verified": true,
+    "hash_convention": "Model data_manifest_hash/training_split_hash: SHA256 of sorted compact JSON with ASCII escapes; artifact file hashes: SHA256 of original bytes.",
     "independent_product_confirmation": "NOT_EVALUATED",
     "live_command": "python db/scripts/flavor_backend.py --model-file \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/selected_bundle.model.json\" --input \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/example_request.private.json\"",
     "model_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/selected_bundle.model.json",
@@ -38,14 +40,18 @@
     "same_live_evaluation_features_scores": true,
     "selected_model": "M2_JOINT",
     "source_file_hashes": {
-      "evaluate_sequential_v2.py": "94cf48b1cef51c58a699c60421807e94b7d1b619be45570865d335c655a07e16",
-      "finish_sequential_v2.py": "ccc2af3f44b08c9d2c8ed85f75fa343e81a8c5e101bac76b9f480d13d04a40dd",
-      "flavor_sequential.py": "a7f41e83bb26e2dd9711b1de9d90b533f4e377b35a58d39824eaf30ad7240060",
-      "prepare_sequential_data.py": "6e810d46a5e71b7c262a01af317e5ba3edd0b970e5cbb32a10e3e9745b937263",
-      "run_sequential_v2.py": "7b8ca16c8a2aaff38d6bc77f9ca9aac5a6bc63ebd5d3676876ee8d50f1192aa8",
+      "backend-model-requirements.txt": "d81f62a575aa4384429681c5d24520ec8d61f1ca86f2c26ba0b29a4083fb451c",
+      "evaluate_sequential_v2.py": "47507d7e50fdad96b6cc18a651032d93c32be8e5e3e9f6961a0ef939595f5fd6",
+      "finish_sequential_v2.py": "74a0fdaabb170eff47cccc3886b57ef21bb610d48e5b4cb8290ccbe6a14a577f",
+      "flavor_backend.py": "c8df8a8d6d185bc4b90b89be5d5388178431634c9ea3872af8f6e315200d34fc",
+      "flavor_context.py": "1750fd0d238d5592e04f3f6520d7d8d83682193e6a4f66a808667650ca93e395",
+      "flavor_sequential.py": "6434bf65c8d433d26e2e07d91109ad1974321f2fa4cf16c86b472d5e05091832",
+      "prepare_sequential_data.py": "1aa21da492dfe25aa3f7d2098fe0523e920124b73129e1f506b18b7f6c8d7aa8",
+      "run_context_v2.py": "e8bf240804a316395cbd7672513437ab85db7bd21d45380345b08b4eda5fe967",
+      "run_sequential_v2.py": "9946fd4158ec556f825d120b74aac7e0d72ae480f8ca994687cfcf9e6630483b",
       "train_sequential.py": "e5d54358e3b13bc5f990f0054c11c890606c66e46035e1dbb387e36c82f7b0d9"
     },
-    "verification_seconds": 9.091668128967285,
+    "verification_seconds": 9.13942813873291,
     "weights_not_public": true
   },
   "diagnostics": {
@@ -64,5 +70,19 @@
   ],
   "experiment_id": "backend-sequential-model-v2",
   "first_checkpoint_has_actual_fits": true,
-  "original_M1_retained": true
+  "original_M1_retained": true,
+  "validation": {
+    "backend_unit_and_retained_artifact_tests_passed": 52,
+    "basis": "Observed local checkpoint; finishing script does not execute these tests",
+    "dirty_main_worktree": "INSPECTED_READ_ONLY; original user modifications retained",
+    "public_snapshot_mandatory_tests_passed": 2,
+    "remote_status_last_observed": {
+      "not_claimed_accepted": true,
+      "sha": "de4dc3a3c4ee0959cde2594dc71f3ba886668f4a",
+      "status": "IN_PROGRESS"
+    },
+    "restricted_corpus_replay": "NOT_EXECUTED; intentionally unavailable to public CI, unrelated to local admitted model data",
+    "scope_check": "PASSED; zero frontend changes since 973f814",
+    "tests_skipped_locally": 0
+  }
 }
