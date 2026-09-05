@@ -23,6 +23,7 @@ db/data/product-gap-mining-v0.2/
 
 # Backend experiment files retain generator-owned serialization and hashes.
 db/data/backend-model-20260905/
+db/data/backend-sequential-model-v2/
 
 # Rights-reviewed Round 3E external snapshots retain the exact acquired bytes;
 # their SHA-256 values are validated against SOURCE_MANIFEST.json.

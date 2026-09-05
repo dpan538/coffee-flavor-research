@@ -1,0 +1,28 @@
+{
+  "context_experiment": {
+    "alpha": 1.0,
+    "context_mapping_version": "context.v2.source-native-separated",
+    "evaluation": "Leave-one-coffee/sample-group-out within each study; all technical/panel repeats kept aggregate",
+    "independent_confirmatory_product_status": "NOT_EVALUATED",
+    "interaction_feature_shrinkage": 0.25,
+    "loss": "Multi-output squared loss; per-target TRAIN-only mean/std then Ridge alpha=1; separate datasets/scales, not pooled",
+    "model_features_exclude": [
+      "coffee_identity",
+      "study_identity",
+      "lab_identity",
+      "measurement_truth",
+      "evaluation_targets"
+    ],
+    "models": [
+      "C_BASE",
+      "C_C0",
+      "C_C1",
+      "C_ADD",
+      "C_JOINT"
+    ],
+    "preregistered_before_fit": true,
+    "seed": 20260905,
+    "source_native_roast_not_seven_bin": true,
+    "task": "NUMERICAL_CONTEXT_AUXILIARY"
+  }
+}

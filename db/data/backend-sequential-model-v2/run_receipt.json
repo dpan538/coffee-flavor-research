@@ -1,0 +1,16 @@
+{
+  "command": "python db/scripts/run_context_v2.py --owner-root \"$COFFEE_SEQUENTIAL_V2_ROOT\"",
+  "context_elapsed_seconds": 0.1073918342590332,
+  "context_fit_count": 80,
+  "context_model_path": "$COFFEE_SEQUENTIAL_V2_ROOT/models/context_models.model.json",
+  "context_model_sha256": "070a5fddb33c9a5b50e914b6ceb632a1925f53e26fc6a7149fec4f862964fd57",
+  "errors": [
+    "Source C1 classes are coarse native labels, not validated production bins.",
+    "Only 2 coffee groups in each sensory study; grouped intervals do not establish broad generalization.",
+    "Methods differ in time, temperature and extraction mechanics; effects are source-specific recipe associations.",
+    "No true seven-bin context plus actual answer trajectories; stage recovery is not estimable from these aggregates."
+  ],
+  "experiment_id": "backend-sequential-model-v2",
+  "first_checkpoint_has_actual_fits": true,
+  "original_M1_retained": true
+}

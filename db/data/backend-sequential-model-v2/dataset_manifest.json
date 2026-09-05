@@ -1,0 +1,75 @@
+{
+  "baseline_sha": "973f814afe4e592ed521bab952f98f59ca0324ed",
+  "context_data_units": "Source aggregates kept as aggregates; groups are original coffee/sample identities, not panelist or technical repeat counts",
+  "context_source_groups": {
+    "iswaldi_shared_chemical_sensory": 2,
+    "stanek_coffee_lots": 6,
+    "vezzulli_coffee_species_samples": 2
+  },
+  "context_sources": [
+    {
+      "artifact_sha256": "5631761a3bc8fc2d88c75e4124ecadda73027620c45a1bdb2797f4fb4954773f",
+      "author": "Ihsan Iswaldi et al.",
+      "conditions_satisfied": true,
+      "context_mapping": "V60=filter_percolation; cold brew=cold_extraction from methods; roast light/medium/dark remain source-native (205C/8min,220C/10min,230C/13min), not seven bins",
+      "design": "2 origin/coffee groups × 3 roast treatments × 2 methods; origin IDs are grouping only; no reconstructed person-level rows",
+      "id": "iswaldi",
+      "license": "CC BY 4.0",
+      "modification": "Tables transcribed to numeric aggregate matrices; unit/scales unaltered. Consumer data not promoted to trained-panel evidence.",
+      "total_vs_conditional": "Total recipe/treatment associations; no row-level mediator-adjusted effect estimable",
+      "url": "https://doi.org/10.1590/1981-6723.1062025",
+      "version": "2026 article"
+    },
+    {
+      "artifact_sha256": "d1b1a9411bacfbef14e6e605015422e8969666c8ba908be3b990ed3052c52484",
+      "author": "Natalia Stanek et al.",
+      "conditions_satisfied": true,
+      "context_mapping": "P=source-described hot filter; CB and HT=cold_extraction. Specific cold protocols remain distinct metadata. Roast contrast absent: no C1 labels inferred.",
+      "id": "stanek",
+      "license": "CC BY 4.0",
+      "modification": "HPLC Table 1 transcribed, uncertainty strings and units retained; six original coffee groups",
+      "total_vs_conditional": "Published protocol targets constant TDS; context contrast is under that design condition. No measured mediator row matrix to estimate an additional adjustment. Not a pure universal brew-method causal coefficient.",
+      "url": "https://doi.org/10.1038/s41598-021-01001-2",
+      "version": "2021-11-01 article"
+    },
+    {
+      "artifact_sha256": "1120133f98712a44d4af364a578f90bc348d31b51de948381fa1b835b5b26c75",
+      "author": "Fosca Vezzulli et al. (full author list in retained source)",
+      "conditions_satisfied": true,
+      "context_mapping": "Moka=stovetop; espresso=espresso_pressure; gravity Neapolitan/filter=filter_percolation. No source roast variation encoded.",
+      "id": "vezzulli",
+      "license": "CC BY 4.0",
+      "modification": "Published panel medians; no copied WCR definitions or inferred child labels",
+      "total_vs_conditional": "Total source-protocol association; dose/strength differ, no unconfounded mediator decomposition.",
+      "url": "https://doi.org/10.3390/foods11060807",
+      "version": "2022 article"
+    }
+  ],
+  "data_type_A": "NUMERICAL_AGGREGATE_SUPERVISION; no reconstructed individual rows",
+  "data_type_C_real_feedback": 0,
+  "experiment_id": "backend-sequential-model-v2",
+  "not_estimable": {
+    "all_56_cells": "No 56-cell empirical coverage claimed",
+    "liang_raw": "Dryad response explicitly says identifier cannot be viewed; do not infer permission/access from HTTP 200",
+    "production_seven_level_C1": "No reviewed mapping from numeric source roasting protocols to all seven production bins",
+    "row_level_context_supervision": "These context sources provide aggregates, not independently reconstructed panel rows"
+  },
+  "numerical_record_counts": {
+    "iswaldi_chemical": 12,
+    "iswaldi_consumer_sensory": 12,
+    "stanek_chemical": 18,
+    "vezzulli_panel": 8
+  },
+  "project_purpose": "PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH",
+  "source_discovery": {
+    "closed_after_one_targeted_block": true,
+    "existing_registered_sources_rechecked": [
+      "Iswaldi",
+      "Vezzulli",
+      "Stanek",
+      "Liang"
+    ],
+    "liang_status": "NOT_ADMITTED_RAW_FILES_UNAVAILABLE",
+    "new_high_relevance_sources_checked": 0
+  }
+}

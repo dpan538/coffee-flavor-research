@@ -1,5 +1,25 @@
 # Experiment registry
 
+## Context-Validated Sequential Flavor Model v2 — active
+
+V2 preserves the 973f814 experiment and treats its inspected 17 groups as
+historical regression only. The first actual numerical checkpoint fits
+C_BASE/C_C0/C_C1/C_ADD/C_JOINT with leave-one-coffee-group-out evaluation on
+separate source-native aggregate targets. C0 standardized MAE reductions are
+0.09055 (Iswaldi chemistry, two coffees), 0.05414 (Iswaldi consumer sensory,
+same two coffees), 0.02767 (Stanek chemistry, six coffees), and 0.12519
+(Vezzulli professional panel, two coffees). Source-native roast effects are
+estimable only in Iswaldi's two-coffee crossed study; production seven-bin C1
+effects remain NOT_ESTIMABLE. Small source-specific groups and aggregate
+observations prevent a broad efficacy claim. No descriptor-ranking or user
+accuracy claim follows from these numerical results.
+
+The five model forms and all raw-unit errors, group intervals, perturbations,
+source conditions and persistent model paths are recorded in the single
+[v2 experiment](../../db/data/backend-sequential-model-v2/run_receipt.json).
+Sequential M2 fitting, cluster/planning and final-comparison work continues
+under the shared versioned feature/inference contract.
+
 ## Backend flavor recovery — 2026-09-05 (current)
 
 The owner authorized backend fitting for personal noncommercial research on

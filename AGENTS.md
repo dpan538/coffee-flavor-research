@@ -56,6 +56,31 @@ No app/public/style/page/component/service-worker or frontend dependency changes
 are permitted. Any required shared-module exception must list exact files, never
 an entire frontend package. There are currently no shared frontend exceptions.
 
+### Active v2 sequential model authorization — 2026-09-05
+
+The current task is Context-Validated Sequential Flavor Model v2. Preserve the
+973f814 core experiment and all retained weights. Its 77+16 development groups
+may support grouped cross-validation; the previously inspected 17 TEST groups
+are historical regression cases, not a new confirmation set.
+
+C0/C1 remain mandatory. Q0 and Q1 produce INITIAL_EXTRACTION. Q0–Q5 are up to
+six ordinary sensory slots, each with at most four options. Execute the explicit
+P1–P4 paths ending with Q4 or Q5; conditional second questions use only answers
+already received. Never repeat Q3. PRELIMINARY_RESULT may receive exactly one
+separate FINAL_COMPARISON of 3–8 actually exposed candidates, then FINAL_RESULT
+terminates the session. No Q6, early Q2/Q3 exit, restart or fallback loop.
+Historical five-question limits and Q5-only-fallback rules do not govern v2.
+
+Fit numerical C0/C1 effects and M2_ADD/M2_JOINT/M2_HIER; compare clusters,
+one/two-step stage planning and F0/F1/F2 feedback with proper grouped isolation.
+Training, validation and live inference must share version-checked feature and
+scoring code. Unobserved laboratory values cannot become runtime features.
+Use one new experiment directory, backend-sequential-model-v2, and persistent
+owner-controlled private artifacts. The prior two-extension-fit limit applies
+only to the frozen v1 experiment. V2 targeted source discovery is limited to
+12 high-relevance sources in one bounded block, approximately three hours.
+No CI restructuring or frontend work is authorized.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;
@@ -73,12 +98,12 @@ Keep data roles explicit: `CORE_PROFESSIONAL`, `AUX_COFFEE_WEAK_LABEL`,
 the core evaluation or acquire a higher evidence grade by association. Compound
 source categories remain compound. Other-food semantics do not become coffee
 observations. Source-native roast terms do not automatically establish calibrated
-seven-level C1 mappings. Freeze the core split/configuration before at most two
+seven-level C1 mappings. For the historical v1 experiment, freeze the core split/configuration before at most two
 additional balanced/auxiliary comparisons; use DEV decisions and the unchanged
 locked TEST scope, never TEST-driven iteration. Cache sources and models in
 persistent owner-controlled storage. Do not create additional design/license
-report hierarchies or broaden source discovery beyond eight targeted routes and
-90 minutes for the current experiment.
+report hierarchies. The historical v1 source-discovery budget was eight targeted
+routes / 90 minutes; the active v2 budget is specified above.
 
 Coffee Flavor Atlas / 咖啡风味图谱 is a research-grounded sensory reference
 system for ordinary coffee tasting. The intended product uses low-burden

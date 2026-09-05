@@ -1,0 +1,475 @@
+{
+  "context": {
+    "iswaldi_chemical": {
+      "comparisons": {
+        "C_C0_minus_C_BASE": {
+          "error_reduction": 0.09054577315415736,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.09029836046516095,
+            0.09079318584315378
+          ],
+          "status": "INCONCLUSIVE"
+        },
+        "C_C1_minus_C_BASE": {
+          "error_reduction": 0.18372016124295193,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.17321847008004418,
+            0.19422185240585965
+          ],
+          "status": "INCONCLUSIVE"
+        },
+        "C_JOINT_minus_C_ADD": {
+          "error_reduction": 0.004732875606283132,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.0038879243006946598,
+            0.005577826911871604
+          ],
+          "status": "INCONCLUSIVE"
+        }
+      },
+      "condition_count": 12,
+      "effect_type": "PHYSICOCHEMICAL_EFFECT",
+      "independent_coffee_groups": 2,
+      "models": {
+        "C_ADD": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "Caffeine (mg/g)": 1.4644444444444444,
+            "Chlorogenic acid (mg/g)": 1.4793749999999999,
+            "IC 50 (ppm)": 18.069999999999997,
+            "TFC (mg RE/g)": 0.5416666666666666,
+            "TPC (mg GAE/g)": 1.6530555555555555
+          },
+          "standardized_mae": 0.9561715889767677
+        },
+        "C_BASE": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "Caffeine (mg/g)": 1.7763888888888888,
+            "Chlorogenic acid (mg/g)": 3.052777777777777,
+            "IC 50 (ppm)": 18.423333333333332,
+            "TFC (mg RE/g)": 0.6780555555555554,
+            "TPC (mg GAE/g)": 3.602222222222222
+          },
+          "standardized_mae": 1.2329764725760937
+        },
+        "C_C0": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "Caffeine (mg/g)": 1.4625694444444441,
+            "Chlorogenic acid (mg/g)": 3.1798611111111104,
+            "IC 50 (ppm)": 18.070000000000004,
+            "TFC (mg RE/g)": 0.5740972222222221,
+            "TPC (mg GAE/g)": 3.351388888888889
+          },
+          "standardized_mae": 1.142430699421936
+        },
+        "C_C1": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "Caffeine (mg/g)": 1.770462962962963,
+            "Chlorogenic acid (mg/g)": 1.3984259259259257,
+            "IC 50 (ppm)": 18.07,
+            "TFC (mg RE/g)": 0.5982407407407407,
+            "TPC (mg GAE/g)": 2.440833333333333
+          },
+          "standardized_mae": 1.0492563113331415
+        },
+        "C_JOINT": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "Caffeine (mg/g)": 1.4395954997383569,
+            "Chlorogenic acid (mg/g)": 1.4555850955766925,
+            "IC 50 (ppm)": 18.069999999999997,
+            "TFC (mg RE/g)": 0.5416666666666666,
+            "TPC (mg GAE/g)": 1.6492462215655495
+          },
+          "standardized_mae": 0.9514387133704848
+        }
+      },
+      "observation_unit": "AGGREGATE_ONLY",
+      "role": "AUX_CONTEXT"
+    },
+    "iswaldi_consumer_sensory": {
+      "comparisons": {
+        "C_C0_minus_C_BASE": {
+          "error_reduction": 0.054138566860091025,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.03251271190041929,
+            0.07576442181976277
+          ],
+          "status": "INCONCLUSIVE"
+        },
+        "C_C1_minus_C_BASE": {
+          "error_reduction": 0.3245521718332173,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.28152921208614146,
+            0.3675751315802931
+          ],
+          "status": "INCONCLUSIVE"
+        },
+        "C_JOINT_minus_C_ADD": {
+          "error_reduction": 0.005316075670479351,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.004639107986484888,
+            0.005993043354473815
+          ],
+          "status": "INCONCLUSIVE"
+        }
+      },
+      "condition_count": 12,
+      "effect_type": "SENSORY_ATTRIBUTE_EFFECT",
+      "independent_coffee_groups": 2,
+      "models": {
+        "C_ADD": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "acidity": 0.4651851851851852,
+            "aroma": 0.25305555555555564,
+            "bitterness": 0.36666666666666675,
+            "colour": 0.4729629629629628,
+            "mouthfeel": 0.25898148148148153,
+            "overall_liking": 0.20111111111111105
+          },
+          "standardized_mae": 0.4886645451802401
+        },
+        "C_BASE": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "acidity": 0.8022222222222221,
+            "aroma": 0.45555555555555555,
+            "bitterness": 0.8194444444444446,
+            "colour": 1.0877777777777775,
+            "mouthfeel": 0.57,
+            "overall_liking": 0.29999999999999993
+          },
+          "standardized_mae": 0.9240559251496258
+        },
+        "C_C0": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "acidity": 0.8022222222222224,
+            "aroma": 0.37027777777777793,
+            "bitterness": 0.7806944444444447,
+            "colour": 1.038611111111111,
+            "mouthfeel": 0.5,
+            "overall_liking": 0.30041666666666667
+          },
+          "standardized_mae": 0.8699173582895349
+        },
+        "C_C1": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "acidity": 0.4651851851851852,
+            "aroma": 0.4066666666666667,
+            "bitterness": 0.43018518518518517,
+            "colour": 0.5548148148148148,
+            "mouthfeel": 0.44666666666666677,
+            "overall_liking": 0.20111111111111105
+          },
+          "standardized_mae": 0.5995037533164085
+        },
+        "C_JOINT": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": true,
+          "mae_by_target": {
+            "acidity": 0.46200496608899994,
+            "aroma": 0.24357706159386835,
+            "bitterness": 0.3647659063625452,
+            "colour": 0.46746031746031735,
+            "mouthfeel": 0.25726347975087477,
+            "overall_liking": 0.20040816326530608
+          },
+          "standardized_mae": 0.48334846950976074
+        }
+      },
+      "observation_unit": "AGGREGATE_ONLY",
+      "role": "AUX_COFFEE_WEAK_LABEL"
+    },
+    "stanek_chemical": {
+      "comparisons": {
+        "C_C0_minus_C_BASE": {
+          "error_reduction": 0.027672128394307282,
+          "groups": 6,
+          "paired_group_95_interval": [
+            -0.0005752644584287212,
+            0.057998141714027694
+          ],
+          "status": "INCONCLUSIVE"
+        },
+        "C_C1_minus_C_BASE": {
+          "error_reduction": null,
+          "groups": 6,
+          "paired_group_95_interval": null,
+          "status": "NOT_ESTIMABLE"
+        },
+        "C_JOINT_minus_C_ADD": {
+          "error_reduction": null,
+          "groups": 6,
+          "paired_group_95_interval": null,
+          "status": "NOT_ESTIMABLE"
+        }
+      },
+      "condition_count": 18,
+      "effect_type": "PHYSICOCHEMICAL_EFFECT",
+      "independent_coffee_groups": 6,
+      "models": {
+        "C_ADD": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "3-CQA": 62.90338164251206,
+            "4-CQA": 29.110144927536233,
+            "5-CQA": 18.78550724637681,
+            "5-HMF": 6.999999999999999,
+            "Caffeine": 53.469565217391306,
+            "Gallic acid": 6.3130434782608695,
+            "Trigonelline": 43.72463768115942
+          },
+          "standardized_mae": 1.0458144861730059
+        },
+        "C_BASE": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "3-CQA": 65.62222222222223,
+            "4-CQA": 30.259259259259263,
+            "5-CQA": 21.05185185185185,
+            "5-HMF": 6.999999999999999,
+            "Caffeine": 53.340740740740735,
+            "Gallic acid": 6.333333333333333,
+            "Trigonelline": 44.33333333333332
+          },
+          "standardized_mae": 1.073486614567313
+        },
+        "C_C0": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "3-CQA": 62.90338164251206,
+            "4-CQA": 29.110144927536233,
+            "5-CQA": 18.78550724637681,
+            "5-HMF": 6.999999999999999,
+            "Caffeine": 53.469565217391306,
+            "Gallic acid": 6.3130434782608695,
+            "Trigonelline": 43.72463768115942
+          },
+          "standardized_mae": 1.0458144861730059
+        },
+        "C_C1": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "3-CQA": 65.62222222222223,
+            "4-CQA": 30.259259259259263,
+            "5-CQA": 21.05185185185185,
+            "5-HMF": 6.999999999999999,
+            "Caffeine": 53.340740740740735,
+            "Gallic acid": 6.333333333333333,
+            "Trigonelline": 44.33333333333332
+          },
+          "standardized_mae": 1.073486614567313
+        },
+        "C_JOINT": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "3-CQA": 62.90338164251206,
+            "4-CQA": 29.110144927536233,
+            "5-CQA": 18.78550724637681,
+            "5-HMF": 6.999999999999999,
+            "Caffeine": 53.469565217391306,
+            "Gallic acid": 6.3130434782608695,
+            "Trigonelline": 43.72463768115942
+          },
+          "standardized_mae": 1.0458144861730059
+        }
+      },
+      "observation_unit": "AGGREGATE_ONLY",
+      "role": "AUX_CONTEXT"
+    },
+    "vezzulli_panel": {
+      "comparisons": {
+        "C_C0_minus_C_BASE": {
+          "error_reduction": 0.12519006778927033,
+          "groups": 2,
+          "paired_group_95_interval": [
+            0.10291281798126914,
+            0.1474673175972715
+          ],
+          "status": "INCONCLUSIVE"
+        },
+        "C_C1_minus_C_BASE": {
+          "error_reduction": null,
+          "groups": 2,
+          "paired_group_95_interval": null,
+          "status": "NOT_ESTIMABLE"
+        },
+        "C_JOINT_minus_C_ADD": {
+          "error_reduction": null,
+          "groups": 2,
+          "paired_group_95_interval": null,
+          "status": "NOT_ESTIMABLE"
+        }
+      },
+      "condition_count": 8,
+      "effect_type": "SENSORY_ATTRIBUTE_EFFECT",
+      "independent_coffee_groups": 2,
+      "models": {
+        "C_ADD": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "Acidity": 0.57125,
+            "Aroma intensity": 0.42000000000000004,
+            "Aroma persistence": 0.6737500000000003,
+            "Astringency": 0.48249999999999993,
+            "Bitter": 0.675,
+            "Body": 0.5925,
+            "Burnt": 0.38625000000000004,
+            "Caramel": 0.33999999999999997,
+            "Cereals": 0.44875000000000004,
+            "Cocoa": 0.655,
+            "Color intensity": 0.25,
+            "Dry vegetal": 0.87,
+            "Floral and fruity": 0.41250000000000003,
+            "Honey": 0.5700000000000001,
+            "Nuts and dry fruits": 0.3812499999999999,
+            "Pastry": 0.8,
+            "Positive aromas": 0.2737500000000001,
+            "Roasted": 0.4650000000000001,
+            "Stone fruit": 0.30499999999999994,
+            "Vegetal": 0.725
+          },
+          "standardized_mae": 1.065750145673372
+        },
+        "C_BASE": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "Acidity": 0.73125,
+            "Aroma intensity": 0.7250000000000001,
+            "Aroma persistence": 0.775,
+            "Astringency": 0.4875,
+            "Bitter": 0.7812500000000001,
+            "Body": 1.1125,
+            "Burnt": 0.49375,
+            "Caramel": 0.50625,
+            "Cereals": 0.425,
+            "Cocoa": 0.65625,
+            "Color intensity": 0.25625,
+            "Dry vegetal": 0.7999999999999999,
+            "Floral and fruity": 0.39375,
+            "Honey": 0.55,
+            "Nuts and dry fruits": 0.4624999999999999,
+            "Pastry": 0.7999999999999998,
+            "Positive aromas": 0.37499999999999994,
+            "Roasted": 0.5375,
+            "Stone fruit": 0.45,
+            "Vegetal": 0.6312500000000001
+          },
+          "standardized_mae": 1.1909402134626423
+        },
+        "C_C0": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "Acidity": 0.57125,
+            "Aroma intensity": 0.42000000000000004,
+            "Aroma persistence": 0.6737500000000003,
+            "Astringency": 0.48249999999999993,
+            "Bitter": 0.675,
+            "Body": 0.5925,
+            "Burnt": 0.38625000000000004,
+            "Caramel": 0.33999999999999997,
+            "Cereals": 0.44875000000000004,
+            "Cocoa": 0.655,
+            "Color intensity": 0.25,
+            "Dry vegetal": 0.87,
+            "Floral and fruity": 0.41250000000000003,
+            "Honey": 0.5700000000000001,
+            "Nuts and dry fruits": 0.3812499999999999,
+            "Pastry": 0.8,
+            "Positive aromas": 0.2737500000000001,
+            "Roasted": 0.4650000000000001,
+            "Stone fruit": 0.30499999999999994,
+            "Vegetal": 0.725
+          },
+          "standardized_mae": 1.065750145673372
+        },
+        "C_C1": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "Acidity": 0.73125,
+            "Aroma intensity": 0.7250000000000001,
+            "Aroma persistence": 0.775,
+            "Astringency": 0.4875,
+            "Bitter": 0.7812500000000001,
+            "Body": 1.1125,
+            "Burnt": 0.49375,
+            "Caramel": 0.50625,
+            "Cereals": 0.425,
+            "Cocoa": 0.65625,
+            "Color intensity": 0.25625,
+            "Dry vegetal": 0.7999999999999999,
+            "Floral and fruity": 0.39375,
+            "Honey": 0.55,
+            "Nuts and dry fruits": 0.4624999999999999,
+            "Pastry": 0.7999999999999998,
+            "Positive aromas": 0.37499999999999994,
+            "Roasted": 0.5375,
+            "Stone fruit": 0.45,
+            "Vegetal": 0.6312500000000001
+          },
+          "standardized_mae": 1.1909402134626423
+        },
+        "C_JOINT": {
+          "estimable_c0": true,
+          "estimable_source_native_c1": false,
+          "mae_by_target": {
+            "Acidity": 0.57125,
+            "Aroma intensity": 0.42000000000000004,
+            "Aroma persistence": 0.6737500000000003,
+            "Astringency": 0.48249999999999993,
+            "Bitter": 0.675,
+            "Body": 0.5925,
+            "Burnt": 0.38625000000000004,
+            "Caramel": 0.33999999999999997,
+            "Cereals": 0.44875000000000004,
+            "Cocoa": 0.655,
+            "Color intensity": 0.25,
+            "Dry vegetal": 0.87,
+            "Floral and fruity": 0.41250000000000003,
+            "Honey": 0.5700000000000001,
+            "Nuts and dry fruits": 0.3812499999999999,
+            "Pastry": 0.8,
+            "Positive aromas": 0.2737500000000001,
+            "Roasted": 0.4650000000000001,
+            "Stone fruit": 0.30499999999999994,
+            "Vegetal": 0.725
+          },
+          "standardized_mae": 1.065750145673372
+        }
+      },
+      "observation_unit": "AGGREGATE_ONLY",
+      "role": "CORE_PROFESSIONAL"
+    }
+  },
+  "independent_product_confirmation": "NOT_EVALUATED"
+}
