@@ -26,9 +26,38 @@ minus JOINT is -0.008578 [-0.014935, -0.002840]: NO_IMPROVEMENT; the factor
 branch is not selected. These are positive-description recovery proxies,
 not independent product confirmation. Six-slot execution, feature parity,
 answer replacement and terminal one-time feedback pass local unit tests.
-Same-budget policy and F0/F1/F2 diagnostics continue. The initial numerical
+Same-budget policy and F0/F1/F2 diagnostics are complete. The initial numerical
 checkpoint is preserved externally; overall_liking was removed from the
 consumer sensory-attribute block because it is a hedonic target.
+
+At exactly five questions / 20 actual options, fixed/random/one-step/two-step
+recovery NDCG@5 is 0.534849 / 0.496403 / 0.538193 / 0.539409. One-step and
+two-step deltas versus fixed have intervals crossing zero; mean full-chain
+simulation latency is approximately 38 / 37 / 296 / 2476 ms respectively.
+Keep the fixed policy as the default. Q1 has zero measured ranking contribution;
+Q0 alone has no supported gain but its removal from the complete chain loses
+0.050161. Q2/Q3/Q4 prefix gains are 0.058792 / 0.039138 / 0.029968. These are
+development trajectory diagnostics, not independent human question value.
+
+F2 exceeds mechanical F1 by 0.027848 [0.010905, 0.044883] on hidden observed
+descriptor recovery with visible-only simulated feedback: PROXY improvement
+only. Selected candidates were already exposed, so 100% retention@8 by itself
+is tautological and not a gain. Real feedback and independent product
+confirmation remain NOT_EVALUATED. All 211 development cases remain in coverage;
+one has no interpretable target and cannot contribute labelled ranking utility.
+
+The new model does not replace old M1/B2. On common fine descriptors, the
+new model is below B2 in development CV by 0.054455, and below frozen M1 on
+17 historical regression groups by 0.077259 [0.004632, 0.169813] in error
+magnitude. Broader vocabulary and source-native attribute recovery are not
+proof of better fine flavor inference. The proxy can learn suppression of
+already visible broad categories; this is an explicit product limitation.
+All new and old weights are retained. Source hashes, nested feature isolation,
+56 full context paths, feature parity, answer traces and reload checks pass.
+Twenty anonymous comparison cases are retained privately with empty judgments;
+10 development and 10 frozen historical review cases are separate, with no
+fresh confirmation claim. The single experiment receipt gives the model path,
+commands, fitted dependency versions, errors and local verification status.
 
 ## Backend flavor recovery — 2026-09-05 (current)
 

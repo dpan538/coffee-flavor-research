@@ -108,6 +108,13 @@ def main():
     parser.add_argument("--owner-dir", type=Path, required=True)
     a = parser.parse_args()
     owner = a.owner_dir
+    if any(
+        (owner / "models" / (kind + ".model.json")).exists()
+        for kind in ["M2_ADD", "M2_JOINT", "M2_HIER"]
+    ):
+        raise ValueError(
+            "RETAINED_MODELS_EXIST: use finish_sequential_v2.py for nondestructive reproduction verification"
+        )
     started = time.time()
     records = json.loads((owner / "recovery_records.json").read_text())
     dev = [r for r in records if r["split"] == "DEVELOPMENT"]

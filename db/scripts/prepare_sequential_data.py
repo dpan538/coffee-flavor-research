@@ -293,6 +293,30 @@ def record_recovery(owner, prior_owner):
     import openpyxl
     from collections import Counter
 
+    rights = json.loads(
+        (ROOT / "db/data/backend-model-20260905/dataset_manifest.json").read_text()
+    )
+    checks = rights["admitted_source"]["conditions_checked"]
+    if not all(
+        checks[k]
+        for k in [
+            "attribution_in_manifest",
+            "noncommercial_local_research_only",
+            "raw_data_not_redistributed",
+            "model_weights_not_released",
+        ]
+    ):
+        raise ValueError("SOURCE_USE_CONDITIONS_NOT_SATISFIED")
+    artifacts = {
+        "zenodo-panelists.xlsx": rights["admitted_source"]["source_sha256"],
+        "inera-sensory.xlsx": rights["source_classes"][
+            "complete_structured_frequency_observations"
+        ]["artifact_sha256"],
+        "lengupa-article.html": rights["auxiliary_source"]["artifact_sha256"],
+    }
+    for name, expected in artifacts.items():
+        if sha(prior_owner / "sources" / name) != expected:
+            raise ValueError("SOURCE_ARTIFACT_HASH_MISMATCH:" + name)
     old = json.loads((prior_owner / "records.json").read_text())
     by_coffee = {r["coffee_id"]: r for r in old}
     evidence_to_record = {x: r for r in old for x in r["evidence_ids"]}
@@ -463,6 +487,10 @@ def record_recovery(owner, prior_owner):
     for r in records:
         r["evaluation_group"] = r["group_id"]
         r["recovery_target_available"] = bool(r["targets"])
+    if (owner / "recovery_records.json").exists() and json.loads(
+        (owner / "recovery_records.json").read_text()
+    ) != records:
+        raise ValueError("REFUSE_TO_OVERWRITE_FROZEN_V2_INPUTS")
     save(owner / "recovery_records.json", records)
     (owner / "recovery_records.json").chmod(0o600)
     return records

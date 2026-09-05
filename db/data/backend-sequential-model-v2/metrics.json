@@ -1,4 +1,20 @@
 {
+  "cluster_diagnostic": {
+    "aligned_component_cosine_mean": 0.9725830265097446,
+    "aligned_component_cosine_range": [
+      0.7736876291396794,
+      0.9968633797974064
+    ],
+    "clusters_exclusive": false,
+    "conditional_C0_C1_stability": "NOT_ESTIMABLE: paired validated context absent",
+    "group_bootstrap_draws": 20,
+    "independent_source_stability": "NOT_EVALUATED",
+    "nutty_cocoa_split": false,
+    "original_independent_training_groups": 73,
+    "source": "INERA only; removal of that source leaves no comparable complete frequency matrix",
+    "source_dominance": "Complete frequency factor estimates come entirely from INERA; projected semantic memberships in other sources are hypotheses. Downstream grouped CV, not this internal cosine, decides adoption.",
+    "task": "OVERLAPPING_NATIVE_ATTRIBUTE_FACTORS"
+  },
   "context": {
     "iswaldi_chemical": {
       "comparisons": {
@@ -466,7 +482,1258 @@
       "role": "CORE_PROFESSIONAL"
     }
   },
+  "context_robustness_summary": [
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_chemical",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.0,
+      "paired_group_95_interval": "[0.0, 0.0]",
+      "perturbation": "correct",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.filter_percolation\", \"preparation.family.filter_percolation -> preparation.family.cold_extraction\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_chemical",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.3831434903268675,
+      "paired_group_95_interval": "[0.3643757609656833, 0.4019112196880517]",
+      "perturbation": "c0_other_observed",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_chemical",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.27221358518655736,
+      "paired_group_95_interval": "[0.1878473253171873, 0.35657984505592744]",
+      "perturbation": "c1_native_adjacent",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_chemical",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.4274548464997956,
+      "paired_group_95_interval": "[0.34279173112540234, 0.5121179618741888]",
+      "perturbation": "c1_native_far",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.filter_percolation\", \"preparation.family.filter_percolation -> preparation.family.cold_extraction\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_chemical",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.7350282942242653,
+      "paired_group_95_interval": "[0.6760388130588876, 0.794017775389643]",
+      "perturbation": "both_native_changed",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_consumer_sensory",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.0,
+      "paired_group_95_interval": "[0.0, 0.0]",
+      "perturbation": "correct",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.filter_percolation\", \"preparation.family.filter_percolation -> preparation.family.cold_extraction\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_consumer_sensory",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.41991304834081844,
+      "paired_group_95_interval": "[0.4153245072623062, 0.42450158941933075]",
+      "perturbation": "c0_other_observed",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_consumer_sensory",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.5557560777529338,
+      "paired_group_95_interval": "[0.4904732126902844, 0.6210389428155831]",
+      "perturbation": "c1_native_adjacent",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_consumer_sensory",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.8049535494199083,
+      "paired_group_95_interval": "[0.75837103341158, 0.8515360654282366]",
+      "perturbation": "c1_native_far",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.filter_percolation\", \"preparation.family.filter_percolation -> preparation.family.cold_extraction\"]",
+      "conditions": 12,
+      "dataset": "iswaldi_consumer_sensory",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.9672123048422276,
+      "paired_group_95_interval": "[0.8921452911288044, 1.042279318555651]",
+      "perturbation": "both_native_changed",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.cold_extraction\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\"]",
+      "conditions": 18,
+      "dataset": "stanek_chemical",
+      "independent_groups": 6,
+      "mean_standardized_error_increase": 0.0,
+      "paired_group_95_interval": "[0.0, 0.0]",
+      "perturbation": "correct",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.cold_extraction -> preparation.family.filter_percolation\", \"preparation.family.filter_percolation -> preparation.family.cold_extraction\"]",
+      "conditions": 18,
+      "dataset": "stanek_chemical",
+      "independent_groups": 6,
+      "mean_standardized_error_increase": 0.07138469438668706,
+      "paired_group_95_interval": "[-0.009899355843282475, 0.13571299573183238]",
+      "perturbation": "c0_other_observed",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "stanek_chemical",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "c1_native_adjacent",
+      "reason": "No source roast contrast or verified category",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "stanek_chemical",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "c1_native_far",
+      "reason": "No source roast contrast or verified category",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "stanek_chemical",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "both_native_changed",
+      "reason": "No source roast contrast or verified category",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.espresso_pressure -> preparation.family.espresso_pressure\", \"preparation.family.filter_percolation -> preparation.family.filter_percolation\", \"preparation.family.stovetop_boiled -> preparation.family.stovetop_boiled\"]",
+      "conditions": 8,
+      "dataset": "vezzulli_panel",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.0,
+      "paired_group_95_interval": "[0.0, 0.0]",
+      "perturbation": "correct",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[\"preparation.family.espresso_pressure -> preparation.family.filter_percolation\", \"preparation.family.filter_percolation -> preparation.family.espresso_pressure\", \"preparation.family.stovetop_boiled -> preparation.family.espresso_pressure\"]",
+      "conditions": 8,
+      "dataset": "vezzulli_panel",
+      "independent_groups": 2,
+      "mean_standardized_error_increase": 0.36679306810354684,
+      "paired_group_95_interval": "[0.3596490052285639, 0.3739371309785298]",
+      "perturbation": "c0_other_observed",
+      "reason": "Legally encoded source-native sensitivity, not seven-bin product error distribution",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "SOURCE_NATIVE_SENSITIVITY_INCONCLUSIVE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "vezzulli_panel",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "c1_native_adjacent",
+      "reason": "No source roast contrast or verified category",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "vezzulli_panel",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "c1_native_far",
+      "reason": "No source roast contrast or verified category",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "vezzulli_panel",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "both_native_changed",
+      "reason": "No source roast contrast or verified category",
+      "stage": "CONTEXT_ONLY_SOURCE_NATIVE",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_adjacent_one_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "CONTEXT_ONLY",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_multiple_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "CONTEXT_ONLY",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "correct_C0_C1",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "CONTEXT_ONLY",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_adjacent_one_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_Q0_Q1",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_multiple_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_Q0_Q1",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "correct_C0_C1",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_Q0_Q1",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_adjacent_one_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_CORRECTION",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_multiple_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_CORRECTION",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "correct_C0_C1",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_CORRECTION",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_adjacent_one_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_FINAL_COMPARISON",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "C1_multiple_of_seven",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_FINAL_COMPARISON",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    },
+    {
+      "c0_replacements": "[]",
+      "conditions": 0,
+      "dataset": "PRODUCTION_SEVEN_BIN",
+      "independent_groups": 0,
+      "mean_standardized_error_increase": null,
+      "paired_group_95_interval": "null",
+      "perturbation": "correct_C0_C1",
+      "reason": "No verified seven-bin roast mapping or independent context+answer trajectory. Source-native and actual seven-bin perturbations are not interchangeable.",
+      "stage": "AFTER_FINAL_COMPARISON",
+      "status": "NOT_ESTIMABLE",
+      "truth_unchanged": true
+    }
+  ],
+  "feedback": {
+    "F1_minus_F0": {
+      "delta": 0.0,
+      "groups": 186,
+      "paired_group_95_interval": [
+        0.0,
+        0.0
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "INCONCLUSIVE"
+    },
+    "F2_minus_F1": {
+      "delta": 0.027847592544696518,
+      "groups": 186,
+      "paired_group_95_interval": [
+        0.01090542884844084,
+        0.044882887622600814
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "IMPROVEMENT_SUPPORTED"
+    },
+    "models": {
+      "F0": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "comparison_eligible": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "exposure_target_coverage": 0.6454478168187845,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": null,
+        "ndcg5": 0.5369256946604254,
+        "option_budget": null,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.3560126987527649,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.425,
+            "recall8": 0.525
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.46210147401031837,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.3766525887493629,
+            "recall8": 0.47314483604806185
+          }
+        },
+        "question_count": null,
+        "recall5": 0.5620718140879432,
+        "recall8": 0.6830329915007335,
+        "records": 211,
+        "selected_retention8": 1.0,
+        "worst_source_ndcg5": 0.3560126987527649
+      },
+      "F1": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "comparison_eligible": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "exposure_target_coverage": 0.6454478168187845,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": null,
+        "ndcg5": 0.5369256946604254,
+        "option_budget": null,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.8358447488584475,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.3560126987527649,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.425,
+            "recall8": 0.525
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.46210147401031837,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.3766525887493629,
+            "recall8": 0.47314483604806185
+          }
+        },
+        "question_count": null,
+        "recall5": 0.5620718140879432,
+        "recall8": 0.6830329915007335,
+        "records": 211,
+        "selected_retention8": 1.0,
+        "worst_source_ndcg5": 0.3560126987527649
+      },
+      "F2": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "comparison_eligible": 1.0,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "exposure_target_coverage": 0.6454478168187845,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": null,
+        "ndcg5": 0.5647732872051219,
+        "option_budget": null,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.7664489925447638,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.9206621004566209,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.31443057196316626,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.3583333333333333,
+            "recall8": 0.5375
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.4603058443561463,
+            "option_budget": null,
+            "question_count": null,
+            "recall5": 0.3715151932893868,
+            "recall8": 0.505856359888618
+          }
+        },
+        "question_count": null,
+        "recall5": 0.5856231880425429,
+        "recall8": 0.7007328394425169,
+        "records": 211,
+        "selected_retention8": 1.0,
+        "worst_source_ndcg5": 0.31443057196316626
+      }
+    },
+    "real_feedback_effect": "NOT_EVALUATED",
+    "scope": "VISIBLE_ONLY_SIMULATION; no actual human responses"
+  },
+  "historical_same_information_comparison": {
+    "models": {
+      "B0": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 0.75,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.41114705588501915,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 0.75,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.41114705588501915,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3570282658517953,
+            "recall8": 0.4017061370002547
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.3570282658517953,
+        "recall8": 0.4017061370002547,
+        "records": 17,
+        "worst_source_ndcg5": 0.41114705588501915
+      },
+      "B1": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.3606702197039836,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.3606702197039836,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.28739495798319326,
+            "recall8": 0.3123949579831933
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.28739495798319326,
+        "recall8": 0.3123949579831933,
+        "records": 17,
+        "worst_source_ndcg5": 0.3606702197039836
+      },
+      "B2": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.41114705588501915,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.41114705588501915,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3570282658517953,
+            "recall8": 0.4017061370002547
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.3570282658517953,
+        "recall8": 0.4017061370002547,
+        "records": 17,
+        "worst_source_ndcg5": 0.41114705588501915
+      },
+      "M1": {
+        "candidate_target_coverage": 0.7025146422205245,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 17,
+        "labelled_records": 17,
+        "latency_ms": null,
+        "ndcg5": 0.40919359356613444,
+        "option_budget": 20.0,
+        "per_source": {
+          "zenodo": {
+            "candidate_target_coverage": 0.7025146422205245,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.40919359356613444,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3398714031066972,
+            "recall8": 0.4213139801375096
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.3398714031066972,
+        "recall8": 0.4213139801375096,
+        "records": 17,
+        "worst_source_ndcg5": 0.40919359356613444
+      }
+    },
+    "scope": "17 previously inspected groups; REGRESSION_ONLY, not new confirmation. Fine vocabulary intersection also reported; context masked consistently in old live code and new descriptor code.",
+    "selected_minus": {
+      "B0": {
+        "delta": -0.07492921447444537,
+        "groups": 17,
+        "paired_group_95_interval": [
+          -0.17523070501643384,
+          0.011620882862681188
+        ],
+        "scope": "PROXY_HISTORICAL_REGRESSION_NOT_NEW_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "B1": {
+        "delta": -0.026500524756931036,
+        "groups": 17,
+        "paired_group_95_interval": [
+          -0.21796793687338228,
+          0.15268572587217696
+        ],
+        "scope": "PROXY_HISTORICAL_REGRESSION_NOT_NEW_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "B2": {
+        "delta": -0.07492921447444537,
+        "groups": 17,
+        "paired_group_95_interval": [
+          -0.17523070501643384,
+          0.011620882862681188
+        ],
+        "scope": "PROXY_HISTORICAL_REGRESSION_NOT_NEW_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "M1": {
+        "delta": -0.07725850947271029,
+        "groups": 17,
+        "paired_group_95_interval": [
+          -0.16981253495039805,
+          -0.004631959743564296
+        ],
+        "scope": "PROXY_HISTORICAL_REGRESSION_NOT_NEW_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      }
+    }
+  },
+  "human_review": {
+    "cases": 20,
+    "development": 10,
+    "fresh_locked_confirmatory": 0,
+    "frozen_historical_regression": 10,
+    "human_results_entered": 0,
+    "no_page_or_questionnaire_created": true,
+    "path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/human_comparison_cases.private.json"
+  },
   "independent_product_confirmation": "NOT_EVALUATED",
+  "legacy_baseline_development": {
+    "models": {
+      "B0": {
+        "candidate_target_coverage": 0.4000830859701827,
+        "coverage": 1.0,
+        "direct_retention8": 0.8674242424242424,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": null,
+        "ndcg5": 0.21331951571983468,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 0.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.0,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.0,
+            "recall8": 0.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 0.3958333333333333,
+            "coverage": 1.0,
+            "direct_retention8": 0.8,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.06644687510188073,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.04583333333333333,
+            "recall8": 0.07083333333333333
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.7150407239116915,
+            "coverage": 1.0,
+            "direct_retention8": 0.8729508196721312,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.4123493808801251,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.35460951831919574,
+            "recall8": 0.4416050496695658
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.18223307457178428,
+        "recall8": 0.22841901228998004,
+        "records": 211,
+        "worst_source_ndcg5": 0.0
+      },
+      "B1": {
+        "candidate_target_coverage": 0.4000830859701827,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": null,
+        "ndcg5": 0.12228664861857008,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 0.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.0,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.0,
+            "recall8": 0.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 0.3958333333333333,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.05206002842761054,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.04583333333333333,
+            "recall8": 0.04583333333333333
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.7150407239116915,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.23337759219894436,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.22622732703377862,
+            "recall8": 0.28472641456512426
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.11804197892907571,
+        "recall8": 0.14729152269474852,
+        "records": 211,
+        "worst_source_ndcg5": 0.0
+      },
+      "B2": {
+        "candidate_target_coverage": 0.4000830859701827,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": null,
+        "ndcg5": 0.21416067812387443,
+        "option_budget": 19.668449197860962,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 0.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.0,
+            "option_budget": 19.671232876712327,
+            "question_count": 5.0,
+            "recall5": 0.0,
+            "recall8": 0.0
+          },
+          "lengupa": {
+            "candidate_target_coverage": 0.3958333333333333,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.06644687510188073,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.04583333333333333,
+            "recall8": 0.07083333333333333
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.7150407239116915,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": null,
+            "ndcg5": 0.4140317056882046,
+            "option_budget": 19.666666666666668,
+            "question_count": 5.0,
+            "recall5": 0.35460951831919574,
+            "recall8": 0.4469813937555873
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.18223307457178428,
+        "recall8": 0.2311071843329908,
+        "records": 211,
+        "worst_source_ndcg5": 0.0
+      }
+    },
+    "scope": "Same actual evidence, historical family adapter; old models lack broad candidate outputs. Full-target coverage and common-fine-only comparison both required.",
+    "selected_minus_B2_fine_only": {
+      "delta": -0.054454810810802806,
+      "groups": 104,
+      "paired_group_95_interval": [
+        -0.08527634607416802,
+        -0.024753124388832048
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "NO_IMPROVEMENT"
+    },
+    "selected_minus_B2_full_scope": {
+      "delta": 0.32276501653655104,
+      "groups": 186,
+      "paired_group_95_interval": [
+        0.26006158221065984,
+        0.38609452786561005
+      ],
+      "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+      "status": "IMPROVEMENT_SUPPORTED"
+    }
+  },
+  "policy": {
+    "comparisons": {
+      "one_step_minus_fixed": {
+        "delta": 0.003343335261910166,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.002052448071999797,
+          0.010508724421199715
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "random_minus_fixed": {
+        "delta": -0.03844645712134248,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.06306232442071501,
+          -0.014804496245738603
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      },
+      "two_step_minus_fixed": {
+        "delta": 0.004559971743259181,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.0011060689869232356,
+          0.012478353722261533
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "two_step_minus_one_step": {
+        "delta": 0.0012166364813490148,
+        "groups": 186,
+        "paired_group_95_interval": [
+          0.0,
+          0.003649909444047044
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      }
+    },
+    "models": {
+      "fixed": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "full_chain_latency_ms": 38.11645293658111,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 17.574082352818653,
+        "ndcg5": 0.5348493103999736,
+        "option_budget": 20.0,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 15.343265174186392,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584474,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 19.582833473881085,
+            "ndcg5": 0.3519987382101743,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.5
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 18.871564938816974,
+            "ndcg5": 0.4588119228104018,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3705159535804697,
+            "recall8": 0.46752488849263046
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5590034965034965,
+        "recall8": 0.6775348456800069,
+        "records": 211,
+        "worst_source_ndcg5": 0.3519987382101743
+      },
+      "one_step": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "full_chain_latency_ms": 296.150771893541,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 17.222640283261352,
+        "ndcg5": 0.5381926456618837,
+        "option_budget": 20.0,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 15.739519935267122,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584474,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 16.483220393725095,
+            "ndcg5": 0.3519987382101743,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.5
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 18.553775800291888,
+            "ndcg5": 0.46549859333422217,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3848528711431937,
+            "recall8": 0.48401234368976315
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5661719552848585,
+        "recall8": 0.6857785732785733,
+        "records": 211,
+        "worst_source_ndcg5": 0.3519987382101743
+      },
+      "random": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "full_chain_latency_ms": 37.435508447071726,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 17.069598296931122,
+        "ndcg5": 0.49640285327863115,
+        "option_budget": 20.0,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 15.437569601576111,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584474,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 15.569246030368266,
+            "ndcg5": 0.27434764350740803,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.36666666666666664,
+            "recall8": 0.5083333333333333
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 18.689442300788496,
+            "ndcg5": 0.39861816871884936,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.34684613474936055,
+            "recall8": 0.44595512014866856
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5408961856542501,
+        "recall8": 0.6676460188556962,
+        "records": 211,
+        "worst_source_ndcg5": 0.27434764350740803
+      },
+      "two_step": {
+        "candidate_target_coverage": 0.9911951399854625,
+        "coverage": 1.0,
+        "direct_retention8": 1.0,
+        "duplicate_rate": 0.0,
+        "full_chain_latency_ms": 2476.385371237221,
+        "groups": 187,
+        "labelled_records": 210,
+        "latency_ms": 16.592607402646127,
+        "ndcg5": 0.5394092821432328,
+        "option_budget": 20.0,
+        "per_source": {
+          "inera": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": null,
+            "duplicate_rate": 0.0,
+            "latency_ms": 15.38625859642682,
+            "ndcg5": 0.6818149061482773,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.8358447488584474,
+            "recall8": 0.9937214611872145
+          },
+          "lengupa": {
+            "candidate_target_coverage": 1.0,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 16.049567576763884,
+            "ndcg5": 0.3519987382101743,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.425,
+            "recall8": 0.5
+          },
+          "zenodo": {
+            "candidate_target_coverage": 0.9823902799709251,
+            "coverage": 1.0,
+            "direct_retention8": 1.0,
+            "duplicate_rate": 0.0,
+            "latency_ms": 17.66214825423254,
+            "ndcg5": 0.46793186629692013,
+            "option_budget": 20.0,
+            "question_count": 5.0,
+            "recall5": 0.3848528711431937,
+            "recall8": 0.48401234368976315
+          }
+        },
+        "question_count": 5.0,
+        "recall5": 0.5661719552848585,
+        "recall8": 0.6857785732785733,
+        "records": 211,
+        "worst_source_ndcg5": 0.3519987382101743
+      }
+    },
+    "pool": "Identical train-qualified four-option axes; exactly five ordinary questions,20 shown options",
+    "scope": "PROXY_POLICY_SIMULATION"
+  },
+  "selection_decision": {
+    "broader_record_recovery_research_candidate": "M2_JOINT",
+    "reason": "New model regresses on matched fine descriptor scope; keep M1 and B2. Cluster branch rejected; selected M2 is a research candidate, not a product promotion.",
+    "replace_historical_M1": false
+  },
   "sequential": {
     "C_search": {
       "M2_ADD_C0.01": {

@@ -1,0 +1,4 @@
+mode	records	groups	observed_recovery_ndcg5	selected_retention8	previous_explicit_retention8	exposure_hidden_target_coverage	eligible_case_coverage	nonempty_selections	scope
+F0	211	187	0.5369256946604254	1.0	1.0	0.6454478168187845	1.0	162	SIMULATED_VISIBLE_ONLY; real feedback NOT_EVALUATED
+F1	211	187	0.5369256946604254	1.0	1.0	0.6454478168187845	1.0	162	SIMULATED_VISIBLE_ONLY; real feedback NOT_EVALUATED
+F2	211	187	0.5647732872051219	1.0	1.0	0.6454478168187845	1.0	162	SIMULATED_VISIBLE_ONLY; real feedback NOT_EVALUATED

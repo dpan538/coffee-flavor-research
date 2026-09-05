@@ -55,6 +55,67 @@
       ],
       "type": "object"
     },
+    "CandidateState": {
+      "properties": {
+        "answers_by_question": {
+          "propertyNames": {
+            "enum": [
+              "Q0",
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ]
+          },
+          "type": "object"
+        },
+        "candidate_scores": {
+          "$ref": "#/$defs/RankResult"
+        },
+        "context": {
+          "$ref": "#/$defs/Context"
+        },
+        "context_attributes_used_for_descriptor_scoring": {
+          "const": false
+        },
+        "current_stage": {
+          "enum": [
+            "CONTEXT",
+            "INITIAL_EXTRACTION_PENDING_Q1",
+            "INITIAL_EXTRACTION",
+            "CORRECTION_STAGE",
+            "CLOSING_STAGE",
+            "PRELIMINARY_RESULT",
+            "FINAL_RESULT"
+          ]
+        },
+        "model_version": {
+          "type": "string"
+        },
+        "remaining_question_slots": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "context",
+        "answers_by_question",
+        "interpreted_evidence",
+        "sensory_attribute_state",
+        "candidate_support",
+        "candidate_scores",
+        "cluster_membership",
+        "remaining_question_slots",
+        "current_stage",
+        "final_comparison",
+        "model_version"
+      ],
+      "type": "object"
+    },
     "Context": {
       "additionalProperties": false,
       "properties": {
@@ -85,6 +146,57 @@
       "required": [
         "c0",
         "c1"
+      ],
+      "type": "object"
+    },
+    "FeatureMatrix": {
+      "properties": {
+        "candidate_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "feature_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "features": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "interpreted_evidence": {
+          "type": "object"
+        },
+        "raw_features": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "sensory_attribute_state": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "candidate_ids",
+        "feature_names",
+        "features",
+        "raw_features",
+        "interpreted_evidence",
+        "sensory_attribute_state"
       ],
       "type": "object"
     },
@@ -123,6 +235,304 @@
         "selected_candidates",
         "feedback_source",
         "generation_version"
+      ],
+      "type": "object"
+    },
+    "ModelBundle": {
+      "properties": {
+        "candidate_vocabulary": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "cluster_version": {
+          "const": "overlapping-attributes.v2"
+        },
+        "context_mapping_version": {
+          "const": "context.v2.source-native-separated"
+        },
+        "contract_version": {
+          "const": "sequential.v2"
+        },
+        "data_manifest_hash": {
+          "type": "string"
+        },
+        "feature_spec_version": {
+          "const": "shared-candidate.v2"
+        },
+        "model_kind": {
+          "enum": [
+            "M2_ADD",
+            "M2_JOINT",
+            "M2_HIER"
+          ]
+        },
+        "model_parameters": {
+          "required": [
+            "weights",
+            "feature_names"
+          ],
+          "type": "object"
+        },
+        "question_bank_version": {
+          "const": "limited-four-options.v2"
+        },
+        "scaler_parameters": {
+          "properties": {
+            "mean": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 16,
+              "minItems": 16,
+              "type": "array"
+            },
+            "scale": {
+              "items": {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              "maxItems": 16,
+              "minItems": 16,
+              "type": "array"
+            }
+          },
+          "required": [
+            "mean",
+            "scale"
+          ],
+          "type": "object"
+        },
+        "semantic_version": {
+          "const": "typed-support.v2"
+        },
+        "training_split_hash": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "feature_spec_version",
+        "context_mapping_version",
+        "question_bank_version",
+        "semantic_version",
+        "cluster_version",
+        "bundle_id",
+        "model_kind",
+        "scaler_parameters",
+        "model_parameters",
+        "candidate_vocabulary",
+        "training_split_hash",
+        "data_manifest_hash",
+        "statistics",
+        "question_bank",
+        "candidate_attributes",
+        "candidate_clusters"
+      ],
+      "type": "object"
+    },
+    "Plan": {
+      "properties": {
+        "action": {
+          "enum": [
+            "ASK",
+            "PRELIMINARY_RESULT",
+            "FINAL_RESULT"
+          ]
+        },
+        "question": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionInstance"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "question"
+      ],
+      "type": "object"
+    },
+    "PredictedSourceAttributesWithSupportMask": {
+      "additionalProperties": {
+        "properties": {
+          "supported": {
+            "type": "boolean"
+          },
+          "values": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "values",
+          "target_names",
+          "units",
+          "supported",
+          "basis",
+          "effect_scope"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "QuestionInstance": {
+      "properties": {
+        "axis": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "properties": {
+              "attribute": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "specific",
+                  "broad"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "attribute"
+            ],
+            "type": "object"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "type": "array"
+        },
+        "question_id": {
+          "type": "string"
+        },
+        "shown_option_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "slot": {
+          "enum": [
+            "Q0",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ]
+        }
+      },
+      "required": [
+        "slot",
+        "question_id",
+        "axis",
+        "shown_option_ids",
+        "options"
+      ],
+      "type": "object"
+    },
+    "RankResult": {
+      "items": {
+        "$ref": "#/$defs/RankRow"
+      },
+      "type": "array"
+    },
+    "RankRow": {
+      "properties": {
+        "candidate_id": {
+          "type": "string"
+        },
+        "components": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "type": "object"
+        },
+        "explicit": {
+          "type": "boolean"
+        },
+        "feedback_selected": {
+          "type": "boolean"
+        },
+        "rank": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "score": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "score",
+        "rank",
+        "components",
+        "explicit",
+        "feedback_selected"
+      ],
+      "type": "object"
+    },
+    "Result": {
+      "properties": {
+        "main": {
+          "items": {
+            "$ref": "#/$defs/RankRow"
+          },
+          "maxItems": 5,
+          "type": "array"
+        },
+        "next": {
+          "$ref": "#/$defs/Plan"
+        },
+        "secondary": {
+          "items": {
+            "$ref": "#/$defs/RankRow"
+          },
+          "maxItems": 3,
+          "type": "array"
+        },
+        "stage": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/$defs/CandidateState"
+        }
+      },
+      "required": [
+        "state",
+        "main",
+        "secondary",
+        "stage",
+        "next",
+        "exposure"
       ],
       "type": "object"
     }
@@ -204,8 +614,31 @@
         "train-only statistical bundle"
       ],
       "input": "CandidateState + FinalComparison + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "comparison": {
+            "$ref": "#/$defs/FinalComparison"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "bundle",
+          "state",
+          "comparison"
+        ],
+        "type": "object"
+      },
       "module": "flavor_sequential",
       "output": "TerminalCandidateState",
+      "output_schema": {
+        "$ref": "#/$defs/CandidateState"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "encode_features": {
@@ -215,8 +648,34 @@
         "train-only statistical bundle"
       ],
       "input": "Request | CandidateState + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "payload_or_state": {
+            "anyOf": [
+              {
+                "$ref": "#"
+              },
+              {
+                "$ref": "#/$defs/CandidateState"
+              }
+            ]
+          }
+        },
+        "required": [
+          "bundle",
+          "payload_or_state"
+        ],
+        "type": "object"
+      },
       "module": "flavor_sequential",
       "output": "FeatureMatrix",
+      "output_schema": {
+        "$ref": "#/$defs/FeatureMatrix"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "estimate_context_attributes": {
@@ -226,8 +685,27 @@
         "train-only statistical bundle"
       ],
       "input": "Context + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "context": {
+            "$ref": "#/$defs/Context"
+          }
+        },
+        "required": [
+          "bundle",
+          "context"
+        ],
+        "type": "object"
+      },
       "module": "flavor_context",
       "output": "PredictedSourceAttributesWithSupportMask",
+      "output_schema": {
+        "$ref": "#/$defs/PredictedSourceAttributesWithSupportMask"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "finalize_result": {
@@ -237,8 +715,27 @@
         "train-only statistical bundle"
       ],
       "input": "CandidateState + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "bundle",
+          "state"
+        ],
+        "type": "object"
+      },
       "module": "flavor_sequential",
       "output": "Result",
+      "output_schema": {
+        "$ref": "#/$defs/Result"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "plan_stage": {
@@ -248,8 +745,27 @@
         "train-only statistical bundle"
       ],
       "input": "CandidateState + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "bundle",
+          "state"
+        ],
+        "type": "object"
+      },
       "module": "flavor_planning",
       "output": "NextQuestion | Preliminary | Final",
+      "output_schema": {
+        "$ref": "#/$defs/Plan"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "rank_candidates": {
@@ -259,8 +775,27 @@
         "train-only statistical bundle"
       ],
       "input": "CandidateState + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "bundle",
+          "state"
+        ],
+        "type": "object"
+      },
       "module": "flavor_sequential",
       "output": "RankResult",
+      "output_schema": {
+        "$ref": "#/$defs/RankResult"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "select_next_question": {
@@ -270,8 +805,27 @@
         "train-only statistical bundle"
       ],
       "input": "CandidateState + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "bundle",
+          "state"
+        ],
+        "type": "object"
+      },
       "module": "flavor_planning",
       "output": "NextQuestion | Preliminary | Final",
+      "output_schema": {
+        "$ref": "#/$defs/Plan"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "update_joint_state": {
@@ -281,8 +835,31 @@
         "train-only statistical bundle"
       ],
       "input": "CandidateState + Answer + ModelBundle",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "answer": {
+            "$ref": "#/$defs/Answer"
+          },
+          "bundle": {
+            "$ref": "#/$defs/ModelBundle"
+          },
+          "state": {
+            "$ref": "#/$defs/CandidateState"
+          }
+        },
+        "required": [
+          "bundle",
+          "state",
+          "answer"
+        ],
+        "type": "object"
+      },
       "module": "flavor_sequential",
       "output": "CandidateState",
+      "output_schema": {
+        "$ref": "#/$defs/CandidateState"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     },
     "validate_context": {
@@ -291,8 +868,14 @@
         "numpy"
       ],
       "input": "Context",
+      "input_schema": {
+        "$ref": "#/$defs/Context"
+      },
       "module": "flavor_backend",
       "output": "Context",
+      "output_schema": {
+        "$ref": "#/$defs/Context"
+      },
       "tests": "db/tests/test_flavor_sequential.py; db/tests/test_sequential_context.py"
     }
   },

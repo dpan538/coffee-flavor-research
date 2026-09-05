@@ -10,13 +10,52 @@
     "seconds": 127.69222688674927,
     "selected_model": "M2_JOINT",
     "sklearn": "1.9.0",
-    "status": "ACTUAL_FITTING_COMPLETED; policy and feedback diagnostic checkpoint pending"
+    "status": "ACTUAL_FITTING_AND_COMPARATIVE_DIAGNOSTICS_COMPLETED"
   },
   "command": "python db/scripts/run_context_v2.py --owner-root \"$COFFEE_SEQUENTIAL_V2_ROOT\"",
   "context_elapsed_seconds": 0.10233807563781738,
   "context_fit_count": 80,
   "context_model_path": "$COFFEE_SEQUENTIAL_V2_ROOT/models/context_models.model.json",
   "context_model_sha256": "4e89b2916a67a5ab57128d0b8ab666ebcb223ea8cb3a69ca586001ffb6c6327d",
+  "delivery": {
+    "code_sha": "de4dc3a3c4ee0959cde2594dc71f3ba886668f4a",
+    "independent_product_confirmation": "NOT_EVALUATED",
+    "live_command": "python db/scripts/flavor_backend.py --model-file \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/selected_bundle.model.json\" --input \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/example_request.private.json\"",
+    "model_path": "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/selected_bundle.model.json",
+    "model_sha256": "c74008be94d22b47655df2c108b7f01235a245f47986d68d1db82669b9f9091a",
+    "real_feedback_count": 0,
+    "refit_identical_scaler": true,
+    "refit_identical_weights": true,
+    "remote_main_not_merged": true,
+    "reproduction_command": "python db/scripts/finish_sequential_v2.py --owner-dir \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2\"",
+    "retained_model_paths": [
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_ADD.model.json",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_HIER.model.json",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/M2_JOINT.model.json",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/context_models.model.json",
+      "/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2/models/selected_bundle.model.json"
+    ],
+    "same_live_evaluation_features_scores": true,
+    "selected_model": "M2_JOINT",
+    "source_file_hashes": {
+      "evaluate_sequential_v2.py": "94cf48b1cef51c58a699c60421807e94b7d1b619be45570865d335c655a07e16",
+      "finish_sequential_v2.py": "ccc2af3f44b08c9d2c8ed85f75fa343e81a8c5e101bac76b9f480d13d04a40dd",
+      "flavor_sequential.py": "a7f41e83bb26e2dd9711b1de9d90b533f4e377b35a58d39824eaf30ad7240060",
+      "prepare_sequential_data.py": "6e810d46a5e71b7c262a01af317e5ba3edd0b970e5cbb32a10e3e9745b937263",
+      "run_sequential_v2.py": "7b8ca16c8a2aaff38d6bc77f9ca9aac5a6bc63ebd5d3676876ee8d50f1192aa8",
+      "train_sequential.py": "e5d54358e3b13bc5f990f0054c11c890606c66e46035e1dbb387e36c82f7b0d9"
+    },
+    "verification_seconds": 9.091668128967285,
+    "weights_not_public": true
+  },
+  "diagnostics": {
+    "command": "python db/scripts/evaluate_sequential_v2.py --owner-dir \"/Users/jarlgiovanni/Library/Application Support/Coffee Flavor Research/backend-sequential-model-v2\" --workers 3",
+    "feedback_cases": 633,
+    "old_M1_not_refit": true,
+    "policy_cases": 844,
+    "seconds": 223.9024109840393,
+    "truth_feedback_count": 0
+  },
   "errors": [
     "Source C1 classes are coarse native labels, not validated production bins.",
     "Only 2 coffee groups in each sensory study; grouped intervals do not establish broad generalization.",

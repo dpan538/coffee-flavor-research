@@ -18,7 +18,7 @@ from prepare_sequential_data import save
 def write_tsv(path, rows):
     keys = list(dict.fromkeys(k for r in rows for k in r))
     with path.open("w") as f:
-        w = csv.DictWriter(f, keys, delimiter="\t")
+        w = csv.DictWriter(f, keys, delimiter="\t", lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 

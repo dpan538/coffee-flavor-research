@@ -367,6 +367,10 @@ def _finish_scores(out):
 
 
 def build_candidate_state(context, bundle, model="B2"):
+    if "contract_version" in bundle:
+        from flavor_sequential import initial_state
+
+        return initial_state(context, bundle)
     validated = validate_context(context)
     return {
         "context": validated,
@@ -380,6 +384,8 @@ def build_candidate_state(context, bundle, model="B2"):
 
 
 def update_candidate_state(state, answer, bundle):
+    if "contract_version" in bundle:
+        return update_joint_state(state, answer, bundle)
     validate_context(state["context"])
     if state["bundle_id"] != bundle["bundle_id"]:
         raise ValueError("Candidate state belongs to a different bundle")
@@ -631,7 +637,29 @@ def main():
             )
         )
     except ValueError as e:
-        print(json.dumps({"error": "INPUT_VALIDATION_ERROR", "message": str(e)}))
+        technical = str(e).startswith(
+            (
+                "MODEL_BUNDLE_",
+                "STATE_MODEL_VERSION_",
+                "CONTEXT_VERSION_",
+                "FEATURE_SPEC_",
+                "INVALID_MODEL_",
+                "UNKNOWN_MODEL_KIND",
+                "INVALID_FEATURE_SCALER",
+            )
+        )
+        print(
+            json.dumps(
+                {
+                    "error": (
+                        "MODEL_CONTRACT_ERROR"
+                        if technical
+                        else "INPUT_VALIDATION_ERROR"
+                    ),
+                    "message": str(e),
+                }
+            )
+        )
         raise SystemExit(2)
 
 

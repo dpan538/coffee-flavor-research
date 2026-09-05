@@ -86,6 +86,12 @@ class SequentialTests(unittest.TestCase):
                 s.finalize_result(states[-1], self.bundle)["stage"],
                 "PRELIMINARY_RESULT",
             )
+            self.assertEqual(
+                s.finalize_result(states[-1], self.bundle)["state"][
+                    "remaining_question_slots"
+                ],
+                [],
+            )
 
     def test_same_path_features_scores_reload_and_grouping(self):
         ep, states, answers = t.trajectory(self.records[0], self.bundle)
@@ -119,6 +125,19 @@ class SequentialTests(unittest.TestCase):
         self.assertEqual(replaced["candidate_scores"], fresh["candidate_scores"])
         self.assertEqual(len(replaced["answers_by_question"]), 1)
         self.assertEqual(replaced["interpreted_evidence"]["specific"], [])
+        for row in replaced["last_answer_update"]:
+            self.assertAlmostEqual(
+                row["score_after"] - row["score_before"],
+                sum(
+                    row[k]
+                    for k in [
+                        "context_component",
+                        "direct_answer_component",
+                        "semantic_component",
+                        "interaction_component",
+                    ]
+                ),
+            )
 
     def test_full_broad_nondiscriminating_and_no_child_confirmation(self):
         st = self.state()
@@ -289,6 +308,22 @@ class SequentialTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             s.update_joint_state(self.state(), answers[3], self.bundle)
 
+    def test_conditional_paths_and_planner_cannot_see_future_answers(self):
+        for path in ["P2", "P3", "P4"]:
+            for policy in ["one_step", "two_step"]:
+                ep, states, answers = t.trajectory(
+                    self.records[0], self.bundle, path, policy
+                )
+                slots = [a["slot"] for a in answers]
+                self.assertIn(slots[-1], ["Q4", "Q5"])
+                self.assertEqual(slots.count("Q3"), int("Q3" in slots))
+                current = states[2]
+                q = p.select_next_question(current, self.bundle)
+                polluted = copy.deepcopy(current)
+                polluted["future_targets"] = ["sensory.clove"]
+                polluted["future_answers"] = ["not observed"]
+                self.assertEqual(q, p.select_next_question(polluted, self.bundle))
+
     def test_low_support_soft_conditioning_does_not_discard_history(self):
         st = self.state()
         a = self.answer(st)
@@ -298,6 +333,23 @@ class SequentialTests(unittest.TestCase):
         self.assertAlmostEqual(w1.sum(), 1.0)
         self.assertTrue(np.all(w1 > 0))
         self.assertFalse(np.allclose(w0, w1))
+
+    def test_full_legal_multiselect_keeps_evidence_when_output_budget_is_full(self):
+        state = self.state("P4")
+        while True:
+            q = p.select_next_question(state, self.bundle)
+            if q["action"] != "ASK":
+                break
+            answer = self.answer(state, q["question"]["shown_option_ids"])
+            state = s.update_joint_state(state, answer, self.bundle)
+        result = s.finalize_result(state, self.bundle)
+        self.assertEqual(len(state["answers_by_question"]), 6)
+        self.assertGreaterEqual(len(state["interpreted_evidence"]["specific"]), 8)
+        self.assertEqual(len(result["main"]) + len(result["secondary"]), 8)
+        self.assertEqual(
+            result["explicit_overflow"],
+            max(0, len(state["interpreted_evidence"]["specific"]) - 8),
+        )
 
 
 if __name__ == "__main__":

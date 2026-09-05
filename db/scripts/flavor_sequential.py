@@ -79,6 +79,10 @@ def digest(x):
 
 
 def check_bundle(bundle):
+    if not isinstance(bundle, dict):
+        raise ValueError("INVALID_MODEL_BUNDLE")
+    if bundle.get("model_kind") not in {"M2_ADD", "M2_JOINT", "M2_HIER"}:
+        raise ValueError("UNKNOWN_MODEL_KIND")
     for k, v in VERSIONS.items():
         if bundle.get(k) != v:
             raise ValueError("MODEL_BUNDLE_VERSION_MISMATCH:" + k)
@@ -107,6 +111,10 @@ def check_bundle(bundle):
             raise ValueError("INVALID_FEATURE_SCALER")
     if np.asarray(bundle["model_parameters"]["weights"]).shape != (len(FEATURES),):
         raise ValueError("INVALID_MODEL_PARAMETERS")
+    if not np.isfinite(
+        np.asarray(bundle["model_parameters"]["weights"], dtype=float)
+    ).all():
+        raise ValueError("INVALID_MODEL_PARAMETERS")
     if len(bundle["candidate_vocabulary"]) != len(set(bundle["candidate_vocabulary"])):
         raise ValueError("DUPLICATE_CANDIDATE")
     return bundle
@@ -115,7 +123,12 @@ def check_bundle(bundle):
 def initial_state(context, bundle, path="P1", policy="fixed"):
     check_bundle(bundle)
     validate_context(context)
-    if path not in PATHS or policy not in POLICIES:
+    if (
+        not isinstance(path, str)
+        or not isinstance(policy, str)
+        or path not in PATHS
+        or policy not in POLICIES
+    ):
         raise ValueError("Unknown path or policy")
     state = {
         "context": dict(context),
@@ -322,6 +335,10 @@ def recompute(state, bundle):
     enc = encode_features(s, bundle)
     s["interpreted_evidence"] = enc["interpreted_evidence"]
     s["sensory_attribute_state"] = enc["sensory_attribute_state"]
+    s["predicted_context_attributes"] = estimate_context_attributes(
+        s["context"], bundle.get("context_attribute_models", {})
+    )
+    s["context_attributes_used_for_descriptor_scoring"] = False
     s["cluster_membership"] = enc["cluster_membership"]
     s["features"] = enc["features"]
     s["candidate_scores"] = rank_candidates(s, bundle)
@@ -337,7 +354,7 @@ def recompute(state, bundle):
     }
     s["remaining_question_slots"] = [
         q
-        for q in ["Q" + str(i) for i in range(6)]
+        for q in ["Q" + str(i) for i in range(6 if s["path"] == "P4" else 5)]
         if q not in s["answers_by_question"] and q not in s["skipped_slots"]
     ]
     if s["final_comparison"]:
@@ -389,7 +406,7 @@ def update_joint_state(state, answer, bundle):
         "selected_option_ids",
         "state",
     }
-    if set(answer) != required:
+    if not isinstance(answer, dict) or set(answer) != required:
         raise ValueError("ANSWER_SCHEMA_MISMATCH")
     slot = answer["slot"]
     if slot not in ["Q" + str(i) for i in range(6)]:
@@ -443,7 +460,58 @@ def update_joint_state(state, answer, bundle):
     if not old:
         if slot == "Q4" and "Q3" not in s["answers_by_question"]:
             s["skipped_slots"] = sorted(set(s["skipped_slots"]) | {"Q3"})
-    return recompute(s, bundle)
+    after = recompute(s, bundle)
+    before_rows = {r["candidate_id"]: r for r in state["candidate_scores"]}
+    after["last_answer_update"] = []
+    groups = {
+        "context_component": ["context_c0", "context_c1"],
+        "direct_answer_component": [
+            "specific_direct",
+            "broad_candidate_direct",
+            "feedback_direct",
+        ],
+        "semantic_component": [
+            "broad_related_support",
+            "cooccurrence_mean",
+            "cooccurrence_max",
+            "source_support_log",
+            "unsupported_specificity",
+            "cluster_affinity",
+            "attribute_overlap",
+            "feedback_association",
+        ],
+        "interaction_component": ["answer_pair_affinity", "context_answer_interaction"],
+    }
+    evidence_ids = sorted(
+        {r["evidence_id"] for r in after["interpreted_evidence"]["relations"]}
+    )
+    for row in after["candidate_scores"]:
+        before = before_rows[row["candidate_id"]]
+        after["last_answer_update"].append(
+            {
+                "question_id": a["question_id"],
+                "shown_option_ids": a["shown_option_ids"],
+                "selected_option_ids": a["selected_option_ids"],
+                "candidate_id": row["candidate_id"],
+                "score_before": before["score"],
+                "score_after": row["score"],
+                "rank_before": before["rank"],
+                "rank_after": row["rank"],
+                **{
+                    key: sum(
+                        row["components"][n] - before["components"][n] for n in names
+                    )
+                    for key, names in groups.items()
+                },
+                "evidence_ids": evidence_ids,
+                "update_reason": (
+                    "REPLACE_PREVIOUS_ANSWER" if old else "ADD_NEW_ANSWER"
+                )
+                + "; FULL_RECOMPUTE_NO_ACCUMULATION",
+                "component_semantics": "DELTA_FROM_PREVIOUS_STATE; base prior unchanged",
+            }
+        )
+    return after
 
 
 def finalize_result(state, bundle):
@@ -460,6 +528,7 @@ def finalize_result(state, bundle):
             set(s["skipped_slots"]) | ({"Q5"} if s["path"] == "P4" else set())
         )
         s["current_stage"] = "PRELIMINARY_RESULT"
+        s["remaining_question_slots"] = []
     rows = s["candidate_scores"]
     eligible = [
         r
@@ -577,6 +646,13 @@ def replay(payload, bundle, plan=True):
             s = update_joint_state(s, a, bundle)
     if payload.get("final_comparison"):
         f = payload["final_comparison"]
+        if not isinstance(f, dict) or set(f) != {
+            "exposed_candidates",
+            "selected_candidates",
+            "feedback_source",
+            "generation_version",
+        }:
+            raise ValueError("FINAL_COMPARISON_SCHEMA_MISMATCH")
         s = apply_final_comparison(
             s,
             f["exposed_candidates"],
@@ -585,6 +661,8 @@ def replay(payload, bundle, plan=True):
             feedback_source=f["feedback_source"],
             generation_version=f["generation_version"],
         )
+    elif "final_comparison" in payload:
+        raise ValueError("FINAL_COMPARISON_MUST_BE_OBJECT")
     return s
 
 

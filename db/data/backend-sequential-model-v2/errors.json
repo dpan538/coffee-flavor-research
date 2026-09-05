@@ -1,0 +1,302 @@
+{
+  "findings": [
+    {
+      "effect": "Numerical native-context models cannot validate descriptor ranking or recover wrong production C1 through Q stages. Both fit and live descriptor masks agree.",
+      "issue": "Seven-bin context remains unsupported",
+      "records_with_validated_C0_C1": 0,
+      "status": "NOT_ESTIMABLE"
+    },
+    {
+      "action": "Retain trained HIER for audit, do not select it.",
+      "comparison": {
+        "delta": -0.008578053505106775,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.014934648655003852,
+          -0.002839861570547326
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "NO_IMPROVEMENT"
+      },
+      "issue": "Factor branch harms downstream ranking"
+    },
+    {
+      "action": "Retain as research candidate; no independent improvement claim.",
+      "comparison": {
+        "delta": 0.00205515961985469,
+        "groups": 186,
+        "paired_group_95_interval": [
+          -0.001820670316695052,
+          0.005966654933703252
+        ],
+        "scope": "PROXY_DEVELOPMENT_CV_NOT_INDEPENDENT_PRODUCT_CONFIRMATION",
+        "status": "INCONCLUSIVE"
+      },
+      "issue": "Small interaction point gain"
+    },
+    {
+      "action": "Excluded overall_liking; saved original checkpoint outside repo, did not overwrite historical M1.",
+      "issue": "Hedonic liking mixed into sensory block at first numerical checkpoint"
+    },
+    {
+      "action": "Retained in case coverage, excluded from labelled utility; no invented label.",
+      "issue": "One uninterpretable Lengupa code set",
+      "records": 1
+    },
+    {
+      "diagnostic": {
+        "aligned_component_cosine_mean": 0.9725830265097446,
+        "aligned_component_cosine_range": [
+          0.7736876291396794,
+          0.9968633797974064
+        ],
+        "clusters_exclusive": false,
+        "conditional_C0_C1_stability": "NOT_ESTIMABLE: paired validated context absent",
+        "group_bootstrap_draws": 20,
+        "independent_source_stability": "NOT_EVALUATED",
+        "nutty_cocoa_split": false,
+        "original_independent_training_groups": 73,
+        "source": "INERA only; removal of that source leaves no comparable complete frequency matrix",
+        "source_dominance": "Complete frequency factor estimates come entirely from INERA; projected semantic memberships in other sources are hypotheses. Downstream grouped CV, not this internal cosine, decides adoption.",
+        "task": "OVERLAPPING_NATIVE_ATTRIBUTE_FACTORS"
+      },
+      "issue": "Semantic factors depend on one structured source"
+    },
+    {
+      "action": "Report full candidate-target coverage and fine-only matched comparison separately.",
+      "issue": "Old baselines cannot output broad concepts"
+    },
+    {
+      "action": "Keep mandatory Q1 in sampling and runtime; do not claim utility. A value-trained complementary axis requires a separately recorded development iteration and fresh independent confirmation; no test-driven redesign.",
+      "issue": "Q1 does not improve this proxy ranking"
+    },
+    {
+      "action": "Report that the proxy can learn missing-token competition rather than product sensory support. Do not promote this model to product use; retain typed direct-support guards and historical baseline.",
+      "issue": "Broad-answer feature becomes suppressive in hidden-descriptor recovery"
+    }
+  ],
+  "no_agent_critique_used_as_truth": true,
+  "not_evaluated": [
+    "Real user QA outcomes",
+    "Real final comparison feedback",
+    "Independent product confirmation",
+    "True sensory error-specificity rate under complete expert relevance labels"
+  ],
+  "scope": "Observed record recovery and engineering counterexamples; no unobserved descriptor treated as false sensory label",
+  "semantic_counterexamples": [
+    {
+      "all_candidates_unchanged": false,
+      "basis": "Synthetic algorithm counterexample, not a cupping record or human judgment",
+      "case": "floral_is_not_jasmine",
+      "comparisons": [
+        {
+          "B1_rank_after": 1,
+          "B1_rank_before": 18,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 55,
+          "M2_rank_before": 29,
+          "M2_score_delta": -0.5460068458098843,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.jasmine"
+        },
+        {
+          "B1_rank_after": 5,
+          "B1_rank_before": 2,
+          "B1_score_delta": 0.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 11,
+          "M2_rank_before": 11,
+          "M2_score_delta": 0.0,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.cocoa"
+        },
+        {
+          "B1_rank_after": 6,
+          "B1_rank_before": 3,
+          "B1_score_delta": 0.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 12,
+          "M2_rank_before": 12,
+          "M2_score_delta": 0.0,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.dark_chocolate"
+        }
+      ],
+      "selected_concepts": [
+        "attribute.floral"
+      ]
+    },
+    {
+      "all_candidates_unchanged": false,
+      "basis": "Synthetic algorithm counterexample, not a cupping record or human judgment",
+      "case": "composite_is_not_two_positives",
+      "comparisons": [
+        {
+          "B1_rank_after": 20,
+          "B1_rank_before": 18,
+          "B1_score_delta": 0.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 25,
+          "M2_rank_before": 29,
+          "M2_score_delta": 0.0,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.jasmine"
+        },
+        {
+          "B1_rank_after": 1,
+          "B1_rank_before": 2,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 27,
+          "M2_rank_before": 11,
+          "M2_score_delta": -0.5460068458098843,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.cocoa"
+        },
+        {
+          "B1_rank_after": 2,
+          "B1_rank_before": 3,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 28,
+          "M2_rank_before": 12,
+          "M2_score_delta": -0.5460068458098843,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.dark_chocolate"
+        }
+      ],
+      "selected_concepts": [
+        "attribute.nutty_cocoa"
+      ]
+    },
+    {
+      "all_candidates_unchanged": false,
+      "basis": "Synthetic algorithm counterexample, not a cupping record or human judgment",
+      "case": "cocoa_is_not_dark_chocolate",
+      "comparisons": [
+        {
+          "B1_rank_after": 20,
+          "B1_rank_before": 18,
+          "B1_score_delta": 0.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 27,
+          "M2_rank_before": 29,
+          "M2_score_delta": 0.29093414519635186,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.jasmine"
+        },
+        {
+          "B1_rank_after": 1,
+          "B1_rank_before": 2,
+          "B1_score_delta": 6.0,
+          "M2_explicit_confirmation": true,
+          "M2_rank_after": 1,
+          "M2_rank_before": 11,
+          "M2_score_delta": 2.5286260842607287,
+          "M2_specific_feature": 1.0,
+          "candidate_id": "sensory.cocoa"
+        },
+        {
+          "B1_rank_after": 2,
+          "B1_rank_before": 3,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 6,
+          "M2_rank_before": 12,
+          "M2_score_delta": 0.8728024355890551,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.dark_chocolate"
+        }
+      ],
+      "selected_concepts": [
+        "sensory.cocoa"
+      ]
+    },
+    {
+      "all_candidates_unchanged": false,
+      "basis": "Synthetic algorithm counterexample, not a cupping record or human judgment",
+      "case": "specific_multiselect_not_diluted",
+      "comparisons": [
+        {
+          "B1_rank_after": 27,
+          "B1_rank_before": 18,
+          "B1_score_delta": 0.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 28,
+          "M2_rank_before": 29,
+          "M2_score_delta": 0.2788096953768795,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.jasmine"
+        },
+        {
+          "B1_rank_after": 1,
+          "B1_rank_before": 2,
+          "B1_score_delta": 6.0,
+          "M2_explicit_confirmation": true,
+          "M2_rank_after": 1,
+          "M2_rank_before": 11,
+          "M2_score_delta": 3.4014285198497842,
+          "M2_specific_feature": 1.0,
+          "candidate_id": "sensory.cocoa"
+        },
+        {
+          "B1_rank_after": 2,
+          "B1_rank_before": 3,
+          "B1_score_delta": 6.0,
+          "M2_explicit_confirmation": true,
+          "M2_rank_after": 2,
+          "M2_rank_before": 12,
+          "M2_score_delta": 3.4014285198497842,
+          "M2_specific_feature": 1.0,
+          "candidate_id": "sensory.dark_chocolate"
+        }
+      ],
+      "selected_concepts": [
+        "sensory.cocoa",
+        "sensory.dark_chocolate"
+      ]
+    },
+    {
+      "all_candidates_unchanged": true,
+      "basis": "Synthetic algorithm counterexample, not a cupping record or human judgment",
+      "case": "all_broad_is_nondiscriminating",
+      "comparisons": [
+        {
+          "B1_rank_after": 18,
+          "B1_rank_before": 18,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 29,
+          "M2_rank_before": 29,
+          "M2_score_delta": 0.0,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.jasmine"
+        },
+        {
+          "B1_rank_after": 2,
+          "B1_rank_before": 2,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 11,
+          "M2_rank_before": 11,
+          "M2_score_delta": 0.0,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.cocoa"
+        },
+        {
+          "B1_rank_after": 3,
+          "B1_rank_before": 3,
+          "B1_score_delta": 3.0,
+          "M2_explicit_confirmation": false,
+          "M2_rank_after": 12,
+          "M2_rank_before": 12,
+          "M2_score_delta": 0.0,
+          "M2_specific_feature": 0.0,
+          "candidate_id": "sensory.dark_chocolate"
+        }
+      ],
+      "selected_concepts": []
+    }
+  ]
+}

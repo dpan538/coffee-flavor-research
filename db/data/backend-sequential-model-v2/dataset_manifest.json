@@ -65,6 +65,8 @@
     "coffee_group_leakage_policy": "All sample aliases and genotypes stay grouped; outer and inner features are fitted on train groups only.",
     "development_groups": 187,
     "development_records": 211,
+    "fitted_manifest_hash": "2a260da03569216dc2f6dcf4a98820252f3f62b643f9d1f357daffda6fdd593e",
+    "full_coffee_overlap_audit": "Old coffee/sample groups preserved; INERA genotype joins both harvests; Lengupa original sample IDs, one study family; mirrors not additional groups. No cross-study common global lot ID, so unknown commercial supply overlap cannot be ruled out.",
     "groups": 204,
     "historical_regression_groups": 17,
     "historical_regression_records": 17,
@@ -73,6 +75,7 @@
     "missing_source_c0_count": 228,
     "missing_source_c1_count": 228,
     "new_confirmation": "NOT_EVALUATED",
+    "new_processing": "Whole source broad categories retained; INERA 8 interpretable native frequency dimensions, Other excluded; Lengupa source codebook broad and fine concepts; distinct panelist mentions retained, no slash splitting.",
     "private_input_sha256": "fb59297faf1e9346c1fba8d4bc3439eb7f5b261300345f1c07a2a2f8d01efc11",
     "production_paired_context_records": 0,
     "records": 228,
@@ -85,19 +88,83 @@
       "lengupa",
       "zenodo"
     ],
+    "source_provenance": {
+      "inera": {
+        "artifact_sha256": "4ca2bff21183d2615e244f68b330ba23282f56e6d012c7be762f04baa19abb0a",
+        "author": "Bollen et al.; source article and supplemental-file metadata retained in owner storage",
+        "author_usage_notice": "CC BY 4.0 source release",
+        "conditions_satisfied": {
+          "attribution": true,
+          "changes_disclosed": true,
+          "local_model_retention": true,
+          "no_raw_or_weight_public_release": true
+        },
+        "current_experiment_use_basis": "NONCOMMERCIAL_RESEARCH_USE",
+        "machine_license_field": "CC BY 4.0",
+        "source_record_id": "figshare:25735122",
+        "url": "https://doi.org/10.3389/fsufs.2024.1382976.s002",
+        "version": "1"
+      },
+      "lengupa": {
+        "artifact_sha256": "a410a8e84754a5a3cceb6489a30053bddfacbd518cb926f822c197f5772a7191",
+        "author": "Diego Alejandro Benavides Sánchez",
+        "author_usage_notice": "Article copyright © 2026 Benavides Sánchez; Creative Commons Attribution License (CC BY)",
+        "conditions_satisfied": {
+          "attribution": true,
+          "changes_disclosed": true,
+          "local_retention": true,
+          "no_raw_republication": true
+        },
+        "current_experiment_use_basis": "NONCOMMERCIAL_RESEARCH_USE under CC BY 4.0",
+        "machine_license_field": null,
+        "source_record_id": "doi:10.3389/fsufs.2026.1809471",
+        "url": "https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2026.1809471/full",
+        "version": "article published 2026-07-01; retrieved 2026-09-05"
+      },
+      "zenodo": {
+        "author_usage_notice": "Non-commercial research only (Creative Commons Attribution Non Commercial 4.0 International)",
+        "conditions_checked": {
+          "attribution_in_manifest": true,
+          "changes_disclosed": "Exact/alias/morphological governed descriptors deduplicated within coffee; modifiers/compounds excluded; identity grouping; masked record-recovery episodes",
+          "model_weights_not_released": true,
+          "noncommercial_local_research_only": true,
+          "raw_data_not_redistributed": true,
+          "separate_source_permission_propagation": false
+        },
+        "creators": [
+          "Golovinsky, Rodion",
+          "Ivanov, Ilya",
+          "Aglikov, Aleksandr",
+          "Aliev, Timur",
+          "Timofeenko, Ivan",
+          "Novikov, Alexander",
+          "Zayats, Mikhail",
+          "Ashikhmina, Mariia",
+          "Orlova, Olga",
+          "Masalovich, Maria",
+          "Ekaterina, Skorb"
+        ],
+        "current_experiment_use_basis": "NONCOMMERCIAL_RESEARCH_USE under the shared scope of machine license and author notice",
+        "machine_license_field": "CC BY 4.0",
+        "source_record_id": "20840464",
+        "source_sha256": "85df699ea18f5849ef3104100a20570d5df13e7d6cc7ce53e20c3df8a5219150",
+        "url": "https://zenodo.org/records/20840464",
+        "version": "1.1"
+      }
+    },
     "source_share": {
       "inera": {
-        "effective_training_source_contribution": 0.3333333333333333,
+        "effective_training_source_contribution": 0.3387096774193548,
         "independent_groups": 73,
         "raw_records": 95
       },
       "lengupa": {
-        "effective_training_source_contribution": 0.3333333333333333,
+        "effective_training_source_contribution": 0.3225806451612903,
         "independent_groups": 21,
         "raw_records": 21
       },
       "zenodo": {
-        "effective_training_source_contribution": 0.3333333333333333,
+        "effective_training_source_contribution": 0.3387096774193548,
         "independent_groups": 93,
         "raw_records": 95
       }
