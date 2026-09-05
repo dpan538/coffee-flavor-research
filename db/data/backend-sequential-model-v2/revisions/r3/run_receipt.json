@@ -1,10 +1,56 @@
 {
+  "actual_work_started_utc": "2026-09-05T15:28:21+00:00",
   "baseline_sha": "73dcea4cf59ae2d4e11d820b690fda56b8cee503",
   "checkpoint_1": "METRIC_K1_Q2_AND_THREE_OUTER_RELATION_FITS_COMPLETED",
+  "checkpoint_1_commit": "91f7ad9f75c090c876e02b72e48747a41a37be70",
+  "checkpoint_1_pushed": true,
+  "checkpoint_2": "NESTED_TRIGGERS_EXTERNAL_CONSTRUCT_AND_FIXED_NEW_SOURCE_INCREMENT_COMPLETED",
+  "completed_utc": "2026-09-05T17:11:23.513076+00:00",
   "contract_sha256": "a2266a2fd4f4246bc18a99ecc97214121e077ffb8075419e320d86c708ceed16",
   "default": "B2_UNCHANGED",
   "experiment_id": "M2_R3_CONSTRAINT_RELATION_TRIGGER",
   "foundation_check": "OFF",
+  "full_development_refit_contract": {
+    "new_confirmatory_claim": false,
+    "protocol": {
+      "base_expert": "REUSE_EXACT_AUDITED_ALL_DEVELOPMENT_M2_R1_FINAL_FIXED",
+      "basis": "OWNER_AUTHORIZED_FINAL_RESEARCH_ARTIFACT_AFTER_NESTED_EVALUATION",
+      "default_B2_changed": false,
+      "family_selection": "FROZEN_THREE_OUTER_RELATION_ASK_Q4_GROUP_MACRO_RAW_GAP_COMPLEXITY_TIE_E1_E2_E3",
+      "parameters": "UNCHANGED_RIDGE10_SUPPORT_GATES_SHRINKAGE50_ASK_THRESHOLD0.01",
+      "performance_claim": "ONLY_EXISTING_NESTED_OUTER_POLICY_HELD_EVALUATION;FULL_TRAIN_OOF_NOT_GENERALIZATION",
+      "preservation": "ALL_OUTER_AND_INNER_MODELS_RETAINED_NO_REPLACEMENT",
+      "relation_training": "THREE_ORIGINAL_OUTER_R1_EXPERT_HELD_PREDICTIONS_UNION_ALL_DEV_BASE_OOF",
+      "research_model": "R3_CONSTRAINTS_ALL_DEVELOPMENT.model.json",
+      "scope": "ALL_211_DEVELOPMENT_RECORDS_187_COFFEE_GROUPS_NO_HISTORY",
+      "trigger_training": "THREE_OUTER_RELATION_HELD_Q2_FEATURES_AND_A_DERIVED_ASK_SKIP_Q4_OUTCOMES_SELECTED_FAMILY",
+      "version": "r3-full-development-research-refit.v1"
+    },
+    "registered_utc": "2026-09-05T16:27:38.587747+00:00",
+    "sha256": "816f2356feccf70ec0c2502084228edb310e4728bf1e8b4676286c9d0c56abc3",
+    "timing": "AFTER_OUTER_DEVELOPMENT_SELECTION_BEFORE_ALL_DEV_REFIT"
+  },
+  "implementation_attempts_retained": [
+    {
+      "outcome": "P4 support failure; original successful attempt retained and excluded; dated amendment registered before uniform P1_INTERNAL fits",
+      "stage": "deepest_base_expert"
+    },
+    {
+      "outcome": "Partial OOF candidate-vocabulary KeyError; corrected explicit candidate-availability mask, no invented logit or changed evaluation universe; exactly one successful logical final refit",
+      "stage": "full_development_refit_before_optimizer"
+    },
+    {
+      "outcome": "Completion manifest not yet sealed, then publication guard mistook the holdout-axis name participant_id for individual data; awaited seal and corrected key-aware guard, with no fit or model modification",
+      "stage": "publication_replay"
+    }
+  ],
+  "independent_review": {
+    "actionable_errors": 0,
+    "endpoint_metric_rows_independently_recalculated": 2954,
+    "model_fits_in_review": 0,
+    "public_private_boundary": "No individual predictions/identities/coefficients/absolute owner path in selected public payloads",
+    "scope": "Metric implementation, public summaries and provenance addendum"
+  },
   "internal_feature_amendment": {
     "original_contract_unchanged": true,
     "protocol": {
@@ -28,5 +74,111 @@
   },
   "old_results_reinterpreted": false,
   "registered_utc": "2026-09-05T15:40:49.619606+00:00",
-  "status": "CHECKPOINT_1_COMPLETED_TRIGGER_AND_NEW_INCREMENT_IN_PROGRESS"
+  "reloadable_bundle": {
+    "exactly_one_logical_final_refit": true,
+    "full_model_train_OOF_not_generalization": true,
+    "model_owner_relative_path": "revisions/r3/models/R3_CONSTRAINTS_ALL_DEVELOPMENT.model.json",
+    "model_sha256": "99e4234be1b84a82336e46b0d1460686d855bcf8b9e0c8e7ea830fc91428b087",
+    "reload_identical": true,
+    "selected_variant": "E1",
+    "training_groups": 187,
+    "training_records": 211
+  },
+  "remote": {
+    "baseline_CI": "PASS",
+    "baseline_historical_replay": "PASS",
+    "checkpoint1_CI": "PASS",
+    "checkpoint1_CI_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33977079276",
+    "checkpoint1_historical_replay": "PASS",
+    "checkpoint1_history_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/33977079203",
+    "checkpoint2": "NOT_YET_PUSHED_AT_RECEIPT_FINALIZATION",
+    "main_merged": false
+  },
+  "reproduction": {
+    "behavior": "Verify original contracts and private artifact hashes, reload all completed component results, reproduce the same public aggregates; no repeated training or historical reclassification",
+    "command": "python db/scripts/run_m2_r3.py --phase reproduce --owner-dir OWNER_V2_DIRECTORY",
+    "fresh_fit_commands": [
+      "python db/scripts/train_constraints_r3.py --help",
+      "python db/scripts/multi_view_r3.py --help",
+      "python db/scripts/castillo_increment_r3.py --help"
+    ],
+    "requires": "Persistent private source/model artifacts and original research Python dependencies; no raw rows are downloaded from the public repository"
+  },
+  "reproduction_verified": {
+    "code_fingerprints_identical": true,
+    "completion_manifest_sha256": "408e77a98c4f50bd7f702e44b914e1e74a32df2bcf3be0ff2d3cdd9ce979d9b9",
+    "endpoint_rankings_recalculated": 2954,
+    "fit_calls": 0,
+    "metric_replay_matches_saved": true,
+    "metrics_recalculated": [
+      "raw_gap",
+      "ndcg",
+      "recall",
+      "M",
+      "M_star",
+      "opportunity_gap"
+    ],
+    "private_artifacts_verified": 59,
+    "trajectory_recomputations": 0
+  },
+  "runtime": {
+    "packages": {
+      "lxml": "6.1.3",
+      "numpy": "2.5.2",
+      "openpyxl": "3.1.5",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.1",
+      "threadpoolctl": "3.6.0"
+    },
+    "platform": "Darwin arm64",
+    "python": "3.12.14"
+  },
+  "scope_preservation": {
+    "default": "B2_UNCHANGED",
+    "excluded_deletion_paths_match_original_snapshot": true,
+    "foundation_check": "OFF",
+    "frontend_changes": false,
+    "historical_artifacts_overwritten": false,
+    "new_branch_created": false,
+    "prior_artifacts_verified": 516,
+    "unrelated_tracked_deletions_excluded": 135
+  },
+  "status": "COMPLETED_RESEARCH_CANDIDATE_DEFAULT_UNCHANGED",
+  "summary_artifacts": {
+    "castillo_increment_public_summary.private.json": "e9e729fe63679dfdd4a9be0e6cf30b34968fb4cb2262a03483bd48977db8386d",
+    "constraints_public_summary.private.json": "6045e8ebc75052f93ed1e711fb6be751a0d94897f05c226bc1c8d5c48cfb727c",
+    "external_construct_public_summary.private.json": "f43741fca8cd0b7df229a89dd785ebc124959ceca3bf4b107f0965e9ffca7759",
+    "first_relation_public_summary.private.json": "72218f2e41ca0dcc981709979b00e024cab303a753c483455bd34e355c3dcf89",
+    "multi_view_public_summary.private.json": "ff5a6f54aec5086b58bb67e8382928fcca25ea1777420d3b329e370a0a119324"
+  },
+  "validation": {
+    "backend_unittest": {
+      "discovered": 181,
+      "errors": 0,
+      "passed": 168,
+      "skipped_existing_optional": 13
+    },
+    "final_backend_tested_utc": "2026-09-05T17:11:23.513678+00:00",
+    "final_public_format_check": "PASS",
+    "final_scope_verified_utc": "2026-09-05T17:12:25.173273+00:00",
+    "isolated_candidate": "HEAD archive excluding135unrelated worktree deletions; same frontend tree",
+    "latest_backend_overlay": "PASS_CURRENT_ALL_R3_CODE_181_TESTS",
+    "nonblocking_existing_warning": "Node22.21.0 below ReactRouter requested22.22.0; commands exited0",
+    "npm_build": "PASS",
+    "npm_check": "PASS",
+    "npm_format_check": "PASS",
+    "npm_smoke": {
+      "passed": 15,
+      "viewports": [
+        390,
+        768,
+        1440
+      ]
+    },
+    "npm_test": {
+      "passed": 34
+    },
+    "tested_utc": "2026-09-05T16:25:35.451586+00:00",
+    "web_validation_scope": "Previously passed final unchanged web tree: no frontend files changed by either R3 checkpoint"
+  }
 }

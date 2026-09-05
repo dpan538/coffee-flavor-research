@@ -210,6 +210,23 @@ def internal_feature_amendment():
     }
 
 
+def full_development_protocol():
+    return {
+        "version": "r3-full-development-research-refit.v1",
+        "basis": "OWNER_AUTHORIZED_FINAL_RESEARCH_ARTIFACT_AFTER_NESTED_EVALUATION",
+        "scope": "ALL_211_DEVELOPMENT_RECORDS_187_COFFEE_GROUPS_NO_HISTORY",
+        "base_expert": "REUSE_EXACT_AUDITED_ALL_DEVELOPMENT_M2_R1_FINAL_FIXED",
+        "relation_training": "THREE_ORIGINAL_OUTER_R1_EXPERT_HELD_PREDICTIONS_UNION_ALL_DEV_BASE_OOF",
+        "family_selection": "FROZEN_THREE_OUTER_RELATION_ASK_Q4_GROUP_MACRO_RAW_GAP_COMPLEXITY_TIE_E1_E2_E3",
+        "trigger_training": "THREE_OUTER_RELATION_HELD_Q2_FEATURES_AND_A_DERIVED_ASK_SKIP_Q4_OUTCOMES_SELECTED_FAMILY",
+        "parameters": "UNCHANGED_RIDGE10_SUPPORT_GATES_SHRINKAGE50_ASK_THRESHOLD0.01",
+        "research_model": "R3_CONSTRAINTS_ALL_DEVELOPMENT.model.json",
+        "performance_claim": "ONLY_EXISTING_NESTED_OUTER_POLICY_HELD_EVALUATION;FULL_TRAIN_OOF_NOT_GENERALIZATION",
+        "default_B2_changed": False,
+        "preservation": "ALL_OUTER_AND_INNER_MODELS_RETAINED_NO_REPLACEMENT",
+    }
+
+
 def train_qualified_p1_bank(stats, attributes):
     """Exact legacy axis qualification with the explicitly amended P1 count."""
     vocab, counts = stats["vocabulary"], stats["counts"]
@@ -447,7 +464,11 @@ def choose_terms(rows, candidates, order):
         defaultdict(lambda: defaultdict(set)),
     )
     for row in rows:
-        positive = set(row["episode"]["hidden"]) & set(candidates)
+        positive = (
+            set(row["episode"]["hidden"])
+            & set(candidates)
+            & {item["candidate_id"] for item in row["base_rows"]}
+        )
         for term in row["terms"][str(order)]:
             identity = term["term_id"]
             catalog[identity] = copy.deepcopy(term)
@@ -520,9 +541,15 @@ def fit_relations(
         for i, term in enumerate(terms)
         for c in sorted(term["coefficients"])
     ]
-    known = [row for row in rows if set(row["episode"]["hidden"]) & set(candidates)]
+    known = [
+        row
+        for row in rows
+        if set(row["episode"]["hidden"])
+        & set(candidates)
+        & {item["candidate_id"] for item in row["base_rows"]}
+    ]
     if known and parameters:
-        logits, q, active, mask = [], [], [], []
+        logits, q, active, mask, available = [], [], [], [], []
         for row in known:
             active_pairs = [
                 term
@@ -531,14 +558,23 @@ def fit_relations(
             ]
             base_rows = runtime.rank_from_base_rows(row["base_rows"], active_pairs)
             mapped = {item["candidate_id"]: item for item in base_rows}
-            logits.append([mapped[c]["score"] for c in candidates])
+            present_candidates = [c in mapped for c in candidates]
+            available.append(present_candidates)
+            logits.append(
+                [mapped[c]["score"] if c in mapped else 0.0 for c in candidates]
+            )
             relevance = row["episode"]["relevance"]
-            target = np.array([relevance.get(c, 0.0) for c in candidates], float)
+            target = np.array(
+                [relevance.get(c, 0.0) if c in mapped else 0.0 for c in candidates],
+                float,
+            )
             q.append(target / target.sum())
             present = {term["term_id"] for term in row["terms"][str(order)]}
             active.append([float(identity in present) for identity in terms_index])
-            mask.append([not mapped[c]["explicit"] for c in candidates])
-        logits, q, active, mask = map(np.asarray, [logits, q, active, mask])
+            mask.append([c in mapped and not mapped[c]["explicit"] for c in candidates])
+        logits, q, active, mask, available = map(
+            np.asarray, [logits, q, active, mask, available]
+        )
         weights = group_weights(known)
 
         def objective(theta):
@@ -546,11 +582,15 @@ def fit_relations(
             for value, (i, j) in zip(theta, parameters, strict=True):
                 matrix[i, j] = value
             z = logits + (active @ matrix) * mask
-            norm = logsumexp(z, axis=1)
+            # An OOF expert may lack a full-development vocabulary member.
+            # Mask it out of the normalizer and loss; zero is only array padding.
+            norm = logsumexp(z, b=available, axis=1)
             loss = np.sum(weights * (norm - np.sum(q * z, axis=1))) + 5 * (
                 theta @ theta
             )
-            residual = (np.exp(z - norm[:, None]) - q) * weights[:, None] * mask
+            residual = (
+                (np.exp(z - norm[:, None]) * available - q) * weights[:, None] * mask
+            )
             grad_matrix = active.T @ residual
             grad = np.array([grad_matrix[i, j] for i, j in parameters]) + 10 * theta
             return float(loss), grad
@@ -596,6 +636,7 @@ def fit_relations(
             "all_training_rows": len(rows),
             "train_group_hash": r1.digest(sorted(allowed)),
             "normalization_is_not_sensory_negative_supervision": True,
+            "row_candidate_availability_mask": "BASE_EXPERT_SCORED_IDS_ONLY_NO_FABRICATED_MISSING_LOGITS_OR_TARGET_ABSENCE",
         },
     }
 
@@ -650,7 +691,11 @@ def result_row(record, episode, state, bundle, slot, model, fold=None, action=No
         "fold": fold,
         "path": "R3_P1",
         "slot": slot,
-        "stage": "FINAL" if slot == "Q4" else "CORRECTION",
+        "stage": (
+            "FINAL_RESULT"
+            if slot == "FINAL_COMPARISON"
+            else "FINAL" if slot == "Q4" else "CORRECTION"
+        ),
         "model": model,
         "variant": state["variant"],
         "trigger_policy": state["trigger_policy"],
@@ -660,6 +705,8 @@ def result_row(record, episode, state, bundle, slot, model, fold=None, action=No
             len(visible & actual_ids) / len(visible) if visible else None
         ),
         "ordinary_questions": len(base["answers_by_question"]),
+        "context_questions": 2,
+        "context_offered_options": 15,
         "ordinary_options": sum(
             len(a["shown_option_ids"]) for a in base["answers_by_question"].values()
         ),
@@ -827,7 +874,13 @@ def evaluate_fixed(records, bundle, fold):
 def _summary(rows):
     return {
         name: {
-            "gap": macro([r for r in rows if r["model"] == name and r["slot"] == "Q4"]),
+            "gap": macro(
+                [
+                    r
+                    for r in rows
+                    if r["model"] == name and r["slot"] in {"Q4", "FINAL_COMPARISON"}
+                ]
+            ),
             "records": len({r["record_id"] for r in rows if r["model"] == name}),
             "groups": len({r["group_id"] for r in rows if r["model"] == name}),
             "labelled_records": len(
@@ -870,6 +923,16 @@ def run_nested(
 ):
     _contract_check(contract_path, expected_contract_sha256)
     owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    if (
+        not relations_only
+        and (dst / "constraints_completion_manifest.private.json").exists()
+    ):
+        return verify_completed(
+            owner_dir,
+            contract_path,
+            expected_contract_sha256,
+            expected_amendment_sha256,
+        )["public_summary"]
     amendment_path = dst / "internal_feature_amendment.frozen.json"
     if not relations_only:
         if (
@@ -1182,6 +1245,1257 @@ def run_nested(
     return summary
 
 
+def paired_summary(rows, treatment, control, field="gap"):
+    """Fixed predictions, paired coffee bootstrap; no fitting or case selection."""
+    keyed = {
+        name: {
+            (row["group_id"], row["record_id"]): row
+            for row in rows
+            if row["model"] == name
+        }
+        for name in [treatment, control]
+    }
+    if set(keyed[treatment]) != set(keyed[control]):
+        raise ValueError("PAIRED_EVALUATION_COVERAGE_MISMATCH")
+    pairs = [
+        (keyed[treatment][key], keyed[control][key]) for key in sorted(keyed[treatment])
+    ]
+    labelled = [
+        (a, b)
+        for a, b in pairs
+        if a.get(field) is not None and b.get(field) is not None
+    ]
+    groups = defaultdict(list)
+    for a, b in labelled:
+        groups[a["group_id"]].append(a[field] - b[field])
+    values = np.array([np.mean(groups[g]) for g in sorted(groups)])
+    rng = np.random.default_rng(20260906)
+    boot = (
+        np.mean(rng.choice(values, (2000, len(values)), replace=True), axis=1)
+        if len(values)
+        else np.array([])
+    )
+    options = defaultdict(list)
+    for a, b in labelled:
+        options[a["group_id"]].append(a["ordinary_options"] - b["ordinary_options"])
+    option_delta = (
+        float(np.mean([np.mean(v) for v in options.values()])) if options else None
+    )
+    return {
+        "treatment": treatment,
+        "control": control,
+        "field": field,
+        "all_case_records": len(pairs),
+        "all_case_groups": len({a["group_id"] for a, _ in pairs}),
+        "identifiable_records": len(labelled),
+        "identifiable_groups": len(groups),
+        "difference": float(np.mean(values)) if len(values) else None,
+        "paired_coffee_bootstrap_95_interval": (
+            np.quantile(boot, [0.025, 0.975]).tolist() if len(boot) else None
+        ),
+        "treatment_better_records": sum(
+            a[field] < b[field] - 1e-12 for a, b in labelled
+        ),
+        "treatment_worse_records": sum(
+            a[field] > b[field] + 1e-12 for a, b in labelled
+        ),
+        "tied_records": sum(abs(a[field] - b[field]) <= 1e-12 for a, b in labelled),
+        "ordinary_option_delta_same_identifiable_cohort": option_delta,
+        "operational_NI_and_lower_options": bool(
+            len(boot) and np.quantile(boot, 0.975) <= 0.02 and option_delta < 0
+        ),
+        "interpretation": "FIXED_PREDICTION_PROXY_COFFEE_UNCERTAINTY_NOT_USER_ACCEPTABILITY_OR_REAL_TIME",
+    }
+
+
+def aggregate_terminal(rows):
+    output = _summary(rows)
+    for name in output:
+        selected = [
+            r
+            for r in rows
+            if r["model"] == name and r["slot"] in {"Q4", "FINAL_COMPARISON"}
+        ]
+        for key in [
+            "ndcg",
+            "recall",
+            "ordinary_questions",
+            "ordinary_options",
+            "selected_retention_at5",
+            "selected_retention_at8",
+            "final_comparison_candidates",
+        ]:
+            output[name][key] = macro(selected, key)
+        output[name]["ask_cases"] = sum(
+            r.get("q2_decision", {}).get("action") == "ASK" for r in selected
+        )
+        output[name]["skip_cases"] = sum(
+            r.get("q2_decision", {}).get("action") == "SKIP" for r in selected
+        )
+        output[name]["unidentifiable_records"] = sum(r["gap"] is None for r in selected)
+        output[name]["source_results"] = {
+            source: {
+                "gap": macro([r for r in selected if r["source_family"] == source]),
+                "all_records": sum(r["source_family"] == source for r in selected),
+            }
+            for source in sorted({r["source_family"] for r in selected})
+        }
+    return output
+
+
+def relation_registry(models, relation_rows):
+    registry = [
+        {
+            "id": "R3_K1_CONTRACT",
+            "type": "HARD_CONTRACT",
+            "status": "SUPPORTED_WITHIN_SCOPE",
+            "condition": "C0_8_C1_7_ORDINARY_MAX4_OPTIONS_Q4_CLOSURE_ONE_FINAL_3_TO_8",
+            "action": "REJECT_INVALID_CONTRACT_ONLY",
+            "sensory_exclusion_accuracy": "NOT_ESTIMABLE",
+        },
+        {
+            "id": "R3_K1_ENTAILMENT",
+            "type": "SEMANTIC_ENTAILMENT",
+            "status": "SUPPORTED_WITHIN_SCOPE",
+            "condition": "CANONICAL_POSITIVE_PARENT_OR_FINE_CONCEPT",
+            "action": "R1_EVIDENCE_ONCE_PARENT_NEVER_CHILD_ABSENCE_COMPOUND_WHOLE",
+            "scope": "REGISTERED_SEMANTICS_NOT_NEW_SENSORY_MEASUREMENT",
+        },
+    ]
+    for fold, model in enumerate(models):
+        for order in ["pairs", "triples"]:
+            for i, term in enumerate(model["relations"][order]):
+                candidate_ids = set(term["coefficients"])
+                active = [
+                    row
+                    for row in relation_rows
+                    if row["fold"] == fold
+                    and row["model"] == "E2"
+                    and row["slot"] == "Q4"
+                    and any(
+                        term["term_id"] in candidate.get("relation_evidence_ids", [])
+                        and candidate["relation_delta"] != 0
+                        for candidate in row["ranking"]
+                    )
+                ]
+                registry.append(
+                    {
+                        "id": f"R3_{order.upper()}_{fold}_{i}",
+                        "outer_fold": fold,
+                        "type": "EMPIRICAL_COMPATIBILITY",
+                        "status": "SUPPORTED_WITHIN_SCOPE",
+                        "scope": "TRAIN_GROUP_CONDITIONAL_MENTION_RETRIEVAL_NOT_CAUSAL_OR_ABSENCE",
+                        "condition": term["pattern"],
+                        "slots": term["slots"],
+                        "candidate_effect_direction": {
+                            candidate: (
+                                "INCREASE_SOFT_PRIORITY"
+                                if term["coefficients"][candidate] > 0
+                                else (
+                                    "DECREASE_SOFT_PRIORITY"
+                                    if term["coefficients"][candidate] < 0
+                                    else "NO_EFFECT"
+                                )
+                            )
+                            for candidate in sorted(candidate_ids)
+                        },
+                        "training_group_support": term["training_group_support"],
+                        "candidate_positive_group_support": term[
+                            "candidate_positive_group_support"
+                        ],
+                        "held_Q4_active_records": len(active),
+                        "hard_delete": False,
+                        "training_evidence_group_hash": r1.digest(
+                            term["training_groups"]
+                        ),
+                        "weights_release": False,
+                    }
+                )
+        for name in ["trigger_a", "trigger_b"]:
+            trigger = model[name]
+            registry.append(
+                {
+                    "id": f"R3_{name.upper()}_{fold}",
+                    "type": (
+                        "LEARNED_QUESTION_TRIGGER"
+                        if name == "trigger_a"
+                        else "SEPARATE_RELATION_ACTIVATION_TRIGGER"
+                    ),
+                    "outer_fold": fold,
+                    "status": (
+                        "SUPPORTED_WITHIN_SCOPE" if trigger["enabled"] else "PROPOSED"
+                    ),
+                    "fit_status": trigger["fit_status"],
+                    "labelled_groups": trigger["labelled_groups"],
+                    "tied_training_rows_retained": trigger["tied_rows"],
+                    "features": runtime.FEATURES,
+                    "condition": "Q2_AFTER_CURRENT_ANSWERS_ONLY",
+                    "action": (
+                        "ASK_Q3_IF_GAIN_GT_0.01_ELSE_SKIP_TO_Q4"
+                        if name == "trigger_a"
+                        else "SEPARATE_ALWAYS_ASK_PATH_ACTIVATE_RELATION_IF_SUPPORTED_AND_GAIN_GT_0"
+                    ),
+                    "target": (
+                        "SKIP_GAP_MINUS_ASK_GAP"
+                        if name == "trigger_a"
+                        else "E1_GAP_MINUS_SELECTED_RELATION_GAP"
+                    ),
+                    "default_changed": False,
+                    "weights_release": False,
+                }
+            )
+    return registry
+
+
+def finish_evaluation(
+    owner_dir, contract_path, expected_contract_sha256, expected_amendment_sha256
+):
+    """No-fit final feedback, counterfactual audit and compact private summaries."""
+    _contract_check(contract_path, expected_contract_sha256)
+    owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    ap = dst / "internal_feature_amendment.frozen.json"
+    if (
+        sha(ap) != expected_amendment_sha256
+        or read(ap)["protocol"] != internal_feature_amendment()
+    ):
+        raise ValueError("FROZEN_INTERNAL_FEATURE_AMENDMENT_REQUIRED")
+    records = [
+        row
+        for row in read(owner / "recovery_records.json")
+        if row["split"] == "DEVELOPMENT"
+    ]
+    folds = read(owner / "revisions/r1/D0_folds.private.json")
+    models, final_rows, counterfactual, checks = [], [], [], []
+    before_hashes = {
+        str(path.relative_to(dst)): sha(path)
+        for path in (dst / "models").glob("*.json")
+    }
+    for outer in range(3):
+        model = read(dst / f"models/R3_CONSTRAINTS_outer{outer}.model.json")
+        runtime.check_bundle(model)
+        if model["objective_contract_sha256"] != expected_contract_sha256:
+            raise ValueError("RELOADED_CONSTRAINT_MODEL_CONTRACT_MISMATCH")
+        models.append(model)
+        train = [r for r in records if folds[r["group_id"]] != outer]
+        held = [r for r in records if folds[r["group_id"]] == outer]
+        for inner in range(2):
+            innersplit = training.split_groups(train, 2)
+            fitting = [r for r in train if innersplit[r["group_id"]] != inner]
+            for deeper in range(2):
+                deepsplit = training.split_groups(fitting, 2)
+                deeptrain = [r for r in fitting if deepsplit[r["group_id"]] != deeper]
+                path = (
+                    dst
+                    / f"models/R3_R1_EXPERT_outer{outer}_inner{inner}_deeper{deeper}_P1_INTERNAL.model.json"
+                )
+                deepmodel = read(path)
+                if (
+                    deepmodel.get("r3_internal_feature_amendment_sha256")
+                    != expected_amendment_sha256
+                ):
+                    raise ValueError("DEEPER_RELOAD_AMENDMENT_MISMATCH")
+                arrays = p1_internal_training_arrays(
+                    deeptrain, deepmodel, expected_contract_sha256
+                )
+                scale = np.sqrt(np.mean(arrays[0] * arrays[0], axis=(0, 1)))
+                scale[scale < 1e-8] = 1.0
+                scale[r1.FEATURES.index("exposed_rejection")] = 1.0
+                if arrays[3] != deepmodel["fit_receipt"][
+                    "inner_feature_audit"
+                ] or not np.allclose(
+                    scale, deepmodel["scaler_parameters"]["scale"], rtol=0, atol=1e-12
+                ):
+                    raise ValueError(
+                        "RELOADED_INTERNAL_BANK_FEATURE_OR_SCALER_MISMATCH"
+                    )
+                checks.append(
+                    {
+                        "model_owner_relative_path": str(path.relative_to(owner)),
+                        "sha256": sha(path),
+                        "internal_bank_hash_and_group_audit_recomputed_identical": True,
+                        "scaler_recomputed_identical_at_1e12": True,
+                    }
+                )
+        for record in held:
+            ep, ask_states, ask_answers = trajectory(
+                record, model, model["selected_variant"], "ALWAYS_ASK"
+            )
+            q2 = next(
+                state
+                for state in ask_states
+                if set(state["base_state"]["answers_by_question"]) == {"Q0", "Q1", "Q2"}
+            )
+            skipped, _ = runtime.complete_branch(q2, ep["visible"], model, "SKIP")
+            for action, state in [("ASK", ask_states[-1]), ("SKIP", skipped)]:
+                counterfactual.append(
+                    result_row(record, ep, state, model, "Q4", action, outer, action)
+                )
+            for policy in ["ALWAYS_ASK", "LEARNED"]:
+                if policy == "ALWAYS_ASK":
+                    states, answers = ask_states, ask_answers
+                else:
+                    _, states, answers = trajectory(
+                        record, model, model["selected_variant"], policy
+                    )
+                pre = runtime.finalize_result(states[-1], model)
+                exposure = pre["exposure"]
+                if not exposure or not exposure["eligible_for_final_comparison"]:
+                    raise ValueError(
+                        "EVERY_REGISTERED_FINAL_CASE_REQUIRES_ACTUAL_EXPOSURE"
+                    )
+                selected = sorted(set(ep["visible"]) & set(exposure["candidate_ids"]))
+                if set(selected) & set(ep["hidden"]):
+                    raise ValueError("FROZEN_A_T_SEPARATION_FAILED")
+                feedback = {
+                    "exposed_candidates": exposure["candidate_ids"],
+                    "selected_candidates": selected,
+                    "feedback_source": "SIMULATED",
+                    "generation_version": model["bundle_id"],
+                }
+                for mode in ["F0", "F1", "F2"]:
+                    final = runtime.apply_final_comparison(
+                        pre["state"], feedback, model, mode
+                    )
+                    finalized = runtime.finalize_result(final, model)
+                    if (
+                        finalized["stage"] != "FINAL_RESULT"
+                        or finalized["next"]["action"] == "ASK"
+                    ):
+                        raise ValueError("FINAL_RESULT_NOT_TERMINAL")
+                    row = result_row(
+                        record,
+                        ep,
+                        final,
+                        model,
+                        "FINAL_COMPARISON",
+                        policy + "/" + mode,
+                        outer,
+                    )
+                    ids5 = {r["candidate_id"] for r in finalized["main"]}
+                    ids8 = ids5 | {r["candidate_id"] for r in finalized["secondary"]}
+                    row.update(
+                        final_mode=mode,
+                        feedback_source="SIMULATED",
+                        selected_count=len(selected),
+                        exposed_candidates=exposure["candidate_ids"],
+                        selected_candidates=selected,
+                        selected_retention_at5=(
+                            len(set(selected) & ids5) / len(selected)
+                            if selected
+                            else None
+                        ),
+                        selected_retention_at8=(
+                            len(set(selected) & ids8) / len(selected)
+                            if selected
+                            else None
+                        ),
+                        final_comparison_candidates=len(exposure["candidate_ids"]),
+                        final_answer_basis="INDEPENDENT_FROZEN_A_INTERSECT_ACTUALLY_EXPOSED_POOL_NEVER_T",
+                    )
+                    final_rows.append(row)
+                    # All live requests, including final once-only validation, are replayed.
+                    payload = {
+                        "contract_version": runtime.VERSION,
+                        "context": ep["context"],
+                        "variant": model["selected_variant"],
+                        "trigger_policy": policy,
+                        "answers": answers,
+                        "final_comparison": feedback,
+                        "final_mode": mode,
+                    }
+                    replayed = runtime.run(payload, model)
+                    if [
+                        (r["candidate_id"], r["score"])
+                        for r in finalized["state"]["candidate_scores"]
+                    ] != [
+                        (r["candidate_id"], r["score"])
+                        for r in replayed["state"]["candidate_scores"]
+                    ]:
+                        raise ValueError("FULL_LIVE_REPLAY_FINAL_RANK_PARITY_FAILED")
+    after_hashes = {
+        str(path.relative_to(dst)): sha(path)
+        for path in (dst / "models").glob("*.json")
+    }
+    if before_hashes != after_hashes:
+        raise ValueError("EVALUATION_MUTATED_MODEL_ARTIFACT")
+    relations = read(dst / "relation_results.private.json")
+    policies = read(dst / "policy_results.private.json")
+    registry = relation_registry(models, relations)
+    counter_pairs = {
+        action: {
+            row["record_id"]: row for row in counterfactual if row["model"] == action
+        }
+        for action in ["ASK", "SKIP"]
+    }
+    examples = []
+    for record_id, asked in counter_pairs["ASK"].items():
+        skipped = counter_pairs["SKIP"][record_id]
+        if asked["gap"] is None:
+            continue
+        gain = skipped["gap"] - asked["gap"]
+        before, after = [r["candidate_id"] for r in skipped["ranking"][:5]], [
+            r["candidate_id"] for r in asked["ranking"][:5]
+        ]
+        if gain or before != after:
+            examples.append(
+                {
+                    "record_id": record_id,
+                    "group_id": asked["group_id"],
+                    "source_family": asked["source_family"],
+                    "fold": asked["fold"],
+                    "Q3_gain": gain,
+                    "ask_gap": asked["gap"],
+                    "skip_gap": skipped["gap"],
+                    "ask_ndcg": asked["ndcg"],
+                    "skip_ndcg": skipped["ndcg"],
+                    "extra_actual_options": asked["ordinary_options"]
+                    - skipped["ordinary_options"],
+                    "question_condition_features": asked["q2_decision"].get(
+                        "feature_values"
+                    ),
+                    "added_main_candidates": sorted(set(after) - set(before)),
+                    "removed_main_candidates": sorted(set(before) - set(after)),
+                    "fixed_visible_count": len(asked["episode"]["visible"]),
+                    "hidden_fine_target_count": sum(
+                        c.startswith("sensory.") for c in asked["episode"]["hidden"]
+                    ),
+                    "episode": asked["episode"],
+                    "kind": (
+                        "Q3_GAIN"
+                        if gain > 0
+                        else (
+                            "Q3_HARM"
+                            if gain < 0
+                            else "SET_MATCHING_TIE_WITH_RANK_CHANGE"
+                        )
+                    ),
+                }
+            )
+    examples.sort(key=lambda row: (-abs(row["Q3_gain"]), row["record_id"]))
+    selected_examples = []
+    for kind in ["Q3_GAIN", "Q3_HARM", "SET_MATCHING_TIE_WITH_RANK_CHANGE"]:
+        selected_examples.extend([row for row in examples if row["kind"] == kind][:4])
+    public_examples = [
+        {
+            "case": f"R3_COUNTERFACTUAL_{i+1:02d}",
+            **{
+                k: v
+                for k, v in row.items()
+                if k not in {"record_id", "group_id", "episode"}
+            },
+        }
+        for i, row in enumerate(selected_examples)
+    ]
+    summary = {
+        "version": runtime.VERSION,
+        "contract_sha256": expected_contract_sha256,
+        "internal_feature_amendment_sha256": expected_amendment_sha256,
+        "fixed_relation_Q4": aggregate_terminal(
+            [r for r in relations if r["slot"] == "Q4"]
+        ),
+        "policy_Q4": aggregate_terminal(policies),
+        "final_feedback": aggregate_terminal(final_rows),
+        "relation_primary": paired_summary(
+            [r for r in relations if r["slot"] == "Q4"], "E2", "E1"
+        ),
+        "policy_comparisons": [
+            paired_summary(policies, policy, "ALWAYS_ASK")
+            for policy in [
+                "LEARNED",
+                "SIMPLE_RULE",
+                "TWO_STEP_EMPIRICAL",
+                "TRIGGER_B_SEPARATE",
+            ]
+        ],
+        "final_comparisons": [
+            paired_summary(final_rows, policy + "/" + mode, policy + "/F0")
+            for policy in ["ALWAYS_ASK", "LEARNED"]
+            for mode in ["F1", "F2"]
+        ],
+        "counterfactual_Q3": paired_summary(counterfactual, "ASK", "SKIP"),
+        "counterfactual_error_class_counts": dict(
+            Counter(row["kind"] for row in examples)
+        ),
+        "counterfactual_cases_scope": "DETAILED_ACTUAL_PREDICTIONS_AND_CASE_IDENTITIES_PRIVATE_ONLY",
+        "final_feedback_answer_scope": "FROZEN_A_INTERSECT_ACTUAL_POOL;T_NEVER_GENERATES_FEEDBACK;F0_COUNTS_SAME_EXPOSURE_WITHOUT_RANK_UPDATE",
+        "selected_retention_separate_from_hidden_not_directly_selected_recovery": True,
+        "full_case_denominator_preserved": True,
+        "human_time": None,
+        "context_information_cost": {
+            "questions": 2,
+            "offered_options": 15,
+            "separate_from_ordinary_sensory_cost": True,
+        },
+        "no_fitting_in_this_evaluation": True,
+        "all_private_model_hashes_unchanged": True,
+        "deepest_internal_bank_and_scaler_recomputed_identical": len(checks),
+        "full_final_live_replays_identical": len(final_rows),
+        "default_B2_changed": False,
+        "foundation_check_enabled": False,
+    }
+    save(dst / "final_feedback_results.private.json", final_rows)
+    save(dst / "counterfactual_Q3_results.private.json", counterfactual)
+    save(dst / "counterfactual_error_examples.private.json", selected_examples)
+    save(dst / "constraint_relation_trigger_registry.private.json", registry)
+    save(dst / "constraints_reload_audit.private.json", checks)
+    save(dst / "constraints_public_summary.private.json", summary)
+    save("/private/tmp/m2-r3-constraints-public-summary.json", summary)
+    print(
+        json.dumps(
+            {
+                "phase": "NO_FIT_FINAL_EVALUATION",
+                "policies": summary["policy_comparisons"],
+                "final_rows": len(final_rows),
+                "deepest_scalers_recomputed": len(checks),
+            }
+        ),
+        flush=True,
+    )
+    return summary
+
+
+def fit_full_development(
+    owner_dir, contract_path, contract_sha, amendment_sha, full_contract_sha
+):
+    """Exactly one all-development research refit from frozen expert OOF."""
+    _contract_check(contract_path, contract_sha)
+    owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    full_path = dst / "full_development_contract.frozen.json"
+    if (
+        sha(full_path) != full_contract_sha
+        or read(full_path)["protocol"] != full_development_protocol()
+    ):
+        raise ValueError("FULL_DEVELOPMENT_FROZEN_CONTRACT_MISMATCH")
+    if sha(dst / "internal_feature_amendment.frozen.json") != amendment_sha:
+        raise ValueError("INTERNAL_AMENDMENT_SHA_MISMATCH")
+    model_path = dst / "models/R3_CONSTRAINTS_ALL_DEVELOPMENT.model.json"
+    receipt_path = dst / "full_development_fit_receipt.private.json"
+    if model_path.exists():
+        receipt = read(receipt_path)
+        if (
+            sha(model_path) != receipt["model_sha256"]
+            or receipt["full_development_contract_sha256"] != full_contract_sha
+        ):
+            raise ValueError("FROZEN_FULL_DEVELOPMENT_MODEL_CHANGED")
+        runtime.check_bundle(read(model_path))
+        return receipt
+    records = read(owner / "recovery_records.json")
+    dev = [r for r in records if r["split"] == "DEVELOPMENT"]
+    historical = [r for r in records if r["split"] != "DEVELOPMENT"]
+    groups = {r["group_id"] for r in dev}
+    folds = read(owner / "revisions/r1/D0_folds.private.json")
+    expert_path = owner / "revisions/r1/models/M2_R1_FINAL_FIXED.model.json"
+    expert = read(expert_path)
+    audit = audit_expert(expert, dev, historical)
+    relation_rows = []
+    for outer in range(3):
+        outer_expert = read(
+            owner / f"revisions/r1/cv/M2_R1_FINAL_FIXED_fold{outer}.model.json"
+        )
+        held = [r for r in dev if folds[r["group_id"]] == outer]
+        train = [r for r in dev if folds[r["group_id"]] != outer]
+        audit_expert(outer_expert, train, held)
+        relation_rows.extend(collect_relation_rows(held, outer_expert))
+    candidates = sorted(
+        c for c in expert["candidate_vocabulary"] if c.startswith("sensory.")
+    )
+    pairs = fit_relations(relation_rows, candidates, groups)
+    relations = fit_relations(
+        relation_rows, candidates, groups, frozen_pairs=pairs["pairs"]
+    )
+    relations["pair_receipt"] = pairs["receipt"]
+    fixed_rows = [
+        r for r in read(dst / "relation_results.private.json") if r["slot"] == "Q4"
+    ]
+    losses = {
+        variant: macro([r for r in fixed_rows if r["model"] == variant])
+        for variant in runtime.VARIANTS
+    }
+    minimum = min(loss for loss in losses.values() if loss is not None)
+    selected = next(
+        v
+        for v in runtime.VARIANTS
+        if losses[v] is not None and losses[v] <= minimum + 1e-12
+    )
+    counter = read(dst / "counterfactual_Q3_results.private.json")
+    mapped = {
+        action: {r["record_id"]: r for r in counter if r["model"] == action}
+        for action in ["ASK", "SKIP"]
+    }
+    trigger_rows = []
+    for record in dev:
+        asked, skipped = (
+            mapped["ASK"][record["record_id"]],
+            mapped["SKIP"][record["record_id"]],
+        )
+        if asked["variant"] != selected or skipped["variant"] != selected:
+            raise ValueError("FULL_TRIGGER_REQUIRES_OUTER_OOF_SELECTED_FAMILY_OUTCOMES")
+        trained = [r["group_id"] for r in dev if folds[r["group_id"]] != asked["fold"]]
+        trigger_rows.append(
+            {
+                "group_id": record["group_id"],
+                "record_id": record["record_id"],
+                "slot": "Q2",
+                "features": asked["q2_decision"]["feature_values"],
+                "gain": (
+                    skipped["gap"] - asked["gap"] if asked["gap"] is not None else None
+                ),
+                "relation_training_groups": sorted(set(trained)),
+            }
+        )
+    trigger_a = fit_trigger_a(trigger_rows, groups)
+    b_rows = copy.deepcopy(trigger_rows)
+    fixed_map = {
+        variant: {r["record_id"]: r for r in fixed_rows if r["model"] == variant}
+        for variant in runtime.VARIANTS
+    }
+    for row in b_rows:
+        first, second = (
+            fixed_map["E1"][row["record_id"]]["gap"],
+            fixed_map[selected][row["record_id"]]["gap"],
+        )
+        row["relation_gain"] = (
+            first - second if first is not None and second is not None else None
+        )
+    trigger_b = fit_trigger_b(b_rows, groups)
+    model = runtime.make_bundle(
+        expert,
+        relations,
+        trigger_a,
+        trigger_b,
+        contract_sha,
+        "ALL_DEVELOPMENT",
+        empirical_support(dev, expert),
+        selected,
+        training_lineage={
+            "full_development_contract_sha256": full_contract_sha,
+            "internal_feature_amendment_sha256": amendment_sha,
+            "base_oof_groups": len(groups),
+            "full_training_oof_not_used_as_generalization": True,
+            "research_artifact_default_unchanged": True,
+        },
+    )
+    save(model_path, model)
+    restored = read(model_path)
+    for record in dev[:3]:
+        for variant in runtime.VARIANTS:
+            _, states, _ = trajectory(record, model, variant)
+            for state in states:
+                if runtime.rank_candidates(
+                    state["base_state"], model, variant
+                ) != runtime.rank_candidates(state["base_state"], restored, variant):
+                    raise ValueError("FULL_DEVELOPMENT_MODEL_RELOAD_MISMATCH")
+    receipt = {
+        "full_development_contract_sha256": full_contract_sha,
+        "internal_feature_amendment_sha256": amendment_sha,
+        "original_contract_sha256": contract_sha,
+        "model_owner_relative_path": str(model_path.relative_to(owner)),
+        "model_sha256": sha(model_path),
+        "bundle_id": model["bundle_id"],
+        "selected_variant": selected,
+        "selection_losses_after_nested_development_evaluation": losses,
+        "training_records": len(dev),
+        "training_groups": len(groups),
+        "base_expert_audit": audit,
+        "pair_receipt": pairs["receipt"],
+        "triple_receipt": relations["receipt"],
+        "trigger_a": trigger_a,
+        "trigger_b": trigger_b,
+        "exactly_one_logical_final_refit": True,
+        "full_model_train_OOF_not_generalization": True,
+        "reload_identical": True,
+    }
+    save(receipt_path, receipt)
+    print(
+        json.dumps(
+            {
+                "phase": "ALL_DEVELOPMENT_RESEARCH_REFIT",
+                "selected_variant": selected,
+                "pair_terms": len(relations["pairs"]),
+                "triple_terms": len(relations["triples"]),
+                "trigger_labelled_groups": trigger_a["labelled_groups"],
+                "model_sha256": receipt["model_sha256"],
+            }
+        ),
+        flush=True,
+    )
+    return receipt
+
+
+def scoring_code_fingerprints():
+    directory = Path(__file__).resolve().parent
+    return {
+        name: sha(directory / name)
+        for name in [
+            "flavor_constraints_r3.py",
+            "train_constraints_r3.py",
+            "alignment_metrics_r3.py",
+        ]
+    }
+
+
+def audit_runtime_projection(owner_dir):
+    """Check annotation additions against every retained inner OOF feature row."""
+    owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    records = {r["record_id"]: r for r in read(owner / "recovery_records.json")}
+    feature_count = rank_count = state_count = order_changes = revision_states = 0
+    status_counts, retention = Counter(), []
+
+    def score_identity(rows):
+        return [(row["candidate_id"], row["score"], row["rank"]) for row in rows]
+
+    for outer in range(3):
+        for inner in range(2):
+            model = read(
+                dst / f"models/R3_INNER_RELATIONS_outer{outer}_inner{inner}.model.json"
+            )
+            expected_rows = read(
+                dst / f"oof/trigger_outer{outer}_inner{inner}.private.json"
+            )
+            for expected in expected_rows:
+                ep, states, _ = trajectory(
+                    records[expected["record_id"]],
+                    model,
+                    expected["variant"],
+                    "ALWAYS_ASK",
+                )
+                q2 = next(
+                    s
+                    for s in states
+                    if set(s["base_state"]["answers_by_question"]) == {"Q0", "Q1", "Q2"}
+                )
+                if runtime.live_features(q2, model) != expected["features"]:
+                    raise ValueError(
+                        "AUDIT_PROJECTION_CHANGED_RETAINED_TRIGGER_FEATURES"
+                    )
+                feature_count += 1
+                skipped, _ = runtime.complete_branch(q2, ep["visible"], model, "SKIP")
+                for action, state in [("ASK", states[-1]), ("SKIP", skipped)]:
+                    if score_identity(state["candidate_scores"]) != score_identity(
+                        expected["outcomes"][action]["ranking"]
+                    ):
+                        raise ValueError(
+                            "AUDIT_PROJECTION_CHANGED_RETAINED_BRANCH_RANKING"
+                        )
+                    rank_count += 1
+                for state in states[2:]:
+                    state_count += 1
+                    status_counts.update(h["status"] for h in state["k1_hypotheses"])
+                    revision_states += any(
+                        h["status"] == "REVISED" for h in state["k1_hypotheses"]
+                    )
+                    order_changes += state["k1_diagnostics"][
+                        "actual_candidate_order_changed_from_previous"
+                    ]
+                    value = state["k1_diagnostics"][
+                        "target_direction_retention_from_previous_current_evidence"
+                    ]
+                    if value is not None:
+                        retention.append(value)
+    counter = read(dst / "counterfactual_Q3_results.private.json")
+    matched = {
+        action: {r["record_id"]: r for r in counter if r["model"] == action}
+        for action in ["ASK", "SKIP"]
+    }
+    bins = defaultdict(list)
+    for identity, asked in matched["ASK"].items():
+        skipped = matched["SKIP"][identity]
+        feature = asked["q2_decision"]["feature_values"]
+        name = (
+            (
+                "DIMENSIONS_LE_1"
+                if feature["dimension_count"] <= 1
+                else "DIMENSIONS_GT_1"
+            )
+            + "/"
+            + (
+                "NO_EXPLICIT_FINE"
+                if feature["explicit_fine_count"] == 0
+                else "EXPLICIT_FINE_PRESENT"
+            )
+        )
+        gain = skipped["gap"] - asked["gap"] if asked["gap"] is not None else None
+        bins[name].append(
+            {"record_id": identity, "group_id": asked["group_id"], "gain": gain}
+        )
+    coarse = {
+        name: {
+            "all_records": len(rows),
+            "all_groups": len({r["group_id"] for r in rows}),
+            "identifiable_records": sum(r["gain"] is not None for r in rows),
+            "Q3_group_macro_gain": macro(rows, "gain"),
+            "Q3_helped_records": sum(
+                r["gain"] is not None and r["gain"] > 1e-12 for r in rows
+            ),
+            "Q3_harmed_records": sum(
+                r["gain"] is not None and r["gain"] < -1e-12 for r in rows
+            ),
+            "Q3_tied_records": sum(
+                r["gain"] is not None and abs(r["gain"]) <= 1e-12 for r in rows
+            ),
+        }
+        for name, rows in sorted(bins.items())
+    }
+    original_path, enriched_path = (
+        owner / "human_comparison_cases.private.json",
+        owner / "revisions/r2/human_comparison_cases_r2.private.json",
+    )
+    original, enriched = read(original_path), read(enriched_path)
+    if (
+        len(original) != 20
+        or len(enriched) != 20
+        or {r["case_id"] for r in original} != {r["case_id"] for r in enriched}
+    ):
+        raise ValueError("ORIGINAL_TWENTY_HUMAN_CASE_IDENTITIES_CHANGED")
+    completed = [
+        r
+        for r in enriched
+        if r.get("corrective_selection") is not None
+        or r.get("human_choice") is not None
+    ]
+    if completed:
+        raise ValueError(
+            "NEW_ACTUAL_HUMAN_FEEDBACK_REQUIRES_VALIDATED_ORIGINAL_EXPOSURE_IMPORT"
+        )
+    human = {
+        "original_cases": len(original),
+        "enriched_cases_reused_by_identity": len(enriched),
+        "original_case_file_sha256": sha(original_path),
+        "enriched_case_file_sha256": sha(enriched_path),
+        "roles": dict(Counter(r["review_role"] for r in original)),
+        "completed_human_judgments": 0,
+        "actual_corrective_selections": 0,
+        "human_rationales": sum(bool(r.get("human_rationale")) for r in enriched),
+        "actual_human_seconds": None,
+        "pending_cases": 20,
+        "status": "NOT_EVALUATED_REAL_HUMAN_FEEDBACK_NOT_COLLECTED",
+        "ordinary_answers": "EXISTING_SIMULATED_RECORD_DERIVED_INPUT_NOT_REAL_HUMAN_ANSWERS",
+        "old_exposure_not_remapped_to_R3": True,
+        "new_participants_or_responses_generated": False,
+    }
+    audit = {
+        "audit_version": runtime.AUDIT_VERSION,
+        "retained_inner_trigger_feature_rows_recomputed_identical": feature_count,
+        "retained_inner_ASK_SKIP_full_rankings_recomputed_identical": rank_count,
+        "audited_initial_correction_states": state_count,
+        "hypothesis_status_counts": dict(status_counts),
+        "states_with_revised_hypothesis": revision_states,
+        "actual_candidate_order_change_states": order_changes,
+        "mean_current_evidence_direction_retention": (
+            float(np.mean(retention)) if retention else None
+        ),
+        "retention_observations": len(retention),
+        "counts_are_repeated_oof_trajectory_states_not_independent_samples": True,
+        "error_pruned_candidate_count": 0,
+        "incompatibility_accuracy": "NOT_ESTIMABLE_WITHOUT_INDEPENDENT_DIRECTION_INCOMPATIBILITY_LABELS",
+        "no_model_or_trigger_feature_change": True,
+        "no_fit": True,
+        "Q3_coarse_feature_bins": coarse,
+        "original20_human_case_reuse": human,
+    }
+    save(dst / "constraints_runtime_projection_audit.private.json", audit)
+    summary = read(dst / "constraints_public_summary.private.json")
+    summary.update(
+        runtime_K1_actual_audit=audit,
+        original20_human_case_reuse=human,
+        Q3_coarse_feature_bins=coarse,
+    )
+    summary.pop("counterfactual_examples", None)
+    save(dst / "constraints_public_summary.private.json", summary)
+    receipt_path = dst / "full_development_fit_receipt.private.json"
+    receipt = read(receipt_path)
+    receipt["implementation_attempts"] = [
+        {
+            "status": "PRE_OPTIMIZER_KEY_ERROR",
+            "candidate": "sensory.hay",
+            "reason": "ALL_DEVELOPMENT_CANDIDATE_MISSING_IN_ONE_OUTER_OOF_EXPERT_SCOPE",
+            "no_completed_full_model_or_optimizer_fit": True,
+        },
+        {
+            "status": "COMPLETED_AFTER_ROW_AVAILABILITY_MASK_FIX",
+            "protocol_retuned": False,
+            "outer_models_retrained": False,
+        },
+    ]
+    receipt["full_candidate_vocabulary_exactly_all_DEVELOPMENT_TRAIN"] = True
+    receipt[
+        "missing_OOF_candidates_excluded_from_row_loss_not_from_any_evaluation_target_denominator"
+    ] = True
+    save(receipt_path, receipt)
+    print(
+        json.dumps(
+            {
+                "phase": "AUDIT_ONLY_PROJECTION_PARITY",
+                "features": feature_count,
+                "branch_rankings": rank_count,
+                "hypothesis_statuses": dict(status_counts),
+                "human_feedback": 0,
+            }
+        ),
+        flush=True,
+    )
+    return audit
+
+
+def evaluate_history(owner_dir):
+    """One frozen-model evaluation of the already viewed historical 17 groups."""
+    owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    summary_path = dst / "history_public_summary.private.json"
+    if summary_path.exists():
+        summary = read(summary_path)
+        if (
+            sha(dst / "models/R3_CONSTRAINTS_ALL_DEVELOPMENT.model.json")
+            != summary["full_model_sha256"]
+        ):
+            raise ValueError("HISTORICAL_MODEL_HASH_CHANGED")
+        return summary
+    model_path = dst / "models/R3_CONSTRAINTS_ALL_DEVELOPMENT.model.json"
+    before = sha(model_path)
+    model = read(model_path)
+    records = [
+        r for r in read(owner / "recovery_records.json") if r["split"] != "DEVELOPMENT"
+    ]
+    if (
+        len(records) != 17
+        or len({r["group_id"] for r in records}) != 17
+        or {r["group_id"] for r in records} & expert_training_groups(model["r1_expert"])
+    ):
+        raise ValueError("HISTORICAL_SEVENTEEN_GROUP_SCOPE_MISMATCH")
+    rows = []
+    for record in records:
+        for policy in ["ALWAYS_ASK", "LEARNED"]:
+            ep, states, answers = trajectory(
+                record, model, model["selected_variant"], policy
+            )
+            pre = runtime.finalize_result(states[-1], model)
+            rows.append(
+                result_row(record, ep, pre["state"], model, "Q4", policy + "/Q4")
+            )
+            exposure = pre["exposure"]
+            selected = sorted(set(ep["visible"]) & set(exposure["candidate_ids"]))
+            feedback = {
+                "exposed_candidates": exposure["candidate_ids"],
+                "selected_candidates": selected,
+                "feedback_source": "SIMULATED",
+                "generation_version": model["bundle_id"],
+            }
+            state = runtime.apply_final_comparison(pre["state"], feedback, model)
+            row = result_row(
+                record, ep, state, model, "FINAL_COMPARISON", policy + "/F2"
+            )
+            row["final_comparison_candidates"] = len(exposure["candidate_ids"])
+            rows.append(row)
+    if before != sha(model_path):
+        raise ValueError("HISTORICAL_EVALUATION_CHANGED_MODEL")
+    summary = {
+        "scope": "ALREADY_VIEWED_17_HISTORICAL_COFFEE_GROUPS_NOT_FRESH_CONFIRMATION",
+        "records": 17,
+        "groups": 17,
+        "no_fit_or_selection": True,
+        "full_model_sha256": before,
+        "results": aggregate_terminal(rows),
+        "actual_human_seconds": None,
+        "answers_and_F2_selection": "FROZEN_SOURCE_RECORD_A_ONLY_NOT_HIDDEN_T",
+        "R2_history_unchanged": True,
+    }
+    save(dst / "history_results.private.json", rows)
+    save(summary_path, summary)
+    print(
+        json.dumps(
+            {
+                "phase": "HISTORICAL_NO_FIT_REGRESSION",
+                "results": {k: v["gap"] for k, v in summary["results"].items()},
+            }
+        ),
+        flush=True,
+    )
+    return summary
+
+
+def direction_metrics(
+    targets, fixed_candidates, preferred_candidates, hypothesis_directions
+):
+    fine = {c for c in targets if c.startswith("sensory.")}
+    target_directions = {a for c in fine for a in r1.PARENTS.get(c, [])}
+    legal = set(fixed_candidates)
+    preferred = set(preferred_candidates) & legal
+    legal_directions = {a for c in legal for a in r1.PARENTS.get(c, [])}
+    hyp = set(hypothesis_directions)
+    return {
+        "hidden_fine_target_count": len(fine),
+        "hidden_target_direction_count": len(target_directions),
+        "hidden_targets_with_unknown_parent_count": sum(
+            not r1.PARENTS.get(c) for c in fine
+        ),
+        "preferred_direction_coverage": (
+            len(target_directions & hyp) / len(target_directions)
+            if target_directions
+            else None
+        ),
+        "fixed_universe_direction_coverage": (
+            len(target_directions & legal_directions) / len(target_directions)
+            if target_directions
+            else None
+        ),
+        "target_direction_outside_preferred_scope": (
+            len((target_directions & legal_directions) - hyp) / len(target_directions)
+            if target_directions
+            else None
+        ),
+        "preferred_exact_leaf_coverage": (
+            len(fine & preferred) / len(fine) if fine else None
+        ),
+        "fixed_universe_exact_leaf_coverage": (
+            len(fine & legal) / len(fine) if fine else None
+        ),
+        "legal_hidden_leaf_outside_preferred_scope": (
+            len((fine & legal) - preferred) / len(fine) if fine else None
+        ),
+        "hard_pruned_candidates": 0,
+    }
+
+
+def evaluate_hidden_directions(owner_dir):
+    """Descriptive held-T directions; never used to form a hypothesis or fit."""
+    owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    records = [
+        r for r in read(owner / "recovery_records.json") if r["split"] == "DEVELOPMENT"
+    ]
+    folds = read(owner / "revisions/r1/D0_folds.private.json")
+    rows = []
+    for outer in range(3):
+        model = read(dst / f"models/R3_CONSTRAINTS_outer{outer}.model.json")
+        for record in [r for r in records if folds[r["group_id"]] == outer]:
+            ep, states, answers = trajectory(record, model, "E1", "ALWAYS_ASK")
+            for state, answer in zip(states[1:], answers, strict=True):
+                if answer["slot"] not in {"Q1", "Q2", "Q3"}:
+                    continue
+                active = [
+                    h
+                    for h in state["k1_hypotheses"]
+                    if h["applicability"]["active_positive_support"]
+                ]
+                preferred = {c for h in active for c in h["preferred_legal_candidates"]}
+                hypotheses = {h["dimension"] for h in active}
+                values = direction_metrics(
+                    ep["hidden"], model["fixed_candidates"], preferred, hypotheses
+                )
+                rows.append(
+                    {
+                        "record_id": record["record_id"],
+                        "group_id": record["group_id"],
+                        "source_family": record["source_family"],
+                        "fold": outer,
+                        "slot": answer["slot"],
+                        **values,
+                        "preferred_candidates": sorted(preferred),
+                        "hypothesis_directions": sorted(hypotheses),
+                        "episode": ep,
+                    }
+                )
+    stage_summary = {}
+    fields = [
+        "preferred_direction_coverage",
+        "fixed_universe_direction_coverage",
+        "target_direction_outside_preferred_scope",
+        "preferred_exact_leaf_coverage",
+        "fixed_universe_exact_leaf_coverage",
+        "legal_hidden_leaf_outside_preferred_scope",
+    ]
+    for slot in ["Q1", "Q2", "Q3"]:
+        subset = [r for r in rows if r["slot"] == slot]
+        stage_summary[slot] = {
+            "all_records": len(subset),
+            "all_groups": len({r["group_id"] for r in subset}),
+            "identifiable_direction_records": sum(
+                r["preferred_direction_coverage"] is not None for r in subset
+            ),
+            **{field: macro(subset, field) for field in fields},
+        }
+    pairs = {
+        slot: {row["record_id"]: row for row in rows if row["slot"] == slot}
+        for slot in ["Q2", "Q3"]
+    }
+    comparable = [
+        (a, pairs["Q3"][identity])
+        for identity, a in pairs["Q2"].items()
+        if a["preferred_direction_coverage"] is not None
+    ]
+    summary = {
+        "scope": "OUTER_HELD_SOURCE_RECORD_T_DIRECTION_PROXY_NOT_REAL_INDEPENDENT_K1_CORROBORATION",
+        "variant": "E1_FIXED_ASK_SHARED_K1_RULES",
+        "fine_target_parent_mapping": "FROZEN_R1_PARENTS_ONLY_NO_FITTED_RELATIONS_GRADE_THEMSELVES",
+        "parent_relation_sha256": r1.digest(r1.PARENTS),
+        "stages": stage_summary,
+        "Q3_direction_corrections": {
+            "identifiable_paired_records": len(comparable),
+            "improved_preferred_direction_coverage": sum(
+                b["preferred_direction_coverage"] > a["preferred_direction_coverage"]
+                for a, b in comparable
+            ),
+            "worsened_preferred_direction_coverage": sum(
+                b["preferred_direction_coverage"] < a["preferred_direction_coverage"]
+                for a, b in comparable
+            ),
+            "unchanged": sum(
+                b["preferred_direction_coverage"] == a["preferred_direction_coverage"]
+                for a, b in comparable
+            ),
+        },
+        "outside_preferred_scope_means": "HYPOTHETICAL_LOSS_IF_PRIORITY_WERE_A_HARD_FILTER;NO_ACTUAL_DELETION_WAS_PERFORMED",
+        "actual_hard_pruning": 0,
+        "current_A_direction_retention_is_contract_fidelity_not_independent_T_retention": True,
+        "missing_fine_T_and_unknown_parent_masks_retained": True,
+        "no_fit_or_selection": True,
+    }
+    save(dst / "k1_hidden_target_direction_diagnostics.private.json", rows)
+    save(dst / "k1_hidden_target_direction_public_summary.private.json", summary)
+    current = read(dst / "constraints_public_summary.private.json")
+    current["K1_hidden_target_direction_diagnostic"] = summary
+    save(dst / "constraints_public_summary.private.json", current)
+    print(
+        json.dumps(
+            {
+                "phase": "K1_HELD_DIRECTION_DIAGNOSTIC",
+                "stages": stage_summary,
+                "Q3": summary["Q3_direction_corrections"],
+            }
+        ),
+        flush=True,
+    )
+    return summary
+
+
+def seal_completed(
+    owner_dir, contract_path, contract_sha, amendment_sha, full_contract_sha
+):
+    """Seal verified immutable parameters and all actual private result artifacts."""
+    _contract_check(contract_path, contract_sha)
+    owner, dst = Path(owner_dir), Path(owner_dir) / "revisions/r3"
+    summary = read(dst / "constraints_public_summary.private.json")
+    summary.pop("counterfactual_examples", None)
+    receipt = read(dst / "full_development_fit_receipt.private.json")
+    summary["full_development_research_artifact"] = {
+        key: receipt[key]
+        for key in [
+            "model_owner_relative_path",
+            "model_sha256",
+            "selected_variant",
+            "training_records",
+            "training_groups",
+            "exactly_one_logical_final_refit",
+            "full_model_train_OOF_not_generalization",
+            "reload_identical",
+        ]
+    }
+    summary["full_development_contract_sha256"] = full_contract_sha
+    summary["context_information_cost"] = {
+        "questions": 2,
+        "offered_options": 15,
+        "separate_from_ordinary_sensory_cost": True,
+    }
+    summary["counterfactual_cases_private_sha256"] = sha(
+        dst / "counterfactual_error_examples.private.json"
+    )
+    summary["runtime_audit_projection"] = {
+        "version": runtime.AUDIT_VERSION,
+        "changes_score_or_trigger_features": False,
+        "explicit_types_statuses_and_one_shared_budget_candidate_group": True,
+    }
+    summary["historical17_regression"] = read(
+        dst / "history_public_summary.private.json"
+    )
+    cli = read("/private/tmp/m2-r3-full-cli-parity.json")
+    if cli["model_sha256"] != receipt["model_sha256"]:
+        raise ValueError("FULL_CLI_PARITY_MODEL_HASH_MISMATCH")
+    summary["full_CLI_reproducibility"] = cli
+    save(dst / "constraints_cli_parity.private.json", cli)
+    save(dst / "constraints_public_summary.private.json", summary)
+    save("/private/tmp/m2-r3-constraints-public-summary.json", summary)
+    paths = set((dst / "models").glob("R3*.json"))
+    for folder, pattern in [
+        ("oof", "*.private.json"),
+        ("trajectories", "*.private.json"),
+    ]:
+        paths.update((dst / folder).glob(pattern))
+    for name in [
+        "constraint_isolation_audit.private.json",
+        "constraints_reload_audit.private.json",
+        "constraints_summary.private.json",
+        "constraints_public_summary.private.json",
+        "relation_results.private.json",
+        "policy_results.private.json",
+        "final_feedback_results.private.json",
+        "counterfactual_Q3_results.private.json",
+        "counterfactual_error_examples.private.json",
+        "constraint_relation_trigger_registry.private.json",
+        "full_development_fit_receipt.private.json",
+        "first_relation_public_summary.private.json",
+        "constraints_runtime_projection_audit.private.json",
+        "history_results.private.json",
+        "history_public_summary.private.json",
+        "constraints_cli_parity.private.json",
+        "k1_hidden_target_direction_diagnostics.private.json",
+        "k1_hidden_target_direction_public_summary.private.json",
+    ]:
+        path = dst / name
+        if not path.exists():
+            raise ValueError("COMPLETED_R3_ARTIFACT_MISSING:" + name)
+        paths.add(path)
+    manifest = {
+        "original_contract_sha256": contract_sha,
+        "internal_feature_amendment_sha256": amendment_sha,
+        "full_development_contract_sha256": full_contract_sha,
+        "private_artifact_hashes": {
+            str(path.relative_to(dst)): sha(path) for path in sorted(paths)
+        },
+        "code_fingerprints": scoring_code_fingerprints(),
+        "audit_version": runtime.AUDIT_VERSION,
+        "completed": True,
+        "reproduction_policy": "VERIFY_AND_LOAD_NO_FIT_OR_RECOMPUTE",
+    }
+    save(dst / "constraints_completion_manifest.private.json", manifest)
+    return verify_completed(owner_dir, contract_path, contract_sha, amendment_sha)
+
+
+def verify_completed(owner_dir, contract_path, contract_sha, amendment_sha):
+    """Read-only complete-run verification. No estimator or trajectory is invoked."""
+    _contract_check(contract_path, contract_sha)
+    dst = Path(owner_dir) / "revisions/r3"
+    manifest = read(dst / "constraints_completion_manifest.private.json")
+    if (
+        not manifest["completed"]
+        or manifest["original_contract_sha256"] != contract_sha
+        or manifest["internal_feature_amendment_sha256"] != amendment_sha
+    ):
+        raise ValueError("COMPLETED_R3_CONTRACT_MISMATCH")
+    if (
+        sha(dst / "internal_feature_amendment.frozen.json") != amendment_sha
+        or sha(dst / "full_development_contract.frozen.json")
+        != manifest["full_development_contract_sha256"]
+    ):
+        raise ValueError("COMPLETED_AMENDMENT_OR_FULL_CONTRACT_CHANGED")
+    for relative, expected in manifest["private_artifact_hashes"].items():
+        if sha(dst / relative) != expected:
+            raise ValueError("COMPLETED_PRIVATE_ARTIFACT_CHANGED:" + relative)
+    if scoring_code_fingerprints() != manifest["code_fingerprints"]:
+        raise ValueError(
+            "COMPLETED_CODE_CHANGED_REQUIRES_EXPLICIT_NO_FIT_AUDIT_REFRESH"
+        )
+    return {
+        "public_summary": read(dst / "constraints_public_summary.private.json"),
+        "verification": {
+            "private_artifacts_verified": len(manifest["private_artifact_hashes"]),
+            "fit_calls": 0,
+            "trajectory_recomputations": 0,
+            "completion_manifest_sha256": sha(
+                dst / "constraints_completion_manifest.private.json"
+            ),
+            "code_fingerprints_identical": True,
+        },
+    }
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--protocol", action="store_true")
@@ -1190,6 +2504,14 @@ def main():
     parser.add_argument("--expected-contract-sha256")
     parser.add_argument("--relations-only", action="store_true")
     parser.add_argument("--expected-amendment-sha256")
+    parser.add_argument("--evaluate-existing", action="store_true")
+    parser.add_argument("--fit-full", action="store_true")
+    parser.add_argument("--seal-completed", action="store_true")
+    parser.add_argument("--verify-completed", action="store_true")
+    parser.add_argument("--audit-projection", action="store_true")
+    parser.add_argument("--evaluate-history", action="store_true")
+    parser.add_argument("--evaluate-hidden-directions", action="store_true")
+    parser.add_argument("--expected-full-contract-sha256")
     parser.add_argument(
         "--summary-path", default="/private/tmp/m2-r3-constraints-summary.json"
     )
@@ -1198,14 +2520,55 @@ def main():
         print(json.dumps(protocol(), sort_keys=True, indent=2))
     elif args.owner_dir and args.contract and args.expected_contract_sha256:
         with threadpool_limits(limits=1):
-            run_nested(
-                args.owner_dir,
-                args.contract,
-                args.expected_contract_sha256,
-                args.summary_path,
-                args.relations_only,
-                args.expected_amendment_sha256,
-            )
+            if args.evaluate_hidden_directions:
+                evaluate_hidden_directions(args.owner_dir)
+            elif args.audit_projection:
+                audit_runtime_projection(args.owner_dir)
+            elif args.evaluate_history:
+                evaluate_history(args.owner_dir)
+            elif args.verify_completed:
+                print(
+                    json.dumps(
+                        verify_completed(
+                            args.owner_dir,
+                            args.contract,
+                            args.expected_contract_sha256,
+                            args.expected_amendment_sha256,
+                        )["verification"]
+                    )
+                )
+            elif args.seal_completed:
+                seal_completed(
+                    args.owner_dir,
+                    args.contract,
+                    args.expected_contract_sha256,
+                    args.expected_amendment_sha256,
+                    args.expected_full_contract_sha256,
+                )
+            elif args.fit_full:
+                fit_full_development(
+                    args.owner_dir,
+                    args.contract,
+                    args.expected_contract_sha256,
+                    args.expected_amendment_sha256,
+                    args.expected_full_contract_sha256,
+                )
+            elif args.evaluate_existing:
+                finish_evaluation(
+                    args.owner_dir,
+                    args.contract,
+                    args.expected_contract_sha256,
+                    args.expected_amendment_sha256,
+                )
+            else:
+                run_nested(
+                    args.owner_dir,
+                    args.contract,
+                    args.expected_contract_sha256,
+                    args.summary_path,
+                    args.relations_only,
+                    args.expected_amendment_sha256,
+                )
     else:
         parser.error(
             "Formal fitting requires owner directory, frozen contract and expected SHA"

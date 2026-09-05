@@ -18,6 +18,7 @@ import numpy as np
 import flavor_m2_r1 as r1
 
 VERSION = "m2-constraints.r3.v1"
+AUDIT_VERSION = "r3-k1-hypotheses.audit.v1"
 VARIANTS = ["E1", "E2", "E3"]
 POLICIES = ["ALWAYS_ASK", "SIMPLE_RULE", "LEARNED", "TWO_STEP_EMPIRICAL"]
 FEATURES = [
@@ -64,6 +65,7 @@ def make_bundle(
     tag="",
     empirical_branches=None,
     selected_variant="E1",
+    training_lineage=None,
 ):
     r1.check_bundle(expert)
     if not expert.get("evidence_policy", {}).get("canonical_broad_feedback"):
@@ -85,6 +87,8 @@ def make_bundle(
         "direct_evidence_application_count": 1,
         "hard_pruning": "CONTRACT_INVALID_ONLY_NO_EMPIRICAL_DELETIONS",
     }
+    if training_lineage is not None:
+        bundle["training_lineage"] = copy.deepcopy(training_lineage)
     bundle["frozen_parameters_sha256"] = r1.digest(bundle)
     bundle["bundle_id"] = "m2-r3:" + tag + ":" + bundle["frozen_parameters_sha256"][:20]
     return bundle
@@ -329,7 +333,236 @@ def wrap_state(base, bundle, variant="E1", trigger_policy="ALWAYS_ASK", previous
         "k1": build_k1(base, bundle, variant, (previous or {}).get("k1", [])),
         "q2_decision": copy.deepcopy((previous or {}).get("q2_decision")),
     }
+    state.update(k1_audit_projection(state, bundle, previous))
     return state
+
+
+def k1_audit_projection(state, bundle, previous=None):
+    """Additive hypothesis ledger, deliberately excluded from trigger FEATURES.
+
+    Initial directional priorities are hypotheses about useful candidate groups.
+    An observed parent is positive evidence; a child's unmentioned status never
+    becomes a negative. Neither provisional nor revised hypotheses delete IDs.
+    """
+    base, expert = state["base_state"], bundle["r1_expert"]
+    answers = base["answers_by_question"]
+    evidence = r1.evidence(base, expert)
+    observed = positive_units(evidence, expert)
+    fixed = set(bundle["fixed_candidates"])
+    by_dimension = defaultdict(list)
+    for slot, answer in sorted(answers.items()):
+        options = {option["id"]: option for option in answer["options"]}
+        positive = (
+            answer["selected_option_ids"] if answer["state"] == "SELECTED" else []
+        )
+        for concept in positive:
+            option = options[concept]
+            dimensions = (
+                [option["attribute"]]
+                if option["kind"] == "broad"
+                else expert["candidate_attributes"].get(concept, [])
+            )
+            for dimension in dimensions:
+                by_dimension[dimension].append(
+                    {
+                        "question_id": answer["question_id"],
+                        "slot": slot,
+                        "concept_id": concept,
+                        "kind": option["kind"],
+                    }
+                )
+    final = base.get("final_comparison")
+    if final and final.get("mode") == "F2":
+        for concept in final["selected_candidates"]:
+            dimensions = (
+                [concept.split(".", 1)[1]]
+                if concept.startswith("attribute.")
+                else expert["candidate_attributes"].get(concept, [])
+            )
+            for dimension in dimensions:
+                by_dimension[dimension].append(
+                    {
+                        "question_id": "FINAL_COMPARISON:"
+                        + final["generation_version"],
+                        "slot": "FINAL_COMPARISON",
+                        "concept_id": concept,
+                        "kind": (
+                            "broad" if concept.startswith("attribute.") else "specific"
+                        ),
+                    }
+                )
+    hypotheses = []
+    old_hypotheses = {
+        row["dimension"]: row for row in (previous or {}).get("k1_hypotheses", [])
+    }
+    if "Q1" in answers:
+        dimensions = set(by_dimension) | set(old_hypotheses)
+        for dimension in sorted(dimensions):
+            supports = by_dimension.get(dimension, [])
+            initial_concepts = {
+                row["concept_id"] for row in supports if row["slot"] in {"Q0", "Q1"}
+            }
+            later_new = [
+                row
+                for row in supports
+                if row["slot"] not in {"Q0", "Q1"}
+                and row["concept_id"] not in initial_concepts
+            ]
+            rejection_ids = [
+                answer["question_id"]
+                for answer in answers.values()
+                if answer["state"] == "NONE_OF_THESE"
+                and any(
+                    option.get("attribute") == dimension for option in answer["options"]
+                )
+            ]
+            status = (
+                "REVISED"
+                if not supports or rejection_ids
+                else "SUPPORTED_WITHIN_SCOPE" if later_new else "PROPOSED"
+            )
+            preferred = [
+                row["candidate_id"]
+                for row in state["candidate_scores"]
+                if row["candidate_id"] in fixed
+                and dimension
+                in expert["candidate_attributes"].get(row["candidate_id"], [])
+            ]
+            old = old_hypotheses.get(dimension)
+            priority_revision = bool(
+                old
+                and "Q2" in answers
+                and old["preferred_legal_candidates"] != preferred
+            )
+            prior_revision = bool(
+                old
+                and old["revising_information"].get(
+                    "candidate_priority_revision_observed_in_session"
+                )
+            )
+            if priority_revision or prior_revision:
+                status = "REVISED"
+            hypotheses.append(
+                {
+                    "id": "hypothesis:direction:" + dimension,
+                    "dimension": dimension,
+                    "type": (
+                        "EMPIRICAL_COMPATIBILITY"
+                        if not supports
+                        else "SEMANTIC_ENTAILMENT"
+                    ),
+                    "status": status,
+                    "claim": "OVERLAPPING_CANDIDATE_DIRECTION_PRIORITY_NOT_CHILD_CONFIRMATION",
+                    "evidence_source": (
+                        "CURRENT_SESSION_CANONICAL_POSITIVES"
+                        if supports
+                        else "PREVIOUSLY_PROPOSED_DIRECTION_WITHDRAWN"
+                    ),
+                    "answer_evidence_ids": sorted(
+                        {row["question_id"] for row in supports}
+                    ),
+                    "concept_evidence_ids": sorted(
+                        {"concept:" + row["concept_id"] for row in supports}
+                    ),
+                    "applicability": {
+                        "after_initial_Q0_Q1": True,
+                        "Q2_observed": "Q2" in answers,
+                        "active_positive_support": bool(supports),
+                    },
+                    "revising_information": {
+                        "new_later_concept_answer_ids": sorted(
+                            {row["question_id"] for row in later_new}
+                        ),
+                        "explicit_exposure_rejection_answer_ids": sorted(rejection_ids),
+                        "removed_previous_positive_support": not supports,
+                        "candidate_priority_revision_observed_in_session": priority_revision
+                        or prior_revision,
+                    },
+                    "target_scope": "REGISTERED_FINE_CANDIDATES_SHARING_PARENT_WITHOUT_CHILD_ABSENCE",
+                    "preferred_legal_candidates": preferred,
+                    "full_legal_candidate_count": len(fixed),
+                    "soft_priority_only": True,
+                    "hard_deleted_candidates": [],
+                    "negative_child_observation_claim": False,
+                    "not_independent_sensory_corroboration": True,
+                }
+            )
+    details = []
+    for clause in state["k1"]:
+        concept = clause.get("concept_id")
+        matching = []
+        for answer in answers.values():
+            scope = (
+                answer["shown_option_ids"]
+                if answer["state"] == "NONE_OF_THESE"
+                else answer["selected_option_ids"]
+            )
+            if concept in scope:
+                matching.append(answer["question_id"])
+        if final and concept in final["selected_candidates"]:
+            matching.append("FINAL_COMPARISON:" + final["generation_version"])
+        details.append(
+            {
+                **copy.deepcopy(clause),
+                "evidence_source": (
+                    "FROZEN_CONTRACT"
+                    if clause["type"] == "HARD_CONTRACT"
+                    else (
+                        "TRAIN_GROUP_MENTION_ASSOCIATION"
+                        if clause["type"] == "EMPIRICAL_COMPATIBILITY"
+                        else "CURRENT_ANSWER_SEMANTICS"
+                    )
+                ),
+                "answer_evidence_ids": sorted(matching),
+                "applicability": {
+                    "current_active": clause["status"] == "SUPPORTED_WITHIN_SCOPE",
+                    "contract_version": VERSION,
+                },
+                "revising_information": (
+                    "CURRENT_CANONICAL_ANSWER_REPLACEMENT_REMOVED_ANTECEDENT"
+                    if clause["status"] == "REVISED"
+                    else "NEW_OR_REPEATED_CANONICAL_EVIDENCE_RECOMPUTED_NO_ACCUMULATION"
+                ),
+                "target_scope": (
+                    "FIXED_PRE_SOFT_FINE_UNIVERSE" if not concept else concept
+                ),
+                "full_legal_candidate_count": len(fixed),
+                "soft_pruning_applied": False,
+            }
+        )
+    old_directions = {
+        row["dimension"]
+        for row in old_hypotheses.values()
+        if row["applicability"]["active_positive_support"]
+    }
+    new_directions = {
+        row["dimension"]
+        for row in hypotheses
+        if row["applicability"]["active_positive_support"]
+    }
+    before = [
+        row["candidate_id"] for row in (previous or {}).get("candidate_scores", [])
+    ]
+    after = [row["candidate_id"] for row in state["candidate_scores"]]
+    return {
+        "k1_audit_version": AUDIT_VERSION,
+        "k1_hypotheses": hypotheses,
+        "constraint_details": details,
+        "k1_diagnostics": {
+            "target_direction_retention_from_previous_current_evidence": (
+                len(old_directions & new_directions) / len(old_directions)
+                if old_directions
+                else None
+            ),
+            "actual_candidate_order_changed_from_previous": bool(
+                before and before != after
+            ),
+            "full_pre_soft_universe_retained": fixed <= set(after),
+            "error_pruned_candidates": 0,
+            "incompatible_direction_exclusion_accuracy": "NOT_ESTIMABLE_NO_INDEPENDENT_INCOMPATIBILITY_LABELS",
+            "audit_projection_changes_scores_or_trigger_features": False,
+        },
+    }
 
 
 def initial_state(
@@ -346,6 +579,8 @@ def initial_state(
         relation_activation == "TRIGGER_B" and trigger_policy != "ALWAYS_ASK"
     ):
         raise ValueError("TRIGGER_B_REQUIRES_SEPARATE_ALWAYS_ASK_PATH")
+    if relation_activation == "TRIGGER_B" and variant != bundle["selected_variant"]:
+        raise ValueError("TRIGGER_B_ONLY_FOR_ITS_FROZEN_SELECTED_RELATION_FAMILY")
     state = wrap_state(
         r1.initial_state(context, bundle["r1_expert"], "P1", "fixed"),
         bundle,
@@ -574,6 +809,32 @@ def finalize_result(state, bundle):
         "next": finalized["next"],
         "exposure": exposure,
         "human_time": None,
+        "candidate_groups": [
+            {
+                "id": "R3_SINGLE_JUSTIFIED_OUTPUT_GROUP",
+                "main_candidate_ids": [row["candidate_id"] for row in rows[:5]],
+                "secondary_candidate_ids": [row["candidate_id"] for row in rows[5:8]],
+                "constraint_ids": [
+                    row["id"]
+                    for row in current["constraint_details"]
+                    if row["status"] != "REVISED"
+                ],
+                "relation_ids": sorted(
+                    {
+                        identity
+                        for row in rows[:8]
+                        for identity in row.get("relation_evidence_ids", [])
+                    }
+                ),
+                "unresolved_direction_ids": [
+                    row["id"]
+                    for row in current["k1_hypotheses"]
+                    if row["status"] != "SUPPORTED_WITHIN_SCOPE"
+                ],
+                "shared_global_candidate_budget": {"main": 5, "secondary": 3},
+                "group_count_does_not_multiply_budget": True,
+            }
+        ],
     }
 
 

@@ -4,6 +4,8 @@ import copy
 import json
 import sys
 import unittest
+import tempfile
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
@@ -187,6 +189,152 @@ class ConstraintTests(unittest.TestCase):
             )
             self.assertEqual(audit["feature_path"], "P1")
             self.assertGreaterEqual(audit["qualified_correction_axes"], 3)
+
+    def test_k1_hypotheses_are_additive_and_group_uses_one_budget(self):
+        state = self.initial()
+        for _ in range(2):
+            state = s.update_state(state, self.answer(state), self.bundle)
+        self.assertTrue(any(h["status"] == "PROPOSED" for h in state["k1_hypotheses"]))
+        without_audit = {
+            k: v
+            for k, v in state.items()
+            if k
+            not in {
+                "k1_hypotheses",
+                "constraint_details",
+                "k1_diagnostics",
+                "k1_audit_version",
+            }
+        }
+        self.assertEqual(
+            s.live_features(state, self.bundle),
+            s.live_features(without_audit, self.bundle),
+        )
+        self.assertEqual(state["k1_diagnostics"]["error_pruned_candidates"], 0)
+        self.assertTrue(
+            all(
+                "answer_evidence_ids" in item
+                and "target_scope" in item
+                and "applicability" in item
+                for item in state["constraint_details"]
+            )
+        )
+        while s.select_next_question(state, self.bundle)["action"] == "ASK":
+            state = s.update_state(state, self.answer(state), self.bundle)
+        result = s.finalize_result(state, self.bundle)
+        self.assertEqual(len(result["candidate_groups"]), 1)
+        group = result["candidate_groups"][0]
+        self.assertLessEqual(len(group["main_candidate_ids"]), 5)
+        self.assertLessEqual(len(group["secondary_candidate_ids"]), 3)
+        self.assertFalse(
+            set(group["main_candidate_ids"]) & set(group["secondary_candidate_ids"])
+        )
+
+    def test_completed_cache_verifies_hashes_and_never_fits(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            owner = Path(tmp)
+            dst = owner / "revisions/r3"
+            contract = owner / "contract.json"
+            t.save(contract, {"mechanisms": t.protocol()})
+            t.save(
+                dst / "internal_feature_amendment.frozen.json",
+                {"protocol": t.internal_feature_amendment()},
+            )
+            t.save(
+                dst / "full_development_contract.frozen.json",
+                {"protocol": t.full_development_protocol()},
+            )
+            t.save(dst / "constraints_public_summary.private.json", {"fixture": True})
+            contract_sha, amendment_sha = t.sha(contract), t.sha(
+                dst / "internal_feature_amendment.frozen.json"
+            )
+            t.save(
+                dst / "constraints_completion_manifest.private.json",
+                {
+                    "completed": True,
+                    "original_contract_sha256": contract_sha,
+                    "internal_feature_amendment_sha256": amendment_sha,
+                    "full_development_contract_sha256": t.sha(
+                        dst / "full_development_contract.frozen.json"
+                    ),
+                    "private_artifact_hashes": {
+                        "constraints_public_summary.private.json": t.sha(
+                            dst / "constraints_public_summary.private.json"
+                        )
+                    },
+                    "code_fingerprints": t.scoring_code_fingerprints(),
+                },
+            )
+            with patch.object(
+                t, "fit_relations", side_effect=AssertionError("CACHE_REFIT")
+            ), patch.object(
+                t, "trajectory", side_effect=AssertionError("CACHE_RECOMPUTE")
+            ):
+                result = t.verify_completed(
+                    owner, contract, contract_sha, amendment_sha
+                )
+                self.assertEqual(result["verification"]["fit_calls"], 0)
+                self.assertEqual(
+                    t.run_nested(
+                        owner,
+                        contract,
+                        contract_sha,
+                        expected_amendment_sha256=amendment_sha,
+                    ),
+                    {"fixture": True},
+                )
+            t.save(dst / "constraints_public_summary.private.json", {"changed": True})
+            with self.assertRaisesRegex(ValueError, "PRIVATE_ARTIFACT_CHANGED"):
+                t.verify_completed(owner, contract, contract_sha, amendment_sha)
+
+    def test_full_vocabulary_candidate_missing_from_oof_has_zero_loss_mask(self):
+        state = self.initial()
+        for _ in range(2):
+            state = s.update_state(state, self.answer(state), self.bundle)
+        base_rows = [
+            r
+            for r in state["candidate_scores"]
+            if r["candidate_id"].startswith("sensory.")
+        ]
+        present = base_rows[0]["candidate_id"]
+        missing = "sensory.fixture_only_full_vocabulary"
+        rows = [
+            {
+                "record_id": f"r{i}",
+                "group_id": f"g{i}",
+                "slot": "Q1",
+                "base_rows": base_rows,
+                "episode": {
+                    "hidden": [present, missing],
+                    "relevance": {present: 1.0, missing: 1.0},
+                },
+                "terms": {"2": s.available_terms(state["base_state"], 2), "3": []},
+                "base_expert_training_groups": [f"g{j}" for j in range(4) if j != i],
+            }
+            for i in range(4)
+        ]
+        fitted = t.fit_relations(rows, [present, missing], {f"g{i}" for i in range(4)})
+        self.assertEqual(fitted["receipt"]["identifiable_training_rows"], 4)
+        self.assertTrue(
+            all(missing not in term["coefficients"] for term in fitted["pairs"])
+        )
+        self.assertTrue(fitted["receipt"]["optimizer_success"])
+
+    def test_held_direction_diagnostic_does_not_shrink_leaf_target_denominator(self):
+        d = t.direction_metrics(
+            ["sensory.apple", "sensory.cocoa", "sensory.unknown_parent_fixture"],
+            ["sensory.apple", "sensory.cocoa"],
+            ["sensory.apple"],
+            ["fruity"],
+        )
+        self.assertEqual(d["hidden_fine_target_count"], 3)
+        self.assertEqual(d["hidden_targets_with_unknown_parent_count"], 1)
+        self.assertEqual(d["preferred_exact_leaf_coverage"], 1 / 3)
+        self.assertEqual(d["preferred_direction_coverage"], 0.5)
+        self.assertEqual(d["target_direction_outside_preferred_scope"], 0.5)
+        self.assertIsNone(
+            t.direction_metrics([], [], [], [])["preferred_direction_coverage"]
+        )
 
 
 if __name__ == "__main__":

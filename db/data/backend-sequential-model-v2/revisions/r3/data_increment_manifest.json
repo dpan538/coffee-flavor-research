@@ -1,0 +1,444 @@
+{
+  "actual_acquisition": "FOUR_NEW_STUDY_XML_AND_SUPPLEMENT_ARCHIVES_CHECKED;TWO_ROLE_LIMITED_ADMISSIONS",
+  "admitted_summary": {
+    "all_source_licenses": "CC-BY-4.0",
+    "castillo": {
+      "actual_people": 3,
+      "conditions": 2,
+      "eligible_proxy_fields": [
+        "aroma",
+        "flavor",
+        "residual_flavor",
+        "acidity",
+        "body"
+      ],
+      "individual_rows": 6,
+      "material_groups": 1,
+      "native_cells": 60,
+      "owner_relative_path": "revisions/r3/castillo_grader_scores.private.json",
+      "profile_intensity_eligible": false,
+      "role": "AUX_RECORDED_MIXED_QUALITY_GRADER_SCORES",
+      "sha256": "33673bc90db45730a6e30484f54708b9ce6c7e9a409da09bae9d1bc5ee5815e8"
+    },
+    "commercial": {
+      "AEDA_cells_observed": 219,
+      "AEDA_cells_total": 340,
+      "analytical_cells_observed_including_color": 138,
+      "analytical_cells_total_including_color": 228,
+      "chemical_cells_observed": 126,
+      "chemical_cells_total": 216,
+      "color_cells_total": 12,
+      "exact_QDA_cells": 0,
+      "individual_sensory_records": 0,
+      "owner_relative_path": "revisions/r3/commercial_aroma_native_records.private.json",
+      "products": 4,
+      "role": "AUX_LAB_CHEMISTRY_AND_GC_O_ENDPOINTS",
+      "sha256": "072a6fc0387cd7aa85e9bdef49554db8ad985b77f0285b3546db8bf4bf320650",
+      "source_issue_count": 2
+    },
+    "main_M2_scoring_changed": false,
+    "new_auxiliary_lab_sources": 1,
+    "new_auxiliary_recorded_score_sources": 1,
+    "new_cup_intensity_sources_admitted": 0,
+    "raw_files_downloaded": 4,
+    "version": "m2-r3-castillo-commercial-native-admission.v1"
+  },
+  "all_source_licenses": "CC-BY-4.0",
+  "attribution_addendum": {
+    "code_sha256": "899d3dcd8e6e4f02fe0ef3890b59f7864cf0ce6736d4c23b0914b075c6a91d36",
+    "corrects": "EMPTY_DERIVED_AUTHOR_LIST_AND_CONCATENATED_DATE_STRING_FROM_CONTRIB_TYPE_ONLY_ADAPTER;READ_PARENT_GROUP_CONTENT_TYPE_AND_DATE_CHILDREN",
+    "evaluation_reruns": 0,
+    "model_refits": 0,
+    "preservation": "NO_NATIVE_ROW_MASK_SCORE_SOURCE_FILE_PROTOCOL_MODEL_OR_EVALUATION_CHANGED",
+    "studies": {
+      "PMC12469716": {
+        "applies_to_owner_relative_path": "revisions/r3/commercial_aroma_native_records.private.json",
+        "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12469716/",
+        "attribution_required": true,
+        "authors": [
+          "Xiaomei Chen",
+          "Panpan Wu",
+          "Shuwei Wang",
+          "Jie Sun",
+          "Haitao Chen"
+        ],
+        "doi": "10.3390/foods14183192",
+        "editors_not_authors": [
+          "Adriana Farah"
+        ],
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "modification": "EXACT_NATIVE_CELL_EXTRACTION_WITH_EXPLICIT_MASKS_AND_NAMESPACED_KEYS",
+        "preserved_payload_sha256": "072a6fc0387cd7aa85e9bdef49554db8ad985b77f0285b3546db8bf4bf320650",
+        "preserved_records_sha256": "d20502244aa9940d6775ad8992c719ff0a473486ebb3d1f4427cdec672d71fbc",
+        "publication_dates": [
+          {
+            "date_type_as_source": {},
+            "day": 13,
+            "iso_date": "2025-09-13",
+            "month": 9,
+            "year": 2025
+          }
+        ],
+        "source_files": [
+          {
+            "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12469716/fullTextXML",
+            "owner_relative_path": "revisions/r3/sources/PMC12469716.xml",
+            "sha256": "c50109405a74e89caacfb0939851f76d95e43a28a0c54bcec1e16598782861ad"
+          },
+          {
+            "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12469716/supplementaryFiles",
+            "owner_relative_path": "revisions/r3/sources/PMC12469716.supplementary.zip",
+            "sha256": "493ccd677e265d5428c62f78eee5fd37e0e2e8355c5fa9553c328e9ef6eccbe2"
+          }
+        ],
+        "title": "Identification of Key Aroma-Active Compounds in Commercial Coffee Using GC-O/AEDA and OAV Analysis"
+      },
+      "PMC12817937": {
+        "applies_to_owner_relative_path": "revisions/r3/castillo_grader_scores.private.json",
+        "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12817937/",
+        "attribution_required": true,
+        "authors": [
+          "Maria A Madrid-Restrepo",
+          "Ana M León-Inga",
+          "Aida Esther Peñuela-Martínez",
+          "Mónica P Cala",
+          "Alejandro Reyes"
+        ],
+        "doi": "10.1128/msystems.01364-25",
+        "editors_not_authors": [
+          "John G Gibbons"
+        ],
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "modification": "EXACT_NATIVE_CELL_EXTRACTION_WITH_EXPLICIT_MASKS_AND_NAMESPACED_KEYS",
+        "preserved_payload_sha256": "33673bc90db45730a6e30484f54708b9ce6c7e9a409da09bae9d1bc5ee5815e8",
+        "preserved_records_sha256": "a8cd160067e2c229b28c2f8f8614d015413757611f6ce5ef95cfd20a8d6bc86d",
+        "publication_dates": [
+          {
+            "date_type_as_source": {},
+            "day": 12,
+            "iso_date": "2025-12-12",
+            "month": 12,
+            "year": 2025
+          }
+        ],
+        "source_files": [
+          {
+            "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12817937/fullTextXML",
+            "owner_relative_path": "revisions/r3/sources/PMC12817937.xml",
+            "sha256": "fa1cffb1cf5bf9ed2de44ffc43aa46e94ea00f98dd29a104ae8c8b2745abc57c"
+          },
+          {
+            "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12817937/supplementaryFiles",
+            "owner_relative_path": "revisions/r3/sources/PMC12817937.supplementary.zip",
+            "sha256": "74782f7d8aa9cf2625d4a998472e9ba3efb62c2912660232166413b839af1d98"
+          }
+        ],
+        "title": "Metagenomic, metabolomic, and sensorial characteristics of fermented Coffea arabica L. var. Castillo beans inoculated with microbial starter cultures"
+      }
+    },
+    "version": "m2-r3-native-source-attribution-addendum.v1"
+  },
+  "attribution_policy": "Use addendum authors/dates; preserve frozen admission metadata defect, raw data and all model hashes",
+  "castillo": {
+    "actual_people": 3,
+    "conditions": 2,
+    "eligible_proxy_fields": [
+      "aroma",
+      "flavor",
+      "residual_flavor",
+      "acidity",
+      "body"
+    ],
+    "individual_rows": 6,
+    "material_groups": 1,
+    "native_cells": 60,
+    "owner_relative_path": "revisions/r3/castillo_grader_scores.private.json",
+    "profile_intensity_eligible": false,
+    "role": "AUX_RECORDED_MIXED_QUALITY_GRADER_SCORES",
+    "sha256": "33673bc90db45730a6e30484f54708b9ce6c7e9a409da09bae9d1bc5ee5815e8"
+  },
+  "commercial": {
+    "AEDA_cells_observed": 219,
+    "AEDA_cells_total": 340,
+    "analytical_cells_observed_including_color": 138,
+    "analytical_cells_total_including_color": 228,
+    "chemical_cells_observed": 126,
+    "chemical_cells_total": 216,
+    "color_cells_total": 12,
+    "exact_QDA_cells": 0,
+    "individual_sensory_records": 0,
+    "owner_relative_path": "revisions/r3/commercial_aroma_native_records.private.json",
+    "products": 4,
+    "role": "AUX_LAB_CHEMISTRY_AND_GC_O_ENDPOINTS",
+    "sha256": "072a6fc0387cd7aa85e9bdef49554db8ad985b77f0285b3546db8bf4bf320650",
+    "source_issue_count": 2
+  },
+  "contracts": [
+    {
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12817937/",
+      "attribution_required": true,
+      "authors": [],
+      "biological_tank_replicates": "ARTICLE_REPORTS_INDEPENDENT_TANKS_FOR_OMICS;NO_INDIVIDUAL_SENSORY_TANK_LINKS_OR_EXTRA_COFFEE_IDS_IN_SCORE_TABLE",
+      "certified_q_graders": 3,
+      "chemistry_join": "SUPPLEMENT_HAS_GROUP_DIFFERENTIAL_FOLD_CHANGES_ONLY;NO_SAMPLE_MATCHED_ABUNDANCE_MATRIX;NO_FABRICATED_JOIN",
+      "coffee_holdout": "NOT_ESTIMABLE_ONE_MATERIAL",
+      "descriptors": "NARRATIVE_NOT_CONVERTED_TO_SIGNED_TARGETS",
+      "doi": "10.1128/msystems.01364-25",
+      "excluded_from_model_fields": [
+        "uniformity",
+        "balance",
+        "clean_cup",
+        "sweetness",
+        "general"
+      ],
+      "fermentation_conditions": 2,
+      "individual_score_cells": 60,
+      "individual_score_rows": 6,
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "main_M2_scoring_eligible": false,
+      "material_identity": "SAME_FARM_VARIETY_CASTILLO;ONE_CONSERVATIVE_MATERIAL_GROUP;RAW_LOT_IDENTIFIER_NOT_PROVIDED",
+      "modification": "EXACT_TABLE_CELL_EXTRACTION_WITH_NAMESPACED_FIELDS_AND_EXPLICIT_MASKS",
+      "named_cupped_profiles": 2,
+      "pmcid": "PMC12817937",
+      "publication_dates_as_source": [
+        "12122025"
+      ],
+      "raw_redistribution": "NOT_PERFORMED_PRIVATE_OWNER_STORAGE_ONLY",
+      "real_user_alignment": "NOT_EVALUATED",
+      "scale_interpretation": "MIXED_SCA_STYLE_QUALITY_FEATURE_CODES;ARTICLE_ALSO_SAYS_INTENSITY;NO_CALIBRATED_INTENSITY_CLAIM",
+      "selected_task_fields": [
+        "aroma",
+        "flavor",
+        "residual_flavor",
+        "acidity",
+        "body"
+      ],
+      "source_id": "MADRID_RESTREPO_CASTILLO_2025",
+      "source_material_groups": 1,
+      "source_permissions_text": "Copyright © 2025 Madrid-Restrepo et al.This is an open-access article distributed under the terms of the Creative Commons Attribution 4.0 International license.",
+      "source_scale": "SOURCE_FEATURE_SCORES_1_TO_10_WITH_QUARTER_POINT_ENTRIES",
+      "title": "Metagenomic, metabolomic, and sensorial characteristics of fermented Coffea arabica L. var. Castillo beans inoculated with microbial starter cultures",
+      "version": "m2-r3-castillo-commercial-native-admission.v1"
+    },
+    {
+      "AEDA_dash": "UNREPORTED_OR_UNDETECTED_AMBIGUOUS;MASK_FALSE_NOT_ZERO",
+      "AEDA_endpoint": "HIGHEST_REPORTED_THREEFOLD_DILUTION_GC_O_DETECTION;NO_CUP_INTENSITY_OR_HUMAN_RESPONSE_MATRIX",
+      "OAV": "DERIVED_CONCENTRATION_OVER_EXTERNAL_ODOR_THRESHOLD_NOT_INDEPENDENT_TARGET",
+      "QDA_numeric_cells_obtained": 0,
+      "QDA_source_scale": "0_NOT_PERCEIVABLE_TO_10_STRONGLY_PERCEIVABLE",
+      "QDA_status": "FIGURE_ONLY_NOT_DIGITIZED;ALL_EIGHT_SUPPLEMENT_PAGES_INSPECTED_NO_QDA_TABLE",
+      "QDA_target_fields": [
+        "roasted",
+        "fruity",
+        "caramel",
+        "smoky",
+        "woody",
+        "chocolate",
+        "nutty",
+        "floral"
+      ],
+      "admission_role": "AUX_LAB_CHEMISTRY_AND_GC_O_RECORDED_ENDPOINTS_ONLY_NO_CUP_PROFILE_FIT",
+      "aggregate_unit": "FOUR_SOURCE_PRODUCTS;MEAN_SD_TECHNICAL_EXPERIMENTS_ARE_NOT_EXTRA_COFFEES_OR_PEOPLE",
+      "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12469716/",
+      "attribution_required": true,
+      "authors": [],
+      "chemical_ND": "NOT_DETECTED_NO_QUANTIFIED_ZERO",
+      "chemistry_AEDA_pair_key": "NATIVE_GL_MJ_XF_BS_PRODUCT_CODES_ONLY;COMPOUND_NAMES_NOT_FORCED_NORMALIZED",
+      "doi": "10.3390/foods14183192",
+      "individual_sensory_records_obtained": 0,
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "main_M2_scoring_eligible": false,
+      "modification": "EXACT_TABLE_CELL_EXTRACTION_WITH_NAMESPACED_FIELDS_AND_EXPLICIT_MASKS",
+      "pmcid": "PMC12469716",
+      "professional_profile_alignment_eligible": false,
+      "publication_dates_as_source": [
+        "1392025"
+      ],
+      "published_products": 4,
+      "raw_redistribution": "NOT_PERFORMED_PRIVATE_OWNER_STORAGE_ONLY",
+      "source_id": "CHEN_COMMERCIAL_COFFEE_AROMA_2025",
+      "source_permissions_text": "© 2025 by the authors.Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).",
+      "source_reported_QDA_panel_size": 18,
+      "source_reporting_issue": "METHOD_SAYS_SEVEN_ATTRIBUTES_BUT_NAMES_EIGHT;PRESERVE_EIGHT_NAMES_NO_INVENTED_COLUMN",
+      "title": "Identification of Key Aroma-Active Compounds in Commercial Coffee Using GC-O/AEDA and OAV Analysis",
+      "version": "m2-r3-castillo-commercial-native-admission.v1"
+    }
+  ],
+  "deferred_and_reused_routes": [
+    {
+      "actual_supplement": "2page PDF;18texture means;20chemistry rows include duplicated initial conditions",
+      "decision": "CONTEXT_AND_CHEMISTRY_ONLY_NO_SENSORY_TRAINING",
+      "doi": "10.3390/foods13050653",
+      "independent_materials": 1,
+      "license": "CC-BY-4.0",
+      "reason": "No exact cup-profile or per-grader numeric matrix. No wheel copying or graph digitization; paper same-instance FTCV not valid holdout.",
+      "source": "Silva2024_Catigua_MG2",
+      "source_products_or_conditions": 18
+    },
+    {
+      "actual_supplement": "XLSX sheets Title/Photosynthesis DEGs/Hormone DEGs/Stress DEGs; PDF supplementary figures",
+      "decision": "DEFER_SENSORY_FIT",
+      "doi": "10.1093/jxb/eraa151",
+      "license": "CC-BY-4.0",
+      "reason": "Whole/ground pooled descriptions for upper/lower canopy cannot reconstruct12people. RNA developmental groups are not sensory sample rows.",
+      "source": "Cheng2020_Canopy"
+    },
+    {
+      "actual_check": "Original nestedDOCX references+ANOVA tables inspected, no30condition intensity matrix; oldDryad denial retained, not reinterpreted.",
+      "decision": "NO_NEW_SOURCE_OR_ROWS",
+      "doi": "10.1038/s41598-024-69867-6",
+      "source": "Liang2024_reused_R1"
+    },
+    {
+      "actual_check": "NestedZIP contains supplementaryPDF, no raw respondent table. Existing prior admission state preserved.",
+      "decision": "NO_NEW_SOURCE_OR_ROWS",
+      "doi": "10.3390/foods11162440",
+      "source": "Batali2022_reused_R1"
+    },
+    {
+      "actual_check": "Three actual download attempts: rawgreen/rawroasted/sensoryquality eachHTTP403; no downloaded rows or join.",
+      "decision": "FILES_NOT_OBTAINED_NO_TRAINING_OR_SAMPLE_COUNT",
+      "doi": "10.17632/nz2fr76trm.3",
+      "license": "CC-BY-4.0_dataset_landing",
+      "source": "FT_NIR_previously_catalogued_R1"
+    }
+  ],
+  "fixed_increment_contract": {
+    "implementation_sha256": "1b64eb9b64d6dcfc345652f3ac916a098370aa549e89ebe39db27a3b7de28074",
+    "no_model_fit_or_evaluation_before_freeze": true,
+    "parent_authorization": "EXPLICIT_BOUNDED_CASTILLO_INCREMENT_WITH_FIXED_RIDGE_AND_DATA_VIEW_BUDGETS",
+    "protocol": {
+      "baselines": "NATIVE_TRAIN_TARGET_MEAN_RETAINED_FOR_EACH_DATA_BUDGET",
+      "confirmation": "NO_SEPARATE_FRESH_CONFIRMATION_SET_IN_SIX_ROW_SOURCE",
+      "data_budgets": {
+        "N1": "EACH_OF_TWO_OUTER_TRAIN_GRADERS_FIT_SEPARATELY;AVERAGE_THEIR_HELD_LOSSES_NOT_PREDICTION_ENSEMBLE",
+        "N2": "BOTH_OUTER_TRAIN_GRADERS_FIT_JOINTLY"
+      },
+      "direction": "LOWER_IS_BETTER",
+      "doi": "10.1128/msystems.01364-25",
+      "execution": "ALL_18_OUTER_AND_TWO_FINAL_MODELS_FROZEN_BEFORE_HELD_PREDICTION_PASS;CACHE_HASH_VERIFY_RETURN_SAVED_NO_REEVALUATION",
+      "final_models": "BOTH_VIEW_BUDGETS_FIT_ALL_THREE_GRADERS_FOR_RELOAD_ONLY;NO_TRAIN_LOSS_AS_VALIDATION",
+      "input_exclusions": "TARGET_SELF_AND_ALL_EXCLUDED_QUALITY_FIELDS;NO_IDS_CONDITION_METADATA_C0_C1_CHEMISTRY_OR_NARRATIVE_DESCRIPTORS",
+      "main_M2_scoring_changed": false,
+      "model": "RIDGE_LINEAR_0.5_WITH_INTERCEPT;TRAIN_ONLY_INPUT_AND_TARGET_POPULATION_MEAN_SD;CLIP_SOURCE_RANGE_1_TO_10",
+      "outer_validation": "THREE_LEAVE_ONE_GRADER_OUT_FOLDS;BOTH_CONDITIONS_OF_HELD_GRADER_TRAVEL_TOGETHER;SAME_TWO_CONDITIONS_SHARED_WITH_TRAIN",
+      "primary_contrasts": [
+        "N2V1_MINUS_N1V1",
+        "N2V4_MINUS_N1V4"
+      ],
+      "primary_metric": "HELD_GRADER_MACRO_MAE_ACROSS_SAME_TWO_CONDITIONS_AND_ALL_FIVE_NATIVE_TARGET_CODES",
+      "professional_profile_alignment": "NOT_EVALUATED",
+      "real_user_alignment": "NOT_EVALUATED",
+      "role": "AUX_RECORDED_MIXED_QUALITY_GRADER_SCORES",
+      "scope": "WITHIN_THIS_SOURCE_AND_THESE_TWO_PROCESSING_CONDITIONS_ONLY;NOT_NEW_COFFEE_NOT_FERMENTATION_CAUSAL_EFFECT_NOT_LIVE_QUESTION_EFFICIENCY",
+      "search": "NONE_FIXED_MODEL_NO_PAIRS_OR_TRIPLES_WITH_ONLY_TWO_TRAIN_GRADERS",
+      "source_contribution": "ACTUALLY_ACQUIRED_INDEPENDENT_GRADER_CODES_AND_ONE_TO_TWO_TRAIN_GRADER_INCREMENT;NOT_D0_PLUS_D1_CORE_GAIN",
+      "source_id": "MADRID_RESTREPO_CASTILLO_2025",
+      "source_owner_relative_path": "revisions/r3/castillo_grader_scores.private.json",
+      "source_scale": "PUBLISHED_ONE_TO_TEN_SCA_STYLE_FEATURE_CODES;MIXED_QUALITY_VS_ARTICLE_INTENSITY_WORDING;NO_CALIBRATED_INTENSITY",
+      "source_sha256": "33673bc90db45730a6e30484f54708b9ce6c7e9a409da09bae9d1bc5ee5815e8",
+      "source_units": {
+        "actual_graders": 3,
+        "actual_rows": 6,
+        "conservative_material_groups": 1,
+        "processing_conditions": 2,
+        "target_cells": 30
+      },
+      "target_exclusions": [
+        "uniformity",
+        "balance",
+        "clean_cup",
+        "sweetness",
+        "general",
+        "totals",
+        "quality_preference_truth"
+      ],
+      "target_order": [
+        "aroma",
+        "flavor",
+        "residual_flavor",
+        "acidity",
+        "body"
+      ],
+      "task": "RECONSTRUCTION_OF_PUBLISHED_NATIVE_GRADER_FEATURE_CODES_NOT_SENSORY_INTENSITY",
+      "uncertainty": "ALL_THREE_HELD_GRADER_LOSSES_AND_PER_TARGET_LOSSES_REPORTED;NO_FORMAL_CONFIDENCE_INTERVAL_OR_SIGNIFICANCE_WITH_THREE_PEOPLE",
+      "version": "m2-r3-castillo-tiny-recorded-grader-increment.v1",
+      "view_budgets": {
+        "V1": "FIRST_AVAILABLE_OTHER_TARGET_FIELD_IN_FIXED_TARGET_ORDER",
+        "V4": "ALL_FOUR_OTHER_TARGET_FIELDS"
+      },
+      "view_contrasts": [
+        "N1V4_MINUS_N1V1",
+        "N2V4_MINUS_N2V1"
+      ]
+    },
+    "registered_utc": "2026-09-05T16:25:35.662206+00:00",
+    "source_adapter_sha256": "90ec7b6b9b5e97e6fa55c7d6db9b12361d2ce7fe8d4f5879bad4281ed1c9cc34",
+    "source_sha256": "33673bc90db45730a6e30484f54708b9ce6c7e9a409da09bae9d1bc5ee5815e8"
+  },
+  "fixed_increment_contract_sha256": "f98d7a2301344b03b47077a93c26159a2cee6e0439da234928a7dd40f359cd87",
+  "increment_interpretation": "Same frozen native targets/model/held graders; new training-grader and measured-view budgets separated; not D0+D1 core descriptor gain",
+  "increment_summary_sha256": "e9e729fe63679dfdd4a9be0e6cf30b34968fb4cb2262a03483bd48977db8386d",
+  "independent_studies_role_admitted": 2,
+  "join_policy": "EXPLICIT_NATIVE_PRODUCT_AND_CONDITION_KEYS;ONE_TO_ONE_VALIDATED;NO_SIMILARITY_JOIN_OR_MANY_TO_MANY",
+  "main_M2_scoring_changed": false,
+  "new_auxiliary_lab_sources": 1,
+  "new_auxiliary_recorded_score_sources": 1,
+  "new_cup_intensity_sources_admitted": 0,
+  "new_fine_descriptor_training_rows": 0,
+  "new_independent_cup_intensity_source_target_met": false,
+  "new_studies_actually_in_fixed_training_increment": 1,
+  "quota_interpretation": "Two independent studies actually acquired and admitted to explicitly limited auxiliary roles; one contributes measured grader-code training, the other analytical GC-O pairing. This does not establish two new cup-profile supervision sources or30–60new independent groups.",
+  "raw_files_downloaded": 4,
+  "recorded_utc": "2026-09-05T16:22:41.551629+00:00",
+  "research_budget": "3_TO_6_HOURS_MAXIMUM_NOT_MINIMUM_OR_QUOTA",
+  "research_started_utc": "2026-09-05T15:28:21+00:00",
+  "source_files": [
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12817937/fullTextXML",
+      "owner_relative_path": "revisions/r3/sources/PMC12817937.xml",
+      "sha256": "fa1cffb1cf5bf9ed2de44ffc43aa46e94ea00f98dd29a104ae8c8b2745abc57c"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12817937/supplementaryFiles",
+      "owner_relative_path": "revisions/r3/sources/PMC12817937.supplementary.zip",
+      "sha256": "74782f7d8aa9cf2625d4a998472e9ba3efb62c2912660232166413b839af1d98"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12469716/fullTextXML",
+      "owner_relative_path": "revisions/r3/sources/PMC12469716.xml",
+      "sha256": "c50109405a74e89caacfb0939851f76d95e43a28a0c54bcec1e16598782861ad"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12469716/supplementaryFiles",
+      "owner_relative_path": "revisions/r3/sources/PMC12469716.supplementary.zip",
+      "sha256": "493ccd677e265d5428c62f78eee5fd37e0e2e8355c5fa9553c328e9ef6eccbe2"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10931400/fullTextXML",
+      "owner_relative_path": "revisions/r3/sources/PMC10931400.xml",
+      "sha256": "3d7120412c890e5f545faa155629d59cd063da88e6655f671a16c0917e074387"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10931400/supplementaryFiles",
+      "owner_relative_path": "revisions/r3/sources/PMC10931400-supp.zip",
+      "sha256": "07f6fd85dcba4b0908de00102feda2f010cdb6096b4ce8a0c2105987a53fe010"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7337091/fullTextXML",
+      "owner_relative_path": "revisions/r3/sources/PMC7337091.xml",
+      "sha256": "779c71aa53e6e5ed407064a209e761e106e007efec587ac5fc0011c4ac43be10"
+    },
+    {
+      "download_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7337091/supplementaryFiles",
+      "owner_relative_path": "revisions/r3/sources/PMC7337091-supp.zip",
+      "sha256": "594caf3931c6f55ddf9832d5e9f7ff8d6035b52d3eebc55a30a762221013e992"
+    }
+  ],
+  "thirty_to_sixty_new_group_target_met": false,
+  "version": "m2-r3-castillo-commercial-native-admission.v1"
+}

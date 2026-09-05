@@ -68,7 +68,8 @@
     "scope": "Common fine five-item counterfactual completion panels; identity here is panel identity, not equality of all scores or runtime state",
     "state_rows": 2743
   },
-  "construct_status": "EXTERNAL_CONSTRUCT_CHECK_PILOT_PENDING_SEPARATE_FROZEN_RUN",
+  "construct_status": "EXTERNAL_CONSTRUCT_CHECK_PILOT",
+  "external_construct_summary_sha256": "f43741fca8cd0b7df229a89dd785ebc124959ceca3bf4b107f0965e9ffca7759",
   "implementation_tests": {
     "passed_before_empirical_audit": true,
     "test_count": 12,
