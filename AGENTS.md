@@ -153,6 +153,25 @@ new questionnaire, CI redesign, unrelated worktree cleanup, model release or mai
 merge is authorized. Report live JSON inference, artifact replay and data retraining
 as separate operations, with actual dates and private persistent model storage.
 
+### Active M2 R5 supervision and information-value validation
+
+Preserve R4 models, wiring and historical outcomes. Use one `revisions/r5`
+record and one fixed small supervision model family. A/B/T are disjoint source
+observation units; independent T may share concepts with A. Report full-reference
+alignment separately from a fixed unexpressed-target subset. Positive-text
+nonmention is unknown, not a sensory negative. Keep native CATA, ordinal sensory
+intensity, JAR, liking and quality as distinct supervision tasks.
+
+Audit actual acquisition and mapping losses, compare A with genuinely revealed
+B, and recover task-eligible paired observations before attributing failures to
+model capacity. Nested question-expert features must exclude the outer-held
+coffee groups. Do not repeat R4 mechanism grids, high-order models or searches
+around the five viewed trigger cases. New trigger fitting requires identifiable
+new information and distributed training support. B2 remains default and
+FOUNDATION_CHECK off. Existing Q3 skip-to-Q4 and single-final-comparison contracts
+remain in force. Parallel disjoint source, data and backend work is authorized;
+no frontend, CI changes, author messages, historical overwrite or unrelated cleanup.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;

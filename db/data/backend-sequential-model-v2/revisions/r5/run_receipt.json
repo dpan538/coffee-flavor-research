@@ -1,0 +1,140 @@
+{
+  "actual_fitting": {
+    "artifacts": {
+      "predictions.private.json": "ce0ddca825164e91a1b6dba0376bc78a7c97b597734cb8341c2e3128dbb718ea",
+      "summary.private.json": "7d22e05416ff32677886fb811221b4532eaf2060d65e63dbf73e22b81d46e6da"
+    },
+    "code_sha256": {
+      "run_supervision_r5.py": "6e76617b2421a593fa5f90f628bdd8083b91fd4334bf57bc6da5fd51882cd565",
+      "train_supervision_r5.py": "2dbfd6cd79ff0a149a4f87034f8daa68a0f568bda06a8d4b55078087871fbbfd"
+    },
+    "finished_utc": "2026-09-06T01:59:55.084943+00:00",
+    "input_hashes": {
+      "experiment_contract.json": "7b2dc839750cbade9934ac22f4ffa4d94b8aee476f1f016009fdeeac5d793785",
+      "information_cases.private.json": "21ba76d6345cd709bb548870c68a88f310fc6346277d296723ff86996aa06cfe",
+      "information_nested_training.private.json": "c56838e15274b000aecfd0004457d24f770fc4c71f75d1f769e46f7650a6ac89"
+    },
+    "models": [
+      {
+        "name": "T1_A",
+        "outer": 0,
+        "path": "models/T1_A_outer0.json",
+        "sha256": "f61a69f09d2c77a18b1e24679e1fd421c529ff30c22d0b562fe15c3bc4ea9f2b"
+      },
+      {
+        "name": "T2_AB",
+        "outer": 0,
+        "path": "models/T2_AB_outer0.json",
+        "sha256": "e9318a0af6a6049f1fd7eaa6366af93a9b4e369008891d38148e4d2bd49a35c1"
+      },
+      {
+        "name": "T3_BEFORE_RECOVERED_PAIRS",
+        "outer": 0,
+        "path": "models/T3_BEFORE_RECOVERED_PAIRS_outer0.json",
+        "sha256": "9ee729868e338d1cb087f48c60026bf61dc15003bc15da5d50b9b235661908db"
+      },
+      {
+        "name": "T2_50_PERCENT_GROUPS",
+        "outer": 0,
+        "path": "models/T2_50_PERCENT_GROUPS_outer0.json",
+        "sha256": "039654c3c4f2719b496292b65ba218afb28f5af2fb8d4cbe0f3c9864555c760f"
+      },
+      {
+        "name": "T2_MISMATCHED_B",
+        "outer": 0,
+        "path": "models/T2_MISMATCHED_B_outer0.json",
+        "sha256": "aad6c67ff823fef3d04a02422b6b82f575a04b5f89b894faa408542185dbfc22"
+      },
+      {
+        "name": "T1_A",
+        "outer": 1,
+        "path": "models/T1_A_outer1.json",
+        "sha256": "8641863e81ca33186ed48bddc4301878b71f494177cf1e6de6e51b1a7efec89f"
+      },
+      {
+        "name": "T2_AB",
+        "outer": 1,
+        "path": "models/T2_AB_outer1.json",
+        "sha256": "122a8858e87c85f40f903450fa21717be66dea78c77d95c88b4a782f8c3aca6a"
+      },
+      {
+        "name": "T3_BEFORE_RECOVERED_PAIRS",
+        "outer": 1,
+        "path": "models/T3_BEFORE_RECOVERED_PAIRS_outer1.json",
+        "sha256": "11ee71e0cb3aa9603d8a22a7f9def8865a9cdb4849db5bf26dea42c508c29dc2"
+      },
+      {
+        "name": "T2_50_PERCENT_GROUPS",
+        "outer": 1,
+        "path": "models/T2_50_PERCENT_GROUPS_outer1.json",
+        "sha256": "d8d19ababb75afaf33f483efeba1078d50d5ba2cc41beda36c10ea3b37e83ee9"
+      },
+      {
+        "name": "T2_MISMATCHED_B",
+        "outer": 1,
+        "path": "models/T2_MISMATCHED_B_outer1.json",
+        "sha256": "1d7ed82b663cf61f3b3af03bdcb62bb3fe5b486b2e9f0d0f57ad77a203de913d"
+      },
+      {
+        "name": "T1_A",
+        "outer": 2,
+        "path": "models/T1_A_outer2.json",
+        "sha256": "d5d93b918cf8ee7f6bcbba720e26da1b18fba3b44e0a48a6a66499004f3007a6"
+      },
+      {
+        "name": "T2_AB",
+        "outer": 2,
+        "path": "models/T2_AB_outer2.json",
+        "sha256": "187cf7752b2726739759846668f62e310c9310647c781263ea3fd36519b1e2aa"
+      },
+      {
+        "name": "T3_BEFORE_RECOVERED_PAIRS",
+        "outer": 2,
+        "path": "models/T3_BEFORE_RECOVERED_PAIRS_outer2.json",
+        "sha256": "2f36440c7ec49f2dd8410e71db2d1a6306fc9b667559e1a5dd906c7a0516696c"
+      },
+      {
+        "name": "T2_50_PERCENT_GROUPS",
+        "outer": 2,
+        "path": "models/T2_50_PERCENT_GROUPS_outer2.json",
+        "sha256": "78c0c09d5da01ccfc082478c38f965ca584c30b2dd8f6ec5cd63bb59b62a0721"
+      },
+      {
+        "name": "T2_MISMATCHED_B",
+        "outer": 2,
+        "path": "models/T2_MISMATCHED_B_outer2.json",
+        "sha256": "14187f93cdd7d5d3d8e1ce252893b968faaae21b07900f8e8deba17fdc08691a"
+      },
+      {
+        "name": "FINAL_RESEARCH_ONLY",
+        "path": "models/R5_RESEARCH_HEAD.json",
+        "sha256": "45011316de180760541158ccead5540faa216c9e0dcd7596a3d6f2bdc221f2cf"
+      }
+    ],
+    "started_utc": "2026-09-06T01:59:51.638624+00:00"
+  },
+  "baseline_remote_CI": {
+    "CI": "success",
+    "Historical replay": "success"
+  },
+  "baseline_sha": "0eaea74f86660c1c186aec5ad72384493cde6cb0",
+  "from_raw_retraining": "RUNNING",
+  "live_JSON": {
+    "owner_relative_path": "revisions/r5/live_inference.private.json",
+    "scope": "Reloaded research scoring alongside existing validated R4 workflow; no default change",
+    "sha256": "f21d177b981d85e038bf58366df6352e8cf58dcc81334e0d795e2818398f8ab3",
+    "status": "PASS"
+  },
+  "publication": "Only code/configuration/aggregate metrics and hashes; case data and weights private",
+  "recorded_utc": "2026-09-06T02:07:59.779016+00:00",
+  "replay": {
+    "checked_utc": "2026-09-06T02:04:26.116617+00:00",
+    "fit_count": 0,
+    "replayed_predictions": 395,
+    "reporting_correction": "Direct versus inferred contribution now uses all actually selected fine concepts at the evaluated branch; initial/later contributions separate. Original sealed reports retained; primary gap/ranking/loss values replay exactly.",
+    "status": "PASS"
+  },
+  "source_expansion": "ACTIVE",
+  "stage": "CHECKPOINT_1_COMPLETE_SOURCE_EXPANSION_ACTIVE",
+  "unrelated_deleted_paths_excluded": 135
+}

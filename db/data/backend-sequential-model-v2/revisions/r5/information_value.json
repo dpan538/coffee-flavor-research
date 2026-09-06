@@ -1,0 +1,554 @@
+{
+  "A0_trigger_gate": {
+    "gain_scorer": "FIXED_A0_NOT_NEW_R5_HEAD; regenerate gain for any newhead before training",
+    "key_gate": "gain>0.01 AND truly new B-derived Q3 canonical observation",
+    "nested_training": {
+      "0": {
+        "Q3_new_B_records": 12,
+        "identifiable": 36,
+        "key_with_new_B_groups": 0,
+        "key_with_new_B_records": 0,
+        "negative": 6,
+        "positive": 2,
+        "records": 51,
+        "ties": 28,
+        "unknown": 15
+      },
+      "1": {
+        "Q3_new_B_records": 13,
+        "identifiable": 42,
+        "key_with_new_B_groups": 1,
+        "key_with_new_B_records": 1,
+        "negative": 7,
+        "positive": 6,
+        "records": 53,
+        "ties": 29,
+        "unknown": 11
+      },
+      "2": {
+        "Q3_new_B_records": 16,
+        "identifiable": 40,
+        "key_with_new_B_groups": 0,
+        "key_with_new_B_records": 0,
+        "negative": 2,
+        "positive": 1,
+        "records": 54,
+        "ties": 37,
+        "unknown": 14
+      }
+    },
+    "outer_held": {
+      "Q3_new_B_records": 20,
+      "identifiable": 59,
+      "key_with_new_B_groups": 0,
+      "key_with_new_B_records": 0,
+      "negative": 3,
+      "positive": 2,
+      "records": 79,
+      "ties": 54,
+      "unknown": 20
+    },
+    "status": "NO_TRIGGER_FIT_INFORMATION_DIAGNOSTIC_ONLY"
+  },
+  "B_exact_overlap_independent_T_records": 22,
+  "Q3_new_canonical_records": 45,
+  "actual_negative_nonmention_corrections": 0,
+  "coffee_groups": 77,
+  "data_conversion_funnel": {
+    "R4_eligible_coffee_groups": 59,
+    "R4_eligible_mapped_three_grader_DEV_samples": 61,
+    "R4_empty_filtered_T_samples_retained": 11,
+    "R4_identifiable_filtered_T_groups": 49,
+    "R4_identifiable_filtered_T_samples": 50,
+    "R5_old_DEV_three_grader_groups": 77,
+    "R5_old_DEV_three_grader_samples": 79,
+    "R5_raw_three_grader_coffee_groups": 93,
+    "R5_raw_three_grader_named_samples": 95,
+    "all_three_ordinals_observed_rows": 522,
+    "anonymous_observation_rows": 166,
+    "anonymous_samples": 84,
+    "anonymous_three_grader_samples": 0,
+    "duplicate_sample_grader_rows": 0,
+    "exclusion_reasons": {
+      "112_to_95_old_DEV": "17 previously viewed historical records held outside the original DEV slice; not lost source observations",
+      "196_to_112": "84 anonymous samples have no source coffee name, all lack roast/grind metadata and have only1-2 grader rows; possible overlap with old coffees unresolved; missing C1 itself is not the exclusion criterion",
+      "61_records_to_59_groups": "Two extra sample IDs are same normalized coffee names and share original D0 group",
+      "61_to_50_R4_identifiable": "11 retained cases had no fine T after old reference formation and A-exact exclusion; R5 full independent T will retain legitimate A/T concept overlap",
+      "95_old_DEV_to_61_R4": "34 failed old requirement of3 nonempty mapped grader sets: 16 actually have fewer than3 source grader rows, 18 have>=3 source rows but fewer than3 mapped reports",
+      "full196_to95_raw_three_grader": "101 samples have fewer than3 actual grader observations; no role splitting or rotating can create a third independent observation"
+    },
+    "fine_vocabulary_D0": 52,
+    "fine_vocabulary_R1": 50,
+    "fresh_confirmation_groups": 0,
+    "individual_sheet_mirror_rows_not_added": 526,
+    "mapping_difference_rows_D0_vs_R1": 343,
+    "mapping_difference_rows_named_D0_vs_R1": 183,
+    "mapping_loss_phrase_occurrences": {
+      "FROZEN_EXACT_LEXICAL_MAPPING": 2404,
+      "INTENSITY_DURATION_OR_QUALITY_WORD_NOT_FINE_DESCRIPTOR": 963,
+      "JOINED_OR_ALTERNATIVE_FORM_NOT_SPLIT": 1,
+      "MODIFIED_COMPOSITE_OR_OTHER_MULTIWORD_UNMAPPED": 1139,
+      "NEGATION_OR_ABSENCE_SCOPE_NOT_POSITIVE_EXACT": 12,
+      "OTHER_UNMAPPED_SINGLE_FORM": 2336
+    },
+    "named_coffee_dependency_groups": 110,
+    "named_observation_rows": 360,
+    "named_samples_linked_to_existing_D0": 112,
+    "new_independent_traceable_coffee_groups": 0,
+    "ordinal_masks": {
+      "native.acidity_intensity": {
+        "NOT_MEASURED": 3,
+        "OBSERVED": 522,
+        "UNPARSEABLE": 1
+      },
+      "taste.bitterness": {
+        "OBSERVED": 526
+      },
+      "taste.sweetness": {
+        "OBSERVED": 526
+      }
+    },
+    "raw_grader_observation_rows": 526,
+    "recoverable_old_DEV_samples_from_raw_unit_role_assignment": 18,
+    "source_grader_people": 4,
+    "source_rows_per_sample_distribution": {
+      "1": 3,
+      "2": 98,
+      "3": 53,
+      "4": 42
+    },
+    "source_sample_ids": 196
+  },
+  "funnel": {
+    "B_actual_new_specific": {
+      "record_concepts": 52,
+      "records": 43
+    },
+    "B_new_system_canonical": {
+      "record_concepts": 52,
+      "records": 43
+    },
+    "source_B_new_exact": {
+      "record_concepts": 173,
+      "records": 70
+    },
+    "source_B_new_specific_not_selected": {
+      "record_concepts": 64,
+      "records": 45
+    }
+  },
+  "gain": {
+    "identifiable": 59,
+    "key_groups": 2,
+    "macro": -0.006620718462823724,
+    "negative": 3,
+    "outer_training_key_groups": {
+      "0": 1,
+      "1": 2,
+      "2": 1
+    },
+    "positive": 2,
+    "tie": 54,
+    "unknown": 20
+  },
+  "human_review": {
+    "completed_human_judgments": 0,
+    "enriched_cases": 20,
+    "measured_times": 0,
+    "original_cases": 20,
+    "rationales": 0,
+    "review_items": 12,
+    "source_sha256": [
+      "40deb4949425bbfb69b81836f934bdb29cbbe44b92a5182bf49135dcf33ee575",
+      "e75ac7622846aae4a12d820590f442d78d41082162033991d467409d3acaa5f7"
+    ],
+    "status": "NOT_EVALUATED"
+  },
+  "information_utilization_counts": {
+    "B_revealed_related_to_T": 7,
+    "I1_improves_full": 17,
+    "I1_improves_hidden": 14,
+    "candidate_features_changed": 73
+  },
+  "legacy_nonmention_corrected_answers": 0,
+  "limitation": "Current answer generator already uses UNSURE for unmentioned positive-text options; guard added, no repaired cases in this cohort.",
+  "nested_base_lineage": [
+    {
+      "inner": 0,
+      "model_sha256": "74324ed7853961f880da1dd4d53ce51d7cb6dfe1d870ccce7326fbfe986bb99f",
+      "outer": 0
+    },
+    {
+      "inner": 1,
+      "model_sha256": "d2ed7ca507a7965040782565fe878bdd5935eab4d43a16227525270b8d48b83c",
+      "outer": 0
+    },
+    {
+      "inner": 0,
+      "model_sha256": "17ea3c785b6dbee875f7b268b956e698abc860daa7e167cf6b47e0ec20809e63",
+      "outer": 1
+    },
+    {
+      "inner": 1,
+      "model_sha256": "1190f7cd4a51ae0abeacb89d81423e06c0db88f4df8a320355badc1783cd9569",
+      "outer": 1
+    },
+    {
+      "inner": 0,
+      "model_sha256": "2f03c535ec743b8fb177a0919eac96ddc0ee8265c7a4fbf5dbc25265b14b1b51",
+      "outer": 2
+    },
+    {
+      "inner": 1,
+      "model_sha256": "282e317161ef2c09be1a52d78f816b54fbcd455ad59907eac810219764f567e2",
+      "outer": 2
+    }
+  ],
+  "new_head_trigger": {
+    "actual_nested_new_head_training_gain": "NOT_ESTIMATED; other outer OOF rows are not valid nested train labels",
+    "decision": "KEY_SIGNAL_CONCENTRATED_IN_ONE_GROUP_DO_NOT_TRAIN",
+    "gain_macro": 0.009356725146198832,
+    "gain_max": 0.5,
+    "gain_min": -0.09999999999999998,
+    "gain_scorer": "FROZEN_R5_T2_AB_OUTER_HELD",
+    "groups": 77,
+    "held_key_true_B_groups_by_outer": {
+      "0": 0,
+      "1": 0,
+      "2": 1
+    },
+    "identifiable": 59,
+    "key_true_B_groups": 1,
+    "key_true_B_records": 1,
+    "negative": 1,
+    "other_outer_OOF_candidate_key_groups_NOT_TRAIN_LABELS": {
+      "0": 1,
+      "1": 1,
+      "2": 0
+    },
+    "policies": {
+      "ALWAYS_ASK": {
+        "actual_final_exposure": 0,
+        "ask": 1.0,
+        "gap": 0.5061751601225286,
+        "human_time": "NOT_EVALUATED",
+        "missed_gain": 0.0,
+        "ndcg": 0.41388298079675157,
+        "options": 19.675324675324674,
+        "proposed_final_candidates": 8.0,
+        "questions": 5.0,
+        "regret": 0.0017543859649122803,
+        "unnecessary_ask": 0.9385964912280702
+      },
+      "ALWAYS_SKIP": {
+        "actual_final_exposure": 0,
+        "ask": 0.0,
+        "gap": 0.5155318852687274,
+        "human_time": "NOT_EVALUATED",
+        "missed_gain": 0.01111111111111111,
+        "ndcg": 0.4135961338455699,
+        "options": 16.0,
+        "proposed_final_candidates": 8.0,
+        "questions": 4.0,
+        "regret": 0.01111111111111111,
+        "unnecessary_ask": 0.0
+      },
+      "POSTHOC_BEST": {
+        "actual_final_exposure": 0,
+        "ask": 0.045454545454545456,
+        "gap": 0.5044207741576162,
+        "human_time": "NOT_EVALUATED",
+        "missed_gain": 0.0,
+        "ndcg": 0.4177574972274874,
+        "options": 16.155844155844157,
+        "proposed_final_candidates": 8.0,
+        "questions": 4.045454545454546,
+        "regret": 0.0,
+        "unnecessary_ask": 0.0
+      },
+      "R4_OLD": {
+        "actual_final_exposure": 0,
+        "ask": 0.2662337662337662,
+        "gap": 0.5146546922862713,
+        "human_time": "NOT_EVALUATED",
+        "missed_gain": 0.01023391812865497,
+        "ndcg": 0.4135961338455699,
+        "options": 17.064935064935064,
+        "proposed_final_candidates": 8.0,
+        "questions": 4.266233766233766,
+        "regret": 0.01023391812865497,
+        "unnecessary_ask": 0.2543859649122807
+      }
+    },
+    "positive": 4,
+    "posthoc_limit": "Uses T to choose action; diagnostic only; unknown gain assigned SKIP solely for reporting minimum proposed cost, not fabricated label",
+    "records": 79,
+    "status": "NO_NEW_TRIGGER_FIT",
+    "true_B_new_records": 20,
+    "unknown": 20,
+    "zero": 54
+  },
+  "posthoc_best_ask_skip_gap": 0.4946184906711223,
+  "posthoc_best_status": "DIAGNOSTIC_ONLY_USES_FIXED_T_NOT_DEPLOYABLE",
+  "protocol": {
+    "I0": "Actual Q0/Q1 initial selected evidence",
+    "I1": "Actual frozen current-bank Q4 ASK trajectory",
+    "I2": "Same Q0/Q1; choose unused registered correction axis maximizing train-group mean B coverage, doubled for current A shared attribute; deterministic axis tie; exact I1 slot option budget; never current B or T for question choice",
+    "I_FULL": "Initial selected A retained plus complete source B positive evidence batch; outside product question/option budget, no inferred unmentioned negatives",
+    "answer_limit": "Positive-text source nonmention becomes UNSURE, never sensory absence; legacy NONE_OF_THESE conversion count retained; T never supplies answers",
+    "fit_count": 0,
+    "gain": "Fixed A0 SKIP gap minus ASK gap, ties retained, empty T null",
+    "independence": "Coffee held out; shared graders; static cross-grader corroboration, not sequential human QA",
+    "key_threshold": 0.01,
+    "target": "Full independent fixed T; separately fixed T minus source A exact",
+    "version": "m2-r5-fixed-a0-information.v1"
+  },
+  "records": 79,
+  "reference_agreement": {
+    "cohorts": {
+      "DEVELOPMENT": {
+        "actual_within_sample_cross_grader_pairs": 357,
+        "all_named_coffee_dependency_groups": 93,
+        "all_named_source_samples": 95,
+        "both_fine_mapped_coffee_groups": 82,
+        "both_fine_mapped_pairs": 274,
+        "both_fine_mapped_source_samples": 84,
+        "coffee_dependency_groups": 92,
+        "missing_fine_pair_comparisons": 83,
+        "ordinal": {
+          "native.acidity_intensity": {
+            "missing_pairs": 2,
+            "observed_pair_coffee_groups": 92,
+            "observed_pairs": 355,
+            "ordinal_threshold_disagreement_coffee_macro": 0.21716485507246377,
+            "same_category_fraction_coffee_macro": 0.4085144927536232,
+            "signed_rank_step_difference_histogram": {
+              "-1": 81,
+              "-2": 31,
+              "-3": 2,
+              "-4": 3,
+              "0": 149,
+              "1": 49,
+              "2": 38,
+              "3": 2
+            }
+          },
+          "taste.bitterness": {
+            "missing_pairs": 0,
+            "observed_pair_coffee_groups": 92,
+            "observed_pairs": 357,
+            "ordinal_threshold_disagreement_coffee_macro": 0.28125,
+            "same_category_fraction_coffee_macro": 0.35054347826086957,
+            "signed_rank_step_difference_histogram": {
+              "-1": 48,
+              "-2": 38,
+              "-3": 9,
+              "-4": 6,
+              "0": 129,
+              "1": 56,
+              "2": 60,
+              "3": 8,
+              "4": 3
+            }
+          },
+          "taste.sweetness": {
+            "missing_pairs": 0,
+            "observed_pair_coffee_groups": 92,
+            "observed_pairs": 357,
+            "ordinal_threshold_disagreement_coffee_macro": 0.17844202898550726,
+            "same_category_fraction_coffee_macro": 0.4673913043478261,
+            "signed_rank_step_difference_histogram": {
+              "-1": 69,
+              "-2": 28,
+              "-3": 2,
+              "-4": 1,
+              "0": 169,
+              "1": 58,
+              "2": 26,
+              "3": 3,
+              "4": 1
+            }
+          }
+        },
+        "source_samples": 94,
+        "source_samples_without_two_grader_pair": 1,
+        "symmetric_exact_match_coffee_macro": 0.1665466365161487,
+        "symmetric_fixed_parent_match_coffee_macro": 0.2249221490456247
+      },
+      "HISTORICAL_REGRESSION": {
+        "actual_within_sample_cross_grader_pairs": 70,
+        "all_named_coffee_dependency_groups": 17,
+        "all_named_source_samples": 17,
+        "both_fine_mapped_coffee_groups": 16,
+        "both_fine_mapped_pairs": 47,
+        "both_fine_mapped_source_samples": 16,
+        "coffee_dependency_groups": 17,
+        "missing_fine_pair_comparisons": 23,
+        "ordinal": {
+          "native.acidity_intensity": {
+            "missing_pairs": 6,
+            "observed_pair_coffee_groups": 17,
+            "observed_pairs": 64,
+            "ordinal_threshold_disagreement_coffee_macro": 0.19852941176470587,
+            "same_category_fraction_coffee_macro": 0.4313725490196078,
+            "signed_rank_step_difference_histogram": {
+              "-1": 12,
+              "-2": 5,
+              "-3": 1,
+              "0": 31,
+              "1": 9,
+              "2": 6
+            }
+          },
+          "taste.bitterness": {
+            "missing_pairs": 0,
+            "observed_pair_coffee_groups": 17,
+            "observed_pairs": 70,
+            "ordinal_threshold_disagreement_coffee_macro": 0.2696078431372549,
+            "same_category_fraction_coffee_macro": 0.39215686274509803,
+            "signed_rank_step_difference_histogram": {
+              "-1": 4,
+              "-2": 11,
+              "-3": 1,
+              "0": 29,
+              "1": 15,
+              "2": 6,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "taste.sweetness": {
+            "missing_pairs": 0,
+            "observed_pair_coffee_groups": 17,
+            "observed_pairs": 70,
+            "ordinal_threshold_disagreement_coffee_macro": 0.18872549019607843,
+            "same_category_fraction_coffee_macro": 0.46078431372549017,
+            "signed_rank_step_difference_histogram": {
+              "-1": 11,
+              "-2": 5,
+              "0": 31,
+              "1": 14,
+              "2": 9
+            }
+          }
+        },
+        "source_samples": 17,
+        "source_samples_without_two_grader_pair": 0,
+        "symmetric_exact_match_coffee_macro": 0.18450727513227513,
+        "symmetric_fixed_parent_match_coffee_macro": 0.26164641203703703
+      }
+    },
+    "descriptor_metric": "Symmetric2*M/(left+right positive fine count); exact equality1, registered same-parent partial0.25; both mapped reports must be nonempty; independent reports may legitimately disagree",
+    "method_limits": [
+      "Shared sample and session; same4 graders across coffees; rating blinding unverified",
+      "Differences combine grader expression, sensory response and incomplete governed mapping; no true-negative interpretation",
+      "No repeated sample x grader rows: same-person stability NOT_EVALUATED; individual-sheet mirrors are not repeats",
+      "Old historical17 remain separate, not new confirmation or primary training"
+    ],
+    "ordinal_metric": "Exact ordinal category agreement and average four-threshold disagreement; native rank-step histogram is a code diagnostic, not physical intensity or psychological distance",
+    "pair_trace_owner_relative_path": "revisions/r5/source_reference_disagreement_pairs.private.json",
+    "source_parse_sha256": "824bd7e4a9ab06458718204c59b420d5c29c6ef6ad0026e89d5ac95ff3c243a1",
+    "status": "SOURCE_NATIVE_CROSS_GRADER_VARIABILITY_NOT_MODEL_EVALUATION_OR_ACCURACY_CEILING",
+    "version": "m2-r5.zenodo-observation-supervision-audit.v1.reference-disagreement",
+    "weighting": "Equal cross-grader pair mean within sample, equal sample mean within coffee-name group, equal group mean; pair counts are not independent coffee trials"
+  },
+  "source_expansion_status": "ACTIVE_CHECKPOINT_1_NOT_FINAL",
+  "stages": {
+    "I0": {
+      "full": {
+        "identifiable_records": 59,
+        "ndcg": 0.38835636160060294,
+        "raw_gap": 0.5155144806460595,
+        "recall": 0.4194722918407129
+      },
+      "hidden": {
+        "identifiable_records": 54,
+        "ndcg": 0.2655334309120788,
+        "raw_gap": 0.5955712788259958,
+        "recall": 0.31799940101826896
+      },
+      "ordinary_options": 8.0,
+      "ordinary_questions": 2.0
+    },
+    "I1": {
+      "full": {
+        "identifiable_records": 59,
+        "ndcg": 0.38050659992683955,
+        "raw_gap": 0.5092801448064606,
+        "recall": 0.411417432470064
+      },
+      "hidden": {
+        "identifiable_records": 54,
+        "ndcg": 0.24080988082974936,
+        "raw_gap": 0.5889450434261755,
+        "recall": 0.3114705001497455
+      },
+      "ordinary_options": 19.675324675324674,
+      "ordinary_questions": 5.0
+    },
+    "I2": {
+      "full": {
+        "identifiable_records": 59,
+        "ndcg": 0.38877140753378275,
+        "raw_gap": 0.4625069618490671,
+        "recall": 0.4730297967140073
+      },
+      "hidden": {
+        "identifiable_records": 54,
+        "ndcg": 0.252263568361902,
+        "raw_gap": 0.5459418987720873,
+        "recall": 0.36807427373465107
+      },
+      "ordinary_options": 19.675324675324674,
+      "ordinary_questions": 5.0
+    },
+    "I_FULL": {
+      "full": {
+        "identifiable_records": 59,
+        "ndcg": 0.3617502707645964,
+        "raw_gap": 0.4887531328320802,
+        "recall": 0.4271929824561404
+      },
+      "hidden": {
+        "identifiable_records": 54,
+        "ndcg": 0.24905769051205212,
+        "raw_gap": 0.57705525606469,
+        "recall": 0.31325247079964064
+      },
+      "ordinary_options": null,
+      "ordinary_questions": null
+    },
+    "Q2": {
+      "full": {
+        "identifiable_records": 59,
+        "ndcg": 0.3970877509245271,
+        "raw_gap": 0.490817321080479,
+        "recall": 0.4277429685324422
+      },
+      "hidden": {
+        "identifiable_records": 54,
+        "ndcg": 0.2746230719204093,
+        "raw_gap": 0.5686395627433363,
+        "recall": 0.3293650793650794
+      },
+      "ordinary_options": 12.0,
+      "ordinary_questions": 3.0
+    },
+    "SKIP": {
+      "full": {
+        "identifiable_records": 59,
+        "ndcg": 0.3535054323128392,
+        "raw_gap": 0.5026594263436369,
+        "recall": 0.4182400445558341
+      },
+      "hidden": {
+        "identifiable_records": 54,
+        "ndcg": 0.24160190503515253,
+        "raw_gap": 0.5746368673255465,
+        "recall": 0.32824198861934706
+      },
+      "ordinary_options": 16.0,
+      "ordinary_questions": 4.0
+    }
+  }
+}
