@@ -134,6 +134,25 @@ No frontend, new questionnaire, framework, RL platform, CI restructuring,
 default promotion or cleanup of unrelated dirty-worktree changes is authorized.
 B2 remains default and FOUNDATION_CHECK remains off.
 
+### Active M2 R4 conditioning and key-case repair
+
+Continue from the existing R3 lineage, with one `revisions/r4` experiment record.
+K1 must be derived from current canonical evidence before new candidate scoring;
+it must not feed the current ranking back into its own support. Compare A0, AK,
+AR and AKR with the same candidates, targets, question bank and grouped splits.
+Pass targeted intervention checks before fitting. Freeze candidate scoring before
+creating out-of-group Q3 gain labels and fitting a separate small key-case trigger.
+Keep missing labels masked and distinguish record-derived reuse from independently
+revealed information. At most one shared-representation auxiliary task is allowed.
+
+Preserve old artifacts and results; Git versions preserve historical shared code
+without prohibiting necessary scoped interface repairs. B2 remains default and
+FOUNDATION_CHECK remains off. Retain the R3 Q2 ASK/ SKIP-to-Q4 paths and one final
+comparison. Disjoint backend/data work may continue in parallel. No frontend,
+new questionnaire, CI redesign, unrelated worktree cleanup, model release or main
+merge is authorized. Report live JSON inference, artifact replay and data retraining
+as separate operations, with actual dates and private persistent model storage.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;

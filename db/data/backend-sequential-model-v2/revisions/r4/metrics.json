@@ -1,0 +1,102 @@
+{
+  "outer0": {
+    "actual_fit_variants": [
+      "AK",
+      "AR",
+      "AKR"
+    ],
+    "audit_count": 3,
+    "candidate_scope_equal": true,
+    "fixed_summary": {
+      "A0": {
+        "available_source_mentions_retention": 0.5055555555555555,
+        "coffee_groups": 63,
+        "direct_retention": 1.0,
+        "direction_coverage": 0.5371693121693121,
+        "empty_targets": 37,
+        "identifiable_groups": 34,
+        "identifiable_records": 36,
+        "ndcg": 0.4931035697820266,
+        "ordinary_options": 20.0,
+        "ordinary_questions": 5.0,
+        "output_count": 5.0,
+        "output_failures": 0,
+        "raw_gap": 0.45645133053221293,
+        "recall": 0.46358543417366954,
+        "records": 73,
+        "specificity_unsupported_proxy": 0.7317460317460318
+      },
+      "AK": {
+        "available_source_mentions_retention": 0.5055555555555555,
+        "coffee_groups": 63,
+        "direct_retention": 1.0,
+        "direction_coverage": 0.5339947089947089,
+        "empty_targets": 37,
+        "identifiable_groups": 34,
+        "identifiable_records": 36,
+        "ndcg": 0.5051279037004209,
+        "ordinary_options": 20.0,
+        "ordinary_questions": 5.0,
+        "output_count": 5.0,
+        "output_failures": 0,
+        "raw_gap": 0.4521621148459384,
+        "recall": 0.4660364145658264,
+        "records": 73,
+        "specificity_unsupported_proxy": 0.7222222222222222
+      },
+      "AKR": {
+        "available_source_mentions_retention": 0.5055555555555555,
+        "coffee_groups": 63,
+        "direct_retention": 1.0,
+        "direction_coverage": 0.5149470899470899,
+        "empty_targets": 37,
+        "identifiable_groups": 34,
+        "identifiable_records": 36,
+        "ndcg": 0.48479772675559213,
+        "ordinary_options": 20.0,
+        "ordinary_questions": 5.0,
+        "output_count": 5.0,
+        "output_failures": 0,
+        "raw_gap": 0.47409838935574233,
+        "recall": 0.45966386554621846,
+        "records": 73,
+        "specificity_unsupported_proxy": 0.7253968253968255
+      },
+      "AR": {
+        "available_source_mentions_retention": 0.5055555555555555,
+        "coffee_groups": 63,
+        "direct_retention": 1.0,
+        "direction_coverage": 0.5161375661375661,
+        "empty_targets": 37,
+        "identifiable_groups": 34,
+        "identifiable_records": 36,
+        "ndcg": 0.47312779180529546,
+        "ordinary_options": 20.0,
+        "ordinary_questions": 5.0,
+        "output_count": 5.0,
+        "output_failures": 0,
+        "raw_gap": 0.4802258403361344,
+        "recall": 0.45721288515406167,
+        "records": 73,
+        "specificity_unsupported_proxy": 0.7317460317460318
+      }
+    },
+    "model_paths": {
+      "AK": {
+        "owner_relative_path": "revisions/r4/models/AK_outer0.74758954df43dc46.model.json",
+        "sha256": "a53683d633235d74bb1bbc52a46637d8658c68e9852a2dc59bc9e149c50085d5"
+      },
+      "AKR": {
+        "owner_relative_path": "revisions/r4/models/AKR_outer0.b9e5cbc682c93c1c.model.json",
+        "sha256": "a2018d5ad2ef387fd85b6c524aa981257b8ac2f10e4225fba3ddea120eb17708"
+      },
+      "AR": {
+        "owner_relative_path": "revisions/r4/models/AR_outer0.5ead9cd3ae5b407d.model.json",
+        "sha256": "f222f734f77cbe9c0119ad9606cf4142bdca60beb7e7f9275aedfb0099299fd0"
+      }
+    },
+    "outer": 0
+  },
+  "remaining": "Full nested scorer/trigger and auxiliary grouped comparison in progress",
+  "status": "FIRST_ACTUAL_OLD_DATA_FIT_CHECKPOINT"
+}

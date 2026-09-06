@@ -1,0 +1,248 @@
+{
+  "auxiliary_registration": "Source/identity/role and bounded same-representation on-off contrast must be frozen before any auxiliary fit",
+  "auxiliary_task_limit": 1,
+  "baseline_sha": "12dfb7ae82bf0332909905971ffff1e6bc75cace",
+  "candidate_scope": "Each frozen outer base expert fine vocabulary before soft effects, identical A0/AK/AR/AKR and policies; all fixed targets retained",
+  "data_inputs": {
+    "recovery_records.json": "fb59297faf1e9346c1fba8d4bc3439eb7f5b261300345f1c07a2a2f8d01efc11",
+    "revisions/r1/D0_folds.private.json": "7a72cd38bd9b216cdcf22474e83a444b7436be7bfd845ea420efe608f2f5f49c",
+    "revisions/r3/constraints_completion_manifest.private.json": "408e77a98c4f50bd7f702e44b914e1e74a32df2bcf3be0ff2d3cdd9ce979d9b9"
+  },
+  "defaults": {
+    "B2": "UNCHANGED",
+    "FOUNDATION_CHECK": false,
+    "research_only": true
+  },
+  "experiment_id": "M2_R4_K1_CONDITIONING_SHARED_RELATION_KEY_CASE",
+  "fitting": {
+    "auxiliary": {
+      "control": "AKR",
+      "loss": "main coffee-weighted CE +0.25*(main train groups/aux train groups)*aux coffee-weighted CE +same ridge10/2",
+      "only_variant": "AKR_AUX",
+      "scope": "Same 22 features and original three coffee folds; main and independently recorded cross-grader held targets reported separately; auxiliary identity/target contract frozen separately before its first fit",
+      "weight": 0.25
+    },
+    "base_reuse": "R1 outer, R2 inner and R3 P1_INTERNAL deepest experts only after exact train-group/statistics/scale audit; source and model SHA retained",
+    "candidate_availability": "Only actual base OOF scored IDs in training normalizer; full fixed outer candidate universe stays in evaluation",
+    "configurations": "One fixed explicit shared-feature configuration, ridge10; no low-rank grid, triples or trees",
+    "cost_curve": "Fixed policies and one KEY_CASE operating point; no posthoc NI margin or threshold grid",
+    "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+    "diagnostics": [
+      "NDCG",
+      "Recall",
+      "explicit_retention",
+      "unsubstantiated_specificity_proxy_not_true_error",
+      "direction_coverage",
+      "output_coverage",
+      "missed_gain_sum_max_quantiles",
+      "unnecessary_ask_options",
+      "relation_funnel"
+    ],
+    "direct_evidence": "Frozen base canonical evidence once; new deltas zero for explicit candidates; K1 and relation learned residual components, not additional fixed support bonuses",
+    "final_refit": "After development selection one chosen scorer re-fit on all original outer base OOF and trigger on selected-model outer-held branch labels; not last-fold model; no new confirmation",
+    "gain_generation": "Only after each scoring model frozen, inner-held ASK/SKIP with identical fixed targets; main answers derived solely from frozen A",
+    "historical_NI_0_02": "Historical operational comparison only; not a user-acceptable margin or promotion gate",
+    "main_data": {
+      "coffee_groups": 187,
+      "deepest_base_folds": 2,
+      "inner_folds": 2,
+      "outer_folds": 3,
+      "records": 211,
+      "split": "UNCHANGED_R1_D0_GROUP_FOLDS"
+    },
+    "objective": "SUM_coffee MEAN_record_stage conditional positive-mention CE plus ridge10/2 norm2; group weighted; no sensory negative labels",
+    "old_trigger": "Retained original R3 outer trigger weights/features, applied to same current information; current R4 scoring supplies both action outcomes",
+    "optimizer": {
+      "ftol": 1e-10,
+      "gtol": 1e-07,
+      "maxiter": 200,
+      "method": "L-BFGS-B",
+      "ridge": 10.0
+    },
+    "scaler": "Train-only feature RMS with zero scale replaced by1; same serialized scale at runtime",
+    "score_selection": "Each outer TRAIN inner-held ASK Q4 group-macro raw_gap; tie within1e-12 simplicity A0 AK AR AKR; outer held never selects",
+    "scoring_variants": [
+      "A0",
+      "AK",
+      "AR",
+      "AKR"
+    ],
+    "support": "At least3 distinct TRAIN coffee groups with nonzero feature; not derived row count",
+    "training_stages": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+    ],
+    "trigger": {
+      "C": 0.1,
+      "decision_threshold": 0.5,
+      "maxiter": 500,
+      "missing_gain": "Excluded from supervised fit, retained in all-case coverage/cost",
+      "model": "L2_LOGISTIC_LBFGS",
+      "other_cost_factor": 1,
+      "policies": [
+        "ALWAYS_ASK",
+        "ALWAYS_SKIP",
+        "R3_OLD",
+        "KEY_CASE"
+      ],
+      "positive_cost_factor": "min(20,1+max(gain,0)/0.01)",
+      "practical_gain_threshold": 0.01,
+      "probability_semantics": "Uncalibrated cost-weighted classifier score, not true gain probability",
+      "selection": "Exactly one learned configuration; no threshold tuning; weights do not multiply independent sample counts",
+      "single_class": "Retain labelled cases and fit intercept-only constant class; no fabricated AUC",
+      "target": "loss_skip_minus_loss_ask >0.01"
+    },
+    "trigger_nesting": "Train on inner-held scorer outputs; each inner scorer uses deeper-held base outputs; outer held evaluates entire chosen scorer and trigger",
+    "uncertainty": "2000 paired coffee-label bootstrap of fixed OOF group losses; seed20260906; development scope only",
+    "version": "m2-r4-small-joint-and-key-case.v1"
+  },
+  "information_origin": "Old main task uses frozen A for all answers: DERIVED_REUSE. Independently recorded B requires separate actual source adapter, not model-generated answers",
+  "metrics": {
+    "batch_alignment": "Exact unique IDs and equal lengths; explicit error instead of zip truncation or incidental row order",
+    "candidate_universe": "Frozen base-expert legal fine universe before any model soft priority/filter; exclude fixed visible A for all variants",
+    "capacity_floor": "1-min(k,|T|)/|T|, a capacity-only ideal with hypothetical exact coverage",
+    "duplicate_ids": "Predictions deduplicated before k; fixed candidate duplicates rejected; duplicate target list entries collapse once",
+    "empty_targets": "Unidentifiable: null gaps/NDCG/Recall; retained full-case coverage",
+    "external_relation_partial_credit": "Separate diagnostic only; empty until independent relations are registered; training associations cannot grade themselves",
+    "matching": "One-to-one maximum-weight bipartite assignment; k-cardinality assignment for fixed-universe M_star",
+    "missing_output": "With target: gap1/Recall0/NDCG0, retained as failure",
+    "opportunity_gap": "1-M/M_star only if M_star>0; diagnostic, not a replacement denominator for primary raw_gap",
+    "primary": "raw_gap=1-M/number_of_distinct_positive_fine_hidden_targets",
+    "primary_k": 5,
+    "primary_similarity": {
+      "exact_fine": 1.0,
+      "otherwise": 0.0,
+      "registered_shared_parent": 0.25
+    },
+    "rank_metric": "Linear positive target relevance DCG by predicted rank / ideal sorted target DCG at same k; deduplicated predictions; all fixed targets retained in IDCG",
+    "relation_hash": "b0dc8e00bd232498d69caaeaf71f69a9880b149036b272382e24c900808f77a1",
+    "threshold": "Raw gap<=0.5 reachable iff M_star>=0.5*|T|; target_count>5 alone is insufficient",
+    "unknown_parents": "No partial credit, including None==None",
+    "version": "m2-r3.fixed-universe-matching-and-ranked-recovery.v1",
+    "vocabulary_relation_extra_floor": "(min(k,|T|)-M_star)/|T|",
+    "wrong_pruning_extra_floor": "(M_star-M_star_after_soft_filter)/|T|; denominator always original fixed universe"
+  },
+  "preservation": "Old source/results/weights retained; historical code via baseline Git SHA and dependencies, no whole-repository immutability requirement",
+  "primary_cost": "Actual ordinary offered options; context2questions/15options and final3to8 pool reported separately; no measured human time",
+  "primary_effect": "R3 raw_gap group macro; AKR minus A0; AK and AR explain the fixed 2x2 contrast",
+  "primary_task": "Grouped recovery of fixed hidden positive fine mentions at fixed ASK Q4, RECORD_DERIVED_PROXY; not independent sensory truth",
+  "public_scope": "Only code, configuration, aggregate traces/metrics and hashes; individual trajectories/raw data/weights persistent private",
+  "registered_utc": "2026-09-05T23:52:52.113340+00:00",
+  "runtime": {
+    "association": "TRAIN_R1_CONDITIONAL_MENTION_MEAN_AND_MAX_FROM_CANONICAL_CONFIRMED_CONCEPTS_EXCLUDING_CANDIDATE",
+    "attribute_axes": [
+      "fruity",
+      "floral",
+      "sweet",
+      "nutty_cocoa",
+      "spices",
+      "roasted",
+      "green_vegetative",
+      "sour_fermented",
+      "taste"
+    ],
+    "candidate_feature_count": 22,
+    "candidate_feature_names": [
+      "k1.supported_association_mean",
+      "k1.supported_association_spread",
+      "k1.rejected_association_mean",
+      "k1.conflicting_association_mean",
+      "pair.fruity.agreement",
+      "pair.fruity.complement",
+      "pair.floral.agreement",
+      "pair.floral.complement",
+      "pair.sweet.agreement",
+      "pair.sweet.complement",
+      "pair.nutty_cocoa.agreement",
+      "pair.nutty_cocoa.complement",
+      "pair.spices.agreement",
+      "pair.spices.complement",
+      "pair.roasted.agreement",
+      "pair.roasted.complement",
+      "pair.green_vegetative.agreement",
+      "pair.green_vegetative.complement",
+      "pair.sour_fermented.agreement",
+      "pair.sour_fermented.complement",
+      "pair.taste.agreement",
+      "pair.taste.complement"
+    ],
+    "dag": [
+      "CURRENT_VALID_ANSWERS",
+      "CANONICAL_EVIDENCE",
+      "K1_BEFORE_SCORING",
+      "SHARED_PAIR_FEATURES_AND_GATES",
+      "CANDIDATE_SCORES",
+      "Q2_DECISION"
+    ],
+    "default_changed": false,
+    "exposure": "Actual question ID, axis and shown scope retained as provenance; no full shown tuple or exact answer combination as learned feature key.",
+    "final": "One actual 3-to-8 candidate comparison; main<=5 secondary<=3; F0/F1 frozen ranking or F2 same scoring chain; then terminal",
+    "foundation_check_enabled": false,
+    "gates": "AR=1; AKR=0 only for candidate explicitly rejected within an actual exposure or its explicitly rejected parent; otherwise 1 including unknown. Gate changes relation component only, never legal candidate mask.",
+    "hard_mask": "ADMITTED_CONTRACT_CANDIDATES_ONLY; no context, low score, missing direction, or empirical compatibility deletion",
+    "k1_formula": [
+      "support_fraction*association_mean",
+      "support_fraction*(association_max-association_mean)",
+      "explicit_rejection_fraction*association_mean",
+      "support_and_rejection_fraction*association_mean"
+    ],
+    "key_case_output_meaning": "UNCALIBRATED_WEIGHTED_CLASSIFICATION_SCORE_NOT_GAIN_OR_RESPONSE_PROBABILITY",
+    "key_case_threshold": 0.5,
+    "normalization": "TRAIN-only RMS positive scale with mean exactly zero; explicit boolean contract-valid candidate mask; stable legal-only log-softmax; no legal candidate returns a technical diagnostic.",
+    "ordinary_path": "P1_FIXED; Q2 ASK_Q3 or true SKIP_Q3 then mandatory Q4; no fabricated Q3 answer",
+    "ownership": "Full R1 direct/broad/rejection components retained exactly once. K1 learns residual modulation of empirical association, not a second fixed direct or broad bonus. New feature rows are all zero for every canonical confirmed candidate.",
+    "pair_formula": "For each candidate attribute a, average x_i[a]*x_j[a] and (x_i[a]*mean_other(x_j,a)+x_j[a]*mean_other(x_i,a))/2 over available distinct-positive pairs; multiply candidate parent indicator/parent_count.",
+    "pair_slots": [
+      [
+        "Q0",
+        "Q1"
+      ],
+      [
+        "Q0",
+        "Q2"
+      ],
+      [
+        "Q1",
+        "Q2"
+      ]
+    ],
+    "r3_old_threshold": 0.01,
+    "runtime_version": "m2-conditioning.r4.v1",
+    "semantic_vector": "Per-slot clipped multi-hot fixed parent vector. Each canonical concept occurs in earliest slot only. A broad concept entailed by any confirmed fine concept is removed from pair evidence. Whole compounds are not split into leaves.",
+    "trigger_feature_names": [
+      "supported_dimension_count",
+      "rejected_dimension_count",
+      "explicit_fine_count",
+      "unknown_dimension_count",
+      "positive_pair_count",
+      "relation_feature_l1",
+      "conditioning_delta_l1",
+      "top5_base_disagreement",
+      "previous_top5_change",
+      "log_training_support"
+    ],
+    "trigger_policies": [
+      "ALWAYS_ASK",
+      "ALWAYS_SKIP",
+      "KEY_CASE",
+      "R3_OLD"
+    ],
+    "unknown": "All unknown K1 coordinates are zero and pair gates neutral; no user C0/C1 fallback added.",
+    "variants": {
+      "A0": "FULL_ORIGINAL_R3_E1",
+      "AK": "E1_PLUS_K1_RESIDUAL",
+      "AKR": "E1_PLUS_JOINT_K1_AND_GATED_PAIR_RESIDUAL",
+      "AR": "E1_PLUS_SHARED_PAIR_RESIDUAL"
+    }
+  },
+  "scientific_outcomes": [
+    "SUPPORTED_IN_DECLARED_SCOPE",
+    "NO_IMPROVEMENT",
+    "INCONCLUSIVE",
+    "NOT_ESTIMABLE",
+    "NOT_EVALUATED"
+  ],
+  "validation_scope": "Development-time coffee-group comparison only; historical17 and previously viewed R3 not new confirmation; participant isolation not inferred from compound keys"
+}

@@ -1,0 +1,26 @@
+{
+  "checked_utc": "2026-09-06T00:03:16.865561+00:00",
+  "engineering": {
+    "actual_r4_fits_performed": 0,
+    "diagnostics": {
+      "batch_grouping_core_parity": "PASS",
+      "exact_replay_is_idempotent": "PASS",
+      "k1_off_removes_numeric_component": "PASS",
+      "new_direction_changes_k1_and_defined_components": "PASS",
+      "relation_off_still_executes_numeric_k1": "PASS",
+      "replacement_removes_old_effect_without_accumulation": "PASS",
+      "shuffled_k1_is_detected_as_negative_diagnostic": "PASS",
+      "unrelated_k1_dimension_has_no_unrelated_candidate_effect": "PASS"
+    },
+    "feature_count": 22,
+    "feature_protocol_sha256": "44e547d0dd1a39f0695caa0657c24632c82a8e68b0c21cddc47c368ca0182ba3",
+    "passed": 8,
+    "scope": "SYNTHETIC_ENGINEERING_INTERVENTIONS_NOT_SENSORY_VALIDATION",
+    "status": "PASS",
+    "total": 8
+  },
+  "fine_task_scope": "New residuals zero for non-sensory and canonical explicit candidates; broad base values preserved",
+  "pre_fit_intervention_checks_passed": true,
+  "runtime_sha256": "973cefea0c7aad836ecb6d6a953b3980b5fbe1de0828184d8dd39c5ab430ff48",
+  "scientific_gain": "NOT_YET_EVALUATED"
+}

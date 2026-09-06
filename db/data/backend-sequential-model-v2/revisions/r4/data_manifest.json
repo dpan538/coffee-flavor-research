@@ -1,0 +1,87 @@
+{
+  "connection": {
+    "B_exact_reuse_only_records": 3,
+    "B_with_new_exact_concepts_records": 58,
+    "B_with_new_semantic_directions_records": 30,
+    "T_related_parent_overlap_concepts_retained": 106,
+    "T_total_distinct_record_concepts": 176,
+    "T_total_removed_A_closure_concepts": 27,
+    "all_source_missing_or_unmentioned_labels": "UNKNOWN_NOT_NEGATIVE",
+    "duplicate_sample_grader_rows": 0,
+    "eligible_coffee_dependency_groups": 59,
+    "eligible_records": 61,
+    "empty_T_records_retained": 11,
+    "global_named_graders": 4,
+    "individual_sheet_mirrors_verified": true,
+    "individual_sheet_new_observations": 0,
+    "nonempty_T_coffee_groups": 49,
+    "nonempty_T_records": 50,
+    "old_historical_connected_groups_not_evaluated": 10,
+    "old_historical_connected_records_not_evaluated": 10,
+    "raw_source_grader_rows": 526,
+    "raw_source_sample_ids": 196,
+    "recovered_D0_records_exactly_verified": 112,
+    "rights": {
+      "attribution": [
+        {
+          "affiliation": "ITMO University",
+          "name": "Golovinsky, Rodion"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Ivanov, Ilya"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Aglikov, Aleksandr"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Aliev, Timur"
+        },
+        {
+          "affiliation": "Siberian Federal University",
+          "name": "Timofeenko, Ivan"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Novikov, Alexander"
+        },
+        {
+          "affiliation": "Belarusian State University",
+          "name": "Zayats, Mikhail"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Ashikhmina, Mariia"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Orlova, Olga"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Masalovich, Maria"
+        },
+        {
+          "affiliation": "ITMO University",
+          "name": "Ekaterina, Skorb"
+        }
+      ],
+      "author_usage_notice": "CC-BY-NC-4.0; Non-commercial research only",
+      "machine_license": "CC-BY-4.0",
+      "modification": "Governed exact/alias/morphological mentions plus original explicit broad fragments; source-row identity restoration; fixed cross-grader partition; target-only A-family masking",
+      "reuse_scope": "LOCAL_NONCOMMERCIAL_RESEARCH_NO_RAW_OR_WEIGHT_REDISTRIBUTION",
+      "source_url": "https://zenodo.org/records/20840464",
+      "title": "Electrochemical profiles of coffee drink samples"
+    }
+  },
+  "new_sources": 0,
+  "private_artifacts": [
+    "revisions/r4/cross_grader_episodes.private.json",
+    "revisions/r4/data_connections_trace.private.json"
+  ],
+  "scope": "Distinct named grader reports of a source sample, with shared coffee/session dependence and unverified rating blinding; not independent coffee samples, statistically independent truth, personalized perception or real same-person question answering",
+  "status": "SOURCE_CONNECTION_IMPLEMENTED_NO_FIT_OR_EVALUATION",
+  "version": "m2-r4.source-verified-cross-grader-abt.v1"
+}

@@ -1,0 +1,21 @@
+{
+  "auxiliary_contract_sha256": "abed1ac935d8dd3e03e6b9c3e3ac59878a8faa3015647d8d6722fdf680543622",
+  "baseline_remote_CI": "PASS",
+  "baseline_remote_historical_replay": "PASS",
+  "baseline_sha": "12dfb7ae82bf0332909905971ffff1e6bc75cace",
+  "checkpoint1_utc": "2026-09-06T00:07:57.143902+00:00",
+  "code_and_scientific_gain_separate": true,
+  "contract_sha256": "d777d51f26354c72671a6a81fdb445d65ef49e4e26064787a947bef77dc30a91",
+  "default": "B2_UNCHANGED",
+  "engineering_checked_utc": "2026-09-06T00:03:16.952470+00:00",
+  "first_observed_environment_clock_utc": "2026-09-05T23:45:28+00:00",
+  "foundation_check": false,
+  "intervention_checks_before_first_fit": true,
+  "local_R4_tests": {
+    "passed": 27,
+    "skipped": 0
+  },
+  "registered_utc": "2026-09-05T23:52:52.113340+00:00",
+  "status": "CHECKPOINT1_ACTUAL_K1_AK_AR_AKR_FITS_COMPLETE",
+  "unrelated_deletions_excluded": 135
+}
