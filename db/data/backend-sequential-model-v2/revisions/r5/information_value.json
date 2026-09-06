@@ -51,8 +51,50 @@
     "status": "NO_TRIGGER_FIT_INFORMATION_DIAGNOSTIC_ONLY"
   },
   "B_exact_overlap_independent_T_records": 22,
+  "I2_sensitivity": {
+    "ndcg": {
+      "delta_right_minus_left": 0.008264807606943148,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        -0.030053277903841526,
+        0.05163819863954247
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    },
+    "raw_gap": {
+      "delta_right_minus_left": -0.04677318295739349,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        -0.10774514411027568,
+        0.0001621240601503455
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    },
+    "recall": {
+      "delta_right_minus_left": 0.06161236424394319,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        -2.0885547201335497e-05,
+        0.14348893065998328
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    }
+  },
   "Q3_new_canonical_records": 45,
   "actual_negative_nonmention_corrections": 0,
+  "bottleneck_examples": {
+    "categories": [
+      "B_EXISTS_BUT_T_RELEVANT_OPTION_MISSED",
+      "REVEALED_B_CORROBORATED_BY_T",
+      "Q3_REEXPRESSION_WITHOUT_NEW_SOURCE_B",
+      "SOURCE_B_REFERENCE_DISAGREEMENT",
+      "INDEPENDENT_T_LEGITIMATELY_REPEATS_A",
+      "RECOVERED_RAW_ROLE_WITH_EVALUABLE_T"
+    ],
+    "owner_relative_path": "revisions/r5/bottleneck_cases.private.json",
+    "private_cases": 6,
+    "sha256": "e33c2c91adb3fa387281b191f46ea4324f1a8ba09f4cc7740c376c2f017a8b69"
+  },
   "coffee_groups": 77,
   "data_conversion_funnel": {
     "R4_eligible_coffee_groups": 59,
@@ -172,6 +214,16 @@
   },
   "legacy_nonmention_corrected_answers": 0,
   "limitation": "Current answer generator already uses UNSURE for unmentioned positive-text options; guard added, no repaired cases in this cohort.",
+  "matched_information_units": {
+    "actually_obtained_new_fine_mentions": 52,
+    "new_source_B_exact_T_overlap_records": 11,
+    "obtained_B_exact_T_mentions": 8,
+    "obtained_B_exact_T_overlap_records": 7,
+    "obtained_fraction": 0.4482758620689655,
+    "same_source_A_B_T_are_disjoint_observation_units": true,
+    "source_B_new_fine_mentions": 116,
+    "unobtained_new_fine_mentions": 64
+  },
   "nested_base_lineage": [
     {
       "inner": 0,
@@ -287,6 +339,59 @@
     "true_B_new_records": 20,
     "unknown": 20,
     "zero": 54
+  },
+  "new_source_admission": {
+    "actual_CSV_experiment_map": {
+      "1": "BOURBON_0.07",
+      "2": "ACAIA_0.07",
+      "3": "BOURBON_0.10",
+      "4": "ACAIA_0.10"
+    },
+    "actual_aggregate_rows": 72,
+    "actual_input": "native.Flavour",
+    "actual_target": "native.Bitterness",
+    "article_doi": "10.5935/1806-6690.20190041",
+    "conservative_composition_groups": 16,
+    "data_license_evidence": "AUTHOR_RELEASED_CRAN_PACKAGE_DESCRIPTION; EXPLICIT_DATA_RD; NO_SEPARATE_DATA_EXCEPTION",
+    "excluded_quality": [
+      "Score"
+    ],
+    "excluded_unclear_attribute_constructs": [
+      "Body",
+      "Acidity"
+    ],
+    "independent_coffee_material_count": null,
+    "input_target_same_aggregate_observation": true,
+    "license": "GPL-3",
+    "limitation": "Same small constituent pool; 72 aggregate rows, not 72 beans or judges; composition cohold is a conservative design split, not a source identity join. No fixed physiological interval or independent-view claim.",
+    "measured_participant_rows": 0,
+    "new_collection_sources": 1,
+    "new_independent_coffee_materials_claim": null,
+    "package": "Blendstat",
+    "package_version": "1.0.6",
+    "paper_table1_experiment2_3_disagree_with_actual_CSV": true,
+    "participant_count_in_paper_not_rows": 5,
+    "processing_views": 2,
+    "role": "ADMIT_MINIMAL_STATIC_SOURCE_VALUE_DIAGNOSTIC_ONLY",
+    "rows_by_processing": {
+      "NATURAL": 36,
+      "PEELED_CHERRY": 36
+    },
+    "source_file_sha256": {
+      "blendstat_DataCD.csv": "e445b7274f7d772fbda93d281a380476fee43e6d69f1c9c3beeb9a8b6bfde878",
+      "blendstat_DataNAT.csv": "a7703d15b2f560a92df227445ad026a15013ed2ae295190ed9bae0c0b876f79d"
+    },
+    "source_native_scale": [
+      0,
+      10
+    ],
+    "typed_private_artifact": {
+      "bytes": 212107,
+      "filename": "blendstat_native_observations.private.json",
+      "sha256": "212804677b04f16f6f74b2c0192afa05b5c23cf0d98c93383e79ce4528efb676"
+    },
+    "unique_process_mix_concentration_conditions": 64,
+    "version": "m2-r5-typed-source-acquisition.v1"
   },
   "posthoc_best_ask_skip_gap": 0.4946184906711223,
   "posthoc_best_status": "DIAGNOSTIC_ONLY_USES_FIXED_T_NOT_DEPLOYABLE",
@@ -452,7 +557,114 @@
     "version": "m2-r5.zenodo-observation-supervision-audit.v1.reference-disagreement",
     "weighting": "Equal cross-grader pair mean within sample, equal sample mean within coffee-name group, equal group mean; pair counts are not independent coffee trials"
   },
-  "source_expansion_status": "ACTIVE_CHECKPOINT_1_NOT_FINAL",
+  "source_acquisition": {
+    "30_to_50_independent_coffee_expansion_claim": false,
+    "HTTP_status_counts": {
+      "200": 60,
+      "401": 1,
+      "403": 2,
+      "404": 5
+    },
+    "actual_fits_by_this_acquisition_component": 0,
+    "actual_network_attempt_receipts": 68,
+    "author_messages_sent": 0,
+    "budget_upper_hours": 4,
+    "budget_was_upper_bound_not_minimum": true,
+    "catalog_searches": [
+      {
+        "actual_returned_metadata_records": 100,
+        "catalog_total": 410,
+        "exhaustive_claim": false,
+        "file": "coffee_sensory_datacite.json",
+        "sha256": "8e01d1dcf01091083d982b468c25c92f53ed84607ca677463ed76c1f2268519d"
+      },
+      {
+        "actual_returned_metadata_records": 100,
+        "catalog_total": 481,
+        "exhaustive_claim": false,
+        "file": "coffee_paired_datacite.json",
+        "sha256": "49121103ebf7384cd46c083ed71fbc21e167cb07dac28290d1ae1c7b070ef836"
+      },
+      {
+        "actual_returned_metadata_records": 100,
+        "catalog_total": 103,
+        "exhaustive_claim": false,
+        "file": "coffee_sensory_datasets_only_datacite.json",
+        "sha256": "0de5d9c8b3866347c3d3b7360f5c220a978f95c9ca08e6a90990da761e8e23a4"
+      },
+      {
+        "actual_returned_metadata_records": 100,
+        "catalog_total": 967,
+        "exhaustive_claim": false,
+        "file": "espresso_cupping_datacite.json",
+        "sha256": "886858c49a571a3c898404cd44f7958d176fa64ddd7dd979b8f39b2c8df6c7c9"
+      }
+    ],
+    "chemical_molecule_odor_annotations_into_sensory_targets": 0,
+    "completed_utc": "2026-09-06T02:35:36.034316+00:00",
+    "cotter_actual_rows": 3186,
+    "cotter_conditions": 27,
+    "cotter_individuals": 118,
+    "cotter_material_groups": 1,
+    "cotter_native_complete_CATA_dimensions": 17,
+    "cotter_new_collection_sources": 0,
+    "cotter_old_FULL_sha_matches": true,
+    "cotter_wrong_metadata_rows": 3168,
+    "elapsed_minutes": 52.68,
+    "fees_paid": 0,
+    "firstbloom": "Unused consumer observation view of existing first-party CC-BY4 collection; not fitted; no participant independence or new raw-lot claim; source-native zero anchors unresolved; roaster content excluded from admission",
+    "gactt": "Original paired data acquired; rights and original coffee-material identity unresolved; no training admission",
+    "inspection_receipt": {
+      "bytes": 3089,
+      "filename": "source_original_inspection_receipt.private.json",
+      "sha256": "91f9c86033d1b82c4ddd379d19ee22ad122042bacc98406f0ad464ad94cc1568"
+    },
+    "methodology_points": [
+      "Complete shown CATA nonselection is source-task response, not universal sensory absence.",
+      "JAR adequacy, liking, overall quality and descriptive intensity are kept separate.",
+      "Native observation identifiers establish record pairing; they do not automatically establish independent participants or coffee lots.",
+      "Expert lexical consistency and sensory perception agreement are different constructs; nonmention in free text is unknown."
+    ],
+    "new_admitted_collection_sources": 1,
+    "new_admitted_role": "Blendstat source-native aggregate Flavour to Bitterness minimal static diagnostic",
+    "new_independent_raw_coffee_material_groups": null,
+    "new_main_fine_descriptor_ABT_rows": 0,
+    "next_step": "Root may integrate the frozen Blendstat auxiliary results; no additional source pool search or model changes are required by this acquisition subtask.",
+    "owned_code": [
+      {
+        "path": "db/scripts/acquire_supervision_r5.py",
+        "sha256": "eceb3aa3b56d9e5f8e3c70fb7d5a8490d3d606ea6f3748e74278134ef7d3826d"
+      },
+      {
+        "path": "db/tests/test_acquire_supervision_r5.py",
+        "sha256": "e48ad3c165fe4987f343e07049ce94f439aabc6b8eb935029c809ea2d120bfc7"
+      }
+    ],
+    "quality_and_JAR_and_liking_into_intensity_targets": 0,
+    "reload_checks": {
+      "RData_to_CSV_exact_replay": true,
+      "five_typed_CLI_parses": true,
+      "source_ledger_CLI": true,
+      "unit_tests_passed": 10
+    },
+    "restricted_access_bypasses": 0,
+    "retained_private_artifact_manifest": {
+      "bytes": 25566,
+      "filename": "source_artifact_manifest.private.json",
+      "sha256": "0294c05242b35c438d17962bc71cb01c4418087e6f7d22d3e7365fbfef467a0e"
+    },
+    "retained_private_artifacts": 151,
+    "revision": "M2_R5",
+    "scope": "BOUNDED_SOURCE_ACQUISITION_AND_TYPED_ADMISSION; NOT_MODEL_FIT",
+    "source_ledger": {
+      "filename": "source_ledger.private.tsv",
+      "rows": 22,
+      "sha256": "47ffeab400dbc5a9081673a7bf77ba869214d946e9d16e3b98c7f5f789c3d6f4"
+    },
+    "started_utc": "2026-09-06T01:42:55.443062+00:00",
+    "user_denied_source": "S0963996925000067; no new fetch or retry"
+  },
+  "source_expansion_status": "COMPLETED_BOUNDED_ACQUISITION_AND_ACTUAL_NATIVE_RESPONSE_FIT",
   "stages": {
     "I0": {
       "full": {
@@ -550,5 +762,25 @@
       "ordinary_options": 16.0,
       "ordinary_questions": 4.0
     }
+  },
+  "supervision_funnel_task_counts": {
+    "original_R4_cohort": {
+      "R4_hidden_nonempty_T": 50,
+      "R5_full_nonempty_T": 55,
+      "records": 61
+    },
+    "recovered_raw_role_cohort": {
+      "empty_fine_T_retained": 14,
+      "new_nonempty_fine_T": 4,
+      "records": 18
+    },
+    "total_R5": {
+      "fixed_hidden_nonempty_T_records": 54,
+      "full_nonempty_T_groups": 57,
+      "full_nonempty_T_records": 59,
+      "groups": 77,
+      "records": 79
+    },
+    "warning": "The gain from50 to59 evaluable records combines5 legitimate full-reference targets restored and4 newly admitted fine references;18 episodes are not18 new fine labels."
   }
 }

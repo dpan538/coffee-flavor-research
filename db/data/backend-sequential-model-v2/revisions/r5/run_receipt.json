@@ -113,17 +113,220 @@
     ],
     "started_utc": "2026-09-06T01:59:51.638624+00:00"
   },
+  "auxiliary_actual_fitting": {
+    "code_sha256": "eda09920f1475f72a0b0845432ae74f76ae3ef753f727f63b64d8046443ad92d",
+    "contract_sha256": "51d5f57bb0b740e22937def548666a3efaeec2f36392e087f6798737095ee703",
+    "finished_utc": "2026-09-06T02:28:33.738501+00:00",
+    "models": [
+      {
+        "name": "T1_MEAN",
+        "outer": 0,
+        "path": "models/T1_MEAN_outer0.json",
+        "sha256": "b9f2a0653f6476f2b5a5c851d88385cc5fc634da595a6ba0274a78ee462d152b"
+      },
+      {
+        "name": "T2_FLAVOUR",
+        "outer": 0,
+        "path": "models/T2_FLAVOUR_outer0.json",
+        "sha256": "84b8b1877470bad9b5789f501b14673c3d90640f9ede91edd6afb3de9ba72405"
+      },
+      {
+        "name": "T2_HALF_GROUPS",
+        "outer": 0,
+        "path": "models/T2_HALF_GROUPS_outer0.json",
+        "sha256": "0f0a99dda6e134e54cd8d9af91f51bb475f74c5bdbc1c2a888c4c42b0dfd4f01"
+      },
+      {
+        "name": "T2_WRONG_B",
+        "outer": 0,
+        "path": "models/T2_WRONG_B_outer0.json",
+        "sha256": "717e3889913260ce33ed0e8a822c98fc3d6962500da46c0c767d13440933c06b"
+      },
+      {
+        "name": "T1_MEAN",
+        "outer": 1,
+        "path": "models/T1_MEAN_outer1.json",
+        "sha256": "8705f0ed6ee13956574b533686f603b5f205f0aebc3ae12b15309f380157a107"
+      },
+      {
+        "name": "T2_FLAVOUR",
+        "outer": 1,
+        "path": "models/T2_FLAVOUR_outer1.json",
+        "sha256": "982fcdfcd14c9213c498df34906c61e6a1cc80773d9f1ade67b70104d149f134"
+      },
+      {
+        "name": "T2_HALF_GROUPS",
+        "outer": 1,
+        "path": "models/T2_HALF_GROUPS_outer1.json",
+        "sha256": "412eadae8aebfe4b79890c5feea8a42fe810627ea235b02664b3fceb774fae76"
+      },
+      {
+        "name": "T2_WRONG_B",
+        "outer": 1,
+        "path": "models/T2_WRONG_B_outer1.json",
+        "sha256": "be7dd6d16011d37a5081841114cb327cf6d9f8d0cd4b034000d0ca3f742cd1fe"
+      },
+      {
+        "name": "T1_MEAN",
+        "outer": 2,
+        "path": "models/T1_MEAN_outer2.json",
+        "sha256": "b156245bf27517816d406a2162e4109f6806ae7e26316a8203974b928a6067fd"
+      },
+      {
+        "name": "T2_FLAVOUR",
+        "outer": 2,
+        "path": "models/T2_FLAVOUR_outer2.json",
+        "sha256": "5ec4ba3c129af0c244871c9df2bcbcd6dc830121cd3b869405a7b42516f078f9"
+      },
+      {
+        "name": "T2_HALF_GROUPS",
+        "outer": 2,
+        "path": "models/T2_HALF_GROUPS_outer2.json",
+        "sha256": "dc950fb2a3083eefd115c1aa92a78689742d3c1bd558eae80edcc2f00ed4d854"
+      },
+      {
+        "name": "T2_WRONG_B",
+        "outer": 2,
+        "path": "models/T2_WRONG_B_outer2.json",
+        "sha256": "f4f320fb383b82e767342f91a2dbe7d7aeafd8581c796ed2fc11e9952630fe17"
+      },
+      {
+        "name": "T1_MEAN",
+        "outer": null,
+        "path": "models/T1_MEAN_DEV_REFIT.json",
+        "sha256": "2ac8136d4bd77b28877c046e993e777f94946e56818ecbc4ede48235d047fe45"
+      },
+      {
+        "name": "T2_FLAVOUR",
+        "outer": null,
+        "path": "models/T2_FLAVOUR_DEV_REFIT.json",
+        "sha256": "7c9c4d6e78c0ed52b6f47be8d10c47bda25450ebb4d7e11b93adf0655a0214b4"
+      }
+    ],
+    "predictions_sha256": "74d46fc516cd0ef97ba6bd8c176288fb7a055824318d6774dc71fc0096d7d82c",
+    "source_sha256": "212804677b04f16f6f74b2c0192afa05b5c23cf0d98c93383e79ce4528efb676",
+    "started_utc": "2026-09-06T02:28:33.720591+00:00",
+    "summary_sha256": "782a81cbd0fed513fcafef2fd85923c0ba9c4cd08ffa0ca9190c1e92cc0d5e42"
+  },
+  "auxiliary_replay": {
+    "checked_utc": "2026-09-06T02:32:45.689863+00:00",
+    "fit_count": 0,
+    "replayed_predictions": 256,
+    "status": "PASS"
+  },
   "baseline_remote_CI": {
     "CI": "success",
     "Historical replay": "success"
   },
   "baseline_sha": "0eaea74f86660c1c186aec5ad72384493cde6cb0",
-  "from_raw_retraining": "RUNNING",
+  "bounded_review_corrections": [
+    "Unified canonical JSON encoding for source content hashes; source payload unchanged.",
+    "Corrected direct/inferred reporting for later explicit terms; primary metrics and reproduced weights unchanged.",
+    "Sealed replay now verifies source input hashes and complete prediction ID sets, including empty-input counterexample.",
+    "From-source cache check uses canonical content equality, preserving tuple/list serialization equivalence.",
+    "Native inference reads observed input without requiring target; coefficients and replay unchanged.",
+    "Legacy source answer generator already used UNSURE; actual negative-nonmention corrections0."
+  ],
+  "checkpoint_remote_CI": {
+    "CI": {
+      "conclusion": "success",
+      "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34005736489"
+    },
+    "Historical_replay": {
+      "conclusion": "success",
+      "url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34005736471"
+    },
+    "commit": "86cda4aa227be4363cc0756d873f89d837769e96"
+  },
+  "commands": {
+    "OWNER": "Owner-controlled backend-sequential-model-v2 directory used in original runs",
+    "from_original_source_retrain": "python db/scripts/run_supervision_r5.py retrain --owner-dir \"$OWNER\"",
+    "live_JSON": "python db/scripts/run_supervision_r5.py infer --owner-dir \"$OWNER\" --request \"$OWNER/revisions/r4/verification/new_legal_multiselect_final.seed1.payload.private.json\"",
+    "new_source_RData_rebuild": "python db/scripts/acquire_supervision_r5.py --owner-dir \"$OWNER\" --phase extract-blendstat",
+    "new_source_typed_rebuild": "python db/scripts/acquire_supervision_r5.py --owner-dir \"$OWNER\" --phase parse-blendstat",
+    "python": "/private/tmp/coffee-backend-model-venv/bin/python",
+    "sealed_auxiliary_replay": "python db/scripts/source_native_supervision_r5.py replay --owner-dir \"$OWNER\"",
+    "sealed_primary_replay": "python db/scripts/run_supervision_r5.py replay --owner-dir \"$OWNER\"",
+    "working_directory": "/private/tmp/coffee-flavor-round3m"
+  },
+  "completed_utc": "2026-09-06T02:48:02.796872+00:00",
+  "completion_manifest": {
+    "owner_relative_path": "revisions/r5/completion_manifest.private.json",
+    "sealed_private_artifacts": 237,
+    "sha256": "dd5274f7aed5cb840b79ff36bd50aa579339f2457043b4d843fc2fdfb2fd2679"
+  },
+  "delivery_increment_remote_CI": "CHECK_SEPARATELY_AFTER_FINAL_INCREMENTAL_COMMIT; NO_PASS_CLAIM",
+  "environment": {
+    "packages": {
+      "numpy": "2.5.2",
+      "openpyxl": "3.1.5",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.1",
+      "threadpoolctl": "3.6.0"
+    },
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]"
+  },
+  "final_replay_verification": {
+    "auxiliary": {
+      "checked_utc": "2026-09-06T02:45:25.573393+00:00",
+      "fit_count": 0,
+      "replayed_predictions": 256,
+      "status": "PASS"
+    },
+    "primary": {
+      "checked_utc": "2026-09-06T02:45:24.773805+00:00",
+      "fit_count": 0,
+      "replayed_predictions": 395,
+      "reporting_correction": "Direct versus inferred contribution now uses all actually selected fine concepts at the evaluated branch; initial/later contributions separate. Original sealed reports retained; primary gap/ranking/loss values replay exactly.",
+      "status": "PASS"
+    }
+  },
+  "from_raw_retraining": {
+    "actually_refitted_model_artifacts": 16,
+    "bitwise_identical_model_artifacts": 16,
+    "completed_utc": "2026-09-06T02:10:05.872151+00:00",
+    "from_original_workbook": true,
+    "regenerated_question_traces": true,
+    "reporting_fields": "Corrected direct/inferred contributions differ from initial sealed reports; coefficients and primary metrics unchanged",
+    "run_owner_relative_path": "revisions/r5/retrains/20260906T020656651028Z",
+    "run_receipt_sha256": "c923d6783bca932d28148672d13968076d7d36d07e8ce7c7c2cb6644e17e07d9",
+    "status": "PASS"
+  },
+  "historical_preservation": {
+    "R4_metrics_hash_unchanged": true,
+    "no_historical_model_refitting": true,
+    "only_new_R5_models_fitted_and_refitted": true,
+    "unchanged_deleted_path_list_count": 135
+  },
   "live_JSON": {
     "owner_relative_path": "revisions/r5/live_inference.private.json",
-    "scope": "Reloaded research scoring alongside existing validated R4 workflow; no default change",
+    "scope": "Engineering fixture through the A0-driven validated R4 research workflow and reloaded R5 scoring head; FINAL_RESULT5/3, not real user selections; B2 remains the separate default.",
     "sha256": "f21d177b981d85e038bf58366df6352e8cf58dcc81334e0d795e2818398f8ab3",
     "status": "PASS"
+  },
+  "local_verification": {
+    "R3_metric_tests": 12,
+    "R4_related_regression_tests": 33,
+    "R5_acquisition_tests": 10,
+    "R5_data_adapter_tests": 9,
+    "R5_script_tests": 22,
+    "format_check": "PASS",
+    "frontend_or_CI_changes": false,
+    "real_human_time": "NOT_EVALUATED",
+    "status": "PASS"
+  },
+  "new_source_frozen_protocol": {
+    "admission_manifest_sha256": "ce76b9fd4e934714219ab4db9e517f3f6fedd5162738b460651f740c85dd9772",
+    "owner_relative_path": "revisions/r5/source_native/contract.frozen.json",
+    "registered_utc": "2026-09-06T02:27:45.870144+00:00",
+    "sha256": "51d5f57bb0b740e22937def548666a3efaeec2f36392e087f6798737095ee703",
+    "typed_source_sha256": "212804677b04f16f6f74b2c0192afa05b5c23cf0d98c93383e79ce4528efb676"
+  },
+  "public_summary_sha256": {
+    "experiment_contract.json": "7b2dc839750cbade9934ac22f4ffa4d94b8aee476f1f016009fdeeac5d793785",
+    "information_value.json": "988690a05a780ce87252d860d9750418a537232c056770f4aca1c162fdeda973",
+    "metrics.json": "b1c3a0e386d41a90f0da258a7d9082c3e4575ce730944e8eaef4c16761789ff5",
+    "supervision_and_source_ledger.tsv": "f456f88744e45b97c2b180a70a2019a77529f72a5fdb8bb5678f34e4a05f920a"
   },
   "publication": "Only code/configuration/aggregate metrics and hashes; case data and weights private",
   "recorded_utc": "2026-09-06T02:07:59.779016+00:00",
@@ -134,7 +337,23 @@
     "reporting_correction": "Direct versus inferred contribution now uses all actually selected fine concepts at the evaluated branch; initial/later contributions separate. Original sealed reports retained; primary gap/ranking/loss values replay exactly.",
     "status": "PASS"
   },
-  "source_expansion": "ACTIVE",
-  "stage": "CHECKPOINT_1_COMPLETE_SOURCE_EXPANSION_ACTIVE",
+  "research_checkpoint_sha": "86cda4aa227be4363cc0756d873f89d837769e96",
+  "source_acquisition_summary": {
+    "elapsed_minutes": 52.68,
+    "new_admitted_collections": 1,
+    "new_primary_fine_ABT_rows_from_new_sources": 0,
+    "owner_relative_path": "revisions/r5/sources/source_acquisition_summary.private.json",
+    "sha256": "59208bbd628da4148afb47f1c0d1e904a62f20e5569f2bc01a808ac80a2a3322"
+  },
+  "source_code_sha256": {
+    "db/scripts/acquire_supervision_r5.py": "eceb3aa3b56d9e5f8e3c70fb7d5a8490d3d606ea6f3748e74278134ef7d3826d",
+    "db/scripts/data_supervision_r5.py": "332900150b71ef87623a1e2ab6fb0ab8b0a124eded808ad35913c821f45ce545",
+    "db/scripts/information_supervision_r5.py": "efb077a66a3f2a5ddb605b731ce50203dc4275b36c143f9d1cec9b7fc55942f5",
+    "db/scripts/run_supervision_r5.py": "2004e164bfbc86274e9c51fe5addbf79f5da1c77ddd024f1d88b7e7a4d3115d1",
+    "db/scripts/source_native_supervision_r5.py": "18bdde626a8e4a1407b3b8a865cf62d8774f858608d946b65e879c9ea2247f7b",
+    "db/scripts/train_supervision_r5.py": "74d2702485dab22aff0f7fdd34a1a1e2cca3540863f5a1232dc5123ced31e87e"
+  },
+  "source_expansion": "COMPLETED_ONE_NEW_NATIVE_RESPONSE_COLLECTION",
+  "stage": "R5_COMPLETE_NO_DEFAULT_PROMOTION",
   "unrelated_deleted_paths_excluded": 135
 }
