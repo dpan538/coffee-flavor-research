@@ -1,0 +1,111 @@
+{
+  "baseline_actual": "95def253bf1d94c4894dc9d226ca2dc8d56101cf",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "checkpoint1": {
+    "held_case_policy_returns": 6,
+    "source_sha256": "f18b1372ccea295dd54fb6b18f87408e4ede7d867f45bccfacb8ad2a58774e30",
+    "status": "PASS"
+  },
+  "checkpoint2": {
+    "actual_final_comparisons": 0,
+    "coffee_groups_per_policy": 77,
+    "distinct_case_policy_returns": 158,
+    "empty_T_per_policy": 20,
+    "evaluable_coffee_groups": 57,
+    "evaluable_records_per_policy": 59,
+    "failures": 0,
+    "missing_artifacts": 0,
+    "records_per_policy": 79,
+    "status": "PASS",
+    "valid_proposed_pools": 158
+  },
+  "checks": {
+    "backend_related_unittest": "PASS_132",
+    "black": "PASS",
+    "format_check": "PASS",
+    "helper_self_tests": "PASS_18",
+    "scope_check": "PASS_6_STAGED_FILES_NO_UNRELATED_DELETIONS",
+    "staged_diff_check": "PASS",
+    "state_return_metric_replay": "PASS_158_ORIGINAL_STATES_TO_ACTUAL_RETURNS_TO_METRICS_NO_RESELECTION"
+  },
+  "commands": {
+    "historical_state_to_return_to_metric_replay": "PYTHONPATH=db/scripts python db/scripts/output_alignment_r8.py replay --owner-dir \"$OWNER_DIR\"",
+    "infer_arbitrary_new_request": "python db/scripts/candidate_c01_r7.py infer --bundle \"$OWNER_DIR/revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json\" --request /absolute/path/new_request.json",
+    "initial_evaluation_seals_outputs": "PYTHONPATH=db/scripts python db/scripts/output_alignment_r8.py run --owner-dir \"$OWNER_DIR\"",
+    "initial_synthetic_integration_seals_outputs": "PYTHONPATH=db/scripts python db/scripts/output_alignment_r8.py synthetic --owner-dir \"$OWNER_DIR\"",
+    "owner_dir": "Owner-controlled backend-sequential-model-v2 persistent directory",
+    "python": "Existing backend environment; actual host /private/tmp/coffee-backend-model-venv/bin/python",
+    "refit": "NOT_APPLICABLE_FIT_COUNT_ZERO",
+    "repeat_synthetic_infer": "python db/scripts/candidate_c01_r7.py infer --bundle \"$OWNER_DIR/revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json\" --request \"$OWNER_DIR/revisions/r8/synthetic_request.private.json\"",
+    "sealing_behavior": "run/synthetic create immutable execution records; use replay to repeat historical state-return-metric validation and infer to rerun a legal JSON. Do not overwrite old receipts."
+  },
+  "execution_notes": [
+    "Three158-case evaluation passes include bounded reporting/schema corrections; initial/intermediate results retained. No different models, policies or metrics selected.",
+    "Initial replay reached identical actual returns but aggregate comparison rejected JSON integer/string histogram keys; corrected.",
+    "Full-development model used only in six synthetic CLI subprocess calls, never the held historical comparison."
+  ],
+  "execution_receipt_sha256": "7d5268cf69efbb152ffb0279dda1c7dda507e31194961731a331eda9e7f94fd6",
+  "fit_count": 0,
+  "frozen_input_hashes": {
+    "revisions/r1/cv/M2_R1_FINAL_FIXED_fold0.model.json": "4d597f6265a2045896837f71a526331f9e7dd683004c719462a2ccc85be35121",
+    "revisions/r1/cv/M2_R1_FINAL_FIXED_fold1.model.json": "8d51c657a49fee96d3e0053df835bc3f607c4ebe1cafb08ab318c1efce2f32e1",
+    "revisions/r1/cv/M2_R1_FINAL_FIXED_fold2.model.json": "4dd4abd59c8302af41f129bd52ebdb6e07db436d6130044a046ccfc365da5022",
+    "revisions/r6/matrix_cases.private.json": "b949ca1a25a083d006d4c2ae1d00114cc8b2254967258a18d34980a4ca7a6660",
+    "revisions/r6/matrix_input_resources.private.json": "571d62c7b9830a1bb61d0ee4d8f5b0d4a885334a1732b549ee41ad682e5759d9"
+  },
+  "frozen_runtime_hashes": {
+    "alignment_metrics_r3.py": "276fe37faf5eb87584b2b223c53f5019ce0d2577a1c2caf4b457e0b2270d7f88",
+    "candidate_c01_r7.py": "989520166e640450f26773d9c21b18e9140f555315836f4fe17bf8772e10db02",
+    "flavor_conditioning_r4.py": "973cefea0c7aad836ecb6d6a953b3980b5fbe1de0828184d8dd39c5ab430ff48",
+    "flavor_m2_r1.py": "cfec9eafcf0803d54a02d7322e31c03367c54df0da1faa50be57f9a8480247e9",
+    "information_supervision_r6.py": "235041364e6088a9663e874888f360c1822aa1adfa80fa7a8366483cdf6112fc",
+    "r6_mapping_i2_helpers.py": "839bcf90cee1be7444f666b44cffbe1a5ce644fa9fac3222076c73af03c54184",
+    "train_conditioning_r4.py": "cec04d03a7eee3d572c9f1c7ed7c7cb124d049adeaabd99610852115ec62a092"
+  },
+  "new_code_hashes": {
+    "db/scripts/output_alignment_r8.py": "e495e907522b2bf3394761586bc43d485fa1675d58a36285322019a197f23832",
+    "db/scripts/r8_output_alignment_helper.py": "c6547a15b51c102bcee82ec50e3db7e64225a671e7f1bb02be419e5c547df6f5",
+    "db/tests/test_output_alignment_r8.py": "2be24ce3fa0e231c00e92c82f8b519a2657f2770653a7af8e6b50008e0739a86"
+  },
+  "public_hashes": {
+    "evaluation_contract.json": "bc87c350c2fbdfcb53eadea17016fb78711da97cffccbac8845822b740d2494d",
+    "output_alignment_results.json": "237d0cfc36a168970ab492d888d6950daf3cd81ae886e5e80897d507c4f00100"
+  },
+  "recorded_utc": "2026-09-06T12:00:47.153833+00:00",
+  "remote_R8": "NOT_YET_COMMITTED_AT_RECORD_TIME",
+  "remote_baseline": {
+    "CI": "PASS",
+    "CI_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34026675281",
+    "historical_replay": "PASS",
+    "historical_replay_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34026675315",
+    "sha": "95def253bf1d94c4894dc9d226ca2dc8d56101cf"
+  },
+  "scope": {
+    "default": "B2_UNCHANGED_CHECK_OFF",
+    "frontend_changes": 0,
+    "main_merged": false,
+    "new_source_searches": 0,
+    "old_artifact_overwrites": 0,
+    "output_policy_changes": 0,
+    "training_runs": 0,
+    "unrelated_deletions_preserved": 135
+  },
+  "synthetic_new_JSON": {
+    "cli_subprocess_calls": 6,
+    "created_utc": "2026-09-06T11:52:13.322818+00:00",
+    "final_feedback_injected": false,
+    "fit_count": 0,
+    "full_development_package_used_only_here": true,
+    "main_count": 5,
+    "ordinary_options": 19,
+    "ordinary_questions": 5,
+    "package_sha256": "dd1e8e5f2683f13ecd9408c09ee5315295ebbe38692204cc8c036e4db5bae8da",
+    "pool_equals_U": true,
+    "proposed_pool_count": 8,
+    "scope": "NEW_LEGAL_SYNTHETIC_JSON_ENGINEERING_ONLY_NOT_COFFEE_EFFECT",
+    "secondary_count": 3,
+    "stage": "PRELIMINARY_RESULT",
+    "status": "PASS"
+  },
+  "version": "m2-r8.run-receipt.v1"
+}

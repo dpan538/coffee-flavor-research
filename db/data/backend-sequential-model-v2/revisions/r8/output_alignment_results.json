@@ -1,0 +1,824 @@
+{
+  "answers": {
+    "adoption": "No adoption. B2 remains default, CHECK off; no fitting, source search or output-policy change this round.",
+    "loss_location": "Original and finalizer candidate rankings agree in all158 cases. Mixed ranking slice main[:5] and secondary[5:8]/exposure[:8] retains broad/attribute slots rather than compressing to five fine terms. Fine words below these actual cuts are not backfilled. C01 main averages2.7142857142857144 fine entries across77 groups; no selected fine word lost in this cohort.",
+    "main_gain_transfer": "Partial: original six L-improved coffee groups include four M improvements and two M ties; all57 evaluable groups have M5 improvements/49ties/3regressions. Mean gap delta -0.02203425229741019, descriptive interval crosses zero. R6 gap0.46251 is not returned-main score.",
+    "next_step": "Prefer freezing the complete current C01 including its mixed output contract for independent confirmation with returned-main as primary, retaining P as secondary diagnostic. Current gains are not wholly trapped internally, and these data do not establish that broad output is erroneous. If main is intended to prioritize specific naming, first define and compare a separate output-semantic policy; do not silently call it a metric repair.",
+    "pool_gain_transfer": "All six legacy-improved groups improve P, but all57 groups include P6 improvements/44ties/7regressions. Mean delta -0.0345655806182122, interval crosses zero. U and P same ordered8 in every case; one result with two roles, no actual user exposure.",
+    "pool_outside_score": "Each policy has39 records with L candidates outside P; exact-T outside credit occurs in8 C00 records (10hit occurrences) and10 C01 records (13hit occurrences). Removing outside L IDs reduces optimal matching in12 C00 and13 C01 records; one chosen matching witness may use different tied edges."
+  },
+  "contract_sha256": "bc87c350c2fbdfcb53eadea17016fb78711da97cffccbac8845822b740d2494d",
+  "default": "B2_UNCHANGED_CHECK_OFF",
+  "detail_categories": {
+    "GAIN_RETAINED": 2,
+    "LEGACY_GAIN_LOST": 1,
+    "POOL_GAIN_WITHOUT_MAIN": 1,
+    "REGRESSION": 2,
+    "TIE_OR_MIXED": 2
+  },
+  "fit_count": 0,
+  "gain_transfer": {
+    "M": {
+      "among_legacy_improved_coffee_groups": {
+        "IMPROVEMENT": 4,
+        "TIE": 2
+      },
+      "legacy_improved_groups": 6,
+      "scope": "Same groups, original L improvement versus separately evaluated actual-output change; no cross-budget pooled effect"
+    },
+    "P": {
+      "among_legacy_improved_coffee_groups": {
+        "IMPROVEMENT": 6
+      },
+      "legacy_improved_groups": 6,
+      "scope": "Same groups, original L improvement versus separately evaluated actual-output change; no cross-budget pooled effect"
+    }
+  },
+  "hidden_paired": {
+    "L": {
+      "group_outcomes": {
+        "IMPROVEMENT": 5,
+        "REGRESSION": 2,
+        "TIE": 46
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": 0.011453687532152642,
+          "groups": 53,
+          "paired_C00_mean": 0.24080988082974936,
+          "paired_C01_mean": 0.252263568361902,
+          "paired_coffee_bootstrap_95": [
+            -0.012295851794999948,
+            0.04022214725981878
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.043003144654088055,
+          "groups": 53,
+          "paired_C00_mean": 0.5889450434261755,
+          "paired_C01_mean": 0.5459418987720873,
+          "paired_coffee_bootstrap_95": [
+            -0.09607900943396228,
+            -0.002122641509433963
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.05660377358490567,
+          "groups": 53,
+          "paired_C00_mean": 0.3114705001497454,
+          "paired_C01_mean": 0.3680742737346511,
+          "paired_coffee_bootstrap_95": [
+            0.0031446540880503138,
+            0.12735849056603774
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 24,
+      "record_outcomes": {
+        "IMPROVEMENT": 5,
+        "NOT_EVALUABLE": 25,
+        "REGRESSION": 2,
+        "TIE": 47
+      }
+    },
+    "M": {
+      "group_outcomes": {
+        "IMPROVEMENT": 4,
+        "REGRESSION": 3,
+        "TIE": 46
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": -0.007282055088336546,
+          "groups": 53,
+          "paired_C00_mean": 0.10517652828610696,
+          "paired_C01_mean": 0.09789447319777042,
+          "paired_coffee_bootstrap_95": [
+            -0.024503813319789822,
+            0.008409679003491132
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.006794699011680147,
+          "groups": 53,
+          "paired_C00_mean": 0.8157681940700809,
+          "paired_C01_mean": 0.8089734950584007,
+          "paired_coffee_bootstrap_95": [
+            -0.03381485849056604,
+            0.02083473719676549
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": -0.0031446540880503146,
+          "groups": 53,
+          "paired_C00_mean": 0.13414195867026052,
+          "paired_C01_mean": 0.13099730458221023,
+          "paired_coffee_bootstrap_95": [
+            -0.02830188679245283,
+            0.018867924528301886
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 24,
+      "record_outcomes": {
+        "IMPROVEMENT": 4,
+        "NOT_EVALUABLE": 25,
+        "REGRESSION": 3,
+        "TIE": 47
+      }
+    },
+    "P": {
+      "group_outcomes": {
+        "IMPROVEMENT": 5,
+        "REGRESSION": 7,
+        "TIE": 41
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": -0.0010001296933374493,
+          "groups": 53,
+          "paired_C00_mean": 0.16118288696698574,
+          "paired_C01_mean": 0.1601827572736483,
+          "paired_coffee_bootstrap_95": [
+            -0.02956880978845132,
+            0.02582520008192365
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.0162848158131177,
+          "groups": 53,
+          "paired_C00_mean": 0.658460616951183,
+          "paired_C01_mean": 0.6421758011380653,
+          "paired_coffee_bootstrap_95": [
+            -0.08044249775381852,
+            0.04472568508535488
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.017744833782569632,
+          "groups": 53,
+          "paired_C00_mean": 0.2556004791853848,
+          "paired_C01_mean": 0.2733453129679545,
+          "paired_coffee_bootstrap_95": [
+            -0.045148247978436654,
+            0.0880503144654088
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 24,
+      "record_outcomes": {
+        "IMPROVEMENT": 5,
+        "NOT_EVALUABLE": 25,
+        "REGRESSION": 7,
+        "TIE": 42
+      }
+    },
+    "U": {
+      "group_outcomes": {
+        "IMPROVEMENT": 5,
+        "REGRESSION": 7,
+        "TIE": 41
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": -0.0010001296933374493,
+          "groups": 53,
+          "paired_C00_mean": 0.16118288696698574,
+          "paired_C01_mean": 0.1601827572736483,
+          "paired_coffee_bootstrap_95": [
+            -0.02956880978845132,
+            0.02582520008192365
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.0162848158131177,
+          "groups": 53,
+          "paired_C00_mean": 0.658460616951183,
+          "paired_C01_mean": 0.6421758011380653,
+          "paired_coffee_bootstrap_95": [
+            -0.08044249775381852,
+            0.04472568508535488
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.017744833782569632,
+          "groups": 53,
+          "paired_C00_mean": 0.2556004791853848,
+          "paired_C01_mean": 0.2733453129679545,
+          "paired_coffee_bootstrap_95": [
+            -0.045148247978436654,
+            0.0880503144654088
+          ],
+          "paired_records": 54,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 24,
+      "record_outcomes": {
+        "IMPROVEMENT": 5,
+        "NOT_EVALUABLE": 25,
+        "REGRESSION": 7,
+        "TIE": 42
+      }
+    }
+  },
+  "interpretation_limits": [
+    "U/P equal outputs are two interface roles, not independent successes.",
+    "Broad slots receive zero fine-reference credit but may have unmeasured user value.",
+    "All intervals are descriptive old-development coffee bootstrap, not new confirmation or participant-independent uncertainty.",
+    "Matching credit is one-to-one within a panel; never add layers or secondary matching scores."
+  ],
+  "metric_scope_details": {
+    "directions": "Existing PARENTS projection of fixed fine T, not independent broad truth.",
+    "faithfulness": "Actual canonical explicitly selected fine IDs only; counts are record-level occurrences, not new independent participants.",
+    "gap_and_recall": "Positive target set count denominator; target magnitudes only enter NDCG. Parent matching fixed at0.25; no partial NDCG relevance.",
+    "layout_means": "All77 coffee groups including empty-T records; effect means use57 evaluable groups/59records.",
+    "old_hidden": "Fixed archived hidden_T remains separate;54 evaluable records/53groups, not the full-reference population."
+  },
+  "overall_conclusion": "D_MIXED_OR_UNCERTAIN: partial mean gain transfer, with main/pool intervals crossing zero and negative mean NDCG deltas",
+  "paired": {
+    "L": {
+      "group_outcomes": {
+        "IMPROVEMENT": 6,
+        "REGRESSION": 2,
+        "TIE": 49
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": 0.013799279129499794,
+          "groups": 57,
+          "paired_C00_mean": 0.374972128404283,
+          "paired_C01_mean": 0.38877140753378275,
+          "paired_coffee_bootstrap_95": [
+            -0.022983051431617357,
+            0.05653164474786073
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.05335213032581454,
+          "groups": 57,
+          "paired_C00_mean": 0.5158590921748816,
+          "paired_C01_mean": 0.4625069618490671,
+          "paired_coffee_bootstrap_95": [
+            -0.11162985588972431,
+            -0.008615288220551378
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.07038429406850459,
+          "groups": 57,
+          "paired_C00_mean": 0.40264550264550264,
+          "paired_C01_mean": 0.4730297967140073,
+          "paired_coffee_bootstrap_95": [
+            0.011675020885547201,
+            0.14620405179615706
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 20,
+      "record_outcomes": {
+        "IMPROVEMENT": 6,
+        "NOT_EVALUABLE": 20,
+        "REGRESSION": 2,
+        "TIE": 51
+      }
+    },
+    "M": {
+      "group_outcomes": {
+        "IMPROVEMENT": 5,
+        "REGRESSION": 3,
+        "TIE": 49
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": -0.009742202238113729,
+          "groups": 57,
+          "paired_C00_mean": 0.25415259259406275,
+          "paired_C01_mean": 0.24441039035594903,
+          "paired_coffee_bootstrap_95": [
+            -0.04837621546281797,
+            0.027043477370634405
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.02203425229741019,
+          "groups": 57,
+          "paired_C00_mean": 0.7138157894736842,
+          "paired_C01_mean": 0.691781537176274,
+          "paired_coffee_bootstrap_95": [
+            -0.05868838763575606,
+            0.007208124477861307
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.017543859649122806,
+          "groups": 57,
+          "paired_C00_mean": 0.24891395154553048,
+          "paired_C01_mean": 0.2664578111946533,
+          "paired_coffee_bootstrap_95": [
+            -0.011695906432748537,
+            0.058479532163742694
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 20,
+      "record_outcomes": {
+        "IMPROVEMENT": 5,
+        "NOT_EVALUABLE": 20,
+        "REGRESSION": 3,
+        "TIE": 51
+      }
+    },
+    "P": {
+      "group_outcomes": {
+        "IMPROVEMENT": 6,
+        "REGRESSION": 7,
+        "TIE": 44
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": -0.0037098578795353486,
+          "groups": 57,
+          "paired_C00_mean": 0.29759921634825853,
+          "paired_C01_mean": 0.2938893584687231,
+          "paired_coffee_bootstrap_95": [
+            -0.04927983255281388,
+            0.03844817940929515
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.0345655806182122,
+          "groups": 57,
+          "paired_C00_mean": 0.580339738234475,
+          "paired_C01_mean": 0.5457741576162628,
+          "paired_coffee_bootstrap_95": [
+            -0.09781093358395991,
+            0.020051430659983282
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.03989139515455305,
+          "groups": 57,
+          "paired_C00_mean": 0.35090504037872455,
+          "paired_C01_mean": 0.39079643553327764,
+          "paired_coffee_bootstrap_95": [
+            -0.019632414369256473,
+            0.11258354218880529
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 20,
+      "record_outcomes": {
+        "IMPROVEMENT": 6,
+        "NOT_EVALUABLE": 20,
+        "REGRESSION": 7,
+        "TIE": 46
+      }
+    },
+    "U": {
+      "group_outcomes": {
+        "IMPROVEMENT": 6,
+        "REGRESSION": 7,
+        "TIE": 44
+      },
+      "metrics": {
+        "ndcg_actual_positions": {
+          "delta_right_minus_left": -0.0037098578795353486,
+          "groups": 57,
+          "paired_C00_mean": 0.29759921634825853,
+          "paired_C01_mean": 0.2938893584687231,
+          "paired_coffee_bootstrap_95": [
+            -0.04927983255281388,
+            0.03844817940929515
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "raw_gap": {
+          "delta_right_minus_left": -0.0345655806182122,
+          "groups": 57,
+          "paired_C00_mean": 0.580339738234475,
+          "paired_C01_mean": 0.5457741576162628,
+          "paired_coffee_bootstrap_95": [
+            -0.09781093358395991,
+            0.020051430659983282
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "recall": {
+          "delta_right_minus_left": 0.03989139515455305,
+          "groups": 57,
+          "paired_C00_mean": 0.35090504037872455,
+          "paired_C01_mean": 0.39079643553327764,
+          "paired_coffee_bootstrap_95": [
+            -0.019632414369256473,
+            0.11258354218880529
+          ],
+          "paired_records": 59,
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "not_evaluable_groups": 20,
+      "record_outcomes": {
+        "IMPROVEMENT": 6,
+        "NOT_EVALUABLE": 20,
+        "REGRESSION": 7,
+        "TIE": 46
+      }
+    }
+  },
+  "policies": {
+    "C00": {
+      "L_M_set_different_records": 78,
+      "U_P_order_equal_records": 79,
+      "U_P_set_equal_records": 79,
+      "actual_final_exposures": 0,
+      "contract_issue_counts": {},
+      "diagnostics": {
+        "outside_P": {
+          "outside_candidate_occurrences": 62,
+          "outside_exact_hit_occurrences": 10,
+          "records_with_necessary_matching_loss": 12,
+          "records_with_one_optimum_outside_match": 12,
+          "records_with_outside_L_candidates": 39,
+          "records_with_outside_exact_T_hits": 8,
+          "sum_necessary_matching_loss": 11.0,
+          "sum_one_optimum_outside_match_weight": 11.5
+        },
+        "outside_U": {
+          "outside_candidate_occurrences": 62,
+          "outside_exact_hit_occurrences": 10,
+          "records_with_necessary_matching_loss": 12,
+          "records_with_one_optimum_outside_match": 12,
+          "records_with_outside_L_candidates": 39,
+          "records_with_outside_exact_T_hits": 8,
+          "sum_necessary_matching_loss": 11.0,
+          "sum_one_optimum_outside_match_weight": 11.5
+        }
+      },
+      "failures": 0,
+      "faithfulness": {
+        "M_retained_occurrences": 154,
+        "P_retained_occurrences": 154,
+        "U_retained_occurrences": 154,
+        "generated_occurrences": 154,
+        "generated_selected_exceeds_main_capacity_records": 0,
+        "not_generated_occurrences": 0,
+        "selected_exceeds_main_capacity_records": 0,
+        "selected_exceeds_pool_capacity_records": 0,
+        "selected_occurrences": 154
+      },
+      "finalizer_ranking_changed_records": 0,
+      "layers": {
+        "L": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "5": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.8421052631578947,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 5.0,
+          "k": 5,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.374972128404283,
+          "non_fine_or_outside_universe_slots": 0.0,
+          "raw_gap": 0.5158590921748816,
+          "recall": 0.40264550264550264,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 5.0
+        },
+        "M": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "5": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.739766081871345,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 2.5064935064935066,
+          "k": 5,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.25415259259406275,
+          "non_fine_or_outside_universe_slots": 2.4935064935064934,
+          "raw_gap": 0.7138157894736842,
+          "recall": 0.24891395154553048,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 5.0
+        },
+        "P": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "8": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.8501461988304094,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 4.214285714285714,
+          "k": 8,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.29759921634825853,
+          "non_fine_or_outside_universe_slots": 3.7857142857142856,
+          "raw_gap": 0.580339738234475,
+          "recall": 0.35090504037872455,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 8.0
+        },
+        "U": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "8": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.8501461988304094,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 4.214285714285714,
+          "k": 8,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.29759921634825853,
+          "non_fine_or_outside_universe_slots": 3.7857142857142856,
+          "raw_gap": 0.580339738234475,
+          "recall": 0.35090504037872455,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 8.0
+        }
+      },
+      "missing_artifacts": 0,
+      "option_costs": {
+        "19": 79
+      },
+      "question_costs": {
+        "5": 79
+      },
+      "secondary_adds_exact_T_records": 19,
+      "secondary_new_exact_hit_occurrences": 22,
+      "valid_proposed_pool_records": 79
+    },
+    "C01": {
+      "L_M_set_different_records": 78,
+      "U_P_order_equal_records": 79,
+      "U_P_set_equal_records": 79,
+      "actual_final_exposures": 0,
+      "contract_issue_counts": {},
+      "diagnostics": {
+        "outside_P": {
+          "outside_candidate_occurrences": 57,
+          "outside_exact_hit_occurrences": 13,
+          "records_with_necessary_matching_loss": 13,
+          "records_with_one_optimum_outside_match": 14,
+          "records_with_outside_L_candidates": 39,
+          "records_with_outside_exact_T_hits": 10,
+          "sum_necessary_matching_loss": 14.0,
+          "sum_one_optimum_outside_match_weight": 14.75
+        },
+        "outside_U": {
+          "outside_candidate_occurrences": 57,
+          "outside_exact_hit_occurrences": 13,
+          "records_with_necessary_matching_loss": 13,
+          "records_with_one_optimum_outside_match": 14,
+          "records_with_outside_L_candidates": 39,
+          "records_with_outside_exact_T_hits": 10,
+          "sum_necessary_matching_loss": 14.0,
+          "sum_one_optimum_outside_match_weight": 14.75
+        }
+      },
+      "failures": 0,
+      "faithfulness": {
+        "M_retained_occurrences": 152,
+        "P_retained_occurrences": 152,
+        "U_retained_occurrences": 152,
+        "generated_occurrences": 152,
+        "generated_selected_exceeds_main_capacity_records": 0,
+        "not_generated_occurrences": 0,
+        "selected_exceeds_main_capacity_records": 0,
+        "selected_exceeds_pool_capacity_records": 0,
+        "selected_occurrences": 152
+      },
+      "finalizer_ranking_changed_records": 0,
+      "layers": {
+        "L": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "5": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.8464912280701754,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 5.0,
+          "k": 5,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.38877140753378275,
+          "non_fine_or_outside_universe_slots": 0.0,
+          "raw_gap": 0.4625069618490671,
+          "recall": 0.4730297967140073,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 5.0
+        },
+        "M": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "5": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.7492690058479531,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 2.7142857142857144,
+          "k": 5,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.24441039035594903,
+          "non_fine_or_outside_universe_slots": 2.2857142857142856,
+          "raw_gap": 0.691781537176274,
+          "recall": 0.2664578111946533,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 5.0
+        },
+        "P": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "8": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.8523391812865497,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 4.318181818181818,
+          "k": 8,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.2938893584687231,
+          "non_fine_or_outside_universe_slots": 3.6818181818181817,
+          "raw_gap": 0.5457741576162628,
+          "recall": 0.39079643553327764,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 8.0
+        },
+        "U": {
+          "actual_empty_output_records": 0,
+          "candidate_count_histogram": {
+            "8": 79
+          },
+          "coffee_groups": 77,
+          "direction_coverage": 0.8523391812865497,
+          "duplicate_records": 0,
+          "empty_T_records": 20,
+          "evaluable_coffee_groups": 57,
+          "evaluable_records": 59,
+          "fine_unique_count": 4.318181818181818,
+          "k": 8,
+          "mean_scope": "Available-case coffee macro; full-reference effects exclude empty T; layout averages retain all output records. Paired means and denominators are separately reported.",
+          "ndcg_actual_positions": 0.2938893584687231,
+          "non_fine_or_outside_universe_slots": 3.6818181818181817,
+          "raw_gap": 0.5457741576162628,
+          "recall": 0.39079643553327764,
+          "records": 79,
+          "returned_panel_absent_records": 0,
+          "returned_slots_scored": 8.0
+        }
+      },
+      "missing_artifacts": 0,
+      "option_costs": {
+        "19": 79
+      },
+      "question_costs": {
+        "5": 79
+      },
+      "secondary_adds_exact_T_records": 18,
+      "secondary_new_exact_hit_occurrences": 21,
+      "valid_proposed_pool_records": 79
+    }
+  },
+  "private_artifact_hashes": {
+    "actual_returns.private.json": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+    "chain_examples.private.json": "515bf247f5dac0aaeb70f7f1b41df215beb997424837f3e08d0a8d8527d8f904",
+    "paired_group_deltas.private.json": "fc15d5a0c6ef9ef3ee11e9972a0edf8d4a08c5a47f1d637c3f1150d98d37dccb"
+  },
+  "private_artifact_location": "Persistent owner-controlled backend-sequential-model-v2/revisions/r8/verified/; initial and intermediate engineering reports retained separately",
+  "real_time": "NOT_EVALUATED",
+  "real_user_feedback": "NOT_EVALUATED",
+  "reporting_corrections": {
+    "changes": [
+      "Count both broad.* and attribute.* as preceding broad output slots; add explicit type/position audit.",
+      "Normalize JSON histogram keys when comparing replayed aggregate dictionaries.",
+      "Make paired versus available-case coffee denominators explicit; distinguish missing returned P from a missing source artifact; exclude zero-weight T from outside-credit diagnostic."
+    ],
+    "corrected_transition_records": 155,
+    "initial_execution_code_sha256": "f147c2a1bf8e36bf944c29f2b05db30da7a2f5e5053d4f351609f306e8de641e",
+    "initial_execution_receipt_sha256": "2955525d267d2d422fb38120d672cdf589a0f49a565fe5e8508e3c9d5e11f521",
+    "intermediate_execution_receipt_sha256": "0a8e682d8331589a34788857d37e063f6f6ceec1c218ac86ebaf46ffedc41df2",
+    "status": "IMPLEMENTATION_REPORTING_FIXED_PRIMARY_RESULTS_UNCHANGED",
+    "unchanged": "All158 actual returns, old input/model/T hashes, full/hidden panel metrics and ordinary costs exactly match initial execution. Frozen cohort has only positive target weights; boundary fixes did not change scores."
+  },
+  "scope": "REPEATEDLY_VIEWED_DEVELOPMENT_RETURNED_OUTPUT_COMPARISON_NOT_NEW_CONFIRMATION",
+  "three_layer_gap_table": [
+    {
+      "C00": 0.5158590921748816,
+      "C01": 0.4625069618490671,
+      "coffee_bootstrap_95": [
+        -0.11162985588972431,
+        -0.008615288220551378
+      ],
+      "evaluable_groups": 57,
+      "evaluable_records": 59,
+      "k": 5,
+      "layer": "LEGACY_FINE5",
+      "paired_delta_C01_minus_C00": -0.05335213032581454,
+      "scope": "Repeatedly viewed coffee-held development; shared graders; not new confirmation or human feedback"
+    },
+    {
+      "C00": 0.7138157894736842,
+      "C01": 0.691781537176274,
+      "coffee_bootstrap_95": [
+        -0.05868838763575606,
+        0.007208124477861307
+      ],
+      "evaluable_groups": 57,
+      "evaluable_records": 59,
+      "k": 5,
+      "layer": "RETURNED_MAIN5",
+      "paired_delta_C01_minus_C00": -0.02203425229741019,
+      "scope": "Repeatedly viewed coffee-held development; shared graders; not new confirmation or human feedback"
+    },
+    {
+      "C00": 0.580339738234475,
+      "C01": 0.5457741576162628,
+      "coffee_bootstrap_95": [
+        -0.09781093358395991,
+        0.020051430659983282
+      ],
+      "evaluable_groups": 57,
+      "evaluable_records": 59,
+      "k": 8,
+      "layer": "RETURNED_MAIN_SECONDARY8_AND_PROPOSED_POOL_IDENTICAL",
+      "paired_delta_C01_minus_C00": -0.0345655806182122,
+      "scope": "Repeatedly viewed coffee-held development; shared graders; not new confirmation or human feedback"
+    }
+  ],
+  "version": "m2-r8.returned-output-evaluation.v1"
+}

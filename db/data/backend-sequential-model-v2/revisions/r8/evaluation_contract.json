@@ -1,0 +1,109 @@
+{
+  "aggregation": {
+    "group_scope": "Coffee-held with shared graders/conditions/sources; no new coffee confirmation or participant independence",
+    "outcomes": "gap delta < -1e-12 improvement, >1e-12 regression, otherwise tie; computational tolerance, not practical/statistical significance",
+    "paired": "C01-C00 per exact record then coffee mean; seeded paired coffee bootstrap2000 draws seed20260906; 2.5/97.5 percentiles; descriptive only, repeatedly viewed development",
+    "point": "within-coffee mean then equal coffee means; same full cohort all layers; empty/missing counts explicit",
+    "separate_k": "L/M k5 vs U/P k8; no pooled cross-budget improvement"
+  },
+  "baseline_actual": "95def253bf1d94c4894dc9d226ca2dc8d56101cf",
+  "baseline_expected": "95def253bf1d94c4894dc9d226ca2dc8d56101cf",
+  "candidate": "C01_RESEARCH_NOT_ADOPTED",
+  "cohort": "All archived C00/C01 records paired by unique record_id/group_id/full_T/hidden_T; no reselection, refit, resplit or exclusion for empty T",
+  "default": "B2_UNCHANGED_CHECK_OFF",
+  "endpoint": "Q0-Q4 PRELIMINARY_RESULT; no FINAL_COMPARISON; P is proposed, not actually exposed to a human",
+  "extraction": "Frozen outer expert via train_conditioning_r4.model_bundle then flavor_conditioning_r4.finalize_result(deepcopy(original state)); original state/model/ranking/questions/answers/T hashes unchanged; returned updated state retained separately",
+  "fit_count": 0,
+  "frozen_code_hashes": {
+    "alignment_metrics_r3.py": "276fe37faf5eb87584b2b223c53f5019ce0d2577a1c2caf4b457e0b2270d7f88",
+    "candidate_c01_r7.py": "989520166e640450f26773d9c21b18e9140f555315836f4fe17bf8772e10db02",
+    "flavor_conditioning_r4.py": "973cefea0c7aad836ecb6d6a953b3980b5fbe1de0828184d8dd39c5ab430ff48",
+    "flavor_m2_r1.py": "cfec9eafcf0803d54a02d7322e31c03367c54df0da1faa50be57f9a8480247e9",
+    "information_supervision_r6.py": "235041364e6088a9663e874888f360c1822aa1adfa80fa7a8366483cdf6112fc",
+    "r6_mapping_i2_helpers.py": "839bcf90cee1be7444f666b44cffbe1a5ce644fa9fac3222076c73af03c54184",
+    "train_conditioning_r4.py": "cec04d03a7eee3d572c9f1c7ed7c7cb124d049adeaabd99610852115ec62a092"
+  },
+  "gain_diagnostics": {
+    "details": "At most8 private cases: deterministic round-robin SHA(record_id) within gain-retained, legacy-gain-lost, pool-gain-without-main, regression, tie; all cases audited before selection",
+    "directions": "existing PARENTS projection of fine T versus returned broad/fine directions; derived semantic proxy only",
+    "faithfulness": "canonical explicitly selected fine IDs: generated/main/U/P counts and denominators; report demand exceeding k; no impossible100% mandate",
+    "secondary": "exact target hits in secondary minus main, never sum matching across layers",
+    "transition": "Compare original ranking with finalizer updated rank; label exclusion by actual M/U/P boundary and preceding broad/fine counts, not causal removal experiments.",
+    "unreturned_L": "Report outside U and P separately; exact hits and marginal loss of legacy maximum matching when outside IDs withheld without replacement. Also report one deterministic optimal matching witness; tie-equivalent witnesses are not uniquely causal."
+  },
+  "helper": {
+    "original_sha256": "57327dbe898b604399e66a997344d1ff9207f85d7fd7628031af4b47c4cee90d",
+    "source": "User-supplied r8_output_alignment_helper.py attachment; integration example, not authority to modify runtime"
+  },
+  "input_hashes": {
+    "revisions/r1/cv/M2_R1_FINAL_FIXED_fold0.model.json": "4d597f6265a2045896837f71a526331f9e7dd683004c719462a2ccc85be35121",
+    "revisions/r1/cv/M2_R1_FINAL_FIXED_fold1.model.json": "8d51c657a49fee96d3e0053df835bc3f607c4ebe1cafb08ab318c1efce2f32e1",
+    "revisions/r1/cv/M2_R1_FINAL_FIXED_fold2.model.json": "4dd4abd59c8302af41f129bd52ebdb6e07db436d6130044a046ccfc365da5022",
+    "revisions/r6/matrix_cases.private.json": "b949ca1a25a083d006d4c2ae1d00114cc8b2254967258a18d34980a4ca7a6660",
+    "revisions/r6/matrix_input_resources.private.json": "571d62c7b9830a1bb61d0ee4d8f5b0d4a885334a1732b549ee41ad682e5759d9"
+  },
+  "metrics": {
+    "duplicates": "flag contract violation; later occurrence cannot score or compress positions",
+    "hidden": "Same archived fixed hidden_T, separate secondary analysis; no exclusion recomputed from new output",
+    "limits": "M<=5 secondary<=3 U<=8; P eligible iff unique3-8 and actual flag; malformed IDs/version conflicts block affected evaluation until audited; no silent truncation",
+    "missing": "MISSING_ARTIFACT is null, distinct from reproducible runtime failure with empty outputs. Empty T null in all layers; retain all records and coverage denominators. Missing exposure remains null, even if main exists.",
+    "ndcg": "linear exact target-weight relevance / log2(actual_position+1); full sorted positive T weights IDCG at declared k; broad and later duplicate slots keep position with zero credit",
+    "raw_gap": "1 - original one-to-one parent maximum_matching / distinct positive full-T count; exact1 registered fine shared-parent0.25. Target magnitudes only affect NDCG, consistent with historical metric.",
+    "recall": "distinct exact fine hits / full positive T count",
+    "scope": "FINE_REFERENCE_ON_RETURNED_OUTPUT; not total sensory value or calibrated psychological distance",
+    "unavailable_targets": "All fixed T and OOV/ungenerated targets retained; no invented predictions, no denominator shrink"
+  },
+  "no_changes": [
+    "A0",
+    "MAP_BASE",
+    "I2_LIVE",
+    "question bank",
+    "main/secondary policy",
+    "parents",
+    "T",
+    "C0/C1",
+    "default",
+    "frontend",
+    "CI",
+    "historical artifacts"
+  ],
+  "panels": {
+    "L": {
+      "k": 5,
+      "name": "LEGACY_FINE5",
+      "rule": "Unchanged R3 fine-filtered panel and archived metrics; reference only"
+    },
+    "M": {
+      "k": 5,
+      "name": "RETURNED_MAIN5",
+      "rule": "Actual main original IDs/order"
+    },
+    "P": {
+      "k": 8,
+      "name": "PROPOSED_COMPARISON_POOL",
+      "rule": "Actual exposure.candidate_ids only; never substitute U or full ranking"
+    },
+    "U": {
+      "k": 8,
+      "name": "RETURNED_MAIN_SECONDARY8",
+      "rule": "Actual main then secondary; no reranking"
+    }
+  },
+  "private": "Raw actual returns/state/answers/IDs/T/model weights in persistent owner-controlled revisions/r8 only",
+  "public_files": [
+    "evaluation_contract.json",
+    "output_alignment_results.json",
+    "run_receipt.json"
+  ],
+  "r7_public_hashes": {
+    "candidate_manifest.json": "c9e035ced9120a0008a668619eac06b9595250250489feadf0b597da96661257",
+    "experiment_contract.json": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
+    "mechanism_and_evidence.tsv": "b4f0c918a0a89697fcc9e808332bb7387af695a74b8bb532d9c1e6b0a891e81d",
+    "results.json": "bb53d859cbfc52d5737fdf336ef5e4d6e1493edca821dc52d8a8dc4c96038418",
+    "run_receipt.json": "ccac84a81b30af35086e8bc85c3ee67b4ee6c22aaccb900eefbd6c9b5aed24d7"
+  },
+  "registered_utc": "2026-09-06T11:44:59.092987+00:00",
+  "registration_scope": "AFTER_INPUT_SCHEMA_INSPECTION_BEFORE_ANY_R8_OUTPUT_EFFECT_CALCULATION",
+  "synthetic_cli": "Full-development C01 only for new legal JSON infer/extraction engineering test; never historical effect evaluation",
+  "version": "m2-r8.returned-output-evaluation.v1"
+}
