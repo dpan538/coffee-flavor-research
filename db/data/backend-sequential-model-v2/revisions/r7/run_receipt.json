@@ -43,46 +43,72 @@
     "second_final_rejected": true,
     "source_feature_vocabulary_count": 63
   },
+  "checkpoint_commit": "8a89934f816188876eff8bc3202810230bffa27a",
   "checks": {
     "backend_related_unittest": {
-      "command": "PYTHONPATH=db/scripts:db/tests python -m unittest db/scripts/test_candidate_c01_r7.py db/scripts/test_mechanism_diagnostics_r7.py db/tests/test_confirmation_r7.py db/scripts/test_information_supervision_r6.py db/scripts/test_supervision_r6.py db/scripts/test_diagnostics_supervision_r6.py db/tests/test_semantic_mapping_r6.py db/tests/test_alignment_metrics_r3.py db/tests/test_conditioning_r4.py",
+      "command": "PYTHONPATH=db/scripts:db/tests python -m unittest db/scripts/test_candidate_c01_r7.py db/scripts/test_mechanism_diagnostics_r7.py db/scripts/test_local_scope_repair_r7.py db/tests/test_confirmation_r7.py db/tests/test_acquire_confirmation_r7.py db/scripts/test_information_supervision_r6.py db/scripts/test_supervision_r6.py db/scripts/test_diagnostics_supervision_r6.py db/tests/test_semantic_mapping_r6.py db/tests/test_alignment_metrics_r3.py db/tests/test_conditioning_r4.py",
       "status": "PASS",
-      "tests": 95
+      "tests": 115
     },
+    "black_owned_python": "PASS",
+    "local_scope_metric_replay": "PASS_79_TRAJECTORIES_158_METRIC_RECOMPUTATIONS_ZERO_FITS",
     "npm_build": "PASS",
     "npm_check": "PASS",
-    "npm_format_check": "PASS_BEFORE_CHECKPOINT_PUBLIC_WRITES_RECHECKED_AT_COMMIT",
+    "npm_format_check": "PASS_FINAL_PUBLIC_RECORDS",
     "npm_test": "PASS_34",
-    "npm_test_smoke": "PASS_15_AFTER_LOCALHOST_SANDBOX_ESCALATION"
+    "npm_test_smoke": "PASS_15_AFTER_LOCALHOST_SANDBOX_ESCALATION",
+    "source_hash_verify": "PASS_34_FILES",
+    "source_original_reparse": "PASS_IDENTICAL_TO_SEALED_SUMMARY"
   },
   "engineering_test_limits": "Synthetic CLI final selections and confirmation import unit fixtures are software verification only, not new coffee observations or real final feedback.",
   "execution_notes": [
     "pytest unavailable; used repository unittest suites",
     "Initial R4 test import needed existing db/tests PYTHONPATH; corrected invocation passed",
     "Sandbox denied preview localhost bind; authorized escalation completed all15 unchanged smoke cases",
-    "Local Node22.21 produced >=22.22 warning; check/build/test exited0"
+    "Local Node22.21 produced >=22.22 warning; check/build/test exited0",
+    "Source root takeover completed actual original-file parses; draft expected93 unique respondent IDs failed, actual93 rows/90 IDs retained with duplicate limitation; no model used that source.",
+    "Local repair initial legacy A exclusion reporting error corrected from sealed trajectories; originals retained; no second candidate or scoring run."
   ],
-  "local_repair": "CONTRACT_FROZEN_PENDING_COMPARISON",
+  "final_implementation_hashes": {
+    "db/scripts/acquire_confirmation_r7.py": "239f9792cf8adeea4f6cfbf29f84778f79af9e2de84df6a617b0df2e754452da",
+    "db/scripts/candidate_c01_r7.py": "989520166e640450f26773d9c21b18e9140f555315836f4fe17bf8772e10db02",
+    "db/scripts/confirmation_r7.py": "85e487317432d4a7ad17778cceaa6586d8bf6d3ee64e9df62e7bbb4bcec9e17a",
+    "db/scripts/local_scope_repair_r7.py": "3b8d696cffe58ed411e45145503d70f39c3120972d4c0638830fb8b9a7290d6e",
+    "db/scripts/mechanism_diagnostics_r7.py": "9011fdd02b9ddf30daeb46fd839f8fc9d980b848582cf409acf6bce6778cb7b1",
+    "db/scripts/test_local_scope_repair_r7.py": "855bf624fd025e636197926633278c9703e108c4c12837a1962cd8eb16a53eae",
+    "db/tests/test_acquire_confirmation_r7.py": "ac04c0a0094f27f69d3bdd3037337ba23fa3556cfef35a9b238ec45d77760d68"
+  },
+  "local_repair": "ONE_FROZEN_SOURCE_SCOPE_COMPARISON_COMPLETED; REPORTING_CORRECTION_AND_REPLAY_VERIFIED",
   "mechanism_replay": {
     "diagnostic_records": 237,
     "scope": "Sealed actual trajectory hashes and original metric replay; not a new fit",
     "status": "PASS"
   },
-  "new_confirmation": "IN_PROGRESS_NOT_EVALUATED",
+  "new_confirmation": "NEW_CONFIRMATION_NOT_AVAILABLE",
+  "preserved_R6_public_hashes_verified": {
+    "experiment_contract.json": "688c2a60f3426e0aa7c45bd51607b33b839b18438c3539ad19df754d0a3a1815",
+    "results.json": "77ccc395e8dbb23e64689af33a2ac7ae0bcf5f03efb23cef1d070dbc02300c60",
+    "run_receipt.json": "c9344d2e172eed673f3fff6c28340704b967845e032c2427ddac327fc81aeedf",
+    "semantic_patch.tsv": "f4fab99ec24f0026575bb6398f4bd06d2d50215eb365a0825d6b81a1ccdfa0ad"
+  },
   "private_evidence": {
     "C01_ALL_DEVELOPMENT.v3.package.json": "dd1e8e5f2683f13ecd9408c09ee5315295ebbe38692204cc8c036e4db5bae8da",
     "c01_verification.private.json": "eb989ab22bdd3e4aedde502d1e8ee8b3459fe6f6376397d0793b05852ed670b9",
+    "confirmation_acquisition_summary.private.json": "36f29ee2c8719dc8553e5537e0d073e982258369902c7e076accdf169add202b",
     "local_repair_contract.private.json": "9b615deadc3f482b8d7e91b5b45a4386a32fa0a523e8a8f2ee7415a163093dd9",
+    "local_repair_receipt.private.json": "70176fcd53404e63b6f5de047f9339d417e72ef53b0b5b09c1afd21820c7ad5e",
+    "local_repair_reporting_receipt.private.json": "78ae98302db1a32969a7e23d3270fcfd12e0b3b12424857424ad9a7304e0b8c1",
+    "local_repair_reporting_summary.private.json": "312619f4fbcae8e07b36342795bafd6c998c73d1967c16397d5f51eed3f12697",
     "mechanism_analysis_receipt.private.json": "d2504351b69dda845ddfb78fc90b6971c6eb33d2c46acf39a957130805197623",
     "mechanism_receipt.private.json": "5683c8de9b58ce21fff89f4ca8f1293d7b09d20e272ca4f1c19ba6286fff9981"
   },
   "public_hashes": {
-    "candidate_manifest.json": "3f866b6ce8f75e17965335ae19df319c13cc53bf3929cbf9bf76d56669a3ed8f",
+    "candidate_manifest.json": "c9e035ced9120a0008a668619eac06b9595250250489feadf0b597da96661257",
     "experiment_contract.json": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
-    "mechanism_and_evidence.tsv": "1497ca6c75d4f5a18a0f98ea6de6c4c0f26472550d477450748f079c54b4568b",
-    "results.json": "3497d1105acf95528973aad5f26e55af8cd9f3629c91df366ee37043904d53d4"
+    "mechanism_and_evidence.tsv": "b4f0c918a0a89697fcc9e808332bb7387af695a74b8bb532d9c1e6b0a891e81d",
+    "results.json": "bb53d859cbfc52d5737fdf336ef5e4d6e1493edca821dc52d8a8dc4c96038418"
   },
-  "recorded_utc": "2026-09-06T09:28:25.994149+00:00",
+  "recorded_utc": "2026-09-06T10:08:36.378040+00:00",
   "refit": "NOT_EXECUTED_EXISTING_A0_REUSE_AUDITED",
   "remote_baseline": {
     "CI": "FAIL_AGENTS_MD_EXTRA_BLANK_LINE",
@@ -91,6 +117,14 @@
     "historical_replay_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34021279295",
     "local_fix": "One blank line removed from AGENTS.md; no governance rule or workflow changed"
   },
+  "remote_checkpoint": {
+    "CI": "PASS",
+    "CI_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34024783811",
+    "commit": "8a89934f816188876eff8bc3202810230bffa27a",
+    "historical_replay": "PASS",
+    "historical_replay_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34024783743"
+  },
+  "remote_final_commit": "NOT_YET_CREATED_AT_RECEIPT; checkpoint CI success does not claim final commit CI success",
   "scope": {
     "default_changed": false,
     "frontend_changes": 0,
@@ -99,6 +133,6 @@
     "unrelated_deletions_excluded": 135,
     "workflow_changes": 0
   },
-  "state": "CHECKPOINT1_COMPLETE_CONTINUING_SOURCE_AND_LOCAL_REPAIR_WORK",
-  "version": "m2-r7.checkpoint1-receipt.v1"
+  "state": "R7_COMPLETED_WITH_EXPLICIT_CONFIRMATION_DATA_GAP",
+  "version": "m2-r7.final-receipt.v1"
 }

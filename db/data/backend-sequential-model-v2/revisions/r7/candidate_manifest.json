@@ -22,11 +22,14 @@
   },
   "commands": {
     "infer": "python db/scripts/candidate_c01_r7.py infer --bundle \"$OWNER_DIR/revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json\" --request /absolute/path/new_request.json",
+    "local_scope_replay": "python db/scripts/local_scope_repair_r7.py replay --owner-dir \"$OWNER_DIR\" --contract-sha256 9b615deadc3f482b8d7e91b5b45a4386a32fa0a523e8a8f2ee7415a163093dd9",
     "mechanism_replay": "python db/scripts/mechanism_diagnostics_r7.py replay --owner-dir \"$OWNER_DIR\" --contract-sha256 ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
     "owner_dir": "Persistent owner-controlled backend-sequential-model-v2 directory, not included in public repository",
     "python": "Existing backend Python environment with numpy/scipy; actual host /private/tmp/coffee-backend-model-venv/bin/python",
     "refit": "NOT_EXECUTED: audited existing full-development A0 reused; build/replay are not training",
     "replay": "python db/scripts/candidate_c01_r7.py replay --owner-dir \"$OWNER_DIR\" --bundle \"$OWNER_DIR/revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json\"",
+    "source_hash_verify": "python db/scripts/acquire_confirmation_r7.py --owner \"$OWNER_DIR\" --phase verify",
+    "source_reparse": "python db/scripts/acquire_confirmation_r7.py --owner \"$OWNER_DIR\" --phase parse",
     "working_directory": "existing repository checkout on research/coffee-sensory-data-ml-readiness"
   },
   "contract_sha256": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",

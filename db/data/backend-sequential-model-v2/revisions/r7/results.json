@@ -1,4 +1,42 @@
 {
+  "R6_original_development_contrasts": {
+    "C01-C00": {
+      "delta_right_minus_left": -0.05335213032581454,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        -0.11162985588972431,
+        -0.008615288220551378
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    },
+    "C10-C00": {
+      "delta_right_minus_left": -0.0014619883040935659,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        -0.004385964912280698,
+        0.0
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    },
+    "C11-C00": {
+      "delta_right_minus_left": -0.03405388471177945,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        -0.0871890664160401,
+        0.008197838345864659
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    },
+    "interaction": {
+      "delta_right_minus_left": 0.020760233918128652,
+      "groups": 57,
+      "paired_coffee_bootstrap_95": [
+        0.0014619883040935659,
+        0.05263157894736842
+      ],
+      "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+    }
+  },
   "candidate": {
     "full_development_independent_performance": "NOT_EVALUATED",
     "new_scorer_fits": 0,
@@ -7,7 +45,19 @@
     "status": "RUNNABLE_PRIORITY_CONFIRMATION_CANDIDATE"
   },
   "checkpoint1": "Independent CLI+158 historical policy replays+3 actual channel diagnostics complete",
-  "checkpoint2": "IN_PROGRESS",
+  "checkpoint2": "Completed alternative: original source files processed; no qualified new confirmation cohort; one source-supported local scope correction implemented and fully compared",
+  "decision": {
+    "B2": "DEFAULT_UNCHANGED",
+    "C01": "RUNNABLE_PRIORITY_CONFIRMATION_CANDIDATE_NOT_ADOPTED",
+    "R6_C11_ridge03": "ARCHIVE_UNCHANGED",
+    "next_required_evidence": "Previously unused, rights-cleared multicoffee original observations with traceable dependencies and disjoint A/B/T, frozen before fixed shared-A0 C00/C01 evaluation. Declare and separately evaluate actual exposed-output alignment before product adoption; old fine-only retrieval scores do not establish it.",
+    "stop_complexifying": [
+      "MAP_PATCH/I2 coordination network",
+      "Q3 trigger",
+      "foundation",
+      "new scorer family"
+    ]
+  },
   "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
   "historical_mechanism_diagnostics": {
     "all_records_audited": 79,
@@ -426,7 +476,219 @@
     "per_cell_records": 79,
     "scope": "Reporting clarification; unchanged original metrics/outputs, not a new scored intervention"
   },
+  "interaction_interpretation": "Original interaction is (C11-C10)-(C01-C00)=+0.020760233918128652; distinct from C11-C01=+0.01929824561403509. Neither is fresh confirmation. Three diagnostic deltas are not additive causal components.",
   "local_repair": {
+    "comparison": {
+      "candidate": "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY",
+      "change_counts": {
+        "C01": {
+          "canonical_selected_changed_records": 28,
+          "fine5_set_changed_records": 13,
+          "main5_set_changed_records": 16,
+          "outcomes_all_records": {
+            "IMPROVEMENT": 1,
+            "NO_EVALUABLE_T": 20,
+            "REGRESSION": 4,
+            "TIE": 54
+          },
+          "rank_changed_records": 26,
+          "scores_changed_records": 28,
+          "whole_exposure_content_changed_records": 22
+        },
+        "C11": {
+          "canonical_selected_changed_records": 3,
+          "fine5_set_changed_records": 0,
+          "main5_set_changed_records": 0,
+          "outcomes_all_records": {
+            "NO_EVALUABLE_T": 20,
+            "TIE": 59
+          },
+          "rank_changed_records": 3,
+          "scores_changed_records": 3,
+          "whole_exposure_content_changed_records": 2
+        }
+      },
+      "coffee_groups": 77,
+      "conclusion_scope": "Provenance support correction is independent of alignment outcome; no claim tea flavour absent or word translation resolved",
+      "contract_sha256": "9b615deadc3f482b8d7e91b5b45a4386a32fa0a523e8a8f2ee7415a163093dd9",
+      "coverage_recomputations": 3,
+      "coverage_scope": "Only corresponding frozen outer TRAIN B; same frozen rule eligibility, no held or target inputs",
+      "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF_NO_PROMOTION",
+      "development_mechanism_checks": {
+        "TRAIN_B_body_only_no_green_coverage": true,
+        "actual_user_green_selection_preserved": true,
+        "actual_user_update_exact_unchanged_runtime_Q0": true,
+        "actual_user_update_exact_unchanged_runtime_Q1": true,
+        "body_only_no_new_green": true,
+        "complete_targets_masks_roles_unchanged": true,
+        "every_MAP_BASE_concept_preserved": true,
+        "held_units_not_inspected": true,
+        "independent_herb_support_retained": true,
+        "non_body_tea_unchanged_aftertaste": true,
+        "non_body_tea_unchanged_aroma": true,
+        "non_body_tea_unchanged_bitterness_description": true,
+        "non_body_tea_unchanged_bouquet": true,
+        "raw_body_text_and_native_uncertainty_retained": true
+      },
+      "fit_count": 0,
+      "held_records_with_changed_mapped_AB": 12,
+      "held_records_with_scoped_body_tea": 13,
+      "metric_scope": "Fixed 56 fine task first5 filtered ranking; full fixed T including generation-unavailable targets; actual mixed-layer main5 separate",
+      "metrics": {
+        "C01": {
+          "actual_final_exposure": 0,
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.14394319131161237,
+          "direct_retention": 1.0,
+          "empty_T_records": 20,
+          "failures": 0,
+          "generation_vocabulary_sizes": [
+            48,
+            50
+          ],
+          "groups": 77,
+          "hidden_gap": 0.5459418987720873,
+          "hidden_ndcg": 0.252263568361902,
+          "human_time": null,
+          "identifiable_records": 59,
+          "inferred_exact_contribution": 0.12251461988304092,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.14394319131161237,
+          "legacy_R4_recovery_gap": 0.5072401916741539,
+          "ndcg": 0.38877140753378275,
+          "option_costs": [
+            19
+          ],
+          "positive_mention_CE": null,
+          "question_costs": [
+            5
+          ],
+          "raw_gap": 0.4625069618490671,
+          "recall": 0.4730297967140073,
+          "records": 79
+        },
+        "C11": {
+          "actual_final_exposure": 0,
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1268170426065163,
+          "direct_retention": 1.0,
+          "empty_T_records": 20,
+          "failures": 0,
+          "generation_vocabulary_sizes": [
+            48,
+            50
+          ],
+          "groups": 77,
+          "hidden_gap": 0.5666966157532195,
+          "hidden_ndcg": 0.23911150132129952,
+          "human_time": null,
+          "identifiable_records": 59,
+          "inferred_exact_contribution": 0.14256474519632414,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1268170426065163,
+          "legacy_R4_recovery_gap": 0.5110137765798143,
+          "ndcg": 0.3616860635822978,
+          "option_costs": [
+            19
+          ],
+          "positive_mention_CE": null,
+          "question_costs": [
+            5
+          ],
+          "raw_gap": 0.48180520746310224,
+          "recall": 0.44846839320523524,
+          "records": 79
+        },
+        "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY": {
+          "actual_final_exposure": 0,
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1268170426065163,
+          "direct_retention": 1.0,
+          "empty_T_records": 20,
+          "failures": 0,
+          "generation_vocabulary_sizes": [
+            48,
+            50
+          ],
+          "groups": 77,
+          "hidden_gap": 0.5666966157532195,
+          "hidden_ndcg": 0.23911150132129952,
+          "human_time": null,
+          "identifiable_records": 59,
+          "inferred_exact_contribution": 0.14256474519632414,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1268170426065163,
+          "legacy_R4_recovery_gap": 0.5110137765798143,
+          "ndcg": 0.3616860635822978,
+          "option_costs": [
+            19
+          ],
+          "positive_mention_CE": null,
+          "question_costs": [
+            5
+          ],
+          "raw_gap": 0.48180520746310224,
+          "recall": 0.44846839320523524,
+          "records": 79
+        }
+      },
+      "paired_contrasts": {
+        "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY-C01": {
+          "delta_right_minus_left": 0.01929824561403509,
+          "groups": 57,
+          "paired_coffee_bootstrap_95": [
+            -0.0002923976608187105,
+            0.05116959064327486
+          ],
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        },
+        "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY-C11": {
+          "delta_right_minus_left": 0.0,
+          "groups": 57,
+          "paired_coffee_bootstrap_95": [
+            0.0,
+            0.0
+          ],
+          "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+        }
+      },
+      "possible_priority_contract_flags": 0,
+      "private_evidence_hashes": {
+        "local_repair_case_audit.private.json": "4a4c29bd60d0ca51b8e13c0063e2b68117e6e6da3a5b32475bc261af1b303b2c",
+        "local_repair_detailed_examples.private.json": "398a3a81a730881c86b83e8f6fff3a28819a7f37910ae5994494d00378a840b0",
+        "local_repair_reporting_trajectories.private.json": "67719563b9247e5979d4316f0b6cac310c781e92e1a335f39451e5388108b45f",
+        "local_repair_resources.private.json": "6b8fc85102471e019ea29a054057c97c227cedc6678a37d2034841ecbe70f6a1",
+        "local_repair_trajectories.private.json": "457e426ac2c4cb96c053caf162b2e8a655074f2e9341a06e865f711636de9461"
+      },
+      "records": 79,
+      "reporting_correction": {
+        "changed_metrics": {
+          "C01": {},
+          "C11": {},
+          "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY": {
+            "legacy_R4_recovery_gap": {
+              "after": 0.5110137765798143,
+              "before": 0.5135294998502546
+            }
+          }
+        },
+        "corrected_utc": "2026-09-06T09:40:38.560857+00:00",
+        "coverage_recomputations": 0,
+        "fit_count": 0,
+        "new_candidate_comparisons": 0,
+        "new_policy_executions": 0,
+        "original_erroneous_summary_sha256": "3bfd1c34e22224a5151d22b3b5bafdcab5861b73adda0d80eae957ca524e3a79",
+        "original_execution_receipt_sha256": "70176fcd53404e63b6f5de047f9339d417e72ef53b0b5b09c1afd21820c7ad5e",
+        "preserved_interpreted_AB_and_all_rankings_states_targets": true,
+        "reason": "v1 overwrote frozen MAP_BASE A with interpreted_A; legacy_R4 exclusion then used a different reference set from original C11. This was a reporting error, not a scientific regression caused by Body tea scope.",
+        "rows_with_fixed_A_restored": 50,
+        "status": "CORRECTED_FIXED_A_REPORTING_WIRING_ERROR"
+      },
+      "rule_selection_count": 0,
+      "scope": "PREVIOUSLY_VIEWED_DEVELOPMENT_LOCAL_SOURCE_SCOPE_CHECK_NOT_CONFIRMATION",
+      "scoped_body_trace_count": 14,
+      "version": "m2-r7.body-tea-source-role-scope.v1"
+    },
     "contract": {
       "adoption_rule": "Support-scope correction judged on provenance/mechanism tests separately from alignment. Preserve all positive/zero/negative alignment changes. Do not promote patch or C01/default based on this local comparison alone.",
       "candidate": "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY",
@@ -483,18 +745,544 @@
       "version": "m2-r7.body-tea-source-role-scope.v1"
     },
     "contract_sha256": "9b615deadc3f482b8d7e91b5b45a4386a32fa0a523e8a8f2ee7415a163093dd9",
+    "decision": "Retain as provenance correction research evidence; no extra candidate search, no C01 or B2 modification, no patch promotion",
     "earlier_automatic_audit_limit": "Original channel audit found no priority violation; subsequent source-field review identified an unsupported Body tea to broad-flavour projection. It does not establish the graders intended tea meaning or a scoring-weight bug.",
-    "status": "CONTRACT_FROZEN_IMPLEMENTATION_IN_PROGRESS"
+    "status": "SOURCE_SCOPE_CORRECTION_VERIFIED_NO_ALIGNMENT_IMPROVEMENT"
   },
   "new_confirmation": {
     "C01_minus_C00_gap": null,
+    "elapsed_source_window_minutes": 69.08149921666667,
+    "new_cohort_scored": false,
     "no_old_data_relabelled": true,
-    "not_yet_a_final_acquisition_outcome": true,
     "qualified_groups": 0,
-    "status": "SOURCE_ACQUISITION_IN_PROGRESS"
+    "scientific_delta_status": "NOT_ESTIMABLE",
+    "scope": "14 retained targeted routes plus version/duplicate review; two typed sources and two additional original workbooks actually parsed. This is not an exhaustive literature search or successful confirmation.",
+    "source_acquisition": {
+      "C00_C01_confirmation_delta": null,
+      "additional_actual_workbook_inspections": [
+        {
+          "columns": 13,
+          "identity_limitation": "93 rows but 90 recorded IDs; three IDs repeat. Do not infer 93 independent participants or coffee groups.",
+          "original_respondent_rows": 93,
+          "reason": "Actual bitterness plus taste/preference/purchase/PROP and demographic fields; no coffee identity column or independent fine-description reference. No hedonic target substitution.",
+          "source_id": "TASTE_SENSITIVITY_2018",
+          "status": "REAL_RESPONSES_NO_TRACEABLE_MULTICOFFEE_A_B_T",
+          "treatment_counts": {
+            "control": 18,
+            "objective": 40,
+            "subjective": 35
+          },
+          "unique_recorded_ids": 90
+        },
+        {
+          "original_analyte_sheets": 7,
+          "reason": "Actual analyte concentration, genotype and native x/0/missing responses. These are compound trials, not seven coffee products; no universal sensory absence recoding or participant identity invention.",
+          "source_id": "MOZAMBIOSIDE_2024",
+          "status": "COMPOUND_CONCENTRATION_RECOGNITION_NOT_COFFEE_A_B_T"
+        }
+      ],
+      "confirmation_model_runs": 0,
+      "created_utc": "2026-09-06T10:04:49.511027+00:00",
+      "first_retrieval_utc": "2026-09-06T08:55:44.621074+00:00",
+      "new_confirmed_coffee_groups": 0,
+      "new_targeted_routes": [
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://cran.r-project.org/src/contrib/ExPosition_2.11.0.tar.gz",
+          "evidence": [
+            {
+              "bytes": 80948,
+              "owner_relative_path": "revisions/r7/sources/ExPosition_2.11.0.tar.gz",
+              "retrieved_utc": "2026-09-06T08:58:07.831506+00:00",
+              "sha256": "f9c9f49ab94b0b5700e9db5a456ef279544c75e1d92ba55cebd4f8ff17de0bd3",
+              "url": "https://cran.r-project.org/src/contrib/ExPosition_2.11.0.tar.gz"
+            },
+            {
+              "bytes": 1108,
+              "owner_relative_path": "revisions/r7/sources/ExPosition_DESCRIPTION.txt",
+              "retrieved_utc": "2026-09-06T08:58:07.831087+00:00",
+              "sha256": "3f105dc647c5949c4ee9603514f5d35b631fc4d92933815a423020123e0cc553",
+              "url": "https://raw.githubusercontent.com/cran/ExPosition/master/DESCRIPTION"
+            },
+            {
+              "bytes": 968,
+              "owner_relative_path": "revisions/r7/sources/ExPosition_coffee.data.Rd",
+              "retrieved_utc": "2026-09-06T08:58:07.831462+00:00",
+              "sha256": "86e23c1c384d261064e8ea586c555e64ff85a198bfbf28b192499e7c8ac0f770",
+              "url": "https://raw.githubusercontent.com/cran/ExPosition/master/man/coffee.data.Rd"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual 1 coffee, 4 conditions, 10 participants, 200 recorded attribute cells; not multicoffee or fixed fine-mention targets.",
+          "rights": "GPL-2 package",
+          "source_id": "EXPOSITION_SINGLE_MATERIAL",
+          "status": "TYPED_ONLY"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.1016/j.crfs.2022.07.010",
+          "evidence": [
+            {
+              "bytes": 118612,
+              "owner_relative_path": "revisions/r7/sources/yunnan2022.xml",
+              "retrieved_utc": "2026-09-06T09:00:22.743894+00:00",
+              "sha256": "c110c0ddf1f2b83269c11d5ba499f45d37153d86d90a4405c3f2981435ebf9a4",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9386398/fullTextXML"
+            },
+            {
+              "bytes": 3236594,
+              "owner_relative_path": "revisions/r7/sources/yunnan2022-supp.zip",
+              "retrieved_utc": "2026-09-06T09:01:12.740391+00:00",
+              "sha256": "536b2cf59f038daa05f198bf336c61cbb816f288a207f5bdbe763fb6e826549f",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9386398/supplementaryFiles"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual 25 named products by 57 source-filtered aggregate M columns, no original grader observations; no independent A/B/T.",
+          "rights": "CC-BY-NC-ND-4.0",
+          "source_id": "YUNNAN_AGGREGATE_M",
+          "status": "TYPED_ONLY"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.5281/zenodo.17178120",
+          "evidence": [
+            {
+              "bytes": 5362,
+              "owner_relative_path": "revisions/r7/sources/novak-sensory-economic.json",
+              "retrieved_utc": "2026-09-06T09:01:12.739553+00:00",
+              "sha256": "13aad27f777c233dbdfddb7fbe46c88fc928f8f2c0d7ff77c76b97b2ae6636a6",
+              "url": "https://zenodo.org/api/records/17178120"
+            },
+            {
+              "bytes": 664931,
+              "owner_relative_path": "revisions/r7/sources/novak-sensory-economic.pdf",
+              "retrieved_utc": "2026-09-06T09:01:50.401159+00:00",
+              "sha256": "81932cfe34a3a67c28adb517c476979f6da795f31f2dc77a7779be40079e6a5e",
+              "url": "https://zenodo.org/api/records/17178120/files/Bridging%20Sensory%20Science%20and%20Economic%20Value%20-%20Maja%20Novak.pdf/content"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual only 14-page framework PDF with illustrative A/B/C case tables; original coffee/panel/collection identities not documented. Dataset metadata label does not establish observations.",
+          "rights": "CC-BY-4.0 repository",
+          "source_id": "NOVAK_REPOSITORY_CASE_EXAMPLES",
+          "status": "NO_VERIFIABLE_ORIGINAL_OBSERVATIONS"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://api.figshare.com/v2/articles/19928981",
+          "evidence": [
+            {
+              "bytes": 6681,
+              "owner_relative_path": "revisions/r7/sources/matas-minas-figshare.json",
+              "retrieved_utc": "2026-09-06T09:00:22.743642+00:00",
+              "sha256": "160f50e5070c14a7f1af094155d7b0a8255917674e9e10b84504a9ec10ad878c",
+              "url": "https://api.figshare.com/v2/articles/19928981"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual deposit inventory has two JPG files, no original coffee-by-grader table. No image digitization or invented people.",
+          "rights": "CC-BY-4.0 metadata",
+          "source_id": "MATAS_MINAS_19928981",
+          "status": "NO_ORIGINAL_PANEL_MATRIX"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://api.figshare.com/v2/articles/30811541",
+          "evidence": [
+            {
+              "bytes": 13930,
+              "owner_relative_path": "revisions/r7/sources/electrochemical-appraisal-figshare.json",
+              "retrieved_utc": "2026-09-06T08:59:16.416021+00:00",
+              "sha256": "8440deb6993aae6887d3d3b8ede60d478e0440dab90a126327c01a66c5966d57",
+              "url": "https://api.figshare.com/v2/articles/30811541"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual file inventory describes electrochemical figures and chemistry workbooks, not independent human A/B/T. No chemical quality prediction branch added.",
+          "rights": "CC-BY-4.0",
+          "source_id": "ELECTROCHEMICAL_APPRAISAL_30811541",
+          "status": "CHEMISTRY_ONLY_NOT_SENSORY_CONFIRMATION"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://api.figshare.com/v2/articles/30946856",
+          "evidence": [
+            {
+              "bytes": 3449,
+              "owner_relative_path": "revisions/r7/sources/fruit-infusion-figshare.json",
+              "retrieved_utc": "2026-09-06T08:59:16.416102+00:00",
+              "sha256": "1886855d29576ed10d84ac6f2d1d8df90234e08962f7b7708e904336ad451d87",
+              "url": "https://api.figshare.com/v2/articles/30946856"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual thesis metadata contains no downloadable data files or original rows.",
+          "rights": "CC-BY-4.0 metadata",
+          "source_id": "FRUIT_INFUSION_30946856",
+          "status": "NO_FILES_IN_ACTUAL_DEPOSIT"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.25918/thesis.535",
+          "evidence": [
+            {
+              "bytes": 10525,
+              "owner_relative_path": "revisions/r7/sources/australia-crop-cup-datacite.json",
+              "retrieved_utc": "2026-09-06T09:00:22.743935+00:00",
+              "sha256": "2cc06130abc31f1e7d12e8d674ce99a5de54d7b1eff93dd06faf0ccf0326a7f2",
+              "url": "https://api.datacite.org/dois/10.25918/thesis.535"
+            },
+            {
+              "bytes": 2328,
+              "owner_relative_path": "revisions/r7/sources/australia-crop-cup.html",
+              "retrieved_utc": "2026-09-06T09:01:12.740533+00:00",
+              "sha256": "31bccb50357843e33e44444c6dadcbe9f040e23cbbfc62a3e28d07eeea45a435",
+              "url": "https://researchportal.scu.edu.au/esploro/outputs/doctoral/991013330226802368"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Metadata describes multiple varieties but actual landing response is an application shell; no original grading matrix obtained. Thesis sample counts are not acquired observations.",
+          "rights": "Open access plus author copyright; dataset reuse not established",
+          "source_id": "AUSTRALIA_CROP_TO_CUP",
+          "status": "NO_ORIGINAL_MATRIX_OR_CONFIRMED_DATA_RIGHTS"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.1016/j.foodres.2024.114349",
+          "evidence": [
+            {
+              "bytes": 16631,
+              "owner_relative_path": "revisions/r7/sources/online-consumer2024-crossref.json",
+              "retrieved_utc": "2026-09-06T09:09:02.671444+00:00",
+              "sha256": "f7f2e79a7824fbb451f77f75e2a8c421f8ae18e5132ebe893dda9024dbbc88d6",
+              "url": "https://api.crossref.org/works/10.1016/j.foodres.2024.114349"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Published data-availability statement says on request; four coffee RATA products are study counts, not obtained participant observations. No request sent.",
+          "rights": "Article rights do not supply withheld response data",
+          "source_id": "ONLINE_CONSUMER_2024",
+          "status": "DATA_ON_REQUEST_NOT_ACQUIRED"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.3390/beverages10030057",
+          "evidence": [
+            {
+              "bytes": 945997,
+              "owner_relative_path": "revisions/r7/sources/amazonian2024.pdf",
+              "retrieved_utc": "2026-09-06T09:09:02.671364+00:00",
+              "sha256": "2d687ef88b8ea4ba3256cf92c750a2538b6a16c5624a543c1caa78a5f3511a90",
+              "url": "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1171378/1/Sensory-Characterization.pdf"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual author-institution PDF: 2 clones, each natural/fermented, 127 consumer study participants; article CATA frequencies aggregated. Supplement described as expert summary and demographic table; actual public supplement request HTTP403, no individual matrix acquired.",
+          "rights": "CC-BY-4.0 article",
+          "source_id": "AMAZONIAN_ROBUSTA_2024",
+          "status": "ARTICLE_AGGREGATES_SUPPLEMENT_NOT_OBTAINED"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.1002/fsn3.71278",
+          "evidence": [
+            {
+              "bytes": 129881,
+              "owner_relative_path": "revisions/r7/sources/geisha2025.xml",
+              "retrieved_utc": "2026-09-06T09:10:20.033317+00:00",
+              "sha256": "3c5c7ed3d397eb4c34dbe3c4947a2015cb515ceb7ca3edb2a608654a2861cbc0",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12645158/fullTextXML"
+            },
+            {
+              "bytes": 639025,
+              "owner_relative_path": "revisions/r7/sources/geisha2025-supp.zip",
+              "retrieved_utc": "2026-09-06T09:11:27.916240+00:00",
+              "sha256": "ac172cc610f91c6ddeda20aaca83dec4f5fb117c3a96489a77af02aa417bb683",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12645158/supplementaryFiles"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Article reports 24 coffee samples, 24 consumers, triplicate RATA. Actual public supplement contains sample metadata and aggregate tests, not individual responses. No participant count promoted to acquired rows; no restricted-data request.",
+          "rights": "CC-BY-4.0 article; raw data explicitly restricted for privacy/ethics",
+          "source_id": "GEISHA_PANAMA_2025",
+          "status": "RESTRICTED_ORIGINAL_DATA_NOT_ACQUIRED"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.1016/j.foodqual.2023.104905",
+          "evidence": [
+            {
+              "bytes": 114729,
+              "owner_relative_path": "revisions/r7/sources/home-use2023.xml",
+              "retrieved_utc": "2026-09-06T09:10:20.033568+00:00",
+              "sha256": "d6cc4286f3dfe82d708c96c4d8d60600ff84b6c6eb102a9405a9aa7912173614",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10232720/fullTextXML"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual XML says data on request. Four coffee products across three separate consumer-testing populations have aggregate article results only; no original A/B/T.",
+          "rights": "Conditional Elsevier COVID research permission, not assumed CC",
+          "source_id": "HOME_USE_2023",
+          "status": "DATA_ON_REQUEST_NOT_ACQUIRED"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.1016/j.foodqual.2024.105377",
+          "evidence": [
+            {
+              "bytes": 21202,
+              "owner_relative_path": "revisions/r7/sources/free-comment2025-crossref.json",
+              "retrieved_utc": "2026-09-06T09:11:27.916581+00:00",
+              "sha256": "52d902d9d7000dfee8a3f8991e6d6ef5a6442de9b844aca1b3fa8222becd75b4",
+              "url": "https://api.crossref.org/works/10.1016/j.foodqual.2024.105377"
+            },
+            {
+              "bytes": 53125,
+              "owner_relative_path": "revisions/r7/sources/free-comment2025-author.html",
+              "retrieved_utc": "2026-09-06T09:11:27.916531+00:00",
+              "sha256": "bd9bf4d554cf76b3a88b50485734f9dea2edb603d6bfc491a111640d2f2e6a35",
+              "url": "https://pure.au.dk/portal/en/publications/comparison-of-free-comment-online-product-reviews-and-central-loc/"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Author repository exposes bibliographic record and publisher link, not the 105-consumer RATA rows or matched original review identities. No scraped anonymous reviews become independent confirmation.",
+          "rights": "Original review/participant-data rights not established",
+          "source_id": "FREE_COMMENT_2025",
+          "status": "NO_OPEN_ORIGINAL_MATRIX_OBTAINED"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.17632/3yv7bdrczd.1",
+          "evidence": [
+            {
+              "bytes": 114432,
+              "owner_relative_path": "revisions/r7/sources/taste-sensitivity2018.html",
+              "retrieved_utc": "2026-09-06T10:01:47.560659+00:00",
+              "sha256": "072337f0fb668367a6c993b4a87d39c4098de8790a90659e56af4a33b9cddb02",
+              "url": "https://data.mendeley.com/datasets/3yv7bdrczd/1"
+            },
+            {
+              "bytes": 772,
+              "owner_relative_path": "revisions/r7/sources/3yv7bdrczd-files.json",
+              "retrieved_utc": "2026-09-06T10:02:25.001278+00:00",
+              "sha256": "48abb61c2daf5b3b5721293d0c490d84a1c8da6c00ef449ca211c34645650ffe",
+              "url": "https://data.mendeley.com/public-api/datasets/3yv7bdrczd/files?folder_id=root&version=1"
+            },
+            {
+              "bytes": 18460,
+              "owner_relative_path": "revisions/r7/sources/taste-sensitivity2018.xlsx",
+              "retrieved_utc": "2026-09-06T10:03:05.115872+00:00",
+              "sha256": "1ef4bc85e81ff56e396c98108373a0b4626f89dc9c920f521b001979c590bab3",
+              "url": "https://data.mendeley.com/public-files/datasets/3yv7bdrczd/files/a18c318b-ffd6-4253-8bfa-09a8be7bd26f/file_downloaded"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual bitterness plus taste/preference/purchase/PROP and demographic fields; no coffee identity column or independent fine-description reference. No hedonic target substitution.",
+          "rights": "CC-BY-4.0 dataset",
+          "source_id": "TASTE_SENSITIVITY_2018",
+          "status": "ORIGINAL_WORKBOOK_PARSED_NOT_MAIN_CONFIRMATION"
+        },
+        {
+          "admitted_confirmation_groups": 0,
+          "doi_or_url": "https://doi.org/10.17632/xzjppbmn58.1",
+          "evidence": [
+            {
+              "bytes": 123870,
+              "owner_relative_path": "revisions/r7/sources/mozambioside2024.html",
+              "retrieved_utc": "2026-09-06T09:32:31.423881+00:00",
+              "sha256": "3066b8287b4699620f237b718336425aff48bd9887d101a12262299feef9af0c",
+              "url": "https://data.mendeley.com/datasets/xzjppbmn58/1"
+            },
+            {
+              "bytes": 10969,
+              "owner_relative_path": "revisions/r7/sources/xzjppbmn58-files.json",
+              "retrieved_utc": "2026-09-06T10:02:25.453989+00:00",
+              "sha256": "374204880233ac030e837805230537bc0cff376f1ea8046940d2ffdf91d08b22",
+              "url": "https://data.mendeley.com/public-api/datasets/xzjppbmn58/files?folder_id=root&version=1"
+            },
+            {
+              "bytes": 48893,
+              "owner_relative_path": "revisions/r7/sources/mozambioside-human-sensory.xlsx",
+              "retrieved_utc": "2026-09-06T10:03:06.798438+00:00",
+              "sha256": "928f72702ff8c96f27d35f90cd807def47b6a8fa17ce0b9d19a44d8adbd09b38",
+              "url": "https://data.mendeley.com/public-files/datasets/xzjppbmn58/files/7ed7d6b6-96c7-491d-9856-5dde66812e28/file_downloaded"
+            }
+          ],
+          "model_evaluations": 0,
+          "reason": "Actual analyte concentration, genotype and native x/0/missing responses. These are compound trials, not seven coffee products; no universal sensory absence recoding or participant identity invention.",
+          "rights": "CC-BY-4.0 dataset",
+          "source_id": "MOZAMBIOSIDE_2024",
+          "status": "ORIGINAL_WORKBOOK_PARSED_NOT_MAIN_CONFIRMATION"
+        }
+      ],
+      "next_required_external_input": "Rights-cleared original multicoffee observations with disjoint A/B/T and traceable unused coffee identities; owner freezes them before fixed candidate evaluation.",
+      "prior_source_deduplication": {
+        "accidental_rediscovery": "R2 remote-testing and cross-brand article identities were recognized against the old ledger after one new article fetch; no repeated supplement or restricted-data request followed.",
+        "new_remote_zenodo_14712259_scope": "Actual new deposit is hemp-seed oil only, not the coffee arm; not imported as coffee evidence.",
+        "old_routes_not_counted_new": [
+          "COTTER_B8993H_AND_2026_AI_REUSE",
+          "CROIJMANS_DANS_ZKE_2WGQ",
+          "INERA_FIGSHARE_25735122",
+          "ROCCHETTI_PMC7736008",
+          "R2_CROSSBRAND_APP15020948",
+          "R2_REMOTE_PMC8548442"
+        ],
+        "other_old_failed_routes": "R5 ledger excludes NIR403, forbidden/no-sharing-rights source, old Dryad restricted route, R2 blank/proprietary forms; no access retry or identity rename.",
+        "remote_hemp_metadata": {
+          "bytes": 5047,
+          "owner_relative_path": "revisions/r7/sources/remote-testing-hemp-only.json",
+          "retrieved_utc": "2026-09-06T09:07:48.066339+00:00",
+          "sha256": "1ceea6eede6c09efd287415812ce51d7db792c69d9bf2a4c840f9119df2e1bf4",
+          "url": "https://zenodo.org/api/records/14712259"
+        }
+      },
+      "protocol": {
+        "confirmation_gate": [
+          "actual original observation rows, with rights applicable to this noncommercial research",
+          "verified coffee/material/condition and duplicate dependency identity",
+          "not previously used by base models, coverage or prior development",
+          "disjoint original A, B and T observations; concept overlap remains legal",
+          "source measurement and fixed MAP_BASE target compatibility reviewed",
+          "owner freezes cohort/roles/T/metrics before any C00/C01 evaluation"
+        ],
+        "forbidden": [
+          "renaming old anonymous samples or rotating graders to create new coffee groups",
+          "reconstructing individuals from averages, frequencies, PCA or plots",
+          "converting native numeric zero into universal sensory absence",
+          "using confirmation targets to select sources or modify mappings",
+          "author requests, recruitment, fees or access-control bypass",
+          "unrelated score-recovery models"
+        ],
+        "model_evaluation_allowed": false,
+        "public_policy": "aggregate source facts and owner-relative evidence hashes only; no answers or participant/sample identifiers",
+        "purpose": "NEW_CONFIRMATION_SOURCE_AVAILABILITY_AUDIT",
+        "source_acquisition_block": "bounded targeted retrieval, approximately 2-3 hour cap; actual timestamps retained",
+        "target": "new multi-coffee source or 15-30 traceable groups is a search goal, not an admission quota",
+        "training_allowed": false,
+        "typed_only": [
+          "EXPOSITION_SINGLE_MATERIAL",
+          "YUNNAN_AGGREGATE_M"
+        ],
+        "version": "m2-r7-confirmation-source-audit.v1"
+      },
+      "route_count": 14,
+      "source_schema_scope": "Two typed sensory sources plus two additional original workbooks parsed substantively; typed availability is not a successful fixed-C00/C01 confirmation cohort. No unrelated attribute model fitted.",
+      "status": "NEW_CONFIRMATION_NOT_AVAILABLE",
+      "training_runs": 0,
+      "typed_actual_parses": [
+        {
+          "confirmation_groups": 0,
+          "measurement_type": "SOURCE_NATIVE_0_2_RECORDED_ATTRIBUTE_RATING",
+          "source_id": "EXPOSITION_SINGLE_MATERIAL",
+          "source_sha256": "f9c9f49ab94b0b5700e9db5a456ef279544c75e1d92ba55cebd4f8ff17de0bd3",
+          "source_units": {
+            "coffee_materials": 1,
+            "conditions": 4,
+            "observed_cells": 200,
+            "original_observations": 40,
+            "participants": 10
+          },
+          "status": "TYPED_MEASUREMENT_ONLY_SINGLE_MATERIAL_NOT_MAIN_CONFIRMATION",
+          "zero_semantics": "Native code retained; detailed anchors not verified; not CATA absence or a fine positive-mention label"
+        },
+        {
+          "confirmation_groups": 0,
+          "field_count": 57,
+          "measurement_type": "AGGREGATE_SQRT_FREQUENCY_TIMES_RELATIVE_INTENSITY_M",
+          "rights": "CC-BY-NC-ND-4.0; original and private inspection retained, no public derivative matrix",
+          "selection_limit": "Source filtered 66 descriptors to 57 using aggregate M>5%; this is not a complete raw ballot",
+          "source_id": "YUNNAN_AGGREGATE_M",
+          "source_sha256": "536b2cf59f038daa05f198bf336c61cbb816f288a207f5bdbe763fb6e826549f",
+          "source_units": {
+            "aggregate_cells": 1425,
+            "growing_regions": 4,
+            "named_products": 25,
+            "original_grader_rows_obtained": 0,
+            "published_aggregate_rows": 25
+          },
+          "status": "TYPED_AGGREGATE_ONLY_NO_DISJOINT_A_B_T",
+          "zero_semantics": "Aggregate M zero, not a negative observation from an individual"
+        }
+      ],
+      "typed_private_artifacts": [
+        {
+          "bytes": 22028,
+          "filename": "exposition_single_material.typed.private.json",
+          "owner_relative_path": "revisions/r7/exposition_single_material.typed.private.json",
+          "sha256": "efe9886a551f38652fdfe20a1ba8881497d2ee586d08a60670f6b6573b2647c6"
+        },
+        {
+          "bytes": 61644,
+          "filename": "yunnan_aggregate_m.typed.private.json",
+          "owner_relative_path": "revisions/r7/yunnan_aggregate_m.typed.private.json",
+          "sha256": "99c06021be1f682220502381ca0ac70f4eba78252ff42d521ea548cec1c4fd42"
+        }
+      ],
+      "version": "m2-r7-confirmation-source-audit.v1",
+      "zenodo_version_audit": {
+        "anonymous_and_historical_rows_not_relabelled_fresh": true,
+        "latest_record_id": "20840464",
+        "new_coffee_groups": 0,
+        "new_original_rows": 0,
+        "original_workbook_sha256": "85df699ea18f5849ef3104100a20570d5df13e7d6cc7ce53e20c3df8a5219150",
+        "panel_workbook_unchanged": true,
+        "source_grader_rows_previously_inspected": 526,
+        "source_id": "ZENODO_VERSION_AND_AUTHOR_REPOSITORY",
+        "source_samples_previously_inspected": 196,
+        "status": "NO_NEW_VERSION_OR_NEW_OBSERVATIONS",
+        "version_count": 2
+      },
+      "zenodo_version_evidence": [
+        {
+          "bytes": 8142,
+          "owner_relative_path": "revisions/r7/sources/zenodo-current.json",
+          "retrieved_utc": "2026-09-06T08:55:44.621074+00:00",
+          "sha256": "28a6bff6edbca6cd6c3da36009111dcec63cf1ccd84d318d6d9bccefe4ec5353",
+          "url": "https://zenodo.org/api/records/20840464"
+        },
+        {
+          "bytes": 8142,
+          "owner_relative_path": "revisions/r7/sources/zenodo-latest.json",
+          "retrieved_utc": "2026-09-06T08:56:15.383728+00:00",
+          "sha256": "28a6bff6edbca6cd6c3da36009111dcec63cf1ccd84d318d6d9bccefe4ec5353",
+          "url": "https://zenodo.org/api/records/20840464/versions/latest"
+        },
+        {
+          "bytes": 16554,
+          "owner_relative_path": "revisions/r7/sources/zenodo-versions.json",
+          "retrieved_utc": "2026-09-06T08:56:15.384048+00:00",
+          "sha256": "a2db74972cb3a53a9b8590afd7a8c485fc66f996fe8bd0f2c11e27252e96fad2",
+          "url": "https://zenodo.org/api/records/20840464/versions"
+        },
+        {
+          "bytes": 16520,
+          "owner_relative_path": "revisions/r7/sources/zenodo-author-records.json",
+          "retrieved_utc": "2026-09-06T08:56:15.384153+00:00",
+          "sha256": "36bba62c7af61f3ce2ea91525a147fbf0cd6f46b0aded6a80d7ec5e82ae6412c",
+          "url": "https://zenodo.org/api/records?q=creators.name%3A%22Golovinsky%22&size=25"
+        },
+        {
+          "bytes": 4221,
+          "owner_relative_path": "revisions/r7/sources/zenodo-author-repo-contents.json",
+          "retrieved_utc": "2026-09-06T08:55:44.621417+00:00",
+          "sha256": "c176c602867cfb7b9c8ba8d84b92d7d418f76a63f9ccf6aaa584d4b31344a1a7",
+          "url": "https://api.github.com/repos/RodionGolovinsky/digital_coffee_tester/contents"
+        },
+        {
+          "bytes": 1263,
+          "owner_relative_path": "revisions/r7/sources/zenodo-author-repo-commits.json",
+          "retrieved_utc": "2026-09-06T08:55:44.621529+00:00",
+          "sha256": "acbb603f96c17246926a327b8e4344c174db1904dcb99458581a8e18430aa401",
+          "url": "https://api.github.com/repos/RodionGolovinsky/digital_coffee_tester/commits?per_page=8"
+        }
+      ]
+    },
+    "status": "NEW_CONFIRMATION_NOT_AVAILABLE",
+    "time_limit": "Actual retrieval-to-parse wall-clock window reported, not continuous person-hours or a claimed 2-3 hours. Reviewed available routes were completed without padding elapsed time."
   },
   "real_human_duration": "NOT_EVALUATED",
   "real_product_user_judgment": "NOT_EVALUATED",
-  "status": "CHECKPOINT1_COMPLETE_SOURCE_AND_LOCAL_SCOPE_COMPARISON_IN_PROGRESS",
-  "version": "m2-r7.checkpoint1.v1"
+  "status": "CANDIDATE_AND_MECHANISMS_COMPLETE_NEW_CONFIRMATION_NOT_AVAILABLE",
+  "version": "m2-r7.completed-research.v1"
 }
