@@ -172,7 +172,6 @@ FOUNDATION_CHECK off. Existing Q3 skip-to-Q4 and single-final-comparison contrac
 remain in force. Parallel disjoint source, data and backend work is authorized;
 no frontend, CI changes, author messages, historical overwrite or unrelated cleanup.
 
-
 ### Active M2 R6 semantic mapping and observable acquisition
 
 Continue the existing R5 lineage with one `revisions/r6` record. Freeze full and

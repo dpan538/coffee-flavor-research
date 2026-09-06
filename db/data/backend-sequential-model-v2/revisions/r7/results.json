@@ -1,0 +1,500 @@
+{
+  "candidate": {
+    "full_development_independent_performance": "NOT_EVALUATED",
+    "new_scorer_fits": 0,
+    "package_id": "C01:52f85c3dd1d41999df4a323170f85e5dfbd477cff30b7353f58f4070143557f9",
+    "package_sha256": "dd1e8e5f2683f13ecd9408c09ee5315295ebbe38692204cc8c036e4db5bae8da",
+    "status": "RUNNABLE_PRIORITY_CONFIRMATION_CANDIDATE"
+  },
+  "checkpoint1": "Independent CLI+158 historical policy replays+3 actual channel diagnostics complete",
+  "checkpoint2": "IN_PROGRESS",
+  "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+  "historical_mechanism_diagnostics": {
+    "all_records_audited": 79,
+    "analysis_refinement": {
+      "additional_policy_runs": 0,
+      "additional_scorer_fits": 0,
+      "all_original_metrics_unchanged": true,
+      "original_execution_code_sha256": "59383cbd39f16402da54406ce091beeb96b060603299c106be204922cc67cf38",
+      "reason": "Distinguish whole exposure content, axis sequence and option presentation order; canonical selected evidence versus answer JSON changes; inspect original A/B and T spans; retain actual main5 and the separate fine-primary panel",
+      "scope": "REPORTING_ONLY_FROM_SEALED_TRAJECTORIES_AND_FIXED_TARGETS"
+    },
+    "changed_records_any_channel": 79,
+    "channel_counts": {
+      "C11": {
+        "additional_specific_noncorroboration_records": 14,
+        "answer_payload_changed_records": 79,
+        "axis_sequence_only_changed_records": 19,
+        "canonical_selected_changed_records": 29,
+        "changed_records": 79,
+        "classifications": {
+          "UNRESOLVED": 55,
+          "VALID_MAPPING_CHANGED_BUDGET_ALLOCATION": 24
+        },
+        "displaced_fine_primary_exact_T_records": 3,
+        "fine_primary_panel_set_changed_records": 13,
+        "main5_set_changed_records": 16,
+        "option_order_only_changed_records": 36,
+        "outcome_counts_all_records": {
+          "IMPROVEMENT": 1,
+          "NO_EVALUABLE_T": 20,
+          "REGRESSION": 4,
+          "TIE": 54
+        },
+        "possible_priority_contract_flags": 0,
+        "question_instance_changed_records": 79,
+        "rank_changed_records": 27,
+        "whole_exposure_content_changed_records": 24
+      },
+      "D_COVERAGE_ONLY": {
+        "additional_specific_noncorroboration_records": 3,
+        "answer_payload_changed_records": 78,
+        "axis_sequence_only_changed_records": 16,
+        "canonical_selected_changed_records": 3,
+        "changed_records": 78,
+        "classifications": {
+          "UNRESOLVED": 68,
+          "VALID_MAPPING_CHANGED_BUDGET_ALLOCATION": 11
+        },
+        "displaced_fine_primary_exact_T_records": 1,
+        "fine_primary_panel_set_changed_records": 3,
+        "main5_set_changed_records": 3,
+        "option_order_only_changed_records": 51,
+        "outcome_counts_all_records": {
+          "NO_EVALUABLE_T": 20,
+          "REGRESSION": 1,
+          "TIE": 58
+        },
+        "possible_priority_contract_flags": 0,
+        "question_instance_changed_records": 78,
+        "rank_changed_records": 3,
+        "whole_exposure_content_changed_records": 11
+      },
+      "D_FIXED_EXPOSURE": {
+        "additional_specific_noncorroboration_records": 6,
+        "answer_payload_changed_records": 26,
+        "axis_sequence_only_changed_records": 0,
+        "canonical_selected_changed_records": 26,
+        "changed_records": 26,
+        "classifications": {
+          "UNRESOLVED": 79
+        },
+        "displaced_fine_primary_exact_T_records": 1,
+        "fine_primary_panel_set_changed_records": 6,
+        "main5_set_changed_records": 10,
+        "option_order_only_changed_records": 0,
+        "outcome_counts_all_records": {
+          "IMPROVEMENT": 1,
+          "NO_EVALUABLE_T": 20,
+          "REGRESSION": 1,
+          "TIE": 57
+        },
+        "possible_priority_contract_flags": 0,
+        "question_instance_changed_records": 0,
+        "rank_changed_records": 24,
+        "whole_exposure_content_changed_records": 0
+      },
+      "D_OBSERVATION_ONLY": {
+        "additional_specific_noncorroboration_records": 10,
+        "answer_payload_changed_records": 26,
+        "axis_sequence_only_changed_records": 1,
+        "canonical_selected_changed_records": 26,
+        "changed_records": 26,
+        "classifications": {
+          "UNRESOLVED": 67,
+          "VALID_MAPPING_CHANGED_BUDGET_ALLOCATION": 12
+        },
+        "displaced_fine_primary_exact_T_records": 2,
+        "fine_primary_panel_set_changed_records": 9,
+        "main5_set_changed_records": 12,
+        "option_order_only_changed_records": 0,
+        "outcome_counts_all_records": {
+          "IMPROVEMENT": 1,
+          "NO_EVALUABLE_T": 20,
+          "REGRESSION": 2,
+          "TIE": 56
+        },
+        "possible_priority_contract_flags": 0,
+        "question_instance_changed_records": 13,
+        "rank_changed_records": 24,
+        "whole_exposure_content_changed_records": 12
+      }
+    },
+    "context_scope": "Exact R6 historical simulation context copied for parity, never treated as observed source C0/C1 or independent context-effect evidence",
+    "contract_sha256": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
+    "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+    "detail_outcome_counts": {
+      "IMPROVEMENT": 1,
+      "NO_EVALUABLE_T": 3,
+      "REGRESSION": 4,
+      "TIE": 4
+    },
+    "detailed_examples": 12,
+    "fit_count": 0,
+    "historical_C01_exact_replay_records": 79,
+    "metrics": {
+      "C00": {
+        "actual_final_exposure": 0,
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.166750208855472,
+        "direct_retention": 1.0,
+        "empty_T_records": 20,
+        "failures": 0,
+        "generation_vocabulary_sizes": [
+          48,
+          50
+        ],
+        "groups": 77,
+        "hidden_gap": 0.5889450434261755,
+        "hidden_ndcg": 0.24080988082974936,
+        "human_time": null,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.08216374269005848,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.166750208855472,
+        "legacy_R4_recovery_gap": 0.5465932914046122,
+        "ndcg": 0.374972128404283,
+        "option_costs": [
+          19
+        ],
+        "positive_mention_CE": null,
+        "question_costs": [
+          5
+        ],
+        "raw_gap": 0.5158590921748816,
+        "recall": 0.40264550264550264,
+        "records": 79
+      },
+      "C01": {
+        "actual_final_exposure": 0,
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.14394319131161237,
+        "direct_retention": 1.0,
+        "empty_T_records": 20,
+        "failures": 0,
+        "generation_vocabulary_sizes": [
+          48,
+          50
+        ],
+        "groups": 77,
+        "hidden_gap": 0.5459418987720873,
+        "hidden_ndcg": 0.252263568361902,
+        "human_time": null,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.12251461988304092,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.14394319131161237,
+        "legacy_R4_recovery_gap": 0.5072401916741539,
+        "ndcg": 0.38877140753378275,
+        "option_costs": [
+          19
+        ],
+        "positive_mention_CE": null,
+        "question_costs": [
+          5
+        ],
+        "raw_gap": 0.4625069618490671,
+        "recall": 0.4730297967140073,
+        "records": 79
+      },
+      "C11": {
+        "actual_final_exposure": 0,
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.1268170426065163,
+        "direct_retention": 1.0,
+        "empty_T_records": 20,
+        "failures": 0,
+        "generation_vocabulary_sizes": [
+          48,
+          50
+        ],
+        "groups": 77,
+        "hidden_gap": 0.5666966157532195,
+        "hidden_ndcg": 0.23911150132129952,
+        "human_time": null,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.14256474519632414,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.1268170426065163,
+        "legacy_R4_recovery_gap": 0.5110137765798143,
+        "ndcg": 0.3616860635822978,
+        "option_costs": [
+          19
+        ],
+        "positive_mention_CE": null,
+        "question_costs": [
+          5
+        ],
+        "raw_gap": 0.48180520746310224,
+        "recall": 0.44846839320523524,
+        "records": 79
+      },
+      "D_COVERAGE_ONLY": {
+        "actual_final_exposure": 0,
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.14101921470342524,
+        "direct_retention": 1.0,
+        "empty_T_records": 20,
+        "failures": 0,
+        "generation_vocabulary_sizes": [
+          48,
+          50
+        ],
+        "groups": 77,
+        "hidden_gap": 0.5600928421683138,
+        "hidden_ndcg": 0.24496445879143897,
+        "human_time": null,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.12251461988304092,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.14101921470342524,
+        "legacy_R4_recovery_gap": 0.508183587900569,
+        "ndcg": 0.37900942665884685,
+        "option_costs": [
+          19
+        ],
+        "positive_mention_CE": null,
+        "question_costs": [
+          5
+        ],
+        "raw_gap": 0.4756648565859092,
+        "recall": 0.4554859370648845,
+        "records": 79
+      },
+      "D_FIXED_EXPOSURE": {
+        "actual_final_exposure": 0,
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.14979114452798664,
+        "direct_retention": 1.0,
+        "empty_T_records": 20,
+        "failures": 0,
+        "generation_vocabulary_sizes": [
+          48,
+          50
+        ],
+        "groups": 77,
+        "hidden_gap": 0.5481431566337227,
+        "hidden_ndcg": 0.2508917055621141,
+        "human_time": null,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.12251461988304092,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.14979114452798664,
+        "legacy_R4_recovery_gap": 0.5072401916741539,
+        "ndcg": 0.38749581580766423,
+        "option_costs": [
+          19
+        ],
+        "positive_mention_CE": null,
+        "question_costs": [
+          5
+        ],
+        "raw_gap": 0.4645537454747981,
+        "recall": 0.4695210247841827,
+        "records": 79
+      },
+      "D_OBSERVATION_ONLY": {
+        "actual_final_exposure": 0,
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.13224728487886384,
+        "direct_retention": 1.0,
+        "empty_T_records": 20,
+        "failures": 0,
+        "generation_vocabulary_sizes": [
+          48,
+          50
+        ],
+        "groups": 77,
+        "hidden_gap": 0.5509733453129679,
+        "hidden_ndcg": 0.2471346679695827,
+        "human_time": null,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.14005847953216372,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.13224728487886384,
+        "legacy_R4_recovery_gap": 0.5100703803533992,
+        "ndcg": 0.3752305001514508,
+        "option_costs": [
+          19
+        ],
+        "positive_mention_CE": null,
+        "question_costs": [
+          5
+        ],
+        "raw_gap": 0.46718532442216654,
+        "recall": 0.46601225285435804,
+        "records": 79
+      }
+    },
+    "negative_control_scope": "D_FIXED_EXPOSURE is fixed-exposure mechanism evidence, not a deployable acquisition result",
+    "new_confirmation": "NOT_PART_OF_THIS_HISTORICAL_DIAGNOSTIC",
+    "paired_contrasts": {
+      "C11-C01": {
+        "delta_right_minus_left": 0.01929824561403509,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.0002923976608187105,
+          0.05116959064327486
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "D_COVERAGE_ONLY-C01": {
+        "delta_right_minus_left": 0.013157894736842105,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          0.0,
+          0.039473684210526314
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "D_FIXED_EXPOSURE-C01": {
+        "delta_right_minus_left": 0.0020467836257309947,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.004385964912280698,
+          0.010526315789473682
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "D_OBSERVATION_ONLY-C01": {
+        "delta_right_minus_left": 0.004678362573099416,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.0029239766081871317,
+          0.01432748538011696
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      }
+    },
+    "posthoc_target_measurement_audit": {
+      "evaluated_concepts": "All added source interpretation concepts plus newly actually selected concepts across C11 and the three existing interventions; frozen reviewed whole-span rules only",
+      "record_concept_mapping_losses": 0,
+      "records_with_verified_fixed_target_mapping_loss": 0,
+      "scope": "Raw independent T span audit after outcomes; fixed-target comparison unchanged, not evidence of interpersonal disagreement",
+      "target_mutations": 0
+    },
+    "private_evidence_hashes": {
+      "mechanism_refined_case_audit.private.json": "dbcc002fdb0c1329786eabfee3e812f9bfaa6c05f448c6ecf93e178256c563ac",
+      "mechanism_refined_detailed_examples.private.json": "04644158308c063d1c94339760dc63b3019a481b5eddb140f27ca0d62374ef42",
+      "mechanism_trajectories.private.json": "83782a34ebc1d9fdeabf8f406c5c0a9160234e6117a9b66a5cebb70c8925b58b"
+    },
+    "protocol": {
+      "D_COVERAGE_ONLY": "Frozen fold TRAIN patched B coverage; base source A/B interpretation; unchanged natural I2_LIVE",
+      "D_FIXED_EXPOSURE": "Original same-fold C01 complete ordered questions/options; patched source answers; unchanged A0 updates; OFFLINE_INTERVENTION_NOT_DEPLOYABLE",
+      "D_OBSERVATION_ONLY": "Frozen fold TRAIN base B coverage; patched source A/B interpretation; unchanged natural I2_LIVE",
+      "classification": "Source mapping/support error requires independent source/contract proof; changed questions support budget-allocation classification; T nonmention alone never establishes sensory disagreement",
+      "cohort": "All 79 R6 development episodes / 77 coffee groups, including 20 empty-T records; no new confirmation",
+      "context": "Exact R6 historical simulation context copied for parity, never treated as observed source C0/C1 or independent context-effect evidence",
+      "detail_selection": "At most 12 changed C11-vs-C01 cases; round robin regression/improvement/tie/no-evaluable-T, each sorted by absolute gap difference then SHA256(record_id); all cases audited separately",
+      "evaluation": "Existing 56 fine ontology, frozen full T weights/masks and original hidden subset; full target denominator retains unavailable fine concepts",
+      "fit_count": 0,
+      "interpretation": "Finite channel interventions are not additive causal decomposition; source interpretation changes do not prove real user answer changes",
+      "models": "Exactly R6 outer-fold frozen A0/R1 weights, generation vocabulary and resources; no R6 linear head",
+      "ordinary_budgets": {
+        "Q0": 4,
+        "Q1": 4,
+        "Q2": 4,
+        "Q3": 4,
+        "Q4": 3
+      },
+      "posthoc_target_measurement_audit": "After all trajectories/scores, inspect independent raw T whole spans using already reviewed R6 rules; flag exact positive fine references missing from frozen T as FIXED_TARGET_MAPPING_LOSS without changing targets or scores; broad references remain outside fine task",
+      "publication": "Aggregate values and hashes only; identities, source spans, questions, answers and detailed predictions private",
+      "repair": "No automatic repair; maximum one separately preregistered source-supported local mechanism correction if justified",
+      "statistics_fit_count": 0,
+      "version": "m2-r7.frozen-channel-diagnostics.v1"
+    },
+    "qualitative_mechanism": [
+      "The coverage channel changes which concepts fit the fixed option budget; its nonzero aggregate loss is concentrated in one held development episode, not a broad population result.",
+      "New correctly interpreted specific evidence can enter the five-fine evaluation panel and displace an inferred target. No available explicitly selected fine candidate was lost from actual main5.",
+      "Fixed-exposure answer interpretation has a smaller aggregate change than the coverage intervention; the interventions are not an additive causal decomposition.",
+      "Independent T nonmention is unresolved noncorroboration, not sensory absence. Raw T whole spans were checked without changing fixed targets or rescoring them."
+    ],
+    "repair_status": "NO_SOURCE_SUPPORTED_INPUT_MAPPING_OR_SUPPORT_CONTRACT_ERROR_FOUND; CORRECT_EXPLICIT_EVIDENCE_RETAINED; NO_REPAIR_CANDIDATE",
+    "statistics_fit_count": 0,
+    "version": "m2-r7.frozen-channel-diagnostics.v1"
+  },
+  "historical_panel_boundary": {
+    "C00": {
+      "fine_evaluation_panel_contains_candidates_outside_mixed_final8": 39,
+      "mixed_main5_differs_from_fine_evaluation_panel": 78
+    },
+    "C01": {
+      "fine_evaluation_panel_contains_candidates_outside_mixed_final8": 39,
+      "mixed_main5_differs_from_fine_evaluation_panel": 78
+    },
+    "meaning": "Primary gap/NDCG/Recall concern fine-only retrieval panel, not actual mixed main or actual final exposure. Legacy contribution/retention fields concern unfiltered top5 and do not add to primary alignment. Aggregate coverage means fixed56 ontology target coverage, not generated subset availability. Historical contract did not fully explain this difference; R7 makes it explicit without rewriting scores.",
+    "per_cell_records": 79,
+    "scope": "Reporting clarification; unchanged original metrics/outputs, not a new scored intervention"
+  },
+  "local_repair": {
+    "contract": {
+      "adoption_rule": "Support-scope correction judged on provenance/mechanism tests separately from alignment. Preserve all positive/zero/negative alignment changes. Do not promote patch or C01/default based on this local comparison alone.",
+      "candidate": "C11_BODY_TEA_SOURCE_INTERPRETATION_ONLY",
+      "classification": "CLASS3_EVIDENCE_ROLE_SCOPE_CORRECTION, NOT_ESTABLISHED_WORD_TRANSLATION_ERROR_OR_SCORER_WEIGHT_BUG",
+      "comparison_if_checks_pass": {
+        "against": [
+          "C11",
+          "C01"
+        ],
+        "budget": [
+          4,
+          4,
+          4,
+          4,
+          3
+        ],
+        "coverage": "Recompute only fold-TRAIN B coverage using existing frozen fold patch with this one scope predicate; no new rule selection/weights; no held or T statistics",
+        "fit_count": 0,
+        "metric": "Exact frozenR6 primary fine5 gap/NDCG/Recall and original contribution fields, panel boundary explicit",
+        "scope": "All79 historical R6 development records /77coffee groups including20emptyT, same original3 outer A0 experts",
+        "separate_results": "No overwrite of original three diagnostics; one local candidate comparison only"
+      },
+      "development_mechanism_check": [
+        "Body-only tea creates no new green flavour support while raw text is retained",
+        "Body tea plus independent aroma/herb support retains green",
+        "Non-Body tea remains original R6 mapping",
+        "Actual user green selection still updates unchanged scorer",
+        "All original fields except A/B and audit unchanged, including complete T/masks/roles"
+      ],
+      "epistemic_limit": "Exact intended meaning remains UNRESOLVED_SOURCE_FIELD_MEANING. Review agent did not establish class1 or a scorer bug. Root interpretation of class3 concerns unsupported source-view→broad-support conversion, supported by distinct workbook field and methodological body definition; no claim tea flavour is absent.",
+      "evidence": [
+        {
+          "fact": "Original workbook separates Body(description) and Body(score) from Aroma/Bouquet/Aftertaste; author README does not define tea as green flavour in Body.",
+          "url": "https://zenodo.org/records/20840464"
+        },
+        {
+          "fact": "SCA methodological source treats Body as tactile and used tea as astringency reference; establishes plausible different measurement, not these graders exact intent. Method reference only, not training source.",
+          "url": "https://sca.coffee/sca-news/25-magazine/issue-5/modulating-perception-25-magazine-issue-5-dxzar"
+        }
+      ],
+      "known_before_comparison": "Source audit found13records touchingBody tea (12withnewgreen,4actualnewgreen selections);8withT all overallC11-C01gap ties,5emptyT. This is previously viewed development evidence, not confirmation and not tea-only effect.",
+      "maximum_local_repair_candidates": 1,
+      "new_confirmation": "No new confirmation data used by this repair.",
+      "predicate": {
+        "action": "Retain raw source/native comparison and unresolved role; do not add attribute.green_vegetative from this span to mapped A/B or TRAIN B coverage.",
+        "field": "body_description",
+        "normalized_span": "tea"
+      },
+      "problem": "Positive source-native tea in Body(description) currently creates green_vegetative broad flavour support despite no source assertion connecting this tactile comparison to that flavour. Stop unsupported cross-measurement support; do not assert what tea must mean.",
+      "r7_contract_sha256": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
+      "registered_utc": "2026-09-06T09:24:53.527251+00:00",
+      "registration_scope": "AFTER_R7_CHANNEL_DIAGNOSTICS_AND_SOURCE_FIELD_INSPECTION_BEFORE_LOCAL_REPAIR_IMPLEMENTATION_AND_COMPARISON",
+      "unchanged": "All34 lexical forms and original R6 artifacts; every MAP_BASE concept; tea in non-Body fields; any independently supported green concept in same observation; other patch rules; real user explicitly selected green support; C01 MAP_BASE and archived C11/ridge0.3; targets/metrics/52-or-fold-generation subsets/fixed56/output budgets/model weights.",
+      "version": "m2-r7.body-tea-source-role-scope.v1"
+    },
+    "contract_sha256": "9b615deadc3f482b8d7e91b5b45a4386a32fa0a523e8a8f2ee7415a163093dd9",
+    "earlier_automatic_audit_limit": "Original channel audit found no priority violation; subsequent source-field review identified an unsupported Body tea to broad-flavour projection. It does not establish the graders intended tea meaning or a scoring-weight bug.",
+    "status": "CONTRACT_FROZEN_IMPLEMENTATION_IN_PROGRESS"
+  },
+  "new_confirmation": {
+    "C01_minus_C00_gap": null,
+    "no_old_data_relabelled": true,
+    "not_yet_a_final_acquisition_outcome": true,
+    "qualified_groups": 0,
+    "status": "SOURCE_ACQUISITION_IN_PROGRESS"
+  },
+  "real_human_duration": "NOT_EVALUATED",
+  "real_product_user_judgment": "NOT_EVALUATED",
+  "status": "CHECKPOINT1_COMPLETE_SOURCE_AND_LOCAL_SCOPE_COMPARISON_IN_PROGRESS",
+  "version": "m2-r7.checkpoint1.v1"
+}

@@ -1,0 +1,104 @@
+{
+  "baseline_sha": "1b89a856b49056372bcf1b13279b3cd30ebc126b",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "candidate_verification": {
+    "actual_generation_fine_count": 52,
+    "actual_new_input_not_saved_case_lookup": true,
+    "context_audit": {
+      "all_descriptor_rankings_and_questions_identical": true,
+      "context_combinations": 56,
+      "context_weights_and_raw_features_zero": true,
+      "scope": "Synthetic selected-option software test; not observed coffee context validation"
+    },
+    "coverage_groups": 77,
+    "coverage_records": 79,
+    "duplicate_last_answer_identical": true,
+    "final_feedback_source": "SIMULATED_ENGINEERING_ONLY",
+    "fixed_evaluation_fine_count": 56,
+    "generated_final_candidates": 8,
+    "historical_replay": {
+      "case_policy_replays": 158,
+      "cells": {
+        "C00": 79,
+        "C01": 79
+      },
+      "identity": "THREE_ORIGINAL_OUTER_HELD_A0_PACKAGES; full-development candidate is separate",
+      "new_fits": 0,
+      "questions_full_rankings_targets_costs_exact": true,
+      "source_matrix_sha256": "b949ca1a25a083d006d4c2ae1d00114cc8b2254967258a18d34980a4ca7a6660",
+      "source_resources_sha256": "571d62c7b9830a1bb61d0ee4d8f5b0d4a885334a1732b549ee41ad682e5759d9"
+    },
+    "metadata_consistency_negative_checks": 6,
+    "new_cli_subprocess_executed": true,
+    "new_fits": 0,
+    "offline_escape_rejected": true,
+    "ordinary_options": 19,
+    "package_id": "C01:52f85c3dd1d41999df4a323170f85e5dfbd477cff30b7353f58f4070143557f9",
+    "package_sha256": "dd1e8e5f2683f13ecd9408c09ee5315295ebbe38692204cc8c036e4db5bae8da",
+    "production_missing_context_rejected": true,
+    "question_updates_changed_ranking": 5,
+    "refit": "NOT_EXECUTED_EXISTING_A0_VERIFIED",
+    "scorer_groups": 187,
+    "scorer_records": 211,
+    "second_final_rejected": true,
+    "source_feature_vocabulary_count": 63
+  },
+  "checks": {
+    "backend_related_unittest": {
+      "command": "PYTHONPATH=db/scripts:db/tests python -m unittest db/scripts/test_candidate_c01_r7.py db/scripts/test_mechanism_diagnostics_r7.py db/tests/test_confirmation_r7.py db/scripts/test_information_supervision_r6.py db/scripts/test_supervision_r6.py db/scripts/test_diagnostics_supervision_r6.py db/tests/test_semantic_mapping_r6.py db/tests/test_alignment_metrics_r3.py db/tests/test_conditioning_r4.py",
+      "status": "PASS",
+      "tests": 95
+    },
+    "npm_build": "PASS",
+    "npm_check": "PASS",
+    "npm_format_check": "PASS_BEFORE_CHECKPOINT_PUBLIC_WRITES_RECHECKED_AT_COMMIT",
+    "npm_test": "PASS_34",
+    "npm_test_smoke": "PASS_15_AFTER_LOCALHOST_SANDBOX_ESCALATION"
+  },
+  "engineering_test_limits": "Synthetic CLI final selections and confirmation import unit fixtures are software verification only, not new coffee observations or real final feedback.",
+  "execution_notes": [
+    "pytest unavailable; used repository unittest suites",
+    "Initial R4 test import needed existing db/tests PYTHONPATH; corrected invocation passed",
+    "Sandbox denied preview localhost bind; authorized escalation completed all15 unchanged smoke cases",
+    "Local Node22.21 produced >=22.22 warning; check/build/test exited0"
+  ],
+  "local_repair": "CONTRACT_FROZEN_PENDING_COMPARISON",
+  "mechanism_replay": {
+    "diagnostic_records": 237,
+    "scope": "Sealed actual trajectory hashes and original metric replay; not a new fit",
+    "status": "PASS"
+  },
+  "new_confirmation": "IN_PROGRESS_NOT_EVALUATED",
+  "private_evidence": {
+    "C01_ALL_DEVELOPMENT.v3.package.json": "dd1e8e5f2683f13ecd9408c09ee5315295ebbe38692204cc8c036e4db5bae8da",
+    "c01_verification.private.json": "eb989ab22bdd3e4aedde502d1e8ee8b3459fe6f6376397d0793b05852ed670b9",
+    "local_repair_contract.private.json": "9b615deadc3f482b8d7e91b5b45a4386a32fa0a523e8a8f2ee7415a163093dd9",
+    "mechanism_analysis_receipt.private.json": "d2504351b69dda845ddfb78fc90b6971c6eb33d2c46acf39a957130805197623",
+    "mechanism_receipt.private.json": "5683c8de9b58ce21fff89f4ca8f1293d7b09d20e272ca4f1c19ba6286fff9981"
+  },
+  "public_hashes": {
+    "candidate_manifest.json": "3f866b6ce8f75e17965335ae19df319c13cc53bf3929cbf9bf76d56669a3ed8f",
+    "experiment_contract.json": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
+    "mechanism_and_evidence.tsv": "1497ca6c75d4f5a18a0f98ea6de6c4c0f26472550d477450748f079c54b4568b",
+    "results.json": "3497d1105acf95528973aad5f26e55af8cd9f3629c91df366ee37043904d53d4"
+  },
+  "recorded_utc": "2026-09-06T09:28:25.994149+00:00",
+  "refit": "NOT_EXECUTED_EXISTING_A0_REUSE_AUDITED",
+  "remote_baseline": {
+    "CI": "FAIL_AGENTS_MD_EXTRA_BLANK_LINE",
+    "CI_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34021279291",
+    "historical_replay": "PASS",
+    "historical_replay_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34021279295",
+    "local_fix": "One blank line removed from AGENTS.md; no governance rule or workflow changed"
+  },
+  "scope": {
+    "default_changed": false,
+    "frontend_changes": 0,
+    "historical_artifacts_overwritten": 0,
+    "main_merged": false,
+    "unrelated_deletions_excluded": 135,
+    "workflow_changes": 0
+  },
+  "state": "CHECKPOINT1_COMPLETE_CONTINUING_SOURCE_AND_LOCAL_REPAIR_WORK",
+  "version": "m2-r7.checkpoint1-receipt.v1"
+}

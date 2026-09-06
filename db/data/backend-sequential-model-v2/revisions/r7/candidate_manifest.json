@@ -1,0 +1,136 @@
+{
+  "A0_expert_content_sha256": "7ecbc74247b1367d6be94e5af6b74be74353fc3801cc29577d21b95aa1a5d38a",
+  "A0_parameter_sha256": "1adf5e8202b89026ec36db63f7755f857ee509336088aa25d979899864c285e4",
+  "A0_source_artifact_sha256": "ebd6a84d396dbeb4749eb6fa97089610580448413bba9270c1f57ecc96c3050c",
+  "A0_source_owner_relative_path": "revisions/r4/models/R4_ALL_DEVELOPMENT_RESEARCH.model.json",
+  "MAP_BASE_version": "STRICT_D0_GOVERNED_PLUS_ORIGINAL_EXPLICIT_BROAD",
+  "actual_generated_fine_count": 52,
+  "artifact_owner_relative_path": "revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json",
+  "artifact_role": "FULL_DEVELOPMENT_CANDIDATE",
+  "artifact_sha256": "dd1e8e5f2683f13ecd9408c09ee5315295ebbe38692204cc8c036e4db5bae8da",
+  "baseline_code_commit": "1b89a856b49056372bcf1b13279b3cd30ebc126b",
+  "code_hashes": {
+    "alignment_metrics_r3.py": "276fe37faf5eb87584b2b223c53f5019ce0d2577a1c2caf4b457e0b2270d7f88",
+    "candidate_c01_r7.py": "989520166e640450f26773d9c21b18e9140f555315836f4fe17bf8772e10db02",
+    "flavor_conditioning_r4.py": "973cefea0c7aad836ecb6d6a953b3980b5fbe1de0828184d8dd39c5ab430ff48",
+    "flavor_context.py": "1750fd0d238d5592e04f3f6520d7d8d83682193e6a4f66a808667650ca93e395",
+    "flavor_m2_r1.py": "cfec9eafcf0803d54a02d7322e31c03367c54df0da1faa50be57f9a8480247e9",
+    "flavor_planning.py": "458ac3fab553a4f9eab6e12273c593bfef6c20819d27f56819c0aa484bcb617d",
+    "information_supervision_r5.py": "efb077a66a3f2a5ddb605b731ce50203dc4275b36c143f9d1cec9b7fc55942f5",
+    "information_supervision_r6.py": "235041364e6088a9663e874888f360c1822aa1adfa80fa7a8366483cdf6112fc",
+    "r6_mapping_i2_helpers.py": "839bcf90cee1be7444f666b44cffbe1a5ce644fa9fac3222076c73af03c54184"
+  },
+  "commands": {
+    "infer": "python db/scripts/candidate_c01_r7.py infer --bundle \"$OWNER_DIR/revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json\" --request /absolute/path/new_request.json",
+    "mechanism_replay": "python db/scripts/mechanism_diagnostics_r7.py replay --owner-dir \"$OWNER_DIR\" --contract-sha256 ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
+    "owner_dir": "Persistent owner-controlled backend-sequential-model-v2 directory, not included in public repository",
+    "python": "Existing backend Python environment with numpy/scipy; actual host /private/tmp/coffee-backend-model-venv/bin/python",
+    "refit": "NOT_EXECUTED: audited existing full-development A0 reused; build/replay are not training",
+    "replay": "python db/scripts/candidate_c01_r7.py replay --owner-dir \"$OWNER_DIR\" --bundle \"$OWNER_DIR/revisions/r7/C01_ALL_DEVELOPMENT.v3.package.json\"",
+    "working_directory": "existing repository checkout on research/coffee-sensory-data-ml-readiness"
+  },
+  "contract_sha256": "ecc7a66d767e84e2e990e2ec82246d4fed4b246eba5b3de0b42d862bae992e60",
+  "core_path": [
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "costs": {
+    "actual_final_comparison": "At most once,3-8 actually exposed; no real feedback or time inferred from static records",
+    "main_max": 5,
+    "ordinary_options": 19,
+    "ordinary_questions": 5,
+    "secondary_max": 3
+  },
+  "coverage_records": 79,
+  "coverage_source_artifact_sha256": "103ade600a8ca05973c8e5b61ee371794cbc877ead25d2aabec31a1a8cd56676",
+  "coverage_training_groups": 77,
+  "evaluation_boundary": {
+    "legacy_contributions": "R5 direct/inferred/retention fields use first5 original ranking entries; not additive decomposition of fine-only primary gap",
+    "new_package_independent_result": "NOT_EVALUATED_PENDING_NEW_QUALIFIED_CONFIRMATION",
+    "performance": "R6 C01 gap0.4625069618490671 belongs to three old outer-held experts, not this full-development package or actual CLI mixed main",
+    "primary": "Frozen R6 gap/NDCG/Recall use fine-only top5 filtered from full ranking; 56 evaluation ontology, full fixed T; this panel can include fine candidates outside the actual mixed final8 exposure",
+    "runtime": "Inherited mixed broad/fine main<=5 and secondary<=3, actual exposed pool3-8; not identical to fine-only evaluation panel"
+  },
+  "fixed_evaluation_fine_count": 56,
+  "fixed_ontology_fine_not_generated": [
+    "sensory.brown_sugar",
+    "sensory.cedar",
+    "sensory.fermented_character",
+    "sensory.orange_blossom"
+  ],
+  "foundation_check": "OFF",
+  "identities": {
+    "DEFAULT": "B2_UNCHANGED",
+    "PRIORITY_CONFIRMATION_CANDIDATE": "A0+MAP_BASE+I2_LIVE:C01",
+    "R6_ARCHIVED_SELECTED_HEAD": "C11/ridge0.3_UNCHANGED"
+  },
+  "json_usage": "Example context is caller-supplied engineering input, never a default. Read next question, append its exact slot/question_id/axis/shown_option_ids with selected_option_ids and state, then resubmit transcript. No case_id lookup. Runtime validates exposure and one-final state; stateless CLI does not claim cross-process participant tracking.",
+  "minimal_confirmation_import": {
+    "A_B": "Lists of frozen MAP_BASE concept IDs from disjoint source observation units",
+    "T": "Positive fine/source-OOV relevance map from independently held observation units; empty {} retained; no post-question target changes",
+    "implementation": "db/scripts/confirmation_r7.py freeze/evaluate/replay; no real cohort evaluated until source admission; synthetic unit tests do not count as new data",
+    "optional_source_context": [
+      "source_C0",
+      "source_C1"
+    ],
+    "required_fields": [
+      "record_id",
+      "group_id",
+      "sample_id",
+      "A",
+      "B",
+      "relevance_full",
+      "A_observation_unit_id",
+      "B_observation_unit_id",
+      "T_observation_unit_ids"
+    ],
+    "source_admission": "Owner-controlled admission record binds records SHA, verified identities/roles/rights/previous-use audit, source_id and measurement_scope; Boolean flags do not replace original evidence inspection"
+  },
+  "minimal_new_json": {
+    "answers": [],
+    "context": {
+      "c0": "preparation.family.filter_percolation",
+      "c1": "medium"
+    },
+    "contract_version": "m2-r7-c01-portable.v1"
+  },
+  "missing_generation_policy": "No invented scores; targets remain in full-T denominator; fixed ontology and generated subset reported separately",
+  "model_kind": "M2_R7_C01_A0_MAP_BASE_I2_LIVE",
+  "offline_context": "Explicit OFFLINE_EXISTING_NEUTRAL_CONTEXT_EFFECTS_DISABLED API only: actual source context absent, context weights/raw features zero verified. Internal neutral values are not recorded observations or available via production JSON escape.",
+  "ordinary_option_budgets": {
+    "Q0": 4,
+    "Q1": 4,
+    "Q2": 4,
+    "Q3": 4,
+    "Q4": 3
+  },
+  "other_existing_product_paths": "Q3 skip-to-Q4 and Q5 preserved outside this fixed research path; no Q2 terminal or new slot",
+  "package_id": "C01:52f85c3dd1d41999df4a323170f85e5dfbd477cff30b7353f58f4070143557f9",
+  "parent_relations_sha256": "b0dc8e00bd232498d69caaeaf71f69a9880b149036b272382e24c900808f77a1",
+  "private_lineage": "Exact source record/group identities, source hashes, audit and TRAIN B statistics embedded in private package; never released as public observations",
+  "production_context": "Required existing8-family C0 and7-class C1; missing/unknown/default rejected by infer CLI",
+  "question_bank_sha256": "d248f2f20a7721ac2472aefde435924ed0a12e2217901dcf81dd3e53594b679c",
+  "refit_status": "NOT_EXECUTED_EXISTING_A0_REUSE_VERIFIED",
+  "related_multiplier": 2.0,
+  "rights": {
+    "raw_release": false,
+    "training_and_confirmation_roles_separate": true,
+    "use": "PERSONAL_NONCOMMERCIAL_RESEARCH under retained source-specific policies",
+    "weight_release": false
+  },
+  "role": "PRIORITY_CONFIRMATION_CANDIDATE",
+  "scope": "Repeatedly viewed development data; independent confirmation pending; full-development package has no inherited outer-held effect estimate",
+  "scorer_source_families": {
+    "inera": 95,
+    "lengupa": 21,
+    "zenodo": 95
+  },
+  "scorer_training_groups": 187,
+  "scorer_training_records": 211,
+  "selector": "Unchanged R6 I2_LIVE: actual Q0/Q1 canonical selections and registered parents, used axes, fixed budgets and TRAIN B coverage only. Later answers update A0 normally, not the selector evidence scope.",
+  "source_feature_vocabulary_count": 63,
+  "version": "m2-r7-c01-portable.v1"
+}

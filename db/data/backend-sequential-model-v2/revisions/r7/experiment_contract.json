@@ -1,0 +1,81 @@
+{
+  "actual_baseline_sha": "1b89a856b49056372bcf1b13279b3cd30ebc126b",
+  "at_registration": "BEFORE_R7_DIAGNOSTIC_AND_NEW_CONFIRMATION_OUTCOMES",
+  "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+  "expected_baseline_sha": "1b89a856b49056372bcf1b13279b3cd30ebc126b",
+  "experiment_id": "M2_R7_C01_MECHANISMS_AND_INDEPENDENT_CONFIRMATION",
+  "fixed": {
+    "C0_C1": "Production JSON strictly requires8-family C0/7-class C1; missing source context only explicitly neutral non-context-effect component evaluation; never impute observed context",
+    "evaluation_universe": "Existing56 fine candidates; A0 own frozen generated subset separately reported and unavailable targets retained",
+    "final": "At most one actual3-8 candidate comparison; unchanged existing feedback mechanism; no real feedback invented",
+    "main_k": 5,
+    "mapping": "R6 MAP_BASE for priority candidate and new confirmation; do not update from confirmation observations",
+    "option_budgets": [
+      4,
+      4,
+      4,
+      4,
+      3
+    ],
+    "ordinary_options": 19,
+    "path": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+    ],
+    "related_multiplier": 2.0,
+    "secondary_k": 3,
+    "target": "Fixed full independent T, original masks/positive weights; fixed hidden subset secondary; no semantic partial-credit changes"
+  },
+  "historical_replay": {
+    "cases": 79,
+    "coffee_groups": 77,
+    "full_T_evaluable_records": 59,
+    "old_sources": "Repeatedly inspected development evidence, never fresh confirmation",
+    "scope": "All R6 development cases including20 emptyT; frozen C00/C01 trajectories and metrics must replay exactly"
+  },
+  "identities": {
+    "DEFAULT": "B2_UNCHANGED",
+    "PRIORITY_CONFIRMATION_CANDIDATE": "A0+MAP_BASE+I2_LIVE:C01",
+    "R6_ARCHIVED_SELECTED_HEAD": "C11/ridge0.3, original private artifact unchanged"
+  },
+  "mechanism_diagnostics": {
+    "D_COVERAGE_ONLY": "Use fold TRAIN MAP_PATCH B coverage with evaluation MAP_BASE A/B; normal I2_LIVE",
+    "D_FIXED_EXPOSURE": "Replay C01 complete questions/options unchanged with patched source answers; offline mechanism intervention, not deployable policy",
+    "D_OBSERVATION_ONLY": "Use fold TRAIN MAP_BASE B coverage with evaluation MAP_PATCH A/B; normal I2_LIVE",
+    "analysis": "All changes counted; maximum12 detailed examples stratified across improvement/tie/regression; channels are not additive causal decomposition",
+    "classification": [
+      "SOURCE_MAPPING_ERROR",
+      "VALID_MAPPING_CHANGED_BUDGET_ALLOCATION",
+      "SUPPORT_SEMANTICS_ERROR",
+      "VALID_OBSERVATION_DISAGREES_WITH_INDEPENDENT_GRADER",
+      "UNRESOLVED"
+    ],
+    "repair_gate": "At most one source-supported class1/class3 repair. First separately preregister mechanism and development check before complete comparison; no need to invent repair if evidence absent; never drop correct user evidence because T differs",
+    "scorer_refits": 0,
+    "statistics_and_patch": "Reuse only fold TRAIN support; exclude held groups; retain R6 rules and parameters"
+  },
+  "new_confirmation": {
+    "admission": "Previously unused trustworthy coffee/product identities, suitable licensed observations, actual disjoint A/B/T observation units, no prior model/coverage use; preregister source-specific cohort/roles/targets before scoring",
+    "missing": "NEW_CONFIRMATION_NOT_AVAILABLE if no qualified source; preserve useful auxiliary evidence separately, never fabricate pairing",
+    "models": "Fixed shared full-development A0 and generated vocabulary, MAP_BASE; only question policy differs C00/C01; no new statistics or mapping fitted on confirmation",
+    "primary": "gap(C01)-gap(C00), coffee/product dependence group paired; negative is better",
+    "role_assignment": "Deterministic source protocol/identity-based assignment before outcomes; concept overlap A-T allowed; no nonmention sensory negatives",
+    "source_selection": "Targeted2-3h acquisition budget, prioritize existing-source new versions then new professional paired collections; no relabelled old anonymous rows;15-30 groups exploration target not quota",
+    "time_and_actual_users": "NOT_EVALUATED unless genuinely observed; no recruitment/email/payment/frontend",
+    "uncertainty": "Source-specific group values and2000 paired group-bootstrap descriptive interval; tiny groups not proof of generalization; keep separate from R6"
+  },
+  "preserved": {
+    "experiment_contract.json": "688c2a60f3426e0aa7c45bd51607b33b839b18438c3539ad19df754d0a3a1815",
+    "results.json": "77ccc395e8dbb23e64689af33a2ac7ae0bcf5f03efb23cef1d070dbc02300c60",
+    "run_receipt.json": "c9344d2e172eed673f3fff6c28340704b967845e032c2427ddac327fc81aeedf",
+    "semantic_patch.tsv": "f4fab99ec24f0026575bb6398f4bd06d2d50215eb365a0825d6b81a1ccdfa0ad"
+  },
+  "publication": "Only candidate_manifest,experiment_contract,mechanism_and_evidence.tsv,results,run_receipt in R7 public dir; raw observations/traces/weights private",
+  "registered_utc": "2026-09-06T08:55:57.330985+00:00",
+  "runtime_limits": "Independent inference executes new JSON with current model, not stored case-ID lookup; stateless transcript final-once boundary stated",
+  "training": "Reuse audited full-development A0 when available; otherwise once under unchanged A0 training scheme. No R6ridge grid, trigger, foundation or pool expansion. Confirmation records excluded from all fits.",
+  "version": "m2-r7.v1"
+}
