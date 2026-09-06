@@ -1,0 +1,143 @@
+{
+  "actual_baseline_sha": "97f246dea63ec5c0d0a01e08115c4cde0f03221b",
+  "actual_training": {
+    "after_four_cells_sealed": true,
+    "completed_utc": "2026-09-06T08:03:02.092583+00:00",
+    "head_family": "fixed137x56 positive-mention linear",
+    "receipt_sha256": "6684e02ed5149cefaf6a211b9ab7d76fd679930924e8ebaf871aca1933ba94aa",
+    "ridge_grid": [
+      0.03,
+      0.1,
+      0.3
+    ],
+    "started_utc": "2026-09-06T08:02:33.812216+00:00"
+  },
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "claims": "Static cross-grader development comparisons only; no human sensory truth/time validation; no Claude/DeepSeek call or human-review completion claimed",
+  "commands": {
+    "command_status": "All three executed with resolved private owner paths; raw data/weights are not available from public checkout alone",
+    "environment": "Python3.12 with numpy/scipy/threadpoolctl/openpyxl and existing project dependencies; COFFEE_OWNER points to retained private v2 owner directory",
+    "from_source_refit": "python db/scripts/run_supervision_r6.py retrain --owner-dir \"$COFFEE_OWNER\"",
+    "live_json": "python db/scripts/run_supervision_r6.py infer --owner-dir \"$COFFEE_OWNER\" --request \"$COFFEE_OWNER/revisions/r6/live_request.private.json\"",
+    "sealed_replay": "python db/scripts/run_supervision_r6.py replay --owner-dir \"$COFFEE_OWNER\"",
+    "working_directory": "Repository research checkout"
+  },
+  "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+  "environment": {
+    "numpy": "2.5.2",
+    "python": "3.12.14",
+    "scipy": "1.18.1"
+  },
+  "experiment_id": "M2_R6_MAPPING_OBSERVABLE_ACQUISITION",
+  "helper_origin": {
+    "kind": "User-supplied code, reviewed before execution, repository copy byte-identical",
+    "sha256": "839bcf90cee1be7444f666b44cffbe1a5ce644fa9fac3222076c73af03c54184"
+  },
+  "local_repairs": [
+    {
+      "issue": "Initial assertion incorrectly equated A0 generation vocabulary with56 evaluation ontology",
+      "phase": "Before matrix output or head fit",
+      "resolution": "Preserve per-fold48/48/50 generation; fixed56 evaluation retains unreachable targets; dated pre-outcome clarification"
+    },
+    {
+      "issue": "Repeated Q4 transcript answer initially rejected by thin live wrapper",
+      "phase": "Verification",
+      "resolution": "Existing-slot updates use original idempotent validation; duplicateQ4 and one-final checks passed; no scientific training change"
+    }
+  ],
+  "matrix": {
+    "completed_utc": "2026-09-06T08:01:33.615429+00:00",
+    "new_scorer_fits": 0,
+    "receipt_sha256": "b6b5c9a54c71fe3bd302631773d5d394515c878c77da47b7f22013e50879138c",
+    "started_utc": "2026-09-06T07:59:17.934267+00:00"
+  },
+  "preservation": {
+    "R5_head_and_metrics_unchanged": true,
+    "frontend_changes": false,
+    "history_rewrite": false,
+    "main_merge": false,
+    "new_branch": false,
+    "unrelated_deleted_paths_count": 135,
+    "unrelated_deleted_paths_sha256": "4d67ff735080cd735c47dc87a69be7152db85043402de5a75e8c91c4f82fccfc",
+    "workflow_changes": false
+  },
+  "private_artifacts": {
+    "completion_manifest_sha256": "e6f016eb99b6650f25cec90bc9afce9a43be62675eafc81a1cd62245c58433a5",
+    "root_role": "Owner-controlled persistent storage, files0600/directories0700; no raw records or weights published",
+    "runtime_bundle_sha256": "b1d54e58147063058853828b7d3901c82858f714b0e206503a98effce2ad5c22",
+    "source_semantic_audit_sha256": "027165fcdcebae7f3ac993c3f21595364c45f5a213adc4cad3df0302cec98687",
+    "source_semantic_checks_sha256": "2b50082a3232a0ac70e2e49cf7a250bfe65830e3ddbd27b9d084326287079b87"
+  },
+  "public_artifacts_sha256": {
+    "experiment_contract.json": "688c2a60f3426e0aa7c45bd51607b33b839b18438c3539ad19df754d0a3a1815",
+    "results.json": "77ccc395e8dbb23e64689af33a2ac7ae0bcf5f03efb23cef1d070dbc02300c60",
+    "semantic_patch.tsv": "f4fab99ec24f0026575bb6398f4bd06d2d50215eb365a0825d6b81a1ccdfa0ad"
+  },
+  "recorded_utc": "2026-09-06T08:12:09.137931+00:00",
+  "registration_utc": "2026-09-06T07:49:10.060801+00:00",
+  "verification": {
+    "diff_whitespace_check": "PASS",
+    "direct_infer_cli_executed": true,
+    "from_raw_source_refit": {
+      "completed_utc": "2026-09-06T08:09:52.883507+00:00",
+      "four_cell_outer_and_nested_trajectories_exact": true,
+      "not_artifact_replay": true,
+      "raw_source_reparsed": true,
+      "refitted_models_bitwise_exact": 22,
+      "started_utc": "2026-09-06T08:06:41.256033+00:00",
+      "status": "PASS"
+    },
+    "live_json": {
+      "duplicate_Q4_idempotent": true,
+      "final_candidates": 8,
+      "invalid_contexts_rejected": 3,
+      "options": 19,
+      "questions": 5,
+      "scope": "ENGINEERING_FIXTURE_NOT_HUMAN_SENSORY_EVIDENCE",
+      "second_final_rejected": true,
+      "session_scope": "Stateless transcript replay: one final per transcript; no cross-request persistence claim",
+      "stage": "FINAL_RESULT",
+      "status": "PASS"
+    },
+    "local_tests": {
+      "R3_metrics": {
+        "status": "PASS",
+        "tests": 12
+      },
+      "R4_conditioning": {
+        "status": "PASS",
+        "tests": 16
+      },
+      "R5_head_regression": {
+        "status": "PASS",
+        "tests": 12
+      },
+      "R6_scripts": {
+        "status": "PASS",
+        "tests": 34
+      },
+      "R6_semantic": {
+        "status": "PASS",
+        "tests": 9
+      },
+      "live_repeat_Q4_and_final_once": "PASS",
+      "user_helper": {
+        "status": "PASS",
+        "tests": 16
+      }
+    },
+    "remote_ci": "NOT_YET_RUN_FOR_THIS_COMMIT",
+    "scope_check": "PASS: 16 explicitly staged backend/config/summary files; no excluded deletions",
+    "sealed_replay": {
+      "all_comparison_rows": 711,
+      "all_published_controls_verified": true,
+      "checked_models": 22,
+      "checked_utc": "2026-09-06T08:11:04.680062+00:00",
+      "fit_count": 0,
+      "frozen_matrix_predictions": 316,
+      "rankings_logits_exact": true,
+      "refitted_outer_predictions": 79,
+      "status": "PASS"
+    }
+  }
+}

@@ -172,6 +172,27 @@ FOUNDATION_CHECK off. Existing Q3 skip-to-Q4 and single-final-comparison contrac
 remain in force. Parallel disjoint source, data and backend work is authorized;
 no frontend, CI changes, author messages, historical overwrite or unrelated cleanup.
 
+
+### Active M2 R6 semantic mapping and observable acquisition
+
+Continue the existing R5 lineage with one `revisions/r6` record. Freeze full and
+unexpressed reference targets, metric rules and evaluation ontology. A0 retains
+its original fold-specific generation vocabulary; do not create missing scores.
+Input mapping rules and B coverage statistics use the respective training A/B
+observations only, excluding inner validation and outer held coffee groups.
+The I2_LIVE selector sees actual Q0/Q1 selections and registered parents, used
+axes, frozen slot budgets and training coverage, never source A/B/T records.
+
+The R6 core comparison follows Q0–Q4 with predeclared option budgets 4/4/4/4/3.
+This does not remove the existing product's legal Q3 skip-to-Q4 or Q5 paths.
+Preserve R5 original-budget results separately. Complete the four frozen-A0
+mapping/policy cells before fitting the existing small head at ridge values
+0.03, 0.1 and 0.3 with grouped inner selection and outer evaluation. No trigger
+refit, new encoder, higher-order branch or auxiliary score-recovery task.
+B2 remains default and FOUNDATION_CHECK off. Keep raw traces/weights private,
+separate live JSON/replay/refit verification, and preserve all unrelated deletions.
+Disjoint semantic, information and training-code work may run in parallel.
+
 ## Product
 
 Current project purpose is `PERSONAL_NONCOMMERCIAL_COFFEE_RESEARCH`;

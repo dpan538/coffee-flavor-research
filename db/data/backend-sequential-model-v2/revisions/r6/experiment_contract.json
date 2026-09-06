@@ -1,0 +1,124 @@
+{
+  "actual_baseline_sha": "97f246dea63ec5c0d0a01e08115c4cde0f03221b",
+  "budget_reason": "Chosen from existing bank/old trace capacity before R6 outcomes: old Q4 uses 3 or4 options. Preserve POLICY_BASE question/option ordering but cap at fixed3 Q4; historical original R5 I1 remains separately labeled. Other slots4. Shortfall is retained failure, never padded or repaired through extra questions.",
+  "cells": {
+    "C00": [
+      "MAP_BASE",
+      "POLICY_BASE"
+    ],
+    "C01": [
+      "MAP_BASE",
+      "I2_LIVE"
+    ],
+    "C10": [
+      "MAP_PATCH",
+      "POLICY_BASE"
+    ],
+    "C11": [
+      "MAP_PATCH",
+      "I2_LIVE"
+    ]
+  },
+  "claims": {
+    "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+    "real_time": "NOT_EVALUATED",
+    "real_user_alignment": "NOT_EVALUATED",
+    "task": "CROSS_GRADER_CORROBORATION; static record reveal, shared graders, unverified source blinding/context; not same-user sequential tasting"
+  },
+  "evaluation": {
+    "contrasts": [
+      "C10-C00",
+      "C01-C00",
+      "C11-C00",
+      "(C11-C10)-(C01-C00)"
+    ],
+    "diagnostics": [
+      "ndcg",
+      "recall",
+      "fixed_hidden_gap",
+      "explicit_retention",
+      "direction_coverage",
+      "new_information",
+      "option_cost",
+      "output_coverage"
+    ],
+    "noninferiority": "No newly asserted user acceptance margin; historical0.02 not changed",
+    "primary": "Full fixed T raw_gap, lower better; coffee macro; empty T not evaluable, output failures remain zero-match",
+    "uncertainty": "2000 paired coffee-group bootstrap, development descriptive uncertainty only"
+  },
+  "expected_baseline_sha": "97f246dea63ec5c0d0a01e08115c4cde0f03221b",
+  "experiment_id": "M2_R6_MAPPING_OBSERVABLE_ACQUISITION",
+  "fit": {
+    "family": "Existing R5 fixed-capacity positive-mention linear head",
+    "forbidden": "No new trigger/high-order/shared encoder/RL fits; no full historical retraining",
+    "nesting": "Reuse audited R1 outer/R2 inner/R3 deepest experts. Head inner training trajectories use deeper-held experts, coverage/patch only their training groups; exclude outer and inner validation groups. Outer head training uses inner-held trajectories.",
+    "normalization": "Sum of group-macro record weights=1; positive mention target normalization unchanged; ridge/2 coefficient norm excluding intercept",
+    "ridge_grid": [
+      0.03,
+      0.1,
+      0.3
+    ],
+    "selection": "First select cell by inner-held frozen A0 raw_gap, simplicity tie C00,C10,C01,C11. Then ridge by inner-held head raw_gap, tie prefer0.1 then0.3 then0.03. Outer held unused for selection. Final development candidate uses aggregated inner selection evidence, not fresh confirmation.",
+    "sequencing": "Four frozen-scorer cells completed before any new scorer fit"
+  },
+  "fixed": {
+    "candidate_universe": "Frozen R5 sensory PARENTS candidates, unchanged across cells/models",
+    "cohort": "All 79 R5 development episodes, 77 coffee dependence groups, including empty T. No new confirmation claim",
+    "final_comparison": "At most one actual 3-8 exposure; source simulations contain no real final feedback; report actual0 and reserved8 separately",
+    "main_k": 5,
+    "metric_code_sha256": "276fe37faf5eb87584b2b223c53f5019ce0d2577a1c2caf4b457e0b2270d7f88",
+    "ordinary_path": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+    ],
+    "r5_contract_sha256": "7b2dc839750cbade9934ac22f4ffa4d94b8aee476f1f016009fdeeac5d793785",
+    "r5_head_code_sha256": "74d2702485dab22aff0f7fdd34a1a1e2cca3540863f5a1232dc5123ced31e87e",
+    "r5_metrics_sha256": "b1c3a0e386d41a90f0da258a7d9082c3e4575ce730944e8eaef4c16761789ff5",
+    "roles": "Unchanged raw R5 A/B/T observation-unit roles; full T and fixed unexpressed T remain unchanged by patch",
+    "secondary_k": 3,
+    "slot_option_budgets": {
+      "Q0": 4,
+      "Q1": 4,
+      "Q2": 4,
+      "Q3": 4,
+      "Q4": 3
+    },
+    "source_parse_sha256": "4286ca124dedd691eba481a31b1420885bcf44a7602831d6361081f21ad9ae2b"
+  },
+  "mapping": {
+    "approval": "SOURCE_CHECKED not HUMAN_APPROVED",
+    "base": "Frozen R5 strict governed mapping",
+    "fold_scope": "Each outer/inner/deepest TRAIN selects its own supported rules, never held A/B or T. Evaluation T immutable",
+    "patch": "At most50 full unmapped A/B fragments, ranked only by relevant TRAIN coffee support/frequency and existing ontology connectivity; cached source verification. Exact positive spans only; preserve compound/broad specificity; no ontology expansion. Ambiguous/not-supported rules excluded"
+  },
+  "policy": {
+    "I2_LIVE": "Only actually selected Q0/Q1 canonical concepts and fixed registered ancestors, used axes, frozen budget and TRAIN B group/sample/observation macro coverage. No full record argument to selector",
+    "answer_provider": "Separate static source A initially and A union B later, read only after choosing question; unmentioned unknown",
+    "missing": "No legal axis at frozen budget retained capacity failure; no fake options or T-guided fallback",
+    "related_multiplier": 2.0,
+    "tie_break": "Axis ID and option ID deterministic"
+  },
+  "pre_outcome_implementation_clarification": {
+    "candidate_scopes": {
+      "A0_generation": "Unchanged own outer bank vocabulary48/48/50; same within all four cells of each outer fold; inner/deepest own frozen vocabulary; no fabricated candidate score",
+      "discovered_by": "pre-trace invariant check, no fitted or matrix outcome available",
+      "evaluation": "Fixed56 existing R5 fine ontology for all metrics; targets outside model-generated vocabulary retained",
+      "heads": "R5/R6 retain same56 head vocabulary and capacity; report compatible old-head refit comparison separately from A0 generation-limited baseline",
+      "utc": "2026-09-06T07:59:17.077063+00:00"
+    },
+    "capacity_failure": "Failure is retained empty ranking in every fitted/frozen evaluation; incomplete trajectories excluded from head fit with count recorded; never promoted to successful lower-budget output.",
+    "final_candidate": "Final cell eligible only if it won at least one outer TRAIN inner A0 selection and therefore received registered ridge validation; rank eligible cells by mean inner loss across all outer development selections. Final ridge uses only inner validation trained with that cell.",
+    "prior_contract_sha256": "c6d2025b6bb445828df0cc7895d3dc56825289c9ec1c477a3355487c1e1793d8",
+    "utc": "2026-09-06T07:54:26.529578+00:00"
+  },
+  "preservation": {
+    "old_artifacts": "R1-R5 immutable; no branch creation/force/main merge/UI/CI changes",
+    "unrelated_deletions": 135
+  },
+  "registered_utc": "2026-09-06T07:49:10.060801+00:00",
+  "status_at_registration": "BEFORE_R6_TRAJECTORIES_AND_FITS",
+  "version": "m2-r6.v1"
+}

@@ -1,0 +1,1802 @@
+{
+  "candidate_scope_audit": {
+    "A0_vs_head_limit": "Separate actual A0 generation and fixed56-head comparison; raw target losses never removed",
+    "coverage_field_meaning": "coverage is fixed56 ontology target coverage, not proof every frozen A0 can generate every target",
+    "outer": {
+      "0": {
+        "T_concepts_outside_A0_generation_record_total": 3,
+        "fixed_evaluation_candidates": 56,
+        "frozen_generated_candidates": 48,
+        "records_with_T_outside_A0_generation": 3,
+        "records_with_nonempty_T": 23
+      },
+      "1": {
+        "T_concepts_outside_A0_generation_record_total": 2,
+        "fixed_evaluation_candidates": 56,
+        "frozen_generated_candidates": 48,
+        "records_with_T_outside_A0_generation": 2,
+        "records_with_nonempty_T": 17
+      },
+      "2": {
+        "T_concepts_outside_A0_generation_record_total": 1,
+        "fixed_evaluation_candidates": 56,
+        "frozen_generated_candidates": 50,
+        "records_with_T_outside_A0_generation": 1,
+        "records_with_nonempty_T": 19
+      }
+    }
+  },
+  "checkpoint1": {
+    "B2_compatible_transport": {
+      "metrics": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.166750208855472,
+        "direct_retention": 0.9901408450704225,
+        "groups": 77,
+        "hidden_gap": 0.6024071578316861,
+        "hidden_ndcg": 0.2370178063643022,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.2278056251740462,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.166750208855472,
+        "legacy_R4_recovery_gap": 0.5581498951781971,
+        "ndcg": 0.37212814857428517,
+        "positive_mention_CE": null,
+        "raw_gap": 0.5293581175160122,
+        "recall": 0.39455583402951827,
+        "records": 79
+      },
+      "scope": "Frozen original B2 algorithm with outer TRAIN-only transported priors and same C00 actual offered answers; old family adapter loses unsupported concepts; full fixed T and fixed universe retain that loss; not relabeled A0 or deployed B2 validation"
+    },
+    "cells": {
+      "C00": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.166750208855472,
+        "direct_retention": 1.0,
+        "failures": 0,
+        "groups": 77,
+        "hidden_gap": 0.5889450434261755,
+        "hidden_ndcg": 0.24080988082974936,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.08216374269005848,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.166750208855472,
+        "legacy_R4_recovery_gap": 0.5465932914046122,
+        "ndcg": 0.374972128404283,
+        "positive_mention_CE": null,
+        "prediction_changes_vs_C00": 0,
+        "raw_gap": 0.5158590921748816,
+        "recall": 0.40264550264550264,
+        "records": 79
+      },
+      "C01": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.14394319131161237,
+        "direct_retention": 1.0,
+        "failures": 0,
+        "groups": 77,
+        "hidden_gap": 0.5459418987720873,
+        "hidden_ndcg": 0.252263568361902,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.12251461988304092,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.14394319131161237,
+        "legacy_R4_recovery_gap": 0.5072401916741539,
+        "ndcg": 0.38877140753378275,
+        "positive_mention_CE": null,
+        "prediction_changes_vs_C00": 34,
+        "raw_gap": 0.4625069618490671,
+        "recall": 0.4730297967140073,
+        "records": 79
+      },
+      "C10": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.166750208855472,
+        "direct_retention": 1.0,
+        "failures": 0,
+        "groups": 77,
+        "hidden_gap": 0.5873727163821503,
+        "hidden_ndcg": 0.24080988082974936,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.08216374269005848,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.166750208855472,
+        "legacy_R4_recovery_gap": 0.5465932914046122,
+        "ndcg": 0.374972128404283,
+        "positive_mention_CE": null,
+        "prediction_changes_vs_C00": 25,
+        "raw_gap": 0.5143971038707881,
+        "recall": 0.40264550264550264,
+        "records": 79
+      },
+      "C11": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.1268170426065163,
+        "direct_retention": 1.0,
+        "failures": 0,
+        "groups": 77,
+        "hidden_gap": 0.5666966157532195,
+        "hidden_ndcg": 0.23911150132129952,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.14256474519632414,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.1268170426065163,
+        "legacy_R4_recovery_gap": 0.5110137765798143,
+        "ndcg": 0.3616860635822978,
+        "positive_mention_CE": null,
+        "prediction_changes_vs_C00": 53,
+        "raw_gap": 0.48180520746310224,
+        "recall": 0.44846839320523524,
+        "records": 79
+      }
+    },
+    "contrasts": {
+      "C01-C00": {
+        "delta_right_minus_left": -0.05335213032581454,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.11162985588972431,
+          -0.008615288220551378
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "C10-C00": {
+        "delta_right_minus_left": -0.0014619883040935659,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.004385964912280698,
+          0.0
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "C11-C00": {
+        "delta_right_minus_left": -0.03405388471177945,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.0871890664160401,
+          0.008197838345864659
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "interaction": {
+        "delta_right_minus_left": 0.020760233918128652,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          0.0014619883040935659,
+          0.05263157894736842
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      }
+    },
+    "inner_selection": {
+      "0": {
+        "cells": {
+          "C00": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.1732142857142857,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.6160305788982259,
+            "hidden_ndcg": 0.23021216148996965,
+            "identifiable_records": 36,
+            "inferred_exact_contribution": 0.09166666666666666,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.1732142857142857,
+            "legacy_R4_recovery_gap": 0.5470413165266106,
+            "ndcg": 0.3824342932540062,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 0,
+            "raw_gap": 0.5324349647266313,
+            "recall": 0.3923059964726632,
+            "records": 51
+          },
+          "C01": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.15998677248677248,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.5922560690943044,
+            "hidden_ndcg": 0.24160385367533332,
+            "identifiable_records": 36,
+            "inferred_exact_contribution": 0.14378306878306876,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.15998677248677248,
+            "legacy_R4_recovery_gap": 0.5244747899159664,
+            "ndcg": 0.39775464108371866,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 28,
+            "raw_gap": 0.5104772927689595,
+            "recall": 0.4163800705467372,
+            "records": 51
+          },
+          "C10": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.1732142857142857,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.608922735760971,
+            "hidden_ndcg": 0.23327517880724638,
+            "identifiable_records": 36,
+            "inferred_exact_contribution": 0.08611111111111111,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.1732142857142857,
+            "legacy_R4_recovery_gap": 0.5497373949579832,
+            "ndcg": 0.38542577449617954,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 14,
+            "raw_gap": 0.5257220017636683,
+            "recall": 0.3978615520282187,
+            "records": 51
+          },
+          "C11": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.13220899470899472,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.5895599906629317,
+            "hidden_ndcg": 0.23469157083750367,
+            "identifiable_records": 36,
+            "inferred_exact_contribution": 0.16203703703703703,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.13220899470899472,
+            "legacy_R4_recovery_gap": 0.5315826330532213,
+            "ndcg": 0.3774361166238471,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 35,
+            "raw_gap": 0.507930996472663,
+            "recall": 0.4163800705467372,
+            "records": 51
+          }
+        },
+        "contrasts": {
+          "C01-C00": {
+            "delta_right_minus_left": -0.021957671957671957,
+            "groups": 36,
+            "paired_coffee_bootstrap_95": [
+              -0.05153439153439153,
+              0.0012582671957671854
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "C10-C00": {
+            "delta_right_minus_left": -0.0067129629629629605,
+            "groups": 36,
+            "paired_coffee_bootstrap_95": [
+              -0.018981481481481474,
+              0.0
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "C11-C00": {
+            "delta_right_minus_left": -0.02450396825396825,
+            "groups": 36,
+            "paired_coffee_bootstrap_95": [
+              -0.054432870370370375,
+              -0.0011888227513227622
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "interaction": {
+            "delta_right_minus_left": 0.0041666666666666675,
+            "groups": 36,
+            "paired_coffee_bootstrap_95": [
+              0.0,
+              0.012500000000000002
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          }
+        }
+      },
+      "1": {
+        "cells": {
+          "C00": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.14970238095238095,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.5843932748538011,
+            "hidden_ndcg": 0.24193939534088488,
+            "identifiable_records": 42,
+            "inferred_exact_contribution": 0.11744047619047619,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.14970238095238095,
+            "legacy_R4_recovery_gap": 0.483845029239766,
+            "ndcg": 0.37835565713464486,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 0,
+            "raw_gap": 0.5128521825396826,
+            "recall": 0.4101587301587301,
+            "records": 53
+          },
+          "C01": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.16845238095238096,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.5912646198830409,
+            "hidden_ndcg": 0.22820811370812014,
+            "identifiable_records": 42,
+            "inferred_exact_contribution": 0.12940476190476188,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.16845238095238096,
+            "legacy_R4_recovery_gap": 0.489985380116959,
+            "ndcg": 0.3835584646000517,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 19,
+            "raw_gap": 0.5010019841269842,
+            "recall": 0.4328373015873016,
+            "records": 53
+          },
+          "C10": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.14970238095238095,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.5822002923976608,
+            "hidden_ndcg": 0.24193939534088488,
+            "identifiable_records": 42,
+            "inferred_exact_contribution": 0.11744047619047619,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.14970238095238095,
+            "legacy_R4_recovery_gap": 0.4970029239766081,
+            "ndcg": 0.37835565713464486,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 13,
+            "raw_gap": 0.5107688492063491,
+            "recall": 0.4101587301587301,
+            "records": 53
+          },
+          "C11": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.16845238095238096,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 51,
+            "hidden_gap": 0.5846856725146199,
+            "hidden_ndcg": 0.22573020671170269,
+            "identifiable_records": 42,
+            "inferred_exact_contribution": 0.0981547619047619,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.16845238095238096,
+            "legacy_R4_recovery_gap": 0.48121345029239765,
+            "ndcg": 0.38113677136102914,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 25,
+            "raw_gap": 0.49378472222222225,
+            "recall": 0.43015873015873013,
+            "records": 53
+          }
+        },
+        "contrasts": {
+          "C01-C00": {
+            "delta_right_minus_left": -0.011850198412698416,
+            "groups": 40,
+            "paired_coffee_bootstrap_95": [
+              -0.05875868055555556,
+              0.018462301587301583
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "C10-C00": {
+            "delta_right_minus_left": -0.002083333333333334,
+            "groups": 40,
+            "paired_coffee_bootstrap_95": [
+              -0.006250000000000003,
+              0.0
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "C11-C00": {
+            "delta_right_minus_left": -0.019067460317460323,
+            "groups": 40,
+            "paired_coffee_bootstrap_95": [
+              -0.06507998511904764,
+              0.010099330357142848
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "interaction": {
+            "delta_right_minus_left": -0.00513392857142857,
+            "groups": 40,
+            "paired_coffee_bootstrap_95": [
+              -0.02232142857142857,
+              0.01049107142857143
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          }
+        }
+      },
+      "2": {
+        "cells": {
+          "C00": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.19172932330827067,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 52,
+            "hidden_gap": 0.6096113445378151,
+            "hidden_ndcg": 0.22667840142939963,
+            "identifiable_records": 40,
+            "inferred_exact_contribution": 0.06315789473684212,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.19172932330827067,
+            "legacy_R4_recovery_gap": 0.5809348739495798,
+            "ndcg": 0.36117875890279183,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 0,
+            "raw_gap": 0.5234649122807017,
+            "recall": 0.3908521303258145,
+            "records": 54
+          },
+          "C01": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.14348370927318296,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 52,
+            "hidden_gap": 0.5964810924369748,
+            "hidden_ndcg": 0.2237114621428961,
+            "identifiable_records": 40,
+            "inferred_exact_contribution": 0.1267543859649123,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.14348370927318296,
+            "legacy_R4_recovery_gap": 0.5243872549019607,
+            "ndcg": 0.3487944485981537,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 22,
+            "raw_gap": 0.5051378446115289,
+            "recall": 0.4165413533834586,
+            "records": 54
+          },
+          "C10": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.19172932330827067,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 52,
+            "hidden_gap": 0.6096113445378151,
+            "hidden_ndcg": 0.22667840142939963,
+            "identifiable_records": 40,
+            "inferred_exact_contribution": 0.06315789473684212,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.19172932330827067,
+            "legacy_R4_recovery_gap": 0.5809348739495798,
+            "ndcg": 0.36117875890279183,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 17,
+            "raw_gap": 0.5234649122807017,
+            "recall": 0.3908521303258145,
+            "records": 54
+          },
+          "C11": {
+            "coverage": 1.0,
+            "direct_exact_contribution": 0.15225563909774437,
+            "direct_retention": 1.0,
+            "failures": 0,
+            "groups": 52,
+            "hidden_gap": 0.5964810924369748,
+            "hidden_ndcg": 0.225431942999472,
+            "identifiable_records": 40,
+            "inferred_exact_contribution": 0.11798245614035088,
+            "initial_exact_contribution": 0.0,
+            "later_exact_contribution": 0.15225563909774437,
+            "legacy_R4_recovery_gap": 0.5243872549019607,
+            "ndcg": 0.35033382620666886,
+            "positive_mention_CE": null,
+            "prediction_changes_vs_C00": 34,
+            "raw_gap": 0.5051378446115289,
+            "recall": 0.4165413533834586,
+            "records": 54
+          }
+        },
+        "contrasts": {
+          "C01-C00": {
+            "delta_right_minus_left": -0.018327067669172935,
+            "groups": 38,
+            "paired_coffee_bootstrap_95": [
+              -0.07095864661654136,
+              0.023026315789473683
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "C10-C00": {
+            "delta_right_minus_left": 0.0,
+            "groups": 38,
+            "paired_coffee_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "C11-C00": {
+            "delta_right_minus_left": -0.018327067669172935,
+            "groups": 38,
+            "paired_coffee_bootstrap_95": [
+              -0.07095864661654136,
+              0.023026315789473683
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          },
+          "interaction": {
+            "delta_right_minus_left": 0.0,
+            "groups": 38,
+            "paired_coffee_bootstrap_95": [
+              0.0,
+              0.0
+            ],
+            "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+          }
+        }
+      }
+    },
+    "primary_scope": "Development coffee-held cross-grader corroboration; fixed T; no real user/time confirmation"
+  },
+  "checkpoint2": {
+    "comparisons": {
+      "full_pipeline_minus_C00_old_head": {
+        "delta_right_minus_left": -0.013565162907268172,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.041224415204678365,
+          0.01114322263993316
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "refit_minus_same_inputs_old_head": {
+        "delta_right_minus_left": -0.015758145363408523,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.042442042606516295,
+          0.005336257309941519
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      },
+      "refit_minus_selected_frozen_A0": {
+        "delta_right_minus_left": 0.01080478975215817,
+        "groups": 57,
+        "paired_coffee_bootstrap_95": [
+          -0.04572916666666667,
+          0.0729952485380117
+        ],
+        "scope": "Development fixed OOF descriptive uncertainty; not fresh confirmation/noninferiority"
+      }
+    },
+    "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+    "final_candidate": {
+      "cell": "C11",
+      "ridge": 0.3,
+      "selection_scope": "Repeatedly viewed development data; no fresh confirmation"
+    },
+    "inner_fit_diagnostics": [
+      {
+        "cell": "C11",
+        "inner": 0,
+        "outer": 0,
+        "ridge": 0.03,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.10802005012531328,
+          "direct_retention": 0.6856060606060606,
+          "groups": 25,
+          "hidden_gap": 0.3881578947368421,
+          "hidden_ndcg": 0.5707605229145548,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.5229323308270677,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.10802005012531328,
+          "legacy_R4_recovery_gap": 0.3348684210526316,
+          "ndcg": 0.6758533746118446,
+          "positive_mention_CE": 2.6601795777960966,
+          "raw_gap": 0.3363408521303258,
+          "recall": 0.6309523809523809,
+          "records": 25
+        },
+        "training_groups": 25,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.09950980392156862,
+          "direct_retention": 0.6153846153846153,
+          "groups": 26,
+          "hidden_gap": 0.6221825396825397,
+          "hidden_ndcg": 0.3013383873357236,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.24754901960784317,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.09950980392156862,
+          "legacy_R4_recovery_gap": 0.5991269841269842,
+          "ndcg": 0.3687862247956255,
+          "positive_mention_CE": 4.976703415444199,
+          "raw_gap": 0.5511029411764705,
+          "recall": 0.34705882352941175,
+          "records": 26
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C11",
+        "inner": 0,
+        "outer": 0,
+        "ridge": 0.1,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.10802005012531328,
+          "direct_retention": 0.7575757575757575,
+          "groups": 25,
+          "hidden_gap": 0.4869883040935672,
+          "hidden_ndcg": 0.4486758568017558,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.38024227234753544,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.10802005012531328,
+          "legacy_R4_recovery_gap": 0.4164473684210526,
+          "ndcg": 0.5308218605998021,
+          "positive_mention_CE": 2.94523391270296,
+          "raw_gap": 0.4470133667502088,
+          "recall": 0.4882623224728488,
+          "records": 25
+        },
+        "training_groups": 25,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.09950980392156862,
+          "direct_retention": 0.5961538461538461,
+          "groups": 26,
+          "hidden_gap": 0.5995634920634921,
+          "hidden_ndcg": 0.3104751396257182,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.26715686274509803,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.09950980392156862,
+          "legacy_R4_recovery_gap": 0.5991269841269842,
+          "ndcg": 0.37618631457301943,
+          "positive_mention_CE": 4.9206245138956595,
+          "raw_gap": 0.5411764705882353,
+          "recall": 0.3666666666666667,
+          "records": 26
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C11",
+        "inner": 0,
+        "outer": 0,
+        "ridge": 0.3,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.10802005012531328,
+          "direct_retention": 0.7575757575757575,
+          "groups": 25,
+          "hidden_gap": 0.510672514619883,
+          "hidden_ndcg": 0.42744764491162657,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.35392648287385126,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.10802005012531328,
+          "legacy_R4_recovery_gap": 0.4407894736842105,
+          "ndcg": 0.4949861686480972,
+          "positive_mention_CE": 3.0686311190690176,
+          "raw_gap": 0.4711361737677527,
+          "recall": 0.46194653299916455,
+          "records": 25
+        },
+        "training_groups": 25,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.12892156862745097,
+          "direct_retention": 0.6538461538461539,
+          "groups": 26,
+          "hidden_gap": 0.5745634920634921,
+          "hidden_ndcg": 0.33008051838123964,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.26715686274509803,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.12892156862745097,
+          "legacy_R4_recovery_gap": 0.5479365079365078,
+          "ndcg": 0.3934851781808324,
+          "positive_mention_CE": 4.793922208429362,
+          "raw_gap": 0.5191176470588235,
+          "recall": 0.396078431372549,
+          "records": 26
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C11",
+        "inner": 1,
+        "outer": 0,
+        "ridge": 0.03,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07009803921568628,
+          "direct_retention": 0.4930555555555555,
+          "groups": 26,
+          "hidden_gap": 0.26646825396825397,
+          "hidden_ndcg": 0.6944600595430922,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.6813725490196078,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07009803921568628,
+          "legacy_R4_recovery_gap": 0.2634920634920635,
+          "ndcg": 0.7733712286990835,
+          "positive_mention_CE": 2.181209498011196,
+          "raw_gap": 0.2278186274509804,
+          "recall": 0.7514705882352941,
+          "records": 26
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.0443609022556391,
+          "direct_retention": 0.4375,
+          "groups": 25,
+          "hidden_gap": 0.6622076023391813,
+          "hidden_ndcg": 0.20365838121374102,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.23295739348370928,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.0443609022556391,
+          "legacy_R4_recovery_gap": 0.6396929824561405,
+          "ndcg": 0.304904532918812,
+          "positive_mention_CE": 6.619201249759241,
+          "raw_gap": 0.622765246449457,
+          "recall": 0.27731829573934835,
+          "records": 25
+        },
+        "validation_groups": 25
+      },
+      {
+        "cell": "C11",
+        "inner": 1,
+        "outer": 0,
+        "ridge": 0.1,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07009803921568628,
+          "direct_retention": 0.4930555555555555,
+          "groups": 26,
+          "hidden_gap": 0.38662698412698415,
+          "hidden_ndcg": 0.512085644333044,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.5705882352941176,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07009803921568628,
+          "legacy_R4_recovery_gap": 0.3801587301587302,
+          "ndcg": 0.620299480414503,
+          "positive_mention_CE": 2.518302369177814,
+          "raw_gap": 0.32487745098039217,
+          "recall": 0.6406862745098039,
+          "records": 26
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.0443609022556391,
+          "direct_retention": 0.3375,
+          "groups": 25,
+          "hidden_gap": 0.6493421052631578,
+          "hidden_ndcg": 0.21012608473550798,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.23755221386800335,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.0443609022556391,
+          "legacy_R4_recovery_gap": 0.5973684210526315,
+          "ndcg": 0.31097518005485614,
+          "positive_mention_CE": 6.612274561358593,
+          "raw_gap": 0.6072055137844611,
+          "recall": 0.2819131161236424,
+          "records": 25
+        },
+        "validation_groups": 25
+      },
+      {
+        "cell": "C11",
+        "inner": 1,
+        "outer": 0,
+        "ridge": 0.3,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07009803921568628,
+          "direct_retention": 0.5555555555555555,
+          "groups": 26,
+          "hidden_gap": 0.46246031746031746,
+          "hidden_ndcg": 0.4243119687118752,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.49509803921568624,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07009803921568628,
+          "legacy_R4_recovery_gap": 0.4755158730158731,
+          "ndcg": 0.5362161650215514,
+          "positive_mention_CE": 2.704131929557676,
+          "raw_gap": 0.38884803921568634,
+          "recall": 0.5651960784313727,
+          "records": 26
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.05488721804511278,
+          "direct_retention": 0.4958333333333333,
+          "groups": 25,
+          "hidden_gap": 0.6475146198830409,
+          "hidden_ndcg": 0.22292500510714017,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.25071010860484544,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.05488721804511278,
+          "legacy_R4_recovery_gap": 0.5845760233918128,
+          "ndcg": 0.3297347542322522,
+          "positive_mention_CE": 6.380730505424992,
+          "raw_gap": 0.5945384294068504,
+          "recall": 0.3055973266499582,
+          "records": 25
+        },
+        "validation_groups": 25
+      },
+      {
+        "cell": "C11",
+        "inner": 0,
+        "outer": 1,
+        "ridge": 0.03,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.10802005012531328,
+          "direct_retention": 0.6856060606060606,
+          "groups": 25,
+          "hidden_gap": 0.3881578947368421,
+          "hidden_ndcg": 0.5707605229145548,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.5229323308270677,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.10802005012531328,
+          "legacy_R4_recovery_gap": 0.3348684210526316,
+          "ndcg": 0.6758533746118446,
+          "positive_mention_CE": 2.6601795777960966,
+          "raw_gap": 0.3363408521303258,
+          "recall": 0.6309523809523809,
+          "records": 25
+        },
+        "training_groups": 25,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.13424036281179139,
+          "direct_retention": 0.7033333333333333,
+          "groups": 26,
+          "hidden_gap": 0.6229323308270677,
+          "hidden_ndcg": 0.27879905533837396,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.2061224489795918,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.13424036281179139,
+          "legacy_R4_recovery_gap": 0.5933270676691729,
+          "ndcg": 0.347374572789733,
+          "positive_mention_CE": 5.190378746463345,
+          "raw_gap": 0.5539399092970522,
+          "recall": 0.3403628117913833,
+          "records": 28
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C11",
+        "inner": 0,
+        "outer": 1,
+        "ridge": 0.1,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.10802005012531328,
+          "direct_retention": 0.7575757575757575,
+          "groups": 25,
+          "hidden_gap": 0.4869883040935672,
+          "hidden_ndcg": 0.4486758568017558,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.38024227234753544,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.10802005012531328,
+          "legacy_R4_recovery_gap": 0.4164473684210526,
+          "ndcg": 0.5308218605998021,
+          "positive_mention_CE": 2.94523391270296,
+          "raw_gap": 0.4470133667502088,
+          "recall": 0.4882623224728488,
+          "records": 25
+        },
+        "training_groups": 25,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.13696145124716552,
+          "direct_retention": 0.71,
+          "groups": 26,
+          "hidden_gap": 0.5411340852130325,
+          "hidden_ndcg": 0.3447546263043624,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.30238095238095236,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.13696145124716552,
+          "legacy_R4_recovery_gap": 0.5230263157894737,
+          "ndcg": 0.4054320281369546,
+          "positive_mention_CE": 5.126462139211519,
+          "raw_gap": 0.4846371882086168,
+          "recall": 0.43934240362811783,
+          "records": 28
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C11",
+        "inner": 0,
+        "outer": 1,
+        "ridge": 0.3,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.10802005012531328,
+          "direct_retention": 0.7575757575757575,
+          "groups": 25,
+          "hidden_gap": 0.510672514619883,
+          "hidden_ndcg": 0.42744764491162657,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.35392648287385126,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.10802005012531328,
+          "legacy_R4_recovery_gap": 0.4407894736842105,
+          "ndcg": 0.4949861686480972,
+          "positive_mention_CE": 3.0686311190690176,
+          "raw_gap": 0.4711361737677527,
+          "recall": 0.46194653299916455,
+          "records": 25
+        },
+        "training_groups": 25,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.13696145124716552,
+          "direct_retention": 0.7266666666666666,
+          "groups": 26,
+          "hidden_gap": 0.537844611528822,
+          "hidden_ndcg": 0.348865257127356,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.30238095238095236,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.13696145124716552,
+          "legacy_R4_recovery_gap": 0.5219298245614035,
+          "ndcg": 0.4086226488755213,
+          "positive_mention_CE": 4.985758697092497,
+          "raw_gap": 0.4826530612244898,
+          "recall": 0.43934240362811783,
+          "records": 28
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C11",
+        "inner": 1,
+        "outer": 1,
+        "ridge": 0.03,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1988662131519274,
+          "direct_retention": 0.5243055555555555,
+          "groups": 26,
+          "hidden_gap": 0.2281954887218045,
+          "hidden_ndcg": 0.6604263819395859,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.576984126984127,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1988662131519274,
+          "legacy_R4_recovery_gap": 0.19924812030075187,
+          "ndcg": 0.7448376112717118,
+          "positive_mention_CE": 2.114605385848691,
+          "raw_gap": 0.2054705215419501,
+          "recall": 0.7758503401360545,
+          "records": 28
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.0781954887218045,
+          "direct_retention": 0.5694444444444444,
+          "groups": 25,
+          "hidden_gap": 0.5649122807017544,
+          "hidden_ndcg": 0.2955771945005058,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.28989139515455303,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.0781954887218045,
+          "legacy_R4_recovery_gap": 0.5073099415204678,
+          "ndcg": 0.3748070573471965,
+          "positive_mention_CE": 6.583708047609361,
+          "raw_gap": 0.5466478696741854,
+          "recall": 0.3680868838763576,
+          "records": 25
+        },
+        "validation_groups": 25
+      },
+      {
+        "cell": "C11",
+        "inner": 1,
+        "outer": 1,
+        "ridge": 0.1,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1631519274376417,
+          "direct_retention": 0.5833333333333334,
+          "groups": 26,
+          "hidden_gap": 0.37907268170426067,
+          "hidden_ndcg": 0.5161138978367366,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.4682539682539682,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1631519274376417,
+          "legacy_R4_recovery_gap": 0.3115288220551379,
+          "ndcg": 0.6157677217823004,
+          "positive_mention_CE": 2.5264691608102186,
+          "raw_gap": 0.3331916099773243,
+          "recall": 0.63140589569161,
+          "records": 28
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07994987468671678,
+          "direct_retention": 0.6319444444444443,
+          "groups": 25,
+          "hidden_gap": 0.5556286549707602,
+          "hidden_ndcg": 0.30358495735668595,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.3074352548036759,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07994987468671678,
+          "legacy_R4_recovery_gap": 0.52953216374269,
+          "ndcg": 0.38287760646486807,
+          "positive_mention_CE": 6.518399274134127,
+          "raw_gap": 0.5331975772765246,
+          "recall": 0.3873851294903926,
+          "records": 25
+        },
+        "validation_groups": 25
+      },
+      {
+        "cell": "C11",
+        "inner": 1,
+        "outer": 1,
+        "ridge": 0.3,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1631519274376417,
+          "direct_retention": 0.5833333333333334,
+          "groups": 26,
+          "hidden_gap": 0.46284461152882206,
+          "hidden_ndcg": 0.4310306762742129,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.38231292517006804,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1631519274376417,
+          "legacy_R4_recovery_gap": 0.4538533834586467,
+          "ndcg": 0.5216379935722666,
+          "positive_mention_CE": 2.7651915975861394,
+          "raw_gap": 0.40841836734693887,
+          "recall": 0.5454648526077096,
+          "records": 28
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07994987468671678,
+          "direct_retention": 0.6319444444444443,
+          "groups": 25,
+          "hidden_gap": 0.5644005847953216,
+          "hidden_ndcg": 0.29672686098757567,
+          "identifiable_records": 19,
+          "inferred_exact_contribution": 0.2942773600668338,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07994987468671678,
+          "legacy_R4_recovery_gap": 0.5269005847953216,
+          "ndcg": 0.3807911985796686,
+          "positive_mention_CE": 6.5272111564614645,
+          "raw_gap": 0.541969507101086,
+          "recall": 0.3742272347535505,
+          "records": 25
+        },
+        "validation_groups": 25
+      },
+      {
+        "cell": "C01",
+        "inner": 0,
+        "outer": 2,
+        "ridge": 0.03,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.08186274509803922,
+          "direct_retention": 0.4818840579710145,
+          "groups": 26,
+          "hidden_gap": 0.2584126984126984,
+          "hidden_ndcg": 0.6961934583334043,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.6774509803921568,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.08186274509803922,
+          "legacy_R4_recovery_gap": 0.24388888888888888,
+          "ndcg": 0.7858834335100797,
+          "positive_mention_CE": 2.168819949260647,
+          "raw_gap": 0.21850490196078431,
+          "recall": 0.759313725490196,
+          "records": 26
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.06632653061224489,
+          "direct_retention": 0.46376811594202894,
+          "groups": 26,
+          "hidden_gap": 0.6190476190476191,
+          "hidden_ndcg": 0.2881043731988083,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.35,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.06632653061224489,
+          "legacy_R4_recovery_gap": 0.599749373433584,
+          "ndcg": 0.4023321304384569,
+          "positive_mention_CE": 6.031207664838087,
+          "raw_gap": 0.5121315192743764,
+          "recall": 0.41632653061224495,
+          "records": 28
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C01",
+        "inner": 0,
+        "outer": 2,
+        "ridge": 0.1,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07009803921568628,
+          "direct_retention": 0.4927536231884058,
+          "groups": 26,
+          "hidden_gap": 0.39043650793650797,
+          "hidden_ndcg": 0.5249359129769954,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.5661764705882353,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07009803921568628,
+          "legacy_R4_recovery_gap": 0.4084920634920636,
+          "ndcg": 0.6314290859279406,
+          "positive_mention_CE": 2.504593437592491,
+          "raw_gap": 0.32634803921568634,
+          "recall": 0.6362745098039215,
+          "records": 26
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.01870748299319728,
+          "direct_retention": 0.4710144927536232,
+          "groups": 26,
+          "hidden_gap": 0.5111528822055138,
+          "hidden_ndcg": 0.3355640766739101,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.4350340136054422,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.01870748299319728,
+          "legacy_R4_recovery_gap": 0.48571428571428565,
+          "ndcg": 0.4180096935037465,
+          "positive_mention_CE": 6.16590032865454,
+          "raw_gap": 0.47304421768707483,
+          "recall": 0.45374149659863944,
+          "records": 28
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C01",
+        "inner": 0,
+        "outer": 2,
+        "ridge": 0.3,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.07009803921568628,
+          "direct_retention": 0.5507246376811594,
+          "groups": 26,
+          "hidden_gap": 0.46246031746031746,
+          "hidden_ndcg": 0.4225206080583222,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.49509803921568624,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.07009803921568628,
+          "legacy_R4_recovery_gap": 0.4838492063492064,
+          "ndcg": 0.5346355526801813,
+          "positive_mention_CE": 2.694101819256361,
+          "raw_gap": 0.38884803921568634,
+          "recall": 0.5651960784313727,
+          "records": 26
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.01870748299319728,
+          "direct_retention": 0.4347826086956523,
+          "groups": 26,
+          "hidden_gap": 0.5611528822055137,
+          "hidden_ndcg": 0.29145313321433874,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.37789115646258503,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.01870748299319728,
+          "legacy_R4_recovery_gap": 0.5015037593984962,
+          "ndcg": 0.3771229774081168,
+          "positive_mention_CE": 6.133341996132848,
+          "raw_gap": 0.5182823129251701,
+          "recall": 0.39659863945578233,
+          "records": 28
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C01",
+        "inner": 1,
+        "outer": 2,
+        "ridge": 0.03,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1869614512471655,
+          "direct_retention": 0.5366666666666666,
+          "groups": 26,
+          "hidden_gap": 0.23587092731829576,
+          "hidden_ndcg": 0.6826749905103702,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.576984126984127,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1869614512471655,
+          "legacy_R4_recovery_gap": 0.20692355889724312,
+          "ndcg": 0.758611946130647,
+          "positive_mention_CE": 2.1294479503875876,
+          "raw_gap": 0.2203514739229025,
+          "recall": 0.7639455782312926,
+          "records": 28
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.17794117647058824,
+          "direct_retention": 0.5033333333333333,
+          "groups": 26,
+          "hidden_gap": 0.5233730158730158,
+          "hidden_ndcg": 0.39444790787973816,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.2985294117647059,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.17794117647058824,
+          "legacy_R4_recovery_gap": 0.5028968253968253,
+          "ndcg": 0.494787025744082,
+          "positive_mention_CE": 5.657918138096278,
+          "raw_gap": 0.4558823529411764,
+          "recall": 0.4764705882352942,
+          "records": 26
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C01",
+        "inner": 1,
+        "outer": 2,
+        "ridge": 0.1,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1631519274376417,
+          "direct_retention": 0.6,
+          "groups": 26,
+          "hidden_gap": 0.3823621553884712,
+          "hidden_ndcg": 0.5097751712224584,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.4682539682539682,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1631519274376417,
+          "legacy_R4_recovery_gap": 0.2972744360902255,
+          "ndcg": 0.5937349558783308,
+          "positive_mention_CE": 2.5455695638004996,
+          "raw_gap": 0.33616780045351474,
+          "recall": 0.63140589569161,
+          "records": 28
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.17794117647058824,
+          "direct_retention": 0.6066666666666667,
+          "groups": 26,
+          "hidden_gap": 0.521984126984127,
+          "hidden_ndcg": 0.3888898217312935,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.30049019607843136,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.17794117647058824,
+          "legacy_R4_recovery_gap": 0.5161507936507936,
+          "ndcg": 0.49091560193195677,
+          "positive_mention_CE": 5.576473187761791,
+          "raw_gap": 0.45759803921568626,
+          "recall": 0.4784313725490196,
+          "records": 26
+        },
+        "validation_groups": 26
+      },
+      {
+        "cell": "C01",
+        "inner": 1,
+        "outer": 2,
+        "ridge": 0.3,
+        "train": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.1631519274376417,
+          "direct_retention": 0.56,
+          "groups": 26,
+          "hidden_gap": 0.45955513784461155,
+          "hidden_ndcg": 0.4299064548483128,
+          "identifiable_records": 23,
+          "inferred_exact_contribution": 0.38231292517006804,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.1631519274376417,
+          "legacy_R4_recovery_gap": 0.45056390977443617,
+          "ndcg": 0.5142214413540073,
+          "positive_mention_CE": 2.775566345608551,
+          "raw_gap": 0.4054421768707484,
+          "recall": 0.5454648526077096,
+          "records": 28
+        },
+        "training_groups": 26,
+        "validation": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.17794117647058824,
+          "direct_retention": 0.6066666666666667,
+          "groups": 26,
+          "hidden_gap": 0.531984126984127,
+          "hidden_ndcg": 0.37369361158333025,
+          "identifiable_records": 17,
+          "inferred_exact_contribution": 0.2887254901960784,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.17794117647058824,
+          "legacy_R4_recovery_gap": 0.529484126984127,
+          "ndcg": 0.4764744113648986,
+          "positive_mention_CE": 5.601012641128113,
+          "raw_gap": 0.466421568627451,
+          "recall": 0.4666666666666667,
+          "records": 26
+        },
+        "validation_groups": 26
+      }
+    ],
+    "models": {
+      "C00_R5_head": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.13047201336675018,
+        "direct_retention": 0.6852112676056338,
+        "groups": 77,
+        "hidden_gap": 0.5586515423779576,
+        "hidden_ndcg": 0.3194941938361659,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.2944514062935115,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.13047201336675018,
+        "legacy_R4_recovery_gap": 0.5112720874513327,
+        "ndcg": 0.41388298079675157,
+        "positive_mention_CE": 4.2532244814286075,
+        "raw_gap": 0.5061751601225286,
+        "recall": 0.4249234196602617,
+        "records": 79
+      },
+      "selected_A0": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.13224728487886384,
+        "direct_retention": 1.0,
+        "groups": 77,
+        "hidden_gap": 0.5666966157532196,
+        "hidden_ndcg": 0.23983555839911963,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.14005847953216374,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.13224728487886384,
+        "legacy_R4_recovery_gap": 0.5100703803533992,
+        "ndcg": 0.3684436087964588,
+        "positive_mention_CE": null,
+        "raw_gap": 0.4818052074631022,
+        "recall": 0.44846839320523524,
+        "records": 79
+      },
+      "selected_R5_head": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.07433166248955723,
+        "direct_retention": 0.6099315068493151,
+        "groups": 77,
+        "hidden_gap": 0.5564502845163223,
+        "hidden_ndcg": 0.3231223625574918,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.3500069618490671,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.07433166248955723,
+        "legacy_R4_recovery_gap": 0.4963574423480084,
+        "ndcg": 0.4153991493684859,
+        "positive_mention_CE": 4.26608201456707,
+        "raw_gap": 0.5083681425786689,
+        "recall": 0.42433862433862435,
+        "records": 79
+      },
+      "selected_R6_head": {
+        "coverage": 1.0,
+        "direct_exact_contribution": 0.07696324143692565,
+        "direct_retention": 0.59337899543379,
+        "groups": 77,
+        "hidden_gap": 0.5306641209943097,
+        "hidden_ndcg": 0.3371382480675837,
+        "identifiable_records": 59,
+        "inferred_exact_contribution": 0.36550403787245894,
+        "initial_exact_contribution": 0.0,
+        "later_exact_contribution": 0.07696324143692565,
+        "legacy_R4_recovery_gap": 0.4844863731656185,
+        "ndcg": 0.4253375453322778,
+        "positive_mention_CE": 4.27684974053182,
+        "raw_gap": 0.4926099972152604,
+        "recall": 0.4424672793093845,
+        "records": 79
+      }
+    },
+    "selection": [
+      {
+        "cell_selection_raw_gap": {
+          "C00": 0.5324349647266314,
+          "C01": 0.5104772927689594,
+          "C10": 0.5257220017636683,
+          "C11": 0.507930996472663
+        },
+        "fit_training": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.08429232804232804,
+          "direct_retention": 0.5507246376811594,
+          "groups": 51,
+          "hidden_gap": 0.5303688141923436,
+          "hidden_ndcg": 0.36855345003440576,
+          "identifiable_records": 36,
+          "inferred_exact_contribution": 0.359049823633157,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.08429232804232804,
+          "legacy_R4_recovery_gap": 0.4925011671335201,
+          "ndcg": 0.4621462056448584,
+          "positive_mention_CE": 3.081063768686744,
+          "raw_gap": 0.4876598324514991,
+          "recall": 0.443342151675485,
+          "records": 51
+        },
+        "outer": 0,
+        "ridge_selection_raw_gap": {
+          "0.03": 0.58892471340388,
+          "0.1": 0.5760251322751322,
+          "0.3": 0.5589230599647267
+        },
+        "selected_cell": "C11",
+        "selected_ridge": 0.3
+      },
+      {
+        "cell_selection_raw_gap": {
+          "C00": 0.5128521825396826,
+          "C01": 0.5010019841269842,
+          "C10": 0.5107688492063491,
+          "C11": 0.49378472222222214
+        },
+        "fit_training": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.13404761904761905,
+          "direct_retention": 0.6590136054421768,
+          "groups": 51,
+          "hidden_gap": 0.4820436507936508,
+          "hidden_ndcg": 0.4154970360473556,
+          "identifiable_records": 42,
+          "inferred_exact_contribution": 0.37257936507936507,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.13404761904761905,
+          "legacy_R4_recovery_gap": 0.4483813700918963,
+          "ndcg": 0.5033513594625669,
+          "positive_mention_CE": 2.980745690262953,
+          "raw_gap": 0.4340426587301587,
+          "recall": 0.5066269841269841,
+          "records": 53
+        },
+        "outer": 1,
+        "ridge_selection_raw_gap": {
+          "0.03": 0.5504761904761905,
+          "0.1": 0.507703373015873,
+          "0.3": 0.510828373015873
+        },
+        "selected_cell": "C11",
+        "selected_ridge": 0.1
+      },
+      {
+        "cell_selection_raw_gap": {
+          "C00": 0.5234649122807017,
+          "C01": 0.5051378446115289,
+          "C10": 0.5234649122807017,
+          "C11": 0.5051378446115289
+        },
+        "fit_training": {
+          "coverage": 1.0,
+          "direct_exact_contribution": 0.12020676691729323,
+          "direct_retention": 0.6163194444444443,
+          "groups": 52,
+          "hidden_gap": 0.4789915966386554,
+          "hidden_ndcg": 0.4330338104397545,
+          "identifiable_records": 40,
+          "inferred_exact_contribution": 0.43414786967418545,
+          "initial_exact_contribution": 0.0,
+          "later_exact_contribution": 0.12020676691729323,
+          "legacy_R4_recovery_gap": 0.4306897759103641,
+          "ndcg": 0.5305166730209425,
+          "positive_mention_CE": 2.772956575626974,
+          "raw_gap": 0.4114505012531329,
+          "recall": 0.5543546365914787,
+          "records": 54
+        },
+        "outer": 2,
+        "ridge_selection_raw_gap": {
+          "0.03": 0.4869674185463659,
+          "0.1": 0.4661340852130326,
+          "0.3": 0.4950814536340852
+        },
+        "selected_cell": "C01",
+        "selected_ridge": 0.1
+      }
+    ],
+    "trigger_refits": 0
+  },
+  "decisions": {
+    "I2_LIVE": "SUPPORTED_IN_DECLARED_SCOPE: same19-option development comparison improves gap by0.05335; six coffee wins and two losses. This is repeated-development static cross-grader evidence, not fresh product confirmation.",
+    "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+    "final_bundle": "Archived inner-selected C11/ridge0.3 candidate; selected outer results are a nested procedure, not the all-development final model independently tested. Do not replace its selection by the observed outer winner after seeing scores.",
+    "head_refit": "INCONCLUSIVE: same-input old-head gap0.50837 to selected refit0.49261; paired95%CI[-0.04244,0.00534]. NDCG improves, positive-mention CE worsens slightly; selected frozen A0 gap0.48181 remains better on primary metric.",
+    "human_review": "12 existing source cases retained for optional semantic/process review, answers blank; no new questionnaire or professional tasting labels; Claude/DeepSeek not called",
+    "interaction": "NO_IMPROVEMENT over I2_LIVE alone: joint patch/acquisition interaction gap +0.02076. New mapped B can change coverage-selected options and add competing directly expressed descriptors that disagree with held grader T.",
+    "leakage_repair_attribution": "Five records have a full-A direction absent from actual Q0/Q1. Removing that unavailable input changes zero complete old-full-A versus LIVE question trajectories at the R6 fixed budget on this cohort. The boundary repair is valid; do not claim the leak caused the observed score difference.",
+    "mapping": "NO_MEANINGFUL_EXACT_ALIGNMENT_IMPROVEMENT: mapping-alone gap benefit only one coffee group through fixed partial credit; exact Recall/NDCG unchanged. Keep verified rules as source interpretation, do not adopt the whole patch-driven acquisition scheme as better product behavior.",
+    "new_sources": "No new independent collection admitted in R6. Targeted source work reused actual R5 A/B and checked lexical scope; seven dictionary references cached privately.",
+    "next_evidence": "Independent coffee groups with authentic initial/later sensory observations plus fixed independent T, providing distributed incremental B-to-T agreement under the same19-option bank. More mapped words alone did not increase the eight exact B-to-T overlaps.",
+    "not_evaluated": [
+      "REAL_USER_SENSORY_ALIGNMENT",
+      "REAL_COMPLETION_TIME",
+      "REAL_FINAL_FEEDBACK_FOR_R6_HEAD"
+    ],
+    "stop_complexification": [
+      "NO_TRIGGER_REFIT",
+      "NO_NEW_ENCODER",
+      "NO_HIGHER_ORDER_BRANCH",
+      "NO_UNCONNECTED_AUXILIARY_SCORE_TASK"
+    ]
+  },
+  "default": "B2_UNCHANGED_FOUNDATION_CHECK_OFF",
+  "historical_results_preserved": {
+    "R4_AK_AR_AKR": "Original regressions not rewritten",
+    "historical_budget_and_information_scope": "Original R5 trajectory-dependent budgets and old full-A I2 retained; not directly attributed to present fixed19-option comparison",
+    "r4_metrics_sha256": "b4f705d7663395c628eb8b7f5d0e606572494522cedb4393ae5d05923606b038",
+    "r5_I1_A0_gap": 0.50928,
+    "r5_I2_A0_gap": 0.462507,
+    "r5_metrics_sha256": "b1c3a0e386d41a90f0da258a7d9082c3e4575ce730944e8eaef4c16761789ff5"
+  },
+  "information_diagnostics": {
+    "cells": {
+      "C00": {
+        "actual_final_exposure": 0,
+        "coffee_macro": {
+          "initial_specific_expression_retention": null,
+          "ordinary_options": 19.0,
+          "ordinary_questions": 5.0,
+          "proposed_final_candidates": 8.0,
+          "target_direction_coverage": 0.739766081871345
+        },
+        "full_A_extra_direction_records": 5,
+        "human_time": "NOT_EVALUATED",
+        "old_selector_comparison_scope": "Same live prefix local full-A selector comparison, not complete historical R5 trajectory; reported only for I2_LIVE cells",
+        "record_concept_totals": {
+          "actual_new_B_canonical": 52,
+          "actual_new_B_exact_T": 8,
+          "actual_new_B_specific": 52,
+          "full_A_unobserved_direction_count": 5,
+          "source_B_new_exact": 173,
+          "unacquired_B_specific": 64
+        },
+        "record_counts": {
+          "B_exact_T_record": 7,
+          "endpoint_selected_changed": 0,
+          "failure": 0,
+          "initial_selected_changed": 0,
+          "new_B_record": 43,
+          "old_selector_local_axis_different": 0,
+          "old_selector_local_option_different": 0,
+          "prediction_set_changed": 0,
+          "ranking_changed": 0
+        }
+      },
+      "C01": {
+        "actual_final_exposure": 0,
+        "coffee_macro": {
+          "initial_specific_expression_retention": null,
+          "ordinary_options": 19.0,
+          "ordinary_questions": 5.0,
+          "proposed_final_candidates": 8.0,
+          "target_direction_coverage": 0.7492690058479533
+        },
+        "full_A_extra_direction_records": 5,
+        "full_old_A_trajectory_differs_records": 0,
+        "human_time": "NOT_EVALUATED",
+        "old_selector_comparison_scope": "Same live prefix local full-A selector comparison, not complete historical R5 trajectory; reported only for I2_LIVE cells",
+        "record_concept_totals": {
+          "actual_new_B_canonical": 51,
+          "actual_new_B_exact_T": 8,
+          "actual_new_B_specific": 51,
+          "full_A_unobserved_direction_count": 5,
+          "source_B_new_exact": 173,
+          "unacquired_B_specific": 65
+        },
+        "record_counts": {
+          "B_exact_T_record": 6,
+          "endpoint_selected_changed": 34,
+          "failure": 0,
+          "initial_selected_changed": 0,
+          "new_B_record": 39,
+          "old_selector_local_axis_different": 0,
+          "old_selector_local_option_different": 0,
+          "prediction_set_changed": 24,
+          "ranking_changed": 34
+        }
+      },
+      "C10": {
+        "actual_final_exposure": 0,
+        "coffee_macro": {
+          "initial_specific_expression_retention": null,
+          "ordinary_options": 19.0,
+          "ordinary_questions": 5.0,
+          "proposed_final_candidates": 8.0,
+          "target_direction_coverage": 0.7456140350877192
+        },
+        "full_A_extra_direction_records": 5,
+        "human_time": "NOT_EVALUATED",
+        "old_selector_comparison_scope": "Same live prefix local full-A selector comparison, not complete historical R5 trajectory; reported only for I2_LIVE cells",
+        "record_concept_totals": {
+          "actual_new_B_canonical": 54,
+          "actual_new_B_exact_T": 8,
+          "actual_new_B_specific": 54,
+          "full_A_unobserved_direction_count": 5,
+          "source_B_new_exact": 215,
+          "unacquired_B_specific": 81
+        },
+        "record_counts": {
+          "B_exact_T_record": 7,
+          "endpoint_selected_changed": 25,
+          "failure": 0,
+          "initial_selected_changed": 21,
+          "new_B_record": 43,
+          "old_selector_local_axis_different": 0,
+          "old_selector_local_option_different": 0,
+          "prediction_set_changed": 10,
+          "ranking_changed": 22
+        }
+      },
+      "C11": {
+        "actual_final_exposure": 0,
+        "coffee_macro": {
+          "initial_specific_expression_retention": null,
+          "ordinary_options": 19.0,
+          "ordinary_questions": 5.0,
+          "proposed_final_candidates": 8.0,
+          "target_direction_coverage": 0.7463450292397661
+        },
+        "full_A_extra_direction_records": 5,
+        "full_old_A_trajectory_differs_records": 0,
+        "human_time": "NOT_EVALUATED",
+        "old_selector_comparison_scope": "Same live prefix local full-A selector comparison, not complete historical R5 trajectory; reported only for I2_LIVE cells",
+        "record_concept_totals": {
+          "actual_new_B_canonical": 58,
+          "actual_new_B_exact_T": 8,
+          "actual_new_B_specific": 58,
+          "full_A_unobserved_direction_count": 5,
+          "source_B_new_exact": 215,
+          "unacquired_B_specific": 77
+        },
+        "record_counts": {
+          "B_exact_T_record": 6,
+          "endpoint_selected_changed": 53,
+          "failure": 0,
+          "initial_selected_changed": 21,
+          "new_B_record": 44,
+          "old_selector_local_axis_different": 0,
+          "old_selector_local_option_different": 0,
+          "prediction_set_changed": 36,
+          "ranking_changed": 52
+        }
+      }
+    },
+    "comparisons": {
+      "C01-C00": {
+        "all_group_denominator": 77,
+        "coffee_group_losses": 2,
+        "coffee_group_ties": 49,
+        "coffee_group_wins": 6,
+        "coffee_groups_with_T": 57,
+        "failure_cases_not_removed": true,
+        "mean_delta_raw_gap": -0.05335213032581454,
+        "record_outcomes": {
+          "loss": 2,
+          "tie": 51,
+          "unknown": 20,
+          "win": 6
+        }
+      },
+      "C10-C00": {
+        "all_group_denominator": 77,
+        "coffee_group_losses": 0,
+        "coffee_group_ties": 56,
+        "coffee_group_wins": 1,
+        "coffee_groups_with_T": 57,
+        "failure_cases_not_removed": true,
+        "mean_delta_raw_gap": -0.0014619883040935659,
+        "record_outcomes": {
+          "loss": 0,
+          "tie": 58,
+          "unknown": 20,
+          "win": 1
+        }
+      },
+      "C11-C00": {
+        "all_group_denominator": 77,
+        "coffee_group_losses": 5,
+        "coffee_group_ties": 46,
+        "coffee_group_wins": 6,
+        "coffee_groups_with_T": 57,
+        "failure_cases_not_removed": true,
+        "mean_delta_raw_gap": -0.03405388471177945,
+        "record_outcomes": {
+          "loss": 5,
+          "tie": 48,
+          "unknown": 20,
+          "win": 6
+        }
+      }
+    },
+    "empty_full_T_retained": 20,
+    "groups": 77,
+    "matched_all_cell_complete_records": 79,
+    "private_review_cases": 12,
+    "records": 79,
+    "review_scope": "Existing source cases for diagnostic mapping/information errors; no generated human judgments",
+    "same_realized_option_budget_records": 79
+  },
+  "semantic_input_repair": {
+    "all_development_supported_forms": 34,
+    "changed_A_records": 52,
+    "changed_B_records": 60,
+    "changed_coffee_groups": 71,
+    "coffee_groups": 77,
+    "evaluation_T_edits": 0,
+    "human_semantic_review": "NOT_EVALUATED",
+    "input_units": 158,
+    "model_fit_count": 0,
+    "outer_held_actual_changes": {
+      "A_added_canonical_occurrences": 76,
+      "A_records": 51,
+      "B_added_canonical_occurrences": 95,
+      "B_records": 60,
+      "counts_are_record_concept_pairs_not_independent_new_samples": true
+    },
+    "protocol_sha256": "67ffa29cdb36a72fc207b6ffc53977f694272c1395f5a50159914058253fecd7",
+    "reviewed_forms": 42,
+    "scope": "All-development A/B mapping inventory only; main comparisons must regenerate fold-specific patch from training groups; no outcome comparison",
+    "source_records": 79,
+    "source_rights": "Prior source restrictive noncommercial intersection; original cells and observation traces private",
+    "unresolved_or_nonpatch_span_counts": {
+      "AMBIGUOUS_MODIFIER_WITHOUT_NAMED_CORE_NOT_MAPPED": 3,
+      "BASE_ALREADY_REGISTERED_NOT_PATCHED": 612,
+      "INTENSITY_DURATION_OR_QUALITY_WORD_NOT_FINE_DESCRIPTOR": 222,
+      "MODIFIED_COMPOSITE_OR_OTHER_MULTIWORD_UNMAPPED": 162,
+      "OTHER_UNMAPPED_SINGLE_FORM": 590
+    },
+    "version": "m2-r6.training-ab-semantic-patch.v1"
+  }
+}
