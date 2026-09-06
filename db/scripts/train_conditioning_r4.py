@@ -28,6 +28,11 @@ from run_m2_r4 import ROOT, OUT, read, save, sha, now
 
 VARIANTS = ["A0", "AK", "AR", "AKR"]
 POLICIES = ["ALWAYS_ASK", "ALWAYS_SKIP", "R3_OLD", "KEY_CASE"]
+RUN_DESTINATION = None
+
+
+def work_directory(owner):
+    return RUN_DESTINATION or (owner / "revisions/r4")
 
 
 def protocol():
@@ -545,7 +550,11 @@ def result_row(record, episode, state, bundle, model, fold):
         if next(r for r in ranking if r["candidate_id"] == c).get("explicit")
     }
     false_specific = [
-        c for c in ids if c not in actual_known and c not in episode["relevance"]
+        c
+        for c in ids
+        if c.startswith("sensory.")
+        and c not in actual_known
+        and c not in episode["relevance"]
     ]
     trace = state.get("conditioning_trace", {})
     raw = np.asarray(trace.get("raw_features", []))
@@ -613,7 +622,9 @@ def result_row(record, episode, state, bundle, model, fold):
         ),
         "explicit_selected_count": len(actual_explicit),
         "specificity_unsupported_proxy": (
-            len(false_specific) / len(ids) if ids else None
+            len(false_specific) / len([c for c in ids if c.startswith("sensory.")])
+            if any(c.startswith("sensory.") for c in ids)
+            else None
         ),
         "specificity_interpretation": "UNOBSERVED_IN_A_B_T_NOT_A_TRUE_SENSORY_FALSE_POSITIVE",
         "direction_coverage": (
@@ -703,7 +714,7 @@ def cached_rows(owner, records, expert, tag, contract_sha, auxiliary=False):
     identity = cache_identity(
         records, expert, "FEATURES_AUX" if auxiliary else "FEATURES", contract_sha
     )
-    path = owner / "revisions/r4/features" / f"{tag}.{identity[:16]}.private.json"
+    path = work_directory(owner) / "features" / f"{tag}.{identity[:16]}.private.json"
     if path.exists():
         cached = read(path)
         if cached["cache_identity"] != identity or cached["rows_sha256"] != r1.digest(
@@ -733,7 +744,7 @@ def cached_fit(
 ):
     identity = cache_identity(rows, expert, variant, contract_sha, auxiliary_rows)
     identity = r1.digest([identity, sorted(allowed), sorted(excluded)])
-    path = owner / "revisions/r4/models" / f"{tag}.{identity[:16]}.model.json"
+    path = work_directory(owner) / "models" / f"{tag}.{identity[:16]}.model.json"
     if path.exists():
         bundle = read(path)
         runtime_module().check_bundle(bundle)
@@ -835,7 +846,7 @@ def attach_policy(bundle, trigger, old, contract_sha, tag):
 
 def run_outer(owner, contract_sha, outer, dev, folds, checkpoint_one=False):
     rt = runtime_module()
-    dst = owner / "revisions/r4"
+    dst = work_directory(owner)
     train = [r for r in dev if folds[r["group_id"]] != outer]
     held = [r for r in dev if folds[r["group_id"]] == outer]
     tg = {r["group_id"] for r in train}
@@ -1099,7 +1110,7 @@ def auxiliary_comparison(owner, contract_sha, dev, folds, episodes):
         },
     }
     save(
-        owner / "revisions/r4/auxiliary_results.private.json",
+        work_directory(owner) / "auxiliary_results.private.json",
         {"summary": report, "rows": results},
         True,
     )
@@ -1158,9 +1169,9 @@ def refit_final(owner, contract_sha, dev, folds, outer_results):
     bundle = attach_policy(
         score, trigger, old, contract_sha, "ALL_DEVELOPMENT_RESEARCH"
     )
-    path = owner / "revisions/r4/models/R4_ALL_DEVELOPMENT_RESEARCH.model.json"
+    path = work_directory(owner) / "models/R4_ALL_DEVELOPMENT_RESEARCH.model.json"
     save(path, bundle, True)
-    save(owner / "revisions/r4/final_trigger_oof.private.json", branchrows, True)
+    save(work_directory(owner) / "final_trigger_oof.private.json", branchrows, True)
     return bundle, {
         "selected_variant": chosen,
         "selection_losses": losses,
@@ -1227,7 +1238,9 @@ def publish(owner, outer_results, auxiliary=None, final=None, execution=None):
         "B2": "UNCHANGED",
         "FOUNDATION_CHECK": False,
         "r3_results_preserved": {
-            "metrics_sha256": sha(OUT.parent / "r3/metrics.json"),
+            "metrics_sha256": sha(
+                ROOT / "db/data/backend-sequential-model-v2/revisions/r3/metrics.json"
+            ),
             "metric_code_sha256": sha(ROOT / "db/scripts/alignment_metrics_r3.py"),
         },
         "execution": execution,
@@ -1244,7 +1257,30 @@ def publish(owner, outer_results, auxiliary=None, final=None, execution=None):
     return metrics
 
 
-def run(owner, contract_path, replay=False, checkpoint_one=False):
+def run(owner, contract_path, replay=False, checkpoint_one=False, fresh=False):
+    global OUT, RUN_DESTINATION
+    if fresh:
+        import shutil
+
+        stamp = now().replace(":", "").replace("+", "_")
+        RUN_DESTINATION = Path(owner) / "revisions/r4/retraining" / stamp
+        RUN_DESTINATION.mkdir(parents=True, exist_ok=False)
+        RUN_DESTINATION.chmod(0o700)
+        original_out = OUT
+        OUT = RUN_DESTINATION / "summaries"
+        shutil.copytree(original_out, OUT)
+        print(
+            json.dumps(
+                {
+                    "operation": "FRESH_R4_REFIT_FROM_DATA_WITH_AUDITED_FROZEN_BASE_EXPERTS",
+                    "output_owner_relative_path": str(
+                        RUN_DESTINATION.relative_to(owner)
+                    ),
+                    "old_R4_artifacts_overwritten": False,
+                }
+            ),
+            flush=True,
+        )
     rt = runtime_module()
     owner = Path(owner)
     contract_sha = sha(contract_path)
@@ -1262,7 +1298,7 @@ def run(owner, contract_path, replay=False, checkpoint_one=False):
     for outer in range(1 if checkpoint_one else 3):
         if replay:
             results.append(
-                read(owner / f"revisions/r4/outer{outer}_results.private.json")
+                read(work_directory(owner) / f"outer{outer}_results.private.json")
             )
         else:
             results.append(
@@ -1279,7 +1315,7 @@ def run(owner, contract_path, replay=False, checkpoint_one=False):
         )
         return results
     if replay:
-        summary = read(owner / "revisions/r4/final_summary.private.json")
+        summary = read(work_directory(owner) / "final_summary.private.json")
         # Replay is a numerical recomputation from saved ranking and fixed targets.
         checked = 0
         for row in [r for o in results for r in o["fixed_rows"] + o["policy_rows"]]:
@@ -1312,7 +1348,7 @@ def run(owner, contract_path, replay=False, checkpoint_one=False):
     auxiliary = auxiliary_comparison(owner, contract_sha, dev, folds, episodes)
     bundle, final = refit_final(owner, contract_sha, dev, folds, results)
     summary = {"auxiliary": auxiliary, "final": final}
-    save(owner / "revisions/r4/final_summary.private.json", summary, True)
+    save(work_directory(owner) / "final_summary.private.json", summary, True)
     return publish(
         owner,
         results,

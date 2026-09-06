@@ -145,7 +145,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--owner-dir", type=Path, required=True)
     parser.add_argument(
-        "--phase", choices=["freeze", "verify", "train", "replay"], required=True
+        "--phase",
+        choices=["freeze", "verify", "train", "retrain", "replay"],
+        required=True,
     )
     parser.add_argument("--checkpoint-one", action="store_true")
     args = parser.parse_args()
@@ -155,11 +157,16 @@ if __name__ == "__main__":
         verify(args.owner_dir)
     else:
         verify(args.owner_dir)
-        from train_conditioning_r4 import run
+        if args.phase == "replay":
+            from replay_conditioning_r4 import verify as replay_verified
 
-        run(
-            args.owner_dir,
-            OUT / "experiment_contract.json",
-            replay=args.phase == "replay",
-            checkpoint_one=args.checkpoint_one,
-        )
+            print(json.dumps(replay_verified(args.owner_dir), sort_keys=True))
+        else:
+            from train_conditioning_r4 import run
+
+            run(
+                args.owner_dir,
+                OUT / "experiment_contract.json",
+                checkpoint_one=args.checkpoint_one,
+                fresh=args.phase == "retrain",
+            )

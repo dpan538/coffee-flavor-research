@@ -3,19 +3,110 @@
   "baseline_remote_CI": "PASS",
   "baseline_remote_historical_replay": "PASS",
   "baseline_sha": "12dfb7ae82bf0332909905971ffff1e6bc75cace",
+  "checkpoint1_commit": "c4f8125461bba6787c55de9c3a7f3061179e8ccd",
+  "checkpoint1_pushed": true,
   "checkpoint1_utc": "2026-09-06T00:07:57.143902+00:00",
   "code_and_scientific_gain_separate": true,
+  "commands": {
+    "artifact_replay": "python db/scripts/run_m2_r4.py --phase replay --owner-dir OWNER_V2",
+    "fresh_R4_training": "python db/scripts/run_m2_r4.py --phase retrain --owner-dir OWNER_V2",
+    "fresh_training_scope": "Recompute R4 features, scorer fits, OOF gain and trigger; reuse exact audited historical base experts; write new persistent private retraining timestamp directory, do not overwrite original R4 results",
+    "fresh_training_verification": "Entire original training completed from data; fresh-output command additionally executed for first full AK/AR/AKR fold, not falsely claimed as second entire nested run",
+    "live": "python db/scripts/flavor_conditioning_r4.py --model OWNER_V2/revisions/r4/models/R4_ALL_DEVELOPMENT_RESEARCH.model.json --request OWNER_V2/revisions/r4/verification/new_legal_multiselect_final.seed1.payload.private.json"
+  },
+  "completed_utc": "2026-09-06T00:29:59.059427+00:00",
   "contract_sha256": "d777d51f26354c72671a6a81fdb445d65ef49e4e26064787a947bef77dc30a91",
   "default": "B2_UNCHANGED",
   "engineering_checked_utc": "2026-09-06T00:03:16.952470+00:00",
+  "execution": {
+    "ASK_SKIP_gains_recomputed": 1899,
+    "auxiliary_rankings_recomputed": 544,
+    "completion_sha256": "d86b88c1324e611dd66c9856a3c1410517b07544ca179e596815888f68a29e4a",
+    "fit_calls": 0,
+    "main_endpoint_rankings_recomputed": 1688,
+    "model_parameters_reloaded": true,
+    "operation": "SEALED_ARTIFACT_AND_NUMERICAL_REPLAY",
+    "private_artifacts_verified": 111,
+    "scope": "Scores/matching/gain/policy/auxiliary summaries recalculated; actual fresh live CLI and held trajectories are separately verified"
+  },
+  "final_model": {
+    "not_last_fold_model": true,
+    "owner_relative_model_path": "revisions/r4/models/R4_ALL_DEVELOPMENT_RESEARCH.model.json",
+    "selected_variant": "A0",
+    "selection_losses": {
+      "A0": 0.46120173229548234,
+      "AK": 0.4703563797313798,
+      "AKR": 0.479450931013431,
+      "AR": 0.48229262057387057
+    },
+    "selection_scope": "Previously inspected development OOF only; final refit is not new evaluation",
+    "sha256": "ebd6a84d396dbeb4749eb6fa97089610580448413bba9270c1f57ecc96c3050c",
+    "training_groups": 187,
+    "training_records": 211,
+    "trigger_fit_status": "FITTED_LOGISTIC_KEY_CASE"
+  },
   "first_observed_environment_clock_utc": "2026-09-05T23:45:28+00:00",
   "foundation_check": false,
+  "fresh_refit_owner_relative_directory": "revisions/r4/retraining/2026-09-06T001826.952615_0000",
+  "fresh_refit_parameters_identical": true,
+  "independent_review": {
+    "A0_full_rank_metric_parity": "PASS_438_REAL_HELD_PREFIXES",
+    "A_B_T_no_target_in_questions": "PASS",
+    "actual_B_revelation": "PASS_61_CASES_TARGET_FIXED",
+    "addressed_findings": [
+      "Fine-only loss and normalizer before first fit",
+      "Private trained intercept excluded",
+      "Actual confirmed versus source available retention separated",
+      "Fine-specificity reporting corrected with prior snapshots preserved",
+      "Sealed full gain/auxiliary replay"
+    ],
+    "group_isolation": "PASS_READ_ONLY_REVIEW",
+    "source_exact_identity_and_rights": "PASS"
+  },
   "intervention_checks_before_first_fit": true,
   "local_R4_tests": {
     "passed": 27,
     "skipped": 0
   },
+  "preservation": {
+    "135_unrelated_deletion_paths_unchanged": true,
+    "R3_private_artifacts_reverified": 59,
+    "R3_scoring_code_fingerprints_identical": true,
+    "front_end_modified": false,
+    "new_branch": false,
+    "original_recovery_data_and_folds_identical": true,
+    "raw_or_weight_publication": false
+  },
   "registered_utc": "2026-09-05T23:52:52.113340+00:00",
-  "status": "CHECKPOINT1_ACTUAL_K1_AK_AR_AKR_FITS_COMPLETE",
-  "unrelated_deletions_excluded": 135
+  "remote": {
+    "baseline_CI": "PASS",
+    "baseline_historical_replay": "PASS",
+    "checkpoint1_CI": "PASS",
+    "checkpoint1_CI_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34000521476",
+    "checkpoint1_historical_replay": "IN_PROGRESS_LAST_OBSERVED",
+    "checkpoint1_history_url": "https://github.com/dpan538/coffee-flavor-research/actions/runs/34000521497",
+    "checkpoint2": "NOT_YET_PUSHED_AT_RECEIPT_FINALIZATION",
+    "main_merged": false
+  },
+  "reporting_corrections": {
+    "direct_retention": "Actual confirmed fine versus separate source available mentions; corrected before full grouped results",
+    "fine_specificity": "Only fine outputs count; earlier broad-count diagnostic retained privately; primary/ranking/gain/models unchanged",
+    "public_weights": "Trained trigger intercept excluded before publication"
+  },
+  "status": "COMPLETED_ENGINEERING_NO_PRIMARY_IMPROVEMENT",
+  "unrelated_deletions_excluded": 135,
+  "updated_utc": "2026-09-06T00:29:13.385892+00:00",
+  "validation": {
+    "actual_fresh_refit_smoke": "PASS_THREE_SCORERS_FIRST_FOLD_IN_SEPARATE_PERSISTENT_OUTPUT",
+    "backend_discovered": 214,
+    "backend_errors": 0,
+    "backend_passed": 201,
+    "backend_scope": "PASS_FINAL_10_FILES",
+    "existing_optional_skips": 13,
+    "format_check": "PASS",
+    "live_JSON_and_true_held_trajectory": "PASS_NO_CACHED_RESULT_SUBSTITUTION",
+    "no_frontend_change": true,
+    "sealed_main_replay_command": "PASS",
+    "web_rebuild_smoke": "NOT_REPEATED_FOR_BACKEND_ONLY_R4; remote current CI reported separately"
+  }
 }

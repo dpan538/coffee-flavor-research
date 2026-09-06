@@ -1,4 +1,197 @@
 {
+  "A0_parity": {
+    "actual_fit_count": 0,
+    "compared_prefixes": 438,
+    "contract_sha256": "d777d51f26354c72671a6a81fdb445d65ef49e4e26064787a947bef77dc30a91",
+    "fold": 0,
+    "group_isolation_checked": true,
+    "held_coffee_groups": 63,
+    "held_records": 73,
+    "interpretation": "Frozen A0 competence preservation and execution consistency, not new model efficacy evidence",
+    "metric_differences": 0,
+    "operation": "NO_FIT_ACTUAL_HELD_REPLAY",
+    "private_detail_sha256": "83e044a597932ab9d691e5681387cc1efb1882a69c45878c4f60675b80819536",
+    "r1_expert_sha256": "4d597f6265a2045896837f71a526331f9e7dd683004c719462a2ccc85be35121",
+    "r3_model_sha256": "cbaff819455cd497ce766a3eb716dc8ad9578f0b4e25a30ec4629dd7b4e2b43c",
+    "rank_and_raw_score_differences": 0,
+    "same_question_bank_and_answer_trajectory": true,
+    "status": "PASS",
+    "version": "m2-r4-independent-execution-audit.v1"
+  },
+  "actual_revealed_B": {
+    "artifacts": {
+      "case_trace_owner_relative_path": "revisions/r4/revelation_audit_cases.private.json"
+    },
+    "fit_calls": 0,
+    "input_fingerprint": "4c90bf14e80403c804a3504da89f761b5f8d14e276bc34f4e45ebf6029674057",
+    "input_sha256": {
+      "audit_code": "425538ea2fdf45e577c68f760f966eb0e17196346fc99950c8afb1a80738b77c",
+      "auxiliary_contract": "abed1ac935d8dd3e03e6b9c3e3ac59878a8faa3015647d8d6722fdf680543622",
+      "auxiliary_results": "189d6a3bf3094b2a5205c889dc08c39954288d382c4f7f1eca479d5091981f38",
+      "episodes": "3b75249d96c9b44c0fb80997d2db13599e88f5845020b6bf7bc60bb63c89f669",
+      "flavor_m2_r1": "cfec9eafcf0803d54a02d7322e31c03367c54df0da1faa50be57f9a8480247e9",
+      "folds": "7a72cd38bd9b216cdcf22474e83a444b7436be7bfd845ea420efe608f2f5f49c",
+      "metric_code": "276fe37faf5eb87584b2b223c53f5019ce0d2577a1c2caf4b457e0b2270d7f88",
+      "model_outer0": "6a687c2fc7aae70ba71d21e6b6b13839702a631d9213323ca32aae26c3cb4a4a",
+      "model_outer1": "60828f7e979111a713b6ca98d0fa964a46ec3ab2a3685ebba9a827628b9fa59e",
+      "model_outer2": "2119707dc6b7dc1177a9e7da7755509ee948a11b234f2c359352a6fb4e830c9d",
+      "runtime_code": "973cefea0c7aad836ecb6d6a953b3980b5fbe1de0828184d8dd39c5ab430ff48",
+      "source_adapter_code": "3c5dcb93dd50cbb9d087ada8d914cd13d0cbadc9fea105d04c5f310acd02407f",
+      "train_m2_r1": "11d363fe54e68e36be320ae69d062c93cc6ffd0f1b865b5b1eea4ecfc45cf5cd",
+      "train_sequential": "e5d54358e3b13bc5f990f0054c11c890606c66e46035e1dbb387e36c82f7b0d9",
+      "trajectory_code": "cec04d03a7eee3d572c9f1c7ed7c7cb124d049adeaabd99610852115ec62a092"
+    },
+    "model_parameter_changes": 0,
+    "new_sources": 0,
+    "protocol": {
+      "B_attribution": "For each actual exposed Q2-Q4 question, selected options under A union B minus selected options under A, using the same frozen answer generator and exact same exposure; not a counterfactual adaptive policy effect",
+      "aggregation": "Equal record mean within original coffee group, then equal group mean; report full records/groups, identifiable coverage, and both record and any-record group counts",
+      "branch_contrast": "Same actual Q2 state, frozen model, source A union B, and fixed T; gain=raw_gap_SKIP minus raw_gap_ASK; descriptive practical key threshold greater than 0.01 inherited from R4, no fitting or threshold search",
+      "cohort": "All 61 admitted source episodes / 59 original coffee groups, including all empty T",
+      "deduplication": "Repeated same canonical selections count once per episode; a later broad parent of already confirmed fine is reuse",
+      "independence": "Source grader reports share coffee/session; graders also span folds. Coffee holdout only; no new source, independent-person generalization or real same-person QA",
+      "models": "Exactly three previously fitted AKR_AUX outer models named by auxiliary_results.private.json.summary.models; verify model hashes and held coffee identity",
+      "public": "Aggregate values, source/code/model/artifact hashes and owner-relative paths only; all case IDs, selected concepts, rankings and trajectories private",
+      "source_novelty": "B minus A exact concepts; same-parent but distinct specifics remain new content and are separately counted",
+      "stage_contrasts": "Q2 minus Q1 and Q4_ASK minus Q1 are descriptive trajectory changes and include additional question budget; no isolated B causal claim",
+      "stages": [
+        "Q1",
+        "Q2",
+        "Q4_ASK",
+        "Q4_SKIP"
+      ],
+      "status": "POST_FIT_DESCRIPTIVE_AUDIT_NO_NEW_FIT_SELECTION_OR_TRIGGER",
+      "system_novelty": "Canonical selected concepts in Q2-Q4 minus the logically entailed closure of Q0-Q1 selected concepts; fine implies only itself and broad parents, never siblings",
+      "target": "One unchanged source T relevance dictionary and original fixed model candidate universe excluding only fixed A at every stage; absent targets remain unidentifiable",
+      "version": "m2-r4.actual-held-source-revelation-audit.v1"
+    },
+    "results": {
+      "coffee_groups": 59,
+      "descriptive_same_Q2_branch": {
+        "coffee_groups_with_any_key_record": 3,
+        "gain_coffee_macro": -0.00838192419825073,
+        "identifiable_coffee_groups": 49,
+        "identifiable_records": 50,
+        "key_records_gain_over_0_01": 3,
+        "key_records_with_actual_B_new_system_information": 1,
+        "negative_gain_records": 4,
+        "new_trigger_fits": 0,
+        "positive_gain_max": 0.15000000000000002,
+        "positive_gain_records": 3,
+        "tie_records": 43
+      },
+      "descriptive_stage_changes": {
+        "Q2_minus_Q1_raw_gap_coffee_macro": -0.02764820213799806,
+        "Q4_ASK_minus_Q1_raw_gap_coffee_macro": -0.01062925170068027,
+        "interpretation": "Q2 minus Q1 and Q4_ASK minus Q1 are descriptive trajectory changes and include additional question budget; no isolated B causal claim"
+      },
+      "empty_target_records_retained": 11,
+      "fixed_target_verified_records": 61,
+      "novelty": {
+        "A_only_later_new_system_canonical": {
+          "coffee_groups_with_any_record": 51,
+          "coffee_macro_concepts_per_record": 1.3728813559322033,
+          "record_concept_total": 84,
+          "records_with_any": 53
+        },
+        "B_actual_new_direction_specific": {
+          "coffee_groups_with_any_record": 11,
+          "coffee_macro_concepts_per_record": 0.1864406779661017,
+          "record_concept_total": 11,
+          "records_with_any": 11
+        },
+        "B_actual_new_related_specific": {
+          "coffee_groups_with_any_record": 27,
+          "coffee_macro_concepts_per_record": 0.576271186440678,
+          "record_concept_total": 35,
+          "records_with_any": 27
+        },
+        "B_actual_new_specific": {
+          "coffee_groups_with_any_record": 37,
+          "coffee_macro_concepts_per_record": 0.7627118644067796,
+          "record_concept_total": 46,
+          "records_with_any": 37
+        },
+        "B_new_system_canonical": {
+          "coffee_groups_with_any_record": 37,
+          "coffee_macro_concepts_per_record": 0.7627118644067796,
+          "record_concept_total": 46,
+          "records_with_any": 37
+        },
+        "B_same_exposure_extra_selected_canonical": {
+          "coffee_groups_with_any_record": 37,
+          "coffee_macro_concepts_per_record": 0.7627118644067796,
+          "record_concept_total": 46,
+          "records_with_any": 37
+        },
+        "actual_new_system_canonical": {
+          "coffee_groups_with_any_record": 57,
+          "coffee_macro_concepts_per_record": 2.135593220338983,
+          "record_concept_total": 130,
+          "records_with_any": 59
+        },
+        "source_B_new_exact": {
+          "coffee_groups_with_any_record": 57,
+          "coffee_macro_concepts_per_record": 2.288135593220339,
+          "record_concept_total": 138,
+          "records_with_any": 58
+        },
+        "source_B_new_related_specific": {
+          "coffee_groups_with_any_record": 40,
+          "coffee_macro_concepts_per_record": 0.9576271186440678,
+          "record_concept_total": 58,
+          "records_with_any": 40
+        },
+        "source_B_new_specific_not_selected": {
+          "coffee_groups_with_any_record": 37,
+          "coffee_macro_concepts_per_record": 0.7796610169491526,
+          "record_concept_total": 47,
+          "records_with_any": 37
+        }
+      },
+      "records": 61,
+      "stages": {
+        "Q1": {
+          "identifiable_coffee_groups": 49,
+          "identifiable_records": 50,
+          "ndcg": 0.3171123066360141,
+          "ordinary_options": 8.0,
+          "ordinary_questions": 2.0,
+          "raw_gap": 0.5820092322643343,
+          "recall": 0.34049238743116295
+        },
+        "Q2": {
+          "identifiable_coffee_groups": 49,
+          "identifiable_records": 50,
+          "ndcg": 0.3272474627790887,
+          "ordinary_options": 12.0,
+          "ordinary_questions": 3.0,
+          "raw_gap": 0.5543610301263362,
+          "recall": 0.34967606090055064
+        },
+        "Q4_ASK": {
+          "identifiable_coffee_groups": 49,
+          "identifiable_records": 50,
+          "ndcg": 0.2965490202407619,
+          "ordinary_options": 19.661016949152543,
+          "ordinary_questions": 5.0,
+          "raw_gap": 0.571379980563654,
+          "recall": 0.3234855847100745
+        },
+        "Q4_SKIP": {
+          "identifiable_coffee_groups": 49,
+          "identifiable_records": 50,
+          "ndcg": 0.30558330924180666,
+          "ordinary_options": 16.0,
+          "ordinary_questions": 4.0,
+          "raw_gap": 0.5629980563654033,
+          "recall": 0.33573048266925815
+        }
+      }
+    },
+    "status": "ACTUAL_HELD_MODEL_REPLAY_DESCRIPTIVE_NO_FIT",
+    "version": "m2-r4.actual-held-source-revelation-audit.v1"
+  },
   "checked_utc": "2026-09-06T00:03:16.865561+00:00",
   "engineering": {
     "actual_r4_fits_performed": 0,
@@ -19,8 +212,182 @@
     "status": "PASS",
     "total": 8
   },
+  "engineering_status": "COMPLETED",
   "fine_task_scope": "New residuals zero for non-sensory and canonical explicit candidates; broad base values preserved",
+  "health": [
+    {
+      "evidence": "Eight numeric interventions; actual nonzero AKR CLI path; A0 historical parity",
+      "item": "计算连通",
+      "next_action": "Keep the shared entry points; no more wiring refactor",
+      "status": "OBSERVED"
+    },
+    {
+      "evidence": "Source-verified independent recorded grader B; old main answers remain DERIVED_REUSE",
+      "item": "信息有效",
+      "next_action": "Collect more independently evaluable Q3-benefit conditions, not more rewrites of A",
+      "status": "OBSERVED"
+    },
+    {
+      "evidence": "Applicable nonzero held relation scores in95/211 Q4 states; no primary gain",
+      "item": "关系可用",
+      "next_action": "Stop added relation complexity on this task",
+      "status": "PROBLEM"
+    },
+    {
+      "evidence": "Only5 held key-benefit groups; one training fold has zero key cases",
+      "item": "学习可识别",
+      "next_action": "Obtain linked benefit cases before adding classifier settings",
+      "status": "PROBLEM"
+    },
+    {
+      "evidence": "KEY_CASE asks63 yet misses all5 key cases; scorer and auxiliary contrasts retain regressions",
+      "item": "效果与代价",
+      "next_action": "Keep B2 default and CHECK off; no operational promotion",
+      "status": "PROBLEM"
+    },
+    {
+      "evidence": "One fixed 2x2, one classifier, one auxiliary task; verified base experts reused, one fresh-fold reproduction",
+      "item": "工作效率",
+      "next_action": "Stop this bounded experiment after sealed replay and CI",
+      "status": "OBSERVED"
+    }
+  ],
+  "live_execution": {
+    "actual_fit_count": 0,
+    "actual_held_records": 1,
+    "actual_outer_held_replay": {
+      "actual_cli_processes": 4,
+      "final_artifacts": [
+        {
+          "output_sha256": "201de52e392009b4187733fa091a6b2e3b57cd840f51f60c4b00dbcc4f6ad7c2",
+          "payload_sha256": "740dbb3a8fba5a3851761cd216fc9d7d2ea4a701a927ea2d8e6c79401ec03263"
+        },
+        {
+          "output_sha256": "201de52e392009b4187733fa091a6b2e3b57cd840f51f60c4b00dbcc4f6ad7c2",
+          "payload_sha256": "740dbb3a8fba5a3851761cd216fc9d7d2ea4a701a927ea2d8e6c79401ec03263"
+        },
+        {
+          "output_sha256": "201de52e392009b4187733fa091a6b2e3b57cd840f51f60c4b00dbcc4f6ad7c2",
+          "payload_sha256": "740dbb3a8fba5a3851761cd216fc9d7d2ea4a701a927ea2d8e6c79401ec03263"
+        }
+      ],
+      "global_main5_secondary3_and_final3to8_budget": true,
+      "hashseed_complete_output_identical": true,
+      "human_time": null,
+      "imported_live_and_cli_identical": true,
+      "legal_Q2_action_and_Q4_closure": true,
+      "model_sha256": "d2ffd3fddb8f49cb47243deb8f98708686154d10046634a0f31e3c5b697751b5",
+      "once_final_then_terminal": true,
+      "ordinary_multi_select_present": true,
+      "preliminary_artifacts": {
+        "output_sha256": "90da947a96730b5c11babd06e6ebdf3b76dcff127d71c5f06bdd7ac4d2ffdb70",
+        "payload_sha256": "9292c66a5a68c1d044e4661908aa6ec36538cfceb7a54938157b9c98b70f70ba"
+      },
+      "status": "PASS"
+    },
+    "contract_sha256": "d777d51f26354c72671a6a81fdb445d65ef49e4e26064787a947bef77dc30a91",
+    "held_coffee_group_isolation_checked": true,
+    "held_selection": "FIRST_FIXED_RECORD_ID_ORDER_NOT_METRIC_SELECTED",
+    "interpretation": "Execution and model-isolation checks only; one case is not a generalization estimate and final full-DEV model is not used as the held model",
+    "new_input": {
+      "actual_cli_processes": 4,
+      "final_artifacts": [
+        {
+          "output_sha256": "00bcebe17a0785d95f3905a8244185cc15c76fc865c9a6fd792c9b35bc1842f5",
+          "payload_sha256": "fb7bee19888fad3e101ab30e1435981cd144ab02d46780034c3c1416fa307ba5"
+        },
+        {
+          "output_sha256": "00bcebe17a0785d95f3905a8244185cc15c76fc865c9a6fd792c9b35bc1842f5",
+          "payload_sha256": "fb7bee19888fad3e101ab30e1435981cd144ab02d46780034c3c1416fa307ba5"
+        },
+        {
+          "output_sha256": "00bcebe17a0785d95f3905a8244185cc15c76fc865c9a6fd792c9b35bc1842f5",
+          "payload_sha256": "fb7bee19888fad3e101ab30e1435981cd144ab02d46780034c3c1416fa307ba5"
+        }
+      ],
+      "global_main5_secondary3_and_final3to8_budget": true,
+      "hashseed_complete_output_identical": true,
+      "human_time": null,
+      "imported_live_and_cli_identical": true,
+      "legal_Q2_action_and_Q4_closure": true,
+      "model_sha256": "ebd6a84d396dbeb4749eb6fa97089610580448413bba9270c1f57ecc96c3050c",
+      "once_final_then_terminal": true,
+      "ordinary_multi_select_present": true,
+      "preliminary_artifacts": {
+        "output_sha256": "5e19ed10f974eda5aef5064ae9233b04078070aca53828d221057c3004b70fe8",
+        "payload_sha256": "afc03bf7c1b7c903b4aef89f11301392ed8bbd6a1f532fe1bb6346f9a7b33bb8"
+      },
+      "status": "PASS"
+    },
+    "operation": "NO_FIT_NEW_LIVE_INPUT_AND_ACTUAL_HELD_REPLAY",
+    "private_held_detail_sha256": "748279fcfe04ac37265ee76388e223539a392d9fbcd062509b2d6f1386c5f8ae",
+    "status": "PASS",
+    "verified_utc": "2026-09-06T00:17:23.723717+00:00",
+    "version": "m2-r4-independent-execution-audit.v1"
+  },
+  "nonzero_AKR_execution": {
+    "actual_cli_processes": 4,
+    "actual_fit_count": 0,
+    "conditioning_nonzero_candidate_count": 34,
+    "final_artifacts": [
+      {
+        "output_sha256": "ddefb9245a047b78d25d6b839b1e87b650d2e871bfcbfcac8d7daf0c89977ec8",
+        "payload_sha256": "380c3ba1300816e12f0edaa5dd34ca6881173b3725495c60120b51b91afaeb8f"
+      },
+      {
+        "output_sha256": "ddefb9245a047b78d25d6b839b1e87b650d2e871bfcbfcac8d7daf0c89977ec8",
+        "payload_sha256": "380c3ba1300816e12f0edaa5dd34ca6881173b3725495c60120b51b91afaeb8f"
+      },
+      {
+        "output_sha256": "ddefb9245a047b78d25d6b839b1e87b650d2e871bfcbfcac8d7daf0c89977ec8",
+        "payload_sha256": "380c3ba1300816e12f0edaa5dd34ca6881173b3725495c60120b51b91afaeb8f"
+      }
+    ],
+    "global_main5_secondary3_and_final3to8_budget": true,
+    "hashseed_complete_output_identical": true,
+    "human_time": null,
+    "imported_live_and_cli_identical": true,
+    "k1_nonzero_candidate_count": 25,
+    "legal_Q2_action_and_Q4_closure": true,
+    "model_sha256": "a2018d5ad2ef387fd85b6c524aa981257b8ac2f10e4225fba3ddea120eb17708",
+    "once_final_then_terminal": true,
+    "ordinary_multi_select_present": true,
+    "preliminary_artifacts": {
+      "output_sha256": "4d0948e916f1df689fdd4f29ea53fac5db6c8de7bf8e3da1845603b9b5102ce8",
+      "payload_sha256": "51a2ff5d9eed39abe474e732815b2ec2467051239e9b34953ddb1f71212bc709"
+    },
+    "relation_nonzero_candidate_count": 29,
+    "scope": "ACTUAL_FITTED_OUTER_AKR_ENGINEERING_INPUT_NOT_SENSORY_VALIDATION",
+    "status": "PASS"
+  },
   "pre_fit_intervention_checks_passed": true,
+  "raw_top5_coverage": {
+    "A0": {
+      "all_output_count_group_macro": 5.0,
+      "coverage_scope": "Original R3 raw top5 panel; ranking metrics separately filter fine candidates with fixed A exclusion; not an increased abstention policy",
+      "fine_output_count_group_macro": 1.0775401069518717,
+      "zero_fine_raw_top5_records": 84
+    },
+    "AK": {
+      "all_output_count_group_macro": 5.0,
+      "coverage_scope": "Original R3 raw top5 panel; ranking metrics separately filter fine candidates with fixed A exclusion; not an increased abstention policy",
+      "fine_output_count_group_macro": 1.1631016042780749,
+      "zero_fine_raw_top5_records": 84
+    },
+    "AKR": {
+      "all_output_count_group_macro": 5.0,
+      "coverage_scope": "Original R3 raw top5 panel; ranking metrics separately filter fine candidates with fixed A exclusion; not an increased abstention policy",
+      "fine_output_count_group_macro": 1.5561497326203209,
+      "zero_fine_raw_top5_records": 35
+    },
+    "AR": {
+      "all_output_count_group_macro": 5.0,
+      "coverage_scope": "Original R3 raw top5 panel; ranking metrics separately filter fine candidates with fixed A exclusion; not an increased abstention policy",
+      "fine_output_count_group_macro": 1.5668449197860963,
+      "zero_fine_raw_top5_records": 34
+    }
+  },
   "runtime_sha256": "973cefea0c7aad836ecb6d6a953b3980b5fbe1de0828184d8dd39c5ab430ff48",
-  "scientific_gain": "NOT_YET_EVALUATED"
+  "scientific_gain": "NO_IMPROVEMENT_ON_REGISTERED_PRIMARY_TASK",
+  "specificity_diagnostic_scope": "Fraction among actually emitted fine raw-top5 items; rows with no fine output are undefined. Report together with raw_top5_coverage because eligible rows vary across models. Unmentioned is not a sensory negative, so this is not a calibrated false-positive measure."
 }

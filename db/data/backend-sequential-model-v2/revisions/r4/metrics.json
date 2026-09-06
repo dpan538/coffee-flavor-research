@@ -1,102 +1,708 @@
 {
-  "outer0": {
-    "actual_fit_variants": [
-      "AK",
-      "AR",
-      "AKR"
+  "B2": "UNCHANGED",
+  "FOUNDATION_CHECK": false,
+  "auxiliary": {
+    "contrasts": {
+      "CROSS_GRADER_REVELATION": {
+        "all_records": 61,
+        "better_records": 6,
+        "control": "AKR",
+        "difference": 0.027947845804988672,
+        "field": "raw_gap",
+        "identifiable_groups": 49,
+        "identifiable_records": 50,
+        "paired_group_95_interval": [
+          -0.012244897959183659,
+          0.07670705782312923
+        ],
+        "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+        "tied_records": 35,
+        "treatment": "AKR_AUX",
+        "worse_records": 9
+      },
+      "MAIN_RECORD_DERIVED": {
+        "all_records": 211,
+        "better_records": 15,
+        "control": "AKR",
+        "difference": 0.001988896520146516,
+        "field": "raw_gap",
+        "identifiable_groups": 104,
+        "identifiable_records": 106,
+        "paired_group_95_interval": [
+          -0.025149882669413925,
+          0.03230611836080586
+        ],
+        "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+        "tied_records": 85,
+        "treatment": "AKR_AUX",
+        "worse_records": 6
+      }
+    },
+    "models": [
+      {
+        "aux_held_records": 23,
+        "aux_train_records": 38,
+        "off_model_sha256": "a2018d5ad2ef387fd85b6c524aa981257b8ac2f10e4225fba3ddea120eb17708",
+        "on_model_sha256": "6a687c2fc7aae70ba71d21e6b6b13839702a631d9213323ca32aae26c3cb4a4a",
+        "on_owner_relative_path": "revisions/r4/models/AKR_AUX_outer0.417f7a859545a49a.model.json",
+        "outer": 0
+      },
+      {
+        "aux_held_records": 18,
+        "aux_train_records": 43,
+        "off_model_sha256": "51abacd0c90da949df02e6292d416b0471ec60543f23269b1a99434f4b771791",
+        "on_model_sha256": "60828f7e979111a713b6ca98d0fa964a46ec3ab2a3685ebba9a827628b9fa59e",
+        "on_owner_relative_path": "revisions/r4/models/AKR_AUX_outer1.ecfe23255ab6fcc0.model.json",
+        "outer": 1
+      },
+      {
+        "aux_held_records": 20,
+        "aux_train_records": 41,
+        "off_model_sha256": "f939c98cfd3fa12184a75276c747be6e7cf9ddb57075f17d72326339d537a54e",
+        "on_model_sha256": "2119707dc6b7dc1177a9e7da7755509ee948a11b234f2c359352a6fb4e830c9d",
+        "on_owner_relative_path": "revisions/r4/models/AKR_AUX_outer2.2b9dd444ad910284.model.json",
+        "outer": 2
+      }
     ],
-    "audit_count": 3,
-    "candidate_scope_equal": true,
-    "fixed_summary": {
-      "A0": {
-        "available_source_mentions_retention": 0.5055555555555555,
-        "coffee_groups": 63,
-        "direct_retention": 1.0,
-        "direction_coverage": 0.5371693121693121,
-        "empty_targets": 37,
-        "identifiable_groups": 34,
-        "identifiable_records": 36,
-        "ndcg": 0.4931035697820266,
-        "ordinary_options": 20.0,
-        "ordinary_questions": 5.0,
-        "output_count": 5.0,
-        "output_failures": 0,
-        "raw_gap": 0.45645133053221293,
-        "recall": 0.46358543417366954,
-        "records": 73,
-        "specificity_unsupported_proxy": 0.7317460317460318
+    "results": {
+      "CROSS_GRADER_REVELATION": {
+        "AKR": {
+          "available_source_mentions_retention": 0.5927158999192897,
+          "coffee_groups": 59,
+          "direct_retention": 1.0,
+          "direction_coverage": 0.6751700680272109,
+          "empty_targets": 11,
+          "identifiable_groups": 49,
+          "identifiable_records": 50,
+          "ndcg": 0.3125333538867161,
+          "ordinary_options": 19.661016949152543,
+          "ordinary_questions": 5.0,
+          "output_count": 5.0,
+          "output_failures": 0,
+          "raw_gap": 0.5434321347586654,
+          "recall": 0.3716715257531583,
+          "records": 61,
+          "specificity_unsupported_proxy": 0.23079096045197742
+        },
+        "AKR_AUX": {
+          "available_source_mentions_retention": 0.5948345439870864,
+          "coffee_groups": 59,
+          "direct_retention": 1.0,
+          "direction_coverage": 0.685374149659864,
+          "empty_targets": 11,
+          "identifiable_groups": 49,
+          "identifiable_records": 50,
+          "ndcg": 0.2965490202407619,
+          "ordinary_options": 19.661016949152543,
+          "ordinary_questions": 5.0,
+          "output_count": 5.0,
+          "output_failures": 0,
+          "raw_gap": 0.571379980563654,
+          "recall": 0.3234855847100745,
+          "records": 61,
+          "specificity_unsupported_proxy": 0.19943502824858755
+        }
       },
-      "AK": {
-        "available_source_mentions_retention": 0.5055555555555555,
-        "coffee_groups": 63,
-        "direct_retention": 1.0,
-        "direction_coverage": 0.5339947089947089,
-        "empty_targets": 37,
-        "identifiable_groups": 34,
-        "identifiable_records": 36,
-        "ndcg": 0.5051279037004209,
-        "ordinary_options": 20.0,
-        "ordinary_questions": 5.0,
-        "output_count": 5.0,
-        "output_failures": 0,
-        "raw_gap": 0.4521621148459384,
-        "recall": 0.4660364145658264,
-        "records": 73,
-        "specificity_unsupported_proxy": 0.7222222222222222
-      },
-      "AKR": {
-        "available_source_mentions_retention": 0.5055555555555555,
-        "coffee_groups": 63,
-        "direct_retention": 1.0,
-        "direction_coverage": 0.5149470899470899,
-        "empty_targets": 37,
-        "identifiable_groups": 34,
-        "identifiable_records": 36,
-        "ndcg": 0.48479772675559213,
-        "ordinary_options": 20.0,
-        "ordinary_questions": 5.0,
-        "output_count": 5.0,
-        "output_failures": 0,
-        "raw_gap": 0.47409838935574233,
-        "recall": 0.45966386554621846,
-        "records": 73,
-        "specificity_unsupported_proxy": 0.7253968253968255
-      },
-      "AR": {
-        "available_source_mentions_retention": 0.5055555555555555,
-        "coffee_groups": 63,
-        "direct_retention": 1.0,
-        "direction_coverage": 0.5161375661375661,
-        "empty_targets": 37,
-        "identifiable_groups": 34,
-        "identifiable_records": 36,
-        "ndcg": 0.47312779180529546,
-        "ordinary_options": 20.0,
-        "ordinary_questions": 5.0,
-        "output_count": 5.0,
-        "output_failures": 0,
-        "raw_gap": 0.4802258403361344,
-        "recall": 0.45721288515406167,
-        "records": 73,
-        "specificity_unsupported_proxy": 0.7317460317460318
+      "MAIN_RECORD_DERIVED": {
+        "AKR": {
+          "available_source_mentions_retention": 0.5037878787878788,
+          "coffee_groups": 187,
+          "direct_retention": 1.0,
+          "direction_coverage": 0.5076612903225807,
+          "empty_targets": 105,
+          "identifiable_groups": 104,
+          "identifiable_records": 106,
+          "ndcg": 0.4470425153766205,
+          "ordinary_options": 19.668449197860962,
+          "ordinary_questions": 5.0,
+          "output_count": 5.0,
+          "output_failures": 0,
+          "raw_gap": 0.479450931013431,
+          "recall": 0.4437996031746032,
+          "records": 211,
+          "specificity_unsupported_proxy": 0.5907012195121951
+        },
+        "AKR_AUX": {
+          "available_source_mentions_retention": 0.5037878787878788,
+          "coffee_groups": 187,
+          "direct_retention": 1.0,
+          "direction_coverage": 0.48951612903225805,
+          "empty_targets": 105,
+          "identifiable_groups": 104,
+          "identifiable_records": 106,
+          "ndcg": 0.4442466016134273,
+          "ordinary_options": 19.668449197860962,
+          "ordinary_questions": 5.0,
+          "output_count": 5.0,
+          "output_failures": 0,
+          "raw_gap": 0.4814398275335775,
+          "recall": 0.43716040903540904,
+          "records": 211,
+          "specificity_unsupported_proxy": 0.584086345381526
+        }
       }
     },
-    "model_paths": {
-      "AK": {
-        "owner_relative_path": "revisions/r4/models/AK_outer0.74758954df43dc46.model.json",
-        "sha256": "a53683d633235d74bb1bbc52a46637d8658c68e9852a2dc59bc9e149c50085d5"
-      },
-      "AKR": {
-        "owner_relative_path": "revisions/r4/models/AKR_outer0.b9e5cbc682c93c1c.model.json",
-        "sha256": "a2018d5ad2ef387fd85b6c524aa981257b8ac2f10e4225fba3ddea120eb17708"
-      },
-      "AR": {
-        "owner_relative_path": "revisions/r4/models/AR_outer0.5ead9cd3ae5b407d.model.json",
-        "sha256": "f222f734f77cbe9c0119ad9606cf4142bdca60beb7e7f9275aedfb0099299fd0"
-      }
-    },
-    "outer": 0
+    "task_definition": "Independent recorded grader A/B/T, shared graders and held coffee groups; source-local auxiliary joint CE, not general sensory pretraining"
   },
-  "remaining": "Full nested scorer/trigger and auxiliary grouped comparison in progress",
-  "status": "FIRST_ACTUAL_OLD_DATA_FIT_CHECKPOINT"
+  "execution": {
+    "ASK_SKIP_gains_recomputed": 1899,
+    "auxiliary_rankings_recomputed": 544,
+    "completion_sha256": "d86b88c1324e611dd66c9856a3c1410517b07544ca179e596815888f68a29e4a",
+    "fit_calls": 0,
+    "main_endpoint_rankings_recomputed": 1688,
+    "model_parameters_reloaded": true,
+    "operation": "SEALED_ARTIFACT_AND_NUMERICAL_REPLAY",
+    "private_artifacts_verified": 111,
+    "scope": "Scores/matching/gain/policy/auxiliary summaries recalculated; actual fresh live CLI and held trajectories are separately verified"
+  },
+  "final_research_bundle": {
+    "not_last_fold_model": true,
+    "owner_relative_model_path": "revisions/r4/models/R4_ALL_DEVELOPMENT_RESEARCH.model.json",
+    "selected_variant": "A0",
+    "selection_losses": {
+      "A0": 0.46120173229548234,
+      "AK": 0.4703563797313798,
+      "AKR": 0.479450931013431,
+      "AR": 0.48229262057387057
+    },
+    "selection_scope": "Previously inspected development OOF only; final refit is not new evaluation",
+    "sha256": "ebd6a84d396dbeb4749eb6fa97089610580448413bba9270c1f57ecc96c3050c",
+    "training_groups": 187,
+    "training_records": 211,
+    "trigger_fit_status": "FITTED_LOGISTIC_KEY_CASE"
+  },
+  "human_time": null,
+  "main_scoring": {
+    "A0": {
+      "available_source_mentions_retention": 0.5037878787878788,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5621415770609319,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.4759863279604399,
+      "ordinary_options": 19.668449197860962,
+      "ordinary_questions": 5.0,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.46120173229548234,
+      "recall": 0.4572611416361416,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.46366666666666667
+    },
+    "AK": {
+      "available_source_mentions_retention": 0.5037878787878788,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5505824372759857,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.47345478945293684,
+      "ordinary_options": 19.668449197860962,
+      "ordinary_questions": 5.0,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.4703563797313798,
+      "recall": 0.44780601343101345,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.4883333333333334
+    },
+    "AKR": {
+      "available_source_mentions_retention": 0.5037878787878788,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5076612903225807,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.4470425153766205,
+      "ordinary_options": 19.668449197860962,
+      "ordinary_questions": 5.0,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.479450931013431,
+      "recall": 0.4437996031746032,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.5907012195121951
+    },
+    "AR": {
+      "available_source_mentions_retention": 0.5037878787878788,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5085125448028673,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.44293569861651066,
+      "ordinary_options": 19.668449197860962,
+      "ordinary_questions": 5.0,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.48229262057387057,
+      "recall": 0.4417162698412699,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.5825757575757575
+    }
+  },
+  "outer_selections": [
+    {
+      "inner_losses": {
+        "A0": 0.531217403628118,
+        "AK": 0.555453514739229,
+        "AKR": 0.5567077664399094,
+        "AR": 0.54375141723356
+      },
+      "outer": 0,
+      "selected": "A0",
+      "trigger": {
+        "all_records": 138,
+        "feature_names": [
+          "supported_dimension_count",
+          "rejected_dimension_count",
+          "explicit_fine_count",
+          "unknown_dimension_count",
+          "positive_pair_count",
+          "relation_feature_l1",
+          "conditioning_delta_l1",
+          "top5_base_disagreement",
+          "previous_top5_change",
+          "log_training_support"
+        ],
+        "fit_status": "FITTED_LOGISTIC_KEY_CASE",
+        "iterations": 7,
+        "key_groups": 5,
+        "key_records": 5,
+        "labelled_groups": 70,
+        "labelled_records": 70,
+        "score_semantics": "UNCALIBRATED_COST_WEIGHTED_CLASSIFICATION",
+        "threshold": 0.5,
+        "ties": 61,
+        "training_weight_sum": 123.16666666666664
+      }
+    },
+    {
+      "inner_losses": {
+        "A0": 0.5307452147525678,
+        "AK": 0.5493070144724557,
+        "AKR": 0.5454948646125117,
+        "AR": 0.5314498716153128
+      },
+      "outer": 1,
+      "selected": "A0",
+      "trigger": {
+        "all_records": 143,
+        "feature_names": [
+          "supported_dimension_count",
+          "rejected_dimension_count",
+          "explicit_fine_count",
+          "unknown_dimension_count",
+          "positive_pair_count",
+          "relation_feature_l1",
+          "conditioning_delta_l1",
+          "top5_base_disagreement",
+          "previous_top5_change",
+          "log_training_support"
+        ],
+        "fit_status": "FITTED_LOGISTIC_KEY_CASE",
+        "iterations": 8,
+        "key_groups": 5,
+        "key_records": 5,
+        "labelled_groups": 68,
+        "labelled_records": 70,
+        "score_semantics": "UNCALIBRATED_COST_WEIGHTED_CLASSIFICATION",
+        "threshold": 0.5,
+        "ties": 63,
+        "training_weight_sum": 131.69642857142856
+      }
+    },
+    {
+      "inner_losses": {
+        "A0": 0.4483446712018141,
+        "AK": 0.4613208616780045,
+        "AKR": 0.47655895691609984,
+        "AR": 0.4722434807256236
+      },
+      "outer": 2,
+      "selected": "A0",
+      "trigger": {
+        "all_records": 141,
+        "constant_probability": 0.0,
+        "feature_names": [
+          "supported_dimension_count",
+          "rejected_dimension_count",
+          "explicit_fine_count",
+          "unknown_dimension_count",
+          "positive_pair_count",
+          "relation_feature_l1",
+          "conditioning_delta_l1",
+          "top5_base_disagreement",
+          "previous_top5_change",
+          "log_training_support"
+        ],
+        "fit_status": "SINGLE_CLASS_INTERCEPT_ONLY_NOT_DYNAMIC",
+        "key_groups": 0,
+        "key_records": 0,
+        "labelled_groups": 70,
+        "labelled_records": 72,
+        "score_semantics": "UNCALIBRATED_COST_WEIGHTED_CLASSIFICATION",
+        "threshold": 0.5,
+        "ties": 69
+      }
+    }
+  ],
+  "policy": {
+    "ALWAYS_ASK": {
+      "available_source_mentions_retention": 0.5037878787878788,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5621415770609319,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.4759863279604399,
+      "ordinary_options": 19.668449197860962,
+      "ordinary_questions": 5.0,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.46120173229548234,
+      "recall": 0.4572611416361416,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.46366666666666667
+    },
+    "ALWAYS_SKIP": {
+      "available_source_mentions_retention": 0.4564393939393939,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5603494623655915,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.4720052972903519,
+      "ordinary_options": 16.0,
+      "ordinary_questions": 4.0,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.47006448412698415,
+      "recall": 0.4469131562881563,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.4395491803278688
+    },
+    "KEY_CASE": {
+      "available_source_mentions_retention": 0.4621212121212121,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5603494623655915,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.4734471795753991,
+      "ordinary_options": 17.176470588235293,
+      "ordinary_questions": 4.294117647058823,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.47006448412698415,
+      "recall": 0.4469131562881563,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.45223577235772355
+    },
+    "R3_OLD": {
+      "available_source_mentions_retention": 0.4564393939393939,
+      "coffee_groups": 187,
+      "direct_retention": 1.0,
+      "direction_coverage": 0.5603494623655915,
+      "empty_targets": 105,
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "ndcg": 0.4720052972903519,
+      "ordinary_options": 16.02139037433155,
+      "ordinary_questions": 4.005347593582887,
+      "output_count": 5.0,
+      "output_failures": 0,
+      "raw_gap": 0.47006448412698415,
+      "recall": 0.4469131562881563,
+      "records": 211,
+      "specificity_unsupported_proxy": 0.4395491803278688
+    }
+  },
+  "policy_contrasts": [
+    {
+      "all_records": 211,
+      "better_records": 0,
+      "control": "ALWAYS_ASK",
+      "difference": 0.008862751831501833,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        0.001021634615384616,
+        0.019281922504578743
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 101,
+      "treatment": "ALWAYS_SKIP",
+      "worse_records": 5
+    },
+    {
+      "all_records": 211,
+      "better_records": 0,
+      "control": "ALWAYS_ASK",
+      "difference": 0.008862751831501833,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        0.001021634615384616,
+        0.019281922504578743
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 101,
+      "treatment": "R3_OLD",
+      "worse_records": 5
+    },
+    {
+      "all_records": 211,
+      "better_records": 0,
+      "control": "ALWAYS_ASK",
+      "difference": 0.008862751831501833,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        0.001021634615384616,
+        0.019281922504578743
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 101,
+      "treatment": "KEY_CASE",
+      "worse_records": 5
+    }
+  ],
+  "proxy_only": true,
+  "r3_results_preserved": {
+    "metric_code_sha256": "276fe37faf5eb87584b2b223c53f5019ce0d2577a1c2caf4b457e0b2270d7f88",
+    "metrics_sha256": "f379a2b612edb7d27e591005710152fb74e1ab7904bfac009dbcf2f1e7bb4824"
+  },
+  "real_user_alignment": "NOT_EVALUATED",
+  "relation_funnel_Q4": {
+    "A0": {
+      "any_conditioning_score_nonzero": 0,
+      "full_order_changed": 0,
+      "raw_relation_features_nonzero": 0,
+      "relation_score_nonzero": 0,
+      "semantic_pairs_extractable": 95,
+      "train_supported_relation_applicable": 0,
+      "unseen_complete_exposure": 211
+    },
+    "AK": {
+      "any_conditioning_score_nonzero": 67,
+      "full_order_changed": 66,
+      "raw_relation_features_nonzero": 0,
+      "relation_score_nonzero": 0,
+      "semantic_pairs_extractable": 95,
+      "train_supported_relation_applicable": 0,
+      "unseen_complete_exposure": 211
+    },
+    "AKR": {
+      "any_conditioning_score_nonzero": 147,
+      "full_order_changed": 146,
+      "raw_relation_features_nonzero": 95,
+      "relation_score_nonzero": 95,
+      "semantic_pairs_extractable": 95,
+      "train_supported_relation_applicable": 95,
+      "unseen_complete_exposure": 211
+    },
+    "AR": {
+      "any_conditioning_score_nonzero": 95,
+      "full_order_changed": 95,
+      "raw_relation_features_nonzero": 95,
+      "relation_score_nonzero": 95,
+      "semantic_pairs_extractable": 95,
+      "train_supported_relation_applicable": 95,
+      "unseen_complete_exposure": 211
+    }
+  },
+  "scoring_contrasts": [
+    {
+      "all_records": 211,
+      "better_records": 3,
+      "control": "A0",
+      "difference": 0.009154647435897438,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        -0.010220352564102564,
+        0.02946915064102563
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 98,
+      "treatment": "AK",
+      "worse_records": 5
+    },
+    {
+      "all_records": 211,
+      "better_records": 5,
+      "control": "A0",
+      "difference": 0.02109088827838828,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        -4.3426625457875305e-05,
+        0.048400869963369945
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 91,
+      "treatment": "AR",
+      "worse_records": 10
+    },
+    {
+      "all_records": 211,
+      "better_records": 4,
+      "control": "A0",
+      "difference": 0.01824919871794872,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        -0.004327423878205127,
+        0.043089943910256404
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 91,
+      "treatment": "AKR",
+      "worse_records": 11
+    },
+    {
+      "all_records": 211,
+      "better_records": 2,
+      "control": "AK",
+      "difference": 0.009094551282051283,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        -0.005450721153846153,
+        0.024440104166666664
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 97,
+      "treatment": "AKR",
+      "worse_records": 7
+    },
+    {
+      "all_records": 211,
+      "better_records": 7,
+      "control": "AR",
+      "difference": -0.00284168956043956,
+      "field": "raw_gap",
+      "identifiable_groups": 104,
+      "identifiable_records": 106,
+      "paired_group_95_interval": [
+        -0.032597370077838826,
+        0.02362158024267399
+      ],
+      "scope": "FIXED_OOF_COFFEE_BOOTSTRAP_DEVELOPMENT_ONLY",
+      "tied_records": 91,
+      "treatment": "AKR",
+      "worse_records": 8
+    }
+  ],
+  "status": "ACTUAL_GROUPED_DEVELOPMENT_COMPARISONS",
+  "trigger_risk": {
+    "ALWAYS_ASK": {
+      "all_coffee_groups": 187,
+      "all_records": 211,
+      "ask_records": 211,
+      "dynamic_policy_observed": false,
+      "identifiable_records": 106,
+      "key_detected_records": 5,
+      "key_groups": 5,
+      "key_records": 5,
+      "missed_gain_quantiles_50_90_95": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "missed_positive_gain_max": 0.0,
+      "missed_positive_gain_sum_record_units": 0.0,
+      "record_regret_sum": 0.0,
+      "skip_records": 0,
+      "sum_units": "Record loss units, not additional independent coffee trials; paired group-macro primary reported separately",
+      "unknown_gain_records": 105,
+      "unnecessary_ask_options": 374,
+      "unnecessary_ask_records_practical_threshold": 101
+    },
+    "ALWAYS_SKIP": {
+      "all_coffee_groups": 187,
+      "all_records": 211,
+      "ask_records": 0,
+      "dynamic_policy_observed": false,
+      "identifiable_records": 106,
+      "key_detected_records": 0,
+      "key_groups": 5,
+      "key_records": 5,
+      "missed_gain_quantiles_50_90_95": [
+        0.1071428571428572,
+        0.35833333333333334,
+        0.36666666666666664
+      ],
+      "missed_positive_gain_max": 0.375,
+      "missed_positive_gain_sum_record_units": 0.9217261904761906,
+      "record_regret_sum": 0.9217261904761906,
+      "skip_records": 211,
+      "sum_units": "Record loss units, not additional independent coffee trials; paired group-macro primary reported separately",
+      "unknown_gain_records": 105,
+      "unnecessary_ask_options": 0,
+      "unnecessary_ask_records_practical_threshold": 0
+    },
+    "KEY_CASE": {
+      "all_coffee_groups": 187,
+      "all_records": 211,
+      "ask_records": 63,
+      "dynamic_policy_observed": true,
+      "identifiable_records": 106,
+      "key_detected_records": 0,
+      "key_groups": 5,
+      "key_records": 5,
+      "missed_gain_quantiles_50_90_95": [
+        0.1071428571428572,
+        0.35833333333333334,
+        0.36666666666666664
+      ],
+      "missed_positive_gain_max": 0.375,
+      "missed_positive_gain_sum_record_units": 0.9217261904761906,
+      "record_regret_sum": 0.9217261904761906,
+      "skip_records": 148,
+      "sum_units": "Record loss units, not additional independent coffee trials; paired group-macro primary reported separately",
+      "unknown_gain_records": 105,
+      "unnecessary_ask_options": 120,
+      "unnecessary_ask_records_practical_threshold": 30
+    },
+    "R3_OLD": {
+      "all_coffee_groups": 187,
+      "all_records": 211,
+      "ask_records": 1,
+      "dynamic_policy_observed": true,
+      "identifiable_records": 106,
+      "key_detected_records": 0,
+      "key_groups": 5,
+      "key_records": 5,
+      "missed_gain_quantiles_50_90_95": [
+        0.1071428571428572,
+        0.35833333333333334,
+        0.36666666666666664
+      ],
+      "missed_positive_gain_max": 0.375,
+      "missed_positive_gain_sum_record_units": 0.9217261904761906,
+      "record_regret_sum": 0.9217261904761906,
+      "skip_records": 210,
+      "sum_units": "Record loss units, not additional independent coffee trials; paired group-macro primary reported separately",
+      "unknown_gain_records": 105,
+      "unnecessary_ask_options": 4,
+      "unnecessary_ask_records_practical_threshold": 1
+    }
+  }
 }
