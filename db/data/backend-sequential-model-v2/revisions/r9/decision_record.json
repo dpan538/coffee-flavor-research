@@ -1,0 +1,56 @@
+{
+  "version": "m2-r9.output-policy-decision-record.v1",
+  "recorded_utc": "2026-09-07T06:44:12Z",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
+  "decision_scope": "Research output responsibility and formative-study contract only; no default promotion and no training resumption.",
+  "roles": {
+    "PROFILE_DIRECTION": "A supported whole-profile direction such as fruit, floral or sweet; retained separately when the policy calls for it and never expanded into leaves.",
+    "NAMED_DESCRIPTOR": "A recognizable named flavor, including registered evidence-qualified middle categories and specific words.",
+    "OTHER_NATIVE_MEASUREMENT": "A source-native measure such as body, acidity or intensity that keeps its original meaning and is not admitted to flavor output just because it is scored."
+  },
+  "policy_differences": {
+    "OUT_MIXED": "Exact R8 rank-sliced mixed main<=5 and secondary<=3; profile is not separated.",
+    "OUT_SPECIFIC_FIRST": "Named descriptors come first across the 5+3 pool; original order is preserved within each role and profile directions fill only a real named shortage.",
+    "OUT_SEPARATED": "Only named descriptors enter main/secondary and comparison; return short on shortage. Up to three already-supported directions appear in overall_profile outside the 5+3 budget."
+  },
+  "old_data_proxy_result": {
+    "status": "R8_MIXED_HISTORY_AVAILABLE_R9_TWO_EXPERIMENTAL_POLICIES_NOT_EVALUATED_MISSING_PRIVATE_CASE_ROWS",
+    "summary": "C01 historical mixed actual main gap 0.69178, recall 0.26646, NDCG 0.24441; actual ordered-eight pool gap 0.54577, recall 0.39080, NDCG 0.29389 on 77 repeatedly viewed development coffee groups.",
+    "scope_limit": "Not independent confirmation; no user preference or effect inference."
+  },
+  "real_feedback": {
+    "status": "NOT_EVALUATED",
+    "participants": 0,
+    "coffee_tasks": 0,
+    "reason": "No filled owner-controlled participant file was available. Synthetic ratings were not created."
+  },
+  "recommendation": {
+    "policy_id": "OUT_SEPARATED",
+    "status": "PRODUCT_STRUCTURE_RECOMMENDATION_NOT_OWNER_APPROVAL",
+    "rationale": [
+      "Main and secondary have one clear job: offer evidence-supported named flavors.",
+      "Overall direction remains available without consuming or duplicating the specific 5+3 comparison budget.",
+      "Returning short avoids invented child descriptors when specific evidence is insufficient.",
+      "The fixed profile field supports a low-burden same-main with/without-profile formative check."
+    ],
+    "specificity_guard": "Do not state a descriptor more specifically than the existing candidate evidence supports."
+  },
+  "unvalidated": [
+    "Actual R9 case-level metric and difference statistics until the hash-matched R8 private returns are supplied.",
+    "Coffee-enthusiast preference, usefulness, burden and misleading over-specificity.",
+    "Any causal benefit from overall_profile.",
+    "Independent confirmation or metric-to-user-rating calibration."
+  ],
+  "owner_decision": {
+    "status": "PENDING_OWNER_DECISION",
+    "only_product_decision_to_approve": "Approve OUT_SEPARATED as the output-role contract: named descriptors in main/secondary, supported directions in overall_profile, with B2/default unchanged until separately authorized.",
+    "allowed_values": [
+      "PENDING_OWNER_DECISION",
+      "OWNER_APPROVED",
+      "OWNER_REJECTED"
+    ],
+    "approval_rule": "Only the real responsible owner may change status to OWNER_APPROVED. Approval does not resume training or promote the research adapter automatically."
+  },
+  "training_after_R9": "PAUSED_REQUIRES_SEPARATE_FUTURE_OWNER_AUTHORIZATION"
+}

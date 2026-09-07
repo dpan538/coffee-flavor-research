@@ -1,0 +1,113 @@
+{
+  "version": "m2-r9.zero-fit-policy-comparison.v1",
+  "recorded_utc": "2026-09-07T06:44:12Z",
+  "status": "ACTUAL_COMPARISON_NOT_RUN_MISSING_SEALED_PRIVATE_INPUT",
+  "checkpoint": "FIRST_R9_THREE_POLICY_ACTUAL_OUTPUTS_AND_DIFFERENCES",
+  "checkpoint_status": "INPUT_REQUIRED",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
+  "fit_count": 0,
+  "question_reselection_count": 0,
+  "default_finalizer_changed": false,
+  "primary_research_generator": "C01",
+  "historical_generator": "C00",
+  "input_audit": {
+    "required_private_artifact": "backend-sequential-model-v2/revisions/r8/verified/actual_returns.private.json",
+    "expected_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+    "location_recorded_by_R8": "Persistent owner-controlled storage, intentionally outside public Git",
+    "local_search_result": "NOT_FOUND_IN_CURRENT_WORKSPACE_OR_DISCOVERABLE_OWNER_PATH",
+    "handling": "No synthetic coffee outputs, random metrics, reconstructed identities or mixed-output backfill substituted.",
+    "executable_command": "PYTHONPATH=db/scripts /private/tmp/coffee-backend-model-venv/bin/python db/scripts/compare_output_policies_r9.py --r8-actual-returns /owner/path/backend-sequential-model-v2/revisions/r8/verified/actual_returns.private.json"
+  },
+  "historical_R8_actual_mixed_proxy": {
+    "scope": "Repeatedly viewed development outer-held states; historical proxy only, not independent user evidence.",
+    "records_per_generator": 79,
+    "coffee_groups_per_generator": 77,
+    "C00": {
+      "actual_main": {
+        "k": 5,
+        "raw_gap": 0.7138157894736842,
+        "recall": 0.24891395154553048,
+        "ndcg_actual_positions": 0.25415259259406275,
+        "mean_sensory_id_count": 2.5064935064935066,
+        "mean_non_sensory_id_count": 2.4935064935064934
+      },
+      "actual_main_secondary_and_comparison_pool": {
+        "k": 8,
+        "raw_gap": 0.580339738234475,
+        "recall": 0.35090504037872455,
+        "ndcg_actual_positions": 0.29759921634825853,
+        "mean_sensory_id_count": 4.214285714285714,
+        "mean_non_sensory_id_count": 3.7857142857142856
+      }
+    },
+    "C01": {
+      "actual_main": {
+        "k": 5,
+        "raw_gap": 0.691781537176274,
+        "recall": 0.2664578111946533,
+        "ndcg_actual_positions": 0.24441039035594903,
+        "mean_sensory_id_count": 2.7142857142857144,
+        "mean_non_sensory_id_count": 2.2857142857142856
+      },
+      "actual_main_secondary_and_comparison_pool": {
+        "k": 8,
+        "raw_gap": 0.5457741576162628,
+        "recall": 0.39079643553327764,
+        "ndcg_actual_positions": 0.2938893584687231,
+        "mean_sensory_id_count": 4.318181818181818,
+        "mean_non_sensory_id_count": 3.6818181818181817
+      }
+    },
+    "source_public_artifact": "db/data/backend-sequential-model-v2/revisions/r8/output_alignment_results.json",
+    "source_private_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+    "note": "R8 U and P were the same ordered eight in every case and are one result with two roles. Historical counts distinguish sensory.* from other IDs; they cannot be relabeled as the new explicit R9 roles without case rows."
+  },
+  "R9_actual_policy_results": {
+    "OUT_MIXED": "HISTORICAL_R8_BASELINE_AVAILABLE_ABOVE; EXACT_REPLAY_PENDING_PRIVATE_ROWS",
+    "OUT_SPECIFIC_FIRST": "NOT_EVALUATED_PENDING_PRIVATE_ROWS",
+    "OUT_SEPARATED": "NOT_EVALUATED_PENDING_PRIVATE_ROWS"
+  },
+  "actual_output_difference_statistics": {
+    "main_identical": "NOT_EVALUATED",
+    "full_return_identical": "NOT_EVALUATED",
+    "only_profile_different": "NOT_EVALUATED",
+    "named_descriptor_shortage_only_difference": "NOT_EVALUATED",
+    "pairwise_EQUIVALENT_ON_CASE": "NOT_EVALUATED"
+  },
+  "mechanism_diagnostics": {
+    "duplicate_policy_output_records": "NOT_EVALUATED_PENDING_PRIVATE_ROWS",
+    "invented_subcategory_records": 0,
+    "T_used_by_policy_functions": false,
+    "synthetic_cases_in_coffee_effect_statistics": 0,
+    "over_specificity_user_harm": "NOT_EVALUATED_NO_REAL_USER_JUDGMENT",
+    "note": "Executable analysis reports named-without-explicit-selection and shared-dimension pairs only as review flags, never as proven errors."
+  },
+  "real_user_feedback": "NOT_EVALUATED",
+  "real_timing": "NOT_EVALUATED",
+  "statistical_policy": {
+    "primary_outputs": [
+      "participant_level_results",
+      "coffee_level_distributions",
+      "actually_different_output_counts",
+      "descriptive_differences",
+      "comments_and_counterexamples"
+    ],
+    "no_independent_row_ANOVA": true,
+    "participant_and_coffee_dependencies_retained": true,
+    "measures_kept_separate": [
+      "main_fit",
+      "specificity",
+      "new_expression_help",
+      "information_burden",
+      "profile_effect"
+    ],
+    "composite_score": "NOT_DEFINED_NO_USER_WEIGHTS",
+    "calibration_or_weight_fit": "NOT_RUN"
+  },
+  "interpretation_limits": [
+    "The historical R8 table cannot determine specific-first or separated output metrics without the sealed case rows.",
+    "A better fine-reference score would not by itself prove better user effect.",
+    "No real participant ratings are present and no significance or causal claim is made."
+  ]
+}

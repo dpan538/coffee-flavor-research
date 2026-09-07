@@ -1,5 +1,22 @@
 # AGENTS.md
 
+## [M2 R9 OVERRIDE — TRAINING PAUSED]
+
+Effective 2026-09-07. This override has priority for R9 and does not erase the
+historical training authorizations below. Do not fit scoring or question-selection
+models, C01 triggers, relation networks, clusters, embeddings, fine-tunes, learned
+metric weights, or probability calibration. Do not run the attached synthetic
+GradientBoostingClassifier, regression calibration, or simulated-preference fitting.
+Synthetic data is permitted only for software-boundary tests and cannot support
+product-effect conclusions.
+
+Permitted R9 work is limited to loading frozen models, inference, deterministic
+output selection, recomputing metrics on actual returns, preparing real research
+data, and necessary software unit tests. B2 remains the default,
+FOUNDATION_CHECK remains off, and frozen C01 remains a research generator rather
+than the default. Approval of an output policy does not resume training; only a
+separate owner authorization in a later round may do so.
+
 ## [CODEX EXECUTION SCOPE — BACKEND MODEL ONLY]
 
 Effective 2026-09-05. This section governs active execution and supersedes older

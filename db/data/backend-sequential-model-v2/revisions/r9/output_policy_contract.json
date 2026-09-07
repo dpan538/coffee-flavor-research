@@ -1,0 +1,661 @@
+{
+  "version": "m2-r9.output-policy-contract.v1",
+  "registered_utc": "2026-09-07T06:44:12Z",
+  "branch": "research/coffee-sensory-data-ml-readiness",
+  "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
+  "scope": "RESEARCH_OUTPUT_ADAPTER_ONLY_BACKEND_NO_DEFAULT_CHANGE",
+  "training_pause": {
+    "priority": "R9_OVERRIDE",
+    "fit_count": 0,
+    "remains_paused_after_round": true,
+    "prohibited": [
+      "scoring_model_fit",
+      "question_selection_model_fit",
+      "C01_trigger_fit",
+      "relation_network_fit",
+      "cluster_fit",
+      "embedding_fit",
+      "fine_tuning",
+      "metric_weight_learning",
+      "probability_calibration_fit",
+      "synthetic_GradientBoostingClassifier",
+      "regression_calibration",
+      "simulated_preference_fit"
+    ],
+    "allowed": [
+      "load_frozen_model",
+      "inference",
+      "deterministic_output_selection",
+      "actual_return_metric_recomputation",
+      "real_research_data_preparation",
+      "necessary_software_unit_tests"
+    ],
+    "resume_authority": "SEPARATE_FUTURE_OWNER_AUTHORIZATION_REQUIRED"
+  },
+  "unchanged": {
+    "default": "B2_UNCHANGED",
+    "foundation_check": "OFF",
+    "C01": "FROZEN_PRIMARY_RESEARCH_GENERATOR_NOT_DEFAULT",
+    "C0": "REQUIRED_EXACTLY_ONE_EXISTING_EIGHT_FAMILY_ID",
+    "C1": "REQUIRED_EXACTLY_ONE_EXISTING_SEVEN_LEVEL_ID_NO_UNKNOWN_UNSURE_NULL_DEFAULT",
+    "question_answer_score_target_candidate_state": "UNCHANGED",
+    "finalizer": "ORIGINAL_R4_DEFAULT_UNCHANGED",
+    "final_comparison": "AT_MOST_ONE_EXISTING_3_TO_8_ACTUALLY_EXPOSED_CANDIDATES"
+  },
+  "role_definitions": {
+    "PROFILE_DIRECTION": "Supported overall direction such as fruit, floral or sweet. It may appear in overall_profile under the fixed rule but is not expanded into leaf descriptors.",
+    "NAMED_DESCRIPTOR": "Recognizable named flavor. Existing evidence-qualified middle categories and specific descriptors are permitted.",
+    "OTHER_NATIVE_MEASUREMENT": "A source-native field retains its measurement meaning and is not a flavor output merely because it has a score."
+  },
+  "semantic_rules": [
+    "Roles are supplied by this explicit registry; policy functions do not infer all semantics from an ID prefix.",
+    "Support for a direction never confirms every child descriptor.",
+    "A body or other source-native comparison does not become an aroma label.",
+    "A legal explicit user expression is not removed because archived T omits it; output-policy functions cannot receive T.",
+    "Current legality, evidence rows, source references, scores and within-role ranks are preserved.",
+    "No learned threshold, parent partial credit, temporary broad-word weight or composite metric is introduced."
+  ],
+  "concept_role_registry": {
+    "attribute.fruity": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "attribute.floral": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "floral"
+      ]
+    },
+    "attribute.sweet": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "sweet"
+      ]
+    },
+    "attribute.nutty_cocoa": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "attribute.spices": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "spices"
+      ]
+    },
+    "attribute.roasted": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "roasted"
+      ]
+    },
+    "attribute.green_vegetative": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "attribute.sour_fermented": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "sour_fermented"
+      ]
+    },
+    "attribute.taste": {
+      "role": "PROFILE_DIRECTION",
+      "support_dimension_ids": [
+        "taste"
+      ]
+    },
+    "sensory.apple": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.orange": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.lemon": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.cherry": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.grape": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.strawberry": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.bergamot": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.raisin": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.grapefruit": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.peach": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.raspberry": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.prune": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.blackcurrant": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.lime": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.pineapple": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.pear": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.blueberry": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.mango": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.blackberry": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.plum": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.banana": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.pomegranate": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "sensory.jasmine": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "floral"
+      ]
+    },
+    "sensory.rose": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "floral"
+      ]
+    },
+    "sensory.orange_blossom": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "floral"
+      ]
+    },
+    "sensory.chamomile": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "floral"
+      ]
+    },
+    "sensory.honey": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sweet"
+      ]
+    },
+    "sensory.caramel": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sweet"
+      ]
+    },
+    "sensory.brown_sugar": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sweet"
+      ]
+    },
+    "sensory.vanilla": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sweet"
+      ]
+    },
+    "sensory.molasses": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sweet"
+      ]
+    },
+    "sensory.cocoa": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "sensory.almond": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "sensory.hazelnut": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "sensory.walnut": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "sensory.peanut": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "sensory.cardamom": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "spices"
+      ]
+    },
+    "sensory.black_pepper": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "spices"
+      ]
+    },
+    "sensory.cinnamon": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "spices"
+      ]
+    },
+    "sensory.nutmeg": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "spices"
+      ]
+    },
+    "sensory.clove": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "spices"
+      ]
+    },
+    "sensory.tobacco": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "roasted"
+      ]
+    },
+    "sensory.malt": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "roasted"
+      ]
+    },
+    "sensory.smoky": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "roasted"
+      ]
+    },
+    "sensory.black_tea": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "sensory.green_tea": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "sensory.hay": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "sensory.woody": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "sensory.cedar": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "sensory.earthy": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ]
+    },
+    "sensory.alcoholic": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sour_fermented"
+      ]
+    },
+    "sensory.wine_like_character": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sour_fermented"
+      ]
+    },
+    "sensory.fermented_character": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sour_fermented"
+      ]
+    },
+    "sensory.bitter": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "taste"
+      ]
+    },
+    "sensory.lemongrass": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative",
+        "fruity"
+      ]
+    },
+    "sensory.dark_chocolate": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa",
+        "roasted"
+      ]
+    },
+    "broad.citrus": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ]
+    },
+    "broad.chocolate": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "broad.nutty": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "nutty_cocoa"
+      ]
+    },
+    "native.olfactory_intensity": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.flowers_and_fresh_fruit": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.vegetable": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.dried_fruits_and_nuts": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.roasted_composite": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.spicy": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.empyreumatic": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.biochemical": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.acidity_intensity": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "taste.bitterness": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "mouthfeel.body": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "mouthfeel.astringency": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.Flavour": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    },
+    "native.Bitterness": {
+      "role": "OTHER_NATIVE_MEASUREMENT",
+      "support_dimension_ids": []
+    }
+  },
+  "input_contract": {
+    "source": "ONE_ALREADY_FINALIZED_FROZEN_ENDPOINT_STATE",
+    "required": [
+      "state.candidate_scores",
+      "state.k1.dimensions",
+      "main",
+      "secondary",
+      "stage",
+      "exposure"
+    ],
+    "common_across_policies": [
+      "candidate_ids",
+      "scores",
+      "legality",
+      "source_and_evidence_fields",
+      "concept_role_registry"
+    ],
+    "forbidden": [
+      "T",
+      "full_T",
+      "hidden_T",
+      "participant_rating",
+      "preference_label"
+    ],
+    "unregistered_candidate_role": "ERROR"
+  },
+  "policies": {
+    "OUT_MIXED": {
+      "responsibility": "Exact R8 mixed main/secondary/exposure behavior.",
+      "main": "Original eligible rank positions 1..5.",
+      "secondary": "Original eligible rank positions 6..8.",
+      "comparison_pool": "Exactly original exposure candidate_ids; must equal ordered main+secondary.",
+      "overall_profile": "Empty."
+    },
+    "OUT_SPECIFIC_FIRST": {
+      "responsibility": "Prefer named flavor output while keeping original within-role rank.",
+      "main": "First five named descriptors, then profile directions only if fewer named candidates exist.",
+      "secondary": "Next three from the same named-first order; profile directions only fill genuine named shortage.",
+      "comparison_pool": "Ordered main+secondary, at most eight; eligibility follows existing 3..8 rule.",
+      "overall_profile": "Empty."
+    },
+    "OUT_SEPARATED": {
+      "responsibility": "Keep named flavors in main/secondary and supported overall direction in a separate field.",
+      "main": "Up to first five named descriptors in original named rank.",
+      "secondary": "Up to next three named descriptors; return short rather than add a direction.",
+      "comparison_pool": "Ordered main+secondary only; profile never counts toward the 3..8 pool.",
+      "overall_profile": "Up to three currently ranked PROFILE_DIRECTION rows whose registered support dimension is supported in the frozen endpoint; original direction rank; no LLM or child inference."
+    }
+  },
+  "consistency_invariants": [
+    "main<=5, secondary<=3, ordered main+secondary<=8",
+    "IDs are unique across main and secondary",
+    "exposure candidate_ids exactly equal ordered main+secondary",
+    "overall_profile has at most3 unique IDs and never overlaps comparison pool",
+    "fewer than3 comparison candidates records existing-contract non-executable status without rescue flow",
+    "same outputs are labeled EQUIVALENT_ON_CASE",
+    "policy functions are research adapters and do not replace the default finalizer"
+  ],
+  "comparison_plan": {
+    "primary_generator": "C01",
+    "historical_generator": "C00",
+    "cohort": "R8 sealed repeatedly viewed development outer-held states and each original outer expert",
+    "order": "Create actual policy outputs first; score actual positions afterward.",
+    "metrics": [
+      "actual_main_gap_recall_ndcg",
+      "actual_main_secondary_or_comparison_pool_gap_recall_ndcg",
+      "named_and_profile_counts",
+      "explicit_expression_retention",
+      "output_insufficiency",
+      "duplicate_and_specificity_mechanism_flags"
+    ],
+    "synthetic_scope": "SOFTWARE_BOUNDARY_TESTS_ONLY_EXCLUDED_FROM_COFFEE_EFFECT_STATISTICS",
+    "interpretation": "Fine-reference improvement alone does not prove better user effect."
+  },
+  "user_research_boundary": {
+    "target": "COFFEE_ENTHUSIASTS",
+    "formative_scale": "9_TO_12_TOTAL_THREE_POLICY_GROUPS_OF_3_TO_4_EACH_1_TO_2_REAL_COFFEES_PER_PARTICIPANT_NOT_POWERED_CONFIRMATION",
+    "assignment": "Each participant experiences one fixed main policy. Do not run the same cup through all three policies for that participant.",
+    "coffee_control": "Use coffees and preparation conditions in common where practical; balance coffee occurrence and tasting order across groups.",
+    "sequence": [
+      "Record raw impression and actual C0/C1 plus question answers before model words are shown.",
+      "Expose the actual assigned main/secondary return and collect four separated judgments.",
+      "After main judgments, compare the same main content once with versus without the same fixed profile; do not rerun questions or rate every main word again."
+    ],
+    "cup_question_count": 5,
+    "response_options": {
+      "main_fit_rating_1_to_4": [
+        "1_NOT_FIT",
+        "2_SLIGHTLY_FIT",
+        "3_MOSTLY_FIT",
+        "4_STRONGLY_FIT"
+      ],
+      "specificity_choice": [
+        "TOO_BROAD",
+        "ABOUT_RIGHT",
+        "TOO_SPECIFIC",
+        "MIXED"
+      ],
+      "new_expression_help_choice": [
+        "NONE",
+        "A_LITTLE",
+        "SOME",
+        "A_LOT"
+      ],
+      "information_burden_choice": [
+        "TOO_LITTLE",
+        "ABOUT_RIGHT",
+        "SOMEWHAT_TOO_MUCH",
+        "MUCH_TOO_MUCH"
+      ],
+      "profile_effect_choice": [
+        "SUPPLEMENT",
+        "REPEAT",
+        "DISTRACT",
+        "NO_HELP"
+      ],
+      "profile_pair_order": [
+        "WITH_PROFILE_FIRST",
+        "WITHOUT_PROFILE_FIRST"
+      ],
+      "previous_study_exposure": [
+        "NONE",
+        "R8_OR_EARLIER_OUTPUT",
+        "PRIOR_R9_PARTICIPANT",
+        "OTHER_RECORDED_PRIVATE"
+      ]
+    },
+    "data_shape": "One row per participant-session-coffee cup task; participant_uid is globally unique, coffee_id and profile_pair_id are retained, and repeated cups are never treated as independent participants.",
+    "timing": "Record actual start/end/duration when measured; do not fabricate missing time.",
+    "post_exposure_limit": "Agreement after seeing a model word is fit feedback, not model-independent pre-exposure sensory truth.",
+    "analysis": "Report participant-level results, coffee distributions, actually different output counts, descriptive differences, comments and counterexamples. Keep fit, specificity, expression help and burden separate; no ordinary independent-row ANOVA or composite score.",
+    "recruitment": "OWNER_ORGANIZED_CODEX_DOES_NOT_RECRUIT_EMAIL_OR_SCHEDULE",
+    "interface": "NONE_CSV_JSON_OR_SHORT_TEXT_ONLY",
+    "privacy": "RAW_IDENTITY_AND_FILLED_FEEDBACK_OWNER_CONTROLLED_PRIVATE_STORAGE; checked-in TSV is blank only"
+  }
+}
