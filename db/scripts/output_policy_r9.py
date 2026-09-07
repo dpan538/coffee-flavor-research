@@ -20,7 +20,23 @@ NAMED_DESCRIPTOR = "NAMED_DESCRIPTOR"
 OTHER_NATIVE_MEASUREMENT = "OTHER_NATIVE_MEASUREMENT"
 ROLES = frozenset({PROFILE_DIRECTION, NAMED_DESCRIPTOR, OTHER_NATIVE_MEASUREMENT})
 FORBIDDEN_EVALUATION_KEYS = frozenset(
-    {"T", "full_T", "hidden_T", "participant_rating", "preference_label"}
+    {
+        "T",
+        "full_T",
+        "hidden_T",
+        "participant_rating",
+        "preference_label",
+        "participant_preference",
+        "participant_satisfaction",
+        "perceived_fit_rating",
+        "main_fit_rating_1_to_4",
+        "specificity_choice",
+        "new_expression_help_choice",
+        "information_burden_choice",
+        "profile_effect_choice",
+        "post_output_acceptance",
+        "profile_preference",
+    }
 )
 
 

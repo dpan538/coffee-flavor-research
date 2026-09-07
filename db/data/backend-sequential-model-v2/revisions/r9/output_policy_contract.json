@@ -32,6 +32,37 @@
     ],
     "resume_authority": "SEPARATE_FUTURE_OWNER_AUTHORIZATION_REQUIRED"
   },
+  "semantic_model_governance": {
+    "status": "OWNER_REQUIRED_CONSTRAINT",
+    "system_type": "EVIDENCE_AND_ONTOLOGY_CONSTRAINED_SEMANTIC_REASONER_NOT_FEEDBACK_RECOMMENDER",
+    "authoritative_inputs": [
+      "provenance_backed_descriptor_identifiers",
+      "explicit_concept_roles",
+      "registered_dimension_membership",
+      "explicit_descriptor_relations_when_available",
+      "question_answer_evidence_state",
+      "hard_output_contracts"
+    ],
+    "prohibited_model_or_architecture_inputs": [
+      "participant_preference",
+      "participant_satisfaction",
+      "perceived_fit_rating",
+      "expression_help_rating",
+      "information_burden_rating",
+      "post_output_acceptance",
+      "profile_preference"
+    ],
+    "prohibited_uses": [
+      "training_label",
+      "loss_term",
+      "probability_calibration_target",
+      "metric_weight_selection",
+      "threshold_selection",
+      "ontology_or_identifier_change",
+      "architecture_selection_or_validation"
+    ],
+    "optional_human_observation_scope": "PRODUCT_COMPREHENSION_AND_WORDING_USABILITY_ONLY_NOT_SENSORY_TRUTH_OR_MODEL_VALIDATION"
+  },
   "unchanged": {
     "default": "B2_UNCHANGED",
     "foundation_check": "OFF",
@@ -53,7 +84,10 @@
     "A body or other source-native comparison does not become an aroma label.",
     "A legal explicit user expression is not removed because archived T omits it; output-policy functions cannot receive T.",
     "Current legality, evidence rows, source references, scores and within-role ranks are preserved.",
-    "No learned threshold, parent partial credit, temporary broad-word weight or composite metric is introduced."
+    "No learned threshold, parent partial credit, temporary broad-word weight or composite metric is introduced.",
+    "Shared support_dimension_ids establish direction compatibility only and never prove a descriptor-level parent, child or sibling entailment.",
+    "A non-direct descriptor requires an explicit registered descriptor relation and provenance before it can be treated as a strict semantic assertion.",
+    "External subjective evaluation cannot train, calibrate, weight, select or validate the model architecture."
   ],
   "concept_role_registry": {
     "attribute.fruity": {

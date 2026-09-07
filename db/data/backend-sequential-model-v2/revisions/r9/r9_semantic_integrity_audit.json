@@ -1,0 +1,231 @@
+{
+  "c01_findings": {
+    "decision": "OUT_SEPARATED passes structural role and identifier integrity, but current frozen outputs are not ready to be treated as strict semantic assertions without direct evidence, registered descriptor relations, or abstention.",
+    "evidence_status_counts": {
+      "DIRECT_DESCRIPTOR_TRACE": 152,
+      "NO_CURRENT_ANSWER_SEMANTIC_TRACE": 156,
+      "SUPPORTED_DIMENSION_COMPATIBILITY_ONLY": 324
+    },
+    "redundancy": {
+      "comparison_pool": {
+        "identical_dimension_signature_pair_rate": 0.1841372912801484,
+        "mean_pairwise_dimension_jaccard": 0.23214285714285715,
+        "named_descriptors_per_active_dimension": 1.8225108225108226,
+        "ordered_repeated_dimension_row_rate": 0.6354359925788498,
+        "repeated_dimension_membership_rate": 0.5003607503607503
+      },
+      "main": {
+        "identical_dimension_signature_pair_rate": 0.1448051948051948,
+        "mean_pairwise_dimension_jaccard": 0.19253246753246753,
+        "named_descriptors_per_active_dimension": 1.4361471861471862,
+        "ordered_repeated_dimension_row_rate": 0.5,
+        "repeated_dimension_membership_rate": 0.36038961038961037
+      }
+    },
+    "specificity": "The contract contains 0 registered descriptor-level relation edges. Non-direct broad/sibling-to-specific cases are review requirements, not computable violations or passes.",
+    "specificity_status_counts": {
+      "DIRECTION_COMPATIBLE_BUT_SPECIFICITY_UNLICENSED": 12,
+      "DIRECT_DESCRIPTOR_NO_SPECIFICITY_ESCALATION": 152,
+      "MIDDLE_FROM_DIRECTION_REQUIRES_RELATION_EDGE": 147,
+      "NO_CURRENT_TRACE_CANNOT_LICENSE_SPECIFICITY": 156,
+      "SPECIFIC_FROM_BROADER_OR_SIBLING_REQUIRES_RELATION_EDGE": 165
+    },
+    "structure": "Identifier, role and frozen ontology-legality checks pass in 79/79 C01 records; native-measurement leakage is zero.",
+    "supported_dimension_coverage": {
+      "complete_records": 70,
+      "covered_dimension_occurrences": 204,
+      "incomplete_records": 9,
+      "micro_coverage": 0.9577464788732394,
+      "missing_dimension_occurrences": 9,
+      "supported_dimension_occurrences": 213
+    },
+    "traceability": "Only 152/632 named output occurrences have a direct descriptor trace. Direction compatibility or an unobserved model candidate does not by itself license a strict descriptor assertion."
+  },
+  "fit_count": 0,
+  "governance": {
+    "authoritative_basis": [
+      "provenance-backed descriptor identifiers",
+      "explicit concept roles",
+      "registered dimension membership",
+      "registered descriptor relations when present",
+      "question-answer evidence state",
+      "hard output contracts"
+    ],
+    "optional_human_observation_scope": "Product comprehension and wording usability only; never sensory truth, model supervision or architecture validation.",
+    "subjective_participant_evaluation_as_architecture_selector": "PROHIBITED",
+    "subjective_participant_evaluation_as_metric_weight_or_threshold_source": "PROHIBITED",
+    "subjective_participant_evaluation_as_training_input": "PROHIBITED"
+  },
+  "guards": {
+    "T_used": false,
+    "fit_count": 0,
+    "metric_weight_created": false,
+    "output_or_default_changed": false,
+    "participant_rating_used": false,
+    "preference_or_satisfaction_used": false,
+    "threshold_selected": false
+  },
+  "interpretation_limits": [
+    "Direction compatibility is not descriptor entailment.",
+    "A review-required specificity path is not a confirmed semantic error.",
+    "Frozen model feature provenance is not a substitute for an explicit runtime semantic trace.",
+    "Registered-dimension redundancy is coarser than descriptor synonymy."
+  ],
+  "private_detail": {
+    "bytes": 1750294,
+    "sha256": "f4df73b00f5c45032d15cbcb62a330a86d793d7d852a1e6d243b56bd7654211f",
+    "status": "OWNER_CONTROLLED_STORAGE"
+  },
+  "purpose": "Evaluate internal semantic, identifier, role, evidence-chain, specificity, supported-dimension and redundancy consistency without external subjective evaluation.",
+  "registry_audit": {
+    "concept_count": 82,
+    "descriptor_relation_edge_count": 0,
+    "descriptor_relation_ids": [],
+    "descriptor_specificity_decidable": false,
+    "frozen_parent_dimension_parity_mismatches": {},
+    "identifier_and_dimension_registry_integrity": "PASS",
+    "interpretation": "PARENTS currently records dimension membership, not broad-to-child or sibling entailment. Shared dimension membership cannot license a more specific descriptor.",
+    "missing_dimension_by_role": {
+      "NAMED_DESCRIPTOR": [],
+      "PROFILE_DIRECTION": []
+    },
+    "native_measurements_with_flavor_dimensions": [],
+    "registered_dimension_count": 9,
+    "registered_dimensions": [
+      "floral",
+      "fruity",
+      "green_vegetative",
+      "nutty_cocoa",
+      "roasted",
+      "sour_fermented",
+      "spices",
+      "sweet",
+      "taste"
+    ],
+    "role_counts": {
+      "NAMED_DESCRIPTOR": 59,
+      "OTHER_NATIVE_MEASUREMENT": 14,
+      "PROFILE_DIRECTION": 9
+    },
+    "unknown_dimension_rows": {}
+  },
+  "source_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+  "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
+  "summary": {
+    "C00": {
+      "T_used": false,
+      "coffee_groups": 77,
+      "descriptor_evidence_status_counts": {
+        "DIRECT_DESCRIPTOR_TRACE": 154,
+        "NO_CURRENT_ANSWER_SEMANTIC_TRACE": 157,
+        "SUPPORTED_DIMENSION_COMPATIBILITY_ONLY": 321
+      },
+      "descriptor_occurrences": 632,
+      "identifier_integrity_pass_records": 79,
+      "ontology_legal_rows": 834,
+      "ontology_legality_pass_records": 79,
+      "ontology_rows": 834,
+      "other_native_measurement_leakage_occurrences": 0,
+      "profile_occurrences": 202,
+      "records": 79,
+      "redundancy_group_macro": {
+        "comparison_pool": {
+          "identical_dimension_signature_pair_rate": 0.18622448979591835,
+          "mean_pairwise_dimension_jaccard": 0.23318645640074212,
+          "named_descriptors_per_active_dimension": 1.8259740259740258,
+          "ordered_repeated_dimension_row_rate": 0.6410018552875696,
+          "repeated_dimension_membership_rate": 0.501984126984127
+        },
+        "main": {
+          "identical_dimension_signature_pair_rate": 0.16103896103896104,
+          "mean_pairwise_dimension_jaccard": 0.2077922077922078,
+          "named_descriptors_per_active_dimension": 1.4393939393939392,
+          "ordered_repeated_dimension_row_rate": 0.5113636363636364,
+          "repeated_dimension_membership_rate": 0.3664502164502164
+        }
+      },
+      "role_purity_pass_records": 79,
+      "semantic_acceptance": "STRUCTURE_PASS_STRICT_DESCRIPTOR_ASSERTION_TRACE_INCOMPLETE",
+      "specificity_confirmed_violation_count": null,
+      "specificity_decision": "NOT_FULLY_DECIDABLE_NO_REGISTERED_DESCRIPTOR_RELATION_EDGES",
+      "specificity_status_counts": {
+        "DIRECTION_COMPATIBLE_BUT_SPECIFICITY_UNLICENSED": 15,
+        "DIRECT_DESCRIPTOR_NO_SPECIFICITY_ESCALATION": 154,
+        "MIDDLE_FROM_DIRECTION_REQUIRES_RELATION_EDGE": 148,
+        "NO_CURRENT_TRACE_CANNOT_LICENSE_SPECIFICITY": 157,
+        "SPECIFIC_FROM_BROADER_OR_SIBLING_REQUIRES_RELATION_EDGE": 158
+      },
+      "strict_assertion_trace_not_ready_occurrences": 478,
+      "strict_assertion_trace_ready_occurrences": 154,
+      "strict_assertion_trace_ready_rate": 0.24367088607594936,
+      "subjective_evaluation_fields_used": [],
+      "supported_dimension_coverage": {
+        "complete_records": 66,
+        "covered_dimension_occurrences": 204,
+        "incomplete_records": 13,
+        "micro_coverage": 0.9357798165137615,
+        "missing_dimension_occurrences": 14,
+        "supported_dimension_occurrences": 218
+      },
+      "unsupported_profile_occurrences": 0
+    },
+    "C01": {
+      "T_used": false,
+      "coffee_groups": 77,
+      "descriptor_evidence_status_counts": {
+        "DIRECT_DESCRIPTOR_TRACE": 152,
+        "NO_CURRENT_ANSWER_SEMANTIC_TRACE": 156,
+        "SUPPORTED_DIMENSION_COMPATIBILITY_ONLY": 324
+      },
+      "descriptor_occurrences": 632,
+      "identifier_integrity_pass_records": 79,
+      "ontology_legal_rows": 830,
+      "ontology_legality_pass_records": 79,
+      "ontology_rows": 830,
+      "other_native_measurement_leakage_occurrences": 0,
+      "profile_occurrences": 198,
+      "records": 79,
+      "redundancy_group_macro": {
+        "comparison_pool": {
+          "identical_dimension_signature_pair_rate": 0.1841372912801484,
+          "mean_pairwise_dimension_jaccard": 0.23214285714285715,
+          "named_descriptors_per_active_dimension": 1.8225108225108226,
+          "ordered_repeated_dimension_row_rate": 0.6354359925788498,
+          "repeated_dimension_membership_rate": 0.5003607503607503
+        },
+        "main": {
+          "identical_dimension_signature_pair_rate": 0.1448051948051948,
+          "mean_pairwise_dimension_jaccard": 0.19253246753246753,
+          "named_descriptors_per_active_dimension": 1.4361471861471862,
+          "ordered_repeated_dimension_row_rate": 0.5,
+          "repeated_dimension_membership_rate": 0.36038961038961037
+        }
+      },
+      "role_purity_pass_records": 79,
+      "semantic_acceptance": "STRUCTURE_PASS_STRICT_DESCRIPTOR_ASSERTION_TRACE_INCOMPLETE",
+      "specificity_confirmed_violation_count": null,
+      "specificity_decision": "NOT_FULLY_DECIDABLE_NO_REGISTERED_DESCRIPTOR_RELATION_EDGES",
+      "specificity_status_counts": {
+        "DIRECTION_COMPATIBLE_BUT_SPECIFICITY_UNLICENSED": 12,
+        "DIRECT_DESCRIPTOR_NO_SPECIFICITY_ESCALATION": 152,
+        "MIDDLE_FROM_DIRECTION_REQUIRES_RELATION_EDGE": 147,
+        "NO_CURRENT_TRACE_CANNOT_LICENSE_SPECIFICITY": 156,
+        "SPECIFIC_FROM_BROADER_OR_SIBLING_REQUIRES_RELATION_EDGE": 165
+      },
+      "strict_assertion_trace_not_ready_occurrences": 480,
+      "strict_assertion_trace_ready_occurrences": 152,
+      "strict_assertion_trace_ready_rate": 0.24050632911392406,
+      "subjective_evaluation_fields_used": [],
+      "supported_dimension_coverage": {
+        "complete_records": 70,
+        "covered_dimension_occurrences": 204,
+        "incomplete_records": 9,
+        "micro_coverage": 0.9577464788732394,
+        "missing_dimension_occurrences": 9,
+        "supported_dimension_occurrences": 213
+      },
+      "unsupported_profile_occurrences": 0
+    }
+  },
+  "version": "m2-r9.internal-semantic-integrity.v2"
+}

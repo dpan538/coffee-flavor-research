@@ -17,6 +17,16 @@ FOUNDATION_CHECK remains off, and frozen C01 remains a research generator rather
 than the default. Approval of an output policy does not resume training; only a
 separate owner authorization in a later round may do so.
 
+External subjective evaluation is not a model input for this semantic system.
+Participant preference, satisfaction, perceived fit, expression-help, burden, or
+post-output acceptance must not supply training labels, loss terms, calibration
+targets, metric weights, thresholds, ontology/identifier changes, or architecture
+selection. Optional human observation may examine product comprehension and wording
+usability only; it cannot be treated as sensory truth or model validation. Future
+training, if separately authorized, must be governed by provenance-backed semantic
+evidence, explicit identifiers and roles, registered descriptor relations, and hard
+inference constraints.
+
 ## [CODEX EXECUTION SCOPE — BACKEND MODEL ONLY]
 
 Effective 2026-09-05. This section governs active execution and supersedes older

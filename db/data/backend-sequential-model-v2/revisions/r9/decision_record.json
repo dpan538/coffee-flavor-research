@@ -3,7 +3,7 @@
   "recorded_utc": "2026-09-07T07:18:54.780729+00:00",
   "branch": "research/coffee-sensory-data-ml-readiness",
   "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
-  "decision_scope": "Research output responsibility and formative-study contract only; no default promotion and no training resumption.",
+  "decision_scope": "Research output responsibility and semantic-model governance only; no default promotion and no training resumption.",
   "roles": {
     "PROFILE_DIRECTION": "A supported whole-profile direction such as fruit, floral or sweet; retained separately when the policy calls for it and never expanded into leaves.",
     "NAMED_DESCRIPTOR": "A recognizable named flavor, including registered evidence-qualified middle categories and specific words.",
@@ -25,7 +25,8 @@
     "status": "NOT_EVALUATED",
     "participants": 0,
     "coffee_tasks": 0,
-    "reason": "No filled owner-controlled participant file was available. Synthetic ratings were not created."
+    "reason": "No filled owner-controlled participant file was available. Synthetic ratings were not created.",
+    "model_dependency": "NOT_REQUIRED_AND_PROHIBITED_AS_TRAINING_CALIBRATION_ONTOLOGY_OR_ARCHITECTURE_INPUT"
   },
   "recommendation": {
     "policy_id": "OUT_SEPARATED",
@@ -41,8 +42,15 @@
   "unvalidated": [
     "Coffee-enthusiast preference, usefulness, burden and misleading over-specificity.",
     "Any causal benefit from overall_profile.",
-    "Independent confirmation or metric-to-user-rating calibration."
+    "Independent semantic confirmation on frozen identifier and relation registries."
   ],
+  "semantic_model_governance": {
+    "status": "OWNER_REQUIRED_CONSTRAINT",
+    "decision": "The coffee-flavor model is an evidence- and ontology-constrained semantic reasoner, not a feedback recommender. Participant preference, satisfaction, perceived fit, expression help, burden, post-output acceptance and profile preference cannot train, calibrate, weight, select, alter or validate the model or its architecture.",
+    "authoritative_basis": "Provenance-backed identifiers, explicit concept roles, registered dimension membership, explicit descriptor relations, question-answer evidence state and hard output contracts.",
+    "human_observation_scope": "OPTIONAL_PRODUCT_COMPREHENSION_AND_WORDING_USABILITY_ONLY_NOT_SENSORY_TRUTH_OR_MODEL_VALIDATION",
+    "training_effect": "REQUIRED_CONSTRAINT_IF_A_FUTURE_OWNER_SEPARATELY_AUTHORIZES_TRAINING"
+  },
   "owner_decision": {
     "status": "OWNER_APPROVED",
     "allowed_values": [
@@ -61,14 +69,16 @@
   "default_adoption": "NOT_APPLIED_B2_AND_DEFAULT_FINALIZER_UNCHANGED",
   "empirical_superiority_claim": "NOT_CLAIMED",
   "formative_study_pack": {
-    "status": "READY_FOR_OWNER_ASSIGNMENT_NO_REAL_DATA",
+    "status": "READY_OPTIONAL_PRODUCT_COMPREHENSION_OBSERVATION_NO_REAL_DATA",
     "policy_id": "OUT_SEPARATED",
     "participant_slots": 12,
     "coffee_tasks_per_participant": 2,
     "planned_rows": 24,
     "profile_pair_order": "BALANCED_6_WITH_PROFILE_FIRST_6_WITHOUT_PROFILE_FIRST",
     "private_assignment_sha256": "daf962f685d51f53d8734101a509d396e09928faa0e5c073c35142b4703343f7",
-    "data_limit": "Participant IDs, coffees, live C01 outputs, judgments and timings remain blank until real sessions occur."
+    "data_limit": "Participant IDs, coffees, live C01 outputs, observations and timings remain blank until real sessions occur.",
+    "permitted_use": "PRODUCT_COMPREHENSION_AND_WORDING_USABILITY_ONLY",
+    "model_training_or_architecture_input": "PROHIBITED"
   },
   "post_decision_audits": {
     "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
@@ -86,11 +96,15 @@
   },
   "future_training_target_spec": {
     "status": "DRAFT_FOR_FUTURE_ROUND_NOT_AUTHORIZED_FOR_EXECUTION",
+    "version": "m2-r9.future-training-target-spec.v2",
     "training_authorized": false,
     "fit_count": 0,
     "empirical_thresholds": "NOT_SET",
-    "reason": "No real R9 feedback, label-reliability estimate, variance estimate or owner-approved metric tradeoff weights exist. The attachment's example thresholds and minimum 30 groups were not adopted as evidence-backed gates.",
-    "private_artifact_sha256": "3820e71842da116148349486a7d71fad20f916a82430353f1fb6e799a5f9220d"
+    "external_subjective_evaluation_dependency": "PROHIBITED",
+    "reason": "Future objectives are limited to internal semantic evidence and hard constraints. Evidence tiers remain categorical; no 1.0/0.6/0.4 score, lambda weight or participant-derived target was adopted.",
+    "private_artifact_sha256": "3eec5d25c948851926ae54329122438b8f2e7392e7ac2d55b7b000038aede26d",
+    "historical_v1_private_artifact_sha256": "3820e71842da116148349486a7d71fad20f916a82430353f1fb6e799a5f9220d",
+    "history_policy": "V1 preserved; V2 stored at a new immutable owner-controlled path."
   },
   "registered_dimension_extension": {
     "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
@@ -116,5 +130,21 @@
     "user_effect": "NOT_EVALUATED",
     "public_summary_sha256": "02b79a5ce265ef41b1a3965df31764c96225d4c30e80b61a7e79c894333ff696",
     "private_detail_sha256": "f62911ea8f55ed24044a77e8a43a21f23c871b44f0b90389cf178cd0663ca658"
+  },
+  "internal_semantic_integrity": {
+    "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS_NO_T_NO_SUBJECTIVE_EVALUATION",
+    "version": "m2-r9.internal-semantic-integrity.v2",
+    "registry": "All 82 concept IDs and nine registered dimensions passed role/dimension integrity; frozen PARENTS dimension membership matched. The current contract has zero descriptor-level relation edges.",
+    "structure": "All 79 C01 OUT_SEPARATED records passed identifier integrity, role purity and frozen legality; 632 named descriptors and 198 profile occurrences were checked, with zero native-measurement leakage and zero unsupported profile occurrences.",
+    "evidence_trace": "Of 632 C01 named output occurrences, 152 had direct descriptor traces, 324 had supported-dimension compatibility only and 156 had no current-answer semantic trace. Only 24.05% are ready for strict descriptor assertion under the direct-or-registered-relation rule.",
+    "specificity": "Without registered broad-to-child or sibling relation edges, 165 specific-from-broader/sibling and 147 middle-from-direction occurrences require relation review; they cannot be called confirmed violations or passes from shared dimensions alone.",
+    "dimension_coverage": "Named outputs represented 204/213 supported K1 dimension occurrences (95.77%); 70/79 records were complete and nine each missed one supported dimension.",
+    "decision": "OUT_SEPARATED is structurally sound but current frozen candidates must not be presented as strict semantic assertions unless direct evidence, an explicit provenance-backed descriptor relation, or abstention resolves the trace gap.",
+    "fit_count": 0,
+    "T_used": false,
+    "subjective_evaluation_used": false,
+    "public_summary_sha256": "06d44a691189c407e46f479e8b481931851e31c1e05e03bd57e272ac2ba63851",
+    "private_detail_sha256": "f4df73b00f5c45032d15cbcb62a330a86d793d7d852a1e6d243b56bd7654211f",
+    "history_policy": "Intermediate v1 private audit preserved; v2 adds exact relation-ID registry validation."
   }
 }

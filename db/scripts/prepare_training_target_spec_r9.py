@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Write a zero-fit draft target specification for a separately authorized round.
+"""Write a zero-fit semantic target draft for a separately authorized round.
 
-The artifact defines candidate objectives and the data needed to make them
-estimable.  It deliberately leaves empirical weights and numerical thresholds
-unset because R9 has no real participant evidence and training remains paused.
+The draft permits only provenance-backed semantic evidence, identifiers, concept
+roles, explicit descriptor relations and hard inference constraints as future
+model inputs. Participant preference, satisfaction, perceived fit and other
+subjective evaluations are prohibited as training or architecture inputs.
 """
 
 from __future__ import annotations
@@ -16,7 +17,7 @@ from acquire_supervision_r5 import save
 
 ROOT = Path(__file__).resolve().parents[2]
 R9_PUBLIC = ROOT / "db/data/backend-sequential-model-v2/revisions/r9"
-VERSION = "m2-r9.future-training-target-spec.v1"
+VERSION = "m2-r9.future-training-target-spec.v2"
 
 
 def specification(decision: dict, contract: dict) -> dict:
@@ -28,6 +29,9 @@ def specification(decision: dict, contract: dict) -> dict:
         raise ValueError("OUT_SEPARATED_OWNER_APPROVAL_REQUIRED")
     if contract["training_pause"]["fit_count"] != 0:
         raise ValueError("R9_ZERO_FIT_CONTRACT_REQUIRED")
+    governance = contract.get("semantic_model_governance", {})
+    if governance.get("status") != "OWNER_REQUIRED_CONSTRAINT":
+        raise ValueError("SEMANTIC_MODEL_GOVERNANCE_REQUIRED")
     return {
         "version": VERSION,
         "status": "DRAFT_FOR_FUTURE_ROUND_NOT_AUTHORIZED_FOR_EXECUTION",
@@ -37,117 +41,173 @@ def specification(decision: dict, contract: dict) -> dict:
         "training_authorized": False,
         "training_freeze_condition": (
             "R9_OVERRIDE_REMAINS_IN_EFFECT; separate owner authorization is required "
-            "even though the output-role contract is approved."
+            "even though the output-role and semantic-governance contracts are approved."
         ),
+        "semantic_training_governance": {
+            "system_type": governance["system_type"],
+            "authoritative_inputs": governance["authoritative_inputs"],
+            "prohibited_model_or_architecture_inputs": governance[
+                "prohibited_model_or_architecture_inputs"
+            ],
+            "prohibited_uses": governance["prohibited_uses"],
+            "external_subjective_evaluation_dependency": "PROHIBITED",
+            "optional_human_observation_scope": governance[
+                "optional_human_observation_scope"
+            ],
+        },
         "role_objectives": {
             "NAMED_DESCRIPTOR": {
                 "output": "main<=5 then secondary<=3",
-                "candidate_objective": "Rank independently evidence-supported named descriptors above unsupported named descriptors.",
+                "candidate_objective": (
+                    "Rank named descriptors by auditable semantic evidence and registered "
+                    "relations; never convert direction compatibility into child confirmation."
+                ),
                 "hard_constraints": [
                     "preserve legal explicit user expressions",
-                    "do not infer a child solely from parent support",
+                    "require direct evidence or an explicit provenance-backed descriptor relation for strict assertion",
+                    "do not infer a child or sibling solely from shared dimension support",
                     "return short instead of inventing a descriptor",
                 ],
             },
             "PROFILE_DIRECTION": {
                 "output": "overall_profile<=3 outside the 5+3 comparison budget",
-                "candidate_objective": "Select independently supported whole-profile directions without expanding them into children.",
+                "candidate_objective": (
+                    "Select supported whole-profile directions without expanding them into "
+                    "children."
+                ),
             },
             "OTHER_NATIVE_MEASUREMENT": {
                 "output": "excluded from flavor output",
                 "hard_metric": "native_measurement_leakage_rate=0",
             },
         },
-        "candidate_losses_not_yet_approved": {
-            "named_descriptor_ranking": {
+        "future_internal_objectives_not_authorized": {
+            "evidence_trace_order": {
                 "candidate_form": (
-                    "For coffee task t with independent nonnegative relevance y[t,c], "
-                    "L_rank=-sum_c normalize(y[t,c])*log_softmax(score[t,*])[c]."
+                    "Pairwise or constrained ordering over categorical trace states: direct "
+                    "descriptor evidence or a registered descriptor relation precedes "
+                    "direction-only compatibility, which precedes no current semantic trace."
                 ),
-                "label_requirement": (
-                    "Descriptor-level relevance collected independently before model-word "
-                    "exposure; post-output acceptance is not independent sensory truth."
+                "weight_policy": (
+                    "No 1.0/0.6/0.4 scalar or other tradeoff weight is adopted in R9."
                 ),
-                "status": "FORM_DEFINED_WEIGHTS_AND_LABEL_PROTOCOL_NOT_APPROVED",
+                "label_source": (
+                    "Versioned question-answer evidence state and provenance-backed explicit "
+                    "descriptor relations only."
+                ),
+                "status": "FORM_DEFINED_RELATION_REGISTRY_INCOMPLETE_NO_TRAINING",
             },
-            "profile_direction": {
+            "ontology_legality": {
                 "candidate_form": (
-                    "Binary cross-entropy over the nine registered directions, evaluated "
-                    "separately as recall and false-positive burden at the fixed top-3 output."
+                    "Hard candidate mask over registered identifiers, concept roles, dimension "
+                    "membership and explicit relation endpoints."
                 ),
-                "label_requirement": (
-                    "Direction labels independent of the same K1 rule being evaluated; K1 "
-                    "self-reproduction cannot count as confirmation."
-                ),
-                "status": "FORM_DEFINED_LABEL_SOURCE_NOT_AVAILABLE",
+                "status": "HARD_CONSTRAINT_NO_FIT_REQUIRED",
             },
-            "specificity_risk": {
+            "specificity_restraint": {
                 "candidate_form": (
-                    "Descriptor-level penalty only when a real judgment labels a returned "
-                    "descriptor TOO_SPECIFIC or MISLEADING for that coffee task."
+                    "A more specific or sibling descriptor requires exact direct evidence or "
+                    "an explicit directed relation with source provenance; shared dimension "
+                    "membership is insufficient."
                 ),
-                "label_requirement": (
-                    "Per-descriptor judgment with exposure stage and broad/sibling evidence "
-                    "path retained; whole-output specificity is insufficient as a leaf label."
-                ),
-                "status": "NOT_ESTIMABLE_FROM_CURRENT_R9_TEMPLATE",
+                "status": "NOT_FULLY_DECIDABLE_UNTIL_RELATION_EDGES_ARE_REGISTERED",
             },
+            "role_separation": {
+                "candidate_form": (
+                    "Hard decoding contract: named descriptors only in main/secondary, profile "
+                    "directions only in overall_profile, native measurements in neither."
+                ),
+                "status": "IMPLEMENTED_BY_R9_RESEARCH_ADAPTER",
+            },
+            "supported_dimension_coverage": {
+                "candidate_form": (
+                    "Report which supported K1 dimensions have named representation, missing "
+                    "dimensions and output-budget conflicts."
+                ),
+                "status": "SEPARATE_INTERNAL_DIAGNOSTIC_NO_OBJECTIVE_WEIGHT",
+            },
+            "registered_dimension_redundancy": {
+                "candidate_form": (
+                    "Report registered-dimension overlap separately; do not equate same "
+                    "dimension with synonymy."
+                ),
+                "status": "SEPARATE_INTERNAL_DIAGNOSTIC_NO_OBJECTIVE_WEIGHT",
+            },
+        },
+        "external_subjective_evaluation": {
+            "status": "PROHIBITED_AS_MODEL_OR_ARCHITECTURE_INPUT",
+            "excluded_fields": governance["prohibited_model_or_architecture_inputs"],
+            "excluded_decisions": governance["prohibited_uses"],
+            "note": (
+                "Optional product-comprehension observations remain outside training, "
+                "calibration, ontology and architecture decisions."
+            ),
         },
         "composite_objective": {
             "status": "NOT_DEFINED",
-            "reason": "No owner-approved tradeoff weights exist for fit, specificity, expression help, burden and profile value.",
+            "reason": (
+                "Evidence trace, ontology legality, specificity restraint, role integrity, "
+                "coverage and redundancy remain separate constraints or diagnostics."
+            ),
         },
         "data_requirements": {
-            "new_independent_coffee_groups_minimum": "NOT_SET_REQUIRES_PRECISION_POWER_AND_FEASIBILITY_JUSTIFICATION",
             "required_fields": [
-                "globally unique participant_uid",
-                "session_id",
-                "coffee_id and preparation batch/condition",
+                "globally unique semantic state and coffee-group IDs",
                 "C0 exact existing family",
                 "C1 exact existing level",
-                "ordered questions and answers",
-                "pre-output raw impression",
-                "candidate IDs, evidence paths and exposure positions",
-                "descriptor-level relevance and specificity judgments when used as labels",
-                "previous-study exposure",
+                "ordered questions and selected answer concept IDs",
+                "candidate IDs, roles and ordered output positions",
+                "versioned evidence paths",
+                "registered descriptor relation IDs and direction when used",
+                "source provenance and rights state for every registered relation",
+                "ontology and identifier registry version",
+                "model bundle and answer-state hashes",
             ],
             "dependency_structure": [
-                "retain repeated observations within participant",
-                "retain repeated observations within coffee",
-                "never analyze rating rows as independent samples",
+                "retain repeated semantic states within coffee group",
+                "retain shared source and relation dependencies",
+                "never treat multiple states from one coffee group as independent cases",
             ],
             "split_requirements": [
-                "split by coffee group before any model or weight selection",
-                "audit participant overlap and model it when participants taste multiple coffees",
-                "reserve a confirmation set unused for objective, threshold or policy selection",
+                "split by coffee and source/relation dependency group before any model selection",
+                "freeze identifier, role and relation registries before evaluation",
+                "reserve independent semantic cases unused for objective or threshold selection",
             ],
+            "participant_or_preference_fields": "FORBIDDEN",
         },
         "acceptance_contract": {
             "hard_zero_tolerance": {
                 "duplicate_output_ids": 0,
+                "unregistered_output_ids": 0,
                 "OTHER_NATIVE_MEASUREMENT_leakage": 0,
-                "invented_child_descriptors": 0,
+                "role_placement_violations": 0,
+                "invented_child_or_sibling_relations": 0,
+                "strict_descriptor_assertions_without_direct_or_registered_relation_trace": 0,
+                "subjective_evaluation_read_by_training_or_architecture": 0,
                 "T_or_participant_rating_read_by_output_policy": 0,
                 "mixed_reference_regression_when_replaying_OUT_MIXED": 0,
             },
             "empirical_thresholds": {
-                "descriptor_ranking": "NOT_SET",
-                "profile_direction": "NOT_SET",
-                "specificity_risk": "NOT_SET",
-                "user_fit_help_and_burden": "REPORT_SEPARATELY_NO_COMPOSITE",
+                "semantic_ranking": "NOT_SET",
+                "supported_dimension_coverage": "REPORT_SEPARATELY_NO_COMPOSITE",
+                "registered_dimension_redundancy": "REPORT_SEPARATELY_NO_COMPOSITE",
+                "external_subjective_evaluation": "PROHIBITED_NOT_A_THRESHOLD",
             },
             "threshold_setting_rule": (
-                "Pre-register after real label reliability, variance and feasible sample size "
-                "are known; do not select and confirm on the same data."
+                "Any future threshold must be justified from frozen internal semantic "
+                "contracts and independent semantic cases, never participant preference."
             ),
             "automatic_approval": False,
         },
         "prohibited_shortcuts": [
-            "AUC>0.6 or gain>0.02 as automatic approval",
-            "random gap or NDCG values",
+            "participant preference, satisfaction or perceived fit as labels",
+            "post-output word acceptance as semantic truth",
+            "shared dimension membership as a parent-child edge",
+            "unregistered descriptor relation inference",
+            "arbitrary evidence-tier scalar weights presented as learned confidence",
+            "selecting architecture from subjective feedback",
             "synthetic preference fitting",
-            "using post-output word recognition as pre-output sensory truth",
-            "selecting weights and claiming independent calibration on the same observations",
+            "selecting weights and claiming independent confirmation on the same cases",
         ],
     }
 
@@ -176,6 +236,9 @@ def main() -> None:
                 "status": value["status"],
                 "fit_count": 0,
                 "training_authorized": False,
+                "external_subjective_evaluation_dependency": value[
+                    "semantic_training_governance"
+                ]["external_subjective_evaluation_dependency"],
                 "sha256": artifact["sha256"],
                 "output": str(args.output),
             },

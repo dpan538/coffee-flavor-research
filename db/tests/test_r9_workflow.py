@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "db/scripts"))
 
 import audit_output_quality_r9 as audit
+import audit_semantic_integrity_r9 as semantic
 import analyze_dimension_structure_r9 as dimensions
 import evaluate_output_diversity_r9 as diversity
 import generate_user_study_pack_r9 as pack
@@ -190,7 +191,21 @@ class FormativePackTests(unittest.TestCase):
         self.assertEqual(spec["fit_count"], 0)
         self.assertEqual(
             set(spec["acceptance_contract"]["empirical_thresholds"].values()),
-            {"NOT_SET", "REPORT_SEPARATELY_NO_COMPOSITE"},
+            {
+                "NOT_SET",
+                "REPORT_SEPARATELY_NO_COMPOSITE",
+                "PROHIBITED_NOT_A_THRESHOLD",
+            },
+        )
+        self.assertEqual(
+            spec["semantic_training_governance"][
+                "external_subjective_evaluation_dependency"
+            ],
+            "PROHIBITED",
+        )
+        self.assertEqual(
+            spec["data_requirements"]["participant_or_preference_fields"],
+            "FORBIDDEN",
         )
 
     def test_registered_dimension_extensions_are_static_and_multi_label(self):
@@ -273,6 +288,45 @@ class FormativePackTests(unittest.TestCase):
         self.assertIsNone(coverage["all_roles"]["target_dimension_recall"])
         self.assertIsNone(coverage["all_roles"]["output_dimension_precision"])
         self.assertIsNone(coverage["all_roles"]["dimension_jaccard"])
+
+    def test_semantic_integrity_separates_structure_from_assertion_trace(self):
+        contract = json.loads(
+            (
+                ROOT
+                / "db/data/backend-sequential-model-v2/revisions/r9/output_policy_contract.json"
+            ).read_text()
+        )
+        registry = role_registry_from_contract(contract)
+        registry_audit = semantic.contract_audit(contract, registry)
+        self.assertEqual(
+            registry_audit["identifier_and_dimension_registry_integrity"], "PASS"
+        )
+        self.assertEqual(registry_audit["descriptor_relation_edge_count"], 0)
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "full_T": {"sensory.apple": 1.0},
+            "actual_return": self.final(),
+        }
+        result = semantic.case_audit(source, registry, frozenset())
+        self.assertTrue(result["identifier_integrity"]["pass"])
+        self.assertTrue(result["role_purity"]["pass"])
+        self.assertTrue(result["ontology_legality"]["pass"])
+        self.assertTrue(result["supported_dimension_coverage"]["coverage_complete"])
+        self.assertTrue(result["T_used"] is False)
+        self.assertTrue(
+            any(
+                not row["strict_assertion_trace_ready"]
+                for row in result["descriptor_evidence"]
+            )
+        )
+        with self.assertRaisesRegex(
+            ValueError, "SUBJECTIVE_EVALUATION_PRESENT_IN_SEMANTIC_AUDIT_INPUT"
+        ):
+            semantic.case_audit(
+                {**source, "participant_rating": 4}, registry, frozenset()
+            )
 
 
 if __name__ == "__main__":

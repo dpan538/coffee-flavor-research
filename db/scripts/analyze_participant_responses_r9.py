@@ -3,6 +3,9 @@
 No synthetic rows, imputation, calibration, composite score, ANOVA, or model fit
 is provided.  Output contains pseudonymous participant IDs and belongs in private
 owner-controlled storage, not the public repository.
+These observations may describe product comprehension and wording usability only.
+They are prohibited as training labels, calibration targets, metric weights,
+thresholds, ontology changes, or architecture-selection evidence.
 """
 
 from __future__ import annotations
@@ -279,6 +282,8 @@ def summarize(rows: list[dict[str, Any]], source_sha256: str) -> dict[str, Any]:
             "participants": 0,
             "coffee_tasks": 0,
             "real_feedback": "NOT_EVALUATED",
+            "permitted_use": "PRODUCT_COMPREHENSION_AND_WORDING_USABILITY_ONLY",
+            "model_training_or_architecture_input": "PROHIBITED",
             "fit_count": 0,
         }
     by_participant: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -354,6 +359,8 @@ def summarize(rows: list[dict[str, Any]], source_sha256: str) -> dict[str, Any]:
         "inference": "NOT_RUN_DESCRIPTIVE_ONLY",
         "composite_score": "NOT_DEFINED",
         "calibration_or_metric_weight_fit": "NOT_RUN",
+        "permitted_use": "PRODUCT_COMPREHENSION_AND_WORDING_USABILITY_ONLY",
+        "model_training_or_architecture_input": "PROHIBITED",
         "fit_count": 0,
     }
 

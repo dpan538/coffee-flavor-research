@@ -5,6 +5,8 @@
 invented identities, coffees, answers, outputs or ratings.  ``materialize``
 accepts owner-supplied live C01 final results and writes response rows with the
 real output fields filled and judgments left blank.  Neither mode fits anything.
+Any completed responses are limited to product-comprehension and wording-usability
+observation; they are prohibited as model supervision or architecture input.
 """
 
 from __future__ import annotations
