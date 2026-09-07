@@ -1,0 +1,689 @@
+{
+  "cluster_definition": "Existing support_dimension_id only; no clustering, cluster fit, learned edge, message-passing iteration or new ontology.",
+  "evidence_dimension_reception": {
+    "C00": {
+      "dimension_summary": {
+        "floral": {
+          "links": 5,
+          "links_participating_in_profile": 5,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 0,
+          "uniform_weight_sum": 5.0,
+          "unique_evidence": 5
+        },
+        "fruity": {
+          "links": 100,
+          "links_participating_in_profile": 100,
+          "links_participating_in_separated_main": 100,
+          "links_participating_in_separated_pool": 100,
+          "uniform_weight_sum": 100.0,
+          "unique_evidence": 100
+        },
+        "green_vegetative": {
+          "links": 13,
+          "links_participating_in_profile": 12,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 6,
+          "uniform_weight_sum": 13.0,
+          "unique_evidence": 13
+        },
+        "nutty_cocoa": {
+          "links": 116,
+          "links_participating_in_profile": 105,
+          "links_participating_in_separated_main": 116,
+          "links_participating_in_separated_pool": 116,
+          "uniform_weight_sum": 102.0,
+          "unique_evidence": 116
+        },
+        "roasted": {
+          "links": 49,
+          "links_participating_in_profile": 35,
+          "links_participating_in_separated_main": 49,
+          "links_participating_in_separated_pool": 49,
+          "uniform_weight_sum": 35.0,
+          "unique_evidence": 49
+        },
+        "sour_fermented": {
+          "links": 1,
+          "links_participating_in_profile": 1,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 0,
+          "uniform_weight_sum": 1.0,
+          "unique_evidence": 1
+        },
+        "spices": {
+          "links": 1,
+          "links_participating_in_profile": 1,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 0,
+          "uniform_weight_sum": 1.0,
+          "unique_evidence": 1
+        },
+        "sweet": {
+          "links": 89,
+          "links_participating_in_profile": 89,
+          "links_participating_in_separated_main": 89,
+          "links_participating_in_separated_pool": 89,
+          "uniform_weight_sum": 89.0,
+          "unique_evidence": 89
+        }
+      },
+      "dimensions_receiving_evidence": 8,
+      "evidence_dimension_links": 374,
+      "evidence_received_by_multiple_dimensions": 28,
+      "interpretation": "This is a multi-label incidence matrix over registered dimensions. A link count or uniform share is not evidence strength or uncertainty.",
+      "mean_unique_evidence_per_receiving_dimension": 46.75,
+      "multi_dimension_evidence_ratio": 0.08092485549132948,
+      "uniform_weight_sum_violations": 0,
+      "unique_selected_answer_evidence": 346
+    },
+    "C01": {
+      "dimension_summary": {
+        "floral": {
+          "links": 5,
+          "links_participating_in_profile": 5,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 0,
+          "uniform_weight_sum": 5.0,
+          "unique_evidence": 5
+        },
+        "fruity": {
+          "links": 99,
+          "links_participating_in_profile": 99,
+          "links_participating_in_separated_main": 99,
+          "links_participating_in_separated_pool": 99,
+          "uniform_weight_sum": 99.0,
+          "unique_evidence": 99
+        },
+        "green_vegetative": {
+          "links": 22,
+          "links_participating_in_profile": 16,
+          "links_participating_in_separated_main": 17,
+          "links_participating_in_separated_pool": 20,
+          "uniform_weight_sum": 22.0,
+          "unique_evidence": 22
+        },
+        "nutty_cocoa": {
+          "links": 142,
+          "links_participating_in_profile": 133,
+          "links_participating_in_separated_main": 142,
+          "links_participating_in_separated_pool": 142,
+          "uniform_weight_sum": 115.0,
+          "unique_evidence": 142
+        },
+        "roasted": {
+          "links": 86,
+          "links_participating_in_profile": 66,
+          "links_participating_in_separated_main": 86,
+          "links_participating_in_separated_pool": 86,
+          "uniform_weight_sum": 59.0,
+          "unique_evidence": 86
+        },
+        "sour_fermented": {
+          "links": 1,
+          "links_participating_in_profile": 1,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 0,
+          "uniform_weight_sum": 1.0,
+          "unique_evidence": 1
+        },
+        "spices": {
+          "links": 1,
+          "links_participating_in_profile": 1,
+          "links_participating_in_separated_main": 0,
+          "links_participating_in_separated_pool": 0,
+          "uniform_weight_sum": 1.0,
+          "unique_evidence": 1
+        },
+        "sweet": {
+          "links": 68,
+          "links_participating_in_profile": 68,
+          "links_participating_in_separated_main": 66,
+          "links_participating_in_separated_pool": 68,
+          "uniform_weight_sum": 68.0,
+          "unique_evidence": 68
+        }
+      },
+      "dimensions_receiving_evidence": 8,
+      "evidence_dimension_links": 424,
+      "evidence_received_by_multiple_dimensions": 54,
+      "interpretation": "This is a multi-label incidence matrix over registered dimensions. A link count or uniform share is not evidence strength or uncertainty.",
+      "mean_unique_evidence_per_receiving_dimension": 53.0,
+      "multi_dimension_evidence_ratio": 0.14594594594594595,
+      "uniform_weight_sum_violations": 0,
+      "unique_selected_answer_evidence": 370
+    }
+  },
+  "fit_count": 0,
+  "guards": {
+    "T_used_only_after_outputs_for_descriptive_prefix_metrics": true,
+    "confidence_probability_claim": "NOT_MADE",
+    "fit_count": 0,
+    "model_or_policy_parameter_changes": 0,
+    "new_cluster_or_edge_learning": false,
+    "output_policy_received_T": false,
+    "threshold_or_policy_selected": false,
+    "user_effect_claim": "NOT_EVALUATED"
+  },
+  "interpretation_limits": [
+    "Multi-dimension incidence does not imply Dempster-Shafer independence or calibrated mass.",
+    "Dimension concentration is not consensus among independent clusterings or evidence sources.",
+    "Static rank association cannot show that the current scorer learned or needs message passing.",
+    "Fine-reference prefix coverage and uncalibrated score separation are separate diagnostics, not a composite objective."
+  ],
+  "output_dimension_concentration": {
+    "C00": {
+      "coffee_group_macro": {
+        "OUT_MIXED": {
+          "active_dimension_count": 4.162337662337662,
+          "herfindahl_concentration": 0.33705357142857145,
+          "normalized_entropy": 0.5566448648090977,
+          "normalized_gini": 0.7693790584415584
+        },
+        "OUT_SEPARATED": {
+          "active_dimension_count": 4.461038961038961,
+          "herfindahl_concentration": 0.3216314935064935,
+          "normalized_entropy": 0.583137749354599,
+          "normalized_gini": 0.7560876623376623
+        }
+      },
+      "coffee_group_macro_delta_separated_minus_mixed": {
+        "active_dimension_count": 0.2987012987012987,
+        "herfindahl_concentration": -0.015422077922077922,
+        "normalized_entropy": 0.02649288454550134,
+        "normalized_gini": -0.013291396103896116
+      },
+      "coffee_groups": 77,
+      "interpretation": "Lower entropy and higher Gini/HHI mean concentration over the fixed nine registered dimensions. They do not demonstrate evidence-source consensus.",
+      "record_directional_counts": {
+        "HHI_tie": 12,
+        "separated_less_concentrated_by_HHI": 46,
+        "separated_more_concentrated_by_HHI": 21
+      },
+      "records": 79
+    },
+    "C01": {
+      "coffee_group_macro": {
+        "OUT_MIXED": {
+          "active_dimension_count": 4.233766233766234,
+          "herfindahl_concentration": 0.328226461038961,
+          "normalized_entropy": 0.5695733770354396,
+          "normalized_gini": 0.7581168831168831
+        },
+        "OUT_SEPARATED": {
+          "active_dimension_count": 4.461038961038961,
+          "herfindahl_concentration": 0.3209212662337662,
+          "normalized_entropy": 0.5855141171391732,
+          "normalized_gini": 0.752536525974026
+        }
+      },
+      "coffee_group_macro_delta_separated_minus_mixed": {
+        "active_dimension_count": 0.22727272727272727,
+        "herfindahl_concentration": -0.007305194805194805,
+        "normalized_entropy": 0.01594074010373363,
+        "normalized_gini": -0.005580357142857147
+      },
+      "coffee_groups": 77,
+      "interpretation": "Lower entropy and higher Gini/HHI mean concentration over the fixed nine registered dimensions. They do not demonstrate evidence-source consensus.",
+      "record_directional_counts": {
+        "HHI_tie": 25,
+        "separated_less_concentrated_by_HHI": 34,
+        "separated_more_concentrated_by_HHI": 20
+      },
+      "records": 79
+    }
+  },
+  "prefix_coverage_raw_score_curve": {
+    "C00": {
+      "coffee_groups": 77,
+      "interpretation": "Recall/gap/NDCG use unchanged fine-reference metrics after output creation. Raw scores are uncalibrated and cannot establish confidence or choose a policy.",
+      "policy_curves": {
+        "OUT_MIXED": [
+          {
+            "coffee_group_macro_mean_raw_score": 4.38788102249936,
+            "coffee_group_macro_ndcg": 0.2719298245614035,
+            "coffee_group_macro_raw_gap": 0.8751044277360066,
+            "coffee_group_macro_raw_score_boundary_margin": 0.7445163977279978,
+            "coffee_group_macro_recall": 0.11244778613199666,
+            "k": 1
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 4.015622823635361,
+            "coffee_group_macro_ndcg": 0.2501410395815674,
+            "coffee_group_macro_raw_gap": 0.8205304928989139,
+            "coffee_group_macro_raw_score_boundary_margin": 0.21529350835872008,
+            "coffee_group_macro_recall": 0.15561821219715957,
+            "k": 2
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.819772254561122,
+            "coffee_group_macro_ndcg": 0.2584828809899589,
+            "coffee_group_macro_raw_gap": 0.7618107769423559,
+            "coffee_group_macro_raw_score_boundary_margin": 0.29644655603879105,
+            "coffee_group_macro_recall": 0.20476190476190476,
+            "k": 3
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.6477353310143044,
+            "coffee_group_macro_ndcg": 0.24689348803841293,
+            "coffee_group_macro_raw_gap": 0.7471908939014202,
+            "coffee_group_macro_raw_score_boundary_margin": 0.313794234212887,
+            "coffee_group_macro_recall": 0.21762740183792817,
+            "k": 4
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.481754330043636,
+            "coffee_group_macro_ndcg": 0.25415259259406275,
+            "coffee_group_macro_raw_gap": 0.7138157894736842,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3420149491867341,
+            "coffee_group_macro_recall": 0.2489139515455305,
+            "k": 5
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.3140978378654022,
+            "coffee_group_macro_ndcg": 0.2630518060742361,
+            "coffee_group_macro_raw_gap": 0.6788847117794485,
+            "coffee_group_macro_raw_score_boundary_margin": 0.2898931570955272,
+            "coffee_group_macro_recall": 0.2734753550543024,
+            "k": 6
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.152929892438731,
+            "coffee_group_macro_ndcg": 0.28209660352065313,
+            "coffee_group_macro_raw_gap": 0.6276942355889724,
+            "coffee_group_macro_raw_score_boundary_margin": 0.2525953108519316,
+            "coffee_group_macro_recall": 0.316499582289056,
+            "k": 7
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.000479519512236,
+            "coffee_group_macro_ndcg": 0.29759921634825853,
+            "coffee_group_macro_raw_gap": 0.5803397382344752,
+            "coffee_group_macro_raw_score_boundary_margin": 0.20934505545417365,
+            "coffee_group_macro_recall": 0.35090504037872455,
+            "k": 8
+          }
+        ],
+        "OUT_SEPARATED": [
+          {
+            "coffee_group_macro_mean_raw_score": 4.349401323763835,
+            "coffee_group_macro_ndcg": 0.2719298245614035,
+            "coffee_group_macro_raw_gap": 0.8751044277360066,
+            "coffee_group_macro_raw_score_boundary_margin": 0.7388087052494995,
+            "coffee_group_macro_recall": 0.11244778613199666,
+            "k": 1
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.979996971139085,
+            "coffee_group_macro_ndcg": 0.2637148222915513,
+            "coffee_group_macro_raw_gap": 0.8059106098579784,
+            "coffee_group_macro_raw_score_boundary_margin": 0.23811900717442708,
+            "coffee_group_macro_recall": 0.17023809523809524,
+            "k": 2
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.777489184539359,
+            "coffee_group_macro_ndcg": 0.27046419183558007,
+            "coffee_group_macro_raw_gap": 0.7428049289891395,
+            "coffee_group_macro_raw_score_boundary_margin": 0.39526894936979245,
+            "coffee_group_macro_recall": 0.21938178780284043,
+            "k": 3
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.577418053897049,
+            "coffee_group_macro_ndcg": 0.2700029217848105,
+            "coffee_group_macro_raw_gap": 0.6984649122807017,
+            "coffee_group_macro_raw_score_boundary_margin": 0.37519217163028123,
+            "coffee_group_macro_recall": 0.25037593984962403,
+            "k": 4
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.382336941185606,
+            "coffee_group_macro_ndcg": 0.27947854103498876,
+            "coffee_group_macro_raw_gap": 0.656446672236146,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3819185557432442,
+            "coffee_group_macro_recall": 0.27910052910052907,
+            "k": 5
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.18862977342077,
+            "coffee_group_macro_ndcg": 0.3077406142856399,
+            "coffee_group_macro_raw_gap": 0.5888854079643553,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3069527094567877,
+            "coffee_group_macro_recall": 0.3434976329713172,
+            "k": 6
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.006417123666346,
+            "coffee_group_macro_ndcg": 0.32460352917505225,
+            "coffee_group_macro_raw_gap": 0.5353453077137288,
+            "coffee_group_macro_raw_score_boundary_margin": 0.26951909304405786,
+            "coffee_group_macro_recall": 0.3845168476747424,
+            "k": 7
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 2.8360677497200206,
+            "coffee_group_macro_ndcg": 0.3427523051108661,
+            "coffee_group_macro_raw_gap": 0.4927805625174046,
+            "coffee_group_macro_raw_score_boundary_margin": 0.16359909671398182,
+            "coffee_group_macro_recall": 0.42714424951267055,
+            "k": 8
+          }
+        ]
+      },
+      "records": 79,
+      "separated_minus_mixed": [
+        {
+          "coffee_group_macro_mean_raw_score": -0.03847969873552515,
+          "coffee_group_macro_ndcg": 0.0,
+          "coffee_group_macro_raw_gap": 0.0,
+          "coffee_group_macro_raw_score_boundary_margin": -0.0057076924784983385,
+          "coffee_group_macro_recall": 0.0,
+          "k": 1
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.035625852496276256,
+          "coffee_group_macro_ndcg": 0.013573782709983884,
+          "coffee_group_macro_raw_gap": -0.014619883040935533,
+          "coffee_group_macro_raw_score_boundary_margin": 0.022825498815707,
+          "coffee_group_macro_recall": 0.014619883040935672,
+          "k": 2
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.0422830700217629,
+          "coffee_group_macro_ndcg": 0.011981310845621151,
+          "coffee_group_macro_raw_gap": -0.01900584795321636,
+          "coffee_group_macro_raw_score_boundary_margin": 0.0988223933310014,
+          "coffee_group_macro_recall": 0.014619883040935672,
+          "k": 3
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.07031727711725555,
+          "coffee_group_macro_ndcg": 0.023109433746397567,
+          "coffee_group_macro_raw_gap": -0.048725981620718506,
+          "coffee_group_macro_raw_score_boundary_margin": 0.061397937417394244,
+          "coffee_group_macro_recall": 0.03274853801169586,
+          "k": 4
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.09941738885803009,
+          "coffee_group_macro_ndcg": 0.025325948440926005,
+          "coffee_group_macro_raw_gap": -0.057369117237538236,
+          "coffee_group_macro_raw_score_boundary_margin": 0.039903606556510096,
+          "coffee_group_macro_recall": 0.030186577554998567,
+          "k": 5
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.12546806444463243,
+          "coffee_group_macro_ndcg": 0.04468880821140381,
+          "coffee_group_macro_raw_gap": -0.08999930381509325,
+          "coffee_group_macro_raw_score_boundary_margin": 0.0170595523612605,
+          "coffee_group_macro_recall": 0.07002227791701476,
+          "k": 6
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.14651276877238484,
+          "coffee_group_macro_ndcg": 0.04250692565439912,
+          "coffee_group_macro_raw_gap": -0.09234892787524362,
+          "coffee_group_macro_raw_score_boundary_margin": 0.016923782192126258,
+          "coffee_group_macro_recall": 0.06801726538568642,
+          "k": 7
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.16441176979221517,
+          "coffee_group_macro_ndcg": 0.04515308876260754,
+          "coffee_group_macro_raw_gap": -0.08755917571707056,
+          "coffee_group_macro_raw_score_boundary_margin": -0.04574595874019183,
+          "coffee_group_macro_recall": 0.076239209133946,
+          "k": 8
+        }
+      ]
+    },
+    "C01": {
+      "coffee_groups": 77,
+      "interpretation": "Recall/gap/NDCG use unchanged fine-reference metrics after output creation. Raw scores are uncalibrated and cannot establish confidence or choose a policy.",
+      "policy_curves": {
+        "OUT_MIXED": [
+          {
+            "coffee_group_macro_mean_raw_score": 4.129004065561186,
+            "coffee_group_macro_ndcg": 0.21929824561403508,
+            "coffee_group_macro_raw_gap": 0.9034670008354219,
+            "coffee_group_macro_raw_score_boundary_margin": 0.5558969532110303,
+            "coffee_group_macro_recall": 0.08059732664995824,
+            "k": 1
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.851055588955672,
+            "coffee_group_macro_ndcg": 0.23151873284369884,
+            "coffee_group_macro_raw_gap": 0.8238721804511279,
+            "coffee_group_macro_raw_score_boundary_margin": 0.17892857475133575,
+            "coffee_group_macro_recall": 0.15008354218880535,
+            "k": 2
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.698763238503388,
+            "coffee_group_macro_ndcg": 0.23437366849197516,
+            "coffee_group_macro_raw_gap": 0.7657581453634086,
+            "coffee_group_macro_raw_score_boundary_margin": 0.2544196882254063,
+            "coffee_group_macro_recall": 0.19657477025898076,
+            "k": 3
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.5590121412208946,
+            "coffee_group_macro_ndcg": 0.23231038928019954,
+            "coffee_group_macro_raw_gap": 0.7391499582289055,
+            "coffee_group_macro_raw_score_boundary_margin": 0.26065132941100216,
+            "coffee_group_macro_recall": 0.2190893901420217,
+            "k": 4
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.423031216969198,
+            "coffee_group_macro_ndcg": 0.24441039035594903,
+            "coffee_group_macro_raw_gap": 0.691781537176274,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3494592675809402,
+            "coffee_group_macro_recall": 0.2664578111946533,
+            "k": 5
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.274134056204577,
+            "coffee_group_macro_ndcg": 0.2510996687140962,
+            "coffee_group_macro_raw_gap": 0.6661967418546366,
+            "coffee_group_macro_raw_score_boundary_margin": 0.300972510579362,
+            "coffee_group_macro_recall": 0.2851712614870509,
+            "k": 6
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.124782868432796,
+            "coffee_group_macro_ndcg": 0.2733311187642387,
+            "coffee_group_macro_raw_gap": 0.5974415204678363,
+            "coffee_group_macro_raw_score_boundary_margin": 0.24411968397620204,
+            "coffee_group_macro_recall": 0.3408939014202172,
+            "k": 7
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 2.982254517106935,
+            "coffee_group_macro_ndcg": 0.2938893584687231,
+            "coffee_group_macro_raw_gap": 0.5457741576162629,
+            "coffee_group_macro_raw_score_boundary_margin": 0.22334416324558387,
+            "coffee_group_macro_recall": 0.39079643553327764,
+            "k": 8
+          }
+        ],
+        "OUT_SEPARATED": [
+          {
+            "coffee_group_macro_mean_raw_score": 4.098775714264343,
+            "coffee_group_macro_ndcg": 0.21929824561403508,
+            "coffee_group_macro_raw_gap": 0.9034670008354219,
+            "coffee_group_macro_raw_score_boundary_margin": 0.5489079493329954,
+            "coffee_group_macro_recall": 0.08059732664995824,
+            "k": 1
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.8243217395978446,
+            "coffee_group_macro_ndcg": 0.24509251555368275,
+            "coffee_group_macro_raw_gap": 0.8092522974101921,
+            "coffee_group_macro_raw_score_boundary_margin": 0.19980798769320018,
+            "coffee_group_macro_recall": 0.16470342522974102,
+            "k": 2
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.666234418811279,
+            "coffee_group_macro_ndcg": 0.24635497933759634,
+            "coffee_group_macro_raw_gap": 0.7511382623224728,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3293667087344074,
+            "coffee_group_macro_recall": 0.21119465329991646,
+            "k": 3
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.504849081234394,
+            "coffee_group_macro_ndcg": 0.2518740801055349,
+            "coffee_group_macro_raw_gap": 0.7079678362573099,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3068814447065305,
+            "coffee_group_macro_recall": 0.24598997493734337,
+            "k": 4
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.346641589746957,
+            "coffee_group_macro_ndcg": 0.2693755396045383,
+            "coffee_group_macro_raw_gap": 0.6477687273739905,
+            "coffee_group_macro_raw_score_boundary_margin": 0.39511973367938236,
+            "coffee_group_macro_recall": 0.2966443887496519,
+            "k": 5
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.1753166398087687,
+            "coffee_group_macro_ndcg": 0.2956561364730753,
+            "coffee_group_macro_raw_gap": 0.5750905040378725,
+            "coffee_group_macro_raw_score_boundary_margin": 0.3410469607740097,
+            "coffee_group_macro_recall": 0.3561960456697299,
+            "k": 6
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 3.0042206811709184,
+            "coffee_group_macro_ndcg": 0.3230861813197415,
+            "coffee_group_macro_raw_gap": 0.5042258423837371,
+            "coffee_group_macro_raw_score_boundary_margin": 0.28662233690841304,
+            "coffee_group_macro_recall": 0.4290030632135895,
+            "k": 7
+          },
+          {
+            "coffee_group_macro_mean_raw_score": 2.840070920078979,
+            "coffee_group_macro_ndcg": 0.34678693803483773,
+            "coffee_group_macro_raw_gap": 0.44773043720412137,
+            "coffee_group_macro_raw_score_boundary_margin": 0.18247442660386665,
+            "coffee_group_macro_recall": 0.48562378167641324,
+            "k": 8
+          }
+        ]
+      },
+      "records": 79,
+      "separated_minus_mixed": [
+        {
+          "coffee_group_macro_mean_raw_score": -0.030228351296843314,
+          "coffee_group_macro_ndcg": 0.0,
+          "coffee_group_macro_raw_gap": 0.0,
+          "coffee_group_macro_raw_score_boundary_margin": -0.006989003878034916,
+          "coffee_group_macro_recall": 0.0,
+          "k": 1
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.0267338493578273,
+          "coffee_group_macro_ndcg": 0.013573782709983911,
+          "coffee_group_macro_raw_gap": -0.014619883040935755,
+          "coffee_group_macro_raw_score_boundary_margin": 0.020879412941864434,
+          "coffee_group_macro_recall": 0.014619883040935672,
+          "k": 2
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.03252881969210897,
+          "coffee_group_macro_ndcg": 0.01198131084562118,
+          "coffee_group_macro_raw_gap": -0.014619883040935755,
+          "coffee_group_macro_raw_score_boundary_margin": 0.0749470205090011,
+          "coffee_group_macro_recall": 0.0146198830409357,
+          "k": 3
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.05416305998650062,
+          "coffee_group_macro_ndcg": 0.019563690825335378,
+          "coffee_group_macro_raw_gap": -0.031182121971595644,
+          "coffee_group_macro_raw_score_boundary_margin": 0.04623011529552834,
+          "coffee_group_macro_recall": 0.026900584795321675,
+          "k": 4
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.07638962722224107,
+          "coffee_group_macro_ndcg": 0.02496514924858928,
+          "coffee_group_macro_raw_gap": -0.044012809802283503,
+          "coffee_group_macro_raw_score_boundary_margin": 0.045660466098442154,
+          "coffee_group_macro_recall": 0.030186577554998595,
+          "k": 5
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.09881741639580843,
+          "coffee_group_macro_ndcg": 0.04455646775897909,
+          "coffee_group_macro_raw_gap": -0.09110623781676408,
+          "coffee_group_macro_raw_score_boundary_margin": 0.040074450194647726,
+          "coffee_group_macro_recall": 0.07102478418267899,
+          "k": 6
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.12056218726187762,
+          "coffee_group_macro_ndcg": 0.04975506255550277,
+          "coffee_group_macro_raw_gap": -0.09321567808409914,
+          "coffee_group_macro_raw_score_boundary_margin": 0.042502652932211005,
+          "coffee_group_macro_recall": 0.0881091617933723,
+          "k": 7
+        },
+        {
+          "coffee_group_macro_mean_raw_score": -0.1421835970279557,
+          "coffee_group_macro_ndcg": 0.05289757956611463,
+          "coffee_group_macro_raw_gap": -0.09804372041214154,
+          "coffee_group_macro_raw_score_boundary_margin": -0.040869736641717225,
+          "coffee_group_macro_recall": 0.0948273461431356,
+          "k": 8
+        }
+      ]
+    }
+  },
+  "private_detail": {
+    "bytes": 4493928,
+    "sha256": "5f83cddeff212b92c36038116e64441e9ea9f6ffbbdb7bb22a469820107dbfbf",
+    "status": "OWNER_CONTROLLED_STORAGE"
+  },
+  "registered_dimensions": [
+    "floral",
+    "fruity",
+    "green_vegetative",
+    "nutty_cocoa",
+    "roasted",
+    "sour_fermented",
+    "spices",
+    "sweet",
+    "taste"
+  ],
+  "single_pass_dimension_vote_association": {
+    "C00": {
+      "coffee_group_macro_spearman_rank_association": 0.28985559400754507,
+      "coffee_groups": 77,
+      "evaluable_rank_association_records": 79,
+      "factor_graph_and_ensemble_duplicate_computations_avoided": true,
+      "interpretation": "This static uniform vote is a diagnostic comparator, not a replacement score, learned ensemble, model recommendation or training result.",
+      "mean_named_candidates_with_nonzero_vote": 28.39240506329114,
+      "mean_separated_returned_with_nonzero_vote": 6.012658227848101,
+      "records": 79
+    },
+    "C01": {
+      "coffee_group_macro_spearman_rank_association": 0.2877336268237946,
+      "coffee_groups": 77,
+      "evaluable_rank_association_records": 79,
+      "factor_graph_and_ensemble_duplicate_computations_avoided": true,
+      "interpretation": "This static uniform vote is a diagnostic comparator, not a replacement score, learned ensemble, model recommendation or training result.",
+      "mean_named_candidates_with_nonzero_vote": 27.911392405063292,
+      "mean_separated_returned_with_nonzero_vote": 6.025316455696203,
+      "records": 79
+    }
+  },
+  "source_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+  "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
+  "version": "m2-r9.registered-dimension-structure.v1"
+}

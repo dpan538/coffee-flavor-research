@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "db/scripts"))
 
 import audit_output_quality_r9 as audit
+import analyze_dimension_structure_r9 as dimensions
 import generate_user_study_pack_r9 as pack
 import prepare_training_target_spec_r9 as target_spec
 import update_owner_decision_r9 as decision
@@ -189,6 +190,44 @@ class FormativePackTests(unittest.TestCase):
         self.assertEqual(
             set(spec["acceptance_contract"]["empirical_thresholds"].values()),
             {"NOT_SET", "REPORT_SEPARATELY_NO_COMPOSITE"},
+        )
+
+    def test_registered_dimension_extensions_are_static_and_multi_label(self):
+        final = self.final()
+        final["state"]["base_state"]["answers_by_question"] = {
+            "Q0": {
+                "question_id": "question-001",
+                "selected_option_ids": ["sensory.dark_chocolate"],
+            }
+        }
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "full_T": {"sensory.apple": 1.0},
+            "actual_return": final,
+        }
+        registry = self.registry()
+        links = dimensions.evidence_reception_rows(source, registry)
+        self.assertGreater(len(links), 1)
+        self.assertEqual(len({row["evidence_id"] for row in links}), 1)
+        self.assertAlmostEqual(
+            sum(row["uniform_membership_weight"] for row in links), 1.0
+        )
+        registered = dimensions.registered_dimensions(registry)
+        concentration = dimensions.consensus_case(source, registry, registered)
+        self.assertLessEqual(
+            concentration["policies"]["OUT_SEPARATED"]["active_dimension_count"],
+            9,
+        )
+        vote = dimensions.single_pass_case(source, registry)
+        self.assertTrue(
+            vote["factor_graph_single_pass_equals_cluster_vote_under_this_definition"]
+        )
+        curves = dimensions.prefix_curve_case(source, registry)
+        self.assertEqual(
+            [point["k"] for point in curves["policies"]["OUT_SEPARATED"]],
+            list(range(1, 9)),
         )
 
 

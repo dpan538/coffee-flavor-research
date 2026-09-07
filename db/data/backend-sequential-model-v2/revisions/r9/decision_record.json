@@ -91,5 +91,16 @@
     "empirical_thresholds": "NOT_SET",
     "reason": "No real R9 feedback, label-reliability estimate, variance estimate or owner-approved metric tradeoff weights exist. The attachment's example thresholds and minimum 30 groups were not adopted as evidence-backed gates.",
     "private_artifact_sha256": "3820e71842da116148349486a7d71fad20f916a82430353f1fb6e799a5f9220d"
+  },
+  "registered_dimension_extension": {
+    "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
+    "definition": "Cluster means one of the nine existing support_dimension_ids; no cluster discovery, learned edge or iterative propagation was performed.",
+    "evidence_reception": "C01 contained 370 unique selected-answer evidence items and 424 evidence-dimension links. Fifty-four evidence items reached multiple dimensions, a 14.59% multi-dimension incidence rate; eight of nine dimensions received evidence.",
+    "concentration_result": "The proposed concentration hypothesis was not supported. OUT_SEPARATED increased mean active dimensions from 4.234 to 4.461 and normalized entropy by 0.0159 while decreasing HHI by 0.0073. It was less concentrated in 34/79 records, more concentrated in 20/79 and tied in 25/79.",
+    "static_vote_result": "The uniform one-pass registered-dimension vote had coffee-group macro Spearman association 0.2877 with the frozen named-candidate score order. This is descriptive, tie-heavy association and does not establish learned factor propagation.",
+    "coverage_score_result": "Fine-reference recall improved for OUT_SEPARATED from k=2 through k=8, while mean uncalibrated raw score was lower at every k. Boundary margins were not uniformly higher. No confidence, probability or Pareto policy claim was made.",
+    "user_effect": "NOT_EVALUATED",
+    "public_summary_sha256": "a5d1f58ccc7f80369ad7749e6b6767f641b126ffa7ed21ea54f1ed1c8d0d8678",
+    "private_detail_sha256": "5f83cddeff212b92c36038116e64441e9ea9f6ffbbdb7bb22a469820107dbfbf"
   }
 }
