@@ -102,5 +102,19 @@
     "user_effect": "NOT_EVALUATED",
     "public_summary_sha256": "a5d1f58ccc7f80369ad7749e6b6767f641b126ffa7ed21ea54f1ed1c8d0d8678",
     "private_detail_sha256": "5f83cddeff212b92c36038116e64441e9ea9f6ffbbdb7bb22a469820107dbfbf"
+  },
+  "concentration_hypothesis_deconstruction": {
+    "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
+    "evaluation_scope": "C01 has 79 records across 77 repeatedly viewed development coffee groups; 59 records across 57 groups have positive frozen T and are evaluable for target-derived coverage and fit. This is not independent confirmation.",
+    "metric_roles": "Coverage recall is paired with dimension precision and Jaccard; redundancy is reported through named-descriptor load and registered-dimension overlap proxies; diversity-adjusted fit uses R8 one-to-one match gain with fixed alpha sensitivity. No composite quality score was created.",
+    "main_result": "OUT_SEPARATED versus OUT_MIXED increased all-role target-dimension recall by 0.0351 and named-only recall by 0.0614. All-role precision fell by 0.0149 and all-role Jaccard was nearly flat (-0.0009). Repeated-dimension membership rose by 0.0725 and mean pairwise dimension overlap rose by 0.0286. Diversity-adjusted fit at alpha=0.5 rose by 0.0253 (higher in 16/59 evaluable records, lower in 0, tied in 43).",
+    "comparison_pool_result": "OUT_SEPARATED increased all-role target-dimension recall by 0.0132 and named-only recall by 0.0336, while all-role precision fell by 0.0165 and all-role Jaccard fell by 0.0104. Repeated-dimension membership rose by 0.0726 and mean pairwise overlap rose by 0.0197. Diversity-adjusted fit at alpha=0.5 rose by 0.0353 (higher in 39/59 evaluable records, lower in 0, tied in 20).",
+    "profile_result": "Adding OUT_SEPARATED overall_profile to its unchanged comparison pool increased target-dimension recall by only 0.0022 while dimension precision fell by 0.0064 and Jaccard fell by 0.0049 on the old target proxy. Profile usefulness remains a separate formative user question.",
+    "interpretation": "The concentration hypothesis decomposes into a tradeoff: role separation improves old-target coverage and one-to-one diversity-adjusted fit, but increases coarse registered-dimension redundancy and does not improve dimension precision/Jaccard consistently. OUT_SEPARATED remains an approved role contract, not an empirically dominant output policy.",
+    "specific_first_separated_current_content": "EQUIVALENT_ON_ALL_79_C01_MAIN_AND_COMPARISON_POOLS",
+    "alpha_policy": "Fixed sensitivity values 0.0, 0.25, 0.5 and 0.75 were all reported. None was learned, selected or adopted as a product tradeoff weight.",
+    "user_effect": "NOT_EVALUATED",
+    "public_summary_sha256": "02b79a5ce265ef41b1a3965df31764c96225d4c30e80b61a7e79c894333ff696",
+    "private_detail_sha256": "f62911ea8f55ed24044a77e8a43a21f23c871b44f0b90389cf178cd0663ca658"
   }
 }

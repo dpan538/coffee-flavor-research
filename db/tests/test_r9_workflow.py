@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "db/scripts"))
 
 import audit_output_quality_r9 as audit
 import analyze_dimension_structure_r9 as dimensions
+import evaluate_output_diversity_r9 as diversity
 import generate_user_study_pack_r9 as pack
 import prepare_training_target_spec_r9 as target_spec
 import update_owner_decision_r9 as decision
@@ -229,6 +230,49 @@ class FormativePackTests(unittest.TestCase):
             [point["k"] for point in curves["policies"]["OUT_SEPARATED"]],
             list(range(1, 9)),
         )
+
+    def test_diversity_metrics_separate_coverage_redundancy_and_fit(self):
+        registry = self.registry()
+        rows = [
+            {"candidate_id": "sensory.apple"},
+            {"candidate_id": "sensory.lemon"},
+            {"candidate_id": "sensory.rose"},
+        ]
+        coverage = diversity.coverage_metrics(
+            rows, ["sensory.apple", "sensory.rose"], registry
+        )
+        self.assertEqual(coverage["all_roles"]["target_dimension_recall"], 1.0)
+        self.assertEqual(coverage["all_roles"]["output_dimension_precision"], 1.0)
+        redundancy = diversity.redundancy_metrics(rows[:2], registry)
+        self.assertEqual(redundancy["repeated_dimension_membership_rate"], 0.5)
+        self.assertEqual(redundancy["mean_pairwise_dimension_jaccard"], 1.0)
+        no_penalty = diversity.diversity_adjusted_fit(
+            rows[:2],
+            ["sensory.apple", "sensory.lemon"],
+            registry,
+            alpha=0.0,
+            declared_budget=2,
+        )
+        penalty = diversity.diversity_adjusted_fit(
+            rows[:2],
+            ["sensory.apple", "sensory.lemon"],
+            registry,
+            alpha=0.5,
+            declared_budget=2,
+        )
+        self.assertLess(
+            penalty["alpha_ndcg_optimistic"],
+            no_penalty["alpha_ndcg_optimistic"],
+        )
+
+    def test_missing_target_dimensions_are_not_scored_as_zero_precision(self):
+        coverage = diversity.coverage_metrics(
+            [{"candidate_id": "sensory.apple"}], [], self.registry()
+        )
+        self.assertFalse(coverage["evaluable"])
+        self.assertIsNone(coverage["all_roles"]["target_dimension_recall"])
+        self.assertIsNone(coverage["all_roles"]["output_dimension_precision"])
+        self.assertIsNone(coverage["all_roles"]["dimension_jaccard"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1108 @@
+{
+  "alpha_sensitivity_values": [
+    0.0,
+    0.25,
+    0.5,
+    0.75
+  ],
+  "c01_deconstruction": {
+    "evaluation_scope": {
+      "coffee_groups": 77,
+      "independent_confirmation": false,
+      "records": 79,
+      "target_evaluable_coffee_groups": 57,
+      "target_evaluable_records": 59
+    },
+    "interpretation": [
+      "OUT_SEPARATED improves old-target dimension recall and one-to-one diversity-adjusted fit, but it also increases registered-dimension overlap redundancy.",
+      "All-role dimension precision and Jaccard do not improve consistently, so coverage gain is not a uniform dimension-fit win.",
+      "The alpha sensitivity series keeps the fit delta positive, but no alpha is an owner-approved or user-derived utility weight.",
+      "Current OUT_SPECIFIC_FIRST and OUT_SEPARATED main/comparison content are identical, so these metrics cannot distinguish their current comparison pools; profile remains a separate role question."
+    ],
+    "overall_profile_increment_over_separated_pool": {
+      "dimension_jaccard": -0.004887218045112773,
+      "output_dimension_precision": -0.006432748538011734,
+      "target_dimension_recall": 0.002192982456140302
+    },
+    "specific_first_separated_content_equivalence": {
+      "comparison_pool": 79,
+      "main": 79
+    },
+    "views": {
+      "comparison_pool": {
+        "all_role_dimension_jaccard_delta": -0.010380116959064323,
+        "all_role_output_dimension_precision_delta": -0.01652046783625727,
+        "all_role_target_dimension_recall_delta": 0.013157894736842146,
+        "alpha_0_5_directional_counts": {
+          "evaluable_records": 59,
+          "separated_higher": 39,
+          "separated_lower": 0,
+          "tie": 20
+        },
+        "alpha_0_5_diversity_adjusted_fit_delta": 0.03531531227130197,
+        "mean_pairwise_dimension_jaccard_delta": 0.01970470006184294,
+        "named_only_dimension_jaccard_delta": -0.015350877192982448,
+        "named_only_output_dimension_precision_delta": -0.027923976608187073,
+        "named_only_target_dimension_recall_delta": 0.033625730994152114,
+        "repeated_dimension_membership_rate_delta": 0.07264223871366732
+      },
+      "main": {
+        "all_role_dimension_jaccard_delta": -0.0008771929824561431,
+        "all_role_output_dimension_precision_delta": -0.014912280701754377,
+        "all_role_target_dimension_recall_delta": 0.03508771929824561,
+        "alpha_0_5_directional_counts": {
+          "evaluable_records": 59,
+          "separated_higher": 16,
+          "separated_lower": 0,
+          "tie": 43
+        },
+        "alpha_0_5_diversity_adjusted_fit_delta": 0.025308231006757276,
+        "mean_pairwise_dimension_jaccard_delta": 0.028571428571428553,
+        "named_only_dimension_jaccard_delta": 0.015789473684210575,
+        "named_only_output_dimension_precision_delta": -0.006140350877192946,
+        "named_only_target_dimension_recall_delta": 0.061403508771929904,
+        "repeated_dimension_membership_rate_delta": 0.07251082251082247
+      }
+    }
+  },
+  "fit_count": 0,
+  "guards": {
+    "T_used_only_after_all_outputs_created": true,
+    "composite_product_score_created": false,
+    "concentration_used_as_quality_target": false,
+    "fit_count": 0,
+    "independent_confirmation_claim": "NOT_MADE",
+    "metric_weight_learned_or_selected": false,
+    "model_or_policy_parameter_changes": 0,
+    "output_policy_received_T": false,
+    "user_effect_claim": "NOT_EVALUATED"
+  },
+  "interpretation_limits": [
+    "Frozen T is an old development expert-target proxy, not participant perception or independent confirmation.",
+    "Registered-dimension overlap is coarser than semantic redundancy; same-dimension descriptors are not automatically synonyms.",
+    "A broad or middle descriptor can be valid product language while receiving no R8 fine-reference match credit.",
+    "Coverage, redundancy and fit remain separate; no owner-approved or user-derived tradeoff weights exist."
+  ],
+  "metric_contract": {
+    "coverage": "Recall of frozen positive-T dimensions, always accompanied by output-dimension precision and Jaccard. Reported for all flavor roles and named descriptors only.",
+    "diversity_adjusted_fit": "R8 one-to-one exact/shared-parent marginal match gain, rank discount and registered-dimension novelty multiplier; normalized by an optimistic exact-target/no-repeat upper bound.",
+    "fixed_alpha_policy": "0.0, 0.25, 0.5 and 0.75 are sensitivity points supplied for audit. None is learned, selected or treated as a product tradeoff weight.",
+    "redundancy": "Named-descriptor load, repeated dimension memberships, pairwise dimension overlap, identical dimension signatures and ordered repeated-dimension rows."
+  },
+  "policies": [
+    "OUT_MIXED",
+    "OUT_SPECIFIC_FIRST",
+    "OUT_SEPARATED"
+  ],
+  "private_detail": {
+    "bytes": 10766284,
+    "sha256": "f62911ea8f55ed24044a77e8a43a21f23c871b44f0b90389cf178cd0663ca658",
+    "status": "OWNER_CONTROLLED_STORAGE"
+  },
+  "purpose": "Deconstruct the rejected concentration-as-quality hypothesis into separately reported target-dimension coverage, registered-dimension redundancy proxies and diversity-adjusted one-to-one fit.",
+  "source_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+  "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
+  "summary": {
+    "C00": {
+      "coffee_groups": 77,
+      "pool_plus_profile_coverage_means": {
+        "OUT_MIXED": {
+          "all_roles": {
+            "dimension_jaccard": 0.43932748538011696,
+            "output_dimension_precision": 0.4845029239766082,
+            "target_dimension_recall": 0.8501461988304094
+          },
+          "named_only": {
+            "dimension_jaccard": 0.44225146198830406,
+            "output_dimension_precision": 0.4926900584795321,
+            "target_dimension_recall": 0.827485380116959
+          }
+        },
+        "OUT_SEPARATED": {
+          "all_roles": {
+            "dimension_jaccard": 0.4078529657477026,
+            "output_dimension_precision": 0.443859649122807,
+            "target_dimension_recall": 0.8676900584795322
+          },
+          "named_only": {
+            "dimension_jaccard": 0.414327485380117,
+            "output_dimension_precision": 0.45336257309941524,
+            "target_dimension_recall": 0.8611111111111112
+          }
+        },
+        "OUT_SPECIFIC_FIRST": {
+          "all_roles": {
+            "dimension_jaccard": 0.414327485380117,
+            "output_dimension_precision": 0.45336257309941524,
+            "target_dimension_recall": 0.8611111111111112
+          },
+          "named_only": {
+            "dimension_jaccard": 0.414327485380117,
+            "output_dimension_precision": 0.45336257309941524,
+            "target_dimension_recall": 0.8611111111111112
+          }
+        }
+      },
+      "records": 79,
+      "specific_first_separated_content_equivalence": {
+        "comparison_pool": 79,
+        "main": 79
+      },
+      "target_evaluable_coffee_groups": 57,
+      "target_evaluable_records": 59,
+      "views": {
+        "comparison_pool": {
+          "directional_counts_separated_vs_mixed": {
+            "coverage_all_roles.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 5,
+              "separated_lower": 21,
+              "tie": 33
+            },
+            "coverage_all_roles.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 5,
+              "separated_lower": 21,
+              "tie": 33
+            },
+            "coverage_all_roles.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 3,
+              "separated_lower": 2,
+              "tie": 54
+            },
+            "coverage_named_only.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 4,
+              "separated_lower": 23,
+              "tie": 32
+            },
+            "coverage_named_only.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 3,
+              "separated_lower": 24,
+              "tie": 32
+            },
+            "coverage_named_only.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 4,
+              "separated_lower": 0,
+              "tie": 55
+            },
+            "diversity_adjusted_fit.alpha_0.0": {
+              "evaluable_records": 59,
+              "separated_higher": 43,
+              "separated_lower": 0,
+              "tie": 16
+            },
+            "diversity_adjusted_fit.alpha_0.25": {
+              "evaluable_records": 59,
+              "separated_higher": 43,
+              "separated_lower": 0,
+              "tie": 16
+            },
+            "diversity_adjusted_fit.alpha_0.5": {
+              "evaluable_records": 59,
+              "separated_higher": 43,
+              "separated_lower": 0,
+              "tie": 16
+            },
+            "diversity_adjusted_fit.alpha_0.75": {
+              "evaluable_records": 59,
+              "separated_higher": 43,
+              "separated_lower": 0,
+              "tie": 16
+            },
+            "r8_reference.exact_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 11,
+              "separated_lower": 0,
+              "tie": 48
+            },
+            "r8_reference.ndcg_actual_positions": {
+              "evaluable_records": 59,
+              "separated_higher": 27,
+              "separated_lower": 0,
+              "tie": 32
+            },
+            "r8_reference.raw_gap": {
+              "evaluable_records": 59,
+              "separated_higher": 0,
+              "separated_lower": 17,
+              "tie": 42
+            },
+            "redundancy.identical_dimension_signature_pair_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 48,
+              "separated_lower": 27,
+              "tie": 4
+            },
+            "redundancy.mean_pairwise_dimension_jaccard": {
+              "evaluable_records": 79,
+              "separated_higher": 43,
+              "separated_lower": 35,
+              "tie": 1
+            },
+            "redundancy.named_descriptors_per_active_dimension": {
+              "evaluable_records": 79,
+              "separated_higher": 61,
+              "separated_lower": 16,
+              "tie": 2
+            },
+            "redundancy.ordered_repeated_dimension_row_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 57,
+              "separated_lower": 21,
+              "tie": 1
+            },
+            "redundancy.repeated_dimension_membership_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 62,
+              "separated_lower": 16,
+              "tie": 1
+            }
+          },
+          "policy_means": {
+            "OUT_MIXED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.43932748538011696,
+                "output_dimension_precision": 0.4845029239766082,
+                "target_dimension_recall": 0.8501461988304094
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.44225146198830406,
+                "output_dimension_precision": 0.4926900584795321,
+                "target_dimension_recall": 0.827485380116959
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.3467229698749047,
+                "0.25": 0.31600001131270355,
+                "0.5": 0.2931492368638953,
+                "0.75": 0.27672560054017226
+              },
+              "r8_reference": {
+                "exact_recall": 0.35090504037872455,
+                "ndcg_actual_positions": 0.29759921634825853,
+                "raw_gap": 0.5803397382344752
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.17108843537414967,
+                "mean_pairwise_dimension_jaccard": 0.2193491032776747,
+                "named_descriptors_per_active_dimension": 1.6343073593073594,
+                "ordered_repeated_dimension_row_rate": 0.5782312925170068,
+                "repeated_dimension_membership_rate": 0.4343434343434343
+              }
+            },
+            "OUT_SEPARATED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.414327485380117,
+                "output_dimension_precision": 0.45336257309941524,
+                "target_dimension_recall": 0.8611111111111112
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.414327485380117,
+                "output_dimension_precision": 0.45336257309941524,
+                "target_dimension_recall": 0.8611111111111112
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.39881208482320946,
+                "0.25": 0.36097982945424717,
+                "0.5": 0.3302348369355864,
+                "0.75": 0.3063280697618837
+              },
+              "r8_reference": {
+                "exact_recall": 0.42714424951267055,
+                "ndcg_actual_positions": 0.3427523051108661,
+                "raw_gap": 0.4927805625174046
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.18622448979591835,
+                "mean_pairwise_dimension_jaccard": 0.23318645640074212,
+                "named_descriptors_per_active_dimension": 1.8259740259740258,
+                "ordered_repeated_dimension_row_rate": 0.6410018552875696,
+                "repeated_dimension_membership_rate": 0.501984126984127
+              }
+            },
+            "OUT_SPECIFIC_FIRST": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.414327485380117,
+                "output_dimension_precision": 0.45336257309941524,
+                "target_dimension_recall": 0.8611111111111112
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.414327485380117,
+                "output_dimension_precision": 0.45336257309941524,
+                "target_dimension_recall": 0.8611111111111112
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.39881208482320946,
+                "0.25": 0.36097982945424717,
+                "0.5": 0.3302348369355864,
+                "0.75": 0.3063280697618837
+              },
+              "r8_reference": {
+                "exact_recall": 0.42714424951267055,
+                "ndcg_actual_positions": 0.3427523051108661,
+                "raw_gap": 0.4927805625174046
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.18622448979591835,
+                "mean_pairwise_dimension_jaccard": 0.23318645640074212,
+                "named_descriptors_per_active_dimension": 1.8259740259740258,
+                "ordered_repeated_dimension_row_rate": 0.6410018552875696,
+                "repeated_dimension_membership_rate": 0.501984126984127
+              }
+            }
+          },
+          "separated_minus_mixed": {
+            "coverage_all_roles.dimension_jaccard": -0.024999999999999967,
+            "coverage_all_roles.output_dimension_precision": -0.031140350877192968,
+            "coverage_all_roles.target_dimension_recall": 0.010964912280701733,
+            "coverage_named_only.dimension_jaccard": -0.027923976608187073,
+            "coverage_named_only.output_dimension_precision": -0.03932748538011688,
+            "coverage_named_only.target_dimension_recall": 0.033625730994152114,
+            "diversity_adjusted_fit.alpha_0.0": 0.05208911494830476,
+            "diversity_adjusted_fit.alpha_0.25": 0.044979818141543615,
+            "diversity_adjusted_fit.alpha_0.5": 0.037085600071691094,
+            "diversity_adjusted_fit.alpha_0.75": 0.029602469221711447,
+            "r8_reference.exact_recall": 0.076239209133946,
+            "r8_reference.ndcg_actual_positions": 0.04515308876260754,
+            "r8_reference.raw_gap": -0.08755917571707056,
+            "redundancy.identical_dimension_signature_pair_rate": 0.015136054421768685,
+            "redundancy.mean_pairwise_dimension_jaccard": 0.013837353123067414,
+            "redundancy.named_descriptors_per_active_dimension": 0.19166666666666643,
+            "redundancy.ordered_repeated_dimension_row_rate": 0.06277056277056281,
+            "redundancy.repeated_dimension_membership_rate": 0.06764069264069267
+          }
+        },
+        "main": {
+          "directional_counts_separated_vs_mixed": {
+            "coverage_all_roles.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 12,
+              "tie": 41
+            },
+            "coverage_all_roles.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 12,
+              "tie": 41
+            },
+            "coverage_all_roles.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 0,
+              "tie": 53
+            },
+            "coverage_named_only.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 9,
+              "separated_lower": 12,
+              "tie": 38
+            },
+            "coverage_named_only.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 8,
+              "separated_lower": 12,
+              "tie": 39
+            },
+            "coverage_named_only.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 9,
+              "separated_lower": 0,
+              "tie": 50
+            },
+            "diversity_adjusted_fit.alpha_0.0": {
+              "evaluable_records": 59,
+              "separated_higher": 23,
+              "separated_lower": 0,
+              "tie": 36
+            },
+            "diversity_adjusted_fit.alpha_0.25": {
+              "evaluable_records": 59,
+              "separated_higher": 23,
+              "separated_lower": 0,
+              "tie": 36
+            },
+            "diversity_adjusted_fit.alpha_0.5": {
+              "evaluable_records": 59,
+              "separated_higher": 23,
+              "separated_lower": 0,
+              "tie": 36
+            },
+            "diversity_adjusted_fit.alpha_0.75": {
+              "evaluable_records": 59,
+              "separated_higher": 23,
+              "separated_lower": 0,
+              "tie": 36
+            },
+            "r8_reference.exact_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 7,
+              "separated_lower": 0,
+              "tie": 52
+            },
+            "r8_reference.ndcg_actual_positions": {
+              "evaluable_records": 59,
+              "separated_higher": 10,
+              "separated_lower": 0,
+              "tie": 49
+            },
+            "r8_reference.raw_gap": {
+              "evaluable_records": 59,
+              "separated_higher": 0,
+              "separated_lower": 21,
+              "tie": 38
+            },
+            "redundancy.identical_dimension_signature_pair_rate": {
+              "evaluable_records": 76,
+              "separated_higher": 28,
+              "separated_lower": 13,
+              "tie": 35
+            },
+            "redundancy.mean_pairwise_dimension_jaccard": {
+              "evaluable_records": 76,
+              "separated_higher": 32,
+              "separated_lower": 9,
+              "tie": 35
+            },
+            "redundancy.named_descriptors_per_active_dimension": {
+              "evaluable_records": 79,
+              "separated_higher": 31,
+              "separated_lower": 13,
+              "tie": 35
+            },
+            "redundancy.ordered_repeated_dimension_row_rate": {
+              "evaluable_records": 76,
+              "separated_higher": 40,
+              "separated_lower": 1,
+              "tie": 35
+            },
+            "redundancy.repeated_dimension_membership_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 43,
+              "separated_lower": 1,
+              "tie": 35
+            }
+          },
+          "policy_means": {
+            "OUT_MIXED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.43625730994152045,
+                "output_dimension_precision": 0.5138888888888888,
+                "target_dimension_recall": 0.739766081871345
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.4298245614035088,
+                "output_dimension_precision": 0.5080409356725146,
+                "target_dimension_recall": 0.6900584795321638
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.28834049980326903,
+                "0.25": 0.2792837254019647,
+                "0.5": 0.27077708290718694,
+                "0.75": 0.26282057231893574
+              },
+              "r8_reference": {
+                "exact_recall": 0.2489139515455305,
+                "ndcg_actual_positions": 0.25415259259406275,
+                "raw_gap": 0.7138157894736842
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.14774774774774774,
+                "mean_pairwise_dimension_jaccard": 0.17601351351351352,
+                "named_descriptors_per_active_dimension": 1.3360389610389611,
+                "ordered_repeated_dimension_row_rate": 0.39808558558558554,
+                "repeated_dimension_membership_rate": 0.2748917748917749
+              }
+            },
+            "OUT_SEPARATED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.4334795321637427,
+                "output_dimension_precision": 0.4956140350877193,
+                "target_dimension_recall": 0.7777777777777778
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.4334795321637427,
+                "output_dimension_precision": 0.4956140350877193,
+                "target_dimension_recall": 0.7777777777777778
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.32944714637675837,
+                "0.25": 0.314755928013181,
+                "0.5": 0.30106860506836575,
+                "0.75": 0.28838517754231263
+              },
+              "r8_reference": {
+                "exact_recall": 0.27910052910052907,
+                "ndcg_actual_positions": 0.27947854103498876,
+                "raw_gap": 0.656446672236146
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.16103896103896104,
+                "mean_pairwise_dimension_jaccard": 0.2077922077922078,
+                "named_descriptors_per_active_dimension": 1.4393939393939392,
+                "ordered_repeated_dimension_row_rate": 0.5113636363636364,
+                "repeated_dimension_membership_rate": 0.3664502164502164
+              }
+            },
+            "OUT_SPECIFIC_FIRST": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.4334795321637427,
+                "output_dimension_precision": 0.4956140350877193,
+                "target_dimension_recall": 0.7777777777777778
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.4334795321637427,
+                "output_dimension_precision": 0.4956140350877193,
+                "target_dimension_recall": 0.7777777777777778
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.32944714637675837,
+                "0.25": 0.314755928013181,
+                "0.5": 0.30106860506836575,
+                "0.75": 0.28838517754231263
+              },
+              "r8_reference": {
+                "exact_recall": 0.27910052910052907,
+                "ndcg_actual_positions": 0.27947854103498876,
+                "raw_gap": 0.656446672236146
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.16103896103896104,
+                "mean_pairwise_dimension_jaccard": 0.2077922077922078,
+                "named_descriptors_per_active_dimension": 1.4393939393939392,
+                "ordered_repeated_dimension_row_rate": 0.5113636363636364,
+                "repeated_dimension_membership_rate": 0.3664502164502164
+              }
+            }
+          },
+          "separated_minus_mixed": {
+            "coverage_all_roles.dimension_jaccard": -0.002777777777777768,
+            "coverage_all_roles.output_dimension_precision": -0.018274853801169555,
+            "coverage_all_roles.target_dimension_recall": 0.03801169590643283,
+            "coverage_named_only.dimension_jaccard": 0.003654970760233911,
+            "coverage_named_only.output_dimension_precision": -0.012426900584795342,
+            "coverage_named_only.target_dimension_recall": 0.08771929824561397,
+            "diversity_adjusted_fit.alpha_0.0": 0.041106646573489336,
+            "diversity_adjusted_fit.alpha_0.25": 0.03547220261121625,
+            "diversity_adjusted_fit.alpha_0.5": 0.030291522161178808,
+            "diversity_adjusted_fit.alpha_0.75": 0.02556460522337689,
+            "r8_reference.exact_recall": 0.030186577554998567,
+            "r8_reference.ndcg_actual_positions": 0.025325948440926005,
+            "r8_reference.raw_gap": -0.057369117237538236,
+            "redundancy.identical_dimension_signature_pair_rate": 0.0132912132912133,
+            "redundancy.mean_pairwise_dimension_jaccard": 0.031778694278694286,
+            "redundancy.named_descriptors_per_active_dimension": 0.10335497835497809,
+            "redundancy.ordered_repeated_dimension_row_rate": 0.11327805077805081,
+            "redundancy.repeated_dimension_membership_rate": 0.0915584415584415
+          }
+        }
+      }
+    },
+    "C01": {
+      "coffee_groups": 77,
+      "pool_plus_profile_coverage_means": {
+        "OUT_MIXED": {
+          "all_roles": {
+            "dimension_jaccard": 0.4275062656641604,
+            "output_dimension_precision": 0.47119883040935673,
+            "target_dimension_recall": 0.8523391812865497
+          },
+          "named_only": {
+            "dimension_jaccard": 0.4324770258980785,
+            "output_dimension_precision": 0.48260233918128653,
+            "target_dimension_recall": 0.8318713450292398
+          }
+        },
+        "OUT_SEPARATED": {
+          "all_roles": {
+            "dimension_jaccard": 0.4122389306599833,
+            "output_dimension_precision": 0.4482456140350877,
+            "target_dimension_recall": 0.8676900584795322
+          },
+          "named_only": {
+            "dimension_jaccard": 0.41712614870509607,
+            "output_dimension_precision": 0.45467836257309946,
+            "target_dimension_recall": 0.8654970760233919
+          }
+        },
+        "OUT_SPECIFIC_FIRST": {
+          "all_roles": {
+            "dimension_jaccard": 0.41712614870509607,
+            "output_dimension_precision": 0.45467836257309946,
+            "target_dimension_recall": 0.8654970760233919
+          },
+          "named_only": {
+            "dimension_jaccard": 0.41712614870509607,
+            "output_dimension_precision": 0.45467836257309946,
+            "target_dimension_recall": 0.8654970760233919
+          }
+        }
+      },
+      "records": 79,
+      "specific_first_separated_content_equivalence": {
+        "comparison_pool": 79,
+        "main": 79
+      },
+      "target_evaluable_coffee_groups": 57,
+      "target_evaluable_records": 59,
+      "views": {
+        "comparison_pool": {
+          "directional_counts_separated_vs_mixed": {
+            "coverage_all_roles.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 7,
+              "separated_lower": 15,
+              "tie": 37
+            },
+            "coverage_all_roles.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 7,
+              "separated_lower": 15,
+              "tie": 37
+            },
+            "coverage_all_roles.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 3,
+              "separated_lower": 1,
+              "tie": 55
+            },
+            "coverage_named_only.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 4,
+              "separated_lower": 17,
+              "tie": 38
+            },
+            "coverage_named_only.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 3,
+              "separated_lower": 18,
+              "tie": 38
+            },
+            "coverage_named_only.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 4,
+              "separated_lower": 0,
+              "tie": 55
+            },
+            "diversity_adjusted_fit.alpha_0.0": {
+              "evaluable_records": 59,
+              "separated_higher": 39,
+              "separated_lower": 0,
+              "tie": 20
+            },
+            "diversity_adjusted_fit.alpha_0.25": {
+              "evaluable_records": 59,
+              "separated_higher": 39,
+              "separated_lower": 0,
+              "tie": 20
+            },
+            "diversity_adjusted_fit.alpha_0.5": {
+              "evaluable_records": 59,
+              "separated_higher": 39,
+              "separated_lower": 0,
+              "tie": 20
+            },
+            "diversity_adjusted_fit.alpha_0.75": {
+              "evaluable_records": 59,
+              "separated_higher": 39,
+              "separated_lower": 0,
+              "tie": 20
+            },
+            "r8_reference.exact_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 14,
+              "separated_lower": 0,
+              "tie": 45
+            },
+            "r8_reference.ndcg_actual_positions": {
+              "evaluable_records": 59,
+              "separated_higher": 26,
+              "separated_lower": 0,
+              "tie": 33
+            },
+            "r8_reference.raw_gap": {
+              "evaluable_records": 59,
+              "separated_higher": 0,
+              "separated_lower": 21,
+              "tie": 38
+            },
+            "redundancy.identical_dimension_signature_pair_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 46,
+              "separated_lower": 19,
+              "tie": 14
+            },
+            "redundancy.mean_pairwise_dimension_jaccard": {
+              "evaluable_records": 79,
+              "separated_higher": 41,
+              "separated_lower": 31,
+              "tie": 7
+            },
+            "redundancy.named_descriptors_per_active_dimension": {
+              "evaluable_records": 79,
+              "separated_higher": 64,
+              "separated_lower": 8,
+              "tie": 7
+            },
+            "redundancy.ordered_repeated_dimension_row_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 54,
+              "separated_lower": 18,
+              "tie": 7
+            },
+            "redundancy.repeated_dimension_membership_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 64,
+              "separated_lower": 8,
+              "tie": 7
+            }
+          },
+          "policy_means": {
+            "OUT_MIXED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.4275062656641604,
+                "output_dimension_precision": 0.47119883040935673,
+                "target_dimension_recall": 0.8523391812865497
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.4324770258980785,
+                "output_dimension_precision": 0.48260233918128653,
+                "target_dimension_recall": 0.8318713450292398
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.34488909336917845,
+                "0.25": 0.3092484909365196,
+                "0.5": 0.2830692860458665,
+                "0.75": 0.2636072176830663
+              },
+              "r8_reference": {
+                "exact_recall": 0.39079643553327764,
+                "ndcg_actual_positions": 0.2938893584687231,
+                "raw_gap": 0.5457741576162629
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.16376004947433517,
+                "mean_pairwise_dimension_jaccard": 0.2124381570810142,
+                "named_descriptors_per_active_dimension": 1.615151515151515,
+                "ordered_repeated_dimension_row_rate": 0.5643475572047,
+                "repeated_dimension_membership_rate": 0.427718511647083
+              }
+            },
+            "OUT_SEPARATED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.41712614870509607,
+                "output_dimension_precision": 0.45467836257309946,
+                "target_dimension_recall": 0.8654970760233919
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.41712614870509607,
+                "output_dimension_precision": 0.45467836257309946,
+                "target_dimension_recall": 0.8654970760233919
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.4020672104318371,
+                "0.25": 0.3546883238459515,
+                "0.5": 0.3183845983171685,
+                "0.75": 0.29096910270904447
+              },
+              "r8_reference": {
+                "exact_recall": 0.48562378167641324,
+                "ndcg_actual_positions": 0.34678693803483773,
+                "raw_gap": 0.44773043720412137
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.1841372912801484,
+                "mean_pairwise_dimension_jaccard": 0.23214285714285715,
+                "named_descriptors_per_active_dimension": 1.8225108225108226,
+                "ordered_repeated_dimension_row_rate": 0.6354359925788498,
+                "repeated_dimension_membership_rate": 0.5003607503607503
+              }
+            },
+            "OUT_SPECIFIC_FIRST": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.41712614870509607,
+                "output_dimension_precision": 0.45467836257309946,
+                "target_dimension_recall": 0.8654970760233919
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.41712614870509607,
+                "output_dimension_precision": 0.45467836257309946,
+                "target_dimension_recall": 0.8654970760233919
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.4020672104318371,
+                "0.25": 0.3546883238459515,
+                "0.5": 0.3183845983171685,
+                "0.75": 0.29096910270904447
+              },
+              "r8_reference": {
+                "exact_recall": 0.48562378167641324,
+                "ndcg_actual_positions": 0.34678693803483773,
+                "raw_gap": 0.44773043720412137
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.1841372912801484,
+                "mean_pairwise_dimension_jaccard": 0.23214285714285715,
+                "named_descriptors_per_active_dimension": 1.8225108225108226,
+                "ordered_repeated_dimension_row_rate": 0.6354359925788498,
+                "repeated_dimension_membership_rate": 0.5003607503607503
+              }
+            }
+          },
+          "separated_minus_mixed": {
+            "coverage_all_roles.dimension_jaccard": -0.010380116959064323,
+            "coverage_all_roles.output_dimension_precision": -0.01652046783625727,
+            "coverage_all_roles.target_dimension_recall": 0.013157894736842146,
+            "coverage_named_only.dimension_jaccard": -0.015350877192982448,
+            "coverage_named_only.output_dimension_precision": -0.027923976608187073,
+            "coverage_named_only.target_dimension_recall": 0.033625730994152114,
+            "diversity_adjusted_fit.alpha_0.0": 0.05717811706265863,
+            "diversity_adjusted_fit.alpha_0.25": 0.045439832909431876,
+            "diversity_adjusted_fit.alpha_0.5": 0.03531531227130197,
+            "diversity_adjusted_fit.alpha_0.75": 0.027361885025978194,
+            "r8_reference.exact_recall": 0.0948273461431356,
+            "r8_reference.ndcg_actual_positions": 0.05289757956611463,
+            "r8_reference.raw_gap": -0.09804372041214154,
+            "redundancy.identical_dimension_signature_pair_rate": 0.02037724180581324,
+            "redundancy.mean_pairwise_dimension_jaccard": 0.01970470006184294,
+            "redundancy.named_descriptors_per_active_dimension": 0.20735930735930763,
+            "redundancy.ordered_repeated_dimension_row_rate": 0.07108843537414977,
+            "redundancy.repeated_dimension_membership_rate": 0.07264223871366732
+          }
+        },
+        "main": {
+          "directional_counts_separated_vs_mixed": {
+            "coverage_all_roles.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 11,
+              "tie": 42
+            },
+            "coverage_all_roles.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 11,
+              "tie": 42
+            },
+            "coverage_all_roles.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 0,
+              "tie": 53
+            },
+            "coverage_named_only.dimension_jaccard": {
+              "evaluable_records": 59,
+              "separated_higher": 9,
+              "separated_lower": 8,
+              "tie": 42
+            },
+            "coverage_named_only.output_dimension_precision": {
+              "evaluable_records": 59,
+              "separated_higher": 6,
+              "separated_lower": 9,
+              "tie": 44
+            },
+            "coverage_named_only.target_dimension_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 9,
+              "separated_lower": 0,
+              "tie": 50
+            },
+            "diversity_adjusted_fit.alpha_0.0": {
+              "evaluable_records": 59,
+              "separated_higher": 16,
+              "separated_lower": 0,
+              "tie": 43
+            },
+            "diversity_adjusted_fit.alpha_0.25": {
+              "evaluable_records": 59,
+              "separated_higher": 16,
+              "separated_lower": 0,
+              "tie": 43
+            },
+            "diversity_adjusted_fit.alpha_0.5": {
+              "evaluable_records": 59,
+              "separated_higher": 16,
+              "separated_lower": 0,
+              "tie": 43
+            },
+            "diversity_adjusted_fit.alpha_0.75": {
+              "evaluable_records": 59,
+              "separated_higher": 16,
+              "separated_lower": 0,
+              "tie": 43
+            },
+            "r8_reference.exact_recall": {
+              "evaluable_records": 59,
+              "separated_higher": 7,
+              "separated_lower": 0,
+              "tie": 52
+            },
+            "r8_reference.ndcg_actual_positions": {
+              "evaluable_records": 59,
+              "separated_higher": 9,
+              "separated_lower": 0,
+              "tie": 50
+            },
+            "r8_reference.raw_gap": {
+              "evaluable_records": 59,
+              "separated_higher": 0,
+              "separated_lower": 15,
+              "tie": 44
+            },
+            "redundancy.identical_dimension_signature_pair_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 23,
+              "separated_lower": 8,
+              "tie": 48
+            },
+            "redundancy.mean_pairwise_dimension_jaccard": {
+              "evaluable_records": 79,
+              "separated_higher": 27,
+              "separated_lower": 6,
+              "tie": 46
+            },
+            "redundancy.named_descriptors_per_active_dimension": {
+              "evaluable_records": 79,
+              "separated_higher": 24,
+              "separated_lower": 8,
+              "tie": 47
+            },
+            "redundancy.ordered_repeated_dimension_row_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 31,
+              "separated_lower": 2,
+              "tie": 46
+            },
+            "redundancy.repeated_dimension_membership_rate": {
+              "evaluable_records": 79,
+              "separated_higher": 31,
+              "separated_lower": 2,
+              "tie": 46
+            }
+          },
+          "policy_means": {
+            "OUT_MIXED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.4305555555555556,
+                "output_dimension_precision": 0.5109649122807017,
+                "target_dimension_recall": 0.7492690058479533
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.41388888888888886,
+                "output_dimension_precision": 0.5021929824561403,
+                "target_dimension_recall": 0.722953216374269
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.2863730374983051,
+                "0.25": 0.27380980174513,
+                "0.5": 0.2613266473241055,
+                "0.75": 0.2489235742352316
+              },
+              "r8_reference": {
+                "exact_recall": 0.2664578111946533,
+                "ndcg_actual_positions": 0.24441039035594903,
+                "raw_gap": 0.691781537176274
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.1292207792207792,
+                "mean_pairwise_dimension_jaccard": 0.16396103896103897,
+                "named_descriptors_per_active_dimension": 1.352813852813853,
+                "ordered_repeated_dimension_row_rate": 0.39935064935064934,
+                "repeated_dimension_membership_rate": 0.2878787878787879
+              }
+            },
+            "OUT_SEPARATED": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.42967836257309944,
+                "output_dimension_precision": 0.49605263157894736,
+                "target_dimension_recall": 0.7843567251461989
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.42967836257309944,
+                "output_dimension_precision": 0.49605263157894736,
+                "target_dimension_recall": 0.7843567251461989
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.3203140015107802,
+                "0.25": 0.30303334088846373,
+                "0.5": 0.28663487833086276,
+                "0.75": 0.2711186138379774
+              },
+              "r8_reference": {
+                "exact_recall": 0.2966443887496519,
+                "ndcg_actual_positions": 0.2693755396045383,
+                "raw_gap": 0.6477687273739905
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.1448051948051948,
+                "mean_pairwise_dimension_jaccard": 0.19253246753246753,
+                "named_descriptors_per_active_dimension": 1.4361471861471862,
+                "ordered_repeated_dimension_row_rate": 0.5,
+                "repeated_dimension_membership_rate": 0.36038961038961037
+              }
+            },
+            "OUT_SPECIFIC_FIRST": {
+              "coverage_all_roles": {
+                "dimension_jaccard": 0.42967836257309944,
+                "output_dimension_precision": 0.49605263157894736,
+                "target_dimension_recall": 0.7843567251461989
+              },
+              "coverage_named_only": {
+                "dimension_jaccard": 0.42967836257309944,
+                "output_dimension_precision": 0.49605263157894736,
+                "target_dimension_recall": 0.7843567251461989
+              },
+              "diversity_adjusted_fit": {
+                "0.0": 0.3203140015107802,
+                "0.25": 0.30303334088846373,
+                "0.5": 0.28663487833086276,
+                "0.75": 0.2711186138379774
+              },
+              "r8_reference": {
+                "exact_recall": 0.2966443887496519,
+                "ndcg_actual_positions": 0.2693755396045383,
+                "raw_gap": 0.6477687273739905
+              },
+              "redundancy": {
+                "identical_dimension_signature_pair_rate": 0.1448051948051948,
+                "mean_pairwise_dimension_jaccard": 0.19253246753246753,
+                "named_descriptors_per_active_dimension": 1.4361471861471862,
+                "ordered_repeated_dimension_row_rate": 0.5,
+                "repeated_dimension_membership_rate": 0.36038961038961037
+              }
+            }
+          },
+          "separated_minus_mixed": {
+            "coverage_all_roles.dimension_jaccard": -0.0008771929824561431,
+            "coverage_all_roles.output_dimension_precision": -0.014912280701754377,
+            "coverage_all_roles.target_dimension_recall": 0.03508771929824561,
+            "coverage_named_only.dimension_jaccard": 0.015789473684210575,
+            "coverage_named_only.output_dimension_precision": -0.006140350877192946,
+            "coverage_named_only.target_dimension_recall": 0.061403508771929904,
+            "diversity_adjusted_fit.alpha_0.0": 0.033940964012475094,
+            "diversity_adjusted_fit.alpha_0.25": 0.029223539143333754,
+            "diversity_adjusted_fit.alpha_0.5": 0.025308231006757276,
+            "diversity_adjusted_fit.alpha_0.75": 0.022195039602745825,
+            "r8_reference.exact_recall": 0.030186577554998595,
+            "r8_reference.ndcg_actual_positions": 0.02496514924858928,
+            "r8_reference.raw_gap": -0.044012809802283503,
+            "redundancy.identical_dimension_signature_pair_rate": 0.01558441558441559,
+            "redundancy.mean_pairwise_dimension_jaccard": 0.028571428571428553,
+            "redundancy.named_descriptors_per_active_dimension": 0.08333333333333326,
+            "redundancy.ordered_repeated_dimension_row_rate": 0.10064935064935066,
+            "redundancy.repeated_dimension_membership_rate": 0.07251082251082247
+          }
+        }
+      }
+    }
+  },
+  "version": "m2-r9.output-coverage-redundancy-fit.v1",
+  "views": {
+    "comparison_pool": 8,
+    "main": 5
+  }
+}
