@@ -69,5 +69,27 @@
     "profile_pair_order": "BALANCED_6_WITH_PROFILE_FIRST_6_WITHOUT_PROFILE_FIRST",
     "private_assignment_sha256": "daf962f685d51f53d8734101a509d396e09928faa0e5c073c35142b4703343f7",
     "data_limit": "Participant IDs, coffees, live C01 outputs, judgments and timings remain blank until real sessions occur."
+  },
+  "post_decision_audits": {
+    "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
+    "version": "m2-r9.output-quality-audit.v2",
+    "mechanism": "For C01, 46/79 main outputs were unchanged and 33/79 removed a profile direction and promoted a named descriptor. Among 57 evaluable coffee groups, gap improved for 15, tied for 42 and regressed for 0; 20 groups had no evaluable target. Seven records gained an exact target and none lost one. Within-role reorder count was zero.",
+    "middle_category": "Evidence-qualified middle categories appeared 141 times in C01 separated main. They had zero exact fine-target hits under the unchanged R8 fine-reference contract; they remain valid product semantics but receive no automatic fine metric credit.",
+    "evidence_chain": "Of 632 C01 separated descriptor occurrences, 152 were explicit user expressions, 324 shared only a supported direction, and 156 had no direct current-answer trace. There were 312 broader-or-sibling specificity review flags across 78 records; 49.37% is a review-queue rate, not an observed error rate.",
+    "profile_quality": "All 198 C01 profile occurrences had K1 support and a selected-or-confirmed support trace; no profile overlapped the 5+3 pool. Nine profile occurrences lacked a named-output dimension counterpart, which is complementary coverage rather than an automatic contradiction or benefit.",
+    "user_effect": "NOT_EVALUATED",
+    "private_artifact_sha256": {
+      "mechanism_audit.private.json": "8cf759c68de13f2f244c8a52fa01192db882f0d9d00a0c0c61f1463fb0c373df",
+      "evidence_audit.private.json": "5f36dcafff40b5f1a97bd5d26d831cb02a94002361bec65e33a98f0d10083c59",
+      "profile_audit.private.json": "426571844249faba9ef3e6aad41344e5ddae1123bcc7f3bd9e6d5d2fddeb4ce7"
+    }
+  },
+  "future_training_target_spec": {
+    "status": "DRAFT_FOR_FUTURE_ROUND_NOT_AUTHORIZED_FOR_EXECUTION",
+    "training_authorized": false,
+    "fit_count": 0,
+    "empirical_thresholds": "NOT_SET",
+    "reason": "No real R9 feedback, label-reliability estimate, variance estimate or owner-approved metric tradeoff weights exist. The attachment's example thresholds and minimum 30 groups were not adopted as evidence-backed gates.",
+    "private_artifact_sha256": "3820e71842da116148349486a7d71fad20f916a82430353f1fb6e799a5f9220d"
   }
 }

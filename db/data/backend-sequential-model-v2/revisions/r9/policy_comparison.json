@@ -375,6 +375,207 @@
       }
     }
   },
+  "post_decision_audits": {
+    "evidence_chain_audit": {
+      "C00": {
+        "coffee_groups": 77,
+        "descriptor_level_counts": {
+          "EVIDENCE_QUALIFIED_MIDDLE_CATEGORY": 206,
+          "SPECIFIC_NAMED_DESCRIPTOR": 426
+        },
+        "descriptor_occurrences": 632,
+        "evidence_class_counts": {
+          "EXPLICIT_USER_EXPRESSION": 154,
+          "NO_DIRECT_USER_ANSWER_TRACE": 157,
+          "SUPPORTED_DIRECTION_ONLY": 321
+        },
+        "explicit_flag_without_selected_or_confirmed_count": 0,
+        "interpretation": "NO_DIRECT_USER_ANSWER_TRACE means the returned word is not directly traceable to the current answers; it does not mean the frozen model has no source or relational evidence. Review flags require real descriptor-level judgments.",
+        "panel_evidence_class_counts": {
+          "main": {
+            "EXPLICIT_USER_EXPRESSION": 154,
+            "NO_DIRECT_USER_ANSWER_TRACE": 77,
+            "SUPPORTED_DIRECTION_ONLY": 164
+          },
+          "secondary": {
+            "NO_DIRECT_USER_ANSWER_TRACE": 80,
+            "SUPPORTED_DIRECTION_ONLY": 157
+          }
+        },
+        "records": 79,
+        "records_with_specificity_review_flag": 78,
+        "specificity_review_flag_occurrences": 306,
+        "specificity_review_flag_rate_not_error_rate": 0.48417721518987344,
+        "target_or_T_used": false
+      },
+      "C01": {
+        "coffee_groups": 77,
+        "descriptor_level_counts": {
+          "EVIDENCE_QUALIFIED_MIDDLE_CATEGORY": 203,
+          "SPECIFIC_NAMED_DESCRIPTOR": 429
+        },
+        "descriptor_occurrences": 632,
+        "evidence_class_counts": {
+          "EXPLICIT_USER_EXPRESSION": 152,
+          "NO_DIRECT_USER_ANSWER_TRACE": 156,
+          "SUPPORTED_DIRECTION_ONLY": 324
+        },
+        "explicit_flag_without_selected_or_confirmed_count": 0,
+        "interpretation": "NO_DIRECT_USER_ANSWER_TRACE means the returned word is not directly traceable to the current answers; it does not mean the frozen model has no source or relational evidence. Review flags require real descriptor-level judgments.",
+        "panel_evidence_class_counts": {
+          "main": {
+            "EXPLICIT_USER_EXPRESSION": 152,
+            "NO_DIRECT_USER_ANSWER_TRACE": 79,
+            "SUPPORTED_DIRECTION_ONLY": 164
+          },
+          "secondary": {
+            "NO_DIRECT_USER_ANSWER_TRACE": 77,
+            "SUPPORTED_DIRECTION_ONLY": 160
+          }
+        },
+        "records": 79,
+        "records_with_specificity_review_flag": 78,
+        "specificity_review_flag_occurrences": 312,
+        "specificity_review_flag_rate_not_error_rate": 0.4936708860759494,
+        "target_or_T_used": false
+      }
+    },
+    "fit_count": 0,
+    "mechanism_audit": {
+      "C00": {
+        "added_named_matching_witness_weight": 12.25,
+        "added_named_occurrences": 62,
+        "cases_with_added_exact_target": 7,
+        "cases_with_removed_exact_target": 0,
+        "coffee_group_main_gap_outcomes": {
+          "IMPROVEMENT": 21,
+          "NOT_EVALUABLE": 20,
+          "REGRESSION": 0,
+          "TIE": 36
+        },
+        "coffee_group_metric_delta_separated_minus_mixed": {
+          "ndcg_actual_positions": 0.025325948440926005,
+          "raw_gap": -0.0573691172375383,
+          "recall": 0.03018657755499861
+        },
+        "coffee_group_pool_metric_delta_separated_minus_mixed": {
+          "ndcg_actual_positions": 0.04515308876260754,
+          "raw_gap": -0.08755917571707045,
+          "recall": 0.07623920913394598
+        },
+        "coffee_groups": 77,
+        "interpretation": "Mechanism counts are record descriptions. Metric deltas and outcomes are also reported at the coffee-group level. Matching witnesses are one deterministic optimum and are not additive causal attribution.",
+        "mechanism_counts": {
+          "NO_MAIN_CHANGE": 35,
+          "PROFILE_DIRECTION_REMOVED_NAMED_PROMOTED": 44
+        },
+        "middle_named_exact_target_occurrences": 0,
+        "middle_named_main_occurrences": 147,
+        "record_main_gap_outcomes": {
+          "IMPROVEMENT": 21,
+          "NOT_EVALUABLE": 20,
+          "REGRESSION": 0,
+          "TIE": 38
+        },
+        "records": 79,
+        "removed_direction_matching_witness_weight": 0,
+        "removed_profile_direction_occurrences": 62,
+        "within_role_reordering_cases": 0
+      },
+      "C01": {
+        "added_named_matching_witness_weight": 10.75,
+        "added_named_occurrences": 46,
+        "cases_with_added_exact_target": 7,
+        "cases_with_removed_exact_target": 0,
+        "coffee_group_main_gap_outcomes": {
+          "IMPROVEMENT": 15,
+          "NOT_EVALUABLE": 20,
+          "REGRESSION": 0,
+          "TIE": 42
+        },
+        "coffee_group_metric_delta_separated_minus_mixed": {
+          "ndcg_actual_positions": 0.024965149248589256,
+          "raw_gap": -0.0440128098022835,
+          "recall": 0.03018657755499861
+        },
+        "coffee_group_pool_metric_delta_separated_minus_mixed": {
+          "ndcg_actual_positions": 0.05289757956611456,
+          "raw_gap": -0.09804372041214146,
+          "recall": 0.09482734614313562
+        },
+        "coffee_groups": 77,
+        "interpretation": "Mechanism counts are record descriptions. Metric deltas and outcomes are also reported at the coffee-group level. Matching witnesses are one deterministic optimum and are not additive causal attribution.",
+        "mechanism_counts": {
+          "NO_MAIN_CHANGE": 46,
+          "PROFILE_DIRECTION_REMOVED_NAMED_PROMOTED": 33
+        },
+        "middle_named_exact_target_occurrences": 0,
+        "middle_named_main_occurrences": 141,
+        "record_main_gap_outcomes": {
+          "IMPROVEMENT": 15,
+          "NOT_EVALUABLE": 20,
+          "REGRESSION": 0,
+          "TIE": 44
+        },
+        "records": 79,
+        "removed_direction_matching_witness_weight": 0,
+        "removed_profile_direction_occurrences": 46,
+        "within_role_reordering_cases": 0
+      }
+    },
+    "private_artifacts": {
+      "evidence_audit.private.json": {
+        "bytes": 1265897,
+        "sha256": "5f36dcafff40b5f1a97bd5d26d831cb02a94002361bec65e33a98f0d10083c59"
+      },
+      "mechanism_audit.private.json": {
+        "bytes": 900708,
+        "sha256": "8cf759c68de13f2f244c8a52fa01192db882f0d9d00a0c0c61f1463fb0c373df"
+      },
+      "profile_audit.private.json": {
+        "bytes": 293793,
+        "sha256": "426571844249faba9ef3e6aad41344e5ddae1123bcc7f3bd9e6d5d2fddeb4ce7"
+      }
+    },
+    "profile_quality_audit": {
+      "C00": {
+        "coffee_groups": 77,
+        "interpretation": "Support and structural consistency are software/evidence-chain checks. They do not establish that participants find overall_profile helpful.",
+        "profile_count_distribution": {
+          "1": 6,
+          "2": 23,
+          "3": 50
+        },
+        "profile_occurrences": 202,
+        "profile_occurrences_with_named_dimension_representation": 188,
+        "profile_occurrences_with_selected_or_confirmed_support_trace": 202,
+        "profile_occurrences_without_named_dimension_representation": 14,
+        "profile_pool_overlap_records": 0,
+        "records": 79,
+        "records_with_unsupported_profile": 0,
+        "unsupported_profile_occurrences": 0
+      },
+      "C01": {
+        "coffee_groups": 77,
+        "interpretation": "Support and structural consistency are software/evidence-chain checks. They do not establish that participants find overall_profile helpful.",
+        "profile_count_distribution": {
+          "1": 6,
+          "2": 27,
+          "3": 46
+        },
+        "profile_occurrences": 198,
+        "profile_occurrences_with_named_dimension_representation": 189,
+        "profile_occurrences_with_selected_or_confirmed_support_trace": 198,
+        "profile_occurrences_without_named_dimension_representation": 9,
+        "profile_pool_overlap_records": 0,
+        "records": 79,
+        "records_with_unsupported_profile": 0,
+        "unsupported_profile_occurrences": 0
+      }
+    },
+    "scope": "AGGREGATES_ONLY_RAW_CASE_DETAILS_PRIVATE",
+    "version": "m2-r9.output-quality-audit.v2"
+  },
   "primary_research_generator": "C01",
   "private_actual_policy_outputs": {
     "records": 474,

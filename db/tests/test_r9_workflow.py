@@ -11,7 +11,9 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "db/scripts"))
 
+import audit_output_quality_r9 as audit
 import generate_user_study_pack_r9 as pack
+import prepare_training_target_spec_r9 as target_spec
 import update_owner_decision_r9 as decision
 from output_policy_r9 import role_registry_from_contract
 
@@ -144,6 +146,50 @@ class FormativePackTests(unittest.TestCase):
             all(json.loads(row["profile_candidate_ids_ordered_json"]) for row in rows)
         )
         self.assertTrue(all(row["output_hash"] for row in rows))
+
+    def test_mechanism_evidence_and_profile_audits_keep_claim_boundaries(self):
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "full_T": {"sensory.apple": 1.0},
+            "actual_return": self.final(),
+        }
+        mechanism = audit.mechanism_case(source, self.registry())
+        self.assertEqual(
+            mechanism["mechanism"],
+            "PROFILE_DIRECTION_REMOVED_NAMED_PROMOTED",
+        )
+        self.assertTrue(mechanism["within_role_order_preserved"])
+        evidence = audit.evidence_rows(source, self.registry())
+        lemon = next(row for row in evidence if row["descriptor_id"] == "sensory.lemon")
+        self.assertEqual(lemon["evidence_class"], "EXPLICIT_USER_EXPRESSION")
+        self.assertIn("not an over-specification finding", lemon["scope_note"])
+        profile = audit.profile_case(source, self.registry())
+        self.assertTrue(profile["all_profiles_supported_by_k1"])
+        self.assertEqual(profile["profile_pool_overlap_ids"], [])
+
+    def test_future_training_spec_has_no_authorization_or_invented_thresholds(self):
+        contract = json.loads(
+            (
+                ROOT
+                / "db/data/backend-sequential-model-v2/revisions/r9/output_policy_contract.json"
+            ).read_text()
+        )
+        decision_record = {
+            "owner_decision": {
+                "status": "OWNER_APPROVED",
+                "approved_policy": "OUT_SEPARATED",
+                "approved_utc": "2026-09-07T07:18:54+00:00",
+            }
+        }
+        spec = target_spec.specification(decision_record, contract)
+        self.assertFalse(spec["training_authorized"])
+        self.assertEqual(spec["fit_count"], 0)
+        self.assertEqual(
+            set(spec["acceptance_contract"]["empirical_thresholds"].values()),
+            {"NOT_SET", "REPORT_SEPARATELY_NO_COMPOSITE"},
+        )
 
 
 if __name__ == "__main__":
