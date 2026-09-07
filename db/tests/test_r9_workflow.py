@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "db/scripts"))
 
 import audit_output_quality_r9 as audit
 import audit_semantic_integrity_r9 as semantic
+import analyze_descriptor_relations_r9 as relations
 import analyze_dimension_structure_r9 as dimensions
 import evaluate_output_diversity_r9 as diversity
 import generate_user_study_pack_r9 as pack
@@ -327,6 +328,60 @@ class FormativePackTests(unittest.TestCase):
             semantic.case_audit(
                 {**source, "participant_rating": 4}, registry, frozenset()
             )
+
+    def test_descriptor_relation_registry_is_explicit_and_does_not_infer_edges(self):
+        contract = json.loads(
+            (
+                ROOT
+                / "db/data/backend-sequential-model-v2/revisions/r9/output_policy_contract.json"
+            ).read_text()
+        )
+        registry = role_registry_from_contract(contract)
+        self.assertEqual(relations.validate_relation_registry(contract, registry), [])
+        co_membership = relations.dimension_co_membership_pairs(registry)
+        self.assertGreater(
+            co_membership["named_descriptor_pairs_sharing_a_dimension"], 0
+        )
+        self.assertEqual(co_membership["automatic_relation_edges_created"], 0)
+
+    def test_descriptor_relation_entailment_never_moves_from_broad_to_child(self):
+        edge = {
+            "relation_id": "relation-test-lemon-is-a-citrus",
+            "relation_type": "IS_A",
+            "subject_concept_id": "sensory.lemon",
+            "object_concept_id": "broad.citrus",
+            "inference_direction": "NARROWER_TO_BROADER_ONLY",
+            "provenance_ids": ["source:test-only"],
+            "governance_status": "OWNER_APPROVED",
+        }
+        self.assertEqual(
+            relations.licensed_relation_ids("broad.citrus", {"sensory.lemon"}, [edge]),
+            ["relation-test-lemon-is-a-citrus"],
+        )
+        self.assertEqual(
+            relations.licensed_relation_ids("sensory.lemon", {"broad.citrus"}, [edge]),
+            [],
+        )
+
+    def test_descriptor_relation_audit_rejects_subjective_evaluation(self):
+        contract = json.loads(
+            (
+                ROOT
+                / "db/data/backend-sequential-model-v2/revisions/r9/output_policy_contract.json"
+            ).read_text()
+        )
+        registry = role_registry_from_contract(contract)
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "participant_preference": "LIKE",
+            "actual_return": self.final(),
+        }
+        with self.assertRaisesRegex(
+            ValueError, "SUBJECTIVE_EVALUATION_PRESENT_IN_RELATION_AUDIT_INPUT"
+        ):
+            relations.case_analysis(source, registry, [])
 
 
 if __name__ == "__main__":

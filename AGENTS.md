@@ -27,6 +27,12 @@ training, if separately authorized, must be governed by provenance-backed semant
 evidence, explicit identifiers and roles, registered descriptor relations, and hard
 inference constraints.
 
+R9 may define and validate a static, provenance-backed descriptor-relation registry
+and may audit frozen outputs against it. It must not infer relation edges from shared
+`support_dimension_ids`, identifier prefixes, score co-occurrence, or participant
+judgments. Weighted evidence propagation, MMR/submodular tradeoff selection, lambda
+scanning, and any relation-aware output replacement remain unapproved in R9.
+
 ## [CODEX EXECUTION SCOPE — BACKEND MODEL ONLY]
 
 Effective 2026-09-05. This section governs active execution and supersedes older

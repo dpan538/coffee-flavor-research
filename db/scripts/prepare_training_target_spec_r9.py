@@ -17,7 +17,7 @@ from acquire_supervision_r5 import save
 
 ROOT = Path(__file__).resolve().parents[2]
 R9_PUBLIC = ROOT / "db/data/backend-sequential-model-v2/revisions/r9"
-VERSION = "m2-r9.future-training-target-spec.v2"
+VERSION = "m2-r9.future-training-target-spec.v3"
 
 
 def specification(decision: dict, contract: dict) -> dict:
@@ -133,6 +133,18 @@ def specification(decision: dict, contract: dict) -> dict:
                 ),
                 "status": "SEPARATE_INTERNAL_DIAGNOSTIC_NO_OBJECTIVE_WEIGHT",
             },
+            "relation_aware_post_selection": {
+                "candidate_form": (
+                    "A future deterministic selector may use only owner-approved, "
+                    "provenance-backed descriptor relations. IS_A evidence flows from "
+                    "narrower to broader only; CO_HYPONYM is diagnostic, not entailment."
+                ),
+                "parameter_policy": (
+                    "No MMR lambda, propagation decay, submodular beta or other tradeoff "
+                    "weight is scanned, selected or adopted in R9."
+                ),
+                "status": "NOT_AUTHORIZED_NO_APPROVED_RELATION_EDGES_NO_OUTPUT_CHANGE",
+            },
         },
         "external_subjective_evaluation": {
             "status": "PROHIBITED_AS_MODEL_OR_ARCHITECTURE_INPUT",
@@ -203,7 +215,9 @@ def specification(decision: dict, contract: dict) -> dict:
             "participant preference, satisfaction or perceived fit as labels",
             "post-output word acceptance as semantic truth",
             "shared dimension membership as a parent-child edge",
+            "downward evidence propagation from a broad descriptor to a child",
             "unregistered descriptor relation inference",
+            "MMR or submodular parameter scanning presented as semantic validation",
             "arbitrary evidence-tier scalar weights presented as learned confidence",
             "selecting architecture from subjective feedback",
             "synthetic preference fitting",

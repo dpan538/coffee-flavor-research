@@ -96,15 +96,16 @@
   },
   "future_training_target_spec": {
     "status": "DRAFT_FOR_FUTURE_ROUND_NOT_AUTHORIZED_FOR_EXECUTION",
-    "version": "m2-r9.future-training-target-spec.v2",
+    "version": "m2-r9.future-training-target-spec.v3",
     "training_authorized": false,
     "fit_count": 0,
     "empirical_thresholds": "NOT_SET",
     "external_subjective_evaluation_dependency": "PROHIBITED",
-    "reason": "Future objectives are limited to internal semantic evidence and hard constraints. Evidence tiers remain categorical; no 1.0/0.6/0.4 score, lambda weight or participant-derived target was adopted.",
-    "private_artifact_sha256": "3eec5d25c948851926ae54329122438b8f2e7392e7ac2d55b7b000038aede26d",
+    "reason": "Future objectives are limited to internal semantic evidence and hard constraints. Relation-aware post-selection requires owner-approved provenance edges; no 1.0/0.6/0.4 score, MMR lambda, propagation decay, submodular beta or participant-derived target was adopted.",
+    "private_artifact_sha256": "1759f21bbf7921458fa7842b8cd8eff560e1370b3fe37e13a1c09acc17d3ac2d",
+    "historical_v2_private_artifact_sha256": "3eec5d25c948851926ae54329122438b8f2e7392e7ac2d55b7b000038aede26d",
     "historical_v1_private_artifact_sha256": "3820e71842da116148349486a7d71fad20f916a82430353f1fb6e799a5f9220d",
-    "history_policy": "V1 preserved; V2 stored at a new immutable owner-controlled path."
+    "history_policy": "V1 and V2 preserved; V3 stored at a new immutable owner-controlled path."
   },
   "registered_dimension_extension": {
     "status": "COMPLETE_ON_REBUILT_R8_ACTUAL_RETURNS",
@@ -146,5 +147,20 @@
     "public_summary_sha256": "06d44a691189c407e46f479e8b481931851e31c1e05e03bd57e272ac2ba63851",
     "private_detail_sha256": "f4df73b00f5c45032d15cbcb62a330a86d793d7d852a1e6d243b56bd7654211f",
     "history_policy": "Intermediate v1 private audit preserved; v2 adds exact relation-ID registry validation."
+  },
+  "descriptor_relation_readiness": {
+    "status": "COMPLETE_NO_REGISTERED_DESCRIPTOR_EDGES",
+    "version": "m2-r9.descriptor-relation-readiness.v1",
+    "relation_contract": "IS_A permits narrower-to-broader inference only; SYNONYM requires exact owner-approved provenance; CO_HYPONYM is diagnostic and does not propagate evidence.",
+    "coarse_dimension_result": "The 59 named descriptors contain 360 pairs sharing at least one support dimension, including 35 pairs between a registered middle category and another named descriptor. Zero semantic edges were inferred from these compatibility pairs.",
+    "c01_assertion_result": "Of 632 C01 named occurrences, 152 have a direct descriptor trace and 480 remain unlicensed for strict assertion. Only 19/79 records would retain at least three strict assertions if the empty relation registry were enforced as a shadow mask.",
+    "relation_review_queue": "C01 produced 535 occurrence-level review candidates covering 51 unique source-target-type combinations. They remain candidates only; frozen relation_evidence_ids contained zero occurrences.",
+    "selection_gate": "MMR, weighted propagation and submodular selection were not run because there are no approved descriptor edges and no authority to choose lambda, decay or beta. OUT_SEPARATED and the default finalizer were unchanged.",
+    "next_admissible_step": "Review exact candidate pairs against provenance, register only owner-approved directed edges, then rerun the boolean assertion audit before considering any relation-aware selector.",
+    "fit_count": 0,
+    "T_used": false,
+    "subjective_evaluation_used": false,
+    "public_summary_sha256": "c3ed6198ae94bf4f272c94079978bcf9ae6644d95436d896b7bba81bf1a35e70",
+    "private_detail_sha256": "99956d5d3040bd1fcb5c2353174c376a8881616c69bc7ce23dfc3889f0158aab"
   }
 }

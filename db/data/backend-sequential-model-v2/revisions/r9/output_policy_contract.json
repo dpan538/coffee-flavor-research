@@ -1,5 +1,5 @@
 {
-  "version": "m2-r9.output-policy-contract.v1",
+  "version": "m2-r9.output-policy-contract.v2",
   "registered_utc": "2026-09-07T06:44:12Z",
   "branch": "research/coffee-sensory-data-ml-readiness",
   "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
@@ -63,6 +63,35 @@
     ],
     "optional_human_observation_scope": "PRODUCT_COMPREHENSION_AND_WORDING_USABILITY_ONLY_NOT_SENSORY_TRUTH_OR_MODEL_VALIDATION"
   },
+  "descriptor_relation_contract": {
+    "version": "m2-r9.descriptor-relation-contract.v1",
+    "status": "SCHEMA_ACTIVE_NO_APPROVED_EDGES",
+    "allowed_relation_types": {
+      "IS_A": "The subject is narrower than the object. Evidence may move from the narrower subject to the broader object only; broad evidence never confirms a child.",
+      "SYNONYM": "Bidirectional equivalence only when the exact pair and provenance are owner approved.",
+      "CO_HYPONYM": "Two descriptors share an explicitly registered parent. This is a redundancy diagnostic and never an evidence-entailment edge."
+    },
+    "required_edge_fields": [
+      "relation_id",
+      "relation_type",
+      "subject_concept_id",
+      "object_concept_id",
+      "inference_direction",
+      "provenance_ids",
+      "governance_status"
+    ],
+    "inference_directions": {
+      "IS_A": "NARROWER_TO_BROADER_ONLY",
+      "SYNONYM": "BIDIRECTIONAL",
+      "CO_HYPONYM": "NONE"
+    },
+    "active_governance_status": "OWNER_APPROVED",
+    "dimension_association_policy": "support_dimension_ids remain separate compatibility metadata and cannot create descriptor-relation edges",
+    "runtime_assertion_rule": "A strict non-direct descriptor requires an applicable owner-approved relation edge with registered provenance; relation IDs alone are insufficient.",
+    "r9_propagation_policy": "BOOLEAN_ONE_EDGE_ASSERTION_CHECK_ONLY_NO_DECAY_NO_WEIGHTED_PROPAGATION",
+    "r9_selection_policy": "NO_MMR_NO_SUBMODULAR_RERANK_NO_LAMBDA_SCAN_NO_OUTPUT_CHANGE"
+  },
+  "descriptor_relation_registry": [],
   "unchanged": {
     "default": "B2_UNCHANGED",
     "foundation_check": "OFF",

@@ -1,0 +1,76 @@
+{
+  "algorithm_gate": {
+    "MMR_reranking": "NOT_RUN_NO_APPROVED_RELATION_GRAPH_OR_LAMBDA_AUTHORITY",
+    "dimension_only_similarity": "REJECTED_DOES_NOT_RESOLVE_DESCRIPTOR_SEMANTICS",
+    "output_policy_or_default_changed": false,
+    "relation_aware_assertion_check": "EXECUTED_BOOLEAN_ONE_EDGE",
+    "submodular_selection": "NOT_RUN_NO_APPROVED_RELATION_GRAPH_OR_BETA_AUTHORITY",
+    "weighted_evidence_propagation": "NOT_RUN_NO_DECAY_OR_HOP_WEIGHT_AUTHORITY"
+  },
+  "decision": "The descriptor-relation schema is executable, but the active registry is empty. The next admissible work is provenance review and owner registration of exact edges; shared dimensions cannot bootstrap the graph.",
+  "dimension_co_membership_audit": {
+    "automatic_relation_edges_created": 0,
+    "interpretation": "These are compatibility pairs only. Treating them as parent-child, synonym or co-hyponym edges would fabricate semantics.",
+    "middle_to_other_named_pairs_sharing_a_dimension": 35,
+    "named_descriptor_pairs_sharing_a_dimension": 360
+  },
+  "fit_count": 0,
+  "guards": {
+    "T_used": false,
+    "fit_count": 0,
+    "output_changed": false,
+    "relation_edges_inferred": 0,
+    "subjective_evaluation_used": false,
+    "weights_or_thresholds_selected": false
+  },
+  "private_detail": {
+    "bytes": 826397,
+    "sha256": "99956d5d3040bd1fcb5c2353174c376a8881616c69bc7ce23dfc3889f0158aab",
+    "status": "OWNER_CONTROLLED_STORAGE"
+  },
+  "registered_relation_edge_count": 0,
+  "relation_contract_version": "m2-r9.descriptor-relation-contract.v1",
+  "source_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+  "status": "COMPLETE_NO_REGISTERED_DESCRIPTOR_EDGES",
+  "summary": {
+    "C00": {
+      "assertion_status_counts": {
+        "DIRECT_DESCRIPTOR_TRACE": 154,
+        "NOT_LICENSED_FOR_STRICT_ASSERTION": 478
+      },
+      "coffee_groups": 77,
+      "descriptor_occurrences": 632,
+      "frozen_relation_evidence_occurrences": 0,
+      "outputs_changed": 0,
+      "records": 79,
+      "records_with_at_least_three_strict_assertions": 21,
+      "relation_review_candidate_occurrences": 532,
+      "relation_review_candidate_type_counts": {
+        "DIRECTION_ASSOCIATION_NOT_DESCRIPTOR_EDGE": 290,
+        "POTENTIAL_CO_HYPONYM_OR_OTHER_NEEDS_PROVENANCE": 242
+      },
+      "strict_assertion_eligible_occurrences": 154,
+      "unique_relation_review_candidate_pairs": 46
+    },
+    "C01": {
+      "assertion_status_counts": {
+        "DIRECT_DESCRIPTOR_TRACE": 152,
+        "NOT_LICENSED_FOR_STRICT_ASSERTION": 480
+      },
+      "coffee_groups": 77,
+      "descriptor_occurrences": 632,
+      "frozen_relation_evidence_occurrences": 0,
+      "outputs_changed": 0,
+      "records": 79,
+      "records_with_at_least_three_strict_assertions": 19,
+      "relation_review_candidate_occurrences": 535,
+      "relation_review_candidate_type_counts": {
+        "DIRECTION_ASSOCIATION_NOT_DESCRIPTOR_EDGE": 298,
+        "POTENTIAL_CO_HYPONYM_OR_OTHER_NEEDS_PROVENANCE": 237
+      },
+      "strict_assertion_eligible_occurrences": 152,
+      "unique_relation_review_candidate_pairs": 51
+    }
+  },
+  "version": "m2-r9.descriptor-relation-readiness.v1"
+}
