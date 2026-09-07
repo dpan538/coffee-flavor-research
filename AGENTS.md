@@ -32,6 +32,10 @@ and may audit frozen outputs against it. It must not infer relation edges from s
 `support_dimension_ids`, identifier prefixes, score co-occurrence, or participant
 judgments. Weighted evidence propagation, MMR/submodular tradeoff selection, lambda
 scanning, and any relation-aware output replacement remain unapproved in R9.
+Permitted descriptive work includes registered high-dimensional feature matrices,
+deterministic rule-based profile types, observed answer-evidence prefix trajectories,
+and exact frozen-context association candidates. Do not label these types as learned
+clusters or promote formal-context implications into semantic relation edges.
 
 ## [CODEX EXECUTION SCOPE — BACKEND MODEL ONLY]
 

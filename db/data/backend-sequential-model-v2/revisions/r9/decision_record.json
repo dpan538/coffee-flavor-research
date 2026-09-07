@@ -162,5 +162,20 @@
     "subjective_evaluation_used": false,
     "public_summary_sha256": "c3ed6198ae94bf4f272c94079978bcf9ae6644d95436d896b7bba81bf1a35e70",
     "private_detail_sha256": "99956d5d3040bd1fcb5c2353174c376a8881616c69bc7ce23dfc3889f0158aab"
+  },
+  "semantic_lineage_analysis": {
+    "status": "RESEARCH_OBSERVATION_ONLY",
+    "version": "m2-r9.semantic-lineage-analysis.v1",
+    "descriptor_view": "All 59 named descriptors were represented by exact nine-dimension multi-hot vectors and categorical C01 evidence distributions. Two descriptors span multiple dimensions and 38/59 never appeared in the frozen C01 5+3 output. PCA/MDS was not run because R9 prohibits embeddings.",
+    "case_profile_view": "Rule-based registered-dimension profile types changed between OUT_MIXED and OUT_SEPARATED in 30/79 C01 records. OUT_SEPARATED added 1.468 named descriptors and 0.380 active dimensions per record on average while repeated-dimension membership rose by 0.0723. These are descriptions, not learned coffee clusters.",
+    "dynamic_view": "All 79 C01 records retained five ordered Q0-Q4 answers. Cumulative selected-answer dimensions expanded after first support in 32 records and stayed stable in 47; the dominant dimension set changed in 65. Intermediate candidate ranks were not saved, so no candidate convergence or stopping-rule claim was made.",
+    "formal_context_view": "The 79 C01 records across 77 coffee groups produced 89 exact formal intents and 92 zero-exception singleton implication candidates without truncation. Six directed candidates had equivalent extents. All remain frozen-context co-occurrence observations; zero semantic relation edges were created.",
+    "decision": "Use the four views separately to expose descriptor coverage, profile composition, answer-evidence evolution and co-occurrence structure. Do not compress them into concentration, a composite score, an embedding, a learned cluster or an automatically populated relation graph.",
+    "fit_count": 0,
+    "T_used": false,
+    "subjective_evaluation_used": false,
+    "output_or_trigger_changed": false,
+    "public_summary_sha256": "020af57b78a80783ec363d3b855f48fe1e373c809ed6693c57a0e458ca92d86f",
+    "private_detail_sha256": "8633f4f5ec8bc08d5b24fd72b7b9ac2c72d9a3a16591aba78747790c8620be57"
   }
 }

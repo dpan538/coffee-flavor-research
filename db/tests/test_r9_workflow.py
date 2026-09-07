@@ -15,9 +15,13 @@ import audit_output_quality_r9 as audit
 import audit_semantic_integrity_r9 as semantic
 import analyze_descriptor_relations_r9 as relations
 import analyze_dimension_structure_r9 as dimensions
+import coffee_profile_assignment_r9 as profiles
+import descriptor_feature_extraction_r9 as descriptor_features
 import evaluate_output_diversity_r9 as diversity
+import formal_concept_analysis_r9 as formal
 import generate_user_study_pack_r9 as pack
 import prepare_training_target_spec_r9 as target_spec
+import trajectory_analysis_r9 as trajectory
 import update_owner_decision_r9 as decision
 from output_policy_r9 import role_registry_from_contract
 
@@ -382,6 +386,85 @@ class FormativePackTests(unittest.TestCase):
             ValueError, "SUBJECTIVE_EVALUATION_PRESENT_IN_RELATION_AUDIT_INPUT"
         ):
             relations.case_analysis(source, registry, [])
+
+    def test_descriptor_features_remain_high_dimensional_and_categorical(self):
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "actual_return": self.final(),
+        }
+        result = descriptor_features.build_descriptor_features(
+            [source], self.registry()
+        )
+        self.assertEqual(len(result["dimensions"]), 9)
+        self.assertEqual(result["descriptor_count"], 59)
+        self.assertEqual(
+            result["feature_definition"]["embedding"],
+            "NOT_RUN_R9_EMBEDDING_PROHIBITED",
+        )
+        lemon = next(
+            row for row in result["rows"] if row["descriptor_id"] == "sensory.lemon"
+        )
+        self.assertEqual(lemon["dimension_vector"]["fruity"], 1)
+        self.assertEqual(lemon["evidence_class_counts"]["EXPLICIT_USER_EXPRESSION"], 1)
+
+    def test_rule_profile_type_preserves_multiway_ties(self):
+        result = profiles.profile_type({"fruity": 2, "sweet": 2, "floral": 1})
+        self.assertEqual(result["dominant_dimension_ids"], ["fruity", "sweet"])
+        self.assertEqual(result["profile_type"], "MIXED_DOMINANT::fruity|sweet")
+        self.assertEqual(result["second_tier_dimension_ids"], ["floral"])
+
+    def test_trajectory_uses_real_answer_prefixes_not_rebuilt_candidates(self):
+        final = self.final()
+        final["state"]["base_state"]["answers_by_question"] = {
+            "Q0": {
+                "question_id": "question-001",
+                "state": "SELECTED",
+                "selected_option_ids": ["sensory.lemon"],
+            }
+        }
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "actual_return": final,
+        }
+        result = trajectory.extract_trajectory(source, self.registry())
+        self.assertEqual([row["slot"] for row in result["stages"]], ["Q0"])
+        self.assertEqual(result["stages"][0]["candidate_set_size"], None)
+        self.assertEqual(
+            result["intermediate_candidate_state"],
+            "NOT_AVAILABLE_FINAL_ENDPOINT_ONLY",
+        )
+
+    def test_formal_context_implications_remain_association_candidates(self):
+        context = {
+            "policy_id": "OUT_SEPARATED",
+            "attributes": ["a", "b", "c"],
+            "objects": [
+                {"object_id": "r1", "group_id": "g1", "attributes": ["a", "b"]},
+                {
+                    "object_id": "r2",
+                    "group_id": "g2",
+                    "attributes": ["a", "b", "c"],
+                },
+                {"object_id": "r3", "group_id": "g3", "attributes": ["a"]},
+            ],
+        }
+        result = formal.analyze_formal_context(context)
+        implication = next(
+            row
+            for row in result["exact_singleton_implications"]
+            if row["antecedent_descriptor_id"] == "b"
+            and row["consequent_descriptor_id"] == "a"
+        )
+        self.assertEqual(implication["support_group_count"], 2)
+        self.assertEqual(
+            implication["semantic_status"],
+            "CO_OCCURRENCE_CANDIDATE_ONLY_NOT_RELATION_EDGE",
+        )
+        self.assertEqual(result["summary"]["semantic_relation_edges_created"], 0)
 
 
 if __name__ == "__main__":

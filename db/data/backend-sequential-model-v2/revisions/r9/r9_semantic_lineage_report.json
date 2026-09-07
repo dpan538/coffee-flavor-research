@@ -1,0 +1,192 @@
+{
+  "contract_version": "m2-r9.output-policy-contract.v2",
+  "decision": "The four views expose structure and dynamics without collapsing them into a single concentration score. Descriptor co-membership and frozen-context implications remain review candidates and cannot populate the relation registry.",
+  "fit_count": 0,
+  "guards": {
+    "T_used": false,
+    "embedding_or_cluster_fit": false,
+    "fit_count": 0,
+    "output_or_default_changed": false,
+    "relation_edges_created": 0,
+    "subjective_evaluation_used": false,
+    "trigger_or_stopping_rule_changed": false
+  },
+  "private_detail": {
+    "bytes": 1453992,
+    "sha256": "8633f4f5ec8bc08d5b24fd72b7b9ac2c72d9a3a16591aba78747790c8620be57",
+    "status": "OWNER_CONTROLLED_STORAGE"
+  },
+  "relation_registry": {
+    "approved_edge_count": 0,
+    "edges_created_by_this_analysis": 0
+  },
+  "research_limits": [
+    "No intermediate candidate rankings or outputs were saved, so only answer-evidence prefixes are analyzed dynamically.",
+    "Rule-based profile types describe output dimension counts and are not coffee taxonomies or learned clusters.",
+    "Formal implications are conditional on the repeatedly viewed frozen output context and are not semantic entailments.",
+    "No PCA, MDS, embedding, clustering, MMR, propagation weight, threshold or composite score was run or selected."
+  ],
+  "source_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+  "status": "RESEARCH_OBSERVATION_ONLY",
+  "version": "m2-r9.semantic-lineage-analysis.v1",
+  "views": {
+    "case_profile_lineage": {
+      "scope": "RULE_BASED_REGISTERED_DIMENSION_COUNT_TYPES_NOT_CLUSTERS",
+      "summary": {
+        "C00": {
+          "coffee_groups": 77,
+          "interpretation": "Types are deterministic descriptions of registered named-output dimension counts, not learned clusters or claims about coffee kinds.",
+          "mean_delta_separated_minus_mixed": {
+            "active_dimension_count": 0.5063291139240507,
+            "named_descriptor_count": 1.5949367088607596,
+            "repeated_dimension_membership_rate": 0.06718404661442637
+          },
+          "profile_type_changed_records": 32,
+          "profile_type_counts": {
+            "OUT_MIXED": {
+              "DOMINANT::fruity": 13,
+              "DOMINANT::nutty_cocoa": 36,
+              "MIXED_DOMINANT::fruity|nutty_cocoa": 24,
+              "MIXED_DOMINANT::fruity|nutty_cocoa|sweet": 3,
+              "MIXED_DOMINANT::fruity|sweet": 3
+            },
+            "OUT_SEPARATED": {
+              "DOMINANT::fruity": 17,
+              "DOMINANT::nutty_cocoa": 50,
+              "MIXED_DOMINANT::fruity|nutty_cocoa": 11,
+              "MIXED_DOMINANT::fruity|sweet": 1
+            }
+          },
+          "records": 79
+        },
+        "C01": {
+          "coffee_groups": 77,
+          "interpretation": "Types are deterministic descriptions of registered named-output dimension counts, not learned clusters or claims about coffee kinds.",
+          "mean_delta_separated_minus_mixed": {
+            "active_dimension_count": 0.379746835443038,
+            "named_descriptor_count": 1.4683544303797469,
+            "repeated_dimension_membership_rate": 0.07234779987944545
+          },
+          "profile_type_changed_records": 30,
+          "profile_type_counts": {
+            "OUT_MIXED": {
+              "DOMINANT::fruity": 14,
+              "DOMINANT::nutty_cocoa": 42,
+              "MIXED_DOMINANT::fruity|green_vegetative|nutty_cocoa": 1,
+              "MIXED_DOMINANT::fruity|nutty_cocoa": 16,
+              "MIXED_DOMINANT::fruity|nutty_cocoa|sweet": 3,
+              "MIXED_DOMINANT::fruity|sweet": 3
+            },
+            "OUT_SEPARATED": {
+              "DOMINANT::fruity": 17,
+              "DOMINANT::nutty_cocoa": 50,
+              "MIXED_DOMINANT::fruity|nutty_cocoa": 11,
+              "MIXED_DOMINANT::fruity|sweet": 1
+            }
+          },
+          "records": 79
+        }
+      }
+    },
+    "descriptor_lineage": {
+      "PCA_or_MDS": "NOT_RUN_R9_EMBEDDING_PROHIBITED",
+      "interpretation": "Coordinates were not manufactured. The auditable object is the exact registered multi-hot and categorical feature matrix.",
+      "scope": "REGISTERED_HIGH_DIMENSIONAL_FEATURE_MATRIX",
+      "summary": {
+        "descriptor_count": 59,
+        "descriptors_never_returned": 38,
+        "embedding": "NOT_RUN_R9_EMBEDDING_PROHIBITED",
+        "evidence_class_occurrence_totals": {
+          "EXPLICIT_USER_EXPRESSION": 152,
+          "NO_DIRECT_USER_ANSWER_TRACE": 156,
+          "SUPPORTED_DIRECTION_ONLY": 324
+        },
+        "multi_dimension_descriptor_count": 2,
+        "registered_dimension_count": 9
+      }
+    },
+    "dynamic_evidence_trajectory": {
+      "intermediate_candidate_or_output_trajectory": "NOT_EVALUATED_FINAL_ENDPOINT_ONLY",
+      "scope": "OBSERVED_Q0_TO_Q4_ANSWER_EVIDENCE_PREFIXES",
+      "summary": {
+        "C00": {
+          "coffee_groups": 77,
+          "dimension_evolution_counts": {
+            "EXPANDS_AFTER_FIRST_SUPPORT": 35,
+            "STABLE_AFTER_FIRST_SUPPORT": 44
+          },
+          "dominance_evolution_counts": {
+            "DOMINANT_SET_CHANGED": 65,
+            "STABLE_AFTER_FIRST_SUPPORT": 14
+          },
+          "intermediate_candidate_trajectory": "NOT_EVALUATED_NOT_SAVED",
+          "interpretation": "Cumulative answer evidence can expand or remain stable but cannot show candidate-set convergence. Dominance changes describe evidence prefixes only and do not validate a trigger or stopping rule.",
+          "question_count_distribution": {
+            "5": 79
+          },
+          "records": 79,
+          "trajectory_type_counts": {
+            "EXPANDS_AFTER_FIRST_SUPPORT__DOMINANT_SET_CHANGED": 30,
+            "EXPANDS_AFTER_FIRST_SUPPORT__STABLE_AFTER_FIRST_SUPPORT": 5,
+            "STABLE_AFTER_FIRST_SUPPORT__DOMINANT_SET_CHANGED": 35,
+            "STABLE_AFTER_FIRST_SUPPORT__STABLE_AFTER_FIRST_SUPPORT": 9
+          }
+        },
+        "C01": {
+          "coffee_groups": 77,
+          "dimension_evolution_counts": {
+            "EXPANDS_AFTER_FIRST_SUPPORT": 32,
+            "STABLE_AFTER_FIRST_SUPPORT": 47
+          },
+          "dominance_evolution_counts": {
+            "DOMINANT_SET_CHANGED": 65,
+            "STABLE_AFTER_FIRST_SUPPORT": 14
+          },
+          "intermediate_candidate_trajectory": "NOT_EVALUATED_NOT_SAVED",
+          "interpretation": "Cumulative answer evidence can expand or remain stable but cannot show candidate-set convergence. Dominance changes describe evidence prefixes only and do not validate a trigger or stopping rule.",
+          "question_count_distribution": {
+            "5": 79
+          },
+          "records": 79,
+          "trajectory_type_counts": {
+            "EXPANDS_AFTER_FIRST_SUPPORT__DOMINANT_SET_CHANGED": 27,
+            "EXPANDS_AFTER_FIRST_SUPPORT__STABLE_AFTER_FIRST_SUPPORT": 5,
+            "STABLE_AFTER_FIRST_SUPPORT__DOMINANT_SET_CHANGED": 38,
+            "STABLE_AFTER_FIRST_SUPPORT__STABLE_AFTER_FIRST_SUPPORT": 9
+          }
+        }
+      }
+    },
+    "formal_concept_analysis": {
+      "scope": "C01_OUT_SEPARATED_FROZEN_OUTPUT_CONTEXT",
+      "summary": {
+        "attributes": 59,
+        "equivalent_extent_directed_candidates": 6,
+        "exact_singleton_implication_candidates": 92,
+        "formal_intent_enumeration_truncated": false,
+        "formal_intents": 89,
+        "implication_support_group_distribution": {
+          "1": 35,
+          "2": 5,
+          "3": 5,
+          "4": 4,
+          "5": 4,
+          "11": 5,
+          "14": 5,
+          "16": 4,
+          "35": 4,
+          "41": 3,
+          "44": 3,
+          "63": 3,
+          "71": 3,
+          "75": 3,
+          "77": 6
+        },
+        "interpretation": "Formal implications are exact only inside the repeatedly viewed frozen output context. They are association-review candidates, not IS_A, SYNONYM, causal, or sensory-truth relations.",
+        "object_groups": 77,
+        "object_records": 79,
+        "semantic_relation_edges_created": 0
+      }
+    }
+  }
+}
