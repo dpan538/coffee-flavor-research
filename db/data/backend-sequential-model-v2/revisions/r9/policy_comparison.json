@@ -1,113 +1,399 @@
 {
-  "version": "m2-r9.zero-fit-policy-comparison.v1",
-  "recorded_utc": "2026-09-07T06:44:12Z",
-  "status": "ACTUAL_COMPARISON_NOT_RUN_MISSING_SEALED_PRIVATE_INPUT",
-  "checkpoint": "FIRST_R9_THREE_POLICY_ACTUAL_OUTPUTS_AND_DIFFERENCES",
-  "checkpoint_status": "INPUT_REQUIRED",
-  "branch": "research/coffee-sensory-data-ml-readiness",
-  "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
-  "fit_count": 0,
-  "question_reselection_count": 0,
-  "default_finalizer_changed": false,
-  "primary_research_generator": "C01",
-  "historical_generator": "C00",
-  "input_audit": {
-    "required_private_artifact": "backend-sequential-model-v2/revisions/r8/verified/actual_returns.private.json",
-    "expected_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
-    "location_recorded_by_R8": "Persistent owner-controlled storage, intentionally outside public Git",
-    "local_search_result": "NOT_FOUND_IN_CURRENT_WORKSPACE_OR_DISCOVERABLE_OWNER_PATH",
-    "handling": "No synthetic coffee outputs, random metrics, reconstructed identities or mixed-output backfill substituted.",
-    "executable_command": "PYTHONPATH=db/scripts /private/tmp/coffee-backend-model-venv/bin/python db/scripts/compare_output_policies_r9.py --r8-actual-returns /owner/path/backend-sequential-model-v2/revisions/r8/verified/actual_returns.private.json"
-  },
-  "historical_R8_actual_mixed_proxy": {
-    "scope": "Repeatedly viewed development outer-held states; historical proxy only, not independent user evidence.",
-    "records_per_generator": 79,
-    "coffee_groups_per_generator": 77,
-    "C00": {
-      "actual_main": {
-        "k": 5,
-        "raw_gap": 0.7138157894736842,
-        "recall": 0.24891395154553048,
-        "ndcg_actual_positions": 0.25415259259406275,
-        "mean_sensory_id_count": 2.5064935064935066,
-        "mean_non_sensory_id_count": 2.4935064935064934
+  "actual_output_differences": {
+    "case_level_counts": {
+      "C00": {
+        "cases": 79,
+        "equivalent_all_fields_all_three": 0,
+        "full_return_identical_all_three": 1,
+        "main_identical_all_three": 35,
+        "named_descriptor_shortage_cases": 0,
+        "only_profile_different": 1,
+        "specific_vs_separated_content_difference_without_shortage": 0,
+        "specific_vs_separated_content_differs_only_on_shortage": 0
       },
-      "actual_main_secondary_and_comparison_pool": {
-        "k": 8,
-        "raw_gap": 0.580339738234475,
-        "recall": 0.35090504037872455,
-        "ndcg_actual_positions": 0.29759921634825853,
-        "mean_sensory_id_count": 4.214285714285714,
-        "mean_non_sensory_id_count": 3.7857142857142856
+      "C01": {
+        "cases": 79,
+        "equivalent_all_fields_all_three": 0,
+        "full_return_identical_all_three": 7,
+        "main_identical_all_three": 46,
+        "named_descriptor_shortage_cases": 0,
+        "only_profile_different": 7,
+        "specific_vs_separated_content_difference_without_shortage": 0,
+        "specific_vs_separated_content_differs_only_on_shortage": 0
+      }
+    },
+    "pairwise_equivalence": {
+      "C00": {
+        "OUT_MIXED__OUT_SEPARATED": {
+          "DIFFERENT_ON_CASE": 79,
+          "FULL_RETURN_IDENTICAL": 1,
+          "MAIN_IDENTICAL": 35,
+          "ONLY_PROFILE_DIFFERENT": 1
+        },
+        "OUT_MIXED__OUT_SPECIFIC_FIRST": {
+          "DIFFERENT_ON_CASE": 78,
+          "EQUIVALENT_ON_CASE": 1,
+          "FULL_RETURN_IDENTICAL": 1,
+          "MAIN_IDENTICAL": 35,
+          "ONLY_PROFILE_DIFFERENT": 0
+        },
+        "OUT_SPECIFIC_FIRST__OUT_SEPARATED": {
+          "DIFFERENT_ON_CASE": 79,
+          "FULL_RETURN_IDENTICAL": 79,
+          "MAIN_IDENTICAL": 79,
+          "ONLY_PROFILE_DIFFERENT": 79
+        }
+      },
+      "C01": {
+        "OUT_MIXED__OUT_SEPARATED": {
+          "DIFFERENT_ON_CASE": 79,
+          "FULL_RETURN_IDENTICAL": 7,
+          "MAIN_IDENTICAL": 46,
+          "ONLY_PROFILE_DIFFERENT": 7
+        },
+        "OUT_MIXED__OUT_SPECIFIC_FIRST": {
+          "DIFFERENT_ON_CASE": 72,
+          "EQUIVALENT_ON_CASE": 7,
+          "FULL_RETURN_IDENTICAL": 7,
+          "MAIN_IDENTICAL": 46,
+          "ONLY_PROFILE_DIFFERENT": 0
+        },
+        "OUT_SPECIFIC_FIRST__OUT_SEPARATED": {
+          "DIFFERENT_ON_CASE": 79,
+          "FULL_RETURN_IDENTICAL": 79,
+          "MAIN_IDENTICAL": 79,
+          "ONLY_PROFILE_DIFFERENT": 79
+        }
+      }
+    }
+  },
+  "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
+  "checkpoint": "FIRST_R9_THREE_POLICY_ACTUAL_OUTPUTS_AND_DIFFERENCES",
+  "default_finalizer_changed": false,
+  "descriptive_delta_vs_OUT_MIXED": {
+    "C00": {
+      "OUT_SEPARATED": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.025325948440926005,
+          "raw_gap": -0.057369117237538236,
+          "recall": 0.030186577554998567
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.04515308876260754,
+          "raw_gap": -0.08755917571707056,
+          "recall": 0.076239209133946
+        }
+      },
+      "OUT_SPECIFIC_FIRST": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.025325948440926005,
+          "raw_gap": -0.057369117237538236,
+          "recall": 0.030186577554998567
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.04515308876260754,
+          "raw_gap": -0.08755917571707056,
+          "recall": 0.076239209133946
+        }
       }
     },
     "C01": {
-      "actual_main": {
-        "k": 5,
-        "raw_gap": 0.691781537176274,
-        "recall": 0.2664578111946533,
-        "ndcg_actual_positions": 0.24441039035594903,
-        "mean_sensory_id_count": 2.7142857142857144,
-        "mean_non_sensory_id_count": 2.2857142857142856
+      "OUT_SEPARATED": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.02496514924858928,
+          "raw_gap": -0.044012809802283503,
+          "recall": 0.030186577554998595
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.05289757956611463,
+          "raw_gap": -0.09804372041214154,
+          "recall": 0.0948273461431356
+        }
       },
-      "actual_main_secondary_and_comparison_pool": {
-        "k": 8,
-        "raw_gap": 0.5457741576162628,
-        "recall": 0.39079643553327764,
-        "ndcg_actual_positions": 0.2938893584687231,
-        "mean_sensory_id_count": 4.318181818181818,
-        "mean_non_sensory_id_count": 3.6818181818181817
+      "OUT_SPECIFIC_FIRST": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.02496514924858928,
+          "raw_gap": -0.044012809802283503,
+          "recall": 0.030186577554998595
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.05289757956611463,
+          "raw_gap": -0.09804372041214154,
+          "recall": 0.0948273461431356
+        }
+      }
+    }
+  },
+  "fit_count": 0,
+  "guards": {
+    "comparison_pool_equals_main_plus_secondary": true,
+    "duplicate_policy_output_records": 0,
+    "invented_candidate_records": 0,
+    "mixed_exact_r8_returns": true,
+    "model_weights_or_question_parameters_changed": false,
+    "policy_adapter_received_T": false,
+    "synthetic_cases_in_effect_statistics": 0
+  },
+  "historical_generator": "C00",
+  "interpretation_limits": [
+    "Specific-first may improve fine-reference metrics mechanically; that alone is not evidence of better user outcomes.",
+    "No parent partial-credit, metric-weight, threshold or confidence rule changed.",
+    "Named-without-explicit-selection and shared-dimension counts are mechanism review flags, not demonstrated over-specificity or redundancy.",
+    "Rows repeat coffee groups and are summarized at coffee-group level; no ordinary independent-row ANOVA is reported."
+  ],
+  "policy_results": {
+    "C00": {
+      "OUT_MIXED": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.25415259259406275,
+          "raw_gap": 0.7138157894736842,
+          "recall": 0.2489139515455305
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.29759921634825853,
+          "raw_gap": 0.5803397382344752,
+          "recall": 0.35090504037872455
+        },
+        "coffee_groups": 77,
+        "explicit_expression_retention": {
+          "eligible_occurrences": 154,
+          "rate": 1.0,
+          "retained_occurrences": 154
+        },
+        "mean_counts_per_return": {
+          "main_named": 4.215189873417722,
+          "main_profile_direction": 0.7848101265822784,
+          "overall_profile": 0.0,
+          "pool_named": 6.405063291139241,
+          "pool_profile_direction": 1.5949367088607596,
+          "secondary_named": 2.189873417721519,
+          "secondary_profile_direction": 0.810126582278481
+        },
+        "mechanism_diagnostics": {
+          "duplicate_records": 0,
+          "interpretation": "Review flags only. They are neither over-specificity errors nor user-effect findings without real judgments.",
+          "named_without_explicit_selection_occurrences": 352,
+          "profile_named_shared_dimension_pair_occurrences": 221
+        },
+        "output_insufficiency": {
+          "comparison_not_executable_records": 0,
+          "fewer_than_five_main_records": 0
+        },
+        "records": 79
+      },
+      "OUT_SEPARATED": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.27947854103498876,
+          "raw_gap": 0.656446672236146,
+          "recall": 0.27910052910052907
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.3427523051108661,
+          "raw_gap": 0.4927805625174046,
+          "recall": 0.42714424951267055
+        },
+        "coffee_groups": 77,
+        "explicit_expression_retention": {
+          "eligible_occurrences": 154,
+          "rate": 1.0,
+          "retained_occurrences": 154
+        },
+        "mean_counts_per_return": {
+          "main_named": 5.0,
+          "main_profile_direction": 0.0,
+          "overall_profile": 2.5569620253164556,
+          "pool_named": 8.0,
+          "pool_profile_direction": 0.0,
+          "secondary_named": 3.0,
+          "secondary_profile_direction": 0.0
+        },
+        "mechanism_diagnostics": {
+          "duplicate_records": 0,
+          "interpretation": "Review flags only. They are neither over-specificity errors nor user-effect findings without real judgments.",
+          "named_without_explicit_selection_occurrences": 478,
+          "profile_named_shared_dimension_pair_occurrences": 470
+        },
+        "output_insufficiency": {
+          "comparison_not_executable_records": 0,
+          "fewer_than_five_main_records": 0
+        },
+        "records": 79
+      },
+      "OUT_SPECIFIC_FIRST": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.27947854103498876,
+          "raw_gap": 0.656446672236146,
+          "recall": 0.27910052910052907
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.3427523051108661,
+          "raw_gap": 0.4927805625174046,
+          "recall": 0.42714424951267055
+        },
+        "coffee_groups": 77,
+        "explicit_expression_retention": {
+          "eligible_occurrences": 154,
+          "rate": 1.0,
+          "retained_occurrences": 154
+        },
+        "mean_counts_per_return": {
+          "main_named": 5.0,
+          "main_profile_direction": 0.0,
+          "overall_profile": 0.0,
+          "pool_named": 8.0,
+          "pool_profile_direction": 0.0,
+          "secondary_named": 3.0,
+          "secondary_profile_direction": 0.0
+        },
+        "mechanism_diagnostics": {
+          "duplicate_records": 0,
+          "interpretation": "Review flags only. They are neither over-specificity errors nor user-effect findings without real judgments.",
+          "named_without_explicit_selection_occurrences": 478,
+          "profile_named_shared_dimension_pair_occurrences": 0
+        },
+        "output_insufficiency": {
+          "comparison_not_executable_records": 0,
+          "fewer_than_five_main_records": 0
+        },
+        "records": 79
       }
     },
-    "source_public_artifact": "db/data/backend-sequential-model-v2/revisions/r8/output_alignment_results.json",
-    "source_private_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
-    "note": "R8 U and P were the same ordered eight in every case and are one result with two roles. Historical counts distinguish sensory.* from other IDs; they cannot be relabeled as the new explicit R9 roles without case rows."
+    "C01": {
+      "OUT_MIXED": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.24441039035594903,
+          "raw_gap": 0.691781537176274,
+          "recall": 0.2664578111946533
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.2938893584687231,
+          "raw_gap": 0.5457741576162629,
+          "recall": 0.39079643553327764
+        },
+        "coffee_groups": 77,
+        "explicit_expression_retention": {
+          "eligible_occurrences": 152,
+          "rate": 1.0,
+          "retained_occurrences": 152
+        },
+        "mean_counts_per_return": {
+          "main_named": 4.417721518987341,
+          "main_profile_direction": 0.5822784810126582,
+          "overall_profile": 0.0,
+          "pool_named": 6.531645569620253,
+          "pool_profile_direction": 1.4683544303797469,
+          "secondary_named": 2.1139240506329116,
+          "secondary_profile_direction": 0.8860759493670886
+        },
+        "mechanism_diagnostics": {
+          "duplicate_records": 0,
+          "interpretation": "Review flags only. They are neither over-specificity errors nor user-effect findings without real judgments.",
+          "named_without_explicit_selection_occurrences": 364,
+          "profile_named_shared_dimension_pair_occurrences": 196
+        },
+        "output_insufficiency": {
+          "comparison_not_executable_records": 0,
+          "fewer_than_five_main_records": 0
+        },
+        "records": 79
+      },
+      "OUT_SEPARATED": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.2693755396045383,
+          "raw_gap": 0.6477687273739905,
+          "recall": 0.2966443887496519
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.34678693803483773,
+          "raw_gap": 0.44773043720412137,
+          "recall": 0.48562378167641324
+        },
+        "coffee_groups": 77,
+        "explicit_expression_retention": {
+          "eligible_occurrences": 152,
+          "rate": 1.0,
+          "retained_occurrences": 152
+        },
+        "mean_counts_per_return": {
+          "main_named": 5.0,
+          "main_profile_direction": 0.0,
+          "overall_profile": 2.5063291139240507,
+          "pool_named": 8.0,
+          "pool_profile_direction": 0.0,
+          "secondary_named": 3.0,
+          "secondary_profile_direction": 0.0
+        },
+        "mechanism_diagnostics": {
+          "duplicate_records": 0,
+          "interpretation": "Review flags only. They are neither over-specificity errors nor user-effect findings without real judgments.",
+          "named_without_explicit_selection_occurrences": 480,
+          "profile_named_shared_dimension_pair_occurrences": 477
+        },
+        "output_insufficiency": {
+          "comparison_not_executable_records": 0,
+          "fewer_than_five_main_records": 0
+        },
+        "records": 79
+      },
+      "OUT_SPECIFIC_FIRST": {
+        "actual_main_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.2693755396045383,
+          "raw_gap": 0.6477687273739905,
+          "recall": 0.2966443887496519
+        },
+        "actual_main_secondary_comparison_pool_metrics_coffee_macro": {
+          "ndcg_actual_positions": 0.34678693803483773,
+          "raw_gap": 0.44773043720412137,
+          "recall": 0.48562378167641324
+        },
+        "coffee_groups": 77,
+        "explicit_expression_retention": {
+          "eligible_occurrences": 152,
+          "rate": 1.0,
+          "retained_occurrences": 152
+        },
+        "mean_counts_per_return": {
+          "main_named": 5.0,
+          "main_profile_direction": 0.0,
+          "overall_profile": 0.0,
+          "pool_named": 8.0,
+          "pool_profile_direction": 0.0,
+          "secondary_named": 3.0,
+          "secondary_profile_direction": 0.0
+        },
+        "mechanism_diagnostics": {
+          "duplicate_records": 0,
+          "interpretation": "Review flags only. They are neither over-specificity errors nor user-effect findings without real judgments.",
+          "named_without_explicit_selection_occurrences": 480,
+          "profile_named_shared_dimension_pair_occurrences": 0
+        },
+        "output_insufficiency": {
+          "comparison_not_executable_records": 0,
+          "fewer_than_five_main_records": 0
+        },
+        "records": 79
+      }
+    }
   },
-  "R9_actual_policy_results": {
-    "OUT_MIXED": "HISTORICAL_R8_BASELINE_AVAILABLE_ABOVE; EXACT_REPLAY_PENDING_PRIVATE_ROWS",
-    "OUT_SPECIFIC_FIRST": "NOT_EVALUATED_PENDING_PRIVATE_ROWS",
-    "OUT_SEPARATED": "NOT_EVALUATED_PENDING_PRIVATE_ROWS"
+  "primary_research_generator": "C01",
+  "private_actual_policy_outputs": {
+    "records": 474,
+    "sha256": "253da3daae36c1901330c0b2c4d9288116ece074c41215640a82cfadb8f0450b",
+    "status": "WRITTEN_TO_OWNER_CONTROLLED_STORAGE"
   },
-  "actual_output_difference_statistics": {
-    "main_identical": "NOT_EVALUATED",
-    "full_return_identical": "NOT_EVALUATED",
-    "only_profile_different": "NOT_EVALUATED",
-    "named_descriptor_shortage_only_difference": "NOT_EVALUATED",
-    "pairwise_EQUIVALENT_ON_CASE": "NOT_EVALUATED"
-  },
-  "mechanism_diagnostics": {
-    "duplicate_policy_output_records": "NOT_EVALUATED_PENDING_PRIVATE_ROWS",
-    "invented_subcategory_records": 0,
-    "T_used_by_policy_functions": false,
-    "synthetic_cases_in_coffee_effect_statistics": 0,
-    "over_specificity_user_harm": "NOT_EVALUATED_NO_REAL_USER_JUDGMENT",
-    "note": "Executable analysis reports named-without-explicit-selection and shared-dimension pairs only as review flags, never as proven errors."
-  },
+  "question_reselection_count": 0,
   "real_user_feedback": "NOT_EVALUATED",
-  "real_timing": "NOT_EVALUATED",
-  "statistical_policy": {
-    "primary_outputs": [
-      "participant_level_results",
-      "coffee_level_distributions",
-      "actually_different_output_counts",
-      "descriptive_differences",
-      "comments_and_counterexamples"
+  "source": {
+    "actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+    "coffee_groups": 77,
+    "outer_expert_hashes": [
+      "4d597f6265a2045896837f71a526331f9e7dd683004c719462a2ccc85be35121",
+      "4dd4abd59c8302af41f129bd52ebdb6e07db436d6130044a046ccfc365da5022",
+      "8d51c657a49fee96d3e0053df835bc3f607c4ebe1cafb08ab318c1efce2f32e1"
     ],
-    "no_independent_row_ANOVA": true,
-    "participant_and_coffee_dependencies_retained": true,
-    "measures_kept_separate": [
-      "main_fit",
-      "specificity",
-      "new_expression_help",
-      "information_burden",
-      "profile_effect"
-    ],
-    "composite_score": "NOT_DEFINED_NO_USER_WEIGHTS",
-    "calibration_or_weight_fit": "NOT_RUN"
+    "records": 158,
+    "scope": "R8 repeatedly viewed development outer-held states; not independent confirmation or real user evidence"
   },
-  "interpretation_limits": [
-    "The historical R8 table cannot determine specific-first or separated output metrics without the sealed case rows.",
-    "A better fine-reference score would not by itself prove better user effect.",
-    "No real participant ratings are present and no significance or causal claim is made."
-  ]
+  "status": "ACTUAL_R8_RETURNS_COMPARED",
+  "version": "m2-r9.zero-fit-policy-comparison.v1"
 }

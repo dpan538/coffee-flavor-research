@@ -10,13 +10,13 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
-import datetime
 import hashlib
 import json
 from pathlib import Path
 import statistics
 from typing import Any
 
+from acquire_supervision_r5 import save
 from output_alignment_r8 import measure
 from output_policy_r9 import (
     NAMED_DESCRIPTOR,
@@ -120,6 +120,14 @@ def detail(
         "group_id": source["group_id"],
         "generator": source["policy"],
         "output_policy": policy_id,
+        "outer_fold": source.get("outer_fold"),
+        "model_sha256": source.get("model_sha256"),
+        "model_bundle_id": source.get("bundle_id"),
+        "answer_state_hash": (
+            final.get("exposure", {}).get("state_hash")
+            if isinstance(final.get("exposure"), dict)
+            else None
+        ),
         "source_return_sha256": output["source_return_sha256"],
         "output_hash": output["output_hash"],
         "main_ids": main_ids,
@@ -172,6 +180,16 @@ def summarize_cells(cells: list[dict[str, Any]]) -> dict[str, Any]:
                     ),
                     "main_profile_direction": statistics.fmean(
                         row["main_roles"].get(PROFILE_DIRECTION, 0) for row in rows
+                    ),
+                    "secondary_named": statistics.fmean(
+                        row["pool_roles"].get(NAMED_DESCRIPTOR, 0)
+                        - row["main_roles"].get(NAMED_DESCRIPTOR, 0)
+                        for row in rows
+                    ),
+                    "secondary_profile_direction": statistics.fmean(
+                        row["pool_roles"].get(PROFILE_DIRECTION, 0)
+                        - row["main_roles"].get(PROFILE_DIRECTION, 0)
+                        for row in rows
                     ),
                     "pool_named": statistics.fmean(
                         row["pool_roles"].get(NAMED_DESCRIPTOR, 0) for row in rows
@@ -287,7 +305,16 @@ def difference_summary(
                 ],
             }
             status = equivalence(left_output, right_output)["status"]
-            pairwise[generator][left + "__" + right][status] += 1
+            values = pairwise[generator][left + "__" + right]
+            values[status] += 1
+            main_equal = rows[left]["main_ids"] == rows[right]["main_ids"]
+            full_equal = rows[left]["pool_ids"] == rows[right]["pool_ids"]
+            profile_equal = rows[left]["profile_ids"] == rows[right]["profile_ids"]
+            values["MAIN_IDENTICAL"] += main_equal
+            values["FULL_RETURN_IDENTICAL"] += full_equal
+            values["ONLY_PROFILE_DIFFERENT"] += (
+                main_equal and full_equal and not profile_equal
+            )
     return {
         "case_level_counts": {
             generator: dict(value) for generator, value in counts.items()
@@ -299,8 +326,33 @@ def difference_summary(
     }
 
 
+def descriptive_deltas(policy_results: dict[str, Any]) -> dict[str, Any]:
+    result = {}
+    for generator, policies in policy_results.items():
+        mixed = policies["OUT_MIXED"]
+        result[generator] = {}
+        for policy_id in ("OUT_SPECIFIC_FIRST", "OUT_SEPARATED"):
+            result[generator][policy_id] = {}
+            for field in (
+                "actual_main_metrics_coffee_macro",
+                "actual_main_secondary_comparison_pool_metrics_coffee_macro",
+            ):
+                result[generator][policy_id][field] = {
+                    metric: policies[policy_id][field][metric] - mixed[field][metric]
+                    for metric in (
+                        "raw_gap",
+                        "recall",
+                        "ndcg_actual_positions",
+                    )
+                }
+    return result
+
+
 def compare(
-    source_path: Path, contract_path: Path, output_path: Path
+    source_path: Path,
+    contract_path: Path,
+    output_path: Path,
+    private_detail_path: Path | None = None,
 ) -> dict[str, Any]:
     r8_results = read(R8_PUBLIC / "output_alignment_results.json")
     expected = r8_results["private_artifact_hashes"]["actual_returns.private.json"]
@@ -335,9 +387,21 @@ def compare(
         ):
             raise ValueError("OUT_MIXED_NOT_EXACT_R8_RETURN")
 
+    policy_results = summarize_cells(cells)
+    private_artifact = None
+    if private_detail_path is not None:
+        private_artifact = save(
+            private_detail_path,
+            {
+                "version": VERSION,
+                "scope": "PRIVATE_ACTUAL_POLICY_OUTPUT_IDS_AND_CASE_METRICS",
+                "fit_count": 0,
+                "source_actual_returns_sha256": expected,
+                "cells": cells,
+            },
+        )
     report = {
         "version": VERSION,
-        "generated_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "status": "ACTUAL_R8_RETURNS_COMPARED",
         "checkpoint": "FIRST_R9_THREE_POLICY_ACTUAL_OUTPUTS_AND_DIFFERENCES",
         "baseline_sha": contract["baseline_sha"],
@@ -355,7 +419,8 @@ def compare(
                 {source["model_sha256"] for source in sources}
             ),
         },
-        "policy_results": summarize_cells(cells),
+        "policy_results": policy_results,
+        "descriptive_delta_vs_OUT_MIXED": descriptive_deltas(policy_results),
         "actual_output_differences": difference_summary(sources, cells),
         "guards": {
             "mixed_exact_r8_returns": True,
@@ -369,6 +434,15 @@ def compare(
             "model_weights_or_question_parameters_changed": False,
         },
         "real_user_feedback": "NOT_EVALUATED",
+        "private_actual_policy_outputs": (
+            None
+            if private_artifact is None
+            else {
+                "status": "WRITTEN_TO_OWNER_CONTROLLED_STORAGE",
+                "sha256": private_artifact["sha256"],
+                "records": len(cells),
+            }
+        ),
         "interpretation_limits": [
             "Specific-first may improve fine-reference metrics mechanically; that alone is not evidence of better user outcomes.",
             "No parent partial-credit, metric-weight, threshold or confidence rule changed.",
@@ -391,8 +465,18 @@ def main() -> None:
     parser.add_argument(
         "--output", type=Path, default=R9_PUBLIC / "policy_comparison.json"
     )
+    parser.add_argument(
+        "--private-detail-output",
+        type=Path,
+        help="Optional owner-controlled path for the 3 outputs per actual R8 row.",
+    )
     args = parser.parse_args()
-    report = compare(args.r8_actual_returns, args.contract, args.output)
+    report = compare(
+        args.r8_actual_returns,
+        args.contract,
+        args.output,
+        args.private_detail_output,
+    )
     print(
         json.dumps(
             {

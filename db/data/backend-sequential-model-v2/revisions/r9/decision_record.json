@@ -1,6 +1,6 @@
 {
   "version": "m2-r9.output-policy-decision-record.v1",
-  "recorded_utc": "2026-09-07T06:44:12Z",
+  "recorded_utc": "2026-09-07T07:18:54.780729+00:00",
   "branch": "research/coffee-sensory-data-ml-readiness",
   "baseline_sha": "cae58b36ed06ee987784ff1315bbec562b78f8da",
   "decision_scope": "Research output responsibility and formative-study contract only; no default promotion and no training resumption.",
@@ -15,8 +15,10 @@
     "OUT_SEPARATED": "Only named descriptors enter main/secondary and comparison; return short on shortage. Up to three already-supported directions appear in overall_profile outside the 5+3 budget."
   },
   "old_data_proxy_result": {
-    "status": "R8_MIXED_HISTORY_AVAILABLE_R9_TWO_EXPERIMENTAL_POLICIES_NOT_EVALUATED_MISSING_PRIVATE_CASE_ROWS",
-    "summary": "C01 historical mixed actual main gap 0.69178, recall 0.26646, NDCG 0.24441; actual ordered-eight pool gap 0.54577, recall 0.39080, NDCG 0.29389 on 77 repeatedly viewed development coffee groups.",
+    "status": "THREE_POLICIES_EVALUATED_ON_REBUILT_R8_ACTUAL_RETURNS",
+    "summary": "Across 77 repeatedly viewed development coffee groups, C01 OUT_MIXED main gap/recall/NDCG were 0.69178/0.26646/0.24441 and pool values were 0.54577/0.39080/0.29389. OUT_SPECIFIC_FIRST and OUT_SEPARATED had identical main and comparison content in all 79 C01 cases: main 0.64777/0.29664/0.26938 and pool 0.44773/0.48562/0.34679.",
+    "actual_difference_summary": "For C01, all-three main content matched in 46/79 cases and all-three full comparison content matched in 7/79. OUT_SPECIFIC_FIRST and OUT_SEPARATED main/secondary matched in 79/79; their sole observed difference was overall_profile. No current case had fewer than eight eligible named descriptors, so the shortage fallback was not exercised by real R8 cases.",
+    "actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
     "scope_limit": "Not independent confirmation; no user preference or effect inference."
   },
   "real_feedback": {
@@ -27,7 +29,7 @@
   },
   "recommendation": {
     "policy_id": "OUT_SEPARATED",
-    "status": "PRODUCT_STRUCTURE_RECOMMENDATION_NOT_OWNER_APPROVAL",
+    "status": "OWNER_APPROVED_OUTPUT_ROLE_CONTRACT",
     "rationale": [
       "Main and secondary have one clear job: offer evidence-supported named flavors.",
       "Overall direction remains available without consuming or duplicating the specific 5+3 comparison budget.",
@@ -37,20 +39,35 @@
     "specificity_guard": "Do not state a descriptor more specifically than the existing candidate evidence supports."
   },
   "unvalidated": [
-    "Actual R9 case-level metric and difference statistics until the hash-matched R8 private returns are supplied.",
     "Coffee-enthusiast preference, usefulness, burden and misleading over-specificity.",
     "Any causal benefit from overall_profile.",
     "Independent confirmation or metric-to-user-rating calibration."
   ],
   "owner_decision": {
-    "status": "PENDING_OWNER_DECISION",
-    "only_product_decision_to_approve": "Approve OUT_SEPARATED as the output-role contract: named descriptors in main/secondary, supported directions in overall_profile, with B2/default unchanged until separately authorized.",
+    "status": "OWNER_APPROVED",
     "allowed_values": [
       "PENDING_OWNER_DECISION",
       "OWNER_APPROVED",
       "OWNER_REJECTED"
     ],
-    "approval_rule": "Only the real responsible owner may change status to OWNER_APPROVED. Approval does not resume training or promote the research adapter automatically."
+    "approval_rule": "Only the real responsible owner may change status to OWNER_APPROVED. Approval does not resume training or promote the research adapter automatically.",
+    "approved_policy": "OUT_SEPARATED",
+    "approved_utc": "2026-09-07T07:18:54.780729+00:00",
+    "approval_scope": "Backend output-role contract only. This approval does not claim empirical superiority, change the default finalizer, authorize a frontend, or resume training.",
+    "approval_note": "Owner approved named descriptors in main/secondary and already-supported directions in overall_profile, with no invented child descriptors.",
+    "approved_product_decision": "Use OUT_SEPARATED as the backend output-role contract: named descriptors in main/secondary and supported directions in overall_profile."
   },
-  "training_after_R9": "PAUSED_REQUIRES_SEPARATE_FUTURE_OWNER_AUTHORIZATION"
+  "training_after_R9": "PAUSED_REQUIRES_SEPARATE_FUTURE_OWNER_AUTHORIZATION",
+  "default_adoption": "NOT_APPLIED_B2_AND_DEFAULT_FINALIZER_UNCHANGED",
+  "empirical_superiority_claim": "NOT_CLAIMED",
+  "formative_study_pack": {
+    "status": "READY_FOR_OWNER_ASSIGNMENT_NO_REAL_DATA",
+    "policy_id": "OUT_SEPARATED",
+    "participant_slots": 12,
+    "coffee_tasks_per_participant": 2,
+    "planned_rows": 24,
+    "profile_pair_order": "BALANCED_6_WITH_PROFILE_FIRST_6_WITHOUT_PROFILE_FIRST",
+    "private_assignment_sha256": "daf962f685d51f53d8734101a509d396e09928faa0e5c073c35142b4703343f7",
+    "data_limit": "Participant IDs, coffees, live C01 outputs, judgments and timings remain blank until real sessions occur."
+  }
 }
