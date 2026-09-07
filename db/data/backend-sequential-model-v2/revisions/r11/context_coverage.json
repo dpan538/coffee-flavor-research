@@ -1,0 +1,20 @@
+{
+  "contract_version": "r11.context-coverage.v1",
+  "generated_at_utc": "2026-09-07T15:35:11Z",
+  "guards": {
+    "fit_count": 0
+  },
+  "post_dedup_t4_c0_group_count": 6,
+  "post_dedup_t4_c1_group_count": 5,
+  "post_dedup_t4_group_count": 13,
+  "status": {
+    "T4": "FAIL",
+    "T4_C0": "FAIL",
+    "T4_C1": "FAIL"
+  },
+  "targets": {
+    "T4": 600,
+    "T4_C0": 150,
+    "T4_C1": 150
+  }
+}

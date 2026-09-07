@@ -1,0 +1,2327 @@
+{
+  "candidate_count": 248,
+  "contract_version": "r11.failure-taxonomy.v1",
+  "diagnosis_class_counts": {
+    "FULL_TEXT_NO_MACHINE_READABLE_TABLE": 83,
+    "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION": 94,
+    "SOURCE_REFUSED_OR_RETRIEVAL_FAILED": 52,
+    "TABLE_PRESENT_WRONG_STRUCTURE": 19
+  },
+  "generated_at_utc": "2026-09-07T15:35:13Z",
+  "guards": {
+    "fit_count": 0,
+    "pdf_derived_tables_admitted": 0
+  },
+  "issued_addendum_count_check": {
+    "frozen_candidate_denominator": 248,
+    "issued_counts": [
+      115,
+      74,
+      11,
+      50
+    ],
+    "issued_sum": 250,
+    "resolution": "CURRENT_REPRODUCIBLE_FIRST_PASS_RECLASSIFICATION_USED",
+    "status": "INCONSISTENT_ISSUED_COUNTS_SUM_TO_250"
+  },
+  "records": [
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "doi": "10.1002/fsn3.1404",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "doi": "10.1002/fsn3.35",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "LEGACY_STRICT_ADAPTER_REJECTED",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T1": 24,
+        "T4": 30,
+        "T5": 20
+      },
+      "supplement_recovery_status": "SUPPLEMENT_RETRIEVAL_FAILED"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.3812",
+      "doi": "10.1002/fsn3.3812",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 11
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "doi": "10.1002/fsn3.70512",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 170
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.71278",
+      "doi": "10.1002/fsn3.71278",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1002/leg3.166",
+      "doi": "10.1002/leg3.166",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1007/s00217-013-1917-x",
+      "doi": "10.1007/s00217-013-1917-x",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1007/s11306-020-01751-6",
+      "doi": "10.1007/s11306-020-01751-6",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.afres.2024.100512",
+      "doi": "10.1016/j.afres.2024.100512",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2023.100485",
+      "doi": "10.1016/j.crfs.2023.100485",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:HTTPError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2026.101478",
+      "doi": "10.1016/j.crfs.2026.101478",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.dib.2025.111609",
+      "doi": "10.1016/j.dib.2025.111609",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.ejbt.2024.04.001",
+      "doi": "10.1016/j.ejbt.2024.04.001",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.fochms.2025.100344",
+      "doi": "10.1016/j.fochms.2025.100344",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2024.101980",
+      "doi": "10.1016/j.fochx.2024.101980",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2025.102580",
+      "doi": "10.1016/j.fochx.2025.102580",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2026.103524",
+      "doi": "10.1016/j.fochx.2026.103524",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "doi": "10.1016/j.foodchem.2018.07.226",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 24
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2021.131159",
+      "doi": "10.1016/j.foodchem.2021.131159",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2023.135489",
+      "doi": "10.1016/j.foodchem.2023.135489",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2024.139717",
+      "doi": "10.1016/j.foodchem.2024.139717",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.foodqual.2018.03.009",
+      "doi": "10.1016/j.foodqual.2018.03.009",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.foodqual.2021.104427",
+      "doi": "10.1016/j.foodqual.2021.104427",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.foodres.2023.113800",
+      "doi": "10.1016/j.foodres.2023.113800",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.foodres.2024.114333",
+      "doi": "10.1016/j.foodres.2024.114333",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.fufo.2023.100245",
+      "doi": "10.1016/j.fufo.2023.100245",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2022.e10829",
+      "doi": "10.1016/j.heliyon.2022.e10829",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.ijgfs.2022.100591",
+      "doi": "10.1016/j.ijgfs.2022.100591",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.lwt.2025.117539",
+      "doi": "10.1016/j.lwt.2025.117539",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.postharvbio.2022.111852",
+      "doi": "10.1016/j.postharvbio.2022.111852",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.tifs.2024.104415",
+      "doi": "10.1016/j.tifs.2024.104415",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2024.106885",
+      "doi": "10.1016/j.ultsonch.2024.106885",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2025.107401",
+      "doi": "10.1016/j.ultsonch.2025.107401",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2026.107943",
+      "doi": "10.1016/j.ultsonch.2026.107943",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1021/acs.jafc.5c17022",
+      "doi": "10.1021/acs.jafc.5c17022",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1021/acscentsci.5c01454",
+      "doi": "10.1021/acscentsci.5c01454",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "doi": "10.1021/acsomega.4c10914",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c00404",
+      "doi": "10.1021/acsomega.5c00404",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c01783",
+      "doi": "10.1021/acsomega.5c01783",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00779-7",
+      "doi": "10.1038/s41538-026-00779-7",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "doi": "10.1038/s41538-026-00852-1",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 19
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "doi": "10.1038/s41598-020-73341-4",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 33
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41598-021-01001-2",
+      "doi": "10.1038/s41598-021-01001-2",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41598-022-06676-9",
+      "doi": "10.1038/s41598-022-06676-9",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-69867-6",
+      "doi": "10.1038/s41598-024-69867-6",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1038/s41598-025-03665-6",
+      "doi": "10.1038/s41598-025-03665-6",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1051/bioconf/202410201013",
+      "doi": "10.1051/bioconf/202410201013",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1080/10942912.2019.1619577",
+      "doi": "10.1080/10942912.2019.1619577",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1080/10942912.2022.2057532",
+      "doi": "10.1080/10942912.2022.2057532",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/102/1/012095",
+      "doi": "10.1088/1755-1315/102/1/012095",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/131/1/012009",
+      "doi": "10.1088/1755-1315/131/1/012009",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/131/1/012018",
+      "doi": "10.1088/1755-1315/131/1/012018",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/1356/1/012034",
+      "doi": "10.1088/1755-1315/1356/1/012034",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/147/1/012008",
+      "doi": "10.1088/1755-1315/147/1/012008",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/196/1/012010",
+      "doi": "10.1088/1755-1315/196/1/012010",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/230/1/012037",
+      "doi": "10.1088/1755-1315/230/1/012037",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/364/1/012010",
+      "doi": "10.1088/1755-1315/364/1/012010",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/365/1/012040",
+      "doi": "10.1088/1755-1315/365/1/012040",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/425/1/012081",
+      "doi": "10.1088/1755-1315/425/1/012081",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/454/1/012099",
+      "doi": "10.1088/1755-1315/454/1/012099",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/475/1/012020",
+      "doi": "10.1088/1755-1315/475/1/012020",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/475/1/012028",
+      "doi": "10.1088/1755-1315/475/1/012028",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/653/1/012050",
+      "doi": "10.1088/1755-1315/653/1/012050",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/667/1/012048",
+      "doi": "10.1088/1755-1315/667/1/012048",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/677/5/052036",
+      "doi": "10.1088/1755-1315/677/5/052036",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/794/1/012149",
+      "doi": "10.1088/1755-1315/794/1/012149",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1757-899x/523/1/012027",
+      "doi": "10.1088/1757-899x/523/1/012027",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1757-899x/523/1/012028",
+      "doi": "10.1088/1757-899x/523/1/012028",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1088/1757-899x/736/6/062018",
+      "doi": "10.1088/1757-899x/736/6/062018",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.16323",
+      "doi": "10.1111/1750-3841.16323",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "doi": "10.1111/1750-3841.71157",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T5": 23
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1111/ijfs.16261",
+      "doi": "10.1111/ijfs.16261",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "doi": "10.1155/2022/2365603",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T4": 54
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1155/jfpp/7439017",
+      "doi": "10.1155/jfpp/7439017",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1186/2044-7248-1-14",
+      "doi": "10.1186/2044-7248-1-14",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1186/s12870-024-04890-3",
+      "doi": "10.1186/s12870-024-04890-3",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.12944/crnfsj.11.2.12",
+      "doi": "10.12944/crnfsj.11.2.12",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.12944/crnfsj.6.2.08",
+      "doi": "10.12944/crnfsj.6.2.08",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0155845",
+      "doi": "10.1371/journal.pone.0155845",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0223280",
+      "doi": "10.1371/journal.pone.0223280",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.14393/bj-v36n2a2020-43255",
+      "doi": "10.14393/bj-v36n2a2020-43255",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.15342/hs.2020.270",
+      "doi": "10.15342/hs.2020.270",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.15414/jmbfs.20115/16.5.3.234-237",
+      "doi": "10.15414/jmbfs.20115/16.5.3.234-237",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1556/066.2019.48.3.3",
+      "doi": "10.1556/066.2019.48.3.3",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_PARSE_FAILED:ParseError",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.15771/2321-1571_2015_1",
+      "doi": "10.15771/2321-1571_2015_1",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/0034-737x201663040002",
+      "doi": "10.1590/0034-737x201663040002",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/1413-7054201943026119",
+      "doi": "10.1590/1413-7054201943026119",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/1807-1929/agriambi.v26n12p894-900",
+      "doi": "10.1590/1807-1929/agriambi.v26n12p894-900",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/1809-4430-eng.agric.v40n2p177-183/2020",
+      "doi": "10.1590/1809-4430-eng.agric.v40n2p177-183/2020",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/fst.30720",
+      "doi": "10.1590/fst.30720",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/fst.96122",
+      "doi": "10.1590/fst.96122",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/fst.96221",
+      "doi": "10.1590/fst.96221",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "doi": "10.1590/s0100-204x2018000900010",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.1590/s1678-3921.pab2020.v55.02240",
+      "doi": "10.1590/s1678-3921.pab2020.v55.02240",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.17728/jatp.4465",
+      "doi": "10.17728/jatp.4465",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.21107/agrointek.v15i2.6219",
+      "doi": "10.21107/agrointek.v15i2.6219",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_PARSE_FAILED:ParseError",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.2478/prolas-2023-0019",
+      "doi": "10.2478/prolas-2023-0019",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1654",
+      "doi": "10.25186/.v15i.1654",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1659",
+      "doi": "10.25186/.v15i.1659",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1672",
+      "doi": "10.25186/.v15i.1672",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1690",
+      "doi": "10.25186/.v15i.1690",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1797",
+      "doi": "10.25186/.v15i.1797",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v16i.1878",
+      "doi": "10.25186/.v16i.1878",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v16i.1889",
+      "doi": "10.25186/.v16i.1889",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v16i.1918",
+      "doi": "10.25186/.v16i.1918",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v17i.1970",
+      "doi": "10.25186/.v17i.1970",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v17i.2016",
+      "doi": "10.25186/.v17i.2016",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2111",
+      "doi": "10.25186/.v18i.2111",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2120",
+      "doi": "10.25186/.v18i.2120",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2137",
+      "doi": "10.25186/.v18i.2137",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2149",
+      "doi": "10.25186/.v18i.2149",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/.v19i.2168",
+      "doi": "10.25186/.v19i.2168",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i1.1400",
+      "doi": "10.25186/cs.v13i1.1400",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i2.1415",
+      "doi": "10.25186/cs.v13i2.1415",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i3.1497",
+      "doi": "10.25186/cs.v13i3.1497",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i4.1472",
+      "doi": "10.25186/cs.v13i4.1472",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i2.1570",
+      "doi": "10.25186/cs.v14i2.1570",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i3.1597",
+      "doi": "10.25186/cs.v14i3.1597",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i4.1617",
+      "doi": "10.25186/cs.v14i4.1617",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i4.1627",
+      "doi": "10.25186/cs.v14i4.1627",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.25338/B8C91C",
+      "doi": "10.25338/B8C91C",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.26656/fr.2017.4(4).058",
+      "doi": "10.26656/fr.2017.4(4).058",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.26656/fr.2017.5(s2).001",
+      "doi": "10.26656/fr.2017.5(s2).001",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.31883/pjfns-2019-0012",
+      "doi": "10.31883/pjfns-2019-0012",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3389/fmicb.2021.713969",
+      "doi": "10.3389/fmicb.2021.713969",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3389/fmicb.2024.1476091",
+      "doi": "10.3389/fmicb.2024.1476091",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3389/fmicb.2025.1697280",
+      "doi": "10.3389/fmicb.2025.1697280",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3389/fnhum.2025.1661214",
+      "doi": "10.3389/fnhum.2025.1661214",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2024.1542109",
+      "doi": "10.3389/fnut.2024.1542109",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "SUPPLEMENT_RETRIEVAL_FAILED"
+    },
+    {
+      "candidate_id": "10.3389/fpls.2021.708013",
+      "doi": "10.3389/fpls.2021.708013",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3389/fpsyg.2017.02264",
+      "doi": "10.3389/fpsyg.2017.02264",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3389/fsufs.2024.1382976",
+      "doi": "10.3389/fsufs.2024.1382976",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/agriculture13101980",
+      "doi": "10.3390/agriculture13101980",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/agronomy12112880",
+      "doi": "10.3390/agronomy12112880",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/agronomy13020341",
+      "doi": "10.3390/agronomy13020341",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/app14156442",
+      "doi": "10.3390/app14156442",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/app15084374",
+      "doi": "10.3390/app15084374",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages11010024",
+      "doi": "10.3390/beverages11010024",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages5020027",
+      "doi": "10.3390/beverages5020027",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages6020029",
+      "doi": "10.3390/beverages6020029",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages6030044",
+      "doi": "10.3390/beverages6030044",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages6030057",
+      "doi": "10.3390/beverages6030057",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages6040061",
+      "doi": "10.3390/beverages6040061",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages6040070",
+      "doi": "10.3390/beverages6040070",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages7010005",
+      "doi": "10.3390/beverages7010005",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/beverages8020028",
+      "doi": "10.3390/beverages8020028",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/buildings15081393",
+      "doi": "10.3390/buildings15081393",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/chemosensors12090196",
+      "doi": "10.3390/chemosensors12090196",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/cosmetics10010024",
+      "doi": "10.3390/cosmetics10010024",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/fermentation10070334",
+      "doi": "10.3390/fermentation10070334",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/fermentation7040254",
+      "doi": "10.3390/fermentation7040254",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "doi": "10.3390/foods10102508",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 211
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11020180",
+      "doi": "10.3390/foods11020180",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "DUPLICATE_EXISTING_SOURCE_DOI",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/foods11030473",
+      "doi": "10.3390/foods11030473",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11050717",
+      "doi": "10.3390/foods11050717",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11060807",
+      "doi": "10.3390/foods11060807",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "LEGACY_STRICT_ADAPTER_REJECTED",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T1": 24,
+        "T4": 56
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "doi": "10.3390/foods11162440",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 27
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "doi": "10.3390/foods11192968",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 40
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11193144",
+      "doi": "10.3390/foods11193144",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods11243945",
+      "doi": "10.3390/foods11243945",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12010037",
+      "doi": "10.3390/foods12010037",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12061264",
+      "doi": "10.3390/foods12061264",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12142675",
+      "doi": "10.3390/foods12142675",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "doi": "10.3390/foods12142710",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 18,
+        "T6": 150
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12152839",
+      "doi": "10.3390/foods12152839",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "doi": "10.3390/foods12203857",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods12224125",
+      "doi": "10.3390/foods12224125",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13010087",
+      "doi": "10.3390/foods13010087",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "doi": "10.3390/foods13030484",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T5": 16,
+        "T6": 109
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13050642",
+      "doi": "10.3390/foods13050642",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T4": 42
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13050653",
+      "doi": "10.3390/foods13050653",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13050768",
+      "doi": "10.3390/foods13050768",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13121871",
+      "doi": "10.3390/foods13121871",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13152332",
+      "doi": "10.3390/foods13152332",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13152359",
+      "doi": "10.3390/foods13152359",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13233842",
+      "doi": "10.3390/foods13233842",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "doi": "10.3390/foods13243995",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T4": 4,
+        "T5": 31
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "doi": "10.3390/foods14060911",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T5": 23,
+        "T6": 86
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14081368",
+      "doi": "10.3390/foods14081368",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14091463",
+      "doi": "10.3390/foods14091463",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14152606",
+      "doi": "10.3390/foods14152606",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14162811",
+      "doi": "10.3390/foods14162811",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T4": 12
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14162840",
+      "doi": "10.3390/foods14162840",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 61
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14173135",
+      "doi": "10.3390/foods14173135",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "doi": "10.3390/foods14183192",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 121
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "doi": "10.3390/foods15020269",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 37
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15040678",
+      "doi": "10.3390/foods15040678",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15050849",
+      "doi": "10.3390/foods15050849",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15081284",
+      "doi": "10.3390/foods15081284",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15081287",
+      "doi": "10.3390/foods15081287",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15091475",
+      "doi": "10.3390/foods15091475",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15091543",
+      "doi": "10.3390/foods15091543",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15111980",
+      "doi": "10.3390/foods15111980",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15122196",
+      "doi": "10.3390/foods15122196",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods15132355",
+      "doi": "10.3390/foods15132355",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods2022-12967",
+      "doi": "10.3390/foods2022-12967",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/foods7060083",
+      "doi": "10.3390/foods7060083",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods8020061",
+      "doi": "10.3390/foods8020061",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods8080344",
+      "doi": "10.3390/foods8080344",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "doi": "10.3390/foods9060753",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 34
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/foods9111664",
+      "doi": "10.3390/foods9111664",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 5
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/horticulturae10030200",
+      "doi": "10.3390/horticulturae10030200",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/icc2024-18163",
+      "doi": "10.3390/icc2024-18163",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/icc2024-18164",
+      "doi": "10.3390/icc2024-18164",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/ijerph192013221",
+      "doi": "10.3390/ijerph192013221",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules24183377",
+      "doi": "10.3390/molecules24183377",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules24244515",
+      "doi": "10.3390/molecules24244515",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "LEGACY_STRICT_ADAPTER_REJECTED",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules25061358",
+      "doi": "10.3390/molecules25061358",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules26123545",
+      "doi": "10.3390/molecules26123545",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules26133856",
+      "doi": "10.3390/molecules26133856",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules26133925",
+      "doi": "10.3390/molecules26133925",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 56
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules26154609",
+      "doi": "10.3390/molecules26154609",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 140
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules27020448",
+      "doi": "10.3390/molecules27020448",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules27092971",
+      "doi": "10.3390/molecules27092971",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules29133006",
+      "doi": "10.3390/molecules29133006",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "doi": "10.3390/molecules29133060",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {
+        "T6": 15
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules29163791",
+      "doi": "10.3390/molecules29163791",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules29194723",
+      "doi": "10.3390/molecules29194723",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T6": 26
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules30244765",
+      "doi": "10.3390/molecules30244765",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules31050853",
+      "doi": "10.3390/molecules31050853",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 15
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "doi": "10.3390/molecules31091518",
+      "final_recovery_outcome": "RECOVERED_TYPED_RECORDS",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {
+        "T5": 15
+      },
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/nu12030627",
+      "doi": "10.3390/nu12030627",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/pr12010018",
+      "doi": "10.3390/pr12010018",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3390/s150101354",
+      "doi": "10.3390/s150101354",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/s21062016",
+      "doi": "10.3390/s21062016",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS",
+      "initial_diagnosis_class": "TABLE_PRESENT_WRONG_STRUCTURE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NO_GOVERNED_RECORD_RECOVERED"
+    },
+    {
+      "candidate_id": "10.3390/su11226430",
+      "doi": "10.3390/su11226430",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.3923/pjn.2016.486.491",
+      "doi": "10.3923/pjn.2016.486.491",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.4025/actasciagron.v32i4.4283",
+      "doi": "10.4025/actasciagron.v32i4.4283",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.4025/actasciagron.v41i1.39323",
+      "doi": "10.4025/actasciagron.v41i1.39323",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.4067/s0718-33052022000300564",
+      "doi": "10.4067/s0718-33052022000300564",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.48130/bpr-0024-0040",
+      "doi": "10.48130/bpr-0024-0040",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_SENSORY_DESCRIPTOR_TABLE",
+      "initial_diagnosis_class": "MACHINE_TABLE_NO_GOVERNED_NAMED_DESCRIPTOR_SUPERVISION",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.1056183",
+      "doi": "10.5281/zenodo.1056183",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "FULL_TEXT_RETRIEVAL_FAILED:HTTPError",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.13894505",
+      "doi": "10.5281/zenodo.13894505",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.13998772",
+      "doi": "10.5281/zenodo.13998772",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.15795089",
+      "doi": "10.5281/zenodo.15795089",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.18342524",
+      "doi": "10.5281/zenodo.18342524",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.5617710",
+      "doi": "10.5281/zenodo.5617710",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.5913038",
+      "doi": "10.5281/zenodo.5913038",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.8071568",
+      "doi": "10.5281/zenodo.8071568",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5281/zenodo.8430543",
+      "doi": "10.5281/zenodo.8430543",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5296/jas.v4i1.8789",
+      "doi": "10.5296/jas.v4i1.8789",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5539/jas.v10n6p207",
+      "doi": "10.5539/jas.v10n6p207",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5539/jas.v14n2p95",
+      "doi": "10.5539/jas.v14n2p95",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5539/jas.v9n9p78",
+      "doi": "10.5539/jas.v9n9p78",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5897/ajar2016.11545",
+      "doi": "10.5897/ajar2016.11545",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5897/ajar2019.14079",
+      "doi": "10.5897/ajar2019.14079",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5897/ajfs2014.1221",
+      "doi": "10.5897/ajfs2014.1221",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "NO_MACHINE_READABLE_TABLES",
+      "initial_diagnosis_class": "FULL_TEXT_NO_MACHINE_READABLE_TABLE",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    },
+    {
+      "candidate_id": "10.5935/1806-6690.20170010",
+      "doi": "10.5935/1806-6690.20170010",
+      "final_recovery_outcome": "NOT_RECOVERED",
+      "first_pass_reason": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND",
+      "initial_diagnosis_class": "SOURCE_REFUSED_OR_RETRIEVAL_FAILED",
+      "primary_recovery_shape_counts": {},
+      "supplement_recovery_status": "NOT_APPLICABLE"
+    }
+  ],
+  "recovered_candidate_count": 29
+}

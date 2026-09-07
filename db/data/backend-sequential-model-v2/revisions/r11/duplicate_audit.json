@@ -1,0 +1,14 @@
+{
+  "apparent_groups_collapsed": 0,
+  "author_institution_trial_year_checks_executed": true,
+  "collapse_rule": "Exact base identity, panel size, descriptor/dimension set, reported values and scale, plus author/institution overlap and publication years within one year.",
+  "collapses": [],
+  "contract_version": "r11.cross-source-duplicate-audit.v1",
+  "generated_at_utc": "2026-09-07T15:35:11Z",
+  "guards": {
+    "fit_count": 0,
+    "weak_similarity_only_collapses": 0
+  },
+  "post_dedup_group_count": 13,
+  "pre_dedup_group_count": 13
+}

@@ -1,0 +1,74 @@
+{
+  "contract_version": "r11.corpus-expansion-round-manifest.v1",
+  "deliverables": {
+    "acquisition_manifest.json": {
+      "sha256": "799d556627efa1c9ded2fe8b04df5b5e3c8e9b8fd54d4b2d518bb77254049c6d"
+    },
+    "auxiliary_transfer_manifest.json": {
+      "sha256": "a57881a8576d4f03eadf757285edd0eb4ddf15a2c18aabd2ab1055ad28c257db"
+    },
+    "context_coverage.json": {
+      "sha256": "f918e183ee12a5208f31526a9ff8636270074186f6cf3508a290e0a76bfe8ce8"
+    },
+    "contract_calibration_report.json": {
+      "sha256": "b657f83545ceef6df38b7bc02db55e480035ca8b1b9d21cb3899095ad2722315"
+    },
+    "direct_vs_mapped_counts.json": {
+      "sha256": "643a1049406cf3d4e7210e4325ad4193dd0ffc435b8cc4693010bdcd97203389"
+    },
+    "duplicate_audit.json": {
+      "sha256": "0eb4e449abba6ae652a1bf10205a20d9ddbd8d3f53358119192a6ce808a4a62d"
+    },
+    "exit_criterion_status.json": {
+      "sha256": "d1e3ae04141d1662a9126618bbb899c72fd0a029f0cddb5515d4bd8613f25e48"
+    },
+    "extraction_report.json": {
+      "sha256": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531"
+    },
+    "failure_taxonomy.json": {
+      "sha256": "9d78c5abb2933f640ae6292a8822ffdfa84db21a84a4975f50d3a4809b3aa7c3"
+    },
+    "mapping_audit.json": {
+      "sha256": "ccd46a7a5e1f76fda5c3bca15c2fc492109031503975f1ae10e779a75d07c250"
+    },
+    "owner_decision.json": {
+      "sha256": "2a6684b5bfec7f393c423fdd909557257f7ea5d58903021424b3af2a7c17d902"
+    },
+    "pipeline_validation.json": {
+      "sha256": "e26b5e234d6cac00aa366f52c75abf8d35ac2a67dbea98a6a7755860632daa97"
+    },
+    "readmission_reconciliation.json": {
+      "sha256": "dd612de18fcc3046e051b2ab1be8cfd2cf583586e564b7329e1263030d637dc9"
+    },
+    "shape_distribution.json": {
+      "sha256": "54b7f13e0463f900fb0e84dc7345727082dd75f9fbc72957dc68b45ee20574c9"
+    },
+    "source_family_distribution.json": {
+      "sha256": "897851b9459dc7795ae1e0f0c8231fa8bd19f2f0cb1d82e194c29c1af1295fa1"
+    },
+    "supplement_recovery.json": {
+      "sha256": "29b42c1bf1b78d91ac97c9b35b5d438504958fe8b47e85784f22225ab63dcf8b"
+    },
+    "targeted_acquisition.json": {
+      "sha256": "69b1d5f517fe302d86a6b73a847a8d0649ba870ad36bffa793f22d996a6c7228"
+    }
+  },
+  "fit_count": 0,
+  "formal_descriptor_relation_edge_count": 0,
+  "generated_at_utc": "2026-09-07T15:35:13Z",
+  "historical_unknown_records_remaining_excluded": 13952,
+  "historical_unknown_records_reopened": 0,
+  "insufficient_evidence_abstentions_preserved": 156,
+  "notes": [
+    "No real-data model-versus-baseline metric was computed or reported.",
+    "The R10 5,819-to-879 provenance discrepancy is disclosed in readmission_reconciliation.json.",
+    "The addendum's four initial failure counts sum to 250, not 248; reproducible reclassification is used."
+  ],
+  "out_of_scope_dirty_deletions_touched": 0,
+  "pipeline_validation_status": "PASS",
+  "predecessor_sha": "4d5b20863173df8cc2b74ba955f18c68f5f4f63a",
+  "real_label_model_vs_baseline_metric_count": 0,
+  "round_outcome": "STOP_BELOW_FIXED_TARGETS",
+  "strict_evidence_rate_preserved": 0.3193,
+  "training_pause_after_round": true
+}

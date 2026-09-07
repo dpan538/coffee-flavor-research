@@ -1,0 +1,116 @@
+{
+  "broad_heterogeneous_inventory_3938": {
+    "components": {
+      "consumer_cata_rows": 3186,
+      "native_dimension_intensity_cells": 564,
+      "quarantined_anonymous_source_sample_ids": 84,
+      "weak_narrative_condition_records": 104
+    },
+    "derivation_path": "db/data/backend-sequential-model-v2/revisions/r1/sample_expansion_manifest.json#actual_increment",
+    "derived_total": 3938,
+    "matches_issued_starting_count": true,
+    "promoted_to_r11_exit_counts": 0,
+    "stratified_routing": {
+      "consumer_cata_rows": "T2_LIKE_AUXILIARY_CONSUMER_ONLY",
+      "native_dimension_intensity_cells": "T4_LIKE_HISTORICAL_DIMENSION_TRACK",
+      "quarantined_anonymous_source_sample_ids": "REMAINS_QUARANTINED",
+      "weak_narrative_condition_records": "T3_LIKE_AUX_COFFEE_WEAK_LABEL"
+    },
+    "warning": "The 3,938 units mix rows, cells, records, and quarantines and are not a group total."
+  },
+  "conclusion": {
+    "contract_narrowness_observed": true,
+    "historical_hash_only_evidence_promoted": 0,
+    "rights_question_reopened": false
+  },
+  "contract_version": "r11.historical-contract-calibration.v1",
+  "fifty_k_valid_output_partition": {
+    "exclusive_barrier_partition": {
+      "NEITHER": 0,
+      "RIGHTS_AND_STRUCTURE": 28551,
+      "RIGHTS_ONLY": 18036,
+      "STRUCTURE_ONLY": 0
+    },
+    "input": {
+      "path": "db/data/current/CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
+      "sha256": "000ff94d338486a5e50ac452f36638ea797c9af3ee81b5a7dfdb6826260166a4"
+    },
+    "interpretation": "Ledger-native rights fields block every valid output atom; structural barriers overlap but are not a rights waiver. R10's separately resolved 5,819 cohort remains the only noncommercial eligible subset.",
+    "rights_barrier_total": 46587,
+    "structure_barrier_total_nonexclusive": 28551,
+    "valid_output_atom_count": 46587
+  },
+  "generated_at_utc": "2026-09-07T15:35:13Z",
+  "guards": {
+    "fit_count": 0,
+    "real_label_model_vs_baseline_metric_count": 0
+  },
+  "r1_d1_weak_recovery": {
+    "classification": {
+      "condelli": "T2_LIKE_CONSUMER_AUXILIARY_NOT_PROFESSIONAL_SUPERVISION",
+      "peru": "T3_LIKE_AUX_COFFEE_WEAK_LABEL_NOT_CORE_SUPERVISION"
+    },
+    "private_receipts": {
+      "d1_recovery_expanded.private.json": {
+        "available": true,
+        "coffee_or_product_group_count": 21,
+        "record_count": 124,
+        "role_counts": {
+          "AUX_COFFEE_WEAK_LABEL": 124
+        },
+        "sha256": "290ded1b651ea5f042b139034807bc0816b81a4ae8fcf5853377c53571b9bfa5",
+        "source_family_counts": {
+          "condelli_2022": 20,
+          "peru_2026": 104
+        }
+      },
+      "d1_recovery_records.private.json": {
+        "available": true,
+        "coffee_or_product_group_count": 1,
+        "record_count": 104,
+        "role_counts": {
+          "AUX_COFFEE_WEAK_LABEL": 104
+        },
+        "sha256": "cdc10b58108d6ea1261c091db59a1e291db2e644dda2c8a4bfbe36789fc22cb1",
+        "source_family_counts": {
+          "peru_2026": 104
+        }
+      }
+    },
+    "promoted_to_r11_exit_counts": 0
+  },
+  "r2_isolated_expression_groups": {
+    "group_count": 8,
+    "status": "REMAINS_QUARANTINED_DATA_CONSISTENCY_FAILURE",
+    "t1_t6_readmitted": 0
+  },
+  "twenty_k_semantic_audit": {
+    "broad_count": 267,
+    "broad_plus_compound_count": 553,
+    "compound_count": 286,
+    "input": {
+      "path": "db/data/candidate-cleaning-staging/BATCH3_PUBLIC_SAFE_SEMANTIC_AUDIT.tsv",
+      "sha256": "bc8762a610ec26a4917becc673679567d3f709ca907c681443039143e9b7605b"
+    },
+    "issued_rough_1900_check": {
+      "issued_approximation": 1900,
+      "reproducible_exact_count": 553,
+      "status": "NOT_SUPPORTED_BY_THE_5744_ROW_AUDIT_DENOMINATOR"
+    },
+    "newly_admitted_count": 0,
+    "note": "The auditable rows contain hashes and semantic decisions, not source table cells; assigning T1--T6 would invent shape evidence.",
+    "outcome_counts": {
+      "NON_DESCRIPTOR": 1094,
+      "SEMANTICALLY_UNRESOLVED": 6,
+      "VALID_ATOMIC_DESCRIPTOR": 4091,
+      "VALID_BROAD_SENSORY": 267,
+      "VALID_COMPOSITE_REQUIRES_SPLIT": 286
+    },
+    "r10_5819_overlap_counts": {
+      "VALID_BROAD_SENSORY": 28,
+      "VALID_COMPOSITE_REQUIRES_SPLIT": 184
+    },
+    "retest_status": "NOT_POSSIBLE_FROM_HASH_ONLY_PUBLIC_SAFE_AUDIT_ROWS",
+    "row_count": 5744
+  }
+}

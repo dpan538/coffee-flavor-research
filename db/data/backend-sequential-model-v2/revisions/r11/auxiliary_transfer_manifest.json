@@ -1,0 +1,15 @@
+{
+  "coffee_supervision_count_contribution": 0,
+  "contract_version": "r11.auxiliary-transfer-manifest.v1",
+  "exit_criterion_count_contribution": 0,
+  "generated_at_utc": "2026-09-07T15:35:13Z",
+  "guards": {
+    "fit_count": 0
+  },
+  "permitted_future_use": "DESCRIPTOR_REPRESENTATION_PRETRAINING_ONLY_IF_SEPARATELY_AUTHORIZED",
+  "promotable_to_coffee_professional_labels": false,
+  "record_count": 0,
+  "records": [],
+  "status": "NO_NEW_AUXILIARY_TRANSFER_RECORDS_ACQUIRED",
+  "track": "AUXILIARY_TRANSFER"
+}

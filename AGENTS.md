@@ -1,5 +1,42 @@
 # AGENTS.md
 
+## [M2 R11 OVERRIDE — CORPUS EXPANSION, NO TRAINING]
+
+Effective 2026-09-07. R11 is an owner-authorized acquisition-only round. Training
+remains paused by choice: do not train, fit, tune, calibrate, or compute, print,
+log, or store any real-data model-versus-baseline metric. The R11 fit count must
+remain zero. Blind pipeline validation may use synthetic or permuted labels only
+and must disclose any accidental real-label metric production.
+
+The exit criteria are fixed before acquisition and may not be revised downward:
+at least 250 post-dedup DIRECT T1+T2+T3 named-descriptor groups; at least 600
+post-dedup DIRECT+MAPPED T1+T2+T3 groups; at least 600 T4 dimension groups; at
+least 150 T4 groups with explicit C0 brew/preparation context; at least 150 T4
+groups with explicit C1 roast level; and at least 200 T5/T6 ontology-review
+records. The original diversity constraints also hold: at least eight source
+families, no family above 35% of groups, and at least 40 of the 53 governed
+candidates supported by ten or more groups. Only canonical trial identities
+after cross-source duplicate collapse count. DIRECT and MAPPED counts must stay
+separate and may not be merged into an unlabeled headline number.
+
+R10 `NON_COMMERCIAL_RESEARCH` license criteria, no-ND rule, attribution and PII
+requirements, share-alike flags, isolated-source exclusions, and permanently
+reference-only SCA/WCR materials carry forward unchanged. The 13,952 historical
+`UNKNOWN` records stay excluded and must not be re-resolved in R11. Auxiliary
+cocoa, tea, and wine data must remain `AUXILIARY_TRANSFER`, non-promotable, and
+excluded from every coffee supervision and exit-criterion count. Formal relation
+edges remain zero; the 156 insufficient-evidence outputs remain abstained without
+backfill; the 135 unrelated working-tree deletions remain untouched.
+
+R11 extraction uses typed contracts T1 DIRECT_INTENSITY, T2 DIRECT_FREQUENCY,
+T3 DIRECT_PRESENCE, T4 DIMENSION_ONLY, T5 ONTOLOGY_REFERENCE, and T6
+ONTOLOGY_CHEMICAL. Mapping may use only the existing R6 semantic registry and
+must retain its rule ID, surface form, and whether it generalizes. No new rule is
+created automatically and no mapping may increase specificity. Retrieval order
+is JATS XML, sanctioned OA package/supplement, publisher structured HTML,
+Unpaywall alternative OA copy, then uncertain PDF table extraction. Access
+controls, robots, rate limits, paywalls, and bot protection must be respected.
+
 ## [M2 R10 OVERRIDE — LICENSE-GATED TRAINING UNBLOCK]
 
 Effective 2026-09-07. The owner authorizes a new, independently computed

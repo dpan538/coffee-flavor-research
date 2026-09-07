@@ -1,0 +1,87 @@
+{
+  "contract_version": "r11.fixed-exit-criterion-status.v1",
+  "criteria": [
+    {
+      "comparison": ">=",
+      "criterion": "DIRECT_T1_T2_T3_GROUPS",
+      "current": 6,
+      "shortfall": 244,
+      "status": "FAIL",
+      "target": 250
+    },
+    {
+      "comparison": ">=",
+      "criterion": "DIRECT_PLUS_MAPPED_T1_T2_T3_GROUPS",
+      "current": 6,
+      "shortfall": 594,
+      "status": "FAIL",
+      "target": 600
+    },
+    {
+      "comparison": ">=",
+      "criterion": "T4_GROUPS",
+      "current": 13,
+      "shortfall": 587,
+      "status": "FAIL",
+      "target": 600
+    },
+    {
+      "comparison": ">=",
+      "criterion": "T4_C0_GROUPS",
+      "current": 6,
+      "shortfall": 144,
+      "status": "FAIL",
+      "target": 150
+    },
+    {
+      "comparison": ">=",
+      "criterion": "T4_C1_GROUPS",
+      "current": 5,
+      "shortfall": 145,
+      "status": "FAIL",
+      "target": 150
+    },
+    {
+      "comparison": ">=",
+      "criterion": "T5_T6_ONTOLOGY_RECORDS",
+      "current": 1644,
+      "shortfall": 0,
+      "status": "PASS",
+      "target": 200
+    },
+    {
+      "comparison": ">=",
+      "criterion": "SOURCE_FAMILIES",
+      "current": 12,
+      "shortfall": 0,
+      "status": "PASS",
+      "target": 8
+    },
+    {
+      "comparison": ">=",
+      "criterion": "CANDIDATES_WITH_TEN_GROUPS",
+      "current": 27,
+      "shortfall": 13,
+      "status": "FAIL",
+      "target": 40
+    },
+    {
+      "comparison": "<=",
+      "criterion": "MAX_SOURCE_FAMILY_SHARE",
+      "current": 0.5161290322580645,
+      "excess": 0.16612903225806452,
+      "status": "FAIL",
+      "target": 0.35
+    }
+  ],
+  "generated_at_utc": "2026-09-07T15:35:13Z",
+  "guards": {
+    "fit_count": 0,
+    "real_data_model_vs_baseline_metric_count": 0,
+    "thresholds_relaxed": 0
+  },
+  "power_derivation_recorded_before_acquisition": "Assuming paired per-coffee-group NDCG differences with SD approximately 0.2--0.3, detecting delta approximately 0.03 at 80% power requires roughly 350--800 groups; 600 was fixed in the safer portion of that range. This is a target derivation only, not an R11 model metric.",
+  "round_outcome": "STOP_BELOW_FIXED_TARGETS",
+  "status": "FAIL",
+  "thresholds_revised_downward": false
+}

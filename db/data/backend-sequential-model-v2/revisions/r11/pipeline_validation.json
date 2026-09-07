@@ -1,0 +1,28 @@
+{
+  "attestation": {
+    "contaminated_result": false,
+    "fit_count": 0,
+    "real_data_model_vs_baseline_metrics_computed": 0,
+    "real_data_model_vs_baseline_metrics_logged_printed_or_stored": 0,
+    "real_label_rows_read": 0
+  },
+  "checks": {
+    "abstention_head_plumbing": "PASS",
+    "artifact_serialization": "PASS",
+    "deterministic_fold_construction": "PASS",
+    "feature_assembly": "PASS",
+    "group_level_leakage_check": "PASS",
+    "synthetic_metric_computation_executed": "PASS"
+  },
+  "contract_version": "r11.blind-pipeline-validation.v1",
+  "fold_group_counts": {
+    "0": 18,
+    "1": 18,
+    "2": 12
+  },
+  "generated_at_utc": "2026-09-07T14:58:10Z",
+  "input_scope": "SYNTHETIC_LABELS_ONLY",
+  "status": "PASS",
+  "synthetic_group_count": 48,
+  "synthetic_metric_receipt_sha256": "08714813ab3cb284d962095aa25175497c401784489ecbc0e0deb90aa5cbd38e"
+}

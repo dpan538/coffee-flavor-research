@@ -1,0 +1,61 @@
+{
+  "contract_version": "r11.source-family-distribution.v1",
+  "generated_at_utc": "2026-09-07T15:35:11Z",
+  "guards": {
+    "fit_count": 0
+  },
+  "post_dedup": {
+    "group_count": 217,
+    "groups_by_family": {
+      "family.frontiers_cenicafe_lengupa_trained_cuppers": 17,
+      "family.frontiers_inera_robusta_q_grader_panel": 73,
+      "family.mdpi_certified_q_grader_storage_panel": 2,
+      "family.r11.0b602c673be8111991a1": 2,
+      "family.r11.300a78c7df4a0af63e79": 2,
+      "family.r11.4c9f4bcce951cde1ce82": 2,
+      "family.r11.86d4dd9dda39102544e2": 2,
+      "family.r11.a28e18f4af53afbee6e8": 1,
+      "family.r11.b5ba9e1dcf0b7d5fcc94": 1,
+      "family.r11.db3ebda0ba755b2c6f25": 2,
+      "family.r11.f4cd6f95f966aba1046a": 1,
+      "family.zenodo_golovinsky_q_grader_dataset": 112
+    },
+    "max_family_group_count": 112,
+    "max_family_id": "family.zenodo_golovinsky_q_grader_dataset",
+    "max_family_share": 0.5161290322580645,
+    "shares_by_family": {
+      "family.frontiers_cenicafe_lengupa_trained_cuppers": 0.07834101382488479,
+      "family.frontiers_inera_robusta_q_grader_panel": 0.33640552995391704,
+      "family.mdpi_certified_q_grader_storage_panel": 0.009216589861751152,
+      "family.r11.0b602c673be8111991a1": 0.009216589861751152,
+      "family.r11.300a78c7df4a0af63e79": 0.009216589861751152,
+      "family.r11.4c9f4bcce951cde1ce82": 0.009216589861751152,
+      "family.r11.86d4dd9dda39102544e2": 0.009216589861751152,
+      "family.r11.a28e18f4af53afbee6e8": 0.004608294930875576,
+      "family.r11.b5ba9e1dcf0b7d5fcc94": 0.004608294930875576,
+      "family.r11.db3ebda0ba755b2c6f25": 0.009216589861751152,
+      "family.r11.f4cd6f95f966aba1046a": 0.004608294930875576,
+      "family.zenodo_golovinsky_q_grader_dataset": 0.5161290322580645
+    },
+    "source_family_count": 12
+  },
+  "pre_dedup": {
+    "group_count": 217,
+    "groups_by_family": {
+      "family.frontiers_cenicafe_lengupa_trained_cuppers": 17,
+      "family.frontiers_inera_robusta_q_grader_panel": 73,
+      "family.mdpi_certified_q_grader_storage_panel": 2,
+      "family.r11.0b602c673be8111991a1": 2,
+      "family.r11.300a78c7df4a0af63e79": 2,
+      "family.r11.4c9f4bcce951cde1ce82": 2,
+      "family.r11.86d4dd9dda39102544e2": 2,
+      "family.r11.a28e18f4af53afbee6e8": 1,
+      "family.r11.b5ba9e1dcf0b7d5fcc94": 1,
+      "family.r11.db3ebda0ba755b2c6f25": 2,
+      "family.r11.f4cd6f95f966aba1046a": 1,
+      "family.zenodo_golovinsky_q_grader_dataset": 112
+    },
+    "source_family_count": 12
+  },
+  "r10_frozen_group_count": 204
+}

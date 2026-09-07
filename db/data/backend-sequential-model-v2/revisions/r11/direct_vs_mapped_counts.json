@@ -1,0 +1,25 @@
+{
+  "contract_version": "r11.direct-vs-mapped-counts.v1",
+  "counts_reported_separately": true,
+  "direct": {
+    "candidate_count": 7,
+    "post_dedup_group_count": 6,
+    "record_count": 78
+  },
+  "direct_plus_mapped_union": {
+    "candidate_count": 7,
+    "post_dedup_group_count": 6,
+    "record_count": 78
+  },
+  "generated_at_utc": "2026-09-07T15:35:11Z",
+  "guards": {
+    "fit_count": 0,
+    "unlabelled_merged_headline_count": 0
+  },
+  "mapped": {
+    "candidate_count": 0,
+    "post_dedup_group_count": 0,
+    "record_count": 0
+  },
+  "warning": "The union is explicitly labelled and is not presented as a DIRECT count."
+}
