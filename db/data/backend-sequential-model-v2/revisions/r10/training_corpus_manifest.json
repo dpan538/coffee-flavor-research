@@ -1,0 +1,39 @@
+{
+  "canonical_occurrence_counts_by_source_family": {
+    "family.frontiers_cenicafe_lengupa_trained_cuppers": 26,
+    "family.frontiers_inera_robusta_q_grader_panel": 122,
+    "family.mdpi_certified_q_grader_storage_panel": 2,
+    "family.zenodo_golovinsky_q_grader_dataset": 729
+  },
+  "canonical_training_candidate_count": 53,
+  "canonical_training_occurrence_count": 879,
+  "coffee_group_count": 204,
+  "coffee_group_counts_by_source_family": {
+    "family.frontiers_cenicafe_lengupa_trained_cuppers": 17,
+    "family.frontiers_inera_robusta_q_grader_panel": 73,
+    "family.mdpi_certified_q_grader_storage_panel": 2,
+    "family.zenodo_golovinsky_q_grader_dataset": 112
+  },
+  "contract_version": "r10.license-clear-training-corpus-manifest.v1",
+  "effective_record_count": 226,
+  "eligibility_sha256": "3bcbbcc3efeea9670513bda3bd93e7ab17ba94bf12027cb4bf62a06f3eb36224",
+  "eligibility_tier": "NON_COMMERCIAL_RESEARCH",
+  "evaluable_group_count_at_least_two_descriptors": 164,
+  "gate_eligible_source_assertion_count": 5819,
+  "gate_source_family_count": 5,
+  "generated_at_utc": "2026-09-07T13:08:39Z",
+  "outer_fold_group_counts": {
+    "0": 70,
+    "1": 68,
+    "2": 66
+  },
+  "private_corpus": {
+    "bytes": 87938,
+    "sha256": "029700197d48e83b17390f0502b2509d362a2dea2fe2c74dd6720ec0a05865b5"
+  },
+  "scope": "CANONICAL_NAMED_DESCRIPTOR_POSITIVE_RECOVERY_ONLY",
+  "source_ledger_sha256": "a12ecd15b8a8417d0fbc7d04f4c6d0bf7f56203b946455664306649e0a5567e8",
+  "status": "FROZEN_TRAINING_NOT_RUN",
+  "training_run_count": 0,
+  "training_source_family_count": 4
+}

@@ -1,5 +1,32 @@
 # AGENTS.md
 
+## [M2 R10 OVERRIDE — LICENSE-GATED TRAINING UNBLOCK]
+
+Effective 2026-09-07. The owner authorizes a new, independently computed
+`NON_COMMERCIAL_RESEARCH` eligibility tier without weakening or replacing the
+existing commercial-grade tier. Eligibility requires a source-resolved license
+identifier and URL or DOI, an allowed non-ND license or explicit publisher
+permission for noncommercial research text/data mining, no participant PII, and
+sufficient attribution metadata. ODbL and CC-BY-SA derived records must carry
+`SHARE_ALIKE_OBLIGATION = true`. Public access alone is not permission, unresolved
+records remain excluded, and SCA/WCR ND or personal-download materials remain
+permanently reference-only. Existing isolated review, roaster, and participant-risk
+sources remain isolated.
+
+R10 must first resolve the 13,952 historical `UNKNOWN` rights records and report
+the result before new acquisition. New acquisition must be license-filtered at
+query time and preserve source, endpoint, license, attribution, retrieval time,
+and checksum. User ratings remain prohibited as model labels or architecture
+selection inputs. Formal descriptor relations remain owner-approved only.
+
+Training stays paused until the reproducible R10 gate is computed. `GO` requires
+at least 500 license-resolved, non-ND, descriptor-level assertions attached to
+identified coffee samples across at least three independent source families.
+`CONDITIONAL` applies from 200 through 499 assertions; below 200 is `NO-GO`.
+Only a `GO` result lifts the pause, and any resumed fit must preserve coffee and
+participant group isolation, protected regression records, confidence intervals,
+private weights, the backend-only scope, and the unchanged B2 production default.
+
 ## [M2 R9 OVERRIDE — TRAINING PAUSED]
 
 Effective 2026-09-07. This override has priority for R9 and does not erase the

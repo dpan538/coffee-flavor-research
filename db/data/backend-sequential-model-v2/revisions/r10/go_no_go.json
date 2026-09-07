@@ -1,0 +1,177 @@
+{
+  "contract_version": "r10.go-no-go.v1",
+  "generated_at_utc": "2026-09-07T13:19:58Z",
+  "eligibility_tier": "NON_COMMERCIAL_RESEARCH",
+  "N_eligible": 5819,
+  "source_family_count": 5,
+  "source_family_assertion_counts": {
+    "family.frontiers_cenicafe_lengupa_trained_cuppers": 98,
+    "family.frontiers_inera_robusta_q_grader_panel": 432,
+    "family.mdpi_certified_q_grader_storage_panel": 1919,
+    "family.pmc8774372_brewed_black_coffee": 89,
+    "family.zenodo_golovinsky_q_grader_dataset": 3281
+  },
+  "threshold": {
+    "GO": "N_eligible >= 500 AND source_family_count >= 3",
+    "CONDITIONAL": "200 <= N_eligible < 500",
+    "NO_GO": "N_eligible < 200"
+  },
+  "verdict": "GO",
+  "can_train_on_license_clear_data": true,
+  "commercial_grade_model_eligible_assertion_count": 0,
+  "unknown_resolution": {
+    "unknown_assertion_count": 13952,
+    "unique_source_url_count": 603,
+    "unique_doi_count": 0,
+    "resolved_assertion_count": 0,
+    "remaining_unknown_assertion_count": 13952,
+    "eligible_noncommercial_research_count": 0,
+    "resolution_license_counts": {
+      "UNRESOLVED": 13952
+    },
+    "resolution_method_counts": {
+      "UNRESOLVED": 13952
+    },
+    "source_family_counts": {
+      "family.ace_cup_of_excellence": 13614,
+      "family.coffee_board_of_india_fine_cup": 58,
+      "family.project_origin": 268,
+      "family.sheba_coffee_yemen_auction": 12
+    }
+  },
+  "new_acquisition": {
+    "query_count": 12,
+    "license_filtered_discovery_candidate_count": 248,
+    "new_record_count": 0,
+    "gate_dependency": "ENHANCEMENT_NOT_PREREQUISITE_GATE_ALREADY_GO"
+  },
+  "exact_query_filters": [
+    {
+      "query_id": "DRYAD_1",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+sensory&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "545e8c388b188381e9850a3626db148c2c98b278393985a33101a3fba001d454"
+    },
+    {
+      "query_id": "DRYAD_2",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+cupping&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "a1f773028687252e1c3f593fe628a3b5e37dc15c9843cb4670fd712a2ab617a7"
+    },
+    {
+      "query_id": "DRYAD_3",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+descriptive+analysis&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "0645890f562353561c5ebc26a1fe7ae8a15f0fc6ce80c75bb038bd02dc48087a"
+    },
+    {
+      "query_id": "DRYAD_4",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=Coffea+arabica+sensory&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "dc27412b5240fb6e0ab2a08a0450600d378024e31b9b93460687463189283f84"
+    },
+    {
+      "query_id": "DRYAD_5",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+flavor+panel&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "65c76a7fadaaa95f48ddff4b68233bca2316e4ccc092cc3c9800040b8ad4ae2e"
+    },
+    {
+      "query_id": "DRYAD_6",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+QDA+CATA&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "e1b6a017792895fad1ac535223fbd40a18e8ce78d39203f84b1bde9ef55119dd"
+    },
+    {
+      "query_id": "EUROPE_PMC_1",
+      "source_system": "EUROPE_PMC",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=OPEN_ACCESS%3AY+AND+%28LICENSE%3A%22cc+by%22+OR+LICENSE%3A%22cc+by-nc%22+OR+LICENSE%3A%22cc+by-sa%22+OR+LICENSE%3Acc0%29+AND+%28coffee+AND+%28sensory+OR+cupping+OR+%22descriptive+analysis%22+OR+CATA+OR+QDA%29%29&resultType=core&format=json&pageSize=1000",
+      "status": "COMPLETE",
+      "response_sha256": "1e6eba050763f42cb436ea9c39fc502f4d9dea5748c85af700e2675c1d2a443a"
+    },
+    {
+      "query_id": "EUROPE_PMC_2",
+      "source_system": "EUROPE_PMC",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=OPEN_ACCESS%3AY+AND+%28LICENSE%3A%22cc+by%22+OR+LICENSE%3A%22cc+by-nc%22+OR+LICENSE%3A%22cc+by-sa%22+OR+LICENSE%3Acc0%29+AND+%28%22Coffea+arabica%22+AND+descriptor%29&resultType=core&format=json&pageSize=1000",
+      "status": "COMPLETE",
+      "response_sha256": "9d92ef8efc85c4d8dc6c1b9dadfe84ede91e5941a42c11d2badb2f4f340502cb"
+    },
+    {
+      "query_id": "EUROPE_PMC_3",
+      "source_system": "EUROPE_PMC",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=OPEN_ACCESS%3AY+AND+%28LICENSE%3A%22cc+by%22+OR+LICENSE%3A%22cc+by-nc%22+OR+LICENSE%3A%22cc+by-sa%22+OR+LICENSE%3Acc0%29+AND+%28coffee+AND+%22flavor+profile%22+AND+panel%29&resultType=core&format=json&pageSize=1000",
+      "status": "COMPLETE",
+      "response_sha256": "8a6c192781cc8184e79682b252ef1fbccb14d7421ee1a8f7c78fbd190233c4c3"
+    },
+    {
+      "query_id": "OPENALEX_CC-BY",
+      "source_system": "OPENALEX",
+      "url": "https://api.openalex.org/works?filter=title_and_abstract.search%3Acoffee+sensory%2Cbest_oa_location.license%3Acc-by&per-page=200",
+      "status": "COMPLETE",
+      "response_sha256": "3b29447cf7f9cf5dcae44e0192e51498fa7c6ecb34cd45b11cd6bee7c52f9ab4"
+    },
+    {
+      "query_id": "OPENALEX_CC0",
+      "source_system": "OPENALEX",
+      "url": "https://api.openalex.org/works?filter=title_and_abstract.search%3Acoffee+sensory%2Cbest_oa_location.license%3Acc0&per-page=200",
+      "status": "COMPLETE",
+      "response_sha256": "3f3655feac183e341d263fd1d5d08600e2a22ee283d7fac2626f29e930fffc29"
+    },
+    {
+      "query_id": "ZENODO_1",
+      "source_system": "ZENODO",
+      "url": "https://zenodo.org/api/records?q=coffee+sensory+AND+access_right%3Aopen&size=25",
+      "status": "COMPLETE",
+      "response_sha256": "51257ef5134be84d576fd4d7c4c3d4a56e67f01ae2141e0ac7fcfefea3099cd6"
+    }
+  ],
+  "frozen_training_corpus": {
+    "status": "FROZEN_TRAINING_NOT_RUN",
+    "canonical_training_occurrence_count": 879,
+    "canonical_training_candidate_count": 53,
+    "coffee_group_count": 204,
+    "training_source_family_count": 4,
+    "outer_fold_group_counts": {
+      "0": 70,
+      "1": 68,
+      "2": 66
+    },
+    "training_run_count": 0
+  },
+  "evidence_correctness": {
+    "bucket_counts": {
+      "INSUFFICIENT_EVIDENCE_ABSTAIN": 156,
+      "RECOVERABLE_DIRECT": 0,
+      "REQUIRES_OWNER_ONTOLOGY_REVIEW": 312,
+      "SHARED_DIMENSION_ONLY": 12
+    },
+    "strict_evidence_rate_before": 0.24050632911392406,
+    "strict_evidence_rate_after_abstention": 0.31932773109243695,
+    "comparison_underflow_cases": 1
+  },
+  "training_execution": {
+    "gate_state": "ELIGIBLE_TO_LIFT_PAUSE",
+    "fit_count_this_run": 0,
+    "status": "NOT_RUN_REQUIRES_EXPLICIT_IN_CHAT_CONFIRMATION",
+    "production_default_changed": false,
+    "protected_regression_set_used": false
+  },
+  "diagnosis": {
+    "existing_license_clear_training_data": "SUFFICIENT",
+    "historical_unknown_block": "UNRESOLVED_RIGHTS_METADATA_AND_PERMISSION_PROBLEM_NOT_A_ROW_COUNT_PROBLEM",
+    "canonical_mapping_bottleneck": "Only 879 governed, record-unique named-descriptor occurrences across 204 coffee groups enter the frozen canonical training table, despite 5819 license-eligible source assertions."
+  },
+  "artifact_sha256": {
+    "license_resolution_report.json": "97da481d782d1a30d6d244c2e94222bf5e934f1303dfafa7422270e75df05007",
+    "eligibility_tiers.json": "3bcbbcc3efeea9670513bda3bd93e7ab17ba94bf12027cb4bf62a06f3eb36224",
+    "acquisition_manifest.json": "98e99f9acfdc882841e14c4d310c42d4934d0d6e976631af933746d683af8880",
+    "evidence_partition_r10.json": "be35b227d6c6f18066fc8558f8104fcf7ac58a98671e436cfefc1dd2c4d16dc8",
+    "training_corpus_manifest.json": "ade918c302045dfa27a8301ac9ed4233003b0a5a9a9025acf0e51fd0bcda6e70"
+  }
+}

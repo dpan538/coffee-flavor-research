@@ -1,0 +1,158 @@
+{
+  "contract_version": "r10.eligibility-tiers.v1",
+  "generated_at_utc": "2026-09-07T13:07:53Z",
+  "inputs": [
+    {
+      "path": "db/data/professional-descriptor-staging/PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "20905a6747de98a0a9211d35857fb74242a573ea182f056e1c60d4967f27f1d5",
+      "row_count": 20087
+    },
+    {
+      "path": "db/data/post20k-extension-staging/POST20K_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "2fbeef46f2bcd42f62e9ad181ddea27e73fa5af8306b1da924f17e99d9353040",
+      "row_count": 10023
+    },
+    {
+      "path": "db/data/post30k-extension-staging/POST30K_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "d28e9eb275d8dcbe95522ed9decbed222d22afcd2ffb0d7304b99a9fcdfbfc43",
+      "row_count": 10185
+    },
+    {
+      "path": "db/data/post50k-extension-staging/NON_COE_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "dbc85d8d7c29deec56d88cc24293e76fc79caf84ef3f25d0843543afab19af61",
+      "row_count": 194
+    }
+  ],
+  "criteria": {
+    "commercial_grade": "UNCHANGED_EXISTING_MODEL_ELIGIBLE_FIELD",
+    "non_commercial_research": {
+      "license_resolved_from_source": true,
+      "allowed_licenses": [
+        "CC-BY-3.0",
+        "CC-BY-4.0",
+        "CC-BY-NC-4.0",
+        "CC-BY-SA-4.0",
+        "CC0-1.0",
+        "EXPLICIT-NONCOMMERCIAL-RESEARCH-TDM",
+        "ODbL-1.0"
+      ],
+      "no_derivatives_excluded": true,
+      "participant_pii_excluded": true,
+      "attribution_required": true,
+      "descriptor_level": "STRICT_FLAVOR",
+      "identified_coffee_sample_required": true,
+      "counts_as_assertion_required": true
+    }
+  },
+  "pii_schema_check": {
+    "raw_participant_identity_fields": [],
+    "pass": true,
+    "rule": "participant/panelist/judge fields must be SHA-256-only in admitted public-safe inputs"
+  },
+  "tiers": {
+    "COMMERCIAL_GRADE": {
+      "model_eligible_assertion_count": 0,
+      "source_family_count": 0
+    },
+    "NON_COMMERCIAL_RESEARCH": {
+      "model_eligible_assertion_count": 5819,
+      "source_family_count": 5,
+      "source_family_assertion_counts": {
+        "family.frontiers_cenicafe_lengupa_trained_cuppers": 98,
+        "family.frontiers_inera_robusta_q_grader_panel": 432,
+        "family.mdpi_certified_q_grader_storage_panel": 1919,
+        "family.pmc8774372_brewed_black_coffee": 89,
+        "family.zenodo_golovinsky_q_grader_dataset": 3281
+      },
+      "share_alike_obligation_assertion_count": 0,
+      "exclusion_reason_counts_nonexclusive": {
+        "ATTRIBUTION_INCOMPLETE": 32732,
+        "LICENSE_NOT_RESOLVED_ALLOWED": 32732,
+        "NOT_DEINFLATED_ASSERTION": 422,
+        "NOT_STRICT_DESCRIPTOR_LEVEL": 6794
+      }
+    }
+  },
+  "resolved_source_licenses": [
+    {
+      "source_family_id": "family.zenodo_golovinsky_q_grader_dataset",
+      "method": "ZENODO_RECORD_API",
+      "url": "https://zenodo.org/api/records/20840464",
+      "historical_rights_basis": "CC_BY_NC_4_0_NONCOMMERCIAL_RESEARCH_ONLY",
+      "doi": "10.5281/zenodo.20840464",
+      "raw_license": "cc-by-4.0",
+      "resolved_license": "CC-BY-4.0",
+      "attribution_string": "Golovinsky, Rodion, Ivanov, Ilya, Aglikov, Aleksandr, Aliev, Timur, Timofeenko, Ivan, Novikov, Alexander, Zayats, Mikhail, Ashikhmina, Mariia, Orlova, Olga, Masalovich, Maria, Ekaterina, Skorb. Electrochemical profiles of coffee drink samples. Zenodo. https://doi.org/10.5281/zenodo.20840464",
+      "attribution_complete": true,
+      "participant_pii_present": false,
+      "share_alike_obligation": false,
+      "historical_basis_differs_from_live_license": true,
+      "resolution_status": "RESOLVED",
+      "response_sha256": "2ad47a54acbe4e75fc0a20f5f6284d2246121e11a367cfd7e9db79c924aac68f"
+    },
+    {
+      "source_family_id": "family.frontiers_inera_robusta_q_grader_panel",
+      "method": "FIGSHARE_RECORD_API",
+      "url": "https://api.figshare.com/v2/articles/25735122",
+      "historical_rights_basis": "CC_BY_4_0_FIGSHARE_DATASET",
+      "doi": "10.3389/fsufs.2024.1382976.s002",
+      "raw_license": "https://creativecommons.org/licenses/by/4.0/",
+      "resolved_license": "CC-BY-4.0",
+      "attribution_string": "Bollen, Robrecht; Verleysen, Lauren; Katshela, Benjamin Ntumba; Kambale, Jean-Léon; Ebele, Tshimi; Ruttink, Tom; et al. (2024). Table_1_Sensory profiles of Robusta coffee (Coffea canephora) genetic resources from the Democratic Republic of the Congo.xlsx. Frontiers. Dataset. https://doi.org/10.3389/fsufs.2024.1382976.s002",
+      "attribution_complete": true,
+      "participant_pii_present": false,
+      "share_alike_obligation": false,
+      "historical_basis_differs_from_live_license": false,
+      "resolution_status": "RESOLVED",
+      "response_sha256": "9782af9bdbf70cfcc8bbe562e32c805c9f2399ad9eee90c7a740811fe532209e"
+    },
+    {
+      "source_family_id": "family.frontiers_cenicafe_lengupa_trained_cuppers",
+      "method": "CROSSREF_WORK_API",
+      "url": "https://api.crossref.org/works/10.3389%2Ffsufs.2026.1809471",
+      "historical_rights_basis": "CC_BY_FRONTIERS_ARTICLE",
+      "doi": "10.3389/fsufs.2026.1809471",
+      "raw_license": "https://creativecommons.org/licenses/by/4.0/",
+      "resolved_license": "CC-BY-4.0",
+      "attribution_string": "Diego Alejandro Benavides Sánchez. Territory-linked coffee quality in Lengupá Province (Boyacá, Colombia): a case study toward a denomination of origin. Frontiers Media SA. https://doi.org/10.3389/fsufs.2026.1809471",
+      "attribution_complete": true,
+      "participant_pii_present": false,
+      "share_alike_obligation": false,
+      "historical_basis_differs_from_live_license": false,
+      "resolution_status": "RESOLVED",
+      "response_sha256": "92cefaf6f01ed3696b0d633aae6780311e392c91ae39de0b8a7cb32ee4000cb9"
+    },
+    {
+      "source_family_id": "family.mdpi_certified_q_grader_storage_panel",
+      "method": "CROSSREF_WORK_API",
+      "url": "https://api.crossref.org/works/10.3390%2Ffoods15152756",
+      "historical_rights_basis": "CC_BY_4_0_MDPI_ARTICLE_AND_SUPPLEMENT",
+      "doi": "10.3390/foods15152756",
+      "raw_license": "https://creativecommons.org/licenses/by/4.0/",
+      "resolved_license": "CC-BY-4.0",
+      "attribution_string": "Frank Fernandez-Rosillo, Lenin Quiñones-Huatangari, Jonathan Alberto Campos Trigoso, Eliana Milagros Cabrejos-Barrios, Segundo G. Chavez, César R. Balcázar-Zumaeta. Text Mining Analysis of Q-Grader Sensory Descriptors in Specialty Coffee Under Accelerated Storage Conditions. MDPI AG. https://doi.org/10.3390/foods15152756",
+      "attribution_complete": true,
+      "participant_pii_present": false,
+      "share_alike_obligation": false,
+      "historical_basis_differs_from_live_license": false,
+      "resolution_status": "RESOLVED",
+      "response_sha256": "13e0457cada90349ab4b21c1b003fbea54a4c268ade5e569661b685bea14d3b4"
+    },
+    {
+      "source_family_id": "family.pmc8774372_brewed_black_coffee",
+      "method": "EUROPE_PMC_CORE_API",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC8774372&resultType=core&format=json",
+      "historical_rights_basis": "CC_BY_4_0_ATTRIBUTION_REQUIRED",
+      "doi": "10.3390/foods11020180",
+      "raw_license": "cc by",
+      "resolved_license": "CC-BY-4.0",
+      "attribution_string": "Pinsuwan A, Suwonsichon S, Chompreeda P, Prinyawiwatkul W. Sensory Drivers of Consumer Acceptance, Purchase Intent and Emotions toward Brewed Black Coffee. Europe PMC PMC8774372; https://doi.org/10.3390/foods11020180",
+      "attribution_complete": true,
+      "participant_pii_present": false,
+      "share_alike_obligation": false,
+      "historical_basis_differs_from_live_license": false,
+      "resolution_status": "RESOLVED",
+      "response_sha256": "67d206b1c2291a5dd09666d5a11fef24f66c417fee0296166aa66b8ba70d1fb3"
+    }
+  ]
+}

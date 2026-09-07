@@ -1,0 +1,3403 @@
+{
+  "contract_version": "r10.license-filtered-acquisition-manifest.v1",
+  "retrieved_at_utc": "2026-09-07T13:15:40Z",
+  "gate_dependency": "ENHANCEMENT_NOT_PREREQUISITE_GATE_ALREADY_GO",
+  "queries": [
+    {
+      "query_id": "DRYAD_1",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+sensory&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "545e8c388b188381e9850a3626db148c2c98b278393985a33101a3fba001d454"
+    },
+    {
+      "query_id": "DRYAD_2",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+cupping&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "a1f773028687252e1c3f593fe628a3b5e37dc15c9843cb4670fd712a2ab617a7"
+    },
+    {
+      "query_id": "DRYAD_3",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+descriptive+analysis&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "0645890f562353561c5ebc26a1fe7ae8a15f0fc6ce80c75bb038bd02dc48087a"
+    },
+    {
+      "query_id": "DRYAD_4",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=Coffea+arabica+sensory&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "dc27412b5240fb6e0ab2a08a0450600d378024e31b9b93460687463189283f84"
+    },
+    {
+      "query_id": "DRYAD_5",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+flavor+panel&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "65c76a7fadaaa95f48ddff4b68233bca2316e4ccc092cc3c9800040b8ad4ae2e"
+    },
+    {
+      "query_id": "DRYAD_6",
+      "source_system": "DRYAD",
+      "url": "https://datadryad.org/api/v2/search?q=coffee+QDA+CATA&per_page=100",
+      "status": "COMPLETE",
+      "response_sha256": "e1b6a017792895fad1ac535223fbd40a18e8ce78d39203f84b1bde9ef55119dd"
+    },
+    {
+      "query_id": "EUROPE_PMC_1",
+      "source_system": "EUROPE_PMC",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=OPEN_ACCESS%3AY+AND+%28LICENSE%3A%22cc+by%22+OR+LICENSE%3A%22cc+by-nc%22+OR+LICENSE%3A%22cc+by-sa%22+OR+LICENSE%3Acc0%29+AND+%28coffee+AND+%28sensory+OR+cupping+OR+%22descriptive+analysis%22+OR+CATA+OR+QDA%29%29&resultType=core&format=json&pageSize=1000",
+      "status": "COMPLETE",
+      "response_sha256": "1e6eba050763f42cb436ea9c39fc502f4d9dea5748c85af700e2675c1d2a443a"
+    },
+    {
+      "query_id": "EUROPE_PMC_2",
+      "source_system": "EUROPE_PMC",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=OPEN_ACCESS%3AY+AND+%28LICENSE%3A%22cc+by%22+OR+LICENSE%3A%22cc+by-nc%22+OR+LICENSE%3A%22cc+by-sa%22+OR+LICENSE%3Acc0%29+AND+%28%22Coffea+arabica%22+AND+descriptor%29&resultType=core&format=json&pageSize=1000",
+      "status": "COMPLETE",
+      "response_sha256": "9d92ef8efc85c4d8dc6c1b9dadfe84ede91e5941a42c11d2badb2f4f340502cb"
+    },
+    {
+      "query_id": "EUROPE_PMC_3",
+      "source_system": "EUROPE_PMC",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=OPEN_ACCESS%3AY+AND+%28LICENSE%3A%22cc+by%22+OR+LICENSE%3A%22cc+by-nc%22+OR+LICENSE%3A%22cc+by-sa%22+OR+LICENSE%3Acc0%29+AND+%28coffee+AND+%22flavor+profile%22+AND+panel%29&resultType=core&format=json&pageSize=1000",
+      "status": "COMPLETE",
+      "response_sha256": "8a6c192781cc8184e79682b252ef1fbccb14d7421ee1a8f7c78fbd190233c4c3"
+    },
+    {
+      "query_id": "OPENALEX_CC-BY",
+      "source_system": "OPENALEX",
+      "url": "https://api.openalex.org/works?filter=title_and_abstract.search%3Acoffee+sensory%2Cbest_oa_location.license%3Acc-by&per-page=200",
+      "status": "COMPLETE",
+      "response_sha256": "3b29447cf7f9cf5dcae44e0192e51498fa7c6ecb34cd45b11cd6bee7c52f9ab4"
+    },
+    {
+      "query_id": "OPENALEX_CC0",
+      "source_system": "OPENALEX",
+      "url": "https://api.openalex.org/works?filter=title_and_abstract.search%3Acoffee+sensory%2Cbest_oa_location.license%3Acc0&per-page=200",
+      "status": "COMPLETE",
+      "response_sha256": "3f3655feac183e341d263fd1d5d08600e2a22ee283d7fac2626f29e930fffc29"
+    },
+    {
+      "query_id": "ZENODO_1",
+      "source_system": "ZENODO",
+      "url": "https://zenodo.org/api/records?q=coffee+sensory+AND+access_right%3Aopen&size=25",
+      "status": "COMPLETE",
+      "response_sha256": "51257ef5134be84d576fd4d7c4c3d4a56e67f01ae2141e0ac7fcfefea3099cd6"
+    }
+  ],
+  "query_count": 12,
+  "license_filtered_discovery_candidate_count": 248,
+  "discovery_candidates": [
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3000666420",
+      "doi": "10.1002/fsn3.1404",
+      "title": "Sensory attributes of coffee beverages and their relation to price and package information: A case study of Colombian customers’ preferences",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1002/fsn3.1404",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2067697065",
+      "doi": "10.1002/fsn3.35",
+      "title": "Changes in sensory quality characteristics of coffee during storage",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1002/fsn3.35",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1002/fsn3.3812",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10867521",
+      "doi": "10.1002/fsn3.3812",
+      "title": "An investigation of the shelf life of cold brew coffee and the influence of extraction temperature using chemical, microbial, and sensory analysis.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10867521/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12205213",
+      "doi": "10.1002/fsn3.70512",
+      "title": "Effect on &lt;i&gt;Arabica&lt;/i&gt; Coffee Flavor Quality of Enhanced Fermentation With &lt;i&gt;Pichia membranifaciens&lt;/i&gt; Through Change Microbial Communities and Chemical Compounds.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12205213/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1002/fsn3.71278",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12645158",
+      "doi": "10.1002/fsn3.71278",
+      "title": "Sensory Perception and Physicochemical Characteristics of Geisha Coffee From Different Production Zones in Panama.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12645158/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1002/leg3.166",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4311112135",
+      "doi": "10.1002/leg3.166",
+      "title": "Sensory analysis of microwave‐roasted fenugreek and coffee blend",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1002/leg3.166",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1007/s00217-013-1917-x",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2000775103",
+      "doi": "10.1007/s00217-013-1917-x",
+      "title": "Comparison of nine common coffee extraction methods: instrumental and sensory analysis",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1007/s00217-013-1917-x",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1007/s11306-020-01751-6",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC7736008",
+      "doi": "10.1007/s11306-020-01751-6",
+      "title": "Identification of markers of sensory quality in ground coffee: an untargeted metabolomics approach.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC7736008/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.afres.2024.100512",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4402614528",
+      "doi": "10.1016/j.afres.2024.100512",
+      "title": "Fatty acid composition and sensory properties as descriptors of differentiation of specialty coffees based on spontaneous and induced processing methods",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.afres.2024.100512",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2023.100485",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4353094497",
+      "doi": "10.1016/j.crfs.2023.100485",
+      "title": "Acids in brewed coffees: Chemical composition and sensory threshold",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.crfs.2023.100485",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2026.101478",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13311791",
+      "doi": "10.1016/j.crfs.2026.101478",
+      "title": "Elucidating the interaction between pyrazine flavor compounds and coffee proteins: Insights from multiscale structural and molecular dynamics simulations.",
+      "resolved_license": "CC-BY-NC-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13311791/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.dib.2025.111609",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12142347",
+      "doi": "10.1016/j.dib.2025.111609",
+      "title": "Large dataset on Fourier transform near infrared (FT-NIR) spectroscopy of green and roasted specialty coffee: Preprocessed infrared spectra and sensory scores for machine learning-based quality monitoring.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12142347/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.ejbt.2024.04.001",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4395450094",
+      "doi": "10.1016/j.ejbt.2024.04.001",
+      "title": "Impact of immature coffee fruits and water addition during spontaneous fermentation process: Chemical composition and sensory profile",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.ejbt.2024.04.001",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.fochms.2025.100344",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12859811",
+      "doi": "10.1016/j.fochms.2025.100344",
+      "title": "Integrated microbial-metabolomic analysis reveals how fermentation contributes to the unique flavor of African Arabica coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12859811/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2024.101980",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11585831",
+      "doi": "10.1016/j.fochx.2024.101980",
+      "title": "Replacing traditional coffee appraisers with inductively coupled plasma - mass spectrometry (ICP-MS): From manual sensory evaluation to scientific analysis.",
+      "resolved_license": "CC-BY-NC-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11585831/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2025.102580",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12152904",
+      "doi": "10.1016/j.fochx.2025.102580",
+      "title": "Enhancing margarine oxidative stability, antioxidant retention, and sensory quality via tragacanth-chitosan hydrogel microencapsulation of supercritical CO₂-extracted green coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12152904/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2026.103524",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12853062",
+      "doi": "10.1016/j.fochx.2026.103524",
+      "title": "Enhanced sensory, antioxidant, and non-toxic anti-diabetes beverage development via co-culture fermentation of &lt;i&gt;Lactiplantibacillus plantarum&lt;/i&gt; and &lt;i&gt;Saccharomyces boulardii&lt;/i&gt; in coffee cherry pulp extracts.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12853062/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2887296794",
+      "doi": "10.1016/j.foodchem.2018.07.226",
+      "title": "Modifying Robusta coffee aroma by green bean chemical pre-treatment",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.foodchem.2018.07.226",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2021.131159",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8617352",
+      "doi": "10.1016/j.foodchem.2021.131159",
+      "title": "Prediction of coffee aroma from single roasted coffee beans by hyperspectral imaging.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8617352/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2023.135489",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4316497513",
+      "doi": "10.1016/j.foodchem.2023.135489",
+      "title": "Coffee bean processing: Emerging methods and their effects on chemical, biological and sensory properties",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.foodchem.2023.135489",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2024.139717",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4398147604",
+      "doi": "10.1016/j.foodchem.2024.139717",
+      "title": "Comprehensive investigation of coffee acidity on eight different brewing methods through chemical analyses, sensory evaluation and statistical elaboration",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.foodchem.2024.139717",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodqual.2018.03.009",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2792935285",
+      "doi": "10.1016/j.foodqual.2018.03.009",
+      "title": "Common roasting defects in coffee: Aroma composition, sensory characterization and consumer perception",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://nottingham-repository.worktribe.com/output/919850",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodqual.2021.104427",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3204595226",
+      "doi": "10.1016/j.foodqual.2021.104427",
+      "title": "Sensory evaluation and mixture design assessment of coffee-flavored liquor obtained from spent coffee grounds",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://hdl.handle.net/11380/1254839",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodres.2023.113800",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4389502364",
+      "doi": "10.1016/j.foodres.2023.113800",
+      "title": "Evaluation of spontaneous fermentation impact on the physicochemical properties and sensory profile of green and roasted arabica coffee by digital technologies",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.foodres.2023.113800",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.foodres.2024.114333",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4394929558",
+      "doi": "10.1016/j.foodres.2024.114333",
+      "title": "Chemical composition and sensory profiling of coffees treated with asparaginase to decrease acrylamide formation during roasting",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.foodres.2024.114333",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.fufo.2023.100245",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4385387293",
+      "doi": "10.1016/j.fufo.2023.100245",
+      "title": "Assessing the impact of spent coffee ground (SCG) concentrations on shortbread: A study of physicochemical attributes and sensory acceptance",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.fufo.2023.100245",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2022.e10829",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4298325745",
+      "doi": "10.1016/j.heliyon.2022.e10829",
+      "title": "Physicochemical properties and sensory quality of Motlopi (Boscia albitrunca) coffee prepared using different temperature-time combinations",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.heliyon.2022.e10829",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.ijgfs.2022.100591",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4294535242",
+      "doi": "10.1016/j.ijgfs.2022.100591",
+      "title": "Pairing coffee with basic tastes and real foods changes perceived sensory characteristics and consumer liking",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.ijgfs.2022.100591",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.lwt.2025.117539",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4407567878",
+      "doi": "10.1016/j.lwt.2025.117539",
+      "title": "A novel beverage of coffee cherry (cascara) water kefir rich in antioxidants, bioactive compounds, and exhibiting promising antibacterial and sensory qualities",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.lwt.2025.117539",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.postharvbio.2022.111852",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4205659839",
+      "doi": "10.1016/j.postharvbio.2022.111852",
+      "title": "Impact of post-harvest treatments on physicochemical and sensory characteristics of coffee beans in Huila, Colombia",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.postharvbio.2022.111852",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.tifs.2024.104415",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4392623478",
+      "doi": "10.1016/j.tifs.2024.104415",
+      "title": "Industrial food quality and consumer choice: Artificial intelligence-based tools in the chemistry of sensory notes in comfort foods (coffee, cocoa and tea)",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1016/j.tifs.2024.104415",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2024.106885",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11061338",
+      "doi": "10.1016/j.ultsonch.2024.106885",
+      "title": "Coffee brewing sonoreactor for reducing the time of cold brew from several hours to minutes while maintaining sensory attributes.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11061338/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2025.107401",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12156212",
+      "doi": "10.1016/j.ultsonch.2025.107401",
+      "title": "Effects of ultrasound treatment on physicochemical, sensory, and structural properties of cold brew coffee.",
+      "resolved_license": "CC-BY-NC-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12156212/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2026.107943",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13355198",
+      "doi": "10.1016/j.ultsonch.2026.107943",
+      "title": "High-foaming modified walnut protein enhances milk coffee quality and volatile aroma profile.",
+      "resolved_license": "CC-BY-NC-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13355198/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.1021/acs.jafc.5c17022",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13281520",
+      "doi": "10.1021/acs.jafc.5c17022",
+      "title": "Impact of Interactions between Melanoidins and Caffeine on the Bitter Taste of Coffee Beverages.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13281520/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.1021/acscentsci.5c01454",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12464778",
+      "doi": "10.1021/acscentsci.5c01454",
+      "title": "A Long-Lost Coffee Bean Tastes as Good as the BestTo Understand Why, Scientists Turn to Chemistry.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12464778/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11983216",
+      "doi": "10.1021/acsomega.4c10914",
+      "title": "Physicochemical Parameters and Multivariate Analysis to Predict the Sensory Quality in Specialty Coffee from Panama.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11983216/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c00404",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12079199",
+      "doi": "10.1021/acsomega.5c00404",
+      "title": "Sensory Classification of Brazilian &lt;i&gt;Coffea arabica&lt;/i&gt; by Laser-Assisted Rapid Evaporative Ionization Mass Spectrometry and Machine Learning Algorithms.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12079199/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c01783",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12224095",
+      "doi": "10.1021/acsomega.5c01783",
+      "title": "Enhancing the Understanding of Aroma Formation during Coffee Roasting Using DHS-GC×GC-TOFMS and Chemometrics.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12224095/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00779-7",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13133105",
+      "doi": "10.1038/s41538-026-00779-7",
+      "title": "AI-driven prediction of consumer liking of coffee from sensory data.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13133105/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13276394",
+      "doi": "10.1038/s41538-026-00852-1",
+      "title": "Kombucha inoculated fermentation reshapes microbial ecology and flavour metabolism in Yunnan Arabica coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13276394/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC7536440",
+      "doi": "10.1038/s41598-020-73341-4",
+      "title": "Brew temperature, at fixed brew strength and extraction, has little impact on the sensory profile of drip brew coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC7536440/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41598-021-01001-2",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8560948",
+      "doi": "10.1038/s41598-021-01001-2",
+      "title": "Influence of coffee brewing methods on the chromatographic and spectroscopic profiles, antioxidant and sensory properties.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8560948/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41598-022-06676-9",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8854711",
+      "doi": "10.1038/s41598-022-06676-9",
+      "title": "Comparison of chemical compounds and their influence on the taste of coffee depending on green beans storage conditions.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8854711/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-69867-6",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11335879",
+      "doi": "10.1038/s41598-024-69867-6",
+      "title": "Sensory analysis of the flavor profile of full immersion hot, room temperature, and cold brewed coffee over time.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11335879/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.1038/s41598-025-03665-6",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12134262",
+      "doi": "10.1038/s41598-025-03665-6",
+      "title": "Soil and cherry bacterial communities predict flavor on coffee farms.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12134262/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1051/bioconf/202410201013",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4394729741",
+      "doi": "10.1051/bioconf/202410201013",
+      "title": "Effect of sucrose replacement on physicochemical parameters and sensory characteristics of instant coffee drinks",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1051/bioconf/202410201013",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1080/10942912.2019.1619577",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2947626795",
+      "doi": "10.1080/10942912.2019.1619577",
+      "title": "Characterization of sensory profile by the CATA method of Mexican coffee brew considering two preparation methods: espresso and French press",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1080/10942912.2019.1619577",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1080/10942912.2022.2057532",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4225700951",
+      "doi": "10.1080/10942912.2022.2057532",
+      "title": "Analysis verbal sensory methods in the evaluation of organic coffee with different roasting intensities",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1080/10942912.2022.2057532",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/102/1/012095",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2789344519",
+      "doi": "10.1088/1755-1315/102/1/012095",
+      "title": "The influence of brewing water characteristic on sensory perception of pour-over local coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/102/1/012095",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/131/1/012009",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2789885134",
+      "doi": "10.1088/1755-1315/131/1/012009",
+      "title": "Effect of brewing technique and particle size of the ground coffee on sensory profiling of brewed Dampit robusta coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/131/1/012009",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/131/1/012018",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2789784997",
+      "doi": "10.1088/1755-1315/131/1/012018",
+      "title": "Physical and sensory quality of Java Arabica green coffee beans",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/131/1/012018",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/1356/1/012034",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4400415507",
+      "doi": "10.1088/1755-1315/1356/1/012034",
+      "title": "Enhancing coffee sensory quality: unleashing synergistic effects of selected microorganism starter cultures and ohmic heating technology",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/1356/1/012034",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/147/1/012008",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2804771249",
+      "doi": "10.1088/1755-1315/147/1/012008",
+      "title": "Estimation of Sensory Analysis Cupping Test Arabica Coffee Using NIR Spectroscopy",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/147/1/012008",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/196/1/012010",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2903459840",
+      "doi": "10.1088/1755-1315/196/1/012010",
+      "title": "Physicochemical and sensory characteristics of luwak coffee from Bener Meriah, Aceh-Indonesia",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/196/1/012010",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/230/1/012037",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2915734834",
+      "doi": "10.1088/1755-1315/230/1/012037",
+      "title": "Effect of Mokapot brewing temperature on sensory profiling of Dampit and Tulungagung Ijo coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/230/1/012037",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/364/1/012010",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2996581663",
+      "doi": "10.1088/1755-1315/364/1/012010",
+      "title": "Fermentation of coffee beans with inoculation of bacillus subtilis and its impact on coffee sensory quality",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/364/1/012010",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/365/1/012040",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2986626096",
+      "doi": "10.1088/1755-1315/365/1/012040",
+      "title": "Comparison of Gayo Arabica coffee taste sensory scoring system between Eckenrode and Fuzzy-Eckenrode methods",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/365/1/012040",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/425/1/012081",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3004488938",
+      "doi": "10.1088/1755-1315/425/1/012081",
+      "title": "Effect of blend percentage and roasting degree on sensory quality of arabica-robusta coffee blend",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/425/1/012081",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/454/1/012099",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3016935592",
+      "doi": "10.1088/1755-1315/454/1/012099",
+      "title": "Effect of manual brewing techniques on the sensory profiles of Arabica coffees (Aceh Gayo wine process and Bali Kintamani honey process)",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/454/1/012099",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/475/1/012020",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3021459421",
+      "doi": "10.1088/1755-1315/475/1/012020",
+      "title": "Effect of different manual brewing techniques to the sensory profile of the Indonesian Arabica and Robusta “natural coffees”",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/475/1/012020",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/475/1/012028",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3023843358",
+      "doi": "10.1088/1755-1315/475/1/012028",
+      "title": "Sensory profiling of Robusta and Liberica coffee leaves functional tea by modifying brewing temperature",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/475/1/012028",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/653/1/012050",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3127162102",
+      "doi": "10.1088/1755-1315/653/1/012050",
+      "title": "Antioxidant and sensory properties of ready to drink coffee-ginger made from decaffeinated and non-decaffeinated robusta coffee beans",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/653/1/012050",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/667/1/012048",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3134004141",
+      "doi": "10.1088/1755-1315/667/1/012048",
+      "title": "Sensory characteristic of espresso coffee prepared from Gayo arabica coffee roasted at various times and temperatures",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/667/1/012048",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/677/5/052036",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3136437119",
+      "doi": "10.1088/1755-1315/677/5/052036",
+      "title": "Processing modes influence on the sensory profile of various types of coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/677/5/052036",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1755-1315/794/1/012149",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3187962947",
+      "doi": "10.1088/1755-1315/794/1/012149",
+      "title": "Changes in physicochemical, antioxidative, and sensory properties in espresso coffee during refrigerated storage and their impacts on coffee milk",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1755-1315/794/1/012149",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1757-899x/523/1/012027",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2957207105",
+      "doi": "10.1088/1757-899x/523/1/012027",
+      "title": "Effect of varieties and processing practices on the physical and sensory characteristics of Gayo Arabica specialty coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1757-899x/523/1/012027",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1757-899x/523/1/012028",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2956192635",
+      "doi": "10.1088/1757-899x/523/1/012028",
+      "title": "Amino acid and sensory profile of Kopi Luwak (Civet Coffee)",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1757-899x/523/1/012028",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1088/1757-899x/736/6/062018",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3009242805",
+      "doi": "10.1088/1757-899x/736/6/062018",
+      "title": "Antimicrobial Properties and Sensory Evaluation of Bread Enriched with Green Coffee Beans (GCB)",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1088/1757-899x/736/6/062018",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.16323",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9826037",
+      "doi": "10.1111/1750-3841.16323",
+      "title": "Drivers of coffee liking: Effect of physicochemical characteristics and aromatic profile on consumers' acceptability of mono-origin and mono-variety coffees.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9826037/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13279845",
+      "doi": "10.1111/1750-3841.71157",
+      "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13279845/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.1111/ijfs.16261",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4313417699",
+      "doi": "10.1111/ijfs.16261",
+      "title": "Effects of postharvest processing on aroma formation in roasted coffee – a review",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1111/ijfs.16261",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9410941",
+      "doi": "10.1155/2022/2365603",
+      "title": "Profile of Bioactive Compounds, Aromas, and Cup Quality of Excelsa Coffee (<i>Coffea liberica</i> var. <i>dewevrei</i>) Prepared from Diverse Postharvest Processes.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9410941/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.1155/jfpp/7439017",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4410895363",
+      "doi": "10.1155/jfpp/7439017",
+      "title": "Sustainable Cookies Enriched With Spent Coffee Grounds: A Study on Nutritional, Textural, and Sensory Properties",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1155/jfpp/7439017",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1186/2044-7248-1-14",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2113373225",
+      "doi": "10.1186/2044-7248-1-14",
+      "title": "Discrimination of roast and ground coffee aroma",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1186/2044-7248-1-14",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1186/s12870-024-04890-3",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10988958",
+      "doi": "10.1186/s12870-024-04890-3",
+      "title": "Combined sensory, volatilome and transcriptome analyses identify a limonene terpene synthase as a major contributor to the characteristic aroma of a Coffea arabica L. specialty coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10988958/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.12944/crnfsj.11.2.12",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4386483309",
+      "doi": "10.12944/crnfsj.11.2.12",
+      "title": "Phytochemicals and Sensory Quality of Cascara Kombucha Made From Coffee By-Products",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.12944/crnfsj.11.2.12",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.12944/crnfsj.6.2.08",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2806114127",
+      "doi": "10.12944/crnfsj.6.2.08",
+      "title": "Caffeine Content and Perceived Sensory Characteristics of Pod Coffee: Effects on Mood and Cognitive Performance",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.12944/crnfsj.6.2.08",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0155845",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC4913926",
+      "doi": "10.1371/journal.pone.0155845",
+      "title": "Not All Flavor Expertise Is Equal: The Language of Wine and Coffee Experts.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC4913926/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0223280",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC6776322",
+      "doi": "10.1371/journal.pone.0223280",
+      "title": "Impact of bitter tastant sub-qualities on retronasal coffee aroma perception.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC6776322/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.14393/bj-v36n2a2020-43255",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3006044214",
+      "doi": "10.14393/bj-v36n2a2020-43255",
+      "title": "Sensory and physiological quality of arabic coffee under different fermentation times",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.14393/bj-v36n2a2020-43255",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.15342/hs.2020.270",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3097700100",
+      "doi": "10.15342/hs.2020.270",
+      "title": "A Study on the Effectiveness of Sensory Branding in Cafe Coffee Day Outlets in Coimbatore",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.15342/hs.2020.270",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.15414/jmbfs.20115/16.5.3.234-237",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2296596378",
+      "doi": "10.15414/jmbfs.20115/16.5.3.234-237",
+      "title": "COMPARISON OF COFFEE SPECIES BY SENSORY PANEL AND ELECTRONIC NOSE",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.15414/jmbfs.20115/16.5.3.234-237",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1556/066.2019.48.3.3",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2965704217",
+      "doi": "10.1556/066.2019.48.3.3",
+      "title": "Evaluation of sensory and antioxidant properties of commercial coffee substitutes",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1556/066.2019.48.3.3",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.15771/2321-1571_2015_1",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4229607408",
+      "doi": "10.15771/2321-1571_2015_1",
+      "title": "Effects of Coffee Processing Technologies on Aroma Profiles and Sensory Quality of Ruiru 11 and SL 28 Kenyan Coffee Varieties",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.15771/2321-1571_2015_1",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/0034-737x201663040002",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2518724645",
+      "doi": "10.1590/0034-737x201663040002",
+      "title": "'Sensory analysis of specialty coffee from different environmental conditions in the region of Matas de Minas, Minas Gerais, Brazil",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/0034-737x201663040002",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/1413-7054201943026119",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3010141405",
+      "doi": "10.1590/1413-7054201943026119",
+      "title": "Instant coffee with steamed PVA beans: Physical-chemical and sensory aspects",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/1413-7054201943026119",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/1807-1929/agriambi.v26n12p894-900",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4290708677",
+      "doi": "10.1590/1807-1929/agriambi.v26n12p894-900",
+      "title": "Physicochemical and sensory characteristics of dehydrated coffee pulp in function of drying temperature",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/1807-1929/agriambi.v26n12p894-900",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/1809-4430-eng.agric.v40n2p177-183/2020",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3017911588",
+      "doi": "10.1590/1809-4430-eng.agric.v40n2p177-183/2020",
+      "title": "EFFECT OF THE POSTHARVEST PROCESSING METHOD ON THE BIOCHEMICAL COMPOSITION AND SENSORY ANALYSIS OF ARABICA COFFEE",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/1809-4430-eng.agric.v40n2p177-183/2020",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/fst.30720",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3131540390",
+      "doi": "10.1590/fst.30720",
+      "title": "Into the minds of coffee consumers: perception, preference, and impact of information in the sensory analysis of specialty coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/fst.30720",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/fst.96122",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4311799956",
+      "doi": "10.1590/fst.96122",
+      "title": "Effects of coffee and cocoa as fermentation additives on sensory quality and chemical compositions of cigar tobacco leaves",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/fst.96122",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/fst.96221",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4220848225",
+      "doi": "10.1590/fst.96221",
+      "title": "Bioactive compounds, antioxidant activity, physical and sensory characteristics of Mırra coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/fst.96221",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2899842050",
+      "doi": "10.1590/s0100-204x2018000900010",
+      "title": "Sensory profile of conilon coffee brews from the state of Espírito Santo, Brazil",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/s0100-204x2018000900010",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.1590/s1678-3921.pab2020.v55.02240",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3120728345",
+      "doi": "10.1590/s1678-3921.pab2020.v55.02240",
+      "title": "Productivity and beverage sensory quality of arabica coffee intercropped with timber species",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.1590/s1678-3921.pab2020.v55.02240",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.17728/jatp.4465",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2967994219",
+      "doi": "10.17728/jatp.4465",
+      "title": "The Influence of Leaf Age, Oxidizing Pre-Treatment and Serving Temperature on Sensory Characteristics of Ampelgading Robusta Coffee Leaves Tea",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.17728/jatp.4465",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.21107/agrointek.v15i2.6219",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3158157095",
+      "doi": "10.21107/agrointek.v15i2.6219",
+      "title": "SENSORY PROPERTIES OF ANALOG COFFEE FROM BANANA PEELS",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.21107/agrointek.v15i2.6219",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.2478/prolas-2023-0019",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4377104149",
+      "doi": "10.2478/prolas-2023-0019",
+      "title": "A Sensory Evaluation of Arabica Gayo Coffee Flavour Based on Varieties and Processing Techniques",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "http://dx.doi.org/10.2478/prolas-2023-0019",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1654",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4249652498",
+      "doi": "10.25186/.v15i.1654",
+      "title": "Sensory quality prediction of coffee assessed by physicochemical parameters and Multivariate model",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v15i.1654",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1659",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4245476505",
+      "doi": "10.25186/.v15i.1659",
+      "title": "Comparison of sensory attributes and chemical markers of the infrared spectrum between defective and non-defective Colombian coffee samples",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v15i.1659",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1672",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3048763616",
+      "doi": "10.25186/.v15i.1672",
+      "title": "Chemical and sensory perception of robusta coffees under wet processing",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v15i.1672",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1690",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3112490473",
+      "doi": "10.25186/.v15i.1690",
+      "title": "Sensory Q-Grader evaluation of fermented arabica coffees by yeast (Saccharomyces cerevisiae) and lactic bacteria (Pediococcus acidilactici) cultures",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v15i.1690",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v15i.1797",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3112624438",
+      "doi": "10.25186/.v15i.1797",
+      "title": "Physicochemical, microbiological, and sensory analysis of fermented coffee from Sierra Nevada of Santa Marta, Colombia.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v15i.1797",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v16i.1878",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3198812503",
+      "doi": "10.25186/.v16i.1878",
+      "title": "Sensory analysis and mid-infrared spectroscopy for discriminating roasted specialty coffees",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v16i.1878",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v16i.1889",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3190837021",
+      "doi": "10.25186/.v16i.1889",
+      "title": "Physicochemical, microbiological, and sensory characterization of fermented coffee pulp beverages",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v16i.1889",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v16i.1918",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3207080597",
+      "doi": "10.25186/.v16i.1918",
+      "title": "Sensory Assessment of Gayo arabica coffee taste based on various varieties and manual brewing devices",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v16i.1918",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v17i.1970",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4293193240",
+      "doi": "10.25186/.v17i.1970",
+      "title": "Detection of adulterated coffee by fourier-transform infrared (FTIR) spectroscopy associated with sensory analysis",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v17i.1970",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v17i.2016",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4313229811",
+      "doi": "10.25186/.v17i.2016",
+      "title": "Effects of post-harvest process on volatile - sensory profile for coffee in Colombia",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v17i.2016",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2111",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4384519626",
+      "doi": "10.25186/.v18i.2111",
+      "title": "Effect of processing methods (washed, honey, natural, anaerobic) of catimor coffee on physical and sensory quality in Alto Inambari, Peru",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v18i.2111",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2120",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4386363222",
+      "doi": "10.25186/.v18i.2120",
+      "title": "Fermented natural coffee followed by pulping: Analysis of the initial sensory quality and after six months of storage",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v18i.2120",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2137",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4388505498",
+      "doi": "10.25186/.v18i.2137",
+      "title": "Sensory and chemical analyses of spontaneously fermented coffees",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v18i.2137",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v18i.2149",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4389815480",
+      "doi": "10.25186/.v18i.2149",
+      "title": "Liberica coffee enriched with Cinnamon (Cinnamomum verum): synergetic study of sensory, antioxidant activity, and chemical components",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v18i.2149",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/.v19i.2168",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4399635332",
+      "doi": "10.25186/.v19i.2168",
+      "title": "Physicochemical and sensory profile of commercial wine coffee in the Gayo Highlands, Indonesia",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/.v19i.2168",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i1.1400",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2803695712",
+      "doi": "10.25186/cs.v13i1.1400",
+      "title": "Sensory analysis and chemical composition of ‘bourbon’ coffees cultivated in different environments",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v13i1.1400",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i2.1415",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2810787826",
+      "doi": "10.25186/cs.v13i2.1415",
+      "title": "PROFILE OF ORGANIC ACIDS AND BIOACTIVE COMPOUNDS IN THE SENSORY QUALITY DISCRIMINATION OF ARABICA COFFEE",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v13i2.1415",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i3.1497",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2893560811",
+      "doi": "10.25186/cs.v13i3.1497",
+      "title": "A NOVEL TASTING PLATFORM FOR SENSORY ANALYSIS OF SPECIALTY COFFEE",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v13i3.1497",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v13i4.1472",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2904417064",
+      "doi": "10.25186/cs.v13i4.1472",
+      "title": "SENSORY ANALYSIS OF COFFEE DRIED IN YARD WITH AND WITHOUT STIRRING",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v13i4.1472",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i2.1570",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2953396227",
+      "doi": "10.25186/cs.v14i2.1570",
+      "title": "MORPHOAGRONOMIC AND SENSORY PERFORMANCE OF COFFEE CULTIVARS IN INITIAL STAGE OF DEVELOPMENT IN CERRADO MINEIRO",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v14i2.1570",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i3.1597",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2976256194",
+      "doi": "10.25186/cs.v14i3.1597",
+      "title": "SENSORY PROFILE OF ARABICA COFFEE ACCESSES OF THE GERMPLASM COLLECTION OF MINAS GERAIS – BRAZIL",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v14i3.1597",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i4.1617",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2996587967",
+      "doi": "10.25186/cs.v14i4.1617",
+      "title": "EFFECT OF INDUCED BIOLOGICAL FERMENTATIONS ON COFFEE SENSORY QUALITY",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v14i4.1617",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25186/cs.v14i4.1627",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2996016356",
+      "doi": "10.25186/cs.v14i4.1627",
+      "title": "SENSORY QUALITY OF ROASTED COFFEE BEANS UNDER DIFFERENT STORAGE CONDITIONS",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.25186/cs.v14i4.1627",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.25338/B8C91C",
+      "source_system": "DRYAD",
+      "source_record_id": "69447",
+      "doi": "10.25338/B8C91C",
+      "title": "Acids in Coffee - A Review of Sensory Measurements and Meta-Analysis of Chemical Composition",
+      "resolved_license": "CC0-1.0",
+      "license_source_url": "http://datadryad.org/dataset/doi:10.25338/B8C91C",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "DRYAD_1",
+        "DRYAD_4"
+      ]
+    },
+    {
+      "candidate_id": "10.26656/fr.2017.4(4).058",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3015350988",
+      "doi": "10.26656/fr.2017.4(4).058",
+      "title": "Physicochemical, antioxidant and sensory characteristics of cookies supplemented with different levels of spent coffee ground extract",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.26656/fr.2017.4(4).058",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.26656/fr.2017.5(s2).001",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3198565222",
+      "doi": "10.26656/fr.2017.5(s2).001",
+      "title": "Chemical compounds and sensory characteristics of Arabica coffee (Coffea arabica) as a novel specialty coffee from Sinjai Regency, Indonesia",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.26656/fr.2017.5(s2).001",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.31883/pjfns-2019-0012",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2928373404",
+      "doi": "10.31883/pjfns-2019-0012",
+      "title": "Nutritional Quality, Potential Health Promoting Properties and Sensory Perception of an Improved Gluten-Free Bread Formulation Containing Inulin, Rice Protein and Bioactive Compounds Extracted from Coffee Byproducts",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.31883/pjfns-2019-0012",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fmicb.2021.713969",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3191030000",
+      "doi": "10.3389/fmicb.2021.713969",
+      "title": "Microbiological and Chemical Characteristics of Wet Coffee Fermentation Inoculated With Hansinaspora uvarum and Pichia kudriavzevii and Their Impact on Coffee Sensory Quality",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3389/fmicb.2021.713969",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fmicb.2024.1476091",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11446889",
+      "doi": "10.3389/fmicb.2024.1476091",
+      "title": "Interaction and dynamic changes of microbial communities and volatile flavor compounds during the fermentation process of coffee flower rice wine.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11446889/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fmicb.2025.1697280",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12672526",
+      "doi": "10.3389/fmicb.2025.1697280",
+      "title": "Metabolomic profiling of indigenous lactic acid bacteria reveals functional traits shaping the flavor and bioactivity of Ecuadorian coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12672526/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fnhum.2025.1661214",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12546097",
+      "doi": "10.3389/fnhum.2025.1661214",
+      "title": "Tuning into flavor: predicting coffee sensory attributes from EEG with boosted-tree regression models.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12546097/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fnut.2024.1542109",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11746012",
+      "doi": "10.3389/fnut.2024.1542109",
+      "title": "Editorial: Coffee and coffee by-products: innovative approaches fostering nutritional, sensory and chemical quality.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11746012/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fpls.2021.708013",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3205875032",
+      "doi": "10.3389/fpls.2021.708013",
+      "title": "Climate Change and Coffee Quality: Systematic Review on the Effects of Environmental and Management Variation on Secondary Metabolites and Sensory Attributes of Coffea arabica and Coffea canephora",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3389/fpls.2021.708013",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fpsyg.2017.02264",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2783415545",
+      "doi": "10.3389/fpsyg.2017.02264",
+      "title": "Influences of Product Temperature on Emotional Responses to, and Sensory Attributes of, Coffee and Green Tea Beverages",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3389/fpsyg.2017.02264",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3389/fsufs.2024.1382976",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4396589947",
+      "doi": "10.3389/fsufs.2024.1382976",
+      "title": "Sensory profiles of Robusta coffee (Coffea canephora) genetic resources from the Democratic Republic of the Congo",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3389/fsufs.2024.1382976",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/agriculture13101980",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4387578612",
+      "doi": "10.3390/agriculture13101980",
+      "title": "Physical–Chemical and Metataxonomic Characterization of the Microbial Communities Present during the Fermentation of Three Varieties of Coffee from Colombia and Their Sensory Qualities",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/agriculture13101980",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/agronomy12112880",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4309462074",
+      "doi": "10.3390/agronomy12112880",
+      "title": "Heat and Mass Transfer Kinetics on the Chemical and Sensory Quality of Arabica Coffee Beans",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/agronomy12112880",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/agronomy13020341",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4317933298",
+      "doi": "10.3390/agronomy13020341",
+      "title": "Chemical Composition and Sensory Quality of Coffee Fruits at Different Stages of Maturity",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/agronomy13020341",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/app14156442",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4400934338",
+      "doi": "10.3390/app14156442",
+      "title": "Coffee Silverskin as a Fat Replacer in Chicken Patty Formulation and Its Effect on Physicochemical, Textural, and Sensory Properties",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/app14156442",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/app15084374",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4409510672",
+      "doi": "10.3390/app15084374",
+      "title": "Physicochemical and Sensory Evaluation of Yanggaeng Treated with Roasted Guatemalan Coffee Extracts",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/app15084374",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages11010024",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4407226508",
+      "doi": "10.3390/beverages11010024",
+      "title": "Barista-Quality Plant-Based Milk for Coffee: A Comprehensive Review of Sensory and Physicochemical Characteristics",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages11010024",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages5020027",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2927939227",
+      "doi": "10.3390/beverages5020027",
+      "title": "Coffee Drinking and Emotions: Are There Key Sensory Drivers for Emotions?",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages5020027",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages6020029",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3022973145",
+      "doi": "10.3390/beverages6020029",
+      "title": "Roasting Conditions and Coffee Flavor: A Multi-Study Empirical Investigation",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages6020029",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages6030044",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3042012809",
+      "doi": "10.3390/beverages6030044",
+      "title": "Coffee Flavor: A Review",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages6030044",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages6030057",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3085138662",
+      "doi": "10.3390/beverages6030057",
+      "title": "Fruit Spirit Production from Coffee Cherries—Process Analysis and Sensory Evaluation",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages6030057",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages6040061",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3094424625",
+      "doi": "10.3390/beverages6040061",
+      "title": "Sensory Analysis of Post-Exercise Coffee or Cocoa Milk Beverages for Endurance Athletes",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages6040061",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages6040070",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3110012697",
+      "doi": "10.3390/beverages6040070",
+      "title": "The Effect of Roast Development Time Modulations on the Sensory Profile and Chemical Composition of the Coffee Brew as Measured by NMR and DHS-GC–MS",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages6040070",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages7010005",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3122478807",
+      "doi": "10.3390/beverages7010005",
+      "title": "Coffee Label Assessment Using Sensory and Biometric Analysis of Self-Isolating Panelists through Videoconference",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages7010005",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/beverages8020028",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4280557551",
+      "doi": "10.3390/beverages8020028",
+      "title": "Foam Characteristics and Sensory Analysis of Arabica Coffee, Extracted by Espresso Capsule and Moka Methods",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/beverages8020028",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/buildings15081393",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4409634956",
+      "doi": "10.3390/buildings15081393",
+      "title": "Research on the Multi-Sensory Experience Design of Interior Spaces from the Perspective of Spatial Perception: A Case Study of Suzhou Coffee Roasting Factory",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/buildings15081393",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/chemosensors12090196",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4402746845",
+      "doi": "10.3390/chemosensors12090196",
+      "title": "Impact of Coffee Roasting and Grind Size on Acidity and Bitterness: Sensory Evaluation Using Electronic Tongue",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/chemosensors12090196",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/cosmetics10010024",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4317933224",
+      "doi": "10.3390/cosmetics10010024",
+      "title": "Characterization and Sensory Evaluation of a Cosmeceutical Formulation for the Eye Area with Roasted Coffee Oil Microcapsules",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/cosmetics10010024",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/fermentation10070334",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4400089980",
+      "doi": "10.3390/fermentation10070334",
+      "title": "Coffee-Flavoured Kombucha: Development, Physicochemical Characterisation, and Sensory Analysis",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/fermentation10070334",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/fermentation7040254",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3209320486",
+      "doi": "10.3390/fermentation7040254",
+      "title": "Sensory Characteristics of Two Kinds of Alcoholic Beverages Produced with Spent Coffee Grounds Extract Based on Electronic Senses and HS-SPME-GC-MS Analyses",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/fermentation7040254",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8535219",
+      "doi": "10.3390/foods10102508",
+      "title": "Insights on Single-Dose Espresso Coffee Capsules' Volatile Profile: From Ground Powder Volatiles to Prediction of Espresso Brew Aroma Properties.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8535219/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11020180",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8774372",
+      "doi": "10.3390/foods11020180",
+      "title": "Sensory Drivers of Consumer Acceptance, Purchase Intent and Emotions toward Brewed Black Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8774372/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11030473",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8834377",
+      "doi": "10.3390/foods11030473",
+      "title": "Exploring Chemical Markers Related to the Acceptance and Sensory Profiles of Concentrated Liquid Coffees: An Untargeted Metabolomics Approach.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8834377/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11050717",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4214616141",
+      "doi": "10.3390/foods11050717",
+      "title": "Coffee Silverskin as a Functional Ingredient in Vegan Biscuits: Physicochemical and Sensory Properties and In Vitro Bioaccessibility of Bioactive Compounds",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods11050717",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11060807",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8953325",
+      "doi": "10.3390/foods11060807",
+      "title": "Metabolomics Combined with Sensory Analysis Reveals the Impact of Different Extraction Methods on Coffee Beverages from <i>Coffea arabica</i> and <i>Coffea canephora</i> var. Robusta.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8953325/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9407127",
+      "doi": "10.3390/foods11162440",
+      "title": "Sensory Analysis of Full Immersion Coffee: Cold Brew Is More Floral, and Less Bitter, Sour, and Rubbery Than Hot Brew.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9407127/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9562860",
+      "doi": "10.3390/foods11192968",
+      "title": "Comparative Profiling of Hot and Cold Brew Coffee Flavor Using Chromatographic and Sensory Approaches.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9562860/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11193144",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4303969235",
+      "doi": "10.3390/foods11193144",
+      "title": "Volatile Fingerprinting and Sensory Profiles of Coffee Cascara Teas Produced in Latin American Countries",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods11193144",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods11243945",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9777685",
+      "doi": "10.3390/foods11243945",
+      "title": "Molecular, Chemical, and Sensory Attributes Fingerprinting of Self-Induced Anaerobic Fermented Coffees from Different Altitudes and Processing Methods.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9777685/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12010037",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9818356",
+      "doi": "10.3390/foods12010037",
+      "title": "Understanding the Effects of Self-Induced Anaerobic Fermentation on Coffee Beans Quality: Microbiological, Metabolic, and Sensory Studies.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9818356/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12061264",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10047961",
+      "doi": "10.3390/foods12061264",
+      "title": "Antioxidant and Sensory Properties of Raw and Cooked Pork Meat Burgers Formulated with Extract from Non-Compliant Green Coffee Beans.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10047961/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12142675",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10378423",
+      "doi": "10.3390/foods12142675",
+      "title": "Quality Attributes and Sensory Acceptance of Different Botanical Coffee Co-Products.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10378423/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4384525262",
+      "doi": "10.3390/foods12142710",
+      "title": "Volatile, Microbial, and Sensory Profiles and Consumer Acceptance of Coffee Cascara Kombuchas",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods12142710",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12152839",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10417091",
+      "doi": "10.3390/foods12152839",
+      "title": "Coffee Silverskin Cellulose-Based Composite Film with Natural Pigments for Food Packaging: Physicochemical and Sensory Abilities.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10417091/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10606293",
+      "doi": "10.3390/foods12203857",
+      "title": "Evaluation of Physicochemical Characteristics and Sensory Properties of Cold Brew Coffees Prepared Using Ultrahigh Pressure under Different Extraction Conditions.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10606293/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods12224125",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10669957",
+      "doi": "10.3390/foods12224125",
+      "title": "Effect of Extraction Methods on Aroma Profile, Antioxidant Activity and Sensory Acceptability of Specialty Coffee Brews.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10669957/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13010087",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10778548",
+      "doi": "10.3390/foods13010087",
+      "title": "Electronic Nose and Gas Chromatograph Devices for the Evaluation of the Sensory Quality of Green Coffee Beans.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10778548/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10855110",
+      "doi": "10.3390/foods13030484",
+      "title": "Volatilome, Microbial, and Sensory Profiles of Coffee Leaf and Coffee Leaf-Toasted Maté Kombuchas.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10855110/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13050642",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10931173",
+      "doi": "10.3390/foods13050642",
+      "title": "Physicochemical and Sensory Properties of <i>Arabica</i> Coffee Beans of Arara cv. Dried Using Different Methods.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10931173/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13050653",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10931400",
+      "doi": "10.3390/foods13050653",
+      "title": "Enhancing Sensory Quality of Coffee: The Impact of Fermentation Techniques on <i>Coffea arabica</i> cv. Catiguá MG2.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10931400/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13050768",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC10931032",
+      "doi": "10.3390/foods13050768",
+      "title": "Electronic Prediction of Chemical Contaminants in Aroma of Brewed Roasted Coffee and Quantification of Acrylamide Levels.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC10931032/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13121871",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11203001",
+      "doi": "10.3390/foods13121871",
+      "title": "Exploring Microbial Influence on Flavor Development during Coffee Processing in Humid Subtropical Climate through Metagenetic-Metabolomics Analysis.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11203001/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13152332",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11312110",
+      "doi": "10.3390/foods13152332",
+      "title": "The Relationship between Microbial Communities in Coffee Fermentation and Aroma with Metabolite Attributes of Finished Products.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11312110/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13152359",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11312409",
+      "doi": "10.3390/foods13152359",
+      "title": "Preparation of β-Cyclodextrin(CD)/Flavour CD Powder and Its Application on Flavour Improvement of Regular Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11312409/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13233842",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11640416",
+      "doi": "10.3390/foods13233842",
+      "title": "The Growing Altitude Influences the Flavor Precursors, Sensory Characteristics and Cupping Quality of the Pu'er Coffee Bean.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11640416/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11675256",
+      "doi": "10.3390/foods13243995",
+      "title": "Effect of Temperature and Storage on Coffee's Volatile Compound Profile and Sensory Characteristics.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11675256/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11941703",
+      "doi": "10.3390/foods14060911",
+      "title": "Major Bioactive Compounds, Volatile and Sensory Profiles of &lt;i&gt;Coffea canephora&lt;/i&gt; Flowers and Infusions for Waste Management in Coffee Production.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11941703/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14081368",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12027445",
+      "doi": "10.3390/foods14081368",
+      "title": "Coffee Biotransformation in Volcanic Process: A Chemical and Sensory Analysis.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12027445/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14091463",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12071231",
+      "doi": "10.3390/foods14091463",
+      "title": "Influence of Drying Methods on the Post-Harvest Quality of Coffee: Effects on Physicochemical, Sensory, and Microbiological Composition.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12071231/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14152606",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12346622",
+      "doi": "10.3390/foods14152606",
+      "title": "Application of Microbial Fermentation in Caffeine Degradation and Flavor Modulation of Coffee Beans.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12346622/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14162811",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12385402",
+      "doi": "10.3390/foods14162811",
+      "title": "Ultrasonic-Assisted Nanoparticle Engineering to Enhance the Extraction Efficiency and Sensory Quality of Saudi Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12385402/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14162840",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12385513",
+      "doi": "10.3390/foods14162840",
+      "title": "Comparative Decoding of Physicochemical and Flavor Profiles of Coffee Prepared by High-Pressure Carbon Dioxide, Ice Drip, and Traditional Cold Brew.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12385513/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14173135",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12428010",
+      "doi": "10.3390/foods14173135",
+      "title": "Effects of Harvesting Periods and Cultivar on the Physicochemical and Sensory Properties of Two Coffee Bean Varieties.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12428010/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12469716",
+      "doi": "10.3390/foods14183192",
+      "title": "Identification of Key Aroma-Active Compounds in Commercial Coffee Using GC-O/AEDA and OAV Analysis.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12469716/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12840179",
+      "doi": "10.3390/foods15020269",
+      "title": "HPLC/GC-MS and Electronic Sensing Reveal Tissue-Wide Differences in Bioactive and Flavor Compound Distribution in Coffee Fruits Across Multiple Varieties.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12840179/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15040678",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12938992",
+      "doi": "10.3390/foods15040678",
+      "title": "Validation of the Coffee Cuality™ Method for the Expert Assessment of Coffee Sensory Quality.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12938992/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15050849",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12984349",
+      "doi": "10.3390/foods15050849",
+      "title": "Biomimetic Fermentation Reshapes Precursor Pools to Drive Synergistic Roasting Reactions and Enhance Coffee Flavor Complexity.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12984349/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15081284",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13115236",
+      "doi": "10.3390/foods15081284",
+      "title": "Effect of Temperature on the Drying Kinetics of Caturra Coffee: Correlation with Hyperspectral Imaging and Sensory Quality.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13115236/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15081287",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13115149",
+      "doi": "10.3390/foods15081287",
+      "title": "Label Information About Fermentation Processing Affects Consumers' Sensory and Hedonic Judgements of Specialty Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13115149/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15091475",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13163802",
+      "doi": "10.3390/foods15091475",
+      "title": "Analysis of Changes in Taste Characteristics of Coffee at Different Primary Processing Methods Using E-Tongue, Untargeted Metabolomics and WGCNA.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13163802/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15091543",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13163920",
+      "doi": "10.3390/foods15091543",
+      "title": "Explainable Artificial Intelligence for Coffee Quality Control: From Coffee Origins to Aroma Intensity.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13163920/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15111980",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13256834",
+      "doi": "10.3390/foods15111980",
+      "title": "Study on the Functional, Physiological, and Sensory Properties of Coffee Leaf Dark Tea Processed Using the Pile Fermentation Method of Pu-Erh Tea.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13256834/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15122196",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13297800",
+      "doi": "10.3390/foods15122196",
+      "title": "Mass Spectrometry-Based Lipidomics in Coffee: Linking Lipid Transformation to Flavor Formation and Quality Control.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13297800/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods15132355",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13361966",
+      "doi": "10.3390/foods15132355",
+      "title": "From Coffee Coproduct to Functional Ingredient: Coffee Silverskin Flour as a Sustainable Fat Replacer in Ice Cream and Its Impact on Nutritional, Physicochemical, and Sensory Acceptance.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13361966/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods2022-12967",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4312236140",
+      "doi": "10.3390/foods2022-12967",
+      "title": "Coffee Flower as a Promising Novel Food—Chemical Characterization and Sensory Evaluation",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods2022-12967",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods7060083",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2806676372",
+      "doi": "10.3390/foods7060083",
+      "title": "What Temperature of Coffee Exceeds the Pain Threshold? Pilot Study of a Sensory Analysis Method as Basis for Cancer Risk Assessment",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods7060083",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods8020061",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2912030776",
+      "doi": "10.3390/foods8020061",
+      "title": "Effect of the Roasting Conditions on the Physicochemical, Quality and Sensory Attributes of Coffee-Like Powder and Brew from Defatted Palm Date Seeds",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods8020061",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods8080344",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC6723667",
+      "doi": "10.3390/foods8080344",
+      "title": "Cold Brew Coffee: Consumer Acceptability and Characterization Using the Check-All-That-Apply (CATA) Method.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC6723667/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC7353547",
+      "doi": "10.3390/foods9060753",
+      "title": "Quantitative Descriptive Analysis of Traditional Herbal and Coffee Liqueurs made with Grape Marc Spirit (Orujo).",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC7353547/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/foods9111664",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3103094217",
+      "doi": "10.3390/foods9111664",
+      "title": "Peanut Coffee: Enhancement of Nutritional, Physicochemical, and Sensory Characteristics in Coffee Brewed with Conventional and High-Oleic Peanut Extracts",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/foods9111664",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/horticulturae10030200",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4391995782",
+      "doi": "10.3390/horticulturae10030200",
+      "title": "Comprehensive Assessment of Coffee Varieties (Coffea arabica L.; Coffea canephora L.) from Coastal, Andean, and Amazonian Regions of Ecuador; A Holistic Evaluation of Metabolism, Antioxidant Capacity and Sensory Attributes",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/horticulturae10030200",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/icc2024-18163",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4403252747",
+      "doi": "10.3390/icc2024-18163",
+      "title": "Managing Cancer Risk from Very Hot Beverages: Influence of Brewing Temperature on Sensory Characteristics of Coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/icc2024-18163",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/icc2024-18164",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4403253693",
+      "doi": "10.3390/icc2024-18164",
+      "title": "Freshly Roasted Coffee Re-Evaluated: A Pilot Study on the Impact of Post-Roast Maturation on Sensory Experience",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/icc2024-18164",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/ijerph192013221",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4306377437",
+      "doi": "10.3390/ijerph192013221",
+      "title": "Green Coffee Extract Microencapsulated: Physicochemical Characteristics, Stability, Bioaccessibility, and Sensory Acceptability through Dairy Beverage Consumption",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/ijerph192013221",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules24183377",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2974362183",
+      "doi": "10.3390/molecules24183377",
+      "title": "Sensory Metabolite Profiling in a Date Pit Based Coffee Substitute and in Response to Roasting as Analyzed via Mass Spectrometry Based Metabolomics",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/molecules24183377",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules24244515",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2995870648",
+      "doi": "10.3390/molecules24244515",
+      "title": "HS-SPME-MS-Enose Coupled with Chemometrics as an Analytical Decision Maker to Predict In-Cup Coffee Sensory Quality in Routine Controls: Possibilities and Limits",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/molecules24244515",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules25061358",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3012476751",
+      "doi": "10.3390/molecules25061358",
+      "title": "Effect of Coffee Cascara Dietary Fiber on the Physicochemical, Nutritional and Sensory Properties of a Gluten-Free Bread Formulation",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/molecules25061358",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules26123545",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8228635",
+      "doi": "10.3390/molecules26123545",
+      "title": "Assessment of Concentrated Liquid Coffee Acceptance during Storage: Sensory and Physicochemical Perspective.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8228635/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules26133856",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8270317",
+      "doi": "10.3390/molecules26133856",
+      "title": "Characterization of the Aroma Profile and Main Key Odorants of Espresso Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8270317/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules26133925",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8271582",
+      "doi": "10.3390/molecules26133925",
+      "title": "Aroma-Active Compounds in Robusta Coffee Pulp Puree-Evaluation of Physicochemical and Sensory Properties.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8271582/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules26154609",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3184504512",
+      "doi": "10.3390/molecules26154609",
+      "title": "Single Origin Coffee Aroma: From Optimized Flavor Protocols and Coffee Customization to Instrumental Volatile Characterization and Chemometrics",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/molecules26154609",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules27020448",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC8778917",
+      "doi": "10.3390/molecules27020448",
+      "title": "Antioxidant and Sensory Assessment of Innovative Coffee Blends of Reduced Caffeine Content.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC8778917/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules27092971",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC9104833",
+      "doi": "10.3390/molecules27092971",
+      "title": "Optimization of Sensory Properties of Cold Brew Coffee Produced by Reduced Pressure Cycles and Its Physicochemical Characteristics.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC9104833/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules29133006",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11243642",
+      "doi": "10.3390/molecules29133006",
+      "title": "A Recyclable Polypropylene Multilayer Film Maintaining the Quality and the Aroma of Coffee Pods during Their Shelf Life.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11243642/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11243470",
+      "doi": "10.3390/molecules29133060",
+      "title": "Comparative Evaluation of Flavor and Sensory Quality of Coffee Pulp Wines.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11243470/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3",
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules29163791",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11357319",
+      "doi": "10.3390/molecules29163791",
+      "title": "A Comparative Analysis of Cold Brew Coffee Aroma Using the Gas Chromatography-Olfactometry-Mass Spectrometry Technique: Headspace-Solid-Phase Extraction and Headspace Solid-Phase Microextraction Methods for the Extraction of Sensory-Active Compounds.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11357319/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules29194723",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC11477549",
+      "doi": "10.3390/molecules29194723",
+      "title": "Effect of Roasting Level on the Development of Key Aroma-Active Compounds in Coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC11477549/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules30244765",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12736006",
+      "doi": "10.3390/molecules30244765",
+      "title": "Wheat Pasta Enriched with Green Coffee Flour: Physicochemical, Antioxidant and Sensory Properties.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12736006/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_3"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules31050853",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC12985535",
+      "doi": "10.3390/molecules31050853",
+      "title": "Tracking Aromatic Volatile Biomarkers Through Coffee Bean Postharvest Stages.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC12985535/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC13164717",
+      "doi": "10.3390/molecules31091518",
+      "title": "Liberica Coffee (&lt;i&gt;Coffea liberica&lt;/i&gt;): A Bibliometric Analysis and Targeted Review of Physical, Bioactive, and Sensory Characteristics.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC13164717/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_1",
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/nu12030627",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3007437383",
+      "doi": "10.3390/nu12030627",
+      "title": "Sensory Acceptance, Appetite Control and Gastrointestinal Tolerance of Yogurts Containing Coffee-Cascara Extract and Inulin",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/nu12030627",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/pr12010018",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4390035674",
+      "doi": "10.3390/pr12010018",
+      "title": "A Study of the Physical Characteristics and Defects of Green Coffee Beans That Influence the Sensory Notes Using Machine Learning Models",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/pr12010018",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/s150101354",
+      "source_system": "EUROPE_PMC",
+      "source_record_id": "PMC4327081",
+      "doi": "10.3390/s150101354",
+      "title": "Improving the performance of an electronic nose by wine aroma training to distinguish between drip coffee and canned coffee.",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/PMC4327081/fullTextXML",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "EUROPE_PMC_2"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/s21062016",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W3138295515",
+      "doi": "10.3390/s21062016",
+      "title": "Integrating a Low-Cost Electronic Nose and Machine Learning Modelling to Assess Coffee Aroma Profile and Intensity",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/s21062016",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3390/su11226430",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2983967849",
+      "doi": "10.3390/su11226430",
+      "title": "Applying Effective Sensory Marketing to Sustainable Coffee Shop Business Management",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3390/su11226430",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.3923/pjn.2016.486.491",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2443813064",
+      "doi": "10.3923/pjn.2016.486.491",
+      "title": "Exploration Study of Gayo Specialty Coffee (Coffea arabica L.): Chemical Compounds, Sensory Profile and Physical Appearance",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.3923/pjn.2016.486.491",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.4025/actasciagron.v32i4.4283",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2096687816",
+      "doi": "10.4025/actasciagron.v32i4.4283",
+      "title": "Multivariate analysis of sensory characteristics of coffee grains (Coffea Arabica L.) in the region of upper Paranaíba",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.4025/actasciagron.v32i4.4283",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.4025/actasciagron.v41i1.39323",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2946462541",
+      "doi": "10.4025/actasciagron.v41i1.39323",
+      "title": "Statistical procedure for the composition of a sensory panel of blends of coffee with different qualities using the distribution of the extremes of the highest scores",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.4025/actasciagron.v41i1.39323",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.4067/s0718-33052022000300564",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4313053392",
+      "doi": "10.4067/s0718-33052022000300564",
+      "title": "On characterization of sensory data in presence of missing values: The case of sensory coffee quality assessment",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.4067/s0718-33052022000300564",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.48130/bpr-0024-0040",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4408899093",
+      "doi": "10.48130/bpr-0024-0040",
+      "title": "Chemical composition, antioxidant activity, and sensory profile of espresso-based Arabica coffee from different bean origins",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.48130/bpr-0024-0040",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.1056183",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W1620288393",
+      "doi": "10.5281/zenodo.1056183",
+      "title": "Sensory Evaluation Of The Selected Coffee Products Using Fuzzy Approach",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5281/zenodo.1056183",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.13894505",
+      "source_system": "ZENODO",
+      "source_record_id": "13894505",
+      "doi": "10.5281/zenodo.13894505",
+      "title": "COFFEE SYMPHONY: EXAMINING THE INFLUENCE  OF BACKGROUND MUSIC ON NATIVE COFFEE FLAVOR",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/13894505",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.13998772",
+      "source_system": "ZENODO",
+      "source_record_id": "13998772",
+      "doi": "10.5281/zenodo.13998772",
+      "title": "Smart coffee aromas: A literature review on electronic nose technologies for quality assessment",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/13998772",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.15795089",
+      "source_system": "ZENODO",
+      "source_record_id": "15795089",
+      "doi": "10.5281/zenodo.15795089",
+      "title": "Kofa: Transforming Used Coffee Grounds into Eco-Friendly Aromatic Solutions",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/15795089",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.18342524",
+      "source_system": "ZENODO",
+      "source_record_id": "18342524",
+      "doi": "10.5281/zenodo.18342524",
+      "title": "Science of Flavor: Unveiling the Sensory Quality of Coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/18342524",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.5617710",
+      "source_system": "ZENODO",
+      "source_record_id": "5617710",
+      "doi": "10.5281/zenodo.5617710",
+      "title": "Coffee sensory properties: a complementary data fusion to simulate odour and taste integration by instrumental approach. Possibilities and limits",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/5617710",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.5913038",
+      "source_system": "ZENODO",
+      "source_record_id": "5913038",
+      "doi": "10.5281/zenodo.5913038",
+      "title": "Using the Check-All-That-Apply (CATA) methodology to evaluate the flavour of foreign global and domestic Chinese coffee products",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/5913038",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.8071568",
+      "source_system": "ZENODO",
+      "source_record_id": "8071568",
+      "doi": "10.5281/zenodo.8071568",
+      "title": "Development of Coffee Sensory Technology to Support Coffee Cupper Skills Training for Deaf People",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/8071568",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5281/zenodo.8430543",
+      "source_system": "ZENODO",
+      "source_record_id": "8430543",
+      "doi": "10.5281/zenodo.8430543",
+      "title": "The characteristic and sensory evaluation of arabica Semendo coffee in high-speed stirring cold brew and common brew",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://zenodo.org/records/8430543",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "ZENODO_1"
+      ]
+    },
+    {
+      "candidate_id": "10.5296/jas.v4i1.8789",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2208624899",
+      "doi": "10.5296/jas.v4i1.8789",
+      "title": "Sensory and Organoleptic Cup Attributes of Robusta Coffee (Coffea canephora Pierre ex A. Froehner)",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5296/jas.v4i1.8789",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5539/jas.v10n6p207",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2801215272",
+      "doi": "10.5539/jas.v10n6p207",
+      "title": "Productivity and Sensory Quality of Arabica Coffee in Response to Pruning Type ‘Esqueletamento’",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5539/jas.v10n6p207",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5539/jas.v14n2p95",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W4206588308",
+      "doi": "10.5539/jas.v14n2p95",
+      "title": "Genetic Variability and Correlation of Biochemical and Sensory Characteristics of Coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5539/jas.v14n2p95",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5539/jas.v9n9p78",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2749253232",
+      "doi": "10.5539/jas.v9n9p78",
+      "title": "Sensory Profile and Chemical Composition of Specialty Coffees from Matas de Minas Gerais, Brazil",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5539/jas.v9n9p78",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5897/ajar2016.11545",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2521873802",
+      "doi": "10.5897/ajar2016.11545",
+      "title": "Relationship between the sensory attributes and the quality of coffee in different environments",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5897/ajar2016.11545",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5897/ajar2019.14079",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2965095636",
+      "doi": "10.5897/ajar2019.14079",
+      "title": "Sensory profile of coffees of different cultivars, plant exposure and post-harvest",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5897/ajar2019.14079",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5897/ajfs2014.1221",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2567704066",
+      "doi": "10.5897/ajfs2014.1221",
+      "title": "Effects of coffee processing technologies on physico-chemical properties and sensory qualities of coffee",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5897/ajfs2014.1221",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    },
+    {
+      "candidate_id": "10.5935/1806-6690.20170010",
+      "source_system": "OPENALEX",
+      "source_record_id": "https://openalex.org/W2531723896",
+      "doi": "10.5935/1806-6690.20170010",
+      "title": "Quality of specialty coffees: a sensory evaluation by consumers using the MFACT technique",
+      "resolved_license": "CC-BY-4.0",
+      "license_source_url": "https://doi.org/10.5935/1806-6690.20170010",
+      "disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+      "query_ids": [
+        "OPENALEX_CC-BY"
+      ]
+    }
+  ],
+  "new_records": [],
+  "new_record_count": 0,
+  "reason_no_new_records": "Metadata discovery cannot establish sample-by-descriptor supervision; no record is admitted without a source-specific table adapter and duplicate audit.",
+  "excluded_source_classes_unchanged": [
+    "SCA_WCR_ND_OR_PERSONAL_DOWNLOAD",
+    "COFFEE_REVIEW_DERIVED",
+    "FIRSTBLOOM",
+    "GREAT_AMERICAN_COFFEE_TEST",
+    "COMMERCIAL_ROASTER_TASTING_NOTES"
+  ],
+  "participant_or_subjective_training_data_acquired": false
+}
