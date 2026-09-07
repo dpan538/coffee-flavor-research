@@ -36,6 +36,12 @@ Permitted descriptive work includes registered high-dimensional feature matrices
 deterministic rule-based profile types, observed answer-evidence prefix trajectories,
 and exact frozen-context association candidates. Do not label these types as learned
 clusters or promote formal-context implications into semantic relation edges.
+Evidence-chain classes must remain categorical, question-slot activation must be
+reported as provenance rather than causal contribution, and observed K1 status labels
+must not be replaced with an assumed ordinal scale. Descriptor co-occurrence,
+separate-view similarity and evidence-dimension-descriptor graph centrality are
+diagnostics only: do not combine their scales, select a frequency threshold, infer a
+cluster, or create a semantic relation from them.
 
 ## [CODEX EXECUTION SCOPE — BACKEND MODEL ONLY]
 

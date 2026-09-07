@@ -15,13 +15,17 @@ import audit_output_quality_r9 as audit
 import audit_semantic_integrity_r9 as semantic
 import analyze_descriptor_relations_r9 as relations
 import analyze_dimension_structure_r9 as dimensions
+import analyze_semantic_structure_r9 as semantic_structure
 import coffee_profile_assignment_r9 as profiles
+import descriptor_association_analysis_r9 as associations
 import descriptor_feature_extraction_r9 as descriptor_features
+import evidence_structure_analysis_r9 as evidence_structure
 import evaluate_output_diversity_r9 as diversity
 import formal_concept_analysis_r9 as formal
 import generate_user_study_pack_r9 as pack
 import prepare_training_target_spec_r9 as target_spec
 import trajectory_analysis_r9 as trajectory
+import tripartite_semantic_structure_r9 as tripartite
 import update_owner_decision_r9 as decision
 from output_policy_r9 import role_registry_from_contract
 
@@ -465,6 +469,125 @@ class FormativePackTests(unittest.TestCase):
             "CO_OCCURRENCE_CANDIDATE_ONLY_NOT_RELATION_EDGE",
         )
         self.assertEqual(result["summary"]["semantic_relation_edges_created"], 0)
+
+    def test_evidence_structure_keeps_classes_and_question_sources_noncausal(self):
+        final = self.final()
+        final["state"]["base_state"]["answers_by_question"] = {
+            "Q0": {
+                "question_id": "question-fruit",
+                "state": "SELECTED",
+                "selected_option_ids": ["sensory.lemon"],
+            },
+            "Q1": {
+                "question_id": "question-floral",
+                "state": "SELECTED",
+                "selected_option_ids": ["attribute.floral"],
+            },
+        }
+        final["state"]["k1"]["dimensions"] = {
+            "floral": {
+                "status": "SUPPORTED_WITHIN_SCOPE",
+                "supported": 1.0,
+                "unknown": 0.0,
+                "support_evidence_ids": ["concept:attribute.floral"],
+            },
+            "fruity": {
+                "status": "SUPPORTED_WITHIN_SCOPE",
+                "supported": 1.0,
+                "unknown": 0.0,
+                "support_evidence_ids": ["concept:sensory.lemon"],
+            },
+            "taste": {
+                "status": "PROPOSED",
+                "supported": 0.0,
+                "unknown": 1.0,
+                "support_evidence_ids": [],
+            },
+        }
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "actual_return": final,
+        }
+        registry = self.registry()
+        evidence_rows = evidence_structure.evidence_stratified_rows([source], registry)
+        position = evidence_structure.summarize_position_evidence(evidence_rows)
+        self.assertEqual(position["evidence_scalar_score"], "NOT_DEFINED")
+        question_rows = evidence_structure.question_source_rows([source], registry)
+        apple = next(
+            row for row in question_rows if row["descriptor_id"] == "sensory.apple"
+        )
+        self.assertIsNone(apple["exact_descriptor_source_slot"])
+        self.assertEqual(apple["first_compatible_dimension_source_slot"], "Q0")
+        self.assertEqual(
+            apple["source_interpretation"], "FIRST_DIMENSION_COMPATIBILITY_ONLY"
+        )
+        k1_rows = evidence_structure.k1_output_rows([source], registry)
+        taste = next(row for row in k1_rows if row["dimension_id"] == "taste")
+        self.assertEqual(taste["k1_status"], "PROPOSED")
+        self.assertEqual(taste["descriptor_count"], 0)
+
+    def test_descriptor_associations_keep_views_separate_and_edges_nonsemantic(self):
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "actual_return": self.final(),
+        }
+        registry = self.registry()
+        network = associations.cooccurrence_network([source], registry)
+        self.assertEqual(network["summary"]["registered_nodes"], 59)
+        self.assertGreater(network["summary"]["observed_edges"], 0)
+        self.assertEqual(network["summary"]["semantic_relation_edges_created"], 0)
+        features = descriptor_features.build_descriptor_features([source], registry)
+        similarities = associations.descriptor_similarity_views(
+            features, network, registry
+        )
+        self.assertEqual(
+            similarities["summary"]["composite_similarity"],
+            "NOT_DEFINED_NO_CROSS_VIEW_WEIGHTS",
+        )
+        self.assertTrue(
+            all(row["composite_similarity"] is None for row in similarities["pairs"])
+        )
+
+    def test_tripartite_paths_are_compatibility_not_entailment(self):
+        final = self.final()
+        final["state"]["base_state"]["answers_by_question"] = {
+            "Q0": {
+                "question_id": "question-001",
+                "state": "SELECTED",
+                "selected_option_ids": ["sensory.lemon"],
+            }
+        }
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "actual_return": final,
+        }
+        graph = tripartite.build_tripartite_graph([source], self.registry())
+        self.assertTrue(graph["edges"])
+        self.assertTrue(all(not edge["entailment"] for edge in graph["edges"]))
+        self.assertEqual(graph["summary"]["semantic_relation_edges_created"], 0)
+        self.assertEqual(
+            graph["summary"]["cross_edge_type_weighted_degree"], "NOT_DEFINED"
+        )
+
+    def test_semantic_projection_omits_targets_and_subjective_fields(self):
+        source = {
+            "record_id": "record-001",
+            "group_id": "coffee-group-001",
+            "policy": "C01",
+            "actual_return": self.final(),
+            "full_T": {"sensory.apple": 1.0},
+            "participant_preference": "LIKE",
+        }
+        projected = semantic_structure.semantic_projection(source)
+        self.assertEqual(
+            set(projected), {"record_id", "group_id", "policy", "actual_return"}
+        )
 
 
 if __name__ == "__main__":

@@ -177,5 +177,23 @@
     "output_or_trigger_changed": false,
     "public_summary_sha256": "020af57b78a80783ec363d3b855f48fe1e373c809ed6693c57a0e458ca92d86f",
     "private_detail_sha256": "8633f4f5ec8bc08d5b24fd72b7b9ac2c72d9a3a16591aba78747790c8620be57"
+  },
+  "semantic_structure_analysis": {
+    "status": "RESEARCH_OBSERVATION_ONLY",
+    "version": "m2-r9.semantic-structure-analysis.v1",
+    "scope": "79 frozen C01 records across 77 repeatedly viewed development coffee groups; T and participant evaluation were omitted from the analysis projection.",
+    "evidence_strata": "The 632 OUT_SEPARATED named-descriptor occurrences comprised 152 explicit user expressions, 324 supported-direction-only traces and 156 with no direct current-answer trace. Main contained all 152 explicit occurrences (38.48% of main); secondary contained none. No scalar evidence-strength score was defined.",
+    "question_provenance": "Exact returned-descriptor selections first appeared at Q2/Q3/Q4 for 66/49/37 occurrences. Q0 was the first compatible dimension source for 422 occurrences, but this is broad dimension provenance and not causal descriptor contribution or child entailment.",
+    "k1_association": "C01 retained the exact observed states SUPPORTED_WITHIN_SCOPE (213 dimension instances) and PROPOSED (498), not an invented ordinal remapping. Supported instances carried 507 output descriptor memberships; proposed instances carried 198 memberships across 73 records and 71 coffee groups. This shows K1 is not currently a hard descriptor-membership gate and does not itself license a semantic assertion.",
+    "profile_strata": "Four rule-based OUT_SEPARATED output-composition types were observed. Evidence distribution, active dimensions and repeated-dimension membership were kept separate by type; no benefit score, coffee taxonomy or independent-row inference was produced.",
+    "association_views": "Only 21/59 registered named descriptors appeared in the frozen C01 5+3 outputs; 38 never appeared. All 134 positive co-occurrence edges were retained without a selected threshold. The 1,711 descriptor pairs were split into 210 both-observed, 798 one-observed and 703 neither-observed pairs, with dimension, evidence, position, frequency, extent and co-occurrence similarities reported separately and no composite or clustering.",
+    "tripartite_view": "The typed graph contains 24 observed evidence concepts, nine registered dimensions and all 59 named descriptors with 25 evidence-to-dimension and 61 dimension-to-descriptor membership edges. Nutty/cocoa and fruity received the most observed selection occurrences (142 and 99). Centrality is compatibility topology, not evidence sufficiency or entailment.",
+    "decision": "The concentration assumption is rejected as a single explanatory quantity. Preserve categorical trace, K1 state, coverage, redundancy, panel position, co-occurrence and topology as distinct audit views. These observations do not change OUT_SEPARATED, the default finalizer, the trigger, or the empty descriptor-relation registry.",
+    "fit_count": 0,
+    "T_used": false,
+    "subjective_evaluation_used": false,
+    "semantic_relation_edges_created": 0,
+    "public_summary_sha256": "ccafdf421275f09da78cae1a4d158239899e105f7ed252bcf8b0ebaa07f65ae6",
+    "private_detail_sha256": "7510c003f8e94c4fc1c4ed88e59e4f0e6bad9ab8bbc9b3a2e5f91487a0fa6a61"
   }
 }

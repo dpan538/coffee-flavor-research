@@ -1,0 +1,1400 @@
+{
+  "analysis_groups": {
+    "descriptor_cooccurrence_network": {
+      "edge_filter": "NONE_ALL_POSITIVE_COOCCURRENCES_RETAINED",
+      "edge_record_count_distribution": {
+        "1": 44,
+        "2": 12,
+        "3": 12,
+        "4": 5,
+        "5": 4,
+        "6": 2,
+        "7": 1,
+        "9": 2,
+        "11": 6,
+        "13": 2,
+        "14": 5,
+        "15": 1,
+        "16": 4,
+        "26": 1,
+        "32": 1,
+        "33": 2,
+        "35": 5,
+        "38": 1,
+        "40": 1,
+        "41": 1,
+        "42": 3,
+        "44": 1,
+        "45": 3,
+        "59": 1,
+        "61": 1,
+        "64": 3,
+        "71": 1,
+        "73": 3,
+        "76": 3,
+        "79": 3
+      },
+      "nodes_never_observed_in_output": 38,
+      "nodes_observed_in_output": 21,
+      "observed_edges": 134,
+      "registered_nodes": 59,
+      "semantic_relation_edges_created": 0
+    },
+    "descriptor_similarity_views": {
+      "clustering_or_outlier_detection": "NOT_RUN_R9_CLUSTERING_PROHIBITED",
+      "composite_similarity": "NOT_DEFINED_NO_CROSS_VIEW_WEIGHTS",
+      "descriptor_pairs": 1711,
+      "pair_observation_strata": {
+        "BOTH_OBSERVED": 210,
+        "NEITHER_OBSERVED": 703,
+        "ONE_OBSERVED": 798
+      },
+      "semantic_relation_edges_created": 0,
+      "views": {
+        "cooccurrence_count_cosine": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 1008,
+            "maximum": 0.9915372244226286,
+            "mean": 0.1734704975899522,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 0.9915372244226286,
+            "mean": 0.8326583884317706,
+            "minimum": 0.4285714285714285
+          }
+        },
+        "cooccurrence_neighbor_jaccard": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 1008,
+            "maximum": 0.9047619047619048,
+            "mean": 0.11045532205371142,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 0.9047619047619048,
+            "mean": 0.5301855458578147,
+            "minimum": 0.2727272727272727
+          }
+        },
+        "evidence_distribution_similarity": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.4471482741351516,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.4471482741351516,
+            "minimum": 0.0
+          }
+        },
+        "output_frequency_ratio_similarity": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 1008,
+            "maximum": 1.0,
+            "mean": 0.0616915471813982,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.2961194264707114,
+            "minimum": 0.012658227848101266
+          }
+        },
+        "output_record_extent_jaccard": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 1008,
+            "maximum": 1.0,
+            "mean": 0.030227485593464234,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.14509193084862831,
+            "minimum": 0.0
+          }
+        },
+        "position_distribution_similarity": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.5739668473497112,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.5739668473497112,
+            "minimum": 0.0
+          }
+        },
+        "registered_dimension_jaccard": {
+          "all_evaluable_pairs": {
+            "evaluable_pairs": 1711,
+            "maximum": 1.0,
+            "mean": 0.1990064289888954,
+            "minimum": 0.0
+          },
+          "both_observed_pairs": {
+            "evaluable_pairs": 210,
+            "maximum": 1.0,
+            "mean": 0.20714285714285716,
+            "minimum": 0.0
+          }
+        }
+      }
+    },
+    "evidence_chain_strata": {
+      "by_dimension_multi_membership": {
+        "floral": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 0,
+            "NO_DIRECT_USER_ANSWER_TRACE": 1,
+            "SUPPORTED_DIRECTION_ONLY": 0
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.0,
+            "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+            "SUPPORTED_DIRECTION_ONLY": 0.0
+          },
+          "total": 1
+        },
+        "fruity": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 45,
+            "NO_DIRECT_USER_ANSWER_TRACE": 31,
+            "SUPPORTED_DIRECTION_ONLY": 126
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.22277227722772278,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.15346534653465346,
+            "SUPPORTED_DIRECTION_ONLY": 0.6237623762376238
+          },
+          "total": 202
+        },
+        "green_vegetative": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 9,
+            "NO_DIRECT_USER_ANSWER_TRACE": 31,
+            "SUPPORTED_DIRECTION_ONLY": 3
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.20930232558139536,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.7209302325581395,
+            "SUPPORTED_DIRECTION_ONLY": 0.06976744186046512
+          },
+          "total": 43
+        },
+        "nutty_cocoa": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 60,
+            "NO_DIRECT_USER_ANSWER_TRACE": 55,
+            "SUPPORTED_DIRECTION_ONLY": 174
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.20761245674740483,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.1903114186851211,
+            "SUPPORTED_DIRECTION_ONLY": 0.6020761245674741
+          },
+          "total": 289
+        },
+        "roasted": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 39,
+            "NO_DIRECT_USER_ANSWER_TRACE": 16,
+            "SUPPORTED_DIRECTION_ONLY": 32
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.4482758620689655,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.1839080459770115,
+            "SUPPORTED_DIRECTION_ONLY": 0.367816091954023
+          },
+          "total": 87
+        },
+        "sweet": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 27,
+            "NO_DIRECT_USER_ANSWER_TRACE": 38,
+            "SUPPORTED_DIRECTION_ONLY": 18
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.3253012048192771,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.4578313253012048,
+            "SUPPORTED_DIRECTION_ONLY": 0.21686746987951808
+          },
+          "total": 83
+        }
+      },
+      "by_panel": {
+        "main": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 152,
+            "NO_DIRECT_USER_ANSWER_TRACE": 79,
+            "SUPPORTED_DIRECTION_ONLY": 164
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.3848101265822785,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.2,
+            "SUPPORTED_DIRECTION_ONLY": 0.4151898734177215
+          },
+          "total": 395
+        },
+        "secondary": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 0,
+            "NO_DIRECT_USER_ANSWER_TRACE": 77,
+            "SUPPORTED_DIRECTION_ONLY": 160
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.0,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.32489451476793246,
+            "SUPPORTED_DIRECTION_ONLY": 0.6751054852320675
+          },
+          "total": 237
+        }
+      },
+      "by_profile_type": {
+        "DOMINANT::fruity": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 41,
+            "NO_DIRECT_USER_ANSWER_TRACE": 21,
+            "SUPPORTED_DIRECTION_ONLY": 74
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.3014705882352941,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.15441176470588236,
+            "SUPPORTED_DIRECTION_ONLY": 0.5441176470588235
+          },
+          "total": 136
+        },
+        "DOMINANT::nutty_cocoa": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 88,
+            "NO_DIRECT_USER_ANSWER_TRACE": 109,
+            "SUPPORTED_DIRECTION_ONLY": 203
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.22,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.2725,
+            "SUPPORTED_DIRECTION_ONLY": 0.5075
+          },
+          "total": 400
+        },
+        "MIXED_DOMINANT::fruity|nutty_cocoa": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 19,
+            "NO_DIRECT_USER_ANSWER_TRACE": 24,
+            "SUPPORTED_DIRECTION_ONLY": 45
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.2159090909090909,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.2727272727272727,
+            "SUPPORTED_DIRECTION_ONLY": 0.5113636363636364
+          },
+          "total": 88
+        },
+        "MIXED_DOMINANT::fruity|sweet": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 4,
+            "NO_DIRECT_USER_ANSWER_TRACE": 2,
+            "SUPPORTED_DIRECTION_ONLY": 2
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.5,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.25,
+            "SUPPORTED_DIRECTION_ONLY": 0.25
+          },
+          "total": 8
+        }
+      },
+      "coffee_groups": 77,
+      "descriptor_occurrences": 632,
+      "interpretation": "Dimension counts are multi-membership occurrence counts. Evidence classes remain categorical and are not collapsed into a scalar strength score.",
+      "overall": {
+        "counts": {
+          "EXPLICIT_USER_EXPRESSION": 152,
+          "NO_DIRECT_USER_ANSWER_TRACE": 156,
+          "SUPPORTED_DIRECTION_ONLY": 324
+        },
+        "fractions": {
+          "EXPLICIT_USER_EXPRESSION": 0.24050632911392406,
+          "NO_DIRECT_USER_ANSWER_TRACE": 0.2468354430379747,
+          "SUPPORTED_DIRECTION_ONLY": 0.5126582278481012
+        },
+        "total": 632
+      }
+    },
+    "evidence_dimension_descriptor_graph": {
+      "cross_edge_type_weighted_degree": "NOT_DEFINED",
+      "dimensions_by_observed_evidence_occurrence": [
+        {
+          "betweenness_centrality": 0.03968253968253968,
+          "concept_id": "nutty_cocoa",
+          "degree": 14,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::nutty_cocoa",
+          "observed_evidence_occurrence_count": 142,
+          "registered_membership_degree": 8
+        },
+        {
+          "betweenness_centrality": 0.17704517704517705,
+          "concept_id": "fruity",
+          "degree": 30,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::fruity",
+          "observed_evidence_occurrence_count": 99,
+          "registered_membership_degree": 24
+        },
+        {
+          "betweenness_centrality": 0.020879120879120878,
+          "concept_id": "roasted",
+          "degree": 7,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::roasted",
+          "observed_evidence_occurrence_count": 86,
+          "registered_membership_degree": 4
+        },
+        {
+          "betweenness_centrality": 0.008791208791208791,
+          "concept_id": "sweet",
+          "degree": 9,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::sweet",
+          "observed_evidence_occurrence_count": 68,
+          "registered_membership_degree": 5
+        },
+        {
+          "betweenness_centrality": 0.07692307692307693,
+          "concept_id": "green_vegetative",
+          "degree": 10,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::green_vegetative",
+          "observed_evidence_occurrence_count": 22,
+          "registered_membership_degree": 7
+        },
+        {
+          "betweenness_centrality": 0.002442002442002442,
+          "concept_id": "floral",
+          "degree": 5,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::floral",
+          "observed_evidence_occurrence_count": 5,
+          "registered_membership_degree": 4
+        },
+        {
+          "betweenness_centrality": 0.0014652014652014652,
+          "concept_id": "sour_fermented",
+          "degree": 4,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::sour_fermented",
+          "observed_evidence_occurrence_count": 1,
+          "registered_membership_degree": 3
+        },
+        {
+          "betweenness_centrality": 0.003663003663003663,
+          "concept_id": "spices",
+          "degree": 6,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::spices",
+          "observed_evidence_occurrence_count": 1,
+          "registered_membership_degree": 5
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "taste",
+          "degree": 1,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::taste",
+          "observed_evidence_occurrence_count": 0,
+          "registered_membership_degree": 1
+        }
+      ],
+      "edge_count": 86,
+      "edge_type_counts": {
+        "OBSERVED_EVIDENCE_TO_REGISTERED_DIMENSION": 25,
+        "REGISTERED_DIMENSION_TO_DESCRIPTOR_MEMBERSHIP": 61
+      },
+      "interpretation": "Centrality reflects the topology induced by registered dimension membership and observed selections. A two-hop evidence-dimension-descriptor path is compatibility reachability, not descriptor support or semantic entailment.",
+      "layer_counts": {
+        "EVIDENCE_CONCEPT": 24,
+        "NAMED_DESCRIPTOR": 59,
+        "REGISTERED_DIMENSION": 9
+      },
+      "node_count": 92,
+      "semantic_relation_edges_created": 0,
+      "top_betweenness_nodes": [
+        {
+          "betweenness_centrality": 0.17704517704517705,
+          "concept_id": "fruity",
+          "degree": 30,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::fruity",
+          "observed_evidence_occurrence_count": 99,
+          "registered_membership_degree": 24
+        },
+        {
+          "betweenness_centrality": 0.07692307692307693,
+          "concept_id": "green_vegetative",
+          "degree": 10,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::green_vegetative",
+          "observed_evidence_occurrence_count": 22,
+          "registered_membership_degree": 7
+        },
+        {
+          "betweenness_centrality": 0.07326007326007326,
+          "concept_id": "sensory.lemongrass",
+          "degree": 2,
+          "layer": "NAMED_DESCRIPTOR",
+          "node_id": "DESCRIPTOR::sensory.lemongrass",
+          "observed_evidence_occurrence_count": 0,
+          "registered_membership_degree": 2
+        },
+        {
+          "betweenness_centrality": 0.03968253968253968,
+          "concept_id": "nutty_cocoa",
+          "degree": 14,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::nutty_cocoa",
+          "observed_evidence_occurrence_count": 142,
+          "registered_membership_degree": 8
+        },
+        {
+          "betweenness_centrality": 0.020879120879120878,
+          "concept_id": "roasted",
+          "degree": 7,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::roasted",
+          "observed_evidence_occurrence_count": 86,
+          "registered_membership_degree": 4
+        },
+        {
+          "betweenness_centrality": 0.009523809523809525,
+          "concept_id": "sensory.dark_chocolate",
+          "degree": 2,
+          "layer": "NAMED_DESCRIPTOR",
+          "node_id": "DESCRIPTOR::sensory.dark_chocolate",
+          "observed_evidence_occurrence_count": 0,
+          "registered_membership_degree": 2
+        },
+        {
+          "betweenness_centrality": 0.009523809523809525,
+          "concept_id": "sensory.dark_chocolate",
+          "degree": 2,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::sensory.dark_chocolate",
+          "observed_evidence_occurrence_count": 108,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.008791208791208791,
+          "concept_id": "sweet",
+          "degree": 9,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::sweet",
+          "observed_evidence_occurrence_count": 68,
+          "registered_membership_degree": 5
+        },
+        {
+          "betweenness_centrality": 0.003663003663003663,
+          "concept_id": "spices",
+          "degree": 6,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::spices",
+          "observed_evidence_occurrence_count": 1,
+          "registered_membership_degree": 5
+        },
+        {
+          "betweenness_centrality": 0.002442002442002442,
+          "concept_id": "floral",
+          "degree": 5,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::floral",
+          "observed_evidence_occurrence_count": 5,
+          "registered_membership_degree": 4
+        }
+      ],
+      "top_degree_nodes": [
+        {
+          "betweenness_centrality": 0.17704517704517705,
+          "concept_id": "fruity",
+          "degree": 30,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::fruity",
+          "observed_evidence_occurrence_count": 99,
+          "registered_membership_degree": 24
+        },
+        {
+          "betweenness_centrality": 0.03968253968253968,
+          "concept_id": "nutty_cocoa",
+          "degree": 14,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::nutty_cocoa",
+          "observed_evidence_occurrence_count": 142,
+          "registered_membership_degree": 8
+        },
+        {
+          "betweenness_centrality": 0.07692307692307693,
+          "concept_id": "green_vegetative",
+          "degree": 10,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::green_vegetative",
+          "observed_evidence_occurrence_count": 22,
+          "registered_membership_degree": 7
+        },
+        {
+          "betweenness_centrality": 0.008791208791208791,
+          "concept_id": "sweet",
+          "degree": 9,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::sweet",
+          "observed_evidence_occurrence_count": 68,
+          "registered_membership_degree": 5
+        },
+        {
+          "betweenness_centrality": 0.020879120879120878,
+          "concept_id": "roasted",
+          "degree": 7,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::roasted",
+          "observed_evidence_occurrence_count": 86,
+          "registered_membership_degree": 4
+        },
+        {
+          "betweenness_centrality": 0.003663003663003663,
+          "concept_id": "spices",
+          "degree": 6,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::spices",
+          "observed_evidence_occurrence_count": 1,
+          "registered_membership_degree": 5
+        },
+        {
+          "betweenness_centrality": 0.002442002442002442,
+          "concept_id": "floral",
+          "degree": 5,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::floral",
+          "observed_evidence_occurrence_count": 5,
+          "registered_membership_degree": 4
+        },
+        {
+          "betweenness_centrality": 0.0014652014652014652,
+          "concept_id": "sour_fermented",
+          "degree": 4,
+          "layer": "REGISTERED_DIMENSION",
+          "node_id": "DIMENSION::sour_fermented",
+          "observed_evidence_occurrence_count": 1,
+          "registered_membership_degree": 3
+        },
+        {
+          "betweenness_centrality": 0.009523809523809525,
+          "concept_id": "sensory.dark_chocolate",
+          "degree": 2,
+          "layer": "NAMED_DESCRIPTOR",
+          "node_id": "DESCRIPTOR::sensory.dark_chocolate",
+          "observed_evidence_occurrence_count": 0,
+          "registered_membership_degree": 2
+        },
+        {
+          "betweenness_centrality": 0.07326007326007326,
+          "concept_id": "sensory.lemongrass",
+          "degree": 2,
+          "layer": "NAMED_DESCRIPTOR",
+          "node_id": "DESCRIPTOR::sensory.lemongrass",
+          "observed_evidence_occurrence_count": 0,
+          "registered_membership_degree": 2
+        }
+      ],
+      "top_evidence_concepts_by_observed_occurrence": [
+        {
+          "betweenness_centrality": 0.009523809523809525,
+          "concept_id": "sensory.dark_chocolate",
+          "degree": 2,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::sensory.dark_chocolate",
+          "observed_evidence_occurrence_count": 108,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "attribute.nutty_cocoa",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::attribute.nutty_cocoa",
+          "observed_evidence_occurrence_count": 56,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "attribute.fruity",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::attribute.fruity",
+          "observed_evidence_occurrence_count": 54,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "attribute.sweet",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::attribute.sweet",
+          "observed_evidence_occurrence_count": 41,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "sensory.caramel",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::sensory.caramel",
+          "observed_evidence_occurrence_count": 23,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "sensory.cocoa",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::sensory.cocoa",
+          "observed_evidence_occurrence_count": 23,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "attribute.roasted",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::attribute.roasted",
+          "observed_evidence_occurrence_count": 21,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "sensory.apple",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::sensory.apple",
+          "observed_evidence_occurrence_count": 20,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "sensory.orange",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::sensory.orange",
+          "observed_evidence_occurrence_count": 17,
+          "registered_membership_degree": 0
+        },
+        {
+          "betweenness_centrality": 0.0,
+          "concept_id": "attribute.green_vegetative",
+          "degree": 1,
+          "layer": "EVIDENCE_CONCEPT",
+          "node_id": "EVIDENCE::attribute.green_vegetative",
+          "observed_evidence_occurrence_count": 13,
+          "registered_membership_degree": 0
+        }
+      ]
+    },
+    "k1_status_output_association": {
+      "by_dimension_and_status": {
+        "floral": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 1,
+            "dimension_instances": 74,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.0
+              },
+              "total": 1
+            },
+            "mean_output_descriptor_memberships": 0.013513513513513514,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 1,
+            "records_with_output_descriptor_membership": 1,
+            "zero_output_descriptor_instances": 73
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 5,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": 0.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 5
+          }
+        },
+        "fruity": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 19,
+            "dimension_instances": 20,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 31,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.0
+              },
+              "total": 31
+            },
+            "mean_output_descriptor_memberships": 1.55,
+            "middle_category_memberships": 20,
+            "other_named_memberships": 11,
+            "records_with_output_descriptor_membership": 20,
+            "zero_output_descriptor_instances": 0
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 58,
+            "dimension_instances": 59,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 45,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 126
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.2631578947368421,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.7368421052631579
+              },
+              "total": 171
+            },
+            "mean_output_descriptor_memberships": 2.8983050847457625,
+            "middle_category_memberships": 59,
+            "other_named_memberships": 112,
+            "records_with_output_descriptor_membership": 59,
+            "zero_output_descriptor_instances": 0
+          }
+        },
+        "green_vegetative": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 31,
+            "dimension_instances": 66,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 31,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.0
+              },
+              "total": 31
+            },
+            "mean_output_descriptor_memberships": 0.4696969696969697,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 31,
+            "records_with_output_descriptor_membership": 31,
+            "zero_output_descriptor_instances": 35
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 10,
+            "dimension_instances": 13,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 9,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 3
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.75,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.25
+              },
+              "total": 12
+            },
+            "mean_output_descriptor_memberships": 0.9230769230769231,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 12,
+            "records_with_output_descriptor_membership": 11,
+            "zero_output_descriptor_instances": 2
+          }
+        },
+        "nutty_cocoa": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 17,
+            "dimension_instances": 17,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 55,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.0
+              },
+              "total": 55
+            },
+            "mean_output_descriptor_memberships": 3.235294117647059,
+            "middle_category_memberships": 24,
+            "other_named_memberships": 31,
+            "records_with_output_descriptor_membership": 17,
+            "zero_output_descriptor_instances": 0
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 61,
+            "dimension_instances": 62,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 60,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 174
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.2564102564102564,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.7435897435897436
+              },
+              "total": 234
+            },
+            "mean_output_descriptor_memberships": 3.774193548387097,
+            "middle_category_memberships": 100,
+            "other_named_memberships": 134,
+            "records_with_output_descriptor_membership": 62,
+            "zero_output_descriptor_instances": 0
+          }
+        },
+        "roasted": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 41,
+            "dimension_instances": 48,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 42,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.0
+              },
+              "total": 42
+            },
+            "mean_output_descriptor_memberships": 0.875,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 42,
+            "records_with_output_descriptor_membership": 42,
+            "zero_output_descriptor_instances": 6
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 30,
+            "dimension_instances": 31,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 39,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 6
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.8666666666666667,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.13333333333333333
+              },
+              "total": 45
+            },
+            "mean_output_descriptor_memberships": 1.4516129032258065,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 45,
+            "records_with_output_descriptor_membership": 31,
+            "zero_output_descriptor_instances": 0
+          }
+        },
+        "sour_fermented": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 78,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": 0.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 78
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 1,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": 0.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 1
+          }
+        },
+        "spices": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 78,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": 0.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 78
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 1,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": 0.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 1
+          }
+        },
+        "sweet": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 38,
+            "dimension_instances": 38,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 38,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.0
+              },
+              "total": 38
+            },
+            "mean_output_descriptor_memberships": 1.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 38,
+            "records_with_output_descriptor_membership": 38,
+            "zero_output_descriptor_instances": 0
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 41,
+            "dimension_instances": 41,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 27,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 18
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": 0.6,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0.0,
+                "SUPPORTED_DIRECTION_ONLY": 0.4
+              },
+              "total": 45
+            },
+            "mean_output_descriptor_memberships": 1.0975609756097562,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 45,
+            "records_with_output_descriptor_membership": 41,
+            "zero_output_descriptor_instances": 0
+          }
+        },
+        "taste": {
+          "PROPOSED": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 79,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": 0.0,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 79
+          },
+          "SUPPORTED_WITHIN_SCOPE": {
+            "coffee_groups_with_output_descriptor_membership": 0,
+            "dimension_instances": 0,
+            "evidence_distribution": {
+              "counts": {
+                "EXPLICIT_USER_EXPRESSION": 0,
+                "NO_DIRECT_USER_ANSWER_TRACE": 0,
+                "SUPPORTED_DIRECTION_ONLY": 0
+              },
+              "fractions": {
+                "EXPLICIT_USER_EXPRESSION": null,
+                "NO_DIRECT_USER_ANSWER_TRACE": null,
+                "SUPPORTED_DIRECTION_ONLY": null
+              },
+              "total": 0
+            },
+            "mean_output_descriptor_memberships": null,
+            "middle_category_memberships": 0,
+            "other_named_memberships": 0,
+            "records_with_output_descriptor_membership": 0,
+            "zero_output_descriptor_instances": 0
+          }
+        }
+      },
+      "by_status": {
+        "PROPOSED": {
+          "coffee_groups_with_output_descriptor_membership": 71,
+          "dimension_instances": 498,
+          "evidence_distribution": {
+            "counts": {
+              "EXPLICIT_USER_EXPRESSION": 0,
+              "NO_DIRECT_USER_ANSWER_TRACE": 198,
+              "SUPPORTED_DIRECTION_ONLY": 0
+            },
+            "fractions": {
+              "EXPLICIT_USER_EXPRESSION": 0.0,
+              "NO_DIRECT_USER_ANSWER_TRACE": 1.0,
+              "SUPPORTED_DIRECTION_ONLY": 0.0
+            },
+            "total": 198
+          },
+          "mean_output_descriptor_memberships": 0.39759036144578314,
+          "middle_category_memberships": 44,
+          "other_named_memberships": 154,
+          "records_with_output_descriptor_membership": 73,
+          "zero_output_descriptor_instances": 349
+        },
+        "SUPPORTED_WITHIN_SCOPE": {
+          "coffee_groups_with_output_descriptor_membership": 77,
+          "dimension_instances": 213,
+          "evidence_distribution": {
+            "counts": {
+              "EXPLICIT_USER_EXPRESSION": 180,
+              "NO_DIRECT_USER_ANSWER_TRACE": 0,
+              "SUPPORTED_DIRECTION_ONLY": 327
+            },
+            "fractions": {
+              "EXPLICIT_USER_EXPRESSION": 0.35502958579881655,
+              "NO_DIRECT_USER_ANSWER_TRACE": 0.0,
+              "SUPPORTED_DIRECTION_ONLY": 0.6449704142011834
+            },
+            "total": 507
+          },
+          "mean_output_descriptor_memberships": 2.380281690140845,
+          "middle_category_memberships": 159,
+          "other_named_memberships": 348,
+          "records_with_output_descriptor_membership": 79,
+          "zero_output_descriptor_instances": 9
+        }
+      },
+      "interpretation": "All registered dimensions are retained, including zero-output rows. K1 status association uses dimension-local evidence classes, is descriptive, and does not establish causal activation or descriptor specificity.",
+      "observed_k1_statuses": [
+        "PROPOSED",
+        "SUPPORTED_WITHIN_SCOPE"
+      ]
+    },
+    "main_secondary_evidence": {
+      "by_panel": {
+        "main": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 152,
+            "NO_DIRECT_USER_ANSWER_TRACE": 79,
+            "SUPPORTED_DIRECTION_ONLY": 164
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.3848101265822785,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.2,
+            "SUPPORTED_DIRECTION_ONLY": 0.4151898734177215
+          },
+          "total": 395
+        },
+        "secondary": {
+          "counts": {
+            "EXPLICIT_USER_EXPRESSION": 0,
+            "NO_DIRECT_USER_ANSWER_TRACE": 77,
+            "SUPPORTED_DIRECTION_ONLY": 160
+          },
+          "fractions": {
+            "EXPLICIT_USER_EXPRESSION": 0.0,
+            "NO_DIRECT_USER_ANSWER_TRACE": 0.32489451476793246,
+            "SUPPORTED_DIRECTION_ONLY": 0.6751054852320675
+          },
+          "total": 237
+        }
+      },
+      "evidence_scalar_score": "NOT_DEFINED",
+      "interpretation": "Panel distributions and within-record share comparisons are reported without mapping evidence classes to arbitrary 1/0.5/0 weights.",
+      "paired_record_direct_share_outcomes": {
+        "MAIN_HIGHER": 74,
+        "TIE": 5
+      },
+      "paired_record_no_trace_share_outcomes": {
+        "MAIN_HIGHER": 25,
+        "SECONDARY_HIGHER": 39,
+        "TIE": 15
+      }
+    },
+    "profile_type_cross_analysis": {
+      "inference": "NOT_RUN_DESCRIPTIVE_DEPENDENT_RECORDS_RETAINED",
+      "interpretation": "Profile types are output-composition strata, not coffee classes. Evidence, coverage and redundancy remain separate; no composite benefit score is made.",
+      "profile_types": {
+        "DOMINANT::fruity": {
+          "coffee_groups": 17,
+          "evidence_distribution": {
+            "counts": {
+              "EXPLICIT_USER_EXPRESSION": 41,
+              "NO_DIRECT_USER_ANSWER_TRACE": 21,
+              "SUPPORTED_DIRECTION_ONLY": 74
+            },
+            "fractions": {
+              "EXPLICIT_USER_EXPRESSION": 0.3014705882352941,
+              "NO_DIRECT_USER_ANSWER_TRACE": 0.15441176470588236,
+              "SUPPORTED_DIRECTION_ONLY": 0.5441176470588235
+            },
+            "total": 136
+          },
+          "mean_active_dimension_count": 3.9411764705882355,
+          "mean_delta_separated_minus_mixed": {
+            "active_dimension_count": 0.11764705882352941,
+            "named_descriptor_count": 1.1764705882352942,
+            "repeated_dimension_membership_rate": 0.057072829131652694
+          },
+          "mean_repeated_dimension_membership_rate": 0.553921568627451,
+          "records": 17,
+          "target_or_gap_metric": "NOT_READ_NO_T"
+        },
+        "DOMINANT::nutty_cocoa": {
+          "coffee_groups": 49,
+          "evidence_distribution": {
+            "counts": {
+              "EXPLICIT_USER_EXPRESSION": 88,
+              "NO_DIRECT_USER_ANSWER_TRACE": 109,
+              "SUPPORTED_DIRECTION_ONLY": 203
+            },
+            "fractions": {
+              "EXPLICIT_USER_EXPRESSION": 0.22,
+              "NO_DIRECT_USER_ANSWER_TRACE": 0.2725,
+              "SUPPORTED_DIRECTION_ONLY": 0.5075
+            },
+            "total": 400
+          },
+          "mean_active_dimension_count": 4.6,
+          "mean_delta_separated_minus_mixed": {
+            "active_dimension_count": 0.4,
+            "named_descriptor_count": 1.52,
+            "repeated_dimension_membership_rate": 0.0840952380952381
+          },
+          "mean_repeated_dimension_membership_rate": 0.4877777777777778,
+          "records": 50,
+          "target_or_gap_metric": "NOT_READ_NO_T"
+        },
+        "MIXED_DOMINANT::fruity|nutty_cocoa": {
+          "coffee_groups": 11,
+          "evidence_distribution": {
+            "counts": {
+              "EXPLICIT_USER_EXPRESSION": 19,
+              "NO_DIRECT_USER_ANSWER_TRACE": 24,
+              "SUPPORTED_DIRECTION_ONLY": 45
+            },
+            "fractions": {
+              "EXPLICIT_USER_EXPRESSION": 0.2159090909090909,
+              "NO_DIRECT_USER_ANSWER_TRACE": 0.2727272727272727,
+              "SUPPORTED_DIRECTION_ONLY": 0.5113636363636364
+            },
+            "total": 88
+          },
+          "mean_active_dimension_count": 4.7272727272727275,
+          "mean_delta_separated_minus_mixed": {
+            "active_dimension_count": 0.6363636363636364,
+            "named_descriptor_count": 1.7272727272727273,
+            "repeated_dimension_membership_rate": 0.05057720057720058
+          },
+          "mean_repeated_dimension_membership_rate": 0.4646464646464646,
+          "records": 11,
+          "target_or_gap_metric": "NOT_READ_NO_T"
+        },
+        "MIXED_DOMINANT::fruity|sweet": {
+          "coffee_groups": 1,
+          "evidence_distribution": {
+            "counts": {
+              "EXPLICIT_USER_EXPRESSION": 4,
+              "NO_DIRECT_USER_ANSWER_TRACE": 2,
+              "SUPPORTED_DIRECTION_ONLY": 2
+            },
+            "fractions": {
+              "EXPLICIT_USER_EXPRESSION": 0.5,
+              "NO_DIRECT_USER_ANSWER_TRACE": 0.25,
+              "SUPPORTED_DIRECTION_ONLY": 0.25
+            },
+            "total": 8
+          },
+          "mean_active_dimension_count": 4.0,
+          "mean_delta_separated_minus_mixed": {
+            "active_dimension_count": 1.0,
+            "named_descriptor_count": 1.0,
+            "repeated_dimension_membership_rate": -0.015873015873015817
+          },
+          "mean_repeated_dimension_membership_rate": 0.5555555555555556,
+          "records": 1,
+          "target_or_gap_metric": "NOT_READ_NO_T"
+        }
+      }
+    },
+    "question_source_provenance": {
+      "by_panel": {
+        "main": {
+          "EXACT_DESCRIPTOR_SELECTION": 152,
+          "FIRST_DIMENSION_COMPATIBILITY_ONLY": 164,
+          "NO_SELECTED_DIMENSION_SOURCE": 79
+        },
+        "secondary": {
+          "FIRST_DIMENSION_COMPATIBILITY_ONLY": 160,
+          "NO_SELECTED_DIMENSION_SOURCE": 77
+        }
+      },
+      "descriptor_occurrences": 632,
+      "exact_descriptor_source_slot_counts": {
+        "NONE": 480,
+        "Q2": 66,
+        "Q3": 49,
+        "Q4": 37
+      },
+      "first_compatible_dimension_source_slot_counts": {
+        "NONE": 156,
+        "Q0": 422,
+        "Q1": 12,
+        "Q2": 11,
+        "Q3": 19,
+        "Q4": 12
+      },
+      "interpretation": "First activation is dimension provenance, not causal attribution and not evidence that a broad selection entails a returned child descriptor.",
+      "source_interpretation_counts": {
+        "EXACT_DESCRIPTOR_SELECTION": 152,
+        "FIRST_DIMENSION_COMPATIBILITY_ONLY": 324,
+        "NO_SELECTED_DIMENSION_SOURCE": 156
+      }
+    }
+  },
+  "contract_version": "m2-r9.output-policy-contract.v2",
+  "decision": "The frozen data support multiple separate descriptions of evidence trace, registered-dimension coverage, redundancy, output position, co-occurrence and graph topology. They do not support a single concentration score or automatic descriptor relation. OUT_SEPARATED remains the approved role contract; these observations do not change its selector or claim empirical superiority.",
+  "guards": {
+    "T_used": false,
+    "composite_similarity_defined": false,
+    "embedding_or_cluster_fit": false,
+    "fit_count": 0,
+    "frequency_threshold_selected": false,
+    "output_or_default_changed": false,
+    "scalar_evidence_strength_defined": false,
+    "semantic_relation_edges_created": 0,
+    "subjective_evaluation_used": false,
+    "trigger_or_stopping_rule_changed": false
+  },
+  "private_detail": {
+    "bytes": 2283348,
+    "sha256": "7510c003f8e94c4fc1c4ed88e59e4f0e6bad9ab8bbc9b3a2e5f91487a0fa6a61",
+    "status": "OWNER_CONTROLLED_STORAGE"
+  },
+  "research_limits": [
+    "Evidence classes remain categorical; no 1/0.5/0 strength score was defined.",
+    "First compatible question slot is provenance, not causal contribution or child-descriptor entailment.",
+    "K1 statuses are preserved exactly as observed and are not remapped to an assumed ordinal scale.",
+    "Profile types describe output composition and are not coffee classes or learned clusters.",
+    "All positive co-occurrences are retained without a selected frequency threshold.",
+    "Similarity views remain separate because no cross-view weights are authorized.",
+    "Tripartite centrality is topology induced by registry membership and observed selections, not evidence sufficiency.",
+    "Records and coffee groups are reported separately; no independent-row inference is run."
+  ],
+  "scope": {
+    "coffee_groups": 77,
+    "generator": "C01_FROZEN_RESEARCH_GENERATOR",
+    "records": 79,
+    "registered_named_descriptors": 59,
+    "registered_relation_edges_before_analysis": 0,
+    "relation_edges_created_by_analysis": 0
+  },
+  "source_actual_returns_sha256": "0b754099f83e13d292f7281384fd9197096283bd696f3ca242d171e5925004fc",
+  "status": "RESEARCH_OBSERVATION_ONLY",
+  "version": "m2-r9.semantic-structure-analysis.v1"
+}
