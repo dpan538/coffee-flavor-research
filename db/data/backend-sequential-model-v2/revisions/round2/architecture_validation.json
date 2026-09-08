@@ -1,0 +1,287 @@
+{
+  "contract_version": "round2.architecture-validation.v2",
+  "generated_at_utc": "2026-09-08T07:50:46Z",
+  "elapsed_seconds": 0.1,
+  "why_not_anfis": {
+    "measured_on_subject_groups_per_candidate": 0.0733,
+    "extrapolated_over_capture_ceiling_7000": 510,
+    "owner_position": "even 250 is not a safe floor for ANFIS",
+    "conclusion": "Parameter fitting is not supported by the measured supervision volume."
+  },
+  "substrate_already_in_repo": {
+    "formal_concept_analysis_r9.py": "intent closure enumeration, i.e. a concept lattice",
+    "descriptor_cooccurrence_network": {
+      "registered_nodes": 59,
+      "observed_edges": 134
+    },
+    "descriptor_similarity_views": {
+      "pairs": 1711,
+      "views": 7,
+      "composite": "NOT_DEFINED_NO_CROSS_VIEW_WEIGHTS",
+      "clustering": "NOT_RUN_R9_CLUSTERING_PROHIBITED"
+    },
+    "tripartite_graph": {
+      "nodes": 92,
+      "edges": 86,
+      "layers": {
+        "EVIDENCE_CONCEPT": 24,
+        "NAMED_DESCRIPTOR": 59,
+        "REGISTERED_DIMENSION": 9
+      }
+    },
+    "gated_algorithms": [
+      "MMR_reranking",
+      "submodular_selection",
+      "weighted_evidence_propagation"
+    ]
+  },
+  "validation_data": {
+    "topology_concepts": 82,
+    "dimensions": 9,
+    "observed_groups_rebuilt_from_cache": 2,
+    "note": "Incidence rebuilt only from papers the group-quality audit classified ON_SUBJECT. Small by design; the off-subject material was excluded rather than counted."
+  },
+  "A1_formal_concept_lattice": {
+    "objects": 2,
+    "distinct_intents": 1,
+    "closure_size": 1,
+    "implications_conf_ge_0.9_support_ge_2": 12,
+    "example_implications": [
+      {
+        "antecedent": "dimension.acidity",
+        "consequent": "dimension.aftertaste",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.acidity",
+        "consequent": "dimension.aroma",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.acidity",
+        "consequent": "dimension.body",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.aftertaste",
+        "consequent": "dimension.acidity",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.aftertaste",
+        "consequent": "dimension.aroma",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.aftertaste",
+        "consequent": "dimension.body",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.aroma",
+        "consequent": "dimension.acidity",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.aroma",
+        "consequent": "dimension.aftertaste",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.aroma",
+        "consequent": "dimension.body",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.body",
+        "consequent": "dimension.acidity",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.body",
+        "consequent": "dimension.aftertaste",
+        "support": 2,
+        "confidence": 1.0
+      },
+      {
+        "antecedent": "dimension.body",
+        "consequent": "dimension.aroma",
+        "support": 2,
+        "confidence": 1.0
+      }
+    ]
+  },
+  "A2_spreading_activation": {
+    "named_concepts": 56,
+    "trials": [
+      {
+        "seed": "sensory.apple",
+        "dimension": "fruity",
+        "activated_nodes": 32,
+        "top5": [
+          "sensory.apple",
+          "attribute.fruity",
+          "sensory.orange",
+          "sensory.lemon",
+          "sensory.cherry"
+        ],
+        "top5_sharing_seed_dimension": 5
+      },
+      {
+        "seed": "sensory.jasmine",
+        "dimension": "floral",
+        "activated_nodes": 5,
+        "top5": [
+          "sensory.jasmine",
+          "attribute.floral",
+          "sensory.rose",
+          "sensory.orange_blossom",
+          "sensory.chamomile"
+        ],
+        "top5_sharing_seed_dimension": 5
+      },
+      {
+        "seed": "sensory.honey",
+        "dimension": "sweet",
+        "activated_nodes": 6,
+        "top5": [
+          "sensory.honey",
+          "attribute.sweet",
+          "sensory.caramel",
+          "sensory.brown_sugar",
+          "sensory.vanilla"
+        ],
+        "top5_sharing_seed_dimension": 5
+      },
+      {
+        "seed": "sensory.cocoa",
+        "dimension": "nutty_cocoa",
+        "activated_nodes": 13,
+        "top5": [
+          "sensory.cocoa",
+          "attribute.nutty_cocoa",
+          "sensory.almond",
+          "sensory.hazelnut",
+          "sensory.walnut"
+        ],
+        "top5_sharing_seed_dimension": 5
+      },
+      {
+        "seed": "sensory.cardamom",
+        "dimension": "spices",
+        "activated_nodes": 6,
+        "top5": [
+          "sensory.cardamom",
+          "attribute.spices",
+          "sensory.black_pepper",
+          "sensory.cinnamon",
+          "sensory.nutmeg"
+        ],
+        "top5_sharing_seed_dimension": 5
+      },
+      {
+        "seed": "sensory.tobacco",
+        "dimension": "roasted",
+        "activated_nodes": 13,
+        "top5": [
+          "sensory.tobacco",
+          "attribute.roasted",
+          "sensory.malt",
+          "sensory.smoky",
+          "sensory.dark_chocolate"
+        ],
+        "top5_sharing_seed_dimension": 5
+      }
+    ],
+    "mean_top5_same_dimension_precision": 1.0,
+    "distinct_top5_sets": 6,
+    "trial_count": 6,
+    "discriminates": true
+  },
+  "A3_peer_dimension_clusters": {
+    "peer_clusters": 9,
+    "cluster_sizes": {
+      "2": 1,
+      "4": 1,
+      "5": 2,
+      "6": 2,
+      "8": 1,
+      "9": 1,
+      "25": 1
+    },
+    "concepts_in_multiple_clusters": 2,
+    "named_pairs_sharing_a_dimension": 324,
+    "observed_groups": 2,
+    "mean_dimensions_per_group": 0.0,
+    "groups_needing_arbitration_gt1_dimension": 0,
+    "arbitration_share": 0.0
+  },
+  "guards": {
+    "fit_count": 0,
+    "records_admitted": 0,
+    "r6_rules_created": 0,
+    "concepts_created": 0,
+    "relation_edges_created": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  },
+  "VALIDATION_VERDICTS": {
+    "A1_formal_concept_lattice": {
+      "verdict": "NOT_VALIDATED",
+      "reason": "Requires an observation incidence matrix. Only 5 ON_SUBJECT papers exist in the sample, 3 of which yield zero header concept hits, producing 2 usable objects. A lattice over 2 objects has 1 distinct intent and is meaningless.",
+      "what_it_would_need": "An incidence matrix over tens to hundreds of coffee groups. That is precisely what the corpus cannot currently supply.",
+      "reported_numbers_are_not_evidence": "The 12 implications found at confidence >= 0.9 come from 2 objects and must not be cited."
+    },
+    "A2_spreading_activation": {
+      "verdict": "VALIDATED",
+      "basis": "Runs on the frozen registry topology, which is complete and real: 56 named concepts, 9 support dimensions, membership edges from output_policy_contract.",
+      "results": {
+        "trials": 6,
+        "mean_top5_same_dimension_precision": 1.0,
+        "distinct_top5_sets": 6,
+        "discriminates": true
+      },
+      "significance": "Every seed produced a distinct top-5, and every returned concept shared the seed's dimension. The mechanism separates candidates without any fitted parameter.",
+      "honest_caveat": "Precision 1.0 against the seed's own dimension is partly structural: activation flows through the dimension layer, so same-dimension neighbours are favoured by construction. It confirms the mechanism works, not that its rankings are correct against ground truth, which does not exist."
+    },
+    "A3_peer_dimension_clusters": {
+      "verdict": "PARTIALLY_VALIDATED",
+      "validated": {
+        "cluster_structure_is_real": true,
+        "peer_clusters": 9,
+        "cluster_sizes": {
+          "2": 1,
+          "4": 1,
+          "5": 2,
+          "6": 2,
+          "8": 1,
+          "9": 1,
+          "25": 1
+        },
+        "named_pairs_sharing_a_dimension": 324,
+        "concepts_in_multiple_clusters": 2
+      },
+      "not_validated": {
+        "arbitration_behaviour": "Cannot be tested. Only 2 observed groups exist, and neither spans more than one dimension, so the arbitration path never fires.",
+        "reported_arbitration_share_0.0": "An artefact of having 2 observations, not a finding."
+      },
+      "structural_finding": "Cluster sizes are severely unbalanced: one dimension holds 25 of the 59 named descriptors while another holds 2. Any peer-to-peer scheme that weights clusters equally would be dominated by the large cluster.",
+      "only_2_concepts_belong_to_multiple_clusters": "The peer structure is close to a partition, not a genuine overlap network. This weakens the case for a peer-to-peer design, because peers barely share members."
+    }
+  },
+  "what_this_tells_us": {
+    "principal_finding": "The architectures that depend on the frozen registry topology work today. The architectures that depend on an observation matrix do not, because the observation matrix is exactly what this project cannot build at current corpus size.",
+    "implication": "Architecture selection should be made on that axis rather than on elegance. A design whose validation requires the data the project cannot obtain is not a lower-risk alternative to ANFIS; it has the same dependency wearing different clothes.",
+    "counter_note": "A1 and A3 are not refuted. They are untestable at n=2 and n=5. They become testable if the corpus grows, which is a different bet from ANFIS only in degree."
+  },
+  "operator_discipline_note": "Following the corrective rule adopted after the ninefold retraction, each architecture carries an explicit validation verdict, and figures computed from insufficient data are marked as not citable rather than reported as results."
+}
