@@ -1,0 +1,145 @@
+{
+  "contract_version": "round2.attribute-expansion-analysis.v1",
+  "subject": "Owner-proposed attribute framework to break the equivalence-class collapse",
+  "verdict": "The method is sound and needs far less than proposed. The proposed DATA SOURCE is the one source this project permanently excluded. A licence-clean source already exists inside the project and was validated.",
+  "F1_the_method_works_and_needs_only_three_attributes": {
+    "test": "Appended k continuous attributes with distinct values to D and recounted equivalence classes.",
+    "results": {
+      "baseline_D_59x9": {
+        "classes": 11,
+        "max_class": 23
+      },
+      "D_plus_3_attrs": {
+        "classes": 59,
+        "max_class": 1
+      },
+      "D_plus_6_attrs": {
+        "classes": 59,
+        "max_class": 1
+      },
+      "attrs_only_3": {
+        "classes": 59,
+        "max_class": 1
+      }
+    },
+    "conclusion": "Three continuous attributes with distinct values fully break the collapse. The 16-attribute schema is far more than required. The bottleneck is entirely the provenance of the numbers, not the architecture or the mathematics."
+  },
+  "F2_the_proposed_measurement_model_would_report_false_success": {
+    "severity": "CRITICAL",
+    "test": "Built the proposed 16-attribute matrix with the specified defaults: 6 binary attributes derived from dimensions, 10 continuous attributes at their default 0.5.",
+    "results": {
+      "baseline": {
+        "classes": 11,
+        "max_class": 23,
+        "spectral_gap": 15.82,
+        "participation_ratio": 4.74
+      },
+      "proposed_with_defaults": {
+        "classes": 9,
+        "max_class": 23,
+        "spectral_gap": 145.18,
+        "participation_ratio": 1.52
+      },
+      "continuous_column_variance": 0.0,
+      "rank": "7 of 16 columns"
+    },
+    "finding": "The metrics move in contradictory directions. Spectral gap improves ninefold while participation ratio collapses and max class size does not move at all. The constant 0.5 columns contribute a rank-one component that inflates the largest eigenvalue.",
+    "consequence": "Reporting spectral gap as the headline would declare success while discrimination is unchanged. max_class_size is the metric that tracks the real property; spectral gap alone is actively misleading when constant columns are present.",
+    "recommended_guard": "Never report spectral gap without max_class_size and per-column variance beside it."
+  },
+  "F3_the_proposed_source_is_the_permanently_excluded_one": {
+    "severity": "CRITICAL",
+    "proposal": "ATTRIBUTE_SCHEMA assigns \"source\": \"SCA Flavor Wheel\" to all ten continuous attributes.",
+    "conflict": "The SCA/WCR Coffee Taster's Flavor Wheel is CC BY-NC-ND 4.0. ND forbids derivative works, and encoding its structure as numeric attribute values is a derivative. It sits on this project's permanent exclusion list as SCA_WCR_ND_OR_PERSONAL_DOWNLOAD.",
+    "related": "The WCR Sensory Lexicon is offered for free personal-use download and printing, which is not a reuse licence either.",
+    "consequence": "Adopting the schema as written would encode the one source the project can never use, and would end its provenance defensibility.",
+    "alternative_if_owner_authored": "Owner-assigned numbers would be the subjective evaluation the project forbids as a model or architecture input."
+  },
+  "F4_a_licence_clean_source_already_exists_in_the_project": {
+    "severity": "RESOLVING",
+    "asset": "packages/flavor-data/src/descriptors.ts in the public frontend repository",
+    "structure": {
+      "attributes": [
+        "sourness",
+        "sweetness",
+        "bitterness",
+        "aromaProminence",
+        "body",
+        "roastFermentation"
+      ],
+      "form": "min / typical / max ranges on a 0 to 5 scale",
+      "descriptors": 24,
+      "evidence_status": "project_curated_draft",
+      "licence": "CC BY 4.0, project-authored research content",
+      "bilingual": "labels carry en and zhHans, which also addresses the output-side CN/EN requirement"
+    },
+    "validation": {
+      "overlap_with_r9_registry": 14,
+      "overlapping_descriptors": [
+        "almond",
+        "blueberry",
+        "caramel",
+        "cedar",
+        "cinnamon",
+        "earthy",
+        "hazelnut",
+        "honey",
+        "jasmine",
+        "lemon",
+        "orange",
+        "rose",
+        "smoky",
+        "tobacco"
+      ],
+      "dimensions_only": {
+        "classes": 7,
+        "of": 14,
+        "max_class": 3
+      },
+      "dimensions_plus_project_attributes": {
+        "classes": 14,
+        "of": 14,
+        "max_class": 1
+      },
+      "attributes_only": {
+        "classes": 14,
+        "of": 14,
+        "max_class": 1
+      }
+    },
+    "finding": "The project's own attribute data fully resolves the collapse on every descriptor it covers.",
+    "gap": "14 of 59 registry descriptors are covered. Extending the existing framework to the remaining 45 is 270 values.",
+    "why_this_is_not_a_new_class_of_decision": "The project already made this exact editorial judgement 24 times, under its own licence, labelled project_curated_draft rather than measurement. Extending it continues an existing practice rather than importing a forbidden source.",
+    "comparison": "270 values is the same order of magnitude as the roughly 60 rule approvals R12C priced, and both are owner-throughput problems rather than external supply problems."
+  },
+  "F5_unresolved_the_output_budget_degenerates_at_class_granularity": {
+    "observation": "At 11 equivalence classes, emitting 3 main plus 5 secondary means emitting 8 of 11 classes, 73% of the entire space. That is enumeration, not recommendation.",
+    "status": "Resolves automatically IF attributes are extended, since classes return to 59. Remains a live defect if they are not.",
+    "note": "The 3+5 budget in PRODUCT_CONTRACT_V1 was set against 59 distinguishable descriptors and is degenerate against 11."
+  },
+  "F6_the_fork_that_has_never_been_named": {
+    "question": "Does the product actually require within-class discrimination?",
+    "why_it_matters": "The product exists for people who can tell two coffees differ but lack words. Moving someone from no words to 'citrus-family' already delivers that. Whether bergamot must be separated from blackcurrant has never been asked.",
+    "branch_no": "The 11 classes are the honest output granularity, attribute expansion is unnecessary, and the entire collapse problem dissolves. The budget must change to suit 11 classes.",
+    "branch_yes": "Attributes are required, and the only licence-clean route is extending the project's own framework by 270 values.",
+    "recommendation": "Settle this before further architecture work. One branch makes all of it moot."
+  },
+  "F7_non_monotonic_reasoning": {
+    "owner_point": "Dempster-Shafer accumulates monotonically and cannot express a user changing their mind. Q1 fruity then Q2 nutty then Q3 fruity is treated as conflicting simultaneous evidence rather than revision.",
+    "assessment": "Correct. Accumulation and revision are different operations and DS only implements the first.",
+    "options": [
+      "discount older evidence by recency",
+      "use a belief-revision framework where later evidence can retract earlier commitments",
+      "treat repetition as confirmation and alternation as an explicit revision signal in the question policy rather than in the evidence layer"
+    ],
+    "status": "Real, but downstream of F6. Deferred, not dismissed."
+  },
+  "guards": {
+    "fit_count": 0,
+    "attributes_authored": 0,
+    "concepts_created": 0,
+    "relation_edges_created": 0,
+    "code_adopted_into_production": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
