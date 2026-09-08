@@ -1,5 +1,5 @@
 {
-  "contract_version": "round2.conversion-finding.v1",
+  "contract_version": "round2.conversion-finding.v3",
   "round": "ROUND2_CONVERSION",
   "headline": "Groups per candidate improved roughly ninefold against R11. The extrapolated yield from the Europe PMC portion of the capture alone lands inside the range the power analysis requires.",
   "measurement": {
@@ -51,7 +51,19 @@
       789
     ],
     "assessment": "For the first time in this project the measured trajectory reaches the statistical threshold rather than falling two orders of magnitude short.",
-    "not_established": "This is supervision-capable volume, not admitted supervision."
+    "not_established": "This is supervision-capable volume, not admitted supervision.",
+    "OPERATOR_ERROR_CORRECTED": {
+      "error": "The operator presented 350-800 groups as the threshold that matters, and let it be read as an ANFIS training threshold. It is not.",
+      "what_350_800_actually_is": "An EVALUATION power figure: the sample needed to detect an observed effect of about 0.03 NDCG at 80% power in a paired comparison of two ranking systems. It answers whether A beats B, not whether a model can be fitted.",
+      "what_anfis_actually_needs": {
+        "reason": "ANFIS fits membership-function premise parameters and rule consequent parameters. Rule count grows as m^n for n inputs with m membership functions each, and every rule carries its own consequent parameters.",
+        "illustration": "A conservative 4 inputs x 3 membership functions is already 81 rules; with consequent parameters per rule the parameter count reaches the hundreds. At a common 5-10 samples per parameter this implies thousands of samples.",
+        "owner_position": "Even 250 as a floor is not safe. Recorded as correct.",
+        "status": "The specific requirement depends on the chosen architecture and has NOT been computed. No ANFIS architecture has been specified."
+      },
+      "revised_reading_of_the_265_789_range": "Adequate for EVALUATION. Not established as adequate for ANFIS training, and on the owner's assessment almost certainly not.",
+      "consequence": "The gap between evaluation-adequate and training-adequate volume is now the open question, and it is larger than any figure this project has previously targeted."
+    }
   },
   "what_a_group_is_here": {
     "definition": "A distinct (DOI, surviving sample label) pair on a table that passed the repaired gates and carried at least two resolvable descriptor concepts.",
@@ -92,5 +104,66 @@
     "concepts_created": 0,
     "fit_count": 0,
     "training_pause": "REMAINS_IN_EFFECT"
+  },
+  "RETRACTION": {
+    "withdrawn_claim": "Groups per candidate improved roughly ninefold against R11, extrapolating to 265-789 groups from the Europe PMC portion.",
+    "status": "WITHDRAWN — the headline counted groups without auditing what they were made of.",
+    "audit_result": {
+      "groups_reported": 113,
+      "off_subject_groups": 86,
+      "off_subject_share": 0.8053,
+      "on_subject_groups": 22,
+      "review_not_primary_data": 5,
+      "largest_off_subject_contributors": [
+        {
+          "doi": "10.1093/ntr/nty101",
+          "groups": 36,
+          "title": "An E-Liquid Flavor Wheel",
+          "note": "electronic cigarette liquid flavours, not coffee"
+        },
+        {
+          "doi": "10.3390/foods13213501",
+          "groups": 20,
+          "title": "The Role of Near-Infrared Spectroscopy in Food Quality Assurance: A Review"
+        },
+        {
+          "doi": "10.3390/foods15091487",
+          "groups": 15,
+          "title": "Effects of Cognitive Style and Evaluation Context on Hedonic and Sensory Perception"
+        }
+      ]
+    },
+    "corrected_figures": {
+      "improvement_as_reported": 9.34,
+      "improvement_on_subject_only": 1.82,
+      "on_subject_groups_per_candidate": 0.0733,
+      "r11_groups_per_candidate": 0.0403,
+      "extrapolated_on_subject_groups_over_epmc_portion": 89,
+      "previously_claimed_range": [
+        265,
+        789
+      ]
+    },
+    "consequence_for_the_power_claim": "The earlier statement that the measured trajectory reaches the evaluation threshold for the first time is withdrawn. Roughly 89 on-subject groups over the Europe PMC portion is below the evaluation range, and far below any ANFIS training requirement, which the owner correctly notes is not safe even at 250."
+  },
+  "operator_process_defect": {
+    "pattern": "Three errors of the same class in this session, all reporting a number without first verifying its composition.",
+    "instances": [
+      "Rated 15000-20000 capture as plausible from hit counts without measuring licence-resolution rates.",
+      "Copied R10's malformed Europe PMC URL construction without verifying it returned content.",
+      "Reported 113 groups as a ninefold improvement without auditing whether the groups came from coffee sensory papers."
+    ],
+    "self_assessment": "This is the exact failure mode recorded as R12C-F7 and criticised in R11: counting extraction volume as if it were admitted material. Verification has been happening after reporting rather than before it.",
+    "corrective_rule_proposed": "No count is reported until its composition has been audited. For group counts specifically: subject verdict and named-versus-dimension evidence split must accompany any headline figure."
+  },
+  "evidence_type_finding": {
+    "finding": "Even among on-subject groups the evidence is heavily dimension-level rather than named-descriptor.",
+    "concept_hits": {
+      "dimension": 67,
+      "sensory_named": 27,
+      "broad_or_attribute": 6
+    },
+    "named_share": 0.27,
+    "significance": "The product task is named descriptors. Dimension-level supervision is a different type and does not serve it directly. This mirrors the T4-versus-T1 asymmetry R11 found and reinforces that the abundant material is dimensions, not names."
   }
 }
