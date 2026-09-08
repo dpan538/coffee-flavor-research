@@ -1,0 +1,18 @@
+{
+  "contract_version": "r12.human-control-preregistration.v1",
+  "status": "BLOCKED_HUMAN_VERIFIED_CONTROLS_REQUIRED",
+  "baseline_commit": "7323a32e964a137dcd49886bbe024db2a773dd92",
+  "positive_target": 20,
+  "negative_target": 10,
+  "positive_controls": [],
+  "negative_controls": [],
+  "required_fields": ["candidate_id", "doi", "table_number", "table_shape", "sample_count", "descriptor_count", "expected_extractable_groups", "human_reviewer", "verified_at_utc", "visual_confirmation", "frozen_license_reference", "source_sha256"],
+  "selection_scope": "Existing 248 R10 candidates only; no new acquisition or license investigation.",
+  "execution_rule": "Do not execute formal recall until 20 positives and 10 negatives are genuinely human verified and that completed fixture is committed before execution.",
+  "negative_rule": "Human confirms no qualifying table; expected_extractable_groups=0, table-specific fields may be null with explanation.",
+  "fixed_bands": {"sound_min": 0.8, "lossy_min": 0.3},
+  "recall_unit": "Recovered canonical groups matched to human expected sample identities, not descriptor cells or panelists.",
+  "required_positive_extra": ["expected_sample_identities"],
+  "limitations": "No human verification record has been supplied. Empty arrays are missing ground truth, not zero eligible papers. Even high recall on hand-selected controls does not independently establish population scarcity. Inverse recall is not a population supply estimator.",
+  "fit_count": 0
+}

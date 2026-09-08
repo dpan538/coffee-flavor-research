@@ -1,5 +1,17 @@
 # AGENTS.md
 
+## [M2 R12 OVERRIDE — DIAGNOSTIC ONLY]
+
+Effective 2026-09-08. Training remains paused; fits and real-label model metrics
+must remain zero. Audit only the existing R10/R11 candidates and cached sources;
+do not acquire new candidates, revisit licenses, modify the frozen corpus,
+weights, default finalizer, frontend, CI, deployment, or R11 owner decision.
+Preserve the 135 unrelated deletions. Human-verified controls must be committed
+before their evaluation; AI review and synthetic tests are not human ground truth.
+Missing historical telemetry is unknown, never an empirical zero. Keep the
+unmodified extraction baseline for recall tests and instrument its diagnostic
+replay externally. No scarcity or scale verdict is validated without controls.
+
 ## [M2 R11 OVERRIDE — CORPUS EXPANSION, NO TRAINING]
 
 Effective 2026-09-07. R11 is an owner-authorized acquisition-only round. Training
