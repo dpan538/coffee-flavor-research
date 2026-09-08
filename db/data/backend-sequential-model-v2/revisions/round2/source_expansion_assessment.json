@@ -1,0 +1,100 @@
+{
+  "contract_version": "round2.source-expansion-assessment.v1",
+  "round": "ROUND2_CAPTURE",
+  "purpose": "Assess remaining capture headroom, Asian source viability, and the multilingual mapping consequence of the sources already added.",
+  "measurement_class": "PROBE — live API counts, point in time, not byte-reproducible",
+
+  "measured_pool_sizes": {
+    "note": "Hit counts, not extractable supervision. Every record still faces retrieval, table detection, classification and gating.",
+    "EUROPE_PMC_licence_filtered": {"largest_query": 10591, "broader_query": 30564},
+    "OPENALEX_cc_by": {"coffee sensory": 4218, "coffee flavor": 2157, "coffee cupping": 320},
+    "DOAJ": {"coffee sensory articles": 672, "allowed_non_nd_journal_whitelist": 444},
+    "CORE": {"coffee sensory totalHits": 648444, "caveat": "loose matching; no licence field, requires DOI resolution"},
+    "ZENODO": {"coffee sensory": 31644, "caveat": "loose matching, intermittent 400/504"},
+    "DRYAD": {"coffee sensory": 2, "verdict": "not a viable ongoing family, confirmed genuine scarcity at R12C-F4"},
+    "JSTAGE": {"coffee": 8567, "coffee sensory": 516, "coffee flavor": 514, "コーヒー": 24274},
+    "OPENALEX_by_language": {"pt": 118, "es": 24, "ja": 203, "ko": 28, "zh": 20, "vi": 17, "th": 7}
+  },
+
+  "capture_headroom_estimate": {
+    "method": "Judgement over measured pool sizes, not a computed figure.",
+    "tiers": [
+      {"tier": "8000", "assessment": "ACHIEVABLE", "basis": "in progress; the capped pass reached 1000 without needing an uncapped top-up"},
+      {"tier": "15000-20000", "assessment": "PLAUSIBLE with the added families", "basis": "requires DOAJ, CORE, J-Stage and multilingual OpenAlex all contributing"},
+      {"tier": "beyond 20000", "assessment": "DIMINISHING", "basis": "measured 92.8% relevance rejection at pagination depth; deep pages return records that mention coffee incidentally rather than new subject matter"}
+    ],
+    "principal_uncertainty": {
+      "issue": "OVERLAP",
+      "detail": "OpenAlex is an aggregator indexing Crossref, PMC and DOAJ. CORE aggregates repositories that also feed OpenAlex. Adding these families may produce high duplicate rates against the incumbents rather than new records.",
+      "status": "NOT MEASURED. Deduplication by DOI across all families is required before any headroom figure is treated as real.",
+      "consequence": "Every tier above should be read as an upper bound on gross capture, not on unique records."
+    }
+  },
+
+  "asian_sources": {
+    "viable": [
+      {
+        "source": "J-Stage",
+        "api": "https://api.jstage.jst.go.jp/searchapi/do (Atom XML)",
+        "measured": "24274 for コーヒー, 8567 for coffee, 516 for coffee sensory",
+        "assessment": "Largest single untapped family measured. Japanese academic coffee literature is a genuinely separate population from MDPI and PMC.",
+        "caveat": "Licence must be resolved per record; not yet verified whether J-Stage exposes one."
+      },
+      {
+        "source": "OpenAlex Asian language filters",
+        "measured": "ja 203, ko 28, zh 20, vi 17, th 7 — roughly 275 total",
+        "assessment": "Already implemented in acquire_round2_sources_ext.py. Small but licence-clean and free.",
+        "caveat": "Small absolute yield."
+      }
+    ],
+    "not_viable": [
+      {
+        "source": "Coffee competitions (World Barista Championship, Cup of Excellence, SCAJ, national championships)",
+        "reason": "Competition results are not openly licensed. The project already excludes Cup of Excellence and SCA material on exactly this basis; Asian competitions carry the same defect and admitting them would reverse a standing decision.",
+        "status": "EXCLUDED, consistent with the standing excluded-source list"
+      },
+      {
+        "source": "CNKI, Wanfang and other Chinese subscription databases",
+        "reason": "Subscription-based and not openly licensed.",
+        "consequence": "This is a real limitation for a CN/EN bilingual product: OpenAlex returns only 20 open-access Chinese-language coffee records. The Chinese sensory literature is largely not open, so Chinese-language evidence cannot be sourced the way Portuguese or Japanese evidence can."
+      },
+      {
+        "source": "KoreaScience",
+        "reason": "No API response during probing (HTTP 000).",
+        "status": "not pursued"
+      }
+    ]
+  },
+
+  "multilingual_mapping_consequence": {
+    "trigger": "The multilingual OpenAlex families added in acquire_round2_sources_ext.py capture papers whose descriptor tables are in the source language. A smoke run returned Portuguese titles such as 'ANÁLISE SENSORIAL: um café e diferentes métodos de preparo'.",
+    "the_two_halves": [
+      {
+        "half": "OUTPUT — product presentation",
+        "problem": "The product is CN/EN bilingual, so every emitted concept needs a Chinese label.",
+        "shape": "One label per concept. Bounded at roughly 56 decisions plus any new concepts.",
+        "difficulty": "LOW. Presentation only; no inference is affected.",
+        "existing_asset": "The public frontend repository already carries bilingual EN/CN labels for its 24 pilot descriptors and can seed this."
+      },
+      {
+        "half": "INPUT — foreign surface forms",
+        "problem": "The R6 registry holds 42 rules, all English spans such as berry, nutty and stone fruit. A Portuguese table reading 'amêndoa, caramelo, chocolate' matches nothing.",
+        "shape": "Unbounded vocabulary, multiplied per language. Same class as the standing 1429-item review queue.",
+        "difficulty": "HIGH."
+      }
+    ],
+    "these_are_not_the_same_problem": "Treating a Chinese output label and a Portuguese input mapping as one bilingual task would be a design error. One is presentation; the other is evidence.",
+    "specificity_hazard": {
+      "risk": "Machine-translating foreign descriptors into English before mapping can silently change specificity. 'amêndoa' to 'almond' is safe; sensory vocabulary that has no clean English equivalent is not.",
+      "conflict": "This would violate the standing rule that a mapping may not increase specificity beyond what the source states.",
+      "recommendation": "If foreign-language descriptors are to be mapped, translation must be a recorded, reviewable mapping step with its own provenance, not an invisible preprocessing step. Not implemented; no such mapping was created."
+    },
+    "status": "RAISED_NOT_ACTIONED"
+  },
+
+  "guards": {
+    "records_admitted": 0, "tables_extracted": 0, "r6_rules_created": 0,
+    "concepts_created": 0, "translations_created": 0, "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT", "sealed_artifacts_modified": false
+  }
+}
