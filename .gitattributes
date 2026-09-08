@@ -16,7 +16,6 @@
 *.sql text eol=lf
 *.sh text eol=lf
 *.tsv text eol=lf whitespace=-blank-at-eol
-
 *.png binary
 *.jpg binary
 *.jpeg binary
@@ -26,7 +25,8 @@
 *.woff2 binary
 *.pdf binary
 *.docx binary
-
 # Frozen external source bytes must retain repository-published line endings so
 # their committed SHA-256 values remain identical to the source registries.
 db/data/round3b/raw/** -text
+db/data/current/CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv filter=lfs diff=lfs merge=lfs -text
+db/data/current/CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv filter=lfs diff=lfs merge=lfs -text
