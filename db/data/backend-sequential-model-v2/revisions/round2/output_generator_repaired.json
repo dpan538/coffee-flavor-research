@@ -1,0 +1,127 @@
+{
+  "contract_version": "round2.output-generator-repaired.v1",
+  "entrypoint": "db/scripts/output_generator_round2.py",
+  "status": "REPAIRED_AND_VERIFIED — evaluation on real frozen states still blocked",
+  "repairs_verified": [
+    {
+      "id": "D1",
+      "severity": "CRITICAL",
+      "was": "main = sorted(direct_named)[:3] discarded user-stated words by spelling",
+      "now": "direct evidence is never dropped for budget; overflow occupies secondary ahead of any representative",
+      "verification": {
+        "user_stated": 5,
+        "retained": 5,
+        "lost": 0,
+        "main": [
+          "almond",
+          "lemon",
+          "rose"
+        ],
+        "secondary": [
+          "smoky",
+          "vanilla"
+        ]
+      }
+    },
+    {
+      "id": "D2",
+      "severity": "CRITICAL",
+      "was": "coverage computed from main only, so a dropped word's dimension was substituted by its broad representative",
+      "now": "coverage computed from the full direct set",
+      "verification": {
+        "covered_dimensions": [
+          "floral",
+          "fruity",
+          "nutty_cocoa",
+          "roasted",
+          "sweet"
+        ],
+        "uncovered_activated": [],
+        "note": "no broad substitution for a dimension the user already named"
+      }
+    },
+    {
+      "id": "D3",
+      "severity": "HIGH",
+      "was": "uncovered dimensions ordered by dimension-name spelling",
+      "now": "SUPPORTED_WITHIN_SCOPE before PROPOSED, declared lexicographic tiebreak within tier",
+      "verification": {
+        "supported": [
+          "sweet"
+        ],
+        "proposed": [
+          "floral",
+          "fruity"
+        ],
+        "secondary": [
+          "broad.sweet",
+          "broad.floral"
+        ]
+      }
+    },
+    {
+      "id": "D4",
+      "severity": "HIGH",
+      "was": "profile truncated alphabetically across evidence tiers, so the only SUPPORTED dimension could be pushed out",
+      "now": "ranked by tier, truncated within tier",
+      "verification": {
+        "profile": [
+          "attribute.sweet",
+          "attribute.floral",
+          "attribute.fruity"
+        ],
+        "note": "sweet, the only SUPPORTED dimension, now ranks first"
+      }
+    },
+    {
+      "id": "D5",
+      "severity": "MEDIUM",
+      "status": "EXPOSED_NOT_DECIDED",
+      "detail": "suppress_profile_when_secondary defaults to False, preserving current behaviour. Owner decision still required."
+    }
+  ],
+  "standing_rule_adopted": "Any truncation orders by a declared evidence property first. sorted() may only break ties afterwards. Three separate defects in this project were lexicographic accident acting as a decision rule.",
+  "projection": {
+    "status": "SIMULATION, NOT MEASUREMENT",
+    "why": "Frozen per-case states are in owner-controlled storage. States were synthesised to match the published aggregates: 79 records, 152 direct occurrences with mean 1.92, 19 records carrying at least 3, and 213 supported dimension occurrences with mean 2.70.",
+    "seeds": [
+      11,
+      22,
+      33
+    ],
+    "current_registry_3_broad_concepts": {
+      "secondary_non_empty_rate": "0.519",
+      "mean_secondary": "0.67 - 0.68",
+      "mean_main": "1.42 - 1.59",
+      "mean_profile": "2.25 - 2.30",
+      "direct_evidence_lost": 0
+    },
+    "with_6_proposed_concepts_simulated_in_memory": {
+      "secondary_non_empty_rate": "0.924 - 0.987",
+      "mean_secondary": "1.54 - 1.66",
+      "mean_main": "1.42 - 1.59",
+      "mean_profile": "2.25 - 2.30",
+      "direct_evidence_lost": 0
+    },
+    "headline": "The six concepts take secondary from roughly half the cases to nearly all of them, and roughly double the mean secondary count.",
+    "why_mean_main_is_below_1.92": "Not an error. Records carrying more than three direct words contribute exactly 3 to main and route the remainder to secondary, so mean main is necessarily below the 1.92 mean direct-evidence count. The two numbers measure different things.",
+    "simulation_limits": [
+      "The direct-count distribution is constructed to satisfy mean 1.92 and the 19-of-79 constraint, but its exact shape is unknown.",
+      "Dimension activation is assigned at random with a 70 percent SUPPORTED split, which is an assumption, not a measurement.",
+      "These figures indicate direction and rough magnitude. They are not the audit."
+    ]
+  },
+  "still_blocked": {
+    "real_evaluation": "Needs the 474 per-case returns in owner-controlled storage.",
+    "six_concepts": "Proposed, not created. concepts_created remains 0.",
+    "D5": "Product decision outstanding."
+  },
+  "guards": {
+    "concepts_created": 0,
+    "registry_mutations": 0,
+    "relation_edges_created": 0,
+    "fit_count": 0,
+    "output_or_default_changed": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
