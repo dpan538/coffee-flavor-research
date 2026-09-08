@@ -1,0 +1,120 @@
+{
+  "contract_version": "round2.capability-vs-promise-audit.v1",
+  "question": "Can the small-model-cluster architecture deliver the product promises, without ANFIS?",
+  "verdict": "YES for the core promise, with one concrete gap in option presentation that must be closed.",
+  "how_the_promise_is_actually_delivered": {
+    "misreading_corrected": "Strict-evidence main returns only DIRECT_DESCRIPTOR_TRACE, defined in audit_semantic_integrity_r9 as selected_or_confirmed_direct. That looks like the system echoing the user's own words back.",
+    "why_it_is_not_an_echo": "question_bank emits specific questions whose options are individual descriptors with relation_type DIRECT_OBSERVATION. The system proposes the specific words; the user recognises one. The system's contribution is narrowing and presenting, the user's is recognition.",
+    "delivery_chain": [
+      "model narrows 65 descriptors to an equivalence class using information gain",
+      "model presents class members as options",
+      "user recognises a word they could not produce unaided",
+      "that word becomes direct evidence and appears in main"
+    ],
+    "significance": "The promise is delivered by the QUESTION layer, not the output layer. Every audit in this project so far measured the output layer."
+  },
+  "does_it_still_need_a_fitted_model": {
+    "select_next_question": {
+      "mechanism": "information gain over bundle train_records",
+      "needs_fitted_model": false
+    },
+    "rank_candidates": {
+      "mechanism": "bundle model_weights, model_intercepts, priors; evidence tagged fitted-model:<fit_id>",
+      "needs_fitted_model": true
+    },
+    "new_output_design": {
+      "main": "direct evidence with a declared tiebreak — no ranking",
+      "secondary": "direct overflow then class representatives — declared rules, no ranking",
+      "overall_profile": "evidence-tier ordered — no ranking",
+      "conclusion": "The repaired output design has removed the dependency on fitted ranking for OUTPUT."
+    },
+    "residual_dependency": "Option presentation still needs to choose WHICH class members to show, and that is a ranking problem."
+  },
+  "information_budget": {
+    "descriptors": 65,
+    "equivalence_classes": 11,
+    "bits_to_reach_a_class": 3.46,
+    "bits_to_reach_a_descriptor": 6.02,
+    "budget": "5 sensory questions at 4 options each, about 2 bits per question, so up to 10 bits",
+    "verdict": "Sufficient. Reaching class granularity needs about 2 questions; reaching a single descriptor needs about 4.",
+    "topology_ceiling": {
+      "largest_class_members": 23,
+      "within_class_entropy_bits": 4.52,
+      "note": "The MODEL can never remove this. The USER can, by recognising a presented option. That is the division of labour the product depends on."
+    }
+  },
+  "THE_GAP": {
+    "id": "ROUND2-F4",
+    "severity": "HIGH",
+    "finding": "The option budget cannot present the largest class. Recorded option budget is 4,4,4,4,3 for 19 slots total. The fruity class alone holds 23 members.",
+    "arithmetic": {
+      "option_slots_total": 19,
+      "largest_class": 23,
+      "descriptors": 65
+    },
+    "consequence": "For a user whose coffee is fruity, the system can narrow to the class but cannot show them all 23 candidate words within the question budget. Which 4 to show is a ranking decision, and ranking is the part that depended on a fitted model.",
+    "why_it_matters": "This is exactly where the product promise is delivered. If the right word is not among the 4 shown, the user leaves without it.",
+    "options_that_need_no_training": [
+      "corpus frequency: show the most frequently attested members. Data-dependent but not fitted.",
+      "declared editorial priority per class, in the manner of the six broad concepts",
+      "progressive disclosure: use a follow-up question inside the class, spending 2 questions instead of 1",
+      "present the class representative plus a see-more affordance, moving the choice into the interface rather than the model"
+    ],
+    "status": "OPEN — requires an owner decision, and it is the last mechanism gap between the architecture and the promise."
+  },
+  "promise_by_promise": [
+    {
+      "promise": "move someone from no words toward specific references",
+      "verdict": "DELIVERABLE",
+      "mechanism": "question layer presents specific descriptors as options",
+      "caveat": "subject to ROUND2-F4"
+    },
+    {
+      "promise": "3 main + 2 secondary + 3 directions",
+      "verdict": "DELIVERABLE",
+      "measured": "mean main 1.42-1.59, secondary non-empty 0.92-0.99 after the six concepts"
+    },
+    {
+      "promise": "never fabricate specificity",
+      "verdict": "DELIVERABLE",
+      "mechanism": "main is confirmed evidence only; class representatives are used where only dimension support exists"
+    },
+    {
+      "promise": "preserve every user-stated word",
+      "verdict": "DELIVERABLE",
+      "measured": "direct_evidence_lost = 0 across all runs after the D1 repair"
+    },
+    {
+      "promise": "abstention preserved at inference, constrained in UI",
+      "verdict": "DELIVERABLE",
+      "note": "unchanged by this architecture"
+    },
+    {
+      "promise": "bilingual CN/EN",
+      "verdict": "BLOCKED",
+      "gap": "59 registry descriptors and 9 directions lack zhHans labels; the six new concepts have them"
+    },
+    {
+      "promise": "no claim of detecting true flavour",
+      "verdict": "DELIVERABLE",
+      "note": "strengthened: the system now says class-family where it cannot say more"
+    }
+  ],
+  "what_is_no_longer_needed": [
+    "ANFIS",
+    "fitted candidate ranking for OUTPUT",
+    "within-class model discrimination"
+  ],
+  "what_is_still_needed": [
+    "option-selection rule inside a class (ROUND2-F4)",
+    "zhHans labels",
+    "question and option wording",
+    "a new evaluation baseline"
+  ],
+  "guards": {
+    "fit_count": 0,
+    "concepts_created": 6,
+    "relation_edges_created": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
