@@ -1,0 +1,164 @@
+{
+  "contract_version": "round2.broad-layer-proposal.v1",
+  "status": "CANDIDATES_FOR_OWNER_DECISION_NOTHING_CREATED",
+  "purpose": "Complete the mid-level layer so the redefined secondary has a candidate in every dimension it can activate.",
+  "reasoning_that_changes_the_original_proposal": [
+    {
+      "id": "R1",
+      "finding": "The 11 equivalence classes are 9 single-dimension classes plus 2 cross-dimension ones: dark_chocolate on nutty_cocoa+roasted, and lemongrass on fruity+green_vegetative.",
+      "consequence": "A completed broad.* layer is literally the naming of the equivalence classes the topology supports. The mid-level layer is not an addition to the structure; it is the structure made expressible."
+    },
+    {
+      "id": "R2",
+      "finding": "The taste dimension has exactly one member, sensory.bitter.",
+      "consequence": "A representative for taste would say 'taste-family' where the system could already say 'bitter'. That is a LOSS of specificity, not a gain.",
+      "decision": "Do not author a representative for taste. The ask drops from 7 concepts to 6."
+    },
+    {
+      "id": "R3",
+      "finding": "A new broad.* concept has a feature vector identical to its dimension siblings, so it joins the equivalence class rather than splitting it.",
+      "consequence": "This change will NOT improve max_class_size, equivalence_class_count or per-column variance, and must not be measured by the representation-progress rule the owner just set. It is an expressibility change, not a representation change. Measuring it by that rule would report failure for a change that is working as intended.",
+      "correct_metric": "secondary non-empty rate, and mean secondary count per record."
+    }
+  ],
+  "proposed_concepts": [
+    {
+      "id": "broad.floral",
+      "dimension": "floral",
+      "existing_members": 4,
+      "members": [
+        "chamomile",
+        "jasmine",
+        "orange_blossom",
+        "rose"
+      ],
+      "label_en": "Floral",
+      "label_zh": "花香类"
+    },
+    {
+      "id": "broad.green",
+      "dimension": "green_vegetative",
+      "existing_members": 7,
+      "members": [
+        "black_tea",
+        "cedar",
+        "earthy",
+        "green_tea",
+        "hay",
+        "lemongrass",
+        "woody"
+      ],
+      "label_en": "Green / vegetal",
+      "label_zh": "青草植物类"
+    },
+    {
+      "id": "broad.roasted",
+      "dimension": "roasted",
+      "existing_members": 4,
+      "members": [
+        "dark_chocolate",
+        "malt",
+        "smoky",
+        "tobacco"
+      ],
+      "label_en": "Roasted",
+      "label_zh": "烘烤类"
+    },
+    {
+      "id": "broad.fermented",
+      "dimension": "sour_fermented",
+      "existing_members": 3,
+      "members": [
+        "alcoholic",
+        "fermented_character",
+        "wine_like_character"
+      ],
+      "label_en": "Fermented",
+      "label_zh": "发酵类"
+    },
+    {
+      "id": "broad.spice",
+      "dimension": "spices",
+      "existing_members": 5,
+      "members": [
+        "black_pepper",
+        "cardamom",
+        "cinnamon",
+        "clove",
+        "nutmeg"
+      ],
+      "label_en": "Spice",
+      "label_zh": "香料类"
+    },
+    {
+      "id": "broad.sweet",
+      "dimension": "sweet",
+      "existing_members": 5,
+      "members": [
+        "brown_sugar",
+        "caramel",
+        "honey",
+        "molasses",
+        "vanilla"
+      ],
+      "label_en": "Sweet",
+      "label_zh": "甜感类"
+    }
+  ],
+  "not_proposed": [
+    {
+      "dimension": "taste",
+      "reason": "single member, sensory.bitter; a representative would reduce specificity",
+      "id_would_have_been": "broad.taste"
+    }
+  ],
+  "naming_collision_check": {
+    "method": "Compared each proposed short name against every existing member short name in its dimension.",
+    "existing_broad_short_names": [
+      "citrus",
+      "chocolate",
+      "nutty"
+    ],
+    "collisions_found": 0,
+    "note": "broad.green is chosen over broad.vegetal to avoid confusion with the existing green_tea member."
+  },
+  "deterministic_selection_rule_required": {
+    "problem": "nutty_cocoa carries two representatives, broad.chocolate and broad.nutty. The prototype's middle_candidates[0] resolves this by registry insertion order, which is incidental rather than declared.",
+    "proposed_rule": "Lexicographic on concept id. For nutty_cocoa this yields broad.chocolate.",
+    "status": "PROPOSED, requires owner confirmation because it is a product-facing wording choice, not a technical detail.",
+    "alternative_worth_considering": "Prefer the representative whose members carry the most direct evidence in the current corpus. Rejected here as it makes the output depend on corpus composition rather than on a declared rule."
+  },
+  "projected_effect": {
+    "supported_dimension_occurrences_per_record": 2.7,
+    "direct_named_per_record": 1.92,
+    "uncovered_dimensions_per_record_upper_bound": 0.77,
+    "caveat": "0.77 assumes each direct named descriptor covers a distinct dimension. In practice they cluster, since 23 of 59 descriptors sit in fruity alone, so real uncovered count is higher.",
+    "estimated_secondary_fill": "roughly 1 to 1.5 per record, against 0 today",
+    "measurement_blocked": "Exact fill requires the 474 per-case returns in owner-controlled storage. This is a bound, not a measurement."
+  },
+  "what_this_does_and_does_not_change": {
+    "does": [
+      "Removes the structural emptiness of secondary for 8 of 9 dimensions",
+      "Lets the system say 'floral-family' where it currently says nothing",
+      "Preserves OUT_SEPARATED: all six concepts carry role NAMED_DESCRIPTOR"
+    ],
+    "does_not": [
+      "Enable within-class discrimination. main stays direct-evidence only at mean 1.92.",
+      "Create relation edges. The 312 occurrences requiring an edge still require one.",
+      "Change what the system knows. It changes what it can say about what it knows."
+    ]
+  },
+  "cost_comparison": {
+    "this_proposal": "6 concepts with bilingual labels",
+    "within_class_ranking": "~60 relation-edge rule approvals",
+    "full_attribute_coverage": "270 values across 45 descriptors"
+  },
+  "guards": {
+    "concepts_created": 0,
+    "relation_edges_created": 0,
+    "fit_count": 0,
+    "registry_mutations": 0,
+    "output_or_default_changed": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
