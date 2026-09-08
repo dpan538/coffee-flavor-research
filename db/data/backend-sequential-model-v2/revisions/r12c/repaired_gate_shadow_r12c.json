@@ -1,0 +1,978 @@
+{
+  "contract_version": "r12c.repaired-gate-shadow.v1",
+  "generated_at_utc": "2026-09-08T04:25:45Z",
+  "guards": {
+    "fit_count": 0,
+    "formal_relation_edges_created": 0,
+    "network_calls": 0,
+    "new_acquisition_count": 0,
+    "r6_rules_created": 0,
+    "records_promoted": 0,
+    "sealed_artifacts_modified": false,
+    "training_corpus_written": false
+  },
+  "inputs": {
+    "candidates_processed": 203,
+    "r11_extraction_report_sha256": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531",
+    "tables_seen": 400
+  },
+  "limitations": [
+    "Shadow measurement of gate behaviour only. No record was extracted, mapped, grouped, admitted, or written to any corpus.",
+    "A table passing the repaired gates is not established supervision. Downstream descriptor-axis resolution, sample identity and grouping still apply.",
+    "G5 is reported as a row-level count on newly admitted tables; it was not used to retroactively re-audit the sealed R11 admissions.",
+    "Widening the professional-panel vocabulary is a judgement about sensory methods reporting. It should be reviewed before any of this is promoted."
+  ],
+  "mode": "SHADOW_MEASUREMENT_ONLY",
+  "newly_admitted_tables": [
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "doi": "10.1002/fsn3.1404",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 6
+      },
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 8,
+      "row_labels_blocked_by_g5": 6,
+      "row_labels_surviving": 2,
+      "sample_label_sample": [
+        "Fragrance",
+        "Aroma",
+        "Acidity",
+        "Bitterness",
+        "Body",
+        "Sweetness"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "fsn31404-tbl-0001",
+      "title": "Sensory attributes of coffee beverages and their relation to price and package information: A case study of Colombian customers’ preferences"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "doi": "10.1002/fsn3.1404",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 18,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 18,
+      "sample_label_sample": [
+        "p11",
+        "p19",
+        "p20",
+        "p21",
+        "p23",
+        "p35"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "fsn31404-tbl-0004",
+      "title": "Sensory attributes of coffee beverages and their relation to price and package information: A case study of Colombian customers’ preferences"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "doi": "10.1002/fsn3.35",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 1
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 6,
+      "row_labels_blocked_by_g5": 1,
+      "row_labels_surviving": 5,
+      "sample_label_sample": [
+        "Appearance",
+        "Odor (orthonasal perception)/flavor",
+        "Odor (orthonasal perception)/flavor",
+        "Taste",
+        "Mouthfeel",
+        "Aftertaste"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "tbl2",
+      "title": "Changes in sensory quality characteristics of coffee during storage"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.71278",
+      "doi": "10.1002/fsn3.71278",
+      "g5_block_classes": {
+        "AXIS_HEADER_AS_SAMPLE": 12
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 12,
+      "row_labels_blocked_by_g5": 12,
+      "row_labels_surviving": 0,
+      "sample_label_sample": [
+        "Descriptors",
+        "Descriptors",
+        "Descriptors",
+        "Descriptors",
+        "Descriptors",
+        "Descriptors"
+      ],
+      "table_fully_blocked_by_g5": true,
+      "table_id": "fsn371278-tbl-0002",
+      "title": "Sensory Perception and Physicochemical Characteristics of Geisha Coffee From Different Production Zones in Panama."
+    },
+    {
+      "candidate_id": "10.1021/acs.jafc.5c17022",
+      "doi": "10.1021/acs.jafc.5c17022",
+      "g5_block_classes": {
+        "CHEMICAL_SOLUTION": 4
+      },
+      "old_reason": "CHEMICAL_OR_TASTANT_SYSTEM_NOT_COFFEE_SAMPLE",
+      "row_label_total": 4,
+      "row_labels_blocked_by_g5": 4,
+      "row_labels_surviving": 0,
+      "sample_label_sample": [
+        "caffeine (7.5 mmol/L)",
+        "caffeine (7.5 mmol/L) + 5-CQA (7.5 mmol/L)",
+        "HMW > 10 kDa (original coffee concentration)",
+        "caffeine (7.5 mmol/L) + 5-CQA (7.5 mmol/L) + HMW > 10 kDa (original coffee concentration)"
+      ],
+      "table_fully_blocked_by_g5": true,
+      "table_id": "tbl1",
+      "title": "Impact of Interactions between Melanoidins and Caffeine on the Bitter Taste of Coffee Beverages."
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "doi": "10.1021/acsomega.4c10914",
+      "g5_block_classes": {
+        "STATISTICS_ROW": 3
+      },
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 3,
+      "row_labels_blocked_by_g5": 3,
+      "row_labels_surviving": 0,
+      "sample_label_sample": [
+        "# of samples",
+        "Range",
+        "Mean ± SDb"
+      ],
+      "table_fully_blocked_by_g5": true,
+      "table_id": "tbl1",
+      "title": "Physicochemical Parameters and Multivariate Analysis to Predict the Sensory Quality in Specialty Coffee from Panama."
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "doi": "10.1021/acsomega.4c10914",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 3,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 3,
+      "sample_label_sample": [
+        "Washed",
+        "Natural",
+        "Washed + Natural"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "tbl3",
+      "title": "Physicochemical Parameters and Multivariate Analysis to Predict the Sensory Quality in Specialty Coffee from Panama."
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "doi": "10.1021/acsomega.4c10914",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 3,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 3,
+      "sample_label_sample": [
+        "Washed",
+        "Natural",
+        "Washed + Natural"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "tbl4",
+      "title": "Physicochemical Parameters and Multivariate Analysis to Predict the Sensory Quality in Specialty Coffee from Panama."
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "doi": "10.1021/acsomega.4c10914",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 3,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 3,
+      "sample_label_sample": [
+        "Washed",
+        "Natural",
+        "Washed + Natural"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "tbl5",
+      "title": "Physicochemical Parameters and Multivariate Analysis to Predict the Sensory Quality in Specialty Coffee from Panama."
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c00404",
+      "doi": "10.1021/acsomega.5c00404",
+      "g5_block_classes": {},
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 6,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 6,
+      "sample_label_sample": [
+        "Barely Soft",
+        "Hard +",
+        "Hard",
+        "Hard –",
+        "Rio",
+        "Fermented"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "tbl1",
+      "title": "Sensory Classification of Brazilian &lt;i&gt;Coffea arabica&lt;/i&gt; by Laser-Assisted Rapid Evaporative Ionization Mass Spectrometry and Machine Learning Algo"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "doi": "10.1038/s41538-026-00852-1",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 16
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 23,
+      "row_labels_blocked_by_g5": 16,
+      "row_labels_surviving": 7,
+      "sample_label_sample": [
+        "Umami",
+        "Umami",
+        "Umami",
+        "Sweet",
+        "Sweet",
+        "Sweet"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "Tab3",
+      "title": "Kombucha inoculated fermentation reshapes microbial ecology and flavour metabolism in Yunnan Arabica coffee."
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "doi": "10.1038/s41598-020-73341-4",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 3
+      },
+      "old_reason": "ANALYTIC_OR_REFERENCE_TABLE_NOT_SUPERVISION",
+      "row_label_total": 33,
+      "row_labels_blocked_by_g5": 3,
+      "row_labels_surviving": 30,
+      "sample_label_sample": [
+        "Aroma",
+        "Aroma",
+        "Aroma",
+        "Taste",
+        "Taste",
+        "Taste"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "Tab1",
+      "title": "Brew temperature, at fixed brew strength and extraction, has little impact on the sensory profile of drip brew coffee."
+    },
+    {
+      "candidate_id": "10.1038/s41598-022-06676-9",
+      "doi": "10.1038/s41598-022-06676-9",
+      "g5_block_classes": {
+        "CHEMICAL_SOLUTION": 6,
+        "DESCRIPTOR_AS_SAMPLE": 14
+      },
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 24,
+      "row_labels_blocked_by_g5": 20,
+      "row_labels_surviving": 4,
+      "sample_label_sample": [
+        "5-CQA*",
+        "5-CQA*",
+        "3-CQA*",
+        "3-CQA*",
+        "4-CQA*",
+        "4-CQA*"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "Tab2",
+      "title": "Comparison of chemical compounds and their influence on the taste of coffee depending on green beans storage conditions."
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-69867-6",
+      "doi": "10.1038/s41598-024-69867-6",
+      "g5_block_classes": {},
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 13,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 13,
+      "sample_label_sample": [
+        "Light-4C-T2",
+        "Light-4C-T3",
+        "Light-4C-T4",
+        "Light-4C-T5",
+        "Light-22C-T2",
+        "Light-22C-T3"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "Tab2",
+      "title": "Sensory analysis of the flavor profile of full immersion hot, room temperature, and cold brewed coffee over time."
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "doi": "10.1111/1750-3841.71157",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 2
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 23,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 21,
+      "sample_label_sample": [
+        "Appearance",
+        "Brown crema color (CRC)",
+        "Brown coffee color (BCC)",
+        "Crema volume (CVL)",
+        "Crema creaminess (CCS)",
+        "Aroma"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "jfds71157-tbl-0001",
+      "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee."
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "doi": "10.1111/1750-3841.71157",
+      "g5_block_classes": {
+        "AXIS_HEADER_AS_SAMPLE": 2
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 21,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 19,
+      "sample_label_sample": [
+        "Descriptors",
+        "Descriptors",
+        "Brown crema color (CRC)",
+        "Brown coffee color (BCC)",
+        "Crema volume (CVL)",
+        "Crema creaminess (CCS)"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "jfds71157-tbl-0003",
+      "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee."
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "doi": "10.1155/2022/2365603",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 1
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 6,
+      "row_labels_blocked_by_g5": 1,
+      "row_labels_surviving": 5,
+      "sample_label_sample": [
+        "Natural 1",
+        "Natural 2",
+        "Natural 3",
+        "Wine",
+        "Honey",
+        "Semiwashed"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "tab3",
+      "title": "Profile of Bioactive Compounds, Aromas, and Cup Quality of Excelsa Coffee (<i>Coffea liberica</i> var. <i>dewevrei</i>) Prepared from Diverse Postharvest Proces"
+    },
+    {
+      "candidate_id": "10.1590/fst.96122",
+      "doi": "10.1590/fst.96122",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 2
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 13,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 11,
+      "sample_label_sample": [
+        "Score (0~9)",
+        "Aroma characteristics",
+        "richness",
+        "matureness",
+        "Smoke characteristics",
+        "fluentness"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-1",
+      "title": "Effects of coffee and cocoa as fermentation additives on sensory quality and chemical compositions of cigar tobacco leaves"
+    },
+    {
+      "candidate_id": "10.1590/fst.96221",
+      "doi": "10.1590/fst.96221",
+      "g5_block_classes": {
+        "STATISTICS_ROW": 2
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 14,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 12,
+      "sample_label_sample": [
+        "Traditional Mırra",
+        "TM-4",
+        "TM-6",
+        "TM-7",
+        "TM-1",
+        "TM-9"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-4",
+      "title": "Bioactive compounds, antioxidant activity, physical and sensory characteristics of Mırra coffee"
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "doi": "10.1590/s0100-204x2018000900010",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 4
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 12,
+      "row_labels_blocked_by_g5": 4,
+      "row_labels_surviving": 8,
+      "sample_label_sample": [
+        "Diamante ES8112 (early maturing)",
+        "103E",
+        "Powder fragrance",
+        "CACB",
+        "Defects",
+        "Acidity"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-1",
+      "title": "Sensory profile of conilon coffee brews from the state of Espírito Santo, Brazil"
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "doi": "10.1590/s0100-204x2018000900010",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 3
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 17,
+      "row_labels_blocked_by_g5": 3,
+      "row_labels_surviving": 14,
+      "sample_label_sample": [
+        "Diamante ES8112 (early maturing)",
+        "103E",
+        "Acid",
+        "Bitter",
+        "Astringent",
+        "Characteristic residual flavor of coffee"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-2",
+      "title": "Sensory profile of conilon coffee brews from the state of Espírito Santo, Brazil"
+    },
+    {
+      "candidate_id": "10.1590/s1678-3921.pab2020.v55.02240",
+      "doi": "10.1590/s1678-3921.pab2020.v55.02240",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 1
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 11,
+      "row_labels_blocked_by_g5": 1,
+      "row_labels_surviving": 10,
+      "sample_label_sample": [
+        "Aroma",
+        "Block",
+        "Treatment",
+        "Error 1",
+        "Year",
+        "Error 2"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-3",
+      "title": "Productivity and beverage sensory quality of arabica coffee intercropped with timber species"
+    },
+    {
+      "candidate_id": "10.3389/fsufs.2024.1382976",
+      "doi": "10.3389/fsufs.2024.1382976",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 3
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 14,
+      "row_labels_blocked_by_g5": 3,
+      "row_labels_surviving": 11,
+      "sample_label_sample": [
+        "(Intercept)",
+        "Green/Vegetative",
+        "Other",
+        "Roasted",
+        "Sweet",
+        "Fruity"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-1",
+      "title": "Sensory profiles of Robusta coffee (Coffea canephora) genetic resources from the Democratic Republic of the Congo"
+    },
+    {
+      "candidate_id": "10.3389/fsufs.2024.1382976",
+      "doi": "10.3389/fsufs.2024.1382976",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 4,
+        "NO_COFFEE_IDENTITY": 1
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 13,
+      "row_labels_blocked_by_g5": 5,
+      "row_labels_surviving": 8,
+      "sample_label_sample": [
+        "(Intercept)",
+        "Green/Vegetative",
+        "Other",
+        "Roasted",
+        "Spices",
+        "Nutty/Cocoa"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "html-table-2",
+      "title": "Sensory profiles of Robusta coffee (Coffea canephora) genetic resources from the Democratic Republic of the Congo"
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "doi": "10.3390/foods11192968",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 6
+      },
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 8,
+      "row_labels_blocked_by_g5": 6,
+      "row_labels_surviving": 2,
+      "sample_label_sample": [
+        "Color",
+        "Nutty",
+        "Coffee",
+        "Fruity",
+        "Sweet",
+        "Sour"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-11-02968-t004",
+      "title": "Comparative Profiling of Hot and Cold Brew Coffee Flavor Using Chromatographic and Sensory Approaches."
+    },
+    {
+      "candidate_id": "10.3390/foods11193144",
+      "doi": "10.3390/foods11193144",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 1,
+        "NO_COFFEE_IDENTITY": 7
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 20,
+      "row_labels_blocked_by_g5": 8,
+      "row_labels_surviving": 12,
+      "sample_label_sample": [
+        "Male",
+        "26%",
+        "Level of education",
+        "Basic education",
+        "6%",
+        "Family income (MW: minimum wages)"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-11-03144-t004",
+      "title": "Volatile Fingerprinting and Sensory Profiles of Coffee Cascara Teas Produced in Latin American Countries"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "doi": "10.3390/foods12203857",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 6,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 6,
+      "sample_label_sample": [
+        "Pressure/(MPa)20 min",
+        "Pressure/(MPa)20 min",
+        "Pressure/(MPa)20 min",
+        "Pressure/(MPa)20 min",
+        "Pressure/(MPa)20 min",
+        "Control group"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-12-03857-t004",
+      "title": "Evaluation of Physicochemical Characteristics and Sensory Properties of Cold Brew Coffees Prepared Using Ultrahigh Pressure under Different Extraction Condition"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "doi": "10.3390/foods12203857",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 6,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 6,
+      "sample_label_sample": [
+        "Holding time/(min)300 MPa",
+        "Holding time/(min)300 MPa",
+        "Holding time/(min)300 MPa",
+        "Holding time/(min)300 MPa",
+        "Holding time/(min)300 MPa",
+        "Control group"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-12-03857-t005",
+      "title": "Evaluation of Physicochemical Characteristics and Sensory Properties of Cold Brew Coffees Prepared Using Ultrahigh Pressure under Different Extraction Condition"
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "doi": "10.3390/foods13030484",
+      "g5_block_classes": {
+        "NO_COFFEE_IDENTITY": 5
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 14,
+      "row_labels_blocked_by_g5": 5,
+      "row_labels_surviving": 9,
+      "sample_label_sample": [
+        "Male",
+        "32%",
+        "Level of education",
+        "Basic education",
+        "2%",
+        "Family income (MW: minimum wages)"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-13-00484-t003",
+      "title": "Volatilome, Microbial, and Sensory Profiles of Coffee Leaf and Coffee Leaf-Toasted Maté Kombuchas."
+    },
+    {
+      "candidate_id": "10.3390/foods13050642",
+      "doi": "10.3390/foods13050642",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 7,
+        "STATISTICS_ROW": 1
+      },
+      "old_reason": "NOT_SENSORY_TABLE",
+      "row_label_total": 8,
+      "row_labels_blocked_by_g5": 8,
+      "row_labels_surviving": 0,
+      "sample_label_sample": [
+        "Aroma",
+        "Flavor",
+        "Aftertaste",
+        "Acidity",
+        "Body",
+        "Balance"
+      ],
+      "table_fully_blocked_by_g5": true,
+      "table_id": "foods-13-00642-t005",
+      "title": "Physicochemical and Sensory Properties of <i>Arabica</i> Coffee Beans of Arara cv. Dried Using Different Methods."
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "doi": "10.3390/foods13243995",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 2
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 31,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 29,
+      "sample_label_sample": [
+        "o.coffee",
+        "o.chocolate",
+        "o.smoky",
+        "o.ash",
+        "o.burnt",
+        "o.earthy"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-13-03995-t001",
+      "title": "Effect of Temperature and Storage on Coffee's Volatile Compound Profile and Sensory Characteristics."
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "doi": "10.3390/foods13243995",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 2
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 31,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 29,
+      "sample_label_sample": [
+        "o.coffee",
+        "o.chocolate",
+        "o.smoky",
+        "o.ash",
+        "o.burnt",
+        "o.earthy"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-13-03995-t003",
+      "title": "Effect of Temperature and Storage on Coffee's Volatile Compound Profile and Sensory Characteristics."
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "doi": "10.3390/foods13243995",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 2
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 31,
+      "row_labels_blocked_by_g5": 2,
+      "row_labels_surviving": 29,
+      "sample_label_sample": [
+        "o.coffee",
+        "o.chocolate",
+        "o.smoky",
+        "o.ash",
+        "o.burnt",
+        "o.earthy"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-13-03995-t004",
+      "title": "Effect of Temperature and Storage on Coffee's Volatile Compound Profile and Sensory Characteristics."
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "doi": "10.3390/foods14060911",
+      "g5_block_classes": {
+        "NO_COFFEE_IDENTITY": 1
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 6,
+      "row_labels_blocked_by_g5": 1,
+      "row_labels_surviving": 5,
+      "sample_label_sample": [
+        "Verdim",
+        "B01",
+        "Bicudo",
+        "Alecrim",
+        "700",
+        "CH1"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-14-00911-t005",
+      "title": "Major Bioactive Compounds, Volatile and Sensory Profiles of &lt;i&gt;Coffea canephora&lt;/i&gt; Flowers and Infusions for Waste Management in Coffee Production."
+    },
+    {
+      "candidate_id": "10.3390/foods14162811",
+      "doi": "10.3390/foods14162811",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 3
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 7,
+      "row_labels_blocked_by_g5": 3,
+      "row_labels_surviving": 4,
+      "sample_label_sample": [
+        "SensoryAttribute",
+        "Aroma",
+        "Taste",
+        "Aftertaste",
+        "Acidity",
+        "Mouthfeel"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-14-02811-t002",
+      "title": "Ultrasonic-Assisted Nanoparticle Engineering to Enhance the Extraction Efficiency and Sensory Quality of Saudi Coffee."
+    },
+    {
+      "candidate_id": "10.3390/foods15081284",
+      "doi": "10.3390/foods15081284",
+      "g5_block_classes": {
+        "AXIS_HEADER_AS_SAMPLE": 1,
+        "DESCRIPTOR_AS_SAMPLE": 9
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 12,
+      "row_labels_blocked_by_g5": 10,
+      "row_labels_surviving": 2,
+      "sample_label_sample": [
+        "Attributes",
+        "Fragrance",
+        "Flavor",
+        "Aftertaste",
+        "Acidity",
+        "Body"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-15-01284-t006",
+      "title": "Effect of Temperature on the Drying Kinetics of Caturra Coffee: Correlation with Hyperspectral Imaging and Sensory Quality."
+    },
+    {
+      "candidate_id": "10.3390/foods15091543",
+      "doi": "10.3390/foods15091543",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 32,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 32,
+      "sample_label_sample": [
+        "Brazile_1",
+        "Brazile_2",
+        "Brazile_3",
+        "Brazile_4",
+        "Brazile_5",
+        "Colombia_1"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-15-01543-t001",
+      "title": "Explainable Artificial Intelligence for Coffee Quality Control: From Coffee Origins to Aroma Intensity."
+    },
+    {
+      "candidate_id": "10.3390/foods15111980",
+      "doi": "10.3390/foods15111980",
+      "g5_block_classes": {},
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 17,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 17,
+      "sample_label_sample": [
+        "Sample",
+        "SDCL",
+        "SPPF",
+        "SPPF",
+        "SPPF",
+        "SPPF"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "foods-15-01980-t004",
+      "title": "Study on the Functional, Physiological, and Sensory Properties of Coffee Leaf Dark Tea Processed Using the Pile Fermentation Method of Pu-Erh Tea."
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "doi": "10.3390/molecules31091518",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 55,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 55,
+      "sample_label_sample": [
+        "Variety",
+        "C. liberica var. liberica",
+        "C. liberica var. liberica",
+        "C. liberica var. liberica",
+        "C. liberica var. liberica",
+        "C. liberica var. liberica"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "molecules-31-01518-t002",
+      "title": "Liberica Coffee (&lt;i&gt;Coffea liberica&lt;/i&gt;): A Bibliometric Analysis and Targeted Review of Physical, Bioactive, and Sensory Characteristics."
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "doi": "10.3390/molecules31091518",
+      "g5_block_classes": {},
+      "old_reason": "CONSUMER_SUBJECTIVE_DATA_EXCLUDED",
+      "row_label_total": 5,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 5,
+      "sample_label_sample": [
+        "C. liberica/Indonesia",
+        "C. liberica/Indonesia",
+        "C. liberica/Indonesia",
+        "C. liberica/Indonesia",
+        "C. liberica var. dewevrei/Indonesia"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "molecules-31-01518-t005",
+      "title": "Liberica Coffee (&lt;i&gt;Coffea liberica&lt;/i&gt;): A Bibliometric Analysis and Targeted Review of Physical, Bioactive, and Sensory Characteristics."
+    },
+    {
+      "candidate_id": "10.3390/s150101354",
+      "doi": "10.3390/s150101354",
+      "g5_block_classes": {
+        "DESCRIPTOR_AS_SAMPLE": 3
+      },
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 8,
+      "row_labels_blocked_by_g5": 3,
+      "row_labels_surviving": 5,
+      "sample_label_sample": [
+        "Coffee",
+        "Mushroom",
+        "Pine",
+        "Honey",
+        "Strawberry",
+        "Mint"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "t3-sensors-15-01354",
+      "title": "Improving the performance of an electronic nose by wine aroma training to distinguish between drip coffee and canned coffee."
+    },
+    {
+      "candidate_id": "10.3390/s21062016",
+      "doi": "10.3390/s21062016",
+      "g5_block_classes": {},
+      "old_reason": "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS",
+      "row_label_total": 9,
+      "row_labels_blocked_by_g5": 0,
+      "row_labels_surviving": 9,
+      "sample_label_sample": [
+        "MQ3",
+        "MQ4",
+        "MQ7",
+        "MQ8",
+        "MQ135",
+        "MQ136"
+      ],
+      "table_fully_blocked_by_g5": false,
+      "table_id": "sensors-21-02016-t002",
+      "title": "Integrating a Low-Cost Electronic Nose and Machine Learning Modelling to Assess Coffee Aroma Profile and Intensity"
+    }
+  ],
+  "repairs": {
+    "G1_consumer_scope": "table caption, or absence of any professional-panel signal under a widened vocabulary",
+    "G2_supervision_cue": "caption match OR >=2 resolvable descriptor/dimension terms in the table itself",
+    "G3_licence_trust": "trust R10 resolved non-ND licence instead of demanding re-verification",
+    "G4_descriptor_axis_window": "widened from row[:3] (applied in G2 content scan as row[:12])",
+    "G5_instrumental_sample_guard": "NEW rejection of m/z, RI/RT, CAS, peak, wavelength, PC/LV identifiers used as samples"
+  },
+  "results": {
+    "g3_candidate_ids": [
+      "10.1007/s00217-013-1917-x",
+      "10.1016/j.foodqual.2018.03.009",
+      "10.1016/j.foodqual.2021.104427",
+      "10.1016/j.foodres.2024.114333",
+      "10.1021/acsomega.5c01783",
+      "10.1186/2044-7248-1-14",
+      "10.1556/066.2019.48.3.3",
+      "10.21107/agrointek.v15i2.6219",
+      "10.25338/B8C91C",
+      "10.3389/fmicb.2024.1476091",
+      "10.3389/fnhum.2025.1661214",
+      "10.3389/fnut.2024.1542109",
+      "10.5281/zenodo.13894505",
+      "10.5281/zenodo.18342524",
+      "10.5281/zenodo.5617710",
+      "10.5281/zenodo.5913038",
+      "10.5281/zenodo.8071568",
+      "10.5935/1806-6690.20170010"
+    ],
+    "g3_candidates_recovered": 18,
+    "g5_block_class_totals": {
+      "AXIS_HEADER_AS_SAMPLE": 15,
+      "CHEMICAL_SOLUTION": 10,
+      "DESCRIPTOR_AS_SAMPLE": 95,
+      "NO_COFFEE_IDENTITY": 14,
+      "STATISTICS_ROW": 6
+    },
+    "new_table_reason_counts": {
+      "ADMITTED_BY_REPAIRED_GATES": 44,
+      "ANALYTIC_OR_REFERENCE_TABLE_NOT_SUPERVISION": 14,
+      "CHEMICAL_TABLE": 16,
+      "CONSUMER_SUBJECTIVE_DATA_EXCLUDED": 13,
+      "EMPTY_TABLE": 3,
+      "NONCOFFEE_DOMAIN": 11,
+      "NOT_SENSORY_TABLE_CAPTION_AND_CONTENT": 297,
+      "PARSE_FAILED:ParseError": 2,
+      "REFERENCE_LEXICON_TABLE": 2
+    },
+    "old_table_rejection_counts": {
+      "ANALYTIC_OR_REFERENCE_TABLE_NOT_SUPERVISION": 61,
+      "CHEMICAL_OR_TASTANT_SYSTEM_NOT_COFFEE_SAMPLE": 8,
+      "COFFEE_FLAVORED_PRODUCT_NOT_COFFEE_SAMPLE": 15,
+      "CONSUMER_SUBJECTIVE_DATA_EXCLUDED": 175,
+      "NOT_SENSORY_TABLE": 107,
+      "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS": 23,
+      "None": 3
+    },
+    "tables_newly_admitted": 42,
+    "tables_newly_admitted_containing_blocked_labels": 29,
+    "tables_newly_admitted_fully_blocked_by_g5": 4,
+    "tables_newly_admitted_with_surviving_rows": 38
+  },
+  "round": "R12C"
+}

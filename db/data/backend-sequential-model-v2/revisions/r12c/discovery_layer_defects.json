@@ -1,0 +1,127 @@
+{
+  "capture_audit": {
+    "candidate_total": 248,
+    "candidates_per_query": {
+      "DRYAD_1": 1,
+      "DRYAD_4": 1,
+      "EUROPE_PMC_1": 79,
+      "EUROPE_PMC_2": 24,
+      "EUROPE_PMC_3": 24,
+      "OPENALEX_CC-BY": 184,
+      "ZENODO_1": 8
+    },
+    "candidates_per_source_system": {
+      "DRYAD": 1,
+      "EUROPE_PMC": 92,
+      "OPENALEX": 147,
+      "ZENODO": 8
+    },
+    "declared_disposition": "DISCOVERY_CANDIDATE_REQUIRES_SAMPLE_DESCRIPTOR_TABLE_ADAPTER",
+    "declared_gate_dependency": "ENHANCEMENT_NOT_PREREQUISITE_GATE_ALREADY_GO",
+    "manifest_sha256": "98e99f9acfdc882841e14c4d310c42d4934d0d6e976631af933746d683af8880",
+    "measurement_class": "STATIC",
+    "query_count": 12,
+    "query_error_count": 0
+  },
+  "contract_version": "r12c.discovery-layer-audit.v1",
+  "fit_count": 0,
+  "mapping_layer_audit": {
+    "distinct_source_dois": 29,
+    "distinct_surface_forms": 1301,
+    "finding": "The mapper receives each table cell as one atomic surface form. Multi-term odour-description cells, which are the standard reporting format for GC-O and sensory tables, therefore never match a single-term rule and are queued wholesale as NO_FROZEN_R6_RULE. This is a missing cell-tokenisation step, not a vocabulary coverage gap.",
+    "formal_relation_edges_created": 0,
+    "mapped_assertion_count": 33,
+    "mapping_direction_counts": {
+      "GENERALISATION": 32,
+      "IDENTITY_OR_HEAD_PRESERVING": 1
+    },
+    "measurement_class": "STATIC",
+    "owner_review_queue_size": 1429,
+    "queue_reason_counts": {
+      "NO_FROZEN_R6_RULE": 1429
+    },
+    "queue_shape_counts": {
+      "T5": 413,
+      "T6": 1016
+    },
+    "source_artifact": "db/data/backend-sequential-model-v2/revisions/r11/mapping_audit.json",
+    "source_sha256": "ccd46a7a5e1f76fda5c3bca15c2fc492109031503975f1ae10e779a75d07c250",
+    "surface_form_structure": {
+      "clean_single_entry": {
+        "count": 337,
+        "share": 0.2590315142198309
+      },
+      "footnote_or_citation_marker": {
+        "count": 249,
+        "share": 0.191391237509608
+      },
+      "multi_term_separator": {
+        "count": 913,
+        "share": 0.7017678708685626
+      },
+      "parenthetical_qualifier": {
+        "count": 42,
+        "share": 0.03228285933897002
+      }
+    },
+    "tokenisation_recoverable": {
+      "caveat": "This is a lower bound on tokenisation-recoverable forms, not a promise of admission. Each token would still require a frozen R6 rule and owner approval under existing policy. No mapping was created.",
+      "count": 754,
+      "examples": [
+        "Acidic, sharp, cheesy, sour, milky, tobacco, fruity",
+        "Acidic, sour, pungent, vinegar",
+        "Acidic, sour, pungent, vinegar 1,2",
+        "Acidic/vinegary if excessive; moderate levels add fruity complexity",
+        "Acrid, fruity",
+        "Acrylate, aromatic, fruity",
+        "Alcoholic, ethereal, medicinal, sweet",
+        "Aldehyde, grassy, green, leafy, vinegar",
+        "Almond, burnt sugar, fruity, cherry, sweet",
+        "Almond, burnt sugar, tropical fruit 1,2",
+        "Almond, caramel, burnt sugar, spice, maple, sweet, brown, grain, maple-like 1,2",
+        "Almond, chocolate, caramel",
+        "Almonds, nuts",
+        "Animalic, floral, moth, mothball, fecal, naphthelene",
+        "Apple peel, fruit, sweet, pineapple, waxy, green, banana 1,2"
+      ],
+      "known_root_vocabulary_size": 27,
+      "method": "Split on , ; / after stripping citation markers, footnote digits and parentheticals, then test each token against a deliberately small root vocabulary drawn from the project's own nine support dimensions and terms already proven to map.",
+      "share": 0.579554189085319
+    }
+  },
+  "new_acquisition_count": 0,
+  "pagination_audit": {
+    "finding": "No pagination construct present. Every API is queried exactly once and truncated at the page-size literal above.",
+    "has_while_loop": false,
+    "measurement_class": "STATIC",
+    "page_size_literals": [
+      {
+        "lineno": 125,
+        "parameter": "per_page",
+        "value": 100
+      },
+      {
+        "lineno": 148,
+        "parameter": "pageSize",
+        "value": 1000
+      },
+      {
+        "lineno": 179,
+        "parameter": "per-page",
+        "value": 200
+      },
+      {
+        "lineno": 200,
+        "parameter": "size",
+        "value": 25
+      }
+    ],
+    "paginates": false,
+    "pagination_token_hits": [],
+    "source_file": "db/scripts/acquire_license_verified_r10.py",
+    "source_sha256": "df29b69805c0b370357d3ddc1de80bf582d6377d297e45f3788e0007c4c541d7"
+  },
+  "round": "R12C",
+  "scope": "Discovery layer only. No acquisition, no admission, no eligibility change.",
+  "sealed_artifacts_modified": false
+}

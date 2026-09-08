@@ -1,0 +1,557 @@
+{
+  "contract_version": "r12c.owner-scope-decision.v9",
+  "round": "R12C",
+  "status": "OWNER_DECIDED_SCOPE_ONLY",
+  "decided_by": "owner",
+  "recorded_by": "Claude, acting operator for R12C",
+  "scope_of_this_record": "Concept-space scope only. This record does NOT settle the Option A / B / C architecture question, does not lift the training pause, and creates no rule, concept or relation edge.",
+  "guards": {
+    "fit_count": 0,
+    "r6_rules_created": 0,
+    "concepts_created": 0,
+    "registry_mutations": 0,
+    "formal_relation_edges_created": 0,
+    "records_admitted": 0,
+    "sealed_artifacts_modified": false,
+    "training_pause": "REMAINS_IN_EFFECT",
+    "option_abc_decision": "UNCHANGED_PENDING_OWNER_DECISION"
+  },
+  "decisions": [
+    {
+      "id": "D1",
+      "topic": "Editorial authority over flavour-percept judgement",
+      "decision": "The audit author's judgement about what counts as a flavour percept is accepted, but rejected terms are not to be discarded.",
+      "implication": "Category D moves from DELETE to RETAIN_OUT_OF_DESCRIPTOR_SPACE. Terms such as fresh, clean, mild and coffee are kept as recorded surface forms with a non-descriptor role rather than dropped from the corpus.",
+      "supersedes": "The R12C review sheet recommendation to REJECT category D."
+    },
+    {
+      "id": "D2",
+      "topic": "Defect and off-flavour terms",
+      "decision": "Admitted. Defects are to be grouped into clusters, attached to the corresponding flavour concept, and carry a low score used as a fuzzy decision input.",
+      "structural_implication": "A defect is not a separate output space. It is a low-membership region of the existing flavour space. This requires a defect cluster relation and a membership-weight attribute on the attachment, neither of which exists today.",
+      "affected_terms": [
+        "musty",
+        "rancid",
+        "sweaty",
+        "soapy",
+        "phenolic",
+        "sulfury",
+        "cheesy",
+        "cheese"
+      ],
+      "note": "This design is fuzzy-native. It is coherent with the Option C-fuzzy direction but does not by itself decide it."
+    },
+    {
+      "id": "D3",
+      "topic": "Mouthfeel and texture terms",
+      "decision": "Not flavour descriptors. Bound instead to C0 preparation and C1 roast inference as context evidence.",
+      "structural_implication": "Requires a role that emits nothing into the flavour output but contributes to context inference. No such role exists in the current registry.",
+      "affected_terms": [
+        "fatty",
+        "oily",
+        "waxy",
+        "creamy"
+      ],
+      "CORRECTED_v4": {
+        "operator_error": "v1-v3 recorded mouthfeel as evidence that INFERS C0 and C1. The direction is reversed.",
+        "actual": "The user states roast (C1) and preparation/method (C0) directly, as answered questions. Mouthfeel then acts as AUXILIARY VERIFICATION, confirming or discriminating candidates against the already-stated roast and method.",
+        "role_consequence": "CONTEXT_EVIDENCE_C0 / CONTEXT_EVIDENCE_C1 are misnamed. They do not feed context inference; they verify candidate consistency with a context the user already supplied.",
+        "proposed_rename": "CONTEXT_CONSISTENCY_CHECK",
+        "status": "rename proposed by operator, NOT approved"
+      }
+    },
+    {
+      "id": "D4",
+      "topic": "Scope of the concept space beyond flavour",
+      "decision": "The system must also hold roast information and coffee species/variety, not only flavour terms.",
+      "structural_implication": "Promotes roast level and coffee kind from incidental metadata to first-class concept-space members. Directly addresses the standing C0 and C1 coverage gap.",
+      "note": "Several tables recovered by the R12C gate repair carry exactly this material: Washed/Natural processing contrasts, Light-4C-T2..T5 roast-by-temperature series, and a C. liberica variety series."
+    },
+    {
+      "id": "D5",
+      "topic": "Chemical class names",
+      "decision": "Not percepts. Excluded from the descriptor space.",
+      "affected_terms": [
+        "pyrazine",
+        "aldehydic",
+        "ethereal"
+      ],
+      "consistency_note": "Consistent with the standing exclusion of instrumental and chemical identifiers as coffee samples (R12C G5)."
+    },
+    {
+      "id": "D6",
+      "topic": "Individual term rulings",
+      "admitted": [
+        "green",
+        "pungent"
+      ],
+      "excluded": [],
+      "owner_stated_reason": "spicy and burnt appear unsuitable for the overall system.",
+      "resolved": {
+        "ruling": "Both spicy and burnt are RETAINED as C1 roast context evidence, not excluded from the system.",
+        "spicy": "attributed as incidental to light and medium roast",
+        "burnt": "attributed to dark roast",
+        "role": "CONTEXT_EVIDENCE_C1",
+        "supersedes": "The v1 record's 'excluded' ruling and both operator readings; reading 1 was partially correct for burnt but wrong to treat spicy as merely redundant."
+      }
+    },
+    {
+      "id": "D7",
+      "topic": "Defect layer visibility - CORRECTION OF AN OPERATOR MISUNDERSTANDING",
+      "decision": "Defect terms are attached to the attributed flavour description as a RESEARCH REFERENCE and are NEVER exposed to the user frontend. The low score is a low-confidence hint used to orient the flavour cluster. A defect never appears as product output.",
+      "operator_error_corrected": "The R12C operator recorded a product risk in v1 Q2 on the assumption that defects would be emitted to users with low scores, and warned this could describe a rancid coffee as a faint normal flavour. That assumption was wrong. Defects are an internal inference signal, not an output channel, so the risk does not arise.",
+      "structural_implication": "DEFECT_DESCRIPTOR requires a hard non-emission property. It must be impossible for a defect concept to reach main, secondary or overall_profile.",
+      "enforceable_invariant": "No record carrying role DEFECT_DESCRIPTOR may appear in any product output surface. This is testable and should be a contract test, in the manner of the existing output-policy tests."
+    },
+    {
+      "id": "D8",
+      "topic": "Defect attachment cardinality and the role of association",
+      "decision": "Association may be used as a hint. Multi-attachment is permitted, but its function is to REDUCE the candidate set only. It must not be used to perform precise inference directly.",
+      "structural_implication": "The defect layer is a weighted graph, but the weights carry pruning authority only, not ranking authority. Candidate reduction and candidate ranking must remain separable and separately auditable.",
+      "resolves": "Q3",
+      "note": "This is a deliberately weaker use of association than the graph structure would permit, and is consistent with the project's standing refusal to let unvalidated structure drive output precision."
+    },
+    {
+      "id": "D9",
+      "topic": "Offline capability - correction of an unilateral agent decision",
+      "decision": "The product is a PWA, but the usage environment is fully online throughout. Offline capability is NOT a requirement.",
+      "origin_of_error": "Offline-capable PWA development was undertaken by Codex on its own initiative, not from an owner requirement.",
+      "operator_error_also_corrected": "The R12C operator repeated this assumption when estimating frontend effort, listing an offline fallback page and service-worker caching strategy as required work. That estimate included work the product does not need.",
+      "consequence": "PWA scope narrows to installability and mobile-first delivery. No offline app shell, no offline fallback, no cache-invalidation strategy for offline use."
+    },
+    {
+      "id": "D10",
+      "topic": "The seven-question algorithm and the function of Q4 and Q5",
+      "decision": "The seven-question algorithm is C0 + C1 + Q0 + Q1 + Q2 + Q3 + Q4. This is confirmed correct.",
+      "q5_purpose": "Q5 exists to compensate when rounds two and three did not yield enough discriminating questions.",
+      "functional_roles": {
+        "normal_path": "Rounds two and three are sufficient. Q4 performs REINFORCEMENT. The interaction ends at seven questions. Q5 is not needed.",
+        "compensating_path": "Round two was insufficient. Q4 performs CORRECTION instead, and REINFORCEMENT moves to Q5. Q5 appearing then necessarily triggers Q6."
+      },
+      "key_insight": "Q4 has two distinct functions depending on path. It is not a fixed step. Reinforcement always happens; what varies is whether it lands on Q4 or Q5.",
+      "supersedes": "The frozen contract's characterisation of Q5 as an 'exceptional maximum'. Q5 is a compensating correction step with a defined function, not an exception."
+    },
+    {
+      "id": "D11",
+      "topic": "Output shape",
+      "decision": "3 main + 5 secondary, superseding the prototype's 5 primary + 3 secondary.",
+      "rationale": "Alignment with Q6, where the user selects three items they are certain of.",
+      "downstream_impact": "The product-inference-v0 package, its 120 policy cases and the R9 three-policy comparison were all computed under main_maximum=5 and secondary_maximum=3 and do not describe the current design."
+    },
+    {
+      "id": "D12",
+      "topic": "Q5 and Q6 confirmed, with revised frequency expectation",
+      "decision": "Q5 is correct and Q6 is reasonable. Both are retained. Their trigger frequency is lower than earlier design work assumed.",
+      "consistency_note": "Consistent with F16. If the original inference was driven by outputs from a defective pipeline, an inflated apparent need for correction and fallback is the expected artefact.",
+      "recorded_in_contract": "PRODUCT_CONTRACT_V1 section 2, expected frequency, and section 8."
+    }
+  ],
+  "new_roles_implied": {
+    "note": "The decisions above cannot be expressed in the current R9 concept role registry, which holds only NAMED_DESCRIPTOR (59), PROFILE_DIRECTION (9) and OTHER_NATIVE_MEASUREMENT (14).",
+    "required": [
+      {
+        "role": "DEFECT_DESCRIPTOR",
+        "from": "D2",
+        "needs": "cluster membership, low-weight attachment to one or more parent flavour concepts, and a hard non-emission property",
+        "visibility": "INTERNAL_ONLY_NEVER_EMITTED",
+        "authority": "CANDIDATE_REDUCTION_ONLY_NOT_RANKING"
+      },
+      {
+        "role": "CONTEXT_EVIDENCE_C0",
+        "from": "D3",
+        "needs": "contributes to preparation inference, emits nothing to flavour output"
+      },
+      {
+        "role": "CONTEXT_EVIDENCE_C1",
+        "from": "D3, D6",
+        "needs": "contributes to roast inference, emits nothing to flavour output",
+        "covers": [
+          "fatty",
+          "oily",
+          "waxy",
+          "creamy",
+          "spicy",
+          "burnt"
+        ],
+        "attribution_examples": {
+          "spicy": "light/medium roast",
+          "burnt": "dark roast"
+        }
+      },
+      {
+        "role": "ROAST_INFORMATION",
+        "from": "D4",
+        "needs": "first-class roast level representation"
+      },
+      {
+        "role": "COFFEE_KIND",
+        "from": "D4",
+        "needs": "species and variety representation"
+      },
+      {
+        "role": "RETAINED_NON_DESCRIPTOR",
+        "from": "D1",
+        "needs": "recorded but never emitted as a flavour"
+      }
+    ],
+    "status": "IMPLIED_BY_DECISIONS_NOT_YET_SPECIFIED_OR_CREATED"
+  },
+  "open_questions_for_owner": [],
+  "not_decided_by_this_record": [
+    "Option A / B / C architecture",
+    "Whether training resumes",
+    "Any specific R6 rule, concept id, or relation edge",
+    "The 46 category-C terms individually; only the policy clusters were ruled on"
+  ],
+  "resolved_questions": [
+    {
+      "id": "Q1",
+      "resolved_by": "D6.resolved",
+      "answer": "spicy -> light/medium roast; burnt -> dark roast; both retained as C1 evidence."
+    },
+    {
+      "id": "Q2",
+      "resolved_by": "D7",
+      "answer": "Defects are internal research reference and cluster-orientation hints, never user-facing. Operator's stated product risk was based on a wrong assumption and is withdrawn."
+    },
+    {
+      "id": "Q3",
+      "resolved_by": "D8",
+      "answer": "Multi-attachment allowed; association prunes candidates but does not drive precise inference."
+    }
+  ],
+  "product_interaction_flow_owner_stated": {
+    "source": "owner statement, R12C",
+    "numbering_note": "Both C and Q are zero-indexed. C0, C1, Q0, Q1 form the first round.",
+    "base_seven": "C0 + C1 + Q0 + Q1 + Q2 + Q3 + Q4 = 7. This is the 'seven questions' referred to earlier.",
+    "rounds": [
+      {
+        "round": 1,
+        "questions": [
+          "C0",
+          "C1",
+          "Q0",
+          "Q1"
+        ],
+        "mandatory": true,
+        "note": "All four are mandatory. Q0 was previously unknown to the operator."
+      },
+      {
+        "round": 2,
+        "questions": [
+          "Q2",
+          "Q3",
+          "Q4"
+        ],
+        "mandatory": true,
+        "note": "ALSO MANDATORY. What is conditional is the sequencing, not whether they are asked.",
+        "sequencing_variants": [
+          "Q2 -> Q3 -> Q4",
+          "Q2-3 -> Q4",
+          "Q2-3 -> Q4-5"
+        ]
+      },
+      {
+        "round": 3,
+        "questions": [
+          "Q5"
+        ],
+        "mandatory": false,
+        "trigger": "sequencing variant Q2-3 -> Q4-5",
+        "consequence": "The appearance of Q5 NECESSARILY triggers Q6."
+      },
+      {
+        "round": 4,
+        "questions": [
+          "Q6"
+        ],
+        "mandatory": false,
+        "triggers": [
+          "Q5 occurred",
+          "candidate confusion in the earlier questions"
+        ],
+        "mechanic": "The user is shown the 3 main + 5 candidate list and selects the three they are absolutely certain of. The system then re-summarises and regenerates 3 main + 5 candidates.",
+        "note": "Q6 is a user-in-the-loop disambiguation step, not another sensory question."
+      }
+    ],
+    "operator_errors_corrected": [
+      "The operator previously described the flow as C0, C1, Q1 mandatory with Q2-Q4 conditional and Q5 exceptional, and stated the flow may terminate early at Q3. That was wrong: Q2-Q4 are mandatory and only their sequencing is conditional.",
+      "The operator did not know Q0 existed.",
+      "The operator repeatedly described early termination as a design feature. Early termination of the mandatory set does not occur."
+    ],
+    "CORRECTED_v4": {
+      "operator_error": "v3 listed three sequencing variants as if they were alternatives within one round. The actual structure is three rounds forming two paths.",
+      "rounds": [
+        {
+          "round": 1,
+          "questions": [
+            "C0",
+            "C1",
+            "Q0",
+            "Q1"
+          ],
+          "mandatory": true
+        },
+        {
+          "round": 2,
+          "path_A": [
+            "Q2"
+          ],
+          "path_B": [
+            "Q2",
+            "Q3"
+          ],
+          "mandatory": true
+        },
+        {
+          "round": 3,
+          "path_A": [
+            "Q3",
+            "Q4"
+          ],
+          "path_B": [
+            "Q4",
+            "Q5"
+          ],
+          "mandatory": true
+        }
+      ],
+      "paths": {
+        "A": {
+          "sequence": [
+            "C0",
+            "C1",
+            "Q0",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ],
+          "count": 7,
+          "note": "This is the 'seven questions'."
+        },
+        "B": {
+          "sequence": [
+            "C0",
+            "C1",
+            "Q0",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "Q5"
+          ],
+          "count": 8,
+          "note": "Q5 present, therefore Q6 necessarily follows, giving 9 steps."
+        }
+      },
+      "q6": "Triggered by Q5 occurring, or by candidate confusion. User selects three they are absolutely certain of from the 3 main + 5 candidate list; system re-summarises and regenerates."
+    }
+  },
+  "core_design_principle_owner_stated": {
+    "principle": "Every keyword is retained in the system. Classification decides only WHERE a term operates, never whether it is kept.",
+    "tiers": [
+      {
+        "tier": "FRONTEND",
+        "meaning": "may reach the user interface"
+      },
+      {
+        "tier": "BACKEND",
+        "meaning": "operates in inference but is never displayed"
+      },
+      {
+        "tier": "RESEARCH_AND_TRAINING_ONLY",
+        "meaning": "fully isolated to the research and model-training layer"
+      }
+    ],
+    "supersedes_operator_framing": "The operator's six derived roles conflated two independent axes: what a term IS (its semantic role) and WHERE it may operate (its visibility tier). The owner's principle separates them. Visibility tier is the primary axis; nothing is ever discarded, so no role means 'excluded'.",
+    "consequence_for_D5": "Chemical class names were recorded as 'excluded from the descriptor space'. Under this principle they are not excluded from the system; they sit in RESEARCH_AND_TRAINING_ONLY."
+  },
+  "discrepancies_requiring_owner_resolution": [
+    {
+      "id": "X1",
+      "topic": "Output shape",
+      "owner_statement_r12c": "3 main + 5 candidates",
+      "frozen_contract_r9": "up to 5 main + up to 3 secondary, with overall_profile separate",
+      "evidence_of_contract": "R9 output policy OUT_SEPARATED, approved by owner; earlier project reporting states 'main at most 5, secondary at most 3' and 'five primary and three secondary references'.",
+      "status": "VERIFIED_AGAINST_SOURCE_NOT_A_HALLUCINATION",
+      "verification": {
+        "owner_claim": "The contract has always been 3 main + 5 secondary; Codex likely hallucinated 5+3.",
+        "finding": "Not supported. The frozen source-of-truth document states 5 primary + 3 secondary, twice, in its own words.",
+        "primary_evidence": {
+          "file": "docs/product/PRODUCT_CONTRACT_V0.md",
+          "frozen_by_commit": "27d257c docs(architecture): freeze context-prior adaptive question model",
+          "quoted_line_62_64": "5 primary sensory candidates + 3 secondary candidates",
+          "quoted_line_234_236": "5 primary candidates / 3 secondary candidates"
+        },
+        "derived_evidence": {
+          "file": "db/data/product-inference-v0/PRODUCT_OUTPUT_POLICY.tsv",
+          "policy:001": "OUTPUT_LIMIT main_maximum = 5",
+          "policy:002": "OUTPUT_LIMIT secondary_maximum = 3"
+        },
+        "conclusion": "The 5+3 figure originates in the committed contract document, not in any agent's report. The divergence is between the owner's current product intent and the frozen specification."
+      }
+    },
+    {
+      "id": "X2",
+      "topic": "Abstention",
+      "owner_statement_r12c": "Abstention generally does not occur, or the option was never provided.",
+      "frozen_contract_and_prior_work": "The product contract required support for 'none of these', explicit uncertainty and unresolved outcomes. R9 implemented an abstention rule that removed 156 outputs and raised the strict-evidence rate from 24.05% to 31.93%. A PRODUCT_ABSTENTION_RULE artefact exists.",
+      "why_it_matters": "Only 152 of 632 named outputs carry a direct evidence trace. Abstention was the mechanism that prevented unsupported descriptors from being emitted. Removing it without a replacement would return the system to emitting descriptors it cannot evidence.",
+      "status": "RESOLVED",
+      "resolution": {
+        "ruling": "Abstention remains in the product contract. Its FRONTEND EXPOSURE is what is constrained, not its existence.",
+        "constraints": [
+          "Exactly one question may carry a 'none of the above' option.",
+          "All other questions may carry at most an 'uncertain' option.",
+          "Uncertainty-semantics options must not proliferate across the interface."
+        ],
+        "rationale_owner_stated": "Placing uncertainty-like options broadly in the frontend causes confusion in the user's perceptual judgement.",
+        "operator_reading_confirmed": "Reading 1 of the two the operator offered: a UI-layer constraint, not removal of the inference-layer mechanism.",
+        "consequence": "The R9 abstention rule and its effect on the strict-evidence rate (24.05% to 31.93%, 156 outputs withheld) are NOT overturned. Inference-layer withholding continues; only its surfacing to the user is limited."
+      }
+    }
+  ],
+  "specification_vs_intent_divergences": {
+    "note": "Verified directly against docs/product/PRODUCT_CONTRACT_V0.md at commit 27d257c. Three independent divergences, not one.",
+    "divergences": [
+      {
+        "id": "V1",
+        "topic": "Output shape",
+        "frozen_specification": "5 primary + 3 secondary",
+        "owner_current_intent": "3 main + 5 secondary",
+        "owner_rationale": "A coffee bag label carries at most five notes and commonly three, so the product is positioned as 3 main + 5 secondary.",
+        "note": "The two are exact inversions of each other.",
+        "authority_resolved": "OWNER_DECISION_TO_CHANGE_FORWARD",
+        "resolution": {
+          "decision": "The product moves to 3 main + 5 secondary.",
+          "rationale_owner_stated": "Given Q6 asks the user to select three items they are certain of, a 3 main + 5 secondary presentation has higher usability than 5 main + 3 secondary. The main slot count aligns with the number the user is asked to choose.",
+          "nature": "This is a forward change, not a correction of a misrecorded value. The frozen contract's 5+3 stands as the prototype value.",
+          "supersedes_owner_earlier_statement": "The earlier statement that 3+5 'has always been unchanged' is superseded by this explicit forward decision."
+        }
+      },
+      {
+        "id": "V2",
+        "topic": "Question numbering",
+        "frozen_specification": "C0, C1, Q1, Q2, Q3, Q4, Q5. No Q0 appears anywhere in the document.",
+        "owner_current_intent": "C0, C1, Q0, Q1 form the mandatory first round; Q0 exists.",
+        "note": "Both formulations total seven, but over different question sets. The frozen seven is C0+C1+Q1..Q5; the owner's seven is C0+C1+Q0+Q1+Q2+Q3+Q4.",
+        "authority_resolved": "OWNER_INTENT_IS_AUTHORITATIVE",
+        "basis": "Owner confirmed the seven-question algorithm as C0-1 + Q0-4 and described Q4/Q5 functional roles that the frozen contract does not express."
+      },
+      {
+        "id": "V3",
+        "topic": "Which questions are mandatory",
+        "frozen_specification": "mandatory: Q1 / conditional: Q2-Q4 / exceptional maximum: Q5. PRODUCT_OUTPUT_POLICY policy:006 adds 'Offline cases may stop before Q4.'",
+        "owner_current_intent": "Q2-Q4 are mandatory. Only their sequencing is conditional. The mandatory set does not terminate early.",
+        "note": "This is a behavioural difference, not a wording difference. Early termination is specified as permitted and stated by the owner as not occurring.",
+        "authority_resolved": "OWNER_INTENT_IS_AUTHORITATIVE",
+        "basis": "Owner confirmed the seven-question algorithm as C0-1 + Q0-4 and described Q4/Q5 functional roles that the frozen contract does not express."
+      },
+      {
+        "id": "V4",
+        "topic": "Offline capability",
+        "frozen_specification_and_prior_work": "Offline-capable PWA work was carried out; PROJECT_STATUS lists 'Installable PWA: PLANNED' with no manifest, service worker or offline app shell.",
+        "owner_current_intent": "Fully online environment. Offline is not a requirement and was never requested.",
+        "authority_resolved": "OWNER_INTENT_IS_AUTHORITATIVE"
+      }
+    ],
+    "downstream_exposure": {
+      "concern": "The product-inference-v0 package was computed under the frozen specification.",
+      "affected_artefacts_reported_earlier": [
+        "PRODUCT_ANSWER_EFFECT.tsv (881 rows)",
+        "PRODUCT_CONTEXT_PRIOR.tsv (1121 rows)",
+        "PRODUCT_INFERENCE_CASE.tsv (121 rows)",
+        "PRODUCT_OUTPUT_POLICY.tsv (25 rows)",
+        "120 policy cases and computed ablations",
+        "R9 three-policy comparison, 158 frozen inputs, 474 policy outputs"
+      ],
+      "implication": "If the owner's intent is authoritative, these were computed against the wrong output shape and question budget and would need regeneration. The operator makes no judgement about which is authoritative.",
+      "status": "NOT_ASSESSED - no attempt was made to quantify how much of the package depends on the 5/3 limits."
+    },
+    "operator_position": "The operator does not amend a frozen owner-approved contract. Recording only.",
+    "summary_after_v6": {
+      "V1_output_shape": "RESOLVED - forward change to 3 main + 5 secondary, aligned with the Q6 selection count.",
+      "V2_question_numbering": "RESOLVED - owner intent authoritative. Q0 exists.",
+      "V3_mandatory_set": "RESOLVED - owner intent authoritative. Q2-Q4 mandatory, no early termination.",
+      "V4_offline": "RESOLVED - owner intent authoritative. No offline requirement.",
+      "operator_recommendation": "Three of four divergences now resolve in favour of owner intent over the frozen PRODUCT_CONTRACT_V0. This is a pattern, not a single error. Issue PRODUCT_CONTRACT_V1 superseding V0 rather than editing V0, so the immutability of frozen artefacts is preserved."
+    }
+  },
+  "design_lineage_owner_stated": {
+    "reframing": "PRODUCT_CONTRACT_V0 is not erroneous. It is an accurate record of an earlier design stage. The design evolved after the contract was frozen. The divergences V2, V3 and V4 are therefore version drift, not defects.",
+    "stages": [
+      {
+        "stage": "PROTOTYPE",
+        "design": "Seven questions: C0 + C1 + Q1..Q5, with Q1 mandatory, Q2-Q4 conditional, Q5 an exceptional maximum.",
+        "recorded_in": "docs/product/PRODUCT_CONTRACT_V0.md, frozen at commit 27d257c",
+        "owner_note": "Acknowledged by the owner as the earliest prototype, authored before training began."
+      },
+      {
+        "stage": "POST_PROTOTYPE",
+        "driver": "Accuracy and correction were found to require dynamic selection rather than a fixed question budget.",
+        "changes": [
+          "Q4 upgraded to STRONG CORRECTION when round two was insufficient",
+          "Q5 added as the reinforcement step in the compensating path",
+          "Q6 added as a STRONG FALLBACK: user-in-the-loop selection of three certain items, then regeneration",
+          "Q0 introduced into the mandatory first round",
+          "Q2-Q4 promoted from conditional to mandatory, with only sequencing conditional"
+        ],
+        "recorded_in": "Not recorded in any frozen contract. Held as owner intent only until this record."
+      }
+    ],
+    "operator_correction": "The operator characterised the divergences as 'a pattern of the contract being wrong', and recommended superseding it on that basis. The recommendation stands but the reasoning was wrong: the contract correctly records the prototype. What is missing is a successor document for the post-prototype design, which has never been written down.",
+    "consequence": "The post-prototype design currently exists only as owner statements. Every artefact downstream of PRODUCT_CONTRACT_V0 - the product-inference-v0 package, the R9 policy comparison, the 120 policy cases - was computed against the prototype. Nothing has been computed against the current design."
+  },
+  "open_question_v7": {
+    "id": "Q7",
+    "question": "On what evidence was the prototype found insufficient?",
+    "why_asked": "The owner states the evolution was driven by finding that accuracy and correction required dynamic selection. But fit count is 0 across every round and training has never run, so accuracy was never measured on a trained model.",
+    "candidate_sources_of_that_evidence": [
+      "R9 deterministic policy comparison: 158 frozen inputs, 474 policy outputs, three-policy agreement figures",
+      "M1 versus B1 NDCG@5 0.495329 against 0.465650, confidence interval crossing zero",
+      "R8 actual returns: main recall 0.266458, main NDCG 0.244410 on 79 C01 states",
+      "Design judgement rather than measurement"
+    ],
+    "why_it_matters": "If the Q4/Q5/Q6 evolution was driven by an observed deficiency, that observation is evidence and should be citable in the successor contract. If it was design judgement, that is equally legitimate but should be recorded as judgement, not as a measured finding. The distinction is exactly the one this project applies to every other claim.",
+    "status": "ANSWERED",
+    "answer": {
+      "source_of_the_finding": "Agent inference. An LLM reasoned over deterministic data results and concluded that accuracy and correction required dynamic selection. Algorithm attempts followed, and the work then stalled.",
+      "epistemic_class": "AGENT_INFERENCE_OVER_DATA_OUTPUTS",
+      "explicitly_not": [
+        "measured accuracy of a trained model",
+        "human panel evidence",
+        "pure owner design judgement"
+      ],
+      "note": "This is a third category distinct from the two the operator offered. It should be recorded as such rather than assimilated to either."
+    }
+  },
+  "inherited_defect_risk": {
+    "id": "R12C-F16",
+    "severity": "HIGH",
+    "finding": "The Q4/Q5/Q6 design evolution was derived by agent inference over R8/R9 data outputs. Those outputs were produced by the pipeline whose defects R12C has now documented. The design rationale may therefore inherit those defects.",
+    "specific_exposure": [
+      "R8 actual returns reported main recall 0.266458 and main NDCG 0.244410. These were computed over outputs of which only 152 of 632 named descriptors carried a direct evidence trace (24.05%).",
+      "The 'candidate confusion' condition that motivates Q6 as a strong fallback was observed on those same outputs.",
+      "The corpus underlying all of it came from a discovery layer that captured 0.75% of the licence-filtered addressable pool for its largest query, and from admission gates that rejected 71.9% of detected tables through wrong-granularity keyword tests."
+    ],
+    "the_concern_stated_plainly": "'The algorithm needs stronger correction and a fallback' and 'the data feeding the algorithm was broken' produce similar symptoms: low recall, unstable candidates, apparent need for user rescue. R12C cannot distinguish them, and neither could the agent that made the original inference, because the defects were not known then.",
+    "what_this_does_not_mean": "It does not mean Q5 and Q6 are wrong. Dynamic correction and a user-in-the-loop fallback may well be correct design regardless. It means the stated JUSTIFICATION rests on measurements taken through a defective instrument, and should not be cited as evidence in the successor contract without re-derivation.",
+    "recommended_action": "Record Q5/Q6 in the successor contract as design decisions, not as measurement-driven findings, unless and until the underlying figures are re-derived after the R12C repairs.",
+    "status": "RAISED_NOT_ACTIONED"
+  },
+  "successor_contract": {
+    "path": "docs/product/PRODUCT_CONTRACT_V1.md",
+    "status": "DRAFT_REQUIRES_OWNER_APPROVAL",
+    "supersedes_on_approval": "docs/product/PRODUCT_CONTRACT_V0.md (frozen at 27d257c)",
+    "v0_disposition": "Retained as the accurate record of the prototype. Not withdrawn, not edited.",
+    "sources": "Owner decisions D1-D12 in this record",
+    "notable_declarations": [
+      "Q4/Q5/Q6 recorded as design decisions, explicitly NOT as measurement-driven findings (section 8)",
+      "Defect non-emission stated as an enforceable invariant requiring a contract test",
+      "Association restricted to pruning authority only",
+      "Six semantic roles listed as implied but NOT specified or created",
+      "Option A/B/C, training pause and all individual rules left undecided"
+    ]
+  }
+}

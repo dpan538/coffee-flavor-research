@@ -1,0 +1,486 @@
+{
+  "axis_decision_counts": {
+    "COLUMN": 14,
+    "None": 346,
+    "ROW": 37
+  },
+  "contract_version": "r12c.orientation-diagnosis.v1",
+  "defect": {
+    "consequence": "When descriptor terms appear on BOTH axes, COLUMN wins by construction and the descriptor-bearing first column is then read as the sample label list, producing sample labels such as Aroma, Bitterness and Umami.",
+    "id": "R12C-F12",
+    "location": "stratify_extraction_r11.descriptor_axis",
+    "proposed_discriminator": "Compare descriptor density on both axes and select the axis with the higher density; require the opposite axis to be substantially free of descriptor terms before accepting the decision. Not implemented here.",
+    "rule": "The function returns COLUMN whenever any header row resolves two or more descriptor columns with numeric rows beneath, and only falls back to ROW otherwise. The choice is unconditional: it never compares the two axes against each other."
+  },
+  "generated_at_utc": "2026-09-08T04:33:00Z",
+  "guards": {
+    "fit_count": 0,
+    "gates_modified": 0,
+    "network_calls": 0,
+    "new_acquisition_count": 0,
+    "records_admitted": 0,
+    "sealed_artifacts_modified": false
+  },
+  "inputs": {
+    "r11_extraction_report_sha256": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531"
+  },
+  "limitations": [
+    "Descriptor-likeness is measured against the existing 56-concept registry, 42 R6 rules and NATIVE_DIMENSIONS. A term outside all three is not counted, so contamination is a lower bound.",
+    "No orientation decision was changed. descriptor_axis was called unmodified.",
+    "Contamination indicates a wrong axis, not that the table lacks usable data."
+  ],
+  "round": "R12C",
+  "tables_at_least_80pct_contaminated": 0,
+  "tables_whose_implied_samples_include_descriptors": 7,
+  "tables_with_a_decided_axis": 51,
+  "tables_with_descriptor_terms_on_BOTH_axes": 0,
+  "tables_with_no_axis_decision": 346,
+  "tables_with_no_axis_recoverable_by_tokenisation": 36,
+  "tokenisation_axis_recovery_rate": 0.10404624277456648,
+  "tokenisation_recovery_examples": [
+    {
+      "first_column_examples": [
+        "Fragrance",
+        "Aroma",
+        "Acidity",
+        "Bitterness",
+        "Body",
+        "Sweetness"
+      ],
+      "header_examples": [
+        "Attribute",
+        "Description"
+      ],
+      "table_id": "fsn31404-tbl-0001",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 6,
+        "first_window_descriptor_rows_wholecell": 6,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": true
+      },
+      "title": "Sensory attributes of coffee beverages and their relation to price and package information: A case study of Colombian customers’ preferences"
+    },
+    {
+      "first_column_examples": [
+        "Appearance",
+        "",
+        "",
+        "Odor (orthonasal perception)/flavor",
+        "Odor (orthonasal perception)/flavor",
+        ""
+      ],
+      "header_examples": [
+        "Categories",
+        "Descriptors",
+        "Definitions"
+      ],
+      "table_id": "tbl2",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 12,
+        "first_window_descriptor_rows_wholecell": 8,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": true
+      },
+      "title": "Changes in sensory quality characteristics of coffee during storage"
+    },
+    {
+      "first_column_examples": [
+        "Acidity",
+        "Sweetness",
+        "Bitterness",
+        "Astringency",
+        "Longevity",
+        "Papery‐Musty‐Stale‐Earthy"
+      ],
+      "header_examples": [
+        "Attribute",
+        "Definition"
+      ],
+      "table_id": "fsn33812-tbl-0002",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 7,
+        "first_window_descriptor_rows_wholecell": 5,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": true
+      },
+      "title": "An investigation of the shelf life of cold brew coffee and the influence of extraction temperature using chemical, microbial, and sensory an"
+    },
+    {
+      "first_column_examples": [
+        "Descriptors",
+        "Descriptors",
+        "Descriptors",
+        "Descriptors",
+        "Descriptors",
+        "Descriptors"
+      ],
+      "header_examples": [
+        "Attribute",
+        "Aroma “A”",
+        "Flavor “F”",
+        "Taste “T”"
+      ],
+      "table_id": "fsn371278-tbl-0002",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 6,
+        "first_window_descriptor_rows_wholecell": 6,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": true
+      },
+      "title": "Sensory Perception and Physicochemical Characteristics of Geisha Coffee From Different Production Zones in Panama."
+    },
+    {
+      "first_column_examples": [
+        "A",
+        "B",
+        "Cluster",
+        "A",
+        "B"
+      ],
+      "header_examples": [
+        "Cluster",
+        "Tea, floral (1.44E-09)",
+        "Dark chocolate (1.71E-08)",
+        "Citrus (4.69E-08)",
+        "Roasted (2.21E-07)",
+        "Nutty (2.91E-06)"
+      ],
+      "table_id": "Tab4",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 1,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 5,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "AI-driven prediction of consumer liking of coffee from sensory data."
+    },
+    {
+      "first_column_examples": [
+        "Aldehydes",
+        "3-MethylbutanalMalt, fermentedNegative23",
+        "3-MethylbutanalMalt, fermentedNegative23",
+        "3-MethylbutanalMalt, fermentedNegative23",
+        "FurfuralSweet, woody, almond, baked bread fragrantPositive22",
+        "FurfuralSweet, woody, almond, baked bread fragrantPositive22"
+      ],
+      "header_examples": [
+        "[μg/mL]",
+        "[μg/mL]",
+        "Gw",
+        "Sw",
+        "Bpn",
+        "Bn"
+      ],
+      "table_id": "Tab2",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 18,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Influence of coffee brewing methods on the chromatographic and spectroscopic profiles, antioxidant and sensory properties."
+    },
+    {
+      "first_column_examples": [
+        "Appearance",
+        "Brown crema color (CRC)",
+        "Brown coffee color (BCC)",
+        "Crema volume (CVL)",
+        "Crema creaminess (CCS)",
+        "Aroma"
+      ],
+      "header_examples": [
+        "Descriptors",
+        "Definitions",
+        "References"
+      ],
+      "table_id": "jfds71157-tbl-0001",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 4,
+        "first_window_descriptor_rows_wholecell": 2,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": true
+      },
+      "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee."
+    },
+    {
+      "first_column_examples": [
+        "Descriptors",
+        "Descriptors",
+        "Brown crema color (CRC)",
+        "Brown coffee color (BCC)",
+        "Crema volume (CVL)",
+        "Crema creaminess (CCS)"
+      ],
+      "header_examples": [
+        "Descriptors",
+        "Samples",
+        "Samples",
+        "Samples",
+        "Samples",
+        "Samples"
+      ],
+      "table_id": "jfds71157-tbl-0003",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 2,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee."
+    },
+    {
+      "first_column_examples": [
+        "Descriptors",
+        "Brown crema color (CRC)",
+        "Brown coffee color (BCC)",
+        "Crema volume (CVL)",
+        "Crema creaminess (CCS)",
+        "Coffee aroma (CAR)"
+      ],
+      "header_examples": [
+        "",
+        "",
+        "Effect",
+        ""
+      ],
+      "table_id": "jfds71157-tbl-0004",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 2,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Between Bitterness and Sweetness: How Decaffeination and Sweeteners Shape the Sensory Experience of Espresso Coffee."
+    },
+    {
+      "first_column_examples": [
+        "Acetic acid",
+        "Hydroxy-acetic acid",
+        "Isovaleric acid",
+        "Ethyl isovalerate",
+        "Methylpyrazine",
+        "2,5-Dimethylpyrazine"
+      ],
+      "header_examples": [
+        "Compound in roasted beans",
+        "Sensory descriptors"
+      ],
+      "table_id": "tab2",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 11,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Profile of Bioactive Compounds, Aromas, and Cup Quality of Excelsa Coffee (<i>Coffea liberica</i> var. <i>dewevrei</i>) Prepared from Divers"
+    },
+    {
+      "first_column_examples": [
+        "Bitter",
+        "Sour",
+        "Sweet",
+        "Astringent",
+        "Viscous",
+        "Black Tea"
+      ],
+      "header_examples": [
+        "Attribute",
+        "Description/Reference"
+      ],
+      "table_id": "foods-11-02440-t002",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 17,
+        "first_window_descriptor_rows_wholecell": 16,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": true
+      },
+      "title": "Sensory Analysis of Full Immersion Coffee: Cold Brew Is More Floral, and Less Bitter, Sour, and Rubbery Than Hot Brew."
+    },
+    {
+      "first_column_examples": [
+        "Volatile Compounds",
+        "Pyrazine",
+        "2-Methylpyrazine",
+        "2,5-Dimethyl pyrazine",
+        "2,6-Dimethyl pyrazine",
+        "Ethylpyrazine"
+      ],
+      "header_examples": [
+        "Volatile Compounds",
+        "CAS",
+        "Odor 1",
+        "Threshold (μg/L) 2",
+        "Concentration (μg/L) 3",
+        "Concentration (μg/L) 3"
+      ],
+      "table_id": "foods-11-02968-t001",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 30,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Comparative Profiling of Hot and Cold Brew Coffee Flavor Using Chromatographic and Sensory Approaches."
+    },
+    {
+      "first_column_examples": [
+        "",
+        "Volatile Compound",
+        "Aldehydes",
+        "Pentanal",
+        "Hexanal *",
+        "Hexenal"
+      ],
+      "header_examples": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Samples"
+      ],
+      "table_id": "foods-11-03144-t003",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 46,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Volatile Fingerprinting and Sensory Profiles of Coffee Cascara Teas Produced in Latin American Countries"
+    },
+    {
+      "first_column_examples": [
+        "Aldehydes",
+        "2-Hexenal",
+        "2-Methylbutyraldehyde",
+        "Benzaldehyde *",
+        "Dodecanal",
+        "Ethanal/Acetaldehyde"
+      ],
+      "header_examples": [
+        "Volatile Compound",
+        "Odor Description",
+        "CAS a",
+        "ELRI b",
+        "LRI c",
+        "BT"
+      ],
+      "table_id": "foods-12-02710-t002",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 49,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Volatile, Microbial, and Sensory Profiles and Consumer Acceptance of Coffee Cascara Kombuchas"
+    },
+    {
+      "first_column_examples": [
+        "Aldehydes",
+        "α-Hexylcinnamaldehyde",
+        "2-methylbutyraldehyde",
+        "Isovaleraldehyde",
+        "Benzaldehyde *",
+        "Decanal"
+      ],
+      "header_examples": [
+        "Volatile Compound",
+        "Odor Description",
+        "CAS# a",
+        "ELRI b",
+        "LRI c",
+        "CCB"
+      ],
+      "table_id": "foods-12-02710-t003",
+      "test": {
+        "first_window_descriptor_rows_tokenised": 55,
+        "first_window_descriptor_rows_wholecell": 0,
+        "header_descriptor_hits_tokenised": 0,
+        "header_descriptor_hits_wholecell": 0,
+        "would_meet_threshold_tokenised": true,
+        "would_meet_threshold_wholecell": false
+      },
+      "title": "Volatile, Microbial, and Sensory Profiles and Consumer Acceptance of Coffee Cascara Kombuchas"
+    }
+  ],
+  "vocabulary_gap": {
+    "distinct_unrecognised_terms_on_axisless_tables": 1892,
+    "frozen_r6_rules": 42,
+    "interpretation": "descriptor_axis needs two or more recognisable terms on one axis. The recognisable vocabulary is the union of the concept registry, the frozen R6 rules and NATIVE_DIMENSIONS. Terms outside that union are invisible to the axis test regardless of tokenisation or gate repair.",
+    "native_dimensions": 30,
+    "recognisable_vocabulary_size": 126,
+    "registry_concepts": 56,
+    "top_unrecognised_terms": {
+      "age": 27,
+      "aldehydes": 16,
+      "appearance": 14,
+      "c liberica var liberica": 20,
+      "caffeine": 26,
+      "chlorogenic acids": 14,
+      "compound": 46,
+      "compounds": 38,
+      "concentration": 20,
+      "content": 21,
+      "convective": 60,
+      "descriptors": 28,
+      "formulation": 22,
+      "formulation 1": 20,
+      "furans": 16,
+      "gender": 15,
+      "glucose": 16,
+      "gluten free breads": 18,
+      "green beans": 18,
+      "harvest period": 18,
+      "male": 16,
+      "method": 16,
+      "moisture": 14,
+      "no": 26,
+      "number": 16,
+      "odor description": 15,
+      "parameter": 14,
+      "ph": 52,
+      "rc": 21,
+      "references": 24,
+      "sample": 77,
+      "samples": 48,
+      "sppf": 30,
+      "sucrose": 14,
+      "time": 23,
+      "tm": 14,
+      "tpc": 22,
+      "variety": 15,
+      "volatile compounds": 18,
+      "yogurt formulation": 16
+    }
+  },
+  "worst_cases": []
+}

@@ -1,0 +1,1107 @@
+{
+  "category_counts": {
+    "A_CODE_FIX_NOT_A_DECISION": 7,
+    "B_MORPHOLOGICAL_VARIANT": 3,
+    "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT": 46,
+    "D_NOT_A_FLAVOUR_DESCRIPTOR": 4
+  },
+  "category_definitions": {
+    "A_CODE_FIX_NOT_A_DECISION": "Already in NATIVE_DIMENSIONS; unresolved only because resolve_surface never consults that set. Fix the code, approve nothing.",
+    "B_MORPHOLOGICAL_VARIANT": "Suffix variant of an existing concept, rule or dimension. Low risk, no specificity change.",
+    "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT": "No existing coverage. Deciding this is a concept-space decision, not a mapping decision.",
+    "D_NOT_A_FLAVOUR_DESCRIPTOR": "Study design, chemistry, quality judgement or the subject itself. Recommended reject."
+  },
+  "category_fragment_frequency": {
+    "A_CODE_FIX_NOT_A_DECISION": 302,
+    "B_MORPHOLOGICAL_VARIANT": 45,
+    "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT": 670,
+    "D_NOT_A_FLAVOUR_DESCRIPTOR": 73
+  },
+  "contract_version": "r12c.owner-review-sheet.v1",
+  "entries": [
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 44,
+      "owner_decision_needed": true,
+      "rank": 1,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 5,
+      "supporting_source_dois": [
+        "10.3390/foods11192968",
+        "10.3390/foods14162840",
+        "10.3390/foods14183192",
+        "10.3390/foods15020269",
+        "10.3390/molecules31091518"
+      ],
+      "surface_form": "0"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 6,
+      "owner_decision_needed": false,
+      "rank": 2,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.3812",
+        "10.1111/1750-3841.71157",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13203239"
+      ],
+      "surface_form": "acid"
+    },
+    {
+      "category": "B_MORPHOLOGICAL_VARIANT",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 3,
+      "reason": "Suffix variant of dimension 'acid'.",
+      "risk": "LOW",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1111/1750-3841.71157",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/molecules26154609"
+      ],
+      "surface_form": "acidic"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 15,
+      "owner_decision_needed": true,
+      "rank": 4,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119",
+        "10.3390/foods14060911",
+        "10.3390/molecules26154609"
+      ],
+      "surface_form": "aldehydic"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 5,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "balsam"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 6,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "balsamic"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 12,
+      "owner_decision_needed": true,
+      "rank": 7,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 13,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.3390/foods10102508",
+        "10.3390/foods11162440"
+      ],
+      "surface_form": "burnt"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 8,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 14,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1038/s41538-026-00852-1",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710"
+      ],
+      "surface_form": "butter"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 9,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 6,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods14060911",
+        "10.3390/molecules26154609",
+        "10.3390/molecules31050853"
+      ],
+      "surface_form": "buttery"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 10,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 4,
+      "supporting_source_dois": [
+        "10.3390/foods10102508",
+        "10.3390/molecules26133925",
+        "10.3390/molecules29194723",
+        "10.3390/molecules31091518"
+      ],
+      "surface_form": "caramel like"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 15,
+      "owner_decision_needed": true,
+      "rank": 11,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14162840"
+      ],
+      "surface_form": "cheese"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 12,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1038/s41538-026-00852-1",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "cheesy"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 5,
+      "owner_decision_needed": true,
+      "rank": 13,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 2,
+      "supporting_source_dois": [
+        "10.3390/foods12142710",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "citric"
+    },
+    {
+      "category": "B_MORPHOLOGICAL_VARIANT",
+      "existing_rule_id": "R6-e1a3b8e42e5a",
+      "existing_target": "broad.citrus",
+      "fragment_frequency": 29,
+      "owner_decision_needed": true,
+      "proposed_direction": "BROAD_CATEGORY_ONLY",
+      "rank": 14,
+      "reason": "Suffix variant of existing R6 span 'citrusy'.",
+      "risk": "LOW - inherits an already-authored rule's target.",
+      "supporting_source_doi_count": 11,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1038/s41598-020-73341-4",
+        "10.3390/foods10102508",
+        "10.3390/foods11162440",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "citrus"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 15,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 2,
+      "supporting_source_dois": [
+        "10.3390/foods10102508",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "citrus like"
+    },
+    {
+      "category": "D_NOT_A_FLAVOUR_DESCRIPTOR",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 16,
+      "reason": "Study design, chemistry, quality judgement, or the subject itself. Admitting it would put non-percept vocabulary into the descriptor space.",
+      "recommended": "REJECT",
+      "risk": "Admitting these pollutes the concept space and is hard to undo.",
+      "supporting_source_doi_count": 6,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/molecules31050853",
+        "10.3390/molecules31091518"
+      ],
+      "surface_form": "clean"
+    },
+    {
+      "category": "D_NOT_A_FLAVOUR_DESCRIPTOR",
+      "fragment_frequency": 24,
+      "owner_decision_needed": true,
+      "rank": 17,
+      "reason": "Study design, chemistry, quality judgement, or the subject itself. Admitting it would put non-percept vocabulary into the descriptor space.",
+      "recommended": "REJECT",
+      "risk": "Admitting these pollutes the concept space and is hard to undo.",
+      "supporting_source_doi_count": 18,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1111/1750-3841.71157",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968"
+      ],
+      "surface_form": "coffee"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 12,
+      "owner_decision_needed": true,
+      "rank": 18,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "creamy"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 8,
+      "owner_decision_needed": true,
+      "rank": 19,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 3,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods12142710",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "cucumber"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 20,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/foods14162840",
+        "10.3390/foods14183192"
+      ],
+      "surface_form": "dairy"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 18,
+      "owner_decision_needed": true,
+      "rank": 21,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "ethereal"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 22,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1038/s41538-026-00852-1",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119"
+      ],
+      "surface_form": "fat"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 62,
+      "owner_decision_needed": true,
+      "rank": 23,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1038/s41538-026-00852-1",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119"
+      ],
+      "surface_form": "fatty"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 63,
+      "owner_decision_needed": false,
+      "rank": 24,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 18,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1038/s41538-026-00852-1",
+        "10.1038/s41598-020-73341-4",
+        "10.3389/fnut.2022.849811"
+      ],
+      "surface_form": "floral"
+    },
+    {
+      "category": "B_MORPHOLOGICAL_VARIANT",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 25,
+      "reason": "Suffix variant of dimension 'flowery'.",
+      "risk": "LOW",
+      "supporting_source_doi_count": 5,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "flower"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 10,
+      "owner_decision_needed": false,
+      "rank": 26,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 4,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "flowery"
+    },
+    {
+      "category": "D_NOT_A_FLAVOUR_DESCRIPTOR",
+      "fragment_frequency": 36,
+      "owner_decision_needed": true,
+      "rank": 27,
+      "reason": "Study design, chemistry, quality judgement, or the subject itself. Admitting it would put non-percept vocabulary into the descriptor space.",
+      "recommended": "REJECT",
+      "risk": "Admitting these pollutes the concept space and is hard to undo.",
+      "supporting_source_doi_count": 9,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1038/s41598-020-73341-4",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "fresh"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 86,
+      "owner_decision_needed": false,
+      "rank": 28,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 24,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1038/s41538-026-00852-1",
+        "10.1038/s41598-020-73341-4"
+      ],
+      "surface_form": "fruity"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 29,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 4,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods13193119",
+        "10.3390/molecules26154609"
+      ],
+      "surface_form": "garlic"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 63,
+      "owner_decision_needed": true,
+      "rank": 30,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 17,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1038/s41598-020-73341-4",
+        "10.3390/foods10102508",
+        "10.3390/foods11162440"
+      ],
+      "surface_form": "green"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 23,
+      "owner_decision_needed": true,
+      "rank": 31,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 9,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119"
+      ],
+      "surface_form": "herbal"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 32,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 11,
+      "supporting_source_dois": [
+        "10.1002/fsn3.3812",
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710"
+      ],
+      "surface_form": "medicinal"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 33,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 4,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "melon"
+    },
+    {
+      "category": "D_NOT_A_FLAVOUR_DESCRIPTOR",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 34,
+      "reason": "Study design, chemistry, quality judgement, or the subject itself. Admitting it would put non-percept vocabulary into the descriptor space.",
+      "recommended": "REJECT",
+      "risk": "Admitting these pollutes the concept space and is hard to undo.",
+      "supporting_source_doi_count": 5,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "mild"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 8,
+      "owner_decision_needed": true,
+      "rank": 35,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 6,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/molecules31091518"
+      ],
+      "surface_form": "minty"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 10,
+      "owner_decision_needed": true,
+      "rank": 36,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1038/s41538-026-00852-1",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "mushroom"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 20,
+      "owner_decision_needed": true,
+      "rank": 37,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.3812",
+        "10.1002/fsn3.70512",
+        "10.1038/s41598-020-73341-4",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710"
+      ],
+      "surface_form": "musty"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 20,
+      "owner_decision_needed": true,
+      "rank": 38,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 6,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "oily"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 9,
+      "owner_decision_needed": true,
+      "rank": 39,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "onion"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 40,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 6,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "orris"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 8,
+      "owner_decision_needed": true,
+      "rank": 41,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710"
+      ],
+      "surface_form": "phenol"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 20,
+      "owner_decision_needed": true,
+      "rank": 42,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 10,
+      "supporting_source_dois": [
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119"
+      ],
+      "surface_form": "phenolic"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 43,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 6,
+      "supporting_source_dois": [
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119",
+        "10.3390/foods14162840",
+        "10.3390/molecules26154609"
+      ],
+      "surface_form": "plastic"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 31,
+      "owner_decision_needed": true,
+      "rank": 44,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 12,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "pungent"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 16,
+      "owner_decision_needed": true,
+      "rank": 45,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 3,
+      "supporting_source_dois": [
+        "10.3390/foods13203239",
+        "10.3390/foods14162840",
+        "10.3390/molecules26154609"
+      ],
+      "surface_form": "pyrazine"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 20,
+      "owner_decision_needed": true,
+      "rank": 46,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "rancid"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 20,
+      "owner_decision_needed": false,
+      "rank": 47,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 16,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1111/1750-3841.71157",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968"
+      ],
+      "surface_form": "roasted"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 48,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 5,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "roasty"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 12,
+      "owner_decision_needed": true,
+      "rank": 49,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 5,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "soapy"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 29,
+      "owner_decision_needed": false,
+      "rank": 50,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 15,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1002/fsn3.3812",
+        "10.1002/fsn3.70512",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1038/s41538-026-00852-1",
+        "10.1038/s41598-020-73341-4"
+      ],
+      "surface_form": "sour"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 12,
+      "owner_decision_needed": true,
+      "rank": 51,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 14,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710"
+      ],
+      "surface_form": "spicy"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 11,
+      "owner_decision_needed": true,
+      "rank": 52,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 3,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/molecules26154609"
+      ],
+      "surface_form": "sulfury"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 8,
+      "owner_decision_needed": true,
+      "rank": 53,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1038/s41538-026-00852-1",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "sweat"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 10,
+      "owner_decision_needed": true,
+      "rank": 54,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 7,
+      "supporting_source_dois": [
+        "10.1038/s41538-026-00852-1",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119",
+        "10.3390/molecules26133925"
+      ],
+      "surface_form": "sweaty"
+    },
+    {
+      "category": "A_CODE_FIX_NOT_A_DECISION",
+      "existing_target": "NATIVE_DIMENSIONS",
+      "fragment_frequency": 88,
+      "owner_decision_needed": false,
+      "rank": 55,
+      "reason": "Already present in NATIVE_DIMENSIONS. It appears unresolved only because resolve_surface does not consult NATIVE_DIMENSIONS, unlike dimension_surface. No owner decision is required; this is a code fix.",
+      "supporting_source_doi_count": 24,
+      "supporting_source_dois": [
+        "10.1002/fsn3.35",
+        "10.1002/fsn3.3812",
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.1016/j.foodchem.2018.07.226",
+        "10.1038/s41598-020-73341-4"
+      ],
+      "surface_form": "sweet"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 56,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 5,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.1016/j.fochx.2025.102251",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "tropical"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 17,
+      "owner_decision_needed": true,
+      "rank": 57,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 10,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods13193119"
+      ],
+      "surface_form": "vegetable"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 7,
+      "owner_decision_needed": true,
+      "rank": 58,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 8,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911",
+        "10.3390/foods14183192"
+      ],
+      "surface_form": "vinegar"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 32,
+      "owner_decision_needed": true,
+      "rank": 59,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 9,
+      "supporting_source_dois": [
+        "10.1002/fsn3.70512",
+        "10.3390/foods10102508",
+        "10.3390/foods11192968",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484",
+        "10.3390/foods14060911"
+      ],
+      "surface_form": "waxy"
+    },
+    {
+      "category": "C_NEW_DESCRIPTOR_REQUIRES_JUDGEMENT",
+      "fragment_frequency": 6,
+      "owner_decision_needed": true,
+      "rank": 60,
+      "reason": "No existing concept, rule or dimension covers this term or a variant of it. Approving it means deciding whether it is a coffee flavour percept at all, and if so whether it needs a new concept rather than only a rule.",
+      "risk": "HIGH - this is a concept-space decision, not a mapping decision.",
+      "supporting_source_doi_count": 10,
+      "supporting_source_dois": [
+        "10.1002/fsn3.3812",
+        "10.1002/fsn3.70512",
+        "10.3389/fnut.2022.849811",
+        "10.3390/foods10102508",
+        "10.3390/foods12142710",
+        "10.3390/foods13030484"
+      ],
+      "surface_form": "wine"
+    }
+  ],
+  "framing_correction": "The earlier statement that 60 rule approvals lift recovery to 73.3% treated these as 60 equivalent decisions. They are not. Category A needs no owner decision at all, category D should mostly be rejected, and only category C is a genuine concept-space judgement.",
+  "generated_at_utc": "2026-09-08T05:36:12Z",
+  "guards": {
+    "concepts_created": 0,
+    "fit_count": 0,
+    "formal_relation_edges_created": 0,
+    "network_calls": 0,
+    "r6_rules_created": 0,
+    "records_admitted": 0,
+    "registry_mutations": 0,
+    "sealed_artifacts_modified": false
+  },
+  "inputs": {
+    "concept_registry_size": 56,
+    "frozen_r6_rule_count": 42,
+    "native_dimension_count": 30,
+    "tokenised_remapping_sha256": "99bf22d5aecffd5aafd1db91526c2d2c8c559ac403d0f87e933a6719561f3f29"
+  },
+  "limitations": [
+    "Frequency counts fragments on the queued forms, not admitted supervision.",
+    "The NOT_A_FLAVOUR_DESCRIPTOR list is an explicit editorial judgement by the audit author and is stated so the owner can contest any member of it.",
+    "Category B proposes inheriting an existing target; it does not verify that the inherited target is itself correct.",
+    "Nothing here is approved. No rule, concept or edge was created."
+  ],
+  "round": "R12C",
+  "status": "CANDIDATES_FOR_OWNER_DECISION_NOTHING_APPROVED"
+}

@@ -1,0 +1,103 @@
+{
+  "contract_version": "r12c.discovery-pool-probe.v1",
+  "dryad_probe": {
+    "distinct_license_values": [
+      "https://spdx.org/licenses/CC0-1.0.html"
+    ],
+    "hypothesis_tested": "6 Dryad queries returned 1 candidate from a CC0-only repository; test whether the licence value fails normalisation.",
+    "measurement_class": "PROBE",
+    "normalisation_check": {
+      "https://spdx.org/licenses/CC0-1.0.html": {
+        "allowed": true,
+        "normalised": "CC0-1.0"
+      }
+    },
+    "probe_id": "DRYAD_YIELD_CAUSE",
+    "reported_total": 2,
+    "response_sha256": "c0107269b5358bd31963629d0ac07d7abb52454892da1b4575519d1f9677b16b",
+    "retrieved_at_utc": "2026-09-08T03:53:37Z",
+    "returned": 2,
+    "status": "COMPLETE",
+    "system": "DRYAD",
+    "url": "https://datadryad.org/api/v2/search?q=coffee+sensory&per_page=5",
+    "verdict": "LICENCE_PARSING_OK_YIELD_IS_GENUINE_SCARCITY"
+  },
+  "fit_count": 0,
+  "headline_capture_ratio": {
+    "addressable_hit_count": 10591,
+    "capture_ratio": 0.007459163440657161,
+    "captured_candidates": 79,
+    "interpretation": "Share of the licence-filtered addressable pool that reached the candidate set for R10's single largest query.",
+    "query_id": "EUROPE_PMC_1"
+  },
+  "new_acquisition_count": 0,
+  "pool_probes": [
+    {
+      "hit_count": 10591,
+      "measurement_class": "PROBE",
+      "probe_id": "EPMC_R10_QUERY_1_VERBATIM",
+      "query": "OPEN_ACCESS:Y AND (LICENSE:\"cc by\" OR LICENSE:\"cc by-nc\" OR LICENSE:\"cc by-sa\" OR LICENSE:cc0) AND (coffee AND (sensory OR cupping OR \"descriptive analysis\" OR CATA OR QDA))",
+      "rationale": "R10 EUROPE_PMC_1 exactly as issued, licence filter included",
+      "response_sha256": "fcd9e2eb8085973e14acd71f7daa68543ae50378086f0e1c0fec14e3895d142a",
+      "retrieved_at_utc": "2026-09-08T03:53:28Z",
+      "status": "COMPLETE",
+      "system": "EUROPE_PMC"
+    },
+    {
+      "hit_count": 12632,
+      "measurement_class": "PROBE",
+      "probe_id": "EPMC_R10_QUERY_1_NO_LICENCE_FILTER",
+      "query": "OPEN_ACCESS:Y AND (coffee AND (sensory OR cupping OR \"descriptive analysis\" OR CATA OR QDA))",
+      "rationale": "same subject query, licence filter removed, to size the licence-filter cost",
+      "response_sha256": "6584626da48759a6b78c454d08d91d1fe22f567725cc3ef8d6d7b1fd677178be",
+      "retrieved_at_utc": "2026-09-08T03:53:29Z",
+      "status": "COMPLETE",
+      "system": "EUROPE_PMC"
+    },
+    {
+      "hit_count": 30564,
+      "measurement_class": "PROBE",
+      "probe_id": "EPMC_BROAD_SUBJECT",
+      "query": "OPEN_ACCESS:Y AND (coffee OR coffea) AND (sensory OR cupping OR flavor OR flavour OR aroma OR taste OR descriptor OR panel)",
+      "rationale": "broader subject formulation, open access only",
+      "response_sha256": "52797de0c036c2c0edd8c317674fa29cdf1786d1537d7575a5415eb0e5190ab6",
+      "retrieved_at_utc": "2026-09-08T03:53:31Z",
+      "status": "COMPLETE",
+      "system": "EUROPE_PMC"
+    }
+  ],
+  "relevance_filter_probe": {
+    "filter_under_test": "acquire_license_verified_r10.relevant (title only)",
+    "measurement_class": "PROBE",
+    "note": "Every sampled record already satisfies the licence filter and the subject query. Rejections are caused solely by the title-only keyword test.",
+    "passed": 42,
+    "probe_id": "R10_RELEVANT_FILTER_REJECTION_RATE",
+    "query": "OPEN_ACCESS:Y AND (LICENSE:\"cc by\" OR LICENSE:\"cc by-nc\" OR LICENSE:\"cc by-sa\" OR LICENSE:cc0) AND (coffee AND (sensory OR cupping OR \"descriptive analysis\" OR CATA OR QDA))",
+    "rejected": 158,
+    "rejected_title_examples": [
+      "Sensory Acceptability and Sensory Profiles of Flavoured Foods for Special Medical Purposes: A Quantitative Descriptive Analysis.",
+      "Effects of Cognitive Style and Evaluation Context on Hedonic and Sensory Perception of Café Latte: A Comparison of Sensory Booth, Real-Life, and Mixed Reality Environments.",
+      "Modelling the odor profile of fungal Solid-State Fermentation.",
+      "Comprehensive Taste Profile Assessment of Underexplored Amino Acids and Protein Derivatives in Umami and Koku.",
+      "Interaction Among Microbiota, Chemical Composition, and Quality Variations in &lt;i&gt;Coffea arabica&lt;/i&gt; Across Altitudinal Gradients During Wet Processing.",
+      "Unlocking the Quality Potential of Liberoid Coffee: Advances in Composition, Processing, and Microbial Fermentation.",
+      "Modified Rice Bran Dietary Fiber-Based Pre-Emulsion as a Fat Replacer: Modulating Physicochemical and Sensory Properties of Emulsified Meat Gels.",
+      "Carbonation Perception and Texture Characteristics of Carbonated Beverages Using Focus Group Interviews and Free-Sorting Tasks.",
+      "Ohmic Fermentation Differentiates Volatile Fingerprints of Roasted Arabica and Robusta Coffees from Four Indonesian Origins",
+      "Cross-Cultural Comparison of the Espresso Protocol Repeatability.",
+      "Near-Infrared Spectroscopy-Based Discriminant Analysis for the Classification of Coffee Quality in Dry Parchment and Green Coffee.",
+      "Solid-phase microextraction as a green sample preparation strategy for volatile organic compound profiling in coffee: a review with AGREEprep-based evaluation.",
+      "Which On-Pack Information Drives a Marketable Specialty Coffee Label? Unfolding Purchase Intention and Visual Attention with Eye Tracking.",
+      "&lt;sup&gt;1&lt;/sup&gt;H NMR-Based Metabolomics and Machine Learning Reveal Candidate Metabolic Markers Associated with &lt;i&gt;Coffea arabica&lt;/i&gt; Genealogical Groups.",
+      "Molecular sensory science elucidates the contribution of methyl ketones to the creamy aroma of &lt;i&gt;Monascus&lt;/i&gt;-fermented cheese."
+    ],
+    "rejection_rate": 0.79,
+    "response_sha256": "29abe86e2c83854e9ae5153d22b27e29c1edf1a38595c309c736a8e09c69aade",
+    "retrieved_at_utc": "2026-09-08T03:53:33Z",
+    "sample_size_requested": 200,
+    "sample_size_returned": 200,
+    "status": "COMPLETE"
+  },
+  "reproducibility": "PROBE values are point-in-time live API observations and are NOT byte-reproducible. Index contents drift. STATIC findings in discovery_layer_defects.json are reproducible.",
+  "round": "R12C"
+}

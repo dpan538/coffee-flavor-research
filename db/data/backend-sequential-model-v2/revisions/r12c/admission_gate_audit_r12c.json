@@ -1,0 +1,144 @@
+{
+  "article_level_consumer_switch": {
+    "candidates_entirely_killed": 36,
+    "defect": "Scope error. A single occurrence of a common academic word anywhere in a paper rejects every table in that paper, unless one of a small set of exact phrases also appears.",
+    "gate": "stratify_extraction_r11.table_is_consumer",
+    "implementation": "return bool(consumer and not trained), where consumer matches consumer|customer|hedonic|liking|preference anywhere in the FULL ARTICLE TEXT and trained requires the exact phrases 'trained (sensory) panel/panelists/assessors', 'q-graders' or 'expert cuppers'.",
+    "killed_title_examples": [
+      "Sensory attributes of coffee beverages and their relation to price and package information: A case study of Colombian customers’ preferences",
+      "Elucidating the interaction between pyrazine flavor compounds and coffee proteins: Insights from multiscale structural and molecular dynamics simulations.",
+      "Enhanced sensory, antioxidant, and non-toxic anti-diabetes beverage development via co-culture fermentation of &lt;i&gt;Lactiplantibacillus plantarum&lt;/i&gt; and &lt;i&gt;Saccharomyces boulardii&lt;/i&gt; in coffee cherry pulp extracts.",
+      "Modifying Robusta coffee aroma by green bean chemical pre-treatment",
+      "Physicochemical Parameters and Multivariate Analysis to Predict the Sensory Quality in Specialty Coffee from Panama.",
+      "AI-driven prediction of consumer liking of coffee from sensory data.",
+      "Comparison of chemical compounds and their influence on the taste of coffee depending on green beans storage conditions.",
+      "Caffeine Content and Perceived Sensory Characteristics of Pod Coffee: Effects on Mood and Cognitive Performance",
+      "Not All Flavor Expertise Is Equal: The Language of Wine and Coffee Experts.",
+      "Instant coffee with steamed PVA beans: Physical-chemical and sensory aspects",
+      "Physicochemical and sensory characteristics of dehydrated coffee pulp in function of drying temperature",
+      "EFFECT OF THE POSTHARVEST PROCESSING METHOD ON THE BIOCHEMICAL COMPOSITION AND SENSORY ANALYSIS OF ARABICA COFFEE",
+      "Metabolomic profiling of indigenous lactic acid bacteria reveals functional traits shaping the flavor and bioactivity of Ecuadorian coffee.",
+      "Climate Change and Coffee Quality: Systematic Review on the Effects of Environmental and Management Variation on Secondary Metabolites and Sensory Attributes of Coffea arabica and Coffea canephora",
+      "Influences of Product Temperature on Emotional Responses to, and Sensory Attributes of, Coffee and Green Tea Beverages",
+      "Exploring Chemical Markers Related to the Acceptance and Sensory Profiles of Concentrated Liquid Coffees: An Untargeted Metabolomics Approach.",
+      "Antioxidant and Sensory Properties of Raw and Cooked Pork Meat Burgers Formulated with Extract from Non-Compliant Green Coffee Beans.",
+      "Quality Attributes and Sensory Acceptance of Different Botanical Coffee Co-Products.",
+      "Coffee Silverskin Cellulose-Based Composite Film with Natural Pigments for Food Packaging: Physicochemical and Sensory Abilities.",
+      "Evaluation of Physicochemical Characteristics and Sensory Properties of Cold Brew Coffees Prepared Using Ultrahigh Pressure under Different Extraction Conditions."
+    ],
+    "misfire_indication": 0.9722222222222222,
+    "of_which_consumer_title": 5,
+    "of_which_professional_title": 35
+  },
+  "candidate_level": {
+    "candidate_outcome_counts": {
+      "ADMITTED_STRUCTURED_SAMPLE_DESCRIPTOR_DATA": 3,
+      "NOT_ADMITTED": 245
+    },
+    "failure_reason_counts": {
+      "ADMITTED": 3,
+      "DUPLICATE_EXISTING_SOURCE_DOI": 1,
+      "FULL_TEXT_PARSE_FAILED:ParseError": 2,
+      "FULL_TEXT_RETRIEVAL_FAILED:HTTPError": 2,
+      "FULL_TEXT_RETRIEVAL_FAILED:RuntimeError": 32,
+      "NO_ADMISSIBLE_SAMPLE_DESCRIPTOR_CELLS": 16,
+      "NO_MACHINE_READABLE_TABLES": 81,
+      "NO_SENSORY_DESCRIPTOR_TABLE": 94,
+      "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND": 17
+    }
+  },
+  "contract_version": "r12c.admission-gate-audit.v1",
+  "guards": {
+    "fit_count": 0,
+    "gates_modified": 0,
+    "network_calls": 0,
+    "new_acquisition_count": 0,
+    "records_admitted": 0,
+    "sealed_artifacts_modified": false
+  },
+  "inputs": {
+    "gate_source_sha256": "59e7d685f51793ed4fec4a6f62f11402901bd039c468fdf59abc12174884a413",
+    "r11_extraction_report_sha256": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531"
+  },
+  "limitations": [
+    "Rejection shares are measured over tables the pipeline actually summarised, not over the literature.",
+    "A gate misfiring does not establish that the rejected tables contain usable supervision. It establishes only that the stated rejection reason is not supported by the paper's own subject matter.",
+    "No gate was modified, relaxed, or bypassed by this script."
+  ],
+  "measurement_class": "STATIC",
+  "round": "R12C",
+  "secondary_defects": [
+    {
+      "count": 17,
+      "finding": "SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND rejected 17 candidates whose licences R10 had already resolved and admitted. A redundant second verification discards already-verified material.",
+      "id": "R12C-F9"
+    },
+    {
+      "evidence": "stratify_extraction_r11.py descriptor_axis: for column, surface in enumerate(row[:3])",
+      "finding": "descriptor_axis scans only row[:3]. A descriptor axis beginning at column four or later is never seen.",
+      "id": "R12C-F10"
+    },
+    {
+      "evidence_record_source_doi": "10.3390/molecules24244515",
+      "finding": "The gates reject professional sensory tables while admitting non-sensory material in the opposite direction: an admitted record carries sample_label 'm/z 67', a mass-spectrometry ion treated as a coffee sample, with base_coffee_identity_normalized 'z'.",
+      "id": "R12C-F11"
+    }
+  ],
+  "systemic_pattern": {
+    "finding": "The admission layer is built from substring keyword tests applied at the wrong granularity. Four independent instances share one defect class.",
+    "instances": [
+      {
+        "appropriate_scope": "title, abstract and full text",
+        "gate": "acquire_license_verified_r10.relevant",
+        "measured_rejection": 0.79,
+        "scope_applied": "title only",
+        "unit": "licence-and-subject-qualified records"
+      },
+      {
+        "appropriate_scope": "the table and its own methods section",
+        "gate": "stratify_extraction_r11.table_is_consumer",
+        "measured_rejection": 0.44642857142857145,
+        "scope_applied": "whole article text",
+        "unit": "detected tables"
+      },
+      {
+        "appropriate_scope": "caption plus table content",
+        "gate": "stratify_extraction_r11.TABLE_SUPERVISION_CUE",
+        "measured_rejection": 0.2729591836734694,
+        "scope_applied": "table caption only",
+        "unit": "detected tables"
+      },
+      {
+        "appropriate_scope": "list fragment, as R6 scope EXACT_COMPLETE_LIST_FRAGMENT declares",
+        "gate": "stratify_extraction_r11.resolve_surface",
+        "measured_rejection": null,
+        "scope_applied": "whole normalised cell",
+        "unit": "1429 surface forms queued; 515 recoverable under existing rules"
+      }
+    ]
+  },
+  "table_level": {
+    "machine_readable_table_count_reported": 400,
+    "rejection_reason_counts": {
+      "ANALYTIC_OR_REFERENCE_TABLE_NOT_SUPERVISION": 61,
+      "CHEMICAL_OR_TASTANT_SYSTEM_NOT_COFFEE_SAMPLE": 8,
+      "COFFEE_FLAVORED_PRODUCT_NOT_COFFEE_SAMPLE": 15,
+      "CONSUMER_SUBJECTIVE_DATA_EXCLUDED": 175,
+      "NOT_SENSORY_TABLE": 107,
+      "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS": 23,
+      "None": 3
+    },
+    "rejection_reason_shares": {
+      "ANALYTIC_OR_REFERENCE_TABLE_NOT_SUPERVISION": 0.1556122448979592,
+      "CHEMICAL_OR_TASTANT_SYSTEM_NOT_COFFEE_SAMPLE": 0.02040816326530612,
+      "COFFEE_FLAVORED_PRODUCT_NOT_COFFEE_SAMPLE": 0.03826530612244898,
+      "CONSUMER_SUBJECTIVE_DATA_EXCLUDED": 0.44642857142857145,
+      "NOT_SENSORY_TABLE": 0.2729591836734694,
+      "NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS": 0.058673469387755105,
+      "None": 0.007653061224489796
+    },
+    "sensory_table_count_reported": 26,
+    "sensory_tables_in_summaries": 26,
+    "tables_summarised": 392
+  }
+}
