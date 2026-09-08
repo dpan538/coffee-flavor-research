@@ -1,0 +1,4436 @@
+{
+  "baseline_commit": "7323a32e964a137dcd49886bbe024db2a773dd92",
+  "complete_remediation": false,
+  "control_fixture_sha256": "667fa2adca40e1b29bac85423244de1ac0574a9e36cb7c8665a4e0216c2e0f74",
+  "disposition_counts": {
+    "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION": 51,
+    "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED": 358,
+    "OBSERVED_TYPED_RUNTIME_EVENT": 19
+  },
+  "exception_handler_dispositions": {
+    "EXISTING_TYPED_FAILURE_RECORD": 10,
+    "RAISE_OR_RETRY": 1,
+    "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER": 6
+  },
+  "fit_count": 0,
+  "limitations": "Conservative AST inventory includes intentional normal returns and defaults; it is not a count of bugs. Cached replay logs exceptions and empty returns without changing baseline. Unexecuted retrieval handlers and implicit schema fallbacks are not claimed repaired; a separate instrumented implementation remains necessary before future acquisition.",
+  "network_calls_allowed": false,
+  "new_candidate_count": 0,
+  "private_r10_training_corpus_sha256_unchanged": "029700197d48e83b17390f0502b2509d362a2dea2fe2c74dd6720ec0a05865b5",
+  "protected_file_hashes_unchanged": {
+    "db/data/backend-sequential-model-v2/revisions/r11/acquisition_manifest.json": "799d556627efa1c9ded2fe8b04df5b5e3c8e9b8fd54d4b2d518bb77254049c6d",
+    "db/data/backend-sequential-model-v2/revisions/r11/auxiliary_transfer_manifest.json": "a57881a8576d4f03eadf757285edd0eb4ddf15a2c18aabd2ab1055ad28c257db",
+    "db/data/backend-sequential-model-v2/revisions/r11/context_coverage.json": "f918e183ee12a5208f31526a9ff8636270074186f6cf3508a290e0a76bfe8ce8",
+    "db/data/backend-sequential-model-v2/revisions/r11/contract_calibration_report.json": "b657f83545ceef6df38b7bc02db55e480035ca8b1b9d21cb3899095ad2722315",
+    "db/data/backend-sequential-model-v2/revisions/r11/direct_vs_mapped_counts.json": "643a1049406cf3d4e7210e4325ad4193dd0ffc435b8cc4693010bdcd97203389",
+    "db/data/backend-sequential-model-v2/revisions/r11/duplicate_audit.json": "0eb4e449abba6ae652a1bf10205a20d9ddbd8d3f53358119192a6ce808a4a62d",
+    "db/data/backend-sequential-model-v2/revisions/r11/exit_criterion_status.json": "d1e3ae04141d1662a9126618bbb899c72fd0a029f0cddb5515d4bd8613f25e48",
+    "db/data/backend-sequential-model-v2/revisions/r11/extraction_report.json": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531",
+    "db/data/backend-sequential-model-v2/revisions/r11/failure_taxonomy.json": "9d78c5abb2933f640ae6292a8822ffdfa84db21a84a4975f50d3a4809b3aa7c3",
+    "db/data/backend-sequential-model-v2/revisions/r11/mapping_audit.json": "ccd46a7a5e1f76fda5c3bca15c2fc492109031503975f1ae10e779a75d07c250",
+    "db/data/backend-sequential-model-v2/revisions/r11/owner_decision.json": "2a6684b5bfec7f393c423fdd909557257f7ea5d58903021424b3af2a7c17d902",
+    "db/data/backend-sequential-model-v2/revisions/r11/pipeline_validation.json": "e26b5e234d6cac00aa366f52c75abf8d35ac2a67dbea98a6a7755860632daa97",
+    "db/data/backend-sequential-model-v2/revisions/r11/readmission_reconciliation.json": "dd612de18fcc3046e051b2ab1be8cfd2cf583586e564b7329e1263030d637dc9",
+    "db/data/backend-sequential-model-v2/revisions/r11/round_manifest.json": "35ee2c4b4ad6ccadc37a5c1cd9b2a2df64867745af514db6118955c5ac822c1e",
+    "db/data/backend-sequential-model-v2/revisions/r11/shape_distribution.json": "54b7f13e0463f900fb0e84dc7345727082dd75f9fbc72957dc68b45ee20574c9",
+    "db/data/backend-sequential-model-v2/revisions/r11/source_family_distribution.json": "897851b9459dc7795ae1e0f0c8231fa8bd19f2f0cb1d82e194c29c1af1295fa1",
+    "db/data/backend-sequential-model-v2/revisions/r11/supplement_recovery.json": "29b42c1bf1b78d91ac97c9b35b5d438504958fe8b47e85784f22225ab63dcf8b",
+    "db/data/backend-sequential-model-v2/revisions/r11/targeted_acquisition.json": "69b1d5f517fe302d86a6b73a847a8d0649ba870ad36bffa793f22d996a6c7228",
+    "db/scripts/acquire_license_verified_r10.py": "df29b69805c0b370357d3ddc1de80bf582d6377d297e45f3788e0007c4c541d7",
+    "db/scripts/acquire_targeted_r11.py": "bf6c64618d0f5161a2fd204cea8021ce42682803ac74261941a25407e48a1953",
+    "db/scripts/extract_candidates_r11.py": "685f8683afddff38f4cacce2167254d3481bff370483df2082ebd6bc920ad9af",
+    "db/scripts/finalize_r11_artifacts.py": "a68502e15b1919178780b0391e673852483ff8cf6fecf21b0e6376730cecaf82",
+    "db/scripts/recover_supplements_r11.py": "95b8ea0c11b7861731544c026eb048eb3a28508bc45c0221ba92963ffa222cd4",
+    "db/scripts/stratify_extraction_r11.py": "59e7d685f51793ed4fec4a6f62f11402901bd039c468fdf59abc12174884a413"
+  },
+  "real_label_model_metric_count": 0,
+  "runtime_typed_events": {
+    "extract_candidates_r11.py:112:norm:EMPTY_RETURN_OBSERVED": 564,
+    "extract_candidates_r11.py:161:numeric:EMPTY_RETURN_OBSERVED": 723,
+    "extract_candidates_r11.py:171:<genexpr>:EMPTY_RETURN_OBSERVED": 19556,
+    "extract_candidates_r11.py:173:context_value:EMPTY_RETURN_OBSERVED": 798,
+    "extract_candidates_r11.py:183:<genexpr>:EMPTY_RETURN_OBSERVED": 38,
+    "extract_candidates_r11.py:185:find_panel_size:EMPTY_RETURN_OBSERVED": 12,
+    "extract_candidates_r11.py:224:__init__:EMPTY_RETURN_OBSERVED": 91,
+    "extract_candidates_r11.py:228:handle_starttag:EMPTY_RETURN_OBSERVED": 53,
+    "extract_candidates_r11.py:230:handle_starttag:EMPTY_RETURN_OBSERVED": 431,
+    "extract_candidates_r11.py:232:handle_starttag:EMPTY_RETURN_OBSERVED": 2075,
+    "extract_candidates_r11.py:233:handle_starttag:EMPTY_RETURN_OBSERVED": 33773,
+    "extract_candidates_r11.py:234:handle_starttag:EMPTY_RETURN_OBSERVED": 1,
+    "extract_candidates_r11.py:239:handle_data:EMPTY_RETURN_OBSERVED": 48362,
+    "extract_candidates_r11.py:240:handle_data:EMPTY_RETURN_OBSERVED": 1,
+    "extract_candidates_r11.py:246:handle_endtag:EMPTY_RETURN_OBSERVED": 2075,
+    "extract_candidates_r11.py:250:handle_endtag:EMPTY_RETURN_OBSERVED": 431,
+    "extract_candidates_r11.py:253:handle_endtag:EMPTY_RETURN_OBSERVED": 1,
+    "extract_candidates_r11.py:254:handle_endtag:EMPTY_RETURN_OBSERVED": 31893,
+    "extract_candidates_r11.py:256:handle_endtag:EMPTY_RETURN_OBSERVED": 53,
+    "extract_candidates_r11.py:264:element_text:EMPTY_RETURN_OBSERVED": 2960,
+    "extract_candidates_r11.py:268:parse_xml:EMPTY_RETURN_OBSERVED": 2,
+    "extract_candidates_r11.py:268:parse_xml:EXCEPTION_OBSERVED:ParseError": 2,
+    "extract_candidates_r11.py:271:parse_xml:EXCEPTION_OBSERVED:StopIteration": 112,
+    "extract_candidates_r11.py:281:parse_xml:EXCEPTION_OBSERVED:StopIteration": 347,
+    "extract_candidates_r11.py:284:parse_xml:EXCEPTION_OBSERVED:StopIteration": 346,
+    "extract_candidates_r11.py:324:<genexpr>:EMPTY_RETURN_OBSERVED": 1,
+    "extract_candidates_r11.py:324:<genexpr>:EXCEPTION_OBSERVED:StopIteration": 1,
+    "extract_candidates_r11.py:326:parse_xml:EXCEPTION_OBSERVED:StopIteration": 111,
+    "extract_candidates_r11.py:344:parse_xml:EXCEPTION_OBSERVED:StopIteration": 112,
+    "stratify_extraction_r11.py:176:dimension_surface:EMPTY_RETURN_OBSERVED": 1446,
+    "stratify_extraction_r11.py:237:resolved_surface:EMPTY_RETURN_OBSERVED": 1425,
+    "stratify_extraction_r11.py:260:<genexpr>:EMPTY_RETURN_OBSERVED": 31,
+    "stratify_extraction_r11.py:277:<genexpr>:EMPTY_RETURN_OBSERVED": 6,
+    "stratify_extraction_r11.py:278:<genexpr>:EMPTY_RETURN_OBSERVED": 2,
+    "stratify_extraction_r11.py:289:descriptor_axis:EMPTY_RETURN_OBSERVED": 10,
+    "stratify_extraction_r11.py:335:ontology_records:EMPTY_RETURN_OBSERVED": 3,
+    "stratify_extraction_r11.py:341:<genexpr>:EMPTY_RETURN_OBSERVED": 361,
+    "stratify_extraction_r11.py:342:<genexpr>:EMPTY_RETURN_OBSERVED": 13,
+    "stratify_extraction_r11.py:378:<genexpr>:EMPTY_RETURN_OBSERVED": 317,
+    "stratify_extraction_r11.py:383:<genexpr>:EMPTY_RETURN_OBSERVED": 354,
+    "stratify_extraction_r11.py:393:ontology_records:EMPTY_RETURN_OBSERVED": 20,
+    "stratify_extraction_r11.py:411:ontology_records:EMPTY_RETURN_OBSERVED": 336,
+    "stratify_extraction_r11.py:427:<genexpr>:EMPTY_RETURN_OBSERVED": 367,
+    "stratify_extraction_r11.py:429:sample_axis_records:EMPTY_RETURN_OBSERVED": 342,
+    "stratify_extraction_r11.py:431:sample_axis_records:EMPTY_RETURN_OBSERVED": 2,
+    "stratify_extraction_r11.py:433:sample_axis_records:EMPTY_RETURN_OBSERVED": 4,
+    "stratify_extraction_r11.py:435:sample_axis_records:EMPTY_RETURN_OBSERVED": 6,
+    "stratify_extraction_r11.py:441:sample_axis_records:EMPTY_RETURN_OBSERVED": 20,
+    "stratify_extraction_r11.py:454:sample_axis_records:EMPTY_RETURN_OBSERVED": 10,
+    "stratify_extraction_r11.py:469:append_cell:EMPTY_RETURN_OBSERVED": 6,
+    "stratify_extraction_r11.py:489:append_cell:EMPTY_RETURN_OBSERVED": 246,
+    "stratify_extraction_r11.py:543:<genexpr>:EMPTY_RETURN_OBSERVED": 8,
+    "stratify_extraction_r11.py:559:sample_axis_records:EMPTY_RETURN_OBSERVED": 3
+  },
+  "scope": [
+    "extract_candidates_r11.py",
+    "stratify_extraction_r11.py",
+    "recover_supplements_r11.py",
+    "acquire_targeted_r11.py",
+    "finalize_r11_artifacts.py",
+    "acquire_license_verified_r10.py"
+  ],
+  "site_kind_counts": {
+    "CONTINUE_REQUIRES_SKIP_VISIBILITY": 42,
+    "DEFAULT_LOOKUP_SCHEMA_RISK": 237,
+    "EXCEPTION_HANDLER": 17,
+    "RETURN_REQUIRES_EMPTY_VISIBILITY": 132
+  },
+  "sites": [
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 101,
+      "observed_events": {},
+      "source": "return (json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + \"\\n\").encode()"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 6751,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 105,
+      "observed_events": {},
+      "source": "return hashlib.sha256(data).hexdigest()"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 12450,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 112,
+      "observed_events": {
+        "extract_candidates_r11.py:112:norm:EMPTY_RETURN_OBSERVED": 564
+      },
+      "source": "return \" \".join(value.split())"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 121,
+      "observed_events": {},
+      "source": "return rows, digest(raw)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 128,
+      "observed_events": {},
+      "source": "return {\n        candidate_id\n        for candidate_id, row in registry.items()\n        if row[\"role\"] == \"NAMED_DESCRIPTOR\" and candidate_id.startswith(\"sensory.\")\n    }"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 141,
+      "observed_events": {},
+      "source": "return aliases"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 152,
+      "observed_events": {},
+      "source": "return aliases.get(token)"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1631,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 163,
+      "observed_events": {},
+      "source": "return result if math.isfinite(result) else None"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 920,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 173,
+      "observed_events": {
+        "extract_candidates_r11.py:173:context_value:EMPTY_RETURN_OBSERVED": 798
+      },
+      "source": "return next(iter(hits)) if len(hits) == 1 else None"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 19,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 185,
+      "observed_events": {
+        "extract_candidates_r11.py:185:find_panel_size:EMPTY_RETURN_OBSERVED": 12
+      },
+      "source": "return min(values) if values else None"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 11,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 197,
+      "observed_events": {},
+      "source": "return {\"type\": \"REPORTED_NUMERIC_VALUE\", \"min\": None, \"max\": None}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 7,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 206,
+      "observed_events": {},
+      "source": "return {\"reported\": False, \"count\": None, \"basis\": \"NOT_REPORTED\"}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 8,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 214,
+      "observed_events": {},
+      "source": "return \"REPORTED_NUMERIC_SUMMARY\""
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 705740,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 260,
+      "observed_events": {},
+      "source": "return tag.rsplit(\"}\", 1)[-1]"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 56292,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 264,
+      "observed_events": {
+        "extract_candidates_r11.py:264:element_text:EMPTY_RETURN_OBSERVED": 2960
+      },
+      "source": "return \" \".join(\"\".join(element.itertext()).split()) if element is not None else \"\""
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 112,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 352,
+      "observed_events": {},
+      "source": "return tables, metadata"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 182,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 370,
+      "observed_events": {},
+      "source": "return tables, {\n        \"plain_text\": plain,\n        \"title\": \"\",\n        \"authors\": [],\n        \"institutions\": [],\n        \"year\": None,\n    }"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 393,
+      "observed_events": {},
+      "source": "return None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 434,
+      "observed_events": {},
+      "source": "return meta"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 439,
+      "observed_events": {},
+      "source": "return json.loads(result[\"body\"]), result"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 450,
+      "observed_events": {},
+      "source": "return next((row.get(\"pmcid\") for row in rows if row.get(\"pmcid\")), None)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 460,
+      "observed_events": {},
+      "source": "return license_id, message, retrieval"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 734,
+      "observed_events": {},
+      "source": "return result, info"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 66,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 773,
+      "observed_events": {},
+      "source": "return value[:160]"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 962,
+      "observed_events": {},
+      "source": "return result, extracted"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 149,
+      "observed_events": {},
+      "source": "return aliases[token]"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 152,
+      "observed_events": {},
+      "source": "aliases.get(token)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 158,
+      "observed_events": {},
+      "source": "return None"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 723,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 161,
+      "observed_events": {
+        "extract_candidates_r11.py:161:numeric:EMPTY_RETURN_OBSERVED": 723
+      },
+      "source": "return None"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 191,
+      "observed_events": {},
+      "source": "return {\"type\": \"POINT_SCALE\", \"min\": 1, \"max\": int(match.group(1))}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 6,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 194,
+      "observed_events": {},
+      "source": "return {\"type\": \"EXPLICIT_RANGE\", \"min\": float(match.group(1)), \"max\": float(match.group(2))}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 196,
+      "observed_events": {},
+      "source": "return {\"type\": \"CATA_FREQUENCY_OR_PRESENCE\", \"min\": 0, \"max\": None}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 11,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 202,
+      "observed_events": {},
+      "source": "return {\"reported\": True, \"count\": 3, \"basis\": \"IN_TRIPLICATE\"}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 205,
+      "observed_events": {},
+      "source": "return {\"reported\": True, \"count\": int(match.group(1)), \"basis\": \"EXPLICIT_REPLICATES\"}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 8,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 211,
+      "observed_events": {},
+      "source": "return \"FREQUENCY_OR_PRESENCE\""
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 3,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 213,
+      "observed_events": {},
+      "source": "return \"PANEL_MEAN\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 404,
+      "observed_events": {},
+      "source": "return meta"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 449,
+      "observed_events": {},
+      "source": "payload.get(\"resultList\", {}).get(\"result\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 456,
+      "observed_events": {},
+      "source": "payload.get(\"message\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 476,
+      "observed_events": {},
+      "source": "return cache_fetch(url, cache_dir, timeout), metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 494,
+      "observed_events": {},
+      "source": "return api_retrieval | {\"body\": api_retrieval[\"body\"]}, metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 497,
+      "observed_events": {},
+      "source": "return cache_fetch(candidate[\"license_source_url\"], cache_dir, timeout), metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 509,
+      "observed_events": {},
+      "source": "return cache_fetch(\n            f\"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML\",\n            cache_dir,\n            timeout,\n        ), metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 590,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": False, \"reason\": \"ANALYTIC_OR_REFERENCE_TABLE_NOT_SUPERVISION\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 593,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": False, \"reason\": \"COFFEE_FLAVORED_PRODUCT_NOT_COFFEE_SAMPLE\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 600,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": False, \"reason\": \"CHEMICAL_OR_TASTANT_SYSTEM_NOT_COFFEE_SAMPLE\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 610,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": False, \"reason\": \"CONSUMER_SUBJECTIVE_DATA_EXCLUDED\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 617,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": False, \"reason\": \"NOT_SENSORY_TABLE\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 619,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": True, \"reason\": \"PER_PANELIST_TABLE_NOT_ADMITTED\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 718,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": True, \"reason\": \"NO_SAMPLE_DESCRIPTOR_NUMERIC_CELLS\"}"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 722,
+      "observed_events": {},
+      "source": "return [], {\"sensory_table\": True, \"reason\": \"INSUFFICIENT_DESCRIPTOR_AXIS_EVIDENCE\"}"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 84,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 748,
+      "observed_events": {},
+      "source": "return species[0]"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 752,
+      "observed_events": {},
+      "source": "return \"huila\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 754,
+      "observed_events": {},
+      "source": "return \"narino\""
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 96,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 772,
+      "observed_events": {},
+      "source": "return \"article-base-coffee\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 793,
+      "observed_events": {},
+      "source": "return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": \"DUPLICATE_EXISTING_SOURCE_DOI\",\n            \"tables_scanned\": 0,\n            \"sensory_tables\": 0,\n            \"extracted_group_count\": 0,\n            \"ext"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 804,
+      "observed_events": {},
+      "source": "except Exception as exc:\n        return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": f\"FULL_TEXT_RETRIEVAL_FAILED:{type(exc).__name__}\",\n            \"failure_detail\": str(exc)[:300],\n            \"tables_scan"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 817,
+      "observed_events": {},
+      "source": "return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": \"PDF_LAST_RESORT_NOT_MACHINE_READABLE_TABLE\",\n            \"retrieval\": retrieval,\n            \"tables_scanned\": 0,\n            \"sensory_tables\": 0,\n       "
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 832,
+      "observed_events": {},
+      "source": "except Exception as exc:\n        return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": f\"FULL_TEXT_PARSE_FAILED:{type(exc).__name__}\",\n            \"failure_detail\": str(exc)[:300],\n            \"retrieval\": ret"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 853,
+      "observed_events": {},
+      "source": "return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": \"SOURCE_LICENSE_NOT_REVERIFIED_ALLOWED_NON_ND\",\n            \"retrieval\": retrieval,\n            \"source_verified_license\": license_id,\n            \"tables_"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 388,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 392,
+      "observed_events": {},
+      "source": "return value"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "RAISE_OR_RETRY",
+      "line": 426,
+      "observed_events": {},
+      "source": "except HTTPError as exc:\n            if exc.code not in {429, 500, 502, 503, 504} or attempt == 2:\n                raise\n            time.sleep(1.5 * (attempt + 1))"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 483,
+      "observed_events": {},
+      "source": "payload.get(\"files\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 493,
+      "observed_events": {},
+      "source": "return cache_fetch(sorted(ranked)[0][1], cache_dir, timeout), metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 504,
+      "observed_events": {},
+      "source": "row.get(\"family\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 532,
+      "observed_events": {},
+      "source": "payload.get(\"publication_year\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 533,
+      "observed_events": {},
+      "source": "payload.get(\"locations\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 536,
+      "observed_events": {},
+      "source": "location.get(\"landing_page_url\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 546,
+      "observed_events": {},
+      "source": "location.get(\"pdf_url\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 805,
+      "observed_events": {},
+      "source": "return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": f\"FULL_TEXT_RETRIEVAL_FAILED:{type(exc).__name__}\",\n            \"failure_detail\": str(exc)[:300],\n            \"tables_scanned\": 0,\n            \"sensory_tab"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 833,
+      "observed_events": {},
+      "source": "return base | {\n            \"outcome\": \"NOT_ADMITTED\",\n            \"failure_reason\": f\"FULL_TEXT_PARSE_FAILED:{type(exc).__name__}\",\n            \"failure_detail\": str(exc)[:300],\n            \"retrieval\": retrieval,\n            \"tables_scann"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 850,
+      "observed_events": {},
+      "source": "metadata.get(\"crossref_license\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 449,
+      "observed_events": {},
+      "source": "payload.get(\"resultList\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 450,
+      "observed_events": {},
+      "source": "row.get(\"pmcid\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 457,
+      "observed_events": {},
+      "source": "row.get(\"URL\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 457,
+      "observed_events": {},
+      "source": "message.get(\"license\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 504,
+      "observed_events": {},
+      "source": "crossref.get(\"author\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 504,
+      "observed_events": {},
+      "source": "row.get(\"family\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 526,
+      "observed_events": {},
+      "source": "institution.get(\"display_name\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER",
+      "line": 543,
+      "observed_events": {},
+      "source": "except Exception:\n                pass"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 549,
+      "observed_events": {},
+      "source": "return cache_fetch(pdf, cache_dir, timeout), metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER",
+      "line": 550,
+      "observed_events": {},
+      "source": "except Exception:\n                pass"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 690,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 846,
+      "observed_events": {},
+      "source": "parsed_metadata.get(key)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 846,
+      "observed_events": {},
+      "source": "metadata.get(key)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 934,
+      "observed_events": {},
+      "source": "row.get(\"sensory_table\", False)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 976,
+      "observed_events": {},
+      "source": "row.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 990,
+      "observed_events": {},
+      "source": "except Exception as exc:\n                outcome = {\n                    \"candidate_id\": candidate_id,\n                    \"outcome\": \"NOT_ADMITTED\",\n                    \"failure_reason\": f\"UNHANDLED_EXTRACTION_ERROR:{type(exc).__name__}\",\n"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 18000,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 328,
+      "observed_events": {},
+      "source": "node.attrib.get(\"contrib-type\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 450,
+      "observed_events": {},
+      "source": "row.get(\"pmcid\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 489,
+      "observed_events": {},
+      "source": "row.get(\"links\", {}).get(\"content\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 489,
+      "observed_events": {},
+      "source": "row.get(\"links\", {}).get(\"self\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 506,
+      "observed_events": {},
+      "source": "(crossref.get(\"published\") or {}).get(\"date-parts\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 521,
+      "observed_events": {},
+      "source": "payload.get(\"authorships\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 522,
+      "observed_events": {},
+      "source": "row.get(\"author\", {}).get(\"display_name\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 527,
+      "observed_events": {},
+      "source": "payload.get(\"authorships\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 528,
+      "observed_events": {},
+      "source": "row.get(\"institutions\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 529,
+      "observed_events": {},
+      "source": "institution.get(\"display_name\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 533,
+      "observed_events": {},
+      "source": "payload.get(\"best_oa_location\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 542,
+      "observed_events": {},
+      "source": "return result, metadata"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 621,
+      "observed_events": {},
+      "source": "metadata.get(\"title\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 645,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 648,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 693,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 696,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 1011,
+      "observed_events": {},
+      "source": "row.get(\"failure_reason\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 295,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 347,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 311,
+      "observed_events": {},
+      "source": "wrap.attrib.get(\"id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 848,
+      "observed_events": {},
+      "source": "parsed_metadata.get(key, [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 848,
+      "observed_events": {},
+      "source": "metadata.get(key, [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 907,
+      "observed_events": {},
+      "source": "info.get(\"panel_size\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 908,
+      "observed_events": {},
+      "source": "info.get(\"sample_count\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 909,
+      "observed_events": {},
+      "source": "info.get(\"scale\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 910,
+      "observed_events": {},
+      "source": "info.get(\"aggregation\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 911,
+      "observed_events": {},
+      "source": "info.get(\"replicate_structure\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 1034,
+      "observed_events": {},
+      "source": "row.get(\"tables_scanned\", 0)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 1035,
+      "observed_events": {},
+      "source": "row.get(\"sensory_tables\", 0)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 487,
+      "observed_events": {},
+      "source": "row.get(\"key\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 489,
+      "observed_events": {},
+      "source": "row.get(\"links\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 489,
+      "observed_events": {},
+      "source": "row.get(\"links\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 520,
+      "observed_events": {},
+      "source": "row.get(\"author\", {}).get(\"display_name\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 522,
+      "observed_events": {},
+      "source": "row.get(\"author\", {})"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 54852,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 299,
+      "observed_events": {},
+      "source": "cell.attrib.get(\"colspan\", \"1\")"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 54852,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 300,
+      "observed_events": {},
+      "source": "cell.attrib.get(\"rowspan\", \"1\")"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 66087,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 308,
+      "observed_events": {},
+      "source": "row.get(index, \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 506,
+      "observed_events": {},
+      "source": "crossref.get(\"published\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 520,
+      "observed_events": {},
+      "source": "row.get(\"author\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/extract_candidates_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 904,
+      "observed_events": {},
+      "source": "metadata.get('title')"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 127,
+      "observed_events": {},
+      "source": "return direct, rules"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 28,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 159,
+      "observed_events": {},
+      "source": "return {\n        \"mapping_status\": \"MAPPED\",\n        \"concept_id\": concept,\n        \"rule_id\": rule[\"rule_id\"],\n        \"mapping_direction\": (\n            \"GENERALISATION\"\n            if not concept.startswith(\"sensory.\")\n            else \""
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 1521,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 176,
+      "observed_events": {
+        "stratify_extraction_r11.py:176:dimension_surface:EMPTY_RETURN_OBSERVED": 1446
+      },
+      "source": "return token if token in NATIVE_DIMENSIONS else None"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 2342,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 180,
+      "observed_events": {},
+      "source": "return [(index, row) for index, row in enumerate(rows[:limit]) if row]"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 39,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 190,
+      "observed_events": {},
+      "source": "return bool(consumer and not trained)"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1782,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 194,
+      "observed_events": {},
+      "source": "return \"family.r11.\" + digest(doi.lower().encode())[:20]"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 246,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 199,
+      "observed_events": {},
+      "source": "return (\n        \"r11.group:\" + digest(f\"{doi.lower()}|{base}\".encode())[:24],\n        base,\n    )"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 480,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 209,
+      "observed_events": {},
+      "source": "return bool(\n        re.fullmatch(\n            r\"(?:attributes?|descriptors?|sensory index|sensory descriptors?|\"\n            r\"extraction conditions?|sample numbers?|temperature|pressure|time)\",\n            token,\n        )\n    )"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 90,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 220,
+      "observed_events": {},
+      "source": "return bool(\n        re.search(\n            r\"coffee (?:pulp|cascara) wines?|coffee liqueur|coffee flavored|\"\n            r\"green tea|black tea|tea infusion|pure tastant|model solution|\"\n            r\"caffeine solution|sucrose solution\",\n  "
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 1521,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 237,
+      "observed_events": {
+        "stratify_extraction_r11.py:237:resolved_surface:EMPTY_RETURN_OBSERVED": 1425
+      },
+      "source": "return (mapping, dimension) if mapping[\"concept_id\"] or dimension else None"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 10,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 289,
+      "observed_events": {
+        "stratify_extraction_r11.py:289:descriptor_axis:EMPTY_RETURN_OBSERVED": 10
+      },
+      "source": "return None"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 33858,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 301,
+      "observed_events": {},
+      "source": "return {\n        \"record_id\": \"r11.typed:\" + digest(\n            f\"{doi}|{table['table_id']}|{shape_id}|{sequence}\".encode()\n        )[:24],\n        \"shape_id\": shape_id,\n        \"evidence_grade\": SHAPES[shape_id],\n        \"source_family_id"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 336,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 411,
+      "observed_events": {
+        "stratify_extraction_r11.py:411:ontology_records:EMPTY_RETURN_OBSERVED": 336
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 9,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 559,
+      "observed_events": {
+        "stratify_extraction_r11.py:559:sample_axis_records:EMPTY_RETURN_OBSERVED": 3
+      },
+      "source": "return records"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 95,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 137,
+      "observed_events": {},
+      "source": "return {\n            \"mapping_status\": \"DIRECT\",\n            \"concept_id\": direct[token],\n            \"rule_id\": None,\n            \"mapping_direction\": \"IDENTITY\",\n            \"specificity_grade\": \"SPECIFIC\",\n        }"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 2962,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 144,
+      "observed_events": {},
+      "source": "rules.get(token)"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 2934,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 146,
+      "observed_events": {},
+      "source": "return {\n            \"mapping_status\": \"UNMAPPED\",\n            \"concept_id\": None,\n            \"rule_id\": None,\n            \"mapping_direction\": \"NONE\",\n            \"specificity_grade\": (\n                \"COMPOUND\" if len(token.split()) > 1"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 40,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 208,
+      "observed_events": {},
+      "source": "return True"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 286,
+      "observed_events": {},
+      "source": "return \"COLUMN\", (header_index, resolved_columns)"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 8,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 288,
+      "observed_events": {},
+      "source": "return \"ROW\", row_hits"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 3,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 335,
+      "observed_events": {
+        "stratify_extraction_r11.py:335:ontology_records:EMPTY_RETURN_OBSERVED": 3
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 16,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 375,
+      "observed_events": {},
+      "source": "return records"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 18,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 410,
+      "observed_events": {},
+      "source": "return records"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 342,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 429,
+      "observed_events": {
+        "stratify_extraction_r11.py:429:sample_axis_records:EMPTY_RETURN_OBSERVED": 342
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 2,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 431,
+      "observed_events": {
+        "stratify_extraction_r11.py:431:sample_axis_records:EMPTY_RETURN_OBSERVED": 2
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 4,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 433,
+      "observed_events": {
+        "stratify_extraction_r11.py:433:sample_axis_records:EMPTY_RETURN_OBSERVED": 4
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 6,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 435,
+      "observed_events": {
+        "stratify_extraction_r11.py:435:sample_axis_records:EMPTY_RETURN_OBSERVED": 6
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 20,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 441,
+      "observed_events": {
+        "stratify_extraction_r11.py:441:sample_axis_records:EMPTY_RETURN_OBSERVED": 20
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 10,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 454,
+      "observed_events": {
+        "stratify_extraction_r11.py:454:sample_axis_records:EMPTY_RETURN_OBSERVED": 10
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 93,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 275,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1782,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 313,
+      "observed_events": {},
+      "source": "outcome.get(\"source_verified_license\")"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1782,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 320,
+      "observed_events": {},
+      "source": "outcome.get(\"publication_year\")"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1782,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 321,
+      "observed_events": {},
+      "source": "outcome.get(\"authors\", [])"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 1782,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 322,
+      "observed_events": {},
+      "source": "outcome.get(\"institutions\", [])"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 20,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 393,
+      "observed_events": {
+        "stratify_extraction_r11.py:393:ontology_records:EMPTY_RETURN_OBSERVED": 20
+      },
+      "source": "return []"
+    },
+    {
+      "disposition": "OBSERVED_TYPED_RUNTIME_EVENT",
+      "executed_line_count": 6,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 469,
+      "observed_events": {
+        "stratify_extraction_r11.py:469:append_cell:EMPTY_RETURN_OBSERVED": 6
+      },
+      "source": "return"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 483,
+      "observed_events": {},
+      "source": "return"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 546,
+      "observed_events": {},
+      "source": "return []"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 581,
+      "observed_events": {},
+      "source": "outcome.get(\"retrieval\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 583,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 586,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER",
+      "line": 595,
+      "observed_events": {},
+      "source": "except Exception:\n            continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 853,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 258,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 95,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 269,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 3564,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 314,
+      "observed_events": {},
+      "source": "outcome.get(\"source_verified_license\")"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 212,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 362,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 396,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 86,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 399,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 537,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 596,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 76,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 557,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 582,
+      "observed_events": {},
+      "source": "outcome.get(\"source_verified_license\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 594,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/stratify_extraction_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 619,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "EXECUTED_SITE_REQUIRES_MANUAL_CLASSIFICATION",
+      "executed_line_count": 6,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 76,
+      "observed_events": {},
+      "source": "return tables"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 81,
+      "observed_events": {},
+      "source": "retrieval.get(\"requested_url\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 83,
+      "observed_events": {},
+      "source": "return outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 86,
+      "observed_events": {},
+      "source": "return outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 96,
+      "observed_events": {},
+      "source": "return metadata[\"plain_text\"]"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER",
+      "line": 97,
+      "observed_events": {},
+      "source": "except Exception:\n        return outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER",
+      "line": 47,
+      "observed_events": {},
+      "source": "except csv.Error:\n            dialect = csv.excel_tab if suffix == \".tsv\" else csv.excel"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 80,
+      "observed_events": {},
+      "source": "outcome.get(\"retrieval\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 83,
+      "observed_events": {},
+      "source": "outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 86,
+      "observed_events": {},
+      "source": "outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 98,
+      "observed_events": {},
+      "source": "return outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 122,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 134,
+      "observed_events": {},
+      "source": "except Exception as exc:\n            outcomes.append(base | {\"status\": \"SUPPLEMENT_RETRIEVAL_FAILED\", \"detail\": f\"{type(exc).__name__}:{str(exc)[:180]}\"})\n            continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 139,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 181,
+      "observed_events": {},
+      "source": "except zipfile.BadZipFile as exc:\n            outcomes.append(base | {\"status\": \"SUPPLEMENT_ZIP_INVALID\", \"detail\": str(exc)[:180], \"retrieval\": response})\n            continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 98,
+      "observed_events": {},
+      "source": "outcome.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 119,
+      "observed_events": {},
+      "source": "outcome.get(\"retrieval\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 120,
+      "observed_events": {},
+      "source": "retrieval.get(\"final_url\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 136,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 183,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 89,
+      "observed_events": {},
+      "source": "retrieval.get(\"content_type\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 150,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 153,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 156,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 160,
+      "observed_events": {},
+      "source": "except Exception as exc:\n                        member_rows.append(item | {\"status\": \"PARSE_FAILED\", \"detail\": f\"{type(exc).__name__}:{str(exc)[:180]}\"})\n                        continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 165,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 216,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 162,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/recover_supplements_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 216,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 66,
+      "observed_events": {},
+      "source": "return bool(\n        re.search(r\"\\bcoffee\\b|\\bcoffea\\b|\\bcafé\\b\", title, re.I)\n        and not NON_COFFEE_PRODUCT_TITLE.search(title)\n    )"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 84,
+      "observed_events": {},
+      "source": "return None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 96,
+      "observed_events": {},
+      "source": "return sorted(values)[0] if values else None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 103,
+      "observed_events": {},
+      "source": "return bool(\n        coffee_is_study_subject(title)\n        and re.search(r\"sensor|cupping|descript|cata|flavo[u]?r|aroma\", text)\n        and not re.search(r\"craft beer|coffee grounds beer|coffee pulp wine|liqueur|consumer preference|consum"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 119,
+      "observed_events": {},
+      "source": "return bool(\n        coffee_is_study_subject(title)\n        and re.search(r\"sensor|cupping|descript|\\bcata\\b|\\bqda\\b|flavo[u]?r|aroma\", text)\n        and not re.search(\n            r\"consumer liking|consumer acceptance|machine learning|deep"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 131,
+      "observed_events": {},
+      "source": "return next((row.get(\"id\", \"\").lower() for row in bib.get(\"identifier\", []) if row.get(\"type\") == \"doi\" and row.get(\"id\")), None)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 75,
+      "observed_events": {},
+      "source": "return None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 77,
+      "observed_events": {},
+      "source": "return \"CC0-1.0\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 79,
+      "observed_events": {},
+      "source": "return \"CC-BY-NC-4.0\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 81,
+      "observed_events": {},
+      "source": "return \"CC-BY-SA-4.0\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 83,
+      "observed_events": {},
+      "source": "return \"CC-BY-4.0\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 89,
+      "observed_events": {},
+      "source": "payload.get(\"results\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 100,
+      "observed_events": {},
+      "source": "row.get(\"bibjson\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 101,
+      "observed_events": {},
+      "source": "bib.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 117,
+      "observed_events": {},
+      "source": "row.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 139,
+      "observed_events": {},
+      "source": "return result, result.pop(\"body\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 140,
+      "observed_events": {},
+      "source": "candidate.get(\"links\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 90,
+      "observed_events": {},
+      "source": "result.get(\"bibjson\", {}).get(\"license\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 135,
+      "observed_events": {},
+      "source": "candidate.get(\"pmcid\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 143,
+      "observed_events": {},
+      "source": "return result, result.pop(\"body\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 199,
+      "observed_events": {},
+      "source": "except Exception as exc:\n            query_receipts.append({\"query_id\": query_id, \"source_system\": \"EUROPE_PMC\", \"url\": url, \"status\": \"FAILED\", \"detail\": f\"{type(exc).__name__}:{str(exc)[:180]}\"})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 218,
+      "observed_events": {},
+      "source": "except Exception as exc:\n            query_receipts.append({\"query_id\": query_id, \"source_system\": \"DOAJ\", \"url\": url, \"status\": \"FAILED\", \"detail\": f\"{type(exc).__name__}:{str(exc)[:180]}\"})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 224,
+      "observed_events": {},
+      "source": "bib.get(\"journal\", {}).get(\"issns\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 238,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 243,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 300,
+      "observed_events": {},
+      "source": "except Exception as exc:\n            outcomes.append({\"candidate_id\": candidate[\"candidate_id\"], \"doi\": candidate[\"doi\"], \"status\": \"RETRIEVAL_OR_PARSE_FAILED\", \"detail\": f\"{type(exc).__name__}:{str(exc)[:180]}\"})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 91,
+      "observed_events": {},
+      "source": "row.get(\"ND\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 92,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 141,
+      "observed_events": {},
+      "source": "link.get(\"url\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 158,
+      "observed_events": {},
+      "source": "row.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 171,
+      "observed_events": {},
+      "source": "payload.get(\"resultList\", {}).get(\"result\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 209,
+      "observed_events": {},
+      "source": "payload.get(\"results\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 227,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "SILENT_FALLBACK_BASELINE_REQUIRES_OBSERVER",
+      "line": 233,
+      "observed_events": {},
+      "source": "except Exception:\n                journal_licenses[issn] = None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 240,
+      "observed_events": {},
+      "source": "journal_licenses.get(issn)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 247,
+      "observed_events": {},
+      "source": "row.get(\"id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 249,
+      "observed_events": {},
+      "source": "bib.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 251,
+      "observed_events": {},
+      "source": "bib.get(\"link\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 90,
+      "observed_events": {},
+      "source": "result.get(\"bibjson\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 131,
+      "observed_events": {},
+      "source": "bib.get(\"identifier\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 141,
+      "observed_events": {},
+      "source": "link.get(\"content_type\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 156,
+      "observed_events": {},
+      "source": "row.get(\"doi\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 183,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 213,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 224,
+      "observed_events": {},
+      "source": "bib.get(\"journal\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 240,
+      "observed_events": {},
+      "source": "bib.get(\"journal\", {}).get(\"issns\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 271,
+      "observed_events": {},
+      "source": "retrieval.get(\"content_type\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 289,
+      "observed_events": {},
+      "source": "metadata.get(\"year\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 290,
+      "observed_events": {},
+      "source": "metadata.get(\"authors\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 291,
+      "observed_events": {},
+      "source": "metadata.get(\"institutions\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 93,
+      "observed_events": {},
+      "source": "row.get(\"url\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 93,
+      "observed_events": {},
+      "source": "row.get(\"type\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 102,
+      "observed_events": {},
+      "source": "bib.get('abstract', '')"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 118,
+      "observed_events": {},
+      "source": "row.get('abstractText', '')"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 131,
+      "observed_events": {},
+      "source": "row.get(\"id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 131,
+      "observed_events": {},
+      "source": "row.get(\"id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 171,
+      "observed_events": {},
+      "source": "payload.get(\"resultList\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 175,
+      "observed_events": {},
+      "source": "row.get(\"license\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 210,
+      "observed_events": {},
+      "source": "payload.get(\"total\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 214,
+      "observed_events": {},
+      "source": "row.get(\"bibjson\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 275,
+      "observed_events": {},
+      "source": "retrieval.get(\"content_type\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 277,
+      "observed_events": {},
+      "source": "retrieval.get(\"content_type\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 315,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 131,
+      "observed_events": {},
+      "source": "row.get(\"type\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 180,
+      "observed_events": {},
+      "source": "row.get(\"pmcid\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 192,
+      "observed_events": {},
+      "source": "row.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 240,
+      "observed_events": {},
+      "source": "bib.get(\"journal\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 315,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_targeted_r11.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 174,
+      "observed_events": {},
+      "source": "row.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 78,
+      "observed_events": {},
+      "source": "return hashlib.sha256(value).hexdigest()"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 82,
+      "observed_events": {},
+      "source": "return (json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + \"\\n\").encode()"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 101,
+      "observed_events": {},
+      "source": "return raw.decode(\"utf-8\"), sha(raw)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 106,
+      "observed_events": {},
+      "source": "return list(csv.DictReader(io.StringIO(text), delimiter=\"\\t\")), checksum"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 110,
+      "observed_events": {},
+      "source": "return (value or \"\").strip().lower() == \"true\""
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 115,
+      "observed_events": {},
+      "source": "return bool(token and \"unknown\" not in token and \"unresolved\" not in token)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 145,
+      "observed_events": {},
+      "source": "return eligible, inputs"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 153,
+      "observed_events": {},
+      "source": "return [\n        row\n        for row in atoms\n        if row[\"source_family_id\"] in allowed_families\n        and row[\"rights_state\"] == \"AFFIRMATIVE\"\n        and row[\"semantic_class\"] == \"STRICT_FLAVOR\"\n        and truth(row[\"counts_as_clea"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 355,
+      "observed_events": {},
+      "source": "return report, eligible_ids"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 436,
+      "observed_events": {},
+      "source": "return {\n        \"contract_version\": \"r11.historical-contract-calibration.v1\",\n        \"generated_at_utc\": time.strftime(\"%Y-%m-%dT%H:%M:%SZ\", time.gmtime()),\n        \"twenty_k_semantic_audit\": {\n            \"input\": {\"path\": AUDIT_20K, \"sh"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 520,
+      "observed_events": {},
+      "source": "return grouped"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 539,
+      "observed_events": {},
+      "source": "return sha(json.dumps(payload, sort_keys=True, ensure_ascii=False).encode())"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 596,
+      "observed_events": {},
+      "source": "return canonical, report"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 638,
+      "observed_events": {},
+      "source": "return {\n        \"contract_version\": \"r11.failure-taxonomy.v1\",\n        \"generated_at_utc\": time.strftime(\"%Y-%m-%dT%H:%M:%SZ\", time.gmtime()),\n        \"candidate_count\": len(records),\n        \"diagnosis_class_counts\": dict(sorted(counts.it"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 675,
+      "observed_events": {},
+      "source": "return records, {\n        \"source_record_counts_pre_record_dedup\": source_counts,\n        \"combined_record_count\": len(records),\n    }"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 604,
+      "observed_events": {},
+      "source": "primary.get(\"candidate_shape_counts\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 129,
+      "observed_events": {},
+      "source": "licenses.get(row.get(\"source_family_id\", \"\"))"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 201,
+      "observed_events": {},
+      "source": "source_by_id.get(assertion_id)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 202,
+      "observed_events": {},
+      "source": "atoms_by_id.get(assertion_id, [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 203,
+      "observed_events": {},
+      "source": "selected_by_id.get(assertion_id, [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 518,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 535,
+      "observed_events": {},
+      "source": "first.get(\"base_coffee_identity_normalized\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 536,
+      "observed_events": {},
+      "source": "first.get(\"panel_size\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 551,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 622,
+      "observed_events": {},
+      "source": "shapes.get(row[\"candidate_id\"], {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 623,
+      "observed_events": {},
+      "source": "supplement_status.get(row[\"candidate_id\"])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 662,
+      "observed_events": {},
+      "source": "primary.get(\"records\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 663,
+      "observed_events": {},
+      "source": "supplement.get(\"records\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 664,
+      "observed_events": {},
+      "source": "targeted.get(\"records\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 704,
+      "observed_events": {},
+      "source": "primary.get(\"generated_at_utc\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 705,
+      "observed_events": {},
+      "source": "supplement.get(\"generated_at_utc\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 706,
+      "observed_events": {},
+      "source": "targeted.get(\"generated_at_utc\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 879,
+      "observed_events": {},
+      "source": "targeted.get(\"query_receipts\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 880,
+      "observed_events": {},
+      "source": "targeted.get(\"capability_receipts\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 898,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 129,
+      "observed_events": {},
+      "source": "row.get(\"source_family_id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 130,
+      "observed_events": {},
+      "source": "source.get(\"resolved_license\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 136,
+      "observed_events": {},
+      "source": "source.get(\"attribution_complete\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 380,
+      "observed_events": {},
+      "source": "row.get(\"rights_noncommercial_model_research\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 606,
+      "observed_events": {},
+      "source": "supplement.get(\"candidate_outcomes\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 610,
+      "observed_events": {},
+      "source": "row.get(\"failure_reason\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 812,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 815,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 135,
+      "observed_events": {},
+      "source": "source.get(\"participant_pii_present\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 137,
+      "observed_events": {},
+      "source": "row.get(\"descriptor_class\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 138,
+      "observed_events": {},
+      "source": "row.get(\"coffee_identity_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 139,
+      "observed_events": {},
+      "source": "row.get(\"counts_as_assertion\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 205,
+      "observed_events": {},
+      "source": "row.get(\"coffee_identity_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 248,
+      "observed_events": {},
+      "source": "row.get(\"coffee_identity_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 382,
+      "observed_events": {},
+      "source": "row.get(\"semantic_class\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 384,
+      "observed_events": {},
+      "source": "row.get(\"canonical_concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 529,
+      "observed_events": {},
+      "source": "row.get(\"reported_value\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 557,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 565,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 627,
+      "observed_events": {},
+      "source": "row.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 754,
+      "observed_events": {},
+      "source": "row.get(\"mapping_status\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 770,
+      "observed_events": {},
+      "source": "row.get(key)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 791,
+      "observed_events": {},
+      "source": "row.get(\"source_surface_form\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 809,
+      "observed_events": {},
+      "source": "row.get(\"mapping_status\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 810,
+      "observed_events": {},
+      "source": "row.get(\"mapping_status\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 929,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 934,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 934,
+      "observed_events": {},
+      "source": "row.get(\"c0_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 939,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 939,
+      "observed_events": {},
+      "source": "row.get(\"c1_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 968,
+      "observed_events": {},
+      "source": "row.get(\"concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 383,
+      "observed_events": {},
+      "source": "row.get(\"counts_as_record_unique_descriptor\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 386,
+      "observed_events": {},
+      "source": "row.get(\"canonical_concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 528,
+      "observed_events": {},
+      "source": "row.get(\"concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 528,
+      "observed_events": {},
+      "source": "row.get(\"native_dimension_label\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 530,
+      "observed_events": {},
+      "source": "row.get(\"scale\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 562,
+      "observed_events": {},
+      "source": "a.get(\"publication_year\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 562,
+      "observed_events": {},
+      "source": "b.get(\"publication_year\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 631,
+      "observed_events": {},
+      "source": "supplement_row.get(\"status\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 758,
+      "observed_events": {},
+      "source": "row.get(\"mapping_status\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 825,
+      "observed_events": {},
+      "source": "row.get(\"concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 830,
+      "observed_events": {},
+      "source": "row.get(\"concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 835,
+      "observed_events": {},
+      "source": "row.get(\"concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 847,
+      "observed_events": {},
+      "source": "row.get(key)"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 721,
+      "observed_events": {},
+      "source": "row.get(\"coffee_group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 747,
+      "observed_events": {},
+      "source": "row.get(\"mapping_direction\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 759,
+      "observed_events": {},
+      "source": "row.get(\"native_dimension_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 970,
+      "observed_events": {},
+      "source": "row.get(\"concept_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 219,
+      "observed_events": {},
+      "source": "source.get(\"source_assertion_disposition\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 414,
+      "observed_events": {},
+      "source": "row.get(\"evaluation_group\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 414,
+      "observed_events": {},
+      "source": "row.get(\"group_id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 558,
+      "observed_events": {},
+      "source": "a.get(\"authors\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 558,
+      "observed_events": {},
+      "source": "b.get(\"authors\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 560,
+      "observed_events": {},
+      "source": "a.get(\"institutions\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 560,
+      "observed_events": {},
+      "source": "b.get(\"institutions\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 618,
+      "observed_events": {},
+      "source": "row.get(\"outcome\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 224,
+      "observed_events": {},
+      "source": "source.get(\"source_assertion_disposition\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 766,
+      "observed_events": {},
+      "source": "row.get(\"mapping_direction\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 796,
+      "observed_events": {},
+      "source": "item.get(\"source_surface_form\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 220,
+      "observed_events": {},
+      "source": "atom.get(\"mapping_state\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 225,
+      "observed_events": {},
+      "source": "atom.get(\"semantic_class\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 229,
+      "observed_events": {},
+      "source": "atom.get(\"mapping_state\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 416,
+      "observed_events": {},
+      "source": "row.get(\"role\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 418,
+      "observed_events": {},
+      "source": "row.get(\"source_family\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/finalize_r11_artifacts.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 788,
+      "observed_events": {},
+      "source": "row.get('source_surface_form')"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 47,
+      "observed_events": {},
+      "source": "return any(token in value for token in (\"coffee\", \"coffea\")) and any(\n        token in value\n        for token in (\n            \"sensory\",\n            \"cupping\",\n            \"flavor\",\n            \"flavour\",\n            \"descriptive\",\n      "
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 67,
+      "observed_events": {},
+      "source": "return json.loads(body.decode(\"utf-8\")), hashlib.sha256(body).hexdigest()"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 81,
+      "observed_events": {},
+      "source": "return"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 84,
+      "observed_events": {},
+      "source": "return"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 117,
+      "observed_events": {},
+      "source": "return payload"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "EXCEPTION_HANDLER",
+      "legacy_handler_disposition": "EXISTING_TYPED_FAILURE_RECORD",
+      "line": 118,
+      "observed_events": {},
+      "source": "except Exception as exc:\n            row.update({\"status\": \"ERROR\", \"error\": f\"{type(exc).__name__}:{exc}\"})\n            queries.append(row)\n            return None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 128,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 129,
+      "observed_events": {},
+      "source": "payload.get(\"_embedded\", {}).get(\"stash:datasets\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 152,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 153,
+      "observed_events": {},
+      "source": "payload.get(\"resultList\", {}).get(\"result\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 183,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 184,
+      "observed_events": {},
+      "source": "payload.get(\"results\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 204,
+      "observed_events": {},
+      "source": "payload.get(\"hits\", {}).get(\"hits\", [])"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "RETURN_REQUIRES_EMPTY_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 121,
+      "observed_events": {},
+      "source": "return None"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "CONTINUE_REQUIRES_SKIP_VISIBILITY",
+      "legacy_handler_disposition": null,
+      "line": 155,
+      "observed_events": {},
+      "source": "continue"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 205,
+      "observed_events": {},
+      "source": "item.get(\"metadata\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 129,
+      "observed_events": {},
+      "source": "payload.get(\"_embedded\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 135,
+      "observed_events": {},
+      "source": "item.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 137,
+      "observed_events": {},
+      "source": "item.get(\"license\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 153,
+      "observed_events": {},
+      "source": "payload.get(\"resultList\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 154,
+      "observed_events": {},
+      "source": "item.get(\"isOpenAccess\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 156,
+      "observed_events": {},
+      "source": "item.get(\"pmcid\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 156,
+      "observed_events": {},
+      "source": "item.get(\"id\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 165,
+      "observed_events": {},
+      "source": "item.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 166,
+      "observed_events": {},
+      "source": "item.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 167,
+      "observed_events": {},
+      "source": "item.get(\"license\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 185,
+      "observed_events": {},
+      "source": "item.get(\"best_oa_location\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 190,
+      "observed_events": {},
+      "source": "item.get(\"id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 191,
+      "observed_events": {},
+      "source": "item.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 204,
+      "observed_events": {},
+      "source": "payload.get(\"hits\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 206,
+      "observed_events": {},
+      "source": "metadata.get(\"license\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 211,
+      "observed_events": {},
+      "source": "metadata.get(\"title\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 212,
+      "observed_events": {},
+      "source": "item.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 213,
+      "observed_events": {},
+      "source": "license_row.get(\"id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 134,
+      "observed_events": {},
+      "source": "item.get(\"id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 138,
+      "observed_events": {},
+      "source": "item.get(\"sharingLink\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 159,
+      "observed_events": {},
+      "source": "item.get('pmcid')"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 193,
+      "observed_events": {},
+      "source": "location.get(\"license\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 194,
+      "observed_events": {},
+      "source": "location.get(\"landing_page_url\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 194,
+      "observed_events": {},
+      "source": "item.get(\"id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 210,
+      "observed_events": {},
+      "source": "item.get(\"id\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 214,
+      "observed_events": {},
+      "source": "item.get(\"links\", {}).get(\"self_html\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 214,
+      "observed_events": {},
+      "source": "item.get(\"links\", {}).get(\"self\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 130,
+      "observed_events": {},
+      "source": "item.get(\"identifier\", \"\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 186,
+      "observed_events": {},
+      "source": "item.get(\"doi\")"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 214,
+      "observed_events": {},
+      "source": "item.get(\"links\", {})"
+    },
+    {
+      "disposition": "NOT_EXECUTED_LEGACY_SITE_REMAINS_UNVERIFIED",
+      "executed_line_count": 0,
+      "file": "db/scripts/acquire_license_verified_r10.py",
+      "kind": "DEFAULT_LOOKUP_SCHEMA_RISK",
+      "legacy_handler_disposition": null,
+      "line": 214,
+      "observed_events": {},
+      "source": "item.get(\"links\", {})"
+    }
+  ]
+}
