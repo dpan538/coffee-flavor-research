@@ -1,0 +1,120 @@
+{
+  "contract_version": "round2.registry-extension.v1",
+  "status": "OWNER_APPROVED",
+  "relationship_to_r9": {
+    "extends": "db/data/backend-sequential-model-v2/revisions/r9/output_policy_contract.json",
+    "sealed_sha256": "f9e1a7f5a99359238b5c8f8c1a5b8228e730954adb45751488f61ea78d933cc3",
+    "r9_contract_modified": false,
+    "rationale": "R9 is a sealed artefact. Adding concepts by editing it would break every hash reference recorded against it since R9. This layers on top, in the same way PRODUCT_CONTRACT_V1 supersedes V0 without editing it."
+  },
+  "purpose": "Complete the mid-level layer so the redefined secondary has a candidate in every dimension it can activate. Before this, 7 of 9 dimensions had no representative and secondary was structurally empty for them.",
+  "added_concepts": {
+    "broad.floral": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "floral"
+      ],
+      "labels": {
+        "en": "Floral",
+        "zhHans": "花香类"
+      },
+      "represents_members": 4
+    },
+    "broad.green": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "green_vegetative"
+      ],
+      "labels": {
+        "en": "Green / vegetal",
+        "zhHans": "青草植物类"
+      },
+      "represents_members": 7
+    },
+    "broad.roasted": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "roasted"
+      ],
+      "labels": {
+        "en": "Roasted",
+        "zhHans": "烘烤类"
+      },
+      "represents_members": 4
+    },
+    "broad.fermented": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sour_fermented"
+      ],
+      "labels": {
+        "en": "Fermented",
+        "zhHans": "发酵类"
+      },
+      "represents_members": 3
+    },
+    "broad.spice": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "spices"
+      ],
+      "labels": {
+        "en": "Spice",
+        "zhHans": "香料类"
+      },
+      "represents_members": 5
+    },
+    "broad.sweet": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "sweet"
+      ],
+      "labels": {
+        "en": "Sweet",
+        "zhHans": "甜感类"
+      },
+      "represents_members": 5
+    }
+  },
+  "deliberately_not_added": {
+    "taste": {
+      "would_have_been": "broad.taste",
+      "reason": "The taste dimension has exactly one member, sensory.bitter. A representative would say taste-family where the system can already say bitter, which loses specificity. The owner further noted bitter appears across all contexts, so a taste-family label carries no information."
+    }
+  },
+  "evidence_status": "project_curated_editorial_extension",
+  "not_a_measurement": "These are naming decisions for equivalence classes the topology already contains. They assert no sensory fact and were not derived from data.",
+  "what_this_does_not_do": [
+    "No within-class discrimination. The six concepts share their siblings' feature vectors and join the equivalence classes rather than splitting them.",
+    "No relation edges. The 312 occurrences carrying a REQUIRES_RELATION_EDGE specificity status still require one.",
+    "No change to what the system knows, only to what it can say when it has dimension-level support."
+  ],
+  "measurement_rule_exemption": {
+    "rule": "The representation-progress rule requires max_class_size, equivalence_class_count and per-column variance to improve together.",
+    "exemption": "This change is expressibility, not representation. It is expected to leave all three unchanged and must not be judged by that rule.",
+    "correct_metrics": [
+      "secondary_non_empty_rate",
+      "mean_secondary_count",
+      "direct_evidence_lost"
+    ]
+  },
+  "deterministic_selection_rule": {
+    "problem": "nutty_cocoa now carries two representatives, broad.chocolate and broad.nutty.",
+    "rule": "Lexicographic on concept id. For nutty_cocoa this selects broad.chocolate.",
+    "status": "APPLIED, and recorded here so it is a declared rule rather than registry insertion order."
+  },
+  "connected_defect_scan": {
+    "hardcoded_concept_counts_in_scripts_or_tests": "none found",
+    "tests_referencing_broad_star": [
+      "test_output_policy_r9.py",
+      "test_semantic_mapping_r6.py",
+      "test_participant_responses_r9.py",
+      "test_alignment_metrics_r2.py",
+      "test_alignment_metrics_r3.py"
+    ],
+    "assessment": "All use broad.citrus, broad.nutty or broad.chocolate as fixtures. None enumerate the total or assert a count, so adding concepts does not break them.",
+    "public_project_status": "reports 130 canonical concepts and 92 active sensory attributes, which are database-layer counts unrelated to this 82-entry registry. No update required.",
+    "scripts_reading_the_registry": 9,
+    "assessment_scripts": "All filter by role rather than by count."
+  }
+}

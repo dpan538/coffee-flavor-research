@@ -52,9 +52,22 @@ SUPPORTED = "SUPPORTED_WITHIN_SCOPE"
 PROPOSED = "PROPOSED"
 
 
-def load_registry(path: Path | None = None) -> dict[str, Any]:
+ROUND2 = ROOT / "db/data/backend-sequential-model-v2/revisions/round2"
+
+
+def load_registry(path: Path | None = None, apply_extension: bool = True) -> dict[str, Any]:
+    """R9 sealed registry, optionally layered with the owner-approved round 2 extension.
+
+    The extension is a separate file. R9's output_policy_contract.json is never
+    edited, so every hash recorded against it since R9 stays valid.
+    """
     path = path or (R9 / "output_policy_contract.json")
-    return json.loads(path.read_text())["concept_role_registry"]
+    registry = dict(json.loads(path.read_text())["concept_role_registry"])
+    ext_path = ROUND2 / "registry_extension.json"
+    if apply_extension and ext_path.exists():
+        for cid, row in json.loads(ext_path.read_text())["added_concepts"].items():
+            registry[cid] = row
+    return registry
 
 
 def _dims(registry: dict[str, Any], cid: str) -> list[str]:

@@ -1,0 +1,106 @@
+{
+  "contract_version": "round2.development-state-plan.v1",
+  "premise_owner_stated": "Future product work is frontend only. Backend and overall problem validation must be planned now, before that split takes effect.",
+  "consequence": "Anything not settled before the split becomes unfixable by the remaining team. This plan lists what must be closed, and what is safe to leave open.",
+  "must_close_before_frontend_only": [
+    {
+      "id": "P1",
+      "item": "D5 — dimension appearing in both secondary and overall_profile",
+      "why_now": "It changes what the user sees in two slots simultaneously. A frontend-only team cannot decide it, because it is an inference-layer rule, not a display choice.",
+      "options": [
+        "suppress the profile entry when the dimension already has a secondary representative",
+        "keep both as intentional role separation",
+        "keep both, mark the profile entry as already represented"
+      ],
+      "already_implemented_as": "suppress_profile_when_secondary flag, defaulting to current behaviour",
+      "cost": "one decision"
+    },
+    {
+      "id": "P2",
+      "item": "Output shape frozen into a schema the frontend can build against",
+      "why_now": "main <=3, secondary <=2, overall_profile <=3 is settled but has no versioned schema. The frontend needs field names, cardinalities and the empty cases.",
+      "critical_empty_cases": [
+        "main below 3, which is 76% of records",
+        "secondary empty when no dimension is uncovered",
+        "overall_profile empty when no dimension is activated"
+      ],
+      "cost": "one schema document"
+    },
+    {
+      "id": "P3",
+      "item": "Bilingual label coverage for every emittable concept",
+      "why_now": "The product is CN/EN. The six new broad concepts carry labels. The 59 R9 descriptors do not, and the frontend cannot invent them.",
+      "gap": "59 named descriptors plus 9 profile directions need zhHans labels. The public repo already carries them for 24 descriptors under CC BY 4.0 and can seed this.",
+      "cost": "roughly 44 labels"
+    },
+    {
+      "id": "P4",
+      "item": "Question and option wording for C0, C1, Q0 through Q5",
+      "why_now": "PRODUCT_CONTRACT_V1 fixes the flow structure but not the wording. A frontend-only team would either invent it or block.",
+      "constraint_from_contract": "exactly one question may carry 'none of the above'; others at most 'uncertain'",
+      "cost": "wording for 7 to 9 questions"
+    }
+  ],
+  "must_plan_but_can_run_after_the_split": [
+    {
+      "id": "P5",
+      "item": "Relation edges",
+      "state": "0 edges. 312 of 632 occurrences carry a REQUIRES_RELATION_EDGE status.",
+      "unlocks": "within-class discrimination, and secondary populated by specific words rather than class representatives",
+      "cost": "roughly 60 owner rule approvals",
+      "note": "Backend work. Does not block frontend, because the output shape is unchanged either way."
+    },
+    {
+      "id": "P6",
+      "item": "Attribute extension to the remaining 45 descriptors",
+      "state": "24 descriptors carry six CC BY 4.0 attributes; 14 overlap the registry",
+      "unlocks": "equivalence classes from 11 to 59",
+      "cost": "270 values",
+      "note": "Backend work, same reason."
+    },
+    {
+      "id": "P7",
+      "item": "Corpus growth beyond the measured ceiling",
+      "state": "capture ceiling roughly 7000, on-subject conversion 0.073 groups per candidate",
+      "note": "Only matters if a learned component returns. Not on the current path."
+    }
+  ],
+  "explicitly_out_of_scope_now": [
+    {
+      "item": "ANFIS or any fitted model",
+      "reason": "Measured supervision cannot support parameter fitting, and the owner confirmed even 250 is not a safe floor."
+    },
+    {
+      "item": "Within-class ranking",
+      "reason": "Mathematically impossible at the current topology. 57 of 59 descriptors carry exactly one dimension."
+    }
+  ],
+  "validation_that_must_be_planned_now": {
+    "problem": "The only evaluation harness runs against R8/R9 frozen states, and the root private artifacts are lost.",
+    "lost": [
+      "actual_returns.private.json",
+      "chain_examples.private.json",
+      "paired_group_deltas.private.json",
+      "the 474 policy outputs",
+      "the r9_extension_summary private detail"
+    ],
+    "consequence": "No further measurement against the historical baseline is possible. Every future comparison must be against a NEW baseline captured from the repaired generator.",
+    "action_required_before_the_split": "Freeze a new evaluation baseline from output_generator_round2 over a committed state fixture, so the frontend team inherits something they can regression-test against.",
+    "note": "Without this the project loses the ability to detect its own regressions, which is worse than any single missing artefact."
+  },
+  "operational_finding": {
+    "id": "ROUND2-F3",
+    "severity": "HIGH",
+    "finding": "OWNER_CONTROLLED_STORAGE resolved to /private/tmp, a directory the operating system clears. Roughly 34 MB of per-case research detail existed there as a single copy with no backup.",
+    "already_lost": 5,
+    "action_taken": "Remaining files copied to ~/coffee-flavor-r9-private-backup. Five declared hashes verified intact. Originals untouched.",
+    "recommendation": "Choose a durable location and change the --private-output default. Any script whose output is referenced by a committed hash must not write to a temp directory."
+  },
+  "guards": {
+    "fit_count": 0,
+    "relation_edges_created": 0,
+    "concepts_created": 6,
+    "concepts_created_note": "the six owner-approved broad.* representatives, via registry_extension.json; R9 contract unmodified",
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
