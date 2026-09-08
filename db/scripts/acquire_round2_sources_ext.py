@@ -37,6 +37,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import re
 import hashlib
 import json
 from pathlib import Path
@@ -69,6 +70,12 @@ OPENALEX_MULTILINGUAL_FILTERS = [
     "title_and_abstract.search:coffee flavor",
     "title_and_abstract.search:coffee quality",
 ]
+JSTAGE_QUERIES = [
+    "coffee sensory", "coffee flavor", "coffee aroma", "coffee taste",
+    "coffee roasting", "coffee quality", "コーヒー 官能", "コーヒー 香り",
+    "コーヒー 焙煎", "コーヒー 風味",
+]
+
 CORE_QUERIES = [
     "coffee sensory evaluation", "coffee descriptive analysis", "coffee cupping score",
     "coffee flavour profile", "coffee roasting sensory", "Coffea arabica sensory panel",
@@ -330,6 +337,80 @@ def harvest_core(c: ExtCollector, timeout: float, max_pages: int, mailto: str) -
               licence, s["url"], s["query_id"])
 
 
+def _cdata(value: str) -> str:
+    return re.sub(r"<!\[CDATA\[(.*?)\]\]?>?", r"\1", value, flags=re.S).strip()
+
+
+def harvest_jstage(c: ExtCollector, timeout: float, max_pages: int, mailto: str) -> None:
+    """J-Stage exposes prism:doi but no licence field, so the CORE pattern applies:
+    stage the records, batch-resolve licences through OpenAlex, admit only what
+    resolves. Titles arrive as separate <en> and <ja> elements."""
+    staged: list[dict[str, Any]] = []
+    for index, q in enumerate(JSTAGE_QUERIES, 1):
+        if c.full or c.source_full("JSTAGE"):
+            break
+        query_id = f"JSTAGE_{index}"
+        for page in range(max_pages):
+            if c.full or c.source_full("JSTAGE"):
+                break
+            start = page * 100 + 1
+            url = ("https://api.jstage.jst.go.jp/searchapi/do?"
+                   + urlencode({"service": 3, "text": q, "count": 100, "start": start}))
+            try:
+                request = Request(url, headers={"User-Agent": USER_AGENT})
+                with urlopen(request, timeout=timeout) as response:
+                    body = response.read()
+                digest = hashlib.sha256(body).hexdigest()
+                xml = body.decode("utf-8", errors="replace")
+            except Exception as exc:  # noqa: BLE001
+                c.log(query_id, "JSTAGE", url, page + 1, "ERROR",
+                      error=f"{type(exc).__name__}:{exc}")
+                break
+            c.log(query_id, "JSTAGE", url, page + 1, "COMPLETE", digest)
+            entries = re.findall(r"<entry>(.*?)</entry>", xml, re.S)
+            for e in entries:
+                doi_m = re.search(r"<prism:doi>(.*?)</prism:doi>", e, re.S)
+                if not doi_m:
+                    c.rejected_unresolved_licence += 1
+                    continue
+                title_block = re.search(r"<article_title>(.*?)</article_title>", e, re.S)
+                title_en = title_ja = ""
+                if title_block:
+                    en = re.search(r"<en>(.*?)</en>", title_block.group(1), re.S)
+                    ja = re.search(r"<ja>(.*?)</ja>", title_block.group(1), re.S)
+                    title_en = _cdata(en.group(1)) if en else ""
+                    title_ja = _cdata(ja.group(1)) if ja else ""
+                link = re.search(r"<article_link>(.*?)</article_link>", e, re.S)
+                staged.append({
+                    "identifier": _cdata(doi_m.group(1)),
+                    "doi": _cdata(doi_m.group(1)),
+                    # English title carries the relevance signal; Japanese title is
+                    # retained so the record is not silently anglicised.
+                    "title": title_en or title_ja,
+                    "title_ja": title_ja,
+                    "abstract": "",
+                    "url": _cdata(link.group(1)).split()[0] if link else "",
+                    "query_id": query_id,
+                })
+            if not entries:
+                break
+            time.sleep(0.5)
+
+    resolved = resolve_licences_via_openalex([s2["doi"] for s2 in staged], timeout, mailto)
+    for s2 in staged:
+        if c.full or c.source_full("JSTAGE"):
+            break
+        licence = resolved.get(s2["doi"].lower())
+        if not licence:
+            c.rejected_unresolved_licence += 1
+            continue
+        if c.add("JSTAGE", s2["identifier"], s2["title"], s2["abstract"], s2["doi"],
+                 licence, s2["url"], s2["query_id"]) and s2.get("title_ja"):
+            key = s2["doi"]
+            if key in c.candidates:
+                c.candidates[key]["title_ja"] = s2["title_ja"]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=int, default=3000)
@@ -348,6 +429,7 @@ def main() -> None:
     harvest_doaj(c, args.timeout, args.max_pages, whitelist)
     harvest_openalex_multilingual(c, args.timeout, args.max_pages, args.mailto)
     harvest_core(c, args.timeout, args.max_pages, args.mailto)
+    harvest_jstage(c, args.timeout, args.max_pages, args.mailto)
 
     rows = sorted(c.candidates.values(), key=lambda r: r["candidate_id"])
     by_system = Counter(r["source_system"] for r in rows)
@@ -367,6 +449,7 @@ def main() -> None:
             "DOAJ": "journal-licence whitelist built first; articles accepted only when their ISSN is on it",
             "OPENALEX_MULTILINGUAL": "pt, es, fr, de, id, ja language filters",
             "CORE": "no licence field; DOIs batch-resolved through OpenAlex, 50 per request",
+            "JSTAGE": "no licence field either; same DOI batch-resolution. Japanese title retained alongside the English one.",
         },
         "licence_discipline": "Identical to R10. Same ALLOWED set, ND exclusion and normalisation. A record whose licence cannot be resolved is not captured.",
         "target": args.target,

@@ -1,0 +1,112 @@
+{
+  "contract_version": "round2.capture-ceiling-finding.v1",
+  "round": "ROUND2_CAPTURE",
+  "status": "STOP_AND_DISCUSS — the capture rate condition the owner set has been met",
+  "headline": "The 15000-20000 target is not achievable under the current licence discipline. The binding constraint is not effort, sources or engineering. Most coffee sensory literature is not openly licensed.",
+  "measured_results": {
+    "incumbent_families_run_to_exhaustion": {
+      "target": 8000,
+      "captured": 4019,
+      "target_met": false,
+      "requests": 427,
+      "errors": 4,
+      "elapsed_seconds": 2537.1,
+      "relevance_rejections": 51515,
+      "distribution": {
+        "OPENALEX": 2612,
+        "EUROPE_PMC": 1221,
+        "ZENODO": 183,
+        "DRYAD": 3
+      },
+      "interpretation": "Europe PMC, OpenAlex, Zenodo and Dryad together exhaust at roughly 4000 unique licence-clear relevant records, not 8000."
+    },
+    "jstage": {
+      "captured": 2,
+      "requests": 20,
+      "rejected_licence_unresolved": 1861,
+      "rejected_nd": 19,
+      "elapsed_seconds": 105,
+      "verdict": "ESSENTIALLY UNUSABLE under licence discipline",
+      "interpretation": "J-Stage reports 24274 records for the Japanese term for coffee, but their DOIs overwhelmingly fail to resolve to an open licence. Japanese academic publishing is largely not CC-licensed."
+    },
+    "core": {
+      "captured": 121,
+      "requests": 12,
+      "request_errors": 6,
+      "rejected_licence_unresolved": 404,
+      "licence_resolution_rate": 0.23,
+      "verdict": "USABLE BUT LOSSY",
+      "note": "50% request error rate at this cadence."
+    },
+    "doaj": {
+      "captured_in_smoke": 88,
+      "pool": 672,
+      "journal_whitelist": 444,
+      "verdict": "USABLE, SMALL"
+    },
+    "openalex_multilingual": {
+      "captured_in_smoke": 134,
+      "pool_estimate": 417,
+      "verdict": "USABLE, SMALL"
+    }
+  },
+  "revised_ceiling_estimate": {
+    "incumbents": 4019,
+    "doaj": "500-670",
+    "openalex_multilingual": "~400",
+    "core": "1000-2000 with sustained effort against a 23% resolution rate and heavy request errors",
+    "jstage": "50-100",
+    "gross_total": "6000-7500",
+    "critical_caveat": "This is BEFORE cross-family DOI deduplication. OpenAlex aggregates Crossref, PMC and DOAJ; CORE aggregates repositories that also feed OpenAlex. Unique yield will be lower, possibly materially lower. Not yet measured.",
+    "against_owner_target": "15000-20000 is roughly 2.5x to 3x above the measured ceiling."
+  },
+  "operator_error_corrected": {
+    "claim": "The operator's own source_expansion_assessment rated 15000-20000 as PLAUSIBLE with the added families.",
+    "status": "WITHDRAWN",
+    "cause": "That estimate was built from hit counts — J-Stage 24274, CORE 648444, Zenodo 31644 — without measuring licence-resolution rates. Hit count is an addressable pool, not extractable yield.",
+    "significance": "This is the same error class the operator documented in R12C-F2 and criticised in R10 and R11: treating an addressable pool as if it were yield. The operator repeated it."
+  },
+  "implication_for_anfis": {
+    "owner_premise": "15000-20000 was described as suitable for ANFIS and subsequent training.",
+    "problems": [
+      "The ceiling is roughly 7000, not 15000-20000.",
+      "A discovery candidate is not a training sample. R11 converted 248 candidates into 3 admitted candidates and 10 coffee groups.",
+      "Post-R12C-repair conversion is unmeasured. No extraction has been run against the repaired gates at scale.",
+      "ANFIS requires substantial labelled data. The measured constraint chain runs capture -> extraction -> admission -> supervision groups, and only the first link has been repaired."
+    ],
+    "recommendation": "Do not set the ANFIS decision against a capture number. Measure the capture-to-supervision conversion rate on the 4019 already captured before committing to any target."
+  },
+  "options_for_owner": [
+    {
+      "option": "A",
+      "action": "Accept roughly 7000 as the ceiling and proceed to extraction",
+      "cost": "none",
+      "note": "Measures the real bottleneck, which is conversion rather than capture."
+    },
+    {
+      "option": "B",
+      "action": "Relax licence discipline to admit unresolved-licence records",
+      "cost": "Recreates the 13952 unresolved-rights records R10 tested and excluded; destroys the project's defensibility",
+      "recommendation": "NOT RECOMMENDED"
+    },
+    {
+      "option": "C",
+      "action": "Request data directly from corresponding authors",
+      "cost": "Owner time, weeks of latency",
+      "note": "Standard practice; reaches material that is not openly licensed."
+    },
+    {
+      "option": "D",
+      "action": "Generate first-party panel data",
+      "cost": "Weeks to months",
+      "note": "The literature's data exists because someone ran a panel."
+    }
+  ],
+  "guards": {
+    "records_admitted": 0,
+    "tables_extracted": 0,
+    "fit_count": 0,
+    "licence_discipline_relaxed": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
