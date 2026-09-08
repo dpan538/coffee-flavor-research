@@ -1,0 +1,230 @@
+{
+  "contract_version": "round2.personal-pwa-data-availability.v1",
+  "generated_at_utc": "2026-09-08T11:35:02Z",
+  "question": "Under the premise of a personal, non-commercial PWA, how much data is actually available and how much new descriptor coverage does it buy?",
+  "correction_recorded": {
+    "what_the_operator_got_wrong": "The operator treated CC BY-NC as an open owner decision. The owner had already stated, repeatedly, that this is a personal product with no commercial expectation. CC BY-NC 4.0 restricts use primarily intended for commercial advantage or monetary compensation; a free personal PWA is not that. The restriction was applied against a premise the owner had already settled.",
+    "what_remains_genuinely_separate": "PUBLIC_DISCOVERY_ONLY_NO_MODEL_PERMISSION_CLAIM is not a commercial-versus-noncommercial question. It is this project's own governance label, meaning the material was found publicly and no permission basis is claimed. ACE competition results carry no open licence at all, so personal use does not create one. Whether to relabel it is the owner's call; the operator may not route around it silently.",
+    "note": "This records licence terms and the project's own labels. It is not legal advice."
+  },
+  "source_inventory": {
+    "ledger": "db/data/current/CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
+    "rows": 50034,
+    "by_rights_basis": {
+      "PUBLIC_DISCOVERY_ONLY_NO_MODEL_PERMISSION_CLAIM": 42267,
+      "CC_BY_NC_4_0_NONCOMMERCIAL_RESEARCH_ONLY": 4785,
+      "CC_BY_4_0_MDPI_ARTICLE_AND_SUPPLEMENT": 1919,
+      "CC_BY_4_0_FIGSHARE_DATASET": 590,
+      "PUBLIC_DISCOVERY_PENDING_PURPOSE_SPECIFIC_REUSE_DECISION": 197,
+      "UNRESOLVED_RIGHTS_BASIS": 157,
+      "CC_BY_FRONTIERS_ARTICLE": 119
+    }
+  },
+  "tiers": [
+    {
+      "tier": "A",
+      "name": "CC BY only, commercially safe",
+      "assertions": 2628,
+      "coffees": 102,
+      "descriptor_types_covered": 14,
+      "types_with_at_least_5_occurrences": 4,
+      "unlocks_of_the_36_unreachable": 1,
+      "requires": "nothing"
+    },
+    {
+      "tier": "B",
+      "name": "CC BY + CC BY-NC, personal non-commercial",
+      "assertions": 7413,
+      "coffees": 214,
+      "descriptor_types_covered": 53,
+      "types_with_at_least_5_occurrences": 37,
+      "unlocks_of_the_36_unreachable": 24,
+      "requires": "only that CC BY-NC be accepted, which the owner's stated premise already grants; attribution required, no share-alike",
+      "unlocked_words": [
+        "alcoholic",
+        "apple",
+        "bergamot",
+        "bitter",
+        "black_tea",
+        "blackcurrant",
+        "cardamom",
+        "cherry",
+        "cocoa",
+        "grape",
+        "grapefruit",
+        "lime",
+        "mango",
+        "molasses",
+        "peach",
+        "pear",
+        "pineapple",
+        "prune",
+        "raisin",
+        "raspberry",
+        "strawberry",
+        "vanilla",
+        "walnut",
+        "woody"
+      ]
+    },
+    {
+      "tier": "C",
+      "name": "plus relabelling ACE and the other no-permission families",
+      "assertions": 50034,
+      "coffees": 1691,
+      "descriptor_types_covered": 56,
+      "types_with_at_least_5_occurrences": 55,
+      "unlocks_of_the_36_unreachable": 35,
+      "requires": "the owner to change this project's own PUBLIC_DISCOVERY_ONLY_NO_MODEL_PERMISSION_CLAIM label",
+      "additional_words_over_tier_B": [
+        "banana",
+        "black_pepper",
+        "blackberry",
+        "chamomile",
+        "clove",
+        "lemongrass",
+        "malt",
+        "nutmeg",
+        "peanut",
+        "plum",
+        "pomegranate"
+      ]
+    }
+  ],
+  "never_covered_at_any_tier": [
+    "sensory.hay"
+  ],
+  "what_this_does_and_does_not_buy": {
+    "does": "Corpus evidence determines which descriptors CAN ground a question axis or a partition.",
+    "does_not": "Corpus evidence does not by itself make a descriptor reachable in the product. Reachability needs a question axis that offers it, and shipping needs that axis to be validated.",
+    "chain": [
+      "corpus evidence (measured here)",
+      "question axis design (operator work)",
+      "user validation (blocked, see below)"
+    ]
+  },
+  "the_blocker_that_data_cannot_fix": {
+    "finding": "All 8 question axes carry product_use_eligible=false with reason INFORMATION_GAIN_AND_USER_COMPREHENSION_NOT_VALIDATED. The 12 supporting evidence rows in db/data/round3h/batch5/question_research_evidence.tsv are unanimous: user_validation_status=NOT_USER_VALIDATED and information_gain_status=NOT_ESTIMABLE, with the limitation that independent research constructs do not validate this product's wording, response behaviour, or information gain.",
+    "consequence": "The owner's proposal to flip product_use_eligible for validated axes has an empty precondition: no axis has been validated. Flipping it without validation would be exactly the buried landmine the owner has forbidden.",
+    "note": "No amount of corpus expansion changes this. It is a user-research task, and this project is a user-research project."
+  },
+  "governance_matrix_state": {
+    "file": "db/data/current/PURPOSE_SPECIFIC_RIGHTS_MATRIX.tsv",
+    "rows": 7720,
+    "artifacts": 965,
+    "purposes": 8,
+    "human_owner_decision_column": "EMPTY FOR ALL 7720 ROWS — no owner decision has ever been recorded here",
+    "PRODUCT_DEPLOYMENT": {
+      "OWNER_POLICY_REQUIRED": 2,
+      "UNKNOWN": 962,
+      "PROHIBITED": 1,
+      "meaning": "the CC BY sources are marked OWNER_POLICY_REQUIRED for product deployment, meaning the licence permits it and the project wants a recorded sign-off"
+    }
+  },
+  "fruit_subgrouping_test": {
+    "why": "fruity holds 20 of the 36 unreachable words; subdividing it is the single largest coverage gain available",
+    "candidate_groups": {
+      "citrus": [
+        "bergamot",
+        "grapefruit",
+        "lemon",
+        "lime",
+        "orange"
+      ],
+      "berry": [
+        "blackberry",
+        "blackcurrant",
+        "blueberry",
+        "raspberry",
+        "strawberry"
+      ],
+      "stone_fruit": [
+        "cherry",
+        "peach",
+        "plum"
+      ],
+      "dried_fruit": [
+        "prune",
+        "raisin"
+      ],
+      "tropical": [
+        "banana",
+        "mango",
+        "pineapple"
+      ],
+      "pome": [
+        "apple",
+        "pear"
+      ]
+    },
+    "test_1_raw_cooccurrence": {
+      "within_rate": 2.89,
+      "between_rate": 2.88,
+      "lift": 1.01,
+      "verdict": "NO SUPPORT",
+      "why": "Two fruits appearing in one cup means the cup was fruity, not that the fruits are alike. Perceptually similar fruits may even be substitutes, pushing co-occurrence down. Raw co-occurrence is the wrong statistic."
+    },
+    "test_2_distributional_similarity": {
+      "within_mean": 0.868,
+      "between_mean": 0.832,
+      "difference": 0.0357,
+      "permutation_test": {
+        "N": 20000,
+        "p": 0.0397
+      },
+      "verdict": "WEAK SUPPORT, NOT A CONCLUSION",
+      "cautions": [
+        "effect is +0.036 on a 0.83 baseline",
+        "the globally most similar pairs cross groups: apple~orange 0.99, bergamot~grape 0.98, apple~cherry 0.97",
+        "202 coffees at 4.6 descriptors each is thin"
+      ],
+      "use": "sufficient to propose groups for user validation; not sufficient to declare them"
+    },
+    "no_research_grounding_exists": "The project holds no research evidence row for fruit subdivision. question-range.family-direction.fruit supports 'fruit' as a family only."
+  },
+  "changes_applied_this_round": {
+    "broad.fruity": {
+      "decision": "ROUND2-D7 approved by owner",
+      "action": "created in registry_extension.json with dimension-closure extent of 23 concepts",
+      "verified": "dimension-level fruity evidence now generalises to broad.fruity, while citrus evidence still generalises to broad.citrus"
+    },
+    "broad.chocolate": {
+      "decision": "ROUND2-D6 resolved as RETIRE",
+      "why_not_option_B": "Option B would declare extent {sensory.dark_chocolate}, identical to sensory.dark_chocolate's own extent. Two propositions with equal extents tie, and the tiebreak is concept id, where broad.chocolate sorts first. The category label would have replaced the specific word meaning exactly the same thing. Option B was actively harmful, not merely redundant."
+    }
+  },
+  "owner_decisions_now_open": [
+    {
+      "id": "ROUND2-D11",
+      "question": "Record the CC BY-NC tier as available for this personal non-commercial PWA?",
+      "effect": "unlocks 24 of 36 unreachable descriptors, 7413 assertions, 214 coffees",
+      "cost": "attribution required; the product must stay non-commercial",
+      "recommendation": "yes — it follows from a premise already stated"
+    },
+    {
+      "id": "ROUND2-D12",
+      "question": "Relabel ACE and the other no-permission families for personal product use?",
+      "effect": "11 further descriptors, 50034 assertions, 1691 coffees",
+      "cost": "these carry no open licence; the label is the project's own risk judgement",
+      "recommendation": "owner's call, and a separate question from D11"
+    },
+    {
+      "id": "ROUND2-D13",
+      "question": "Record owner decisions in PURPOSE_SPECIFIC_RIGHTS_MATRIX, whose human_owner_decision column is empty for all 7720 rows",
+      "recommendation": "do this as part of D11 and D12 rather than leaving the matrix silent"
+    },
+    {
+      "id": "ROUND2-D14",
+      "severity": "BLOCKING",
+      "question": "User validation of the question axes. Nothing ships until this exists, and no corpus growth substitutes for it."
+    }
+  ],
+  "guards": {
+    "records_admitted": 0,
+    "corpus_written": false,
+    "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT",
+    "registry_extension_edited": true,
+    "r9_sealed_contract_edited": false
+  }
+}

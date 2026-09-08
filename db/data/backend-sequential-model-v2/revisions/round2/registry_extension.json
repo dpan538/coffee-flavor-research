@@ -74,6 +74,17 @@
         "zhHans": "甜感类"
       },
       "represents_members": 5
+    },
+    "broad.fruity": {
+      "role": "NAMED_DESCRIPTOR",
+      "support_dimension_ids": [
+        "fruity"
+      ],
+      "labels": {
+        "en": "Fruity",
+        "zhHans": "水果类"
+      },
+      "owner_decision": "ROUND2-D7 approved: fruity is the largest dimension and the only one where honest middle-level output was impossible."
     }
   },
   "deliberately_not_added": {

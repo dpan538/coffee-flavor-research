@@ -1,6 +1,6 @@
 {
-  "contract_version": "round2.concept-extents.v1",
-  "generated_at_utc": "2026-09-08T10:57:52Z",
+  "contract_version": "round2.concept-extents.v2",
+  "generated_at_utc": "2026-09-08T11:30:10Z",
   "purpose": "The extent of a category concept is the set of specific concepts it claims. It is a semantic commitment, so it is declared here rather than inferred by the code.",
   "rule": "A broad.* concept with no entry here is UNUSABLE. It is never widened to its dimension: that would keep the narrow label while meaning the whole dimension.",
   "declared_extents": {
@@ -51,6 +51,31 @@
       "sensory.honey",
       "sensory.molasses",
       "sensory.vanilla"
+    ],
+    "broad.fruity": [
+      "sensory.apple",
+      "sensory.banana",
+      "sensory.bergamot",
+      "sensory.blackberry",
+      "sensory.blackcurrant",
+      "sensory.blueberry",
+      "sensory.cherry",
+      "sensory.grape",
+      "sensory.grapefruit",
+      "sensory.lemon",
+      "sensory.lemongrass",
+      "sensory.lime",
+      "sensory.mango",
+      "sensory.orange",
+      "sensory.peach",
+      "sensory.pear",
+      "sensory.pineapple",
+      "sensory.plum",
+      "sensory.pomegranate",
+      "sensory.prune",
+      "sensory.raisin",
+      "sensory.raspberry",
+      "sensory.strawberry"
     ]
   },
   "provenance": {
@@ -118,28 +143,27 @@
       ],
       "source": "registry_extension.json, owner-approved round 2",
       "breadth": "DIMENSION_CLOSURE"
-    }
-  },
-  "pending_owner_decision": {
-    "broad.chocolate": {
-      "problem": "No clean extent source. The only related partition is dark_chocolate={sensory.dark_chocolate}, but the label 'chocolate' would ordinarily also cover sensory.cocoa. Guessing either way is a semantic claim the operator may not make.",
-      "options": {
-        "A": [
-          "sensory.dark_chocolate",
-          "sensory.cocoa"
-        ],
-        "B": [
-          "sensory.dark_chocolate"
-        ],
-        "C": "retire broad.chocolate; broad.nutty plus the specific words already cover nutty_cocoa"
-      },
-      "status": "UNUSABLE_UNTIL_DECLARED",
-      "effect_while_undeclared": "nutty_cocoa is represented by broad.nutty={almond,hazelnut}, a sub-dimension category, so evidence supporting only nutty_cocoa as a whole falls through to the direction attribute.nutty_cocoa rather than being over-claimed."
+    },
+    "broad.fruity": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "fruity"
+      ],
+      "source": "registry_extension.json, owner decision ROUND2-D7",
+      "breadth": "DIMENSION_CLOSURE"
     }
   },
   "guards": {
     "registry_edited": false,
     "r9_contract_edited": false,
     "fit_count": 0
+  },
+  "retired_concepts": {
+    "broad.chocolate": {
+      "decision": "ROUND2-D6 resolved as RETIRE, not option B",
+      "why_option_B_was_rejected": "Option B declared the extent {sensory.dark_chocolate}, identical to the extent of sensory.dark_chocolate itself. Two propositions with the same extent tie, and the tiebreak is concept id, where 'broad.chocolate' sorts before 'sensory.dark_chocolate'. The category label would have replaced the specific word that means exactly the same thing. Option B was actively harmful, not merely redundant.",
+      "effect": "nutty_cocoa keeps broad.nutty={almond,hazelnut} as a sub-dimension category. Dimension-level nutty_cocoa evidence falls through to attribute.nutty_cocoa rather than being over-claimed.",
+      "status": "RETIRED_NOT_USABLE"
+    }
   }
 }
