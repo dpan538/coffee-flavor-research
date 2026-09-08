@@ -1,0 +1,114 @@
+{
+  "contract_version": "round2.r9-cluster-architecture-review.v1",
+  "correction_accepted": "The cluster is not historical accumulation. It begins at R9, when the project moved from model fitting to algorithms. M1, M2 and R1-R8 are the fitting era; R9 onward is the algorithm era.",
+  "measured_structure": {
+    "scripts": 20,
+    "universal_root": {
+      "module": "output_policy_r9",
+      "imported_by": 16,
+      "exports": [
+        "POLICIES = OUT_MIXED / OUT_SPECIFIC_FIRST / OUT_SEPARATED",
+        "ROLES = PROFILE_DIRECTION / NAMED_DESCRIPTOR / OTHER_NATIVE_MEASUREMENT",
+        "validate_role_registry",
+        "role_registry_from_contract",
+        "_state_ranking",
+        "_supported_profile_rows",
+        "FORBIDDEN_EVALUATION_KEYS"
+      ],
+      "assessment": "This is the contract boundary, not incidental coupling. Everything downstream is defined against it, which is why a registry change had to be layered rather than edited."
+    },
+    "three_tiers": {
+      "runtime": {
+        "count": 1,
+        "modules": [
+          "output_policy_r9"
+        ],
+        "note": "Plus output_generator_round2 added this round."
+      },
+      "components": {
+        "count": 7,
+        "modules": [
+          "formal_concept_analysis_r9",
+          "trajectory_analysis_r9",
+          "tripartite_semantic_structure_r9",
+          "descriptor_feature_extraction_r9",
+          "descriptor_association_analysis_r9",
+          "evidence_structure_analysis_r9",
+          "coffee_profile_assignment_r9"
+        ],
+        "signature": "no CLI, no artefacts written — pure computational modules consumed by synthesisers"
+      },
+      "synthesisers_and_audits": {
+        "count": 12,
+        "top_level": [
+          "analyze_semantic_phylogeny_r9",
+          "analyze_semantic_structure_r9",
+          "audit_semantic_integrity_r9"
+        ]
+      }
+    }
+  },
+  "THE_KEY_FINDING_FOR_LAUNCH": {
+    "observation": "The runtime surface is 1 module out of 20. The other 19 are research instrumentation.",
+    "implication": "The cluster is not the product. It is the evidence machinery that justifies the product's claims. At launch the shippable runtime is very small, which is a strength, not a shortfall.",
+    "consequence": "Launch readiness is not gated on the cluster. It is gated on the runtime path plus the four items in the development-state plan."
+  },
+  "optimisation_targets": [
+    {
+      "id": "A1",
+      "severity": "HIGH",
+      "problem": "Three R9 scripts still import the fitting era: analyze_participant_responses_r9 and generate_user_study_pack_r9 pull flavor_backend, audit_semantic_integrity_r9 pulls flavor_m2_r1. That is why running any of them requires sklearn, scipy and lxml.",
+      "why_it_matters_at_launch": "It puts a heavy scientific stack behind modules that are conceptually algorithm-era. The runtime must not inherit it.",
+      "recommendation": "Assert and test that the runtime path imports neither flavor_backend nor flavor_m2_r1. Leave the three research scripts as they are; they are not shipped.",
+      "cost": "one import-boundary test"
+    },
+    {
+      "id": "A2",
+      "severity": "MEDIUM",
+      "problem": "Two top-level synthesisers overlap. analyze_semantic_phylogeny_r9 and analyze_semantic_structure_r9 both consume analyze_descriptor_relations_r9 and descriptor_feature_extraction_r9, then diverge: phylogeny adds FCA, profile assignment and trajectory; structure adds association, evidence structure and tripartite.",
+      "assessment": "Not redundant, but the split is by lineage rather than by question. Nothing states which one answers what.",
+      "recommendation": "Document the division rather than merge it. Merging would create one very large module and lose the ability to run half the analysis."
+    },
+    {
+      "id": "A3",
+      "severity": "HIGH",
+      "problem": "output_generator_round2 now overlaps output_policy_r9.adapt_output. Two modules can produce an OUT_SEPARATED shape, and nothing declares which is authoritative.",
+      "why_it_matters": "This is exactly how a project ends up with two behaviours that diverge silently.",
+      "recommendation": "Declare output_policy_r9.adapt_output as the FROZEN R9 behaviour, retained for historical comparison only, and output_generator_round2 as the current product path. Record it in the contract so a later reader cannot guess wrong.",
+      "cost": "one contract paragraph"
+    },
+    {
+      "id": "A4",
+      "severity": "MEDIUM",
+      "problem": "The seven component modules write no artefacts and have no CLI, so they are only ever exercised through a synthesiser. A defect inside one surfaces as a wrong number three layers up.",
+      "evidence": "This is how the operator's own F12 claim went wrong: a proxy measurement three layers from the code under test.",
+      "recommendation": "Give each component a direct unit test against a small fixture. Seven tests, and they make the components independently trustworthy."
+    }
+  ],
+  "what_the_launch_runtime_actually_is": {
+    "modules": [
+      "output_policy_r9 (roles, registry validation, policy definitions)",
+      "output_generator_round2 (main / secondary / overall_profile under the 3+2+3 budget)",
+      "registry_extension.json (the six broad concepts)",
+      "flavor_backend.question_bank and select_next_question (information gain, no fitted model)"
+    ],
+    "does_not_need": [
+      "any fitted model for output",
+      "sklearn or scipy on the output path",
+      "the 19 research modules"
+    ],
+    "single_remaining_fitted_dependency": "rank_candidates, used only to choose which class members to present as options — ROUND2-F4",
+    "assessment": "This is a reasonable launch shape. Small runtime, declared rules, no model serving, and every claim traceable to an audit that already exists."
+  },
+  "honest_reservation": {
+    "point": "The cluster's 19 research modules were all validated against R8/R9 frozen states, and those root artefacts are lost.",
+    "consequence": "The instrumentation still runs, but it can no longer reproduce the numbers it originally reported. It measures the present, not the change from the baseline.",
+    "action": "Freezing a new baseline is listed in the development-state plan as a pre-split requirement. It matters more for this cluster than for the runtime, because the cluster's entire purpose is comparison."
+  },
+  "guards": {
+    "fit_count": 0,
+    "concepts_created": 6,
+    "modules_modified": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
