@@ -20,7 +20,10 @@
   "tier2_design": {
     "model_identifier": null,
     "model_version": null,
-    "status": "PINNED_VISION_RUNNER_NOT_CONFIGURED",
+    "status": "OWNER_REPLACED_VISION_WITH_PINNED_PDF_GEOMETRY",
+    "implementation": "measure_pdf_geometry_r12b.py; no classifier imports, caption or header rules",
+    "library_pin": "PyMuPDF 1.27.2.2",
+    "geometry_config": "Text strategy on both axes; min_words_vertical=3, min_words_horizontal=1. At least three rows, two columns, four numeric cells and two distinct sensory cell terms. Fixed before calibration, no tuning.",
     "calibration_first": true,
     "scope": "The frozen 83 no-machine-table plus 19 structure-mismatch candidates, restricted to held license-clear documents.",
     "calibration": "Pages covering the 40 original typed tables and an equal number of verified no-table pages from the same documents; original labels are reference measurements, not ground truth.",
@@ -32,5 +35,5 @@
     "derived_groups": "Report exact existing-extractor counterfactual counts separately from valid-supervision bounds [0, observed counterfactual count]. This is not an upper bound on all missed groups, including groups missed by both methods.",
     "population": "No inverse-recall extrapolation outside these 248 candidates."
   },
-  "escalation": "Only disagreements go to a third independent modality. Absent visual/text adjudication remains unresolved; no automatic tie-break."
+  "escalation": "Only disagreements go to a third independent modality. Visual escalation is optional under the owner's follow-up and is not a blocker; without a pinned local adjudicator these cases remain unresolved, never automatically tie-broken."
 }
