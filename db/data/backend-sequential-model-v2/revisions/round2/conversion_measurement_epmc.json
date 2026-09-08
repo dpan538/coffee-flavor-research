@@ -1,0 +1,2694 @@
+{
+  "contract_version": "round2.conversion-measurement.v1",
+  "round": "ROUND2_CONVERSION",
+  "generated_at_utc": "2026-09-08T07:32:46Z",
+  "elapsed_seconds": 763.6,
+  "question": "What fraction of captured candidates convert into coffee supervision groups, with the R12C repairs applied?",
+  "method": {
+    "population": 1221,
+    "source_filter": "EUROPE_PMC",
+    "sample": 300,
+    "seed": 20260908,
+    "sampling": "uniform random without replacement",
+    "fulltext_source": "Europe PMC full-text XML only; structured table-wrap elements, no PDF extraction",
+    "repairs_applied": [
+      "G1",
+      "G2",
+      "G5",
+      "F6",
+      "F15"
+    ],
+    "not_applied": "Production scripts remain unrepaired; see KNOWN_PIPELINE_DEFECTS.json"
+  },
+  "funnel": {
+    "tables_detected": 1007,
+    "sampled": 300,
+    "fulltext_route_found": 300,
+    "fetched": 298,
+    "has_tables": 264,
+    "no_table_passed_gates": 246,
+    "tables_passing_repaired_gates": 35,
+    "no_tables": 34,
+    "tables_with_descriptor_evidence": 22,
+    "candidates_yielding_groups": 12,
+    "tables_admitted_no_groups": 6,
+    "fetch_failed": 2
+  },
+  "conversion": {
+    "candidates_yielding_groups": 12,
+    "sample": 300,
+    "rate": 0.04,
+    "wilson_95_interval": [
+      0.023,
+      0.0686
+    ],
+    "extrapolated_candidates_yielding_groups": [
+      28,
+      84
+    ]
+  },
+  "groups": {
+    "distinct_groups_in_sample": 113,
+    "groups_per_sampled_candidate": 0.37666666666666665,
+    "extrapolated_groups_over_full_capture": [
+      265,
+      789
+    ]
+  },
+  "top_concepts": {
+    "dimension.aftertaste": 8,
+    "dimension.aroma": 8,
+    "dimension.flavor": 8,
+    "dimension.body": 6,
+    "dimension.acidity": 6,
+    "dimension.sweet": 6,
+    "sensory.bitter": 5,
+    "sensory.vanilla": 5,
+    "broad.nutty": 4,
+    "dimension.roasted": 4,
+    "dimension.astringency": 4,
+    "sensory.strawberry": 3,
+    "sensory.raspberry": 3,
+    "sensory.lemon": 3,
+    "dimension.balance": 3,
+    "dimension.sweetness": 3,
+    "dimension.fragrance": 3,
+    "dimension.flavour": 3,
+    "dimension.sour": 3,
+    "sensory.honey": 2,
+    "dimension.astringent": 2,
+    "attribute.green_vegetative": 2,
+    "sensory.blueberry": 2,
+    "sensory.plum": 2,
+    "sensory.peach": 2
+  },
+  "limitations": [
+    "A group here is a distinct (DOI, surviving sample label) pair on a table that passed the repaired gates and carried at least two resolvable descriptor concepts. It is a supervision-capable unit, not an admitted assertion.",
+    "Only Europe PMC XML is used. Candidates without an open PMC route are counted as non-converting, which understates what a broader retrieval layer might reach.",
+    "Extrapolation assumes the sample is representative of the full capture. It is uniform random, but source composition varies.",
+    "No record was admitted, no corpus written, no rule or concept created."
+  ],
+  "guards": {
+    "records_admitted": 0,
+    "corpus_written": false,
+    "r6_rules_created": 0,
+    "concepts_created": 0,
+    "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT",
+    "sealed_artifacts_modified": false
+  },
+  "per_candidate": [
+    {
+      "candidate_id": "10.3389/fnut.2023.1198802",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2023.1198802",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0009362",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0009362",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13111670",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13111670",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1039/d1ra08152g",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1039/d1ra08152g",
+      "tables_detected": 2,
+      "tables_admitted": 2,
+      "groups": 0,
+      "outcome": "TABLES_ADMITTED_NO_GROUPS"
+    },
+    {
+      "candidate_id": "10.1371/journal.pcbi.1003900",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pcbi.1003900",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/molecules26154609",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules26154609",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13071114",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13071114",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fphar.2018.00079",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fphar.2018.00079",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/fsn3.70512",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s13362-016-0024-6",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s13362-016-0024-6",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/molecules28135189",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules28135189",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-53919-y",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-024-53919-y",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu10081047",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu10081047",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.ppat.1011418",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.ppat.1011418",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods9081135",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods9081135",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ijms27114980",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijms27114980",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0111316",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0111316",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.2196/56565",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.2196/56565",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods9060753",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/genes12020213",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/genes12020213",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpubh.2022.1004570",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpubh.2022.1004570",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods15111843",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods15111843",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.4c10914",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/acsomega.4c10914",
+      "tables_detected": 5,
+      "tables_admitted": 4,
+      "groups": 0,
+      "outcome": "TABLES_ADMITTED_NO_GROUPS"
+    },
+    {
+      "candidate_id": "10.1016/j.bjane.2026.844785",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.bjane.2026.844785",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/healthcare12181855",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/healthcare12181855",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1021/acs.jafc.2c06418",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/acs.jafc.2c06418",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ani16060965",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ani16060965",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules30173487",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules30173487",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/1550-2783-3-1-35",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/1550-2783-3-1-35",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nano12030373",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nano12030373",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpubh.2020.561740",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpubh.2020.561740",
+      "tables_detected": 10,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.dib.2025.111609",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.dib.2025.111609",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1021/acsmeasuresciau.6c00039",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/acsmeasuresciau.6c00039",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-025-06601-w",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-025-06601-w",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0046750",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0046750",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/foods13233842",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13233842",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/antiox14030285",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/antiox14030285",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2022.850523",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2022.850523",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1021/jasms.4c00418",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/jasms.4c00418",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13111731",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13111731",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu18040638",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu18040638",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods12203840",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods12203840",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods12183389",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods12183389",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13030454",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13030454",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1002/vms3.70118",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/vms3.70118",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-56298-6",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-024-56298-6",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0172099",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0172099",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1155/2023/6698056",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2023/6698056",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fendo.2025.1473892",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fendo.2025.1473892",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ani13040675",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ani13040675",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/bs8080070",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/bs8080070",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s12011-022-03129-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s12011-022-03129-2",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules26092585",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules26092585",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11142064",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11142064",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu17193037",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu17193037",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules25112466",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules25112466",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/bs14070569",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/bs14070569",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules27092971",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules27092971",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3746/pnf.2017.22.2.100",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3746/pnf.2017.22.2.100",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/polym16162275",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/polym16162275",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/nu13072317",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu13072317",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.7717/peerj.19733",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.7717/peerj.19733",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods9081008",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods9081008",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0155845",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0155845",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1055/s-0044-1793934",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1055/s-0044-1793934",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11244003",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11244003",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ijms22010107",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijms22010107",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s13065-020-00688-0",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s13065-020-00688-0",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2026.101461",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.crfs.2026.101461",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules28145425",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules28145425",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0259302",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0259302",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-025-24196-0",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-025-24196-0",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13162601",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13162601",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/ijms19113407",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijms19113407",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpls.2018.01630",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpls.2018.01630",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/foods9040493",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods9040493",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-026-43923-9",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-026-43923-9",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/toxics12070526",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/toxics12070526",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/toxics13110944",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/toxics13110944",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/cimb48050459",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/cimb48050459",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ma18112632",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ma18112632",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu13030920",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu13030920",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1093/ajcn/nqac233",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1093/ajcn/nqac233",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0251312",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0251312",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1039/d2ra07605e",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1039/d2ra07605e",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s00216-022-04411-x",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s00216-022-04411-x",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods10040865",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods10040865",
+      "tables_detected": 6,
+      "tables_admitted": 1,
+      "groups": 0,
+      "outcome": "TABLES_ADMITTED_NO_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/nu8010009",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu8010009",
+      "tables_detected": 9,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/antiox11020324",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/antiox11020324",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-019-44886-w",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-019-44886-w",
+      "tables_detected": 3,
+      "tables_admitted": 2,
+      "groups": 3,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/toxics7010001",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/toxics7010001",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.7717/peerj.13563",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.7717/peerj.13563",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s00221-024-06962-0",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s00221-024-06962-0",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/polym15142985",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/polym15142985",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0293369",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0293369",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods14071143",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14071143",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-022-19109-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-022-19109-4",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/plants14213396",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/plants14213396",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1002/14651858.cd009315.pub2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/14651858.cd009315.pub2",
+      "tables_detected": 49,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2025.102580",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.fochx.2025.102580",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1093/qjmed/hcaf247",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1093/qjmed/hcaf247",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ma19102098",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ma19102098",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.5187/jast.2023.e106",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.5187/jast.2023.e106",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods14061014",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14061014",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ijerph17062121",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijerph17062121",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ma19101937",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ma19101937",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods14142486",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14142486",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ijms252212003",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijms252212003",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s40529-022-00346-9",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s40529-022-00346-9",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s11845-021-02786-x",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s11845-021-02786-x",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2021.730343",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2021.730343",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.dib.2017.05.004",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.dib.2017.05.004",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.21203/rs.3.rs-3395187/v1",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.21203/rs.3.rs-3395187/v1",
+      "outcome": "FETCH_FAILED:HTTPError"
+    },
+    {
+      "candidate_id": "10.3390/toxins16020087",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/toxins16020087",
+      "tables_detected": 12,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13010087",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13010087",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.7759/cureus.31081",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.7759/cureus.31081",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1093/ntr/nty101",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1093/ntr/nty101",
+      "tables_detected": 2,
+      "tables_admitted": 2,
+      "groups": 36,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00984-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41538-026-00984-4",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods15081334",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods15081334",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0188779",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0188779",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules28207066",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules28207066",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s12955-022-01920-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s12955-022-01920-2",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/s22228654",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/s22228654",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods12051000",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods12051000",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13213398",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13213398",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0237265",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0237265",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/antiox10111709",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/antiox10111709",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s13002-021-00477-6",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s13002-021-00477-6",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules25092132",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules25092132",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2022.966734",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2022.966734",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/genes15040459",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/genes15040459",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-69867-6",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-024-69867-6",
+      "tables_detected": 2,
+      "tables_admitted": 1,
+      "groups": 0,
+      "outcome": "TABLES_ADMITTED_NO_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/foods10061296",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods10061296",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2024.e30480",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.heliyon.2024.e30480",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules27072120",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules27072120",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-022-23904-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-022-23904-4",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1080/21501203.2023.2273355",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1080/21501203.2023.2273355",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/1471-2229-8-51",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/1471-2229-8-51",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu8010016",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu8010016",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1080/15502783.2023.2237952",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1080/15502783.2023.2237952",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-66543-7",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-024-66543-7",
+      "tables_detected": 13,
+      "tables_admitted": 2,
+      "groups": 0,
+      "outcome": "TABLES_ADMITTED_NO_GROUPS"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0332370",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0332370",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/foods9030378",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods9030378",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11040579",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11040579",
+      "tables_detected": 6,
+      "tables_admitted": 1,
+      "groups": 5,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2024.100788",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.crfs.2024.100788",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11203295",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11203295",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/antiox13010029",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/antiox13010029",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.7759/cureus.49991",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.7759/cureus.49991",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.dib.2024.110958",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.dib.2024.110958",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s10973-022-11878-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s10973-022-11878-4",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1002/hsr2.71724",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/hsr2.71724",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods15081284",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods15081284",
+      "tables_detected": 6,
+      "tables_admitted": 1,
+      "groups": 2,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/foods11193144",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11193144",
+      "tables_detected": 4,
+      "tables_admitted": 1,
+      "groups": 11,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/foods12020385",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods12020385",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1002/jsfa.14263",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/jsfa.14263",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/antiox9020093",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/antiox9020093",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods12142675",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods12142675",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2025.100996",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.crfs.2025.100996",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-017-08678-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-017-08678-4",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/gels10100610",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/gels10100610",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71238",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1111/1750-3841.71238",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/plants14071040",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/plants14071040",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2024.e36137",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.heliyon.2024.e36137",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu13092952",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu13092952",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods14010044",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14010044",
+      "tables_detected": 10,
+      "tables_admitted": 1,
+      "groups": 5,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.1177/11786302241260953",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1177/11786302241260953",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpls.2026.1734522",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpls.2026.1734522",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2024.101119",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.fochx.2024.101119",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "EUROPE_PMC:PMC13298694",
+      "source_system": "EUROPE_PMC",
+      "doi": null,
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ph17050564",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ph17050564",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules25051157",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules25051157",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods15111980",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods15111980",
+      "tables_detected": 4,
+      "tables_admitted": 1,
+      "groups": 5,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.1186/s12863-022-01098-y",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s12863-022-01098-y",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fneur.2025.1660995",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fneur.2025.1660995",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1155/2020/7909703",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2020/7909703",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/toxins11060329",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/toxins11060329",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/1471-2164-12-5",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/1471-2164-12-5",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2025.101010",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.crfs.2025.101010",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3389/fpsyg.2020.595788",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpsyg.2020.595788",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/srep14434",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/srep14434",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s12011-017-0963-9",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s12011-017-0963-9",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13142280",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13142280",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.21203/rs.3.rs-10089667/v1",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.21203/rs.3.rs-10089667/v1",
+      "outcome": "FETCH_FAILED:HTTPError"
+    },
+    {
+      "candidate_id": "10.3390/foods14172931",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14172931",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpls.2025.1719980",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpls.2025.1719980",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s13065-021-00770-1",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s13065-021-00770-1",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/polym15132823",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/polym15132823",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s00216-026-06449-7",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s00216-026-06449-7",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.isci.2024.110041",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.isci.2024.110041",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s12263-021-00686-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s12263-021-00686-4",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules30010059",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules30010059",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules27010188",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules27010188",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules29133060",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/plants12183332",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/plants12183332",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fbioe.2023.1294667",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fbioe.2023.1294667",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2024.1441821",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2024.1441821",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-026-54060-8",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-026-54060-8",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11162440",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods9081123",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods9081123",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods10081697",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods10081697",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules26123681",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules26123681",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ijms22094811",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijms22094811",
+      "tables_detected": 1,
+      "tables_admitted": 1,
+      "groups": 0,
+      "outcome": "TABLES_ADMITTED_NO_GROUPS"
+    },
+    {
+      "candidate_id": "10.3389/fgene.2024.1340044",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fgene.2024.1340044",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules27165328",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules27165328",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules25040887",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules25040887",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41438-021-00613-z",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41438-021-00613-z",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1155/2023/6696808",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2023/6696808",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu11122928",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu11122928",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpubh.2022.878907",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpubh.2022.878907",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/1471-2164-15-66",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/1471-2164-15-66",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.2147/sar.s164261",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.2147/sar.s164261",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "EUROPE_PMC:PMC10668683",
+      "source_system": "EUROPE_PMC",
+      "doi": null,
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1002/hbm.24985",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/hbm.24985",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules25081941",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules25081941",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1155/2011/382852",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2011/382852",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu13124368",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu13124368",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11193146",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11193146",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2022.e12698",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.heliyon.2022.e12698",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1155/2016/1923754",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2016/1923754",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2023.1231049",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2023.1231049",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1097/md.0000000000039784",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1097/md.0000000000039784",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3746/pnf.2021.26.3.346",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3746/pnf.2021.26.3.346",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0070098",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0070098",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/plants15010013",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/plants15010013",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.csbj.2025.10.060",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.csbj.2025.10.060",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-023-39163-w",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-023-39163-w",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules26082277",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules26082277",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu15040994",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu15040994",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules23051146",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules23051146",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-021-01001-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-021-01001-2",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s12885-020-6561-9",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s12885-020-6561-9",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1111/1758-2229.70259",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1111/1758-2229.70259",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-024-80385-3",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-024-80385-3",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/ijerph18158117",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijerph18158117",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1093/bioadv/vbaf132",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1093/bioadv/vbaf132",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/foods14223902",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14223902",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.5851/kosfa.2019.e68",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.5851/kosfa.2019.e68",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2021.e08458",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.heliyon.2021.e08458",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/s20113123",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/s20113123",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s00253-015-6852-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s00253-015-6852-2",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu16213723",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu16213723",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules27165126",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules27165126",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00832-5",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41538-026-00832-5",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules26206091",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules26206091",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods14152696",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14152696",
+      "tables_detected": 8,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1155/2022/9914936",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2022/9914936",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/metabo13050645",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/metabo13050645",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.2849",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/fsn3.2849",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules25225274",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules25225274",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s00394-022-02977-x",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s00394-022-02977-x",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1155/jnme/4174563",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/jnme/4174563",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fnut.2021.762383",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fnut.2021.762383",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/jox15050158",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/jox15050158",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods15132334",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods15132334",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fpls.2020.00616",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fpls.2020.00616",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/vetsci9100532",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/vetsci9100532",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1186/s12967-020-02291-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1186/s12967-020-02291-2",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0206762",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0206762",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13111757",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13111757",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2024.e31506",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.heliyon.2024.e31506",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.29219/fnr.v68.10458",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.29219/fnr.v68.10458",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fped.2017.00169",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fped.2017.00169",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c00936",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/acsomega.5c00936",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0300617",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1371/journal.pone.0300617",
+      "tables_detected": 11,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/nu16172915",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/nu16172915",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/plants14131945",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/plants14131945",
+      "tables_detected": 7,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods12061161",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods12061161",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/s25072096",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/s25072096",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/polym13193428",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/polym13193428",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.1904",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1002/fsn3.1904",
+      "tables_detected": 7,
+      "tables_admitted": 1,
+      "groups": 1,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/brainsci15010092",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/brainsci15010092",
+      "tables_detected": 10,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/antiox13030355",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/antiox13030355",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3389/fsoc.2026.1684951",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3389/fsoc.2026.1684951",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods14040615",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods14040615",
+      "tables_detected": 6,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41598-021-03153-7",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41598-021-03153-7",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods15091487",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods15091487",
+      "tables_detected": 10,
+      "tables_admitted": 5,
+      "groups": 15,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.12688/f1000research.107811.1",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.12688/f1000research.107811.1",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.crfs.2026.101400",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.crfs.2026.101400",
+      "tables_detected": 2,
+      "tables_admitted": 1,
+      "groups": 5,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.5702/massspectrometry.a0187",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.5702/massspectrometry.a0187",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13223576",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13223576",
+      "tables_detected": 1,
+      "tables_admitted": 1,
+      "groups": 5,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.3390/ijerph19095777",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ijerph19095777",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1007/s40279-017-0848-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s40279-017-0848-2",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.3390/foods7060083",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods7060083",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.prdoa.2022.100169",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.prdoa.2022.100169",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods11131854",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods11131854",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c13418",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/acsomega.5c13418",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/microorganisms9020218",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/microorganisms9020218",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1016/j.ultsonch.2025.107401",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1016/j.ultsonch.2025.107401",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13162534",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13162534",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods10081705",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods10081705",
+      "tables_detected": 5,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods8080344",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods8080344",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/molecules27113541",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/molecules27113541",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/plants12081580",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/plants12081580",
+      "tables_detected": 2,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/foods13213501",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/foods13213501",
+      "tables_detected": 23,
+      "tables_admitted": 7,
+      "groups": 20,
+      "outcome": "YIELDED_GROUPS"
+    },
+    {
+      "candidate_id": "10.1155/2022/1663772",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1155/2022/1663772",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.3390/ma18194533",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.3390/ma18194533",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c06761",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1021/acsomega.5c06761",
+      "outcome": "NO_TABLES"
+    },
+    {
+      "candidate_id": "10.1007/s00405-023-07893-2",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1007/s00405-023-07893-2",
+      "tables_detected": 4,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.7717/peerj.10621",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.7717/peerj.10621",
+      "tables_detected": 3,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    },
+    {
+      "candidate_id": "10.1038/s41380-021-01075-4",
+      "source_system": "EUROPE_PMC",
+      "doi": "10.1038/s41380-021-01075-4",
+      "tables_detected": 1,
+      "tables_admitted": 0,
+      "groups": 0,
+      "outcome": "NO_TABLE_PASSED_GATES"
+    }
+  ]
+}

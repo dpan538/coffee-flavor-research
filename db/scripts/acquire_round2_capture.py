@@ -222,7 +222,10 @@ def harvest_epmc(c: Collector, timeout: float, max_pages: int, page_size: int) -
                 c.add("EUROPE_PMC", pmcid or item.get("id", ""),
                       item.get("title", ""), item.get("abstractText", "") or "",
                       item.get("doi"), item.get("license", "") or "",
-                      f"https://www.ebi.ac.uk/europepmc/webservices/rest/PMC/{pmcid}/fullTextXML",
+                      # Europe PMC full text is {BASE}/{pmcid}/fullTextXML. R10 emitted
+                      # PMC/{pmcid}/... and pmcid already carries the PMC
+                      # prefix, so every URL it stored 404s.
+                      f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML",
                       query_id)
             nxt = payload.get("nextCursorMark")
             if not results or not nxt or nxt == cursor:

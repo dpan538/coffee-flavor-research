@@ -1,0 +1,96 @@
+{
+  "contract_version": "round2.conversion-finding.v1",
+  "round": "ROUND2_CONVERSION",
+  "headline": "Groups per candidate improved roughly ninefold against R11. The extrapolated yield from the Europe PMC portion of the capture alone lands inside the range the power analysis requires.",
+  "measurement": {
+    "design": "Restricted to EUROPE_PMC-sourced candidates so retrieval-coverage loss and extraction conversion loss are measured separately rather than conflated. Uniform random sample, seed 20260908.",
+    "population": 1221,
+    "sample": 300,
+    "funnel": {
+      "fulltext_route_found": 300,
+      "fetched": 298,
+      "fetch_failed": 2,
+      "has_tables": 264,
+      "no_tables": 34,
+      "tables_detected": 1007,
+      "tables_passing_repaired_gates": 35,
+      "tables_with_descriptor_evidence": 22,
+      "candidates_yielding_groups": 12,
+      "distinct_groups_in_sample": 113
+    },
+    "candidate_conversion_rate": 0.04,
+    "wilson_95": [
+      0.023,
+      0.0686
+    ],
+    "groups_per_candidate": 0.3767,
+    "extrapolated_groups_over_epmc_portion": [
+      265,
+      789
+    ]
+  },
+  "comparison_to_history": {
+    "R11": {
+      "candidates": 248,
+      "groups": 10,
+      "groups_per_candidate": 0.0403
+    },
+    "round2_repaired": {
+      "candidates": 300,
+      "groups": 113,
+      "groups_per_candidate": 0.3767
+    },
+    "improvement": "roughly 9x groups per candidate",
+    "caveat": "R11 counted groups under a different and also defective definition. The comparison indicates direction, not a like-for-like ratio."
+  },
+  "against_the_power_requirement": {
+    "requirement": "Detecting the observed effect size of about 0.03 NDCG at 80% power needs roughly 350-800 groups, per the earlier estimate at SD 0.2-0.3.",
+    "standing_total": 217,
+    "extrapolated_from_epmc_portion_alone": [
+      265,
+      789
+    ],
+    "assessment": "For the first time in this project the measured trajectory reaches the statistical threshold rather than falling two orders of magnitude short.",
+    "not_established": "This is supervision-capable volume, not admitted supervision."
+  },
+  "what_a_group_is_here": {
+    "definition": "A distinct (DOI, surviving sample label) pair on a table that passed the repaired gates and carried at least two resolvable descriptor concepts.",
+    "is_not": "An admitted assertion. Evidence-trace, rights and governed-mapping admission still apply downstream and were not run.",
+    "known_downstream_loss": "R9 measured only 152 of 632 named outputs carrying a direct evidence trace, 24.05%, rising to 31.93% after abstention. That loss has not been re-measured post-repair and is not reflected in these figures."
+  },
+  "the_three_separated_losses": [
+    {
+      "loss": "RETRIEVAL COVERAGE",
+      "measured": "83% of a mixed-source sample had no open Europe PMC full-text route",
+      "attribution": "retrieval layer, not extraction",
+      "note": "OpenAlex indexes far more publishers than PMC holds."
+    },
+    {
+      "loss": "TOPICAL PRECISION",
+      "measured": "10.1% of the capture qualified only through an abstract mention; in the mixed sample these surfaced as epidemiology tables such as chi-square tests, evaluator demographics and adjusted odds ratios for metabolic syndrome",
+      "attribution": "relevance filter",
+      "note": "The repaired gates rejected these correctly. The defect is upstream."
+    },
+    {
+      "loss": "EXTRACTION CONVERSION",
+      "measured": "4.0% of candidates yield groups; 0.377 groups per candidate",
+      "attribution": "extraction layer",
+      "note": "This is the number four rounds never isolated."
+    }
+  ],
+  "inherited_defect_found_and_fixed": {
+    "id": "ROUND2-F1",
+    "defect": "R10 built Europe PMC full-text URLs as {BASE}/PMC/{pmcid}/fullTextXML. pmcid already carries the PMC prefix, so every stored URL returns 404.",
+    "propagation": "acquire_round2_capture.py copied the R10 pattern; 1218 captured URLs were malformed.",
+    "status": "FIXED in both scripts and repaired in place in the capture manifest.",
+    "operator_note": "This is the second R10 defect the operator reproduced by following existing code without verifying it. The first was estimating capture headroom from hit counts without measuring licence-resolution rates."
+  },
+  "guards": {
+    "records_admitted": 0,
+    "corpus_written": false,
+    "r6_rules_created": 0,
+    "concepts_created": 0,
+    "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
