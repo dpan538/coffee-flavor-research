@@ -23,6 +23,8 @@
     "status": "OWNER_REPLACED_VISION_WITH_PINNED_PDF_GEOMETRY",
     "implementation": "measure_pdf_geometry_r12b.py; no classifier imports, caption or header rules",
     "library_pin": "PyMuPDF 1.27.2.2",
+    "markup_library_pin": "lxml 6.1.1 / libxml2 2.14.6",
+    "negative_selection_amendment": "After an initial strict-heading selection supplied only 33 negatives for 39 positives, recognize numbered references/methods headings and standalone Methods. Preserve initial strict calibration alongside the amended result. Detector decisions remain frozen; never select pages by detector outcome.",
     "geometry_config": "Text strategy on both axes; min_words_vertical=3, min_words_horizontal=1. At least three rows, two columns, four numeric cells and two distinct sensory cell terms. Fixed before calibration, no tuning.",
     "calibration_first": true,
     "scope": "The frozen 83 no-machine-table plus 19 structure-mismatch candidates, restricted to held license-clear documents.",
