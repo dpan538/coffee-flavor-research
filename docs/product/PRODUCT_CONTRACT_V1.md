@@ -74,10 +74,10 @@ Path A is the seven-question algorithm.
 
 Reinforcement always occurs. What varies is where it lands.
 
-| Path | Q4 | Q5 |
-| --- | --- | --- |
-| A — rounds 2 and 3 sufficient | reinforcement | not asked |
-| B — round 2 insufficient | strong correction | reinforcement |
+| Path                          | Q4                | Q5            |
+| ----------------------------- | ----------------- | ------------- |
+| A — rounds 2 and 3 sufficient | reinforcement     | not asked     |
+| B — round 2 insufficient      | strong correction | reinforcement |
 
 Q5 is not an exception or an overflow slot. It is the compensating step that carries
 reinforcement when Q4 has been promoted to correction.
@@ -142,10 +142,10 @@ operates, never whether it is kept.**
 
 Three visibility tiers:
 
-| Tier | Meaning |
-| --- | --- |
-| `FRONTEND` | may reach the user interface |
-| `BACKEND` | operates in inference, never displayed |
+| Tier                         | Meaning                                           |
+| ---------------------------- | ------------------------------------------------- |
+| `FRONTEND`                   | may reach the user interface                      |
+| `BACKEND`                    | operates in inference, never displayed            |
 | `RESEARCH_AND_TRAINING_ONLY` | fully isolated to the research and training layer |
 
 Visibility is an axis independent of semantic role. A term has both.
@@ -156,13 +156,13 @@ The current registry holds only `NAMED_DESCRIPTOR`, `PROFILE_DIRECTION` and
 `OTHER_NATIVE_MEASUREMENT`. The following are implied by V1 and are **not yet specified or
 created**:
 
-| Role | Tier | Notes |
-| --- | --- | --- |
-| `DEFECT_DESCRIPTOR` | RESEARCH_AND_TRAINING_ONLY | clustered, low-weight attachment to parent flavours |
-| `CONTEXT_CONSISTENCY_CHECK` | BACKEND | mouthfeel and texture; verifies against stated C0/C1 |
-| `ROAST_INFORMATION` | FRONTEND | roast level as a first-class concept |
-| `COFFEE_KIND` | FRONTEND | species and variety |
-| `RETAINED_NON_DESCRIPTOR` | RESEARCH_AND_TRAINING_ONLY | recorded, never emitted, no operational authority |
+| Role                        | Tier                       | Notes                                                |
+| --------------------------- | -------------------------- | ---------------------------------------------------- |
+| `DEFECT_DESCRIPTOR`         | RESEARCH_AND_TRAINING_ONLY | clustered, low-weight attachment to parent flavours  |
+| `CONTEXT_CONSISTENCY_CHECK` | BACKEND                    | mouthfeel and texture; verifies against stated C0/C1 |
+| `ROAST_INFORMATION`         | FRONTEND                   | roast level as a first-class concept                 |
+| `COFFEE_KIND`               | FRONTEND                   | species and variety                                  |
+| `RETAINED_NON_DESCRIPTOR`   | RESEARCH_AND_TRAINING_ONLY | recorded, never emitted, no operational authority    |
 
 ### Defect layer
 
@@ -177,15 +177,15 @@ Defects are grouped into clusters and attached to parent flavour concepts with a
 
 ### Term rulings carried forward
 
-| Terms | Disposition |
-| --- | --- |
-| green, pungent | admitted as flavour descriptors |
-| fatty, oily, waxy, creamy | `CONTEXT_CONSISTENCY_CHECK` |
-| spicy | C1 evidence — incidental to light and medium roast |
-| burnt | C1 evidence — attributed to dark roast |
-| musty, rancid, sweaty, soapy, phenolic, sulfury, cheesy, cheese | `DEFECT_DESCRIPTOR` |
-| pyrazine, aldehydic, ethereal | not percepts — research tier |
-| fresh, clean, mild, coffee | `RETAINED_NON_DESCRIPTOR` |
+| Terms                                                           | Disposition                                        |
+| --------------------------------------------------------------- | -------------------------------------------------- |
+| green, pungent                                                  | admitted as flavour descriptors                    |
+| fatty, oily, waxy, creamy                                       | `CONTEXT_CONSISTENCY_CHECK`                        |
+| spicy                                                           | C1 evidence — incidental to light and medium roast |
+| burnt                                                           | C1 evidence — attributed to dark roast             |
+| musty, rancid, sweaty, soapy, phenolic, sulfury, cheesy, cheese | `DEFECT_DESCRIPTOR`                                |
+| pyrazine, aldehydic, ethereal                                   | not percepts — research tier                       |
+| fresh, clean, mild, coffee                                      | `RETAINED_NON_DESCRIPTOR`                          |
 
 ## 7. What V1 does not decide
 
