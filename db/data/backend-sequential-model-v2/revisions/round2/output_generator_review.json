@@ -1,0 +1,121 @@
+{
+  "contract_version": "round2.output-generator-review.v1",
+  "subject": "Owner-supplied deterministic 3+2+3 output generator",
+  "method": "Executed against the real frozen registry with synthetic states constructed to expose each candidate defect. Frozen per-case states are in owner-controlled storage and were not used.",
+  "verdict": "The structure is right. Four defects were reproduced, and the first destroys the single property that justifies strict-evidence mode.",
+  "D1_direct_evidence_is_truncated_alphabetically": {
+    "severity": "CRITICAL",
+    "code": "main = sorted(direct_named)[:main_max]",
+    "reproduction": {
+      "user_stated": [
+        "almond",
+        "lemon",
+        "rose",
+        "smoky",
+        "vanilla"
+      ],
+      "main_emitted": [
+        "almond",
+        "lemon",
+        "rose"
+      ],
+      "silently_dropped": [
+        "smoky",
+        "vanilla"
+      ]
+    },
+    "why_it_is_critical": "The strict-evidence audit established explicit_expression_retention = 1.0 as the entire virtue of this design: it loses no user-stated word and removes only untraceable material. Alphabetical truncation breaks exactly that property. Two words the user explicitly said are discarded because of their spelling.",
+    "proposed_fix": "Direct evidence must never be dropped for budget reasons. Overflow beyond main_max should occupy secondary ahead of any mid-level representative. If direct evidence exceeds main plus secondary, that is a signal the budget is wrong, not that the words are unimportant."
+  },
+  "D2_dropped_words_are_replaced_by_a_broad_substitute": {
+    "severity": "CRITICAL",
+    "code": "covered_dims computed from main only, not from direct_named",
+    "consequence": "A user-stated word cut by D1 leaves its dimension looking uncovered, so the generator emits the dimension's broad representative instead. The user says lemon, the system drops lemon and answers citrus-family.",
+    "proposed_fix": "Compute covered_dims from the full direct_named set, independent of what fits in main."
+  },
+  "D3_secondary_dimension_choice_is_alphabetical": {
+    "severity": "HIGH",
+    "code": "for dim in sorted(uncovered_dims)",
+    "reproduction": {
+      "activated": [
+        "floral",
+        "fruity",
+        "nutty_cocoa",
+        "sweet"
+      ],
+      "secondary_emitted": [
+        "broad.citrus",
+        "broad.chocolate"
+      ],
+      "note": "Which two of four dimensions are represented is decided by dimension name spelling."
+    },
+    "proposed_fix": "Order uncovered dimensions by evidence strength: SUPPORTED_WITHIN_SCOPE before PROPOSED, then a declared tiebreak. Alphabetical order is a fallback that must be stated, not a default that happens."
+  },
+  "D4_profile_ignores_evidence_strength_and_truncates_alphabetically": {
+    "severity": "HIGH",
+    "code": "profile = sorted(profile)[:profile_max]",
+    "reproduction": {
+      "k1_supported": [
+        "sweet"
+      ],
+      "k1_proposed": [
+        "floral",
+        "fruity",
+        "roasted",
+        "spices"
+      ],
+      "profile_emitted": [
+        "attribute.floral",
+        "attribute.fruity",
+        "attribute.roasted"
+      ],
+      "consequence": "The only SUPPORTED dimension was pushed out by alphabetical order. Every emitted direction is merely PROPOSED. Evidence strength is inverted."
+    },
+    "proposed_fix": "Rank SUPPORTED_WITHIN_SCOPE above PROPOSED and truncate within tier, never across tiers."
+  },
+  "D5_a_dimension_can_occupy_both_secondary_and_profile": {
+    "severity": "MEDIUM",
+    "reproduction": {
+      "activated": [
+        "fruity"
+      ],
+      "secondary": [
+        "broad.citrus"
+      ],
+      "profile": [
+        "attribute.fruity"
+      ],
+      "user_sees": "citrus-family in the named slot and fruity as a direction, which is the same information twice"
+    },
+    "assessment": "This is a product judgement rather than a bug. The secondary representative is strictly more informative than the bare direction, so suppressing the direction for a dimension already represented in secondary would reduce redundancy. But it also weakens overall_profile's role as a complete statement of supported directions.",
+    "requires_owner_decision": true,
+    "options": [
+      "Suppress the profile entry when the same dimension already has a secondary representative",
+      "Keep both and accept the duplication as intentional role separation",
+      "Keep both but mark the profile entry as already represented"
+    ]
+  },
+  "what_the_structure_gets_right": [
+    "main from direct evidence only, keeping the retention property intact in principle",
+    "secondary from mid-level representatives of uncovered dimensions, requiring no relation edge",
+    "all three slots deterministic with no fitted parameter",
+    "role separation preserved: broad.* are NAMED_DESCRIPTOR, attribute.* stay in profile"
+  ],
+  "the_common_pattern_across_D1_D3_D4": {
+    "observation": "Three of the four defects are the same mistake: sorted() used as a budget cut, so lexicographic accident decides what the user sees.",
+    "significance": "This is the third time in this project that alphabetical ordering has silently become a decision rule. It appeared in the earlier fuzzy decision-tree prototype and in the equivalence-class tie-breaking analysis.",
+    "recommended_standing_rule": "Any truncation must order by a declared evidence property first. sorted() may only break ties after that, and the contract must say so."
+  },
+  "measurement_note": {
+    "cannot_run_the_owner_evaluation_yet": "evaluate_secondary_metrics requires the frozen per-case states, which are in owner-controlled storage. Secondary non-empty rate and mean secondary count cannot be computed here.",
+    "also_blocked_by": "The 6 broad.* concepts are proposed but not created, so 7 of 9 dimensions still have no representative. Running the evaluation before they exist would measure the gap, not the design."
+  },
+  "guards": {
+    "concepts_created": 0,
+    "relation_edges_created": 0,
+    "fit_count": 0,
+    "code_adopted_into_production": false,
+    "output_or_default_changed": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
