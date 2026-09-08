@@ -1,0 +1,156 @@
+{
+  "contract_version": "round2.proposition-architecture-review.v1",
+  "generated_at_utc": "2026-09-08T11:04:19Z",
+  "subject": "Owner's FSM + pure-strategy + saturation architecture, reviewed, repaired, implemented and measured.",
+  "verdict": "ADOPTED_WITH_FOUR_REPAIRS. The design is sound. Implemented literally it would have reintroduced defects the project already fixed, and its central worry turned out to be the wrong worry.",
+  "defects_found_in_the_proposal_as_written": [
+    {
+      "id": "P1",
+      "where": "build_output section 4",
+      "defect": "sorted(candidates)[:n] on all three lists. The prose alongside it says to avoid alphabetical order and use registry or dimension priority; the code does exactly what the prose forbids.",
+      "why_it_matters": "This is the defect class D1-D4 already repaired in this project. Three separate defects here have been lexicographic accident acting as a decision rule.",
+      "repair": "Ordering is by extent size, most specific first. Concept id breaks ties only, and is documented as a tiebreak."
+    },
+    {
+      "id": "P2",
+      "where": "generate_output_with_fallback step 7",
+      "defect": "secondary is filled with L2 middle categories BEFORE L1 direct-evidence overflow.",
+      "why_it_matters": "Reverses the D1 repair. A participant who names four words has the fourth displaced by a category the system chose. explicit_expression_retention drops below 1.0, which is the single property justifying strict-evidence mode.",
+      "repair": "Stated-but-unshown evidence occupies secondary ahead of any system-chosen representative."
+    },
+    {
+      "id": "P3",
+      "where": "main fallback admitting one L3 direction as a placeholder",
+      "defect": "Contradicts the proposal's own stated constraint that main and secondary carry only NAMED_DESCRIPTOR, and duplicates overall_profile, which draws its directions from the same activated dimensions.",
+      "why_it_matters": "The same word would appear twice in one result. output_policy_r9 validates duplicates within main+secondary only, so this would pass validation and still be visibly wrong.",
+      "repair": "Role separation kept absolute. The motive behind the proposal (avoid an empty main) is real and is addressed instead by declaring an honest dimension-level category, measured below.",
+      "status": "NOT_IMPLEMENTED_PENDING_OWNER — if the owner prefers the placeholder, it needs a de-duplication rule against overall_profile."
+    },
+    {
+      "id": "P4",
+      "where": "compute_saturation constants 0.8 / 0.4 / min(dim_ev/2, 0.6)",
+      "defect": "Undeclared magic numbers doing real ranking work.",
+      "repair": "Removed entirely. Entailment is set containment and ranking is extent size, so there is nothing left to tune."
+    },
+    {
+      "id": "P5",
+      "where": "the L1/L2/L3 ladder itself",
+      "defect": "Each concept's rung is hardcoded, so the ladder cannot express that a category may be narrower than its dimension.",
+      "repair": "The ladder is derived: extent size orders the concepts, and the rungs fall out. This is what makes ROUND2-OP4 structurally impossible rather than merely fixed."
+    },
+    {
+      "id": "P6",
+      "where": "the worked example 'user picks fruit direction -> output citrus'",
+      "defect": "Not achievable honestly. broad.citrus covers 2 of 23 fruity words. Answering the fruit direction does not entail citrus.",
+      "note": "The owner's instinct that an intermediate layer exists was correct; it lives in the question axis partitions, not the concept registry."
+    }
+  ],
+  "defects_found_in_the_operator_s_own_shipped_code": [
+    {
+      "id": "ROUND2-OP2",
+      "severity": "CRITICAL",
+      "defect": "output_generator_round2, declared CURRENT PRODUCT PATH in contract section 6b, read state['k1']['dimensions'] as a list of {dimension_id,status} rows. The frozen R9 schema, enforced by output_policy_r9 and exercised in test_output_policy_r9, is a Mapping {dimension_id:{'supported':float}}. Every real state raised AttributeError.",
+      "how_it_survived": "It had only ever been run on states the operator invented to match his own misreading.",
+      "repair": "evidence_reader_round2 normalises both shapes; the frozen Mapping is canonical.",
+      "status": "REPAIRED"
+    },
+    {
+      "id": "ROUND2-OP3",
+      "severity": "CRITICAL",
+      "defect": "Direct evidence required a selected option id to be a NAMED_DESCRIPTOR in the registry. Zero of the 28 product options are registry concepts; all are partition names. Direct evidence was structurally unreachable, so every session fell through to dimension-level output. k1.confirmed_concepts was also ignored.",
+      "significance": "This, not the inference rule, was the mechanism behind the over-normalisation the owner asked about.",
+      "repair": "Options resolve through the axis partitions. A singleton partition (13 of 23) pins one concept and is direct evidence; a multi-member partition is set evidence and is never promoted to any single member.",
+      "status": "REPAIRED"
+    },
+    {
+      "id": "ROUND2-OP4",
+      "severity": "HIGH",
+      "defect": "broad.citrus was the only representative for the fruity dimension, so a participant whose evidence supported no more than 'fruity' was told 'citrus'.",
+      "cause": "The six dimension-level broad concepts added in round 2 were layered into a namespace already holding three sub-dimension ones from the sealed R9 contract (broad.chocolate, broad.citrus, broad.nutty). The generator treated all nine as interchangeable representatives for a dimension. The collision was introduced by the operator.",
+      "user_visible_consequence": "Someone who tasted mango is told 'citrus'. That is false, not vague.",
+      "repair": "Extents are declared per concept; entailment requires the evidence set to be contained in the concept's extent, so a narrower category can never be reached from wider evidence.",
+      "status": "REPAIRED"
+    },
+    {
+      "id": "ROUND2-OP5",
+      "severity": "MEDIUM",
+      "defect": "A single-candidate-set model would intersect all answers, so answering 'fruit' then 'nuts' yields the empty set and the participant is told nothing despite having said two things.",
+      "repair": "State carries one branch per thing said. A later answer refines the branch it intersects and opens a branch when it intersects none.",
+      "status": "REPAIRED_BY_DESIGN"
+    }
+  ],
+  "the_owner_s_question_answered": {
+    "asked": "How do we avoid the small dataset forcing everything toward the same output?",
+    "finding": "Over-normalisation is not the failure mode. Across all 170 reachable sessions the machine produces 161 distinct outputs and the most common single output accounts for 1.76 percent.",
+    "the_actual_constraint": "The reachable space is small, not repetitive. 170 sessions is the entire product answer space, and only 15 of the registry's 88 concepts can ever appear in a result. 36 of 56 specific words are touched by no question, so no evidence for them can ever exist.",
+    "where_the_leverage_is": "Question coverage, not the inference algorithm. The largest indistinguishable cell is 19 fruits (apple, banana, cherry, mango, peach and 14 more) that no question separates.",
+    "resolution_limit": {
+      "specific_concepts": 56,
+      "cells_from_dimensions_alone": 11,
+      "largest_cell_dimensions_only": 22,
+      "cells_with_partitions": 27,
+      "largest_cell_with_partitions": 19,
+      "uniquely_determinable_words": 19
+    }
+  },
+  "measured_effect_of_the_one_change_tested": {
+    "change": "declare a dimension-level broad.fruity, the only large dimension with no honest middle category",
+    "distinct_main_sets": {
+      "before": 104,
+      "after": 118
+    },
+    "sessions_with_empty_main": {
+      "before": 19,
+      "after": 13
+    },
+    "note": "Measured over the same 170 enumerated sessions. Not applied: creating a concept is an owner decision."
+  },
+  "owner_decisions_required": [
+    {
+      "id": "ROUND2-D6",
+      "question": "broad.chocolate has no clean extent source and is unusable until declared.",
+      "options": {
+        "A": "{dark_chocolate, cocoa}",
+        "B": "{dark_chocolate}",
+        "C": "retire it; broad.nutty and the specific words already cover nutty_cocoa"
+      },
+      "current_effect": "nutty_cocoa evidence at dimension level falls through to the direction rather than being over-claimed."
+    },
+    {
+      "id": "ROUND2-D7",
+      "question": "Create broad.fruity as a dimension-level category?",
+      "measured_effect": "see above",
+      "recommendation": "yes; it is the largest dimension and the only one where honest middle-level output is currently impossible"
+    },
+    {
+      "id": "ROUND2-D8",
+      "question": "Question coverage. 36 of 56 words are unreachable and the largest unseparated cell is 19 fruits. Extending the fruit axis is the single highest-leverage change available.",
+      "recommendation": "treat as the next work item, ahead of any further inference work"
+    },
+    {
+      "id": "ROUND2-D9",
+      "severity": "BLOCKING",
+      "question": "All 8 question axes carry product_use_eligible=false with reason INFORMATION_GAIN_AND_USER_COMPREHENSION_NOT_VALIDATED. Nothing is shippable until that is resolved, and the diversity measurement above had to ignore the flag to produce any sessions at all."
+    },
+    {
+      "id": "ROUND2-D10",
+      "question": "P3: allow a direction to occupy a main slot when main would otherwise be empty?",
+      "current": "not implemented; role separation kept",
+      "if_yes_required": "a de-duplication rule against overall_profile"
+    }
+  ],
+  "verification": {
+    "full_suite": "398 tests, 0 errors, 13 skipped",
+    "new_tests": "test_proposition_architecture_round2.py, 32 tests",
+    "regression_pins": "each of OP2, OP3, OP4, OP5 has a test that fails if it returns",
+    "mutation_check": "test_mutating_an_extent_is_caught deliberately widens broad.citrus and requires entailment to fire, so the non-entailment assertion is not vacuous"
+  },
+  "guards": {
+    "registry_edited": false,
+    "r9_contract_edited": false,
+    "records_admitted": 0,
+    "corpus_written": false,
+    "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}

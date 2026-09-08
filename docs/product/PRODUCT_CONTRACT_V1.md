@@ -222,23 +222,46 @@ Defects are grouped into clusters and attached to parent flavour concepts with a
 
 ## 6b. Authoritative output module
 
-Two modules can now produce an `OUT_SEPARATED` shape. This section declares which
-one governs, so the two cannot diverge silently.
+Several modules can now produce an `OUT_SEPARATED` shape. This section declares
+which one governs, so they cannot diverge silently.
 
-| Module                                    | Status                   | Use                                                                                 |
-| ----------------------------------------- | ------------------------ | ----------------------------------------------------------------------------------- |
-| `output_policy_r9.adapt_output`           | **FROZEN R9 BEHAVIOUR**  | Historical comparison only. Do not change it and do not ship it.                    |
-| `output_generator_round2.generate_output` | **CURRENT PRODUCT PATH** | The 3 + 2 + 3 budget, the repaired D1-D4 rules, and the round 2 registry extension. |
+| Module                                    | Status                   | Use                                                                                   |
+| ----------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------- |
+| `output_policy_r9.adapt_output`           | **FROZEN R9 BEHAVIOUR**  | Historical comparison only. Do not change it and do not ship it.                      |
+| `output_generator_round2.generate_output` | **SUPERSEDED**           | Single-shot 3 + 2 + 3 from a finished state. Kept for comparison against the machine. |
+| `evidence_reader_round2`                  | **CURRENT PRODUCT PATH** | The single reader of session state. Every output path uses it, so none can drift.     |
+| `proposition_lattice_round2`              | **CURRENT PRODUCT PATH** | Extents, entailment, minimal sufficient generalisation.                               |
+| `inference_state_machine_round2`          | **CURRENT PRODUCT PATH** | The session: state, strategies, stop rules, and the 3 + 2 + 3 output.                 |
 
 `output_policy_r9` remains the contract root: it defines the three policies, the
 three roles, and registry validation, and sixteen research modules import it.
 What is frozen is its **output adaptation**, not its definitions.
 
+### How output granularity is decided
+
+Granularity is not assigned per concept. Every proposition carries an **extent**,
+the set of specific concepts it claims, declared in `concept_extents.json`. Every
+answer yields a **constraint**, the set the participant's referent lies in. A
+proposition is entailed when the constraint is contained in its extent, and the
+system shows the entailed proposition with the smallest extent.
+
+The consequence that matters: a category narrower than the evidence can never be
+reached. `broad.citrus` covers 2 of the 23 fruity words, so evidence supporting
+no more than "fruity" does not entail it. The superseded generator had no such
+guard and answered "citrus" to a participant who had tasted mango — recorded as
+ROUND2-OP4.
+
+A `broad.*` concept with no declared extent is **unusable**, and is never widened
+to its dimension. Widening would keep the narrow label while meaning the whole
+dimension, which is the same error in the other direction.
+
 ### Runtime boundary
 
-The product runtime is `output_policy_r9`, `output_generator_round2`,
-`registry_extension.json`, and `flavor_backend.question_bank` /
-`select_next_question`. All four are standard library only.
+The product runtime is `output_policy_r9`, `evidence_reader_round2`,
+`proposition_lattice_round2`, `inference_state_machine_round2`,
+`output_generator_round2`, `registry_extension.json`, `concept_extents.json`,
+and `flavor_backend.question_bank` / `select_next_question`. All are standard
+library only.
 
 The runtime must never import a fitting-era module (`flavor_m2_r1`,
 `flavor_sequential`, `flavor_context` and siblings) or a scientific stack

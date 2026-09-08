@@ -26,6 +26,9 @@ if str(SCRIPTS) not in sys.path:
 RUNTIME_MODULES = (
     "output_policy_r9",
     "output_generator_round2",
+    "evidence_reader_round2",
+    "proposition_lattice_round2",
+    "inference_state_machine_round2",
     "flavor_backend",
 )
 

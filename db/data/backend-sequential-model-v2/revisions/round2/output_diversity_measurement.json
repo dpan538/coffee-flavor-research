@@ -1,0 +1,121 @@
+{
+  "contract_version": "round2.output-diversity.v1",
+  "generated_at_utc": "2026-09-08T11:00:30Z",
+  "question": "Does the small corpus force the system to answer nearly the same thing every time?",
+  "method": {
+    "enumeration": "every reachable answer path, axis chosen by the product's own select_next_axis, to the five-question limit",
+    "abstention": "each axis expansion includes an 'unsure' branch",
+    "eligibility_note": "all 8 axes carry product_use_eligible=false with reason INFORMATION_GAIN_AND_USER_COMPREHENSION_NOT_VALIDATED; enumeration ignores that flag, so these figures describe the mechanism, not a shippable question set"
+  },
+  "resolution_limit": {
+    "specific_concepts": 56,
+    "cells_from_dimensions_alone": null,
+    "note": "see partition_resolution below"
+  },
+  "variants": [
+    {
+      "variant": "shipped (output_generator_round2)",
+      "sessions_enumerated": 170,
+      "distinct_outputs": 143,
+      "most_common_output_share": 0.0235,
+      "sessions_naming_a_specific_word": 135,
+      "specific_word_rate": 0.7941,
+      "crashes": 0
+    },
+    {
+      "variant": "machine",
+      "sessions_enumerated": 170,
+      "distinct_outputs": 161,
+      "distinct_main_sets": 104,
+      "most_common_output_share": 0.0176,
+      "sessions_with_empty_main": 19,
+      "sessions_naming_a_specific_word": 135,
+      "specific_word_rate": 0.7941,
+      "distinct_concepts_ever_shown": 15,
+      "most_shown_concepts": [
+        [
+          "broad.sweet",
+          17
+        ],
+        [
+          "sensory.brown_sugar",
+          17
+        ],
+        [
+          "broad.nutty",
+          17
+        ],
+        [
+          "sensory.dark_chocolate",
+          17
+        ],
+        [
+          "sensory.jasmine",
+          16
+        ],
+        [
+          "sensory.rose",
+          16
+        ],
+        [
+          "sensory.orange_blossom",
+          16
+        ],
+        [
+          "sensory.green_tea",
+          16
+        ]
+      ]
+    },
+    {
+      "variant": "machine+broad.fruity",
+      "sessions_enumerated": 170,
+      "distinct_outputs": 161,
+      "distinct_main_sets": 118,
+      "most_common_output_share": 0.0176,
+      "sessions_with_empty_main": 13,
+      "sessions_naming_a_specific_word": 135,
+      "specific_word_rate": 0.7941,
+      "distinct_concepts_ever_shown": 16,
+      "most_shown_concepts": [
+        [
+          "broad.fruity",
+          19
+        ],
+        [
+          "broad.sweet",
+          17
+        ],
+        [
+          "sensory.brown_sugar",
+          17
+        ],
+        [
+          "broad.nutty",
+          17
+        ],
+        [
+          "sensory.dark_chocolate",
+          17
+        ],
+        [
+          "sensory.jasmine",
+          16
+        ],
+        [
+          "sensory.rose",
+          16
+        ],
+        [
+          "sensory.orange_blossom",
+          16
+        ]
+      ]
+    }
+  ],
+  "guards": {
+    "records_admitted": 0,
+    "corpus_written": false,
+    "fit_count": 0
+  }
+}

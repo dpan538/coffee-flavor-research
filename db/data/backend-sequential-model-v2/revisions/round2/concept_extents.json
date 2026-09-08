@@ -1,0 +1,145 @@
+{
+  "contract_version": "round2.concept-extents.v1",
+  "generated_at_utc": "2026-09-08T10:57:52Z",
+  "purpose": "The extent of a category concept is the set of specific concepts it claims. It is a semantic commitment, so it is declared here rather than inferred by the code.",
+  "rule": "A broad.* concept with no entry here is UNUSABLE. It is never widened to its dimension: that would keep the narrow label while meaning the whole dimension.",
+  "declared_extents": {
+    "broad.citrus": [
+      "sensory.lemon",
+      "sensory.orange"
+    ],
+    "broad.nutty": [
+      "sensory.almond",
+      "sensory.hazelnut"
+    ],
+    "broad.floral": [
+      "sensory.chamomile",
+      "sensory.jasmine",
+      "sensory.orange_blossom",
+      "sensory.rose"
+    ],
+    "broad.green": [
+      "sensory.black_tea",
+      "sensory.cedar",
+      "sensory.earthy",
+      "sensory.green_tea",
+      "sensory.hay",
+      "sensory.lemongrass",
+      "sensory.woody"
+    ],
+    "broad.roasted": [
+      "sensory.dark_chocolate",
+      "sensory.malt",
+      "sensory.smoky",
+      "sensory.tobacco"
+    ],
+    "broad.fermented": [
+      "sensory.alcoholic",
+      "sensory.fermented_character",
+      "sensory.wine_like_character"
+    ],
+    "broad.spice": [
+      "sensory.black_pepper",
+      "sensory.cardamom",
+      "sensory.cinnamon",
+      "sensory.clove",
+      "sensory.nutmeg"
+    ],
+    "broad.sweet": [
+      "sensory.brown_sugar",
+      "sensory.caramel",
+      "sensory.honey",
+      "sensory.molasses",
+      "sensory.vanilla"
+    ]
+  },
+  "provenance": {
+    "broad.citrus": {
+      "basis": "QUESTION_AXIS_PARTITION",
+      "partitions": [
+        "citrus",
+        "citrus_like"
+      ],
+      "source": "db/data/product-inference-v0/PRODUCT_QUESTION_AXIS.tsv",
+      "breadth": "SUB_DIMENSION"
+    },
+    "broad.nutty": {
+      "basis": "QUESTION_AXIS_PARTITION",
+      "partitions": [
+        "nuts"
+      ],
+      "source": "db/data/product-inference-v0/PRODUCT_QUESTION_AXIS.tsv",
+      "breadth": "SUB_DIMENSION"
+    },
+    "broad.floral": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "floral"
+      ],
+      "source": "registry_extension.json, owner-approved round 2",
+      "breadth": "DIMENSION_CLOSURE"
+    },
+    "broad.green": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "green_vegetative"
+      ],
+      "source": "registry_extension.json, owner-approved round 2",
+      "breadth": "DIMENSION_CLOSURE"
+    },
+    "broad.roasted": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "roasted"
+      ],
+      "source": "registry_extension.json, owner-approved round 2",
+      "breadth": "DIMENSION_CLOSURE"
+    },
+    "broad.fermented": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "sour_fermented"
+      ],
+      "source": "registry_extension.json, owner-approved round 2",
+      "breadth": "DIMENSION_CLOSURE"
+    },
+    "broad.spice": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "spices"
+      ],
+      "source": "registry_extension.json, owner-approved round 2",
+      "breadth": "DIMENSION_CLOSURE"
+    },
+    "broad.sweet": {
+      "basis": "DIMENSION_CLOSURE",
+      "dimensions": [
+        "sweet"
+      ],
+      "source": "registry_extension.json, owner-approved round 2",
+      "breadth": "DIMENSION_CLOSURE"
+    }
+  },
+  "pending_owner_decision": {
+    "broad.chocolate": {
+      "problem": "No clean extent source. The only related partition is dark_chocolate={sensory.dark_chocolate}, but the label 'chocolate' would ordinarily also cover sensory.cocoa. Guessing either way is a semantic claim the operator may not make.",
+      "options": {
+        "A": [
+          "sensory.dark_chocolate",
+          "sensory.cocoa"
+        ],
+        "B": [
+          "sensory.dark_chocolate"
+        ],
+        "C": "retire broad.chocolate; broad.nutty plus the specific words already cover nutty_cocoa"
+      },
+      "status": "UNUSABLE_UNTIL_DECLARED",
+      "effect_while_undeclared": "nutty_cocoa is represented by broad.nutty={almond,hazelnut}, a sub-dimension category, so evidence supporting only nutty_cocoa as a whole falls through to the direction attribute.nutty_cocoa rather than being over-claimed."
+    }
+  },
+  "guards": {
+    "registry_edited": false,
+    "r9_contract_edited": false,
+    "fit_count": 0
+  }
+}

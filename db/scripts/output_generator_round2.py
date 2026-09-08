@@ -43,7 +43,16 @@ import argparse
 from collections import defaultdict
 import json
 from pathlib import Path
+import sys
 from typing import Any
+
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from evidence_reader_round2 import (  # noqa: E402
+    covered_dimensions as covered_dims,
+    read_evidence,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 R9 = ROOT / "db/data/backend-sequential-model-v2/revisions/r9"
@@ -82,30 +91,25 @@ def generate_output(
     profile_max: int = 3,
     suppress_profile_when_secondary: bool = False,
 ) -> dict[str, Any]:
-    # ---- evidence extraction -------------------------------------------
-    direct_named: set[str] = set()
-    for qa in state.get("qa_pairs", []):
-        for opt in qa.get("selected_option_ids", []):
-            if registry.get(opt, {}).get("role") == "NAMED_DESCRIPTOR":
-                direct_named.add(opt)
-
-    dim_status: dict[str, str] = {}
-    for row in state.get("k1", {}).get("dimensions", []):
-        did, status = row.get("dimension_id"), row.get("status")
-        if did and status in (SUPPORTED, PROPOSED):
-            # SUPPORTED wins if a dimension appears twice
-            if dim_status.get(did) != SUPPORTED:
-                dim_status[did] = status
+    # ---- evidence extraction (ROUND2-OP2, ROUND2-OP3) -------------------
+    # Delegated to evidence_reader_round2 so this path and the state machine
+    # cannot drift apart. The reader accepts the frozen R9 k1 schema, reads
+    # k1.confirmed_concepts, and resolves question options through the axis
+    # partitions, without which direct evidence is unreachable in production.
+    evidence = read_evidence(state, registry)
+    direct_named: set[str] = evidence["direct"]
+    dim_status: dict[str, str] = evidence["dim_status"]
 
     # ---- main: direct evidence only, never dropped for budget (D1) -----
     ordered_direct = sorted(direct_named)  # declared tiebreak, no evidence rank exists here
     main = ordered_direct[:main_max]
     direct_overflow = ordered_direct[main_max:]
 
-    # ---- coverage from ALL direct evidence, not just main (D2) ---------
-    covered_dimensions: set[str] = set()
-    for cid in direct_named:
-        covered_dimensions.update(_dims(registry, cid))
+    # ---- coverage from ALL evidence, not just main (D2) ----------------
+    # Set evidence counts as coverage: answering "citrus" addresses fruity
+    # even though no single fruit was named, so substituting the broad fruity
+    # representative there would tell the participant nothing new.
+    covered_dimensions = covered_dims(registry, evidence)
 
     # ---- secondary: direct overflow first, then representatives (D1) ---
     secondary: list[str] = list(direct_overflow[:secondary_max])
