@@ -220,6 +220,57 @@ Defects are grouped into clusters and attached to parent flavour concepts with a
 | pyrazine, aldehydic, ethereal                                   | not percepts — research tier                       |
 | fresh, clean, mild, coffee                                      | `RETAINED_NON_DESCRIPTOR`                          |
 
+## 6b. Authoritative output module
+
+Two modules can now produce an `OUT_SEPARATED` shape. This section declares which
+one governs, so the two cannot diverge silently.
+
+| Module                                    | Status                   | Use                                                                                 |
+| ----------------------------------------- | ------------------------ | ----------------------------------------------------------------------------------- |
+| `output_policy_r9.adapt_output`           | **FROZEN R9 BEHAVIOUR**  | Historical comparison only. Do not change it and do not ship it.                    |
+| `output_generator_round2.generate_output` | **CURRENT PRODUCT PATH** | The 3 + 2 + 3 budget, the repaired D1-D4 rules, and the round 2 registry extension. |
+
+`output_policy_r9` remains the contract root: it defines the three policies, the
+three roles, and registry validation, and sixteen research modules import it.
+What is frozen is its **output adaptation**, not its definitions.
+
+### Runtime boundary
+
+The product runtime is `output_policy_r9`, `output_generator_round2`,
+`registry_extension.json`, and `flavor_backend.question_bank` /
+`select_next_question`. All four are standard library only.
+
+The runtime must never import a fitting-era module (`flavor_m2_r1`,
+`flavor_sequential`, `flavor_context` and siblings) or a scientific stack
+(`sklearn`, `scipy`, `numpy`, `lxml`). This is enforced by
+`db/tests/test_runtime_boundary_round2.py`, not by convention.
+
+Three research modules legitimately do carry that dependency —
+`analyze_participant_responses_r9`, `generate_user_study_pack_r9` and
+`audit_semantic_integrity_r9`. They are not shipped.
+
+### Research cluster division of labour
+
+The R9 cluster is twenty modules in three tiers: one runtime root, seven
+components with no CLI and no artefacts, and twelve synthesisers and audits.
+
+Two top-level synthesisers overlap and are **deliberately not merged**, because
+merging would produce one very large module and remove the ability to run half
+the analysis:
+
+| Synthesiser                     | Consumes                                                                               | Answers                                                                |
+| ------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `analyze_semantic_phylogeny_r9` | relations, profile assignment, feature extraction, formal concept analysis, trajectory | how descriptors relate by derivation and answer path                   |
+| `analyze_semantic_structure_r9` | relations, association, feature extraction, evidence structure, tripartite             | how descriptors relate by observed co-occurrence and evidence layering |
+
+Both consume `analyze_descriptor_relations_r9` and
+`descriptor_feature_extraction_r9`; that shared base is intended.
+
+The seven components carry direct unit tests in
+`db/tests/test_r9_components_round2.py`. Before those existed a component defect
+could only surface three layers up as a wrong number, which is how the R12C
+table-orientation claim went wrong.
+
 ## 7. What V1 does not decide
 
 - The Option A / B / C architecture question. `owner_decision.json` stays pending.
