@@ -1,0 +1,130 @@
+{
+  "contract_version": "r12c.known-pipeline-defects.v1",
+  "round": "R12C",
+  "purpose": "Prevent a later round from re-running defective production scripts and treating their output as valid.",
+
+  "THE_CENTRAL_WARNING": "R12C REPAIRED NOTHING IN THE PRODUCTION PATH. Every repair was executed as a shadow measurement against sealed inputs. The production scripts named below are unchanged and still carry every defect listed. Running them today reproduces the same wrong results that R10, R11, R12 and R12B produced, and those results will look normal.",
+
+  "why_this_file_exists": "R12C's artefacts report repaired numbers. The scripts that produced the original numbers were not modified. Without this register, a later reader could reasonably assume the pipeline now behaves as the R12C reports describe. It does not.",
+
+  "defective_production_scripts": [
+    {
+      "script": "db/scripts/acquire_license_verified_r10.py",
+      "status": "UNREPAIRED",
+      "defects": [
+        {
+          "id": "F1",
+          "defect": "No pagination construct of any kind. No cursor, cursorMark, offset, resumptionToken or loop. Every API is queried exactly once and truncated at its page-size literal.",
+          "page_size_literals": {"DRYAD": 100, "EUROPE_PMC": 1000, "OPENALEX": 200, "ZENODO": 25},
+          "effect_if_rerun": "Candidate pool remains capped at one page per query regardless of how much the source holds."
+        },
+        {
+          "id": "F2",
+          "defect": "Measured capture ratio of 0.0075 on its own largest query: 10591 addressable, 79 captured.",
+          "effect_if_rerun": "Reproduces a ~0.75% sample and presents it as a corpus."
+        },
+        {
+          "id": "F3",
+          "defect": "relevant() inspects the title only and requires both a subject token and a topic token. Measured rejection of 79.0% of records that already passed the licence filter and the subject query.",
+          "effect_if_rerun": "Rejects roughly four in five qualified papers before they are ever fetched."
+        },
+        {
+          "id": "F5-note",
+          "defect": "The script declares itself a bounded discovery enhancement, not a primary acquisition. Its manifest carries gate_dependency ENHANCEMENT_NOT_PREREQUISITE_GATE_ALREADY_GO.",
+          "effect_if_rerun": "Its output is not a population sample and must not be treated as one, which is the error R11, R12 and R12B inherited."
+        }
+      ],
+      "existing_unused_infrastructure": "db/data/acquisition-state/ACQUISITION_CURSOR_REGISTRY.tsv, SOURCE_ROUTE_REGISTRY.tsv, SOURCE_ADAPTER_REGISTRY.tsv and ROUTE_SCHEMA_REGISTRY.tsv exist in the repository. The R10 script uses none of them."
+    },
+    {
+      "script": "db/scripts/stratify_extraction_r11.py",
+      "status": "UNREPAIRED",
+      "defects": [
+        {
+          "id": "F6",
+          "defect": "resolve_surface() performs an exact dictionary lookup on the whole normalised cell. norm() collapses every non-alphanumeric character, so multi-term cells and cells carrying citation markers can never match a single-term key, despite R6 rules declaring scope EXACT_COMPLETE_LIST_FRAGMENT.",
+          "measured": "1429 forms queued as NO_FROZEN_R6_RULE; 33 mapped. Fragment tokenisation recovers 515 under the identical existing rules.",
+          "effect_if_rerun": "Discards roughly a third of resolvable ontology forms again."
+        },
+        {
+          "id": "GATE-consumer",
+          "defect": "table_is_consumer() scans the WHOLE ARTICLE TEXT. One occurrence of consumer, customer, hedonic, liking or preference anywhere in a paper rejects every table in it, unless one of four exact phrases also appears.",
+          "measured": "175 of 392 table rejections (44.6%). 36 candidates entirely killed, of which 35 have professional sensory titles and only 5 have consumer-study titles.",
+          "effect_if_rerun": "Discards professional sensory papers on an incidental word."
+        },
+        {
+          "id": "GATE-cue",
+          "defect": "TABLE_SUPERVISION_CUE requires a caption keyword match and never inspects table content.",
+          "measured": "107 of 392 table rejections (27.3%).",
+          "effect_if_rerun": "Rejects sensory tables whose captions use other vocabulary."
+        },
+        {
+          "id": "GATE-licence",
+          "defect": "A candidate is skipped unless source_verified_license is truthy, even where R10 already resolved an allowed non-ND licence.",
+          "measured": "17 candidates discarded. The repaired shadow recovered 18.",
+          "effect_if_rerun": "Re-discards already-verified material."
+        },
+        {
+          "id": "F10",
+          "defect": "descriptor_axis inspects only row[:3]. A descriptor axis beginning at column four is never seen.",
+          "effect_if_rerun": "Silently misses wide tables."
+        },
+        {
+          "id": "F13",
+          "defect": "346 of 397 cached tables (87.2%) receive no descriptor-axis decision at all.",
+          "note": "Tokenisation recovers only 36 of them. The remainder is bounded by F14 and is not fully explained.",
+          "effect_if_rerun": "The largest single loss point in extraction remains."
+        },
+        {
+          "id": "F14",
+          "defect": "The recognisable vocabulary is 126 terms: 56 concepts, 42 frozen R6 rules, 30 NATIVE_DIMENSIONS. descriptor_axis requires two recognisable terms on one axis.",
+          "effect_if_rerun": "Any upstream repair delivers more material into a stage whose ceiling has not moved."
+        },
+        {
+          "id": "F15",
+          "defect": "resolve_surface() never consults NATIVE_DIMENSIONS while dimension_surface() does. Two functions in the same module disagree about what vocabulary exists.",
+          "measured": "302 of roughly 1090 ranked fragment occurrences, including sweet, fruity, floral, sour and roasted, are recoverable with zero owner decisions.",
+          "effect_if_rerun": "Rejects the project's own dimension vocabulary."
+        }
+      ]
+    }
+  ],
+
+  "shadow_only_repairs": {
+    "note": "These exist as measurements. None is wired into any production path.",
+    "db/scripts/reextract_tokenised_mapping_r12c.py": "Fragment tokenisation. Recovered 515 of 1429 under existing rules. Not wired in.",
+    "db/scripts/repaired_gates_r12c.py": "Repaired gate stack G1-G5. 42 tables newly admitted, 18 candidates recovered. Shadow only; nothing promoted.",
+    "db/scripts/diagnose_orientation_r12c.py": "Diagnosis only; changed no orientation decision."
+  },
+
+  "retractions_recorded_in_this_round": [
+    {
+      "claim": "R11: per-coffee named-descriptor supervision is not available in the open literature.",
+      "status": "WITHDRAWN_AS_UNSUPPORTED",
+      "reason": "Computed over a bounded probe that captured 0.75% of the addressable pool for its largest query."
+    },
+    {
+      "claim": "R12C operator: table orientation error, 95 row labels are descriptors.",
+      "status": "WITHDRAWN_NOT_SUPPORTED",
+      "reason": "The figure came from the operator's own shadow script taking column 0 as the sample-label list. Direct diagnosis found 0 tables with descriptors on both axes and 7 with any contaminated implied samples."
+    }
+  ],
+
+  "before_any_future_acquisition_round": [
+    "Do not re-run acquire_license_verified_r10.py as a primary acquisition. Add pagination and replace the title-only filter first.",
+    "Do not treat any count produced by the unrepaired pipeline as a measurement of the literature.",
+    "The 126-term vocabulary ceiling binds every upstream repair. Raising it requires owner-approved R6 rules; the R12C review sheet ranks the candidates and finds 7 of the top 60 need no decision at all.",
+    "The existing acquisition-state registries were restored in this round and are available; the R10 script does not use them."
+  ],
+
+  "guards": {
+    "production_scripts_modified": 0,
+    "sealed_artifacts_modified": 0,
+    "records_admitted": 0,
+    "r6_rules_created": 0,
+    "concepts_created": 0,
+    "formal_relation_edges_created": 0,
+    "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
