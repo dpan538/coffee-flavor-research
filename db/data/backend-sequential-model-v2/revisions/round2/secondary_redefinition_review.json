@@ -1,0 +1,105 @@
+{
+  "contract_version": "round2.secondary-redefinition-review.v1",
+  "proposal": "Redefine secondary from low-confidence specific words to mid-level representatives of activated-but-uncovered dimensions.",
+  "verdict": "SOUND IN PRINCIPLE, INCOMPLETE IN THE REGISTRY. The mechanism needs no relation edge, which is the point. But the broad.* layer it depends on covers 2 of 9 dimensions.",
+  "why_the_principle_is_right": [
+    "A mid-level class is a legitimate representative of its dimension. Emitting 'citrus-family' is honest where selecting 'lemon' is fabrication.",
+    "Dimension membership is already registered, so no relation edge is required. That is what unblocks the structural emptiness.",
+    "There are 0-2 mid-level classes per dimension, so no alphabetical tie-breaking problem arises.",
+    "It preserves OUT_SEPARATED: broad.* concepts are role NAMED_DESCRIPTOR, so nothing crosses the named/direction boundary."
+  ],
+  "THE_BLOCKER": {
+    "broad_concepts_in_registry": 3,
+    "detail": {
+      "broad.chocolate": [
+        "nutty_cocoa"
+      ],
+      "broad.citrus": [
+        "fruity"
+      ],
+      "broad.nutty": [
+        "nutty_cocoa"
+      ]
+    },
+    "dimensions_with_a_representative": [
+      "fruity",
+      "nutty_cocoa"
+    ],
+    "dimensions_without_one": [
+      "floral",
+      "green_vegetative",
+      "roasted",
+      "sour_fermented",
+      "spices",
+      "sweet",
+      "taste"
+    ],
+    "coverage": "2 of 9",
+    "consequence": "For floral, green_vegetative, roasted, sour_fermented, spices, sweet and taste the proposed secondary rule finds no candidate and secondary stays empty. The emptiness is relocated, not removed."
+  },
+  "the_complete_layer_exists_but_is_role_typed_as_direction": {
+    "concepts": [
+      "attribute.fruity",
+      "attribute.floral",
+      "attribute.sweet",
+      "attribute.nutty_cocoa",
+      "attribute.spices",
+      "attribute.roasted",
+      "attribute.green_vegetative",
+      "attribute.sour_fermented",
+      "attribute.taste"
+    ],
+    "coverage": "9 of 9 dimensions, exactly one per dimension",
+    "why_it_cannot_simply_be_used": "attribute.* carry role PROFILE_DIRECTION. Placing them in secondary would put a direction into a named slot, which is precisely the mixing OUT_SEPARATED was approved to stop. Using them would reverse an owner-approved R9 decision rather than extend it.",
+    "status": "REJECTED as a shortcut"
+  },
+  "recommended_resolution": {
+    "action": "Author 7 new broad.* concepts, one per uncovered dimension, with role NAMED_DESCRIPTOR and a single support_dimension_id.",
+    "needed": [
+      "floral",
+      "green_vegetative",
+      "roasted",
+      "sour_fermented",
+      "spices",
+      "sweet",
+      "taste"
+    ],
+    "cost": "7 concept creations, owner decision",
+    "comparison_to_other_asks_on_the_table": {
+      "relation_edges_for_within_class_ranking": "~60 rule approvals",
+      "attribute_values_for_all_59_descriptors": "270 values",
+      "this": "7 concepts"
+    },
+    "why_it_is_the_cheapest_unblock_available": "It is an order of magnitude smaller than either alternative and it removes a structural emptiness rather than improving a metric.",
+    "what_it_does_not_do": [
+      "It does not enable within-class discrimination. main stays at direct evidence only, mean 1.92.",
+      "It does not create relation edges. The 312 occurrences requiring an edge still require one.",
+      "It changes what the system can say when it has only dimension-level support, not what it knows."
+    ]
+  },
+  "projected_effect_needs_measurement": {
+    "current_dimension_coverage_under_OUT_SEPARATED": {
+      "complete_records": 70,
+      "covered_dimension_occurrences": 204,
+      "incomplete_records": 9,
+      "micro_coverage": 0.9577464788732394,
+      "missing_dimension_occurrences": 9,
+      "supported_dimension_occurrences": 213
+    },
+    "note": "micro_coverage is already 0.958 under the current policy, but that is coverage by the full output including profile. Coverage by strict main alone is lower and is NOT derivable from published aggregates.",
+    "required_to_quantify": "The 474 per-case returns in owner-controlled storage. Without them, secondary fill rate under the new rule can be bounded but not measured.",
+    "bound": "At most one representative per activated-but-uncovered dimension, capped at 3. With 7 of 9 dimensions currently lacking a representative, the achievable fill today is limited to cases activating fruity or nutty_cocoa."
+  },
+  "implementation_note_on_the_proposed_code": {
+    "issue": "middle_candidates[0] selects by dict iteration order, which is registry insertion order rather than a declared rule.",
+    "case": "nutty_cocoa has two representatives, broad.chocolate and broad.nutty, so the choice is real and must be specified rather than incidental.",
+    "fix": "Declare an explicit deterministic rule, for example lexicographic on concept id, and record it in the contract."
+  },
+  "guards": {
+    "concepts_created": 0,
+    "relation_edges_created": 0,
+    "fit_count": 0,
+    "output_or_default_changed": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
