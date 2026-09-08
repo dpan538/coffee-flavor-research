@@ -1,0 +1,36 @@
+{
+  "version": "r12b.independent-machine-reference.v1",
+  "supersedes": "r12/control_set.json human-verification blocker only; sealed R12 file is unchanged",
+  "status": "MACHINE_REFERENCE_AUTHORIZED_NOT_GROUND_TRUTH",
+  "baseline_commit": "315a7ab",
+  "training_paused": true,
+  "fit_count": 0,
+  "new_acquisition_allowed": false,
+  "owner_decision_change_allowed": false,
+  "tier1_design": {
+    "implementation": "db/scripts/classify_table_cells_r12b.py",
+    "model_identifier": null,
+    "basis": "Fresh cell-content classifier: Unicode word sequences, numeric/presence/list cells, descriptor and native-attribute roles, chemical identifiers and explanatory prose. Inspect all row/column intersections, not caption gates or first-N-header rules.",
+    "shared_inputs": "Frozen concept-role registry is a shared semantic specification, not independent vocabulary evidence. No old matching function or extraction helper is imported by Tier 1.",
+    "scope": "All 400 table identities registered in the sealed R12 funnel, including original typed positives.",
+    "ambiguous_labels": "Keep complete shape sets. For the required 7x7 display choose greatest supporting cell count, breaking ties by lexical label. Report multilabel disagreements and explicitly mark projection loss.",
+    "no_tuning": "Freeze implementation before computing original-versus-reference agreement; no fitting or outcome-driven rule adjustment.",
+    "group_bridge": "Only after classification, invoke the unchanged group-extraction function separately on original table content. A zero here can be an extraction limitation; do not insert captions or invent child terms. No output is admitted to frozen supervision."
+  },
+  "tier2_design": {
+    "model_identifier": null,
+    "model_version": null,
+    "status": "PINNED_VISION_RUNNER_NOT_CONFIGURED",
+    "calibration_first": true,
+    "scope": "The frozen 83 no-machine-table plus 19 structure-mismatch candidates, restricted to held license-clear documents.",
+    "calibration": "Pages covering the 40 original typed tables and an equal number of verified no-table pages from the same documents; original labels are reference measurements, not ground truth.",
+    "rendering": "Original held PDFs may be rendered without fetching. Reflowed XML/HTML is a derivative with potentially missing figures, not an original publisher-page surrogate; disclose modality and coverage."
+  },
+  "uncertainty": {
+    "enumeration": "Exact agreement on the finite enumerated table set has no table-sampling error; this does not eliminate measurement error or document dependence.",
+    "measurement": "Without independently established sensitivity and specificity, valid accuracy identification bounds remain [0,1]. Do not invent narrow confidence intervals from agreement alone.",
+    "derived_groups": "Report exact existing-extractor counterfactual counts separately from valid-supervision bounds [0, observed counterfactual count]. This is not an upper bound on all missed groups, including groups missed by both methods.",
+    "population": "No inverse-recall extrapolation outside these 248 candidates."
+  },
+  "escalation": "Only disagreements go to a third independent modality. Absent visual/text adjudication remains unresolved; no automatic tie-break."
+}

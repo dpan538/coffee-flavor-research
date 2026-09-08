@@ -1,5 +1,15 @@
 # AGENTS.md
 
+## [M2 R12B OVERRIDE — INDEPENDENT MACHINE REFERENCES]
+
+Effective 2026-09-08. Supersedes R12's human-only control requirement. Fix the
+R11 summariser forward before computing R12B counts, without rewriting sealed
+reports. Independently classify all held tables by cell structure, calibrate
+visual document measurement before applying it, and report agreement and explicit
+uncertainty, never ground truth or bare recall. Do not fetch, acquire, fit, revisit
+licenses, or change frozen corpus/weights or R11 owner decision. Training remains
+paused. Preserve the 135 unrelated deletions and all backend-only constraints.
+
 ## [M2 R12 OVERRIDE — DIAGNOSTIC ONLY]
 
 Effective 2026-09-08. Training remains paused; fits and real-label model metrics

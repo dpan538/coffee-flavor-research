@@ -664,16 +664,25 @@ def combined_outputs(
         "R11_TARGETED": targeted.get("records", []),
     }
     records_by_id: dict[str, dict[str, Any]] = {}
-    source_counts = {}
+    source_counts = Counter()
     for source, rows in sources.items():
-        source_counts[source] = len(rows)
         for row in rows:
             copied = dict(row)
-            copied["r11_acquisition_stream"] = source
+            # A prior combined report is a valid input. Keep its original stream
+            # instead of rebranding targeted/supplement records as primary.
+            stream = copied.get("r11_acquisition_stream", source)
+            if stream not in sources:
+                raise ValueError(f"UNKNOWN_ACQUISITION_STREAM:{stream}")
+            copied["r11_acquisition_stream"] = stream
+            source_counts[stream] += 1
             records_by_id.setdefault(row["record_id"], copied)
     records = sorted(records_by_id.values(), key=lambda row: row["record_id"])
     return records, {
-        "source_record_counts_pre_record_dedup": source_counts,
+        "source_record_counts_pre_record_dedup": {source: source_counts[source] for source in sources},
+        "source_record_counts_post_record_dedup": {
+            source: sum(row["r11_acquisition_stream"] == source for row in records)
+            for source in sources
+        },
         "combined_record_count": len(records),
     }
 
