@@ -1,6 +1,6 @@
 {
-  "contract_version": "round2.personal-pwa-data-availability.v1",
-  "generated_at_utc": "2026-09-08T11:35:02Z",
+  "contract_version": "round2.personal-pwa-data-availability.v2",
+  "generated_at_utc": "2026-09-08T11:40:50Z",
   "question": "Under the premise of a personal, non-commercial PWA, how much data is actually available and how much new descriptor coverage does it buy?",
   "correction_recorded": {
     "what_the_operator_got_wrong": "The operator treated CC BY-NC as an open owner decision. The owner had already stated, repeatedly, that this is a personal product with no commercial expectation. CC BY-NC 4.0 restricts use primarily intended for commercial advantage or monetary compensation; a free personal PWA is not that. The restriction was applied against a premise the owner had already settled.",
@@ -195,11 +195,10 @@
   },
   "owner_decisions_now_open": [
     {
-      "id": "ROUND2-D11",
-      "question": "Record the CC BY-NC tier as available for this personal non-commercial PWA?",
-      "effect": "unlocks 24 of 36 unreachable descriptors, 7413 assertions, 214 coffees",
-      "cost": "attribution required; the product must stay non-commercial",
-      "recommendation": "yes — it follows from a premise already stated"
+      "id": "ROUND2-D15",
+      "severity": "BLOCKING",
+      "question": "R11's supervision architecture decision, option A or B, still selected_option=null. training_authorized remains false because of this, not because of licence.",
+      "note": "Answering it is what converts the 181-group cohort from inert into usable."
     },
     {
       "id": "ROUND2-D12",
@@ -226,5 +225,44 @@
     "training_pause": "REMAINS_IN_EFFECT",
     "registry_extension_edited": true,
     "r9_sealed_contract_edited": false
+  },
+  "CORRECTION_TO_V1": {
+    "what_v1_got_wrong": "V1 listed ROUND2-D11 -- 'record the CC BY-NC tier as available' -- as an open owner decision. It is not open. R10 already made it.",
+    "evidence": "db/data/backend-sequential-model-v2/revisions/r10/go_no_go.json records eligibility_tier=NON_COMMERCIAL_RESEARCH, N_eligible=5819, verdict=GO, can_train_on_license_clear_data=true. r10/eligibility_tiers.json lists the allowed licences, CC-BY-NC-4.0 among them, with attribution required and no-derivatives excluded.",
+    "operator_misreading": "The operator read eligible_noncommercial_research_count=0 as meaning no data qualified. That field sits inside the unknown_resolution block and means something else: of the 13,952 assertions whose licence was UNKNOWN (ACE and siblings), 0 could be resolved into the non-commercial tier. It was never a statement about the corpus as a whole.",
+    "consequence": "D11 is withdrawn. The standard the owner asked about has been in force since R10."
+  },
+  "reconciliation_with_r10": {
+    "r10_recorded": {
+      "gate_eligible_source_assertion_count": 5819,
+      "coffee_group_count": 204,
+      "evaluable_group_count_at_least_two_descriptors": 164,
+      "source_family_count": 5,
+      "source": "db/data/backend-sequential-model-v2/revisions/r10/training_corpus_manifest.json"
+    },
+    "recomputed_now_on_50k_ledger": {
+      "licence_filtered_assertions": 7413,
+      "after_STRICT_FLAVOR": 5730,
+      "after_counts_as_record_unique_descriptor": 4925,
+      "coffee_groups": 204,
+      "evaluable_groups_at_least_two_descriptors": 181,
+      "specific_descriptors_covered": 52
+    },
+    "agreement": "coffee_group_count 204 matches exactly.",
+    "differences_explained": {
+      "assertions_4925_vs_5819": "R10 counted from the staging sidecar files and included family.pmc8774372_brewed_black_coffee (89 assertions), which is not present in the 50K ledger; zenodo also differs (3,281 in R10's sidecars vs 4,785 in the ledger).",
+      "groups_181_vs_164": "Recomputed against the current registry after round 2 mapping work. Both are the same measurement on slightly different inputs; neither supersedes the other without a single declared input."
+    },
+    "operator_note": "These were checked before reporting. An earlier instinct to announce that the project had overlooked a large ledger cohort would have been wrong: R10 found it, gated it, and issued GO."
+  },
+  "why_the_project_then_went_looking_for_literature": {
+    "finding": "R11's owner_decision.json carries evidence_snapshot direct_named_groups=6, and r11/direct_vs_mapped_counts.json shows where it came from: candidate_count 7, record_count 78. Those 7 are CANDIDATE PAPERS from the Europe PMC capture, not coffees from the ledger.",
+    "so": "The 6 and the 164 measure different pipelines and do not contradict. The literature capture produced 6 groups from 248 candidates; the ledger cohort held 164-181 and was already GO.",
+    "still_open": "r11/owner_decision.json has selected_option=null, status=PENDING_OWNER_DECISION, training_authorized=false. The supervision-architecture choice (A: named-descriptor target with mapped supervision; B: dimension target with governed ontology bridge) was never made, and that, not licence, is what still holds training."
+  },
+  "what_181_groups_is_actually_for": {
+    "not_training": "The owner has already stated that even 250 groups is not a safe ANFIS floor, and ANFIS is abandoned. 181 groups does not change that.",
+    "evaluation": "The architecture built this round does no fitting at all: entailment is set containment and ranking is extent size. 181 groups with 52 of 56 descriptors covered is an EVALUATION corpus -- enough to measure whether the output is right, which is what the deterministic path needs.",
+    "size_check": "181 paired comparisons is in range for a paired NDCG comparison at conventional power; it is not in range for fitting anything."
   }
 }
