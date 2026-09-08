@@ -1,0 +1,118 @@
+{
+  "contract_version": "round2.data-ceiling-audit.v1",
+  "generated_at_utc": "2026-09-08T11:58:28Z",
+  "question": "Is the data actually exhausted, or was the count wrong because of operator error?",
+  "why_asked": "The operator had made several errors this round (a state-schema misreading, an over-restriction on CC BY-NC, a misread of eligible_noncommercial_research_count). The owner was right to require an audit rather than an assurance.",
+  "verdict": {
+    "licensed_tier": "AT CEILING for samples. 204 coffees, 181 groups, 53 descriptors; upper bound if every unmapped atom were mapped is 214 coffees and 211 groups.",
+    "unlicensed_tier": "NOT EXHAUSTED. 1,450 coffees and 1,420 groups, 7.8x the licensed tier, plus a ranked 200-item owner review packet already built and untouched.",
+    "operator_count_was_correct": "181 is confirmed three independent ways; it was not an undercount.",
+    "operator_report_was_incomplete": "Earlier turns reported only the licensed tier and did not surface that the unlicensed tier is 7.8x larger and that its review queue is already prepared."
+  },
+  "cross_validation_of_181": [
+    {
+      "source": "CLEANED_50K_SOURCE_ASSERTION_LEDGER, licence filter + R10 gates",
+      "coffees": 204,
+      "groups": 181,
+      "descriptors": 52
+    },
+    {
+      "source": "CLEANED_50K_OUTPUT_ATOM_LEDGER, rights_noncommercial_model_research=AFFIRMATIVE_WITH_CONDITIONS",
+      "coffees": 204,
+      "groups": 181,
+      "descriptors": 53
+    },
+    {
+      "source": "CROSS_FAMILY_SHARED_TARGET_BENCHMARK joined to the atom ledger, NC rows only",
+      "groups": 202,
+      "groups_with_two_or_more": 152,
+      "note": "a sampled subset, consistent"
+    },
+    {
+      "source": "r10/training_corpus_manifest.json, recorded 2026-09-07",
+      "coffees": 204,
+      "groups": 164,
+      "note": "coffee count matches exactly; group count differs because R10 ran against the pre-round-2 registry"
+    }
+  ],
+  "misclassification_found": {
+    "id": "ROUND2-F15",
+    "severity": "MATERIAL",
+    "found_in": "the project's own rights matrix, not this round's work",
+    "what": "rights_product_deployment = PROHIBITED for 5,028 atoms, all of them family.zenodo_golovinsky_q_grader_dataset, the CC BY-NC source.",
+    "why_it_matters": "zenodo is the largest licensed source and supplies most of the 181 groups. The same atoms are AFFIRMATIVE_WITH_CONDITIONS for NONCOMMERCIAL_MODEL_RESEARCH. So under the matrix as written, the 181 groups may be used to research and evaluate, but not to deploy the product.",
+    "assessment": "The classification treats PRODUCT_DEPLOYMENT as inherently commercial. CC BY-NC restricts commercial use, not deployment as such, and a free personal PWA is not commercial use. The classification is over-strict for this project, but correcting it is an owner determination and a different question from R10's research GO.",
+    "not_legal_advice": true
+  },
+  "tier_comparison": {
+    "licensed_nc_r10_go": {
+      "atoms": 7855,
+      "coffees": 204,
+      "groups": 181,
+      "descriptors": 53
+    },
+    "unlicensed_ace_and_siblings": {
+      "atoms": 44656,
+      "coffees": 1450,
+      "groups": 1420,
+      "descriptors": 55
+    },
+    "total": {
+      "atoms": 52511,
+      "coffees": 1654,
+      "groups": 1601,
+      "descriptors": 56
+    }
+  },
+  "vocabulary_situation": {
+    "framing_correction": "An earlier figure of 802 unmapped forms mixed the two tiers and overstated what the licensed tier offers.",
+    "registry_mapped_now": 55,
+    "observed_strict_flavor_forms_whole_corpus": 2266,
+    "unmapped_whole_corpus": 2197,
+    "unmapped_by_support_whole_corpus": {
+      "at_least_100": 64,
+      "20_to_99": 97,
+      "5_to_19": 199,
+      "1_to_4": 1691
+    },
+    "unmapped_within_licensed_tier": {
+      "clusters": 325,
+      "support_20_to_99": 5,
+      "support_5_to_19": 37,
+      "strict_flavor_with_support_at_least_5": 40,
+      "meaning": "vocabulary expansion available under the licence is about 40 concepts, not 800"
+    },
+    "why_plain_text_is_not_readable": "Every public-safe table stores hashed form ids; the surface column holds a category label, not text. Plain text sits behind restricted_pointer, a separate governance layer."
+  },
+  "prepared_work_already_waiting": {
+    "file": "db/data/current/CROSS_FORM_OWNER_REVIEW_PACKET.tsv",
+    "items": 200,
+    "ranked": true,
+    "total_assertion_support": 33664,
+    "suggested_action": {
+      "MAP_TO_EXISTING": 160,
+      "DEFER_TO_SENSORY_EXPERT": 40
+    },
+    "project_owner_decision": "EMPTY FOR ALL 200",
+    "reviewer_id": "EMPTY FOR ALL 200",
+    "restricted_pointer_present": 200,
+    "CRITICAL": "0 of the 200 are in the licensed tier. The entire prepared queue is unlicensed-tier material, so it unlocks nothing until the relabelling decision is made.",
+    "gap_register": {
+      "file": "db/data/current/ONTOLOGY_GAP_REGISTER.tsv",
+      "clusters": 2051,
+      "human_reviewed": "false for all licensed-tier clusters"
+    }
+  },
+  "what_this_means_for_the_decision": {
+    "option_A_stands": "A was selected on 181 vs 0. The audit does not disturb that: the licensed corpus is specific-word data, which is what A needs.",
+    "the_181_is_real_and_final": "For evaluation of the non-fitting architecture, 181 groups covering 53 of 56 descriptors is the licensed ceiling and is adequate.",
+    "the_growth_path_is_not_acquisition": "More literature capture will not move these numbers; R10-R12 already demonstrated that, producing 6 groups from 248 candidates. The two levers are the ACE relabelling decision and user validation of the question axes."
+  },
+  "guards": {
+    "records_admitted": 0,
+    "corpus_written": false,
+    "fit_count": 0,
+    "registry_edited": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
