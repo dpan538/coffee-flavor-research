@@ -1,0 +1,792 @@
+{
+  "additional_group_ids": [],
+  "baseline_primary_named_group_count": 4,
+  "classifier_sha256": "c1ca687999a364e4b10a90eca8870541810526b180777e5e221714a18517fb15",
+  "classifier_version": "r12b-cell-structure-1",
+  "defect_classes_among_original_unclassified": {
+    "explicit_list_structure_detected": 8,
+    "filename_only_caption": 0
+  },
+  "existing_extractor_counterfactual_group_count": 2,
+  "fit_count": 0,
+  "limitation": "The existing extractor includes its old caption and axis gates. Its empty result is not a valid estimate of zero lost groups. No bypass, synthetic caption or admission was applied.",
+  "lxml_version": [
+    6,
+    1,
+    1,
+    0
+  ],
+  "new_acquisition_count": 0,
+  "not_ground_truth": true,
+  "orchestrator_python_version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "protected_artifacts_sha256": {
+    "db/data/backend-sequential-model-v2/revisions/r11/acquisition_manifest.json": "799d556627efa1c9ded2fe8b04df5b5e3c8e9b8fd54d4b2d518bb77254049c6d",
+    "db/data/backend-sequential-model-v2/revisions/r11/auxiliary_transfer_manifest.json": "a57881a8576d4f03eadf757285edd0eb4ddf15a2c18aabd2ab1055ad28c257db",
+    "db/data/backend-sequential-model-v2/revisions/r11/context_coverage.json": "f918e183ee12a5208f31526a9ff8636270074186f6cf3508a290e0a76bfe8ce8",
+    "db/data/backend-sequential-model-v2/revisions/r11/contract_calibration_report.json": "b657f83545ceef6df38b7bc02db55e480035ca8b1b9d21cb3899095ad2722315",
+    "db/data/backend-sequential-model-v2/revisions/r11/direct_vs_mapped_counts.json": "643a1049406cf3d4e7210e4325ad4193dd0ffc435b8cc4693010bdcd97203389",
+    "db/data/backend-sequential-model-v2/revisions/r11/duplicate_audit.json": "0eb4e449abba6ae652a1bf10205a20d9ddbd8d3f53358119192a6ce808a4a62d",
+    "db/data/backend-sequential-model-v2/revisions/r11/exit_criterion_status.json": "d1e3ae04141d1662a9126618bbb899c72fd0a029f0cddb5515d4bd8613f25e48",
+    "db/data/backend-sequential-model-v2/revisions/r11/extraction_report.json": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531",
+    "db/data/backend-sequential-model-v2/revisions/r11/failure_taxonomy.json": "9d78c5abb2933f640ae6292a8822ffdfa84db21a84a4975f50d3a4809b3aa7c3",
+    "db/data/backend-sequential-model-v2/revisions/r11/mapping_audit.json": "ccd46a7a5e1f76fda5c3bca15c2fc492109031503975f1ae10e779a75d07c250",
+    "db/data/backend-sequential-model-v2/revisions/r11/owner_decision.json": "2a6684b5bfec7f393c423fdd909557257f7ea5d58903021424b3af2a7c17d902",
+    "db/data/backend-sequential-model-v2/revisions/r11/pipeline_validation.json": "e26b5e234d6cac00aa366f52c75abf8d35ac2a67dbea98a6a7755860632daa97",
+    "db/data/backend-sequential-model-v2/revisions/r11/readmission_reconciliation.json": "dd612de18fcc3046e051b2ab1be8cfd2cf583586e564b7329e1263030d637dc9",
+    "db/data/backend-sequential-model-v2/revisions/r11/round_manifest.json": "35ee2c4b4ad6ccadc37a5c1cd9b2a2df64867745af514db6118955c5ac822c1e",
+    "db/data/backend-sequential-model-v2/revisions/r11/shape_distribution.json": "54b7f13e0463f900fb0e84dc7345727082dd75f9fbc72957dc68b45ee20574c9",
+    "db/data/backend-sequential-model-v2/revisions/r11/source_family_distribution.json": "897851b9459dc7795ae1e0f0c8231fa8bd19f2f0cb1d82e194c29c1af1295fa1",
+    "db/data/backend-sequential-model-v2/revisions/r11/supplement_recovery.json": "29b42c1bf1b78d91ac97c9b35b5d438504958fe8b47e85784f22225ab63dcf8b",
+    "db/data/backend-sequential-model-v2/revisions/r11/targeted_acquisition.json": "69b1d5f517fe302d86a6b73a847a8d0649ba870ad36bffa793f22d996a6c7228",
+    "db/data/backend-sequential-model-v2/revisions/r12/anomaly_diagnosis.json": "5027d1d7c02ab5aa208c7f03cd335a7b9077c2492f3a5f5194c73a9f84cd6d61",
+    "db/data/backend-sequential-model-v2/revisions/r12/control_set.json": "667fa2adca40e1b29bac85423244de1ac0574a9e36cb7c8665a4e0216c2e0f74",
+    "db/data/backend-sequential-model-v2/revisions/r12/funnel_counts.json": "a19b23f6d0646e6373ee714ce75075db2039554c62dae958256c864acccb0cc4",
+    "db/data/backend-sequential-model-v2/revisions/r12/recall_report.json": "474982a44147ccf653a331ecb14ce9dc0aeebd34ec51cba971eca4be913e0672",
+    "db/data/backend-sequential-model-v2/revisions/r12/silent_failure_audit.json": "d2f5eeaa12e8f8388ada0e2a4405994baced9e30b435ff2170b3fa75697aa731"
+  },
+  "r11_forward_source_accounting": {
+    "combined_record_count": 2198,
+    "source_record_counts_post_record_dedup": {
+      "R10_248_PRIMARY": 1782,
+      "R10_248_SUPPLEMENT": 0,
+      "R11_TARGETED": 416
+    },
+    "source_record_counts_pre_record_dedup": {
+      "R10_248_PRIMARY": 1782,
+      "R10_248_SUPPLEMENT": 0,
+      "R11_TARGETED": 832
+    }
+  },
+  "real_label_model_metric_count": 0,
+  "render_implementation_sha256": "c5e539fefdf3d2947fcab82cafeb68529727cf2c613472d4c065dd809189b1c1",
+  "tables": [
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "fsn31404-tbl-0004"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "fsn370512-tbl-0001"
+    },
+    {
+      "candidate_id": "10.1007/s11306-020-01751-6",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "Tab2"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2024.101980",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "t0025"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "t0005"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2021.131159",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "t0015"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "Tab4"
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "tab1"
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "tab3"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0223280",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "pone.0223280.t002"
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "html-table-2"
+    },
+    {
+      "candidate_id": "10.3389/fpsyg.2017.02264",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "T4"
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-10-02508-t001"
+    },
+    {
+      "candidate_id": "10.3390/foods11060807",
+      "direct_group_ids": [
+        "r11.group:1f56987c3bae9482ac67b809",
+        "r11.group:960648b917f2c2799ee5359f"
+      ],
+      "group_ids": [
+        "r11.group:1f56987c3bae9482ac67b809",
+        "r11.group:960648b917f2c2799ee5359f"
+      ],
+      "records": [
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:ff6bebfa714275ce12608374",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:a9caa319cc0df21442bfcf7d",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:6293ee191fbf70229c2052c4",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:fb35eb38baf2ebea37045895",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:ff9beaa3f1ad8344f3574f80",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:6a9216c93a49c0e2771d932f",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:01b3a0ebac5d2cf9e2aa0050",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.honey",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:6a9a9e36ce81b0a65ed58813",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:b00183849d304d6ae26d2674",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:613cbed749011a18e6efbc05",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:2fba85c545793769910dd2e8",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:76aab8466ae9f96e6f122c2a",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:9ba93874bcb6be8fc24b5aad",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:9a3a03fd49e1cb434f2cfebe",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:0572611f2d61cee222f3a341",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.caramel",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:dda7b5a2758d874a101482e9",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:311e667e00697cca08dd3fdc",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:b02e70e6d557a2c102409492",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:14676a169f8716de906c20f6",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:91f6e350a494220470166a8f",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:185a933f05ae011e9b892563",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:10f0ddf3b8b9d39358859e52",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:960648b917f2c2799ee5359f",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:73221707d858ac128ba5dd81",
+          "shape": "T1"
+        },
+        {
+          "concept_id": "sensory.cocoa",
+          "group_id": "r11.group:1f56987c3bae9482ac67b809",
+          "mapping_status": "DIRECT",
+          "record_id": "r11.typed:59f93854cc0b82b1b1059b63",
+          "shape": "T1"
+        }
+      ],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_NONEMPTY",
+      "table_id": "foods-11-00807-t002"
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-11-02440-t003"
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-11-02968-t004"
+    },
+    {
+      "candidate_id": "10.3390/foods11193144",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-11-03144-t004"
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-12-02710-t001"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-12-03857-t004"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-12-03857-t005"
+    },
+    {
+      "candidate_id": "10.3390/foods13010087",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-13-00087-t002"
+    },
+    {
+      "candidate_id": "10.3390/foods13152359",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-13-02359-t003"
+    },
+    {
+      "candidate_id": "10.3390/foods13233842",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-13-03842-t002"
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-14-00911-t004"
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-14-00911-t005"
+    },
+    {
+      "candidate_id": "10.3390/foods14152606",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T5"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-14-02606-t001"
+    },
+    {
+      "candidate_id": "10.3390/foods14152606",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-14-02606-t002"
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-14-03192-t003"
+    },
+    {
+      "candidate_id": "10.3390/foods15132355",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-15-02355-t005"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-09-00753-t001"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-09-00753-t005"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-09-00753-t006"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-09-00753-t007"
+    },
+    {
+      "candidate_id": "10.3390/foods9111664",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "foods-09-01664-t005"
+    },
+    {
+      "candidate_id": "10.3390/molecules24244515",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-24-04515-t001"
+    },
+    {
+      "candidate_id": "10.3390/molecules24244515",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-24-04515-t003"
+    },
+    {
+      "candidate_id": "10.3390/molecules26154609",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-26-04609-t002"
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-29-03060-t002"
+    },
+    {
+      "candidate_id": "10.3390/molecules29163791",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-29-03791-t004"
+    },
+    {
+      "candidate_id": "10.3390/molecules29163791",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-29-03791-t005"
+    },
+    {
+      "candidate_id": "10.3390/molecules29194723",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-29-04723-t001"
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-31-01518-t002"
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "molecules-31-01518-t006"
+    },
+    {
+      "candidate_id": "10.3390/s150101354",
+      "direct_group_ids": [],
+      "group_ids": [],
+      "records": [],
+      "reference_labels": [
+        "T1"
+      ],
+      "status": "EXISTING_EXTRACTOR_EMPTY_NOT_EVIDENCE_OF_NO_GROUPS",
+      "table_id": "t1-sensors-15-01354"
+    }
+  ],
+  "total_missed_groups_identification_interval": {
+    "lower": 0,
+    "reason": "Misses shared by both instruments are unidentified.",
+    "upper": null
+  },
+  "valid_supervision_identification_interval": [
+    0,
+    2
+  ]
+}

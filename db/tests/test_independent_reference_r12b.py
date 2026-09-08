@@ -65,6 +65,8 @@ class IndependentReferenceTests(unittest.TestCase):
         self.assertTrue(calibration['executed_before_target_measurement'])
         self.assertEqual(calibration['library_pin']['PyMuPDF'], '1.27.2.2')
         self.assertEqual(calibration['true_accuracy_identification_interval'], [0,1])
+        self.assertTrue(calibration['equal_negative_requirement_met'])
+        self.assertEqual(calibration['positive_page_count'], calibration['negative_page_count'])
 
     def test_geometry_pin_and_synthetic_grid(self):
         import fitz

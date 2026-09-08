@@ -1,0 +1,2058 @@
+{
+  "bootstrap_scope": "2000 fixed-seed document resamples, preserving all within-document page outcomes. These bands are conditional on markup controls, not ground-truth accuracy.",
+  "classifier_sha256": "c1ca687999a364e4b10a90eca8870541810526b180777e5e221714a18517fb15",
+  "classifier_version": "r12b-cell-structure-1",
+  "config": {
+    "horizontal_strategy": "text",
+    "min_words_horizontal": 1,
+    "min_words_vertical": 3,
+    "vertical_strategy": "text"
+  },
+  "document_cluster_bootstrap_f_band": [
+    0.12195121951219512,
+    0.40540540540540543
+  ],
+  "document_cluster_bootstrap_s_band": [
+    0.6818181818181818,
+    0.9024390243902439
+  ],
+  "equal_negative_requirement_met": true,
+  "executed_before_target_measurement": true,
+  "false_positive_rate_relative_to_markup_negatives": 0.2564102564102564,
+  "fit_count": 0,
+  "implementation_sha256": "1d184b42ce42debb725cd4b09b341881505f34db63841fc004c998fbc84f6ab3",
+  "library_pin": {
+    "MuPDF": "1.27.2",
+    "PyMuPDF": "1.27.2.2"
+  },
+  "lxml_version": [
+    6,
+    1,
+    1,
+    0
+  ],
+  "native_pdf_calibration": "NOT_ESTABLISHED_BY_REFLOWED_MARKUP_CONTROLS",
+  "negative_page_count": 39,
+  "negative_pages": [
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            36.98924255371094,
+            765.4920654296875,
+            402.869140625
+          ],
+          "columns": 10,
+          "numeric_cell_count": 42,
+          "positive": true,
+          "rows": 25,
+          "sensory_terms": [
+            "aroma",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 9,
+      "positive": true,
+      "word_count": 387
+    },
+    {
+      "candidate_id": "10.1002/fsn3.3812",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            780.66015625,
+            550.2291870117188
+          ],
+          "columns": 13,
+          "numeric_cell_count": 32,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 4,
+      "positive": false,
+      "word_count": 414
+    },
+    {
+      "candidate_id": "10.1002/fsn3.3812",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            35.747093200683594,
+            787.89599609375,
+            562.3614501953125
+          ],
+          "columns": 8,
+          "numeric_cell_count": 25,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 17,
+      "positive": false,
+      "word_count": 423
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            785.7516479492188,
+            541.9491577148438
+          ],
+          "columns": 10,
+          "numeric_cell_count": 37,
+          "positive": false,
+          "rows": 35,
+          "sensory_terms": [
+            "bitterness"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 2,
+      "positive": false,
+      "word_count": 442
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            33.747093200683594,
+            758.4447021484375,
+            554.0892333984375
+          ],
+          "columns": 9,
+          "numeric_cell_count": 58,
+          "positive": false,
+          "rows": 35,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 26,
+      "positive": false,
+      "word_count": 440
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            793.7640380859375,
+            556.3492431640625
+          ],
+          "columns": 10,
+          "numeric_cell_count": 27,
+          "positive": true,
+          "rows": 36,
+          "sensory_terms": [
+            "aroma",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": true,
+      "word_count": 488
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            36.98924255371094,
+            565.763916015625,
+            396.5092468261719
+          ],
+          "columns": 2,
+          "numeric_cell_count": 5,
+          "positive": false,
+          "rows": 22,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 15,
+      "positive": false,
+      "word_count": 110
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            38.98924255371094,
+            795.0841064453125,
+            562.4891357421875
+          ],
+          "columns": 9,
+          "numeric_cell_count": 7,
+          "positive": true,
+          "rows": 35,
+          "sensory_terms": [
+            "balance",
+            "floral",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 13,
+      "positive": true,
+      "word_count": 452
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "grids": [],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 22,
+      "positive": false,
+      "word_count": 7
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            34.98924255371094,
+            774.4558715820312,
+            552.70703125
+          ],
+          "columns": 10,
+          "numeric_cell_count": 7,
+          "positive": false,
+          "rows": 35,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 13,
+      "positive": false,
+      "word_count": 464
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            34.98924255371094,
+            796.1281127929688,
+            550.5092163085938
+          ],
+          "columns": 7,
+          "numeric_cell_count": 40,
+          "positive": false,
+          "rows": 33,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 17,
+      "positive": false,
+      "word_count": 301
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            773.9999389648438,
+            552.967041015625
+          ],
+          "columns": 13,
+          "numeric_cell_count": 18,
+          "positive": true,
+          "rows": 36,
+          "sensory_terms": [
+            "acidity",
+            "aroma",
+            "balance",
+            "bitterness",
+            "sweetness"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 4,
+      "positive": true,
+      "word_count": 460
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            38.98924255371094,
+            766.9560546875,
+            380.967041015625
+          ],
+          "columns": 10,
+          "numeric_cell_count": 33,
+          "positive": false,
+          "rows": 23,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 21,
+      "positive": false,
+      "word_count": 318
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            779.60400390625,
+            553.4091796875
+          ],
+          "columns": 10,
+          "numeric_cell_count": 12,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": [
+            "honey"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 2,
+      "positive": false,
+      "word_count": 483
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            797.4603271484375,
+            549.689208984375
+          ],
+          "columns": 11,
+          "numeric_cell_count": 38,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 487
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            31.747093200683594,
+            791.208251953125,
+            549.689208984375
+          ],
+          "columns": 11,
+          "numeric_cell_count": 17,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 15,
+      "positive": false,
+      "word_count": 297
+    },
+    {
+      "candidate_id": "10.3390/foods11060807",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            788.2919921875,
+            532.68701171875
+          ],
+          "columns": 8,
+          "numeric_cell_count": 19,
+          "positive": false,
+          "rows": 35,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 2,
+      "positive": false,
+      "word_count": 549
+    },
+    {
+      "candidate_id": "10.3390/foods11060807",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            34.98924255371094,
+            341.60400390625,
+            563.3493041992188
+          ],
+          "columns": 4,
+          "numeric_cell_count": 2,
+          "positive": false,
+          "rows": 32,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 16,
+      "positive": false,
+      "word_count": 157
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            789.179931640625,
+            554.4892578125
+          ],
+          "columns": 10,
+          "numeric_cell_count": 20,
+          "positive": true,
+          "rows": 35,
+          "sensory_terms": [
+            "acidity",
+            "bitterness",
+            "honey",
+            "sourness"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": true,
+      "word_count": 523
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            48.98924255371094,
+            784.7642822265625,
+            558.869140625
+          ],
+          "columns": 6,
+          "numeric_cell_count": 50,
+          "positive": true,
+          "rows": 35,
+          "sensory_terms": [
+            "acidity",
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 18,
+      "positive": true,
+      "word_count": 519
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            785.0281372070312,
+            554.8270263671875
+          ],
+          "columns": 10,
+          "numeric_cell_count": 15,
+          "positive": true,
+          "rows": 36,
+          "sensory_terms": [
+            "aroma",
+            "bitterness",
+            "fruity",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 2,
+      "positive": true,
+      "word_count": 522
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            39.747093200683594,
+            790.3441772460938,
+            554.2091674804688
+          ],
+          "columns": 8,
+          "numeric_cell_count": 62,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": [
+            "floral"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 17,
+      "positive": false,
+      "word_count": 499
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            784.8840942382812,
+            561.6892700195312
+          ],
+          "columns": 10,
+          "numeric_cell_count": 33,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 432
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            40.98924255371094,
+            765.69580078125,
+            556.7492065429688
+          ],
+          "columns": 7,
+          "numeric_cell_count": 38,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 29,
+      "positive": false,
+      "word_count": 464
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            788.171875,
+            549.689208984375
+          ],
+          "columns": 13,
+          "numeric_cell_count": 28,
+          "positive": false,
+          "rows": 35,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 486
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            39.747093200683594,
+            787.6442260742188,
+            550.249267578125
+          ],
+          "columns": 7,
+          "numeric_cell_count": 25,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 28,
+      "positive": false,
+      "word_count": 275
+    },
+    {
+      "candidate_id": "10.3390/foods13050642",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            794.0520629882812,
+            555.8092041015625
+          ],
+          "columns": 12,
+          "numeric_cell_count": 15,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 581
+    },
+    {
+      "candidate_id": "10.3390/foods13050642",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            41.747093200683594,
+            793.9439697265625,
+            552.2492065429688
+          ],
+          "columns": 4,
+          "numeric_cell_count": 21,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 18,
+      "positive": false,
+      "word_count": 285
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            782.4481201171875,
+            559.8292846679688
+          ],
+          "columns": 13,
+          "numeric_cell_count": 21,
+          "positive": true,
+          "rows": 35,
+          "sensory_terms": [
+            "aroma",
+            "body",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": true,
+      "word_count": 477
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            50.98924255371094,
+            786.9839477539062,
+            560.8692016601562
+          ],
+          "columns": 8,
+          "numeric_cell_count": 59,
+          "positive": true,
+          "rows": 35,
+          "sensory_terms": [
+            "aroma",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 21,
+      "positive": true,
+      "word_count": 543
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            771.7679443359375,
+            553.4091796875
+          ],
+          "columns": 11,
+          "numeric_cell_count": 35,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 532
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            43.747093200683594,
+            797.22021484375,
+            554.249267578125
+          ],
+          "columns": 8,
+          "numeric_cell_count": 28,
+          "positive": false,
+          "rows": 32,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 22,
+      "positive": false,
+      "word_count": 297
+    },
+    {
+      "candidate_id": "10.3390/foods14162811",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            790.7640380859375,
+            556.68701171875
+          ],
+          "columns": 10,
+          "numeric_cell_count": 15,
+          "positive": false,
+          "rows": 37,
+          "sensory_terms": [
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 2,
+      "positive": false,
+      "word_count": 507
+    },
+    {
+      "candidate_id": "10.3390/foods14162811",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            35.747093200683594,
+            731.9158935546875,
+            562.8092651367188
+          ],
+          "columns": 4,
+          "numeric_cell_count": 5,
+          "positive": false,
+          "rows": 32,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 14,
+      "positive": false,
+      "word_count": 185
+    },
+    {
+      "candidate_id": "10.3390/foods14162840",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            796.656005859375,
+            555.6670532226562
+          ],
+          "columns": 11,
+          "numeric_cell_count": 21,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 372
+    },
+    {
+      "candidate_id": "10.3390/foods14162840",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            33.747093200683594,
+            776.669921875,
+            558.3491821289062
+          ],
+          "columns": 10,
+          "numeric_cell_count": 36,
+          "positive": true,
+          "rows": 36,
+          "sensory_terms": [
+            "aroma",
+            "fruity",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 15,
+      "positive": true,
+      "word_count": 480
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            765.887939453125,
+            556.8892822265625
+          ],
+          "columns": 6,
+          "numeric_cell_count": 40,
+          "positive": false,
+          "rows": 35,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 412
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            43.747093200683594,
+            795.3720092773438,
+            558.209228515625
+          ],
+          "columns": 9,
+          "numeric_cell_count": 45,
+          "positive": false,
+          "rows": 34,
+          "sensory_terms": [
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 22,
+      "positive": false,
+      "word_count": 488
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            775.1879272460938,
+            563.1070556640625
+          ],
+          "columns": 11,
+          "numeric_cell_count": 36,
+          "positive": false,
+          "rows": 36,
+          "sensory_terms": [
+            "berry"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": false,
+      "word_count": 516
+    }
+  ],
+  "negative_selection": "Same source documents, reference/method section marker and no rendered source-table anchors. Missing graphics make these machine negatives imperfect.",
+  "negative_selection_amendment": "After the first 33-page shortage was observed, section identification was corrected once to accept numbered section headings and standalone Methods. Geometry rules unchanged; original strict result retained. No pages were selected by their detector outcomes.",
+  "new_acquisition_count": 0,
+  "not_ground_truth": true,
+  "orchestrator_python_version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "original_table_controls_requested": 40,
+  "positive_page_count": 39,
+  "positive_pages": [
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            33.98924255371094,
+            782.4241333007812,
+            552.2691650390625
+          ],
+          "columns": 15,
+          "numeric_cell_count": 39,
+          "positive": true,
+          "rows": 38,
+          "sensory_terms": [
+            "aftertaste",
+            "astringency",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": true,
+      "word_count": 454
+    },
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "grids": [
+        {
+          "bbox": [
+            57.0,
+            34.98924255371094,
+            664.2824096679688,
+            535.6091918945312
+          ],
+          "columns": 14,
+          "numeric_cell_count": 119,
+          "positive": false,
+          "rows": 41,
+          "sensory_terms": [
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 5,
+      "positive": false,
+      "word_count": 287
+    },
+    {
+      "candidate_id": "10.1002/fsn3.3812",
+      "grids": [
+        {
+          "bbox": [
+            45.0,
+            73.76473236083984,
+            746.9343872070312,
+            529.1891479492188
+          ],
+          "columns": 13,
+          "numeric_cell_count": 8,
+          "positive": true,
+          "rows": 43,
+          "sensory_terms": [
+            "acidity",
+            "aroma",
+            "astringency",
+            "bitterness",
+            "fruity",
+            "sweetness"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 5,
+      "positive": true,
+      "word_count": 312
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "grids": [
+        {
+          "bbox": [
+            45.0,
+            57.38924789428711,
+            793.1649780273438,
+            531.9891357421875
+          ],
+          "columns": 10,
+          "numeric_cell_count": 84,
+          "positive": true,
+          "rows": 44,
+          "sensory_terms": [
+            "berry",
+            "citrus",
+            "floral",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 11,
+      "positive": true,
+      "word_count": 173
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "grids": [
+        {
+          "bbox": [
+            43.5,
+            30.989242553710938,
+            768.8880615234375,
+            544.94921875
+          ],
+          "columns": 14,
+          "numeric_cell_count": 35,
+          "positive": false,
+          "rows": 39,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 6,
+      "positive": false,
+      "word_count": 289
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            36.98924255371094,
+            761.9678955078125,
+            557.8692626953125
+          ],
+          "columns": 12,
+          "numeric_cell_count": 41,
+          "positive": true,
+          "rows": 38,
+          "sensory_terms": [
+            "aroma",
+            "floral",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 11,
+      "positive": true,
+      "word_count": 410
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "grids": [
+        {
+          "bbox": [
+            43.5,
+            29.823158264160156,
+            798.6961059570312,
+            553.189208984375
+          ],
+          "columns": 9,
+          "numeric_cell_count": 11,
+          "positive": true,
+          "rows": 47,
+          "sensory_terms": [
+            "aroma",
+            "berry",
+            "floral",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 4,
+      "positive": true,
+      "word_count": 349
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "grids": [
+        {
+          "bbox": [
+            43.5,
+            30.989242553710938,
+            764.8585815429688,
+            537.189208984375
+          ],
+          "columns": 12,
+          "numeric_cell_count": 19,
+          "positive": false,
+          "rows": 38,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 6,
+      "positive": false,
+      "word_count": 298
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "grids": [
+        {
+          "bbox": [
+            45.0,
+            74.56473541259766,
+            787.1842651367188,
+            539.7646484375
+          ],
+          "columns": 4,
+          "numeric_cell_count": 15,
+          "positive": true,
+          "rows": 45,
+          "sensory_terms": [
+            "aftertaste",
+            "aroma",
+            "balance",
+            "body",
+            "caramel",
+            "roasted",
+            "sweetness"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 12,
+      "positive": true,
+      "word_count": 127
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            793.2798461914062,
+            553.7891845703125
+          ],
+          "columns": 9,
+          "numeric_cell_count": 55,
+          "positive": true,
+          "rows": 53,
+          "sensory_terms": [
+            "aroma",
+            "floral",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 16,
+      "positive": true,
+      "word_count": 208
+    },
+    {
+      "candidate_id": "10.3390/foods11060807",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            32.98924255371094,
+            791.1242065429688,
+            521.2691650390625
+          ],
+          "columns": 11,
+          "numeric_cell_count": 26,
+          "positive": true,
+          "rows": 34,
+          "sensory_terms": [
+            "aroma",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 12,
+      "positive": true,
+      "word_count": 513
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "grids": [
+        {
+          "bbox": [
+            45.0,
+            59.38924789428711,
+            508.5154724121094,
+            544.38916015625
+          ],
+          "columns": 4,
+          "numeric_cell_count": 5,
+          "positive": true,
+          "rows": 51,
+          "sensory_terms": [
+            "berry",
+            "chocolate",
+            "citrus",
+            "floral",
+            "fruity",
+            "nutty"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 8,
+      "positive": true,
+      "word_count": 167
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            31.747093200683594,
+            779.1879272460938,
+            529.9291381835938
+          ],
+          "columns": 13,
+          "numeric_cell_count": 90,
+          "positive": true,
+          "rows": 43,
+          "sensory_terms": [
+            "aroma",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 7,
+      "positive": true,
+      "word_count": 267
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            32.98924255371094,
+            789.854248046875,
+            557.1513977050781
+          ],
+          "columns": 14,
+          "numeric_cell_count": 42,
+          "positive": true,
+          "rows": 48,
+          "sensory_terms": [
+            "aroma",
+            "floral",
+            "fruity",
+            "nutty"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 11,
+      "positive": true,
+      "word_count": 316
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "grids": [
+        {
+          "bbox": [
+            47.316986083984375,
+            90.78373336791992,
+            794.1151123046875,
+            534.4752197265625
+          ],
+          "columns": 17,
+          "numeric_cell_count": 45,
+          "positive": true,
+          "rows": 48,
+          "sensory_terms": [
+            "chocolate",
+            "citrus",
+            "floral",
+            "fruity",
+            "lemon",
+            "nutty"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 16,
+      "positive": true,
+      "word_count": 286
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            38.98924255371094,
+            793.37744140625,
+            549.7891845703125
+          ],
+          "columns": 10,
+          "numeric_cell_count": 26,
+          "positive": false,
+          "rows": 45,
+          "sensory_terms": [
+            "honey"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 24,
+      "positive": false,
+      "word_count": 310
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            32.98924255371094,
+            794.6761474609375,
+            519.3712158203125
+          ],
+          "columns": 14,
+          "numeric_cell_count": 53,
+          "positive": true,
+          "rows": 40,
+          "sensory_terms": [
+            "aroma",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 11,
+      "positive": true,
+      "word_count": 428
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            36.98924255371094,
+            777.5161743164062,
+            492.9891357421875
+          ],
+          "columns": 11,
+          "numeric_cell_count": 30,
+          "positive": false,
+          "rows": 33,
+          "sensory_terms": [
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 24,
+      "positive": false,
+      "word_count": 504
+    },
+    {
+      "candidate_id": "10.3390/foods13050642",
+      "grids": [
+        {
+          "bbox": [
+            43.5,
+            38.98924255371094,
+            778.884033203125,
+            549.8692016601562
+          ],
+          "columns": 14,
+          "numeric_cell_count": 72,
+          "positive": true,
+          "rows": 44,
+          "sensory_terms": [
+            "acidity",
+            "aftertaste",
+            "aroma",
+            "body"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 15,
+      "positive": true,
+      "word_count": 518
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            777.300048828125,
+            513.149169921875
+          ],
+          "columns": 11,
+          "numeric_cell_count": 35,
+          "positive": false,
+          "rows": 33,
+          "sensory_terms": [
+            "body"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 4,
+      "positive": false,
+      "word_count": 470
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            36.98924255371094,
+            797.124267578125,
+            551.669189453125
+          ],
+          "columns": 14,
+          "numeric_cell_count": 93,
+          "positive": true,
+          "rows": 36,
+          "sensory_terms": [
+            "body",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 13,
+      "positive": true,
+      "word_count": 611
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            36.98924255371094,
+            791.5514526367188,
+            528.22265625
+          ],
+          "columns": 16,
+          "numeric_cell_count": 35,
+          "positive": true,
+          "rows": 43,
+          "sensory_terms": [
+            "floral",
+            "fruity",
+            "nutty"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 10,
+      "positive": true,
+      "word_count": 396
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            49.18924331665039,
+            786.4003295898438,
+            557.3646850585938
+          ],
+          "columns": 14,
+          "numeric_cell_count": 7,
+          "positive": true,
+          "rows": 48,
+          "sensory_terms": [
+            "floral",
+            "honey"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 18,
+      "positive": true,
+      "word_count": 357
+    },
+    {
+      "candidate_id": "10.3390/foods14162811",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            33.747093200683594,
+            791.2565307617188,
+            542.1292114257812
+          ],
+          "columns": 15,
+          "numeric_cell_count": 99,
+          "positive": true,
+          "rows": 40,
+          "sensory_terms": [
+            "acidity",
+            "aftertaste",
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 10,
+      "positive": true,
+      "word_count": 433
+    },
+    {
+      "candidate_id": "10.3390/foods14162840",
+      "grids": [
+        {
+          "bbox": [
+            45.0,
+            57.38924789428711,
+            789.7272338867188,
+            540.589111328125
+          ],
+          "columns": 16,
+          "numeric_cell_count": 162,
+          "positive": true,
+          "rows": 56,
+          "sensory_terms": [
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 10,
+      "positive": true,
+      "word_count": 300
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            45.823158264160156,
+            780.9002685546875,
+            549.5731811523438
+          ],
+          "columns": 11,
+          "numeric_cell_count": 47,
+          "positive": true,
+          "rows": 38,
+          "sensory_terms": [
+            "aroma",
+            "bitterness",
+            "caramel",
+            "nutty"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 10,
+      "positive": true,
+      "word_count": 395
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            47.823158264160156,
+            793.8961181640625,
+            549.2691650390625
+          ],
+          "columns": 10,
+          "numeric_cell_count": 26,
+          "positive": true,
+          "rows": 38,
+          "sensory_terms": [
+            "aroma",
+            "caramel",
+            "fruity",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 13,
+      "positive": true,
+      "word_count": 528
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "grids": [
+        {
+          "bbox": [
+            45.0,
+            63.38924789428711,
+            810.019287109375,
+            554.38916015625
+          ],
+          "columns": 13,
+          "numeric_cell_count": 173,
+          "positive": false,
+          "rows": 53,
+          "sensory_terms": []
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 19,
+      "positive": false,
+      "word_count": 308
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "grids": [
+        {
+          "bbox": [
+            43.5,
+            38.98924255371094,
+            812.2352294921875,
+            545.38916015625
+          ],
+          "columns": 16,
+          "numeric_cell_count": 150,
+          "positive": true,
+          "rows": 47,
+          "sensory_terms": [
+            "aroma",
+            "caramel",
+            "fruity",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 20,
+      "positive": true,
+      "word_count": 387
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "grids": [
+        {
+          "bbox": [
+            48.58422088623047,
+            37.98924255371094,
+            714.3328247070312,
+            552.7891845703125
+          ],
+          "columns": 8,
+          "numeric_cell_count": 9,
+          "positive": true,
+          "rows": 52,
+          "sensory_terms": [
+            "aftertaste",
+            "aroma",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 20,
+      "positive": true,
+      "word_count": 139
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "grids": [
+        {
+          "bbox": [
+            54.96215057373047,
+            39.98924255371094,
+            689.5750732421875,
+            556.189208984375
+          ],
+          "columns": 11,
+          "numeric_cell_count": 8,
+          "positive": true,
+          "rows": 60,
+          "sensory_terms": [
+            "aftertaste",
+            "aroma"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 22,
+      "positive": true,
+      "word_count": 225
+    },
+    {
+      "candidate_id": "10.3390/foods9111664",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            39.98924255371094,
+            794.1000366210938,
+            558.7412109375
+          ],
+          "columns": 12,
+          "numeric_cell_count": 71,
+          "positive": false,
+          "rows": 46,
+          "sensory_terms": [
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 13,
+      "positive": false,
+      "word_count": 426
+    },
+    {
+      "candidate_id": "10.3390/molecules26133925",
+      "grids": [
+        {
+          "bbox": [
+            55.93199920654297,
+            91.1292495727539,
+            666.2760009765625,
+            554.7291870117188
+          ],
+          "columns": 7,
+          "numeric_cell_count": 73,
+          "positive": true,
+          "rows": 47,
+          "sensory_terms": [
+            "aroma",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 6,
+      "positive": true,
+      "word_count": 267
+    },
+    {
+      "candidate_id": "10.3390/molecules26154609",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            702.9840698242188,
+            546.8092041015625
+          ],
+          "columns": 10,
+          "numeric_cell_count": 15,
+          "positive": true,
+          "rows": 39,
+          "sensory_terms": [
+            "aroma",
+            "nutty"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": true,
+      "word_count": 384
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            32.98924255371094,
+            795.075439453125,
+            541.8169555664062
+          ],
+          "columns": 19,
+          "numeric_cell_count": 149,
+          "positive": true,
+          "rows": 54,
+          "sensory_terms": [
+            "citrus",
+            "floral",
+            "fruity",
+            "honey"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 8,
+      "positive": true,
+      "word_count": 359
+    },
+    {
+      "candidate_id": "10.3390/molecules29194723",
+      "grids": [
+        {
+          "bbox": [
+            42.74473762512207,
+            30.989242553710938,
+            786.225341796875,
+            560.1891479492188
+          ],
+          "columns": 13,
+          "numeric_cell_count": 162,
+          "positive": true,
+          "rows": 50,
+          "sensory_terms": [
+            "aroma",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 3,
+      "positive": true,
+      "word_count": 327
+    },
+    {
+      "candidate_id": "10.3390/molecules31050853",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            30.989242553710938,
+            778.10400390625,
+            547.1891479492188
+          ],
+          "columns": 8,
+          "numeric_cell_count": 20,
+          "positive": true,
+          "rows": 66,
+          "sensory_terms": [
+            "acidity",
+            "floral",
+            "fruity"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 28,
+      "positive": true,
+      "word_count": 273
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            38.98924255371094,
+            795.1561889648438,
+            549.5891723632812
+          ],
+          "columns": 10,
+          "numeric_cell_count": 17,
+          "positive": true,
+          "rows": 53,
+          "sensory_terms": [
+            "acidity",
+            "aftertaste",
+            "aroma",
+            "balance",
+            "bitterness",
+            "body",
+            "caramel",
+            "chocolate",
+            "fruity",
+            "honey",
+            "nutty",
+            "sweetness"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 21,
+      "positive": true,
+      "word_count": 385
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "grids": [
+        {
+          "bbox": [
+            42.0,
+            40.98924255371094,
+            788.8561401367188,
+            550.7891845703125
+          ],
+          "columns": 13,
+          "numeric_cell_count": 26,
+          "positive": true,
+          "rows": 43,
+          "sensory_terms": [
+            "aftertaste",
+            "aroma",
+            "balance",
+            "body",
+            "chocolate",
+            "fruity",
+            "honey",
+            "nutty",
+            "roasted"
+          ]
+        }
+      ],
+      "modality": "HELD_MARKUP_REFLOW_NOT_PUBLISHER_PAGES",
+      "page_number": 22,
+      "positive": true,
+      "word_count": 349
+    }
+  ],
+  "protected_artifacts_sha256": {
+    "db/data/backend-sequential-model-v2/revisions/r11/acquisition_manifest.json": "799d556627efa1c9ded2fe8b04df5b5e3c8e9b8fd54d4b2d518bb77254049c6d",
+    "db/data/backend-sequential-model-v2/revisions/r11/auxiliary_transfer_manifest.json": "a57881a8576d4f03eadf757285edd0eb4ddf15a2c18aabd2ab1055ad28c257db",
+    "db/data/backend-sequential-model-v2/revisions/r11/context_coverage.json": "f918e183ee12a5208f31526a9ff8636270074186f6cf3508a290e0a76bfe8ce8",
+    "db/data/backend-sequential-model-v2/revisions/r11/contract_calibration_report.json": "b657f83545ceef6df38b7bc02db55e480035ca8b1b9d21cb3899095ad2722315",
+    "db/data/backend-sequential-model-v2/revisions/r11/direct_vs_mapped_counts.json": "643a1049406cf3d4e7210e4325ad4193dd0ffc435b8cc4693010bdcd97203389",
+    "db/data/backend-sequential-model-v2/revisions/r11/duplicate_audit.json": "0eb4e449abba6ae652a1bf10205a20d9ddbd8d3f53358119192a6ce808a4a62d",
+    "db/data/backend-sequential-model-v2/revisions/r11/exit_criterion_status.json": "d1e3ae04141d1662a9126618bbb899c72fd0a029f0cddb5515d4bd8613f25e48",
+    "db/data/backend-sequential-model-v2/revisions/r11/extraction_report.json": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531",
+    "db/data/backend-sequential-model-v2/revisions/r11/failure_taxonomy.json": "9d78c5abb2933f640ae6292a8822ffdfa84db21a84a4975f50d3a4809b3aa7c3",
+    "db/data/backend-sequential-model-v2/revisions/r11/mapping_audit.json": "ccd46a7a5e1f76fda5c3bca15c2fc492109031503975f1ae10e779a75d07c250",
+    "db/data/backend-sequential-model-v2/revisions/r11/owner_decision.json": "2a6684b5bfec7f393c423fdd909557257f7ea5d58903021424b3af2a7c17d902",
+    "db/data/backend-sequential-model-v2/revisions/r11/pipeline_validation.json": "e26b5e234d6cac00aa366f52c75abf8d35ac2a67dbea98a6a7755860632daa97",
+    "db/data/backend-sequential-model-v2/revisions/r11/readmission_reconciliation.json": "dd612de18fcc3046e051b2ab1be8cfd2cf583586e564b7329e1263030d637dc9",
+    "db/data/backend-sequential-model-v2/revisions/r11/round_manifest.json": "35ee2c4b4ad6ccadc37a5c1cd9b2a2df64867745af514db6118955c5ac822c1e",
+    "db/data/backend-sequential-model-v2/revisions/r11/shape_distribution.json": "54b7f13e0463f900fb0e84dc7345727082dd75f9fbc72957dc68b45ee20574c9",
+    "db/data/backend-sequential-model-v2/revisions/r11/source_family_distribution.json": "897851b9459dc7795ae1e0f0c8231fa8bd19f2f0cb1d82e194c29c1af1295fa1",
+    "db/data/backend-sequential-model-v2/revisions/r11/supplement_recovery.json": "29b42c1bf1b78d91ac97c9b35b5d438504958fe8b47e85784f22225ab63dcf8b",
+    "db/data/backend-sequential-model-v2/revisions/r11/targeted_acquisition.json": "69b1d5f517fe302d86a6b73a847a8d0649ba870ad36bffa793f22d996a6c7228",
+    "db/data/backend-sequential-model-v2/revisions/r12/anomaly_diagnosis.json": "5027d1d7c02ab5aa208c7f03cd335a7b9077c2492f3a5f5194c73a9f84cd6d61",
+    "db/data/backend-sequential-model-v2/revisions/r12/control_set.json": "667fa2adca40e1b29bac85423244de1ac0574a9e36cb7c8665a4e0216c2e0f74",
+    "db/data/backend-sequential-model-v2/revisions/r12/funnel_counts.json": "a19b23f6d0646e6373ee714ce75075db2039554c62dae958256c864acccb0cc4",
+    "db/data/backend-sequential-model-v2/revisions/r12/recall_report.json": "474982a44147ccf653a331ecb14ce9dc0aeebd34ec51cba971eca4be913e0672",
+    "db/data/backend-sequential-model-v2/revisions/r12/silent_failure_audit.json": "d2f5eeaa12e8f8388ada0e2a4405994baced9e30b435ff2170b3fa75697aa731"
+  },
+  "python_version": "3.13.5 (v3.13.5:6cb20a219a8, Jun 11 2025, 12:23:45) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "r11_forward_source_accounting": {
+    "combined_record_count": 2198,
+    "source_record_counts_post_record_dedup": {
+      "R10_248_PRIMARY": 1782,
+      "R10_248_SUPPLEMENT": 0,
+      "R11_TARGETED": 416
+    },
+    "source_record_counts_pre_record_dedup": {
+      "R10_248_PRIMARY": 1782,
+      "R10_248_SUPPLEMENT": 0,
+      "R11_TARGETED": 832
+    }
+  },
+  "real_label_model_metric_count": 0,
+  "render_implementation_sha256": "c5e539fefdf3d2947fcab82cafeb68529727cf2c613472d4c065dd809189b1c1",
+  "sensitivity_relative_to_source_anchor_controls": 0.7948717948717948,
+  "sensory_cell_terms": [
+    "acidity",
+    "aftertaste",
+    "aroma",
+    "astringency",
+    "balance",
+    "berry",
+    "bitterness",
+    "body",
+    "caramel",
+    "chocolate",
+    "citrus",
+    "floral",
+    "fruity",
+    "honey",
+    "lemon",
+    "nutty",
+    "roasted",
+    "sourness",
+    "sweetness",
+    "vanilla"
+  ],
+  "status": "CALIBRATION_MEASURED",
+  "strict_v1_negative_calibration": {
+    "document_bootstrap_band": [
+      0.16129032258064516,
+      0.4482758620689655
+    ],
+    "false_positive_rate": 0.30303030303030304,
+    "page_count": 33
+  },
+  "true_accuracy_identification_interval": [
+    0,
+    1
+  ],
+  "unmatched_table_controls": [],
+  "version": "r12b-pdf-word-geometry-1"
+}

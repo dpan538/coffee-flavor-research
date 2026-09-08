@@ -1,0 +1,1188 @@
+{
+  "classifier_sha256": "c1ca687999a364e4b10a90eca8870541810526b180777e5e221714a18517fb15",
+  "classifier_version": "r12b-cell-structure-1",
+  "fit_count": 0,
+  "lxml_version": [
+    6,
+    1,
+    1,
+    0
+  ],
+  "new_acquisition_count": 0,
+  "not_ground_truth": true,
+  "orchestrator_python_version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "protected_artifacts_sha256": {
+    "db/data/backend-sequential-model-v2/revisions/r11/acquisition_manifest.json": "799d556627efa1c9ded2fe8b04df5b5e3c8e9b8fd54d4b2d518bb77254049c6d",
+    "db/data/backend-sequential-model-v2/revisions/r11/auxiliary_transfer_manifest.json": "a57881a8576d4f03eadf757285edd0eb4ddf15a2c18aabd2ab1055ad28c257db",
+    "db/data/backend-sequential-model-v2/revisions/r11/context_coverage.json": "f918e183ee12a5208f31526a9ff8636270074186f6cf3508a290e0a76bfe8ce8",
+    "db/data/backend-sequential-model-v2/revisions/r11/contract_calibration_report.json": "b657f83545ceef6df38b7bc02db55e480035ca8b1b9d21cb3899095ad2722315",
+    "db/data/backend-sequential-model-v2/revisions/r11/direct_vs_mapped_counts.json": "643a1049406cf3d4e7210e4325ad4193dd0ffc435b8cc4693010bdcd97203389",
+    "db/data/backend-sequential-model-v2/revisions/r11/duplicate_audit.json": "0eb4e449abba6ae652a1bf10205a20d9ddbd8d3f53358119192a6ce808a4a62d",
+    "db/data/backend-sequential-model-v2/revisions/r11/exit_criterion_status.json": "d1e3ae04141d1662a9126618bbb899c72fd0a029f0cddb5515d4bd8613f25e48",
+    "db/data/backend-sequential-model-v2/revisions/r11/extraction_report.json": "bbac96e902e25a1ce78bc5deb65c28876f54ab3ddf98fccc646c309454251531",
+    "db/data/backend-sequential-model-v2/revisions/r11/failure_taxonomy.json": "9d78c5abb2933f640ae6292a8822ffdfa84db21a84a4975f50d3a4809b3aa7c3",
+    "db/data/backend-sequential-model-v2/revisions/r11/mapping_audit.json": "ccd46a7a5e1f76fda5c3bca15c2fc492109031503975f1ae10e779a75d07c250",
+    "db/data/backend-sequential-model-v2/revisions/r11/owner_decision.json": "2a6684b5bfec7f393c423fdd909557257f7ea5d58903021424b3af2a7c17d902",
+    "db/data/backend-sequential-model-v2/revisions/r11/pipeline_validation.json": "e26b5e234d6cac00aa366f52c75abf8d35ac2a67dbea98a6a7755860632daa97",
+    "db/data/backend-sequential-model-v2/revisions/r11/readmission_reconciliation.json": "dd612de18fcc3046e051b2ab1be8cfd2cf583586e564b7329e1263030d637dc9",
+    "db/data/backend-sequential-model-v2/revisions/r11/round_manifest.json": "35ee2c4b4ad6ccadc37a5c1cd9b2a2df64867745af514db6118955c5ac822c1e",
+    "db/data/backend-sequential-model-v2/revisions/r11/shape_distribution.json": "54b7f13e0463f900fb0e84dc7345727082dd75f9fbc72957dc68b45ee20574c9",
+    "db/data/backend-sequential-model-v2/revisions/r11/source_family_distribution.json": "897851b9459dc7795ae1e0f0c8231fa8bd19f2f0cb1d82e194c29c1af1295fa1",
+    "db/data/backend-sequential-model-v2/revisions/r11/supplement_recovery.json": "29b42c1bf1b78d91ac97c9b35b5d438504958fe8b47e85784f22225ab63dcf8b",
+    "db/data/backend-sequential-model-v2/revisions/r11/targeted_acquisition.json": "69b1d5f517fe302d86a6b73a847a8d0649ba870ad36bffa793f22d996a6c7228",
+    "db/data/backend-sequential-model-v2/revisions/r12/anomaly_diagnosis.json": "5027d1d7c02ab5aa208c7f03cd335a7b9077c2492f3a5f5194c73a9f84cd6d61",
+    "db/data/backend-sequential-model-v2/revisions/r12/control_set.json": "667fa2adca40e1b29bac85423244de1ac0574a9e36cb7c8665a4e0216c2e0f74",
+    "db/data/backend-sequential-model-v2/revisions/r12/funnel_counts.json": "a19b23f6d0646e6373ee714ce75075db2039554c62dae958256c864acccb0cc4",
+    "db/data/backend-sequential-model-v2/revisions/r12/recall_report.json": "474982a44147ccf653a331ecb14ce9dc0aeebd34ec51cba971eca4be913e0672",
+    "db/data/backend-sequential-model-v2/revisions/r12/silent_failure_audit.json": "d2f5eeaa12e8f8388ada0e2a4405994baced9e30b435ff2170b3fa75697aa731"
+  },
+  "r11_forward_source_accounting": {
+    "combined_record_count": 2198,
+    "source_record_counts_post_record_dedup": {
+      "R10_248_PRIMARY": 1782,
+      "R10_248_SUPPLEMENT": 0,
+      "R11_TARGETED": 416
+    },
+    "source_record_counts_pre_record_dedup": {
+      "R10_248_PRIMARY": 1782,
+      "R10_248_SUPPLEMENT": 0,
+      "R11_TARGETED": 832
+    }
+  },
+  "real_label_model_metric_count": 0,
+  "reason": "Third visual adjudication is optional under owner amendment; no forced tie-break or ground truth claim.",
+  "render_implementation_sha256": "c5e539fefdf3d2947fcab82cafeb68529727cf2c613472d4c065dd809189b1c1",
+  "residual_unresolved_fraction_of_all_tables": 0.235,
+  "residual_unresolved_fraction_of_disagreements": 1.0,
+  "third_method_completed": 0,
+  "tier1_disagreement_count": 94,
+  "tier1_disagreements": [
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "original": [],
+      "reference": [
+        "T5"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "fsn31404-tbl-0001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.1404",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "fsn31404-tbl-0004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.35",
+      "original": [
+        "T1",
+        "T4"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "tbl3",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1002/fsn3.70512",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T5",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "fsn370512-tbl-0001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1007/s11306-020-01751-6",
+      "original": [],
+      "reference": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "Tab2",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1016/j.fochx.2024.101980",
+      "original": [],
+      "reference": [
+        "T1"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "t0025",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2018.07.226",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T3",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "t0005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1016/j.foodchem.2021.131159",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "t0015",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1016/j.heliyon.2022.e10829",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "tbl3",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1021/acsomega.5c01783",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "tbl1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1038/s41538-026-00852-1",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "Tab4",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1038/s41598-020-73341-4",
+      "original": [
+        "T5"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "Tab1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1038/s41598-022-06676-9",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "Tab2",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "original": [
+        "T5"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "jfds71157-tbl-0001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1111/1750-3841.71157",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "jfds71157-tbl-0002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "original": [],
+      "reference": [
+        "T1"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "tab1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1155/2022/2365603",
+      "original": [
+        "T4"
+      ],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "tab3",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.12944/crnfsj.11.2.12",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-7",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1371/journal.pone.0223280",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "pone.0223280.t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/1413-7054201943026119",
+      "original": [],
+      "reference": [
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/1807-1929/agriambi.v26n12p894-900",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-3",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/fst.96122",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/fst.96221",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-4",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/s0100-204x2018000900010",
+      "original": [],
+      "reference": [
+        "T1"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-2",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.1590/s1678-3921.pab2020.v55.02240",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-3",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3389/fpsyg.2017.02264",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "T2",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3389/fpsyg.2017.02264",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "T4",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3389/fsufs.2024.1382976",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3389/fsufs.2024.1382976",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "html-table-2",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods10102508",
+      "original": [
+        "T5"
+      ],
+      "reference": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-10-02508-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods11050717",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-11-00717-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods11162440",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-11-02440-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-11-02968-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods11192968",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-11-02968-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods11193144",
+      "original": [],
+      "reference": [
+        "T3"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-11-03144-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "original": [],
+      "reference": [
+        "T1"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-12-02710-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-12-02710-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods12142710",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-12-02710-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-12-03857-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods12203857",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-12-03857-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13010087",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-00087-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-00484-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13030484",
+      "original": [
+        "T5"
+      ],
+      "reference": [
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-00484-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13050768",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-00768-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13152359",
+      "original": [],
+      "reference": [
+        "T1",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-02359-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13233842",
+      "original": [],
+      "reference": [
+        "T3",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-03842-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods13243995",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-13-03995-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-00911-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "original": [],
+      "reference": [
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-00911-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14060911",
+      "original": [
+        "T5"
+      ],
+      "reference": [
+        "T5",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-00911-t006",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14152606",
+      "original": [],
+      "reference": [
+        "T3",
+        "T5"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-02606-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14152606",
+      "original": [],
+      "reference": [
+        "T3",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-02606-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14162840",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-02840-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-03192-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods14183192",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-14-03192-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-15-00269-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods15020269",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-15-00269-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods15081284",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-15-01284-t006",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods15081287",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-15-01287-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods15132355",
+      "original": [],
+      "reference": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-15-02355-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods8020061",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-08-00061-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods8080344",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-08-00344-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "original": [],
+      "reference": [
+        "T4",
+        "T5"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-00753-t0A1",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-00753-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-00753-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-00753-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-00753-t006",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9060753",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-00753-t007",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/foods9111664",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "foods-09-01664-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/ijerph192013221",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "ijerph-19-13221-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules24244515",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-24-04515-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules24244515",
+      "original": [],
+      "reference": [
+        "T1",
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-24-04515-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules26123545",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-26-03545-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules26123545",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-26-03545-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules26133856",
+      "original": [],
+      "reference": [
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-26-03856-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules26133925",
+      "original": [
+        "T6"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-26-03925-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules26154609",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-26-04609-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-29-03060-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules29133060",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-29-03060-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules29163791",
+      "original": [],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-29-03791-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules29163791",
+      "original": [],
+      "reference": [
+        "T1",
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-29-03791-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules29194723",
+      "original": [
+        "T6"
+      ],
+      "reference": [
+        "T1",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-29-04723-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules30244765",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-30-04765-t010",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules31050853",
+      "original": [
+        "T5"
+      ],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-31-00853-t001",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules31050853",
+      "original": [
+        "T5"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-31-00853-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "original": [],
+      "reference": [
+        "T1"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-31-01518-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "original": [
+        "T5"
+      ],
+      "reference": [],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-31-01518-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/molecules31091518",
+      "original": [
+        "T5"
+      ],
+      "reference": [
+        "T3",
+        "T4",
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "molecules-31-01518-t006",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/nu12030627",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "nutrients-12-00627-t002",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/s150101354",
+      "original": [],
+      "reference": [
+        "T1"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "t1-sensors-15-01354",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/s21062016",
+      "original": [],
+      "reference": [
+        "T6"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "sensors-21-02016-t003",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/s21062016",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "sensors-21-02016-t004",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    },
+    {
+      "candidate_id": "10.3390/s21062016",
+      "original": [],
+      "reference": [
+        "T4"
+      ],
+      "status": "UNRESOLVED_OPTIONAL_THIRD_METHOD_NOT_EXECUTED",
+      "table_id": "sensors-21-02016-t005",
+      "third_method": "OPTIONAL_VISUAL_TABLE_REGION"
+    }
+  ],
+  "tier2_disagreements": [
+    {
+      "candidate_id": "10.1016/j.ultsonch.2026.107943",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.1021/acscentsci.5c01454",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.1186/s12870-024-04890-3",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.1590/0034-737x201663040002",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.2478/prolas-2023-0019",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.3390/foods11243945",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.3390/foods13050653",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.3390/foods13121871",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.3390/foods15050849",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.3923/pjn.2016.486.491",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.4025/actasciagron.v32i4.4283",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.5296/jas.v4i1.8789",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    },
+    {
+      "candidate_id": "10.5539/jas.v9n9p78",
+      "geometry_sensory_numeric_grid": true,
+      "note": "Any HTML/XML table and a sensory numeric PDF grid are different predicates; disagreement is not automatically an error.",
+      "original_any_table_detected": false,
+      "status": "UNRESOLVED_DIFFERENT_TARGET_DEFINITIONS_AND_OPTIONAL_THIRD_METHOD"
+    }
+  ],
+  "tier2_unresolved_disagreement_count": 13
+}

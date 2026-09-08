@@ -146,7 +146,7 @@ def run(request):
             'document_band': [0,len(valid)],
             'reason': 'Page sensitivity/FPR cannot be transported to document-any-positive outcomes without a page-dependence model; original PDF domain is also uncalibrated. No invented model is fitted.'},
         'rendered_documents': list(rendered.values()),
-        'verdict_caveat': 'Grid positives are not confirmed coffee supervision. The measured calibration false-positive rate is recorded above; it and incomplete equal-sized negative controls weaken target findings. Reflow and missing graphics prevent transfer to original PDFs.'}
+        'verdict_caveat': 'Grid positives are not confirmed coffee supervision. The calibration false-positive rate and any reported control-coverage shortfall weaken target findings. Reflow and missing graphics prevent transfer to original PDFs.'}
     (output/'tier2_adjudication.json').write_text(json.dumps(adjudication,indent=2,sort_keys=True)+'\n')
     return {'calibration_s': sensitivity, 'calibration_f': false_positive,
         's_band': s_band, 'f_band': f_band, 'positive_pages': len(positives), 'negative_pages': len(negatives),
