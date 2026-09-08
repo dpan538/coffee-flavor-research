@@ -47,9 +47,29 @@ FITTING_ERA_MODULES = frozenset(
 # what makes it deployable without a build environment.
 FORBIDDEN_THIRD_PARTY = frozenset({"sklearn", "scipy", "numpy", "lxml"})
 
+# Project-local modules, safe to evict and re-import because they are pure
+# Python with no extension state.
+LOCAL_MODULES = frozenset(p.stem for p in SCRIPTS.glob("*.py"))
+
 
 class RuntimeBoundary(unittest.TestCase):
-    def _import_with_guard(self, module_name: str, blocked: frozenset[str]) -> None:
+    """Detection is by interposing on __import__, never by evicting the target.
+
+    An earlier version of this test evicted sklearn, scipy and numpy from
+    sys.modules to force a fresh import. numpy cannot survive that: once
+    removed, every later import of it in the same process fails inside its own
+    partially-initialised package, and the whole fitting-era suite failed with
+    six errors that had nothing to do with the code under test.
+
+    Eviction was never needed. The import statement calls __import__ on every
+    execution, cached or not, so a guard on __import__ sees the import whether
+    or not the module is already in sys.modules. Only project-local modules are
+    evicted here, and only so that a runtime module's own top-level imports
+    actually re-execute under the guard.
+    """
+
+    def _violations(self, module_name: str, blocked: frozenset[str]) -> list[str]:
+        """Import under the guard and report which blocked modules were reached."""
         real_import = builtins.__import__
         violations: list[str] = []
 
@@ -60,29 +80,56 @@ class RuntimeBoundary(unittest.TestCase):
                 raise ImportError(f"blocked by runtime boundary: {name}")
             return real_import(name, globals, locals, fromlist, level)
 
-        for cached in [m for m in sys.modules if m.split(".")[0] in blocked]:
-            del sys.modules[cached]
-        sys.modules.pop(module_name, None)
+        # Evict only local modules, so the runtime module and its local
+        # dependencies re-execute their imports. Third-party modules stay
+        # cached; the guard catches them regardless.
+        evicted = {name: sys.modules[name] for name in LOCAL_MODULES if name in sys.modules}
+        for name in evicted:
+            del sys.modules[name]
 
         builtins.__import__ = guarded
         try:
             importlib.import_module(module_name)
-        except ImportError as exc:  # noqa: PERF203 - the assertion needs the message
-            self.fail(
-                f"{module_name} imports a forbidden module: {violations or exc}"
-            )
+        except ImportError:
+            pass  # the guard raised; violations already records what was reached
         finally:
             builtins.__import__ = real_import
+            # Drop anything left behind by a failed import, then restore.
+            for name in LOCAL_MODULES:
+                sys.modules.pop(name, None)
+            sys.modules.update(evicted)
+        return violations
 
     def test_runtime_does_not_import_fitting_era(self):
         for module_name in RUNTIME_MODULES:
             with self.subTest(module=module_name):
-                self._import_with_guard(module_name, FITTING_ERA_MODULES)
+                self.assertEqual(
+                    self._violations(module_name, FITTING_ERA_MODULES), [],
+                    f"{module_name} reaches the fitting era",
+                )
 
     def test_runtime_does_not_need_scientific_stack(self):
         for module_name in RUNTIME_MODULES:
             with self.subTest(module=module_name):
-                self._import_with_guard(module_name, FORBIDDEN_THIRD_PARTY)
+                self.assertEqual(
+                    self._violations(module_name, FORBIDDEN_THIRD_PARTY), [],
+                    f"{module_name} reaches the scientific stack",
+                )
+
+    def test_guard_catches_a_known_violator(self):
+        """Positive control.
+
+        Without this, both tests above would still pass if the guard silently
+        stopped firing, and the boundary would be unenforced while looking
+        green. audit_semantic_integrity_r9 genuinely imports flavor_m2_r1, so
+        the guard must report it.
+        """
+        found = self._violations("audit_semantic_integrity_r9", FITTING_ERA_MODULES)
+        self.assertIn(
+            "flavor_m2_r1", found,
+            "the guard failed to detect a fitting-era import that is known to exist; "
+            "the two boundary tests above cannot be trusted while this fails",
+        )
 
     def test_research_modules_are_not_runtime(self):
         """Documents the boundary rather than enforcing it.

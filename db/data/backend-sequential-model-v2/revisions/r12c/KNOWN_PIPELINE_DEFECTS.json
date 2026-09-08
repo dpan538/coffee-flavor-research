@@ -2,11 +2,8 @@
   "contract_version": "r12c.known-pipeline-defects.v1",
   "round": "R12C",
   "purpose": "Prevent a later round from re-running defective production scripts and treating their output as valid.",
-
   "THE_CENTRAL_WARNING": "R12C REPAIRED NOTHING IN THE PRODUCTION PATH. Every repair was executed as a shadow measurement against sealed inputs. The production scripts named below are unchanged and still carry every defect listed. Running them today reproduces the same wrong results that R10, R11, R12 and R12B produced, and those results will look normal.",
-
   "why_this_file_exists": "R12C's artefacts report repaired numbers. The scripts that produced the original numbers were not modified. Without this register, a later reader could reasonably assume the pipeline now behaves as the R12C reports describe. It does not.",
-
   "defective_production_scripts": [
     {
       "script": "db/scripts/acquire_license_verified_r10.py",
@@ -15,7 +12,12 @@
         {
           "id": "F1",
           "defect": "No pagination construct of any kind. No cursor, cursorMark, offset, resumptionToken or loop. Every API is queried exactly once and truncated at its page-size literal.",
-          "page_size_literals": {"DRYAD": 100, "EUROPE_PMC": 1000, "OPENALEX": 200, "ZENODO": 25},
+          "page_size_literals": {
+            "DRYAD": 100,
+            "EUROPE_PMC": 1000,
+            "OPENALEX": 200,
+            "ZENODO": 25
+          },
           "effect_if_rerun": "Candidate pool remains capped at one page per query regardless of how much the source holds."
         },
         {
@@ -89,14 +91,12 @@
       ]
     }
   ],
-
   "shadow_only_repairs": {
     "note": "These exist as measurements. None is wired into any production path.",
     "db/scripts/reextract_tokenised_mapping_r12c.py": "Fragment tokenisation. Recovered 515 of 1429 under existing rules. Not wired in.",
     "db/scripts/repaired_gates_r12c.py": "Repaired gate stack G1-G5. 42 tables newly admitted, 18 candidates recovered. Shadow only; nothing promoted.",
     "db/scripts/diagnose_orientation_r12c.py": "Diagnosis only; changed no orientation decision."
   },
-
   "retractions_recorded_in_this_round": [
     {
       "claim": "R11: per-coffee named-descriptor supervision is not available in the open literature.",
@@ -109,14 +109,12 @@
       "reason": "The figure came from the operator's own shadow script taking column 0 as the sample-label list. Direct diagnosis found 0 tables with descriptors on both axes and 7 with any contaminated implied samples."
     }
   ],
-
   "before_any_future_acquisition_round": [
     "Do not re-run acquire_license_verified_r10.py as a primary acquisition. Add pagination and replace the title-only filter first.",
     "Do not treat any count produced by the unrepaired pipeline as a measurement of the literature.",
     "The 126-term vocabulary ceiling binds every upstream repair. Raising it requires owner-approved R6 rules; the R12C review sheet ranks the candidates and finds 7 of the top 60 need no decision at all.",
     "The existing acquisition-state registries were restored in this round and are available; the R10 script does not use them."
   ],
-
   "guards": {
     "production_scripts_modified": 0,
     "sealed_artifacts_modified": 0,
@@ -125,6 +123,37 @@
     "concepts_created": 0,
     "formal_relation_edges_created": 0,
     "fit_count": 0,
-    "training_pause": "REMAINS_IN_EFFECT"
-  }
+    "training_pause": "REMAINS_IN_EFFECT",
+    "full_test_suite_at_last_write": "366 tests, 0 errors, 13 skipped",
+    "full_test_suite_verified_at_utc": "2026-09-08T10:48:02Z"
+  },
+  "operator_introduced_defects": [
+    {
+      "defect_id": "ROUND2-OP1",
+      "introduced_by": "operator",
+      "artefact": "db/tests/test_runtime_boundary_round2.py",
+      "commit_that_introduced_it": "369d6ef",
+      "status": "REPAIRED_BEFORE_ANY_FURTHER_PUSH",
+      "what_it_was": "The A1 runtime-boundary test forced a fresh import by deleting sklearn, scipy, numpy and lxml from sys.modules. numpy cannot be re-imported after eviction, so every later test in the same process that touched the scientific stack failed inside numpy's own partially-initialised package.",
+      "blast_radius": "6 errors across test_sensory_views_r1, test_sequential_context, test_training_r4 and test_verify_conditioning_r4. All 18 of those tests pass when run without the A1 test in the same process, which is how the damage stayed invisible to a per-module run.",
+      "why_the_eviction_was_never_needed": "The import statement calls __import__ on every execution, cached or not. A guard installed on builtins.__import__ observes the import whether or not the module is already in sys.modules. Eviction bought nothing and cost the suite.",
+      "repair": "Evict only project-local modules (pure Python, no extension state), so a runtime module's own top-level imports re-execute under the guard; leave every third-party module cached. Restore the evicted local modules in a finally block so a failed import leaves nothing partial behind.",
+      "positive_control_added": {
+        "test": "test_guard_catches_a_known_violator",
+        "reason": "Removing the eviction changes how detection works, so the two boundary tests could have gone green by ceasing to detect anything. The control imports audit_semantic_integrity_r9, which genuinely imports flavor_m2_r1, and requires the guard to report it. If the guard stops firing, this test fails and says the other two cannot be trusted.",
+        "state": "PASSING"
+      },
+      "verification": {
+        "before_repair_full_suite": "365 tests, 6 errors, 13 skipped",
+        "after_repair_full_suite": "366 tests, 0 errors, 13 skipped",
+        "command": "cd db/tests && python3 -m unittest discover -s . -p 'test_*.py'",
+        "isolation_check": "test_runtime_boundary_round2 followed by the four affected modules in one process: 22 tests, OK"
+      },
+      "process_finding": {
+        "cause": "The commit was made after running only the two new test modules, not the full suite. A test that damages interpreter state is invisible to a per-module run by construction.",
+        "standing_rule_adopted": "A test module that mutates interpreter-global state (sys.modules, builtins, sys.path, environment, working directory) must restore it in a finally block, and must be verified by running the full suite in one process, never module by module.",
+        "relation_to_owner_instruction": "Owner's standing rule is that scripts producing the same broken results after a push are landmines. This was that failure mode inside the test layer rather than the pipeline layer."
+      }
+    }
+  ]
 }
