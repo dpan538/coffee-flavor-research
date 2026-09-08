@@ -96,13 +96,30 @@ work assumed. See §8 on the epistemic status of that earlier assumption.
 
 ## 3. Output
 
+Budget at class granularity, superseding the earlier 3 main + 5 secondary:
+
 ```text
-3 main
-5 secondary
+main              <= 3   specific descriptors with direct evidence OR relation-edge support
+secondary         <= 2   same-dimension, lower confidence, ONLY with explicit relation evidence
+overall_profile   <= 3   supported directions
+comparison pool   <= 8   and usually fewer
 ```
 
-Superseding V0's 5 primary + 3 secondary. The main count aligns with the three items Q6
-asks the user to select.
+The earlier 3 + 5 budget was set against 59 distinguishable descriptors. Spectral analysis
+of the frozen registry showed the 59 named descriptors collapse into 11 equivalence classes,
+because 57 of 59 carry exactly one support dimension. Emitting 8 of 11 classes would be
+enumeration rather than recommendation.
+
+**Secondary is currently structurally empty.** It requires explicit relation evidence and
+`descriptor_relation_edge_count` is 0. This is a stated consequence, not an oversight: 312
+of 632 measured occurrences carry a specificity status that explicitly requires a relation
+edge.
+
+Within-class discrimination is **not pursued at present**. The project's own
+`descriptors.ts` carries six continuous sensory-association attributes under CC BY 4.0 for
+24 descriptors, 14 of which overlap the registry, and on those 14 the attributes take
+equivalence classes from 7 of 14 to 14 of 14. That asset is retained as a future
+enhancement and is **not an output basis today**.
 
 Overall direction remains in a separate `overall_profile` field and is not mixed into main
 or secondary. This carries forward the owner-approved `OUT_SEPARATED` policy from R9
@@ -110,6 +127,22 @@ unchanged.
 
 The output must not be described as a true-flavor probability or as an accuracy figure.
 Scores remain uncalibrated decision scores.
+
+### Representation-progress measurement rule
+
+Spectral gap must never be reported alone. Any claim that the representation layer has
+improved must report, together:
+
+```text
+max_class_size            largest equivalence class
+equivalence_class_count   distinct feature rows
+per-column variance       no column may be constant
+```
+
+Progress is claimed only when all three improve. This rule exists because a tested
+attribute schema with ten constant-valued columns raised the spectral gap from 15.82 to
+145.18 through a rank-one artefact while `max_class_size` stayed at 23 and the
+participation ratio fell from 4.74 to 1.52.
 
 ## 4. Abstention
 

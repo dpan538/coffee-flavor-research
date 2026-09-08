@@ -1,0 +1,105 @@
+{
+  "contract_version": "round2.strict-evidence-mechanism-audit.v1",
+  "scope": "AGGREGATE_ONLY — per-case actual returns are WRITTEN_TO_OWNER_CONTROLLED_STORAGE (474 records) and were not accessible. Every figure below is derived from published aggregates.",
+  "budget_under_test": {
+    "main": "<=3, direct evidence OR relation-edge support",
+    "secondary": "<=2, same-dimension lower confidence, ONLY with explicit relation evidence",
+    "overall_profile": "<=3 supported directions",
+    "pool_cap": 8,
+    "supersedes": "PRODUCT_CONTRACT_V1 section 3, which set 3 main + 5 secondary"
+  },
+  "THE_BINDING_CONSTRAINT": {
+    "descriptor_relation_edge_count": 0,
+    "consequence": "secondary requires explicit relation evidence, and no relation edge exists. Under strict-evidence mode secondary is structurally EMPTY for every record, not merely small.",
+    "occurrences_that_require_a_relation_edge": 312,
+    "breakdown": {
+      "SPECIFIC_FROM_BROADER_OR_SIBLING_REQUIRES_RELATION_EDGE": 165,
+      "MIDDLE_FROM_DIRECTION_REQUIRES_RELATION_EDGE": 147
+    },
+    "share_of_all_occurrences": 0.4937
+  },
+  "Q1_main_empty_or_below_three": {
+    "eligible_pool_for_main": 152,
+    "records": 79,
+    "mean_direct_per_record": 1.924,
+    "records_with_at_least_three_strict_assertions": 19,
+    "records_below_three": 60,
+    "share_below_three": 0.7595,
+    "records_with_zero_direct": "NOT_COMPUTABLE from aggregates; requires the private per-case returns",
+    "finding": "At least 60 of 79 records (75.9%) cannot fill main to 3 under strict evidence. The count that would return an empty main is not derivable from published aggregates."
+  },
+  "Q2_metric_gap_change": {
+    "current_OUT_SEPARATED": {
+      "main": {
+        "ndcg_actual_positions": 0.2693755396045383,
+        "raw_gap": 0.6477687273739905,
+        "recall": 0.2966443887496519
+      },
+      "pool": {
+        "ndcg_actual_positions": 0.34678693803483773,
+        "raw_gap": 0.44773043720412137,
+        "recall": 0.48562378167641324
+      },
+      "mean_counts": {
+        "main_named": 5.0,
+        "main_profile_direction": 0.0,
+        "overall_profile": 2.5063291139240507,
+        "pool_named": 8.0,
+        "pool_profile_direction": 0.0,
+        "secondary_named": 3.0,
+        "secondary_profile_direction": 0.0
+      }
+    },
+    "current_OUT_MIXED": {
+      "main": {
+        "ndcg_actual_positions": 0.24441039035594903,
+        "raw_gap": 0.691781537176274,
+        "recall": 0.2664578111946533
+      },
+      "pool": {
+        "ndcg_actual_positions": 0.2938893584687231,
+        "raw_gap": 0.5457741576162629,
+        "recall": 0.39079643553327764
+      }
+    },
+    "strict_mode_projection": {
+      "mean_main_named_now": 5.0,
+      "mean_main_named_strict_upper_bound": 1.924,
+      "mean_secondary_named_now": 3.0,
+      "mean_secondary_named_strict": 0.0,
+      "mean_pool_named_now": 8.0,
+      "mean_pool_named_strict_upper_bound": 1.924
+    },
+    "interpretation": "Pool shrinks from a mean of 6.53 named items to at most 1.92. Recall and NDCG are computed over that pool, so both will fall. That is expected and is not a regression: the removed items were the ones carrying no direct trace.",
+    "caution": "Recomputing NDCG and recall under the strict pool requires the private per-case returns and was NOT done. The projection above is a bound on counts, not a measured metric."
+  },
+  "Q3_explicit_expression_retention": {
+    "current_rate": {
+      "eligible_occurrences": 152,
+      "rate": 1.0,
+      "retained_occurrences": 152
+    },
+    "strict_mode_rate": 1.0,
+    "reasoning": "Explicit user expressions are exactly the DIRECT_DESCRIPTOR_TRACE set. Strict-evidence mode admits that set and removes everything else, so retention is preserved by construction.",
+    "finding": "The strict budget loses no user-stated word. Everything it removes is material the user never stated and the system could not trace."
+  },
+  "what_strict_mode_actually_removes": {
+    "SUPPORTED_DIMENSION_COMPATIBILITY_ONLY": 324,
+    "NO_CURRENT_ANSWER_SEMANTIC_TRACE": 156,
+    "total_removed": 480,
+    "retained": 152,
+    "retained_share": 0.2405
+  },
+  "honest_assessment": {
+    "positive": "Strict mode retains 100% of user-stated words and removes only untraceable material. Under the new budget the system stops emitting specific descriptors it cannot license.",
+    "negative": "With relation edges at 0, secondary is permanently empty and 76% of records cannot fill main. The typical return becomes 1-2 named descriptors plus up to 3 directions.",
+    "the_real_question": "Whether a return of 1-2 named words plus directions is a product or an admission of insufficiency. That is a product judgement, not a metric one, and it has not been made."
+  },
+  "guards": {
+    "fit_count": 0,
+    "output_or_default_changed": false,
+    "records_admitted": 0,
+    "relation_edges_created": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
