@@ -1,0 +1,111 @@
+{
+  "contract_version": "round2.prototype-review.v1",
+  "subject": "Owner-supplied fuzzy decision-tree + Dempster-Shafer + FCA + spectral prototype",
+  "verdict": "ADOPT the epistemic framing and the DS layer. The spectral diagnostic the owner added is what proves they are necessary. Several concrete defects must be fixed first, and one structural finding invalidates part of the prototype's own ranking design.",
+  "THE_DECISIVE_FINDING": {
+    "id": "ROUND2-F2",
+    "severity": "CRITICAL",
+    "found_by": "Running the owner's proposed spectral analysis on the frozen registry.",
+    "measurement": {
+      "matrix": "D is 59 named descriptors x 9 support dimensions",
+      "eigenvalues_desc": [
+        24.059,
+        8.236,
+        6.941,
+        5.0,
+        5.0,
+        4.0,
+        3.764,
+        3.0,
+        1.0
+      ],
+      "spectral_gap": 15.823,
+      "lambda2_over_lambda1": 0.342,
+      "participation_ratio": 4.74,
+      "rank": 9,
+      "descriptors_in_exactly_one_dimension": 57,
+      "descriptors_in_two_dimensions": 2,
+      "distinct_row_vectors": 11
+    },
+    "finding": "D is effectively a PARTITION, not an overlap structure. 59 descriptors collapse into 11 distinguishable equivalence classes. 23 descriptors — apple, banana, bergamot, blackberry, blackcurrant, blueberry, cherry, grape and others — have identical rows because their only feature is membership in 'fruity'.",
+    "consequence": "The spectral gap is real, so the topology separates BETWEEN dimensions. But within a dimension it provides ZERO discrimination. Verified directly: seeding broad.citrus gives all 24 fruity members an activation of exactly 1.0, a single distinct value.",
+    "why_this_matters": "The product's task is to answer which fruity descriptor. That is not merely data-limited at the current topology, it is mathematically impossible: the representation contains no information separating lemon from cherry.",
+    "invalidates": "The operator's own A2 spreading-activation validation. Its reported precision of 1.0 measured same-dimension membership, which is trivially satisfied by a partition and says nothing about within-dimension ranking. Withdrawn as evidence that A2 serves the product task."
+  },
+  "review_adopt": [
+    {
+      "item": "Aleatoric vs epistemic distinction",
+      "assessment": "CORRECT AND LOAD-BEARING. Fuzzy scores have no 'unknown' state; they compress ignorance into a number. With 480 of 632 outputs carrying only shared-dimension support, the project's dominant uncertainty is epistemic, and modelling it as fuzzy is a category error."
+    },
+    {
+      "item": "Dempster-Shafer evidence layer",
+      "assessment": "ADOPT, and stronger than proposed. The spectral finding shows the topology genuinely cannot separate within-dimension members, so mass on the set {all fruity} is not a convenience — it is the only honest representation. Any scheme emitting three specific fruits is fabricating discrimination the representation does not contain."
+    },
+    {
+      "item": "Spectral analysis of D D^T",
+      "assessment": "ADOPT. It produced the finding above. Recommend it becomes a standing diagnostic: any change to the registry or relation graph should re-report the gap, participation ratio and distinct-row count."
+    },
+    {
+      "item": "FCA implications as hard constraints rather than rankings",
+      "assessment": "ADOPT IN PRINCIPLE, BLOCKED IN PRACTICE. The construction is sound and matches formal_concept_analysis_r9. But R12C measured only 5 ON_SUBJECT papers yielding 2 usable objects; a lattice over 2 objects is meaningless. Implement the interface, leave it unpopulated, and say so."
+    }
+  ],
+  "review_fix_before_adopting": [
+    {
+      "defect": "BudgetLimitNode(main_max=5, sec_max=3)",
+      "severity": "HIGH",
+      "problem": "Contradicts PRODUCT_CONTRACT_V1, which the owner set to 3 main + 5 secondary. This is the prototype-era 5+3 reappearing.",
+      "fix": "main_max=3, sec_max=5."
+    },
+    {
+      "defect": "diffuse_evidence accepts decay and max_hops and never uses them",
+      "severity": "HIGH",
+      "problem": "The body performs a single uniform share within each dimension. It is not the R9 weighted_evidence_propagation it claims to implement, and the two parameters are inert.",
+      "fix": "Either implement multi-hop decay or remove the parameters. Given the partition finding, multi-hop over D alone gains nothing: hop 2 returns to the same equivalence class."
+    },
+    {
+      "defect": "Uniform share makes every within-dimension member tie, and BudgetLimitNode breaks ties alphabetically",
+      "severity": "CRITICAL",
+      "problem": "sorted(key=lambda c: (-score, c)) means main becomes the alphabetically first members of the activated dimension. For fruity that is apple, banana, bergamot. The output would be alphabetical, presented as inference.",
+      "fix": "Do not rank within an equivalence class. Return the class."
+    },
+    {
+      "defect": "RedundancyPruningNode barely prunes",
+      "severity": "MEDIUM",
+      "problem": "It consults only dims[0], and the loop ends with an unconditional keep.add(cid) on every path that does not continue, so most candidates survive.",
+      "fix": "Rewrite against all dimensions of a concept, and make the keep decision exclusive."
+    },
+    {
+      "defect": "Dempster combination is defined but never invoked",
+      "severity": "MEDIUM",
+      "problem": "evidence_to_mass builds a single mass function and normalises. combine() is dead code in the described flow.",
+      "fix": "Either combine per-question mass functions explicitly, or drop combine() and document that a single joint assignment is used."
+    },
+    {
+      "defect": "Naive Dempster combination assumes independent sources",
+      "severity": "HIGH",
+      "problem": "Answers to Q0 through Q4 concern the same coffee and are correlated by it. Combining them as independent evidence overstates belief and, under conflict, produces the counter-intuitive results Zadeh's example is known for.",
+      "fix": "Use a conflict-aware rule, or combine only across genuinely separate sources such as user answer versus corpus prior, and state the independence assumption wherever it is made."
+    },
+    {
+      "defect": "FuzzyActivator depends on self.db set by a separate set_db() call",
+      "severity": "LOW",
+      "problem": "compute_dimension_activations dereferences self.db, which __init__ never sets. It works only because the reasoner calls set_db first.",
+      "fix": "Take db in __init__."
+    }
+  ],
+  "design_consequence_of_the_partition_finding": {
+    "statement": "At the current topology the honest output is SET-VALUED, not a ranked triple.",
+    "detail": "select_main choosing three specific descriptors is defensible only for descriptors carrying DIRECT evidence. For everything reached through dimension membership alone, the representation supports 'citrus-family, not further separable' and nothing narrower.",
+    "fits_existing_contract": "This is consistent with the standing abstention rule and with OUT_SEPARATED keeping broad direction in overall_profile rather than expanding it into subtypes.",
+    "what_would_change_it": "Relation edges. The 11 equivalence classes collapse to 59 distinguishable items only when within-dimension relations exist. That is the same owner-review bottleneck R12C priced at roughly 60 decisions, and it is now shown to be the binding constraint on the ARCHITECTURE, not only on data volume."
+  },
+  "guards": {
+    "fit_count": 0,
+    "records_admitted": 0,
+    "concepts_created": 0,
+    "relation_edges_created": 0,
+    "code_adopted_into_production": false,
+    "training_pause": "REMAINS_IN_EFFECT"
+  }
+}
