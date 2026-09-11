@@ -1,25 +1,24 @@
 {
- "contract_version": "r11.owner-architecture-decision.v1",
- "decision_required": "SUPERVISION_ARCHITECTURE_IF_DIRECT_NAMED_DESCRIPTOR_SUPPLY_REMAINS_SCARCE",
- "evidence_snapshot": {
-  "dimension_groups": 13,
-  "direct_named_groups": 6,
-  "direct_plus_mapped_named_groups": 6,
-  "ontology_records": 1644
- },
- "generated_at_utc": "2026-09-07T15:35:13Z",
- "options": {
-  "A": {
-   "condition": "Carry mapping uncertainty explicitly into abstention behaviour.",
-   "label": "NAMED_DESCRIPTOR_TARGET_WITH_MAPPED_SUPERVISION"
+  "contract_version": "r11.owner-architecture-decision.v1",
+  "decision_required": "SUPERVISION_ARCHITECTURE_IF_DIRECT_NAMED_DESCRIPTOR_SUPPLY_REMAINS_SCARCE",
+  "evidence_snapshot": {
+    "dimension_groups": 13,
+    "direct_named_groups": 6,
+    "direct_plus_mapped_named_groups": 6,
+    "ontology_records": 1644
   },
-  "B": {
-   "condition": "Named descriptors require later owner-approved relation edges.",
-   "label": "DIMENSION_TARGET_WITH_GOVERNED_ONTOLOGY_BRIDGE"
-  }
- },
- "selected_option": "A",
- "status": "DECIDED_2026_09_10_RECORDED_2026_09_11",
- "training_authorized": false,
- "decision_record": "round3/owner_decisions_round3.json#R3-D3"
+  "generated_at_utc": "2026-09-07T15:35:13Z",
+  "options": {
+    "A": {
+      "condition": "Carry mapping uncertainty explicitly into abstention behaviour.",
+      "label": "NAMED_DESCRIPTOR_TARGET_WITH_MAPPED_SUPERVISION"
+    },
+    "B": {
+      "condition": "Named descriptors require later owner-approved relation edges.",
+      "label": "DIMENSION_TARGET_WITH_GOVERNED_ONTOLOGY_BRIDGE"
+    }
+  },
+  "selected_option": null,
+  "status": "PENDING_OWNER_DECISION",
+  "training_authorized": false
 }

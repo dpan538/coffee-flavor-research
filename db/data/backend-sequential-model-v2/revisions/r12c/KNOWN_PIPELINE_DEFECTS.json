@@ -154,6 +154,31 @@
         "standing_rule_adopted": "A test module that mutates interpreter-global state (sys.modules, builtins, sys.path, environment, working directory) must restore it in a finally block, and must be verified by running the full suite in one process, never module by module.",
         "relation_to_owner_instruction": "Owner's standing rule is that scripts producing the same broken results after a push are landmines. This was that failure mode inside the test layer rather than the pipeline layer."
       }
+    },
+    {
+      "defect_id": "ROUND3-OP8",
+      "introduced_by": "operator",
+      "commit_that_introduced_it": "eb2b8c4",
+      "status": "REPAIRED_BEFORE_ANY_PUSH",
+      "what": "Recorded the R11 option-A decision by editing r11/owner_decision.json in place (selected_option, status). r11 is a sealed round; test_r11_corpus_expansion pins status=PENDING_OWNER_DECISION and selected_option=None. The commit was made without running the full suite.",
+      "two_rules_violated": [
+        "sealed-artefact discipline: later rounds layer decisions in their own artefacts, never edit a sealed one",
+        "ROUND2-OP1 standing rule: verify by full-suite run before committing"
+      ],
+      "how_caught": "Full suite run before the CoffeeReview ingestion commit: 1 failure, test_historical_rights_boundary_and_owner_decision.",
+      "repair": "git checkout eb2b8c4~1 -- r11/owner_decision.json; decision lives only in round3/owner_decisions_round3.json#R3-D3, which now states the sealed-artefact rule explicitly.",
+      "recorded_at_utc": "2026-09-11T07:20:09Z"
+    },
+    {
+      "defect_id": "ROUND3-OP9",
+      "introduced_by": "operator",
+      "commit_that_introduced_it": "b1cb0a2 (amended)",
+      "status": "REPAIRED_BY_AMEND_BEFORE_ANY_PUSH",
+      "what": "acquire-coffeereview-round3.write_tsv used csv.DictWriter's default \\r\\n line terminator. Every other family writes lineterminator=\"\\n\". .gitattributes (* text=auto) normalised the committed sidecar blob to LF, so COFFEEREVIEW_ROUND3_MANIFEST.json recorded sha256 40f521f9… for a file whose committed form hashes to 73e555c3…. The manifest is the family's reproducibility anchor; it pointed at bytes that do not exist in the repository.",
+      "how_caught": "git's 'CRLF will be replaced by LF' warning at commit time, then comparing the manifest hash against sha256 of `git cat-file -p HEAD:<sidecar>`.",
+      "repair": "lineterminator=\"\\n\"; sidecar, restricted ledger and manifest regenerated; verified CR count 0 and manifest sha256 == working file == blob; commit amended.",
+      "standing_rule": "Any writer of a committed artefact sets lineterminator explicitly, and a manifest hash is verified against the committed blob, not the working copy, before the commit is considered final.",
+      "recorded_at_utc": "2026-09-11T07:23:06Z"
     }
   ],
   "infrastructure_defects": [

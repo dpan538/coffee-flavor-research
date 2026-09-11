@@ -1,0 +1,57 @@
+{
+  "contract_version": "coffeereview-round3-manifest.v1",
+  "extension_batch_id": "coffeereview-round3-kaggle-parsed-20260911",
+  "generated_at_utc": "2026-09-11T07:23:10Z",
+  "elapsed_seconds": 4.1,
+  "source": {
+    "url": "https://www.kaggle.com/datasets/schmoyote/coffee-reviews-dataset",
+    "filename": "coffee_reviews_parsed.csv",
+    "family": "family.coffeereview_kaggle_parsed",
+    "route": "route.coffeereview.kaggle-parsed-2000-2025.blind-assessment",
+    "schema": "schema.coffeereview.parsed-review-csv.v1",
+    "publisher": "Coffee Review (coffeereview.com); Kaggle scrape (schmoyote)",
+    "language": "en",
+    "rights": "AFFIRMATIVE_WITH_CONDITIONS",
+    "rights_basis": "OWNER_MANUAL_REVIEW_APPROVAL_R3_D2_SCRAPED_EDITORIAL_INTERNAL_RESEARCH_ONLY",
+    "evidence_tier": "P2",
+    "collection_tier": "SILVER"
+  },
+  "owner_decision": "round3/owner_decisions_round3.json#R3-D2",
+  "source_file_sha256": "7a69ea813c19a5abcdf2b7637c37e06a16fa220a6b3ef48d9ab20c1d3c9cec4f",
+  "restricted_root_environment_variable": "COFFEE_FLAVOR_RESTRICTED_ROOT",
+  "restricted_family_dir": "coffee-flavor-round3-coffeereview",
+  "extraction": {
+    "rows": 8387,
+    "blind_assessment_empty": 11,
+    "no_list_sentence": 2196,
+    "espresso": 697,
+    "records_with_atoms": 6180
+  },
+  "raw_atom_count": 27011,
+  "deinflation": {
+    "assertion_losses": 7,
+    "record_losses": 0
+  },
+  "deinflated_assertion_count": 27004,
+  "effective_record_count": 6180,
+  "coffee_identity_count": 6180,
+  "descriptor_class_counts": {
+    "STRICT_FLAVOR": 26794,
+    "BROAD_SENSORY": 210
+  },
+  "restricted_assertion_ledger_sha256": "471e44ed5d3f84785a9e1b9983a5a8855a76ac78d6a41e86cc9508db5da94fbf",
+  "public_files": [
+    {
+      "path": "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
+      "sha256": "73e555c385a482cbbec62287b3f3b01fc8474777f85eacc59a059b1f597eb757",
+      "data_row_count": 27011
+    }
+  ],
+  "guards": {
+    "source_native_text_in_public_output": false,
+    "model_eligible_assertion_count": 0,
+    "records_admitted": 0,
+    "fit_count": 0,
+    "schema_changed": false
+  }
+}

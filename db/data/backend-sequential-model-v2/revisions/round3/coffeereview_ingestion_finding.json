@@ -1,0 +1,191 @@
+{
+  "contract_version": "round3.coffeereview-ingestion-finding.v1",
+  "generated_at_utc": "2026-09-11T07:16:01Z",
+  "family": "family.coffeereview_kaggle_parsed",
+  "route": "route.coffeereview.kaggle-parsed-2000-2025.blind-assessment",
+  "owner_decision": "round3/owner_decisions_round3.json#R3-D2",
+  "input": {
+    "file": "coffee_reviews_parsed.csv (restricted root, sources/coffeereview_kaggle)",
+    "sha256": "7a69ea813c19a5abcdf2b7637c37e06a16fa220a6b3ef48d9ab20c1d3c9cec4f",
+    "rows": 8387,
+    "years": "2000-2025 (387 undated)",
+    "supersedes": "coffee_analysis.csv (2,095 rows, 2017-2022) and simplified_coffee.csv are strict subsets by name+roaster (1,982 of 2,095 matched); coffee_review_raw_texts.csv is the unparsed twin. Only coffee_reviews_parsed.csv is ingested."
+  },
+  "yield_v1": {
+    "records_with_descriptor_sentence": 6180,
+    "share": 0.737,
+    "raw_atoms": 27011,
+    "deinflated_assertions": 27004,
+    "descriptor_class": {
+      "STRICT_FLAVOR": 26794,
+      "BROAD_SENSORY": 210
+    },
+    "espresso_evaluations": 697,
+    "registry_coverage_on_ingested_forms": {
+      "records_with_at_least_2_registry_words": 4670,
+      "registry_words_covered": "51/56",
+      "note": "Lower than the 6,396 / 56-of-56 pre-measurement because that scanned the whole Blind Assessment paragraph; ingestion takes only the extracted descriptor-list sentence and passes it through B2.normalize. The five words absent from list sentences (they occur in prose) return under parser v2."
+    },
+    "comparison": "licensed corpus 181 groups; unlicensed ACE ledger 1,420; this family alone 4,670 records with >=2 registry words"
+  },
+  "extraction_gap_by_era": {
+    "1990s": {
+      "reviews": 387,
+      "missed": 325,
+      "rate": 0.84,
+      "format": "free narrative prose (Davids' early style). Not honestly extractable by pattern; needs the semantic cleaner or is accepted as loss."
+    },
+    "2000s": {
+      "reviews": 1646,
+      "missed": 1181,
+      "rate": 0.72,
+      "format": "mostly prose; 179 carry 'Aroma:'-style labels; 961 have >=3 commas but many are prose commas."
+    },
+    "2010s": {
+      "reviews": 3397,
+      "missed": 622,
+      "rate": 0.18,
+      "format": "mixed: colon-introduced lists ('round aroma: toasted almond, cocoa-toned caramel...') and prose."
+    },
+    "2020s": {
+      "reviews": 2946,
+      "missed": 65,
+      "rate": 0.02,
+      "format": "ready-to-drink reviews use a bare list sentence without the 'in aroma and cup' anchor: 'Rhubarb, Pinot Noir grape, cocoa nib, honeysuckle, sandalwood.'"
+    }
+  },
+  "parser_v2_scope": {
+    "patterns_to_add": [
+      "bare list sentence: >=3 comma-separated short noun phrases, no finite verb, terminated by a period",
+      "colon-introduced list: '<noun> aroma|flavor|notes: X, Y, Z'"
+    ],
+    "must_not_add": "any pattern that admits prose; every v2 atom must be a list item, never a clause",
+    "measured_as": "a separate batch with its own parser_version stamp and a delta against v1, never a silent replacement"
+  },
+  "verification": {
+    "public_sidecar_text_leak_check": {
+      "phrases": [
+        "lemon blossom",
+        "dark chocolate",
+        "narcissus",
+        "cocoa nib"
+      ],
+      "public_hits": {
+        "lemon blossom": 0,
+        "dark chocolate": 0,
+        "narcissus": 10,
+        "cocoa nib": 0
+      },
+      "narcissus_resolution": "NOT A LEAK. All 10 hits are in source_url and source_locator, from the public review URL slug ethiopia-guji-narcissus-washed-g1 (a lot named Narcissus). Every family's sidecar publishes source_url. No descriptor text column is present in the public file."
+    },
+    "restricted_ledger_integrity": {
+      "csv_parsed_rows": 27011,
+      "public_rows": 27011,
+      "ids_match_1_to_1": true,
+      "rows_with_embedded_newlines": 19,
+      "note": "wc -l overcounts by 38 because quoted newlines span lines; the file parses cleanly."
+    },
+    "schema_parity_with_coe_sidecars": {
+      "columns": 45,
+      "header_set_equal": true,
+      "added_for_parity": {
+        "acquisition_cursor": "csv:<file>#row=N",
+        "frozen_snapshot_version": "NA_NOT_A_COE_CONTINUATION",
+        "frozen_snapshot_member": false
+      }
+    }
+  },
+  "vocabulary_signal": {
+    "distinct_provisional_forms": 3707,
+    "forms_with_support_at_least_20": 195,
+    "top_non_registry_forms": [
+      [
+        "sandalwood",
+        414
+      ],
+      [
+        "magnolia",
+        315
+      ],
+      [
+        "narcissus",
+        315
+      ],
+      [
+        "apricot",
+        288
+      ],
+      [
+        "oak",
+        270
+      ],
+      [
+        "date",
+        264
+      ],
+      [
+        "honeysuckle",
+        247
+      ],
+      [
+        "fresh-cut fir",
+        239
+      ],
+      [
+        "maple syrup",
+        232
+      ],
+      [
+        "agave syrup",
+        229
+      ],
+      [
+        "tangerine zest",
+        219
+      ],
+      [
+        "lilac",
+        213
+      ],
+      [
+        "lavender",
+        177
+      ],
+      [
+        "marjoram",
+        174
+      ],
+      [
+        "freesia-like flowers",
+        167
+      ]
+    ],
+    "reading": "Direct gap-register material. Florals (magnolia, narcissus, honeysuckle, lilac, lavender, freesia) and woods (sandalwood, oak, fir) will mostly map to existing dimensions; apricot, date, maple/agave syrup, tangerine zest are candidate new specific concepts. 'narcissus 315' here is the descriptor form, distinct from the URL-slug coffee name."
+  },
+  "next_steps": [
+    {
+      "id": "CR-1",
+      "task": "Wire family.coffeereview_kaggle_parsed into descriptor-pipeline.py so it flows into SEMANTIC_CLEANING_V2 -> ONTOLOGY_GAP_REGISTER like the CoE families.",
+      "blocking": "Phase 1 mapping cannot use this family until this is done."
+    },
+    {
+      "id": "CR-2",
+      "task": "Parser v2 with the two list patterns; report delta vs v1 by era."
+    },
+    {
+      "id": "CR-3",
+      "task": "evidence_tier P2 / collection_tier SILVER were operator judgements (professional panel, single-organisation editorial cupping). Owner may raise to P1/GOLD."
+    },
+    {
+      "id": "CR-4",
+      "task": "Migrate the remaining 12 restricted-root defaults in db/scripts from /private/tmp to COFFEE_FLAVOR_RESTRICTED_ROOT (F18 required fix); this script already honours it."
+    }
+  ],
+  "guards": {
+    "source_native_text_in_public_output": false,
+    "model_eligible_assertion_count": 0,
+    "records_admitted": 0,
+    "fit_count": 0,
+    "schema_changed": false
+  }
+}

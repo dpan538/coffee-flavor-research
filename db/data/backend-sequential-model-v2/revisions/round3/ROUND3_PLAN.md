@@ -1,6 +1,6 @@
 # Round 3 Plan — Full Research and Mapping
 
-**Status:** DRAFT for owner review. Nothing in this plan is executed until Phase 0 is decided.
+**Status:** ACTIVE. Phase 0 decided 2026-09-11 (R3-D1..D3 in `owner_decisions_round3.json`): restricted root approved; posture is per-dataset owner approval after manual review; option A recorded. Phase 2 has begun: CoffeeReview parser v1 ingested (`coffeereview_ingestion_finding.json`).
 **Written:** 2026-09-11, on the owner's redirection: the project leaves the fall-recruitment
 timeline and becomes a polish-first personal research project. "We absolutely need more data
 or corpus support."
@@ -113,7 +113,8 @@ all three, per the contract's representation-progress rule. Never spectral gap a
 
 ### Phase 2 — New source intake (conditional on Phase 0)
 
-- RoasterDB and CoffeeReview: assess, then ingest through the **existing** cleaning pipeline
+- CoffeeReview: **INGESTED v1** — `acquire-coffeereview-round3.py`, 8,387 reviews → 6,180 with a descriptor sentence → 27,011 atoms; 4,670 records carry ≥2 registry words (26x the licensed corpus). Next: wire into `descriptor-pipeline.py` (CR-1), parser v2 for the two unanchored list styles (CR-2).
+- RoasterDB: not yet supplied by the owner; assess when it is. Both go through the **existing** cleaning pipeline
   (`SEMANTIC_CLEANING_V2` → `ONTOLOGY_CONSOLIDATION` → gap register). No new pipeline.
 - OpenAIRE and Semantic Scholar: G1-5 — resolve licences for the novel DOIs, apply
   `relevant()`, and report *would-be-captured*, not *novel*. Both need a real `mailto`.

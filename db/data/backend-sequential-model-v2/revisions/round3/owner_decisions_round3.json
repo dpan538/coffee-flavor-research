@@ -59,7 +59,8 @@
       "id": "R3-D3",
       "subject": "R11 supervision architecture (D15)",
       "decision": "OPTION A — NAMED_DESCRIPTOR_TARGET_WITH_MAPPED_SUPERVISION",
-      "basis": "Owner: 可以用A (2026-09-10). Recorded here; r11/owner_decision.json to be updated in the same commit."
+      "basis": "Owner: 可以用A (2026-09-10).",
+      "sealed_artifact_rule": "r11/owner_decision.json is a SEALED R11 artefact and is left exactly as R11 wrote it (status PENDING_OWNER_DECISION, selected_option null, training_authorized false); test_r11_corpus_expansion pins those values. Later rounds LAYER decisions in their own artefacts; this entry is the sole record of the decision. An earlier commit (eb2b8c4) edited the sealed file in place; that edit was reverted."
     }
   ],
   "guards": {
