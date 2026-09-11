@@ -1,0 +1,245 @@
+{
+  "contract_version": "round2.gate1-acquisition-space.v3",
+  "generated_at_utc": "2026-09-08T13:51:12Z",
+  "gate": "Owner gate 1 — no remaining acquisition space, so research data can be frozen.",
+  "status": "NOT CLOSED, and the reason changed. The dedup measurement moved the incumbent ceiling DOWN (6000-7500 gross -> roughly 4300-4700 unique against 4031 held). But two keyless sources never assessed before, OpenAIRE and Semantic Scholar, show 50-65% novelty against the held set, so acquisition space is NOT demonstrably exhausted. Their real yield is unknown because neither exposes a licence at discovery and the measured licence-resolution rate elsewhere is 23%.",
+  "correction_to_capture_ceiling_finding": {
+    "its_headline": "The binding constraint is not effort, sources or engineering. Most coffee sensory literature is not openly licensed.",
+    "what_the_manifest_actually_records": {
+      "records_considered": 55574,
+      "rejected_relevance": 51515,
+      "rejected_licence_not_allowed": 37,
+      "rejected_no_derivatives": 3,
+      "capture_rate_of_considered": 0.0723
+    },
+    "finding": "Licence rejected 37 records out of 55,574 considered. It was not the binding constraint at capture time. Relevance rejected 51,515.",
+    "why_the_headline_is_unfalsifiable_from_this_data": "Licence filtering happens INSIDE the query — Europe PMC carries a LICENSE: clause, OpenAlex a best_oa_location.license filter — so non-open literature was never returned and cannot be counted either way from this manifest. The claim may still be true; it is simply not evidenced here.",
+    "checked_and_cleared": "relevant() is the F3-repaired version inspecting title AND abstract over 39 topic tokens, and the Europe PMC URL does carry resultType=core, so abstracts were genuinely fetched. The 92.7% relevance rejection is legitimate filtering, dominated by OpenAlex fuzzy full-text matches."
+  },
+  "was_the_capture_exhausted_or_capped": {
+    "per_source_cap": 2800,
+    "openalex_captured": 2612,
+    "verdict": "OpenAlex stopped BELOW its cap, so it exhausted its query set rather than being truncated.",
+    "but": "It exhausted FIVE topic searches. Europe PMC exhausted six queries. That is a ceiling on the query set, not on the literature.",
+    "cross_source_overlap_measured": {
+      "union": 3943,
+      "sum_of_parts": 3943,
+      "pairwise_intersections": 0,
+      "explanation": "Zero overlap is real at the DOI string level and is not an artefact of dedup — the capture script contains no dedup logic. It arises from query design: the Europe PMC query ran a broad subject clause against a biomedical index and returned caffeine-and-health papers, while OpenAlex ran sensory-specific searches against a general index. The sets are disjoint because they asked different questions, not because the sources are independent."
+    }
+  },
+  "does_remaining_headroom_serve_the_selected_architecture": {
+    "why_it_matters": "Option A targets named descriptors, so only specific-word supervision counts.",
+    "measured_on_the_300_candidate_sample": {
+      "candidates_yielding_any_group": 12,
+      "groups_by_class": {
+        "OFF_SUBJECT_named": 86,
+        "ON_SUBJECT_named": 19,
+        "ON_SUBJECT_no_named": 3,
+        "REVIEW_not_primary": 5
+      },
+      "on_subject_AND_named": 19,
+      "share_of_reported_groups": 0.168,
+      "rate_per_candidate": 0.0633,
+      "concentration_warning": "Those 19 groups came from THREE candidates, one contributing 11."
+    },
+    "extrapolation_with_honest_intervals": {
+      "candidate_yield_rate": "3/300 = 0.0100, Wilson 95% CI [0.0034, 0.0290]",
+      "groups_per_yielding_candidate": 6.33,
+      "if_2000_more_candidates": {
+        "point": 127,
+        "ci_95": [
+          43,
+          367
+        ]
+      },
+      "if_3500_more_candidates": {
+        "point": 222,
+        "ci_95": [
+          76,
+          642
+        ]
+      },
+      "comparison": "The licensed ledger holds 181 groups today.",
+      "reading": "The point estimate is comparable to the entire existing corpus, so the literature is NOT obviously exhausted for option A. But the interval spans an order of magnitude because it rests on three candidates, so it cannot be planned on."
+    },
+    "operator_correction": "An earlier turn said literature capture buys 'mostly the wrong granularity' for option A. That was too strong. It buys specific-word groups at 0.063 per candidate — a low rate, not a zero one."
+  },
+  "source_capability_audit_already_on_record": {
+    "source": "db/scripts/acquire_targeted_r11.py capability_receipts",
+    "SCIELO_OAI_PMH": "METADATA_ENDPOINT_NO_BOUNDED_KEYWORD_QUERY; claims multilingual coverage via DOAJ",
+    "CORE": "BLOCKED_API_KEY_REQUIRED at R11; resolved in round 2, 121 captured at 23% licence resolution",
+    "UNPAYWALL": "NOT_CALLED_CONTACT_EMAIL_NOT_PROVIDED — trivially unblockable, but it is a DOI-to-OA resolver, not a keyword index, so it would improve CORE's 23% resolution rate and add NO discovery",
+    "J_STAGE": "METADATA_ONLY_NO_PER_ITEM_LICENSE_CLEAN_FULLTEXT_ROUTE; round 2 measured 2 captured from 24,274 hits",
+    "REDALYC_AJOL": "COVERED_BY_DOAJ",
+    "never_referenced_anywhere_in_the_project": [
+      "BASE",
+      "OpenAIRE",
+      "Semantic Scholar / S2ORC",
+      "PubAg"
+    ]
+  },
+  "operator_defect_this_round": {
+    "id": "ROUND2-OP6",
+    "what": "The first version of probe_query_headroom_round2.py caught every exception and returned None, so a run in which OpenAlex 429'd every request reported pool 0 and novelty 0 for all 25 terms — including five incumbent controls known to have yielded 2,612 records.",
+    "why_it_was_caught": "The probe included those five as a control group. Without them the all-zero result would have read as 'no headroom exists' and would have closed gate 1 on a false negative.",
+    "irony_noted": "This is the exact defect the capture script's own docstring criticises in R10's acquisition, reintroduced by the operator.",
+    "cause_of_the_429s": "The operator ran the probe concurrently with the ext capture, which also hits OpenAlex.",
+    "repair": "Failures are now reported per request; a control_check block marks the whole run INSTRUMENT_FAILED_RESULTS_UNUSABLE when the controls come back empty; request pacing is configurable.",
+    "status": "REPAIRED_RERUN_PENDING",
+    "collateral_damage": {
+      "what": "The concurrent probe 429'd the extended-source capture's OpenAlex multilingual harvest, all 18 requests, so that family returned 0 instead of its smoke-tested 134.",
+      "cost": "61 minutes of capture with one of four families lost.",
+      "fixed_by": "Re-measuring it alone, with pacing, in the repaired probe."
+    }
+  },
+  "what_remains_to_close_this_gate": [
+    {
+      "id": "G1-1",
+      "task": "Extended-source capture and DOI overlap.",
+      "state": "DONE — 88 net new, 23.9% novelty, ceiling revised down"
+    },
+    {
+      "id": "G1-4",
+      "task": "Assess BASE, OpenAIRE, Semantic Scholar, PubAg.",
+      "state": "DONE — two unusable with receipts, two novel but licence-unresolved"
+    },
+    {
+      "id": "G1-2",
+      "task": "OpenAlex query-headroom probe.",
+      "state": "BLOCKED — killed after 11 minutes of sustained 429s. Retry after setting a real mailto (F17)."
+    },
+    {
+      "id": "G1-5",
+      "task": "Resolve licences for a sample of the OpenAIRE and Semantic Scholar novel DOIs and apply relevant(), converting 'novel DOI' into 'would actually be captured'. This is the measurement that decides whether the 50-65% novelty is real headroom.",
+      "state": "PENDING — needs OpenAlex, so it waits on F17"
+    },
+    {
+      "id": "G1-6",
+      "task": "Decide whether to pursue OpenAIRE and Semantic Scholar at all, given that neither exposes a licence and every record would need resolution at roughly 23%.",
+      "state": "OWNER"
+    }
+  ],
+  "guards": {
+    "records_admitted": 0,
+    "corpus_written": false,
+    "fit_count": 0,
+    "training_pause": "REMAINS_IN_EFFECT"
+  },
+  "THE_MEASUREMENT_THAT_WAS_MISSING": {
+    "what_capture_ceiling_finding_flagged": "This is BEFORE cross-family DOI deduplication. OpenAlex aggregates Crossref, PMC and DOAJ; CORE aggregates repositories that also feed OpenAlex. Unique yield will be lower, possibly materially lower. Not yet measured.",
+    "now_measured": true,
+    "extended_source_run": {
+      "captured": 382,
+      "unique_dois": 368,
+      "elapsed_seconds": 3684.3,
+      "by_source": {
+        "DOAJ": 289,
+        "CORE": 93,
+        "OPENALEX_MULTILINGUAL": 0,
+        "JSTAGE": 0
+      },
+      "rejected_licence_unresolved": 11781,
+      "note": "For these families licence RESOLUTION is the binding constraint, unlike the incumbents where relevance dominated. J-Stage completed 400 requests and captured 0, consistent with the earlier finding of 2 from 24,274 hits."
+    },
+    "overlap_against_the_3943_incumbent_dois": {
+      "DOAJ": {
+        "unique": 276,
+        "already_held": 206,
+        "new": 70,
+        "novelty": 0.254
+      },
+      "CORE": {
+        "unique": 93,
+        "already_held": 75,
+        "new": 18,
+        "novelty": 0.194
+      },
+      "total": {
+        "unique": 368,
+        "already_held": 280,
+        "new": 88,
+        "novelty": 0.239
+      },
+      "between_extended_sources": {
+        "CORE_and_DOAJ": 1
+      }
+    },
+    "verdict": "76% of what the additional families return is already held. The ext module's own docstring claimed these populations 'do not substantially overlap the incumbents'; that claim was never measured and is refuted. The docstring has been corrected in place.",
+    "corpus_total_unique_dois": 4031,
+    "revised_ceiling": {
+      "previous_estimate": "6000-7500 gross, explicitly before dedup",
+      "why_it_overstated": "It treated DOAJ's 500-670 and CORE's 1000-2000 as largely additive. At 24% novelty they are not.",
+      "revised": "roughly 4300-4700 unique, assuming the remaining DOAJ and CORE pools novel at the same 24%",
+      "against_owner_target": "The 15000-20000 target is 3x to 4x above this, and the earlier 6000-7500 figure was itself about 1.5x too high."
+    }
+  },
+  "G1_4_unassessed_sources": {
+    "artifact": "unassessed_source_probe.json",
+    "receipts": {
+      "OPENAIRE": {
+        "reachable": true,
+        "auth": "NONE_REQUIRED",
+        "pool_for_coffee_sensory": 3126,
+        "sampled": 121,
+        "not_already_held": 61,
+        "novelty": 0.5041,
+        "licence_at_discovery": "access-level tokens only (OPEN / CLOSED / RESTRICTED / cc-by), not a per-item licence identifier",
+        "verdict": "REACHABLE_AND_NOVEL_BUT_LICENCE_UNRESOLVED_AT_DISCOVERY"
+      },
+      "SEMANTIC_SCHOLAR": {
+        "reachable": "PARTIAL",
+        "auth": "NONE_REQUIRED_BUT_RATE_LIMITED",
+        "pool_for_coffee_sensory": 6544,
+        "sampled": 95,
+        "not_already_held": 62,
+        "novelty": 0.6526,
+        "licence_at_discovery": "openAccessPdf flag only, no licence field",
+        "verdict": "REACHABLE_AND_NOVEL_BUT_LICENCE_UNRESOLVED_AT_DISCOVERY"
+      },
+      "BASE": {
+        "reachable": false,
+        "auth": "REGISTRATION_REQUIRED_IP_AND_USER_AGENT_MUST_BE_WHITELISTED",
+        "verbatim": "{\"error\": \"Access denied for IP address ... and user agent ...\"}",
+        "note": "Answers HTTP 200 with an error object, so a naive probe records it as reachable with an empty pool.",
+        "verdict": "UNUSABLE_WITHOUT_REGISTRATION"
+      },
+      "PUBAG": {
+        "reachable": false,
+        "auth": "NO_RECORD_API",
+        "detail": "The documented api.nal.usda.gov/pubag/rest path returns 404. The public site answers but serves an Ex Libris Primo HTML interface, not a licence-bearing record API.",
+        "verdict": "UNUSABLE_NO_RECORD_API"
+      }
+    },
+    "operator_defect_caught_before_reporting": {
+      "id": "ROUND2-OP7",
+      "what": "The first OpenAIRE measurement reported 444 DOIs sampled and 78.2% novelty. The extractor scanned each record for any \"10.*\" string, which also matched the DOIs of references and related works: 186 such strings for 50 records against 48 record-own DOIs.",
+      "inflation": "about 3.7x",
+      "how_caught": "The arithmetic did not close — 3 queries at size 50 cannot yield 444 distinct records — so the sample was inspected before the figure was reported.",
+      "corrected": {
+        "sampled": 121,
+        "not_already_held": 61,
+        "novelty": 0.5041
+      },
+      "repair": "The extractor now takes only the record's own doi pid."
+    }
+  },
+  "CRITICAL_CAVEAT_ON_NOVELTY": {
+    "problem": "Novelty is measured against the 4,031 DOIs HELD, and the held set is a licence-filtered slice. The incumbent capture considered 55,574 records and kept 4,019, rejecting 51,515 on relevance. A DOI absent from the held set may well be one already considered and rejected.",
+    "can_it_be_tested": "Not from the stored artefacts. capture_manifest.json records rejected_relevance as an integer only; no rejected DOI was ever saved.",
+    "process_defect": {
+      "id": "ROUND2-F16",
+      "what": "The capture pipeline discards rejected record identifiers, keeping only counts. 'Never seen' and 'seen and rejected' therefore cannot be distinguished, which is exactly the question a ceiling claim needs to answer.",
+      "recommendation": "Persist rejected DOIs with their rejection reason in any future capture. The cost is one column; the benefit is that exhaustion becomes measurable."
+    },
+    "consequence": "The 50-65% novelty figures are an UPPER BOUND on real headroom, not an estimate of it."
+  },
+  "OPENALEX_RATE_LIMIT_FINDING": {
+    "id": "ROUND2-F17",
+    "what": "All three capture scripts default to mailto=research@example.org, which is not a real address.",
+    "why_it_matters": "OpenAlex routes requests with a valid mailto into its polite pool, which carries substantially higher rate limits. Without one, every request this project has ever made went through the common pool.",
+    "observed": "Sustained 429s during this round, which destroyed the extended-source multilingual harvest (18 of 18 requests) and prevented the query-headroom probe from completing.",
+    "fix": "Set a real contact address before any further capture. It is a one-line change and it is the cheapest available improvement to capture throughput.",
+    "note": "This also resolves the R11 receipt for Unpaywall, which was NOT_CALLED_CONTACT_EMAIL_NOT_PROVIDED."
+  }
+}

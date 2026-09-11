@@ -1,0 +1,78 @@
+{
+  "contract_version": "round2.unassessed-source-probe.v1",
+  "generated_at_utc": "2026-09-08T13:49:18Z",
+  "gate_item": "G1-4",
+  "question": "Four discovery sources have no capability receipt anywhere in the project. Do they contain acquisition space the ceiling estimate has missed?",
+  "held_doi_count": 4030,
+  "receipts": [
+    {
+      "source_system": "OPENAIRE",
+      "reachable": true,
+      "auth": "NONE_REQUIRED",
+      "claimed_pool_for_subject": 3126,
+      "dois_sampled": 121,
+      "dois_not_already_held": 61,
+      "novelty_rate": 0.5041,
+      "licence_exposed_at_discovery": [
+        "CLOSED",
+        "OPEN",
+        "RESTRICTED",
+        "cc-by"
+      ],
+      "errors": [],
+      "assessment_note": "EU aggregator. Open API, no key. Rights appear as access-level tokens rather than a licence identifier, so per-item licence would still need resolving."
+    },
+    {
+      "source_system": "SEMANTIC_SCHOLAR",
+      "reachable": false,
+      "auth": "NONE_REQUIRED",
+      "claimed_pool_for_subject": 6544,
+      "dois_sampled": 95,
+      "dois_not_already_held": 62,
+      "novelty_rate": 0.6526,
+      "licence_exposed_at_discovery": "open_access_flag_only",
+      "errors": [
+        "coffee sensory:HTTPError:HTTP Error 429: ",
+        "coffee cupping quality:HTTPError:HTTP Error 429: "
+      ],
+      "assessment_note": "Open API, rate limited without a key. Exposes openAccessPdf but no licence field, so licence would have to be resolved elsewhere for every record."
+    },
+    {
+      "source_system": "BASE",
+      "reachable": true,
+      "auth": "REGISTRATION_REQUIRED_IP_AND_USER_AGENT_MUST_BE_WHITELISTED",
+      "claimed_pool_for_subject": 0,
+      "dois_sampled": 0,
+      "dois_not_already_held": 0,
+      "novelty_rate": null,
+      "licence_exposed_at_discovery": null,
+      "errors": [],
+      "assessment_note": "Requires IP registration for API access."
+    },
+    {
+      "source_system": "PUBAG",
+      "reachable": false,
+      "auth": "NO_RECORD_API_DOCUMENTED_REST_PATH_RETURNS_404_SITE_SERVES_PRIMO_HTML",
+      "claimed_pool_for_subject": 0,
+      "dois_sampled": 0,
+      "dois_not_already_held": 0,
+      "novelty_rate": null,
+      "licence_exposed_at_discovery": null,
+      "errors": [
+        "HTTPError:HTTP Error 404: Not Found"
+      ],
+      "assessment_note": "USDA NAL. Documented API requires a data.gov key."
+    }
+  ],
+  "guards": {
+    "records_captured": 0,
+    "records_admitted": 0,
+    "corpus_written": false,
+    "fit_count": 0
+  },
+  "limitations": [
+    "One page per term per source. Novelty is measured on a sample, not on a pool.",
+    "A DOI absent from the held set is new to the corpus. It is not thereby relevant, openly licensed, extractable, or of the granularity option A needs.",
+    "Sources demanding a key or registration are recorded as refused rather than assessed. That is a capability receipt, not a measurement of their contents."
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "contract_version": "round2.conversion-finding.v3",
+  "contract_version": "round2.conversion-finding.v4",
   "round": "ROUND2_CONVERSION",
-  "headline": "Groups per candidate improved roughly ninefold against R11. The extrapolated yield from the Europe PMC portion of the capture alone lands inside the range the power analysis requires.",
+  "headline": "CORRECTED. Groups per candidate improved roughly 1.8x against R11, not ninefold. The 113 groups in the sample were 80.5% off-subject: 22 on-subject, 86 off-subject, 5 reviews rather than primary data. On-subject yield is 0.073 groups per candidate. The extrapolation that appeared to reach the power threshold does not survive the correction.",
   "measurement": {
     "design": "Restricted to EUROPE_PMC-sourced candidates so retrieval-coverage loss and extraction conversion loss are measured separately rather than conflated. Uniform random sample, seed 20260908.",
     "population": 1221,
@@ -44,26 +44,36 @@
     "caveat": "R11 counted groups under a different and also defective definition. The comparison indicates direction, not a like-for-like ratio."
   },
   "against_the_power_requirement": {
-    "requirement": "Detecting the observed effect size of about 0.03 NDCG at 80% power needs roughly 350-800 groups, per the earlier estimate at SD 0.2-0.3.",
-    "standing_total": 217,
-    "extrapolated_from_epmc_portion_alone": [
-      265,
-      789
+    "requirement": "Detecting an observed effect of about 0.03 NDCG at 80% power needs roughly 350-800 groups. This is an EVALUATION power figure, not a training threshold.",
+    "measured_on_subject_rate": 0.0733,
+    "corrected_extrapolation_over_epmc_portion": [
+      75,
+      165
     ],
-    "assessment": "For the first time in this project the measured trajectory reaches the statistical threshold rather than falling two orders of magnitude short.",
-    "not_established": "This is supervision-capable volume, not admitted supervision.",
-    "OPERATOR_ERROR_CORRECTED": {
-      "error": "The operator presented 350-800 groups as the threshold that matters, and let it be read as an ANFIS training threshold. It is not.",
-      "what_350_800_actually_is": "An EVALUATION power figure: the sample needed to detect an observed effect of about 0.03 NDCG at 80% power in a paired comparison of two ranking systems. It answers whether A beats B, not whether a model can be fitted.",
-      "what_anfis_actually_needs": {
-        "reason": "ANFIS fits membership-function premise parameters and rule consequent parameters. Rule count grows as m^n for n inputs with m membership functions each, and every rule carries its own consequent parameters.",
-        "illustration": "A conservative 4 inputs x 3 membership functions is already 81 rules; with consequent parameters per rule the parameter count reaches the hundreds. At a common 5-10 samples per parameter this implies thousands of samples.",
-        "owner_position": "Even 250 as a floor is not safe. Recorded as correct.",
-        "status": "The specific requirement depends on the chosen architecture and has NOT been computed. No ANFIS architecture has been specified."
-      },
-      "revised_reading_of_the_265_789_range": "Adequate for EVALUATION. Not established as adequate for ANFIS training, and on the owner's assessment almost certainly not.",
-      "consequence": "The gap between evaluation-adequate and training-adequate volume is now the open question, and it is larger than any figure this project has previously targeted."
-    }
+    "assessment": "CORRECTED: the on-subject trajectory does NOT reach the power threshold from literature capture. The v3 range of 265-789 was computed on the uncorrected 0.377 rate, of which 80.5% was off-subject.",
+    "superseded_v3_block": {
+      "requirement": "Detecting the observed effect size of about 0.03 NDCG at 80% power needs roughly 350-800 groups, per the earlier estimate at SD 0.2-0.3.",
+      "standing_total": 217,
+      "extrapolated_from_epmc_portion_alone": [
+        265,
+        789
+      ],
+      "assessment": "For the first time in this project the measured trajectory reaches the statistical threshold rather than falling two orders of magnitude short.",
+      "not_established": "This is supervision-capable volume, not admitted supervision.",
+      "OPERATOR_ERROR_CORRECTED": {
+        "error": "The operator presented 350-800 groups as the threshold that matters, and let it be read as an ANFIS training threshold. It is not.",
+        "what_350_800_actually_is": "An EVALUATION power figure: the sample needed to detect an observed effect of about 0.03 NDCG at 80% power in a paired comparison of two ranking systems. It answers whether A beats B, not whether a model can be fitted.",
+        "what_anfis_actually_needs": {
+          "reason": "ANFIS fits membership-function premise parameters and rule consequent parameters. Rule count grows as m^n for n inputs with m membership functions each, and every rule carries its own consequent parameters.",
+          "illustration": "A conservative 4 inputs x 3 membership functions is already 81 rules; with consequent parameters per rule the parameter count reaches the hundreds. At a common 5-10 samples per parameter this implies thousands of samples.",
+          "owner_position": "Even 250 as a floor is not safe. Recorded as correct.",
+          "status": "The specific requirement depends on the chosen architecture and has NOT been computed. No ANFIS architecture has been specified."
+        },
+        "revised_reading_of_the_265_789_range": "Adequate for EVALUATION. Not established as adequate for ANFIS training, and on the owner's assessment almost certainly not.",
+        "consequence": "The gap between evaluation-adequate and training-adequate volume is now the open question, and it is larger than any figure this project has previously targeted."
+      }
+    },
+    "what_does_reach_it": "The licensed ledger cohort: 181 groups today, cross-validated three ways in data_ceiling_audit.json. Literature capture is not the path to volume."
   },
   "what_a_group_is_here": {
     "definition": "A distinct (DOI, surviving sample label) pair on a table that passed the repaired gates and carried at least two resolvable descriptor concepts.",
@@ -165,5 +175,16 @@
     },
     "named_share": 0.27,
     "significance": "The product task is named descriptors. Dimension-level supervision is a different type and does not serve it directly. This mirrors the T4-versus-T1 asymmetry R11 found and reinforces that the abundant material is dimensions, not names."
+  },
+  "HEADLINE_HISTORY": {
+    "v3_headline": "Groups per candidate improved roughly ninefold against R11. The extrapolated yield from the Europe PMC portion of the capture alone lands inside the range the power analysis requires.",
+    "why_replaced": "v3 carried a RETRACTION section, but its headline and against_the_power_requirement block still stated the withdrawn figure. A reader opening the file met the wrong number first and would have had to reach the eleventh key to find it withdrawn. Correcting only in an appendix is not correcting.",
+    "corrected_at_utc": "2026-09-08T12:26:34Z"
+  },
+  "granularity_finding_for_option_A": {
+    "why_this_matters": "The owner selected option A, NAMED_DESCRIPTOR_TARGET. Option A needs specific-word supervision.",
+    "literature_granularity": "r11/mapping_audit.json records 33 mapped assertions, all mapping_direction GENERALISATION, all specificity_grade BROAD, with guard specificity_increasing_mappings=0. This round's evidence_type finding reports dimension 67, sensory 27, broad/attribute 6 among concept hits.",
+    "conclusion": "Literature tables yield predominantly DIMENSION-level evidence. That serves option B, which was not selected. The licensed ledger, by contrast, is 100% specific-word data, which is exactly what option A needs.",
+    "implication_for_acquisition": "Further literature capture would buy mostly the wrong granularity for the selected architecture."
   }
 }

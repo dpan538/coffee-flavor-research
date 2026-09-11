@@ -4,8 +4,22 @@
 Dryad yields 3 records for this subject and is not a viable ongoing family.
 Zenodo is intermittent. Europe PMC and OpenAlex therefore carry ~94% of any
 large capture, which cannot satisfy the R11 concentration criterion of no
-family above 35%. This module adds three families with populations that do not
-substantially overlap the incumbents.
+family above 35%. This module adds three families.
+
+MEASURED AFTER THE FACT. This docstring originally claimed these families have
+populations "that do not substantially overlap the incumbents". That was never
+measured when it was written, and it is wrong. Comparing the 368 unique DOIs
+this module captured against the 3,943 the incumbent capture holds:
+
+    DOAJ    276 unique, 206 already held,  70 new   (25.4% novel)
+    CORE     93 unique,  75 already held,  18 new   (19.4% novel)
+    total   368 unique, 280 already held,  88 new   (23.9% novel)
+
+76% of what these families return is already in hand, which is what should have
+been expected: OpenAlex aggregates Crossref, PMC and DOAJ, and CORE aggregates
+repositories that also feed OpenAlex. The concentration problem this module was
+built to solve is real; these families do not solve it as cheaply as the
+original claim implied.
 
 SOURCES ADDED
 -------------

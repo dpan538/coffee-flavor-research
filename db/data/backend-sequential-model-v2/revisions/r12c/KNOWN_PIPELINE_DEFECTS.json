@@ -155,5 +155,19 @@
         "relation_to_owner_instruction": "Owner's standing rule is that scripts producing the same broken results after a push are landmines. This was that failure mode inside the test layer rather than the pipeline layer."
       }
     }
+  ],
+  "infrastructure_defects": [
+    {
+      "defect_id": "ROUND2-F18",
+      "severity": "CRITICAL",
+      "status": "REPAIRED_ROOT_CAUSE_OPEN",
+      "what": "The research working tree /private/tmp/coffee-flavor-round3m is a git worktree living under /private/tmp. macOS periodically removes files there. On 2026-09-10 00:00 it removed 1,262 tracked files (both 50K ledgers, the question-axis TSV, the rights matrix, README, LICENSE, the app tree) and the one-line .git pointer file, leaving the tree unusable and git unaware it was a repository.",
+      "what_was_NOT_lost": "All commits on research/round2-capture (5c923e4..e5b225d) — worktree commits live in the main repository's .git at /Users/jarlgiovanni/Desktop/Coffee_Flavor_Research, which is not under /tmp. Every deleted file was in the committed tree and was restored with git checkout. Uncommitted round-2/round-3 work survived because it had been written within the cleanup window.",
+      "detected_how": "evidence_reader_round2.load_partitions() returned 0 partitions during a CoffeeReview dataset assessment, producing an impossible figure (51 of 36 unreachable descriptors covered). Chasing that arithmetic found the missing file, then the missing .git.",
+      "repair": "Rewrote .git as 'gitdir: <main>/.git/worktrees/coffee-flavor-round3m'; restored only --deleted paths so the 2 modified and 7 untracked working files were untouched; full suite 398 OK afterwards.",
+      "root_cause_still_open": "The worktree is still under /private/tmp, as are 17 other Codex worktrees listed by git worktree list. The same cleanup will recur. Recommendation: git worktree move to a durable path outside /tmp; the owner decides where.",
+      "standing_rule": "Never place a working tree, cache, or artefact the project depends on under /tmp or /private/tmp. The scratchpad under /private/tmp/claude-501 is subject to the same policy and must hold nothing that is not also committed.",
+      "recorded_at_utc": "2026-09-11T06:35:23Z"
+    }
   ]
 }
