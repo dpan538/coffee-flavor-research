@@ -279,7 +279,15 @@ def main() -> int:
     validate_routes()
     _source, atoms = validate_50k()
     validate_s2_and_support()
-    validate_benchmark(atoms)
+    # The benchmark manifest is written by benchmark_v2 from the corpus the
+    # semantic layer was built on, which BATCH7_SEMANTIC_MANIFEST.json declares
+    # as source_ledger (77K since round 3). validate_50k() deliberately reads
+    # the sealed 50K ledgers for its own 50K assertions; the graph-derived
+    # checks below must use the declared corpus, not conflate the two.
+    semantic_manifest = document(CURRENT / "BATCH7_SEMANTIC_MANIFEST.json")
+    graph_ledger = semantic_manifest.get("source_ledger", "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv").replace("SOURCE_ASSERTION", "OUTPUT_ATOM")
+    graph_atoms = atoms if graph_ledger == "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv" else rows(CURRENT / graph_ledger)
+    validate_benchmark(graph_atoms)
     validate_boundaries_and_model_audit()
     validate_post50_if_present()
     before = sha(CURRENT / "SHA256SUMS")

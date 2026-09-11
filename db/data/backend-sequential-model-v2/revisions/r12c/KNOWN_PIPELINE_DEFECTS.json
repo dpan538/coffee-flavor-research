@@ -89,6 +89,37 @@
           "effect_if_rerun": "Rejects the project's own dimension vocabulary."
         }
       ]
+    },
+    {
+      "script": "db/scripts/generate-product-inference-v0.py",
+      "status": "OPEN_DIAGNOSED_NOT_REPAIRED (round3, CR-1b close-out)",
+      "defects": [
+        {
+          "id": "F19",
+          "defect": "The product layer's governed_semantic_relation_support is 0 for all 20 candidates at BOTH the 50K and the 77K checkpoint. build_semantic_counts resolves edge endpoints only through ONTOLOGY_CONSOLIDATION_V2.concept_cluster_id -> canonical_concept_ids, but the semantic builder emits canonical concepts as their own node id form (semantic-concept:sensory.<x>, node_kind EXISTING_CANONICAL_CONCEPT); the 90 canonical clusters never appear as edge endpoints. 63,684 edge endpoints of the sensory.* form are silently ignored.",
+          "status": "OPEN_DIAGNOSED_NOT_REPAIRED",
+          "introduced_by": "operator (generate-product-inference-v0.py, commit e4eced4)",
+          "script": "db/scripts/generate-product-inference-v0.py::build_semantic_counts",
+          "what": "The product layer's governed_semantic_relation_support is 0 for all 20 candidates at BOTH the 50K and the 77K checkpoint. build_semantic_counts resolves edge endpoints only through ONTOLOGY_CONSOLIDATION_V2.concept_cluster_id -> canonical_concept_ids, but the semantic builder emits canonical concepts as their own node id form (semantic-concept:sensory.<x>, node_kind EXISTING_CANONICAL_CONCEPT); the 90 canonical clusters never appear as edge endpoints. 63,684 edge endpoints of the sensory.* form are silently ignored.",
+          "evidence": {
+            "checked_at_utc": "2026-09-11T16:44:17Z",
+            "edges_touching_any_candidate_concept_via_cluster_join": {
+              "50K": 0,
+              "77K": 0
+            },
+            "canonical_clusters": 90,
+            "canonical_clusters_present_in_edges": 0,
+            "edge_endpoints_of_form_semantic-concept:sensory.*": 63684,
+            "committed_PRODUCT_CONCEPT_CANDIDATE.governed_semantic_relation_support": "0 for 20/20 since e4eced4"
+          },
+          "why_not_caught": "test-product-inference-v0.py asserts lineage hashes and governance invariants but never asserts that the semantic support signal is non-zero for any candidate; a dead join reads as 'no evidence', which the policy treats as legitimate.",
+          "consequence": "The semantic layer (121K -> 136K edges) has never reached the product ranking; governed_semantic_score_component is 0.000000 for every candidate. CR-1b therefore changed the product checkpoint only in lineage hashes (outputs byte-identical), which is not evidence that the 77K layer is irrelevant to the product — it is evidence the pipe is disconnected.",
+          "repair_rule": "Fix the join for the design defect (accept semantic-concept:sensory.* endpoints directly, keep the cluster route). Because the repair changes candidate scores in an owner-facing offline checkpoint (120 cases, 100-row review packet) it is a separate owner decision, measured before applied; not folded into CR-1b.",
+          "guard_to_add": "test-product-inference-v0.py: require sum(governed_semantic_relation_support) > 0 once repaired, and a positive control asserting a known canonical endpoint resolves.",
+          "recorded_at_utc": "2026-09-11T16:44:17Z",
+          "effect_if_rerun": "re-running the generator reproduces the dead join byte-for-byte; the defect is structural, not a drift."
+        }
+      ]
     }
   ],
   "shadow_only_repairs": {
@@ -190,6 +221,15 @@
       "repair": "Lowercase booleans in write_tsv; sidecar, restricted ledger and manifest regenerated; column literals verified against POST50K; manifest sha256 re-verified against the file.",
       "standing_rule": "A new writer of any committed artefact copies an existing writer's serialisation verbatim and is verified by running the artefact through its first downstream consumer before commit — not only by inspecting it.",
       "recorded_at_utc": "2026-09-11T11:17:11Z"
+    },
+    {
+      "defect_id": "ROUND3-OP11",
+      "introduced_by": "operator",
+      "status": "CAUGHT_BEFORE_REPORTING",
+      "what": "Acceptance check for CR-1b searched a count column (source_family_support) for a family name and read the inevitable 0 as 'zero clusters contain CoffeeReview'.",
+      "how_caught": "contradicted by +2,615 form nodes in the same output; column re-read (source_family_ids) showed 2,156 clusters.",
+      "standing_rule": "confirm a column's semantics before reporting a zero from it.",
+      "recorded_at_utc": "2026-09-11T12:55:12Z"
     }
   ],
   "infrastructure_defects": [

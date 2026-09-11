@@ -1,0 +1,88 @@
+{
+  "contract_version": "round3.cr1b-semantic-77k-finding.v1",
+  "generated_at_utc": "2026-09-11T12:55:12Z",
+  "scope": "CR-1b — the semantic layer rebuilt on the 77K checkpoint (owner-approved 2026-09-11).",
+  "design": {
+    "corpus_selector": "global --checkpoint {50k,77k}, default 77k. command_semantic and command_checkpoint branch on it; command_clean stays 50K (clean77k exists).",
+    "public_mode": "build_cleaned_77k gained the same cached fallback build_cleaned_50k has: when the CoffeeReview restricted ledger is not reachable, the committed CLEANED_77K_* ledgers are served under the FROZEN_77K_COUNT guard. Without this the semantic layer could only be rebuilt on the machine holding the text, and CI could not reproduce it.",
+    "manifest_stamps": "BATCH7_SEMANTIC_MANIFEST.json gains corpus_checkpoint and source_ledger; CURRENT_DATA_MANIFEST.json gains semantic_corpus_checkpoint, candidate_77k_snapshot, cleaned_77k_view and points canonical_current_* at the 77K ledgers. phase_status is left as the 50K/60K acquisition phase it names (test-current-descriptor-data pins it); the semantic corpus is stated as a separate fact."
+  },
+  "result": {
+    "source_assertions": 77038,
+    "output_atoms": 81175,
+    "semantic_relation_edges": {
+      "before": 121040,
+      "after": 136065
+    },
+    "cross_form_benchmark_cases": {
+      "before": 189,
+      "after": 257
+    },
+    "SEMANTIC_FORM_NODE": {
+      "before": 4092,
+      "after": 6707,
+      "containing_coffeereview": 2998
+    },
+    "ONTOLOGY_CONSOLIDATION_V2": {
+      "before": 3215,
+      "after": 5050,
+      "new_clusters": 1835,
+      "new_clusters_containing_coffeereview": 1835,
+      "clusters_containing_coffeereview": 2156,
+      "coffeereview_only": 1835,
+      "shared_with_other_families": 321,
+      "coffeereview_only_by_mapping_state": {
+        "GENUINE_ONTOLOGY_CANDIDATE": 1420,
+        "NON_DESCRIPTOR": 262,
+        "COMPOUND_OF_EXISTING_CONCEPTS": 80,
+        "UNRESOLVED": 57,
+        "DEFECT_CONCEPT_CANDIDATE": 16
+      },
+      "top_coffeereview_only_assertion_support": [
+        496,
+        343,
+        321,
+        247,
+        229,
+        223
+      ]
+    },
+    "determinism": "semantic re-run in public mode reproduced all 16 semantic/benchmark outputs byte-identically."
+  },
+  "stale_gate_audit_semantic_stage": {
+    "concept_clusters_line_22": "NOT a filter. normalization_authority != NO_GOVERNED_AUTHORITY only decides whether the authority string joins the cluster's set; atoms still count. 73% of CoffeeReview valid atoms are NO_GOVERNED_AUTHORITY (new forms) and clustered normally.",
+    "concept_cluster_id": "all 26,726 valid CoffeeReview atoms carry a cluster id; concept_clusters keys on it, so none fall out.",
+    "verdict": "no silent drop inside the semantic stage."
+  },
+  "operator_measurement_error": {
+    "id": "ROUND3-OP11",
+    "what": "First acceptance check searched for 'coffeereview' in source_family_support — a COUNT column — and reported 0 clusters containing the family, which would have read as a total silent drop.",
+    "caught_by": "the same call showed SEMANTIC_FORM_NODE +2,615 with 2,998 CoffeeReview nodes, which cannot coexist with zero clusters; the column was re-read (source_family_ids) before any conclusion was reported.",
+    "rule": "before reporting a zero, confirm the column semantics of the field being searched."
+  },
+  "artifact_lineage_finding": {
+    "the_real_stale_gate": "artefact-level, not a filter. The owner-facing review artefacts are produced by stages pinned to earlier checkpoints:",
+    "ONTOLOGY_GAP_REGISTER.tsv": "written by generate-batch3/batch4 from the 30K corpus (2,052 rows; unchanged by CR-1b)",
+    "CONCEPT_CLUSTER_V2.tsv": "written by generate-batch6-semantic-corpus.main from the 40K sidecars (2,853 rows; unchanged)",
+    "ONTOLOGY_CONSOLIDATION_V2.tsv": "written by command_semantic from the declared checkpoint — this IS the 77K cluster layer (5,050 rows)",
+    "schema": "CONSOLIDATION_V2 and CONCEPT_CLUSTER_V2 share an identical 30-column header. GAP_REGISTER = the same base + 7 B4 enrichment columns (support_band, review_priority_score, neighbor_cluster_ids, normalization_authorities, gold/silver/bronze_assertion_count, per-purpose rights_*).",
+    "consequence": "CoffeeReview's 1,835 clusters exist in CONSOLIDATION_V2 but not in the file named ONTOLOGY_GAP_REGISTER that the owner's review packet is cut from. Phase 1 must read the 77K consolidation, or the register must be re-derived from it."
+  },
+  "test_change": {
+    "file": "db/scripts/test-batch7-pipeline.py:282",
+    "what": "validate_benchmark() received the 50K atoms returned by validate_50k() and recomputed the union-find component graph from them, then compared to CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json, which benchmark_v2 now writes from 77K. The test conflated the sealed 50K checkpoint with the corpus the semantic layer is built on.",
+    "fix": "graph atoms are resolved from BATCH7_SEMANTIC_MANIFEST.json['source_ledger'] (falling back to the 50K atoms when absent); validate_50k() and its 50K assertions are untouched.",
+    "owner_rule_applied": "changed for the test's own design defect (a hard-coded corpus assumption), not to admit data; the 50K checks remain exactly as pinned."
+  },
+  "next": {
+    "CR-1b-ii": "derive the owner review surface from the 77K consolidation: apply B4.review_packet's review_states filter and the 7 enrichment columns to ONTOLOGY_CONSOLIDATION_V2 (or regenerate ONTOLOGY_GAP_REGISTER from it). Bounded: the enrichment logic exists in generate-batch4-cleaned-30k; it needs the corpus parameterised like command_semantic.",
+    "CR-1c": "purpose-rights matrix to the 77K families via batch6.purpose_rights; converge B4/batch6 rights tables.",
+    "CR-2": "parser v2 (bare list sentence, colon-introduced list), measured by era.",
+    "F19_repair": "fix build_semantic_counts to accept semantic-concept:sensory.* endpoints; measure the delta on the 120 cases and the 100-row owner packet before applying; add the non-zero guard."
+  },
+  "downstream_lineage_refresh": {
+    "trigger": "ci-verify stage PRODUCT_INFERENCE_V0 failed: 'lineage input hash drift: ONTOLOGY_CONSOLIDATION_V2.tsv' — the product checkpoint pins sha256 of the consolidation and edge ledgers.",
+    "action": "re-ran generate-product-inference-v0.py then generate-product-inference-v02.py in public mode (maintainer sequence). Only PRODUCT_INFERENCE_MANIFEST.json / PRODUCT_TASK_CONTRACT.json / SHA256SUMS (v0) and PRODUCT_INFERENCE_V0_2_MANIFEST.json (v0.2) changed — hash lines only. All product TSVs byte-identical.",
+    "why_byte_identical": "NOT because the 77K layer carries nothing for the product: defect F19 (KNOWN_PIPELINE_DEFECTS) — the product generator's edge→concept join never resolves canonical concepts, so semantic support is 0 for all 20 candidates at both checkpoints. Diagnosed here, not repaired (separate owner decision; changes the offline checkpoint's scores)."
+  }
+}

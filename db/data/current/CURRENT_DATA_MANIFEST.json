@@ -300,73 +300,75 @@
   },
   "batch7_cross_form_benchmark": {
     "contract_version": "batch7.cross-form-benchmark.v2",
-    "global_component_count": 7,
-    "held_out_family_shared_target_count": 265,
-    "largest_global_component_share": 0.997057,
+    "global_component_count": 339,
+    "held_out_family_shared_target_count": 417,
+    "largest_global_component_share": 0.942481,
     "leak_count": 0,
-    "median_held_out_form_test_group_count": 17,
+    "median_held_out_form_test_group_count": 19,
     "minimum_held_out_form_test_group_count": 3,
     "model_run": false,
-    "open_set_unseen_target_count": 2931,
-    "p50_component_size": 3,
-    "p95_component_size": 5760,
-    "p99_component_size": 5760,
+    "open_set_unseen_target_count": 4447,
+    "p50_component_size": 2,
+    "p95_component_size": 4,
+    "p99_component_size": 5,
     "preferred_held_out_form_test_group_count": 5,
     "primary_governed_fold_count": 89,
-    "primary_governed_target_count": 69,
-    "primary_governed_test_output_count": 15370,
-    "primary_governed_train_output_count": 10005,
+    "primary_governed_target_count": 73,
+    "primary_governed_test_output_count": 22489,
+    "primary_governed_train_output_count": 17485,
     "relation_authority_pass": true,
-    "review_required_fold_count": 100,
-    "review_required_target_count": 49,
-    "review_required_test_output_count": 3811,
+    "review_required_fold_count": 168,
+    "review_required_target_count": 68,
+    "review_required_test_output_count": 8618,
     "target_known_condition_pass": true
   },
   "batch7_semantic_layer": {
     "benchmark": {
       "contract_version": "batch7.cross-form-benchmark.v2",
-      "global_component_count": 7,
-      "held_out_family_shared_target_count": 265,
-      "largest_global_component_share": 0.997057,
+      "global_component_count": 339,
+      "held_out_family_shared_target_count": 417,
+      "largest_global_component_share": 0.942481,
       "leak_count": 0,
-      "median_held_out_form_test_group_count": 17,
+      "median_held_out_form_test_group_count": 19,
       "minimum_held_out_form_test_group_count": 3,
       "model_run": false,
-      "open_set_unseen_target_count": 2931,
-      "p50_component_size": 3,
-      "p95_component_size": 5760,
-      "p99_component_size": 5760,
+      "open_set_unseen_target_count": 4447,
+      "p50_component_size": 2,
+      "p95_component_size": 4,
+      "p99_component_size": 5,
       "preferred_held_out_form_test_group_count": 5,
       "primary_governed_fold_count": 89,
-      "primary_governed_target_count": 69,
-      "primary_governed_test_output_count": 15370,
-      "primary_governed_train_output_count": 10005,
+      "primary_governed_target_count": 73,
+      "primary_governed_test_output_count": 22489,
+      "primary_governed_train_output_count": 17485,
       "relation_authority_pass": true,
-      "review_required_fold_count": 100,
-      "review_required_target_count": 49,
-      "review_required_test_output_count": 3811,
+      "review_required_fold_count": 168,
+      "review_required_target_count": 68,
+      "review_required_test_output_count": 8618,
       "target_known_condition_pass": true
     },
-    "cleaned_output_atom_count": 52511,
+    "cleaned_output_atom_count": 81175,
     "contract_version": "batch7.semantic-layer.v1",
+    "corpus_checkpoint": "77k",
     "human_benchmark_completed_count": 0,
     "human_benchmark_packet_count": 500,
     "model_run": false,
-    "observational_context_relation_count": 118366,
+    "observational_context_relation_count": 131249,
     "owner_review_decision_count": 0,
     "owner_review_relation_cluster_count": 100,
-    "relation_level_support_row_count": 121040,
-    "relation_support_occurrence_count": 652676,
+    "relation_level_support_row_count": 136065,
+    "relation_support_occurrence_count": 763650,
     "s2_reference_source_count": 5,
     "s2_target_concept_coverage_count": 78,
     "s2_unique_relation_count": 108,
-    "s3_support_occurrence_count": 620850,
-    "s3_unique_relation_count": 120706,
+    "s3_support_occurrence_count": 717552,
+    "s3_unique_relation_count": 135729,
     "schema_changed": false,
-    "semantic_relation_count": 121040,
-    "source_assertion_count": 50034,
-    "unique_governed_relation_count": 334,
-    "unique_review_required_relation_count": 2340
+    "semantic_relation_count": 136065,
+    "source_assertion_count": 77038,
+    "source_ledger": "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv",
+    "unique_governed_relation_count": 336,
+    "unique_review_required_relation_count": 4480
   },
   "batch_id": "professional-descriptor-scaleup-batch2-20260829",
   "candidate_20k_snapshot_content_sha256": "c5f671ffba444a6372d014239914e52931d66b9c971a8c2421909f273cfd4067",
@@ -401,8 +403,33 @@
     "source_ledger_sha256": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4",
     "training_corpus_frozen": false
   },
-  "canonical_current_cleaned_output_ledger": "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
-  "canonical_current_source_assertion_ledger": "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
+  "candidate_77k_snapshot": {
+    "candidate_50k_snapshot_sha256": "d8a72ef4b27694178ce8721c61da88de44a455456ae762ac479b22e1df3a3f78",
+    "cleaner_changed": false,
+    "cleaner_contract_version": "batch4.semantic-cleaner.v2",
+    "coffeereview_identity_basis": "B2_ASSERTION_ID+SOURCE_ARTIFACT_SHA256+SOURCE_LOCATOR",
+    "coffeereview_identity_namespace": "assertion-b7-coffeereview",
+    "coffeereview_owner_decision": "round3/owner_decisions_round3.json#R3-D2",
+    "coffeereview_round3_manifest_sha256": "c101ab3901984d0cabcdab890865bf573e700a901531726b1f3ba7b3f60c7d12",
+    "contract_version": "candidate-77k-snapshot-manifest.v1",
+    "effective_record_count": 8008,
+    "immutable": true,
+    "model_eligible_assertion_count": 0,
+    "model_eligible_corpus_frozen": false,
+    "new_migration_count": 0,
+    "restricted_ledger_root_hash": "4970bb59d2fe91384785b52940f293903116c02acf57696928860343e9f5eeba",
+    "schema_changed": false,
+    "snapshot_content_sha256": "34f73b26cf8eea60ef957ec120772d22b8bad5f04069676d14d36d2fec53e272",
+    "snapshot_role": "IMMUTABLE_ACQUISITION_CHECKPOINT_NOT_TRAINING_CORPUS",
+    "snapshot_version": "professional-descriptor-candidate-v4-77k",
+    "source_assertion_count": 77038,
+    "source_family_count": 9,
+    "source_ledger": "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv",
+    "source_ledger_sha256": "a580a16f10d6c680e3efeffe280b70bfbe4dfc59ef308ab4222a56e584ea3587",
+    "training_corpus_frozen": false
+  },
+  "canonical_current_cleaned_output_ledger": "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv",
+  "canonical_current_source_assertion_ledger": "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv",
   "cleaned_40k_view_version": "professional-descriptor-cleaned-v2-40k",
   "cleaned_50k_view": {
     "candidate_50k_snapshot_sha256": "d8a72ef4b27694178ce8721c61da88de44a455456ae762ac479b22e1df3a3f78",
@@ -420,6 +447,23 @@
     "unresolved_source_assertion_count": 59,
     "valid_output_atom_count": 46587,
     "valid_source_assertion_count": 45813
+  },
+  "cleaned_77k_view": {
+    "candidate_77k_snapshot_sha256": "abe369defea419a5e3383a4947eb536a2d279a817ab02e60588f84fd91e1ecfe",
+    "cleaned_view_version": "professional-descriptor-cleaned-v2-77k",
+    "cleaner_version": "batch4.semantic-cleaner.v2",
+    "contract_version": "cleaned-77k-manifest.v1",
+    "model_run": false,
+    "non_descriptor_source_assertion_count": 298,
+    "output_atom_count": 81175,
+    "output_atom_ledger_sha256": "bf8a0379c346492a5ee3de0ab1ca5ca951a6a47ad0fc8f682c9f96caf7f42c6a",
+    "record_unique_output_atom_count": 66602,
+    "source_assertion_count": 77038,
+    "source_assertion_reconciliation_pass": true,
+    "source_ledger_sha256": "a580a16f10d6c680e3efeffe280b70bfbe4dfc59ef308ab4222a56e584ea3587",
+    "unresolved_source_assertion_count": 112,
+    "valid_output_atom_count": 73313,
+    "valid_source_assertion_count": 71869
   },
   "cleaner_contract_version": "batch4.semantic-cleaner.v2",
   "cross_encoder_run": false,
@@ -447,10 +491,10 @@
   "embedding_model_trained": false,
   "files": [
     {
-      "byte_count": 1716,
+      "byte_count": 1804,
       "data_row_count": "NA_NOT_TABULAR",
       "path": "BATCH7_SEMANTIC_MANIFEST.json",
-      "sha256": "f0ffe7f593c939a6975b95439e8cce7de3047eed9ef722095334df315b9e8e5d"
+      "sha256": "1432c2054843d4ee20870ebe1e604c753b3272f5f5594365ef459df5af956a12"
     },
     {
       "byte_count": 1278,
@@ -645,28 +689,28 @@
       "sha256": "ca3b053e68705ae2cfbb1733ee712781a93cb5b13dafa72a02942a007924bbb0"
     },
     {
-      "byte_count": 37568871,
-      "data_row_count": 73060,
+      "byte_count": 76427186,
+      "data_row_count": 147766,
       "path": "CROSS_FORM_BENCHMARK_CANDIDATE.tsv",
-      "sha256": "18b260e931319f2bb4311f2fa17d8451e96493f9cc86de74f583182cb4010900"
+      "sha256": "8a31faca0d9cb5359075dfab926eb3d3b4ccb1a7bce478a189aff293071dabec"
     },
     {
-      "byte_count": 39221,
-      "data_row_count": 189,
+      "byte_count": 53456,
+      "data_row_count": 257,
       "path": "CROSS_FORM_BENCHMARK_GROUP.tsv",
-      "sha256": "745c7d5b07f17b1dbe504fc80e317860dd8b49f0cb44f54cc64efb0445cfa93d"
+      "sha256": "05f8e1171b73086565ab6f32c72107f2fb06b320a1a98621f93783d9d6cbd809"
     },
     {
-      "byte_count": 10956,
-      "data_row_count": 189,
+      "byte_count": 14832,
+      "data_row_count": 257,
       "path": "CROSS_FORM_BENCHMARK_LEAKAGE_AUDIT.tsv",
-      "sha256": "1f3ef829987f469e3df4583e03cfae8db9e7b88d66e5f0b67766ffdd4f256b26"
+      "sha256": "18379d842deaf438481e0a6177f1547c5239c1e80676930f606e4116e99bfa64"
     },
     {
-      "byte_count": 858,
+      "byte_count": 854,
       "data_row_count": "NA_NOT_TABULAR",
       "path": "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
-      "sha256": "a6dfe65f3355fabfea513c353c667b1b157e22dfc11c2d185313f1fa6f12d649"
+      "sha256": "194cbb969a011a853fe20dd0f34929997325d72c1d73f26b25c71e7f3250ec77"
     },
     {
       "byte_count": 10141,
@@ -783,10 +827,10 @@
       "sha256": "da72ce459579379f4b2f7513a6ebcc2a37cb8e9f4254bee27e6f960e34a713ee"
     },
     {
-      "byte_count": 116670,
+      "byte_count": 116604,
       "data_row_count": 500,
       "path": "HUMAN_CROSS_FORM_BENCHMARK_TEMPLATE.tsv",
-      "sha256": "50e9c9233e005b4a882db3571c17f581e77d6d77051ad8212d476264720ed181"
+      "sha256": "3b6b1a1b88e8494c4075adf2e9e64c93f6ded60b2877b0b305642df82ba20720"
     },
     {
       "byte_count": 558402,
@@ -819,10 +863,10 @@
       "sha256": "ba1b34275aa1d624088e0519340dde29d783e1be35cfb7c8d504482f6c766a66"
     },
     {
-      "byte_count": 1497474,
-      "data_row_count": 3215,
+      "byte_count": 2486843,
+      "data_row_count": 5050,
       "path": "ONTOLOGY_CONSOLIDATION_V2.tsv",
-      "sha256": "874d913c94b7477c05c455694385e3cd46e260f9dc79b04644b29170f7eed3d0"
+      "sha256": "12e93eb78b14e17a8f8c3a0cdbd599b2bd1f4266624c6361ba282f92daedfa26"
     },
     {
       "byte_count": 1335494,
@@ -915,16 +959,16 @@
       "sha256": "c91476a7b800d3f08b28218545a6ae51397c74923f80cb90d9d86e3d66aa2a1b"
     },
     {
-      "byte_count": 417830,
-      "data_row_count": 3485,
+      "byte_count": 639865,
+      "data_row_count": 5320,
       "path": "SEMANTIC_CONCEPT_NODE.tsv",
-      "sha256": "e83200ed7d928a711d3030c247853cff166d9238a9cea73c5b0771586453789c"
+      "sha256": "60e0eb6a6e2edff54e2e87b7e650761455848f984b2a47e25ba9f32151769cd0"
     },
     {
-      "byte_count": 2693175,
-      "data_row_count": 4092,
+      "byte_count": 4422073,
+      "data_row_count": 6707,
       "path": "SEMANTIC_FORM_NODE.tsv",
-      "sha256": "e42830a4b3a3822529289c9b645548b9e098cfe3cb23df3033a710d378a3f4d0"
+      "sha256": "514a64a6746f5803348cce71c1eb1dba75acbbd5c20d549413cfb742a2db5083"
     },
     {
       "byte_count": 227,
@@ -939,16 +983,16 @@
       "sha256": "59e8ec16a22bc7e67f8e03d6121459aa780a7417c3d1920cc6e938eff3cdda71"
     },
     {
-      "byte_count": 354891,
-      "data_row_count": 2340,
+      "byte_count": 681055,
+      "data_row_count": 4480,
       "path": "SEMANTIC_RELATION_CANDIDATE.tsv",
-      "sha256": "a7dde0adb8c63ee99b4116eec623b417573939d3c6bf3a95dc02c667e841ac6f"
+      "sha256": "97c1a1dcf83a7c5a367151b4cd6115996864db83f90068ef55bc971b351e8bbe"
     },
     {
-      "byte_count": 35650996,
-      "data_row_count": 121040,
+      "byte_count": 39954578,
+      "data_row_count": 136065,
       "path": "SEMANTIC_RELATION_EDGE.tsv",
-      "sha256": "669bf39a3209ab21bb424bb9bdc2c5c350e504c2c24249bf53f2f7530150afa7"
+      "sha256": "70794652f3dd3c2f6a26829fb4f2239f866343077ccade79c692d0c55e39d09e"
     },
     {
       "byte_count": 34149,
@@ -978,13 +1022,13 @@
       "byte_count": 330,
       "data_row_count": 8,
       "path": "SEMANTIC_RELATION_SUMMARY.tsv",
-      "sha256": "e6100fa0e6e655c1f5d7d46393c6029ec1ac737a2c0ffe99eb1f60166d4231c2"
+      "sha256": "1d26ebfb722b2bfcb9d15d1e31f1bee678ccdce015a8ba3d2a83bf542548450a"
     },
     {
-      "byte_count": 69184855,
-      "data_row_count": 121040,
+      "byte_count": 78555128,
+      "data_row_count": 136065,
       "path": "SEMANTIC_RELATION_SUPPORT.tsv",
-      "sha256": "d7ce189b82cf61b01e1fc750dbca7f81c4afb98714265b9ec620cba582b173cd"
+      "sha256": "2079b47ac24e1471feb52a85d6a01fff4e63888edc710e000e80ae431e280ff7"
     },
     {
       "byte_count": 695,
@@ -1184,6 +1228,7 @@
   "schema": "coffee-flavor-current-descriptor-data-v1",
   "schema_changed": false,
   "semantic_cleaning_disposition_completeness_rate": 1.0,
+  "semantic_corpus_checkpoint": "77k",
   "stop_at_first_complete_record_boundary_at_or_above_20000": true,
   "strictness_impact_triggered": true,
   "strictness_user_decision_required": false,

@@ -1069,11 +1069,24 @@ def build_cleaned_77k(args: argparse.Namespace) -> tuple[list[dict[str, str]], l
     """
     cached_source = CURRENT / "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv"
     cached_atoms = CURRENT / "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv"
-    root = getattr(args, "restricted_root", None) or Path(os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT", ""))
-    if not str(root):
-        raise RuntimeError("COFFEE_FLAVOR_RESTRICTED_ROOT (or --restricted-root) is required for the 77K checkpoint")
-    restricted_path = find_restricted_ledger(Path(root), "COFFEEREVIEW_ASSERTIONS_RESTRICTED.tsv", COFFEEREVIEW_FAMILY_DIR)
     staging_manifest = json.loads((COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST.json").read_text(encoding="utf-8"))
+    root = getattr(args, "restricted_root", None) or Path(os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT", ""))
+    try:
+        if not str(root):
+            raise RuntimeError("no restricted root configured")
+        restricted_path = find_restricted_ledger(Path(root), "COFFEEREVIEW_ASSERTIONS_RESTRICTED.tsv", COFFEEREVIEW_FAMILY_DIR)
+    except RuntimeError:
+        # Public mode (CI, or a machine without the owner's restricted root):
+        # serve the committed 77K ledgers under the frozen-denominator guard,
+        # exactly as build_cleaned_50k serves 50K. Without this the semantic
+        # layer could only be rebuilt where the CoffeeReview text lives.
+        if cached_source.is_file() and cached_atoms.is_file():
+            decisions = read_tsv(cached_source)
+            atoms = read_tsv(cached_atoms)
+            if len(decisions) != FROZEN_77K_COUNT:
+                raise RuntimeError("cached 77K source denominator drift")
+            return decisions, atoms
+        raise
     if sha_file(restricted_path) != staging_manifest["restricted_assertion_ledger_sha256"]:
         raise RuntimeError("CoffeeReview restricted ledger does not match the committed staging manifest hash")
     batch6 = load_batch6()
@@ -1455,7 +1468,8 @@ def build_relation_support(batch6: Any, decisions: list[Mapping[str, str]], atom
 def command_semantic(args: argparse.Namespace) -> int:
     if not (STATE / "S2_REFERENCE_RELATION_SEED.tsv").is_file():
         acquire_semantic_references(args)
-    decisions, atoms = build_cleaned_50k(args)
+    checkpoint = getattr(args, "checkpoint", "77k")
+    decisions, atoms = (build_cleaned_77k if checkpoint == "77k" else build_cleaned_50k)(args)
     batch6 = load_batch6()
     clusters = batch6.concept_clusters(atoms)
     form_nodes, concept_nodes, edge_rows, evidence_rows, candidates, rejections = batch6.semantic_graph(atoms, clusters)
@@ -1578,6 +1592,8 @@ def command_semantic(args: argparse.Namespace) -> int:
     write_tsv(CURRENT / "SEMANTIC_RELATION_OWNER_REVIEW_IMPORT_TEMPLATE.tsv", list(imports[0]), imports)
     write_json(CURRENT / "BATCH7_SEMANTIC_MANIFEST.json", {
         "contract_version": "batch7.semantic-layer.v1",
+        "corpus_checkpoint": checkpoint,
+        "source_ledger": f"CLEANED_{checkpoint.upper()}_SOURCE_ASSERTION_LEDGER.tsv",
         "source_assertion_count": len(decisions),
         "cleaned_output_atom_count": len(atoms),
         "semantic_relation_count": len(edge_rows),
@@ -1625,6 +1641,9 @@ def command_checkpoint(args: argparse.Namespace) -> int:
         "CLEANED_50K_MANIFEST.json",
         "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
         "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
+        *(("CANDIDATE_77K_SNAPSHOT_MANIFEST.json", "CLEANED_77K_MANIFEST.json",
+           "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv", "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv")
+          if getattr(args, "checkpoint", "77k") == "77k" else ()),
         "BATCH7_SEMANTIC_MANIFEST.json",
         "SEMANTIC_RELATION_SUPPORT.tsv",
         "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
@@ -1637,6 +1656,10 @@ def command_checkpoint(args: argparse.Namespace) -> int:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     snapshot = json.loads((CURRENT / "CANDIDATE_50K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
     cleaned = json.loads((CURRENT / "CLEANED_50K_MANIFEST.json").read_text(encoding="utf-8"))
+    checkpoint = getattr(args, "checkpoint", "77k")
+    if checkpoint == "77k":
+        snapshot_77k = json.loads((CURRENT / "CANDIDATE_77K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
+        cleaned_77k = json.loads((CURRENT / "CLEANED_77K_MANIFEST.json").read_text(encoding="utf-8"))
     semantic = json.loads((CURRENT / "BATCH7_SEMANTIC_MANIFEST.json").read_text(encoding="utf-8"))
     benchmark = json.loads((CURRENT / "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json").read_text(encoding="utf-8"))
     post50 = (
@@ -1653,10 +1676,14 @@ def command_checkpoint(args: argparse.Namespace) -> int:
         "active_research_branch": "research/coffee-sensory-data-ml-readiness",
         "baseline_main_sha": BASELINE_SHA,
         "phase_status": phase,
-        "canonical_current_source_assertion_ledger": "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
-        "canonical_current_cleaned_output_ledger": "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
+        # phase_status is left as the 50K/60K acquisition phase it names; the
+        # semantic corpus checkpoint is a separate, explicitly stated fact.
+        "semantic_corpus_checkpoint": checkpoint,
+        "canonical_current_source_assertion_ledger": f"CLEANED_{checkpoint.upper()}_SOURCE_ASSERTION_LEDGER.tsv",
+        "canonical_current_cleaned_output_ledger": f"CLEANED_{checkpoint.upper()}_OUTPUT_ATOM_LEDGER.tsv",
         "candidate_50k_snapshot": snapshot,
         "cleaned_50k_view": cleaned,
+        **({"candidate_77k_snapshot": snapshot_77k, "cleaned_77k_view": cleaned_77k} if checkpoint == "77k" else {}),
         "batch7_semantic_layer": semantic,
         "batch7_cross_form_benchmark": benchmark,
         "post50k_extension": post50 or {
@@ -1727,6 +1754,12 @@ def main() -> int:
         type=float,
         default=0.25,
         help="minimum delay between network requests",
+    )
+    parser.add_argument(
+        "--checkpoint",
+        choices=("50k", "77k"),
+        default="77k",
+        help="corpus checkpoint the semantic layer and the current manifest are built from (round 3: 77k)",
     )
     subcommands = parser.add_subparsers(dest="command", required=True)
     dispatch = {
