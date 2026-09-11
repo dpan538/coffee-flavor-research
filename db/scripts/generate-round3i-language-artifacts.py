@@ -3,13 +3,14 @@
 
 The Firstbloom source checkout is supplied explicitly and must resolve to the
 pinned CC BY 4.0 commit. Review-candidate text is emitted only under
-``/private/tmp``; the repository receives only dual-review decisions and
+``COFFEE_FLAVOR_RESTRICTED_ROOT``; the repository receives only dual-review decisions and
 consensus-admitted expressions.
 """
 
 from __future__ import annotations
 
 import argparse
+import os
 import csv
 import hashlib
 import json
@@ -734,9 +735,12 @@ def firstbloom_repository_artifacts(
 
 def require_private_path(path: Path, repo_root: Path) -> Path:
     resolved = path.resolve()
+    # ROUND2-F18: see generate-round2b-pilot.require_private_review_path.
+    configured = os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT")
+    require(bool(configured), "COFFEE_FLAVOR_RESTRICTED_ROOT must be set for review candidates")
     require(
-        resolved.is_relative_to(Path("/private/tmp").resolve()),
-        "review candidates must stay under /private/tmp",
+        resolved.is_relative_to(Path(configured).resolve()),
+        "review candidates must stay under COFFEE_FLAVOR_RESTRICTED_ROOT",
     )
     require(
         not resolved.is_relative_to(repo_root.resolve()),

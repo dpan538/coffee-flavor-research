@@ -196,7 +196,7 @@
     {
       "defect_id": "ROUND2-F18",
       "severity": "CRITICAL",
-      "status": "REPAIRED_ROOT_CAUSE_OPEN",
+      "status": "REPAIRED_ROOT_CAUSE_CLOSED_CR4_2026_09_11",
       "what": "The research working tree /private/tmp/coffee-flavor-round3m is a git worktree living under /private/tmp. macOS periodically removes files there. On 2026-09-10 00:00 it removed 1,262 tracked files (both 50K ledgers, the question-axis TSV, the rights matrix, README, LICENSE, the app tree) and the one-line .git pointer file, leaving the tree unusable and git unaware it was a repository.",
       "what_was_NOT_lost": "All commits on research/round2-capture (5c923e4..e5b225d) — worktree commits live in the main repository's .git at /Users/jarlgiovanni/Desktop/Coffee_Flavor_Research, which is not under /tmp. Every deleted file was in the committed tree and was restored with git checkout. Uncommitted round-2/round-3 work survived because it had been written within the cleanup window.",
       "detected_how": "evidence_reader_round2.load_partitions() returned 0 partitions during a CoffeeReview dataset assessment, producing an impossible figure (51 of 36 unreachable descriptors covered). Chasing that arithmetic found the missing file, then the missing .git.",
@@ -230,6 +230,25 @@
         "owner_question": "Does the owner (or the Codex sessions that built rounds 3l-3m) hold the original captures elsewhere? CI's --require-restricted-real mode 'fails closed without owner inputs', which implies the owner supplies them at replay time from a location outside this machine's /tmp. If so, the loss is local and recoverable.",
         "required_fix_refined": "One env var (COFFEE_FLAVOR_RESTRICTED_ROOT) with the approved durable default; every restricted-root default reads it; the two require_private_* functions keep the not-inside-any-git-tree clause and drop the /private/tmp clause; batch6 keeps tempfile.gettempdir() only for CI scratch, never for the restricted root, so the CI contract stays satisfied.",
         "recorded_at_utc": "2026-09-11T07:07:35Z"
+      },
+      "repair_cr4": {
+        "scope": "Every restricted-root default in db/scripts that pointed under /private/tmp (9 files, 12 constants + 2 policy assertions). Caches (r10/r11/r12b/round2 fulltext) and fitting-era model-run outputs left under /tmp on purpose: re-downloadable or historical, not owner-private text.",
+        "resolution_order": [
+          "batch-specific variable the restricted replay already exports (ROUND3M_/POST20K_/POST30K_/POST40K_RESTRICTED_ROOT, BATCH6_POST30_RESTRICTED_ROOT as child-convention twin)",
+          "umbrella COFFEE_FLAVOR_RESTRICTED_ROOT + the batch's relative layout, matching test-restricted-real-replay.roots()",
+          "ROOT/.restricted-input-unavailable/<layout>: a path that does not exist, so public-mode callers fail closed at use, never at import (descriptor-pipeline's existing pattern)"
+        ],
+        "new_variable": "BATCH2_RESTRICTED_ROOT for the frozen batch2 root (round3l-acquisition/professional_descriptor_batch2), which the replay's roots() layout never named",
+        "layout_gap_noted": "test-restricted-real-replay.roots() enumerates round3m/post20/post30/post40 only; batch2 is resolved by the new variable or the umbrella path. roots() left unchanged so the replay contract does not gain a 5th mandatory root.",
+        "policy_assertions": "generate-round2b-pilot.require_private_review_path and generate-round3i-language-artifacts.require_private_path now require COFFEE_FLAVOR_RESTRICTED_ROOT and containment under it, keeping the not-inside-the-repository clause. Help strings and the round3i docstring updated. No test calls either function.",
+        "ci_contract_preserved": "generate-batch6-semantic-corpus keeps tempfile.gettempdir() as the public-mode fallback and contains no /private/tmp literal; test-ci-workflow-contract passes.",
+        "verification": {
+          "import_smoke_public_mode": "9/9 scripts import with no roots present; resolution verified for none / umbrella / parent+child / child-twin / batch6-umbrella",
+          "contract_scripts_public_mode": "ci-workflow-contract, post20k, post30k, post40k, batch3-candidate-cleaning, normalization-smoke, batch4-cleaned-30k PASS; batch6-semantic-corpus PASS in CI order (an earlier failure was an ordering artefact of an ad-hoc loop: its stability test read SUMS before batch4's checkpoint had run)",
+          "replay_public_mode": "RESTRICTED_REAL_REPLAY_EXECUTED=false (unchanged behaviour)"
+        },
+        "provenance_consequence": "semantic_reference_source_rows records sha_file(build-batch4-cleaning-staging.py) as the artifact_hash of the governed-ontology reference; editing that script's default changed the hash, so SEMANTIC_REFERENCE_SOURCE.tsv, CURRENT_DATA_MANIFEST.json and SHA256SUMS legitimately change and are committed with CR-4 (verified by hash equality on both sides).",
+        "recorded_at_utc": "2026-09-11T12:23:25Z"
       }
     }
   ]

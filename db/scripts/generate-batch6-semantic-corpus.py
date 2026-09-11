@@ -24,10 +24,16 @@ ROOT = Path(__file__).resolve().parents[2]
 CURRENT = ROOT / "db" / "data" / "current"
 POST30 = ROOT / "db" / "data" / "post30k-extension-staging"
 POST40 = ROOT / "db" / "data" / "post40k-extension-staging"
+# Owner-controlled restricted root (ROUND2-F18): the batch-specific variable
+# the restricted replay exports, then the umbrella COFFEE_FLAVOR_RESTRICTED_ROOT
+# with the batch layout, then the platform temp dir the CI contract requires
+# as the public-mode fallback (test-ci-workflow-contract pins gettempdir()).
 POST30_RESTRICTED = Path(
-    os.environ.get(
-        "BATCH6_POST30_RESTRICTED_ROOT",
-        str(Path(tempfile.gettempdir()) / "coffee-flavor-round3m-post30k" / "post30k_extension"),
+    os.environ.get("BATCH6_POST30_RESTRICTED_ROOT")
+    or (
+        str(Path(os.environ["COFFEE_FLAVOR_RESTRICTED_ROOT"]) / "coffee-flavor-round3m-post30k" / "post30k_extension")
+        if os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT")
+        else str(Path(tempfile.gettempdir()) / "coffee-flavor-round3m-post30k" / "post30k_extension")
     )
 )
 RESTRICTED_REVIEW = POST30_RESTRICTED / "batch6_semantic_review"

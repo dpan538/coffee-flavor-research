@@ -9,6 +9,7 @@ strings, roaster descriptions, or consumer reviews.
 
 from __future__ import annotations
 
+import os
 import argparse
 import csv
 import hashlib
@@ -2190,10 +2191,15 @@ def expression_rows(
 
 def require_private_review_path(path: Path, repo_root: Path) -> Path:
     resolved = path.resolve()
-    private_root = Path("/private/tmp").resolve()
+    # ROUND2-F18: the invariant is "outside the repository, in the owner's
+    # restricted root". /private/tmp was only ever the mechanism, and macOS
+    # deleted every restricted root kept there on 2026-09-10.
+    configured = os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT")
+    require(bool(configured), "COFFEE_FLAVOR_RESTRICTED_ROOT must be set for protected review artifacts")
+    private_root = Path(configured).resolve()
     require(
         resolved.is_relative_to(private_root),
-        "protected review artifacts must stay under /private/tmp",
+        "protected review artifacts must stay under COFFEE_FLAVOR_RESTRICTED_ROOT",
     )
     require(
         not resolved.is_relative_to(repo_root.resolve()),
@@ -4440,7 +4446,7 @@ def main() -> int:
         "--emit-private-review-candidates",
         type=Path,
         help=(
-            "Write the protected phrase-review TSV under /private/tmp and "
+            "Write the protected phrase-review TSV under COFFEE_FLAVOR_RESTRICTED_ROOT and "
             "exit without generating repository artifacts"
         ),
     )
@@ -4449,7 +4455,7 @@ def main() -> int:
         type=Path,
         help=(
             "Write the protected deterministic final-admission spot-audit "
-            "packet under /private/tmp and exit"
+            "packet under COFFEE_FLAVOR_RESTRICTED_ROOT and exit"
         ),
     )
     parser.add_argument("--merge-private-review-passes", action="store_true")

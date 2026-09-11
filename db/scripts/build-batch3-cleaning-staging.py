@@ -17,19 +17,39 @@ import re
 import sys
 import unicodedata
 from collections import Counter, defaultdict
+import os
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def _restricted(env_var: str, relative: str, child: str = "", alt_env_var: str = "") -> Path:
+    """Owner-controlled restricted root; never under /tmp (ROUND2-F18).
+
+    Every restricted root this project ever kept under /private/tmp was deleted
+    by macOS tmp cleanup on 2026-09-10. Resolution order: the batch-specific
+    variable the restricted replay exports (or its child-convention twin), then
+    the umbrella COFFEE_FLAVOR_RESTRICTED_ROOT with the batch's relative layout,
+    then a path that does not exist -- so public-mode callers fail closed at
+    use, never at import.
+    """
+    for name in (alt_env_var, env_var):
+        value = os.environ.get(name) if name else None
+        if value:
+            base = Path(value)
+            # alt (child-convention) variables already point at the child
+            return base if name == alt_env_var else (base / child if child else base)
+    umbrella = os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT")
+    root = Path(umbrella) / relative if umbrella else ROOT / ".restricted-input-unavailable" / relative
+    return root / child if child else root
 CURRENT = ROOT / "db" / "data" / "current"
 OUT = ROOT / "db" / "data" / "candidate-cleaning-staging"
 ONTOLOGY_SQL = ROOT / "db" / "010_canonical_ontology_seed.sql"
-DEFAULT_BATCH2_RESTRICTED = Path(
-    "/private/tmp/round3l-acquisition/professional_descriptor_batch2"
-)
-DEFAULT_ROUND3M_RESTRICTED = Path("/private/tmp/coffee-flavor-round3m-restricted")
+DEFAULT_BATCH2_RESTRICTED = _restricted("BATCH2_RESTRICTED_ROOT", "round3l-acquisition/professional_descriptor_batch2")
+DEFAULT_ROUND3M_RESTRICTED = _restricted("ROUND3M_RESTRICTED_ROOT", "coffee-flavor-round3m-restricted")
 
 SNAPSHOT_VERSION = "professional-descriptor-candidate-v0-20k"
 BUILDER_VERSION = "batch3.restricted-semantic-cleaner.v1"

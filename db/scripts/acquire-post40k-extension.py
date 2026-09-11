@@ -15,6 +15,7 @@ import importlib.util
 import json
 import sys
 import types
+import os
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
@@ -24,8 +25,29 @@ LEGACY_REPRODUCIBILITY_ENTRYPOINT = True
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def _restricted(env_var: str, relative: str, child: str = "", alt_env_var: str = "") -> Path:
+    """Owner-controlled restricted root; never under /tmp (ROUND2-F18).
+
+    Every restricted root this project ever kept under /private/tmp was deleted
+    by macOS tmp cleanup on 2026-09-10. Resolution order: the batch-specific
+    variable the restricted replay exports (or its child-convention twin), then
+    the umbrella COFFEE_FLAVOR_RESTRICTED_ROOT with the batch's relative layout,
+    then a path that does not exist -- so public-mode callers fail closed at
+    use, never at import.
+    """
+    for name in (alt_env_var, env_var):
+        value = os.environ.get(name) if name else None
+        if value:
+            base = Path(value)
+            # alt (child-convention) variables already point at the child
+            return base if name == alt_env_var else (base / child if child else base)
+    umbrella = os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT")
+    root = Path(umbrella) / relative if umbrella else ROOT / ".restricted-input-unavailable" / relative
+    return root / child if child else root
 PUBLIC = ROOT / "db" / "data" / "post40k-extension-staging"
-POST30_RESTRICTED = Path("/private/tmp/coffee-flavor-round3m-post30k/post30k_extension")
+POST30_RESTRICTED = _restricted("POST30K_RESTRICTED_ROOT", "coffee-flavor-round3m-post30k", "post30k_extension", alt_env_var="BATCH6_POST30_RESTRICTED_ROOT")
 POST30_MANIFEST = ROOT / "db" / "data" / "post30k-extension-staging" / "POST30K_EXTENSION_MANIFEST.json"
 START_PAGE = 100
 START_INDEX = 3

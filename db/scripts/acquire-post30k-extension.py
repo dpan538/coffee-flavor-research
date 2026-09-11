@@ -19,6 +19,7 @@ import re
 import sys
 import zipfile
 from collections import Counter
+import os
 from pathlib import Path
 from typing import Any
 
@@ -30,9 +31,30 @@ LEGACY_REPRODUCIBILITY_ENTRYPOINT = True
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def _restricted(env_var: str, relative: str, child: str = "", alt_env_var: str = "") -> Path:
+    """Owner-controlled restricted root; never under /tmp (ROUND2-F18).
+
+    Every restricted root this project ever kept under /private/tmp was deleted
+    by macOS tmp cleanup on 2026-09-10. Resolution order: the batch-specific
+    variable the restricted replay exports (or its child-convention twin), then
+    the umbrella COFFEE_FLAVOR_RESTRICTED_ROOT with the batch's relative layout,
+    then a path that does not exist -- so public-mode callers fail closed at
+    use, never at import.
+    """
+    for name in (alt_env_var, env_var):
+        value = os.environ.get(name) if name else None
+        if value:
+            base = Path(value)
+            # alt (child-convention) variables already point at the child
+            return base if name == alt_env_var else (base / child if child else base)
+    umbrella = os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT")
+    root = Path(umbrella) / relative if umbrella else ROOT / ".restricted-input-unavailable" / relative
+    return root / child if child else root
 PUBLIC = ROOT / "db" / "data" / "post30k-extension-staging"
-FROZEN_20K = Path("/private/tmp/round3l-acquisition/professional_descriptor_batch2")
-POST20K = Path("/private/tmp/coffee-flavor-round3m-post20k/post20k_extension")
+FROZEN_20K = _restricted("BATCH2_RESTRICTED_ROOT", "round3l-acquisition/professional_descriptor_batch2")
+POST20K = _restricted("POST20K_RESTRICTED_ROOT", "coffee-flavor-round3m-post20k", "post20k_extension")
 FROZEN_COUNT = 30_010
 TARGET_TOTAL = 40_000
 START_PAGE = 75
