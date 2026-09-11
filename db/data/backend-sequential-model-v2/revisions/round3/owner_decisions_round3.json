@@ -53,7 +53,29 @@
           "operator_to_determine": "whether it has a concrete use despite the noise"
         }
       ],
-      "not_approved": "active crawling of coffeereview.com or any site; only owner-downloaded, owner-reviewed files."
+      "not_approved": "active crawling of coffeereview.com or any site; only owner-downloaded, owner-reviewed files.",
+      "assessed_not_adopted": [
+        {
+          "key": "github_ejfeldman7_coffee-reviews-nlp",
+          "proposed_by_owner": "2026-09-11, 'open source, checked, clone into project, credit in README'",
+          "assessed_at_utc": "2026-09-11T11:04:11Z",
+          "findings": {
+            "licence": "NONE. GitHub API license=null; /LICENSE returns 404; README carries no licence or reuse statement; coffee.py has no header. Public visibility is not a licence; attribution in our README does not create one.",
+            "data": "Pickles/df.pickle and df_full.pickle (~5 MB each) hold ~6,000 scraped CoffeeReview reviews per the README — a subset of the 8,387 already ingested from coffee_reviews_parsed.csv. Not inspected: unpickling untrusted files executes arbitrary code.",
+            "methods": "TF-IDF + NMF topic vectors, lasso/linear/random-forest score predictors (num_to_score_RF.pickle, 12 MB), VADER sentiment, Markov review generation, Streamlit app. These are the fitted and generative paths this project set aside for the proposition lattice.",
+            "code": "coffee.py is a notebook export (get_ipython(), hard-coded Windows path); scraping_functions.py targets coffeereview.com, which the owner has ruled out for active crawling."
+          },
+          "decision": "NOT CLONED. Nothing to adopt: no data beyond what is held, methods the project rejected, code not reusable, and no licence under which to vendor any of it.",
+          "if_owner_still_wants_it": "Ask the author for a licence, or cite the README's approach as prior work in the methods notes. Neither requires cloning.",
+          "owner_response_2026_09_11": "不能直接查看那我们就当作辅助吧，用他的 Streamlit app 作为辅助，不直接用数据",
+          "final_disposition": {
+            "status": "REFERENCE_ONLY_VIA_HOSTED_APP",
+            "app": "https://ejfeldman7-coffee-reviews-nlp-web-appweb-app-pu4as4.streamlit.app/",
+            "meaning": "The hosted app may be consulted by a person as an external comparison (e.g. how its NMF topics group descriptors). No data, pickles, or code enter this project; nothing here depends on the app being up.",
+            "note": "README attribution is not needed because nothing is incorporated."
+          }
+        }
+      ]
     },
     {
       "id": "R3-D3",
