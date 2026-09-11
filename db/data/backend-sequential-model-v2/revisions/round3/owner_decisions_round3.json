@@ -32,17 +32,40 @@
             "cotter_dataset.csv",
             "README.txt"
           ],
-          "use": "TBD after assessment",
-          "rights_note": "CC0 1.0 per README"
+          "use": "CONTEXT/PRODUCT LAYER (owner 2026-09-11: 语境层或产品层)",
+          "rights_note": "CC0 1.0 per README",
+          "assessment_2026_09_11": {
+            "correction": "NOT new. Ingested in Round 1 (r1/sample_expansion_manifest.json: cotter_2023_original, 3,186 judge-by-brew rows, 17 CATA attributes, one Honduras coffee, CC0 verified) as NEW_ACQUISITION_ADMITTED_CONSUMER_AUXILIARY, split group DEVELOPMENT. The operator's earlier 'B8993H is new' claim confused it with 10.25338/B8C91C ('Acids in Coffee' review, a different Dryad dataset).",
+            "where_it_lives": "Private artefacts under ~/Library/Application Support/… /revisions/r1/ (durable, not /tmp) — intact: True. NOT in the B2/atom ledger pool (no cotter/dryad family in the 77K ledger); it sits in R1's attribute-observation track.",
+            "what_using_it_means": "Load its brew-condition × response structure (Temp/TDS/PE × Liking/JAR/17 CATA) into the calibration schema (data/calibration/templates: preparation_conditions, beverage_samples, dimension_responses) as a reference study — the product/context layer. New work; not a corpus ingestion."
+          }
         },
         {
           "key": "cqi_github_fatih-boyar",
           "files": [],
-          "use": "TBD after assessment; dimension-level scores",
-          "rights_note": "to assess"
-        }
-      ],
-      "reference_only": [
+          "use": "T4 DIMENSION-INTENSITY TRACK (owner: 部分数据有进入大池子的能力 — correct, in the T4 sense)",
+          "rights_note": "to assess",
+          "assessment_2026_09_11": {
+            "rows_in_github_version": 208,
+            "columns": 41,
+            "score_columns": [
+              "Aroma",
+              "Flavor",
+              "Aftertaste",
+              "Acidity",
+              "Body",
+              "Balance",
+              "Uniformity",
+              "Clean Cup",
+              "Sweetness",
+              "Overall",
+              "Total Cup Points"
+            ],
+            "free_text_descriptor_fields": "NONE — 'Flavor' is a 0-10 score column; 'Defects' are counts",
+            "verdict": "Enters the pool as T4 native_dimension_intensity_cells (the track exists: r11 calibration routed 564 such cells). Zero named descriptors, so nothing for option A directly; dimension evidence only.",
+            "note": "The Kaggle description promises ~1,300 lots; the GitHub clean file holds 208. If the owner downloads and reviews the Kaggle full file, the same T4 adapter applies."
+          }
+        },
         {
           "key": "gactt_maven",
           "files": [
@@ -50,9 +73,27 @@
             "QUESTION_KEY.csv"
           ],
           "owner_words": "唯独那个taste test的盲测有太多噪声，只可以作为参考",
-          "operator_to_determine": "whether it has a concrete use despite the noise"
+          "operator_to_determine": "whether it has a concrete use despite the noise",
+          "use": "T2 CONSUMER OBSERVATION LAYER for the free-text notes (owner 2026-09-11: 部分数据有进入大池子的能力 — correct); taste-test RATINGS remain reference-only for noise",
+          "assessment_2026_09_11": {
+            "free_text_observations": 9997,
+            "with_at_least_1_registry_word": 4132,
+            "share": 0.413,
+            "with_at_least_2": 1025,
+            "registry_words_covered": "56/56",
+            "words_with_10_plus": 43,
+            "per_coffee": {
+              "A": "apple 290, caramel 263, lemon 142",
+              "B": "dark_chocolate 154, bitter 126, earthy 109",
+              "C": "earthy 159, bitter 143, dark_chocolate 119",
+              "D": "blueberry 270, fermented 209, apple 139, cherry 128"
+            },
+            "structure": "4 coffee_identity × ~2,500 judge_observation each — the same shape as zenodo (118 panelists × 27 samples), with consumer judges. Ingestible via B2.make_atoms with publication_layer=JUDGE_LEVEL_OBSERVATION, judge_observation_id=Submission ID, a consumer evidence tier.",
+            "operator_correction": "'Reference only' was too strong for the corpus. The noise concern is valid for the 1-5 preference/bitterness/acidity ratings, not for the descriptor vocabulary, which is coherent per coffee."
+          }
         }
       ],
+      "reference_only": [],
       "not_approved": "active crawling of coffeereview.com or any site; only owner-downloaded, owner-reviewed files.",
       "assessed_not_adopted": [
         {
@@ -75,7 +116,8 @@
             "note": "README attribution is not needed because nothing is incorporated."
           }
         }
-      ]
+      ],
+      "owner_message_2026_09_11": "我给你的应该不止这一个数据源，其他的都不能用吗？… gryad适合语境层或者产品层，CQI和GACTT其实部分数据有进入大池子的能力。coffee-reviews-nlp仅作为参考，不取数据不取代码。"
     },
     {
       "id": "R3-D3",
@@ -83,6 +125,13 @@
       "decision": "OPTION A — NAMED_DESCRIPTOR_TARGET_WITH_MAPPED_SUPERVISION",
       "basis": "Owner: 可以用A (2026-09-10).",
       "sealed_artifact_rule": "r11/owner_decision.json is a SEALED R11 artefact and is left exactly as R11 wrote it (status PENDING_OWNER_DECISION, selected_option null, training_authorized false); test_r11_corpus_expansion pins those values. Later rounds LAYER decisions in their own artefacts; this entry is the sole record of the decision. An earlier commit (eb2b8c4) edited the sealed file in place; that edit was reverted."
+    },
+    {
+      "id": "R3-D4",
+      "subject": "CR approvals",
+      "decision": "CR-1b (semantic on 77K) APPROVED; CR-1c (rights matrix to 77K) APPROVED; CR-4 (/tmp → COFFEE_FLAVOR_RESTRICTED_ROOT) APPROVED; CR-2 (parser v2) NOT YET UNDERSTOOD BY OWNER — re-explained, awaiting answer.",
+      "owner_words": "我同意cr1的两个 … cr2我没看懂你什么意思，cr4是可以的",
+      "recorded_at_utc": "2026-09-11T12:03:56Z"
     }
   ],
   "guards": {
