@@ -1,0 +1,51 @@
+{
+  "contract_version": "round3.f19-measurement.v1",
+  "measured_at_utc": "2026-09-11T16:51:48Z",
+  "defect": "F19 (KNOWN_PIPELINE_DEFECTS r12c): generate-product-inference-v0.build_semantic_counts never resolves semantic-concept:sensory.* endpoints; governed semantic support = 0 for all 20 candidates at 50K and 77K.",
+  "method": "Patched the join in the working tree only (accept semantic-concept:sensory.* endpoints directly; cluster route kept), re-ran the v0 generator in public mode on the 77K semantic layer, diffed against HEAD 9786c65, ran test-product-inference-v0 (PASS), then restored the tree with git checkout. Nothing from this measurement is committed as data.",
+  "candidate_level": {
+    "governed_semantic_relation_support_after": {
+      "jasmine": 2,
+      "rose": 4,
+      "orange_blossom": 2,
+      "lemon": 4,
+      "orange": 4,
+      "blueberry": 4,
+      "honey": 2,
+      "caramel": 4,
+      "brown_sugar": 2,
+      "almond": 4,
+      "hazelnut": 4,
+      "dark_chocolate": 2,
+      "cinnamon": 2,
+      "tobacco": 2,
+      "smoky": 2,
+      "green_tea": 2,
+      "cedar": 2,
+      "earthy": 2,
+      "fermented_character": 2,
+      "wine_like_character": 8
+    },
+    "before": "0 for 20/20",
+    "exploratory_support_also_rises": "REVIEW_REQUIRED edges now reach the candidates too (e.g. lemon 745→954, orange 1127→1363, cedar 45→178; brown_sugar/dark_chocolate/green_tea 0→20/58/9)",
+    "columns_changed": [
+      "governed_semantic_relation_support",
+      "review_required_exploratory_relation_support",
+      "governed_semantic_score_component",
+      "base_decision_score"
+    ]
+  },
+  "case_level": {
+    "cases": 120,
+    "output_set_changed": 24,
+    "main_concept_ids_changed": 18,
+    "secondary_concept_ids_changed": 6,
+    "result_state_changed": 0,
+    "explanation_rows": "170 → 170",
+    "owner_review_packet_rows_differing": "0 / 100",
+    "manifest_metrics_changed": "none",
+    "sensitivity.without_governed_semantic.output_changed_case_count": "0 → 24 (the ablation becomes informative for the first time)"
+  },
+  "reading": "The repair does not change any abstention or state decision and does not touch the owner packet; it re-ranks 24 answer-driven cases because the governed-semantic component (weight 0.5, capped at 3 edges) was structurally zero. min(governed,3)/3 saturates for 11 of 20 candidates at the 77K layer, so the repaired component is close to a constant for them; the cap is the next design question, not this repair.",
+  "decision_required": "Owner: apply the F19 repair to the offline checkpoint (v0 + v0.2 lineage refresh, add the non-zero guard + positive control to test-product-inference-v0) — yes / no / defer until CR-1b-ii. Not applied in CR-1b because it alters the checkpoint's ranking inputs, which is a product-policy change rather than a lineage refresh."
+}
