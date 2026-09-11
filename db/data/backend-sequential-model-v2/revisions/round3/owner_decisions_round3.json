@@ -1,0 +1,69 @@
+{
+  "contract_version": "round3.owner-decisions.v1",
+  "recorded_at_utc": "2026-09-11T07:03:17Z",
+  "decisions": [
+    {
+      "id": "R3-D1",
+      "subject": "Restricted root location",
+      "decision": "/Users/jarlgiovanni/Desktop/Coffee_Flavor_Restricted",
+      "basis": "Owner approved the operator's proposal 2026-09-11. Outside every git tree; not under /tmp.",
+      "consequence": "All restricted-root defaults in db/scripts move here (F18 required fix). New families use it from day one."
+    },
+    {
+      "id": "R3-D2",
+      "subject": "Phase 0 posture",
+      "decision": "PER-DATASET OWNER APPROVAL AFTER MANUAL REVIEW — not a tier-wide P0-C policy",
+      "owner_words": "我说的是可以使用kaggle中的数据，事实上我会手动下载并且review以确保数据的质量，以上提到的数据我都已经看过，可以使用",
+      "approved_datasets": [
+        {
+          "key": "coffeereview_kaggle",
+          "files": [
+            "coffee_analysis.csv",
+            "simplified_coffee.csv",
+            "coffee_review_raw_texts.csv",
+            "coffee_reviews_parsed.csv"
+          ],
+          "use": "named-descriptor supervision",
+          "rights_note": "scraped editorial content; owner-reviewed and approved for this project's internal research use"
+        },
+        {
+          "key": "dryad_B8993H",
+          "files": [
+            "cotter_dataset.csv",
+            "README.txt"
+          ],
+          "use": "TBD after assessment",
+          "rights_note": "CC0 1.0 per README"
+        },
+        {
+          "key": "cqi_github_fatih-boyar",
+          "files": [],
+          "use": "TBD after assessment; dimension-level scores",
+          "rights_note": "to assess"
+        }
+      ],
+      "reference_only": [
+        {
+          "key": "gactt_maven",
+          "files": [
+            "GACTT_RESULTS_ANONYMIZED_v2.csv",
+            "QUESTION_KEY.csv"
+          ],
+          "owner_words": "唯独那个taste test的盲测有太多噪声，只可以作为参考",
+          "operator_to_determine": "whether it has a concrete use despite the noise"
+        }
+      ],
+      "not_approved": "active crawling of coffeereview.com or any site; only owner-downloaded, owner-reviewed files."
+    },
+    {
+      "id": "R3-D3",
+      "subject": "R11 supervision architecture (D15)",
+      "decision": "OPTION A — NAMED_DESCRIPTOR_TARGET_WITH_MAPPED_SUPERVISION",
+      "basis": "Owner: 可以用A (2026-09-10). Recorded here; r11/owner_decision.json to be updated in the same commit."
+    }
+  ],
+  "guards": {
+    "source_native_text_in_git": false,
+    "restricted_receipt": "/Users/jarlgiovanni/Desktop/Coffee_Flavor_Restricted/SOURCE_RECEIPT.sha256"
+  }
+}

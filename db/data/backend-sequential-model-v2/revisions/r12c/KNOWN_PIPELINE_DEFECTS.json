@@ -167,7 +167,34 @@
       "repair": "Rewrote .git as 'gitdir: <main>/.git/worktrees/coffee-flavor-round3m'; restored only --deleted paths so the 2 modified and 7 untracked working files were untouched; full suite 398 OK afterwards.",
       "root_cause_still_open": "The worktree is still under /private/tmp, as are 17 other Codex worktrees listed by git worktree list. The same cleanup will recur. Recommendation: git worktree move to a durable path outside /tmp; the owner decides where.",
       "standing_rule": "Never place a working tree, cache, or artefact the project depends on under /tmp or /private/tmp. The scratchpad under /private/tmp/claude-501 is subject to the same policy and must hold nothing that is not also committed.",
-      "recorded_at_utc": "2026-09-11T06:35:23Z"
+      "recorded_at_utc": "2026-09-11T06:35:23Z",
+      "collateral_loss_confirmed_2026_09_11": {
+        "what": "/private/tmp/coffee-flavor-round3m-post30k/post30k_extension — the owner-controlled restricted root holding source-native descriptor text for the post-30k CoE extension — is empty (0 files, dir mtime 2026-09-10 00:00). Same cleanup.",
+        "backups_checked": {
+          "~/.codex/restricted/coffee-flavor-round3m/": "only round3m-2026-08-28 CAPTURE_MANIFEST.json + web_index_field_capture; not post30k",
+          "~/coffee-flavor-r9-private-backup/": "r9 semantic-structure JSONs only; not post30k"
+        },
+        "verdict": "LOST unless the owner holds another copy. Its content hash is on record (post40k manifest restricted_assertion_ledger_sha256), so a recovered copy can be verified.",
+        "what_still_works": "All committed public outputs (batch4 cleaned 30K, batch6 semantic corpus, post40k/post50k sidecars) are intact; they carry hashes and restricted pointers, never the text.",
+        "what_no_longer_works": "9 scripts hardcode or default to that path (acquire-post30k/post40k-extension, generate-batch4-cleaned-30k, generate-batch6-semantic-corpus, run/test-normalization-smoke, test-post30k-extension, test-batch4-cleaned-30k, test-restricted-real-replay). They cannot re-run from restricted source. Reproducibility loss, not current-pipeline loss.",
+        "root_cause_generalised": "Restricted roots defaulted to tempfile.gettempdir(). Source-native text the retention policy forbids from git was therefore kept in the one place the OS deletes on a schedule.",
+        "required_fix": "Move every restricted-root default out of /tmp to a durable, non-git path chosen by the owner, and make it env-driven (BATCH6_POST30_RESTRICTED_ROOT already exists as the pattern). Any new family — CoffeeReview first — must use that root from day one.",
+        "recorded_at_utc": "2026-09-11T06:44:44Z"
+      },
+      "full_restricted_loss_inventory_2026_09_11": {
+        "roots_checked": {
+          "/private/tmp/round3l-acquisition/professional_descriptor_batch2": "DIRECTORY ABSENT — the FROZEN 20K source-native layer (FROZEN_20K / DEFAULT_BATCH2 in 5 scripts)",
+          "/private/tmp/coffee-flavor-round3m-restricted": "DIRECTORY ABSENT — DEFAULT_ROUND3M in 3 scripts",
+          "/private/tmp/coffee-flavor-round3m-post20k/post20k_extension": "DIRECTORY ABSENT — POST20K in 3 scripts",
+          "/private/tmp/coffee-flavor-round3m-post30k/post30k_extension": "EMPTY (0 files, mtime 2026-09-10)",
+          "/private/tmp/r9_semantic_integrity_after_relation_contract.private.json": "SURVIVES (1.75 MB, touched 2026-09-07)"
+        },
+        "verdict": "Every owner-private source-native root for the 20K/30K/40K/50K corpus is gone from this machine. Public TSVs (hashes + restricted pointers) are committed and intact.",
+        "why_tmp_was_chosen": "Deliberate. generate-round2b-pilot.require_private_review_path and generate-round3i-language-artifacts.require_private_path both ASSERT the path is under /private/tmp AND not inside the repository. The real invariant is the second clause; /private/tmp was the mechanism. test-ci-workflow-contract.py additionally requires batch6 to use tempfile.gettempdir() and forbids the hardcoded macOS path.",
+        "owner_question": "Does the owner (or the Codex sessions that built rounds 3l-3m) hold the original captures elsewhere? CI's --require-restricted-real mode 'fails closed without owner inputs', which implies the owner supplies them at replay time from a location outside this machine's /tmp. If so, the loss is local and recoverable.",
+        "required_fix_refined": "One env var (COFFEE_FLAVOR_RESTRICTED_ROOT) with the approved durable default; every restricted-root default reads it; the two require_private_* functions keep the not-inside-any-git-tree clause and drop the /private/tmp clause; batch6 keeps tempfile.gettempdir() only for CI scratch, never for the restricted root, so the CI contract stays satisfied.",
+        "recorded_at_utc": "2026-09-11T07:07:35Z"
+      }
     }
   ]
 }
