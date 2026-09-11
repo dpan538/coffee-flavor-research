@@ -120,6 +120,25 @@ def split_pipe(value: Any) -> list[str]:
 def purpose_rights(source: Mapping[str, str]) -> dict[str, str]:
     basis = source.get("rights_basis", "")
     state = source.get("rights_state", "UNKNOWN")
+    if "OWNER_MANUAL_REVIEW_APPROVAL" in basis:
+        # Round 3, R3-D2: the owner downloaded and reviewed the file and
+        # approved it for this project's internal research. Scraped editorial
+        # content, so raw-text redistribution and commercial training are
+        # prohibited outright; derived release, deployment and weights stay an
+        # owner policy call rather than an automatic PROHIBITED (the F15
+        # lesson: "deployment" is not inherently commercial). Without this
+        # branch the token fell through to UNKNOWN on every purpose and the
+        # family was indistinguishable from unlicensed discovery.
+        return {
+            "rights_public_discovery": "AFFIRMATIVE",
+            "rights_internal_research_analysis": "AFFIRMATIVE_WITH_CONDITIONS",
+            "rights_noncommercial_model_research": "AFFIRMATIVE_WITH_CONDITIONS",
+            "rights_commercial_model_training": "PROHIBITED",
+            "rights_derived_data_release": "OWNER_POLICY_REQUIRED",
+            "rights_raw_text_redistribution": "PROHIBITED",
+            "rights_model_weight_release": "OWNER_POLICY_REQUIRED",
+            "rights_product_deployment": "OWNER_POLICY_REQUIRED",
+        }
     if "CC_BY_NC_4_0" in basis:
         return {
             "rights_public_discovery": "AFFIRMATIVE_WITH_CONDITIONS",

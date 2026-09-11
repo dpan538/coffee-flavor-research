@@ -113,7 +113,7 @@ all three, per the contract's representation-progress rule. Never spectral gap a
 
 ### Phase 2 — New source intake (conditional on Phase 0)
 
-- CoffeeReview: **INGESTED v1** — `acquire-coffeereview-round3.py`, 8,387 reviews → 6,180 with a descriptor sentence → 27,011 atoms; 4,670 records carry ≥2 registry words (26x the licensed corpus). Next: wire into `descriptor-pipeline.py` (CR-1), parser v2 for the two unanchored list styles (CR-2).
+- CoffeeReview: **INGESTED v1** — `acquire-coffeereview-round3.py`, 8,387 reviews → 6,180 with a descriptor sentence → 27,011 atoms; 4,670 records carry ≥2 registry words (26x the licensed corpus). **CR-1 DONE (clean stage)**: 77K checkpoint opened on the 40K→50K pattern — 77,038 source assertions, 81,175 atoms, 4,670 records with ≥2 registry words now in the cleaned view; `clean77k` subcommand, 14th route, 4th adapter, owner-review branch in `purpose_rights`. Gates updated loudly (14/4, EXPECTED_FILES, receipt 98→102), two silent-drop gates caught (`stale_gate_audit_round3.json`). B4 left unchanged — correct for its scope. Remaining: CR-1b (semantic on 77K), CR-1c (rights matrix to 77K), CR-2 (parser v2).
 - RoasterDB: not yet supplied by the owner; assess when it is. Both go through the **existing** cleaning pipeline
   (`SEMANTIC_CLEANING_V2` → `ONTOLOGY_CONSOLIDATION` → gap register). No new pipeline.
 - OpenAIRE and Semantic Scholar: G1-5 — resolve licences for the novel DOIs, apply

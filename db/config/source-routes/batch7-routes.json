@@ -20,7 +20,9 @@
       "route_id": "route.epmc.pmc8774372.brewed-black-coffee",
       "source_family_id": "family.pmc8774372_brewed_black_coffee",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8774372/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -34,7 +36,10 @@
       "route_id": "route.epmc.pmc13163763.cafe-latte-lexicon",
       "source_family_id": "family.pmc13163763_cafe_latte",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en", "ko-context"],
+      "languages": [
+        "en",
+        "ko-context"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13163763/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -48,7 +53,9 @@
       "route_id": "route.epmc.pmc6776322.retronasal-aroma",
       "source_family_id": "family.pmc6776322_retronasal_aroma",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6776322/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -62,7 +69,9 @@
       "route_id": "route.epmc.pmc11675256.storage-temperature-lexicon",
       "source_family_id": "family.pmc11675256_storage_temperature",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11675256/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -76,7 +85,10 @@
       "route_id": "route.epmc.pmc13279845.espresso-lexicon",
       "source_family_id": "family.pmc13279845_espresso",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en", "pt-context"],
+      "languages": [
+        "en",
+        "pt-context"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13279845/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -90,7 +102,9 @@
       "route_id": "route.epmc.pmc3951592.storage-sensory",
       "source_family_id": "family.pmc3951592_storage_sensory",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3951592/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -104,7 +118,10 @@
       "route_id": "route.epmc.pmc9386398.yunnan-lexicon",
       "source_family_id": "family.pmc9386398_yunnan",
       "source_class": "TRAINED_PANEL_RESEARCH",
-      "languages": ["en", "zh-context"],
+      "languages": [
+        "en",
+        "zh-context"
+      ],
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9386398/fullTextXML",
       "adapter_id": "adapter.epmc.jats-trained-panel-v1",
       "route_schema_id": "schema.epmc.jats-table.v1",
@@ -118,7 +135,9 @@
       "route_id": "route.iso.18794-2025.coffee-sensory-vocabulary",
       "source_family_id": "family.iso_18794_2025",
       "source_class": "STANDARD_OR_LEXICON",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://www.iso.org/obp/ui?_escaped_fragment_=iso:std:iso:18794:ed-2:v1:en",
       "adapter_id": "adapter.web.metadata-probe-v1",
       "route_schema_id": "schema.web.reference-page.v1",
@@ -132,7 +151,15 @@
       "route_id": "route.sca.cva-terminology-glossaries",
       "source_family_id": "family.sca_cva_glossaries",
       "source_class": "STANDARD_OR_LEXICON",
-      "languages": ["en", "es", "pt", "zh-Hans", "zh-Hant", "fr", "ko"],
+      "languages": [
+        "en",
+        "es",
+        "pt",
+        "zh-Hans",
+        "zh-Hant",
+        "fr",
+        "ko"
+      ],
       "url": "https://sca.coffee/value-assessment/",
       "adapter_id": "adapter.web.metadata-probe-v1",
       "route_schema_id": "schema.web.reference-page.v1",
@@ -146,7 +173,9 @@
       "route_id": "route.zenodo.20840464.q-grader-dataset",
       "source_family_id": "family.zenodo_golovinsky_q_grader_dataset",
       "source_class": "Q_GRADER_DATASET",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://zenodo.org/records/20840464",
       "adapter_id": "adapter.web.metadata-probe-v1",
       "route_schema_id": "schema.web.dataset-landing-page.v1",
@@ -160,7 +189,10 @@
       "route_id": "route.coffee-board-india.fine-cup-2026",
       "source_family_id": "family.coffee_board_india_fine_cup_2026",
       "source_class": "OFFICIAL_COMPETITION",
-      "languages": ["en", "hi-context"],
+      "languages": [
+        "en",
+        "hi-context"
+      ],
       "url": "https://coffeeboard.gov.in/",
       "adapter_id": "adapter.web.metadata-probe-v1",
       "route_schema_id": "schema.web.competition-page.v1",
@@ -174,7 +206,9 @@
       "route_id": "route.wcc.wcrc-2026-rules",
       "source_family_id": "family.wcc_wcrc_2026",
       "source_class": "PROFESSIONAL_ROASTING_COMPETITION",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://wcc.coffee/rules-regulations",
       "adapter_id": "adapter.web.metadata-probe-v1",
       "route_schema_id": "schema.web.competition-page.v1",
@@ -188,7 +222,9 @@
       "route_id": "route.coe.post50k-archive-continuation",
       "source_family_id": "family.ace_cup_of_excellence",
       "source_class": "COE_ANCHOR_CONTINUATION",
-      "languages": ["en"],
+      "languages": [
+        "en"
+      ],
       "url": "https://farmdirectory.cupofexcellence.org/listing/abiyot-ethiopia-2022/",
       "adapter_id": "adapter.coe.structured-official-sensory-fields-v2",
       "route_schema_id": "schema.coe.structured-official-sensory-fields.v2",
@@ -197,6 +233,22 @@
       "rights_state": "MIXED_PENDING_UNKNOWN",
       "robots_access_decision": "EXISTING_GOVERNED_RATE_LIMITED_ROUTE",
       "citation_locator": "archive-page=142;detail-index=2"
+    },
+    {
+      "route_id": "route.coffeereview.kaggle-parsed-2000-2025.blind-assessment",
+      "source_family_id": "family.coffeereview_kaggle_parsed",
+      "source_class": "EDITORIAL_REVIEW_PANEL_SCRAPE",
+      "languages": [
+        "en"
+      ],
+      "url": "https://www.kaggle.com/datasets/schmoyote/coffee-reviews-dataset",
+      "adapter_id": "adapter.coffeereview.blind-assessment-list-v1",
+      "route_schema_id": "schema.coffeereview.parsed-review-csv.v1",
+      "semantic_reference": false,
+      "row_level_observations": true,
+      "rights_state": "OWNER_REVIEWED_FILE_R3_D2_INTERNAL_RESEARCH_ONLY",
+      "robots_access_decision": "OWNER_SUPPLIED_FILE_NO_SITE_ACCESS",
+      "citation_locator": "Kaggle schmoyote/coffee-reviews-dataset, coffee_reviews_parsed.csv (8,387 reviews, 2000-2025); owner decision round3/owner_decisions_round3.json#R3-D2"
     }
   ]
 }

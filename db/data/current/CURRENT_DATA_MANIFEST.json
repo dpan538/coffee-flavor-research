@@ -423,14 +423,14 @@
   },
   "cleaner_contract_version": "batch4.semantic-cleaner.v2",
   "cross_encoder_run": false,
-  "dataset_inventory_count": 34,
+  "dataset_inventory_count": 35,
   "dataset_role_counts": {
     "AGGREGATE_RECEIPT_ONLY": 10,
     "DUPLICATE_DERIVATION": 9,
     "REFERENCE_ONLY": 1,
     "ROW_LEVEL_DERIVED": 11,
     "ROW_LEVEL_PRIMARY": 2,
-    "ROW_LEVEL_PRIMARY_PUBLIC_SAFE": 1
+    "ROW_LEVEL_PRIMARY_PUBLIC_SAFE": 2
   },
   "deep_learning_model_run": false,
   "deltas_from_initial_current_snapshot": {
@@ -475,6 +475,12 @@
       "data_row_count": "NA_NOT_TABULAR",
       "path": "CANDIDATE_50K_SNAPSHOT_MANIFEST.json",
       "sha256": "d8a72ef4b27694178ce8721c61da88de44a455456ae762ac479b22e1df3a3f78"
+    },
+    {
+      "byte_count": 1379,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CANDIDATE_77K_SNAPSHOT_MANIFEST.json",
+      "sha256": "abe369defea419a5e3383a4947eb536a2d279a817ab02e60588f84fd91e1ecfe"
     },
     {
       "byte_count": 30420247,
@@ -541,6 +547,24 @@
       "data_row_count": 50034,
       "path": "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
       "sha256": "1426c444f14f411b2b4bdcd371b5154f231df0aeab106b2ac6750f25fc32bde4"
+    },
+    {
+      "byte_count": 815,
+      "data_row_count": "NA_NOT_TABULAR",
+      "path": "CLEANED_77K_MANIFEST.json",
+      "sha256": "15c9a3d5714170016726934f2aa881259813284192eab493ff5bb5479446e604"
+    },
+    {
+      "byte_count": 75008894,
+      "data_row_count": 81175,
+      "path": "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv",
+      "sha256": "bf8a0379c346492a5ee3de0ab1ca5ca951a6a47ad0fc8f682c9f96caf7f42c6a"
+    },
+    {
+      "byte_count": 100846074,
+      "data_row_count": 77038,
+      "path": "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv",
+      "sha256": "a580a16f10d6c680e3efeffe280b70bfbe4dfc59ef308ab4222a56e584ea3587"
     },
     {
       "byte_count": 19746521,
@@ -657,16 +681,16 @@
       "sha256": "6525806664352ddb1e03376f84734e283aae646293ec447fc23edc7928462a4f"
     },
     {
-      "byte_count": 18497,
-      "data_row_count": 34,
+      "byte_count": 19087,
+      "data_row_count": 35,
       "path": "DATASET_INVENTORY.tsv",
-      "sha256": "047e13f7c2e83b0c8b867330abf9749b6b991be6ba462d6e619f6a9dfe4a6a43"
+      "sha256": "c34d9c81027aecb62d97948fdbfa1d378bafd9eafaa81303ee30ec4614e36694"
     },
     {
-      "byte_count": 12343,
-      "data_row_count": 34,
+      "byte_count": 12752,
+      "data_row_count": 35,
       "path": "DATASET_ROLE_AND_LINEAGE.tsv",
-      "sha256": "6f0f373eb9dda8be3fb9519a49984a54344e3db4ddcc2e17d54f79e731d5078d"
+      "sha256": "7144f3a41ff84b7f6de46523b3ab86a5947067e9b5eaf04c65b38eb4a909f3c7"
     },
     {
       "byte_count": 1619108,

@@ -1,0 +1,17 @@
+{
+  "candidate_77k_snapshot_sha256": "abe369defea419a5e3383a4947eb536a2d279a817ab02e60588f84fd91e1ecfe",
+  "cleaned_view_version": "professional-descriptor-cleaned-v2-77k",
+  "cleaner_version": "batch4.semantic-cleaner.v2",
+  "contract_version": "cleaned-77k-manifest.v1",
+  "model_run": false,
+  "non_descriptor_source_assertion_count": 298,
+  "output_atom_count": 81175,
+  "output_atom_ledger_sha256": "bf8a0379c346492a5ee3de0ab1ca5ca951a6a47ad0fc8f682c9f96caf7f42c6a",
+  "record_unique_output_atom_count": 66602,
+  "source_assertion_count": 77038,
+  "source_assertion_reconciliation_pass": true,
+  "source_ledger_sha256": "a580a16f10d6c680e3efeffe280b70bfbe4dfc59ef308ab4222a56e584ea3587",
+  "unresolved_source_assertion_count": 112,
+  "valid_output_atom_count": 73313,
+  "valid_source_assertion_count": 71869
+}

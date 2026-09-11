@@ -179,6 +179,17 @@
       "repair": "lineterminator=\"\\n\"; sidecar, restricted ledger and manifest regenerated; verified CR count 0 and manifest sha256 == working file == blob; commit amended.",
       "standing_rule": "Any writer of a committed artefact sets lineterminator explicitly, and a manifest hash is verified against the committed blob, not the working copy, before the commit is considered final.",
       "recorded_at_utc": "2026-09-11T07:23:06Z"
+    },
+    {
+      "defect_id": "ROUND3-OP10",
+      "introduced_by": "operator",
+      "commit_that_introduced_it": "6fb0a4a",
+      "status": "REPAIRED_BEFORE_ANY_PUSH",
+      "what": "acquire-coffeereview-round3.write_tsv wrote Python booleans as 'True'/'False'. Every other writer (B2.write_tsv, post40k.write_tsv, descriptor-pipeline.scalar) emits 'true'/'false'. The committed public sidecar and the restricted ledger both carried the wrong literal in counts_as_assertion, counts_as_record_unique_descriptor and frozen_snapshot_member.",
+      "how_caught": "build_cleaned_77k's frozen-denominator guard: '77K input denominator drift: 50k=50034 coffeereview=0' — the pipeline's counts_as_assertion == \"true\" filter selected nothing. Had the guard not existed, the 77K checkpoint would have silently contained zero CoffeeReview assertions and reported success.",
+      "repair": "Lowercase booleans in write_tsv; sidecar, restricted ledger and manifest regenerated; column literals verified against POST50K; manifest sha256 re-verified against the file.",
+      "standing_rule": "A new writer of any committed artefact copies an existing writer's serialisation verbatim and is verified by running the artefact through its first downstream consumer before commit — not only by inspecting it.",
+      "recorded_at_utc": "2026-09-11T11:17:11Z"
     }
   ],
   "infrastructure_defects": [

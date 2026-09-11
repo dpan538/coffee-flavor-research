@@ -65,7 +65,9 @@ def validate_routes() -> None:
     schemas = rows(STATE / "ROUTE_SCHEMA_REGISTRY.tsv")
     attempts = rows(STATE / "NON_COE_ROUTE_ATTEMPT.tsv")
     cursors = rows(STATE / "ACQUISITION_CURSOR_REGISTRY.tsv")
-    check(len(registry) == 13 and len(adapters) == 3, "route or adapter registry count drift")
+    # 14 routes / 4 adapters since round 3: route.coffeereview.kaggle-parsed-2000-2025.blind-assessment
+    # and adapter.coffeereview.blind-assessment-list-v1 (owner decision R3-D2).
+    check(len(registry) == 14 and len(adapters) == 4, "route or adapter registry count drift")
     check(len(families) == len({row["source_family_id"] for row in registry}), "source-family registry count drift")
     check(len(schemas) == len({row["route_schema_id"] for row in registry}), "route-schema registry count drift")
     check(len({row["source_route_id"] for row in registry}) == len(registry), "route IDs are not unique")

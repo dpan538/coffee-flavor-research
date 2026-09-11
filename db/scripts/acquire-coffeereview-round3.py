@@ -213,7 +213,11 @@ def write_tsv(path: Path, rows: list[dict[str, Any]], fields: list[str] | None =
         w = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n", extrasaction="ignore")
         w.writeheader()
         for r in rows:
-            w.writerow(r)
+            # Booleans as "true"/"false", the convention every other writer in
+            # this project follows (B2.write_tsv, post40k.write_tsv, pipeline
+            # scalar()). Python's default "True"/"False" made the pipeline's
+            # counts_as_assertion == "true" filter select 0 rows (ROUND3-OP10).
+            w.writerow({k: (str(v).lower() if isinstance(v, bool) else v) for k, v in r.items()})
 
 
 def main() -> int:

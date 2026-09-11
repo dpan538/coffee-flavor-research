@@ -1,8 +1,8 @@
 {
   "contract_version": "coffeereview-round3-manifest.v1",
   "extension_batch_id": "coffeereview-round3-kaggle-parsed-20260911",
-  "generated_at_utc": "2026-09-11T07:23:10Z",
-  "elapsed_seconds": 4.1,
+  "generated_at_utc": "2026-09-11T11:17:18Z",
+  "elapsed_seconds": 5.6,
   "source": {
     "url": "https://www.kaggle.com/datasets/schmoyote/coffee-reviews-dataset",
     "filename": "coffee_reviews_parsed.csv",
@@ -39,11 +39,11 @@
     "STRICT_FLAVOR": 26794,
     "BROAD_SENSORY": 210
   },
-  "restricted_assertion_ledger_sha256": "471e44ed5d3f84785a9e1b9983a5a8855a76ac78d6a41e86cc9508db5da94fbf",
+  "restricted_assertion_ledger_sha256": "4970bb59d2fe91384785b52940f293903116c02acf57696928860343e9f5eeba",
   "public_files": [
     {
       "path": "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv",
-      "sha256": "73e555c385a482cbbec62287b3f3b01fc8474777f85eacc59a059b1f597eb757",
+      "sha256": "4ffce727608807891687fbb651d562f82983e30d99a5becb5f368327f1b3ff3d",
       "data_row_count": 27011
     }
   ],

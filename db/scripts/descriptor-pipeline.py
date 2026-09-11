@@ -50,6 +50,14 @@ BENCHMARK_VERSION = "batch7.cross-form-benchmark.v2"
 GENERATED_AT = "2026-08-31T00:00:00+10:00"
 FROZEN_40K_COUNT = 40030
 FROZEN_50K_COUNT = 50034
+# Round 3 checkpoint: the frozen 50K denominator plus the 27,004 deinflated
+# CoffeeReview assertions (coffeereview-round3-staging manifest). Same guard
+# discipline as 40K -> 50K: the builder refuses any other count.
+FROZEN_77K_COUNT = 77038
+SNAPSHOT_77K = "professional-descriptor-candidate-v4-77k"
+CLEANED_77K = "professional-descriptor-cleaned-v2-77k"
+COFFEEREVIEW_FAMILY_DIR = "coffee-flavor-round3-coffeereview"
+COFFEEREVIEW_STAGING = ROOT / "db" / "data" / "coffeereview-round3-staging"
 TARGET_60K = 60000
 COE_START_PAGE = 142
 COE_START_INDEX = 2
@@ -216,6 +224,15 @@ def command_discover(_args: argparse.Namespace) -> int:
             "source_class": "COE_ANCHOR_CONTINUATION",
             "input_schema": "COE_ARCHIVE_AND_STRUCTURED_DETAIL_HTML",
             "output_contract": "SOURCE_ASSERTIONS_AND_CURSOR_RECEIPTS",
+            "public_restricted_boundary": "SOURCE_TEXT_RESTRICTED_PUBLIC_HASHES_ONLY",
+            "idempotent_offline_replay": "true",
+        },
+        {
+            "adapter_id": "adapter.coffeereview.blind-assessment-list-v1",
+            "adapter_version": "round3.coffeereview-blind-assessment-parser.v1",
+            "source_class": "EDITORIAL_REVIEW_PANEL_SCRAPE",
+            "input_schema": "OWNER_SUPPLIED_PARSED_REVIEW_CSV",
+            "output_contract": "ROW_LEVEL_DESCRIPTOR_ASSERTIONS_VIA_B2_ATOMS",
             "public_restricted_boundary": "SOURCE_TEXT_RESTRICTED_PUBLIC_HASHES_ONLY",
             "idempotent_offline_replay": "true",
         },
@@ -997,6 +1014,147 @@ def build_cleaned_50k(args: argparse.Namespace) -> tuple[list[dict[str, str]], l
     return [dict(row) for row in decisions], [dict(row) for row in atoms]
 
 
+def coffeereview_source(row: Mapping[str, str]) -> dict[str, str]:
+    """Round 3 CoffeeReview restricted row -> batch6 source dict.
+
+    Mirrors post40_source. The restricted ledger is B2.restricted_rows output,
+    so every field post40_source reads is present. Identity is segment-scoped
+    for the same reason as post40k: keep the historical B2 id in the pointer.
+    """
+    assertion_id = stable_id(
+        "assertion-b7-coffeereview",
+        "\x1f".join((row["descriptor_assertion_id"], row["source_artifact_sha256"], row["source_locator"])),
+    )
+    return {
+        "corpus_segment": "COFFEEREVIEW_ROUND3",
+        "descriptor_assertion_id": assertion_id,
+        "source_family_id": row["source_family_id"],
+        "publisher_id": stable_id("publisher", row["publisher"]),
+        "source_route_id": row["source_route_id"],
+        "source_artifact_id": stable_id("source-artifact", row["source_artifact_sha256"]),
+        "source_artifact_sha256": row["source_artifact_sha256"],
+        "source_locator": row["source_locator"],
+        "effective_record_id": row["effective_record_id"],
+        "coffee_identity_id": row["coffee_identity_id"],
+        "year_id": f"year.{row['edition_year']}" if row["edition_year"] and row["edition_year"] != "UNREPORTED" else "year.unreported",
+        "preparation_service_id": row["preparation_service"],
+        "source_language": row["source_language"],
+        "source_field_label_sha256": sha_text(row["source_field_label"]),
+        "raw_field_text_sha256": row["raw_field_text_sha256"],
+        "atomic_source_text_sha256": row["atomic_source_text_sha256"],
+        "source_native_form_id": f"source-form:{row['source_native_form_sha256'][:24]}",
+        "restricted_source_pointer": f"restricted://{COFFEEREVIEW_FAMILY_DIR}/assertions/{row['descriptor_assertion_id']}",
+        "original_descriptor_class": row["descriptor_class"],
+        "evidence_tier": row["evidence_tier"],
+        "collection_tier": row["collection_tier"],
+        "provenance_state": row["provenance_state"],
+        "rights_state": row["rights_state"],
+        "rights_basis": row["rights_basis"],
+        "publication_layer": row["publication_layer"],
+        "judge_observation_id_sha256": row["judge_observation_id_sha256"],
+        "duplicate_group_id": "",
+        "mirror_group_id": "",
+        "counts_as_record_unique_descriptor": row["counts_as_record_unique_descriptor"],
+    }
+
+
+def build_cleaned_77k(args: argparse.Namespace) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    """50K cached ledgers + CoffeeReview restricted ledger -> 77K cleaned view.
+
+    Follows build_cleaned_50k exactly: additive on the prior frozen checkpoint,
+    guarded by a frozen denominator, cached to CURRENT, two manifests. The 50K
+    stage is taken from its cached ledgers (its restricted source is gone from
+    this machine, F18); this stage's restricted source lives under
+    COFFEE_FLAVOR_RESTRICTED_ROOT and is required.
+    """
+    cached_source = CURRENT / "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv"
+    cached_atoms = CURRENT / "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv"
+    root = getattr(args, "restricted_root", None) or Path(os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT", ""))
+    if not str(root):
+        raise RuntimeError("COFFEE_FLAVOR_RESTRICTED_ROOT (or --restricted-root) is required for the 77K checkpoint")
+    restricted_path = find_restricted_ledger(Path(root), "COFFEEREVIEW_ASSERTIONS_RESTRICTED.tsv", COFFEEREVIEW_FAMILY_DIR)
+    staging_manifest = json.loads((COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST.json").read_text(encoding="utf-8"))
+    if sha_file(restricted_path) != staging_manifest["restricted_assertion_ledger_sha256"]:
+        raise RuntimeError("CoffeeReview restricted ledger does not match the committed staging manifest hash")
+    batch6 = load_batch6()
+    decisions, atoms = build_cleaned_50k(args)
+    decisions = [dict(row) for row in decisions]
+    atoms = [dict(row) for row in atoms]
+    raw_rows = [row for row in read_tsv(restricted_path) if row["counts_as_assertion"] == "true"]
+    if len(decisions) + len(raw_rows) != FROZEN_77K_COUNT:
+        raise RuntimeError(f"77K input denominator drift: 50k={len(decisions)} coffeereview={len(raw_rows)}")
+    for raw in raw_rows:
+        source = coffeereview_source(raw)
+        decision, new_atoms = batch6.clean_source(source, raw["atomic_source_text"])
+        decisions.append(decision)
+        atoms.extend(new_atoms)
+    decisions = [{key: scalar(value) for key, value in row.items()} for row in decisions]
+    atoms = [{key: scalar(value) for key, value in row.items()} for row in atoms]
+    if len(decisions) != FROZEN_77K_COUNT or len({row["descriptor_assertion_id"] for row in decisions}) != FROZEN_77K_COUNT:
+        raise RuntimeError("combined 77K source assertion identity reconciliation failed")
+    if len(atoms) != sum(int(row["cleaned_output_atom_count"]) for row in decisions):
+        raise RuntimeError("combined 77K source/output atom reconciliation failed")
+    write_tsv(cached_source, fields(CURRENT / "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv"), decisions)
+    write_tsv(cached_atoms, fields(CURRENT / "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv"), atoms)
+    manifest_content = "\n".join("\t".join((row["descriptor_assertion_id"], row["source_artifact_sha256"], row["effective_record_id"], row["atomic_source_text_sha256"])) for row in decisions)
+    snapshot = {
+        "contract_version": "candidate-77k-snapshot-manifest.v1",
+        "snapshot_version": SNAPSHOT_77K,
+        "snapshot_role": "IMMUTABLE_ACQUISITION_CHECKPOINT_NOT_TRAINING_CORPUS",
+        "immutable": True,
+        "candidate_50k_snapshot_sha256": sha_file(CURRENT / "CANDIDATE_50K_SNAPSHOT_MANIFEST.json"),
+        "coffeereview_round3_manifest_sha256": sha_file(COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST.json"),
+        "snapshot_content_sha256": sha_text(manifest_content),
+        "source_assertion_count": len(decisions),
+        "effective_record_count": len({row["effective_record_id"] for row in decisions}),
+        "source_family_count": len({row["source_family_id"] for row in decisions}),
+        "source_ledger": cached_source.name,
+        "source_ledger_sha256": sha_file(cached_source),
+        "coffeereview_identity_namespace": "assertion-b7-coffeereview",
+        "coffeereview_identity_basis": "B2_ASSERTION_ID+SOURCE_ARTIFACT_SHA256+SOURCE_LOCATOR",
+        "coffeereview_owner_decision": "round3/owner_decisions_round3.json#R3-D2",
+        "cleaner_changed": False,
+        "restricted_ledger_root_hash": staging_manifest["restricted_assertion_ledger_sha256"],
+        "cleaner_contract_version": CLEANER_VERSION,
+        "training_corpus_frozen": False,
+        "model_eligible_corpus_frozen": False,
+        "model_eligible_assertion_count": 0,
+        "schema_changed": False,
+        "new_migration_count": 0,
+    }
+    write_json(CURRENT / "CANDIDATE_77K_SNAPSHOT_MANIFEST.json", snapshot)
+    valid_count = sum(row["source_assertion_disposition"] in VALID_SOURCE for row in decisions)
+    valid_atoms = [row for row in atoms if row["counts_as_cleaned_descriptor_output"] == "true"]
+    cleaned_manifest = {
+        "contract_version": "cleaned-77k-manifest.v1",
+        "cleaned_view_version": CLEANED_77K,
+        "cleaner_version": CLEANER_VERSION,
+        "source_assertion_count": len(decisions),
+        "valid_source_assertion_count": valid_count,
+        "non_descriptor_source_assertion_count": sum(row["source_assertion_disposition"] == "NON_DESCRIPTOR" for row in decisions),
+        "unresolved_source_assertion_count": sum(row["source_assertion_disposition"] == "UNRESOLVED" for row in decisions),
+        "output_atom_count": len(atoms),
+        "valid_output_atom_count": len(valid_atoms),
+        "record_unique_output_atom_count": len({(row["effective_record_id"], batch6.target_id(row)) for row in valid_atoms if row["counts_as_record_unique_descriptor"] == "true"}),
+        "source_assertion_reconciliation_pass": sum(int(row["cleaned_output_atom_count"]) for row in decisions) == len(atoms),
+        "candidate_77k_snapshot_sha256": sha_file(CURRENT / "CANDIDATE_77K_SNAPSHOT_MANIFEST.json"),
+        "source_ledger_sha256": sha_file(cached_source),
+        "output_atom_ledger_sha256": sha_file(cached_atoms),
+        "model_run": False,
+    }
+    write_json(CURRENT / "CLEANED_77K_MANIFEST.json", cleaned_manifest)
+    return decisions, atoms
+
+
+def command_clean77k(args: argparse.Namespace) -> int:
+    decisions, atoms = build_cleaned_77k(args)
+    manifest = json.loads((CURRENT / "CLEANED_77K_MANIFEST.json").read_text())
+    print(f"CANDIDATE_77K_SOURCE_ASSERTION_COUNT={len(decisions)}")
+    print(f"CLEANED_77K_OUTPUT_ATOM_COUNT={len(atoms)}")
+    print(f"CLEANED_77K_VALID_SOURCE_ASSERTION_COUNT={manifest['valid_source_assertion_count']}")
+    return 0
+
+
 def command_clean(args: argparse.Namespace) -> int:
     decisions, atoms = build_cleaned_50k(args)
     manifest = json.loads((CURRENT / "CLEANED_50K_MANIFEST.json").read_text())
@@ -1577,6 +1735,7 @@ def main() -> int:
         "acquire": command_acquire,
         "resume": command_resume,
         "clean": command_clean,
+        "clean77k": command_clean77k,
         "semantic": command_semantic,
         "validate": command_validate,
         "checkpoint": command_checkpoint,

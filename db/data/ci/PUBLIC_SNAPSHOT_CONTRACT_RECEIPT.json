@@ -5,7 +5,7 @@
   "cleaned_50k_output_atom_count": 52511,
   "contract_version": "ci-public-snapshot-contract.v2",
   "cross_form_case_count": 189,
-  "current_sha256_receipt_file_count": 98,
+  "current_sha256_receipt_file_count": 102,
   "mode": "public-snapshot",
   "model_file_count": 0,
   "post40k_sha256_receipt_file_count": 5,
