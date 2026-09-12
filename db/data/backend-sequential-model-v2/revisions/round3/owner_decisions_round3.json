@@ -160,6 +160,21 @@
         "query_horizon": "309/324 users with top-3 > 0.85 (was 266); the 15 misses are all fermented_winey-heavy answers (the last empty axis)"
       },
       "recorded_at_utc": "2026-09-12T02:09:47Z"
+    },
+    {
+      "id": "R3-D7",
+      "subject": "Confirmation of R3-D6; structure weight; data sources; execution order",
+      "decision": "12D confirmed. Profile-first path confirmed (Top-1 portrait -> benchmark beans -> user local library in IndexedDB). CoffeeReview 1-10 scores confirmed for body/acidity with structure-axis : descriptor-axis weight 0.6 : 1.0. APPROVED sources: WCR Varieties Catalog (K[C2_variety] sensory potential + variety lexicon), UC Davis Coffee Center and Coffee Ad Astra (extraction mechanism statements, marked LITERATURE_CLAIM). Execution order: Step 1 12D projection reviewed (owner_reviewed=true); Step 2 Matrix_K C0xC1 from the 83K corpus with scores; Step 3 variety/process extraction from review text for K[C2]; Step 4 frontend runtime in packages/flavor-data/src/product-vector-v1. New requirement: product-level flavor descriptions must align with user language.",
+      "owner_words": "确定采用 12 维空间 … defect 维度作为天然负向约束的数学设计非常优雅 … 建议将“结构打分轴 : 描述词投影轴”的相对权重设为 0.6 : 1.0 … 批准接入 WCR Varieties Catalog … UC Davis Coffee Center & Coffee Ad Astra … 但需要确定准确的产品级风味描述，和用户用语对齐",
+      "applied": {
+        "weight": "STRUCTURE_AXIS_WEIGHT = 0.6 in build-product-vector-v1.py; plus the rule that a usable vector needs >= 1 mapped descriptor (structure alone formed two false profiles at 1:1)",
+        "step1": "CONCEPT_DIMENSION_PROJECTION_DRAFT owner_reviewed=true with basis OWNER_STEP1_APPROVAL (design-level approval; row corrections welcome)",
+        "step2": "MATRIX_K.tsv (C0 2 rows, C1 6 rows) + MATRIX_K_C0_C1_CELLS.tsv (8 MAIN, 4 INTERPOLATION); cold_brew has no corpus row",
+        "step3": "COFFEEREVIEW_C2_LABELS.tsv: variety 3,586/8,387 resolved, process 4,304; Matrix_K C2 rows: 10 varieties (>=50), 4 processes (>=30)",
+        "step4": "packages/flavor-data/src/product-vector-v1/index.ts engine + tests/product-vector-v1.test.ts (5 passing); runtime bundle db/data/product-vector-v1/product-vector-v1.json",
+        "measurement": "usable 8,142; query horizon 281/324 > 0.85 (down from 309 at 1:1 by design); profiles 16, structure-only false profiles gone"
+      },
+      "recorded_at_utc": "2026-09-12T02:21:28Z"
     }
   ],
   "guards": {

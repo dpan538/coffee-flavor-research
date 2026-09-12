@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot) and R3-D6 (dimension count, candidate-library path, structure axes), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) and R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -41,8 +41,9 @@ V = [ acidity, sweetness, body, floral, fruity, nutty_chocolate, fermented_winey
 ### 1.2 投影矩阵（概念 → 维度）
 
 `db/data/product-vector-v1/CONCEPT_DIMENSION_PROJECTION_DRAFT.tsv`：94 个规范概念各一行，12 列权重（0–1），
-`coverage_state`（60 MAPPED + 34 MAPPED_12D），`coverage_state_8d`（保留 8 维时的诊断），`owner_reviewed=false`。
-这是操作员按 SCA 风味轮家族写的**草案**，需要 owner 逐行过目后才算数。
+`coverage_state`（60 MAPPED + 34 MAPPED_12D），`coverage_state_8d`（保留 8 维时的诊断），`owner_reviewed=true`
+（R3-D7 Step 1：owner 以草案整体批准登记，basis 注明 `OWNER_STEP1_APPROVAL`；权重由操作员按 SCA 风味轮家族起草，逐行修正随时可改，
+改动只需编辑这一张表再重跑两个 build 脚本）。
 
 ### 1.3 聚类如何进入空间
 
@@ -80,9 +81,24 @@ V = [ acidity, sweetness, body, floral, fruity, nutty_chocolate, fermented_winey
 
    主干格子远超 owner 的 100+ 标准；意式 × 浅/极深两格只有十几杯，属于「插值」格子。冷萃、法压在语料里没有。
 
-2. **现在算不出来的**：C2。83K 账本没有品种与处理法字段。两条路：从 CoffeeReview 文本定向抽取（"washed / natural /
-   Gesha / Bourbon" 出现在评论正文，抽取器是 parser v2 同一套思路）；以及 owner 审阅后接入 WCR Varieties Catalog 的
-   sensory potential。在此之前，K[C2] 只能来自 §6 的文献陈述表，并标为 `LITERATURE_CLAIM`。
+   **已算出（Step 2，`build-matrix-k-v1.py` → `MATRIX_K.tsv`, `MATRIX_K_C0_C1_CELLS.tsv`）**：C0 两行（cupping 作 V60 / 法压的
+   滤泡代理，espresso 实测），C1 六行，12 个 C0×C1 联合格子（8 个 MAIN ≥100 杯，4 个 INTERPOLATION 10–99 杯）。冷萃无语料行，
+   标 `NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING`，等 UC Davis / Coffee Ad Astra 的萃取结论。
+
+2. **C2（Step 3，`extract-coffeereview-c2-labels.py` → `COFFEEREVIEW_C2_LABELS.tsv`）**：用关键词词表在评论名称、产地与正文里
+   抽取品种与处理法（只输出类别标签，不输出文本）。8,387 条评论：品种可解析 3,586（43%），处理法 4,304（51%），两者皆有 2,517。
+   进入 Matrix_K 的行（单标签、成员 ≥ 50 / ≥ 30）：
+
+   | 品种 | 杯 | 品种 | 杯 | 处理法 | 杯 |
+   |---|---|---|---|---|---|
+   | ethiopian_landrace | 565 | caturra | 166 | washed | 1,819 |
+   | gesha | 447 | bourbon | 154 | natural | 879 |
+   | sl28_sl34 | 259 | catuai | 90 | decaf | 66 |
+   | typica | 88 | robusta | 64 | anaerobic | 52 |
+   | pacamara | 55 | castillo | 51 | | |
+
+   honey（145 条）因大多同时出现 washed/natural 字样被判多标签而未入行，需要词表细化。WCR Varieties Catalog（已批准）
+   将补 K[C2_variety] 的 sensory potential 与标准品种词表；语料实测行与 WCR 行并列，各带 basis。
 
 ---
 
@@ -137,14 +153,16 @@ V_target = normalize( V_pred + α · ΔV )          # α ∈ [0, 1]，默认 0.5
 `db/scripts/build-product-vector-v1.py` 从 83K 语料生成 `COFFEE_VECTOR_LIBRARY.tsv`（每杯咖啡 = 一个 effective record，
 12 维单位向量，支持度，轴基础，权利标签）。轴的构成：描述词投影按该杯最强描述轴归一到 1；
 **CoffeeReview 的 7,243 杯用其 Body / Acidity（1–10 编辑打分）的秩百分位替换 body / acidity 轴**（R3-D6 第三项，
-`extract-coffeereview-structure-scores.py`；用秩而非 (score−1)/9，因为 Body 在 84% 的评论里是 8 或 9，只有秩带信息）。
+`extract-coffeereview-structure-scores.py`；用秩而非 (score−1)/9，因为 Body 在 84% 的评论里是 8 或 9，只有秩带信息），
+**结构轴 : 描述轴 = 0.6 : 1.0**（R3-D7）。结构打分只能加强一个风味向量，不能替代它：没有任何已映射描述词的杯不算可用
+（否则它们的向量只剩结构方向，会自成两个假画像——首版 k-means 里的画像 8 和 10 就是这样来的）。
 
-| 指标 | 8 维 + 仅描述词 | **12 维 + 结构打分** |
-|---|---|---|
-| 咖啡总数 | 9,128 | 9,128 |
-| 可用向量 | 6,871 | **8,899** |
-| 单薄 / 空 | 1,311 / 946 | 66 / 163 |
-| 杯均映射概念数 | 4.54 | 3.69（分母变大）|
+| 指标 | 8 维 + 仅描述词 | 12 维 + 打分 1:1 | **12 维 + 打分 0.6，需 ≥1 描述词** |
+|---|---|---|---|
+| 咖啡总数 | 9,128 | 9,128 | 9,128 |
+| 可用向量 | 6,871 | 8,899 | **8,142** |
+| 单薄 / 空 | 1,311 / 946 | 66 / 163 | 66 / 920 |
+| 杯均映射概念数 | 4.54 | 3.69 | 4.03 |
 
 ### 5.2 候选库的权利出路（R3-D6 第二项）
 
@@ -157,30 +175,29 @@ CoffeeReview 的批准（R3-D2）是「内部研究」：它的向量用于标�
 
 ### 5.3 画像库（数据驱动的第一版，等 owner 命名）
 
-`FLAVOR_PROFILE_LIBRARY.tsv`：对 8,899 个可用向量做确定性 k-means（k = 16，最远点初始化），每个画像有质心、成员数、
+`FLAVOR_PROFILE_LIBRARY.tsv`：对 8,142 个可用向量做确定性 k-means（k = 16，最远点初始化），每个画像有质心、成员数、
 前三维、来源族构成、瑕疵均值，以及留空的 `owner_name_zh / owner_name_en / benchmark_beans`。
 
 | # | 成员 | 质心前三维 | 读法 |
 |---|---|---|---|
-| 1 | 1,485 | fruity .75, sweetness .46, acidity .42 | 甜果主干 |
-| 2 | 1,175 | nutty_chocolate .57, fruity .52, acidity .43 | 坚果巧克力 + 果 |
-| 3 | 1,110 | sweetness .80, acidity .35, body .34 | 甜为主 |
-| 4 | 780 | nutty_chocolate .80, body .41, acidity .34 | 经典坚果巧克力 |
-| 5 | 769 | fruity .72, acidity .51, body .42 | 明亮果酸 |
-| 6 | 705 | nutty_chocolate .58, woody_earthy .52, bitter_roasted .36 | 深烘坚果木质 |
-| 7 | 620 | fruity .56, woody_earthy .51, acidity .43 | 果 + 木质 |
-| 8 | 550 | acidity .84, body .54 | 结构打分主导（描述词少）|
-| 9 | 422 | floral .63, acidity .45, body .41 | 花香 |
-| 10 | 334 | body .98 | 结构打分主导（描述词少）|
-| 11 | 320 | woody_earthy .81, bitter_roasted .34, body .33 | 木质烟熏 |
-| 12 | 288 | spice .67, body .40, acidity .39 | 香料 |
-| 13 | 218 | bitter_roasted .83, body .32 | 深烘苦 |
-| 14 | 59 | fermented_winey .63, acidity .53, nutty_chocolate .50 | 发酵酒香 |
-| 15 | 51 | herbal_green .70, acidity .46 | 草本青草 |
-| 16 | 13 | defect .98 | 瑕疵（负向集合）|
+| 1 | 1,343 | fruity .79, acidity .42, sweetness .40 | 甜果主干 |
+| 2 | 1,169 | nutty_chocolate .61, fruity .57, acidity .39 | 坚果巧克力 + 果 |
+| 3 | 983 | sweetness .72, fruity .54, acidity .32 | 甜果 |
+| 4 | 757 | nutty_chocolate .88, body .28, bitter_roasted .25 | 经典坚果巧克力 |
+| 5 | 720 | nutty_chocolate .61, woody_earthy .54, bitter_roasted .38 | 深烘坚果木质 |
+| 6 | 639 | fruity .71, acidity .64, body .25 | 明亮果酸 |
+| 7 | 606 | sweetness .90, nutty_chocolate .24, body .23 | 甜为主 |
+| 8 | 592 | fruity .60, woody_earthy .55, acidity .40 | 果 + 木质 |
+| 9 | 387 | floral .72, acidity .37, fruity .33 | 花香 |
+| 10 | 325 | woody_earthy .86, bitter_roasted .36, sweetness .22 | 木质烟熏 |
+| 11 | 273 | spice .75, acidity .31, fruity .29 | 香料 |
+| 12 | 217 | bitter_roasted .87, nutty_chocolate .26, body .22 | 深烘苦 |
+| 13 | 60 | fermented_winey .65, acidity .52, nutty_chocolate .48 | 发酵酒香 |
+| 14 | 47 | herbal_green .77, acidity .36, fruity .34 | 草本青草 |
+| 15 | 12 | defect .99 | 瑕疵（负向集合）|
+| 16 | 12 | body .91, acidity .36 | 结构主导残余（12 杯，可并入 7）|
 
-画像 8 和 10 是结构打分在描述词稀少时主导的产物，说明 body/acidity 秩百分位与描述轴的量纲还需 owner 调一个权重
-（当前 1:1）；这是 §10 待定项之一。
+0.6 权重与「≥1 描述词」规则之后，结构打分主导的假画像消失（首版的 550 + 334 杯降到 12 杯）。
 
 ---
 
@@ -215,28 +232,31 @@ owner 给的两个示例（匹配度 94%…；发现有趣偏置…）作为文�
 
 **7.2 交叉组合稀疏度（Sparsity）**：C0 × C1 见 §2 表；C2 未测（无字段）。
 
-**7.3 分布均匀度（Uniformity）**，8,899 杯可用向量的「最强维度」占比：
+**7.3 分布均匀度（Uniformity）**，8,142 杯可用向量的「最强维度」占比：
 
-| 维度 | fruity | nutty_chocolate | sweetness | acidity | woody_earthy | floral | body | bitter_roasted | spice | herbal_green | fermented_winey | defect |
+| 维度 | fruity | nutty_chocolate | sweetness | acidity | woody_earthy | floral | bitter_roasted | spice | herbal_green | fermented_winey | body | defect |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 12 维 + 打分 | 29.0% | 20.8% | 18.6% | 13.7% | 4.6% | 4.3% | 3.9% | 3.0% | 1.6% | 0.3% | 0.1% | 0.1% |
-| （8 维、仅描述词）| 35.6% | 23.4% | 21.1% | 10.3% | — | 5.3% | 0.4% | 3.8% | — | — | 0.1% | — |
+| 12 维 + 打分 0.6 | 31.7% | 22.7% | 20.3% | 9.7% | 5.1% | 4.7% | 3.3% | 1.8% | 0.3% | 0.2% | 0.1% | 0.1% |
+| （8 维、仅描述词）| 35.6% | 23.4% | 21.1% | 10.3% | — | 5.3% | 3.8% | — | — | 0.1% | 0.4% | — |
 
-body 从 0.4% 到 3.9%：结构打分修正了描述词「重香气、轻口感」的偏置。**fermented_winey 仍是空轴**（0.1%）——
+「最强维度」几乎不会是 body：0.6 的权重使结构轴成为第二、第三维而非主导维，这正是 owner 要的效果（在 1:1 时 body 曾以
+假画像的形式占 3.9%）。**fermented_winey 仍是空轴**（0.2%）——
 专业评审很少把发酵感写成独立描述词，而 Q5-B / Q8-C 会把用户推向这一维。这是剩下的最后一个长尾区，
 定向补缺的第一目标（厌氧/特殊处理豆的评论；GACTT 消费者描述里 "boozy / winey / funky" 的用法）。
 
 **7.4 用户视野测试（Query Horizon）**，324 个模拟 V_user：
 
-| 指标 | 8 维、仅描述词 | **12 维 + 打分** | owner 标准 |
-|---|---|---|---|
-| top-1 相似度均值 / 最小 | 0.927 / 0.786 | **0.949 / 0.838** | — |
-| top-3 全部 > 0.85 的用户 | 266 / 324 (82%) | **309 / 324 (95%)** | 100% |
-| top-3 三杯互不重复的用户 | 324 / 324 | 324 / 324 | 100% |
-| 出现在任何 top-3 里的不同咖啡 | 200 | **323** | 越多越好 |
-| 单杯被推荐最多次数 | 35 | 33 | — |
+| 指标 | 8 维、仅描述词 | 12 维 + 打分 1:1 | **12 维 + 打分 0.6，≥1 描述词** | owner 标准 |
+|---|---|---|---|---|
+| top-1 相似度均值 / 最小 | 0.927 / 0.786 | 0.949 / 0.838 | **0.934 / 0.779** | — |
+| top-3 全部 > 0.85 的用户 | 266 / 324 (82%) | 309 / 324 (95%) | **281 / 324 (87%)** | 100% |
+| top-3 三杯互不重复的用户 | 324 / 324 | 324 / 324 | 324 / 324 | 100% |
+| 出现在任何 top-3 里的不同咖啡 | 200 | 323 | **270** | 越多越好 |
+| 单杯被推荐最多次数 | 35 | 33 | 31 | — |
 
-剩下的 15 个用户全部是 Q5-B + Q8-C（发酵/酒香高权重）的组合，对应 7.3 的空轴。
+0.6 权重是 owner 有意的取舍：1:1 时的 95% 有一部分是靠结构打分把 Q7-C（重醇厚）用户推给描述词稀少的杯换来的。
+现在剩下的 43 个用户分两类：Q7-C 高 body 组合（结构轴不再主导）和 Q5-B + Q8-C 高发酵组合（7.3 的空轴）。前者靠
+标杆豆款与用户自建库补（它们不受描述词稀疏影响），后者靠 fermented_winey 定向补缺。
 
 ---
 
@@ -254,7 +274,7 @@ body 从 0.4% 到 3.9%：结构打分修正了描述词「重香气、轻口感�
 | 组 | 处置 | 内容 |
 |---|---|---|
 | **主管线（保留、继续维护）** | 8 个 | `acquire-professional-descriptors-batch2.py`, `acquire-coffeereview-round3.py`, `generate-current-descriptor-data.py`, `generate-batch4-cleaned-30k.py`, `generate-batch6-semantic-corpus.py`, `descriptor-pipeline.py`, `generate-ci-artifact-checksums.py`, `ci-verify-current-artifacts.sh` |
-| **产品向量层（新）** | 2 个 | `build-product-vector-v1.py`（投影 → 向量库 → 画像 → 四项测量）, `extract-coffeereview-structure-scores.py`（结构打分 → 秩百分位轴）|
+| **产品向量层（新）** | 4 个 + 前端引擎 | `extract-coffeereview-structure-scores.py`（结构打分、烘焙度、产地国）, `extract-coffeereview-c2-labels.py`（品种/处理法标签）, `build-product-vector-v1.py`（投影 → 向量库 → 画像 → 四项测量）, `build-matrix-k-v1.py`（Matrix_K + 运行时 bundle `product-vector-v1.json`）; `packages/flavor-data/src/product-vector-v1/index.ts` |
 | **归档：推理策略线** | 7 个 | `inference_state_machine_round2.py`, `proposition_lattice_round2.py`, `evidence_reader_round2.py`, `output_generator_round2.py`, `generate-product-inference-v0.py`, `generate-product-inference-v02.py`, `run-product-inference-v0.py` |
 | **冻结：研究轮次 R1–R12 / round3a–3m** | ~190 个 | 训练实验、监督、审计、各轮 artefact 生成器。保持可复现（CI 仍跑），不再扩展 |
 | **测试** | 23 个 | 只保留主管线的 15 阶段 CI 作为提交闸门；不再为归档线新增测试；不再为产品向量层写测试脚手架，用 §7 的四项测量代替 |
@@ -285,12 +305,20 @@ body 从 0.4% 到 3.9%：结构打分修正了描述词「重香气、轻口感�
 | 前端运行时 | 未开始；现有前端是 v0.2 目录的 demo | §8 |
 | 充分性 | 4 项里 3 项过（饱和、稀疏主干、视野 95%），均匀度差最后一个轴（fermented_winey）| §7 |
 
-**已决定（R3-D6）：** 12 维；画像优先 + 标杆豆款 + 用户自建库；CoffeeReview 1–10 打分接入 body/acidity。
+**已决定（R3-D6 / R3-D7）：** 12 维；画像优先 + 标杆豆款 + 用户自建库；CoffeeReview 1–10 打分接入 body/acidity，权重 0.6 : 1.0；
+WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（机理句标 `LITERATURE_CLAIM`）。
 
-**待 owner：** 投影矩阵草案审阅（94 行）；16 个画像的命名与标杆豆款；α；结构轴与描述轴的相对权重。
+**owner 的执行顺序与状态：**
 
-**下一步顺序（不需要新决定就能做的）：** Matrix_K 的 C0×C1 从向量库算出 → 351 个高支持聚类的映射 → C2 定向抽取
-（品种/处理法词表）→ fermented_winey 轴定向补缺 → 前端运行时替换 v0.2（含用户自建库）。
+| Step | 内容 | 状态 |
+|---|---|---|
+| 1 | 12 维投影矩阵，94 行审阅 → `owner_reviewed=true` | 完成（按 R3-D7 以草案整体批准登记；逐行修正随时可改）|
+| 2 | 从 83K 语料导出 C0×C1 的 Matrix_K，融合 Body/Acidity 打分 | 完成（`MATRIX_K.tsv`，22 行）|
+| 3 | 解析评论正文，抽取品种/处理法，补齐 K[C2] | 完成第一版（10 个品种行 + 4 个处理法行；honey 词表待细化；WCR 行待接入）|
+| 4 | 前端运行时 `packages/flavor-data/src/product-vector-v1`，纯 JS 推荐与归因引擎 | 引擎完成（`infer()`：V_pred / V_user / ΔV / V_target / 画像与豆款排序 / 语境证据基础），5 个引擎测试通过；页面与用户自建库（IndexedDB）未开始 |
+| 5 | 产品级风味描述与用户用语对齐（owner 新要求）| 未开始：用已批准的 GACTT 消费者描述建立「消费者用语 → 12 维」词表，画像命名与归因文案都从它取词 |
+
+**仍待 owner：** 16 个画像的命名与标杆豆款；α（默认 0.5）；WCR / UC Davis / Coffee Ad Astra 三份材料的具体文件（按逐一审阅规则由 owner 提供）。
 
 ---
 
@@ -298,9 +326,9 @@ body 从 0.4% 到 3.9%：结构打分修正了描述词「重香气、轻口感�
 
 | 来源 | 用途 | 状态 |
 |---|---|---|
-| WCR Varieties Catalog | K[C2_variety] 的 sensory potential；品种词表；标杆豆款的品种依据 | 待 owner 审阅许可 |
-| UC Davis Coffee Center（研磨度–水温–萃取率–感官图谱）| K[C0] 的萃取机理句证据 | 待 owner 审阅 |
-| Coffee Ad Astra（Gagné：EY% / TDS 与风味强度）| 归因里的萃取解释 | 待 owner 审阅；博客内容需确认许可 |
+| WCR Varieties Catalog | K[C2_variety] 的 sensory potential；品种词表；标杆豆款的品种依据 | **批准（R3-D7）**；等 owner 提供文件 |
+| UC Davis Coffee Center（研磨度–水温–萃取率–感官图谱）| K[C0] 的萃取机理句证据，`LITERATURE_CLAIM` | **批准（R3-D7）**；等 owner 提供文件 |
+| Coffee Ad Astra（Gagné：EY% / TDS 与风味强度）| 归因里的萃取解释，`LITERATURE_CLAIM` | **批准（R3-D7）**；等 owner 提供文件 |
 | CoffeeReview Body/Acidity 打分列 | 已接入（R3-D6）| 完成 |
 | GACTT（T2 消费者描述）| 消费者语言 → Q5–Q10 文案校准；fermented 轴用词 | 已批准，未接入 |
 | Dryad B8993H（消费者偏好）| 校准层 | 已在 R1 |

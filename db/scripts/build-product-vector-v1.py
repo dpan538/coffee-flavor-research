@@ -25,6 +25,9 @@ DIMS = ["acidity", "sweetness", "body", "floral", "fruity", "nutty_chocolate", "
         "spice", "herbal_green", "woody_earthy", "defect"]
 N = len(DIMS)
 PROFILE_K = 16
+# owner (R3-D6 confirmation): structure-score axes weigh 0.6 against descriptor axes scaled to 1.0,
+# so rank percentiles do not dominate thinly described coffees
+STRUCTURE_AXIS_WEIGHT = 0.6
 # rights per family for the *product candidate library*: research-only sources may calibrate
 # and validate, but are not recommendable items in a public product without an owner decision.
 RESEARCH_ONLY = {"family.coffeereview_kaggle_parsed"}
@@ -75,14 +78,16 @@ def main() -> int:
         if st and (st["body_axis_percentile"] or st["acidity_axis_percentile"]):
             # owner D-open-3: editorial scores replace the under-reported structure axes
             if st["body_axis_percentile"]:
-                vec[DIMS.index("body")] = float(st["body_axis_percentile"])
+                vec[DIMS.index("body")] = STRUCTURE_AXIS_WEIGHT * float(st["body_axis_percentile"])
             if st["acidity_axis_percentile"]:
-                vec[DIMS.index("acidity")] = max(vec[DIMS.index("acidity")], float(st["acidity_axis_percentile"]))
+                vec[DIMS.index("acidity")] = max(vec[DIMS.index("acidity")], STRUCTURE_AXIS_WEIGHT * float(st["acidity_axis_percentile"]))
             basis = "DESCRIPTORS+COFFEEREVIEW_STRUCTURE_SCORES"
             structure_used += 1
         norm = math.sqrt(sum(x * x for x in vec))
         unit = [x / norm for x in vec] if norm else [0.0] * N
-        mapped_mentions = c["mapped"] + (2 if basis != "DESCRIPTORS_ONLY" else 0)
+        # structure scores strengthen a flavor vector but cannot stand in for one: a coffee with
+        # no mapped descriptor stays THIN/EMPTY (owner: rank percentiles must not lift thin samples)
+        mapped_mentions = c["mapped"] + (1 if (basis != "DESCRIPTORS_ONLY" and c["mapped"] >= 1) else 0)
         lib.append({"effective_record_id": rid, "source_family_id": c["family"], "year_id": c["year"], "preparation_service_id": c["prep"],
                     "assertion_count": c["assertions"], "mapped_concept_mentions": c["mapped"], "distinct_mapped_concepts": len(c["concepts"]),
                     **{f"v_{d}": f"{u:.4f}" for d, u in zip(DIMS, unit)},
@@ -154,7 +159,7 @@ def main() -> int:
         "corpus": "CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv",
         "dimensions": DIMS,
         "projection": {"concepts": len(proj), "with_nonzero_projection": len(mapped), "owner_reviewed": False},
-        "structure_axes": {"coffees_with_coffeereview_scores": structure_used, "basis": "body / acidity rank percentile of CoffeeReview editorial 1-10 scores (owner D-open-3)"},
+        "structure_axes": {"coffees_with_coffeereview_scores": structure_used, "weight_vs_descriptor_axes": STRUCTURE_AXIS_WEIGHT, "basis": "body / acidity rank percentile of CoffeeReview editorial 1-10 scores (owner D-open-3), weighted 0.6 : 1.0 (R3-D6 confirmation)"},
         "profiles": {"k": PROFILE_K, "member_counts": [p["member_count"] for p in profiles], "top_dimensions": [p["top_dimensions"] for p in profiles]},
         "coverage": {"coffees": len(lib), "usable_(>=2 mapped mentions)": len(usable), "thin_(1)": sum(c["vector_state"] == "THIN" for c in lib), "empty_(0)": sum(c["vector_state"] == "EMPTY" for c in lib),
                      "usable_by_family": dict(Counter(c["source_family_id"] for c in usable)),
