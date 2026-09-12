@@ -37,7 +37,7 @@ function labelOf(values: string[]): string {
   <section v-if="card" class="h-full flex flex-col" data-component="ContextSetupCard" :data-context-key="card.key">
     <div class="basis-[42%] min-h-0 px-6 pt-7 flex flex-col justify-end gap-2">
       <p class="text-xs uppercase tracking-widest opacity-70">{{ locale === 'zh-CN' ? '这杯咖啡' : 'This cup' }}</p>
-      <h2 class="text-[34px]" :class="locale === 'zh-CN' ? 'display-zh' : 'display'">{{ card.title }}</h2>
+      <h2 class="text-[34px] rise" :class="locale === 'zh-CN' ? 'display-zh' : 'display'">{{ card.title }}</h2>
       <p v-if="card.key === 'c2_origin'" class="text-sm opacity-80">{{ card.hint }}</p>
       <div v-if="card.key === 'c2_variety'" class="flex gap-2 pt-1" role="radiogroup">
         <button type="button" class="chip !py-1" :aria-pressed="!blendMode" @click="blendMode = false">{{ card.toggle.single }}</button>
@@ -47,7 +47,7 @@ function labelOf(values: string[]): string {
     <div class="flex-1 px-4 pt-5 pb-4 flex flex-col gap-3 min-h-0">
       <!-- options fill the lower half as a grid of equal cells (owner: use the space), scrolling only when a card has many -->
       <div class="grid grid-cols-2 auto-rows-fr gap-2 overflow-y-auto min-h-0 flex-1" :class="card.chips.length > 8 ? 'auto-rows-[minmax(56px,1fr)]' : ''">
-        <button v-for="chip in card.chips" :key="chip.value" type="button" class="option flex items-center justify-center text-center !rounded-2xl" :aria-pressed="chosen.includes(chip.value)" :title="chip.basis" @click="choose(chip.value)">
+        <button v-for="chip in card.chips" :key="chip.value" type="button" class="option flex items-center justify-center text-center !rounded-2xl rise" :aria-pressed="chosen.includes(chip.value)" :title="chip.basis" @click="choose(chip.value)">
           {{ chip.label }}
         </button>
       </div>

@@ -164,8 +164,8 @@
   "Q0": {
    "question": "Q5_acid",
    "prompt": {
-    "zh-CN": "入口第一感觉，酸是哪一种？",
-    "en": "First sip — what kind of acidity?"
+    "zh-CN": "喝到酸了吗？是哪一种？",
+    "en": "Any acidity? Which kind?"
    },
    "options": {
     "A": {
@@ -255,7 +255,7 @@
    "question": "Q8_aroma",
    "prompt": {
     "zh-CN": "闻起来最像什么？",
-    "en": "What does it smell like most?"
+    "en": "What does it smell like?"
    },
    "options": {
     "A": {
@@ -351,8 +351,8 @@
   "Q2": {
    "question": "Q6_sweet",
    "prompt": {
-    "zh-CN": "回甘里最常尝到哪种甜？",
-    "en": "Which sweetness shows up in the finish?"
+    "zh-CN": "能喝出甜味吗？更像哪一种？",
+    "en": "Do you taste sweetness? Which kind?"
    },
    "options": {
     "A": {
@@ -431,8 +431,8 @@
   "Q3": {
    "question": "Q7_body",
    "prompt": {
-    "zh-CN": "在嘴里的分量感像什么？",
-    "en": "How heavy does it feel in the mouth?"
+    "zh-CN": "口感如何？",
+    "en": "How does it feel in the mouth?"
    },
    "options": {
     "A": {
@@ -515,8 +515,8 @@
   "Q4": {
    "question": "Q9_bitter",
    "prompt": {
-    "zh-CN": "尾段的苦感？",
-    "en": "Bitterness at the end?"
+    "zh-CN": "尾段苦吗？",
+    "en": "Bitter at the end?"
    },
    "options": {
     "A": {
@@ -573,7 +573,7 @@
   "Q5": {
    "question": "Q10_clean",
    "prompt": {
-    "zh-CN": "整体更偏向哪种？",
+    "zh-CN": "整体更像哪种？",
     "en": "Overall, which is closer?"
    },
    "options": {

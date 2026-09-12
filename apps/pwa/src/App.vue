@@ -22,8 +22,8 @@ const stageKey = () => {
 
 <template>
   <div class="h-[100dvh] flex flex-col transition-colors duration-500" :style="{ backgroundColor: stageColor, color: stageInk }">
-    <!-- no page background: the screen is split 1 : 4, paper above, the card colour below (owner) -->
-    <section class="relative basis-1/5 shrink-0 bg-paper text-ink px-5 pt-4 pb-3 flex flex-col min-h-0 safe-top" data-zone="top">
+    <!-- no page background: the screen is split 1 : 3.5, paper above, the card colour below (owner) -->
+    <section class="relative basis-[22.2%] shrink-0 bg-paper text-ink px-5 pt-4 pb-3 flex flex-col min-h-0 safe-top" data-zone="top">
       <AppHeader />
       <CollectedStack />
       <div v-if="collecting" class="absolute right-5 bottom-3 flex gap-1" aria-live="polite" :aria-label="locale === 'zh-CN' ? '收集中' : 'collecting'">
