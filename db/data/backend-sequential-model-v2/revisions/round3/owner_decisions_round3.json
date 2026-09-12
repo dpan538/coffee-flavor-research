@@ -199,6 +199,21 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T02:47:01Z"
+    },
+    {
+      "id": "R3-D9",
+      "subject": "Coherence decision tree, 8-pick-5 implicit feedback, Q6 escalation gate, consumer lexicon; anchor-17 and statements confirmed",
+      "decision": "(1) anchor-17 confirmed as 蜂蜜甜果与杏桃 / Honeyed Sweet Fruit & Apricot, owner_reviewed=true; anchor-08 stays in the anchor table. (2) 27 context statements approved; displayTags two-level algorithm and defect >= 0.5 guard confirmed. (3) 94 canonical concepts are sufficient as the algebraic base; the consumer-facing layer must be expanded with mainland-China e-commerce / social vocabulary (supplement matrix: floral 桂花/栀子花/咖啡花/白兰花/洋甘菊; fruity 巨峰葡萄/荔枝/杨梅/西梅/青梅/红心芭乐; sweetness 冰糖雪梨/太妃糖/麦芽糖/黑糖/罗汉果甜; herbal_green 高山龙井/武夷岩茶/鸭屎香/普洱茶韵; fermented 米酒/酒酿/酒酿圆子/黄酒/热带水果发酵酱; bitter_roasted 烤杏仁/烘焙麦芽/黑芝麻/松露巧克力) in Step 5. (4) Question flow = coherence decision tree: base Q0-Q1, check Q2-Q3, Paths 1-4, thresholds Sim >= 0.85 coherent / 0.65-0.85 mild / < 0.65 severe; first description 3+5 words with 'pick the 5 that fit' as implicit feedback; escalation gate renders Q6 (8-word checkbox) only when the flow saw severe conflict and the picks confirm the perception bias; otherwise the final card (the user's 5 words + 1-2 science lines + closing).",
+      "owner_words": "同意将 983 杯 … 命名为“蜂蜜甜果与杏桃 / Honeyed Sweet Fruit & Apricot” … 批准 27 条 … 确认 displayTags 的两级退化算法 … 94 个词作为“规范基底”是足够的，但 … 必须进行一次基于中国电商与社交媒体语料的扩充与泛化 … 系统多级相干性决策树 … Q6 的 8 词勾选框作为系统的绝对底线 … 请选择你觉得最合适的 5 个风味描述 … 隐式的强信号收集",
+      "applied": {
+        "flow": "packages/flavor-data/src/product-vector-v1/flow.ts: coherence in profile-signature space (raw answer sub-vectors are 0 for most pairs: 76/81 < 0.65), flowStep Paths 1-4, describe 3+5, picksToVector, escalationGate, q6Options/applyQ6 (alpha_strong 0.9), finalCard",
+        "calibration": "Q0-Q1 vs Q2-Q3 over 81 combinations: min 0.62, median 0.73, p75 0.82, max 0.98; owner thresholds keep Path 2 common",
+        "slots": "Q0 acid, Q1 aroma, Q2 sweet, Q3 body, Q4 bitter, Q5 clean — operator proposal, owner review pending",
+        "lexicon": "CN_CONSUMER_FLAVOR_LEXICON.tsv seeded with the owner's 29 terms; wired into dimension-level word lists after DIMENSION_TAG_MAP_CN",
+        "defect_found": "engine dot() truncated vectors to 12 entries; profile signatures are 16 — fixed, covered by tests",
+        "tests": "vitest 17/17, tsc clean"
+      },
+      "recorded_at_utc": "2026-09-12T03:14:19Z"
     }
   ],
   "guards": {

@@ -105,3 +105,87 @@ describe("product-vector-v1 presentation layer", () => {
     expect(en.science.every((l) => l.evidenceState && l.citationRef)).toBe(true);
   });
 });
+
+describe("product-vector-v1 question flow (coherence decision tree)", async () => {
+  const flow = await import("../packages/flavor-data/src/product-vector-v1/flow");
+  const ctx = { c0_preparation: "pour_over_v60", c1_roast: "light", c2_process: "washed" } as const;
+
+  it("asks the base pair first, then Q2, and never asks an answered slot again", () => {
+    expect(flow.flowStep({}).ask).toEqual(["Q0", "Q1"]);
+    expect(flow.flowStep({ Q0: "A" }).ask).toEqual(["Q1"]);
+    expect(flow.flowStep({ Q0: "A", Q1: "A" }).ask).toEqual(["Q2"]);
+  });
+
+  it("measures coherence in profile-signature space, so consistent answers on different dimensions still agree", () => {
+    const bright = flow.groupVector({ Q0: "A", Q1: "A" }, ["Q0", "Q1"]); // acid + floral
+    const honeyFloral = flow.groupVector({ Q2: "A" }, ["Q2"]);
+    const caramelDark = flow.groupVector({ Q2: "B" }, ["Q2"]);
+    expect(flow.coherence(bright, honeyFloral).similarity).toBeGreaterThan(flow.coherence(bright, caramelDark).similarity);
+    expect(flow.coherence(bright, bright).level).toBe("coherent");
+    const smoothNutty = flow.groupVector({ Q0: "C", Q1: "B" }, ["Q0", "Q1"]);
+    expect(flow.coherence(smoothNutty, caramelDark).level).toBe("coherent");
+  });
+
+  it("every complete answer set reaches delivery with a path and a coherence history", () => {
+    const options = ["A", "B", "C"];
+    let delivered = 0;
+    const paths = new Set<number>();
+    for (const q0 of options) for (const q1 of options) for (const q2 of options) for (const q3 of options) {
+      const answers: Record<string, string> = { Q0: q0, Q1: q1, Q2: q2, Q3: q3, Q4: "A", Q5: "A" };
+      const step = flow.flowStep(answers);
+      expect(step.deliver).toBe(true);
+      expect(step.checks.length).toBeGreaterThan(0);
+      if (step.path) paths.add(step.path);
+      delivered += 1;
+    }
+    expect(delivered).toBe(81);
+    expect(paths.size).toBeGreaterThanOrEqual(2);
+  });
+
+  it("delivers a 3 + 5 description whose words are attributable to dimensions and distinct", () => {
+    const result = flow.inferFromFlow(ctx, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" });
+    const zh = flow.describe(result, "zh-CN");
+    expect(zh.main).toHaveLength(3);
+    expect(zh.secondary).toHaveLength(5);
+    expect(new Set(zh.all.map((w) => w.text)).size).toBe(8);
+    expect(zh.all.every((w) => flow.dimensionCount === 12 && typeof w.dimension === "string")).toBe(true);
+    expect(zh.prompt).toContain("5");
+    expect(flow.describe(result, "en").all.map((w) => w.text)).not.toEqual(zh.all.map((w) => w.text));
+  });
+
+  it("escalation gate: Q6 only when a severe conflict happened and the picks side with the user against the theory", () => {
+    const result = flow.inferFromFlow(ctx, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" });
+    const description = flow.describe(result, "zh-CN");
+    const calmStep = { ask: [], deliver: true, path: 1 as const, checks: [{ between: ["a", "b"] as [string, string], similarity: 0.9, level: "coherent" as const }], escalationEligible: false, reason: "" };
+    const gateA = flow.escalationGate(calmStep, result, description.all.slice(0, 5));
+    expect(gateA.escalate).toBe(false);
+    expect(gateA.severeHistory).toBe(false);
+    const severeStep = { ...calmStep, path: 3 as const, escalationEligible: true };
+    const userSide = [{ text: "x", dimension: "floral" }, { text: "y", dimension: "floral" }, { text: "z", dimension: "floral" }, { text: "w", dimension: "acidity" }, { text: "v", dimension: "sweetness" }];
+    const gateB = flow.escalationGate(severeStep, { ...result, vPred: flow.picksToVector([{ text: "n", dimension: "nutty_chocolate" }, { text: "b", dimension: "bitter_roasted" }]) }, userSide);
+    expect(gateB.biasConfirmed).toBe(true);
+    expect(gateB.escalate).toBe(true);
+  });
+
+  it("Q6 offers one word per most-disputed dimension and applies a strong correction", () => {
+    const result = flow.inferFromFlow(ctx, { Q0: "C", Q1: "B", Q2: "B", Q3: "C", Q4: "A", Q5: "B" });
+    const options = flow.q6Options(result, "zh-CN");
+    expect(options).toHaveLength(8);
+    expect(options.some((o) => o.dimension === "defect")).toBe(false);
+    const corrected = flow.applyQ6(result, ["nutty_chocolate", "body"]);
+    expect(corrected.alpha).toBe(flow.questionFlow.alpha_strong);
+    expect(corrected.vUser[DIMENSIONS.indexOf("nutty_chocolate")]).toBeGreaterThan(0);
+    expect(flow.applyQ6(result, [])).toBe(result);
+  });
+
+  it("final card carries the user's own words, at most two science lines with evidence states, and the closing line", () => {
+    const result = flow.inferFromFlow(ctx, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" });
+    const picks = flow.describe(result, "zh-CN").all.slice(0, 5);
+    const card = flow.finalCard(result, picks, "zh-CN");
+    expect(card.picked).toHaveLength(5);
+    expect(card.science.length).toBeLessThanOrEqual(2);
+    expect(card.science.every((l) => l.evidenceState)).toBe(true);
+    expect(card.closing).toContain("咖啡");
+    expect(flow.finalCard(result, picks, "en").closing).toContain("enjoy");
+  });
+});

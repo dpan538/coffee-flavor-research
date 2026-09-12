@@ -136,7 +136,32 @@ def main() -> int:
                     "context_statements": statements,
                     "tag_rules": {"priority_1": "concept-level tags when concept ids are present, ranked by projection weight against the vector", "priority_2": "dimension-level tags for dominant dimensions (weight > 0.15), first unused tag of the dimension's list", "defect_guard": "defect tags only when defect dominates (>= 0.5)"},
                     "layout": {"headline": "owner_name + display_tags (3-4 minimalist tags)", "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"}}
-    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS,
+    lexicon = rows(OUT / "CN_CONSUMER_FLAVOR_LEXICON.tsv") if (OUT / "CN_CONSUMER_FLAVOR_LEXICON.tsv").is_file() else []
+    consumer_terms = {}
+    for r in lexicon:
+        consumer_terms.setdefault(r["primary_dimension"], {"zh-CN": [], "en": []})
+        consumer_terms[r["primary_dimension"]]["zh-CN"].append(r["surface_term_zh"]); consumer_terms[r["primary_dimension"]]["en"].append(r["surface_term_en"])
+    presentation["consumer_terms"] = consumer_terms
+    # owner's coherence decision tree (2026-09-12): base pair Q0-Q1, check Q2-Q3, confirm Q4-Q5, Q6 = escalation checkbox.
+    # slot -> Matrix_Q question mapping is the operator's proposal (base pair = the two strongest movers).
+    question_flow = {
+        "slots": [{"slot": "Q0", "question": "Q5_acid", "role": "base"}, {"slot": "Q1", "question": "Q8_aroma", "role": "base"},
+                  {"slot": "Q2", "question": "Q6_sweet", "role": "check"}, {"slot": "Q3", "question": "Q7_body", "role": "check"},
+                  {"slot": "Q4", "question": "Q9_bitter", "role": "confirm"}, {"slot": "Q5", "question": "Q10_clean", "role": "confirm"}],
+        "thresholds": {"coherent": 0.85, "mild": 0.65},
+        # Answers occupy 1-2 dimensions each, so raw sub-vector cosines are 0 for most answer pairs
+        # (Q0-Q1 vs Q2-Q3: 76 of 81 combinations < 0.65). Coherence is therefore measured in profile-
+        # signature space: each answer group -> its cosine to the 16 centroids -> cosine between signatures.
+        "coherence_space": "profile_signature",
+        "calibration_2026_09_12": {"Q0-Q1_vs_Q2-Q3_over_81_combinations": {"min": 0.62, "median": 0.73, "p75": 0.82, "max": 0.98, "coherent_at_0.85": 18, "mild": 56, "severe_below_0.65": 7},
+                                    "note": "owner thresholds kept; with them Path 2 (mild) is the common path. 0.80/0.65 or 0.75/0.62 would make Path 1 common."},
+        "alpha_strong": 0.9,
+        "first_description": {"main": 3, "secondary": 5, "pick_count": 5},
+        "q6": {"option_count": 8, "kind": "dimension_words_by_largest_delta", "multi_select": True},
+        "closing": {"zh-CN": "感谢使用，祝你享受这杯咖啡！", "en": "Thank you — enjoy the cup!"},
+        "slot_mapping_owner_reviewed": False,
+    }
+    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
               "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "matrix_q": questions, "profiles": profiles,
               "benchmark_beans": [], "presentation": presentation,

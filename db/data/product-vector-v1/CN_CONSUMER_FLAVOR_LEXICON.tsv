@@ -1,0 +1,30 @@
+surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary_effects	source	owner_reviewed
+桂花	osmanthus	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+栀子花	gardenia	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+咖啡花	coffee blossom	floral	sensory.jasmine		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+白兰花	white magnolia	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+洋甘菊	chamomile	floral	sensory.chamomile		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+巨峰葡萄	Kyoho grape	fruity	sensory.grape		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+荔枝	lychee	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+杨梅	bayberry	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+西梅	prune	fruity	sensory.prune		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+青梅	green plum	fruity	sensory.plum	sour side; acidity 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+红心芭乐	pink guava	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+冰糖雪梨	rock-sugar pear	sweetness	sensory.pear		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+太妃糖	toffee	sweetness	sensory.caramel		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+麦芽糖	maltose	sweetness	sensory.malt		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+黑糖	dark brown sugar	sweetness	sensory.molasses		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+罗汉果甜	monk-fruit sweetness	sweetness			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+高山龙井	high-mountain Longjing	herbal_green	sensory.green_tea		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+武夷岩茶	Wuyi rock tea	herbal_green	sensory.black_tea	roasted oolong; woody 0.3	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+鸭屎香	Ya Shi Xiang (Dancong)	herbal_green		floral 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+普洱茶韵	Pu'er tea finish	herbal_green		woody_earthy 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+米酒	rice wine	fermented_winey	sensory.wine_like_character		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+酒酿	jiuniang (sweet fermented rice)	fermented_winey	sensory.fermented_character	sweetness 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+酒酿圆子	jiuniang rice balls	fermented_winey		sweetness 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+黄酒	huangjiu	fermented_winey	sensory.wine_like_character		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+热带水果发酵酱	tropical fruit ferment	fermented_winey		fruity 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+烤杏仁	roasted almond	bitter_roasted	sensory.almond	nutty_chocolate 0.6	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+烘焙麦芽	roasted malt	bitter_roasted	sensory.malt		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+黑芝麻	black sesame	bitter_roasted		nutty_chocolate 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+松露巧克力	truffle chocolate	bitter_roasted	sensory.dark_chocolate	nutty_chocolate 0.7	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true

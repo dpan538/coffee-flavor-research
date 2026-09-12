@@ -15,6 +15,73 @@
   "woody_earthy",
   "defect"
  ],
+ "question_flow": {
+  "slots": [
+   {
+    "slot": "Q0",
+    "question": "Q5_acid",
+    "role": "base"
+   },
+   {
+    "slot": "Q1",
+    "question": "Q8_aroma",
+    "role": "base"
+   },
+   {
+    "slot": "Q2",
+    "question": "Q6_sweet",
+    "role": "check"
+   },
+   {
+    "slot": "Q3",
+    "question": "Q7_body",
+    "role": "check"
+   },
+   {
+    "slot": "Q4",
+    "question": "Q9_bitter",
+    "role": "confirm"
+   },
+   {
+    "slot": "Q5",
+    "question": "Q10_clean",
+    "role": "confirm"
+   }
+  ],
+  "thresholds": {
+   "coherent": 0.85,
+   "mild": 0.65
+  },
+  "coherence_space": "profile_signature",
+  "calibration_2026_09_12": {
+   "Q0-Q1_vs_Q2-Q3_over_81_combinations": {
+    "min": 0.62,
+    "median": 0.73,
+    "p75": 0.82,
+    "max": 0.98,
+    "coherent_at_0.85": 18,
+    "mild": 56,
+    "severe_below_0.65": 7
+   },
+   "note": "owner thresholds kept; with them Path 2 (mild) is the common path. 0.80/0.65 or 0.75/0.62 would make Path 1 common."
+  },
+  "alpha_strong": 0.9,
+  "first_description": {
+   "main": 3,
+   "secondary": 5,
+   "pick_count": 5
+  },
+  "q6": {
+   "option_count": 8,
+   "kind": "dimension_words_by_largest_delta",
+   "multi_select": true
+  },
+  "closing": {
+   "zh-CN": "感谢使用，祝你享受这杯咖啡！",
+   "en": "Thank you — enjoy the cup!"
+  },
+  "slot_mapping_owner_reviewed": false
+ },
  "alpha_default": 0.5,
  "structure_axis_weight": 0.6,
  "score_semantics": "cosine similarity; not a probability; uncalibrated",
@@ -1935,11 +2002,11 @@
     0.0438,
     0.0032
    ],
-   "benchmark_beans": "埃塞俄比亚 西达摩 水洗 / 哥伦比亚 蜜处理 (operator proposal)",
+   "benchmark_beans": "埃塞俄比亚 西达摩 水洗 / 哥伦比亚 蜜处理",
    "anchor_id": "anchor-17",
    "owner_name": {
     "zh-CN": "蜂蜜甜果与杏桃",
-    "en": "Honeyed Sweet Fruit"
+    "en": "Honeyed Sweet Fruit & Apricot"
    },
    "display_tags": {
     "zh-CN": [
@@ -1955,7 +2022,7 @@
      "smooth"
     ]
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:07",
@@ -3481,6 +3548,102 @@
   "layout": {
    "headline": "owner_name + display_tags (3-4 minimalist tags)",
    "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"
+  },
+  "consumer_terms": {
+   "floral": {
+    "zh-CN": [
+     "桂花",
+     "栀子花",
+     "咖啡花",
+     "白兰花",
+     "洋甘菊"
+    ],
+    "en": [
+     "osmanthus",
+     "gardenia",
+     "coffee blossom",
+     "white magnolia",
+     "chamomile"
+    ]
+   },
+   "fruity": {
+    "zh-CN": [
+     "巨峰葡萄",
+     "荔枝",
+     "杨梅",
+     "西梅",
+     "青梅",
+     "红心芭乐"
+    ],
+    "en": [
+     "Kyoho grape",
+     "lychee",
+     "bayberry",
+     "prune",
+     "green plum",
+     "pink guava"
+    ]
+   },
+   "sweetness": {
+    "zh-CN": [
+     "冰糖雪梨",
+     "太妃糖",
+     "麦芽糖",
+     "黑糖",
+     "罗汉果甜"
+    ],
+    "en": [
+     "rock-sugar pear",
+     "toffee",
+     "maltose",
+     "dark brown sugar",
+     "monk-fruit sweetness"
+    ]
+   },
+   "herbal_green": {
+    "zh-CN": [
+     "高山龙井",
+     "武夷岩茶",
+     "鸭屎香",
+     "普洱茶韵"
+    ],
+    "en": [
+     "high-mountain Longjing",
+     "Wuyi rock tea",
+     "Ya Shi Xiang (Dancong)",
+     "Pu'er tea finish"
+    ]
+   },
+   "fermented_winey": {
+    "zh-CN": [
+     "米酒",
+     "酒酿",
+     "酒酿圆子",
+     "黄酒",
+     "热带水果发酵酱"
+    ],
+    "en": [
+     "rice wine",
+     "jiuniang (sweet fermented rice)",
+     "jiuniang rice balls",
+     "huangjiu",
+     "tropical fruit ferment"
+    ]
+   },
+   "bitter_roasted": {
+    "zh-CN": [
+     "烤杏仁",
+     "烘焙麦芽",
+     "黑芝麻",
+     "松露巧克力"
+    ],
+    "en": [
+     "roasted almond",
+     "roasted malt",
+     "black sesame",
+     "truffle chocolate"
+    ]
+   }
   }
  },
  "notes": [

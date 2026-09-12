@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) and R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) and R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -128,6 +128,41 @@ V = [ acidity, sweetness, body, floral, fruity, nutty_chocolate, fermented_winey
 
 3×3×3×3×2×2 = 324 种答案组合，即 324 个可能的 V_user；§7 的用户视野测试就是穷举这 324 个。
 
+### 3.1 问答流：相干性决策树（R3-D9）
+
+六道感知题不再固定顺序全问，而是按 owner 的决策树动态分支（`packages/flavor-data/src/product-vector-v1/flow.ts`，`flowStep()`）。
+槽位 Q0–Q5 到 Matrix_Q 六题的映射是操作员提案（`question_flow.slots`，`slot_mapping_owner_reviewed=false`）：
+Q0 = 酸质、Q1 = 香气（基础对，两题移动最强的维度）；Q2 = 甜感、Q3 = 触感（校验）；Q4 = 苦感、Q5 = 复杂度（确认/修正）；Q6 = 8 词勾选强修正。
+
+```
+C0–C2 + Q0–Q1 → 问 Q2 → 相干度(Q0-Q1, Q2)
+   ≥ 0.85 相干 → 问 Q3 → 相干度(Q0-Q1, Q2-Q3)
+        相干  → 问 Q4（轻微确认）→ 相干度(Q0-Q2, Q3-Q4) 严重? → Path 4（后置突变，Q6 候选）: Path 1 交付
+        轻微  → Path 2；严重 → Path 3
+   0.65–0.85 轻微 → Path 2：问 Q3-Q4（修正）→ 问 Q5（确认）→ Q5 与 (0-1+3-4) 或 (2+3-4) 相干 → 交付；否则 Q6 候选
+   < 0.65 严重   → Path 3：问 Q3、Q4-Q5（修正）→ Q4-5 与 0-1 或 2-3 相干 → 交付；均不相干 → Q6 候选
+```
+
+**相干度不在原始答案子向量上算。** 每个答案只动 1–2 个维度，两个内容一致但涉及不同维度的答案余弦为 0
+（实测 Q0-Q1 对 Q2-Q3 的 81 种组合里 76 种 < 0.65）。引擎先把每组答案映射成「画像签名」——对 16 个画像质心的余弦向量——再取两组签名的余弦：
+问的是「这些答案指向同一批画像吗」。校准（81 种组合）：最小 0.62、中位 0.73、p75 0.82、最大 0.98；按 owner 的阈值 0.85 / 0.65，
+18 种相干、56 种轻微、7 种严重，即 **Path 2 会是常见路径**。若希望 Path 1 常见，阈值可调到 0.80 / 0.65 或 0.75 / 0.62（bundle 里一处改）。
+示例：清亮花果（酸-A + 香-A）对花蜜甜（甜-A）0.77，对焦糖黑巧（甜-B）0.63；顺滑坚果（酸-C + 香-B）对焦糖黑巧 0.96，对花蜜甜 0.59。
+
+### 3.2 交互闭环（R3-D9）
+
+```
+[阶段 1] C0–C2 + Q0–Q1，按 3.1 分支动态追问
+[阶段 2] 第一份风味描述：3 + 5 = 8 个词（`describe()`，按 V_target 的维度轮询取词，每个词可归因到一个维度）
+         末尾："请勾选出你觉得最符合你当前体验的 5 个风味描述" —— 隐式强信号（`picksToVector()`）
+[阶段 3] 升阶门控（`escalationGate()`）：
+         A  无严重冲突，或勾选未验证偏置 → 专属风味总结卡（用户自选的 5 个词 + 1–2 句科学归因 + "感谢使用，祝你享受这杯咖啡！"）
+         B  流程里出现过严重冲突 且 勾选向量与 V_user 相干(≥ 0.85) 而与 V_pred 冲突(< 0.65) → Q6
+             Q6 = 8 词勾选（|ΔV| 最大的 8 个非瑕疵维度各一个词，`q6Options()`），选中维度以 α_strong = 0.9 强修正（`applyQ6()`）
+             → 第二份 3 + 5 描述卡（完结）
+```
+Q6 只在门控落入 B 时渲染。
+
 ---
 
 ## 4. 比较与校准
@@ -220,7 +255,9 @@ CoffeeReview 的批准（R3-D2）是「内部研究」：它的向量用于标�
 | 2 维度级 | 只有向量（画像质心、用户未细化）| 权重 > 0.15 的主导维度，映射到维度级中国词库，每维取列表里第一个未用过的词；不暴露抽象维度名 |
 | defect 守卫 | 任何情况 | defect 词只在 defect ≥ 0.5（瑕疵预警卡）时出现；常规卡强制过滤 |
 
-**6.2 词库** `CONCEPT_FLAVOR_TAGS.tsv`：12 个维度各一组中国本土词（owner 的 `DIMENSION_TAG_MAP_CN`：acidity → 清冽果酸｜明亮酸质｜柑橘酸；
+**6.2 词库** `CONCEPT_FLAVOR_TAGS.tsv`（规范基底）+ `CN_CONSUMER_FLAVOR_LEXICON.tsv`（消费端泛化，R3-D9 种子 29 条：桂花、栀子花、荔枝、杨梅、
+冰糖雪梨、太妃糖、高山龙井、鸭屎香、米酒、酒酿、烤杏仁、黑芝麻……各挂主维度与可选规范概念；Step 5 用 GACTT 与社媒语料扩充）。
+维度级取词顺序：owner 的 `DIMENSION_TAG_MAP_CN` 列表在前，消费端词在后。`CONCEPT_FLAVOR_TAGS.tsv`：12 个维度各一组中国本土词（owner 的 `DIMENSION_TAG_MAP_CN`：acidity → 清冽果酸｜明亮酸质｜柑橘酸；
 fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧酒香｜朗姆酒｜发酵果酱 …）+ 94 个规范概念各一个中/英极简词
 （按 owner 规则：stone fruit → 黄桃/杏桃，brown sugar → 红糖/蔗糖，winey → 厌氧酒香/朗姆，citrus → 柑橘/柚子，floral → 茉莉花/咖啡花）。
 概念行仍是操作员草案（`owner_reviewed=false`）。
@@ -327,7 +364,8 @@ fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧�
 | Matrix_Q | 完成（owner 给定）| §3 |
 | Matrix_K | C0×C1 可算未算；C2 缺数据 | §2 |
 | 比较/校准 | 公式定稿；α = 0.5（R3-D8，不再微调）；结构轴权重 0.6 | §4 / §5.3 |
-| 表达层 | 完成：词库（12 维列表 + 94 概念）、27 条归因句、双语 `present()`，10 个测试 | §6 |
+| 表达层 | 完成：词库（12 维列表 + 94 概念 + 29 条消费端词）、27 条归因句、双语 `present()` | §6 |
+| 问答流 | 完成：相干性决策树（画像签名空间）、3+5 描述、8 选 5、升阶门控、Q6 强修正；17 个测试 | §3.1 / §3.2 |
 | 用户自建库 | 未开始（本地存储 + 录入表单 + 扫码）| §8 |
 | 前端运行时 | 未开始；现有前端是 v0.2 目录的 demo | §8 |
 | 充分性 | 4 项里 3 项过（饱和、稀疏主干、视野 95%），均匀度差最后一个轴（fermented_winey）| §7 |
@@ -345,7 +383,7 @@ WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（
 | 4 | 前端运行时 `packages/flavor-data/src/product-vector-v1`，纯 JS 推荐与归因引擎 | 引擎完成（`infer()`：V_pred / V_user / ΔV / V_target / 画像与豆款排序 / 语境证据基础），5 个引擎测试通过；页面与用户自建库（IndexedDB）未开始 |
 | 5 | 产品级风味描述与用户用语对齐（owner 新要求）| 未开始：用已批准的 GACTT 消费者描述建立「消费者用语 → 12 维」词表，画像命名与归因文案都从它取词 |
 
-**仍待 owner：** 确认或改名 `anchor-17`（983 杯的甜果画像）；94 个概念级极简词过目；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
+**仍待 owner：** Q0–Q5 槽位到六题的映射；相干阈值是否按校准调整（0.85/0.65 → Path 2 常见）；94 个概念级极简词过目；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
 `ingest-external-literature.py` 会把它们并入归因句表。
 
 ---
