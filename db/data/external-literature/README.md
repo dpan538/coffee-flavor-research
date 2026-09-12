@@ -30,3 +30,15 @@ bundle's `presentation.context_statements`, so the attribution text can cite its
 
 Raw PDFs or full text of third-party sources do not belong in git; keep them under the restricted root and point to them
 from `source_locator`.
+
+## Per-source conventions (owner, 2026-09-12)
+
+| file | focus | context binding |
+|---|---|---|
+| `wcr_sensory_lexicon.claims.csv` | chemical references and grading sentences for floral, fruity, acidity, sweetness | `C2_variety` (genetic ceiling) and `C1_roast` |
+| `uc_davis_coffee_center.claims.csv` | grind – temperature – TDS – sensory map; extraction assertions ("hot fast extraction pulls polar acids", "fine grind amplifies large-molecule bitterness") | `C0_brew` |
+| `coffee_ad_astra.claims.csv` | channeling, extraction yield vs mid-palate sweetness and late off-notes (`defect` / `bitter`) | `C0_brew` and `C0_brew__C1_roast` combinations via `context_parts` |
+
+`context_axis` accepts the aliases `C0_brew`, `C1_roast`; a combination sentence sets `context_parts` (e.g. `C0:pour_over_v60|C1:light`).
+Templates with the exact columns and example rows live in `templates/` (not ingested). The example claim texts there are placeholders,
+not citations — replace them with sentences taken from the source.

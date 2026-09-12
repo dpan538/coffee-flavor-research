@@ -1,0 +1,3 @@
+source_id,source_title,source_locator,licence_note,context_axis,option,context_parts,dimension_effects,claim_zh_cn,claim_en
+uc_davis_coffee_center,"<paper title>",<DOI>,<licence>,C0_brew,pour_over_v60,,"acidity:+0.3","高温快萃优先提取极性酸","hot, fast extraction pulls polar acids first"
+uc_davis_coffee_center,"<paper title>",<DOI>,<licence>,C0_brew,espresso,,"bitter_roasted:+0.3|body:+0.3","细研磨放大大分子苦感与醇厚","fine grind amplifies large-molecule bitterness and body"

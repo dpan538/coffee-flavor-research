@@ -233,6 +233,35 @@
         "tests": "19/19 incl. the rhythm lock (Path 1 20-35%, Path 2 50-70%, Path 3+4 5-20%, mean <= 6 questions)"
       },
       "recorded_at_utc": "2026-09-12T03:25:05Z"
+    },
+    {
+      "id": "R3-D11",
+      "subject": "94 concept tags approved; literature claim conventions; three local test suites; hybrid utterance mapper; persona blueprints",
+      "decision": "(1) All 94 concept-level minimalist tags approved (owner_reviewed=true) as the V1 canonical baseline lexicon. (2) Literature intake conventions: wcr_sensory_lexicon (C2_variety + C1_roast), uc_davis_coffee_center (C0_brew), coffee_ad_astra (C0_brew and C0_brew__C1_roast combinations). (3) Three local test suites: semantic disambiguation (20-30 consumer utterances -> Q0-Q5), persona full-path simulations (Persona A Path 1 / B Path 2 correction / C negation + Q6 when the vectors do not converge), consumer-lexicon naturalness. (4) Hybrid mapper: negation prefix scan, cosine for direction questions, cue hits for parallel questions, score = alpha*cosine + beta*cueHits, negation forcing (不苦 -> Q4-B, 不酸/怕酸 -> Q0-C). (5) Q0-Q5 wording must match Chinese coffee lovers' everyday language.",
+      "owner_words": "全盘批准 … 正式锁定为系统的 V1 核心规范词表 … 语义一致性与歧义测试 … 模拟真实用户的全路径收敛测试 … 混合映射器 (Hybrid Mapper) … 关键否定词防御机制 … 确保 Q0~Q5 的中文提问符合中国咖啡爱好者的日常习惯",
+      "applied": {
+        "data": [
+          "CONCEPT_FLAVOR_TAGS.tsv 94 rows owner_reviewed=true",
+          "QUESTION_BANK.tsv colloquial zh-CN/en prompts + option cues (operator draft)",
+          "external-literature/templates + README conventions; ingest accepts C0_brew/C1_roast aliases and context_parts combinations"
+        ],
+        "engine": [
+          "lexicon.ts hybrid mapper",
+          "flow.ts roast-polarity paradox guard (min 0.55) and context conflict check (min 0.25; caps at mild)",
+          "flowStep(answers, context)"
+        ],
+        "findings": [
+          "profile-signature space cannot see the owner's sensory paradox (0.72 = mild) -> polarity guard",
+          "blending V_pred into the base pair makes 100% of sequences Path 1 -> rejected; context gets its own check",
+          "guard costs ~13% of sequences moved to Path 3: rhythm 21/52/27 (none), 20/53/27 (light), 15/63/22 (dark)"
+        ],
+        "tests": "37/37 across three files; tsc clean",
+        "open": [
+          "QUESTION_BANK wording review",
+          "literature claim files"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T03:45:14Z"
     }
   ],
   "guards": {

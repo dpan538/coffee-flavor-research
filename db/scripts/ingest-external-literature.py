@@ -10,7 +10,9 @@ ROOT = Path(__file__).resolve().parents[2]
 IN = ROOT / "db" / "data" / "external-literature"
 OUT = ROOT / "db" / "data" / "product-vector-v1" / "LITERATURE_CLAIMS.tsv"
 REQUIRED = ["source_id", "source_title", "source_locator", "licence_note", "context_axis", "option", "dimension_effects", "claim_zh_cn", "claim_en"]
+OPTIONAL = ["context_parts"]  # combination sentences: "C0:pour_over_v60|C1:light" (owner: C0_brew__C1_roast rows)
 AXES = {"C0", "C1", "C2_variety", "C2_process", "GENERAL"}
+AXIS_ALIAS = {"C0_brew": "C0", "C0_BREW": "C0", "C1_roast": "C1", "C1_ROAST": "C1", "C2": "C2_variety", "C2_VARIETY": "C2_variety", "C2_PROCESS": "C2_process", "general": "GENERAL"}
 DIMS = {"acidity", "sweetness", "body", "floral", "fruity", "nutty_chocolate", "fermented_winey", "bitter_roasted", "spice", "herbal_green", "woody_earthy", "defect"}
 
 
@@ -24,14 +26,25 @@ def main() -> int:
                 problems.append(f"{path.name}: missing columns {missing}")
                 continue
             for n, r in enumerate(reader, 2):
-                if r["context_axis"] not in AXES:
+                r["context_axis"] = AXIS_ALIAS.get(r["context_axis"].strip(), r["context_axis"].strip())
+                combo = (r.get("context_parts") or "").strip()
+                if combo:
+                    parts_in = [part.strip() for part in combo.split("|") if part.strip()]
+                    bad = [part for part in parts_in if ":" not in part or AXIS_ALIAS.get(part.split(":")[0], part.split(":")[0]) not in AXES - {"GENERAL"}]
+                    if bad:
+                        problems.append(f"{path.name}:{n}: context_parts {combo!r}")
+                        continue
+                elif r["context_axis"] not in AXES:
                     problems.append(f"{path.name}:{n}: context_axis {r['context_axis']!r}")
                     continue
                 effects = r["dimension_effects"].strip()
                 if effects and not all(re.fullmatch(r"(%s):[+-]?\d*\.?\d+" % "|".join(DIMS), part.strip()) for part in effects.split("|")):
                     problems.append(f"{path.name}:{n}: dimension_effects {effects!r}")
                     continue
-                parts = [(r["context_axis"], r["option"].strip())] if r["option"].strip() else []
+                if combo:
+                    parts = [(AXIS_ALIAS.get(part.split(":")[0], part.split(":")[0]), part.split(":", 1)[1]) for part in parts_in]
+                else:
+                    parts = [(r["context_axis"], r["option"].strip())] if r["option"].strip() else []
                 rows.append({"context_id": "__".join(f"{a}_{o.upper()}" for a, o in parts) or f"GENERAL_{r['source_id']}_{n}",
                              "context_parts": "|".join(f"{a}:{o}" for a, o in parts),
                              "statement_zh": r["claim_zh_cn"].strip(), "statement_en": r["claim_en"].strip(), "evidence_state": "LITERATURE_CLAIM",

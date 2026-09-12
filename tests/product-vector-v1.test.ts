@@ -123,7 +123,7 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     expect(flow.questionFlow.alpha_strong).toBe(0.9);
   });
 
-  it("path rhythm over all 324 answer sequences: ~25% fast Path 1, ~60% corrective Path 2, ~15% severe Paths 3/4", () => {
+  it("path rhythm over all 324 answer sequences: ~20% fast Path 1, ~50% corrective Path 2, ~25% severe Paths 3/4 with the paradox guard", () => {
     const o3 = ["A", "B", "C"];
     const o2 = ["A", "B"];
     const paths: Record<string, number> = { "1": 0, "2": 0, "3": 0, "4": 0 };
@@ -150,8 +150,9 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     expect(share("1")).toBeLessThanOrEqual(0.35);
     expect(share("2")).toBeGreaterThanOrEqual(0.5);
     expect(share("2")).toBeLessThanOrEqual(0.7);
+    // the roast-polarity paradox guard (R3-D11) moves ~13% of sequences into Path 3; band widened accordingly
     expect(share("3") + share("4")).toBeGreaterThanOrEqual(0.05);
-    expect(share("3") + share("4")).toBeLessThanOrEqual(0.2);
+    expect(share("3") + share("4")).toBeLessThanOrEqual(0.3);
     expect(asked / total).toBeLessThanOrEqual(6);
   });
 

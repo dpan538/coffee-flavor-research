@@ -160,10 +160,25 @@ def main() -> int:
         "alpha_strong": 0.9,
         "first_description": {"main": 3, "secondary": 5, "pick_count": 5},
         "q6": {"option_count": 8, "kind": "dimension_words_by_largest_delta", "multi_select": True},
+        # roast-polarity paradox guard: bright-light (+) vs dark-heavy (-). Two answer groups whose polarities
+        # flip with magnitude >= min_magnitude are a sensory paradox (owner's Persona C: light-roast acidity
+        # then heavy bitterness) and are demoted to severe. A context whose polarity flips against the base
+        # pair (owner's Persona B: dark espresso, bright peach acid) caps the first check at mild -> Path 2.
+        "polarity": {"weights": {"acidity": 1.0, "floral": 1.0, "herbal_green": 1.0, "bitter_roasted": -1.0, "woody_earthy": -1.0, "nutty_chocolate": -0.7},
+                     "min_magnitude": 0.55, "context_min_magnitude": 0.25},
+        # the hybrid utterance mapper (owner spec): score = alpha * cosine + beta * cue hits; negation forcing
+        "utterance_mapper": {"alpha": 1.0, "beta": 0.5, "min_projection": 0.2, "direction_questions": ["Q0", "Q1", "Q2", "Q5"], "cue_questions": ["Q3", "Q4"],
+                             "negation_prefixes": {"zh-CN": ["不", "没", "无", "毫无", "几乎不", "怕", "不要", "不想要", "一点都不", "讨厌", "不喜欢", "不爱"], "en": ["not ", "no ", "without ", "hardly any ", "zero ", "hate ", "dislike "]},
+                             "forced_by_negation": {"zh-CN": {"苦": ["Q4", "B"], "酸": ["Q0", "C"]}, "en": {"bitter": ["Q4", "B"], "acid": ["Q0", "C"], "sour": ["Q0", "C"]}}},
         "closing": {"zh-CN": "感谢使用，祝你享受这杯咖啡！", "en": "Thank you — enjoy the cup!"},
         "slot_mapping_owner_reviewed": True,  # R3-D10: Q0 acid, Q1 aroma, Q2 sweetness, Q3 body, Q4 bitterness, Q5 complexity
     }
-    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow,
+    # question bank: colloquial zh-CN / en prompts and option labels + cue words (utterance mapper); operator draft
+    question_bank = {}
+    for r in rows(OUT / "QUESTION_BANK.tsv"):
+        q = question_bank.setdefault(r["slot"], {"question": r["question_id"], "prompt": {"zh-CN": r["prompt_zh_cn"], "en": r["prompt_en"]}, "options": {}, "owner_reviewed": r["owner_reviewed"] == "true"})
+        q["options"][r["option"]] = {"label": {"zh-CN": r["label_zh_cn"], "en": r["label_en"]}, "cues": {"zh-CN": [c for c in r["cues_zh_cn"].split("|") if c], "en": [c for c in r["cues_en"].split("|") if c]}}
+    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
               "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "matrix_q": questions, "profiles": profiles,
               "benchmark_beans": [], "presentation": presentation,

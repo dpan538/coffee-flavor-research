@@ -76,11 +76,550 @@
    "kind": "dimension_words_by_largest_delta",
    "multi_select": true
   },
+  "polarity": {
+   "weights": {
+    "acidity": 1.0,
+    "floral": 1.0,
+    "herbal_green": 1.0,
+    "bitter_roasted": -1.0,
+    "woody_earthy": -1.0,
+    "nutty_chocolate": -0.7
+   },
+   "min_magnitude": 0.55,
+   "context_min_magnitude": 0.25
+  },
+  "utterance_mapper": {
+   "alpha": 1.0,
+   "beta": 0.5,
+   "min_projection": 0.2,
+   "direction_questions": [
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q5"
+   ],
+   "cue_questions": [
+    "Q3",
+    "Q4"
+   ],
+   "negation_prefixes": {
+    "zh-CN": [
+     "不",
+     "没",
+     "无",
+     "毫无",
+     "几乎不",
+     "怕",
+     "不要",
+     "不想要",
+     "一点都不",
+     "讨厌",
+     "不喜欢",
+     "不爱"
+    ],
+    "en": [
+     "not ",
+     "no ",
+     "without ",
+     "hardly any ",
+     "zero ",
+     "hate ",
+     "dislike "
+    ]
+   },
+   "forced_by_negation": {
+    "zh-CN": {
+     "苦": [
+      "Q4",
+      "B"
+     ],
+     "酸": [
+      "Q0",
+      "C"
+     ]
+    },
+    "en": {
+     "bitter": [
+      "Q4",
+      "B"
+     ],
+     "acid": [
+      "Q0",
+      "C"
+     ],
+     "sour": [
+      "Q0",
+      "C"
+     ]
+    }
+   }
+  },
   "closing": {
    "zh-CN": "感谢使用，祝你享受这杯咖啡！",
    "en": "Thank you — enjoy the cup!"
   },
   "slot_mapping_owner_reviewed": true
+ },
+ "question_bank": {
+  "Q0": {
+   "question": "Q5_acid",
+   "prompt": {
+    "zh-CN": "入口第一感觉，酸是哪一种？",
+    "en": "First sip — what kind of acidity?"
+   },
+   "options": {
+    "A": {
+     "label": {
+      "zh-CN": "亮亮的柑橘 / 青苹果酸",
+      "en": "bright citrus or green-apple acidity"
+     },
+     "cues": {
+      "zh-CN": [
+       "柑橘",
+       "柠檬",
+       "青苹果",
+       "明亮",
+       "鲜明",
+       "亮",
+       "活泼",
+       "清冽",
+       "柚子"
+      ],
+      "en": [
+       "citrus",
+       "lemon",
+       "green apple",
+       "bright",
+       "lively",
+       "crisp",
+       "yuzu"
+      ]
+     }
+    },
+    "B": {
+     "label": {
+      "zh-CN": "柔和的乳酸 / 发酵酸，像酸奶",
+      "en": "soft lactic or fermented acidity, like yoghurt"
+     },
+     "cues": {
+      "zh-CN": [
+       "乳酸",
+       "酸奶",
+       "发酵酸",
+       "柔和的酸",
+       "圆润的酸",
+       "酒酿",
+       "米酒"
+      ],
+      "en": [
+       "lactic",
+       "yoghurt",
+       "fermented acid",
+       "soft acid",
+       "round acid",
+       "rice wine"
+      ]
+     }
+    },
+    "C": {
+     "label": {
+      "zh-CN": "几乎不酸，很顺",
+      "en": "hardly any acidity, very smooth"
+     },
+     "cues": {
+      "zh-CN": [
+       "不酸",
+       "几乎不酸",
+       "无酸",
+       "没什么酸",
+       "很顺",
+       "平顺"
+      ],
+      "en": [
+       "not sour",
+       "hardly any acid",
+       "no acidity",
+       "very smooth",
+       "flat"
+      ]
+     }
+    }
+   },
+   "owner_reviewed": false
+  },
+  "Q1": {
+   "question": "Q8_aroma",
+   "prompt": {
+    "zh-CN": "闻起来最像什么？",
+    "en": "What does it smell like most?"
+   },
+   "options": {
+    "A": {
+     "label": {
+      "zh-CN": "花香、茶感、草本",
+      "en": "floral, tea-like, herbal"
+     },
+     "cues": {
+      "zh-CN": [
+       "花香",
+       "茶感",
+       "清茶",
+       "草本",
+       "茉莉",
+       "桂花",
+       "栀子",
+       "玉兰",
+       "白花",
+       "橙花"
+      ],
+      "en": [
+       "floral",
+       "tea",
+       "herbal",
+       "jasmine",
+       "osmanthus",
+       "gardenia",
+       "magnolia",
+       "white flowers",
+       "orange blossom"
+      ]
+     }
+    },
+    "B": {
+     "label": {
+      "zh-CN": "坚果、烤面包、烤榛果",
+      "en": "nuts, toast, roasted hazelnut"
+     },
+     "cues": {
+      "zh-CN": [
+       "坚果",
+       "烤面包",
+       "榛果",
+       "烤杏仁",
+       "黑芝麻",
+       "麦芽",
+       "吐司",
+       "花生"
+      ],
+      "en": [
+       "nut",
+       "toast",
+       "hazelnut",
+       "roasted almond",
+       "sesame",
+       "malt",
+       "peanut"
+      ]
+     }
+    },
+    "C": {
+     "label": {
+      "zh-CN": "热带水果，带一点微醺酒香",
+      "en": "tropical fruit with a boozy edge"
+     },
+     "cues": {
+      "zh-CN": [
+       "热带水果",
+       "微醺",
+       "酒香",
+       "芒果",
+       "荔枝",
+       "菠萝",
+       "朗姆",
+       "百香果",
+       "杨梅"
+      ],
+      "en": [
+       "tropical",
+       "boozy",
+       "winey",
+       "mango",
+       "lychee",
+       "pineapple",
+       "rum",
+       "passion fruit"
+      ]
+     }
+    }
+   },
+   "owner_reviewed": false
+  },
+  "Q2": {
+   "question": "Q6_sweet",
+   "prompt": {
+    "zh-CN": "回甘里最常尝到哪种甜？",
+    "en": "Which sweetness shows up in the finish?"
+   },
+   "options": {
+    "A": {
+     "label": {
+      "zh-CN": "清爽的花蜜 / 蔗糖甜",
+      "en": "light nectar or cane-sugar sweetness"
+     },
+     "cues": {
+      "zh-CN": [
+       "花蜜",
+       "蔗糖",
+       "蜂蜜",
+       "冰糖",
+       "清甜",
+       "蜜感"
+      ],
+      "en": [
+       "nectar",
+       "cane sugar",
+       "honey",
+       "rock sugar",
+       "light sweetness"
+      ]
+     }
+    },
+    "B": {
+     "label": {
+      "zh-CN": "浓郁的焦糖 / 黑巧克力",
+      "en": "rich caramel or dark chocolate"
+     },
+     "cues": {
+      "zh-CN": [
+       "焦糖",
+       "黑巧",
+       "黑巧克力",
+       "太妃糖",
+       "可可",
+       "红糖"
+      ],
+      "en": [
+       "caramel",
+       "dark chocolate",
+       "toffee",
+       "cocoa",
+       "brown sugar"
+      ]
+     }
+    },
+    "C": {
+     "label": {
+      "zh-CN": "熟果、果酱那种浓稠的甜",
+      "en": "ripe-fruit, jammy sweetness"
+     },
+     "cues": {
+      "zh-CN": [
+       "熟果",
+       "果酱",
+       "浓稠的甜",
+       "果干",
+       "葡萄干",
+       "西梅"
+      ],
+      "en": [
+       "ripe fruit",
+       "jam",
+       "jammy",
+       "dried fruit",
+       "raisin",
+       "prune"
+      ]
+     }
+    }
+   },
+   "owner_reviewed": false
+  },
+  "Q3": {
+   "question": "Q7_body",
+   "prompt": {
+    "zh-CN": "在嘴里的分量感像什么？",
+    "en": "How heavy does it feel in the mouth?"
+   },
+   "options": {
+    "A": {
+     "label": {
+      "zh-CN": "清爽，像绿茶或果汁",
+      "en": "light, like green tea or juice"
+     },
+     "cues": {
+      "zh-CN": [
+       "清爽",
+       "轻盈",
+       "很轻",
+       "绿茶",
+       "果汁",
+       "茶一样",
+       "清茶",
+       "淡茶",
+       "茶汤"
+      ],
+      "en": [
+       "light",
+       "juicy",
+       "green tea",
+       "tea-like",
+       "delicate",
+       "light tea",
+       "tea"
+      ]
+     }
+    },
+    "B": {
+     "label": {
+      "zh-CN": "顺滑，像牛奶或丝绒",
+      "en": "smooth, like milk or velvet"
+     },
+     "cues": {
+      "zh-CN": [
+       "顺滑",
+       "牛奶",
+       "丝绒",
+       "奶油",
+       "圆润",
+       "丝滑"
+      ],
+      "en": [
+       "smooth",
+       "milky",
+       "velvet",
+       "creamy",
+       "round"
+      ]
+     }
+    },
+    "C": {
+     "label": {
+      "zh-CN": "厚重，像黑巧或糖浆",
+      "en": "heavy, like dark chocolate or syrup"
+     },
+     "cues": {
+      "zh-CN": [
+       "厚重",
+       "糖浆",
+       "很厚",
+       "重口",
+       "黏稠",
+       "浓稠"
+      ],
+      "en": [
+       "heavy",
+       "syrupy",
+       "thick",
+       "dense",
+       "weighty"
+      ]
+     }
+    }
+   },
+   "owner_reviewed": false
+  },
+  "Q4": {
+   "question": "Q9_bitter",
+   "prompt": {
+    "zh-CN": "尾段的苦感？",
+    "en": "Bitterness at the end?"
+   },
+   "options": {
+    "A": {
+     "label": {
+      "zh-CN": "有一点苦，但像黑巧一样回甘",
+      "en": "a little, but it turns sweet like dark chocolate"
+     },
+     "cues": {
+      "zh-CN": [
+       "微苦",
+       "有一点苦",
+       "有点苦",
+       "回甘",
+       "苦得舒服",
+       "黑巧一样的苦",
+       "很苦",
+       "苦味",
+       "带苦",
+       "苦感",
+       "苦"
+      ],
+      "en": [
+       "slightly bitter",
+       "a little bitter",
+       "lingering sweet",
+       "bittersweet",
+       "bitter"
+      ]
+     }
+    },
+    "B": {
+     "label": {
+      "zh-CN": "完全不苦",
+      "en": "none at all"
+     },
+     "cues": {
+      "zh-CN": [
+       "不苦",
+       "完全不苦",
+       "没有苦",
+       "无苦",
+       "一点都不苦"
+      ],
+      "en": [
+       "not bitter",
+       "no bitterness",
+       "zero bitterness"
+      ]
+     }
+    }
+   },
+   "owner_reviewed": false
+  },
+  "Q5": {
+   "question": "Q10_clean",
+   "prompt": {
+    "zh-CN": "整体更偏向哪种？",
+    "en": "Overall, which is closer?"
+   },
+   "options": {
+    "A": {
+     "label": {
+      "zh-CN": "层次分明，很干净",
+      "en": "clear layers, very clean"
+     },
+     "cues": {
+      "zh-CN": [
+       "层次",
+       "干净",
+       "清晰",
+       "分明",
+       "干净利落"
+      ],
+      "en": [
+       "layered",
+       "clean",
+       "clear",
+       "distinct"
+      ]
+     }
+    },
+    "B": {
+     "label": {
+      "zh-CN": "风味交融，浓郁复杂",
+      "en": "flavours blend together, rich and complex"
+     },
+     "cues": {
+      "zh-CN": [
+       "交融",
+       "浓郁",
+       "复杂",
+       "混在一起",
+       "融合",
+       "饱满"
+      ],
+      "en": [
+       "blended",
+       "rich",
+       "complex",
+       "melded",
+       "full"
+      ]
+     }
+    }
+   },
+   "owner_reviewed": false
+  }
  },
  "alpha_default": 0.5,
  "structure_axis_weight": 0.6,

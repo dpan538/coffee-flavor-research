@@ -17,6 +17,7 @@ import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json
 import {
   DIMENSIONS,
   add,
+  buildVPred,
   cosine,
   infer,
   normalize,
@@ -41,7 +42,7 @@ export type Slot = "Q0" | "Q1" | "Q2" | "Q3" | "Q4" | "Q5";
 export const SLOTS = flow.slots.map((s) => s.slot as Slot);
 export type FlowAnswers = Partial<Record<Slot, string>>;
 export type CoherenceLevel = "coherent" | "mild" | "severe";
-export type CoherenceCheck = { between: [string, string]; similarity: number; level: CoherenceLevel };
+export type CoherenceCheck = { between: [string, string]; similarity: number; level: CoherenceLevel; paradox?: boolean };
 export type FlowPath = 1 | 2 | 3 | 4;
 export type FlowStep = {
   ask: Slot[];
@@ -91,11 +92,51 @@ export function profileSignature(v: Vector): Vector {
   return normalize(bundle.profiles.map((p) => Math.max(cosine(v, p.centroid), 0)));
 }
 
-export function coherence(a: Vector, b: Vector, between: [string, string] = ["a", "b"]): CoherenceCheck {
-  const similarity = cosine(profileSignature(a), profileSignature(b));
+/** Roast-polarity of a vector: bright-light (+) vs dark-heavy (−), per bundle.question_flow.polarity. */
+export function polarity(v: Vector): number {
+  const weights = flow.polarity.weights as Record<string, number>;
+  return DIMENSIONS.reduce((acc, d, i) => acc + (v[i] ?? 0) * (weights[d] ?? 0), 0);
+}
+
+function polarityFlips(a: Vector, b: Vector, minMagnitude: number): boolean {
+  const pa = polarity(a);
+  const pb = polarity(b);
+  return (pa >= minMagnitude && pb <= -minMagnitude) || (pb >= minMagnitude && pa <= -minMagnitude);
+}
+
+function levelOf(similarity: number): CoherenceLevel {
   const { coherent, mild } = flow.thresholds;
-  const level: CoherenceLevel = similarity >= coherent ? "coherent" : similarity >= mild ? "mild" : "severe";
-  return { between, similarity, level };
+  return similarity >= coherent ? "coherent" : similarity >= mild ? "mild" : "severe";
+}
+
+/**
+ * Coherence of two answer groups: cosine of their profile signatures, with the roast-polarity paradox
+ * guard — groups whose polarities flip strongly (light-roast acidity then heavy bitterness) are a
+ * sensory paradox and read as severe whatever their signature overlap says.
+ */
+export function coherence(a: Vector, b: Vector, between: [string, string] = ["a", "b"]): CoherenceCheck {
+  let similarity = cosine(profileSignature(a), profileSignature(b));
+  let paradox = false;
+  if (polarityFlips(a, b, flow.polarity.min_magnitude)) {
+    similarity = Math.min(similarity, flow.thresholds.mild - 0.01);
+    paradox = true;
+  }
+  return { between, similarity, level: levelOf(similarity), paradox };
+}
+
+/**
+ * Context conflict: the context's theoretical vector against the base pair. A polarity flip (dark
+ * espresso, bright peach acidity) caps the first check at mild — a correction path, never severe on
+ * its own, because V_pred is a soft prior.
+ */
+export function contextCheck(context: ContextAnswers | undefined, base: Vector): CoherenceCheck | null {
+  if (!context) return null;
+  const { vPred } = buildVPred(context);
+  if (!vPred.some((x) => x !== 0)) return null;
+  const similarity = cosine(profileSignature(vPred), profileSignature(base));
+  const flips = polarityFlips(vPred, base, flow.polarity.context_min_magnitude);
+  const capped = flips ? Math.min(similarity, flow.thresholds.coherent - 0.01) : similarity;
+  return { between: ["context", "Q0-Q1"], similarity: capped, level: flips ? (levelOf(capped) === "severe" ? "mild" : levelOf(capped)) : levelOf(capped), paradox: flips };
 }
 
 /** Slot answers → Matrix_Q answers, so infer() runs unchanged. */
@@ -111,7 +152,7 @@ export function perceptionAnswers(answers: FlowAnswers): PerceptionAnswers {
 /** Which slots to ask next, or deliver the first description; a pure function of the answers so far.
  *  The owner's tree: base pair Q0-Q1 → check Q2-Q3 together against it → Path 1 (Q4 confirm),
  *  Path 2 (Q4 correct, Q5 confirm), Path 3 (Q4-Q5 correct), Path 4 (late mutation after Q4). */
-export function flowStep(answers: FlowAnswers): FlowStep {
+export function flowStep(answers: FlowAnswers, context?: ContextAnswers): FlowStep {
   const has = (s: Slot) => answers[s] !== undefined && answers[s] !== "";
   const missing = (...slots: Slot[]) => slots.filter((s) => !has(s));
   const checks: CoherenceCheck[] = [];
@@ -123,8 +164,13 @@ export function flowStep(answers: FlowAnswers): FlowStep {
   if (missing("Q2", "Q3").length) return ask(missing("Q2", "Q3"), "coherence check needs Q2-Q3");
   const c23 = coherence(g(["Q0", "Q1"]), g(["Q2", "Q3"]), ["Q0-Q1", "Q2-Q3"]);
   checks.push(c23);
+  const ctx = contextCheck(context, g(["Q0", "Q1"]));
+  if (ctx) checks.push(ctx);
+  // the first decision takes the worse of the answer check and the context check
+  const order: Record<CoherenceLevel, number> = { coherent: 2, mild: 1, severe: 0 };
+  const first: CoherenceLevel = ctx && order[ctx.level] < order[c23.level] ? ctx.level : c23.level;
 
-  if (c23.level === "severe") {
+  if (first === "severe") {
     // Path 3: correct with Q4-Q5; Q4-Q5 must agree with one side
     const need = missing("Q4", "Q5");
     if (need.length) return ask(need, "Path 3: correction questions");
@@ -134,7 +180,7 @@ export function flowStep(answers: FlowAnswers): FlowStep {
     if (withBase.level === "coherent" || withCheck.level === "coherent") return deliver(3, false, "Path 3: Q4-Q5 agree with one side");
     return deliver(3, true, "Path 3: Q4-Q5 agree with neither side — Q6 eligible after the picks");
   }
-  if (c23.level === "mild") {
+  if (first === "mild") {
     // Path 2: correct with Q4 (Q3 already in hand), confirm with Q5
     if (!has("Q4")) return ask(["Q4"], "Path 2: correction question");
     if (!has("Q5")) return ask(["Q5"], "Path 2: light confirmation");
