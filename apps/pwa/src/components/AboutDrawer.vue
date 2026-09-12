@@ -90,7 +90,7 @@ onBeforeUnmount(() => {
 
     <!-- page 4: the profile network, drawn while scrolling -->
     <section ref="burstTrack" class="relative h-[560dvh] bg-[#0B0A09]" data-page="4" data-section="spectrum">
-      <div class="sticky top-0 h-[100dvh] px-4 pt-[84px] pb-6 flex flex-col justify-start overflow-hidden text-[#F4F1EA]">
+      <div class="sticky top-0 h-[100dvh] px-4 pt-[116px] pb-6 flex flex-col justify-start overflow-hidden text-[#F4F1EA]">
         <h2 class="text-[22px] font-bold leading-tight" :class="zh ? 'display-zh' : 'display'">{{ t.burstTitle }}</h2>
         <ProfileNetwork class="mt-2" :progress="burstProgress" />
       </div>

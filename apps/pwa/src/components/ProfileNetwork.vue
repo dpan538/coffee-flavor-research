@@ -83,7 +83,7 @@ const ink = (hex: string) => { const n = parseInt(hex.slice(1), 16); const l = (
         <li v-for="(nd, i) in nodes" :key="nd.id" class="flex gap-1.5 min-w-0 transition-opacity duration-300" :style="{ opacity: nodeIn(i) }"><b class="w-4 text-right font-semibold tabular-nums shrink-0">{{ nd.n }}</b><span class="text-[#D8D2C8] truncate">{{ nd.name }}</span></li>
       </ol>
     </div>
-    <svg :viewBox="`0 0 ${W} ${H}`" class="w-full h-auto max-h-[38dvh] mx-auto mt-1" role="img">
+    <svg :viewBox="`0 0 ${W} ${H}`" class="w-full h-auto max-h-[35dvh] mx-auto mt-1" role="img">
       <g :opacity="ringsIn">
         <circle :cx="CX" :cy="CY" :r="R1" fill="none" stroke="#F4F1EA" stroke-opacity="0.35" stroke-width="0.8" stroke-dasharray="3 4" />
         <circle :cx="CX" :cy="CY" :r="R2" fill="none" stroke="#F4F1EA" stroke-opacity="0.35" stroke-width="0.8" stroke-dasharray="3 4" />

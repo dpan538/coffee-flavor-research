@@ -39,6 +39,8 @@ export default {
         blossom: "#E97BAF",
         clay: "#E4724B",
         ochre: "#CBBB4C",
+        sun: "#FFD54A",
+        mint2: "#7BE0C8",
       },
       fontFamily: {
         display: ['"Stack Sans"', '"MiSans"', '"Helvetica Neue"', '"Arial Narrow"', "system-ui", "sans-serif"],
