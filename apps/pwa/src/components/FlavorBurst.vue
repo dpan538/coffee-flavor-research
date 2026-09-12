@@ -45,9 +45,17 @@ const spokes = computed(() =>
 <template>
   <figure class="w-full" data-component="FlavorBurst">
     <svg :viewBox="`0 0 ${size} ${size}`" class="w-full h-auto" role="img" :aria-label="`${profiles.length} flavor profiles`">
+      <circle v-for="k in 4" :key="'ring' + k" :cx="cx" :cy="cy" :r="inner + ((outer - inner) * k) / 4" fill="none" stroke="#1E1C1A" stroke-opacity="0.08" stroke-width="0.6" />
       <g v-for="s in spokes" :key="s.id">
-        <line v-for="(seg, i) in s.segments" :key="i" :x1="polar(seg.r0, s.angle)[0]" :y1="polar(seg.r0, s.angle)[1]" :x2="polar(seg.r1, s.angle)[0]" :y2="polar(seg.r1, s.angle)[1]" :stroke="seg.color" stroke-width="9" stroke-linecap="butt" />
-        <circle :cx="polar(s.length + 6, s.angle)[0]" :cy="polar(s.length + 6, s.angle)[1]" r="2.2" fill="#1E1C1A" />
+        <template v-for="(seg, i) in s.segments" :key="i">
+          <line v-for="t in Math.max(1, Math.round((seg.r1 - seg.r0) / 3.2))" :key="t"
+            :x1="polar(seg.r0 + (t - 0.5) * ((seg.r1 - seg.r0) / Math.max(1, Math.round((seg.r1 - seg.r0) / 3.2))), s.angle - 0.028)[0]"
+            :y1="polar(seg.r0 + (t - 0.5) * ((seg.r1 - seg.r0) / Math.max(1, Math.round((seg.r1 - seg.r0) / 3.2))), s.angle - 0.028)[1]"
+            :x2="polar(seg.r0 + (t - 0.5) * ((seg.r1 - seg.r0) / Math.max(1, Math.round((seg.r1 - seg.r0) / 3.2))), s.angle + 0.028)[0]"
+            :y2="polar(seg.r0 + (t - 0.5) * ((seg.r1 - seg.r0) / Math.max(1, Math.round((seg.r1 - seg.r0) / 3.2))), s.angle + 0.028)[1]"
+            :stroke="seg.color" stroke-width="1.6" />
+        </template>
+        <circle :cx="polar(s.length + 5, s.angle)[0]" :cy="polar(s.length + 5, s.angle)[1]" r="1.8" fill="#1E1C1A" />
       </g>
       <circle :cx="cx" :cy="cy" :r="inner - 8" fill="#FFFFFF" stroke="#1E1C1A" stroke-width="1" />
       <text :x="cx" :y="cy + 5" text-anchor="middle" font-size="13" fill="#1E1C1A" font-weight="600">{{ total.toLocaleString() }}</text>

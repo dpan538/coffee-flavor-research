@@ -678,6 +678,152 @@
  "corpus_facts": {
   "source_assertions": 83031,
   "valid_source_assertions": 77637,
+  "families": [
+   {
+    "family": "coffeereview_kaggle_parsed",
+    "coffees": 6516,
+    "mass": [
+     2008.88,
+     1836.09,
+     1499.48,
+     547.04,
+     2346.39,
+     2145.52,
+     259.96,
+     1231.79,
+     264.67,
+     68.98,
+     973.26,
+     55.83
+    ]
+   },
+   {
+    "family": "ace_cup_of_excellence",
+    "coffees": 1390,
+    "mass": [
+     544.09,
+     621.05,
+     56.32,
+     179.81,
+     931.43,
+     196.08,
+     99.32,
+     126.92,
+     44.29,
+     59.93,
+     34.1,
+     2.95
+    ]
+   },
+   {
+    "family": "zenodo_golovinsky_q_grader_dataset",
+    "coffees": 111,
+    "mass": [
+     27.67,
+     40.27,
+     1.08,
+     10.04,
+     45.04,
+     42.69,
+     9.23,
+     31.65,
+     4.39,
+     9.58,
+     12.9,
+     7.29
+    ]
+   },
+   {
+    "family": "frontiers_inera_robusta_q_grader_panel",
+    "coffees": 79,
+    "mass": [
+     26.15,
+     0.0,
+     0.0,
+     15.31,
+     0.0,
+     47.81,
+     26.15,
+     14.34,
+     0.0,
+     26.79,
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "family": "project_origin",
+    "coffees": 29,
+    "mass": [
+     11.24,
+     10.63,
+     0.08,
+     1.98,
+     22.2,
+     2.35,
+     2.41,
+     1.52,
+     0.0,
+     1.07,
+     0.37,
+     0.0
+    ]
+   },
+   {
+    "family": "frontiers_cenicafe_lengupa_trained_cuppers",
+    "coffees": 12,
+    "mass": [
+     0.2,
+     5.43,
+     0.0,
+     0.45,
+     1.28,
+     4.52,
+     1.88,
+     0.96,
+     0.0,
+     1.98,
+     0.69,
+     0.69
+    ]
+   },
+   {
+    "family": "coffee_board_of_india_fine_cup",
+    "coffees": 3,
+    "mass": [
+     0.0,
+     0.96,
+     0.0,
+     0.0,
+     0.0,
+     1.45,
+     0.0,
+     1.86,
+     0.0,
+     0.0,
+     0.79,
+     0.0
+    ]
+   },
+   {
+    "family": "sheba_coffee_yemen_auction",
+    "coffees": 2,
+    "mass": [
+     0.31,
+     1.09,
+     0.0,
+     0.18,
+     1.5,
+     0.0,
+     0.06,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  ],
   "coffees": 9128,
   "usable_coffee_vectors": 8142,
   "semantic_relation_edges": 141460,

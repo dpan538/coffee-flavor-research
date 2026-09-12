@@ -73,8 +73,47 @@ export function aboutCitations(locale: Locale): Citation[] {
   return out;
 }
 
-export function aboutFooter(locale: Locale): string {
-  return locale === "zh-CN" ? "无服务器，无账号，无追踪。每一次诊断、每一个向量和自建豆库都只在这台设备的本地存储里，随时可清空。" : "No server, no account, no tracking. Every diagnosis, vector and bean stays in this device's local storage and can be cleared any time.";
+export type Approach = { eyebrow: string; title: string; author: string; paragraphs: string[]; problem: string[] };
+
+/** "Our approach": why the project exists, who made it, what it answers — the first thing About says. */
+export function aboutApproach(locale: Locale): Approach {
+  if (locale === "zh-CN") {
+    return {
+      eyebrow: "Our approach",
+      title: "把一口咖啡，还原成它的物理成因",
+      author: "潘岱 · Dai Pan",
+      problem: ["包装上的风味词是营销写的，杯子里的味道是烘焙与萃取决定的，两者之间没有一座桥。", "喝到了什么、为什么是这样、下一杯该往哪走——爱好者手边一直没有一件像样的工具。"],
+      paragraphs: [
+        "flavorwords 是一间放在口袋里的感官实验室。它把一口咖啡的直觉描述投影成一个向量，拿它去对照烘焙与萃取的物理先验，再用精品咖啡圈真正在用的词把结果说回来。",
+        `它不训练模型，不打分，不排名。它只做三件事：把 ${facts.source_assertions.toLocaleString()} 条专业感官记录压成一个 ${facts.dimensions} 维空间，用几何而不是问卷去问，以及把每一句成因都注明出处。`,
+      ],
+    };
+  }
+  return {
+    eyebrow: "Our approach",
+    title: "Trace a sip back to its physics",
+    author: "Dai Pan · 潘岱",
+    problem: ["The flavor words on a bag are written by marketing; the taste in the cup is decided by roast and extraction, and nothing bridges the two.", "What did I taste, why, and where should the next cup go — the enthusiast never had a proper instrument for that."],
+    paragraphs: [
+      "flavorwords is a sensory lab that fits in a pocket. It projects the intuitive description of a sip into a vector, holds it against the physical priors of the roast and the brew, and answers in the words the specialty scene actually uses.",
+      `It trains no model, gives no score, ranks nothing. It does three things: compresses ${facts.source_assertions.toLocaleString()} professional sensory records into a ${facts.dimensions}-dimension space, asks with geometry instead of a questionnaire, and cites the source of every causal sentence.`,
+    ],
+  };
+}
+
+export type EvidenceLink = { id: string; title: string; gives: string; locator: string; licence: string; claims: number; color: string };
+
+/** the evidence chain: what each source gives the engine, in one line each */
+export function aboutEvidence(locale: Locale): EvidenceLink[] {
+  const zh = locale === "zh-CN";
+  const gives: Record<string, [string, string]> = {
+    wcr_sensory_lexicon: ["规范概念的标准定义、品种的基因上限", "canonical definitions, the genetic ceiling of varieties"],
+    uc_davis_coffee_center: ["研磨、水温、TDS 如何先释放酸、后释放苦", "how grind, temperature and TDS release acids first and bitterness last"],
+    coffee_ad_astra: ["通道效应与萃取率如何决定中段甜与尾段涩", "how channeling and extraction yield decide mid-palate sweetness and late astringency"],
+    gactt: [`${facts.consumer_respondents.toLocaleString()} 位消费者真实用词的频次`, `the real vocabulary of ${facts.consumer_respondents.toLocaleString()} consumers, by frequency`],
+  };
+  const colors: Record<string, string> = { wcr_sensory_lexicon: "#7268C9", uc_davis_coffee_center: "#2F7A4C", coffee_ad_astra: "#B97C4E", gactt: "#EE8F70" };
+  return aboutCitations(locale).map((c) => ({ id: c.id, title: c.title.split(" — ")[0]!, gives: gives[c.id]![zh ? 0 : 1], locator: c.locator, licence: c.licence, claims: c.claims, color: colors[c.id] ?? "#999" }));
 }
 
 export function aboutSections(locale: Locale): AboutSection[] {
@@ -83,7 +122,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
     return [
       {
         id: "methodology",
-        title: "方法",
+        title: "感官物理学与几何归因",
         summary: `把风味拆成 ${facts.dimensions} 个正交维度；用向量的语义搜索给决策树剪枝，而不是给咖啡打分排序。`,
         folded: true,
         blocks: [
@@ -105,7 +144,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
   return [
     {
       id: "methodology",
-      title: "Method",
+      title: "Sensory physics & geometric attribution",
       summary: `Flavor is split into ${facts.dimensions} orthogonal dimensions; vector semantic search prunes the decision tree — it never ranks coffees.`,
       folded: true,
       blocks: [

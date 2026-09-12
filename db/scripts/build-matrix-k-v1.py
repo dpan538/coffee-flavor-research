@@ -231,7 +231,18 @@ def main() -> int:
     cleaned = json.loads((CURRENT / "CLEANED_83K_MANIFEST.json").read_text(encoding="utf-8"))
     semantic = json.loads((CURRENT / "BATCH7_SEMANTIC_MANIFEST.json").read_text(encoding="utf-8"))
     gactt = json.loads((OUT / "GACTT_SUMMARY.json").read_text(encoding="utf-8")) if (OUT / "GACTT_SUMMARY.json").is_file() else {}
+    library_rows = [r for r in rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv") if r["vector_state"] == "USABLE"]
+    family_mass: dict[str, dict] = {}
+    for r in library_rows:
+        fam = family_mass.setdefault(r["source_family_id"].removeprefix("family."), {"family": r["source_family_id"].removeprefix("family."), "coffees": 0, "mass": [0.0] * len(DIMS)})
+        fam["coffees"] += 1
+        for i, d in enumerate(DIMS):
+            fam["mass"][i] += float(r[f"v_{d}"])
+    families = sorted(family_mass.values(), key=lambda f: -f["coffees"])
+    for f in families:
+        f["mass"] = [round(x, 2) for x in f["mass"]]
     corpus_facts = {"source_assertions": cleaned["source_assertion_count"], "valid_source_assertions": cleaned["valid_source_assertion_count"],
+                    "families": families,
                     "coffees": len(rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv")), "usable_coffee_vectors": sum(1 for r in rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv") if r["vector_state"] == "USABLE"),
                     "semantic_relation_edges": semantic["semantic_relation_count"], "canonical_concepts": len(proj), "dimensions": len(DIMS), "profiles": len(profiles),
                     "consumer_respondents": gactt.get("respondents", 0), "consumer_notes": gactt.get("notes", 0), "literature_sources": len(sources), "literature_claims": sum(s["claims"] for s in sources),
