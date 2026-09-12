@@ -2,8 +2,8 @@
 // The geometric kit (owner, 2026-09-12): flat shapes on 30 × 30 tiles, every shape inside its box, three compositions
 // that share one language but are not the same row —
 //   card:  a row of small tiles in the confirmed words' feature colours (quarter, circle, half, triangle, diamond);
-//   home:  a stamp band — four tiles, each a coloured ground with a cream shape cut into it;
-//   about: a quilt — six tiles in two rows, muted grounds, ink and cream shapes.
+//   home:  five flat shapes in the bright palette, a different sequence from the card's;
+//   about: five flat shapes in the muted palette, another sequence (no coloured grounds — owner: too much contrast).
 import { computed } from "vue";
 
 type Tile = { bg?: string; fg: string; shape: "quarter" | "circle" | "half" | "triangle" | "diamond" | "ring" | "petals" | "bars" };
@@ -13,15 +13,13 @@ const PALETTE = ["#7268C9", "#E4724B", "#FFD54A", "#7BE0C8", "#1F3B5C", "#E97BAF
 const CARD_SHAPES: Tile["shape"][] = ["quarter", "circle", "half", "triangle", "diamond"];
 const layout = computed<{ cols: number; rows: number; tiles: Tile[] }>(() => {
   if (props.variant === "home") {
-    return { cols: 4, rows: 1, tiles: [
-      { bg: "#7268C9", fg: "#F3EEE2", shape: "quarter" }, { bg: "#E4724B", fg: "#F3EEE2", shape: "half" },
-      { bg: "#FFD54A", fg: "#1E1C1A", shape: "triangle" }, { bg: "#7BE0C8", fg: "#1E1C1A", shape: "petals" },
+    return { cols: 5, rows: 1, tiles: [
+      { fg: "#7268C9", shape: "half" }, { fg: "#E4724B", shape: "triangle" }, { fg: "#2EC27E", shape: "circle" }, { fg: "#FFB300", shape: "quarter" }, { fg: "#1F3B5C", shape: "diamond" },
     ] };
   }
   if (props.variant === "about") {
-    return { cols: 3, rows: 2, tiles: [
-      { bg: "#EFE7D5", fg: "#7268C9", shape: "ring" }, { bg: "#7268C9", fg: "#F3EEE2", shape: "diamond" }, { bg: "#EFE7D5", fg: "#E4724B", shape: "bars" },
-      { bg: "#1F3B5C", fg: "#F3EEE2", shape: "circle" }, { bg: "#EFE7D5", fg: "#1F3B5C", shape: "petals" }, { bg: "#FFD54A", fg: "#1E1C1A", shape: "quarter" },
+    return { cols: 5, rows: 1, tiles: [
+      { fg: "#B97C4E", shape: "diamond" }, { fg: "#7268C9", shape: "quarter" }, { fg: "#6F8B5A", shape: "circle" }, { fg: "#E4724B", shape: "half" }, { fg: "#1F3B5C", shape: "triangle" },
     ] };
   }
   const colors = props.colors.length ? props.colors : PALETTE;

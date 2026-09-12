@@ -17,7 +17,7 @@ export type CollectedCard = { key: string; title: string; label: string; color: 
 
 /** card colours: the Big Sur bag palette (owner, 2026-09-12), one flat block per step; the final card is the navy block */
 export const COLORS: Record<string, string> = {
-  c0_preparation: "#FFD54A", c1_roast: "#FFDCC8", c2_variety: "#C9DB6E", c2_process: "#E97BAF", c2_origin: "#6F8B5A",
+  c0_preparation: "#F3D66E", c1_roast: "#FFDCC8", c2_variety: "#C9DB6E", c2_process: "#E97BAF", c2_origin: "#6F8B5A",
   Q0: "#A995E3", Q1: "#E4724B", Q2: "#C9DB6E", Q3: "#F2C7B5", Q4: "#E97BAF", Q5: "#CBBB4C",
   description: "#EFE7D5", final: "#1F3B5C", escalation: "#8C4A4C", hero: "#A995E3",
 };

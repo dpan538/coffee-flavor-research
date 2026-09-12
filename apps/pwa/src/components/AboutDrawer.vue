@@ -101,8 +101,8 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- page 4: design notes — pinned for a beat, three folded entries with coloured marks, the credit line (owner's copy) -->
-    <section class="relative" :class="openSection ? '' : 'min-h-[160dvh]'" data-page="2" data-section="author">
-    <div class="min-h-[100dvh] px-5 pt-[100px] pb-10 flex flex-col bg-paper" :class="openSection ? '' : 'sticky top-0'" data-reveal>
+    <section class="relative min-h-[160dvh]" data-page="2" data-section="author">
+    <div class="sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-10 flex flex-col bg-paper" data-reveal>
       <p class="text-[11px] tracking-[0.22em] text-muted">{{ author.eyebrow }}</p>
       <h2 class="text-[32px] mt-2 font-bold" :class="zh ? 'display-zh' : 'display'">{{ author.title }}</h2>
       <p v-for="(p, i) in author.paragraphs" :key="'a' + i" class="leading-relaxed mt-4 text-[16px]">{{ p }}</p>
@@ -132,8 +132,8 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- page 5: sources in use, pinned for a beat, TOP at the bottom right -->
-    <section class="relative" :class="openSection ? '' : 'min-h-[160dvh]'" data-page="5" data-section="evidence">
-    <div class="min-h-[100dvh] px-5 pt-[100px] pb-28 flex flex-col bg-paper" :class="openSection ? '' : 'sticky top-0'" data-reveal>
+    <section class="relative min-h-[160dvh]" data-page="5" data-section="evidence">
+    <div class="sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-28 flex flex-col bg-paper" data-reveal>
       <h2 class="text-[28px] font-bold" :class="zh ? 'display-zh' : 'display'">{{ t.sources }}</h2>
       <ol class="mt-5 relative">
         <li v-for="(e, i) in evidence" :key="e.id" class="relative pl-6 pb-6">
