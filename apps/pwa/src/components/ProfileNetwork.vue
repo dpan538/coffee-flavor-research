@@ -77,13 +77,13 @@ const ink = (hex: string) => { const n = parseInt(hex.slice(1), 16); const l = (
 
 <template>
   <figure class="w-full text-[#F4F1EA]" data-component="ProfileNetwork">
-    <div class="flex items-start justify-between gap-3">
-      <p class="text-[12px] leading-[1.4] text-[#B9B4AA] max-w-[150px]">{{ zh ? '大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线连到最接近的两组，C1–C6 是最接近的几对。' : 'Size by records, colour by the group\'s strongest feature; the inner ring holds the 6 largest. Curves join the two nearest groups, C1–C6 the closest pairs.' }}</p>
-      <ol class="grid grid-cols-2 gap-x-2 gap-y-[2px] text-[11px] leading-[1.3] shrink-0" data-index="profiles">
-        <li v-for="(nd, i) in nodes" :key="nd.id" class="flex gap-1 transition-opacity duration-300" :style="{ opacity: nodeIn(i) }"><b class="w-4 text-right font-semibold tabular-nums">{{ nd.n }}</b><span class="text-[#D8D2C8]">{{ nd.name }}</span></li>
+    <div class="flex flex-col gap-2">
+      <p class="text-[13px] leading-[1.45] text-[#B9B4AA]">{{ zh ? '大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线连到最接近的两组，C1–C6 是最接近的几对。' : 'Size by records, colour by the group\'s strongest feature; the inner ring holds the 6 largest. Curves join the two nearest groups, C1–C6 the closest pairs.' }}</p>
+      <ol class="grid grid-cols-2 gap-x-3 gap-y-[2px] text-[12px] leading-[1.3]" data-index="profiles">
+        <li v-for="(nd, i) in nodes" :key="nd.id" class="flex gap-1.5 min-w-0 transition-opacity duration-300" :style="{ opacity: nodeIn(i) }"><b class="w-4 text-right font-semibold tabular-nums shrink-0">{{ nd.n }}</b><span class="text-[#D8D2C8] truncate">{{ nd.name }}</span></li>
       </ol>
     </div>
-    <svg :viewBox="`0 0 ${W} ${H}`" class="w-full h-auto max-h-[44dvh] mx-auto mt-1" role="img">
+    <svg :viewBox="`0 0 ${W} ${H}`" class="w-full h-auto max-h-[38dvh] mx-auto mt-1" role="img">
       <g :opacity="ringsIn">
         <circle :cx="CX" :cy="CY" :r="R1" fill="none" stroke="#F4F1EA" stroke-opacity="0.35" stroke-width="0.8" stroke-dasharray="3 4" />
         <circle :cx="CX" :cy="CY" :r="R2" fill="none" stroke="#F4F1EA" stroke-opacity="0.35" stroke-width="0.8" stroke-dasharray="3 4" />
@@ -104,11 +104,11 @@ const ink = (hex: string) => { const n = parseInt(hex.slice(1), 16); const l = (
       </g>
     </svg>
     <div class="mt-2 transition-opacity duration-500" :style="{ opacity: notesIn }">
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-[2px] text-[11px] leading-[1.35] text-[#D8D2C8]" data-index="callouts">
+      <ul class="grid grid-cols-2 gap-x-3 gap-y-[2px] text-[11.5px] leading-[1.3] text-[#D8D2C8]" data-index="callouts">
         <li v-for="e in callouts" :key="e.callout"><b class="text-[#F4F1EA]">{{ e.callout }}</b> {{ e.a.n }} ↔ {{ e.b.n }} · {{ e.shared.join("、") }} <span class="text-[#8f8a80] tabular-nums">{{ e.sim.toFixed(2) }}</span></li>
       </ul>
-      <ul class="grid grid-cols-4 gap-x-2 gap-y-[2px] mt-2 text-[11px] leading-[1.3]" data-index="features">
-        <li v-for="d in dims" :key="d" class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-sm shrink-0" :style="{ backgroundColor: DIM_COLORS[d] }" /><span class="text-[#D8D2C8] truncate">{{ labels[d]?.[locale] }}</span></li>
+      <ul class="grid grid-cols-3 gap-x-2 gap-y-[3px] mt-2 text-[12px] leading-[1.25]" data-index="features">
+        <li v-for="d in dims" :key="d" class="flex items-start gap-1"><span class="inline-block w-2 h-2 rounded-sm shrink-0 mt-[4px]" :style="{ backgroundColor: DIM_COLORS[d] }" /><span class="text-[#D8D2C8]">{{ labels[d]?.[locale] }}</span></li>
       </ul>
     </div>
   </figure>

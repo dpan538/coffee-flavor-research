@@ -419,6 +419,25 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T14:40:00Z"
+    },
+    {
+      "id": "R3-D20",
+      "subject": "Owner review 4: coloured headline hero, motif kit, four-option questions, drinker's-eye context titles, pinned About pages, MiSans self-hosted, PNG export",
+      "decision": "Home: 'Every taste has its own vocabulary.' is the headline in sentence case with each word in its own colour; 风味，自有表达。 / Put this cup into words. is the language title; the lead is body text in ink; the merged slogan line 'Put this cup into words.  从这一口开始 →' starts the flow with no underline, the Start button below being the redundant path; the lower band grows a little while the buttons shrink (176 px). The wordmark reads FLAVOR / WORDS, WORDS in Fraunces upper case; the language badge is 10 % smaller. A geometric motif kit (leaf, circle, fan, drop, ring, arch, wedge, wave) is one component used by the card's top row, the home hero and About page 1. Questions: Q0 gains 酸得有点刺激, Q3 gains 有点涩，发干, Q5 becomes four options (分得清 / 饱满 / 有点杂 / 说不上来); the rhythm re-measured at 20 / 49 / 31 on evidence sequences. Context titles ask as a drinker would: 怎么制作的？ / 咖啡豆的处理法 / 咖啡豆的产地（可选）; continent headers sit with their chips at twice the size. The collected card after the picks reads 候选风味描述; the card's five words are one tight group; switching language re-derives the description, picks and card (relocalize). About: the poster pages use their height (centred, larger type); the English network page no longer overflows; 动态问答模型 replaces 随回答调整的提问; the design page and the sources page are pinned for a beat (170 dvh tracks, sticky panels) with three coloured plus marks and the credit line among the entries; TOP sits at the bottom right of the sources page; the close button is a rounded rectangle; the scope block wraps cleanly. MiSans Regular / Medium / Demibold are subset from the owner's download to the app's 963 characters (~133 KB each) and precached. Share exports the card as a 1200 × 1200 PNG drawn with Canvas 2D (share sheet when files are supported, otherwise saved); the icon bar is rounded rectangles lifted off the bottom.",
+      "owner_words": "logo应该是全大写的WORDS … 不要顶在边缘上 … 到图四的时候scroll需要有一个pinned的段落 … 三个+号可以用三种highlight颜色 … 随回答调整的提问应该改为叫做动态问答模型 … 右下角有一个TOP按钮 … Every taste has its own vocabulary. 并且这个taste的五个单词可以用五个不同的颜色 … 这些词现在是正文，不该用灰色字体 … 移除下划线，这只是交互冗余 … 怎么制作的？… 咖啡豆的处理法 … 咖啡豆的产地 … 很多题其实应该有4个选项 … 候选风味描述 … 行间距应该缩小 … card没有切换成英文 … 设计一组基于几何的svg套件 … 导出是png，1200x1200px … 更类似圆角矩形",
+      "applied": {
+        "data": "QUESTION_BANK Q0-D, Q3-D, Q5-C/D; build-matrix-k-v1 Matrix_Q; view.ts context titles",
+        "code": "session.relocalize + answerQ6 picks; store.toggleLocale; view.ts appShell (sentence-case slogan); about.ts (动态问答模型, scope block NBSP); App.vue hero; AppHeader; BrandGlyphs kit; FlavorCard; FinalAttributionCard (PNG share, rounded icon bar); exportCard.ts (new); ContextSetupCard headers; AboutDrawer (pins, plus marks, TOP, centred posters); ProfileNetwork / SourceColumns; style.css; apps/pwa/scripts/subset-fonts.py; public/fonts MiSans subsets",
+        "verified": "vitest 54/54 (rhythm bands re-based), vue-tsc, vite build with the fonts precached",
+        "open": [
+          "Stack Sans files",
+          "card variants beyond cream",
+          "a second look at the PNG on a real phone share sheet"
+        ],
+        "owner_follow_up": "The plus marks are plain signs in three colours (no background — 不要自作主张加东西); the pinned design and sources panels start below the sticky header so 设计思路 and 引用与来源 stay visible; Q0-D reads 酸苦，带点刺激 (acidity 2, bitter_roasted 1, defect 0.5).",
+        "owner_follow_up_2": "Only the five letters of 'taste' carry a colour each (not every word); the slogan breaks into two lines — 'Put this cup into words.' then '从这一口开始 →' — and sits a little lower; the two home buttons are 1 : 1.2 (162 × 194 on a 375 px screen)."
+      },
+      "recorded_at_utc": "2026-09-12T16:10:00Z"
     }
   ],
   "guards": {

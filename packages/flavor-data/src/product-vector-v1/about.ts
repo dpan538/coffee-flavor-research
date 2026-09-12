@@ -193,8 +193,10 @@ export function aboutSections(locale: Locale): AboutSection[] {
   const t = flow.thresholds;
   const fd = flow.first_description;
   const scope = aboutScope(locale);
-  const scopeText = scope.items.map((s) => `${n(s.value, locale)} ${s.unit}${s.label}：${s.note}`).join("\n");
-  const scopeTextEn = scope.items.map((s) => `${n(s.value, locale)} ${s.label}: ${s.note}`).join("\n");
+  // no line break inside a number and its unit, nor inside the version or the date (owner: odd wrapping)
+  const nb = (s: string) => s.replace(/-/g, "\u2011");
+  const scopeText = scope.items.map((s) => `${n(s.value, locale)}\u00A0${s.unit}${/^[A-Za-z]/.test(s.label) ? " " : ""}${s.label}：${s.note}`).join("\n\n");
+  const scopeTextEn = scope.items.map((s) => `${n(s.value, locale)}\u00A0${s.label}: ${s.note}`).join("\n\n");
   if (locale === "zh-CN") {
     return [
       {
@@ -210,7 +212,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
       },
       {
         id: "questions",
-        title: "随回答调整的提问",
+        title: "动态问答模型",
         summary: "先从酸质与香气建立方向，再结合后续回答继续区分；需要进一步辨认时，补充一次提问或确认，让描述逐步形成。",
         folded: true,
         blocks: [
@@ -224,7 +226,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
         summary: "查看词汇来源、风味分组与匹配方式，了解参考描述如何形成，以及结果的适用范围。",
         folded: true,
         blocks: [
-          { title: "资料范围", body: `${scopeText}\n${scope.footnote}` },
+          { title: "资料范围", body: `${scopeText}\n\n${nb(scope.footnote)}` },
           { title: "初始参考如何形成", body: "冲煮方式、烘焙度、豆种与处理法各有一个从评审资料统计得到的参考向量，相加后就是这杯咖啡的初始参考。评审记录不足的选项（如蜜处理、湿刨法、乳酸发酵、酒桶发酵、冷萃）目前没有参考向量，选择它们不会改变初始参考。产地可选，只在花香、果香等少数特征上加一点偏置。初始参考只是起点，你的回答与选词决定最后的风味卡。" },
           { title: "结果的适用范围", body: "风味卡呈现你本次选择的描述。冲煮与豆子信息用于提供初始参考，相关研究用于补充说明；这些内容不构成对杯中成分或风味成因的测定。" },
           { title: "技术说明", body: `每类风味特征是向量的一个分量，共 ${facts.dimensions} 个分量。V_pred = normalize(Σ K)：语境的参考向量相加；V_user = normalize(Σ Q)：每个回答的增量向量相加；ΔV = V_user − V_pred；V_target = normalize(V_pred + α·ΔV)，α = ${bundle.alpha_default}，再确认后 α = ${flow.alpha_strong}。回答分组后投影到 ${facts.profiles} 组参考风味上比较相似度：≥ ${t.coherent} 视为一致，< ${t.mild} 视为明显不一致；烘焙方向单独检查。余弦相似度只用来找最接近的几组，再由你的选择决定；不给咖啡打分，也不输出概率。全部计算在手机本地完成，没有训练模型。` },
@@ -247,7 +249,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
     },
     {
       id: "questions",
-      title: "Questions that adapt to your answers",
+      title: "Dynamic question model",
       summary: "Acidity and aroma set the direction first; later answers refine it, and when something still needs telling apart, one more question or confirmation lets the description take shape.",
       folded: true,
       blocks: [
@@ -261,7 +263,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
       summary: "Where the vocabulary comes from, how the groups and the matching work, how the reference descriptions are formed, and what the result covers.",
       folded: true,
       blocks: [
-        { title: "Scope of the material", body: `${scopeTextEn}\n${scope.footnote}` },
+        { title: "Scope of the material", body: `${scopeTextEn}\n\n${nb(scope.footnote)}` },
         { title: "How the initial reference is formed", body: "Brew method, roast level, variety and processing each have a reference vector counted from the review material; added together they form this cup's initial reference. Options with too few reviews (honey, wet-hulled, lactic, barrel-aged, cold brew) have no reference vector yet, so choosing them leaves the initial reference unchanged. Origin is optional and adds only a small bias on a few features. The initial reference is a starting point; your answers and picks decide the final card." },
         { title: "What the result covers", body: "The card presents the description you chose this time. Brew and bean information provides the initial reference, and related research adds notes; none of this measures the cup's composition or the causes of its flavor." },
         { title: "Technical notes", body: `Each flavor feature is one component of a ${facts.dimensions}-component vector. V_pred = normalize(Σ K): the context reference vectors added; V_user = normalize(Σ Q): the answer increments added; ΔV = V_user − V_pred; V_target = normalize(V_pred + α·ΔV) with α = ${bundle.alpha_default}, and α = ${flow.alpha_strong} after a second confirmation. Answer groups are projected onto the ${facts.profiles} reference profiles and compared: ≥ ${t.coherent} counts as consistent, < ${t.mild} as clearly inconsistent; roast direction is checked separately. Cosine similarity only finds the closest few groups; your picks decide from there. No scores, no probabilities; everything runs on the phone and no model is trained.` },

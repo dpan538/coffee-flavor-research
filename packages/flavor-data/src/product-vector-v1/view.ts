@@ -48,11 +48,11 @@ const LABELS: Record<string, Record<Locale, string>> = {
   decaf: { "zh-CN": "低因", en: "Decaf" },
 };
 const TITLES: Record<string, Record<Locale, string>> = {
-  c0_preparation: { "zh-CN": "怎么冲的？", en: "How was it brewed?" },
+  c0_preparation: { "zh-CN": "怎么制作的？", en: "How was it made?" },
   c1_roast: { "zh-CN": "烘焙度", en: "Roast level" },
   c2_variety: { "zh-CN": "豆种", en: "Variety" },
-  c2_process: { "zh-CN": "处理法", en: "Processing" },
-  c2_origin: { "zh-CN": "产地（可选）", en: "Origin (optional)" },
+  c2_process: { "zh-CN": "咖啡豆的处理法", en: "How the beans were processed" },
+  c2_origin: { "zh-CN": "咖啡豆的产地（可选）", en: "Where the beans are from (optional)" },
 };
 
 function label(value: string, locale: Locale): string {
@@ -213,7 +213,7 @@ export function q6Copy(locale: Locale): { title: string; submit: string } {
 export function appShell(locale: Locale) {
   return locale === "zh-CN"
     ? {
-        slogan: "EVERY TASTE HAS ITS OWN VOCABULARY.",
+        slogan: "Every taste has its own vocabulary.",
         title: "风味，自有表达。",
         subtitle: "像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords 帮你找到贴近感受的词，组成这一杯的风味卡。",
         lead: "",
@@ -225,7 +225,7 @@ export function appShell(locale: Locale) {
         offlineReady: "离线可用",
       }
     : {
-        slogan: "EVERY TASTE HAS ITS OWN VOCABULARY.",
+        slogan: "Every taste has its own vocabulary.",
         title: "Put this cup into words.",
         subtitle: "Some coffees are easy to taste, but harder to describe. Citrus, cocoa, or something familiar you can't quite name. Find the words for what you taste, and bring them together in your own flavor card.",
         lead: "",

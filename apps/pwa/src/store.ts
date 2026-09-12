@@ -7,7 +7,7 @@
 import { shallowRef, ref, computed } from "vue";
 import type { ContextAnswers, Locale } from "flavor-data/product-vector-v1/engine";
 import type { Word, Slot } from "flavor-data/product-vector-v1/flow";
-import { answer, answerQ6, createSession, firstDescription, submitPicks, type Session } from "flavor-data/product-vector-v1/session";
+import { answer, answerQ6, createSession, firstDescription, relocalize, submitPicks, type Session } from "flavor-data/product-vector-v1/session";
 import { appShell, contextCatalog, normalizeContext, screenModel, type ContextCard, type ScreenModel } from "flavor-data/product-vector-v1/view";
 import { aboutCitations, aboutSections } from "flavor-data/product-vector-v1/about";
 import { beansAsVectors, userDatabase } from "flavor-data/user-db";
@@ -80,7 +80,7 @@ function wait(ms: number) {
 export function toggleLocale() {
   locale.value = locale.value === "zh-CN" ? "en" : "zh-CN";
   if (session.value) {
-    session.value = { ...session.value, locale: locale.value };
+    session.value = relocalize(session.value, locale.value);
     refresh();
   }
 }
@@ -143,7 +143,7 @@ export async function submitPickedWords(words: Word[]) {
   if (!session.value) return;
   collecting.value = true;
   await wait(COLLECT_MS);
-  collect({ key: "picks", title: locale.value === "zh-CN" ? "你的 5 个词" : "Your 5 words", label: words.map((w) => w.text).join(" · "), color: COLORS.description! });
+  collect({ key: "picks", title: locale.value === "zh-CN" ? "候选风味描述" : "Candidate descriptions", label: words.map((w) => w.text).join(" · "), color: COLORS.description! });
   session.value = submitPicks(session.value, words);
   refresh();
   collecting.value = false;

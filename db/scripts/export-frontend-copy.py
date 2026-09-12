@@ -21,7 +21,7 @@ SRC = ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1"
 
 # strings that live in Vue components (not in the bundle, not in view.ts / about.ts)
 COMPONENT_STRINGS = {
-    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("品牌图形", "五个 glyph：叶 / 圆 / 扇 / 滴 / 环（无文字）", "five glyphs: leaf / circle / fan / drop / ring (no text)")],
+    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("品牌图形（与风味卡顶部同一排）", "叶 / 圆 / 扇 / 滴 / 环；套件另有 拱 / 楔 / 波", "leaf / circle / fan / drop / ring; the kit also has arch / wedge / wave"), ("大标题五词五色", "Every taste has its own vocabulary.（每个词一种颜色）", "Every taste has its own vocabulary. (one colour per word)")],
     "风味卡 FlavorCard（终卡）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords")],
     "语境卡 ContextSetupCard": [
         ("小标签", "这杯咖啡", "This cup"),
@@ -32,8 +32,8 @@ COMPONENT_STRINGS = {
     "题卡 QuizCard": [("小标签", "这一口", "This sip")],
     "第一次出卡 FirstDescriptionCard": [("提交按钮", "确认风味卡", "Confirm my card")],
     "Q6 EscalationModal": [("小标签", "再看一眼", "One more look")],
-    "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("参考行前缀", "参考风味", "Reference"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享", "Home ｜ Start over ｜ Share"), ("操作区 aria", "操作", "Actions")],
-    "上方堆叠 CollectedStack": [("勾选卡标题", "你的 5 个词", "Your 5 words"), ("收集中 aria", "收集中", "collecting")],
+    "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("参考行前缀", "参考风味", "Reference"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享（导出 1200×1200 PNG）", "Home ｜ Start over ｜ Share (exports a 1200×1200 PNG)"), ("操作区 aria", "操作", "Actions"), ("PNG 上的字", "风味卡 ｜ 参考风味 · … ｜ flavorwords", "FLAVOR CARD ｜ Reference · … ｜ flavorwords")],
+    "上方堆叠 CollectedStack": [("勾选卡标题", "候选风味描述", "Candidate descriptions"), ("收集中 aria", "收集中", "collecting")],
     "About 抽屉 AboutDrawer（五页）": [
         ("关闭 aria / 滑动提示", "关闭 ｜ 向下滑动", "Close ｜ Scroll"), ("展开 / 收起", "展开 ｜ 收起", "Details ｜ Collapse"),
         ("第三页导语（无标题）", "十二类风味特征在全部评审记录里的累计权重（对数刻度）；深浅是来源评审族，字母下是各自占比。", "Twelve flavor features by cumulative weight across every review record (log scale); shades are the review panels, the share sits under each letter."),
@@ -41,7 +41,7 @@ COMPONENT_STRINGS = {
         ("第四页标题", "本项目整理的 16 组参考风味", "16 reference profiles organised by this project"),
         ("第四页导语", "大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线连到最接近的两组，C1–C6 是最接近的几对。", "Size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. Curves join the two nearest groups, C1–C6 the closest pairs."),
         ("第四页环与注释", "记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录", "the 6 largest ｜ the other 10 ｜ records"),
-        ("来源页（独立一页）", "引用与来源 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ 回到顶端", "Citations and sources ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ Back to top"),
+        ("来源页（独立一页，右下角 TOP）", "引用与来源 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ ↑ TOP", "Citations and sources ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ ↑ TOP"),
         ("来源族名", "CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ Project Origin 评审 ｜ Cenicafé 受训杯测师 ｜ 印度咖啡局 Fine Cup ｜ 也门 Sheba 拍卖评审", "CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ Project Origin panel ｜ Cenicafé trained cuppers ｜ Coffee Board of India Fine Cup ｜ Sheba Yemen auction panel"),
     ],
 }

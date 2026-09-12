@@ -150,6 +150,7 @@ describe("about content", () => {
     // owner copy review 2 (2026-09-12): three folded entries — vocabulary & groups, how the questions work, data & method
     expect(zh.map((s) => s.id)).toEqual(["vocabulary", "questions", "data"]);
     expect(zh.every((s) => s.folded && s.summary.length > 0 && s.blocks.length > 0)).toBe(true);
+    expect(zh[1]!.title).toBe("动态问答模型");
     expect(zh[1]!.blocks.map((b) => b.title)).toEqual(["提问顺序", "描述的选择与确认"]);
     expect(zh[2]!.blocks.map((b) => b.title)).toEqual(["资料范围", "初始参考如何形成", "结果的适用范围", "技术说明", "来源"]);
     expect(zh[0]!.blocks.some((b) => /V_pred|余弦|ΔV/.test(b.body))).toBe(false);

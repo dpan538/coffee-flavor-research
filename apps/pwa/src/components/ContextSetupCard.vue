@@ -61,7 +61,7 @@ function labelOf(values: string[]): string {
     <div class="flex-1 px-4 pt-4 pb-4 flex flex-col gap-3 min-h-0">
       <div class="grid grid-cols-2 auto-rows-[minmax(56px,auto)] gap-2.5 overflow-y-auto min-h-0 content-start">
         <template v-for="section in sections" :key="section.key">
-          <p v-if="section.label" class="col-span-2 text-xs tracking-widest opacity-70 pt-1 -mb-1">{{ section.label }}</p>
+          <p v-if="section.label" class="col-span-2 text-[22px] font-semibold leading-none pt-4 first:pt-0 -mb-0.5">{{ section.label }}</p>
           <button v-for="chip in section.chips" :key="chip.value" type="button" class="option !px-3 !py-2.5 flex flex-col items-center justify-center text-center rise" :aria-pressed="chosen.includes(chip.value)" :title="chip.basis" @click="choose(chip.value)">
             <span class="l1">{{ lines(chip.label)[0] }}</span>
             <span v-if="lines(chip.label)[1]" class="l2">{{ lines(chip.label)[1] }}</span>

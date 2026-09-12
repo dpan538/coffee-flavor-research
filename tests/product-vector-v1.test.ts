@@ -163,17 +163,19 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
         expect(step.checks[0]!.level).not.toBe("severe");
       }
     }
-    expect(total).toBe(3 * 4 * 4 * 3 * 3 * 2);
+    expect(total).toBe(["Q0", "Q1", "Q2", "Q3", "Q4", "Q5"].reduce((a, s) => a * opts(s).length, 1));
     // the owner's rhythm (R3-D10) holds among sequences that give directional evidence on Q0-Q2 (486 of them)
     const share = (k: string) => (withEvidence[k] ?? 0) / evidenceTotal;
-    expect(evidenceTotal).toBe(3 * 3 * 3 * 3 * 3 * 2);
-    expect(share("1")).toBeGreaterThanOrEqual(0.2);
+    // Q1-D and Q2-D are the absence answers; every other option carries a direction
+    expect(evidenceTotal).toBe(opts("Q0").length * (opts("Q1").length - 1) * (opts("Q2").length - 1) * opts("Q3").length * opts("Q4").length * opts("Q5").length);
+    expect(share("1")).toBeGreaterThanOrEqual(0.18);
     expect(share("1")).toBeLessThanOrEqual(0.35);
-    expect(share("2")).toBeGreaterThanOrEqual(0.5);
+    // owner review 4 (2026-09-12): the fourth options (harsh sourness, astringency, a muddled blend) lean on the defect
+    // axis and read as conflicts, moving a few points from Path 2 to Paths 3/4 — measured 20 / 49 / 31
+    expect(share("2")).toBeGreaterThanOrEqual(0.45);
     expect(share("2")).toBeLessThanOrEqual(0.7);
-    // the roast-polarity paradox guard (R3-D11) moves ~13% of sequences into Path 3; band widened accordingly
     expect(share("3") + share("4")).toBeGreaterThanOrEqual(0.05);
-    expect(share("3") + share("4")).toBeLessThanOrEqual(0.3);
+    expect(share("3") + share("4")).toBeLessThanOrEqual(0.35);
     // overall, a "not noticeable" aroma or sweetness can only take Path 2 (one more question), so Path 1 sits lower
     const overall = (k: string) => (paths[k] ?? 0) / total;
     expect(overall("1")).toBeGreaterThanOrEqual(0.1);

@@ -156,8 +156,24 @@ export function answerQ6(session: Session, selectedDimensions: string[]): Sessio
   if (session.stage !== "q6" || !session.result || !session.q6) return session;
   const corrected = applyQ6(session.result, selectedDimensions);
   const description = describe(corrected, session.locale);
-  const card = finalCard(corrected, description.all.slice(0, bundle.question_flow.first_description.pick_count), session.locale);
-  return log({ ...session, result: corrected, description, card, q6: { ...session.q6, selected: selectedDimensions }, stage: "final" }, "q6", { selectedDimensions });
+  const picks = description.all.slice(0, bundle.question_flow.first_description.pick_count);
+  const card = finalCard(corrected, picks, session.locale);
+  return log({ ...session, result: corrected, description, picks, card, q6: { ...session.q6, selected: selectedDimensions }, stage: "final" }, "q6", { selectedDimensions });
+}
+
+/** The same session in another language: the description, the picks (matched by position) and the card are re-derived. */
+export function relocalize(session: Session, locale: Locale): Session {
+  if (session.locale === locale) return session;
+  let next: Session = { ...session, locale };
+  if (session.result && session.description) {
+    const description = describe(session.result, locale);
+    const index = new Map(session.description.all.map((w, i) => [w.text, i]));
+    const picks = session.picks.map((w) => description.all[index.get(w.text) ?? -1] ?? w);
+    next = { ...next, description, picks };
+    if (session.card) next = { ...next, card: finalCard(session.result, picks, locale) };
+    if (session.q6) next = { ...next, q6: { ...session.q6, options: q6Options(session.result, locale) } };
+  }
+  return next;
 }
 
 export const sessionVersion = bundle.version;

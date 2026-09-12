@@ -123,12 +123,12 @@ def main() -> int:
     profiles = [{"profile_id": r["profile_id"], "member_count": int(r["member_count"]), "top_dimensions": r["top_dimensions"], "centroid": [float(r[f"c_{d}"]) for d in DIMS],
                  "benchmark_beans": r["benchmark_beans"], "anchor_id": r["anchor_id"]} for r in rows(OUT / "FLAVOR_PROFILE_LIBRARY.tsv")]
     questions = {
-        "Q5_acid": {"A": {"acidity": 2, "fruity": 1}, "B": {"acidity": 1, "fermented_winey": 2}, "C": {"body": 1}},
+        "Q5_acid": {"A": {"acidity": 2, "fruity": 1}, "B": {"acidity": 1, "fermented_winey": 2}, "C": {"body": 1}, "D": {"acidity": 2, "bitter_roasted": 1, "defect": 0.5}},  # D: sour and bitter with a sharp edge (owner review 4, 2026-09-12)
         "Q6_sweet": {"A": {"floral": 1, "sweetness": 2}, "B": {"nutty_chocolate": 2, "bitter_roasted": 1}, "C": {"fruity": 2, "sweetness": 2}, "D": {}},  # D: sweetness not noticeable — an absence adds nothing (owner copy review 2026-09-12)
-        "Q7_body": {"A": {"body": 1}, "B": {"body": 2}, "C": {"body": 3, "bitter_roasted": 1}},
+        "Q7_body": {"A": {"body": 1}, "B": {"body": 2}, "C": {"body": 3, "bitter_roasted": 1}, "D": {"body": 1, "defect": 0.5}},  # D: astringent, drying (owner review 4)
         "Q8_aroma": {"A": {"floral": 3}, "B": {"nutty_chocolate": 3}, "C": {"fermented_winey": 2, "fruity": 2}, "D": {}},  # D: no clear aroma (owner copy review 2, 2026-09-12)
         "Q9_bitter": {"A": {"bitter_roasted": 1}, "B": {}, "C": {"bitter_roasted": 2}},  # intensity only (owner copy review 2, 2026-09-12): the label no longer says 回甘, so A no longer adds nutty_chocolate
-        "Q10_clean": {"A": {"floral": 1, "acidity": 1}, "B": {"fermented_winey": 1, "body": 1}},
+        "Q10_clean": {"A": {"floral": 1, "acidity": 1}, "B": {"fermented_winey": 1, "body": 1}, "C": {"fermented_winey": 0.5, "defect": 0.5}, "D": {}},  # C: blended but muddled; D: hard to say (owner review 4)
     }
     # presentation layer (owner 2026-09-12): one vector backend, two languages. Minimalist CN tag
     # arrays for zh-CN, scientific wording for en; the science line is a collapsible second layer.

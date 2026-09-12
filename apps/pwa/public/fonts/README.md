@@ -3,6 +3,12 @@
 `Fraunces-Variable.woff2` / `Fraunces-Variable-Italic.woff2` (latin subset from Google Fonts, axes opsz / wght / SOFT / WONK) with
 `OFL-Fraunces.txt` — SIL Open Font License 1.1, Undercase Type. Loaded in `src/style.css`; used by `.wordmark-serif`.
 
+# MiSans (owner's download, subset on 2026-09-12)
+
+`MiSans-Regular.woff2`, `MiSans-Medium.woff2`, `MiSans-Demibold.woff2` are subsets of the owner's MiSans download
+(`~/Downloads/MiSans/woff2`), cut to the characters the app can show by `apps/pwa/scripts/subset-fonts.py` (re-run it after
+adding copy). MiSans is free for commercial use under Xiaomi's MiSans licence; the owner keeps the licence text with the download.
+
 # Self-hosted fonts
 
 Drop the font files here; `src/style.css` declares the faces and falls back to system fonts until they exist.

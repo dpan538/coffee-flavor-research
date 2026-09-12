@@ -259,6 +259,31 @@
        "flat"
       ]
      }
+    },
+    "D": {
+     "label": {
+      "zh-CN": "酸苦，带点刺激",
+      "en": "sour and bitter, a little sharp"
+     },
+     "cues": {
+      "zh-CN": [
+       "酸苦",
+       "又酸又苦",
+       "酸中带苦",
+       "酸里带苦",
+       "刺激",
+       "尖酸",
+       "扎口",
+       "酸得难受"
+      ],
+      "en": [
+       "sour and bitter",
+       "sour-bitter",
+       "sharp",
+       "harsh",
+       "piercing"
+      ]
+     }
     }
    },
    "owner_reviewed": true
@@ -569,6 +594,28 @@
        "weighty"
       ]
      }
+    },
+    "D": {
+     "label": {
+      "zh-CN": "有点涩，发干",
+      "en": "a little astringent, drying"
+     },
+     "cues": {
+      "zh-CN": [
+       "涩",
+       "发干",
+       "干涩",
+       "收敛",
+       "锁喉",
+       "刮舌"
+      ],
+      "en": [
+       "astringent",
+       "drying",
+       "dry finish",
+       "puckering"
+      ]
+     }
     }
    },
    "owner_reviewed": true
@@ -703,17 +750,61 @@
       "zh-CN": [
        "交融",
        "浓郁",
-       "复杂",
        "混在一起",
        "融合",
-       "饱满"
+       "饱满",
+       "厚实"
       ],
       "en": [
        "blended",
        "rich",
-       "complex",
        "melded",
-       "full"
+       "full",
+       "dense"
+      ]
+     }
+    },
+    "C": {
+     "label": {
+      "zh-CN": "味道混在一起，有点杂",
+      "en": "flavors blend together, a little muddled"
+     },
+     "cues": {
+      "zh-CN": [
+       "杂",
+       "混浊",
+       "浑浊",
+       "不干净",
+       "糊",
+       "杂糅",
+       "乱",
+       "混乱"
+      ],
+      "en": [
+       "muddled",
+       "muddy",
+       "murky",
+       "unclear",
+       "messy"
+      ]
+     }
+    },
+    "D": {
+     "label": {
+      "zh-CN": "说不上来",
+      "en": "hard to say"
+     },
+     "cues": {
+      "zh-CN": [
+       "说不上来",
+       "不确定",
+       "不好说",
+       "不知道"
+      ],
+      "en": [
+       "hard to say",
+       "not sure",
+       "can't tell"
       ]
      }
     }
@@ -2923,6 +3014,11 @@
    },
    "C": {
     "body": 1
+   },
+   "D": {
+    "acidity": 2,
+    "bitter_roasted": 1,
+    "defect": 0.5
    }
   },
   "Q6_sweet": {
@@ -2950,6 +3046,10 @@
    "C": {
     "body": 3,
     "bitter_roasted": 1
+   },
+   "D": {
+    "body": 1,
+    "defect": 0.5
    }
   },
   "Q8_aroma": {
@@ -2982,7 +3082,12 @@
    "B": {
     "fermented_winey": 1,
     "body": 1
-   }
+   },
+   "C": {
+    "fermented_winey": 0.5,
+    "defect": 0.5
+   },
+   "D": {}
   }
  },
  "profiles": [

@@ -84,16 +84,16 @@ const tree = computed(() =>
 <template>
   <figure class="w-full text-[#F4F1EA]" data-component="SourceColumns">
     <div class="flex items-start justify-between gap-3">
-      <div class="text-[12px] leading-[1.4] text-[#B9B4AA] max-w-[196px]">
+      <div class="text-[13px] leading-[1.45] text-[#B9B4AA] max-w-[190px]">
         {{ zh ? '十二类风味特征在全部评审记录里的累计权重（对数刻度）；深浅是来源评审族，字母下是各自占比。' : 'Twelve flavor features by cumulative weight across every review record (log scale); shades are the review panels, the share sits under each letter.' }}
       </div>
-      <ul class="text-[11px] leading-[1.35] shrink-0" data-index="panels">
+      <ul class="text-[12px] leading-[1.4] shrink-0" data-index="panels">
         <li v-for="(f, i) in families" :key="f.family" class="flex gap-2 transition-opacity duration-300" :style="{ opacity: panelIn(i) }">
           <span class="inline-block w-3 h-[8px] mt-[4px] rounded-[1px] bg-[#F4F1EA]" :style="{ opacity: i === 0 ? 1 : i === 1 ? 0.7 : 0.42 }" /><span class="text-[#B9B4AA]">{{ FAMILY_LABEL[f.family]?.[locale] ?? f.family }} <b class="text-[#F4F1EA] font-medium tabular-nums">{{ fmt(f.coffees) }}</b></span>
         </li>
       </ul>
     </div>
-    <ul class="grid grid-cols-3 gap-x-2 gap-y-[3px] mt-2 text-[12px] leading-[1.3]" data-index="features" :style="{ opacity: axesIn }">
+    <ul class="grid grid-cols-3 gap-x-2 gap-y-[4px] mt-3 text-[13px] leading-[1.3]" data-index="features" :style="{ opacity: axesIn }">
       <li v-for="(d, i) in dims" :key="d" class="flex items-center gap-1.5"><b class="w-3 font-semibold">{{ LETTERS[i] }}</b><span class="inline-block w-2 h-2 rounded-sm" :style="{ backgroundColor: DIM_COLORS[d] }" /><span class="text-[#D8D2C8]">{{ labels[d]?.[locale] }}</span></li>
     </ul>
     <svg :viewBox="`0 0 ${W} 526`" class="w-full h-auto max-h-[58dvh] mx-auto mt-1" role="img" font-family="inherit">

@@ -4,17 +4,27 @@ import { computed, ref } from "vue";
 import { House, RotateCcw, Share2 } from "lucide-vue-next";
 import type { ResultCardModel } from "flavor-data/product-vector-v1/view";
 import FlavorCard from "./FlavorCard.vue";
+import { shareCardPng } from "../exportCard";
 import { home, locale, restart } from "../store";
 
 const props = defineProps<{ model: ResultCardModel }>();
 const open = ref(false);
 const labels = computed(() => (locale.value === "zh-CN" ? { home: "首页", again: "重新体验", share: "分享", reference: "参考风味" } : { home: "Home", again: "Start over", share: "Share", reference: "Reference" }));
 const eyebrow = computed(() => `${props.model.heading}${props.model.corrected ? ` · ${locale.value === "zh-CN" ? "已确认" : "confirmed"}` : ""}`);
+const busy = ref(false);
+/** the card as a 1200 × 1200 PNG through the share sheet, or saved; the text share is the fallback */
 async function share(text: string) {
-  if (typeof navigator === "undefined") return;
-  const nav = navigator as Navigator & { share?: (d: { text: string }) => Promise<void> };
-  if (typeof nav.share === "function") await nav.share({ text }).catch(() => undefined);
-  else if (nav.clipboard) await nav.clipboard.writeText(text).catch(() => undefined);
+  if (typeof navigator === "undefined" || busy.value) return;
+  busy.value = true;
+  try {
+    await shareCardPng(props.model, locale.value);
+  } catch {
+    const nav = navigator as Navigator & { share?: (d: { text: string }) => Promise<void> };
+    if (typeof nav.share === "function") await nav.share({ text }).catch(() => undefined);
+    else if (nav.clipboard) await nav.clipboard.writeText(text).catch(() => undefined);
+  } finally {
+    busy.value = false;
+  }
 }
 </script>
 
@@ -39,10 +49,10 @@ async function share(text: string) {
         </div>
       </div>
     </div>
-    <nav class="px-6 pt-3 pb-5 flex items-center justify-between" :aria-label="locale === 'zh-CN' ? '操作' : 'Actions'">
-      <button type="button" class="rounded-full border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.home" :title="labels.home" @click="home"><House :size="22" :stroke-width="1.75" /></button>
-      <button type="button" class="rounded-full border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.again" :title="labels.again" @click="restart"><RotateCcw :size="22" :stroke-width="1.75" /></button>
-      <button type="button" class="rounded-full bg-cream text-ink w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.share" :title="labels.share" @click="share(model.shareText)"><Share2 :size="22" :stroke-width="1.75" /></button>
+    <nav class="px-6 pt-2 pb-10 flex items-center justify-between" :aria-label="locale === 'zh-CN' ? '操作' : 'Actions'">
+      <button type="button" class="rounded-2xl border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.home" :title="labels.home" @click="home"><House :size="22" :stroke-width="1.75" /></button>
+      <button type="button" class="rounded-2xl border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.again" :title="labels.again" @click="restart"><RotateCcw :size="22" :stroke-width="1.75" /></button>
+      <button type="button" class="rounded-2xl bg-cream text-ink w-14 h-14 inline-flex items-center justify-center disabled:opacity-60" :disabled="busy" :aria-label="labels.share" :title="labels.share" @click="share(model.shareText)"><Share2 :size="22" :stroke-width="1.75" /></button>
     </nav>
   </section>
 </template>
