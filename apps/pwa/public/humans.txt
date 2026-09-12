@@ -1,0 +1,11 @@
+/* TEAM */
+Research, design and development: Dai Pan (潘岱)
+Site: https://flavorwords.com
+
+/* THANKS */
+World Coffee Research (Sensory Lexicon), Coffee Ad Astra (Jonathan Gagné), Great American Coffee Taste Test (aggregate word counts)
+Fonts: MiSans (Xiaomi), Fraunces (Undercase Type, OFL), Stack Sans Text (OFL)
+
+/* SITE */
+Standards: HTML5, CSS3, ES2022, Web App Manifest, Service Worker
+Components: Vue 3, Tailwind CSS 3, GSAP, Dexie

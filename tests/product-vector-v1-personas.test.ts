@@ -94,6 +94,7 @@ describe("owner personas", () => {
     expect(first.paradox).toBe(true);
     const gate = flow.escalationGate(step, result, userSidePicks(result, description));
     expect(gate.severeHistory).toBe(true);
+    expect(gate.escalate).toBe(true); // the second round is reachable (owner, 2026-09-12)
     if (gate.escalate) {
       const options = flow.q6Options(result, "zh-CN");
       expect(options).toHaveLength(8);

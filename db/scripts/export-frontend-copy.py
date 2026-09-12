@@ -34,6 +34,7 @@ COMPONENT_STRINGS = {
     "Q6 EscalationModal": [("小标签", "再看一眼", "One more look")],
     "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("参考行前缀", "参考风味", "Reference"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享（导出 1200×1200 PNG）", "Home ｜ Start over ｜ Share (exports a 1200×1200 PNG)"), ("操作区 aria", "操作", "Actions"), ("PNG 上的字", "风味卡 ｜ 参考风味 · … ｜ flavorwords", "FLAVOR CARD ｜ Reference · … ｜ flavorwords")],
     "上方堆叠 CollectedStack": [("勾选卡标题", "候选风味描述", "Candidate descriptions"), ("收集中 aria", "收集中", "collecting")],
+    "机器阅读层（index.html / public）": [("页面标题 / 描述", "flavorwords — Put this cup into words ｜ Every taste has its own vocabulary. 从酸质、香气与口感开始……", "same; JSON-LD WebApplication, noscript summary, llms.txt, robots, sitemap, humans"), ("manifest", "flavorwords — Put this cup into words ｜ Every taste has its own vocabulary. A few questions turn what you taste into a flavor card. Works offline.", "same")],
     "About 抽屉 AboutDrawer（五页）": [
         ("关闭 aria / 滑动提示", "关闭 ｜ 向下滑动", "Close ｜ Scroll"), ("展开 / 收起", "展开 ｜ 收起", "Details ｜ Collapse"),
         ("第三页导语（无标题）", "十二类风味特征在全部评审记录里的累计权重（对数刻度）；深浅是来源评审族，字母下是各自占比。", "Twelve flavor features by cumulative weight across every review record (log scale); shades are the review panels, the share sits under each letter."),
@@ -128,6 +129,13 @@ def main() -> int:
         for opt, spec in q["options"].items():
             rows.append((slot, f"选项 {opt}", spec["label"]["zh-CN"], spec["label"]["en"]))
     md += [table(["题", "位置", "中文", "English"], rows), ""]
+    md += ["### 承接上一题的提问变体（bundle.question_flow.prompt_variants）", "", "第二题起，提问按上一题的回答换一种说法；选项按这杯与已答内容重新排序，「不明显」类永远在最后。", ""]
+    rows = []
+    for slot, spec in B["question_flow"].get("prompt_variants", {}).items():
+        for prev, text in spec.items():
+            if prev == "by": continue
+            rows.append((slot, f"上一题 {spec['by']} = {prev}", text["zh-CN"], text["en"]))
+    md += [table(["题", "条件", "中文", "English"], rows), ""]
 
     md += ["## 4. 十六组参考风味（终卡标题与标签）", "", "「参考实例」一列不上屏，只作内部对照；命名规则：两个主要感官参照，不加修饰词。", ""]
     rows = [(p["owner_name"]["zh-CN"], p["owner_name"]["en"], " ｜ ".join(p["display_tags"]["zh-CN"]), " ｜ ".join(p["display_tags"]["en"]), p["benchmark_beans"], p["member_count"]) for p in B["profiles"]]

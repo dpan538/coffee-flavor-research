@@ -1,0 +1,30 @@
+# flavorwords
+
+> Every taste has its own vocabulary. flavorwords helps coffee drinkers put a cup into words: a few questions about acidity, aroma, sweetness, mouthfeel and bitterness lead to candidate flavor words, the drinker confirms five, and they become a flavor card. Chinese and English.
+
+Research, design and development: Dai Pan (潘岱). Site: https://flavorwords.com — an installable offline web app (PWA); no account, no server, nothing leaves the phone.
+
+## What it does
+
+- Asks how the cup was made (nine methods), the roast level (seven), the variety (ten, single or blend of up to three), how the beans were processed (nine), and optionally the origin (19 countries by continent).
+- Asks five or six short questions about what the drinker tastes; every taste question has a "not noticeable" answer.
+- Offers eight candidate flavor words (three main suggestions, five alternatives) drawn from 12 flavor features; the drinker confirms five. If the picks point far from the earlier answers, one more look (Q6) lets the drinker restate what they tasted.
+- Produces a flavor card: the cup's information, the five confirmed words, and a reference profile — one of 16 reference profiles this project organised from review material. The card exports as a 1200 × 1200 PNG.
+- Under "About this description" the card shows: the initial reference (which inputs it came from and which features it leans toward), one research reference or one data count, and how the drinker's description differs from the initial reference. Nothing measures the cup's composition or the causes of its flavor.
+
+## How it works (method)
+
+- Twelve flavor features: acidity, sweetness, body, floral, fruity, nutty & chocolate, fermented & winey, roast & bitter, spice, herbal & green, woody & earthy, defect. Every flavor word maps to one feature.
+- An initial reference vector is the sum of reference vectors for brew method, roast, variety and processing, counted from public review records; the drinker's answers form a second vector; the target is the reference moved half-way toward the answers (α = 0.5, 0.9 after a second confirmation). Cosine similarity finds the nearest reference profiles; the drinker's picks decide. No model is trained, no score or probability is output.
+- Vocabulary: 94 bilingual flavor words aligned with professional lexicons, plus Chinese everyday tasting expressions; adjectives are input aliases only, suggestions are concrete flavor objects.
+
+## Data (scope)
+
+- 83,031 flavor-description records extracted from public review text; 9,128 deduplicated coffee review records, of which 8,142 carry at least one flavor word and enter the 16 reference profiles.
+- 4,042 participants of the Great American Coffee Taste Test (aggregate word frequencies only; not users of flavorwords).
+- Research references in use: World Coffee Research — Sensory Lexicon (attribute names and references consulted; no text reproduced); Coffee Ad Astra, Jonathan Gagné — The Physics of Filter Coffee (extraction-physics explanations paraphrased, cited with attribution). Each source's own terms and this project's use are listed separately in the app.
+
+## Notes for machines
+
+- The app is client-rendered; this file and the JSON-LD in index.html carry the readable summary.
+- Names, counts and sources above are generated from the same data bundle the app runs on (product-vector-v1).

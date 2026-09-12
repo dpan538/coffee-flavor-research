@@ -34,14 +34,20 @@ const stageKey = () => {
   if (!s) return "empty";
   return s.kind === "question" ? `q:${s.slot}` : s.kind;
 };
-const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// no animation when motion is reduced, and none while the document is hidden: a background tab gets no animation
+// frames, so a GSAP tween would never call done() and the next card would never mount
+const reduced = () => typeof window !== "undefined" && (window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.hidden);
+
+// with no animation, done() must still run after the hook returns: calling it synchronously inside a Vue <Transition>
+// JS hook throws "parentNode of null" and the next card never mounts (found under prefers-reduced-motion / hidden tab)
+const finish = (done: () => void) => queueMicrotask(done);
 
 function onEnter(el: Element, done: () => void) {
-  if (reduced()) return done();
+  if (reduced()) return finish(done);
   gsap.fromTo(el, { y: 44, scale: 0.965, opacity: 0, transformOrigin: "50% 100%" }, { y: 0, scale: 1, opacity: 1, duration: 0.62, ease: "back.out(1.15)", onComplete: done, clearProps: "transform,opacity" });
 }
 function onLeave(el: Element, done: () => void) {
-  if (reduced()) return done();
+  if (reduced()) return finish(done);
   gsap.to(el, { y: "-58%", scale: 0.84, rotateX: 14, opacity: 0, transformOrigin: "50% 0%", duration: 0.4, ease: "power3.in", onComplete: done });
 }
 </script>
@@ -53,8 +59,8 @@ function onLeave(el: Element, done: () => void) {
       <AppHeader :big="stage === 'hero'" />
       <div v-if="stage === 'hero'" class="flex-1 min-h-0 flex flex-col justify-center gap-3 pt-3 pb-2" data-hero>
         <h1 class="font-display font-bold text-[34px] leading-[1.05] tracking-tight rise" data-headline>{{ headline.before }}<span v-for="(l, i) in headline.letters" :key="i" :style="{ color: l.color }">{{ l.ch }}</span>{{ headline.after }}</h1>
-        <h2 class="font-semibold text-[22px] leading-tight rise" :class="locale === 'zh-CN' ? 'display-zh' : 'font-display'">{{ shell.title }}</h2>
-        <p class="text-[15px] leading-relaxed text-ink rise">{{ shell.subtitle }}</p>
+        <h2 class="font-semibold leading-tight rise" :class="locale === 'zh-CN' ? 'display-zh text-[22px]' : 'font-display text-[20px]'">{{ shell.title }}</h2>
+        <p class="leading-relaxed text-ink rise" :class="locale === 'zh-CN' ? 'text-[15px]' : 'text-[14px]'">{{ shell.subtitle }}</p>
         <GeoMotif class="rise" variant="home" :size="26" />
         <button type="button" class="text-left font-display font-bold text-[16px] leading-snug tracking-tight min-h-[44px] mt-3 rise" data-action="start-link" @click="start">
           <span v-for="(line, i) in sloganLines" :key="i" class="block">{{ line }}</span>

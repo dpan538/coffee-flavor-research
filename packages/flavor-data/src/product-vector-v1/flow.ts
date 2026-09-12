@@ -18,7 +18,7 @@ import {
   DIMENSIONS,
   add,
   buildVPred,
-  calibrationLine, defectNote, referenceBasisLine, textSeed,
+  calibrationLine, corpusLine, defectNote, referenceBasisLine, textSeed,
   cosine,
   infer,
   normalize,
@@ -265,8 +265,15 @@ export function escalationGate(step: FlowStep, result: InferenceResult, picks: W
   const similarityPicksUser = cosine(pv, result.vUser);
   const similarityPicksPred = cosine(pv, result.vPred);
   const severeHistory = step.escalationEligible || step.checks.some((c) => c.level === "severe");
-  const biasConfirmed = similarityPicksUser >= flow.thresholds.coherent && similarityPicksPred < flow.thresholds.mild;
-  const escalate = severeHistory && biasConfirmed;
+  // owner (2026-09-12): the second round is part of the model, not a rare exception. The flow's own verdict decides:
+  // on the correction paths (2, 3, 4) picks that side with the reader's answers more than with the reference open it
+  // (margin 0.08, and not already aligned with the reference); after a severe conflict, picks that leave the
+  // reference (< mild) open it too. Path 1 (coherent throughout) never opens it — the consistent persona stays at five questions.
+  const conflictPath = step.path !== null && step.path !== 1;
+  const leansUser = similarityPicksUser >= similarityPicksPred + 0.08;
+  const leavesReference = similarityPicksPred < flow.thresholds.mild;
+  const biasConfirmed = (conflictPath && leansUser && similarityPicksPred < flow.thresholds.coherent) || (severeHistory && (leansUser || leavesReference));
+  const escalate = biasConfirmed;
   const reason = escalate
     ? "severe conflict in the flow and the picks confirm the perception bias — Q6"
     : !severeHistory
@@ -327,11 +334,18 @@ export function finalCard(result: InferenceResult, picks: Word[], locale: Locale
   const science: ScienceLine[] = [];
   const basis = referenceBasisLine(result, locale);
   if (basis) science.push(basis);
-  // the reference and the difference line vary with the confirmed words (owner: not the same text every time)
-  const seed = textSeed(picks.map((w) => w.text));
+  // the second line varies with the cup, the answers and the confirmed words (owner: not the same text every time):
+  // a research reference (one of those that apply, in one of its two phrasings) or a data-count line, alternating
+  const seed = textSeed([...picks.map((w) => w.text), JSON.stringify(result.context), ...result.vUser.map((x) => x.toFixed(2))]);
   const literatureLines = statementsFor(result.context, locale).filter((l) => l.evidenceState === "LITERATURE_CLAIM");
-  const literature = literatureLines[seed % Math.max(1, literatureLines.length)];
-  if (literature) science.push(literature);
+  const data = corpusLine(result.context, locale, seed >> 3);
+  const pickLiterature = literatureLines.length > 0 && (!data || (seed >> 1) % 3 !== 0);
+  if (pickLiterature) {
+    const line = literatureLines[seed % literatureLines.length]!;
+    science.push(line.textAlt && (seed >> 2) % 2 === 1 ? { ...line, text: line.textAlt } : line);
+  } else if (data) {
+    science.push(data);
+  }
   const [top, second] = result.topDeltaDimensions;
   if (top && Math.abs(top.delta) >= 0.1) science.push(calibrationLine(top.dimension, top.delta, locale, seed, second && Math.abs(second.delta) >= 0.1 ? second : undefined));
   const confirmed = confirmedProfile(result, picks);

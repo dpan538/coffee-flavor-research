@@ -65,6 +65,8 @@ export type ScienceLine = {
   label: string;
   /** "参考资料：Coffee Ad Astra (J. Gagné)" for literature; empty for owner statements and the difference line */
   citation: string;
+  /** a second phrasing of the same statement, when the source file carries one */
+  textAlt?: string;
 };
 export type Presentation = {
   locale: Locale;
@@ -319,6 +321,13 @@ export function contextLabel(option: string, locale: Locale): string {
   return (presentation as PresentationExtras).context_labels?.[option]?.[locale] ?? option;
 }
 
+/** the label's native part for prose and card rows: "意式萃取 Espresso" → "意式萃取", "SL28 / SL34" stays */
+export function shortContextLabel(option: string, locale: Locale): string {
+  const label = contextLabel(option, locale);
+  const m = label.match(/^([^\sA-Za-z(]+)\s+[A-Za-z(].*$/);
+  return m ? m[1]! : label;
+}
+
 /** The initial reference, said once (owner copy review 2, 2026-09-12): which inputs it came from and which
  *  features it leans toward — computed from V_pred, so it is a statement about the reference, not about the cup. */
 export function referenceBasisLine(result: { vPred: Vector; context: ContextAnswers }, locale: Locale): ScienceLine | null {
@@ -327,7 +336,7 @@ export function referenceBasisLine(result: { vPred: Vector; context: ContextAnsw
   const parts: string[] = [];
   for (const [, key] of AXIS_KEYS) {
     const value = result.context[key];
-    for (const v of Array.isArray(value) ? value : value ? [value] : []) parts.push(contextLabel(v, locale));
+    for (const v of Array.isArray(value) ? value : value ? [value] : []) parts.push(shortContextLabel(v, locale));
   }
   if (result.context.c2_origin) {
     const region = (rules.origin_regions as Record<string, { label: Record<Locale, string> }>)[result.context.c2_origin];
@@ -419,6 +428,7 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
     .map((s) => {
       const title = (s as { source_title?: string }).source_title ?? s.source_id;
       const literature = s.evidence_state.startsWith("LITERATURE_CLAIM");
+      const alt = (s as Record<string, unknown>)[`${locale}_alt`];
       return {
         text: s[locale],
         evidenceState: s.evidence_state,
@@ -428,8 +438,30 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
         sourceLicence: sourceLicence(s.source_id),
         label: evidenceLabel(s.evidence_state, locale),
         citation: literature ? `${(presentation as PresentationExtras).citation_prefix?.[locale] ?? ""}${shortSource(title)}` : "",
+        ...(typeof alt === "string" && alt ? { textAlt: alt } : {}),
       };
     });
+}
+
+/** A data-count line (资料统计): one measured reference row of this cup's context, its record count and its two leading features. */
+export function corpusLine(context: ContextAnswers, locale: Locale, seed = 0): ScienceLine | null {
+  const K = bundle.matrix_k as Record<string, Record<string, { vector: number[] | null; basis: string; member_count: number | null }>>;
+  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
+  const candidates: Array<{ option: string; row: { vector: number[] | null; basis: string; member_count: number | null } }> = [];
+  for (const [axis, key] of AXIS_KEYS) {
+    const value = context[key];
+    for (const v of Array.isArray(value) ? value : value ? [value] : []) {
+      const row = K[axis]?.[v];
+      if (row?.vector && row.member_count && row.basis === "CORPUS_MEASURED") candidates.push({ option: v, row });
+    }
+  }
+  if (!candidates.length) return null;
+  const { option, row } = candidates[seed % candidates.length]!;
+  const dims = DIMENSIONS.map((d, i) => ({ d, w: row.vector![i] ?? 0 })).sort((a, b) => b.w - a.w).slice(0, 2).map((x) => labels[x.d]?.[locale] ?? x.d);
+  const n = row.member_count!.toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US");
+  const name = shortContextLabel(option, locale);
+  const text = locale === "zh-CN" ? `评审资料里的${name}记录共 ${n} 条，最常出现的特征是${dims[0]}与${dims[1]}。` : `Among the ${n} ${name} records in the review material, ${dims[0]} and ${dims[1]} come up most.`;
+  return { text, evidenceState: "CORPUS_MEASURED", citationRef: `matrix_k:${option}`, about: `corpus:${option}`, sourceTitle: "corpus", sourceLicence: "", label: evidenceLabel("CORPUS_MEASURED", locale), citation: "" };
 }
 
 /** Locale-aware rendering of an inference: headline profile + tags, alternatives, beans, and the science fold. */

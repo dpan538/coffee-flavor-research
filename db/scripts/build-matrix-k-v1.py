@@ -151,6 +151,7 @@ def main() -> int:
             for r in rows(path):
                 parts = [{"axis": part.split(":")[0], "option": part.split(":")[1]} for part in r["context_parts"].split("|") if ":" in part]
                 statements.append({"context_id": r["context_id"], "parts": parts, "zh-CN": r["statement_zh"], "en": r["statement_en"],
+                                   "zh-CN_alt": r.get("statement_zh_alt", "") or "", "en_alt": r.get("statement_en_alt", "") or "",
                                    "evidence_state": r["evidence_state"], "citation_ref": r["citation_ref"], "source_id": r["source_id"],
                                    "source_title": r.get("source_title", "") or ("owner" if r["source_id"] == "owner" else r["source_id"])})
     merged_path = OUT / "CONTEXT_STATEMENTS_MERGED.tsv"
@@ -256,6 +257,30 @@ def main() -> int:
                              "negation_prefixes": {"zh-CN": ["不", "没", "没有", "没什么", "无", "毫无", "几乎不", "几乎没", "不太", "怕", "不要", "不想要", "一点都不", "讨厌", "不喜欢", "不爱"], "en": ["not ", "no ", "without ", "hardly any ", "zero ", "hate ", "dislike "]},
                              "forced_by_negation": {"zh-CN": {"苦": ["Q4", "B"], "酸": ["Q0", "C"], "甜": ["Q2", "D"]}, "en": {"bitter": ["Q4", "B"], "acid": ["Q0", "C"], "sour": ["Q0", "C"], "sweet": ["Q2", "D"]}}},
         "closing": {"zh-CN": "感谢使用，祝你享受这杯咖啡！", "en": "Thank you — enjoy the cup!"},
+        # owner (2026-09-12): a dynamic model asks differently after each answer — every later prompt picks up the previous
+        # answer, and the options are re-ranked by their fit to what the cup and the answers so far point to (session.nextStep)
+        "prompt_variants": {
+            "Q1": {"by": "Q0", "A": {"zh-CN": "柑橘那种酸之后，闻起来最像什么？", "en": "With that citrus acidity, what does it smell like?"},
+                   "B": {"zh-CN": "乳酸那种酸之后，闻起来最像什么？", "en": "With that lactic acidity, what does it smell like?"},
+                   "C": {"zh-CN": "酸感不明显，那闻起来最像什么？", "en": "Acidity aside, what does it smell like?"},
+                   "D": {"zh-CN": "酸苦之外，闻起来最像什么？", "en": "Beyond the sour-bitter edge, what does it smell like?"}},
+            "Q2": {"by": "Q1", "A": {"zh-CN": "花香之后，能喝出甜味吗？更像哪一种？", "en": "After the florals, do you taste sweetness? Which kind?"},
+                   "B": {"zh-CN": "坚果烤香之后，甜味更像哪一种？", "en": "After the nutty, toasty notes, which sweetness is it?"},
+                   "C": {"zh-CN": "热带果香之后，甜味更像哪一种？", "en": "After the tropical fruit, which sweetness is it?"},
+                   "D": {"zh-CN": "闻不出香气也没关系，能喝出甜味吗？", "en": "No clear aroma is fine — do you taste sweetness?"}},
+            "Q3": {"by": "Q2", "A": {"zh-CN": "清爽的甜之后，口感如何？", "en": "With that light sweetness, how does it feel in the mouth?"},
+                   "B": {"zh-CN": "焦糖黑巧的甜之后，口感如何？", "en": "With caramel and dark chocolate, how does it feel in the mouth?"},
+                   "C": {"zh-CN": "果酱般的甜之后，口感如何？", "en": "With that jammy sweetness, how does it feel in the mouth?"},
+                   "D": {"zh-CN": "甜感不明显的话，口感如何？", "en": "Sweetness aside, how does it feel in the mouth?"}},
+            "Q4": {"by": "Q3", "A": {"zh-CN": "轻盈的口感，尾段苦吗？", "en": "Light as it is, is the finish bitter?"},
+                   "B": {"zh-CN": "顺滑之后，尾段苦吗？", "en": "After that smoothness, is the finish bitter?"},
+                   "C": {"zh-CN": "厚重之后，尾段苦吗？", "en": "After that weight, is the finish bitter?"},
+                   "D": {"zh-CN": "发涩之外，尾段苦吗？", "en": "Beyond the astringency, is the finish bitter?"}},
+            "Q5": {"by": "Q4", "A": {"zh-CN": "微苦收尾，这一口整体更像哪种？", "en": "With a slightly bitter finish, which is the cup overall?"},
+                   "B": {"zh-CN": "不苦的话，这一口整体更像哪种？", "en": "No bitterness — which is the cup overall?"},
+                   "C": {"zh-CN": "苦得明显，这一口整体更像哪种？", "en": "Clearly bitter — which is the cup overall?"}},
+        },
+        "option_ranking": "options are ordered by cosine(option increment, normalize(V_pred + Σ answered increments)); zero-increment (absence) options stay last",
         "slot_mapping_owner_reviewed": True,  # R3-D10: Q0 acid, Q1 aroma, Q2 sweetness, Q3 body, Q4 bitterness, Q5 complexity
     }
     # question bank: colloquial zh-CN / en prompts and option labels + cue words (utterance mapper); operator draft

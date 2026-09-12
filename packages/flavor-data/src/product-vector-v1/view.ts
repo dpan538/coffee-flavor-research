@@ -5,7 +5,7 @@
  * framework: a React or Vue component binds these objects one-to-one.
  */
 import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json" with { type: "json" };
-import { cardCopy, contextLabel, type ContextAnswers, type Locale } from "./engine";
+import { cardCopy, contextLabel, shortContextLabel, type ContextAnswers, type Locale } from "./engine";
 import { type Word } from "./flow";
 import { nextStep, type Session } from "./session";
 
@@ -112,7 +112,7 @@ export function normalizeContext(input: ContextAnswers): ContextAnswers {
   return out;
 }
 
-export type QuizCardModel = { kind: "question"; slot: string; prompt: string; options: Array<{ option: string; label: string }>; progress: { answered: number; expected: number } };
+export type QuizCardModel = { kind: "question"; slot: string; prompt: string; adapted: boolean; options: Array<{ option: string; label: string; fit: number }>; progress: { answered: number; expected: number } };
 export type FirstDescriptionCardModel = {
   kind: "first_description";
   main: Word[];
@@ -198,7 +198,7 @@ export function cupInfo(context: ContextAnswers, locale: Locale): Array<{ key: s
     if (!values.length) continue;
     const text = key === "c2_origin"
       ? values.map((v) => (rules.origin_regions as Record<string, { label: Record<Locale, string> }>)[v]?.label[locale] ?? v).join(" + ")
-      : values.map((v) => label(v, locale)).join(" + ");
+      : values.map((v) => (contextLabel(v, locale) !== v ? shortContextLabel(v, locale) : label(v, locale))).join(" + ");
     out.push({ key, label: names[key]![zh ? 0 : 1], value: text });
   }
   return out;
@@ -227,7 +227,7 @@ export function appShell(locale: Locale) {
     : {
         slogan: "Every taste has its own vocabulary.",
         title: "Put this cup into words.",
-        subtitle: "Some coffees are easy to taste, but harder to describe. Citrus, cocoa, or something familiar you can't quite name. Find the words for what you taste, and bring them together in your own flavor card.",
+        subtitle: "Some coffees are easy to taste, but harder to describe. Find the words for what you taste, and bring them together in your own flavor card.",
         lead: "",
         claim: "",
         start: "Start",

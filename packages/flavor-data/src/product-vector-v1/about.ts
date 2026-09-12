@@ -87,10 +87,10 @@ export function aboutAuthor(locale: Locale): Author {
   }
   return {
     eyebrow: "Design notes",
-    title: "Designed for taste",
+    title: "Design for taste",
     name: "Dai Pan · 潘岱",
     paragraphs: [
-      "flavorwords folds a bilingual vocabulary, flavor groups and matching logic into a step-by-step path of questions and word choices. Instead of reading through a whole flavor wheel, you recognise this cup's character as the questions and candidate words unfold.",
+      "flavorwords folds a bilingual vocabulary, flavor groups and matching logic into a few questions and word choices, so you recognise this cup without reading a whole flavor wheel.",
     ],
     credit: "Research, design and development: Dai Pan · 潘岱",
     contributions: [
@@ -213,10 +213,10 @@ export function aboutSections(locale: Locale): AboutSection[] {
       {
         id: "questions",
         title: "动态问答模型",
-        summary: "先从酸质与香气建立方向，再结合后续回答继续区分；需要进一步辨认时，补充一次提问或确认，让描述逐步形成。",
+        summary: "先从酸质与香气建立方向；之后每一题都承接上一题的回答，选项按这杯与你的回答重新排序；需要进一步辨认时，补充一次提问或确认。",
         folded: true,
         blocks: [
-          { title: "提问顺序", body: "前两题（酸质、香气）给出一个基本方向；后面的回答如果与它不一致，就多问一题，或在出词后请你再看一眼；答案一致时少问。酸、香、甜、苦四题都有「不明显」的出口，不假设你一定喝到了什么。" },
+          { title: "提问顺序", body: "前两题（酸质、香气）给出一个基本方向；后面的每一题都承接上一题的回答来问，选项按这杯的信息与你到目前为止的回答重新排序，「不明显」一类的出口永远在最后。回答与方向不一致时多问一题，或在出词后请你再看一眼；一致时少问。" },
           { title: "描述的选择与确认", body: `系统先给出 ${fd.main + fd.secondary} 个候选词：${fd.main} 个主要建议，${fd.secondary} 个备选；你从中选出 ${fd.pick_count} 个，这 ${fd.pick_count} 个词就是风味卡，卡片的分组名也按你选出的词确定。如果你选的词与前面的回答方向差得很远，会再请你看一眼，然后按你确认的结果更新。` },
         ],
       },
@@ -239,7 +239,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
     {
       id: "vocabulary",
       title: "Vocabulary and flavor groups",
-      summary: "Flavor descriptions from different sources are aligned in two languages and grouped by feature, so professional terms and familiar tasting expressions become candidate words you can compare and choose from.",
+      summary: "Descriptions from many sources, aligned in two languages and grouped by feature, become candidate words you can compare.",
       folded: true,
       blocks: [
         { title: "Word list", body: "The flavor words are aligned with public sensory lexicons and given side by side in Chinese and English; the Chinese side adds expressions common in mainland tasting talk. Words that appear in the material but stay vague are used only to recognise input, never as default suggestions." },
@@ -250,17 +250,17 @@ export function aboutSections(locale: Locale): AboutSection[] {
     {
       id: "questions",
       title: "Dynamic question model",
-      summary: "Acidity and aroma set the direction first; later answers refine it, and when something still needs telling apart, one more question or confirmation lets the description take shape.",
+      summary: "Acidity and aroma set the direction; each later question picks up the previous answer and re-ranks its options by this cup and your answers; one more question or confirmation settles what is still unclear.",
       folded: true,
       blocks: [
-        { title: "Order", body: "The first two answers (acidity, aroma) set a direction; if later answers disagree with it, one more question is asked, or you are asked to look again after the words appear; when answers agree, fewer questions are asked. Acidity, aroma, sweetness and bitterness each have a \"not noticeable\" way out, so nothing assumes what you must have tasted." },
+        { title: "Order", body: "The first two answers (acidity, aroma) set a direction; every later question is phrased from the previous answer and its options are re-ranked by the cup's information and your answers so far, with the \"not noticeable\" exits always last. If answers disagree with the direction, one more question is asked, or you are asked to look again after the words appear; when they agree, fewer questions are asked." },
         { title: "Choosing and confirming the words", body: `${fd.main + fd.secondary} candidate words are offered: ${fd.main} main suggestions and ${fd.secondary} alternatives; you pick ${fd.pick_count}, those ${fd.pick_count} are the card, and the card's group name follows the words you picked. If your picks point far from your earlier answers, you are asked to look once more, and the card is updated to what you confirm.` },
       ],
     },
     {
       id: "data",
       title: "Data and method",
-      summary: "Where the vocabulary comes from, how the groups and the matching work, how the reference descriptions are formed, and what the result covers.",
+      summary: "Where the words come from, how grouping and matching work, and what the result covers.",
       folded: true,
       blocks: [
         { title: "Scope of the material", body: `${scopeTextEn}\n\n${nb(scope.footnote)}` },

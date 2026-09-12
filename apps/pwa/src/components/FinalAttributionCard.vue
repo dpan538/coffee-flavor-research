@@ -33,8 +33,8 @@ async function share(text: string) {
     <div class="flex-1 min-h-0 overflow-y-auto px-4 pt-4 pb-2">
       <FlavorCard :cup="model.cupInfo" :words="model.picked" :dimensions="model.pickedDimensions" :reference="`${labels.reference} · ${model.title}`" :eyebrow="eyebrow" />
       <div class="mx-2 mt-4 border-t border-cream/20 pt-1">
-        <button type="button" class="fold-toggle text-[13px] tracking-[0.18em] opacity-80" :aria-expanded="open" @click="open = !open">
-          <span>{{ model.scienceHeading }}</span><span class="text-xl leading-none">{{ open ? '–' : '+' }}</span>
+        <button type="button" class="fold-toggle min-h-[58px] text-[15px] tracking-[0.14em] opacity-90" :aria-expanded="open" @click="open = !open">
+          <span>{{ model.scienceHeading }}</span><span class="text-3xl leading-none">{{ open ? '–' : '+' }}</span>
         </button>
         <div class="fold" :data-open="open">
           <div>

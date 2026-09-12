@@ -457,6 +457,23 @@
         "owner_follow_up_2": "The wordmark's two lines sit closer (it read as two words apart); the sources page no longer jumps when a fold collapses — the pin is constant and the panel grows inside its track instead of toggling sticky; the first card's yellow is a step less pure; home and About motifs return to plain flat shapes in two sequences distinct from the card row (the coloured grounds were too much contrast); the card row stays as is (owner: good practice)."
       },
       "recorded_at_utc": "2026-09-12T18:20:00Z"
+    },
+    {
+      "id": "R3-D22",
+      "subject": "Varying card notes, a reachable Q6, English fit, and the deployment layer (Vercel + machine-readable summary)",
+      "decision": "The card's second note now varies with the cup, the answers and the confirmed words: each live research reference carries a second phrasing (claim_*_alt columns, same source), and a data-count line (资料统计: one measured reference row of this cup's context, its record count, its two leading features) alternates with the research reference. The Q6 gate opens when, after a severe conflict, the picks side with the reader's answers more than with the reference (similarity margin 0.08) — the old absolute pair almost never held, so the second round was practically unreachable. Touch: the card's fold toggle is 58 px with a larger sign. English: a shorter home lead and a smaller language title so the slogan starts where the Chinese one does; About title 'Design for taste'; shorter English paragraph and entry summaries; the poster pages stack their intro above the index in English and let the profile index wrap. Deployment: vercel.json at the repo root (npm ci, npm run pwa:build, apps/pwa/dist, cache headers, sw.js never cached); index.html carries a description, Open Graph, hreflang, canonical, an SVG icon, JSON-LD (WebApplication with author, citations and languages) and a noscript summary in both languages; public/ carries robots.txt, sitemap.xml, humans.txt and llms.txt (what it does, how it works, the data scope and sources) for crawlers and language models; the web manifest names, describes and icons the app.",
+      "owner_words": "永远都是这一句，有没有别的变体 … 根本没有开启过 Q6 或者第二轮修正，请确定这不是 bug … 关于这段描述和 + 可以稍微放大 … homepage 在英文状态下 … 确保开始位置和中文版是一样的 … 标题应该是 Design for taste … 我们在一切完成后会进行推送并 import 到 vercel … 确保现在的内容中已经有了机器阅读层",
+      "applied": {
+        "data": "external-literature/*.claims.csv claim_zh_cn_alt / claim_en_alt (6 live claims), ingest + builder carry *_alt into context_statements",
+        "code": "engine.ts ScienceLine.textAlt, corpusLine; flow.ts finalCard seeded second line + gate margin; FinalAttributionCard fold sizes; view.ts EN lead; App.vue EN sizes; about.ts EN copy; SourceColumns / ProfileNetwork EN layouts; index.html; vite.config manifest; public/ icons, robots, sitemap, humans, llms; vercel.json",
+        "verified": "Q6 measured across 9,216 sequences × 3 contexts before and after; vitest 54/54; vue-tsc; vite build",
+        "open": [
+          "push and import into Vercel (owner)",
+          "confirm the production domain in canonical / sitemap / manifest if not flavorwords.com"
+        ],
+        "owner_follow_up": "The owner rejected a fixed question order with static options and a near-dormant Q6 as 'not a dynamic model'. Now: every prompt after the first is phrased from the previous answer (prompt_variants, 4 × Q1–Q4 + 3 × Q5, both languages); the options of every question are re-ranked by cosine between the option's increment and normalize(V_pred + Σ answered increments), absence options last (session.rankedOptions); the second round opens on the flow's correction paths when the picks side with the reader's answers more than with the reference (margin 0.08) or, after a severe conflict, when they leave the reference. Measured over 9,216 sequences × 3 contexts: Q6 opens in 37.9% with the default picks (Path 1 never, Path 2 40%, Path 3 67%, Path 4 27%) and 66% with picks that side with the reader; the consistent Persona A stays at five questions without Q6."
+      },
+      "recorded_at_utc": "2026-09-12T20:10:00Z"
     }
   ],
   "guards": {

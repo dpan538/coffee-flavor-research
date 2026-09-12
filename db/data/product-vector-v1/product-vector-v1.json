@@ -170,6 +170,100 @@
    "zh-CN": "感谢使用，祝你享受这杯咖啡！",
    "en": "Thank you — enjoy the cup!"
   },
+  "prompt_variants": {
+   "Q1": {
+    "by": "Q0",
+    "A": {
+     "zh-CN": "柑橘那种酸之后，闻起来最像什么？",
+     "en": "With that citrus acidity, what does it smell like?"
+    },
+    "B": {
+     "zh-CN": "乳酸那种酸之后，闻起来最像什么？",
+     "en": "With that lactic acidity, what does it smell like?"
+    },
+    "C": {
+     "zh-CN": "酸感不明显，那闻起来最像什么？",
+     "en": "Acidity aside, what does it smell like?"
+    },
+    "D": {
+     "zh-CN": "酸苦之外，闻起来最像什么？",
+     "en": "Beyond the sour-bitter edge, what does it smell like?"
+    }
+   },
+   "Q2": {
+    "by": "Q1",
+    "A": {
+     "zh-CN": "花香之后，能喝出甜味吗？更像哪一种？",
+     "en": "After the florals, do you taste sweetness? Which kind?"
+    },
+    "B": {
+     "zh-CN": "坚果烤香之后，甜味更像哪一种？",
+     "en": "After the nutty, toasty notes, which sweetness is it?"
+    },
+    "C": {
+     "zh-CN": "热带果香之后，甜味更像哪一种？",
+     "en": "After the tropical fruit, which sweetness is it?"
+    },
+    "D": {
+     "zh-CN": "闻不出香气也没关系，能喝出甜味吗？",
+     "en": "No clear aroma is fine — do you taste sweetness?"
+    }
+   },
+   "Q3": {
+    "by": "Q2",
+    "A": {
+     "zh-CN": "清爽的甜之后，口感如何？",
+     "en": "With that light sweetness, how does it feel in the mouth?"
+    },
+    "B": {
+     "zh-CN": "焦糖黑巧的甜之后，口感如何？",
+     "en": "With caramel and dark chocolate, how does it feel in the mouth?"
+    },
+    "C": {
+     "zh-CN": "果酱般的甜之后，口感如何？",
+     "en": "With that jammy sweetness, how does it feel in the mouth?"
+    },
+    "D": {
+     "zh-CN": "甜感不明显的话，口感如何？",
+     "en": "Sweetness aside, how does it feel in the mouth?"
+    }
+   },
+   "Q4": {
+    "by": "Q3",
+    "A": {
+     "zh-CN": "轻盈的口感，尾段苦吗？",
+     "en": "Light as it is, is the finish bitter?"
+    },
+    "B": {
+     "zh-CN": "顺滑之后，尾段苦吗？",
+     "en": "After that smoothness, is the finish bitter?"
+    },
+    "C": {
+     "zh-CN": "厚重之后，尾段苦吗？",
+     "en": "After that weight, is the finish bitter?"
+    },
+    "D": {
+     "zh-CN": "发涩之外，尾段苦吗？",
+     "en": "Beyond the astringency, is the finish bitter?"
+    }
+   },
+   "Q5": {
+    "by": "Q4",
+    "A": {
+     "zh-CN": "微苦收尾，这一口整体更像哪种？",
+     "en": "With a slightly bitter finish, which is the cup overall?"
+    },
+    "B": {
+     "zh-CN": "不苦的话，这一口整体更像哪种？",
+     "en": "No bitterness — which is the cup overall?"
+    },
+    "C": {
+     "zh-CN": "苦得明显，这一口整体更像哪种？",
+     "en": "Clearly bitter — which is the cup overall?"
+    }
+   }
+  },
+  "option_ranking": "options are ordered by cosine(option increment, normalize(V_pred + Σ answered increments)); zero-increment (absence) options stay last",
   "slot_mapping_owner_reviewed": true
  },
  "question_bank": {
@@ -4679,6 +4773,8 @@
     ],
     "zh-CN": "意式浓缩放大醇厚度与油脂，前段高挥发花果香被压缩。",
     "en": "Espresso amplifies body and oils; the volatile floral and fruit top notes are compressed.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4694,6 +4790,8 @@
     ],
     "zh-CN": "冷萃抑制低挥发酸，酸质与花香偏弱，甜感与醇厚更突出。",
     "en": "Cold brew suppresses the low-volatility acids: less acidity and floral lift, more sweetness and body.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4709,6 +4807,8 @@
     ],
     "zh-CN": "手冲常见的表现是花香与果酸更清晰，醇厚较轻。",
     "en": "Pour-over tends to show florals and fruit acidity more clearly, with a lighter body.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
@@ -4724,6 +4824,8 @@
     ],
     "zh-CN": "浸泡式萃取带入更多油脂与细粉，醇厚度上升，干净度下降。",
     "en": "Immersion brewing carries more oils and fines: more body, less clarity.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4739,6 +4841,8 @@
     ],
     "zh-CN": "浅烘保留更多绿原酸与高挥发香气，酸质与花果香突出。",
     "en": "Light roasts keep more chlorogenic acids and volatile aromatics: acidity and floral-fruit notes lead.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4754,6 +4858,8 @@
     ],
     "zh-CN": "中浅烘保留花果酸质，同时开始形成焦糖化甜感。",
     "en": "Medium-light roasts keep the floral-fruit acidity while caramelisation sweetness begins.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4769,6 +4875,8 @@
     ],
     "zh-CN": "中烘平衡酸质与美拉德产物，坚果与焦糖增强。",
     "en": "Medium roasts balance acidity against Maillard products: nut and caramel rise.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4784,6 +4892,8 @@
     ],
     "zh-CN": "中深烘美拉德产物占比高，醇厚度、巧克力与苦感上升，酸质下降。",
     "en": "Medium-dark roasts are Maillard-dominated: body, chocolate and bitterness rise, acidity falls.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4799,6 +4909,8 @@
     ],
     "zh-CN": "深烘绿原酸大量降解，焦糖苦与烟熏占主导。",
     "en": "Dark roasts degrade most chlorogenic acids: caramelised bitterness and smoke dominate.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4814,6 +4926,8 @@
     ],
     "zh-CN": "极深烘以碳化与烟熏为主，品种与产地特征基本被覆盖。",
     "en": "Very dark roasts are carbonised and smoky; origin and variety character is mostly covered.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4829,6 +4943,8 @@
     ],
     "zh-CN": "水洗去胶质快，内源有机酸突出：干净度高、柑橘、花香、高酸。",
     "en": "Washed processing removes mucilage quickly; the bean's own organic acids stand out: clean, citrus, floral, high acidity.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4844,6 +4960,8 @@
     ],
     "zh-CN": "日晒让果肉糖分在发酵中渗入豆内，还原糖与游离氨基酸升高：果酱、热带水果、高甜。",
     "en": "Natural processing lets fruit sugars ferment into the seed: more reducing sugars and free amino acids — jam, tropical fruit, high sweetness.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
@@ -4859,6 +4977,8 @@
     ],
     "zh-CN": "厌氧发酵常带来更多乳酸与酯类风味：酸奶感与酒香。",
     "en": "Anaerobic fermentation tends to add lactic and ester notes: yoghurt and winey character.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
@@ -4874,6 +4994,8 @@
     ],
     "zh-CN": "蜜处理保留部分果胶发酵，甜感与醇厚介于水洗与日晒之间。",
     "en": "Honey processing keeps part of the mucilage: sweetness and body between washed and natural.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4889,6 +5011,8 @@
     ],
     "zh-CN": "脱因工艺去除部分前体物质，香气强度整体下降。",
     "en": "Decaffeination removes some precursors; aroma intensity drops overall.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4904,6 +5028,8 @@
     ],
     "zh-CN": "瑰夏常见茉莉、白花与柑橘酸质，醇厚偏轻。",
     "en": "Gesha commonly shows jasmine, white florals and citrus acidity with a lighter body.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
@@ -4919,6 +5045,8 @@
     ],
     "zh-CN": "波本甜感与平衡度好，焦糖与红果常见。",
     "en": "Bourbon is sweet and balanced; caramel and red fruit are typical.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4934,6 +5062,8 @@
     ],
     "zh-CN": "SL28/SL34 以黑加仑与明亮柑橘酸质著称。",
     "en": "SL28/SL34 are known for blackcurrant and bright citric acidity.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4949,6 +5079,8 @@
     ],
     "zh-CN": "埃塞原生种以茉莉花、柑橘与蓝莓（日晒）为标志。",
     "en": "Ethiopian landraces are marked by jasmine, citrus and, when natural, blueberry.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4964,6 +5096,8 @@
     ],
     "zh-CN": "铁皮卡干净、甜感柔和，醇厚适中。",
     "en": "Typica is clean and gently sweet with moderate body.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4979,6 +5113,8 @@
     ],
     "zh-CN": "罗布斯塔前体糖分低、绿原酸与咖啡因高：苦感与醇厚重，花果弱。",
     "en": "Robusta has low sugar precursors and high chlorogenic acid and caffeine: heavy bitterness and body, little floral-fruit.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
     "source_id": "owner",
@@ -4998,6 +5134,8 @@
     ],
     "zh-CN": "浅烘保留了更多绿原酸与挥发性花果香，手冲又让这些花香与果酸更清晰。",
     "en": "Light roast keeps more chlorogenic acids and volatile floral-fruit aromatics, and pour-over lets those florals and acids read clearly.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples); reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
@@ -5017,6 +5155,8 @@
     ],
     "zh-CN": "中深烘的美拉德产物在意式高压下被油脂放大：黑巧、焦糖与厚重口感主导，酸质退到后段。",
     "en": "Medium-dark Maillard products are amplified by espresso pressure and oils: dark chocolate, caramel and weight lead; acidity retreats.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
     "source_id": "owner",
@@ -5036,6 +5176,8 @@
     ],
     "zh-CN": "冷萃压低了浅烘的低挥发酸，花香减弱、甜感与茶感更清晰。",
     "en": "Cold brew flattens the light roast's low-volatility acids: less floral lift, clearer sweetness and tea-like body.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
     "source_id": "owner",
@@ -5055,6 +5197,8 @@
     ],
     "zh-CN": "浅烘 + 水洗保留了柠檬酸与高极性酯类：柑橘、茉莉与干净的酸质。",
     "en": "Light roast plus washed processing keeps citric acid and polar esters: citrus, jasmine and clean acidity.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
     "source_id": "owner",
@@ -5074,6 +5218,8 @@
     ],
     "zh-CN": "浅烘 + 日晒把发酵进豆内的果糖与酯类完整保留：蓝莓、果酱与高甜。",
     "en": "Light roast plus natural processing keeps the fermented fruit sugars and esters: blueberry, jam and high sweetness.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
     "source_id": "owner",
@@ -5093,6 +5239,8 @@
     ],
     "zh-CN": "中深烘 + 厌氧常见的表现是黑巧与发酵感并存；若你尝到的酸质更高，与这个组合的常见表现不同。",
     "en": "Medium-dark plus anaerobic usually reads as dark chocolate with fermentation; a brighter acidity differs from the usual pattern for this combination.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples); reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description); cause clause removed OWNER_COPY_REVIEW_2_2026-09-12",
     "source_id": "owner",
@@ -5108,6 +5256,8 @@
     ],
     "zh-CN": "极浅烘几乎不动豆子的原始结构：绿原酸与挥发性花果香保留最完整，酸质最突出，甜感与醇厚尚未展开。",
     "en": "A very light roast barely touches the bean's original structure: chlorogenic acids and volatile florals stay almost intact, acidity is at its most pronounced, sweetness and body have not opened yet.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "operator extension of the owner's light-roast statement, 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
@@ -5123,6 +5273,8 @@
     ],
     "zh-CN": "粉床细粉迁移引发微观通道效应时，局部过萃会导致中段甜感中断，并在余韵中引入涩感与杂味。",
     "en": "When fines migrate and open micro-channels in the bed, local over-extraction breaks the mid-palate sweetness and brings astringency and off-notes into the finish.",
+    "zh-CN_alt": "手冲时若细粉在粉床里迁移、形成小通道，局部会过萃：中段的甜感断开，余韵多出涩与杂。",
+    "en_alt": "In a pour-over, fines that migrate and open small channels in the bed over-extract locally: the mid-palate sweetness breaks and the finish picks up astringency and off-notes.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "source_id": "coffee_ad_astra",
@@ -5142,6 +5294,8 @@
     ],
     "zh-CN": "浅烘手冲时，萃取率落在合适区间才有饱满的中段甜感；萃取率不足则酸而空，过高则涩。",
     "en": "For light roasts on pour-over, mid-palate sweetness fills in only inside the right extraction-yield window; under-extraction reads sour and hollow, over-extraction astringent.",
+    "zh-CN_alt": "浅烘用手冲，甜感是否饱满取决于萃取率：偏低时酸而单薄，偏高时发涩。",
+    "en_alt": "With a light roast on pour-over, whether the sweetness fills in depends on extraction yield: too low reads sour and thin, too high turns astringent.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "source_id": "coffee_ad_astra",
@@ -5161,6 +5315,8 @@
     ],
     "zh-CN": "中深烘意式在高压下通道效应更敏感：粉饼不均会同时出现欠萃的酸与过萃的苦。",
     "en": "Medium-dark espresso is more sensitive to channeling under pressure: an uneven puck shows under-extracted sourness and over-extracted bitterness at once.",
+    "zh-CN_alt": "中深烘做意式时，粉饼稍不均匀就会同时出现欠萃的酸和过萃的苦，因为高压放大了通道效应。",
+    "en_alt": "Medium-dark espresso shows both under-extracted sourness and over-extracted bitterness as soon as the puck is uneven, because pressure amplifies channeling.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "source_id": "coffee_ad_astra",
@@ -5176,6 +5332,8 @@
     ],
     "zh-CN": "快萃与较高水温优先溶解极性较高的有机酸分子，前段酸质与花果香先被释放。",
     "en": "Fast extraction at higher water temperature dissolves the more polar organic acids first, so acidity and floral-fruit notes lead.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
@@ -5191,6 +5349,8 @@
     ],
     "zh-CN": "研磨度过细会加速大分子绿原酸内酯的释放，从而增加尾段苦感；高压萃取同时带出更多油脂与醇厚度。",
     "en": "Too fine a grind accelerates the release of large chlorogenic-acid lactones and adds late bitterness; pressure extraction also carries more oils and body.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
@@ -5206,6 +5366,8 @@
     ],
     "zh-CN": "低温长时萃取下，挥发性酸与酸质通常更弱，感官图谱偏向甜感与圆润。",
     "en": "Under long, cold extraction the volatile acids and acidity are usually weaker; the sensory map shifts toward sweetness and roundness.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
@@ -5221,6 +5383,8 @@
     ],
     "zh-CN": "浸泡式萃取与金属滤网让更多细粉与油脂进入杯中，醇厚度上升、干净度下降。",
     "en": "Immersion brewing through a metal filter passes more fines and oils: more body, less clarity.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
@@ -5236,6 +5400,8 @@
     ],
     "zh-CN": "瑰夏（Gesha）基因决定了其高挥发性单萜烯（如芳樟醇）的高表达上限，浅烘焙下呈现高锐白花与单醇果酸。",
     "en": "The Gesha genotype sets a high ceiling for volatile monoterpenes such as linalool; at light roast it reads as sharp white florals and clean, single-note fruit acidity.",
+    "zh-CN_alt": "",
+    "en_alt": "",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
@@ -5251,6 +5417,8 @@
     ],
     "zh-CN": "浅烘保留品种的花香与果酸参照物（花香、柑橘酸、单醇甜感），焦糖化产物尚未主导。",
     "en": "Light roasting keeps the variety's floral and fruit-acid references (florals, citric acidity, clean sweetness) before caramelisation products take over.",
+    "zh-CN_alt": "在浅烘阶段，词汇表里属于品种本身的参照物（花香、柑橘酸、干净的甜）还在，焦糖化的味道尚未占上风。",
+    "en_alt": "At light roast the variety's own references in the lexicon (florals, citric acidity, clean sweetness) are still present; caramelisation has not taken over.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
@@ -5266,6 +5434,8 @@
     ],
     "zh-CN": "中烘时焦糖化与美拉德参照物（红糖、坚果、可可）与残余果酸达到平衡。",
     "en": "At medium roast the caramelisation and Maillard references (brown sugar, nut, cocoa) balance the remaining fruit acidity.",
+    "zh-CN_alt": "中烘让红糖、坚果、可可这类烘焙参照物与剩下的果酸大致平衡。",
+    "en_alt": "Medium roast brings the roast references (brown sugar, nut, cocoa) into rough balance with the fruit acidity that remains.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
@@ -5281,6 +5451,8 @@
     ],
     "zh-CN": "深烘下花香与果酸参照物被烘烤参照物（烟熏、焦糖苦、灰烬）覆盖。",
     "en": "At dark roast the floral and fruit-acid references are covered by roast references (smoke, burnt caramel, ash).",
+    "zh-CN_alt": "到了深烘，烟熏、焦糖苦、灰烬这些烘烤参照物盖过了花香与果酸。",
+    "en_alt": "By dark roast the roast references (smoke, burnt caramel, ash) cover the florals and the fruit acidity.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",

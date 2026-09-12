@@ -42,7 +42,7 @@ const flowTrack = ref<HTMLElement | null>(null);
 const burstTrack = ref<HTMLElement | null>(null);
 const flowProgress = ref(0);
 const burstProgress = ref(0);
-const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduced = typeof window !== "undefined" && (window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.hidden);
 
 function toggle(id: string) {
   openSection.value = openSection.value === id ? "" : id;

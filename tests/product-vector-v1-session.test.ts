@@ -94,6 +94,28 @@ describe("product-vector-v1 session", () => {
     expect(s.history.some((h) => h.event === "utterance")).toBe(true);
   });
 
+  it("the model adapts: later prompts pick up the previous answer and options re-rank by fit, exits last (owner, 2026-09-12)", () => {
+    const floral = answer(answer(createSession(LIGHT, "zh-CN"), "Q0", "A"), "Q1", "A");
+    const nutty = answer(answer(createSession({ c0_preparation: "espresso", c1_roast: "dark" }, "zh-CN"), "Q0", "C"), "Q1", "B");
+    const q2f = nextStep(floral);
+    const q2n = nextStep(nutty);
+    expect(q2f.kind).toBe("ask");
+    expect(q2n.kind).toBe("ask");
+    if (q2f.kind === "ask" && q2n.kind === "ask") {
+      expect(q2f.card.slot).toBe("Q2");
+      expect(q2f.card.adapted).toBe(true);
+      expect(q2f.card.prompt).toContain("花香");
+      expect(q2n.card.prompt).toContain("坚果");
+      expect(q2f.card.prompt).not.toBe(q2n.card.prompt);
+      // the floral, acid cup ranks the light nectar sweetness first; the dark espresso ranks caramel / dark chocolate first
+      expect(q2f.card.options[0]!.option).toBe("A");
+      expect(q2n.card.options[0]!.option).toBe("B");
+      expect(q2f.card.options[q2f.card.options.length - 1]!.option).toBe("D");
+    }
+    const first = nextStep(createSession(LIGHT, "zh-CN"));
+    if (first.kind === "ask") expect(first.card.adapted).toBe(false);
+  });
+
   it("english sessions speak english end to end", () => {
     let s = play(LIGHT, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" }, "en");
     const card = nextStep(createSession(LIGHT, "en"));

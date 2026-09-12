@@ -12,7 +12,7 @@
  * persists the session however it likes (IndexedDB for the local library is a separate module).
  */
 import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json" with { type: "json" };
-import { infer, type BeanVector, type ContextAnswers, type InferenceResult, type Locale } from "./engine";
+import { add, buildVPred, cosine, infer, normalize, zero, type BeanVector, type ContextAnswers, type InferenceResult, type Locale } from "./engine";
 import {
   applyQ6,
   describe,
@@ -21,6 +21,7 @@ import {
   flowStep,
   perceptionAnswers,
   q6Options,
+  slotVector,
   type Description,
   type FinalCard,
   type FlowAnswers,
@@ -37,7 +38,10 @@ export type Stage = "context" | "questions" | "describe" | "picks" | "q6" | "fin
 export type QuestionCard = {
   slot: Slot;
   prompt: string;
-  options: Array<{ option: string; label: string }>;
+  /** the prompt was chosen by the previous answer (a variant), not the bank's default */
+  adapted: boolean;
+  /** re-ranked by fit to the cup and the answers so far; absence options last */
+  options: Array<{ option: string; label: string; fit: number }>;
   progress: { answered: number; expected: number };
 };
 
@@ -59,6 +63,30 @@ export type Session = {
 };
 
 const bank = bundle.question_bank as Record<string, { question: string; prompt: Record<Locale, string>; options: Record<string, { label: Record<Locale, string> }> }>;
+type Variant = { by: string } & Record<string, Record<Locale, string> | string>;
+const variants = ((bundle.question_flow as { prompt_variants?: Record<string, Variant> }).prompt_variants ?? {}) as Record<string, Variant>;
+
+/** the prompt for a slot given the answers so far: the variant keyed by the previous answer, else the bank's default */
+export function promptFor(slot: Slot, answers: FlowAnswers, locale: Locale): { prompt: string; adapted: boolean } {
+  const v = variants[slot];
+  const prev = v ? answers[v.by as Slot] : undefined;
+  const pick = v && prev ? (v[prev] as Record<Locale, string> | undefined) : undefined;
+  return pick ? { prompt: pick[locale], adapted: true } : { prompt: bank[slot]!.prompt[locale], adapted: false };
+}
+
+/** the options of a slot re-ranked by fit to the cup and the answers so far (absence options last) */
+export function rankedOptions(slot: Slot, context: ContextAnswers, answers: FlowAnswers, locale: Locale): Array<{ option: string; label: string; fit: number }> {
+  let v = buildVPred(context).vPred;
+  for (const [s, a] of Object.entries(answers)) if (a) v = add(v, slotVector(s as Slot, a));
+  const target = v.some((x) => x !== 0) ? normalize(v) : zero();
+  return Object.entries(bank[slot]!.options)
+    .map(([option, spec]) => {
+      const inc = slotVector(slot, option);
+      const absent = !inc.some((x) => x !== 0);
+      return { option, label: spec.label[locale], fit: absent ? -1 : cosine(normalize(inc), target) };
+    })
+    .sort((a, b) => b.fit - a.fit);
+}
 
 function log(session: Session, event: string, detail?: unknown): Session {
   return { ...session, history: [...session.history, { at: session.history.length, event, detail }] };
@@ -89,15 +117,16 @@ export function nextStep(session: Session): { kind: "ask"; card: QuestionCard } 
   if (session.stage === "questions") {
     const slot = session.step.ask[0];
     if (!slot || session.step.deliver) return { kind: "describe" };
-    const q = bank[slot]!;
     const answered = Object.keys(session.answers).length;
     const expected = session.step.path === null ? (answered < 4 ? 5 : 6) : session.step.path === 1 || session.step.path === 4 ? 5 : 6;
+    const { prompt, adapted } = promptFor(slot, session.answers, session.locale);
     return {
       kind: "ask",
       card: {
         slot,
-        prompt: q.prompt[session.locale],
-        options: Object.entries(q.options).map(([option, spec]) => ({ option, label: spec.label[session.locale] })),
+        prompt,
+        adapted,
+        options: rankedOptions(slot, session.context, session.answers, session.locale),
         progress: { answered, expected },
       },
     };
