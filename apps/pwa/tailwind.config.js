@@ -42,6 +42,7 @@ export default {
       },
       fontFamily: {
         display: ['"Stack Sans"', '"MiSans"', '"Helvetica Neue"', '"Arial Narrow"', "system-ui", "sans-serif"],
+        words: ['"Fraunces"', "Georgia", "serif"],
         sans: ['"MiSans"', '"Stack Sans"', "-apple-system", '"PingFang SC"', '"Noto Sans SC"', "system-ui", "sans-serif"],
       },
       borderRadius: { card: "22px" },

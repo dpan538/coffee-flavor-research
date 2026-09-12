@@ -15,7 +15,7 @@ export type Approach = { eyebrow: string; title: string; intro: string[]; missio
 /** the sample card's three layers: the cup's info, the confirmed words, the reference entry + signature */
 export type ExampleCard = { eyebrow: string; title: string; cup: Array<{ label: string; value: string }>; words: string[]; reference: string; brand: string; note: string };
 export type Contribution = { value: number; unit: string; label: string; use: string };
-export type Author = { eyebrow: string; name: string; paragraphs: string[]; contributions: Contribution[] };
+export type Author = { eyebrow: string; title: string; name: string; paragraphs: string[]; credit: string; contributions: Contribution[] };
 export type ScopeItem = { key: string; value: number; unit: string; label: string; note: string };
 export type Scope = { title: string; items: ScopeItem[]; footnote: string };
 
@@ -36,29 +36,25 @@ export function aboutTitle(locale: Locale): { title: string; subtitle: string } 
 export function aboutApproach(locale: Locale): Approach {
   if (locale === "zh-CN") {
     return {
-      eyebrow: "关于 flavorwords",
+      eyebrow: "关于 FLAVORWORDS",
       title: "从品味，到表达",
       intro: [
-        "flavorwords 把咖啡评审与感官资料中的描述，整理成日常品饮时可以使用的词汇与提问。",
-        "从酸质、香气、甜感和口感出发，你选出贴近这一杯的表达，组成自己的风味卡。",
+        "有时是一点花香，有时是像水果一样的酸，或是喝完之后留下的甜。你留意到的细节，构成了对这一杯咖啡的印象，却未必能立刻找到合适的词。",
+        "flavorwords 将专业咖啡评审、感官词汇与日常品饮用语放在一起整理，帮助你从熟悉的味道联想，找到更具体的描述。",
+        "从酸质、香气到甜感与口感，通过几次提问和选择，把这一杯的感受组成自己的风味卡。专业资料提供参照，最后由你确认。",
       ],
-      mission: [
-        `我们想解决的困难很具体：专业的风味词很多，落到自己的杯子上却常常说不出口。为此整理了 ${facts.families.length} 组公开评审来源的 ${n(facts.source_assertions, locale)} 条风味描述、${n(facts.consumer_respondents, locale)} 位消费者的盲测用词，以及大众点评、小红书与淘宝上烘焙商标签里的中文说法。`,
-        "我们致力于提供足够准确的词，同时给每个人保留自己的说法。",
-      ],
+      mission: [],
     };
   }
   return {
-    eyebrow: "About flavorwords",
+    eyebrow: "About FLAVORWORDS",
     title: "From tasting to words",
     intro: [
-      "Some cups are easier to taste than to describe. flavorwords turns the descriptions found in coffee reviews and sensory lexicons into words and questions you can use while drinking.",
-      "Starting from acidity, aroma, sweetness and mouthfeel, you choose the expressions that fit this cup and make your own flavor card.",
+      "Sometimes it is a touch of florals, an acidity like fruit, or the sweetness a cup leaves behind. The details you notice make up your impression of the coffee, yet the right word does not always come at once.",
+      "flavorwords brings professional coffee reviews, sensory lexicons and everyday tasting language together, so you can move from familiar tastes to a more specific description.",
+      "From acidity and aroma to sweetness and mouthfeel, a few questions and choices turn what you tasted into your own flavor card. Professional material provides the reference; you confirm the result.",
     ],
-    mission: [
-      `The difficulty is concrete: professional flavor words are plentiful, yet hard to bring to your own cup. So we organised ${n(facts.source_assertions, locale)} flavor descriptions from ${facts.families.length} public review sources, the blind-tasting vocabulary of ${n(facts.consumer_respondents, locale)} consumers, and the Chinese expressions found on roaster labels across Dianping, Xiaohongshu and Taobao.`,
-      "We work to offer words accurate enough, while leaving everyone their own way of saying it.",
-    ],
+    mission: [],
   };
 }
 
@@ -75,12 +71,13 @@ export function aboutExample(locale: Locale): ExampleCard {
 export function aboutAuthor(locale: Locale): Author {
   if (locale === "zh-CN") {
     return {
-      eyebrow: "研究、设计与开发",
+      eyebrow: "设计思路",
+      title: "为品味而设计",
       name: "潘岱 · Dai Pan",
       paragraphs: [
-        "flavorwords 关注的是：怎样提供足够准确的词，同时给每个人保留自己的说法。",
-        "资料整理、风味分组、双语词表、随回答调整的提问方式，以及从选词到确认风味卡的交互设计与开发。",
+        "flavorwords 将双语词汇、风味分组与匹配逻辑，整合进逐步展开的提问与选词过程。你不必翻查一整张风味词表，可以随着问题和候选描述，逐步辨认这一杯的特点。",
       ],
+      credit: "研究、设计与开发：潘岱 · Dai Pan",
       contributions: [
         { value: facts.canonical_concepts, unit: "个", label: "双语风味词", use: "对照专业感官词汇整理，并补充中文品饮表达。" },
         { value: facts.dimensions, unit: "类", label: "风味特征", use: "每个风味词都归到其中一类；提问、出词和风味卡都按这些类取词。" },
@@ -89,12 +86,13 @@ export function aboutAuthor(locale: Locale): Author {
     };
   }
   return {
-    eyebrow: "Research, design and development",
+    eyebrow: "Design notes",
+    title: "Designed for taste",
     name: "Dai Pan · 潘岱",
     paragraphs: [
-      "flavorwords asks one thing: how to offer words accurate enough, while leaving everyone their own way of saying it.",
-      "Organising the material, the flavor groups, the bilingual word list, the questions that adapt to each answer, and the design and build of the path from choosing words to confirming a card.",
+      "flavorwords folds a bilingual vocabulary, flavor groups and matching logic into a step-by-step path of questions and word choices. Instead of reading through a whole flavor wheel, you recognise this cup's character as the questions and candidate words unfold.",
     ],
+    credit: "Research, design and development: Dai Pan · 潘岱",
     contributions: [
       { value: facts.canonical_concepts, unit: "", label: "bilingual flavor words", use: "aligned with professional lexicons, with Chinese tasting expressions added." },
       { value: facts.dimensions, unit: "", label: "flavor features", use: "every flavor word belongs to one; questions, suggested words and the card all draw from them." },
@@ -202,7 +200,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
       {
         id: "vocabulary",
         title: "词汇与风味分组",
-        summary: `${facts.canonical_concepts} 个双语风味词、${facts.dimensions} 类风味特征、本项目整理的 ${facts.profiles} 组参考风味。`,
+        summary: "将不同来源的风味描述进行双语对照与特征分组，把专业词汇和熟悉的品饮表达整理成可供比较的候选词，帮助你找到更贴近感受的说法。",
         folded: true,
         blocks: [
           { title: "词表", body: `风味词对照公开的感官词汇表整理，中英并列；中文一侧补充了大陆品饮时常用的说法（如酒酿、桂花、冰糖雪梨）。资料中出现过但意思不够明确的词，只用于识别输入，不作为默认推荐词。` },
@@ -212,8 +210,8 @@ export function aboutSections(locale: Locale): AboutSection[] {
       },
       {
         id: "questions",
-        title: "提问方式",
-        summary: "先问酸质和香气，再问甜感和口感，最后问苦感和整体印象；答案一致时少问，不一致时多问一题。",
+        title: "随回答调整的提问",
+        summary: "先从酸质与香气建立方向，再结合后续回答继续区分；需要进一步辨认时，补充一次提问或确认，让描述逐步形成。",
         folded: true,
         blocks: [
           { title: "提问顺序", body: "前两题（酸质、香气）给出一个基本方向；后面的回答如果与它不一致，就多问一题，或在出词后请你再看一眼；答案一致时少问。酸、香、甜、苦四题都有「不明显」的出口，不假设你一定喝到了什么。" },
@@ -223,7 +221,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
       {
         id: "data",
         title: "资料与方法",
-        summary: "资料范围、初始参考如何形成、结果的适用范围、技术说明与来源。",
+        summary: "查看词汇来源、风味分组与匹配方式，了解参考描述如何形成，以及结果的适用范围。",
         folded: true,
         blocks: [
           { title: "资料范围", body: `${scopeText}\n${scope.footnote}` },
@@ -239,7 +237,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
     {
       id: "vocabulary",
       title: "Vocabulary and flavor groups",
-      summary: `${facts.canonical_concepts} bilingual flavor words, ${facts.dimensions} flavor features, ${facts.profiles} reference profiles organised by this project.`,
+      summary: "Flavor descriptions from different sources are aligned in two languages and grouped by feature, so professional terms and familiar tasting expressions become candidate words you can compare and choose from.",
       folded: true,
       blocks: [
         { title: "Word list", body: "The flavor words are aligned with public sensory lexicons and given side by side in Chinese and English; the Chinese side adds expressions common in mainland tasting talk. Words that appear in the material but stay vague are used only to recognise input, never as default suggestions." },
@@ -249,8 +247,8 @@ export function aboutSections(locale: Locale): AboutSection[] {
     },
     {
       id: "questions",
-      title: "How the questions work",
-      summary: "Acidity and aroma first, then sweetness and mouthfeel, then bitterness and the overall impression; fewer questions when answers agree, one more when they don't.",
+      title: "Questions that adapt to your answers",
+      summary: "Acidity and aroma set the direction first; later answers refine it, and when something still needs telling apart, one more question or confirmation lets the description take shape.",
       folded: true,
       blocks: [
         { title: "Order", body: "The first two answers (acidity, aroma) set a direction; if later answers disagree with it, one more question is asked, or you are asked to look again after the words appear; when answers agree, fewer questions are asked. Acidity, aroma, sweetness and bitterness each have a \"not noticeable\" way out, so nothing assumes what you must have tasted." },
@@ -260,7 +258,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
     {
       id: "data",
       title: "Data and method",
-      summary: "Scope of the material, how the initial reference is formed, what the result covers, technical notes and sources.",
+      summary: "Where the vocabulary comes from, how the groups and the matching work, how the reference descriptions are formed, and what the result covers.",
       folded: true,
       blocks: [
         { title: "Scope of the material", body: `${scopeTextEn}\n${scope.footnote}` },

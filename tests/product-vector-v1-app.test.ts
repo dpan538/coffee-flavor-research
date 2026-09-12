@@ -99,7 +99,11 @@ describe("context catalog and screen models", () => {
 
   it("app shell copy exists in both languages", () => {
     expect(appShell("zh-CN").start).toBe("开始");
-    expect(appShell("zh-CN").title).toBe("Put this cup into words");
+    expect(appShell("zh-CN").startLink).toBe("从这一口开始");
+    expect(appShell("zh-CN").title).toBe("风味，自有表达。");
+    expect(appShell("zh-CN").slogan).toBe(appShell("en").slogan);
+    expect(appShell("zh-CN").claim).toBe("Put this cup into words.");
+    expect(appShell("en").title).toBe("Put this cup into words.");
     expect(appShell("en").localeSwitch).toBe("中");
   });
 });
@@ -171,8 +175,10 @@ describe("about content", () => {
   it("says what the product is for before any implementation word, names the author's work, and gives every number a unit and a use", () => {
     const author = aboutAuthor("zh-CN");
     expect(author.name).toContain("潘岱");
-    expect(author.paragraphs[0]).toContain("给每个人保留自己的说法");
-    expect(aboutApproach("zh-CN").mission.join("")).toContain("83,031");
+    expect(author.title).toBe("为品味而设计");
+    expect(author.credit).toContain("潘岱");
+    expect(aboutApproach("zh-CN").intro).toHaveLength(3);
+    expect(aboutApproach("zh-CN").intro[2]).toContain("最后由你确认");
     expect(aboutApproach("zh-CN").title).toBe("从品味，到表达");
     expect(author.contributions.map((c) => c.value)).toEqual([94, 12, 16]);
     expect(author.contributions.every((c) => c.use.length > 0)).toBe(true);

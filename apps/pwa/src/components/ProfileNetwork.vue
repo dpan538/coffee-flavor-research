@@ -9,6 +9,8 @@ import { productVectorBundle } from "flavor-data/product-vector-v1";
 import { locale } from "../store";
 
 const props = withDefaults(defineProps<{ progress?: number }>(), { progress: 1 });
+// the drawing completes at 72 % of the scroll track; the remaining track is reading time (owner)
+const drawn = computed(() => Math.min(1, props.progress / 0.72));
 const DIM_COLORS: Record<string, string> = {
   acidity: "#F2C24E", sweetness: "#F5B0C6", body: "#B79B7C", floral: "#9C92E8", fruity: "#EE8F70", nutty_chocolate: "#C98A55",
   fermented_winey: "#B2626A", bitter_roasted: "#D8D2C8", spice: "#DA8A80", herbal_green: "#8CC46F", woody_earthy: "#4FA06C", defect: "#8FA0C8",
@@ -66,10 +68,10 @@ const edges = computed<Edge[]>(() => {
 });
 const callouts = computed(() => edges.value.filter((e) => e.callout));
 const clamp = (x: number) => Math.max(0, Math.min(1, x));
-const ringsIn = computed(() => clamp(props.progress / 0.1));
-const nodeIn = (i: number) => clamp((props.progress - 0.1 - i * 0.03) / 0.06);
-const edgeIn = (i: number) => clamp((props.progress - 0.6 - i * 0.012) / 0.1);
-const notesIn = computed(() => clamp((props.progress - 0.85) / 0.12));
+const ringsIn = computed(() => clamp(drawn.value / 0.1));
+const nodeIn = (i: number) => clamp((drawn.value - 0.1 - i * 0.03) / 0.06);
+const edgeIn = (i: number) => clamp((drawn.value - 0.6 - i * 0.012) / 0.1);
+const notesIn = computed(() => clamp((drawn.value - 0.85) / 0.12));
 const ink = (hex: string) => { const n = parseInt(hex.slice(1), 16); const l = (0.2126 * ((n >> 16) & 255) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255; return l > 0.6 ? "#0B0A09" : "#F4F1EA"; };
 </script>
 

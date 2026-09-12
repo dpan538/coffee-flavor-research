@@ -209,23 +209,29 @@ export function q6Copy(locale: Locale): { title: string; submit: string } {
   return locale === "zh-CN" ? { title: "哪些描述更贴近你的感受？", submit: "更新风味卡" } : { title: "Which of these are closer to what you tasted?", submit: "Update my card" };
 }
 
-/** App shell copy (owner, 2026-09-12): the English tagline is the hero title in both languages; two tiles, Start and About. */
+/** App shell copy (owner, 2026-09-12): the slogan in English on both, the title and lead in each language, "Put this cup into words." as the action claim (the English title itself), two buttons. */
 export function appShell(locale: Locale) {
   return locale === "zh-CN"
     ? {
-        title: "Put this cup into words",
-        subtitle: "从酸质、香气与口感开始，选出贴近你感受的词，组成这一杯的风味卡。",
+        slogan: "EVERY TASTE HAS ITS OWN VOCABULARY.",
+        title: "风味，自有表达。",
+        subtitle: "像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords 帮你找到贴近感受的词，组成这一杯的风味卡。",
         lead: "",
+        claim: "Put this cup into words.",
         start: "开始",
+        startLink: "从这一口开始",
         about: "关于",
         localeSwitch: "EN",
         offlineReady: "离线可用",
       }
     : {
-        title: "Put this cup into words",
-        subtitle: "Choose the words that fit your cup and create a flavor card.",
+        slogan: "EVERY TASTE HAS ITS OWN VOCABULARY.",
+        title: "Put this cup into words.",
+        subtitle: "Some coffees are easy to taste, but harder to describe. Citrus, cocoa, or something familiar you can't quite name. Find the words for what you taste, and bring them together in your own flavor card.",
         lead: "",
+        claim: "",
         start: "Start",
+        startLink: "Start with this sip",
         about: "About",
         localeSwitch: "中",
         offlineReady: "Works offline",

@@ -8,6 +8,9 @@
 @font-face { font-family: "MiSans"; src: url("/fonts/MiSans-Demibold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Stack Sans"; src: url("/fonts/StackSans-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Stack Sans"; src: url("/fonts/StackSans-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+/* Fraunces (SIL OFL, public/fonts/OFL-Fraunces.txt): the serif the owner chose for the "words" half of the wordmark */
+@font-face { font-family: "Fraunces"; src: url("/fonts/Fraunces-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("/fonts/Fraunces-Variable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 
 @layer base {
   html, body, #app { height: 100%; }
@@ -22,6 +25,9 @@
 @layer components {
   .display { @apply font-display uppercase tracking-tight leading-[0.92]; }
   .display-zh { @apply font-sans font-semibold tracking-normal leading-tight normal-case; }
+  /* the serif half of the wordmark: Fraunces at display size, soft and a little wonky */
+  .wordmark-serif { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1; letter-spacing: -0.01em; text-transform: none; }
+  .link-line { @apply inline-flex items-center min-h-[44px] underline underline-offset-[6px] decoration-2 font-medium; }
   .card { @apply rounded-card shadow-card overflow-hidden; }
   .chip { @apply rounded-full border border-ink/25 px-4 py-2.5 text-base leading-snug min-h-[48px] inline-flex items-center justify-center transition-colors duration-150; }
   .chip[aria-pressed="true"] { @apply bg-ink text-paper border-ink; }

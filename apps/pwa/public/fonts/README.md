@@ -1,3 +1,8 @@
+# Fraunces (owner's pick for the "words" half of the wordmark, 2026-09-12)
+
+`Fraunces-Variable.woff2` / `Fraunces-Variable-Italic.woff2` (latin subset from Google Fonts, axes opsz / wght / SOFT / WONK) with
+`OFL-Fraunces.txt` — SIL Open Font License 1.1, Undercase Type. Loaded in `src/style.css`; used by `.wordmark-serif`.
+
 # Self-hosted fonts
 
 Drop the font files here; `src/style.css` declares the faces and falls back to system fonts until they exist.

@@ -7,8 +7,8 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { X } from "lucide-vue-next";
-import { aboutApproach, aboutAuthor, aboutCitations, aboutEvidence, aboutExample, aboutSections } from "flavor-data/product-vector-v1/about";
-import FlavorCard from "./FlavorCard.vue";
+import { aboutApproach, aboutAuthor, aboutCitations, aboutEvidence, aboutSections } from "flavor-data/product-vector-v1/about";
+import BrandGlyphs from "./BrandGlyphs.vue";
 import ProfileNetwork from "./ProfileNetwork.vue";
 import SourceColumns from "./SourceColumns.vue";
 import { aboutOpen, locale } from "../store";
@@ -16,7 +16,6 @@ import { aboutOpen, locale } from "../store";
 gsap.registerPlugin(ScrollTrigger);
 
 const approach = computed(() => aboutApproach(locale.value));
-const example = computed(() => aboutExample(locale.value));
 const author = computed(() => aboutAuthor(locale.value));
 const sections = computed(() => aboutSections(locale.value));
 const evidence = computed(() => aboutEvidence(locale.value));
@@ -27,11 +26,10 @@ function toTop() {
 }
 const zh = computed(() => locale.value === "zh-CN");
 const openSection = ref("");
-const SAMPLE_DIMS = ["floral", "floral", "fruity", "fruity", "acidity"];
 const t = computed(() =>
   zh.value
-    ? { details: "链接与条款", collapse: "收起", close: "关闭", scroll: "向下滑动", burstTitle: "本项目整理的 16 组参考风味", sources: "资料来源", sourcesLead: "本项目使用的三份公开资料，以及每一份的用途与条款。", uses: "本项目的使用", terms: "来源条款", top: "回到顶端" }
-    : { details: "Link and terms", collapse: "Collapse", close: "Close", scroll: "Scroll", burstTitle: "16 reference profiles organised by this project", sources: "Sources", sourcesLead: "The three public sources this project uses, with each one's role and terms.", uses: "Use in this project", terms: "Source terms", top: "Back to top" },
+    ? { details: "链接与条款", collapse: "收起", close: "关闭", scroll: "向下滑动", burstTitle: "本项目整理的 16 组参考风味", sources: "引用与来源", uses: "本项目的使用", terms: "来源条款", top: "回到顶端" }
+    : { details: "Link and terms", collapse: "Collapse", close: "Close", scroll: "Scroll", burstTitle: "16 reference profiles organised by this project", sources: "Citations and sources", uses: "Use in this project", terms: "Source terms", top: "Back to top" },
 );
 
 const scroller = ref<HTMLElement | null>(null);
@@ -69,42 +67,39 @@ onBeforeUnmount(() => {
 <template>
   <aside ref="scroller" class="fixed inset-0 z-40 overflow-y-auto bg-paper text-ink fold-card safe-top safe-bottom" role="dialog" aria-modal="true" data-component="AboutDrawer">
     <div class="sticky top-0 z-10 bg-paper/95 backdrop-blur px-5 py-3 flex items-center justify-between">
-      <div class="leading-[0.9]"><span class="display block font-bold text-[22px]">flavor</span><span class="display block font-bold text-[22px] text-violet">words</span></div>
+      <div class="leading-[0.9]"><span class="display block font-bold text-[22px]">flavor</span><span class="wordmark-serif block text-[24px] text-violet">words</span></div>
       <button type="button" class="icon-btn" :aria-label="t.close" @click="aboutOpen = false"><X :size="22" :stroke-width="1.75" /></button>
     </div>
 
-    <!-- page 1: what it is for, the mission, the sample card -->
-    <section class="min-h-[calc(100dvh-72px)] px-5 pt-6 pb-8 flex flex-col" data-page="1" data-section="approach">
-      <p class="text-[11px] tracking-[0.22em] text-muted uppercase">{{ approach.eyebrow }}</p>
+    <!-- page 1: what it is for — blank above, the glyphs, the owner's three paragraphs (less is more) -->
+    <section class="min-h-[calc(100dvh-72px)] px-5 pt-20 pb-8 flex flex-col" data-page="1" data-section="approach">
+      <BrandGlyphs :size="20" />
+      <p class="text-[11px] tracking-[0.22em] text-muted mt-8">{{ approach.eyebrow }}</p>
       <h1 class="text-[36px] mt-2 font-bold" :class="zh ? 'display-zh' : 'display'">{{ approach.title }}</h1>
-      <p v-for="(p, i) in approach.intro" :key="'i' + i" class="leading-relaxed text-[17px] mt-4">{{ p }}</p>
-      <p v-for="(p, i) in approach.mission" :key="'m' + i" class="leading-relaxed text-[15px] text-muted mt-3">{{ p }}</p>
-      <div class="mt-6" data-section="example">
-        <FlavorCard :cup="example.cup" :words="example.words" :dimensions="SAMPLE_DIMS" :reference="example.reference" :eyebrow="example.eyebrow" />
-      </div>
-      <p class="text-xs text-muted mt-auto pt-6 tracking-widest">↓ {{ t.scroll }}</p>
+      <p v-for="(p, i) in approach.intro" :key="'i' + i" class="leading-relaxed text-[16px] mt-4">{{ p }}</p>
+      <p class="text-xs text-muted mt-auto pt-8 tracking-widest">↓ {{ t.scroll }}</p>
     </section>
 
     <!-- page 3: the column-and-trunk poster, drawn while scrolling -->
-    <section ref="flowTrack" class="relative h-[420dvh] bg-[#0B0A09]" data-page="3" data-section="flow">
+    <section ref="flowTrack" class="relative h-[560dvh] bg-[#0B0A09]" data-page="3" data-section="flow">
       <div class="sticky top-0 h-[100dvh] px-4 pt-[84px] pb-4 flex flex-col overflow-hidden text-[#F4F1EA]">
         <SourceColumns :progress="flowProgress" />
       </div>
     </section>
 
     <!-- page 4: the profile network, drawn while scrolling -->
-    <section ref="burstTrack" class="relative h-[420dvh] bg-[#0B0A09]" data-page="4" data-section="spectrum">
-      <div class="sticky top-0 h-[100dvh] px-4 pt-[80px] pb-4 flex flex-col overflow-hidden text-[#F4F1EA]">
+    <section ref="burstTrack" class="relative h-[560dvh] bg-[#0B0A09]" data-page="4" data-section="spectrum">
+      <div class="sticky top-0 h-[100dvh] px-4 pt-[80px] pb-6 flex flex-col justify-center overflow-hidden text-[#F4F1EA]">
         <h2 class="text-[22px] font-bold" :class="zh ? 'display-zh' : 'display'">{{ t.burstTitle }}</h2>
         <ProfileNetwork class="mt-2" :progress="burstProgress" />
       </div>
     </section>
 
-    <!-- page 2: the author, three folded entries -->
-    <section class="min-h-[100dvh] px-5 pt-10 pb-10" data-page="2" data-section="author" data-reveal>
-      <p class="text-[11px] tracking-[0.22em] text-muted uppercase">{{ author.eyebrow }}</p>
-      <h2 class="text-[30px] mt-2 font-bold" :class="zh ? 'display-zh' : 'display'">{{ author.name }}</h2>
-      <p v-for="(p, i) in author.paragraphs" :key="'a' + i" class="leading-relaxed mt-4" :class="i === 0 ? 'text-[19px]' : 'text-[15px] text-muted'">{{ p }}</p>
+    <!-- page 4: design notes — three folded entries, the credit line at the foot (owner's copy) -->
+    <section class="min-h-[100dvh] px-5 pt-14 pb-10 flex flex-col" data-page="2" data-section="author" data-reveal>
+      <p class="text-[11px] tracking-[0.22em] text-muted">{{ author.eyebrow }}</p>
+      <h2 class="text-[32px] mt-2 font-bold" :class="zh ? 'display-zh' : 'display'">{{ author.title }}</h2>
+      <p v-for="(p, i) in author.paragraphs" :key="'a' + i" class="leading-relaxed mt-4 text-[16px]">{{ p }}</p>
       <div class="mt-8 divide-y divide-ink/10 border-y border-ink/10">
         <div v-for="section in sections" :key="section.id" :data-section="section.id">
           <button type="button" class="fold-toggle py-4" :aria-expanded="openSection === section.id" @click="toggle(section.id)">
@@ -126,12 +121,12 @@ onBeforeUnmount(() => {
           </div>
         </div>
       </div>
+      <p class="text-[13px] text-muted mt-auto pt-10">{{ author.credit }}</p>
     </section>
 
     <!-- page 5: sources in use, a page of their own, with a way back to the top -->
     <section class="min-h-[100dvh] px-5 pt-10 pb-8 flex flex-col" data-page="5" data-section="evidence" data-reveal>
       <h2 class="text-[28px] font-bold" :class="zh ? 'display-zh' : 'display'">{{ t.sources }}</h2>
-      <p class="text-[15px] text-muted leading-relaxed mt-2">{{ t.sourcesLead }}</p>
       <ol class="mt-5 relative">
         <li v-for="(e, i) in evidence" :key="e.id" class="relative pl-6 pb-6">
           <span class="absolute left-0 top-2 w-3 h-3 rounded-full" :style="{ backgroundColor: e.color }" />

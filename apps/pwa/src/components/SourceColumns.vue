@@ -9,6 +9,8 @@ import { productVectorBundle } from "flavor-data/product-vector-v1";
 import { locale } from "../store";
 
 const props = withDefaults(defineProps<{ progress?: number }>(), { progress: 1 });
+// the drawing completes at 72 % of the scroll track; the remaining track is reading time (owner)
+const drawn = computed(() => Math.min(1, props.progress / 0.72));
 const DIM_COLORS: Record<string, string> = {
   acidity: "#F2C24E", sweetness: "#F5B0C6", body: "#B79B7C", floral: "#9C92E8", fruity: "#EE8F70", nutty_chocolate: "#C98A55",
   fermented_winey: "#B2626A", bitter_roasted: "#D8D2C8", spice: "#DA8A80", herbal_green: "#8CC46F", woody_earthy: "#4FA06C", defect: "#8FA0C8",
@@ -42,11 +44,11 @@ const minorTiers = computed(() => [3, 30, 300, 3000].filter((t) => t < maxTotal.
 const grand = computed(() => totals.value.reduce((a, b) => a + b, 0));
 const share = (i: number) => `${Math.round((totals.value[i]! / grand.value) * 100)}%`;
 const clamp = (x: number) => Math.max(0, Math.min(1, x));
-const axesIn = computed(() => clamp(props.progress / 0.12));
-const colIn = (i: number) => clamp((props.progress - 0.12 - i * 0.042) / 0.07);
-const treeIn = (i: number) => clamp((props.progress - 0.66 - i * 0.018) / 0.14);
-const trunkIn = computed(() => clamp((props.progress - 0.9) / 0.1));
-const panelIn = (i: number) => clamp((props.progress - 0.02 - i * 0.03) / 0.08);
+const axesIn = computed(() => clamp(drawn.value / 0.12));
+const colIn = (i: number) => clamp((drawn.value - 0.12 - i * 0.042) / 0.07);
+const treeIn = (i: number) => clamp((drawn.value - 0.66 - i * 0.018) / 0.14);
+const trunkIn = computed(() => clamp((drawn.value - 0.9) / 0.1));
+const panelIn = (i: number) => clamp((drawn.value - 0.02 - i * 0.03) / 0.08);
 const columns = computed(() =>
   dims.map((d, i) => {
     const total = totals.value[i]!;

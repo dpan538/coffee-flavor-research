@@ -8,9 +8,11 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 标题 | Put this cup into words | Put this cup into words |
-| 副标题 | 从酸质、香气与口感开始，选出贴近你感受的词，组成这一杯的风味卡。 | Choose the words that fit your cup and create a flavor card. |
-| 导言 |  |  |
+| 口号 | EVERY TASTE HAS ITS OWN VOCABULARY. | EVERY TASTE HAS ITS OWN VOCABULARY. |
+| 标题 | 风味，自有表达。 | Put this cup into words. |
+| 段落 | 像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords 帮你找到贴近感受的词，组成这一杯的风味卡。 | Some coffees are easy to taste, but harder to describe. Citrus, cocoa, or something familiar you can't quite name. Find the words for what you taste, and bring them together in your own flavor card. |
+| 行动主张 | Put this cup into words. |  |
+| 开始链接（与下方按钮同一动作） | 从这一口开始 | Start with this sip |
 | 开始按钮 | 开始 | Start |
 | About 按钮 aria | 关于 | About |
 | 语言切换 | EN | 中 |
@@ -47,9 +49,9 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | 两个按钮 | 开始 ｜ 关于 | Start ｜ About |
-| 示例卡（来自 about.ts aboutExample） | 风味卡示例 ｜ 冲煮 / 烘焙 ｜ 参考风味 · … ｜ flavorwords | Sample flavor card ｜ Brew / Roast ｜ Reference · … ｜ flavorwords |
+| 品牌图形 | 五个 glyph：叶 / 圆 / 扇 / 滴 / 环（无文字） | five glyphs: leaf / circle / fan / drop / ring (no text) |
 
-#### 风味卡 FlavorCard（终卡 / 首页示例 / About 示例）
+#### 风味卡 FlavorCard（终卡）
 
 | 位置 | 中文 | English |
 |---|---|---|
@@ -109,7 +111,7 @@
 | 第四页标题 | 本项目整理的 16 组参考风味 | 16 reference profiles organised by this project |
 | 第四页导语 | 大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线连到最接近的两组，C1–C6 是最接近的几对。 | Size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. Curves join the two nearest groups, C1–C6 the closest pairs. |
 | 第四页环与注释 | 记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录 | the 6 largest ｜ the other 10 ｜ records |
-| 来源页（独立一页） | 资料来源 ｜ 本项目使用的三份公开资料，以及每一份的用途与条款。 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ 回到顶端 | Sources ｜ The three public sources this project uses, with each one's role and terms. ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ Back to top |
+| 来源页（独立一页） | 引用与来源 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ 回到顶端 | Citations and sources ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ Back to top |
 | 来源族名 | CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ Project Origin 评审 ｜ Cenicafé 受训杯测师 ｜ 印度咖啡局 Fine Cup ｜ 也门 Sheba 拍卖评审 | CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ Project Origin panel ｜ Cenicafé trained cuppers ｜ Coffee Board of India Fine Cup ｜ Sheba Yemen auction panel |
 
 ## 2. 卡片标题、说明标签与差异句（bundle.presentation）
@@ -353,20 +355,15 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | 页面小标题 | 从品味，到表达 | From tasting to words |
-| Eyebrow | 关于 flavorwords | About flavorwords |
+| Eyebrow | 关于 FLAVORWORDS | About FLAVORWORDS |
 | 标题 | 从品味，到表达 | From tasting to words |
-| 导言 1 | flavorwords 把咖啡评审与感官资料中的描述，整理成日常品饮时可以使用的词汇与提问。 | Some cups are easier to taste than to describe. flavorwords turns the descriptions found in coffee reviews and sensory lexicons into words and questions you can use while drinking. |
-| 导言 2 | 从酸质、香气、甜感和口感出发，你选出贴近这一杯的表达，组成自己的风味卡。 | Starting from acidity, aroma, sweetness and mouthfeel, you choose the expressions that fit this cup and make your own flavor card. |
-| 使命段 1 | 我们想解决的困难很具体：专业的风味词很多，落到自己的杯子上却常常说不出口。为此整理了 8 组公开评审来源的 83,031 条风味描述、4,042 位消费者的盲测用词，以及大众点评、小红书与淘宝上烘焙商标签里的中文说法。 | The difficulty is concrete: professional flavor words are plentiful, yet hard to bring to your own cup. So we organised 83,031 flavor descriptions from 8 public review sources, the blind-tasting vocabulary of 4,042 consumers, and the Chinese expressions found on roaster labels across Dianping, Xiaohongshu and Taobao. |
-| 使命段 2 | 我们致力于提供足够准确的词，同时给每个人保留自己的说法。 | We work to offer words accurate enough, while leaving everyone their own way of saying it. |
-| 示例卡 eyebrow | 风味卡示例 | Sample flavor card |
-| 示例卡上层 | 冲煮 手冲 (V60) ｜ 烘焙 浅烘 | Brew Pour-over (V60) ｜ Roast Light |
-| 示例卡词 | 茉莉花 ｜ 白花 ｜ 佛手柑 ｜ 水蜜桃 ｜ 清冽果酸 | jasmine ｜ white flowers ｜ bergamot ｜ peach ｜ crisp acidity |
-| 示例卡下层 | 参考风味 · 茉莉与白花 ｜ flavorwords | Reference · Jasmine & White Flowers ｜ flavorwords |
-| 作者段 eyebrow | 研究、设计与开发 | Research, design and development |
-| 作者 | 潘岱 · Dai Pan | Dai Pan · 潘岱 |
-| 作者段 1 | flavorwords 关注的是：怎样提供足够准确的词，同时给每个人保留自己的说法。 | flavorwords asks one thing: how to offer words accurate enough, while leaving everyone their own way of saying it. |
-| 作者段 2 | 资料整理、风味分组、双语词表、随回答调整的提问方式，以及从选词到确认风味卡的交互设计与开发。 | Organising the material, the flavor groups, the bilingual word list, the questions that adapt to each answer, and the design and build of the path from choosing words to confirming a card. |
+| 导言 1 | 有时是一点花香，有时是像水果一样的酸，或是喝完之后留下的甜。你留意到的细节，构成了对这一杯咖啡的印象，却未必能立刻找到合适的词。 | Sometimes it is a touch of florals, an acidity like fruit, or the sweetness a cup leaves behind. The details you notice make up your impression of the coffee, yet the right word does not always come at once. |
+| 导言 2 | flavorwords 将专业咖啡评审、感官词汇与日常品饮用语放在一起整理，帮助你从熟悉的味道联想，找到更具体的描述。 | flavorwords brings professional coffee reviews, sensory lexicons and everyday tasting language together, so you can move from familiar tastes to a more specific description. |
+| 导言 3 | 从酸质、香气到甜感与口感，通过几次提问和选择，把这一杯的感受组成自己的风味卡。专业资料提供参照，最后由你确认。 | From acidity and aroma to sweetness and mouthfeel, a few questions and choices turn what you tasted into your own flavor card. Professional material provides the reference; you confirm the result. |
+| 设计页 eyebrow | 设计思路 | Design notes |
+| 设计页标题 | 为品味而设计 | Designed for taste |
+| 设计页段 1 | flavorwords 将双语词汇、风味分组与匹配逻辑，整合进逐步展开的提问与选词过程。你不必翻查一整张风味词表，可以随着问题和候选描述，逐步辨认这一杯的特点。 | flavorwords folds a bilingual vocabulary, flavor groups and matching logic into a step-by-step path of questions and word choices. Instead of reading through a whole flavor wheel, you recognise this cup's character as the questions and candidate words unfold. |
+| 署名行 | 研究、设计与开发：潘岱 · Dai Pan | Research, design and development: Dai Pan · 潘岱 |
 | 贡献 94 | 94 个双语风味词：对照专业感官词汇整理，并补充中文品饮表达。 | 94 bilingual flavor words: aligned with professional lexicons, with Chinese tasting expressions added. |
 | 贡献 12 | 12 类风味特征：每个风味词都归到其中一类；提问、出词和风味卡都按这些类取词。 | 12 flavor features: every flavor word belongs to one; questions, suggested words and the card all draw from them. |
 | 贡献 16 | 16 组参考风味：本项目从评审资料整理的分组，用来给出第一版描述。 | 16 reference profiles: groups this project organised from the review material to give a first description. |
@@ -381,16 +378,16 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 摘要 | 94 个双语风味词、12 类风味特征、本项目整理的 16 组参考风味。 | 94 bilingual flavor words, 12 flavor features, 16 reference profiles organised by this project. |
+| 摘要 | 将不同来源的风味描述进行双语对照与特征分组，把专业词汇和熟悉的品饮表达整理成可供比较的候选词，帮助你找到更贴近感受的说法。 | Flavor descriptions from different sources are aligned in two languages and grouped by feature, so professional terms and familiar tasting expressions become candidate words you can compare and choose from. |
 | 词表 / Word list | 风味词对照公开的感官词汇表整理，中英并列；中文一侧补充了大陆品饮时常用的说法（如酒酿、桂花、冰糖雪梨）。资料中出现过但意思不够明确的词，只用于识别输入，不作为默认推荐词。 | The flavor words are aligned with public sensory lexicons and given side by side in Chinese and English; the Chinese side adds expressions common in mainland tasting talk. Words that appear in the material but stay vague are used only to recognise input, never as default suggestions. |
 | 风味特征 / Flavor features | 每个风味词归到 12 类风味特征中的一类：酸质、甜感、醇厚度、花香、果香、坚果巧克力、发酵与酒香、烘烤苦感、香料、草本绿茶、木质泥土、瑕疵。不同来源的描述由此可以放在一起比较；提问、出词和风味卡都按这些类取词。 | Every flavor word belongs to one of 12 features: acidity, sweetness, body, floral, fruity, nutty & chocolate, fermented & winey, roast & bitter, spice, herbal & green, woody & earthy, defect. Descriptions from different sources can then be compared side by side; questions, suggested words and the card all draw from these. |
 | 参考风味 / Reference profiles | 16 组参考风味是本项目从评审资料中整理的分组，每组以两个主要感官参照命名，用来给出第一版描述。它们是整理的结果，不是咖啡的全部分类。 | The 16 reference profiles are groups this project organised from the review material, each named by two sensory references, used to give a first description. They are a result of that organisation, not a taxonomy of all coffee. |
 
-### About · 提问方式 / How the questions work（默认折叠）
+### About · 随回答调整的提问 / Questions that adapt to your answers（默认折叠）
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 摘要 | 先问酸质和香气，再问甜感和口感，最后问苦感和整体印象；答案一致时少问，不一致时多问一题。 | Acidity and aroma first, then sweetness and mouthfeel, then bitterness and the overall impression; fewer questions when answers agree, one more when they don't. |
+| 摘要 | 先从酸质与香气建立方向，再结合后续回答继续区分；需要进一步辨认时，补充一次提问或确认，让描述逐步形成。 | Acidity and aroma set the direction first; later answers refine it, and when something still needs telling apart, one more question or confirmation lets the description take shape. |
 | 提问顺序 / Order | 前两题（酸质、香气）给出一个基本方向；后面的回答如果与它不一致，就多问一题，或在出词后请你再看一眼；答案一致时少问。酸、香、甜、苦四题都有「不明显」的出口，不假设你一定喝到了什么。 | The first two answers (acidity, aroma) set a direction; if later answers disagree with it, one more question is asked, or you are asked to look again after the words appear; when answers agree, fewer questions are asked. Acidity, aroma, sweetness and bitterness each have a "not noticeable" way out, so nothing assumes what you must have tasted. |
 | 描述的选择与确认 / Choosing and confirming the words | 系统先给出 8 个候选词：3 个主要建议，5 个备选；你从中选出 5 个，这 5 个词就是风味卡，卡片的分组名也按你选出的词确定。如果你选的词与前面的回答方向差得很远，会再请你看一眼，然后按你确认的结果更新。 | 8 candidate words are offered: 3 main suggestions and 5 alternatives; you pick 5, those 5 are the card, and the card's group name follows the words you picked. If your picks point far from your earlier answers, you are asked to look once more, and the card is updated to what you confirm. |
 
@@ -398,7 +395,7 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 摘要 | 资料范围、初始参考如何形成、结果的适用范围、技术说明与来源。 | Scope of the material, how the initial reference is formed, what the result covers, technical notes and sources. |
+| 摘要 | 查看词汇来源、风味分组与匹配方式，了解参考描述如何形成，以及结果的适用范围。 | Where the vocabulary comes from, how the groups and the matching work, how the reference descriptions are formed, and what the result covers. |
 | 资料范围 / Scope of the material | 83,031 条风味描述记录：从公开评审文本中抽出的感官描述。<br>9,128 条咖啡评审记录：去重后的记录数；其中 8,142 条带至少一个风味词，进入参考风味分组。<br>4,042 位GACTT 消费者研究参与者：盲测用词的聚合频次，用于中文消费端词汇的对照；口径为研究参与者。<br>2 份已采用的研究参考：6 条研究说明来自这些来源；来源条款与本项目的使用方式列在下方。<br>版本 product-vector-v1，统计于 2026-09-12。 | 83,031 flavor-description records: sensory descriptions extracted from public review text.<br>9,128 coffee review records: deduplicated records; 8,142 of them carry at least one flavor word and enter the reference-profile grouping.<br>4,042 GACTT consumer-study participants: aggregate word frequencies from their blind-tasting notes, used to cross-check the Chinese consumer vocabulary; counted as study participants.<br>2 research references in use: 6 research notes come from these sources; each source's terms and this project's use are listed below.<br>Version product-vector-v1, counted on 2026-09-12. |
 | 初始参考如何形成 / How the initial reference is formed | 冲煮方式、烘焙度、豆种与处理法各有一个从评审资料统计得到的参考向量，相加后就是这杯咖啡的初始参考。评审记录不足的选项（如蜜处理、湿刨法、乳酸发酵、酒桶发酵、冷萃）目前没有参考向量，选择它们不会改变初始参考。产地可选，只在花香、果香等少数特征上加一点偏置。初始参考只是起点，你的回答与选词决定最后的风味卡。 | Brew method, roast level, variety and processing each have a reference vector counted from the review material; added together they form this cup's initial reference. Options with too few reviews (honey, wet-hulled, lactic, barrel-aged, cold brew) have no reference vector yet, so choosing them leaves the initial reference unchanged. Origin is optional and adds only a small bias on a few features. The initial reference is a starting point; your answers and picks decide the final card. |
 | 结果的适用范围 / What the result covers | 风味卡呈现你本次选择的描述。冲煮与豆子信息用于提供初始参考，相关研究用于补充说明；这些内容不构成对杯中成分或风味成因的测定。 | The card presents the description you chose this time. Brew and bean information provides the initial reference, and related research adds notes; none of this measures the cup's composition or the causes of its flavor. |

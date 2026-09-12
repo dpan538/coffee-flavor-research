@@ -21,8 +21,8 @@ SRC = ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1"
 
 # strings that live in Vue components (not in the bundle, not in view.ts / about.ts)
 COMPONENT_STRINGS = {
-    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("示例卡（来自 about.ts aboutExample）", "风味卡示例 ｜ 冲煮 / 烘焙 ｜ 参考风味 · … ｜ flavorwords", "Sample flavor card ｜ Brew / Roast ｜ Reference · … ｜ flavorwords")],
-    "风味卡 FlavorCard（终卡 / 首页示例 / About 示例）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords")],
+    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("品牌图形", "五个 glyph：叶 / 圆 / 扇 / 滴 / 环（无文字）", "five glyphs: leaf / circle / fan / drop / ring (no text)")],
+    "风味卡 FlavorCard（终卡）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords")],
     "语境卡 ContextSetupCard": [
         ("小标签", "这杯咖啡", "This cup"),
         ("单品 / 拼配切换后缀", "≤ 3", "≤ 3"),
@@ -41,7 +41,7 @@ COMPONENT_STRINGS = {
         ("第四页标题", "本项目整理的 16 组参考风味", "16 reference profiles organised by this project"),
         ("第四页导语", "大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线连到最接近的两组，C1–C6 是最接近的几对。", "Size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. Curves join the two nearest groups, C1–C6 the closest pairs."),
         ("第四页环与注释", "记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录", "the 6 largest ｜ the other 10 ｜ records"),
-        ("来源页（独立一页）", "资料来源 ｜ 本项目使用的三份公开资料，以及每一份的用途与条款。 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ 回到顶端", "Sources ｜ The three public sources this project uses, with each one's role and terms. ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ Back to top"),
+        ("来源页（独立一页）", "引用与来源 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ 回到顶端", "Citations and sources ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ Back to top"),
         ("来源族名", "CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ Project Origin 评审 ｜ Cenicafé 受训杯测师 ｜ 印度咖啡局 Fine Cup ｜ 也门 Sheba 拍卖评审", "CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ Project Origin panel ｜ Cenicafé trained cuppers ｜ Coffee Board of India Fine Cup ｜ Sheba Yemen auction panel"),
     ],
 }
@@ -93,7 +93,7 @@ def main() -> int:
     md = ["# flavorwords 前端文案总表（审核稿）", "", f"自动导出自 `product-vector-v1.json`（{B['version']}）、`view.ts` / `about.ts`（经 esbuild 执行）与组件内固定文案。每一行都是用户会在屏幕上看到的字。修改后请告诉我改哪一行，我改源头再重新导出。", ""]
 
     md += ["## 1. 首页与流程界面", "", "### 首页 Hero（view.ts appShell）", ""]
-    rows = [("标题", *pair(zh["shell"], en["shell"], "title")), ("副标题", *pair(zh["shell"], en["shell"], "subtitle")), ("导言", *pair(zh["shell"], en["shell"], "lead")), ("开始按钮", *pair(zh["shell"], en["shell"], "start")),
+    rows = [("口号", *pair(zh["shell"], en["shell"], "slogan")), ("标题", *pair(zh["shell"], en["shell"], "title")), ("段落", *pair(zh["shell"], en["shell"], "subtitle")), ("行动主张", *pair(zh["shell"], en["shell"], "claim")), ("开始链接（与下方按钮同一动作）", *pair(zh["shell"], en["shell"], "startLink")), ("开始按钮", *pair(zh["shell"], en["shell"], "start")),
             ("About 按钮 aria", *pair(zh["shell"], en["shell"], "about")), ("语言切换", *pair(zh["shell"], en["shell"], "localeSwitch")), ("离线标记 title", *pair(zh["shell"], en["shell"], "offlineReady"))]
     md += [table(["位置", "中文", "English"], rows), ""]
     md += ["### 语境卡（view.ts contextCatalog）", ""]
@@ -150,12 +150,10 @@ def main() -> int:
     rows = [("页面小标题", zh["title"]["title"], en["title"]["title"]), ("Eyebrow", zh["approach"]["eyebrow"], en["approach"]["eyebrow"]), ("标题", zh["approach"]["title"], en["approach"]["title"])]
     for i, (a, b) in enumerate(zip(zh["approach"]["intro"], en["approach"]["intro"]), 1):
         rows.append((f"导言 {i}", a, b))
-    for i, (a, b) in enumerate(zip(zh["approach"]["mission"], en["approach"]["mission"]), 1):
-        rows.append((f"使命段 {i}", a, b))
-    rows += [("示例卡 eyebrow", zh["example"]["eyebrow"], en["example"]["eyebrow"]), ("示例卡上层", " ｜ ".join(f"{c['label']} {c['value']}" for c in zh["example"]["cup"]), " ｜ ".join(f"{c['label']} {c['value']}" for c in en["example"]["cup"])), ("示例卡词", " ｜ ".join(zh["example"]["words"]), " ｜ ".join(en["example"]["words"])), ("示例卡下层", zh["example"]["reference"] + " ｜ " + zh["example"]["brand"], en["example"]["reference"] + " ｜ " + en["example"]["brand"])]
-    rows += [("作者段 eyebrow", zh["author"]["eyebrow"], en["author"]["eyebrow"]), ("作者", zh["author"]["name"], en["author"]["name"])]
+    rows += [("设计页 eyebrow", zh["author"]["eyebrow"], en["author"]["eyebrow"]), ("设计页标题", zh["author"]["title"], en["author"]["title"])]
     for i, (a, b) in enumerate(zip(zh["author"]["paragraphs"], en["author"]["paragraphs"]), 1):
-        rows.append((f"作者段 {i}", a, b))
+        rows.append((f"设计页段 {i}", a, b))
+    rows.append(("署名行", zh["author"]["credit"], en["author"]["credit"]))
     for a, b in zip(zh["author"]["contributions"], en["author"]["contributions"]):
         rows.append((f"贡献 {a['value']}", f"{a['value']} {a['unit']}{a['label']}：{a['use']}", f"{b['value']} {b['label']}: {b['use']}"))
     rows.append(("资料范围标题", zh["scope"]["title"], en["scope"]["title"]))

@@ -403,6 +403,22 @@
         "owner_follow_up_2": "Page order 1 从品味，到表达 → 2 column poster (its title removed: the chart explains itself; share under each letter, minor gridlines, panel ticks added) → 3 profile network (tighter layout, 11 px minimum type, SVG height-capped) → 4 研究、设计与开发 with the three entries (owner: after the two visuals) → 5 sources as a full page with each source's role and use shown, link and terms folded, a back-to-top button at the foot. The violet trace stays withdrawn."
       },
       "recorded_at_utc": "2026-09-12T13:30:00Z"
+    },
+    {
+      "id": "R3-D19",
+      "subject": "Branding, not the product on every page: slogan hero, glyphs, Fraunces for the wordmark, owner's About copy, reading time on the poster pages",
+      "decision": "The flavor card leaves the home page and About (it stays the end of the flow); five brand glyphs stand in. Home: a smaller wordmark with 'words' set in Fraunces (owner's pick, self-hosted under OFL), the slogan EVERY TASTE HAS ITS OWN VOCABULARY. on both languages, 风味，自有表达。 / Put this cup into words. as the title, the owner's lead paragraph, 'Put this cup into words.' as the action claim on the Chinese page, an underlined start line 从这一口开始 → that starts the flow, and a taller lower band (about 40 %) with the two bright buttons — the start line and the Start button are one action (owner: redundancy). About page 1 carries the owner's three paragraphs with blank space above and the glyphs; the design page (设计思路 / 为品味而设计) holds the owner's paragraph, the three entries with the owner's summaries, and the credit line 研究、设计与开发：潘岱 · Dai Pan at the foot, placed after the two visuals; the poster tracks grow to 560 dvh with the drawing complete at 72 % so the rest is reading time; the network page is vertically centred; the sources page is headed 引用与来源 with its lead line removed.",
+      "owner_words": "不要在about中放风味卡，可以放几个svg icon … less is more … 我们做的是branding，而不是把成品贴在每一页 … 内容全出现之后可以继续留一段scroll … Fraunces这个字体不错很适合给words用 … 首页需要简化 … EVERY TASTE HAS ITS OWN VOCABULARY. … 风味，自有表达。 … 从这一口开始 → … Put this cup into words. 这是产品的主要行动主张 … 设计思路 / 为品味而设计 … 从这一口开始 →可以给一个下划线，也可以从下方的start开始，设置为交互冗余",
+      "applied": {
+        "code": "view.ts appShell (slogan, title, subtitle, claim, startLink, start); about.ts (owner's page-1 copy, design page with title / paragraph / credit, entry summaries); App.vue hero (60 : 40, centred block, glyphs, start link); AppHeader + AboutDrawer wordmark (.wordmark-serif); BrandGlyphs.vue (new); AboutDrawer pages (no card, glyphs, design page after the visuals, 560 dvh tracks, centred network, 引用与来源); SourceColumns / ProfileNetwork drawn = progress / 0.72; style.css Fraunces faces + .wordmark-serif + .link-line; tailwind fontFamily.words; public/fonts Fraunces woff2 + OFL",
+        "verified": "vitest 54/54, vue-tsc, vite build; walked home and About pages 1, 4, 2 and 5 on 375×812",
+        "open": [
+          "MiSans and Stack Sans files",
+          "card variants (navy, patterned) for the end of the flow",
+          "share as PNG"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T14:40:00Z"
     }
   ],
   "guards": {
