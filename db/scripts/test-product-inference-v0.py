@@ -95,6 +95,20 @@ def main() -> int:
     require(all(row["product_deployment_rights_status"] == "UNKNOWN_NOT_AUTHORIZED" for row in candidates), "deployment rights fabricated")
     require(any(row["public_research_simulation_rights_eligible"] == "false" for row in candidates), "rights-blocked fixture missing")
 
+    # F19 guard: the governed semantic signal must actually reach the candidates, and a
+    # positive control ties the count to the edge ledger (a dead join reads as 'no evidence').
+    ledger_governed: Counter[str] = Counter()
+    with (ROOT / "db" / "data" / "current" / "SEMANTIC_RELATION_EDGE.tsv").open(encoding="utf-8", newline="") as handle:
+        for edge in csv.DictReader(handle, delimiter="\t"):
+            if not edge["governance_state"].startswith("GOVERNED"):
+                continue
+            for endpoint in {edge["subject_node_id"], edge["object_node_id"]}:
+                if endpoint.startswith("semantic-concept:sensory."):
+                    ledger_governed[endpoint.removeprefix("semantic-concept:")] += 1
+    require(any(ledger_governed[row["canonical_concept_id"]] > 0 for row in candidates), "positive control: no governed canonical endpoint in the edge ledger for any candidate")
+    require(all(int(row["governed_semantic_relation_support"]) >= ledger_governed[row["canonical_concept_id"]] for row in candidates), "governed semantic support below the edge ledger's direct canonical count (dead join, F19)")
+    require(sum(int(row["governed_semantic_relation_support"]) for row in candidates) > 0, "governed semantic support is zero for every candidate (dead join, F19)")
+
     coverage = rows("PRODUCT_TASK_COVERAGE_MATRIX.tsv")
     cells = [row for row in coverage if row["row_kind"] == "C0_C1_CELL"]
     require(len(cells) == 56, "C0 x C1 matrix must contain 56 cells")

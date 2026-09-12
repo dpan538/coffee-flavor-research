@@ -92,12 +92,12 @@
     },
     {
       "script": "db/scripts/generate-product-inference-v0.py",
-      "status": "OPEN_DIAGNOSED_NOT_REPAIRED (round3, CR-1b close-out)",
+      "status": "REPAIRED (round3, owner-approved 2026-09-12)",
       "defects": [
         {
           "id": "F19",
           "defect": "The product layer's governed_semantic_relation_support is 0 for all 20 candidates at BOTH the 50K and the 77K checkpoint. build_semantic_counts resolves edge endpoints only through ONTOLOGY_CONSOLIDATION_V2.concept_cluster_id -> canonical_concept_ids, but the semantic builder emits canonical concepts as their own node id form (semantic-concept:sensory.<x>, node_kind EXISTING_CANONICAL_CONCEPT); the 90 canonical clusters never appear as edge endpoints. 63,684 edge endpoints of the sensory.* form are silently ignored.",
-          "status": "OPEN_DIAGNOSED_NOT_REPAIRED",
+          "status": "REPAIRED",
           "introduced_by": "operator (generate-product-inference-v0.py, commit e4eced4)",
           "script": "db/scripts/generate-product-inference-v0.py::build_semantic_counts",
           "what": "The product layer's governed_semantic_relation_support is 0 for all 20 candidates at BOTH the 50K and the 77K checkpoint. build_semantic_counts resolves edge endpoints only through ONTOLOGY_CONSOLIDATION_V2.concept_cluster_id -> canonical_concept_ids, but the semantic builder emits canonical concepts as their own node id form (semantic-concept:sensory.<x>, node_kind EXISTING_CANONICAL_CONCEPT); the 90 canonical clusters never appear as edge endpoints. 63,684 edge endpoints of the sensory.* form are silently ignored.",
@@ -117,7 +117,9 @@
           "repair_rule": "Fix the join for the design defect (accept semantic-concept:sensory.* endpoints directly, keep the cluster route). Because the repair changes candidate scores in an owner-facing offline checkpoint (120 cases, 100-row review packet) it is a separate owner decision, measured before applied; not folded into CR-1b.",
           "guard_to_add": "test-product-inference-v0.py: require sum(governed_semantic_relation_support) > 0 once repaired, and a positive control asserting a known canonical endpoint resolves.",
           "recorded_at_utc": "2026-09-11T16:44:17Z",
-          "effect_if_rerun": "re-running the generator reproduces the dead join byte-for-byte; the defect is structural, not a drift."
+          "effect_if_rerun": "re-running the generator reproduces the dead join byte-for-byte; the defect is structural, not a drift.",
+          "repaired_at_utc": "2026-09-12T01:19:54Z",
+          "repair": "build_semantic_counts resolves semantic-concept:sensory.* endpoints directly (cluster route kept). test-product-inference-v0 gained the guard: positive control from the edge ledger, per-candidate governed support >= ledger's direct canonical count, and sum > 0. Negative control (HEAD generator + HEAD data + new test) fails on the guard."
         }
       ]
     }

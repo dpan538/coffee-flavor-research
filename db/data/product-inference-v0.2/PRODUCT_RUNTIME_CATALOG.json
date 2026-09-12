@@ -39,10 +39,10 @@
   ],
   "candidates": [
     {
-      "baseScore": 5.640823,
+      "baseScore": 5.974156,
       "directSupport": 183,
       "explanation": "可试着用“茉莉花香”描述这份花香；不需要同时有水果香或酸味。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.jasmine",
       "label": "茉莉花香",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -55,10 +55,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 4.056629,
+      "baseScore": 4.556629,
       "directSupport": 59,
       "explanation": "可试着用“玫瑰花香”描述这份花香，看看是否贴近你的感觉。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.rose",
       "label": "玫瑰花香",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -71,10 +71,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 3.247088,
+      "baseScore": 3.580422,
       "directSupport": 27,
       "explanation": "“橙花香”可作为花香参照；它不表示橙子果肉的味道或酸味。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.orange_blossom",
       "label": "橙花香",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -87,10 +87,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 5.115262,
+      "baseScore": 5.615262,
       "directSupport": 274,
       "explanation": "可把“柠檬”作为参照；有酸味并不一定就像柠檬。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.lemon",
       "label": "柠檬般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -103,10 +103,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 5.501765,
+      "baseScore": 6.001765,
       "directSupport": 315,
       "explanation": "可把“橙子”作为参照，看看是否贴近你的感觉；它与橙花香分开描述。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.orange",
       "label": "橙子般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -119,10 +119,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 5.031422,
+      "baseScore": 5.531422,
       "directSupport": 115,
       "explanation": "可把“蓝莓”作为参照；如果你只感觉像某种莓果，也可以先保留宽泛说法。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.blueberry",
       "label": "蓝莓般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -135,10 +135,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 5.912951,
+      "baseScore": 6.246284,
       "directSupport": 265,
       "explanation": "可把“蜂蜜香”作为参照；闻着甜不代表含糖量高，也不一定喝着甜。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.honey",
       "label": "蜂蜜般的香气",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -151,10 +151,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 6.25,
+      "baseScore": 6.75,
       "directSupport": 461,
       "explanation": "可把“焦糖香”作为参照；它不表示加了糖，也不等于烟熏味。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.caramel",
       "label": "焦糖般的香气",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -167,10 +167,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 5.01454,
+      "baseScore": 5.347873,
       "directSupport": 220,
       "explanation": "可把“红糖香”作为参照；闻着甜不等于喝着甜，也不能说明糖分多少。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.brown_sugar",
       "label": "红糖般的香气",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -183,10 +183,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 4.293865,
+      "baseScore": 4.793865,
       "directSupport": 81,
       "explanation": "可把“杏仁”作为参照，看看是否贴近你的感觉；这个名称不表示添加了杏仁。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.almond",
       "label": "杏仁般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -199,10 +199,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 4.06999,
+      "baseScore": 4.56999,
       "directSupport": 61,
       "explanation": "可把“榛子”作为参照，看看是否贴近你的感觉；也可以先记作坚果般的风味。",
-      "governedSupport": 1,
+      "governedSupport": 5,
       "id": "sensory.hazelnut",
       "label": "榛子般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -215,10 +215,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 5.877524,
+      "baseScore": 6.210857,
       "directSupport": 191,
       "explanation": "可把“黑巧克力”作为参照；只有苦味，还不足以描述这种联想。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.dark_chocolate",
       "label": "黑巧克力般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -231,10 +231,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 4.34271,
+      "baseScore": 4.676044,
       "directSupport": 86,
       "explanation": "可把“肉桂香”作为参照，看看是否贴近你的感觉。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.cinnamon",
       "label": "肉桂般的香气",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -247,10 +247,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 3.853738,
+      "baseScore": 4.187072,
       "directSupport": 51,
       "explanation": "可把“烟草”作为气味参照；它与烟熏感分开描述。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.tobacco",
       "label": "烟草般的气味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -263,10 +263,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 2.238862,
+      "baseScore": 2.572195,
       "directSupport": 3,
       "explanation": "可试着用“烟熏感”描述这份气味；它本身不能说明烘焙深浅或制作方式。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.smoky",
       "label": "烟熏感",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -279,10 +279,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 3.941377,
+      "baseScore": 4.274711,
       "directSupport": 52,
       "explanation": "可把“绿茶”作为参照；如果只感觉像茶，也可以先保留“茶感”。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.green_tea",
       "label": "绿茶般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -295,10 +295,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 3.620214,
+      "baseScore": 3.953547,
       "directSupport": 32,
       "explanation": "可把“雪松”作为气味参照；如果不熟悉这种木头，也可以先记下自己的联想。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.cedar",
       "label": "雪松般的气味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -311,10 +311,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 1.823278,
+      "baseScore": 2.156612,
       "directSupport": 2,
       "explanation": "可试着用“土壤感”描述泥土般的气味；它本身不能判断咖啡是否变质。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.earthy",
       "label": "土壤感",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -327,10 +327,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 1.769431,
+      "baseScore": 2.102764,
       "directSupport": 1,
       "explanation": "可试着用“发酵感”描述这份气味；这不能说明咖啡采用了哪种发酵工艺。",
-      "governedSupport": 1,
+      "governedSupport": 3,
       "id": "sensory.fermented_character",
       "label": "发酵感",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",
@@ -343,10 +343,10 @@
       "wordingStatus": "FORMATIVE_WORDING_NOT_USER_VALIDATED"
     },
     {
-      "baseScore": 4.247693,
+      "baseScore": 4.747693,
       "directSupport": 55,
       "explanation": "可把“葡萄酒感”作为参照；它不表示含有酒精，也不能说明咖啡的处理工艺。",
-      "governedSupport": 1,
+      "governedSupport": 9,
       "id": "sensory.wine_like_character",
       "label": "葡萄酒般的风味",
       "lineage": "db/data/current/CLEANED_DESCRIPTOR_DISTRIBUTION.tsv|db/data/current/ONTOLOGY_CONSOLIDATION_V2.tsv|db/data/round3h/batch5/relationship_evidence_claims.tsv|packages/flavor-data/src/descriptors.ts",

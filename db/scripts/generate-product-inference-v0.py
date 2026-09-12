@@ -146,7 +146,11 @@ def build_semantic_counts() -> tuple[Counter[str], Counter[str]]:
         concepts: set[str] = set()
         for field in ("subject_node_id", "object_node_id"):
             node = row[field]
-            if node.startswith("semantic-concept:"):
+            if node.startswith("semantic-concept:sensory."):
+                # F19 repair: the semantic builder emits existing canonical concepts as their
+                # own node form (node_kind EXISTING_CANONICAL_CONCEPT); resolve them directly.
+                concepts.add(node.removeprefix("semantic-concept:"))
+            elif node.startswith("semantic-concept:"):
                 concepts.update(cluster_to_concepts.get(node.removeprefix("semantic-concept:"), set()))
         for concept in concepts:
             if row["governance_state"].startswith("GOVERNED"):

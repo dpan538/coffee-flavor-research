@@ -772,7 +772,7 @@
       "complete_abstention_case_count": 24,
       "duplicate_redundancy_group_pressure_count": 0,
       "main_output_fill_rate": 0.253333,
-      "output_changed_case_count": 12,
+      "output_changed_case_count": 15,
       "result_state_changed_case_count": 0,
       "secondary_output_fill_rate": 0.05
     },
@@ -780,7 +780,7 @@
       "complete_abstention_case_count": 24,
       "duplicate_redundancy_group_pressure_count": 0,
       "main_output_fill_rate": 0.253333,
-      "output_changed_case_count": 9,
+      "output_changed_case_count": 15,
       "result_state_changed_case_count": 0,
       "secondary_output_fill_rate": 0.05
     },
@@ -796,7 +796,7 @@
       "complete_abstention_case_count": 24,
       "duplicate_redundancy_group_pressure_count": 0,
       "main_output_fill_rate": 0.253333,
-      "output_changed_case_count": 0,
+      "output_changed_case_count": 24,
       "result_state_changed_case_count": 0,
       "secondary_output_fill_rate": 0.05
     },
@@ -828,7 +828,7 @@
       "complete_abstention_case_count": 24,
       "duplicate_redundancy_group_pressure_count": 0,
       "main_output_fill_rate": 0.253333,
-      "output_changed_case_count": 6,
+      "output_changed_case_count": 12,
       "result_state_changed_case_count": 0,
       "secondary_output_fill_rate": 0.05
     },
