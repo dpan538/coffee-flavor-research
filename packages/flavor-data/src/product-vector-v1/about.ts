@@ -1,52 +1,80 @@
 /**
- * About / methodology content for the PWA (owner plan, 2026-09-12). Bilingual, offline, data only —
- * the page renders these sections; the numbers are read from the bundle so they never go stale.
+ * About — Sensory Physics & Methodology (owner copy, 2026-09-12; geek-romantic register, no sales voice).
+ * Bilingual data only: sections with a short summary and folded details, merged literature + licences (folded),
+ * lexicon & local autonomy (folded), and the corpus facts for the data visual. Numbers come from the bundle.
  */
 import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json" with { type: "json" };
 import { type Locale } from "./engine";
 
-export type AboutSection = { id: string; title: string; paragraphs: string[]; bullets?: string[] };
-export type Citation = { id: string; title: string; role: string; evidenceState: "LITERATURE_CLAIM" | "LITERATURE_CLAIM_PENDING_LOCATOR" | "PENDING_INGEST"; locator: string; licenceNote: string; claims: number };
+export type AboutBlock = { title: string; body: string };
+export type AboutSection = { id: string; title: string; summary: string; blocks: AboutBlock[]; folded: boolean };
+export type Citation = { id: string; title: string; role: string; locator: string; licence: string; evidenceState: string; claims: number };
+export type AboutStat = { key: string; value: number; label: string };
 
+const facts = bundle.corpus_facts;
 const flow = bundle.question_flow;
-const dims = bundle.dimensions.length;
-const profiles = bundle.profiles.length;
-const concepts = Object.keys(bundle.concept_projection).length;
-
 type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; claims: number; state: string };
-const ROLES: Record<string, Record<Locale, string>> = {
-  wcr_sensory_lexicon: { "zh-CN": "94 个规范风味概念与 12 维投影标尺的标准化定义；品种基因上限与烘焙演变的化学参照物", en: "standard definitions behind the 94 canonical concepts and the 12-dimension projection; variety ceilings and roast evolution references" },
-  uc_davis_coffee_center: { "zh-CN": "萃取动力学与感官图谱：研磨度、水温、TDS 对前段极性小分子酸与后段大分子苦感的释放规律", en: "brewing kinetics and sensory maps: how grind, temperature and TDS release polar acids early and large bitter molecules late" },
-  coffee_ad_astra: { "zh-CN": "咖啡萃取物理学：通道效应、萃取率（EY%）对中段甜感与尾段瑕疵风味的归因", en: "physics of extraction: channeling and extraction yield versus mid-palate sweetness and late off-notes" },
-};
-const TITLES: Record<string, string> = { wcr_sensory_lexicon: "World Coffee Research — Sensory Lexicon / Varieties Catalog", uc_davis_coffee_center: "UC Davis Coffee Center", coffee_ad_astra: "Coffee Ad Astra (Jonathan Gagné)" };
+const registry = ((bundle.presentation as { sources?: SourceRow[] }).sources ?? []) as SourceRow[];
 
-/** The three literature sources from the bundle's source registry (locator and licence note are the owner's), plus GACTT. */
+export function aboutTitle(locale: Locale): { title: string; subtitle: string } {
+  return locale === "zh-CN" ? { title: "感官物理学与几何归因", subtitle: "Sensory Physics & Methodology" } : { title: "Sensory Physics & Methodology", subtitle: "感官物理学与几何归因" };
+}
+
+/** the data visual: what the engine was built from */
+export function aboutStats(locale: Locale): AboutStat[] {
+  const zh = locale === "zh-CN";
+  return [
+    { key: "assertions", value: facts.source_assertions, label: zh ? "条专业感官断言" : "professional sensory assertions" },
+    { key: "coffees", value: facts.coffees, label: zh ? "杯经专业评审的咖啡" : "professionally reviewed coffees" },
+    { key: "edges", value: facts.semantic_relation_edges, label: zh ? "条语义关系边" : "semantic relation edges" },
+    { key: "consumers", value: facts.consumer_respondents, label: zh ? "位消费者的盲测笔记" : "consumers' blind-tasting notes" },
+    { key: "concepts", value: facts.canonical_concepts, label: zh ? "个规范风味概念" : "canonical flavor concepts" },
+    { key: "dimensions", value: facts.dimensions, label: zh ? "维正交感官空间" : "orthogonal sensory dimensions" },
+    { key: "profiles", value: facts.profiles, label: zh ? "个风味画像" : "flavor profiles" },
+    { key: "sources", value: facts.literature_sources, label: zh ? "份文献背书" : "literature sources" },
+  ];
+}
+
+function short(title: string): string {
+  return title.split(" — ")[0]!.trim();
+}
+
 export function aboutCitations(locale: Locale): Citation[] {
-  const registry = ((bundle.presentation as { sources?: SourceRow[] }).sources ?? []) as SourceRow[];
+  const zh = locale === "zh-CN";
+  const roles: Record<string, [string, string]> = {
+    wcr_sensory_lexicon: ["94 个规范概念与 12 维投影标尺的标准化定义；品种基因上限（如瑰夏单萜烯表达）与烘焙演化的化学基准。", "Standard definitions behind the 94 canonical concepts and the 12-dimension projection; variety ceilings (Gesha's monoterpene expression) and roast-evolution chemistry."],
+    uc_davis_coffee_center: ["萃取动力学与感官表达图谱。提取研磨度、水温与 TDS 对前段极性小分子酸与后段大分子绿原酸内酯苦感的萃取动力学释放规律。", "Brewing kinetics and sensory maps: how grind, water temperature and TDS release polar acids early and chlorogenic-acid lactone bitterness late."],
+    coffee_ad_astra: ["咖啡萃取物理学。利用流体力学与粉床迁移理论，归因通道效应（Channeling）、萃取率（EY%）对中段甜感呈现与尾段瑕疵风味的物理成因。", "Physics of filter coffee: fluid dynamics and fines migration explain how channeling and extraction yield shape mid-palate sweetness and late off-notes."],
+  };
+  const names: Record<string, [string, string]> = {
+    wcr_sensory_lexicon: ["World Coffee Research (WCR) — Sensory Lexicon & Varieties Catalog", "World Coffee Research (WCR) — Sensory Lexicon & Varieties Catalog"],
+    uc_davis_coffee_center: ["UC Davis Coffee Center — Brewing Kinetics & Sensory Maps", "UC Davis Coffee Center — Brewing Kinetics & Sensory Maps"],
+    coffee_ad_astra: ["Coffee Ad Astra (Dr. Christopher H. Gagné) — Physics of Filter Coffee", "Coffee Ad Astra (Dr. Christopher H. Gagné) — Physics of Filter Coffee"],
+  };
+  const licences: Record<string, [string, string]> = {
+    wcr_sensory_lexicon: ["CC BY-SA 4.0 (Owner verified 2026-09-12)", "CC BY-SA 4.0 (owner verified 2026-09-12)"],
+    uc_davis_coffee_center: ["Academic Citation / Fair Use (Owner verified 2026-09-12)", "Academic citation / fair use (owner verified 2026-09-12)"],
+    coffee_ad_astra: ["Personal Research & Author Attribution (Owner verified 2026-09-12)", "Personal research & author attribution (owner verified 2026-09-12)"],
+  };
   const out: Citation[] = [];
   for (const id of ["wcr_sensory_lexicon", "uc_davis_coffee_center", "coffee_ad_astra"]) {
     const row = registry.find((r) => r.source_id === id);
-    out.push({
-      id,
-      title: row?.title || TITLES[id]!,
-      role: ROLES[id]![locale],
-      evidenceState: row ? (row.state as Citation["evidenceState"]) : "PENDING_INGEST",
-      locator: row?.locator || (locale === "zh-CN" ? "DOI / 链接待 owner 补充" : "DOI / link pending (owner)"),
-      licenceNote: row?.licence_note || (locale === "zh-CN" ? "许可说明待补充" : "licence note pending"),
-      claims: row?.claims ?? 0,
-    });
+    out.push({ id, title: names[id]![zh ? 0 : 1], role: roles[id]![zh ? 0 : 1], locator: row?.locator ?? "", licence: licences[id]![zh ? 0 : 1], evidenceState: row?.state ?? "PENDING_INGEST", claims: row?.claims ?? 0 });
   }
   out.push({
     id: "gactt",
-    title: "Great American Coffee Taste Test (GACTT)",
-    role: locale === "zh-CN" ? "4,042 位消费者的盲测笔记：消费端风味用语的频次基底（只用聚合计数）" : "blind-tasting notes from 4,042 consumers: the frequency base of consumer flavor language (aggregate counts only)",
+    title: "Great American Coffee Taste Test (GACTT) — Consumer Corpus",
+    role: zh ? `${facts.consumer_respondents.toLocaleString()} 位消费者盲测笔记的纯粹聚合频次（Aggregate Frequency Counts），用于构建消费端真实用词的映射基底。` : `Pure aggregate frequency counts from ${facts.consumer_respondents.toLocaleString()} consumers' blind-tasting notes, the mapping base for real consumer vocabulary.`,
+    locator: "GACTT_CONSUMER_TERM_FREQUENCY.tsv (Owner verified)",
+    licence: zh ? "聚合计数，不含原文" : "aggregate counts, no text",
     evidenceState: "LITERATURE_CLAIM",
-    locator: "db/data/product-vector-v1/GACTT_CONSUMER_TERM_FREQUENCY.tsv",
-    licenceNote: locale === "zh-CN" ? "owner 已审阅批准（T2 消费者观测）；仓库只含聚合频次" : "owner-reviewed and approved (T2 consumer observations); only aggregate counts are stored",
     claims: 0,
   });
   return out;
+}
+
+export function aboutFooter(locale: Locale): string {
+  return locale === "zh-CN" ? "无服务器，无账号，无追踪。每一次诊断、每一个向量和自建豆库都只在这台设备的本地存储里，随时可清空。" : "No server, no account, no tracking. Every diagnosis, vector and bean stays in this device's local storage and can be cleared any time.";
 }
 
 export function aboutSections(locale: Locale): AboutSection[] {
@@ -55,54 +83,44 @@ export function aboutSections(locale: Locale): AboutSection[] {
     return [
       {
         id: "methodology",
-        title: "核心方法论",
-        paragraphs: [
-          `${dims} 维感官向量空间：系统放弃营销式的模糊形容词，把香气、酸质、甜感、体感、发酵感、烘烤、香料、草本、木质与瑕疵拆成 ${dims} 个几何维度。${concepts} 个规范风味概念各自投影到这个空间；一杯咖啡、一个画像、一次回答，都是同一空间里的向量。`,
-          `相干性校验与动态纠错：回答不是逐题累加，而是分组比对。系统先用 Q0–Q1 建立感知基底，再用 Q2–Q3 做相干性评估（相干 ≥ ${t.coherent}，冲突 < ${t.mild}），在画像签名空间里问「这些回答指向同一批风味画像吗」；极性守卫拦截「极浅烘高酸花香 + 深烘重苦厚重」这类感官悖论，语境检查让冲煮与烘焙参数只引导修正、不越权。平均 5.70 题完成。`,
-          `第一份风味描述给出 3 + 5 个词，你勾选 5 个最贴切的；这次勾选是隐式的强信号。只有当前文出现过严重冲突且你的勾选证实了感官偏置时，才会出现 Q6 强修正，得到第二份精修卡。`,
+        title: "方法",
+        summary: `把风味拆成 ${facts.dimensions} 个正交维度；用向量的语义搜索给决策树剪枝，而不是给咖啡打分排序。`,
+        folded: true,
+        blocks: [
+          { title: "动态设计", body: `问答不是问卷。每一次回答都被投影进画像空间，系统据此剪掉不可能的分支：回答相干时少问，出现分歧时多问一道，遇到物理悖论时直接拦截。平均 ${facts.mean_questions} 道题收敛，最多六道。` },
+          { title: "公式设计", body: "V_pred = normalize(Σ K)，由冲煮、烘焙、豆种与处理法的先验向量相加；V_user = normalize(Σ Q)，由回答的增量向量相加；ΔV = V_user − V_pred 是感知偏置；V_target = normalize(V_pred + α·ΔV)，α = 0.5。全链路只有一个投影矩阵、一组向量和余弦相似度。不训练模型，不做概率拟合，不做统计校准。" },
+          { title: "语义搜索，不是排序", body: `余弦相似度只用来在 ${facts.profiles} 个画像与候选豆之间做语义检索与剪枝——找到最接近的那一小撮，再由你的勾选定夺。它从不给咖啡打分排名，也不输出概率。` },
+          { title: "相干与极性", body: `Q0–Q1 锁定基底，Q2–Q3 在画像签名空间里做相干性投影（相干 ≥ ${t.coherent}，冲突 < ${t.mild}）。签名空间由 ${facts.usable_coffee_vectors.toLocaleString()} 笔专业感官记录聚成 ${facts.profiles} 个画像。极性守卫在签名之外单独校验烘焙极性：极浅烘高酸花香与深烘重苦厚重不能同时成立，悖论直接进入强修正；冲煮与烘焙先验只引导修正，不越权。` },
         ],
-        bullets: [`${profiles} 个风味画像，由 8,142 杯专业评审记录聚类而来，命名采用中国精品咖啡圈的通用词汇`, "所有分数都是余弦相似度，不是概率，未做校准", "系统从不训练模型：一个投影矩阵、一组向量、一行余弦"],
       },
       {
         id: "literature",
-        title: "学术文献与理论支持",
-        paragraphs: ["归因文案的每一句都带证据级别：OWNER_STATEMENT（产品方陈述）、CORPUS_MEASURED（从 83,031 条专业评审断言实测）、LITERATURE_CLAIM（引自下列文献）。"],
-        bullets: aboutCitations("zh-CN").map((c) => `${c.title} — ${c.role}（${c.locator}；${c.licenceNote}；${c.evidenceState}）`),
-      },
-      {
-        id: "lexicon",
-        title: "极简风味词典与数据血缘",
-        paragraphs: [
-          "卡片上的词（如 白花 | 水蜜桃 | 茉莉绿茶 | 杏桃）来自两层词典：94 个规范概念的中文极简词，以及从 GACTT 消费者盲测语料与国内消费端语料收敛的本土词（野果发酵、微醺酒香、冰糖雪梨、鸭屎香……）。专业端的长句描述只用于计算，从不直接展示。",
-          "隐私：本应用没有后端服务器、没有账号。所有诊断交互、历史记录与你录入的豆子都只保存在你手机本地（IndexedDB），可以随时清空。",
-        ],
+        title: "数据与文献",
+        summary: "每一句成因都带出处。三份文献背书萃取与品种的物理化学机理，一份消费者语料校准用词。",
+        folded: true,
+        blocks: aboutCitations("zh-CN").map((c) => ({ title: c.title, body: `${c.role}\n出底：${c.locator}\n许可：${c.licence}` })),
       },
     ];
   }
   return [
     {
       id: "methodology",
-      title: "Methodology",
-      paragraphs: [
-        `A ${dims}-dimension sensory vector space: instead of marketing adjectives, aroma, acidity, sweetness, body, fermentation, roast, spice, herbal, woody and defect become ${dims} geometric axes. ${concepts} canonical flavor concepts project into this space; a cup, a profile and an answer are all vectors in it.`,
-        `Coherence checks with dynamic correction: answers are compared in groups, not summed. Q0–Q1 set the perceptual base; Q2–Q3 are checked against it (coherent ≥ ${t.coherent}, conflict < ${t.mild}) in profile-signature space — "do these answers point at the same profiles?". A polarity guard intercepts sensory paradoxes (light-roast florals and acidity followed by heavy dark bitterness); the context check lets brew and roast parameters guide a correction without overriding perception. 5.70 questions on average.`,
-        "The first description offers 3 + 5 words and asks you to pick the 5 that fit; that pick is a strong implicit signal. Only when the flow saw a severe conflict and your picks confirm the bias does a Q6 correction appear, producing a refined second card.",
+      title: "Method",
+      summary: `Flavor is split into ${facts.dimensions} orthogonal dimensions; vector semantic search prunes the decision tree — it never ranks coffees.`,
+      folded: true,
+      blocks: [
+        { title: "Dynamic design", body: `This is not a questionnaire. Every answer is projected into profile space and the system prunes what cannot be: fewer questions when answers cohere, one more when they diverge, a hard stop on physical paradoxes. Paths converge in ${facts.mean_questions} questions on average, six at most.` },
+        { title: "Formula design", body: "V_pred = normalize(Σ K), the prior vectors of brew, roast, variety and processing added; V_user = normalize(Σ Q), the answer increments added; ΔV = V_user − V_pred is the perception bias; V_target = normalize(V_pred + α·ΔV) with α = 0.5. The whole chain is one projection matrix, a set of vectors and cosine similarity. No model is trained, no probability fitted, no statistical calibration." },
+        { title: "Semantic search, not ranking", body: `Cosine similarity is used only to search and prune among the ${facts.profiles} profiles and candidate beans — to find the closest few, which your picks then settle. It never scores or ranks coffees and never outputs a probability.` },
+        { title: "Coherence and polarity", body: `Q0–Q1 lock the base; Q2–Q3 are projected against it in profile-signature space (coherent ≥ ${t.coherent}, conflict < ${t.mild}). That space is ${facts.profiles} profiles clustered from ${facts.usable_coffee_vectors.toLocaleString()} professional sensory records. A polarity guard checks roast polarity outside the signature: very-light-roast florals and dark-roast heaviness cannot both hold, so the paradox goes straight to correction; brew and roast priors only steer, never override.` },
       ],
-      bullets: [`${profiles} flavor profiles clustered from 8,142 professionally reviewed coffees, named in the vocabulary of the Chinese specialty scene`, "every score is a cosine similarity, never a probability, uncalibrated", "no model is ever trained: one projection matrix, a set of vectors, a cosine"],
     },
     {
       id: "literature",
-      title: "Literature and theoretical basis",
-      paragraphs: ["Every attribution sentence carries its evidence state: OWNER_STATEMENT, CORPUS_MEASURED (from 83,031 professional review assertions) or LITERATURE_CLAIM (from the sources below)."],
-      bullets: aboutCitations("en").map((c) => `${c.title} — ${c.role} (${c.locator}; ${c.licenceNote}; ${c.evidenceState})`),
-    },
-    {
-      id: "lexicon",
-      title: "Lexicon and provenance",
-      paragraphs: [
-        "Card words (白花 | 水蜜桃 | 茉莉绿茶 | 杏桃, or jasmine | peach | green tea | apricot) come from two layers: minimalist words for the 94 canonical concepts, and consumer terms converged from GACTT blind-tasting notes and Chinese consumer language. Long professional descriptions are used for computation only, never shown.",
-        "Privacy: no server, no account. Every diagnosis, its history and the beans you enter stay on your device (IndexedDB) and can be cleared at any time.",
-      ],
+      title: "Data and literature",
+      summary: "Every attribution carries its source. Three references back the physics and chemistry of extraction and variety; one consumer corpus calibrates the words.",
+      folded: true,
+      blocks: aboutCitations("en").map((c) => ({ title: c.title, body: `${c.role}\nSource: ${c.locator}\nLicence: ${c.licence}` })),
     },
   ];
 }

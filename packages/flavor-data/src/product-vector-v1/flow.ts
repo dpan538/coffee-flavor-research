@@ -18,6 +18,7 @@ import {
   DIMENSIONS,
   add,
   buildVPred,
+  calibrationLine,
   cosine,
   infer,
   normalize,
@@ -302,8 +303,6 @@ export function applyQ6(result: InferenceResult, selectedDimensions: string[]): 
 
 /** Final summary card: the user's own 5 words, one or two science lines, the closing line. */
 export function finalCard(result: InferenceResult, picks: Word[], locale: Locale): FinalCard {
-  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
-  const words = presentation.delta_words[locale];
   // 1-2 attribution sentences: the most specific statement, plus the first literature claim that applies
   // (owner R3-D14: literature must be declared where the user reads it), then the computed bias line
   const applicable = statementsFor(result.context, locale);
@@ -311,16 +310,7 @@ export function finalCard(result: InferenceResult, picks: Word[], locale: Locale
   const literature = applicable.find((l) => l.evidenceState.startsWith("LITERATURE_CLAIM") && l !== science[0]);
   if (literature) science.push(literature);
   const top = result.topDeltaDimensions[0];
-  if (top && Math.abs(top.delta) >= 0.1) {
-    const label = labels[top.dimension]?.[locale] ?? top.dimension;
-    science.push({
-      text: locale === "zh-CN" ? `你感受到的${label}${top.delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${top.delta > 0 ? words.pos : words.neg}.`,
-      evidenceState: "COMPUTED_DELTA",
-      citationRef: "engine: V_user − V_pred",
-      about: `delta:${top.dimension}`,
-      sourceTitle: "engine",
-    });
-  }
+  if (top && Math.abs(top.delta) >= 0.1) science.push(calibrationLine(top.dimension, top.delta, locale));
   const first = result.profiles[0];
   return {
     picked: picks.map((w) => w.text),

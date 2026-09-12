@@ -100,6 +100,7 @@ def main() -> int:
     fields = ["surface_term_zh", "surface_term_en", "primary_dimension", "canonical_concept_id", "secondary_effects", "source", "owner_reviewed", "display_eligible"]
     with lex_path.open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n"); w.writeheader(); w.writerows(lex)
+    (OUT / "GACTT_SUMMARY.json").write_text(json.dumps({"respondents": len(rows), "notes": len(notes), "mapped_terms": len(respondents), "basis": "aggregate counts only; owner-approved T2"}, indent=2) + "\n", encoding="utf-8")
     summary = {"respondents": len(rows), "note_columns": note_cols, "notes": len(notes), "mapped_terms": len(respondents),
                "respondents_by_dimension": dict(dim_total.most_common()), "fermented_winey_terms": [(t, len(respondents[t])) for t in sorted(respondents, key=lambda t: -len(respondents[t])) if vocab[t][0] == "fermented_winey"][:12],
                "top_unknown_tokens": unknown.most_common(25), "lexicon_added_en": added}

@@ -5,7 +5,7 @@
 import "fake-indexeddb/auto";
 import { describe, expect, it } from "vitest";
 import { DIMENSIONS, buildVPred, cosine, productVectorBundle } from "../packages/flavor-data/src/product-vector-v1";
-import { aboutCitations, aboutSections } from "../packages/flavor-data/src/product-vector-v1/about";
+import { aboutCitations, aboutSections, aboutStats } from "../packages/flavor-data/src/product-vector-v1/about";
 import { answer, createSession, firstDescription, nextStep, submitPicks } from "../packages/flavor-data/src/product-vector-v1/session";
 import { appShell, contextCatalog, normalizeContext, screenModel } from "../packages/flavor-data/src/product-vector-v1/view";
 import { addBean, beansAsVectors, clearBeans, conceptIdsFromLabel, deleteBean, listBeans, userDatabase } from "../packages/flavor-data/src/user-db";
@@ -130,16 +130,19 @@ describe("user bean library (Dexie over IndexedDB)", () => {
 });
 
 describe("about content", () => {
-  it("is bilingual, reads live numbers from the bundle, and states the evidence state of each citation", () => {
+  it("is bilingual, reads live numbers from the bundle, folds its details, and states every citation's licence", () => {
     const zh = aboutSections("zh-CN");
     const en = aboutSections("en");
-    expect(zh.map((s) => s.id)).toEqual(["methodology", "literature", "lexicon"]);
-    expect(zh[0]!.paragraphs[0]).toContain("12 维");
-    expect(en[0]!.paragraphs[1]).toContain("0.8");
-    expect(zh[2]!.paragraphs[1]).toContain("IndexedDB");
+    expect(zh.map((s) => s.id)).toEqual(["methodology", "literature"]);
+    expect(zh.every((s) => s.folded && s.summary.length > 0 && s.blocks.length > 0)).toBe(true);
+    expect(zh[0]!.summary).toContain("12 个正交维度");
+    expect(en[0]!.blocks[3]!.body).toContain("0.8");
+    expect(zh[0]!.blocks[2]!.title).toContain("排序");
     const cites = aboutCitations("en");
     expect(cites.map((c) => c.id)).toEqual(["wcr_sensory_lexicon", "uc_davis_coffee_center", "coffee_ad_astra", "gactt"]);
-    expect(cites.every((c) => ["LITERATURE_CLAIM", "LITERATURE_CLAIM_PENDING_LOCATOR", "PENDING_INGEST"].includes(c.evidenceState))).toBe(true);
-    expect(cites.slice(0, 3).every((c) => c.claims > 0 && c.locator && c.licenceNote)).toBe(true);
+    expect(cites.slice(0, 3).every((c) => c.claims > 0 && c.locator && c.licence && c.evidenceState === "LITERATURE_CLAIM")).toBe(true);
+    const stats = aboutStats("zh-CN");
+    expect(stats.find((s) => s.key === "assertions")!.value).toBeGreaterThan(80000);
+    expect(stats.find((s) => s.key === "consumers")!.value).toBe(4042);
   });
 });

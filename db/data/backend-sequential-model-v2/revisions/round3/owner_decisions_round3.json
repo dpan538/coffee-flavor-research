@@ -330,6 +330,23 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T05:10:08Z"
+    },
+    {
+      "id": "R3-D15",
+      "subject": "Visual pass: tonality, 1:4 flat layout, card flow, consumer-facing copy layer, About data visual, mobile UX details",
+      "decision": "Owner references and corrections applied in sequence: palette from the retro block book cover + the green/terracotta painting; MiSans (zh) and Stack Sans (en) self-hosted; page split 1:4 with no card-on-background (paper band above, colour band below); one card at a time, question above / options filling the lower half, tactile highlight then fold-up into the top stack; Next as a full-width bar; 7 roast levels incl. very light; logo on two lines, no domain line; consumer-facing translation of every string (no raw enums, no 您, no thank-you, no licence text on the card; evidence states as 烘焙与萃取成因 / 物理萃取规律 / 感官偏置校准; softened calibration sentence; 风味描述预览 / 风味描述; 科学归因 folded by default); About copy in the owner's geek-romantic register with the methodology reframed as dynamic design + formula design (vector semantic search prunes the decision tree, never ranks), the lexicon/autonomy section dropped, literature + licences merged and folded, a data visual first; icons for About / home / restart / share; whiter paper, near-invisible grain; CSS-only press feedback, CSS-grid fold, shimmer skeleton, overscroll off, safe-area padding.",
+      "owner_words": "从图一中获得颜色，从图二中匹配英文字体 … 上1下4 … 卡片被收集到上方的1中 … 页面没有背景 … 直接把背景分成了1:4 … 极浅 … 商业级包装 … 去“您”字推销感 … 不要使用任何icon也不要谢您 … 用一个分享的icon即可 … 重新体验 … 科学归因默认折叠 … 白不够白 … 风味描述预览 … 向量的语义搜索算法，但不是排序，只是决策树剪枝",
+      "applied": {
+        "pwa": "apps/pwa: tailwind tokens, style (fonts, grain, fold/stack transitions, press feedback, skeleton, safe areas), store (stage colour, collected stack, collecting state, context stepper, home/restart), App 1:4 flat split, ContextSetupCard / QuizCard / FirstDescriptionCard / EscalationModal / FinalAttributionCard / AboutDrawer / CollectedStack / FlavorBurst",
+        "packages": "bundle: evidence_labels, delta_templates, card/preview/science headings, very_light roast proxy, corpus_facts; engine ScienceLine.label/citation/sourceLicence + calibrationLine; view pickedDimensions + headings; about.ts rewritten (stats, sections, citations, footer)",
+        "verified": "vue-tsc clean, vite build + sw.js, vitest 51/51, package tsc clean; walked hero → context → quiz → preview → picks → final card → About in the preview at 375x812",
+        "open": [
+          "font files + licences into apps/pwa/public/fonts",
+          "share as PNG export (designed last)",
+          "owner's next visual references"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T06:32:28Z"
     }
   ],
   "guards": {

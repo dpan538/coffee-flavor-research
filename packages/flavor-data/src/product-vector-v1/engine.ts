@@ -54,7 +54,18 @@ export type InferenceResult = {
   scoreSemantics: string;
 };
 
-export type ScienceLine = { text: string; evidenceState: string; citationRef: string; about: string; sourceTitle: string };
+export type ScienceLine = {
+  text: string;
+  evidenceState: string;
+  citationRef: string;
+  about: string;
+  sourceTitle: string;
+  sourceLicence: string;
+  /** consumer-facing label for the evidence state (never the raw enum) */
+  label: string;
+  /** "引用自：Coffee Ad Astra (J. Gagné)" for literature; empty for owner statements and calibration */
+  citation: string;
+};
 export type Presentation = {
   locale: Locale;
   headline: { title: string; tags: string[]; similarity: number; ownerReviewed: boolean; profileId: string } | null;
@@ -290,6 +301,51 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
   return tags;
 }
 
+type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; claims: number; state: string };
+type PresentationExtras = {
+  evidence_labels?: Record<string, Record<Locale, string>>;
+  delta_templates?: Record<Locale, { pos: string; neg: string }>;
+  citation_prefix?: Record<Locale, string>;
+  card_heading?: Record<Locale, string>;
+  science_heading?: Record<Locale, string>;
+};
+
+/** consumer-facing label for an evidence state ("物理萃取规律"), never the raw enum */
+export function evidenceLabel(state: string, locale: Locale): string {
+  return (presentation as PresentationExtras).evidence_labels?.[state]?.[locale] ?? "";
+}
+
+/** "World Coffee Research — Sensory Lexicon / Varieties Catalog" → "World Coffee Research"; "Coffee Ad Astra (Jonathan Gagné) — …" → "Coffee Ad Astra (J. Gagné)" */
+export function shortSource(title: string): string {
+  const head = title.split(" — ")[0]!.trim();
+  return head.replace("(Jonathan Gagné)", "(J. Gagné)");
+}
+
+/** softened calibration sentence for a delta dimension */
+export function calibrationLine(dimension: string, delta: number, locale: Locale): ScienceLine {
+  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
+  const label = labels[dimension]?.[locale] ?? dimension;
+  const templates = (presentation as PresentationExtras).delta_templates?.[locale];
+  const words = presentation.delta_words[locale];
+  const text = templates
+    ? (delta > 0 ? templates.pos : templates.neg).replace("{label}", label)
+    : locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
+  return { text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}`, sourceTitle: "engine", sourceLicence: "", label: evidenceLabel("COMPUTED_DELTA", locale), citation: "" };
+}
+
+export function cardCopy(locale: Locale): { heading: string; science: string } {
+  const extras = presentation as PresentationExtras;
+  return { heading: extras.card_heading?.[locale] ?? "", science: extras.science_heading?.[locale] ?? "" };
+}
+/** Short licence label for a source id ("CC BY-SA 4.0"), from the bundle's source registry; empty for owner statements. */
+export function sourceLicence(sourceId: string): string {
+  const registry = ((presentation as { sources?: SourceRow[] }).sources ?? []) as SourceRow[];
+  const row = registry.find((r) => r.source_id === sourceId);
+  if (!row?.licence_note) return "";
+  const cc = row.licence_note.match(/\(CC [A-Z-]+ [0-9.]+\)/);
+  return cc ? cc[0].slice(1, -1) : row.licence_note.split(" — ")[0]!.split(" (")[0]!;
+}
+
 /** Context statements whose parts are all answered, most specific (most parts) first. */
 export function statementsFor(context: ContextAnswers, locale: Locale): ScienceLine[] {
   const answered = new Map<string, Set<string>>();
@@ -301,7 +357,20 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
   return presentation.context_statements
     .filter((s) => s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis)?.has(p.option)))
     .sort((a, b) => b.parts.length - a.parts.length)
-    .map((s) => ({ text: s[locale], evidenceState: s.evidence_state, citationRef: s.citation_ref, about: s.context_id, sourceTitle: (s as { source_title?: string }).source_title ?? s.source_id }));
+    .map((s) => {
+      const title = (s as { source_title?: string }).source_title ?? s.source_id;
+      const literature = s.evidence_state.startsWith("LITERATURE_CLAIM");
+      return {
+        text: s[locale],
+        evidenceState: s.evidence_state,
+        citationRef: s.citation_ref,
+        about: s.context_id,
+        sourceTitle: title,
+        sourceLicence: sourceLicence(s.source_id),
+        label: evidenceLabel(s.evidence_state, locale),
+        citation: literature ? `${(presentation as PresentationExtras).citation_prefix?.[locale] ?? ""}${shortSource(title)}` : "",
+      };
+    });
 }
 
 /** Locale-aware rendering of an inference: headline profile + tags, alternatives, beans, and the science fold. */
@@ -318,9 +387,7 @@ export function present(result: InferenceResult, locale: Locale): Presentation {
   const science: ScienceLine[] = statementsFor(result.context, locale);
   for (const { dimension, delta } of result.topDeltaDimensions) {
     if (Math.abs(delta) < 0.1) continue;
-    const label = labels[dimension]?.[locale] ?? dimension;
-    const text = locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
-    science.push({ text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}`, sourceTitle: "engine" });
+    science.push(calibrationLine(dimension, delta, locale));
   }
   return {
     locale,

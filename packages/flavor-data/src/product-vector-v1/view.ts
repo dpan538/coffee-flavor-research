@@ -5,7 +5,7 @@
  * framework: a React or Vue component binds these objects one-to-one.
  */
 import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json" with { type: "json" };
-import { type ContextAnswers, type Locale } from "./engine";
+import { cardCopy, type ContextAnswers, type Locale } from "./engine";
 import { type Word } from "./flow";
 import { nextStep, type Session } from "./session";
 
@@ -25,6 +25,7 @@ const LABELS: Record<string, Record<Locale, string>> = {
   french_press: { "zh-CN": "法压", en: "French press" },
   espresso: { "zh-CN": "意式浓缩", en: "Espresso" },
   cold_brew: { "zh-CN": "冷萃", en: "Cold brew" },
+  very_light: { "zh-CN": "极浅烘", en: "Very light" },
   light: { "zh-CN": "浅烘", en: "Light" },
   medium_light: { "zh-CN": "中浅烘", en: "Medium-light" },
   medium: { "zh-CN": "中烘", en: "Medium" },
@@ -115,13 +116,17 @@ export type FirstDescriptionCardModel = {
   pickCount: number;
   path: number | null;
   profileTitle: string | null;
+  heading: string;
 };
 export type ResultCardModel = {
   kind: "result";
   title: string;
   picked: string[];
+  pickedDimensions: string[];
   tags: string[];
-  science: Array<{ text: string; evidenceState: string; citationRef: string; sourceTitle: string }>;
+  heading: string;
+  scienceHeading: string;
+  science: Array<{ text: string; evidenceState: string; citationRef: string; sourceTitle: string; sourceLicence: string; label: string; citation: string }>;
   closing: string;
   corrected: boolean; // true after Q6 (second, refined card)
   shareText: string;
@@ -144,6 +149,7 @@ export function screenModel(session: Session): ScreenModel {
       pickCount: bundle.question_flow.first_description.pick_count,
       path: session.step.path,
       profileTitle: session.result?.profiles[0]?.profile.owner_name[locale] ?? null,
+      heading: ((bundle.presentation as { preview_heading?: Record<Locale, string> }).preview_heading ?? { "zh-CN": "风味描述预览", en: "Flavor preview" })[locale],
     };
   }
   if (step.kind === "q6" && session.q6) {
@@ -162,8 +168,11 @@ export function screenModel(session: Session): ScreenModel {
     kind: "result",
     title,
     picked: tags,
+    pickedDimensions: session.picks.map((w) => w.dimension),
     tags,
-    science: (card?.science ?? []).map((l) => ({ text: l.text, evidenceState: l.evidenceState, citationRef: l.citationRef, sourceTitle: l.sourceTitle })),
+    heading: cardCopy(locale).heading,
+    scienceHeading: cardCopy(locale).science,
+    science: (card?.science ?? []).map((l) => ({ text: l.text, evidenceState: l.evidenceState, citationRef: l.citationRef, sourceTitle: l.sourceTitle, sourceLicence: l.sourceLicence, label: l.label, citation: l.citation })),
     closing: card?.closing ?? "",
     corrected: session.q6 !== null && session.q6.selected.length > 0,
     shareText: `${title}\n${tags.join(" | ")}`,
@@ -174,20 +183,20 @@ export function screenModel(session: Session): ScreenModel {
 export function appShell(locale: Locale) {
   return locale === "zh-CN"
     ? {
-        title: "咖啡感官归因与风味诊断",
-        subtitle: "结合感官物理学与 12 维向量空间的精准风味解构",
-        lead: "不需要专业杯测背景，只需描述你的直觉体验，通过感官相干性算法解构面前这杯咖啡的真实风味与物理成因。",
+        title: "感官归因与风味诊断",
+        subtitle: "感官物理学 × 12 维向量空间",
+        lead: "描述直觉里的这一口，看它在物理上为什么这样。",
         start: "开始风味诊断",
-        about: "关于 / 方法论",
+        about: "关于",
         localeSwitch: "EN",
         offlineReady: "离线可用",
       }
     : {
-        title: "Coffee sensory attribution & flavor diagnosis",
-        subtitle: "Sensory physics meets a 12-dimension flavor vector space",
-        lead: "No cupping background needed: describe what you taste, and the coherence engine works out what the cup is and why.",
+        title: "Sensory attribution & flavor diagnosis",
+        subtitle: "Sensory physics × a 12-dimension vector space",
+        lead: "Describe the sip as you feel it; see why the cup tastes that way.",
         start: "Start the diagnosis",
-        about: "About / methodology",
+        about: "About",
         localeSwitch: "中",
         offlineReady: "Works offline",
       };

@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "db" / "data" / "product-vector-v1"
+CURRENT = ROOT / "db" / "data" / "current"
 DIMS = ["acidity", "sweetness", "body", "floral", "fruity", "nutty_chocolate", "fermented_winey", "bitter_roasted",
         "spice", "herbal_green", "woody_earthy", "defect"]
 ALPHA_DEFAULT = 0.5
@@ -26,7 +27,7 @@ MIN_VARIETY, MIN_PROCESS, MIN_CELL = 50, 30, 10
 PRODUCT_OPTIONS = {
     "C0": {"pour_over_v60": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "french_press": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"),
            "espresso": ("ESPRESSO", "CORPUS_MEASURED"), "cold_brew": (None, "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING")},
-    "C1": {"light": ("Light", "CORPUS_MEASURED"), "medium_light": ("Medium-Light", "CORPUS_MEASURED"), "medium": ("Medium", "CORPUS_MEASURED"),
+    "C1": {"very_light": ("Light", "VERY_LIGHT_PROXY_FROM_LIGHT_ROW"), "light": ("Light", "CORPUS_MEASURED"), "medium_light": ("Medium-Light", "CORPUS_MEASURED"), "medium": ("Medium", "CORPUS_MEASURED"),
            "medium_dark": ("Medium-Dark", "CORPUS_MEASURED"), "dark": ("Dark", "CORPUS_MEASURED"), "very_dark": ("Very Dark", "CORPUS_MEASURED")},
 }
 
@@ -141,6 +142,21 @@ def main() -> int:
                 st["source_title"] = src["title"]
     presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "sources": sources, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "concept_tags": concept_tags,
                     "delta_words": {"zh-CN": {"pos": "比这个语境的理论值更明显", "neg": "比这个语境的理论值更弱"}, "en": {"pos": "stronger than this context predicts", "neg": "weaker than this context predicts"}},
+                    # consumer-facing layer (owner R3-D15): no raw enum reaches the screen; the calibration sentence reads as a
+                    # sensory report, not as a correction of the drinker
+                    "evidence_labels": {"OWNER_STATEMENT": {"zh-CN": "烘焙与萃取成因", "en": "Roast & extraction"},
+                                        "CORPUS_MEASURED": {"zh-CN": "语料实测", "en": "Measured in the corpus"},
+                                        "LITERATURE_CLAIM": {"zh-CN": "物理萃取规律", "en": "Extraction physics"},
+                                        "LITERATURE_CLAIM_PENDING_LOCATOR": {"zh-CN": "物理萃取规律", "en": "Extraction physics"},
+                                        "COMPUTED_DELTA": {"zh-CN": "感官偏置校准", "en": "Perception calibration"}},
+                    "delta_templates": {"zh-CN": {"pos": "在当前的感知中，{label}的表达比理论物理值更显突出，可能受萃取温度或降温速率的影响。",
+                                                  "neg": "在当前的感知中，{label}的表达比理论物理值稍显收敛，可能受降温速率或水温偏置影响。"},
+                                        "en": {"pos": "In this cup, {label} reads more pronounced than the physics predicts; water temperature or cooling rate may be pushing it forward.",
+                                               "neg": "In this cup, {label} reads a little more restrained than the physics predicts; cooling rate or water temperature may be holding it back."}},
+                    "citation_prefix": {"zh-CN": "引用自：", "en": "From: "},
+                    "card_heading": {"zh-CN": "风味描述", "en": "Flavor description"},
+                    "preview_heading": {"zh-CN": "风味描述预览", "en": "Flavor preview"},
+                    "science_heading": {"zh-CN": "科学归因", "en": "Attribution"},
                     "context_statements": statements,
                     "tag_rules": {"priority_1": "concept-level tags when concept ids are present, ranked by projection weight against the vector", "priority_2": "dimension-level tags for dominant dimensions (weight > 0.15), first unused tag of the dimension's list", "defect_guard": "defect tags only when defect dominates (>= 0.5)"},
                     "layout": {"headline": "owner_name + display_tags (3-4 minimalist tags)", "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"}}
@@ -212,7 +228,15 @@ def main() -> int:
         },
         "owner_reviewed": True,
     }
-    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank, "context_rules": context_rules,
+    cleaned = json.loads((CURRENT / "CLEANED_83K_MANIFEST.json").read_text(encoding="utf-8"))
+    semantic = json.loads((CURRENT / "BATCH7_SEMANTIC_MANIFEST.json").read_text(encoding="utf-8"))
+    gactt = json.loads((OUT / "GACTT_SUMMARY.json").read_text(encoding="utf-8")) if (OUT / "GACTT_SUMMARY.json").is_file() else {}
+    corpus_facts = {"source_assertions": cleaned["source_assertion_count"], "valid_source_assertions": cleaned["valid_source_assertion_count"],
+                    "coffees": len(rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv")), "usable_coffee_vectors": sum(1 for r in rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv") if r["vector_state"] == "USABLE"),
+                    "semantic_relation_edges": semantic["semantic_relation_count"], "canonical_concepts": len(proj), "dimensions": len(DIMS), "profiles": len(profiles),
+                    "consumer_respondents": gactt.get("respondents", 0), "consumer_notes": gactt.get("notes", 0), "literature_sources": len(sources), "literature_claims": sum(s["claims"] for s in sources),
+                    "mean_questions": 5.70}
+    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank, "context_rules": context_rules, "corpus_facts": corpus_facts,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
               "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "matrix_q": questions, "profiles": profiles,
               "benchmark_beans": [], "presentation": presentation,

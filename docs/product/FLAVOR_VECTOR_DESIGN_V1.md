@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design) and R3-D14 (Vue 3 + Tailwind isolated PWA, two-level claim declaration, three claims files ingested; stop before visual design), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design) R3-D14 (Vue 3 + Tailwind isolated PWA, two-level claim declaration, three claims files ingested) and R3-D15 (visual pass: tonality, 1 : 4 layout, card flow, consumer-facing copy layer, About data visual, mobile UX list), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -446,7 +446,17 @@ owner 的栈裁决：Vue 3（Composition API + TS）+ Tailwind CSS v3 + lucide �
 - 组件（结构与绑定完成，无视觉）：`AppHeader`（About、EN/中、离线指示）、`ContextSetupCard`（C0–C2，SOE/拼配切换上限 3，产地可选 Chip）、
   `QuizCard`（一页一题 + 进度）、`FirstDescriptionCard`（3+5 阵列 + 8 选 5）、`EscalationModal`（Q6，仅门控打开时）、
   `FinalAttributionCard`（用户 5 词 + 每句归因的证据级别与来源 + 分享/再来一杯）、`AboutDrawer`（三板块 + 四条引用的链接/许可/状态）。
-- `vue-tsc` 通过，`vite build` 通过并生成 `sw.js`。按 owner 指令在视觉设计前停下：Tailwind 只用了结构类（布局、间距、边框），没有配色与字体决定。
+- `vue-tsc` 通过，`vite build` 通过并生成 `sw.js`。
+
+**视觉与体验（R3-D15，owner 的参考图与逐条修正）**
+
+- 调性：白纸 + 复古色块（书封配色：芥末、天蓝、薄荷、粉、棕、紫、鲑、石板、玫瑰、酒红，加深绿 / 陶土），几乎不可见的纸纹；中文 MiSans、英文 Stack Sans（自托管，文件与许可放 `public/fonts`，未到位前回退系统字体）。
+- 布局：整页 1 : 4 平铺切分——上方白色带（两行 logo「flavor / words」、信息 icon、EN/中、离线点、已答卡片的堆叠），下方色带随当前卡片换色，无外框无圆角"卡片在背景上"。
+- 卡片流：一次一张；题目占上半、选项等分撑满下半；点选高亮后卡片上折收进上方堆叠（CSS 过渡），下一张升入；下一步为通栏大按钮；语境卡 5 张（含 SOE / 拼配切换、7 档烘焙含极浅、可选产地）。
+- 面向用户的表达层：卡片与折叠层不露任何工程枚举；证据级别映射为「烘焙与萃取成因 / 物理萃取规律 / 感官偏置校准」，文献句带「引用自：…」；偏置句改为感官报告语气（"在当前的感知中，花香的表达比理论物理值更显突出，可能受萃取温度或降温速率的影响"）；无"您"，无致谢，无营销语。第一次出卡标题「风味描述预览」，终卡「风味描述」；「科学归因」默认折叠（CSS Grid 0fr→1fr，不测 DOM 高度）。
+- 终卡：小标题 → ［画像名］ → 3 词（最大）│ → 其余词 · → 所选词维度色条 → 科学归因折叠 → 底部三个 icon（首页、重新体验、分享）。
+- About：手机全屏抽屉；顶部数据可视化「风味光谱」由 bundle 数据生成——16 个画像各一道光谱，长度按咖啡数对数刻度，色段是画像质心在 12 维上的重心；其后是计数条；两个折叠段：「方法」（动态设计、公式设计、语义搜索不是排序、相干与极性）与「数据与文献」（四条出处 + 许可）；页脚一句本地自治。owner 的原话文案已替换掉 AI 腔与"词典与自治"段。
+- 体验细节：纯 CSS 触感反馈（:active 缩放）、骨架光晕（收集阶段）、`overscroll-behavior-y: none`、安全区 padding、`-webkit-tap-highlight-color` 透明。Lottie 未加（无素材）。分享 PNG 导出留到最后设计，当前为系统分享 / 剪贴板文本。
 
 
 
@@ -494,7 +504,7 @@ owner 的栈裁决：Vue 3（Composition API + TS）+ Tailwind CSS v3 + lucide �
 | 会话接口 | 完成：`session.ts` 全链路（题卡 → 描述 → 8 选 5 → 门控 → 总结卡 / Q6），历史记录 | §3.4 |
 | 消费端词表 | 第一轮：29 + 5 中文，61 英文（GACTT）；中文社媒扩充等语料 | §6.2 |
 | 应用接口层 | 完成：视图模型、Dexie 用户库、About 内容；拼配与产地进引擎 | §3.5 |
-| 应用壳 | 结构完成：`apps/pwa` Vue 3 + Tailwind v3 隔离入口，7 组件绑定 `screenModel`，PWA 离线构建通过；视觉未开始 | §8 |
+| 应用壳 | 视觉第一轮完成：调性、1 : 4 布局、卡片折叠流、表达层、About 光谱；分享 PNG 与字体文件待 owner | §8 |
 | 文献声明 | 11 条 claims 入库并在界面与 About 两层标注；DOI/许可待 owner 补 | §6.3 |
 | 测试 | 51 个：引擎 / 表达层 / 节奏 / 语义歧义 28+5 / 画像 4+10 / 会话 6 / 应用层 8 | §7.5 |
 | 用户自建库 | 未开始（本地存储 + 录入表单 + 扫码）| §8 |

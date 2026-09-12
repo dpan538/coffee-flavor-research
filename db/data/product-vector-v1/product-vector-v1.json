@@ -675,6 +675,21 @@
   },
   "owner_reviewed": true
  },
+ "corpus_facts": {
+  "source_assertions": 83031,
+  "valid_source_assertions": 77637,
+  "coffees": 9128,
+  "usable_coffee_vectors": 8142,
+  "semantic_relation_edges": 141460,
+  "canonical_concepts": 94,
+  "dimensions": 12,
+  "profiles": 16,
+  "consumer_respondents": 4042,
+  "consumer_notes": 9997,
+  "literature_sources": 3,
+  "literature_claims": 11,
+  "mean_questions": 5.7
+ },
  "alpha_default": 0.5,
  "structure_axis_weight": 0.6,
  "score_semantics": "cosine similarity; not a probability; uncalibrated",
@@ -2060,6 +2075,24 @@
    }
   },
   "C1": {
+   "very_light": {
+    "vector": [
+     0.481,
+     0.3238,
+     0.3355,
+     0.1606,
+     0.5057,
+     0.4563,
+     0.0465,
+     0.1968,
+     0.0614,
+     0.0172,
+     0.1289,
+     0.0076
+    ],
+    "basis": "VERY_LIGHT_PROXY_FROM_LIGHT_ROW",
+    "member_count": 1168
+   },
    "light": {
     "vector": [
      0.481,
@@ -3149,26 +3182,26 @@
    {
     "source_id": "coffee_ad_astra",
     "title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction",
-    "locator": "",
-    "licence_note": "",
+    "locator": "https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
+    "licence_note": "Personal blog & research citations / author attribution per public research principles (owner note 2026-09-12)",
     "claims": 3,
-    "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+    "state": "LITERATURE_CLAIM"
    },
    {
     "source_id": "uc_davis_coffee_center",
     "title": "UC Davis Coffee Center — brewing kinetics and sensory maps",
-    "locator": "",
-    "licence_note": "",
+    "locator": "DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
+    "licence_note": "Academic citation / educational & research attribution under fair use (owner note 2026-09-12)",
     "claims": 4,
-    "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+    "state": "LITERATURE_CLAIM"
    },
    {
     "source_id": "wcr_sensory_lexicon",
     "title": "World Coffee Research — Sensory Lexicon / Varieties Catalog",
-    "locator": "",
-    "licence_note": "",
+    "locator": "https://worldcoffeeresearch.org/resources/sensory-lexicon",
+    "licence_note": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — attribution required; derivative lexicon data must be shared alike (owner note 2026-09-12)",
     "claims": 4,
-    "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+    "state": "LITERATURE_CLAIM"
    }
   ],
   "dimension_labels": {
@@ -3755,6 +3788,54 @@
     "neg": "weaker than this context predicts"
    }
   },
+  "evidence_labels": {
+   "OWNER_STATEMENT": {
+    "zh-CN": "烘焙与萃取成因",
+    "en": "Roast & extraction"
+   },
+   "CORPUS_MEASURED": {
+    "zh-CN": "语料实测",
+    "en": "Measured in the corpus"
+   },
+   "LITERATURE_CLAIM": {
+    "zh-CN": "物理萃取规律",
+    "en": "Extraction physics"
+   },
+   "LITERATURE_CLAIM_PENDING_LOCATOR": {
+    "zh-CN": "物理萃取规律",
+    "en": "Extraction physics"
+   },
+   "COMPUTED_DELTA": {
+    "zh-CN": "感官偏置校准",
+    "en": "Perception calibration"
+   }
+  },
+  "delta_templates": {
+   "zh-CN": {
+    "pos": "在当前的感知中，{label}的表达比理论物理值更显突出，可能受萃取温度或降温速率的影响。",
+    "neg": "在当前的感知中，{label}的表达比理论物理值稍显收敛，可能受降温速率或水温偏置影响。"
+   },
+   "en": {
+    "pos": "In this cup, {label} reads more pronounced than the physics predicts; water temperature or cooling rate may be pushing it forward.",
+    "neg": "In this cup, {label} reads a little more restrained than the physics predicts; cooling rate or water temperature may be holding it back."
+   }
+  },
+  "citation_prefix": {
+   "zh-CN": "引用自：",
+   "en": "From: "
+  },
+  "card_heading": {
+   "zh-CN": "风味描述",
+   "en": "Flavor description"
+  },
+  "preview_heading": {
+   "zh-CN": "风味描述预览",
+   "en": "Flavor preview"
+  },
+  "science_heading": {
+   "zh-CN": "科学归因",
+   "en": "Attribution"
+  },
   "context_statements": [
    {
     "context_id": "C0_ESPRESSO",
@@ -4186,6 +4267,21 @@
     "source_title": "owner"
    },
    {
+    "context_id": "C1_VERY_LIGHT",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "very_light"
+     }
+    ],
+    "zh-CN": "极浅烘几乎不动豆子的原始结构：绿原酸与挥发性花果香保留最完整，酸质最锐利，甜感与醇厚尚未展开。",
+    "en": "A very light roast barely touches the bean's original structure: chlorogenic acids and volatile florals stay almost intact, acidity is at its sharpest, sweetness and body have not opened yet.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "operator extension of the owner's light-roast statement, 2026-09-12",
+    "source_id": "owner",
+    "source_title": "owner"
+   },
+   {
     "context_id": "C0_POUR_OVER_V60",
     "parts": [
      {
@@ -4195,8 +4291,8 @@
     ],
     "zh-CN": "粉床细粉迁移引发微观通道效应时，局部过萃会导致中段甜感中断，并在余韵中引入涩感与杂味。",
     "en": "When fines migrate and open micro-channels in the bed, local over-extraction breaks the mid-palate sweetness and brings astringency and off-notes into the finish.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "source_id": "coffee_ad_astra",
     "source_title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction"
    },
@@ -4214,8 +4310,8 @@
     ],
     "zh-CN": "浅烘手冲时，萃取率落在合适区间才有饱满的中段甜感；萃取率不足则酸而空，过高则涩。",
     "en": "For light roasts on pour-over, mid-palate sweetness fills in only inside the right extraction-yield window; under-extraction reads sour and hollow, over-extraction astringent.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "source_id": "coffee_ad_astra",
     "source_title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction"
    },
@@ -4233,8 +4329,8 @@
     ],
     "zh-CN": "中深烘意式在高压下通道效应更敏感：粉饼不均会同时出现欠萃的酸与过萃的苦。",
     "en": "Medium-dark espresso is more sensitive to channeling under pressure: an uneven puck shows under-extracted sourness and over-extracted bitterness at once.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "source_id": "coffee_ad_astra",
     "source_title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction"
    },
@@ -4248,8 +4344,8 @@
     ],
     "zh-CN": "快萃与较高水温优先溶解极性较高的有机酸分子，前段酸质与花果香先被释放。",
     "en": "Fast extraction at higher water temperature dissolves the more polar organic acids first, so acidity and floral-fruit notes lead.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4263,8 +4359,8 @@
     ],
     "zh-CN": "研磨度过细会加速大分子绿原酸内酯的释放，从而增加尾段苦感；高压萃取同时带出更多油脂与醇厚度。",
     "en": "Too fine a grind accelerates the release of large chlorogenic-acid lactones and adds late bitterness; pressure extraction also carries more oils and body.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4278,8 +4374,8 @@
     ],
     "zh-CN": "低温长时萃取压低挥发酸与前段酸质，TDS 与感官图谱偏向甜感与圆润。",
     "en": "Long, cold extraction suppresses volatile acids and front-end acidity; the TDS–sensory map shifts toward sweetness and roundness.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4293,8 +4389,8 @@
     ],
     "zh-CN": "浸泡式萃取与金属滤网让更多细粉与油脂进入杯中，醇厚度上升、干净度下降。",
     "en": "Immersion brewing through a metal filter passes more fines and oils: more body, less clarity.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4308,8 +4404,8 @@
     ],
     "zh-CN": "瑰夏（Gesha）基因决定了其高挥发性单萜烯（如芳樟醇）的高表达上限，浅烘焙下呈现高锐白花与单醇果酸。",
     "en": "The Gesha genotype sets a high ceiling for volatile monoterpenes such as linalool; at light roast it reads as sharp white florals and clean, single-note fruit acidity.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
     "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
    },
@@ -4323,8 +4419,8 @@
     ],
     "zh-CN": "浅烘保留品种的花香与果酸参照物（花香、柑橘酸、单醇甜感），焦糖化产物尚未主导。",
     "en": "Light roasting keeps the variety's floral and fruit-acid references (florals, citric acidity, clean sweetness) before caramelisation products take over.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
     "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
    },
@@ -4338,8 +4434,8 @@
     ],
     "zh-CN": "中烘时焦糖化与美拉德参照物（红糖、坚果、可可）与残余果酸达到平衡。",
     "en": "At medium roast the caramelisation and Maillard references (brown sugar, nut, cocoa) balance the remaining fruit acidity.",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
     "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
    },
@@ -4353,8 +4449,8 @@
     ],
     "zh-CN": "深烘下花香与果酸参照物被烘烤参照物（烟熏、焦糖苦、灰烬）覆盖。",
     "en": "At dark roast the floral and fruit-acid references are covered by roast references (smoke, burnt caramel, ash).",
-    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
-    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "evidence_state": "LITERATURE_CLAIM",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
     "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
    }
@@ -4510,6 +4606,15 @@
      "ashy"
     ]
    },
+   "defect": {
+    "zh-CN": [
+     "醋味"
+    ],
+    "en": [
+     "vinegar",
+     "off"
+    ]
+   },
    "nutty_chocolate": {
     "zh-CN": [],
     "en": [
@@ -4557,15 +4662,6 @@
     "en": [
      "wood",
      "dirt"
-    ]
-   },
-   "defect": {
-    "zh-CN": [
-     "醋味"
-    ],
-    "en": [
-     "off",
-     "vinegar"
     ]
    },
    "spice": {

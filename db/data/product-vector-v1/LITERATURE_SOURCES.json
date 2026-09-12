@@ -3,26 +3,26 @@
     {
       "source_id": "coffee_ad_astra",
       "title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction",
-      "locator": "",
-      "licence_note": "",
+      "locator": "https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
+      "licence_note": "Personal blog & research citations / author attribution per public research principles (owner note 2026-09-12)",
       "claims": 3,
-      "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+      "state": "LITERATURE_CLAIM"
     },
     {
       "source_id": "uc_davis_coffee_center",
       "title": "UC Davis Coffee Center — brewing kinetics and sensory maps",
-      "locator": "",
-      "licence_note": "",
+      "locator": "DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
+      "licence_note": "Academic citation / educational & research attribution under fair use (owner note 2026-09-12)",
       "claims": 4,
-      "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+      "state": "LITERATURE_CLAIM"
     },
     {
       "source_id": "wcr_sensory_lexicon",
       "title": "World Coffee Research — Sensory Lexicon / Varieties Catalog",
-      "locator": "",
-      "licence_note": "",
+      "locator": "https://worldcoffeeresearch.org/resources/sensory-lexicon",
+      "licence_note": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — attribution required; derivative lexicon data must be shared alike (owner note 2026-09-12)",
       "claims": 4,
-      "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+      "state": "LITERATURE_CLAIM"
     }
   ],
   "rule": "raw PDFs / full text never enter git; locator and licence note are the owner's; a claim without both is LITERATURE_CLAIM_PENDING_LOCATOR"
