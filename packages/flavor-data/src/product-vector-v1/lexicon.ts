@@ -54,7 +54,9 @@ export function utteranceVector(text: string, locale: Locale): { vector: Vector;
   const matched: MatchedTerm[] = [];
   const projection = bundle.concept_projection as Record<string, number[]>;
   const conceptTags = presentation.concept_tags as Record<string, Record<Locale, string>>;
-  const consumer = presentation.consumer_terms as Record<string, Record<Locale, string[]>>;
+  // the mapper hears every lexicon term (including structural words such as "thin" / "watery");
+  // the card only prints the display-eligible ones (presentation.consumer_terms)
+  const consumer = ((presentation as { mapper_terms?: unknown }).mapper_terms ?? presentation.consumer_terms) as Record<string, Record<Locale, string[]>>;
   const dimTags = presentation.dimension_tags as Record<string, Record<Locale, string[]>>;
   const unit = (dimension: string) => {
     const v = zero();

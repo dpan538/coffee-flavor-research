@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) and R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) and R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -186,8 +186,9 @@ owner 三个画像的实测（`tests/product-vector-v1-personas.test.ts`）：
 
 ### 3.2 题库文案（R3-D11）
 
-`QUESTION_BANK.tsv` / bundle `question_bank`：Q0–Q5 的口语化中文提问与选项（操作员草案，`owner_reviewed=false`），英文对照，
-以及每个选项的提示词（cue words）。例：Q0「入口第一感觉，酸是哪一种？」A 亮亮的柑橘 / 青苹果酸 · B 柔和的乳酸 / 发酵酸，像酸奶 · C 几乎不酸，很顺。
+`QUESTION_BANK.tsv` / bundle `question_bank`：Q0–Q5 的口语化中文提问与选项（**R3-D12 批准，`owner_reviewed=true`**），英文对照，
+以及每个选项的提示词（cue words）。owner 修补了 Q0 的酸质文案——「亮亮的柑橘」是 bright 的直译腔，「很酸/尖锐」会让小白反感：
+Q0「入口第一感觉，酸是哪一种？」A 鲜明多汁的柑橘 / 青苹果酸 · B 柔和温和的乳酸 / 发酵果酸（像酸奶、水果黄酒）· C 平顺无酸 / 低酸度（口感顺滑平衡）。
 
 ### 3.3 混合映射器（R3-D11，`lexicon.ts`）
 
@@ -202,7 +203,20 @@ owner 三个画像的实测（`tests/product-vector-v1-personas.test.ts`）：
 口语向量来自表达层同一套词汇（消费端词、概念极简词、维度词列表），否定的词只记录不加分。
 28 条中文 + 5 条英文口语用例（`tests/product-vector-v1-lexicon.test.ts`）全部命中预期选项。
 
-### 3.4 交互闭环（R3-D9）
+### 3.4 会话接口（R3-D12，`session.ts`）
+
+前端只需要这一组纯函数，状态不可变，不碰存储：
+
+```
+createSession(context, locale, beans?)  → nextStep(session)   "ask"（题卡：提问 + 选项 + 进度）| "describe" | "picks" | "q6" | "final"
+answer(session, slot, option)           → 按决策树推进；answerFromUtterance(session, 口语) 用映射器只填当前被问的槽位
+firstDescription(session)               → 推理 + 3+5 描述，进入 picks 阶段
+submitPicks(session, words)             → 升阶门控：分支 A 出总结卡（final）；分支 B 给 Q6 的 8 个选项（q6）
+answerQ6(session, dimensions)           → α_strong 强修正，第二份描述 + 总结卡（final）
+```
+每一步写入 `history`（事件 + 摘要），是用户研究要的隐式反馈记录。用户本地库（IndexedDB）是另一个模块，通过 `beans` 传入。
+
+### 3.5 交互闭环（R3-D9）
 
 ```
 [阶段 1] C0–C2 + Q0–Q1，按 3.1 分支动态追问
@@ -308,8 +322,13 @@ CoffeeReview 的批准（R3-D2）是「内部研究」：它的向量用于标�
 | 2 维度级 | 只有向量（画像质心、用户未细化）| 权重 > 0.15 的主导维度，映射到维度级中国词库，每维取列表里第一个未用过的词；不暴露抽象维度名 |
 | defect 守卫 | 任何情况 | defect 词只在 defect ≥ 0.5（瑕疵预警卡）时出现；常规卡强制过滤 |
 
-**6.2 词库** `CONCEPT_FLAVOR_TAGS.tsv`（规范基底）+ `CN_CONSUMER_FLAVOR_LEXICON.tsv`（消费端泛化，R3-D9 种子 29 条：桂花、栀子花、荔枝、杨梅、
-冰糖雪梨、太妃糖、高山龙井、鸭屎香、米酒、酒酿、烤杏仁、黑芝麻……各挂主维度与可选规范概念；Step 5 用 GACTT 与社媒语料扩充）。
+**6.2 词库** `CONCEPT_FLAVOR_TAGS.tsv`（规范基底，94 行 R3-D11 批准）+ `CN_CONSUMER_FLAVOR_LEXICON.tsv`（消费端泛化）。
+消费端词表现状（R3-D12，Step 5 第一轮）：owner 的 29 条种子 + 5 条 fermented_winey 补强（水果黄酒、微醺朗姆、微醺、威士忌桶、雪莉桶）
++ **GACTT 消费者语料抽取的 61 条英文高频词**（`extract-gactt-consumer-terms.py`，4,042 位受访者 9,997 条盲测笔记，只输出聚合频次
+`GACTT_CONSUMER_TERM_FREQUENCY.tsv`，不输出任何原文）。61 条里 32 条可上卡（chocolate、citrus、berry、juicy、funky、wine、smokey、stone fruit、tropical…），
+29 条是结构/泛称词（body、thin、watery、acidic、bitterness…）只给映射器听、不上卡（`display_eligible=false`）。
+fermented_winey 在消费者口中的词频：fermented 221、funky 109、wine 78、vinegar 36、funk 32、cider 19——「funky」是英语消费者的核心词，
+中文对应词（菌香 / funky 感 / 发酵感）等 owner 定。中文社媒语料（小红书 / 大众点评 / 淘宝）不在仓库里，按逐一审阅规则等 owner 提供。
 维度级取词顺序：owner 的 `DIMENSION_TAG_MAP_CN` 列表在前，消费端词在后。`CONCEPT_FLAVOR_TAGS.tsv`：12 个维度各一组中国本土词（owner 的 `DIMENSION_TAG_MAP_CN`：acidity → 清冽果酸｜明亮酸质｜柑橘酸；
 fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧酒香｜朗姆酒｜发酵果酱 …）+ 94 个规范概念各一个中/英极简词
 （按 owner 规则：stone fruit → 黄桃/杏桃，brown sugar → 红糖/蔗糖，winey → 厌氧酒香/朗姆，citrus → 柑橘/柚子，floral → 茉莉花/咖啡花）。
@@ -422,8 +441,10 @@ fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧�
 | 比较/校准 | 公式定稿；α = 0.5（R3-D8，不再微调）；结构轴权重 0.6 | §4 / §5.3 |
 | 表达层 | 完成：词库（12 维列表 + 94 概念 + 29 条消费端词）、27 条归因句、双语 `present()` | §6 |
 | 问答流 | 完成：相干性决策树（签名空间 0.80 / 0.65 + 极性悖论守卫 + 语境冲突检查）、3+5 描述、8 选 5、升阶门控、Q6（α_strong 0.9）| §3.1 / §3.4 |
-| 题库与映射器 | 完成：口语化题库（待 owner 过目）、混合映射器、否定守卫 | §3.2 / §3.3 |
-| 测试 | 37 个：引擎 / 表达层 / 节奏锁定 / 语义歧义 28+5 用例 / 画像全路径 4+10 | §7.5 |
+| 题库与映射器 | 完成：口语化题库（R3-D12 批准）、混合映射器、否定守卫 | §3.2 / §3.3 |
+| 会话接口 | 完成：`session.ts` 全链路（题卡 → 描述 → 8 选 5 → 门控 → 总结卡 / Q6），历史记录 | §3.4 |
+| 消费端词表 | 第一轮：29 + 5 中文，61 英文（GACTT）；中文社媒扩充等语料 | §6.2 |
+| 测试 | 43 个：引擎 / 表达层 / 节奏 / 语义歧义 28+5 / 画像 4+10 / 会话 6 | §7.5 |
 | 用户自建库 | 未开始（本地存储 + 录入表单 + 扫码）| §8 |
 | 前端运行时 | 未开始；现有前端是 v0.2 目录的 demo | §8 |
 | 充分性 | 4 项里 3 项过（饱和、稀疏主干、视野 95%），均匀度差最后一个轴（fermented_winey）| §7 |
@@ -441,7 +462,7 @@ WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（
 | 4 | 前端运行时 `packages/flavor-data/src/product-vector-v1`，纯 JS 推荐与归因引擎 | 引擎完成（`infer()`：V_pred / V_user / ΔV / V_target / 画像与豆款排序 / 语境证据基础），5 个引擎测试通过；页面与用户自建库（IndexedDB）未开始 |
 | 5 | 产品级风味描述与用户用语对齐（owner 新要求）| 未开始：用已批准的 GACTT 消费者描述建立「消费者用语 → 12 维」词表，画像命名与归因文案都从它取词 |
 
-**仍待 owner：** 题库口语文案过目（`QUESTION_BANK.tsv`）；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
+**仍待 owner：** GACTT 英文消费词的中文对应（尤其 funky）；中文社媒语料；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
 `ingest-external-literature.py` 会把它们并入归因句表。
 
 ---

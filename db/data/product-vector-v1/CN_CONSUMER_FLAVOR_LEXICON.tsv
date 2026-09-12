@@ -1,30 +1,96 @@
-surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary_effects	source	owner_reviewed
-桂花	osmanthus	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-栀子花	gardenia	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-咖啡花	coffee blossom	floral	sensory.jasmine		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-白兰花	white magnolia	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-洋甘菊	chamomile	floral	sensory.chamomile		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-巨峰葡萄	Kyoho grape	fruity	sensory.grape		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-荔枝	lychee	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-杨梅	bayberry	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-西梅	prune	fruity	sensory.prune		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-青梅	green plum	fruity	sensory.plum	sour side; acidity 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-红心芭乐	pink guava	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-冰糖雪梨	rock-sugar pear	sweetness	sensory.pear		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-太妃糖	toffee	sweetness	sensory.caramel		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-麦芽糖	maltose	sweetness	sensory.malt		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-黑糖	dark brown sugar	sweetness	sensory.molasses		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-罗汉果甜	monk-fruit sweetness	sweetness			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-高山龙井	high-mountain Longjing	herbal_green	sensory.green_tea		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-武夷岩茶	Wuyi rock tea	herbal_green	sensory.black_tea	roasted oolong; woody 0.3	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-鸭屎香	Ya Shi Xiang (Dancong)	herbal_green		floral 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-普洱茶韵	Pu'er tea finish	herbal_green		woody_earthy 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-米酒	rice wine	fermented_winey	sensory.wine_like_character		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-酒酿	jiuniang (sweet fermented rice)	fermented_winey	sensory.fermented_character	sweetness 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-酒酿圆子	jiuniang rice balls	fermented_winey		sweetness 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-黄酒	huangjiu	fermented_winey	sensory.wine_like_character		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-热带水果发酵酱	tropical fruit ferment	fermented_winey		fruity 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-烤杏仁	roasted almond	bitter_roasted	sensory.almond	nutty_chocolate 0.6	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-烘焙麦芽	roasted malt	bitter_roasted	sensory.malt		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-黑芝麻	black sesame	bitter_roasted		nutty_chocolate 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
-松露巧克力	truffle chocolate	bitter_roasted	sensory.dark_chocolate	nutty_chocolate 0.7	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true
+surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary_effects	source	owner_reviewed	display_eligible
+桂花	osmanthus	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+栀子花	gardenia	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+咖啡花	coffee blossom	floral	sensory.jasmine		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+白兰花	white magnolia	floral			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+洋甘菊	chamomile	floral	sensory.chamomile		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+巨峰葡萄	Kyoho grape	fruity	sensory.grape		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+荔枝	lychee	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+杨梅	bayberry	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+西梅	prune	fruity	sensory.prune		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+青梅	green plum	fruity	sensory.plum	sour side; acidity 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+红心芭乐	pink guava	fruity			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+冰糖雪梨	rock-sugar pear	sweetness	sensory.pear		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+太妃糖	toffee	sweetness	sensory.caramel		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+麦芽糖	maltose	sweetness	sensory.malt		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+黑糖	dark brown sugar	sweetness	sensory.molasses		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+罗汉果甜	monk-fruit sweetness	sweetness			OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+高山龙井	high-mountain Longjing	herbal_green	sensory.green_tea		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+武夷岩茶	Wuyi rock tea	herbal_green	sensory.black_tea	roasted oolong; woody 0.3	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+鸭屎香	Ya Shi Xiang (Dancong)	herbal_green		floral 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+普洱茶韵	Pu'er tea finish	herbal_green		woody_earthy 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+米酒	rice wine	fermented_winey	sensory.wine_like_character		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+酒酿	jiuniang (sweet fermented rice)	fermented_winey	sensory.fermented_character	sweetness 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+酒酿圆子	jiuniang rice balls	fermented_winey		sweetness 0.4	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+黄酒	huangjiu	fermented_winey	sensory.wine_like_character		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+热带水果发酵酱	tropical fruit ferment	fermented_winey		fruity 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+烤杏仁	roasted almond	bitter_roasted	sensory.almond	nutty_chocolate 0.6	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+烘焙麦芽	roasted malt	bitter_roasted	sensory.malt		OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+黑芝麻	black sesame	bitter_roasted		nutty_chocolate 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+松露巧克力	truffle chocolate	bitter_roasted	sensory.dark_chocolate	nutty_chocolate 0.7	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
+水果黄酒	fruit huangjiu	fermented_winey	sensory.wine_like_character		OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
+微醺朗姆	tipsy rum	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
+微醺	tipsy	fermented_winey	sensory.alcoholic		OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
+威士忌桶	whisky barrel	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
+雪莉桶	sherry cask	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
+	chocolate	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (895 respondents); zh counterpart pending	false	true
+	fruity	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (892 respondents); zh counterpart pending	false	false
+	fruit	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (584 respondents); zh counterpart pending	false	false
+	nutty	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (471 respondents); zh counterpart pending	false	false
+	bright	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (352 respondents); zh counterpart pending	false	false
+	citrus	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (312 respondents); zh counterpart pending	false	true
+	berry	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (258 respondents); zh counterpart pending	false	true
+	berries	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (238 respondents); zh counterpart pending	false	true
+	acidic	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (226 respondents); zh counterpart pending	false	false
+	acidity	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (217 respondents); zh counterpart pending	false	false
+	floral	floral			GACTT_CONSUMER_TERMS_2026-09-12 (192 respondents); zh counterpart pending	false	true
+	juicy	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (176 respondents); zh counterpart pending	false	true
+	body	body			GACTT_CONSUMER_TERMS_2026-09-12 (156 respondents); zh counterpart pending	false	false
+	bitterness	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (145 respondents); zh counterpart pending	false	false
+	chocolatey	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (133 respondents); zh counterpart pending	false	false
+	mouthfeel	body			GACTT_CONSUMER_TERMS_2026-09-12 (127 respondents); zh counterpart pending	false	false
+	acid	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (122 respondents); zh counterpart pending	false	false
+	green	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (119 respondents); zh counterpart pending	false	false
+	tea	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (114 respondents); zh counterpart pending	false	true
+	nuts	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (113 respondents); zh counterpart pending	false	false
+	tart	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (113 respondents); zh counterpart pending	false	true
+	funky	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (109 respondents); zh counterpart pending	false	true
+	heavy	body			GACTT_CONSUMER_TERMS_2026-09-12 (102 respondents); zh counterpart pending	false	false
+	thin	body			GACTT_CONSUMER_TERMS_2026-09-12 (100 respondents); zh counterpart pending	false	false
+	sweetness	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (78 respondents); zh counterpart pending	false	false
+	wine	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (78 respondents); zh counterpart pending	false	true
+	rich	body			GACTT_CONSUMER_TERMS_2026-09-12 (74 respondents); zh counterpart pending	false	false
+	smokey	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (72 respondents); zh counterpart pending	false	true
+	stone fruit	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (70 respondents); zh counterpart pending	false	true
+	wood	woody_earthy			GACTT_CONSUMER_TERMS_2026-09-12 (67 respondents); zh counterpart pending	false	false
+	tropical	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (67 respondents); zh counterpart pending	false	true
+	roasted	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (67 respondents); zh counterpart pending	false	true
+	sharp	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (65 respondents); zh counterpart pending	false	false
+	crisp	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (60 respondents); zh counterpart pending	false	true
+	tea-like	floral			GACTT_CONSUMER_TERMS_2026-09-12 (58 respondents); zh counterpart pending	false	true
+	thick	body			GACTT_CONSUMER_TERMS_2026-09-12 (54 respondents); zh counterpart pending	false	false
+	tea like	floral			GACTT_CONSUMER_TERMS_2026-09-12 (54 respondents); zh counterpart pending	false	false
+	full bodied	body			GACTT_CONSUMER_TERMS_2026-09-12 (48 respondents); zh counterpart pending	false	false
+	jam	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (47 respondents); zh counterpart pending	false	true
+	citrusy	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (43 respondents); zh counterpart pending	false	true
+	nut	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (42 respondents); zh counterpart pending	false	false
+	candy	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (40 respondents); zh counterpart pending	false	true
+	watery	body			GACTT_CONSUMER_TERMS_2026-09-12 (39 respondents); zh counterpart pending	false	false
+	off	defect			GACTT_CONSUMER_TERMS_2026-09-12 (35 respondents); zh counterpart pending	false	false
+	dark roast	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (34 respondents); zh counterpart pending	false	true
+	grass	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (34 respondents); zh counterpart pending	false	true
+	spice	spice			GACTT_CONSUMER_TERMS_2026-09-12 (34 respondents); zh counterpart pending	false	false
+	syrup	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (33 respondents); zh counterpart pending	false	true
+	funk	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (32 respondents); zh counterpart pending	false	true
+	tangy	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (32 respondents); zh counterpart pending	false	true
+	grassy	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (32 respondents); zh counterpart pending	false	true
+	melon	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (31 respondents); zh counterpart pending	false	true
+	silky	body			GACTT_CONSUMER_TERMS_2026-09-12 (29 respondents); zh counterpart pending	false	true
+	herbal	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (28 respondents); zh counterpart pending	false	true
+	jammy	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (27 respondents); zh counterpart pending	false	true
+	spices	spice			GACTT_CONSUMER_TERMS_2026-09-12 (24 respondents); zh counterpart pending	false	false
+	lemony	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (22 respondents); zh counterpart pending	false	true
+	chocolaty	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (20 respondents); zh counterpart pending	false	false
+	dirt	woody_earthy			GACTT_CONSUMER_TERMS_2026-09-12 (20 respondents); zh counterpart pending	false	false
+	cider	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (19 respondents); zh counterpart pending	false	true
+	ashy	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (17 respondents); zh counterpart pending	false	true

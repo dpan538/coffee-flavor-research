@@ -139,8 +139,21 @@ def main() -> int:
     lexicon = rows(OUT / "CN_CONSUMER_FLAVOR_LEXICON.tsv") if (OUT / "CN_CONSUMER_FLAVOR_LEXICON.tsv").is_file() else []
     consumer_terms = {}
     for r in lexicon:
+        if r.get("display_eligible", "true") == "false":
+            continue  # structural / generic consumer words: usable by the utterance mapper, never printed on a card
         consumer_terms.setdefault(r["primary_dimension"], {"zh-CN": [], "en": []})
-        consumer_terms[r["primary_dimension"]]["zh-CN"].append(r["surface_term_zh"]); consumer_terms[r["primary_dimension"]]["en"].append(r["surface_term_en"])
+        if r["surface_term_zh"]:
+            consumer_terms[r["primary_dimension"]]["zh-CN"].append(r["surface_term_zh"])
+        if r["surface_term_en"]:
+            consumer_terms[r["primary_dimension"]]["en"].append(r["surface_term_en"])
+    mapper_terms = {}
+    for r in lexicon:
+        mapper_terms.setdefault(r["primary_dimension"], {"zh-CN": [], "en": []})
+        if r["surface_term_zh"]:
+            mapper_terms[r["primary_dimension"]]["zh-CN"].append(r["surface_term_zh"])
+        if r["surface_term_en"]:
+            mapper_terms[r["primary_dimension"]]["en"].append(r["surface_term_en"])
+    presentation["mapper_terms"] = mapper_terms
     presentation["consumer_terms"] = consumer_terms
     # owner's coherence decision tree (2026-09-12): base pair Q0-Q1, check Q2-Q3, confirm Q4-Q5, Q6 = escalation checkbox.
     # slot -> Matrix_Q question mapping is the operator's proposal (base pair = the two strongest movers).

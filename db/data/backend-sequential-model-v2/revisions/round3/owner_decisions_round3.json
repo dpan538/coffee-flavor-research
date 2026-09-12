@@ -262,6 +262,37 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T03:45:14Z"
+    },
+    {
+      "id": "R3-D12",
+      "subject": "Q0 wording localised and question bank approved; polarity guard, context check, Persona C and literature conventions confirmed; Step 5 executed",
+      "decision": "(1) Q0 options reworded to mainland-China roaster usage (鲜明多汁的柑橘 / 青苹果酸; 柔和温和的乳酸 / 发酵果酸（像酸奶、水果黄酒）; 平顺无酸 / 低酸度（口感顺滑平衡）); all Q0-Q5 prompts and options owner_reviewed=true. (2) Polarity guard stays on by default: intercepting the light-bright vs dark-heavy paradox outranks the path percentages; Path 3+4 at 27% (test cap 30%) is healthy. (3) Context check approved: V_pred polarity against the base pair caps the first decision at mild -> Path 2; blending V_pred into the base vector rejected. (4) Persona C confirmed: negation forcing + internally consistent answers -> fast path. (5) Literature intake templates and LITERATURE_CLAIM mapping conform to the licence rules; files to follow. (6) Step 5: expand CN_CONSUMER_FLAVOR_LEXICON from GACTT and social corpora with emphasis on fermented_winey (米酒、酒酿、水果黄酒、微醺朗姆); wrap the whole front-end chain into packages/flavor-data/src/product-vector-v1.",
+      "owner_words": "亮亮的柑橘 带有明显的英文直译痕迹 … 批准将 QUESTION_BANK.tsv 中全部 Q0~Q5 的提问与选项文案标记为 owner_reviewed=true … 同意维持极性守卫默认开启 … 拦截底线错误 … 高于单纯的路径百分比数值 … 采纳你的方案 … 语境不越权、只引导修正 … 随时可将审阅后的 … 数据文件放入跑脚本 … 重点补强 fermented_winey 轴 … 前端全链路接口封装进 packages/flavor-data/src/product-vector-v1",
+      "applied": {
+        "question_bank": "Q0 labels replaced; cues extended (水果黄酒|温和的酸; 低酸|平衡); all rows owner_reviewed=true",
+        "lexicon": "5 owner fermented_winey zh terms; extract-gactt-consumer-terms.py -> GACTT_CONSUMER_TERM_FREQUENCY.tsv (aggregate only) + 61 en consumer terms (32 display-eligible, 29 mapper-only); presentation.consumer_terms (display) vs presentation.mapper_terms (all)",
+        "gactt": {
+          "respondents": 4042,
+          "notes": 9997,
+          "mapped_terms": 195,
+          "fermented_winey": {
+            "fermented": 221,
+            "funky": 109,
+            "wine": 78,
+            "vinegar": 36,
+            "funk": 32,
+            "cider": 19
+          }
+        },
+        "session_api": "session.ts: createSession / nextStep / answer / answerFromUtterance / firstDescription / submitPicks / answerQ6, immutable, history log; 6 tests",
+        "tests": "43/43 across four files; tsc clean",
+        "open": [
+          "zh counterparts for GACTT en terms (funky above all)",
+          "Chinese social-media corpus (owner-provided)",
+          "literature claim files"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T04:33:16Z"
     }
   ],
   "guards": {

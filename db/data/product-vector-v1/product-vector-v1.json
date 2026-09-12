@@ -170,8 +170,8 @@
    "options": {
     "A": {
      "label": {
-      "zh-CN": "亮亮的柑橘 / 青苹果酸",
-      "en": "bright citrus or green-apple acidity"
+      "zh-CN": "鲜明多汁的柑橘 / 青苹果酸",
+      "en": "Bright & juicy citrus / green-apple acidity"
      },
      "cues": {
       "zh-CN": [
@@ -198,8 +198,8 @@
     },
     "B": {
      "label": {
-      "zh-CN": "柔和的乳酸 / 发酵酸，像酸奶",
-      "en": "soft lactic or fermented acidity, like yoghurt"
+      "zh-CN": "柔和温和的乳酸 / 发酵果酸（像酸奶、水果黄酒）",
+      "en": "Soft lactic / fermented fruit acidity (like yoghurt)"
      },
      "cues": {
       "zh-CN": [
@@ -209,7 +209,9 @@
        "柔和的酸",
        "圆润的酸",
        "酒酿",
-       "米酒"
+       "米酒",
+       "水果黄酒",
+       "温和的酸"
       ],
       "en": [
        "lactic",
@@ -223,8 +225,8 @@
     },
     "C": {
      "label": {
-      "zh-CN": "几乎不酸，很顺",
-      "en": "hardly any acidity, very smooth"
+      "zh-CN": "平顺无酸 / 低酸度（口感顺滑平衡）",
+      "en": "Smooth & low acidity (balanced, easy to drink)"
      },
      "cues": {
       "zh-CN": [
@@ -233,7 +235,9 @@
        "无酸",
        "没什么酸",
        "很顺",
-       "平顺"
+       "平顺",
+       "低酸",
+       "平衡"
       ],
       "en": [
        "not sour",
@@ -245,7 +249,7 @@
      }
     }
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   },
   "Q1": {
    "question": "Q8_aroma",
@@ -342,7 +346,7 @@
      }
     }
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   },
   "Q2": {
    "question": "Q6_sweet",
@@ -422,7 +426,7 @@
      }
     }
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   },
   "Q3": {
    "question": "Q7_body",
@@ -506,7 +510,7 @@
      }
     }
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   },
   "Q4": {
    "question": "Q9_bitter",
@@ -564,7 +568,7 @@
      }
     }
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   },
   "Q5": {
    "question": "Q10_clean",
@@ -618,7 +622,7 @@
      }
     }
    },
-   "owner_reviewed": false
+   "owner_reviewed": true
   }
  },
  "alpha_default": 0.5,
@@ -4088,7 +4092,7 @@
    "headline": "owner_name + display_tags (3-4 minimalist tags)",
    "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"
   },
-  "consumer_terms": {
+  "mapper_terms": {
    "floral": {
     "zh-CN": [
      "桂花",
@@ -4102,7 +4106,10 @@
      "gardenia",
      "coffee blossom",
      "white magnolia",
-     "chamomile"
+     "chamomile",
+     "floral",
+     "tea-like",
+     "tea like"
     ]
    },
    "fruity": {
@@ -4120,7 +4127,14 @@
      "bayberry",
      "prune",
      "green plum",
-     "pink guava"
+     "pink guava",
+     "fruity",
+     "fruit",
+     "berry",
+     "berries",
+     "stone fruit",
+     "tropical",
+     "melon"
     ]
    },
    "sweetness": {
@@ -4136,7 +4150,12 @@
      "toffee",
      "maltose",
      "dark brown sugar",
-     "monk-fruit sweetness"
+     "monk-fruit sweetness",
+     "sweetness",
+     "jam",
+     "candy",
+     "syrup",
+     "jammy"
     ]
    },
    "herbal_green": {
@@ -4150,7 +4169,12 @@
      "high-mountain Longjing",
      "Wuyi rock tea",
      "Ya Shi Xiang (Dancong)",
-     "Pu'er tea finish"
+     "Pu'er tea finish",
+     "green",
+     "tea",
+     "grass",
+     "grassy",
+     "herbal"
     ]
    },
    "fermented_winey": {
@@ -4159,14 +4183,28 @@
      "酒酿",
      "酒酿圆子",
      "黄酒",
-     "热带水果发酵酱"
+     "热带水果发酵酱",
+     "水果黄酒",
+     "微醺朗姆",
+     "微醺",
+     "威士忌桶",
+     "雪莉桶"
     ],
     "en": [
      "rice wine",
      "jiuniang (sweet fermented rice)",
      "jiuniang rice balls",
      "huangjiu",
-     "tropical fruit ferment"
+     "tropical fruit ferment",
+     "fruit huangjiu",
+     "tipsy rum",
+     "tipsy",
+     "whisky barrel",
+     "sherry cask",
+     "funky",
+     "wine",
+     "funk",
+     "cider"
     ]
    },
    "bitter_roasted": {
@@ -4180,7 +4218,227 @@
      "roasted almond",
      "roasted malt",
      "black sesame",
-     "truffle chocolate"
+     "truffle chocolate",
+     "bitterness",
+     "smokey",
+     "roasted",
+     "dark roast",
+     "ashy"
+    ]
+   },
+   "nutty_chocolate": {
+    "zh-CN": [],
+    "en": [
+     "chocolate",
+     "nutty",
+     "chocolatey",
+     "nuts",
+     "nut",
+     "chocolaty"
+    ]
+   },
+   "acidity": {
+    "zh-CN": [],
+    "en": [
+     "bright",
+     "citrus",
+     "acidic",
+     "acidity",
+     "juicy",
+     "acid",
+     "tart",
+     "sharp",
+     "crisp",
+     "citrusy",
+     "tangy",
+     "lemony"
+    ]
+   },
+   "body": {
+    "zh-CN": [],
+    "en": [
+     "body",
+     "mouthfeel",
+     "heavy",
+     "thin",
+     "rich",
+     "thick",
+     "full bodied",
+     "watery",
+     "silky"
+    ]
+   },
+   "woody_earthy": {
+    "zh-CN": [],
+    "en": [
+     "wood",
+     "dirt"
+    ]
+   },
+   "defect": {
+    "zh-CN": [],
+    "en": [
+     "off"
+    ]
+   },
+   "spice": {
+    "zh-CN": [],
+    "en": [
+     "spice",
+     "spices"
+    ]
+   }
+  },
+  "consumer_terms": {
+   "floral": {
+    "zh-CN": [
+     "桂花",
+     "栀子花",
+     "咖啡花",
+     "白兰花",
+     "洋甘菊"
+    ],
+    "en": [
+     "osmanthus",
+     "gardenia",
+     "coffee blossom",
+     "white magnolia",
+     "chamomile",
+     "floral",
+     "tea-like"
+    ]
+   },
+   "fruity": {
+    "zh-CN": [
+     "巨峰葡萄",
+     "荔枝",
+     "杨梅",
+     "西梅",
+     "青梅",
+     "红心芭乐"
+    ],
+    "en": [
+     "Kyoho grape",
+     "lychee",
+     "bayberry",
+     "prune",
+     "green plum",
+     "pink guava",
+     "berry",
+     "berries",
+     "stone fruit",
+     "tropical",
+     "melon"
+    ]
+   },
+   "sweetness": {
+    "zh-CN": [
+     "冰糖雪梨",
+     "太妃糖",
+     "麦芽糖",
+     "黑糖",
+     "罗汉果甜"
+    ],
+    "en": [
+     "rock-sugar pear",
+     "toffee",
+     "maltose",
+     "dark brown sugar",
+     "monk-fruit sweetness",
+     "jam",
+     "candy",
+     "syrup",
+     "jammy"
+    ]
+   },
+   "herbal_green": {
+    "zh-CN": [
+     "高山龙井",
+     "武夷岩茶",
+     "鸭屎香",
+     "普洱茶韵"
+    ],
+    "en": [
+     "high-mountain Longjing",
+     "Wuyi rock tea",
+     "Ya Shi Xiang (Dancong)",
+     "Pu'er tea finish",
+     "tea",
+     "grass",
+     "grassy",
+     "herbal"
+    ]
+   },
+   "fermented_winey": {
+    "zh-CN": [
+     "米酒",
+     "酒酿",
+     "酒酿圆子",
+     "黄酒",
+     "热带水果发酵酱",
+     "水果黄酒",
+     "微醺朗姆",
+     "微醺",
+     "威士忌桶",
+     "雪莉桶"
+    ],
+    "en": [
+     "rice wine",
+     "jiuniang (sweet fermented rice)",
+     "jiuniang rice balls",
+     "huangjiu",
+     "tropical fruit ferment",
+     "fruit huangjiu",
+     "tipsy rum",
+     "tipsy",
+     "whisky barrel",
+     "sherry cask",
+     "funky",
+     "wine",
+     "funk",
+     "cider"
+    ]
+   },
+   "bitter_roasted": {
+    "zh-CN": [
+     "烤杏仁",
+     "烘焙麦芽",
+     "黑芝麻",
+     "松露巧克力"
+    ],
+    "en": [
+     "roasted almond",
+     "roasted malt",
+     "black sesame",
+     "truffle chocolate",
+     "smokey",
+     "roasted",
+     "dark roast",
+     "ashy"
+    ]
+   },
+   "nutty_chocolate": {
+    "zh-CN": [],
+    "en": [
+     "chocolate"
+    ]
+   },
+   "acidity": {
+    "zh-CN": [],
+    "en": [
+     "citrus",
+     "juicy",
+     "tart",
+     "crisp",
+     "citrusy",
+     "tangy",
+     "lemony"
+    ]
+   },
+   "body": {
+    "zh-CN": [],
+    "en": [
+     "silky"
     ]
    }
   }
