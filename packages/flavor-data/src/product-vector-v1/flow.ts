@@ -1,10 +1,10 @@
 /**
  * Question flow for product-vector-v1: the owner's coherence decision tree (2026-09-12).
  *
- *   base pair Q0-Q1  →  check Q2(-Q3) against it  →  Path 1 (coherent: light confirm Q4, deliver)
- *                                                    Path 2 (mild conflict: correct Q3-Q4, confirm Q5)
- *                                                    Path 3 (severe conflict: correct Q4-Q5)
- *                                                    Path 4 (late mutation: 0-2 agree, 3-5 contradict)
+ *   base pair Q0-Q1  →  check Q2-Q3 against it  →  Path 1 (coherent: light confirm Q4, deliver)
+ *                                                  Path 2 (mild conflict: correct Q4, confirm Q5)
+ *                                                  Path 3 (severe conflict: correct Q4-Q5)
+ *                                                  Path 4 (late mutation: 0-2 agree, 3-4 contradict)
  *   → first description (3 + 5 words) → the user picks 5 → escalation gate → final card, or Q6 → second description.
  *
  * Coherence is a cosine, but not between raw answer sub-vectors: each answer moves one or two of
@@ -108,7 +108,9 @@ export function perceptionAnswers(answers: FlowAnswers): PerceptionAnswers {
   return out;
 }
 
-/** Which slots to ask next, or deliver the first description; a pure function of the answers so far. */
+/** Which slots to ask next, or deliver the first description; a pure function of the answers so far.
+ *  The owner's tree: base pair Q0-Q1 → check Q2-Q3 together against it → Path 1 (Q4 confirm),
+ *  Path 2 (Q4 correct, Q5 confirm), Path 3 (Q4-Q5 correct), Path 4 (late mutation after Q4). */
 export function flowStep(answers: FlowAnswers): FlowStep {
   const has = (s: Slot) => answers[s] !== undefined && answers[s] !== "";
   const missing = (...slots: Slot[]) => slots.filter((s) => !has(s));
@@ -118,40 +120,31 @@ export function flowStep(answers: FlowAnswers): FlowStep {
   const g = (slots: Slot[]) => groupVector(answers, slots);
 
   if (missing("Q0", "Q1").length) return ask(missing("Q0", "Q1"), "base perception pair");
-  if (!has("Q2")) return ask(["Q2"], "first coherence check needs Q2");
-  const c2 = coherence(g(["Q0", "Q1"]), g(["Q2"]), ["Q0-Q1", "Q2"]);
-  checks.push(c2);
+  if (missing("Q2", "Q3").length) return ask(missing("Q2", "Q3"), "coherence check needs Q2-Q3");
+  const c23 = coherence(g(["Q0", "Q1"]), g(["Q2", "Q3"]), ["Q0-Q1", "Q2-Q3"]);
+  checks.push(c23);
 
-  const path2 = (): FlowStep => {
-    // mild conflict: correct with Q3-Q4, confirm with Q5
-    const need = missing("Q3", "Q4");
-    if (need.length) return ask(need, "Path 2: correction questions");
-    if (!has("Q5")) return ask(["Q5"], "Path 2: light confirmation");
-    const withBase = coherence(g(["Q5"]), g(["Q0", "Q1", "Q3", "Q4"]), ["Q5", "Q0-Q1+Q3-Q4"]);
-    const withCheck = coherence(g(["Q5"]), g(["Q2", "Q3", "Q4"]), ["Q5", "Q2+Q3-Q4"]);
-    checks.push(withBase, withCheck);
-    if (withBase.level === "coherent" || withCheck.level === "coherent") return deliver(2, false, "Path 2: Q5 agrees with one side");
-    return deliver(2, true, "Path 2: Q5 conflicts again — Q6 eligible after the picks");
-  };
-  const path3 = (): FlowStep => {
-    // severe conflict: complete Q2-Q3, correct with Q4-Q5
-    const need = missing("Q3", "Q4", "Q5");
+  if (c23.level === "severe") {
+    // Path 3: correct with Q4-Q5; Q4-Q5 must agree with one side
+    const need = missing("Q4", "Q5");
     if (need.length) return ask(need, "Path 3: correction questions");
     const withBase = coherence(g(["Q4", "Q5"]), g(["Q0", "Q1"]), ["Q4-Q5", "Q0-Q1"]);
     const withCheck = coherence(g(["Q4", "Q5"]), g(["Q2", "Q3"]), ["Q4-Q5", "Q2-Q3"]);
     checks.push(withBase, withCheck);
     if (withBase.level === "coherent" || withCheck.level === "coherent") return deliver(3, false, "Path 3: Q4-Q5 agree with one side");
     return deliver(3, true, "Path 3: Q4-Q5 agree with neither side — Q6 eligible after the picks");
-  };
-
-  if (c2.level === "severe") return path3();
-  if (c2.level === "mild") return path2();
-  // Q2 coherent with the base pair: check Q2-Q3 together
-  if (!has("Q3")) return ask(["Q3"], "Path 1 candidate: needs Q3");
-  const c23 = coherence(g(["Q0", "Q1"]), g(["Q2", "Q3"]), ["Q0-Q1", "Q2-Q3"]);
-  checks.push(c23);
-  if (c23.level === "severe") return path3();
-  if (c23.level === "mild") return path2();
+  }
+  if (c23.level === "mild") {
+    // Path 2: correct with Q4 (Q3 already in hand), confirm with Q5
+    if (!has("Q4")) return ask(["Q4"], "Path 2: correction question");
+    if (!has("Q5")) return ask(["Q5"], "Path 2: light confirmation");
+    const withBase = coherence(g(["Q5"]), g(["Q0", "Q1", "Q3", "Q4"]), ["Q5", "Q0-Q1+Q3-Q4"]);
+    const withCheck = coherence(g(["Q5"]), g(["Q2", "Q3", "Q4"]), ["Q5", "Q2+Q3-Q4"]);
+    checks.push(withBase, withCheck);
+    if (withBase.level === "coherent" || withCheck.level === "coherent") return deliver(2, false, "Path 2: Q5 agrees with one side");
+    return deliver(2, true, "Path 2: Q5 conflicts again — Q6 eligible after the picks");
+  }
+  // Path 1: light confirmation with Q4, then the late-mutation check (Path 4)
   if (!has("Q4")) return ask(["Q4"], "Path 1: light confirmation");
   const late = coherence(g(["Q0", "Q1", "Q2"]), g(["Q3", "Q4"]), ["Q0-Q2", "Q3-Q4"]);
   checks.push(late);

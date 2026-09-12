@@ -214,6 +214,25 @@
         "tests": "vitest 17/17, tsc clean"
       },
       "recorded_at_utc": "2026-09-12T03:14:19Z"
+    },
+    {
+      "id": "R3-D10",
+      "subject": "Coherence thresholds 0.80 / 0.65; slot mapping approved; lexicon v1 locked; alpha_strong and branch-A card confirmed",
+      "decision": "Thresholds: coherent >= 0.80, severe < 0.65 (mild between). Rationale: the product's users want precision and participation, not speed; ~30% highly consistent users take Path 1, ~60% experience a corrective Path 2 (perceived expertise), ~10% trigger strong correction. Slot mapping approved (Q0 acid, Q1 aroma; Q2 sweetness, Q3 body; Q4 bitterness, Q5 complexity). CN_CONSUMER_FLAVOR_LEXICON v1 (29 terms) locked as the first presentation base; Step 5 expands from GACTT and social corpora with emphasis on fermented_winey and local terms. alpha_strong = 0.9 confirmed; branch A shows the user's 5 picked words with evidence-tagged science lines and the thank-you line.",
+      "owner_words": "过度追求极速 … 反而会让用户觉得推荐流太粗糙 … coherence_threshold_coherent 锁定为 0.80 … coherence_threshold_severe 锁定为 0.65 … 批准你提出的 Slot 映射方案 … 确认锁定为目前的第一版表达层基底 … 确认 α_strong = 0.9",
+      "applied": {
+        "structure_correction": "the first check now compares Q0-Q1 against Q2-Q3 together (the owner's tree); checking Q2 alone put 44% of the 324 sequences into severe conflict",
+        "measured_rhythm_324_sequences": {
+          "path1": 80,
+          "path2": 200,
+          "path3": 28,
+          "path4": 16,
+          "escalation_eligible": 26,
+          "mean_questions": 5.7
+        },
+        "tests": "19/19 incl. the rhythm lock (Path 1 20-35%, Path 2 50-70%, Path 3+4 5-20%, mean <= 6 questions)"
+      },
+      "recorded_at_utc": "2026-09-12T03:25:05Z"
     }
   ],
   "guards": {

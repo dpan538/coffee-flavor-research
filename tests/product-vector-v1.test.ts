@@ -110,10 +110,49 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
   const flow = await import("../packages/flavor-data/src/product-vector-v1/flow");
   const ctx = { c0_preparation: "pour_over_v60", c1_roast: "light", c2_process: "washed" } as const;
 
-  it("asks the base pair first, then Q2, and never asks an answered slot again", () => {
+  it("asks the base pair first, then Q2-Q3 for the coherence check, and never asks an answered slot again", () => {
     expect(flow.flowStep({}).ask).toEqual(["Q0", "Q1"]);
     expect(flow.flowStep({ Q0: "A" }).ask).toEqual(["Q1"]);
-    expect(flow.flowStep({ Q0: "A", Q1: "A" }).ask).toEqual(["Q2"]);
+    expect(flow.flowStep({ Q0: "A", Q1: "A" }).ask).toEqual(["Q2", "Q3"]);
+    expect(flow.flowStep({ Q0: "A", Q1: "A", Q2: "A" }).ask).toEqual(["Q3"]);
+  });
+
+  it("locks the owner's thresholds (R3-D10): coherent >= 0.80, severe < 0.65", () => {
+    expect(flow.questionFlow.thresholds).toEqual({ coherent: 0.8, mild: 0.65 });
+    expect(flow.questionFlow.slot_mapping_owner_reviewed).toBe(true);
+    expect(flow.questionFlow.alpha_strong).toBe(0.9);
+  });
+
+  it("path rhythm over all 324 answer sequences: ~25% fast Path 1, ~60% corrective Path 2, ~15% severe Paths 3/4", () => {
+    const o3 = ["A", "B", "C"];
+    const o2 = ["A", "B"];
+    const paths: Record<string, number> = { "1": 0, "2": 0, "3": 0, "4": 0 };
+    let asked = 0;
+    let total = 0;
+    for (const q0 of o3) for (const q1 of o3) for (const q2 of o3) for (const q3 of o3) for (const q4 of o2) for (const q5 of o2) {
+      const full: Record<string, string> = { Q0: q0, Q1: q1, Q2: q2, Q3: q3, Q4: q4, Q5: q5 };
+      const answers: Record<string, string> = {};
+      let step = flow.flowStep(answers);
+      let guard = 0;
+      while (!step.deliver && guard < 10) {
+        for (const s of step.ask) answers[s] = full[s]!;
+        step = flow.flowStep(answers);
+        guard += 1;
+      }
+      expect(step.deliver).toBe(true);
+      paths[String(step.path)] = (paths[String(step.path)] ?? 0) + 1;
+      asked += Object.keys(answers).length;
+      total += 1;
+    }
+    expect(total).toBe(324);
+    const share = (k: string) => (paths[k] ?? 0) / total;
+    expect(share("1")).toBeGreaterThanOrEqual(0.2);
+    expect(share("1")).toBeLessThanOrEqual(0.35);
+    expect(share("2")).toBeGreaterThanOrEqual(0.5);
+    expect(share("2")).toBeLessThanOrEqual(0.7);
+    expect(share("3") + share("4")).toBeGreaterThanOrEqual(0.05);
+    expect(share("3") + share("4")).toBeLessThanOrEqual(0.2);
+    expect(asked / total).toBeLessThanOrEqual(6);
   });
 
   it("measures coherence in profile-signature space, so consistent answers on different dimensions still agree", () => {
@@ -135,6 +174,7 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
       const step = flow.flowStep(answers);
       expect(step.deliver).toBe(true);
       expect(step.checks.length).toBeGreaterThan(0);
+      expect(step.checks[0]!.between).toEqual(["Q0-Q1", "Q2-Q3"]);
       if (step.path) paths.add(step.path);
       delivered += 1;
     }

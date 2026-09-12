@@ -148,18 +148,20 @@ def main() -> int:
         "slots": [{"slot": "Q0", "question": "Q5_acid", "role": "base"}, {"slot": "Q1", "question": "Q8_aroma", "role": "base"},
                   {"slot": "Q2", "question": "Q6_sweet", "role": "check"}, {"slot": "Q3", "question": "Q7_body", "role": "check"},
                   {"slot": "Q4", "question": "Q9_bitter", "role": "confirm"}, {"slot": "Q5", "question": "Q10_clean", "role": "confirm"}],
-        "thresholds": {"coherent": 0.85, "mild": 0.65},
+        # owner R3-D10 (2026-09-12): 0.80 coherent / 0.65 severe — Path 2 as the main path is the intended
+        # product rhythm ("perceived expertise"), Path 1 for the ~30% with highly consistent answers.
+        "thresholds": {"coherent": 0.80, "mild": 0.65},
         # Answers occupy 1-2 dimensions each, so raw sub-vector cosines are 0 for most answer pairs
         # (Q0-Q1 vs Q2-Q3: 76 of 81 combinations < 0.65). Coherence is therefore measured in profile-
         # signature space: each answer group -> its cosine to the 16 centroids -> cosine between signatures.
         "coherence_space": "profile_signature",
         "calibration_2026_09_12": {"Q0-Q1_vs_Q2-Q3_over_81_combinations": {"min": 0.62, "median": 0.73, "p75": 0.82, "max": 0.98, "coherent_at_0.85": 18, "mild": 56, "severe_below_0.65": 7},
-                                    "note": "owner thresholds kept; with them Path 2 (mild) is the common path. 0.80/0.65 or 0.75/0.62 would make Path 1 common."},
+                                    "note": "measured under 0.85/0.65; owner moved to 0.80/0.65 (R3-D10) so Path 2 stays the main path and Path 1 serves the most consistent ~30%."},
         "alpha_strong": 0.9,
         "first_description": {"main": 3, "secondary": 5, "pick_count": 5},
         "q6": {"option_count": 8, "kind": "dimension_words_by_largest_delta", "multi_select": True},
         "closing": {"zh-CN": "感谢使用，祝你享受这杯咖啡！", "en": "Thank you — enjoy the cup!"},
-        "slot_mapping_owner_reviewed": False,
+        "slot_mapping_owner_reviewed": True,  # R3-D10: Q0 acid, Q1 aroma, Q2 sweetness, Q3 body, Q4 bitterness, Q5 complexity
     }
     bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
