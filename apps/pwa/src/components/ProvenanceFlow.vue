@@ -21,12 +21,14 @@ const labels = productVectorBundle.presentation.dimension_labels as Record<strin
 type Family = { family: string; coffees: number; mass: number[] };
 const families = computed<Family[]>(() => {
   const all = (productVectorBundle.corpus_facts as { families: Family[] }).families;
-  const top = all.slice(0, 5);
-  const rest = all.slice(5);
+  const total = all.reduce((a, f) => a + f.coffees, 0);
+  // panels under 2% of the coffees fold into "other panels" so their labels never collide
+  const top = all.filter((f) => f.coffees / total >= 0.02);
+  const rest = all.filter((f) => f.coffees / total < 0.02);
   if (rest.length) top.push({ family: "others", coffees: rest.reduce((a, f) => a + f.coffees, 0), mass: dims.map((_, i) => rest.reduce((a, f) => a + (f.mass[i] ?? 0), 0)) });
   return top;
 });
-const W = 340, H = 300, LX = 96, RX = 244, GAP = 4;
+const W = 340, H = 300, LX = 124, RX = 236, GAP = 5;
 const familyTotals = computed(() => families.value.map((f) => f.mass.reduce((a, b) => a + b, 0)));
 const dimTotals = computed(() => dims.map((_, i) => families.value.reduce((a, f) => a + (f.mass[i] ?? 0), 0)));
 const scaleL = computed(() => (H - GAP * (families.value.length - 1)) / familyTotals.value.reduce((a, b) => a + b, 0));
@@ -59,8 +61,8 @@ const fmt = (n: number) => n.toLocaleString(locale.value === "zh-CN" ? "zh-CN" :
       <path v-for="(r, i) in ribbons" :key="i" :d="r.d" :fill="r.color" fill-opacity="0.55" />
       <g v-for="b in leftBars" :key="b.f.family">
         <rect :x="LX - 6" :y="b.y" width="6" :height="b.h" fill="#1E1C1A" />
-        <text :x="LX - 10" :y="b.y + Math.min(b.h, 14) / 2 + 3.5" text-anchor="end" font-size="8.5" fill="#1E1C1A">{{ FAMILY_LABEL[b.f.family]?.[locale] ?? (b.f.family === 'others' ? (locale === 'zh-CN' ? '其他评审' : 'other panels') : b.f.family) }}</text>
-        <text :x="LX - 10" :y="b.y + Math.min(b.h, 14) / 2 + 13" text-anchor="end" font-size="7.5" fill="#6B6660">{{ fmt(b.f.coffees) }}</text>
+        <text :x="LX - 10" :y="b.y + Math.min(b.h, 16) / 2 + 3" text-anchor="end" font-size="8.5" fill="#1E1C1A">{{ FAMILY_LABEL[b.f.family]?.[locale] ?? (b.f.family === 'others' ? (locale === 'zh-CN' ? '其他评审' : 'other panels') : b.f.family) }}</text>
+        <text :x="LX - 10" :y="b.y + Math.min(b.h, 16) / 2 + 13" text-anchor="end" font-size="7.5" fill="#6B6660">{{ fmt(b.f.coffees) }}</text>
       </g>
       <g v-for="b in rightBars" :key="b.d">
         <rect :x="RX" :y="b.y" width="6" :height="b.h" :fill="DIM_COLORS[b.d]" />
