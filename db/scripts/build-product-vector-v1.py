@@ -28,6 +28,7 @@ PROFILE_K = 16
 # owner (R3-D6 confirmation): structure-score axes weigh 0.6 against descriptor axes scaled to 1.0,
 # so rank percentiles do not dominate thinly described coffees
 STRUCTURE_AXIS_WEIGHT = 0.6
+ANCHOR_MIN_SIMILARITY = 0.6  # an owner name attaches only to a centroid it actually resembles
 # rights per family for the *product candidate library*: research-only sources may calibrate
 # and validate, but are not recommendable items in a public product without an owner decision.
 RESEARCH_ONLY = {"family.coffeereview_kaggle_parsed"}
@@ -150,6 +151,29 @@ def main() -> int:
                          "mean_defect_axis": f"{sum(vecs[i][DIMS.index('defect')] for i in idx) / max(len(idx), 1):.4f}",
                          "owner_name_zh": "", "owner_name_en": "", "benchmark_beans": "", "owner_reviewed": "false"})
     profiles.sort(key=lambda p: -p["member_count"])
+    # owner names are anchors in the space (PROFILE_NAME_ANCHORS.tsv): each anchor attaches to its most
+    # similar centroid, one-to-one, greedily by similarity, so a rebuild cannot mis-number the names
+    anchors_path = OUT / "PROFILE_NAME_ANCHORS.tsv"
+    anchor_report = {"assigned": [], "unassigned_anchors": [], "unnamed_profiles": []}
+    for p in profiles:
+        p.update({"anchor_id": "", "anchor_similarity": "", "display_tags_zh": "", "display_tags_en": ""})
+    if anchors_path.is_file():
+        anchors = rows(anchors_path)
+        cents = {p["profile_id"]: [float(p[f"c_{d}"]) for d in DIMS] for p in profiles}
+        pairs = sorted(((cosine([float(a[f"a_{d}"]) for d in DIMS], c), a["anchor_id"], pid) for a in anchors for pid, c in cents.items()), reverse=True)
+        used_a, used_p = set(), set()
+        by_id = {p["profile_id"]: p for p in profiles}
+        for sim, aid, pid in pairs:
+            if aid in used_a or pid in used_p or sim < ANCHOR_MIN_SIMILARITY:
+                continue
+            a = next(x for x in anchors if x["anchor_id"] == aid)
+            by_id[pid].update({"owner_name_zh": a["owner_name_zh"], "owner_name_en": a["owner_name_en"], "benchmark_beans": a["benchmark_beans"],
+                               "display_tags_zh": a["display_tags_zh"], "display_tags_en": a["display_tags_en"], "owner_reviewed": a["owner_reviewed"],
+                               "anchor_id": aid, "anchor_similarity": f"{sim:.3f}"})
+            used_a.add(aid); used_p.add(pid)
+            anchor_report["assigned"].append({"anchor": aid, "name_en": a["owner_name_en"], "profile": pid, "similarity": round(sim, 3), "members": by_id[pid]["member_count"]})
+        anchor_report["unassigned_anchors"] = [{"anchor": a["anchor_id"], "name_en": a["owner_name_en"], "best_similarity": round(max(cosine([float(a[f"a_{d}"]) for d in DIMS], c) for c in cents.values()), 3)} for a in anchors if a["anchor_id"] not in used_a]
+        anchor_report["unnamed_profiles"] = [{"profile": p["profile_id"], "members": p["member_count"], "top": p["top_dimensions"]} for p in profiles if p["profile_id"] not in used_p]
     with (OUT / "FLAVOR_PROFILE_LIBRARY.tsv").open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(profiles[0]), delimiter="\t", lineterminator="\n"); w.writeheader(); w.writerows(profiles)
 
@@ -160,7 +184,7 @@ def main() -> int:
         "dimensions": DIMS,
         "projection": {"concepts": len(proj), "with_nonzero_projection": len(mapped), "owner_reviewed": False},
         "structure_axes": {"coffees_with_coffeereview_scores": structure_used, "weight_vs_descriptor_axes": STRUCTURE_AXIS_WEIGHT, "basis": "body / acidity rank percentile of CoffeeReview editorial 1-10 scores (owner D-open-3), weighted 0.6 : 1.0 (R3-D6 confirmation)"},
-        "profiles": {"k": PROFILE_K, "member_counts": [p["member_count"] for p in profiles], "top_dimensions": [p["top_dimensions"] for p in profiles]},
+        "profiles": {"k": PROFILE_K, "member_counts": [p["member_count"] for p in profiles], "top_dimensions": [p["top_dimensions"] for p in profiles], "owner_names": anchor_report},
         "coverage": {"coffees": len(lib), "usable_(>=2 mapped mentions)": len(usable), "thin_(1)": sum(c["vector_state"] == "THIN" for c in lib), "empty_(0)": sum(c["vector_state"] == "EMPTY" for c in lib),
                      "usable_by_family": dict(Counter(c["source_family_id"] for c in usable)),
                      "usable_recommendable_in_public_product": sum(c["product_candidate_rights"] != "RESEARCH_ONLY_NOT_RECOMMENDABLE" for c in usable),
@@ -177,6 +201,7 @@ def main() -> int:
     }
     (OUT / "PRODUCT_VECTOR_V1_MEASUREMENT.json").write_text(json.dumps(measurement, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({k: measurement[k] for k in ("coverage", "structure_axes", "uniformity", "query_horizon_test", "profiles")}, indent=1, ensure_ascii=False))
+
     return 0
 
 

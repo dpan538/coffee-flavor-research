@@ -175,6 +175,30 @@
         "measurement": "usable 8,142; query horizon 281/324 > 0.85 (down from 309 at 1:1 by design); profiles 16, structure-only false profiles gone"
       },
       "recorded_at_utc": "2026-09-12T02:21:28Z"
+    },
+    {
+      "id": "R3-D8",
+      "subject": "Profile names, alpha, literature intake, bilingual presentation layer",
+      "decision": "(1) Owner names 16 profiles in mainland-China specialty vocabulary with English names and benchmark beans; applied as anchors (PROFILE_NAME_ANCHORS.tsv) attached to centroids by cosine — 15 attached, anchor-08 dissolved, one profile carries an operator proposal (anchor-17, unreviewed). (2) alpha = 0.5, fixed. (3) Literature files go to db/data/external-literature/ as <source_id>.claims.csv; ingest-external-literature.py merges them as LITERATURE_CLAIM into the unified context-statement table. (4) Presentation layer: backend converges vectors, UI maps to words; zh-CN minimalist tag arrays, en scientific wording; displayTags priority 1 concept-level by projection weight, priority 2 dimension-level from DIMENSION_TAG_MAP_CN, defect guard; unified CONTEXT_STATEMENTS schema (context_id, statement_zh, statement_en, evidence_state, citation_ref); long text behind a science fold.",
+      "owner_words": "结合这一本地化语义体系，直接为你完成 … 16 个画像质心的中文命名 … 偏置权重 α 参数：确定为 0.5 … 请将 … 材料文件放入 db/data/external-literature/ … 后端收敛向量，前端 UI 进行语义映射（Tag Extractor）… 重点是开发如何既能满足欧美用户，满足科学化，又能满足中国大陆的咖啡语言 … displayTags 的选择策略 … 统一归纳为单张合并表，通过 evidence_state 显式标识血缘 … DIMENSION_TAG_MAP_CN",
+      "applied": {
+        "files": [
+          "PROFILE_NAME_ANCHORS.tsv",
+          "CONCEPT_FLAVOR_TAGS.tsv",
+          "CONTEXT_STATEMENTS.tsv (27 rows: 21 single-option, 6 combinations)",
+          "LITERATURE_CLAIMS.tsv (empty until files arrive)",
+          "CONTEXT_STATEMENTS_MERGED.tsv",
+          "db/data/external-literature/README.md",
+          "db/scripts/ingest-external-literature.py"
+        ],
+        "engine": "displayTags / statementsFor / present in packages/flavor-data/src/product-vector-v1; 10 tests pass; tsc clean",
+        "open": [
+          "anchor-17 name confirmation",
+          "94 concept-level tags review",
+          "literature claim files"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T02:47:01Z"
     }
   ],
   "guards": {

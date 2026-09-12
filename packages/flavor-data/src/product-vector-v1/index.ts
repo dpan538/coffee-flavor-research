@@ -11,12 +11,19 @@
  *   ΔV       = V_user − V_pred
  *   V_target = normalize( V_pred + α · ΔV )
  *   output   = profiles ranked by Sim(V_target, centroid), then beans ranked by Sim(V_target, V_bean)
+ *
+ * Presentation is a separate layer over the same vectors (owner, 2026-09-12): the
+ * backend converges on vectors, the UI maps them to words. zh-CN renders the
+ * minimalist tag array of the Chinese specialty scene (词 A | 词 B | 词 C | 词 D);
+ * en renders the scientific wording. The science line sits behind a fold and
+ * carries its evidence_state (OWNER_STATEMENT / CORPUS_MEASURED / LITERATURE_CLAIM).
  */
 import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json" with { type: "json" };
 
 export const DIMENSIONS = bundle.dimensions as readonly string[];
 export type Dimension = (typeof DIMENSIONS)[number];
 export type Vector = number[];
+export type Locale = "zh-CN" | "en";
 
 export type ContextAnswers = {
   c0_preparation?: string; // pour_over_v60 | french_press | espresso | cold_brew
@@ -27,7 +34,7 @@ export type ContextAnswers = {
 export type PerceptionAnswers = Partial<Record<keyof typeof bundle.matrix_q, string>>;
 
 export type Profile = (typeof bundle.profiles)[number];
-export type BeanVector = { id: string; label: string; vector: Vector; source: "benchmark" | "user" };
+export type BeanVector = { id: string; label: string; vector: Vector; source: "benchmark" | "user"; conceptIds?: string[] };
 
 export type ContextBasis = { axis: string; option: string; basis: string; memberCount: number | null };
 
@@ -37,6 +44,7 @@ export type InferenceResult = {
   deltaV: Vector;
   vTarget: Vector;
   alpha: number;
+  context: ContextAnswers;
   contextBasis: ContextBasis[];
   similarityUserPred: number;
   profiles: Array<{ profile: Profile; similarity: number }>;
@@ -45,7 +53,24 @@ export type InferenceResult = {
   scoreSemantics: string;
 };
 
+export type ScienceLine = { text: string; evidenceState: string; citationRef: string; about: string };
+export type Presentation = {
+  locale: Locale;
+  headline: { title: string; tags: string[]; similarity: number; ownerReviewed: boolean; profileId: string } | null;
+  alternatives: Array<{ title: string; tags: string[]; similarity: number; profileId: string }>;
+  beans: Array<{ label: string; tags: string[]; similarity: number; source: BeanVector["source"] }>;
+  science: ScienceLine[];
+  scoreSemantics: string;
+};
+
 const N = DIMENSIONS.length;
+const presentation = bundle.presentation;
+const AXIS_KEYS: Array<[string, keyof ContextAnswers]> = [
+  ["C0", "c0_preparation"],
+  ["C1", "c1_roast"],
+  ["C2_variety", "c2_variety"],
+  ["C2_process", "c2_process"],
+];
 
 export function zero(): Vector {
   return new Array(N).fill(0);
@@ -64,13 +89,17 @@ export function add(a: Vector, b: Vector): Vector {
   return a.map((x, i) => x + (b[i] ?? 0));
 }
 
+export function dot(a: Vector, b: Vector): number {
+  let sum = 0;
+  for (let i = 0; i < N; i += 1) sum += (a[i] ?? 0) * (b[i] ?? 0);
+  return sum;
+}
+
 export function cosine(a: Vector, b: Vector): number {
   const na = norm(a);
   const nb = norm(b);
   if (na === 0 || nb === 0) return 0;
-  let dot = 0;
-  for (let i = 0; i < N; i += 1) dot += (a[i] ?? 0) * (b[i] ?? 0);
-  return dot / (na * nb);
+  return dot(a, b) / (na * nb);
 }
 
 function increments(spec: Record<string, number>): Vector {
@@ -96,14 +125,8 @@ function kRow(axis: keyof typeof bundle.matrix_k, option: string | undefined): {
 export function buildVPred(context: ContextAnswers): { vPred: Vector; contextBasis: ContextBasis[] } {
   let sum = zero();
   const contextBasis: ContextBasis[] = [];
-  const parts: Array<[keyof typeof bundle.matrix_k, string | undefined]> = [
-    ["C0", context.c0_preparation],
-    ["C1", context.c1_roast],
-    ["C2_variety", context.c2_variety],
-    ["C2_process", context.c2_process],
-  ];
-  for (const [axis, option] of parts) {
-    const { row, basis } = kRow(axis, option);
+  for (const [axis, key] of AXIS_KEYS) {
+    const { row, basis } = kRow(axis as keyof typeof bundle.matrix_k, context[key]);
     if (basis) contextBasis.push(basis);
     if (row?.vector) sum = add(sum, row.vector);
   }
@@ -175,12 +198,112 @@ export function infer(
     deltaV: delta,
     vTarget: target,
     alpha,
+    context,
     contextBasis,
     similarityUserPred: cosine(vUser, vPred),
     profiles: rankProfiles(target, options.profileLimit ?? 3),
     beans: rankBeans(target, options.beans ?? [], options.beanLimit ?? 3),
     topDeltaDimensions,
     scoreSemantics: bundle.score_semantics,
+  };
+}
+
+// ---------------------------------------------------------------- presentation layer
+
+type Localized = { "zh-CN": string; en: string };
+type LocalizedList = { "zh-CN": string[]; en: string[] };
+const DIM_THRESHOLD = 0.15;
+const DEFECT_DOMINANCE = 0.5;
+
+/**
+ * Minimalist tags for a vector (owner's displayTags rules, 2026-09-12).
+ *  priority 1 — with concept ids (a bean with tasting notes): the concrete words, ranked by the
+ *               concept's projection weight against the vector, top 3–4;
+ *  priority 2 — with a bare vector (a profile centroid): dominant dimensions above the threshold,
+ *               each mapped to the first unused word of its CN/EN tag list;
+ *  defect guard — defect words appear only when defect dominates the vector.
+ */
+export function displayTags(vector: Vector, locale: Locale, count = presentation.tag_count, conceptIds?: string[]): string[] {
+  const dimTags = presentation.dimension_tags as Record<string, LocalizedList>;
+  const conceptTags = presentation.concept_tags as Record<string, Localized>;
+  const projection = bundle.concept_projection as Record<string, number[]>;
+  const defectIndex = DIMENSIONS.indexOf("defect");
+  const defectDominates = (vector[defectIndex] ?? 0) >= DEFECT_DOMINANCE;
+  const tags: string[] = [];
+  const push = (tag: string | undefined) => {
+    if (tag && !tags.includes(tag)) tags.push(tag);
+  };
+  if (conceptIds?.length) {
+    const ranked = conceptIds
+      .filter((id) => projection[id])
+      .filter((id) => defectDominates || (projection[id]![defectIndex] ?? 0) < DEFECT_DOMINANCE)
+      .map((id) => ({ id, w: dot(projection[id]!, vector) }))
+      .filter((x) => x.w > 0)
+      .sort((a, b) => b.w - a.w);
+    for (const { id } of ranked) {
+      if (tags.length >= count) break;
+      push(conceptTags[id]?.[locale]);
+    }
+  }
+  if (tags.length < count) {
+    const dims = DIMENSIONS.map((d, i) => ({ d, w: vector[i] ?? 0 }))
+      .filter((x) => x.w > DIM_THRESHOLD && (x.d !== "defect" || defectDominates))
+      .sort((a, b) => b.w - a.w);
+    for (const { d } of dims) {
+      if (tags.length >= count) break;
+      const list = dimTags[d]?.[locale] ?? [];
+      push(list.find((t) => !tags.includes(t)));
+    }
+  }
+  return tags;
+}
+
+/** Context statements whose parts are all answered, most specific (most parts) first. */
+export function statementsFor(context: ContextAnswers, locale: Locale): ScienceLine[] {
+  const answered = new Map<string, string>();
+  for (const [axis, key] of AXIS_KEYS) {
+    const value = context[key];
+    if (value) answered.set(axis, value);
+  }
+  return presentation.context_statements
+    .filter((s) => s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis) === p.option))
+    .sort((a, b) => b.parts.length - a.parts.length)
+    .map((s) => ({ text: s[locale], evidenceState: s.evidence_state, citationRef: s.citation_ref, about: s.context_id }));
+}
+
+/** Locale-aware rendering of an inference: headline profile + tags, alternatives, beans, and the science fold. */
+export function present(result: InferenceResult, locale: Locale): Presentation {
+  const labels = presentation.dimension_labels as Record<string, Localized>;
+  const words = presentation.delta_words[locale];
+  const toHeadline = (entry: { profile: Profile; similarity: number }) => {
+    const name = entry.profile.owner_name[locale] || entry.profile.owner_name.en || entry.profile.profile_id;
+    const owned = entry.profile.display_tags[locale];
+    const tags = owned.length ? owned.slice(0, presentation.tag_count) : displayTags(entry.profile.centroid, locale);
+    return { title: name, tags, similarity: entry.similarity, ownerReviewed: entry.profile.owner_reviewed, profileId: entry.profile.profile_id };
+  };
+  const [first, ...rest] = result.profiles;
+  const science: ScienceLine[] = statementsFor(result.context, locale);
+  for (const { dimension, delta } of result.topDeltaDimensions) {
+    if (Math.abs(delta) < 0.1) continue;
+    const label = labels[dimension]?.[locale] ?? dimension;
+    const text = locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
+    science.push({ text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}` });
+  }
+  return {
+    locale,
+    headline: first ? toHeadline(first) : null,
+    alternatives: rest.map((entry) => {
+      const h = toHeadline(entry);
+      return { title: h.title, tags: h.tags, similarity: h.similarity, profileId: h.profileId };
+    }),
+    beans: result.beans.map(({ bean, similarity }) => ({
+      label: bean.label,
+      tags: displayTags(bean.vector, locale, presentation.tag_count, bean.conceptIds),
+      similarity,
+      source: bean.source,
+    })),
+    science,
+    scoreSemantics: result.scoreSemantics,
   };
 }
 

@@ -1,0 +1,107 @@
+key	kind	tags_zh_cn	tags_en	label_zh_cn	label_en	basis	owner_reviewed
+dim:acidity	dimension	清冽果酸|明亮酸质|柑橘酸	crisp acidity|bright acidity|citric	酸质	acidity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:sweetness	dimension	高甜感|蔗糖甜|蜂蜜感	high sweetness|cane sugar|honeyed	甜感	sweetness	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:body	dimension	丝绒感|醇厚|圆润口感	velvety|full body|round mouthfeel	醇厚度	body	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:floral	dimension	茉莉花|玉兰花|白花	jasmine|magnolia|white flowers	花香	floral	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:fruity	dimension	水蜜桃|黄桃|黑加仑|杏桃	peach|yellow peach|blackcurrant|apricot	果香	fruity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:nutty_chocolate	dimension	烤榛果|黑莓可可|提拉米苏	roasted hazelnut|berry cocoa|tiramisu	坚果巧克力	nutty & chocolate	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:fermented_winey	dimension	厌氧酒香|朗姆酒|发酵果酱	anaerobic winey|rum|fermented jam	厌氧酒香	fermented & winey	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:bitter_roasted	dimension	黑巧回甘|烟熏可可|重烘焙香	dark chocolate finish|smoky cocoa|deep roast	烘烤苦感	roast & bitter	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:spice	dimension	小豆蔻|肉桂|异域辛香	cardamom|cinnamon|exotic spice	香料	spice	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:herbal_green	dimension	茉莉绿茶|高山乌龙|草本清香	jasmine green tea|high-mountain oolong|fresh herbal	草本绿茶	herbal & green	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:woody_earthy	dimension	风干雪松|泥炭木质|松露	aged cedar|peaty wood|truffle	木质泥土	woody & earthy	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:defect	dimension	风味瑕疵|过发酵味	off-flavor|over-fermented	瑕疵	defect	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+sensory.acetic_vinegar	concept	醋酸	vinegar	醋酸	vinegar	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.alcoholic	concept	酒精感	boozy	酒精感	boozy	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.almond	concept	杏仁	almond	杏仁	almond	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.anise	concept	八角	anise	八角	anise	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.apple	concept	苹果	apple	苹果	apple	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.ash	concept	灰烬	ash	灰烬	ash	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.astringent	concept	涩感	astringent	涩感	astringent	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.baked_bread	concept	烤面包	baked bread	烤面包	baked bread	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.banana	concept	香蕉	banana	香蕉	banana	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.bell_pepper	concept	青椒	bell pepper	青椒	bell pepper	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.bergamot	concept	佛手柑	bergamot	佛手柑	bergamot	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.bitter	concept	苦	bitter	苦	bitter	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.black_pepper	concept	黑胡椒	black pepper	黑胡椒	black pepper	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.black_tea	concept	红茶	black tea	红茶	black tea	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.blackberry	concept	黑莓	blackberry	黑莓	blackberry	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.blackcurrant	concept	黑加仑	blackcurrant	黑加仑	blackcurrant	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.blueberry	concept	蓝莓	blueberry	蓝莓	blueberry	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.brown_sugar	concept	红糖	brown sugar	红糖	brown sugar	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.burnt	concept	焦苦	burnt	焦苦	burnt	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.butter	concept	黄油	butter	黄油	butter	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.caramel	concept	焦糖	caramel	焦糖	caramel	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cardamom	concept	小豆蔻	cardamom	小豆蔻	cardamom	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cardboard	concept	纸板味	cardboard	纸板味	cardboard	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cedar	concept	雪松	cedar	雪松	cedar	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cereal_grain	concept	谷物	grain	谷物	grain	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.chamomile	concept	洋甘菊	chamomile	洋甘菊	chamomile	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cherry	concept	车厘子	cherry	车厘子	cherry	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cinnamon	concept	肉桂	cinnamon	肉桂	cinnamon	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.clove	concept	丁香	clove	丁香	clove	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.cocoa	concept	可可	cocoa	可可	cocoa	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.coconut	concept	椰子	coconut	椰子	coconut	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.creamy_mouthfeel	concept	奶油质地	creamy	奶油质地	creamy	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.dark_chocolate	concept	黑巧克力	dark chocolate	黑巧克力	dark chocolate	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.drying	concept	干涩	drying	干涩	drying	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.dusty	concept	灰尘味	dusty	灰尘味	dusty	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.earthy	concept	泥土	earthy	泥土	earthy	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.eucalyptus	concept	尤加利	eucalyptus	尤加利	eucalyptus	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.fermented_character	concept	发酵感	fermented	发酵感	fermented	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.fresh_grass	concept	青草	fresh grass	青草	fresh grass	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.fullness	concept	饱满	full	饱满	full	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.ginger	concept	姜	ginger	姜	ginger	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.grape	concept	葡萄	grape	葡萄	grape	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.grapefruit	concept	西柚	grapefruit	西柚	grapefruit	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.green_tea	concept	绿茶	green tea	绿茶	green tea	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.green_vegetal	concept	青蔬	vegetal	青蔬	vegetal	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.hay	concept	干草	hay	干草	hay	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.hazelnut	concept	榛果	hazelnut	榛果	hazelnut	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.honey	concept	蜂蜜	honey	蜂蜜	honey	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.jasmine	concept	茉莉花	jasmine	茉莉花	jasmine	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.leather	concept	皮革	leather	皮革	leather	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.lemon	concept	柠檬	lemon	柠檬	lemon	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.lemongrass	concept	柠檬草	lemongrass	柠檬草	lemongrass	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.lime	concept	青柠	lime	青柠	lime	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.malt	concept	麦芽	malt	麦芽	malt	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.mango	concept	芒果	mango	芒果	mango	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.metallic	concept	金属味	metallic	金属味	metallic	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.mint	concept	薄荷	mint	薄荷	mint	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.molasses	concept	黑糖	molasses	黑糖	molasses	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.moldy	concept	霉变	moldy	霉变	moldy	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.mouth_coating	concept	挂口	coating	挂口	coating	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.mushroom	concept	蘑菇	mushroom	蘑菇	mushroom	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.musty	concept	霉味	musty	霉味	musty	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.nutmeg	concept	肉豆蔻	nutmeg	肉豆蔻	nutmeg	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.orange	concept	甜橙	orange	甜橙	orange	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.orange_blossom	concept	橙花	orange blossom	橙花	orange blossom	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.paper	concept	纸味	papery	纸味	papery	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.pea_pod	concept	豌豆荚	pea pod	豌豆荚	pea pod	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.peach	concept	水蜜桃	peach	水蜜桃	peach	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.peanut	concept	花生	peanut	花生	peanut	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.pear	concept	梨	pear	梨	pear	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.pineapple	concept	菠萝	pineapple	菠萝	pineapple	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.pink_grapefruit	concept	红心西柚	pink grapefruit	红心西柚	pink grapefruit	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.plum	concept	李子	plum	李子	plum	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.pomegranate	concept	石榴	pomegranate	石榴	pomegranate	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.prune	concept	西梅	prune	西梅	prune	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.raisin	concept	葡萄干	raisin	葡萄干	raisin	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.raspberry	concept	树莓	raspberry	树莓	raspberry	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.roasted_character	concept	烘烤	roasty	烘烤	roasty	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.rose	concept	玫瑰	rose	玫瑰	rose	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.rubber	concept	橡胶味	rubbery	橡胶味	rubbery	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.salty	concept	咸	salty	咸	salty	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.smoky	concept	烟熏	smoky	烟熏	smoky	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.smooth_mouthfeel	concept	顺滑	smooth	顺滑	smooth	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.sour	concept	尖酸	sour	尖酸	sour	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.stale	concept	陈味	stale	陈味	stale	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.strawberry	concept	草莓	strawberry	草莓	strawberry	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.sweet	concept	甜	sweet	甜	sweet	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.syrupy_mouthfeel	concept	糖浆感	syrupy	糖浆感	syrupy	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.toast	concept	吐司	toast	吐司	toast	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.tobacco	concept	烟草	tobacco	烟草	tobacco	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.vanilla	concept	香草	vanilla	香草	vanilla	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.walnut	concept	核桃	walnut	核桃	walnut	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.wine_like_character	concept	红酒	winey	红酒	winey	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false
+sensory.woody	concept	木质	woody	木质	woody	OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	false

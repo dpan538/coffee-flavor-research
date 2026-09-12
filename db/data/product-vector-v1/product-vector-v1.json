@@ -1855,9 +1855,27 @@
     0.016,
     0.0025
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "哥伦比亚 厌氧日晒 / 埃塞俄比亚 日晒 G1",
+   "anchor_id": "anchor-01",
+   "owner_name": {
+    "zh-CN": "熟果与黄桃甜感",
+    "en": "Tropical Stone Fruit"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "黄桃",
+     "熟果",
+     "蔗糖",
+     "柑橘"
+    ],
+    "en": [
+     "yellow peach",
+     "ripe fruit",
+     "cane sugar",
+     "citrus"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:12",
@@ -1877,9 +1895,27 @@
     0.0106,
     0.0033
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "危地马拉 安提瓜水洗 (Guatemala Antigua)",
+   "anchor_id": "anchor-02",
+   "owner_name": {
+    "zh-CN": "榛果巧克力与红莓",
+    "en": "Nutty Cocoa & Berry"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "榛果",
+     "可可",
+     "红莓",
+     "柑橘"
+    ],
+    "en": [
+     "hazelnut",
+     "cocoa",
+     "red berry",
+     "citrus"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:15",
@@ -1899,9 +1935,27 @@
     0.0438,
     0.0032
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "埃塞俄比亚 西达摩 水洗 / 哥伦比亚 蜜处理 (operator proposal)",
+   "anchor_id": "anchor-17",
+   "owner_name": {
+    "zh-CN": "蜂蜜甜果与杏桃",
+    "en": "Honeyed Sweet Fruit"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "蜂蜜",
+     "杏桃",
+     "甜橙",
+     "柔和"
+    ],
+    "en": [
+     "honey",
+     "apricot",
+     "sweet orange",
+     "smooth"
+    ]
+   },
+   "owner_reviewed": false
   },
   {
    "profile_id": "profile-v1:07",
@@ -1921,9 +1975,27 @@
     0.0099,
     0.0022
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "哥伦比亚 惠兰水洗 (Colombia Huila)",
+   "anchor_id": "anchor-04",
+   "owner_name": {
+    "zh-CN": "经典黑巧与烤榛果",
+    "en": "Dark Chocolate & Roasted Nut"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "黑巧克力",
+     "烤榛果",
+     "红糖",
+     "醇厚"
+    ],
+    "en": [
+     "dark chocolate",
+     "roasted hazelnut",
+     "brown sugar",
+     "full body"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:13",
@@ -1943,9 +2015,27 @@
     0.5414,
     0.0035
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "苏门答腊 湿剥曼特宁 (Sumatra Mandheling PWN)",
+   "anchor_id": "anchor-06",
+   "owner_name": {
+    "zh-CN": "深烘烤雪松与松露",
+    "en": "Roasted Cedar & Earth"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "雪松",
+     "松露",
+     "黑巧克力",
+     "烟熏"
+    ],
+    "en": [
+     "cedar",
+     "truffle",
+     "dark chocolate",
+     "smoke"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:10",
@@ -1965,9 +2055,27 @@
     0.006,
     0.005
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "肯尼亚 AA (Kenya AA SL28/SL34)",
+   "anchor_id": "anchor-05",
+   "owner_name": {
+    "zh-CN": "鲜明柑橘与柚子酸质",
+    "en": "Bright Citrus & Yuzu Acid"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "柚子",
+     "柑橘",
+     "黑加仑",
+     "明亮"
+    ],
+    "en": [
+     "yuzu",
+     "citrus",
+     "blackcurrant",
+     "bright"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:11",
@@ -1987,9 +2095,27 @@
     0.0214,
     0.0034
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "巴西 黄波本 (Brazil Yellow Bourbon)",
+   "anchor_id": "anchor-03",
+   "owner_name": {
+    "zh-CN": "蔗糖与纯净高甜",
+    "en": "Pure Cane Sweetness"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "蔗糖",
+     "蜂蜜",
+     "焦糖",
+     "柔和"
+    ],
+    "en": [
+     "cane sugar",
+     "honey",
+     "caramel",
+     "smooth"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:14",
@@ -2009,9 +2135,27 @@
     0.5469,
     0.0054
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "埃塞俄比亚 哈拉尔 (Ethiopia Harrar)",
+   "anchor_id": "anchor-07",
+   "owner_name": {
+    "zh-CN": "野生黑加仑与树莓",
+    "en": "Wild Forest Berry"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "黑加仑",
+     "树莓",
+     "木质",
+     "红酒"
+    ],
+    "en": [
+     "blackcurrant",
+     "raspberry",
+     "woody",
+     "red wine"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:09",
@@ -2031,9 +2175,27 @@
     0.028,
     0.0039
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "埃塞俄比亚 耶加雪菲水洗 / 瑰夏 (Geisha)",
+   "anchor_id": "anchor-09",
+   "owner_name": {
+    "zh-CN": "高锐茉莉花与白花",
+    "en": "Delicate Jasmine & Floral"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "茉莉花",
+     "白花",
+     "佛手柑",
+     "水蜜桃"
+    ],
+    "en": [
+     "jasmine",
+     "white flowers",
+     "bergamot",
+     "peach"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:04",
@@ -2053,9 +2215,27 @@
     0.8577,
     0.011
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "爪哇 老深烘 (Java Arabica / Old Brown)",
+   "anchor_id": "anchor-11",
+   "owner_name": {
+    "zh-CN": "泥炭烟熏与风干木",
+    "en": "Smoky Peat & Aged Wood"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "烟熏",
+     "泥炭",
+     "风干木",
+     "烟草"
+    ],
+    "en": [
+     "smoke",
+     "peat",
+     "aged wood",
+     "tobacco"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:03",
@@ -2075,9 +2255,27 @@
     0.0234,
     0.0037
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "也门 摩卡 (Yemen Matari)",
+   "anchor_id": "anchor-12",
+   "owner_name": {
+    "zh-CN": "异域小豆蔻与肉桂",
+    "en": "Cardamom & Sweet Spice"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "小豆蔻",
+     "肉桂",
+     "红糖",
+     "葡萄干"
+    ],
+    "en": [
+     "cardamom",
+     "cinnamon",
+     "brown sugar",
+     "raisin"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:08",
@@ -2097,9 +2295,27 @@
     0.0438,
     0.1499
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "意式拼配 深烘 (Italian Dark Roast Blend)",
+   "anchor_id": "anchor-13",
+   "owner_name": {
+    "zh-CN": "深烘重可可与回甘",
+    "en": "Deep Dark Cocoa Roast"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "重可可",
+     "焦糖",
+     "烘烤",
+     "回甘"
+    ],
+    "en": [
+     "dark cocoa",
+     "caramel",
+     "roast",
+     "lingering sweet"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:01",
@@ -2119,9 +2335,27 @@
     0.0082,
     0.0
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "洪都拉斯 威士忌雪莉桶 / 厌氧日晒瑰夏",
+   "anchor_id": "anchor-14",
+   "owner_name": {
+    "zh-CN": "厌氧朗姆与微醺酒香",
+    "en": "Anaerobic Rum & Winey"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "厌氧朗姆",
+     "酒香",
+     "热带水果",
+     "发酵"
+    ],
+    "en": [
+     "anaerobic rum",
+     "winey",
+     "tropical fruit",
+     "fermented"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:06",
@@ -2141,9 +2375,27 @@
     0.0521,
     0.0022
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "巴拿马 浅烘铁皮卡 (Panama Typica)",
+   "anchor_id": "anchor-15",
+   "owner_name": {
+    "zh-CN": "清脆草本与绿茶香",
+    "en": "Fresh Herbal & Green Tea"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "茉莉绿茶",
+     "柠檬草",
+     "青苹果",
+     "清脆"
+    ],
+    "en": [
+     "jasmine green tea",
+     "lemongrass",
+     "green apple",
+     "crisp"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:02",
@@ -2163,9 +2415,27 @@
     0.0595,
     0.9911
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "（负向约束集合，不推荐商品）",
+   "anchor_id": "anchor-16",
+   "owner_name": {
+    "zh-CN": "瑕疵预警风味",
+    "en": "Off-Flavor / Defect Group"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "瑕疵",
+     "霉味",
+     "纸味",
+     "陈味"
+    ],
+    "en": [
+     "defect",
+     "musty",
+     "papery",
+     "stale"
+    ]
+   },
+   "owner_reviewed": true
   },
   {
    "profile_id": "profile-v1:05",
@@ -2185,15 +2455,1037 @@
     0.0,
     0.0
    ],
-   "owner_name_zh": "",
-   "owner_name_en": "",
-   "benchmark_beans": ""
+   "benchmark_beans": "巴西 半日晒 / 罗布斯塔精选 (Brazil Pulped Natural)",
+   "anchor_id": "anchor-10",
+   "owner_name": {
+    "zh-CN": "丝绒醇厚与糖浆感",
+    "en": "Full Velvet Body"
+   },
+   "display_tags": {
+    "zh-CN": [
+     "丝绒",
+     "糖浆",
+     "奶油",
+     "醇厚"
+    ],
+    "en": [
+     "velvet",
+     "syrup",
+     "cream",
+     "full body"
+    ]
+   },
+   "owner_reviewed": true
   }
  ],
  "benchmark_beans": [],
+ "presentation": {
+  "locales": [
+   "zh-CN",
+   "en"
+  ],
+  "tag_count": 4,
+  "dimension_labels": {
+   "acidity": {
+    "zh-CN": "酸质",
+    "en": "acidity"
+   },
+   "sweetness": {
+    "zh-CN": "甜感",
+    "en": "sweetness"
+   },
+   "body": {
+    "zh-CN": "醇厚度",
+    "en": "body"
+   },
+   "floral": {
+    "zh-CN": "花香",
+    "en": "floral"
+   },
+   "fruity": {
+    "zh-CN": "果香",
+    "en": "fruity"
+   },
+   "nutty_chocolate": {
+    "zh-CN": "坚果巧克力",
+    "en": "nutty & chocolate"
+   },
+   "fermented_winey": {
+    "zh-CN": "厌氧酒香",
+    "en": "fermented & winey"
+   },
+   "bitter_roasted": {
+    "zh-CN": "烘烤苦感",
+    "en": "roast & bitter"
+   },
+   "spice": {
+    "zh-CN": "香料",
+    "en": "spice"
+   },
+   "herbal_green": {
+    "zh-CN": "草本绿茶",
+    "en": "herbal & green"
+   },
+   "woody_earthy": {
+    "zh-CN": "木质泥土",
+    "en": "woody & earthy"
+   },
+   "defect": {
+    "zh-CN": "瑕疵",
+    "en": "defect"
+   }
+  },
+  "dimension_tags": {
+   "acidity": {
+    "zh-CN": [
+     "清冽果酸",
+     "明亮酸质",
+     "柑橘酸"
+    ],
+    "en": [
+     "crisp acidity",
+     "bright acidity",
+     "citric"
+    ]
+   },
+   "sweetness": {
+    "zh-CN": [
+     "高甜感",
+     "蔗糖甜",
+     "蜂蜜感"
+    ],
+    "en": [
+     "high sweetness",
+     "cane sugar",
+     "honeyed"
+    ]
+   },
+   "body": {
+    "zh-CN": [
+     "丝绒感",
+     "醇厚",
+     "圆润口感"
+    ],
+    "en": [
+     "velvety",
+     "full body",
+     "round mouthfeel"
+    ]
+   },
+   "floral": {
+    "zh-CN": [
+     "茉莉花",
+     "玉兰花",
+     "白花"
+    ],
+    "en": [
+     "jasmine",
+     "magnolia",
+     "white flowers"
+    ]
+   },
+   "fruity": {
+    "zh-CN": [
+     "水蜜桃",
+     "黄桃",
+     "黑加仑",
+     "杏桃"
+    ],
+    "en": [
+     "peach",
+     "yellow peach",
+     "blackcurrant",
+     "apricot"
+    ]
+   },
+   "nutty_chocolate": {
+    "zh-CN": [
+     "烤榛果",
+     "黑莓可可",
+     "提拉米苏"
+    ],
+    "en": [
+     "roasted hazelnut",
+     "berry cocoa",
+     "tiramisu"
+    ]
+   },
+   "fermented_winey": {
+    "zh-CN": [
+     "厌氧酒香",
+     "朗姆酒",
+     "发酵果酱"
+    ],
+    "en": [
+     "anaerobic winey",
+     "rum",
+     "fermented jam"
+    ]
+   },
+   "bitter_roasted": {
+    "zh-CN": [
+     "黑巧回甘",
+     "烟熏可可",
+     "重烘焙香"
+    ],
+    "en": [
+     "dark chocolate finish",
+     "smoky cocoa",
+     "deep roast"
+    ]
+   },
+   "spice": {
+    "zh-CN": [
+     "小豆蔻",
+     "肉桂",
+     "异域辛香"
+    ],
+    "en": [
+     "cardamom",
+     "cinnamon",
+     "exotic spice"
+    ]
+   },
+   "herbal_green": {
+    "zh-CN": [
+     "茉莉绿茶",
+     "高山乌龙",
+     "草本清香"
+    ],
+    "en": [
+     "jasmine green tea",
+     "high-mountain oolong",
+     "fresh herbal"
+    ]
+   },
+   "woody_earthy": {
+    "zh-CN": [
+     "风干雪松",
+     "泥炭木质",
+     "松露"
+    ],
+    "en": [
+     "aged cedar",
+     "peaty wood",
+     "truffle"
+    ]
+   },
+   "defect": {
+    "zh-CN": [
+     "风味瑕疵",
+     "过发酵味"
+    ],
+    "en": [
+     "off-flavor",
+     "over-fermented"
+    ]
+   }
+  },
+  "concept_tags": {
+   "sensory.acetic_vinegar": {
+    "zh-CN": "醋酸",
+    "en": "vinegar"
+   },
+   "sensory.alcoholic": {
+    "zh-CN": "酒精感",
+    "en": "boozy"
+   },
+   "sensory.almond": {
+    "zh-CN": "杏仁",
+    "en": "almond"
+   },
+   "sensory.anise": {
+    "zh-CN": "八角",
+    "en": "anise"
+   },
+   "sensory.apple": {
+    "zh-CN": "苹果",
+    "en": "apple"
+   },
+   "sensory.ash": {
+    "zh-CN": "灰烬",
+    "en": "ash"
+   },
+   "sensory.astringent": {
+    "zh-CN": "涩感",
+    "en": "astringent"
+   },
+   "sensory.baked_bread": {
+    "zh-CN": "烤面包",
+    "en": "baked bread"
+   },
+   "sensory.banana": {
+    "zh-CN": "香蕉",
+    "en": "banana"
+   },
+   "sensory.bell_pepper": {
+    "zh-CN": "青椒",
+    "en": "bell pepper"
+   },
+   "sensory.bergamot": {
+    "zh-CN": "佛手柑",
+    "en": "bergamot"
+   },
+   "sensory.bitter": {
+    "zh-CN": "苦",
+    "en": "bitter"
+   },
+   "sensory.black_pepper": {
+    "zh-CN": "黑胡椒",
+    "en": "black pepper"
+   },
+   "sensory.black_tea": {
+    "zh-CN": "红茶",
+    "en": "black tea"
+   },
+   "sensory.blackberry": {
+    "zh-CN": "黑莓",
+    "en": "blackberry"
+   },
+   "sensory.blackcurrant": {
+    "zh-CN": "黑加仑",
+    "en": "blackcurrant"
+   },
+   "sensory.blueberry": {
+    "zh-CN": "蓝莓",
+    "en": "blueberry"
+   },
+   "sensory.brown_sugar": {
+    "zh-CN": "红糖",
+    "en": "brown sugar"
+   },
+   "sensory.burnt": {
+    "zh-CN": "焦苦",
+    "en": "burnt"
+   },
+   "sensory.butter": {
+    "zh-CN": "黄油",
+    "en": "butter"
+   },
+   "sensory.caramel": {
+    "zh-CN": "焦糖",
+    "en": "caramel"
+   },
+   "sensory.cardamom": {
+    "zh-CN": "小豆蔻",
+    "en": "cardamom"
+   },
+   "sensory.cardboard": {
+    "zh-CN": "纸板味",
+    "en": "cardboard"
+   },
+   "sensory.cedar": {
+    "zh-CN": "雪松",
+    "en": "cedar"
+   },
+   "sensory.cereal_grain": {
+    "zh-CN": "谷物",
+    "en": "grain"
+   },
+   "sensory.chamomile": {
+    "zh-CN": "洋甘菊",
+    "en": "chamomile"
+   },
+   "sensory.cherry": {
+    "zh-CN": "车厘子",
+    "en": "cherry"
+   },
+   "sensory.cinnamon": {
+    "zh-CN": "肉桂",
+    "en": "cinnamon"
+   },
+   "sensory.clove": {
+    "zh-CN": "丁香",
+    "en": "clove"
+   },
+   "sensory.cocoa": {
+    "zh-CN": "可可",
+    "en": "cocoa"
+   },
+   "sensory.coconut": {
+    "zh-CN": "椰子",
+    "en": "coconut"
+   },
+   "sensory.creamy_mouthfeel": {
+    "zh-CN": "奶油质地",
+    "en": "creamy"
+   },
+   "sensory.dark_chocolate": {
+    "zh-CN": "黑巧克力",
+    "en": "dark chocolate"
+   },
+   "sensory.drying": {
+    "zh-CN": "干涩",
+    "en": "drying"
+   },
+   "sensory.dusty": {
+    "zh-CN": "灰尘味",
+    "en": "dusty"
+   },
+   "sensory.earthy": {
+    "zh-CN": "泥土",
+    "en": "earthy"
+   },
+   "sensory.eucalyptus": {
+    "zh-CN": "尤加利",
+    "en": "eucalyptus"
+   },
+   "sensory.fermented_character": {
+    "zh-CN": "发酵感",
+    "en": "fermented"
+   },
+   "sensory.fresh_grass": {
+    "zh-CN": "青草",
+    "en": "fresh grass"
+   },
+   "sensory.fullness": {
+    "zh-CN": "饱满",
+    "en": "full"
+   },
+   "sensory.ginger": {
+    "zh-CN": "姜",
+    "en": "ginger"
+   },
+   "sensory.grape": {
+    "zh-CN": "葡萄",
+    "en": "grape"
+   },
+   "sensory.grapefruit": {
+    "zh-CN": "西柚",
+    "en": "grapefruit"
+   },
+   "sensory.green_tea": {
+    "zh-CN": "绿茶",
+    "en": "green tea"
+   },
+   "sensory.green_vegetal": {
+    "zh-CN": "青蔬",
+    "en": "vegetal"
+   },
+   "sensory.hay": {
+    "zh-CN": "干草",
+    "en": "hay"
+   },
+   "sensory.hazelnut": {
+    "zh-CN": "榛果",
+    "en": "hazelnut"
+   },
+   "sensory.honey": {
+    "zh-CN": "蜂蜜",
+    "en": "honey"
+   },
+   "sensory.jasmine": {
+    "zh-CN": "茉莉花",
+    "en": "jasmine"
+   },
+   "sensory.leather": {
+    "zh-CN": "皮革",
+    "en": "leather"
+   },
+   "sensory.lemon": {
+    "zh-CN": "柠檬",
+    "en": "lemon"
+   },
+   "sensory.lemongrass": {
+    "zh-CN": "柠檬草",
+    "en": "lemongrass"
+   },
+   "sensory.lime": {
+    "zh-CN": "青柠",
+    "en": "lime"
+   },
+   "sensory.malt": {
+    "zh-CN": "麦芽",
+    "en": "malt"
+   },
+   "sensory.mango": {
+    "zh-CN": "芒果",
+    "en": "mango"
+   },
+   "sensory.metallic": {
+    "zh-CN": "金属味",
+    "en": "metallic"
+   },
+   "sensory.mint": {
+    "zh-CN": "薄荷",
+    "en": "mint"
+   },
+   "sensory.molasses": {
+    "zh-CN": "黑糖",
+    "en": "molasses"
+   },
+   "sensory.moldy": {
+    "zh-CN": "霉变",
+    "en": "moldy"
+   },
+   "sensory.mouth_coating": {
+    "zh-CN": "挂口",
+    "en": "coating"
+   },
+   "sensory.mushroom": {
+    "zh-CN": "蘑菇",
+    "en": "mushroom"
+   },
+   "sensory.musty": {
+    "zh-CN": "霉味",
+    "en": "musty"
+   },
+   "sensory.nutmeg": {
+    "zh-CN": "肉豆蔻",
+    "en": "nutmeg"
+   },
+   "sensory.orange": {
+    "zh-CN": "甜橙",
+    "en": "orange"
+   },
+   "sensory.orange_blossom": {
+    "zh-CN": "橙花",
+    "en": "orange blossom"
+   },
+   "sensory.paper": {
+    "zh-CN": "纸味",
+    "en": "papery"
+   },
+   "sensory.pea_pod": {
+    "zh-CN": "豌豆荚",
+    "en": "pea pod"
+   },
+   "sensory.peach": {
+    "zh-CN": "水蜜桃",
+    "en": "peach"
+   },
+   "sensory.peanut": {
+    "zh-CN": "花生",
+    "en": "peanut"
+   },
+   "sensory.pear": {
+    "zh-CN": "梨",
+    "en": "pear"
+   },
+   "sensory.pineapple": {
+    "zh-CN": "菠萝",
+    "en": "pineapple"
+   },
+   "sensory.pink_grapefruit": {
+    "zh-CN": "红心西柚",
+    "en": "pink grapefruit"
+   },
+   "sensory.plum": {
+    "zh-CN": "李子",
+    "en": "plum"
+   },
+   "sensory.pomegranate": {
+    "zh-CN": "石榴",
+    "en": "pomegranate"
+   },
+   "sensory.prune": {
+    "zh-CN": "西梅",
+    "en": "prune"
+   },
+   "sensory.raisin": {
+    "zh-CN": "葡萄干",
+    "en": "raisin"
+   },
+   "sensory.raspberry": {
+    "zh-CN": "树莓",
+    "en": "raspberry"
+   },
+   "sensory.roasted_character": {
+    "zh-CN": "烘烤",
+    "en": "roasty"
+   },
+   "sensory.rose": {
+    "zh-CN": "玫瑰",
+    "en": "rose"
+   },
+   "sensory.rubber": {
+    "zh-CN": "橡胶味",
+    "en": "rubbery"
+   },
+   "sensory.salty": {
+    "zh-CN": "咸",
+    "en": "salty"
+   },
+   "sensory.smoky": {
+    "zh-CN": "烟熏",
+    "en": "smoky"
+   },
+   "sensory.smooth_mouthfeel": {
+    "zh-CN": "顺滑",
+    "en": "smooth"
+   },
+   "sensory.sour": {
+    "zh-CN": "尖酸",
+    "en": "sour"
+   },
+   "sensory.stale": {
+    "zh-CN": "陈味",
+    "en": "stale"
+   },
+   "sensory.strawberry": {
+    "zh-CN": "草莓",
+    "en": "strawberry"
+   },
+   "sensory.sweet": {
+    "zh-CN": "甜",
+    "en": "sweet"
+   },
+   "sensory.syrupy_mouthfeel": {
+    "zh-CN": "糖浆感",
+    "en": "syrupy"
+   },
+   "sensory.toast": {
+    "zh-CN": "吐司",
+    "en": "toast"
+   },
+   "sensory.tobacco": {
+    "zh-CN": "烟草",
+    "en": "tobacco"
+   },
+   "sensory.vanilla": {
+    "zh-CN": "香草",
+    "en": "vanilla"
+   },
+   "sensory.walnut": {
+    "zh-CN": "核桃",
+    "en": "walnut"
+   },
+   "sensory.wine_like_character": {
+    "zh-CN": "红酒",
+    "en": "winey"
+   },
+   "sensory.woody": {
+    "zh-CN": "木质",
+    "en": "woody"
+   }
+  },
+  "delta_words": {
+   "zh-CN": {
+    "pos": "比这个语境的理论值更明显",
+    "neg": "比这个语境的理论值更弱"
+   },
+   "en": {
+    "pos": "stronger than this context predicts",
+    "neg": "weaker than this context predicts"
+   }
+  },
+  "context_statements": [
+   {
+    "context_id": "C0_ESPRESSO",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "espresso"
+     }
+    ],
+    "zh-CN": "意式浓缩放大醇厚度与油脂，前段高挥发花果香被压缩。",
+    "en": "Espresso amplifies body and oils; the volatile floral and fruit top notes are compressed.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C0_COLD_BREW",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "cold_brew"
+     }
+    ],
+    "zh-CN": "冷萃抑制低挥发酸，酸质与花香偏弱，甜感与醇厚更突出。",
+    "en": "Cold brew suppresses the low-volatility acids: less acidity and floral lift, more sweetness and body.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C0_V60",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "pour_over_v60"
+     }
+    ],
+    "zh-CN": "手冲快萃优先释放前段高挥发花香与单体果酸。",
+    "en": "Pour-over releases the early, volatile floral and fruit acids first.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C0_FRENCH_PRESS",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "french_press"
+     }
+    ],
+    "zh-CN": "浸泡式萃取带入更多油脂与细粉，醇厚度上升，干净度下降。",
+    "en": "Immersion brewing carries more oils and fines: more body, less clarity.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_LIGHT",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "light"
+     }
+    ],
+    "zh-CN": "浅烘保留更多绿原酸与高挥发香气，酸质与花果香突出。",
+    "en": "Light roasts keep more chlorogenic acids and volatile aromatics: acidity and floral-fruit notes lead.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_MEDIUM_LIGHT",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "medium_light"
+     }
+    ],
+    "zh-CN": "中浅烘保留花果酸质，同时开始形成焦糖化甜感。",
+    "en": "Medium-light roasts keep the floral-fruit acidity while caramelisation sweetness begins.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_MEDIUM",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "medium"
+     }
+    ],
+    "zh-CN": "中烘平衡酸质与美拉德产物，坚果与焦糖增强。",
+    "en": "Medium roasts balance acidity against Maillard products: nut and caramel rise.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_MEDIUM_DARK",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "medium_dark"
+     }
+    ],
+    "zh-CN": "中深烘美拉德产物占比高，醇厚度、巧克力与苦感上升，酸质下降。",
+    "en": "Medium-dark roasts are Maillard-dominated: body, chocolate and bitterness rise, acidity falls.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_DARK",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "dark"
+     }
+    ],
+    "zh-CN": "深烘绿原酸大量降解，焦糖苦与烟熏占主导。",
+    "en": "Dark roasts degrade most chlorogenic acids: caramelised bitterness and smoke dominate.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_VERY_DARK",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "very_dark"
+     }
+    ],
+    "zh-CN": "极深烘以碳化与烟熏为主，品种与产地特征基本被覆盖。",
+    "en": "Very dark roasts are carbonised and smoky; origin and variety character is mostly covered.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_process_WASHED",
+    "parts": [
+     {
+      "axis": "C2_process",
+      "option": "washed"
+     }
+    ],
+    "zh-CN": "水洗去胶质快，内源有机酸突出：干净度高、柑橘、花香、高酸。",
+    "en": "Washed processing removes mucilage quickly; the bean's own organic acids stand out: clean, citrus, floral, high acidity.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_process_NATURAL",
+    "parts": [
+     {
+      "axis": "C2_process",
+      "option": "natural"
+     }
+    ],
+    "zh-CN": "日晒让果肉糖分长时间发酵渗入豆内，还原糖与游离氨基酸升高：果酱、热带水果、高甜、波本感。",
+    "en": "Natural processing lets fruit sugars ferment into the seed: more reducing sugars and free amino acids — jam, tropical fruit, high sweetness.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_process_ANAEROBIC",
+    "parts": [
+     {
+      "axis": "C2_process",
+      "option": "anaerobic"
+     }
+    ],
+    "zh-CN": "厌氧发酵产生大量乳酸与外源酯类：酸奶、厌氧酒香、极高识别度。",
+    "en": "Anaerobic fermentation produces lactic acid and exogenous esters: yoghurt, winey notes, very distinctive.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_process_HONEY",
+    "parts": [
+     {
+      "axis": "C2_process",
+      "option": "honey"
+     }
+    ],
+    "zh-CN": "蜜处理保留部分果胶发酵，甜感与醇厚介于水洗与日晒之间。",
+    "en": "Honey processing keeps part of the mucilage: sweetness and body between washed and natural.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_process_DECAF",
+    "parts": [
+     {
+      "axis": "C2_process",
+      "option": "decaf"
+     }
+    ],
+    "zh-CN": "脱因工艺去除部分前体物质，香气强度整体下降。",
+    "en": "Decaffeination removes some precursors; aroma intensity drops overall.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_variety_GESHA",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "gesha"
+     }
+    ],
+    "zh-CN": "瑰夏基因型花香与柑橘酸质上限极高，醇厚度偏轻。",
+    "en": "The Gesha genotype has a very high ceiling for floral and citrus acidity with a lighter body.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_variety_BOURBON",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "bourbon"
+     }
+    ],
+    "zh-CN": "波本甜感与平衡度好，焦糖与红果常见。",
+    "en": "Bourbon is sweet and balanced; caramel and red fruit are typical.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_variety_SL28_SL34",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "sl28_sl34"
+     }
+    ],
+    "zh-CN": "SL28/SL34 以黑加仑与明亮柑橘酸质著称。",
+    "en": "SL28/SL34 are known for blackcurrant and bright citric acidity.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_variety_ETHIOPIAN_LANDRACE",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "ethiopian_landrace"
+     }
+    ],
+    "zh-CN": "埃塞原生种以茉莉花、柑橘与蓝莓（日晒）为标志。",
+    "en": "Ethiopian landraces are marked by jasmine, citrus and, when natural, blueberry.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_variety_TYPICA",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "typica"
+     }
+    ],
+    "zh-CN": "铁皮卡干净、甜感柔和，醇厚适中。",
+    "en": "Typica is clean and gently sweet with moderate body.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C2_variety_ROBUSTA",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "robusta"
+     }
+    ],
+    "zh-CN": "罗布斯塔前体糖分低、绿原酸与咖啡因高：苦感与醇厚重，花果弱。",
+    "en": "Robusta has low sugar precursors and high chlorogenic acid and caffeine: heavy bitterness and body, little floral-fruit.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C0_V60__C1_LIGHT",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "pour_over_v60"
+     },
+     {
+      "axis": "C1",
+      "option": "light"
+     }
+    ],
+    "zh-CN": "浅烘焙保留了绿原酸与高挥发性花果香，V60 快萃优先释放了前段极性酸质。",
+    "en": "Light roast preserves volatile florals and fruit acids, and V60 fast extraction targets these front-end acids.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12 (design examples)",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C0_ESPRESSO__C1_MEDIUM_DARK",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "espresso"
+     },
+     {
+      "axis": "C1",
+      "option": "medium_dark"
+     }
+    ],
+    "zh-CN": "中深烘的美拉德产物在意式高压下被油脂放大：黑巧、焦糖与厚重口感主导，酸质退到后段。",
+    "en": "Medium-dark Maillard products are amplified by espresso pressure and oils: dark chocolate, caramel and weight lead; acidity retreats.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12 (design examples)",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C0_COLD_BREW__C1_LIGHT",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "cold_brew"
+     },
+     {
+      "axis": "C1",
+      "option": "light"
+     }
+    ],
+    "zh-CN": "冷萃压低了浅烘的低挥发酸，花香减弱、甜感与茶感更清晰。",
+    "en": "Cold brew flattens the light roast's low-volatility acids: less floral lift, clearer sweetness and tea-like body.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12 (design examples)",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_LIGHT__C2_process_WASHED",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "light"
+     },
+     {
+      "axis": "C2_process",
+      "option": "washed"
+     }
+    ],
+    "zh-CN": "浅烘 + 水洗保留了柠檬酸与高极性酯类：柑橘、茉莉与干净的酸质。",
+    "en": "Light roast plus washed processing keeps citric acid and polar esters: citrus, jasmine and clean acidity.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12 (design examples)",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_LIGHT__C2_process_NATURAL",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "light"
+     },
+     {
+      "axis": "C2_process",
+      "option": "natural"
+     }
+    ],
+    "zh-CN": "浅烘 + 日晒把发酵进豆内的果糖与酯类完整保留：蓝莓、果酱与高甜。",
+    "en": "Light roast plus natural processing keeps the fermented fruit sugars and esters: blueberry, jam and high sweetness.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12 (design examples)",
+    "source_id": "owner"
+   },
+   {
+    "context_id": "C1_MEDIUM_DARK__C2_process_ANAEROBIC",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "medium_dark"
+     },
+     {
+      "axis": "C2_process",
+      "option": "anaerobic"
+     }
+    ],
+    "zh-CN": "中深烘 + 厌氧本应呈现较强的黑巧与发酵感；若你尝到更高的酸质，通常是冲煮水温偏低使后段大分子苦酚萃取不足。",
+    "en": "Medium-dark plus anaerobic should read as dark chocolate and fermentation; a brighter acidity usually means the brew ran cool and under-extracted the late bitter phenolics.",
+    "evidence_state": "OWNER_STATEMENT",
+    "citation_ref": "owner 2026-09-12 (design examples)",
+    "source_id": "owner"
+   }
+  ],
+  "tag_rules": {
+   "priority_1": "concept-level tags when concept ids are present, ranked by projection weight against the vector",
+   "priority_2": "dimension-level tags for dominant dimensions (weight > 0.15), first unused tag of the dimension's list",
+   "defect_guard": "defect tags only when defect dominates (>= 0.5)"
+  },
+  "layout": {
+   "headline": "owner_name + display_tags (3-4 minimalist tags)",
+   "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"
+  }
+ },
  "notes": [
-  "profiles carry no owner names yet",
-  "benchmark_beans are the owner's; empty",
-  "cold_brew has no corpus row"
+  "benchmark_beans are the owner's names per profile (benchmark_beans column); vectors for them are not yet built",
+  "cold_brew has no corpus row",
+  "literature claims arrive via db/data/external-literature (ingest-external-literature.py)"
  ]
 }

@@ -98,7 +98,7 @@ def main() -> int:
                 bundle_k[axis][option] = {"vector": kvec(axis, option), "basis": r["basis"], "member_count": int(r["member_count"])}
     proj = {r["canonical_concept_id"]: [float(r[d]) for d in DIMS] for r in rows(OUT / "CONCEPT_DIMENSION_PROJECTION_DRAFT.tsv")}
     profiles = [{"profile_id": r["profile_id"], "member_count": int(r["member_count"]), "top_dimensions": r["top_dimensions"], "centroid": [float(r[f"c_{d}"]) for d in DIMS],
-                 "owner_name_zh": r["owner_name_zh"], "owner_name_en": r["owner_name_en"], "benchmark_beans": r["benchmark_beans"]} for r in rows(OUT / "FLAVOR_PROFILE_LIBRARY.tsv")]
+                 "benchmark_beans": r["benchmark_beans"], "anchor_id": r["anchor_id"]} for r in rows(OUT / "FLAVOR_PROFILE_LIBRARY.tsv")]
     questions = {
         "Q5_acid": {"A": {"acidity": 2, "fruity": 1}, "B": {"acidity": 1, "fermented_winey": 2}, "C": {"body": 1}},
         "Q6_sweet": {"A": {"floral": 1, "sweetness": 2}, "B": {"nutty_chocolate": 2, "bitter_roasted": 1}, "C": {"fruity": 2, "sweetness": 2}},
@@ -107,10 +107,41 @@ def main() -> int:
         "Q9_bitter": {"A": {"nutty_chocolate": 1, "bitter_roasted": 1}, "B": {}},
         "Q10_clean": {"A": {"floral": 1, "acidity": 1}, "B": {"fermented_winey": 1, "body": 1}},
     }
+    # presentation layer (owner 2026-09-12): one vector backend, two languages. Minimalist CN tag
+    # arrays for zh-CN, scientific wording for en; the science line is a collapsible second layer.
+    tags = rows(OUT / "CONCEPT_FLAVOR_TAGS.tsv")
+    split = lambda v: [t for t in v.split("|") if t]
+    dimension_labels = {r["key"].removeprefix("dim:"): {"zh-CN": r["label_zh_cn"], "en": r["label_en"]} for r in tags if r["kind"] == "dimension"}
+    dimension_tags = {r["key"].removeprefix("dim:"): {"zh-CN": split(r["tags_zh_cn"]), "en": split(r["tags_en"])} for r in tags if r["kind"] == "dimension"}
+    concept_tags = {r["key"]: {"zh-CN": r["tags_zh_cn"], "en": r["tags_en"]} for r in tags if r["kind"] == "concept"}
+    statements = []
+    for name in ("CONTEXT_STATEMENTS.tsv", "LITERATURE_CLAIMS.tsv"):
+        path = OUT / name
+        if path.is_file():
+            for r in rows(path):
+                parts = [{"axis": part.split(":")[0], "option": part.split(":")[1]} for part in r["context_parts"].split("|") if ":" in part]
+                statements.append({"context_id": r["context_id"], "parts": parts, "zh-CN": r["statement_zh"], "en": r["statement_en"],
+                                   "evidence_state": r["evidence_state"], "citation_ref": r["citation_ref"], "source_id": r["source_id"]})
+    merged_path = OUT / "CONTEXT_STATEMENTS_MERGED.tsv"
+    with merged_path.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh, delimiter="\t", lineterminator="\n"); w.writerow(["context_id", "context_parts", "statement_zh", "statement_en", "evidence_state", "citation_ref", "source_id"])
+        for st in statements:
+            w.writerow([st["context_id"], "|".join(f"{p['axis']}:{p['option']}" for p in st["parts"]), st["zh-CN"], st["en"], st["evidence_state"], st["citation_ref"], st["source_id"]])
+    for pr, raw in zip(profiles, rows(OUT / "FLAVOR_PROFILE_LIBRARY.tsv")):
+        pr["owner_name"] = {"zh-CN": raw["owner_name_zh"], "en": raw["owner_name_en"]}
+        pr["display_tags"] = {"zh-CN": [t for t in raw["display_tags_zh"].split("|") if t], "en": [t for t in raw["display_tags_en"].split("|") if t]}
+        pr["owner_reviewed"] = raw.get("owner_reviewed", "false") == "true"
+    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "concept_tags": concept_tags,
+                    "delta_words": {"zh-CN": {"pos": "比这个语境的理论值更明显", "neg": "比这个语境的理论值更弱"}, "en": {"pos": "stronger than this context predicts", "neg": "weaker than this context predicts"}},
+                    "context_statements": statements,
+                    "tag_rules": {"priority_1": "concept-level tags when concept ids are present, ranked by projection weight against the vector", "priority_2": "dimension-level tags for dominant dimensions (weight > 0.15), first unused tag of the dimension's list", "defect_guard": "defect tags only when defect dominates (>= 0.5)"},
+                    "layout": {"headline": "owner_name + display_tags (3-4 minimalist tags)", "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"}}
     bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
               "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "matrix_q": questions, "profiles": profiles,
-              "benchmark_beans": [], "notes": ["profiles carry no owner names yet", "benchmark_beans are the owner's; empty", "cold_brew has no corpus row"]}
+              "benchmark_beans": [], "presentation": presentation,
+              "notes": ["benchmark_beans are the owner's names per profile (benchmark_beans column); vectors for them are not yet built", "cold_brew has no corpus row",
+                        "literature claims arrive via db/data/external-literature (ingest-external-literature.py)"]}
     (OUT / "product-vector-v1.json").write_text(json.dumps(bundle, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     summary = {"matrix_rows": len(matrix), "by_axis": {a: sum(1 for r in matrix if r["context_axis"] == a) for a in ("C0", "C1", "C2_variety", "C2_process")},
                "variety_rows": [(r["option"], r["member_count"]) for r in matrix if r["context_axis"] == "C2_variety"],

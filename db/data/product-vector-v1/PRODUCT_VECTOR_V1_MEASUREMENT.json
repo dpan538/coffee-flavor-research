@@ -63,7 +63,131 @@
       "herbal_green=0.77|acidity=0.36|fruity=0.34",
       "defect=0.99|body=0.09|woody_earthy=0.06",
       "body=0.91|acidity=0.36|sweetness=0.22"
-    ]
+    ],
+    "owner_names": {
+      "assigned": [
+        {
+          "anchor": "anchor-16",
+          "name_en": "Off-Flavor / Defect Group",
+          "profile": "profile-v1:02",
+          "similarity": 0.991,
+          "members": 12
+        },
+        {
+          "anchor": "anchor-01",
+          "name_en": "Tropical Stone Fruit",
+          "profile": "profile-v1:00",
+          "similarity": 0.978,
+          "members": 1343
+        },
+        {
+          "anchor": "anchor-05",
+          "name_en": "Bright Citrus & Yuzu Acid",
+          "profile": "profile-v1:10",
+          "similarity": 0.968,
+          "members": 639
+        },
+        {
+          "anchor": "anchor-17",
+          "name_en": "Honeyed Sweet Fruit",
+          "profile": "profile-v1:15",
+          "similarity": 0.95,
+          "members": 983
+        },
+        {
+          "anchor": "anchor-04",
+          "name_en": "Dark Chocolate & Roasted Nut",
+          "profile": "profile-v1:07",
+          "similarity": 0.939,
+          "members": 757
+        },
+        {
+          "anchor": "anchor-03",
+          "name_en": "Pure Cane Sweetness",
+          "profile": "profile-v1:11",
+          "similarity": 0.931,
+          "members": 606
+        },
+        {
+          "anchor": "anchor-11",
+          "name_en": "Smoky Peat & Aged Wood",
+          "profile": "profile-v1:04",
+          "similarity": 0.929,
+          "members": 325
+        },
+        {
+          "anchor": "anchor-02",
+          "name_en": "Nutty Cocoa & Berry",
+          "profile": "profile-v1:12",
+          "similarity": 0.919,
+          "members": 1169
+        },
+        {
+          "anchor": "anchor-10",
+          "name_en": "Full Velvet Body",
+          "profile": "profile-v1:05",
+          "similarity": 0.907,
+          "members": 12
+        },
+        {
+          "anchor": "anchor-07",
+          "name_en": "Wild Forest Berry",
+          "profile": "profile-v1:14",
+          "similarity": 0.904,
+          "members": 592
+        },
+        {
+          "anchor": "anchor-06",
+          "name_en": "Roasted Cedar & Earth",
+          "profile": "profile-v1:13",
+          "similarity": 0.901,
+          "members": 720
+        },
+        {
+          "anchor": "anchor-13",
+          "name_en": "Deep Dark Cocoa Roast",
+          "profile": "profile-v1:08",
+          "similarity": 0.888,
+          "members": 217
+        },
+        {
+          "anchor": "anchor-15",
+          "name_en": "Fresh Herbal & Green Tea",
+          "profile": "profile-v1:06",
+          "similarity": 0.844,
+          "members": 47
+        },
+        {
+          "anchor": "anchor-09",
+          "name_en": "Delicate Jasmine & Floral",
+          "profile": "profile-v1:09",
+          "similarity": 0.837,
+          "members": 387
+        },
+        {
+          "anchor": "anchor-12",
+          "name_en": "Cardamom & Sweet Spice",
+          "profile": "profile-v1:03",
+          "similarity": 0.836,
+          "members": 273
+        },
+        {
+          "anchor": "anchor-14",
+          "name_en": "Anaerobic Rum & Winey",
+          "profile": "profile-v1:01",
+          "similarity": 0.834,
+          "members": 60
+        }
+      ],
+      "unassigned_anchors": [
+        {
+          "anchor": "anchor-08",
+          "name_en": "High Altitude Alpine Acidity",
+          "best_similarity": 0.792
+        }
+      ],
+      "unnamed_profiles": []
+    }
   },
   "coverage": {
     "coffees": 9128,

@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) and R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) and R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -176,42 +176,69 @@ CoffeeReview 的批准（R3-D2）是「内部研究」：它的向量用于标�
 ### 5.3 画像库（数据驱动的第一版，等 owner 命名）
 
 `FLAVOR_PROFILE_LIBRARY.tsv`：对 8,142 个可用向量做确定性 k-means（k = 16，最远点初始化），每个画像有质心、成员数、
-前三维、来源族构成、瑕疵均值，以及留空的 `owner_name_zh / owner_name_en / benchmark_beans`。
+前三维、来源族构成、瑕疵均值，以及 owner 的命名与标杆豆款。
 
-| # | 成员 | 质心前三维 | 读法 |
-|---|---|---|---|
-| 1 | 1,343 | fruity .79, acidity .42, sweetness .40 | 甜果主干 |
-| 2 | 1,169 | nutty_chocolate .61, fruity .57, acidity .39 | 坚果巧克力 + 果 |
-| 3 | 983 | sweetness .72, fruity .54, acidity .32 | 甜果 |
-| 4 | 757 | nutty_chocolate .88, body .28, bitter_roasted .25 | 经典坚果巧克力 |
-| 5 | 720 | nutty_chocolate .61, woody_earthy .54, bitter_roasted .38 | 深烘坚果木质 |
-| 6 | 639 | fruity .71, acidity .64, body .25 | 明亮果酸 |
-| 7 | 606 | sweetness .90, nutty_chocolate .24, body .23 | 甜为主 |
-| 8 | 592 | fruity .60, woody_earthy .55, acidity .40 | 果 + 木质 |
-| 9 | 387 | floral .72, acidity .37, fruity .33 | 花香 |
-| 10 | 325 | woody_earthy .86, bitter_roasted .36, sweetness .22 | 木质烟熏 |
-| 11 | 273 | spice .75, acidity .31, fruity .29 | 香料 |
-| 12 | 217 | bitter_roasted .87, nutty_chocolate .26, body .22 | 深烘苦 |
-| 13 | 60 | fermented_winey .65, acidity .52, nutty_chocolate .48 | 发酵酒香 |
-| 14 | 47 | herbal_green .77, acidity .36, fruity .34 | 草本青草 |
-| 15 | 12 | defect .99 | 瑕疵（负向集合）|
-| 16 | 12 | body .91, acidity .36 | 结构主导残余（12 杯，可并入 7）|
+**命名怎么挂上去（R3-D8）**：owner 的 16 个命名写在 `PROFILE_NAME_ANCHORS.tsv`，每个名字带一个"锚点向量"（owner 陈述的质心特征）、
+中英名、标杆豆款、3–4 个极简标签。构建时每个锚点按余弦挂到最相似的质心（一对一贪心，阈值 0.6），所以重建后名字不会错位。
+本次结果：15 个 owner 锚点挂上（相似度 0.83–0.99）；`anchor-08 高拔明亮清冽酸质` 没有归宿（那个质心在 0.6 权重后消散，最佳 0.79，
+保留在锚点表里等空间变化）；983 杯的「sweetness .72, fruity .54」画像 owner 未命名，操作员提案 `anchor-17 蜂蜜甜果与杏桃 / Honeyed Sweet Fruit`，
+`owner_reviewed=false`，等确认或改名。
+
+| 成员 | 质心前三维 | owner 命名 (zh / en) | 标杆豆款 | 极简标签 (zh-CN) |
+|---|---|---|---|---|
+| 1,343 | fruity .79, acidity .42, sweetness .40 | 熟果与黄桃甜感 / Tropical Stone Fruit | 哥伦比亚 厌氧日晒 / 埃塞 日晒 G1 | 黄桃｜熟果｜蔗糖｜柑橘 |
+| 1,169 | nutty_chocolate .61, fruity .57, acidity .39 | 榛果巧克力与红莓 / Nutty Cocoa & Berry | 危地马拉 安提瓜水洗 | 榛果｜可可｜红莓｜柑橘 |
+| 983 | sweetness .72, fruity .54, acidity .32 | **蜂蜜甜果与杏桃 / Honeyed Sweet Fruit（操作员提案，待确认）** | 埃塞 西达摩 水洗 / 哥伦比亚 蜜处理 | 蜂蜜｜杏桃｜甜橙｜柔和 |
+| 757 | nutty_chocolate .88, body .28, bitter_roasted .25 | 经典黑巧与烤榛果 / Dark Chocolate & Roasted Nut | 哥伦比亚 惠兰水洗 | 黑巧克力｜烤榛果｜红糖｜醇厚 |
+| 720 | nutty_chocolate .61, woody_earthy .54, bitter_roasted .38 | 深烘烤雪松与松露 / Roasted Cedar & Earth | 苏门答腊 湿剥曼特宁 | 雪松｜松露｜黑巧克力｜烟熏 |
+| 639 | fruity .71, acidity .64, body .25 | 鲜明柑橘与柚子酸质 / Bright Citrus & Yuzu Acid | 肯尼亚 AA | 柚子｜柑橘｜黑加仑｜明亮 |
+| 606 | sweetness .90, nutty_chocolate .24, body .23 | 蔗糖与纯净高甜 / Pure Cane Sweetness | 巴西 黄波本 | 蔗糖｜蜂蜜｜焦糖｜柔和 |
+| 592 | fruity .60, woody_earthy .55, acidity .40 | 野生黑加仑与树莓 / Wild Forest Berry | 埃塞 哈拉尔 | 黑加仑｜树莓｜木质｜红酒 |
+| 387 | floral .72, acidity .37, fruity .33 | 高锐茉莉花与白花 / Delicate Jasmine & Floral | 耶加雪菲水洗 / 瑰夏 | 茉莉花｜白花｜佛手柑｜水蜜桃 |
+| 325 | woody_earthy .86, bitter_roasted .36, sweetness .22 | 泥炭烟熏与风干木 / Smoky Peat & Aged Wood | 爪哇 老深烘 | 烟熏｜泥炭｜风干木｜烟草 |
+| 273 | spice .75, acidity .31, fruity .29 | 异域小豆蔻与肉桂 / Cardamom & Sweet Spice | 也门 摩卡 | 小豆蔻｜肉桂｜红糖｜葡萄干 |
+| 217 | bitter_roasted .87, nutty_chocolate .26, body .22 | 深烘重可可与回甘 / Deep Dark Cocoa Roast | 意式拼配 深烘 | 重可可｜焦糖｜烘烤｜回甘 |
+| 60 | fermented_winey .65, acidity .52, nutty_chocolate .48 | 厌氧朗姆与微醺酒香 / Anaerobic Rum & Winey | 洪都拉斯 雪莉桶 / 厌氧日晒瑰夏 | 厌氧朗姆｜酒香｜热带水果｜发酵 |
+| 47 | herbal_green .77, acidity .36, fruity .34 | 清脆草本与绿茶香 / Fresh Herbal & Green Tea | 巴拿马 浅烘铁皮卡 | 茉莉绿茶｜柠檬草｜青苹果｜清脆 |
+| 12 | defect .99 | 瑕疵预警风味 / Off-Flavor / Defect Group | （负向约束集合，不推荐）| 瑕疵｜霉味｜纸味｜陈味 |
+| 12 | body .91, acidity .36 | 丝绒醇厚与糖浆感 / Full Velvet Body | 巴西 半日晒 | 丝绒｜糖浆｜奶油｜醇厚 |
 
 0.6 权重与「≥1 描述词」规则之后，结构打分主导的假画像消失（首版的 550 + 334 杯降到 12 杯）。
 
 ---
 
-## 6. 归因输出
+## 6. 表达层：一个向量后端，两种语言（R3-D8）
 
-推送画像与候选时给出结合物理化学的解释。模板由三部分拼成：
+后端只收敛向量；风味词是前端表达层。zh-CN 渲染中国精品咖啡圈的「极简风味词阵列」（词 A｜词 B｜词 C｜词 D），en 渲染科学化的叙述；
+长解释收进「科学归因」折叠层。数据与规则都在 bundle 的 `presentation` 里，引擎函数 `displayTags()` / `statementsFor()` / `present()`。
 
-1. **吻合/偏置陈述**：取 |ΔV| 最大的 1–2 维，按符号选「吻合」或「发现有趣偏置」句式。
-2. **语境物理句**：从 §2 的物理/化学逻辑表取该 C0–C2 组合对应的句子。
-3. **证据指针**：每条物理句必须带 `evidence_state`：`LITERATURE_CLAIM`（有 round3h `relationship_evidence_claims.tsv` 条目）
-   / `CORPUS_MEASURED`（Matrix_K 从 83K 算出）/ `OWNER_STATEMENT`（仅 owner 表述，未对证）。
+**6.1 标签选择（owner 规则）**
 
-owner 给的两个示例（匹配度 94%…；发现有趣偏置…）作为文案基准收录在 `docs/product/attribution_examples_zh.md`（待写）。
-「V60 冲煮水温偏低导致后段大分子苦酚萃取不足」这类机理句在写入产品前需要 Coffee Ad Astra / UC Davis 的对应数据（§11）。
+| 优先级 | 条件 | 做法 |
+|---|---|---|
+| 1 实体级 | 候选带规范概念 id（用户录入的豆子、标杆豆款）| 按概念投影向量与该向量的点积降序，取前 3–4 个具体名词（茉莉花｜水蜜桃｜佛手柑｜青柠）|
+| 2 维度级 | 只有向量（画像质心、用户未细化）| 权重 > 0.15 的主导维度，映射到维度级中国词库，每维取列表里第一个未用过的词；不暴露抽象维度名 |
+| defect 守卫 | 任何情况 | defect 词只在 defect ≥ 0.5（瑕疵预警卡）时出现；常规卡强制过滤 |
+
+**6.2 词库** `CONCEPT_FLAVOR_TAGS.tsv`：12 个维度各一组中国本土词（owner 的 `DIMENSION_TAG_MAP_CN`：acidity → 清冽果酸｜明亮酸质｜柑橘酸；
+fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧酒香｜朗姆酒｜发酵果酱 …）+ 94 个规范概念各一个中/英极简词
+（按 owner 规则：stone fruit → 黄桃/杏桃，brown sugar → 红糖/蔗糖，winey → 厌氧酒香/朗姆，citrus → 柑橘/柚子，floral → 茉莉花/咖啡花）。
+概念行仍是操作员草案（`owner_reviewed=false`）。
+
+**6.3 科学归因句** `CONTEXT_STATEMENTS.tsv`（owner 的统一 schema）：`context_id`（语境组合键，如 `C0_V60__C1_LIGHT`）、`context_parts`、
+`statement_zh`、`statement_en`、`evidence_state`（`OWNER_STATEMENT` / `CORPUS_MEASURED` / `LITERATURE_CLAIM`）、`citation_ref`。
+现有 27 条：21 条单选项句 + 6 条组合句（如浅烘 × V60、中深烘 × 厌氧）。文献接入后 `LITERATURE_CLAIMS.tsv` 以同一 schema 合并进来
+（`CONTEXT_STATEMENTS_MERGED.tsv` 是合并后的可读表）。引擎只取「所有组成部分都被回答」的句子，最具体的在前。
+
+**6.4 卡片形态**
+
+```
+[ 高锐茉莉花与白花 ]                         ← owner 命名（zh-CN）/ Delicate Jasmine & Floral（en）
+茉莉花 ｜ 白花 ｜ 佛手柑 ｜ 水蜜桃            ← 3–4 个极简标签
+▸ 科学归因                                   ← 折叠层：语境句（带证据级别）+ ΔV 最大两维的偏置句
+  浅烘焙保留了绿原酸与高挥发性花果香，V60 快萃优先释放了前段极性酸质。  [OWNER_STATEMENT]
+  你感受到的酸质比这个语境的理论值更明显。  [COMPUTED_DELTA]
+```
 
 ---
 
@@ -263,7 +290,7 @@ owner 给的两个示例（匹配度 94%…；发现有趣偏置…）作为文�
 ## 8. 运行时形态
 
 - 一个 JSON：投影矩阵、Matrix_K、Matrix_Q、画像库（16 个质心 + owner 命名）、标杆豆款向量、α。
-- 一段前端代码：加权求和 + 余弦 + top-k + 模板拼接；用户自建库存本地（IndexedDB），匹配离线完成。
+- 一段前端代码：加权求和 + 余弦 + top-k + 表达层（`displayTags` / `present`，locale = zh-CN | en）；用户自建库存本地（IndexedDB），匹配离线完成。
 - 落点 `packages/flavor-data/src/`（现有 `research/session.ts` 消费的 v0.2 目录将被替换为 `product-vector-v1`）。
 - 无服务器、无训练、无模型文件。MLP 仅当 Matrix_K 的线性求和被证明不够时才考虑，且输入输出都在这 12 维内；当前不计划。
 
@@ -296,11 +323,11 @@ owner 给的两个示例（匹配度 94%…；发现有趣偏置…）作为文�
 | 语料与语义层 | **完成**（83K，5,656 聚类，141,460 关系边）| CR-1b / CR-2 |
 | 投影矩阵 | 12 维草案完成，94/94 覆盖，**待 owner 逐行审阅** | §1.2 |
 | 向量库 | **完成**（8,899 可用，含结构打分轴）| §5.1 |
-| 画像库 | 16 个数据驱动画像已切出，**待 owner 命名与配标杆豆款** | §5.3 |
+| 画像库 | 16 个画像，15 个挂上 owner 命名与标杆豆款；1 个操作员提案待确认 | §5.3 |
 | Matrix_Q | 完成（owner 给定）| §3 |
 | Matrix_K | C0×C1 可算未算；C2 缺数据 | §2 |
-| 比较/校准 | 公式定稿；α 与「结构轴 : 描述轴」权重待定 | §4 / §5.3 |
-| 归因文案 | 模板结构定稿；机理句缺证据 | §6 |
+| 比较/校准 | 公式定稿；α = 0.5（R3-D8，不再微调）；结构轴权重 0.6 | §4 / §5.3 |
+| 表达层 | 完成：词库（12 维列表 + 94 概念）、27 条归因句、双语 `present()`，10 个测试 | §6 |
 | 用户自建库 | 未开始（本地存储 + 录入表单 + 扫码）| §8 |
 | 前端运行时 | 未开始；现有前端是 v0.2 目录的 demo | §8 |
 | 充分性 | 4 项里 3 项过（饱和、稀疏主干、视野 95%），均匀度差最后一个轴（fermented_winey）| §7 |
@@ -318,7 +345,8 @@ WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（
 | 4 | 前端运行时 `packages/flavor-data/src/product-vector-v1`，纯 JS 推荐与归因引擎 | 引擎完成（`infer()`：V_pred / V_user / ΔV / V_target / 画像与豆款排序 / 语境证据基础），5 个引擎测试通过；页面与用户自建库（IndexedDB）未开始 |
 | 5 | 产品级风味描述与用户用语对齐（owner 新要求）| 未开始：用已批准的 GACTT 消费者描述建立「消费者用语 → 12 维」词表，画像命名与归因文案都从它取词 |
 
-**仍待 owner：** 16 个画像的命名与标杆豆款；α（默认 0.5）；WCR / UC Davis / Coffee Ad Astra 三份材料的具体文件（按逐一审阅规则由 owner 提供）。
+**仍待 owner：** 确认或改名 `anchor-17`（983 杯的甜果画像）；94 个概念级极简词过目；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
+`ingest-external-literature.py` 会把它们并入归因句表。
 
 ---
 
@@ -326,9 +354,9 @@ WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（
 
 | 来源 | 用途 | 状态 |
 |---|---|---|
-| WCR Varieties Catalog | K[C2_variety] 的 sensory potential；品种词表；标杆豆款的品种依据 | **批准（R3-D7）**；等 owner 提供文件 |
-| UC Davis Coffee Center（研磨度–水温–萃取率–感官图谱）| K[C0] 的萃取机理句证据，`LITERATURE_CLAIM` | **批准（R3-D7）**；等 owner 提供文件 |
-| Coffee Ad Astra（Gagné：EY% / TDS 与风味强度）| 归因里的萃取解释，`LITERATURE_CLAIM` | **批准（R3-D7）**；等 owner 提供文件 |
+| WCR Varieties Catalog | K[C2_variety] 的 sensory potential；品种词表；标杆豆款的品种依据 | **批准（R3-D7）**；接入口 `db/data/external-literature/<source_id>.claims.csv` |
+| UC Davis Coffee Center（研磨度–水温–萃取率–感官图谱）| K[C0] 的萃取机理句证据，`LITERATURE_CLAIM` | **批准（R3-D7）**；同上 |
+| Coffee Ad Astra（Gagné：EY% / TDS 与风味强度）| 归因里的萃取解释，`LITERATURE_CLAIM` | **批准（R3-D7）**；同上 |
 | CoffeeReview Body/Acidity 打分列 | 已接入（R3-D6）| 完成 |
 | GACTT（T2 消费者描述）| 消费者语言 → Q5–Q10 文案校准；fermented 轴用词 | 已批准，未接入 |
 | Dryad B8993H（消费者偏好）| 校准层 | 已在 R1 |
