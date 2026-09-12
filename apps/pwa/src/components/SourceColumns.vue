@@ -38,6 +38,9 @@ const totals = computed(() => dims.map((_, i) => families.value.reduce((a, f) =>
 const maxTotal = computed(() => Math.max(...totals.value));
 const yOf = (m: number) => BASE - (Math.log10(m + 1) / Math.log10(maxTotal.value + 1)) * (BASE - TOP - 14);
 const tiers = computed(() => [10, 100, 1000].filter((t) => t < maxTotal.value).map((t) => ({ t, y: yOf(t) })));
+const minorTiers = computed(() => [3, 30, 300, 3000].filter((t) => t < maxTotal.value).map((t) => ({ t, y: yOf(t) })));
+const grand = computed(() => totals.value.reduce((a, b) => a + b, 0));
+const share = (i: number) => `${Math.round((totals.value[i]! / grand.value) * 100)}%`;
 const clamp = (x: number) => Math.max(0, Math.min(1, x));
 const axesIn = computed(() => clamp(props.progress / 0.12));
 const colIn = (i: number) => clamp((props.progress - 0.12 - i * 0.042) / 0.07);
@@ -79,28 +82,30 @@ const tree = computed(() =>
 <template>
   <figure class="w-full text-[#F4F1EA]" data-component="SourceColumns">
     <div class="flex items-start justify-between gap-3">
-      <div class="text-[10.5px] leading-[1.35] text-[#B9B4AA] max-w-[210px]">
-        {{ zh ? '每一根柱子是一类风味特征在全部评审记录里的累计权重（对数刻度）。深浅是来源评审族，柱顶是数值；柱子在底部汇成一条主干：进入分组的记录。' : 'Each column is one flavor feature\'s cumulative weight across every review record (log scale). Shades are the review panels, the dot carries the value; the columns join into one trunk: the records that enter the grouping.' }}
+      <div class="text-[12px] leading-[1.4] text-[#B9B4AA] max-w-[196px]">
+        {{ zh ? '十二类风味特征在全部评审记录里的累计权重（对数刻度）；深浅是来源评审族，字母下是各自占比。' : 'Twelve flavor features by cumulative weight across every review record (log scale); shades are the review panels, the share sits under each letter.' }}
       </div>
-      <ul class="text-[10px] leading-[1.35] shrink-0" data-index="panels">
+      <ul class="text-[11px] leading-[1.35] shrink-0" data-index="panels">
         <li v-for="(f, i) in families" :key="f.family" class="flex gap-2 transition-opacity duration-300" :style="{ opacity: panelIn(i) }">
-          <span class="inline-block w-3 h-[7px] mt-[3px] rounded-[1px] bg-[#F4F1EA]" :style="{ opacity: i === 0 ? 1 : i === 1 ? 0.7 : 0.42 }" /><span class="text-[#B9B4AA]">{{ FAMILY_LABEL[f.family]?.[locale] ?? f.family }} <b class="text-[#F4F1EA] font-medium tabular-nums">{{ fmt(f.coffees) }}</b></span>
+          <span class="inline-block w-3 h-[8px] mt-[4px] rounded-[1px] bg-[#F4F1EA]" :style="{ opacity: i === 0 ? 1 : i === 1 ? 0.7 : 0.42 }" /><span class="text-[#B9B4AA]">{{ FAMILY_LABEL[f.family]?.[locale] ?? f.family }} <b class="text-[#F4F1EA] font-medium tabular-nums">{{ fmt(f.coffees) }}</b></span>
         </li>
       </ul>
     </div>
-    <ul class="grid grid-cols-3 gap-x-2 gap-y-[2px] mt-2 text-[10.5px] leading-[1.3]" data-index="features" :style="{ opacity: axesIn }">
+    <ul class="grid grid-cols-3 gap-x-2 gap-y-[3px] mt-2 text-[12px] leading-[1.3]" data-index="features" :style="{ opacity: axesIn }">
       <li v-for="(d, i) in dims" :key="d" class="flex items-center gap-1.5"><b class="w-3 font-semibold">{{ LETTERS[i] }}</b><span class="inline-block w-2 h-2 rounded-sm" :style="{ backgroundColor: DIM_COLORS[d] }" /><span class="text-[#D8D2C8]">{{ labels[d]?.[locale] }}</span></li>
     </ul>
-    <svg :viewBox="`0 0 ${W} 526`" class="w-full h-auto mt-1" role="img" font-family="inherit">
+    <svg :viewBox="`0 0 ${W} 526`" class="w-full h-auto max-h-[58dvh] mx-auto mt-1" role="img" font-family="inherit">
       <!-- tiers -->
       <g :opacity="axesIn">
+        <line v-for="t in minorTiers" :key="'m' + t.t" x1="18" :x2="W - 6" :y1="t.y" :y2="t.y" stroke="#F4F1EA" stroke-opacity="0.1" stroke-width="0.5" stroke-dasharray="2 3" />
         <line v-for="t in tiers" :key="t.t" x1="18" :x2="W - 6" :y1="t.y" :y2="t.y" stroke="#F4F1EA" stroke-opacity="0.22" stroke-width="0.6" />
-        <text v-for="t in tiers" :key="'l' + t.t" x="4" :y="t.y - 3" font-size="8.5" fill="#B9B4AA">{{ fmt(t.t) }}</text>
+        <text v-for="t in tiers" :key="'l' + t.t" x="4" :y="t.y - 3" font-size="9.5" fill="#B9B4AA">{{ fmt(t.t) }}</text>
         <line x1="18" :x2="W - 6" :y1="BASE" :y2="BASE" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1" />
         <text x="4" :y="BASE - 3" font-size="8.5" fill="#B9B4AA">0</text>
         <g v-for="(x, i) in xs" :key="'g' + i">
           <line :x1="x" :x2="x" :y1="TOP" :y2="BASE" stroke="#F4F1EA" stroke-opacity="0.18" stroke-width="0.6" />
-          <text :x="x" :y="TOP - 10" text-anchor="middle" font-size="11" font-weight="700" fill="#F4F1EA">{{ LETTERS[i] }}</text>
+          <text :x="x" :y="TOP - 14" text-anchor="middle" font-size="12" font-weight="700" fill="#F4F1EA">{{ LETTERS[i] }}</text>
+          <text :x="x" :y="TOP - 3" text-anchor="middle" font-size="8.5" fill="#B9B4AA">{{ share(i) }}</text>
         </g>
       </g>
       <!-- the tree, drawn from each column into the trunk -->
@@ -108,8 +113,9 @@ const tree = computed(() =>
       <!-- the columns -->
       <g v-for="c in columns" :key="c.d">
         <rect v-for="(s, k) in c.segments" :key="k" :x="c.x - 7" :y="s.y" width="14" :height="Math.max(0, s.h)" :fill="c.color" :fill-opacity="s.opacity" />
+        <line v-for="(s, k) in c.segments.slice(1)" :key="'k' + k" :x1="c.x - 9" :x2="c.x + 9" :y1="s.y + s.h" :y2="s.y + s.h" stroke="#0B0A09" stroke-width="1" />
         <circle v-if="c.done" :cx="c.x" :cy="c.top - 6" r="4" :fill="c.color" stroke="#0B0A09" stroke-width="1.2" />
-        <text v-if="c.done" :x="c.x" :y="c.top - 13" text-anchor="middle" font-size="8" fill="#F4F1EA">{{ fmt(c.total) }}</text>
+        <text v-if="c.done" :x="c.x" :y="c.top - 13" text-anchor="middle" font-size="8.5" fill="#F4F1EA">{{ fmt(c.total) }}</text>
       </g>
       <!-- the trunk -->
       <g :opacity="trunkIn">

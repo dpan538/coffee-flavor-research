@@ -104,13 +104,12 @@
 |---|---|---|
 | 关闭 aria / 滑动提示 | 关闭 ｜ 向下滑动 | Close ｜ Scroll |
 | 展开 / 收起 | 展开 ｜ 收起 | Details ｜ Collapse |
-| 第三页标题 | 评审资料如何用于风味描述 | From coffee reviews to flavor descriptions |
-| 第三页导语 | 每一根柱子是一类风味特征在全部评审记录里的累计权重（对数刻度）。深浅是来源评审族，柱顶是数值；柱子在底部汇成一条主干：进入分组的记录。 | Each column is one flavor feature's cumulative weight across every review record (log scale). Shades are the review panels, the dot carries the value; the columns join into one trunk: the records that enter the grouping. |
+| 第三页导语（无标题） | 十二类风味特征在全部评审记录里的累计权重（对数刻度）；深浅是来源评审族，字母下是各自占比。 | Twelve flavor features by cumulative weight across every review record (log scale); shades are the review panels, the share sits under each letter. |
 | 第三页主干 | 8,142 条记录 → 整理为 16 组参考风味 | 8,142 records → organised into 16 reference profiles |
 | 第四页标题 | 本项目整理的 16 组参考风味 | 16 reference profiles organised by this project |
-| 第四页导语 | 圆圈是本项目整理的 16 组参考风味：大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线把每组连到与它最接近的两组，C1–C6 标出最接近的几对。 | Circles are the 16 reference profiles this project organised: size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. White curves join each group to its two nearest, C1–C6 mark the closest pairs. |
-| 第四页环与注释 | 记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录 ｜ 共同点 | the 6 largest ｜ the other 10 ｜ records ｜ shared |
-| 来源页标题 / 字段 | 资料来源 ｜ 来源条款 ｜ 本项目的使用 | Sources ｜ Source terms ｜ Use in this project |
+| 第四页导语 | 大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线连到最接近的两组，C1–C6 是最接近的几对。 | Size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. Curves join the two nearest groups, C1–C6 the closest pairs. |
+| 第四页环与注释 | 记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录 | the 6 largest ｜ the other 10 ｜ records |
+| 来源页（独立一页） | 资料来源 ｜ 本项目使用的三份公开资料，以及每一份的用途与条款。 ｜ 本项目的使用 ｜ 链接与条款 ｜ 来源条款 ｜ 回到顶端 | Sources ｜ The three public sources this project uses, with each one's role and terms. ｜ Use in this project ｜ Link and terms ｜ Source terms ｜ Back to top |
 | 来源族名 | CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ Project Origin 评审 ｜ Cenicafé 受训杯测师 ｜ 印度咖啡局 Fine Cup ｜ 也门 Sheba 拍卖评审 | CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ Project Origin panel ｜ Cenicafé trained cuppers ｜ Coffee Board of India Fine Cup ｜ Sheba Yemen auction panel |
 
 ## 2. 卡片标题、说明标签与差异句（bundle.presentation）
