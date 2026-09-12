@@ -1,6 +1,7 @@
 /**
  * flavorwords design tokens (owner references, 2026-09-12):
- *  - palette from the "여덟 개의 우주" cover (muted retro blocks on grainy off-white) plus the green / terracotta of the lamp painting;
+ *  - palette aligned with the owner's Big Sur Coffee bag cards (2026-09-12): off-white ground, black type, one flat colour block
+ *    each — navy (深烘), lavender / lime (东非拼配), mustard, pink, terracotta, peach, olive (水洗 马森秋); the retro-cover tokens stay for the stack;
  *  - display type in the spirit of the Sesoni poster (tight, condensed grotesk, upper case for en) — "Stack Sans" (open) with condensed fallbacks;
  *  - Chinese in Xiaomi MiSans (open); the fonts are self-hosted from public/fonts (see public/fonts/README.md).
  */
@@ -30,6 +31,14 @@ export default {
         leaf: "#6FA85A",
         terracotta: "#B97C4E",
         cream: "#F3EEE2",
+        navy: "#1F3B5C",
+        lavender: "#A995E3",
+        lime: "#C9DB6E",
+        olive: "#6F8B5A",
+        peach: "#F2C7B5",
+        blossom: "#E97BAF",
+        clay: "#E4724B",
+        ochre: "#CBBB4C",
       },
       fontFamily: {
         display: ['"Stack Sans"', '"MiSans"', '"Helvetica Neue"', '"Arial Narrow"', "system-ui", "sans-serif"],

@@ -77,6 +77,7 @@ export type Presentation = {
 
 const N = DIMENSIONS.length;
 const presentation = bundle.presentation;
+const rules = bundle.context_rules;
 const AXIS_KEYS: Array<[string, keyof ContextAnswers]> = [
   ["C0", "c0_preparation"],
   ["C1", "c1_roast"],
@@ -139,7 +140,6 @@ function kRow(axis: keyof typeof bundle.matrix_k, option: string | undefined): {
 export function buildVPred(context: ContextAnswers): { vPred: Vector; contextBasis: ContextBasis[] } {
   let sum = zero();
   const contextBasis: ContextBasis[] = [];
-  const rules = bundle.context_rules;
   for (const [axis, key] of AXIS_KEYS) {
     if (key === "c2_variety") {
       // blend (owner R3-D13): V_blend = normalize(Σ V_variety_i), at most max_varieties
@@ -301,7 +301,7 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
   return tags;
 }
 
-type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; claims: number; state: string };
+type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; terms_short?: string; use?: string; claims: number; state: string };
 type PresentationExtras = {
   evidence_labels?: Record<string, Record<Locale, string>>;
   delta_templates?: Record<Locale, { pos: string; neg: string }>;
@@ -310,7 +310,35 @@ type PresentationExtras = {
   science_heading?: Record<Locale, string>;
   displayable_evidence_states?: string[];
   defect_note?: Record<Locale, string>;
+  reference_basis_templates?: Record<Locale, { text: string; explain: string; join: string; context_join: string }>;
+  context_labels?: Record<string, Record<Locale, string>>;
 };
+
+/** UI label of a context option (bundle presentation.context_labels; the raw key when unknown). */
+export function contextLabel(option: string, locale: Locale): string {
+  return (presentation as PresentationExtras).context_labels?.[option]?.[locale] ?? option;
+}
+
+/** The initial reference, said once (owner copy review 2, 2026-09-12): which inputs it came from and which
+ *  features it leans toward — computed from V_pred, so it is a statement about the reference, not about the cup. */
+export function referenceBasisLine(result: { vPred: Vector; context: ContextAnswers }, locale: Locale): ScienceLine | null {
+  const t = (presentation as PresentationExtras).reference_basis_templates?.[locale];
+  if (!t) return null;
+  const parts: string[] = [];
+  for (const [, key] of AXIS_KEYS) {
+    const value = result.context[key];
+    for (const v of Array.isArray(value) ? value : value ? [value] : []) parts.push(contextLabel(v, locale));
+  }
+  if (result.context.c2_origin) {
+    const region = (rules.origin_regions as Record<string, { label: Record<Locale, string> }>)[result.context.c2_origin];
+    if (region) parts.push(region.label[locale]);
+  }
+  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
+  const dims = DIMENSIONS.map((d, i) => ({ d, w: result.vPred[i] ?? 0 })).filter((x) => x.w > 0.15).sort((a, b) => b.w - a.w).slice(0, 3).map((x) => labels[x.d]?.[locale] ?? x.d);
+  if (!parts.length || !dims.length) return null;
+  const text = `${t.text.replace("{context}", parts.join(t.context_join)).replace("{dims}", dims.join(t.join))} ${t.explain}`;
+  return { text, evidenceState: "REFERENCE_BASIS", citationRef: "engine: V_pred = normalize(Σ K)", about: "reference_basis", sourceTitle: "engine", sourceLicence: "", label: evidenceLabel("REFERENCE_BASIS", locale), citation: "" };
+}
 
 /** Evidence states a user may see (owner copy review 2026-09-12): a claim pending a locator or re-verification is declared in the data but never shown. */
 export function displayableEvidenceStates(): string[] {
@@ -321,7 +349,7 @@ export function displayableEvidenceStates(): string[] {
 export function defectNote(locale: Locale): ScienceLine | null {
   const text = (presentation as PresentationExtras).defect_note?.[locale];
   if (!text) return null;
-  return { text, evidenceState: "OWNER_STATEMENT", citationRef: "owner copy review 2026-09-12", about: "defect_note", sourceTitle: "owner", sourceLicence: "", label: evidenceLabel("OWNER_STATEMENT", locale), citation: "" };
+  return { text, evidenceState: "PRODUCT_NOTE", citationRef: "owner copy review 2026-09-12", about: "defect_note", sourceTitle: "owner", sourceLicence: "", label: evidenceLabel("PRODUCT_NOTE", locale), citation: "" };
 }
 
 /** consumer-facing label for an evidence state ("研究参考"), never the raw enum */
@@ -356,6 +384,7 @@ export function sourceLicence(sourceId: string): string {
   const registry = ((presentation as { sources?: SourceRow[] }).sources ?? []) as SourceRow[];
   const row = registry.find((r) => r.source_id === sourceId);
   if (!row?.licence_note) return "";
+  if (row.terms_short) return row.terms_short;
   const cc = row.licence_note.match(/\(CC [A-Z-]+ [0-9.]+\)/);
   return cc ? cc[0].slice(1, -1) : row.licence_note.split(" — ")[0]!.split(" (")[0]!;
 }
@@ -399,7 +428,8 @@ export function present(result: InferenceResult, locale: Locale): Presentation {
     return { title: name, tags, similarity: entry.similarity, ownerReviewed: entry.profile.owner_reviewed, profileId: entry.profile.profile_id };
   };
   const [first, ...rest] = result.profiles;
-  const science: ScienceLine[] = statementsFor(result.context, locale);
+  const basis = referenceBasisLine(result, locale);
+  const science: ScienceLine[] = [...(basis ? [basis] : []), ...statementsFor(result.context, locale)];
   for (const { dimension, delta } of result.topDeltaDimensions) {
     if (Math.abs(delta) < 0.1) continue;
     science.push(calibrationLine(dimension, delta, locale));

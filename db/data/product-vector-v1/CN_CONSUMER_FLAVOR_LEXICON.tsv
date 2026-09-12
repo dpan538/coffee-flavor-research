@@ -29,13 +29,13 @@ surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary
 黑芝麻	black sesame	bitter_roasted		nutty_chocolate 0.5	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
 松露巧克力	truffle chocolate	bitter_roasted	sensory.dark_chocolate	nutty_chocolate 0.7	OWNER_SUPPLEMENT_MATRIX_2026-09-12 (大众点评/小红书/淘宝 roaster labels); GACTT expansion pending (Step 5)	true	true
 水果黄酒	fruit huangjiu	fermented_winey	sensory.wine_like_character		OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
-微醺朗姆	tipsy rum	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
-微醺	tipsy	fermented_winey	sensory.alcoholic		OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
+微醺朗姆	tipsy rum	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12; mapper-only OWNER_COPY_REVIEW_2_2026-09-12	true	false
+微醺	tipsy	fermented_winey	sensory.alcoholic		OWNER_STEP5_FERMENTED_WINEY_2026-09-12; mapper-only OWNER_COPY_REVIEW_2_2026-09-12	true	false
 威士忌桶	whisky barrel	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
 雪莉桶	sherry cask	fermented_winey			OWNER_STEP5_FERMENTED_WINEY_2026-09-12	true	true
 野果发酵	funky	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (alt: 厌氧风味 / 特异发酵感)	true	true
 微醺酒香	wine	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (alt: 朗姆酒香)	true	true
-厌氧风味	funk	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12	true	true
+厌氧风味	funk	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12; mapper-only OWNER_COPY_REVIEW_2_2026-09-12	true	false
 苹果酒感	cider	fermented_winey		acidity 0.5	GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (acidity 0.5; alt: 微酸果酒)	true	true
 水果发酵酱	fermented	fermented_winey	sensory.fermented_character		GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (GACTT 221; alt: 厌氧发酵)	true	true
 朗姆酒香	winey	fermented_winey	sensory.wine_like_character		GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (GACTT 10; alt: 微醺酒香)	true	true

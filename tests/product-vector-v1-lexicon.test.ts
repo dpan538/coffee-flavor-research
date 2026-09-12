@@ -17,7 +17,7 @@ const ZH: Case[] = [
   { text: "闻起来像烤面包和榛果", expect: { Q1: "B" } },
   { text: "有热带水果和一点酒香", expect: { Q1: "C" } },
   { text: "回甘像蜂蜜和蔗糖", expect: { Q2: "A" } },
-  { text: "很苦但是像黑巧克力一样甜", expect: { Q2: "B", Q4: "A" }, note: "bittersweet: dark chocolate sweetness + slight bitterness" },
+  { text: "很苦但是像黑巧克力一样甜", expect: { Q2: "B", Q4: "C" }, note: "copy review 2: Q4 is intensity only — 很苦 reads as clearly bitter; the chocolate sweetness goes to Q2" },
   { text: "甜得像果酱", expect: { Q2: "C" } },
   { text: "口感很轻，像果汁", expect: { Q3: "A" } },
   { text: "顺滑像牛奶", expect: { Q3: "B" } },
@@ -42,6 +42,7 @@ const ZH: Case[] = [
   { text: "没什么甜味，尾段很苦", expect: { Q2: "D", Q4: "C" }, note: "absence of sweetness + clearly bitter" },
   { text: "不甜，有一点苦但回甘", expect: { Q2: "D", Q4: "A" }, note: "negation forcing on 甜" },
   { text: "太苦了，苦味盖过其他味道", expect: { Q4: "C" } },
+  { text: "闻不出什么香气，口感很顺滑", expect: { Q1: "D", Q3: "B" }, note: "aroma exit (copy review 2)" },
 ];
 
 const EN: Case[] = [

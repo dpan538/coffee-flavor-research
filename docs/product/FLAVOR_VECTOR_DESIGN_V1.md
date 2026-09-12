@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design) R3-D14 (Vue 3 + Tailwind isolated PWA, two-level claim declaration, three claims files ingested) R3-D15 (visual pass: tonality, 1 : 4 layout, card flow, consumer-facing copy layer, About data visual, mobile UX list) and R3-D16 (owner's copy review: positioning, evidence labelling, claim re-verification, exit options, profile naming), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design) R3-D14 (Vue 3 + Tailwind isolated PWA, two-level claim declaration, three claims files ingested) R3-D15 (visual pass: tonality, 1 : 4 layout, card flow, consumer-facing copy layer, About data visual, mobile UX list) R3-D16 (owner's copy review: positioning, evidence labelling, claim re-verification, exit options, profile naming) and R3-D17 (copy review 2 + mobile pass: UC Davis DOI withdrawn, project rules off the card, initial-reference line, confirmed-profile title, hero home page, 54 dp controls, four-page scroll-driven About), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -477,6 +477,17 @@ owner 的栈裁决：Vue 3（Composition API + TS）+ Tailwind CSS v3 + lucide �
 - 维度与概念校对：`fermented_winey` 中文「发酵与酒香」（去「厌氧」）；香料词去「异域」；醋酸 → 醋味；黑糖 → 糖蜜（黑糖留在消费端词表）；红酒 → 酒香；肯尼亚产地标签去「高磷酸」。
 - About 阅读顺序：产品用途 → 示例风味卡（标明示例）→ 作者与具体工作（研究、设计与开发 · 潘岱，三个数字各带用途：12 类风味特征 / 16 组参考风味 / 94 个风味词）→ 资料范围（83,031 条风味描述记录；9,128 条评审记录，其中 8,142 条进入分组；4,042 位 GACTT 消费者，非本产品用户；3 份来源，8 条上线 / 3 条待复核；版本与统计日期）→ 两张图（「评审资料如何用于风味描述」，带宽 = 累计权重；「16 组参考风味」）→「风味描述如何形成」（参考资料 / 提问方式 / 描述的选择与确认 / 结果的适用范围）→「技术说明」（公式、阈值、余弦；「不训练模型」只作实现说明）→「资料来源」（本项目如何使用这份资料）。「平均 5.7 道题」不再出现在用户文案。
 - 文案总表改为由 esbuild 执行 `view.ts` / `about.ts` 导出，组件内固定文案仍手工登记；每次改源头后重跑 `db/scripts/export-frontend-copy.py`。
+
+**文案审核二 + 移动端整改（R3-D17）**
+
+- 硬错误：UC Davis 条目的 DOI `10.1016/j.foodchem.2020.126567` 实际对应 Chao 等人的姜黄粉光谱鉴别论文，四条 UC Davis 说明全部撤下（`review_state = NEEDS_REVERIFICATION`，locator 清空），来源从读者可见的列表移到内部记录；WCR 许可按官方页面所见记录（可免费下载、打印供个人使用，页面无 CC BY-SA 声明），claims CSV 新增 `use_note` 列，「来源条款」与「本项目的使用」分开展示；owner 自建的成因句是项目规则，改在 About「初始参考如何形成」里解释，不再上卡；中深烘 + 厌氧句去掉「水温偏低」。
+- 卡片折叠层「关于这段描述」：初始参考句（由 V_pred 计算：「根据 手冲、浅烘、水洗，初始参考侧重酸质、花香、果香。初始参考来自评审资料的统计，只是起点，不是这杯咖啡的测定。」）→ 第一条有来源的研究参考 → 差异句「相较于初始参考，你的描述中，{特征}更突出 / 较弱。」证据标签：初始参考 / 资料统计 / 研究参考 / 你的描述 / 提示。
+- 终卡分组名跟随确认的词：`confirmedProfile = rankProfiles(normalize(V_target + picks))`；用户选的词离开建议分组时，标题随之改变（测试锁定）。
+- 题库：Q1 新增「闻不出明显的香气」（增量为空），Q4 改为纯强度（有一点苦 1 / 没有明显苦感 0 / 苦感明显 2，原 A 的 nutty_chocolate 随「回甘」措辞一起去掉）；任何缺席回答都把首次相干检查封顶在 mild。处理法九个选项（日晒、水洗、蜜处理、半水洗、湿刨法、厌氧发酵、乳酸发酵、酒桶发酵、低因），蜜处理等五个在可用向量里不足 30 条，没有参考行，`basis` 写明，V_pred 不受其影响；产地只显示地名。
+- 首页：标题中英文都用「Put this cup into words」；上 1 : 下 2，wordmark 放大；下方两块瓷砖「开始 / 关于」，右上角只留中英文切换；流程中回到 1 : 3。所有 icon 控件 54 × 54，chip ≥ 48，选项 ≥ 60，题目置顶，语境 chip 两行（名称 / 拉丁名），卡片进出用 GSAP 弹性缓动。
+- About 四页：1 从品饮，到表达 + 风味卡示例；2 研究、设计与开发 · 潘岱 + 三个折叠条目（词汇与风味分组 / 提问方式 / 资料与方法）；3 「评审资料如何用于风味描述」在 320dvh 的轨道里随滚动绘制（面板柱先长出、来源逐个揭开、特征标签最后到位，记录数随进度计数）；4 「本项目整理的 16 组参考风味」随滚动一条条画出射线；末尾资料来源（条款与使用分列）。GSAP ScrollTrigger 以抽屉为 scroller；`prefers-reduced-motion` 时直接完整显示。
+- 英文单独编辑：flavor 拼写统一；About this description；3 main suggestions and 5 alternatives；From coffee reviews to flavor descriptions。
+- owner 追加：首页两块瓷砖接近正方形；语言切换改为黑色圆角长方形徽章（参考图上的「极浅烘」标签）；配色对齐 Big Sur Coffee 的豆袋卡片——终卡与示例卡用图一的深蓝 #1F3B5C（对比更高），语境与题卡分别用薰衣草紫、青柠绿、赭黄、粉、陶土橙、蜜桃、橄榄绿（图八）。
 
 ---
 

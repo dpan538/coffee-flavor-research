@@ -15,11 +15,11 @@ import { beansAsVectors, userDatabase } from "flavor-data/user-db";
 export type Stage = "hero" | "context" | "session";
 export type CollectedCard = { key: string; title: string; label: string; color: string };
 
-/** card colours: the retro block palette, one per step so the collected stack reads as the book cover */
+/** card colours: the Big Sur bag palette (owner, 2026-09-12), one flat block per step; the final card is the navy block */
 export const COLORS: Record<string, string> = {
-  c0_preparation: "#F2C24E", c1_roast: "#5FAEE8", c2_variety: "#86CBB4", c2_process: "#F5B0C6", c2_origin: "#9B7B5D",
-  Q0: "#7268C9", Q1: "#EE8F70", Q2: "#86CBB4", Q3: "#7F90B8", Q4: "#DA8A80", Q5: "#5FAEE8",
-  description: "#EFE7D5", final: "#2F7A4C", escalation: "#8C4A4C", hero: "#7268C9",
+  c0_preparation: "#CBBB4C", c1_roast: "#F2C7B5", c2_variety: "#C9DB6E", c2_process: "#E97BAF", c2_origin: "#6F8B5A",
+  Q0: "#A995E3", Q1: "#E4724B", Q2: "#C9DB6E", Q3: "#F2C7B5", Q4: "#E97BAF", Q5: "#CBBB4C",
+  description: "#EFE7D5", final: "#1F3B5C", escalation: "#8C4A4C", hero: "#A995E3",
 };
 export const COLLECT_MS = 520;
 

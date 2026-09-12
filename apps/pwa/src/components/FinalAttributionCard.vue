@@ -36,8 +36,8 @@ async function share(text: string) {
       </div>
     </div>
     <div class="mx-6 mt-5 flex-1 min-h-0 overflow-y-auto border-t border-cream/20 pt-3">
-      <button type="button" class="w-full text-left text-[12px] tracking-[0.2em] opacity-70 py-1" :aria-expanded="open" @click="open = !open">
-        {{ model.scienceHeading }}<span class="float-right">{{ open ? '–' : '+' }}</span>
+      <button type="button" class="fold-toggle text-[13px] tracking-[0.18em] opacity-80" :aria-expanded="open" @click="open = !open">
+        <span>{{ model.scienceHeading }}</span><span class="text-xl leading-none">{{ open ? '–' : '+' }}</span>
       </button>
       <div class="fold" :data-open="open">
         <div>
@@ -52,9 +52,9 @@ async function share(text: string) {
       </div>
     </div>
     <nav class="px-6 pt-4 pb-5 flex items-center justify-between" :aria-label="locale === 'zh-CN' ? '操作' : 'Actions'">
-      <button type="button" class="rounded-full border border-cream/35 p-3.5" :aria-label="labels.home" :title="labels.home" @click="home"><House :size="20" :stroke-width="1.75" /></button>
-      <button type="button" class="rounded-full border border-cream/35 p-3.5" :aria-label="labels.again" :title="labels.again" @click="restart"><RotateCcw :size="20" :stroke-width="1.75" /></button>
-      <button type="button" class="rounded-full bg-cream text-ink p-3.5" :aria-label="labels.share" :title="labels.share" @click="share(model.shareText)"><Share2 :size="20" :stroke-width="1.75" /></button>
+      <button type="button" class="rounded-full border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.home" :title="labels.home" @click="home"><House :size="22" :stroke-width="1.75" /></button>
+      <button type="button" class="rounded-full border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.again" :title="labels.again" @click="restart"><RotateCcw :size="22" :stroke-width="1.75" /></button>
+      <button type="button" class="rounded-full bg-cream text-ink w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.share" :title="labels.share" @click="share(model.shareText)"><Share2 :size="22" :stroke-width="1.75" /></button>
     </nav>
   </section>
 </template>

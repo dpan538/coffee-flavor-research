@@ -356,6 +356,30 @@
        "passion fruit"
       ]
      }
+    },
+    "D": {
+     "label": {
+      "zh-CN": "闻不出明显的香气",
+      "en": "no clear aroma"
+     },
+     "cues": {
+      "zh-CN": [
+       "闻不出",
+       "没什么香气",
+       "香气不明显",
+       "说不上来",
+       "没什么味道",
+       "香气很淡",
+       "闻不到"
+      ],
+      "en": [
+       "no aroma",
+       "hardly any aroma",
+       "can't smell much",
+       "faint aroma",
+       "no clear aroma"
+      ]
+     }
     }
    },
    "owner_reviewed": true
@@ -558,40 +582,35 @@
    "options": {
     "A": {
      "label": {
-      "zh-CN": "有一点苦，但像黑巧一样回甘",
-      "en": "a little, but it turns sweet like dark chocolate"
+      "zh-CN": "有一点苦",
+      "en": "a little bitter"
      },
      "cues": {
       "zh-CN": [
-       "微苦",
        "有一点苦",
        "有点苦",
+       "微苦",
        "一点苦",
        "略苦",
-       "回甘",
        "苦得舒服",
-       "黑巧一样的苦",
-       "像黑巧",
-       "黑巧克力一样",
        "苦中带甜",
-       "带一点苦"
+       "带一点苦",
+       "回甘"
       ],
       "en": [
        "slightly bitter",
        "a little bitter",
        "a bit bitter",
        "touch of bitterness",
-       "lingering sweet",
        "bittersweet",
-       "pleasant bitterness",
-       "like dark chocolate"
+       "pleasant bitterness"
       ]
      }
     },
     "B": {
      "label": {
-      "zh-CN": "完全不苦",
-      "en": "none at all"
+      "zh-CN": "没有明显苦感",
+      "en": "no noticeable bitterness"
      },
      "cues": {
       "zh-CN": [
@@ -599,19 +618,22 @@
        "完全不苦",
        "没有苦",
        "无苦",
-       "一点都不苦"
+       "一点都不苦",
+       "没有明显苦",
+       "不太苦"
       ],
       "en": [
        "not bitter",
        "no bitterness",
-       "zero bitterness"
+       "zero bitterness",
+       "no noticeable bitterness"
       ]
      }
     },
     "C": {
      "label": {
-      "zh-CN": "苦味明显，盖过其他味道",
-      "en": "clearly bitter, over the other flavours"
+      "zh-CN": "苦感明显",
+      "en": "clearly bitter"
      },
      "cues": {
       "zh-CN": [
@@ -627,7 +649,8 @@
        "苦味盖过",
        "盖过",
        "苦得厉害",
-       "苦味明显"
+       "苦味明显",
+       "苦感明显"
       ],
       "en": [
        "very bitter",
@@ -653,7 +676,7 @@
     "A": {
      "label": {
       "zh-CN": "味道一层一层，分得清",
-      "en": "flavours come one at a time, distinct"
+      "en": "flavors come one at a time, distinct"
      },
      "cues": {
       "zh-CN": [
@@ -674,7 +697,7 @@
     "B": {
      "label": {
       "zh-CN": "味道混在一起，饱满",
-      "en": "flavours blend together, full"
+      "en": "flavors blend together, full"
      },
      "cues": {
       "zh-CN": [
@@ -707,8 +730,8 @@
   "origin_regions": {
    "ethiopia_east_africa": {
     "label": {
-     "zh-CN": "埃塞俄比亚 / 东非（花香果酸）",
-     "en": "Ethiopia / East Africa (floral, bright)"
+     "zh-CN": "埃塞俄比亚 / 东非",
+     "en": "Ethiopia / East Africa"
     },
     "bias": [
      "floral",
@@ -717,8 +740,8 @@
    },
    "colombia_central_south_america": {
     "label": {
-     "zh-CN": "哥伦比亚 / 中南美（均衡果酸）",
-     "en": "Colombia / Central & South America (balanced fruit acidity)"
+     "zh-CN": "哥伦比亚 / 中南美",
+     "en": "Colombia / Central & South America"
     },
     "bias": [
      "fruity",
@@ -727,8 +750,8 @@
    },
    "yunnan": {
     "label": {
-     "zh-CN": "云南（坚果 / 红糖 / 厌氧）",
-     "en": "Yunnan (nutty, brown sugar, anaerobic)"
+     "zh-CN": "云南",
+     "en": "Yunnan"
     },
     "bias": [
      "fermented_winey",
@@ -737,8 +760,8 @@
    },
    "kenya": {
     "label": {
-     "zh-CN": "肯尼亚（黑加仑 / 乌梅）",
-     "en": "Kenya (blackcurrant, dark plum)"
+     "zh-CN": "肯尼亚",
+     "en": "Kenya"
     },
     "bias": [
      "acidity",
@@ -907,8 +930,8 @@
   "consumer_notes": 9997,
   "literature_sources": 3,
   "literature_claims": 11,
-  "literature_claims_live": 8,
-  "literature_claims_pending_review": 3,
+  "literature_claims_live": 6,
+  "literature_claims_pending_review": 5,
   "mean_questions": 5.7
  },
  "alpha_default": 0.5,
@@ -2606,42 +2629,6 @@
    }
   },
   "C2_process": {
-   "anaerobic": {
-    "vector": [
-     0.4531,
-     0.2854,
-     0.3837,
-     0.1294,
-     0.5282,
-     0.4368,
-     0.0783,
-     0.1875,
-     0.1607,
-     0.0164,
-     0.11,
-     0.0065
-    ],
-    "basis": "CORPUS_MEASURED_COFFEEREVIEW_USABLE_VECTORS",
-    "member_count": 52
-   },
-   "decaf": {
-    "vector": [
-     0.212,
-     0.6175,
-     0.2141,
-     0.058,
-     0.3019,
-     0.4201,
-     0.07,
-     0.3801,
-     0.0474,
-     0.0231,
-     0.3236,
-     0.0072
-    ],
-    "basis": "CORPUS_MEASURED_COFFEEREVIEW_USABLE_VECTORS",
-    "member_count": 66
-   },
    "natural": {
     "vector": [
      0.435,
@@ -2657,7 +2644,7 @@
      0.1571,
      0.0119
     ],
-    "basis": "CORPUS_MEASURED_COFFEEREVIEW_USABLE_VECTORS",
+    "basis": "CORPUS_MEASURED",
     "member_count": 879
    },
    "washed": {
@@ -2675,8 +2662,69 @@
      0.209,
      0.0095
     ],
-    "basis": "CORPUS_MEASURED_COFFEEREVIEW_USABLE_VECTORS",
+    "basis": "CORPUS_MEASURED",
     "member_count": 1819
+   },
+   "honey": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (honey / pulped natural / semi-washed reviews with a usable vector are below the minimum of 30)",
+    "member_count": null
+   },
+   "semi_washed": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (grouped with honey by the extraction lexicon; below the minimum of 30)",
+    "member_count": null
+   },
+   "wet_hulled": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (2 reviews, below the minimum of 30)",
+    "member_count": null
+   },
+   "anaerobic": {
+    "vector": [
+     0.4531,
+     0.2854,
+     0.3837,
+     0.1294,
+     0.5282,
+     0.4368,
+     0.0783,
+     0.1875,
+     0.1607,
+     0.0164,
+     0.11,
+     0.0065
+    ],
+    "basis": "CORPUS_MEASURED",
+    "member_count": 52
+   },
+   "lactic": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (not in the extraction lexicon)",
+    "member_count": null
+   },
+   "barrel_aged": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (not in the extraction lexicon)",
+    "member_count": null
+   },
+   "decaf": {
+    "vector": [
+     0.212,
+     0.6175,
+     0.2141,
+     0.058,
+     0.3019,
+     0.4201,
+     0.07,
+     0.3801,
+     0.0474,
+     0.0231,
+     0.3236,
+     0.0072
+    ],
+    "basis": "CORPUS_MEASURED",
+    "member_count": 66
    }
   }
  },
@@ -2731,11 +2779,11 @@
    "C": {
     "fermented_winey": 2,
     "fruity": 2
-   }
+   },
+   "D": {}
   },
   "Q9_bitter": {
    "A": {
-    "nutty_chocolate": 1,
     "bitter_roasted": 1
    },
    "B": {},
@@ -3408,7 +3456,9 @@
     "source_id": "coffee_ad_astra",
     "title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction",
     "locator": "https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
-    "licence_note": "Personal blog & research citations / author attribution per public research principles (owner note 2026-09-12)",
+    "licence_note": "Author's public blog and self-published book; cited with author attribution, no text reproduced (owner note 2026-09-12)",
+    "terms_short": "Author's public blog and self-published book",
+    "use": "Extraction-physics explanations paraphrased for the notes on channeling and extraction yield; cited with author attribution.",
     "claims": 3,
     "claims_live": 3,
     "claims_pending_review": 0,
@@ -3417,18 +3467,22 @@
    {
     "source_id": "uc_davis_coffee_center",
     "title": "UC Davis Coffee Center — brewing kinetics and sensory maps",
-    "locator": "DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
-    "licence_note": "Academic citation / educational & research attribution under fair use (owner note 2026-09-12)",
+    "locator": "",
+    "licence_note": "Academic citation — pending: the cited DOI does not resolve to a coffee paper (external check 2026-09-12)",
+    "terms_short": "Academic citation",
+    "use": "Withdrawn until the source is re-established from the paper actually read.",
     "claims": 4,
-    "claims_live": 2,
-    "claims_pending_review": 2,
+    "claims_live": 0,
+    "claims_pending_review": 4,
     "state": "LITERATURE_CLAIM"
    },
    {
     "source_id": "wcr_sensory_lexicon",
     "title": "World Coffee Research — Sensory Lexicon / Varieties Catalog",
     "locator": "https://worldcoffeeresearch.org/resources/sensory-lexicon",
-    "licence_note": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — attribution required; derivative lexicon data must be shared alike (owner note 2026-09-12)",
+    "licence_note": "Official resource page offers free download and printing of copies for personal use; no CC BY-SA statement found on the page — formal terms to be confirmed (external check 2026-09-12)",
+    "terms_short": "Official resource page offers free download and printing of copies for personal use",
+    "use": "Attribute names and reference definitions consulted to align the 94 flavor words and the roast-level notes; no lexicon text reproduced.",
     "claims": 4,
     "claims_live": 3,
     "claims_pending_review": 1,
@@ -3567,7 +3621,7 @@
      "发酵果酱"
     ],
     "en": [
-     "anaerobic winey",
+     "winey",
      "rum",
      "fermented jam"
     ]
@@ -4020,9 +4074,9 @@
    }
   },
   "evidence_labels": {
-   "OWNER_STATEMENT": {
-    "zh-CN": "参考说明",
-    "en": "Reference note"
+   "REFERENCE_BASIS": {
+    "zh-CN": "初始参考",
+    "en": "Initial reference"
    },
    "CORPUS_MEASURED": {
     "zh-CN": "资料统计",
@@ -4033,24 +4087,165 @@
     "en": "Research reference"
    },
    "COMPUTED_DELTA": {
-    "zh-CN": "描述差异",
-    "en": "Where your description differs"
+    "zh-CN": "你的描述",
+    "en": "Your description"
+   },
+   "PRODUCT_NOTE": {
+    "zh-CN": "提示",
+    "en": "Note"
    }
   },
   "displayable_evidence_states": [
-   "OWNER_STATEMENT",
+   "REFERENCE_BASIS",
    "CORPUS_MEASURED",
    "LITERATURE_CLAIM",
-   "COMPUTED_DELTA"
+   "COMPUTED_DELTA",
+   "PRODUCT_NOTE"
   ],
   "delta_templates": {
    "zh-CN": {
-    "pos": "这次的描述中，{label}更突出。仅凭目前的信息，还无法判断这种差异的原因。",
-    "neg": "这次的描述中，{label}不太明显。仅凭目前的信息，还无法判断这种差异的原因。"
+    "pos": "相较于初始参考，你的描述中，{label}更突出。",
+    "neg": "相较于初始参考，你的描述中，{label}较弱。"
    },
    "en": {
-    "pos": "In this description, {label} stands out more than this cup's setup usually shows. From what we have, the reason cannot be told.",
-    "neg": "In this description, {label} comes through less than this cup's setup usually shows. From what we have, the reason cannot be told."
+    "pos": "Compared with the initial reference profile, {label} is more pronounced in your description.",
+    "neg": "Compared with the initial reference profile, {label} is less pronounced in your description."
+   }
+  },
+  "reference_basis_templates": {
+   "zh-CN": {
+    "text": "根据{context}，初始参考侧重{dims}。",
+    "explain": "初始参考来自评审资料的统计，只是起点，不是这杯咖啡的测定。",
+    "join": "、",
+    "context_join": "、"
+   },
+   "en": {
+    "text": "From {context}, the initial reference leans toward {dims}.",
+    "explain": "It comes from the review data and is a starting point, not a measurement of this cup.",
+    "join": ", ",
+    "context_join": ", "
+   }
+  },
+  "context_labels": {
+   "pour_over_v60": {
+    "zh-CN": "手冲 (V60)",
+    "en": "Pour-over (V60)"
+   },
+   "french_press": {
+    "zh-CN": "法压",
+    "en": "French press"
+   },
+   "espresso": {
+    "zh-CN": "意式浓缩",
+    "en": "Espresso"
+   },
+   "cold_brew": {
+    "zh-CN": "冷萃",
+    "en": "Cold brew"
+   },
+   "very_light": {
+    "zh-CN": "极浅烘",
+    "en": "Very light"
+   },
+   "light": {
+    "zh-CN": "浅烘",
+    "en": "Light"
+   },
+   "medium_light": {
+    "zh-CN": "中浅烘",
+    "en": "Medium-light"
+   },
+   "medium": {
+    "zh-CN": "中烘",
+    "en": "Medium"
+   },
+   "medium_dark": {
+    "zh-CN": "中深烘",
+    "en": "Medium-dark"
+   },
+   "dark": {
+    "zh-CN": "深烘",
+    "en": "Dark"
+   },
+   "very_dark": {
+    "zh-CN": "极深烘",
+    "en": "Very dark"
+   },
+   "gesha": {
+    "zh-CN": "瑰夏 Gesha",
+    "en": "Gesha"
+   },
+   "bourbon": {
+    "zh-CN": "波本 Bourbon",
+    "en": "Bourbon"
+   },
+   "typica": {
+    "zh-CN": "铁皮卡 Typica",
+    "en": "Typica"
+   },
+   "caturra": {
+    "zh-CN": "卡杜拉 Caturra",
+    "en": "Caturra"
+   },
+   "catuai": {
+    "zh-CN": "卡杜艾 Catuai",
+    "en": "Catuai"
+   },
+   "sl28_sl34": {
+    "zh-CN": "SL28 / SL34",
+    "en": "SL28 / SL34"
+   },
+   "pacamara": {
+    "zh-CN": "帕卡马拉 Pacamara",
+    "en": "Pacamara"
+   },
+   "castillo": {
+    "zh-CN": "卡斯蒂略 Castillo",
+    "en": "Castillo"
+   },
+   "robusta": {
+    "zh-CN": "罗布斯塔 Robusta",
+    "en": "Robusta"
+   },
+   "ethiopian_landrace": {
+    "zh-CN": "埃塞原生种 Heirloom",
+    "en": "Ethiopian landrace"
+   },
+   "natural": {
+    "zh-CN": "日晒",
+    "en": "Natural"
+   },
+   "washed": {
+    "zh-CN": "水洗",
+    "en": "Washed"
+   },
+   "honey": {
+    "zh-CN": "蜜处理",
+    "en": "Honey"
+   },
+   "semi_washed": {
+    "zh-CN": "半水洗",
+    "en": "Semi-washed"
+   },
+   "wet_hulled": {
+    "zh-CN": "湿刨法",
+    "en": "Wet-hulled"
+   },
+   "anaerobic": {
+    "zh-CN": "厌氧发酵",
+    "en": "Anaerobic"
+   },
+   "lactic": {
+    "zh-CN": "乳酸发酵",
+    "en": "Lactic fermentation"
+   },
+   "barrel_aged": {
+    "zh-CN": "酒桶发酵",
+    "en": "Barrel-aged"
+   },
+   "decaf": {
+    "zh-CN": "低因",
+    "en": "Decaf"
    }
   },
   "citation_prefix": {
@@ -4066,8 +4261,8 @@
    "en": "This cup's flavor"
   },
   "science_heading": {
-   "zh-CN": "相关风味说明",
-   "en": "Flavor notes"
+   "zh-CN": "关于这段描述",
+   "en": "About this description"
   },
   "defect_note": {
    "zh-CN": "这些描述常与储存或处理有关，值得再喝一口确认。这里不对这杯咖啡做质量判断。",
@@ -4496,10 +4691,10 @@
       "option": "anaerobic"
      }
     ],
-    "zh-CN": "中深烘 + 厌氧常见的表现是黑巧与发酵感并存；若你尝到的酸质更高，与这个组合的常见表现不同。水温偏低是可能的原因之一，但仅凭描述无法确定。",
-    "en": "Medium-dark plus anaerobic usually reads as dark chocolate with fermentation; a brighter acidity differs from the usual pattern for this combination. A cool brew is one possible reason, but the description alone cannot tell.",
+    "zh-CN": "中深烘 + 厌氧常见的表现是黑巧与发酵感并存；若你尝到的酸质更高，与这个组合的常见表现不同。",
+    "en": "Medium-dark plus anaerobic usually reads as dark chocolate with fermentation; a brighter acidity differs from the usual pattern for this combination.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12 (design examples); reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
+    "citation_ref": "owner 2026-09-12 (design examples); reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description); cause clause removed OWNER_COPY_REVIEW_2_2026-09-12",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4582,7 +4777,7 @@
     "zh-CN": "快萃与较高水温优先溶解极性较高的有机酸分子，前段酸质与花果香先被释放。",
     "en": "Fast extraction at higher water temperature dissolves the more polar organic acids first, so acidity and floral-fruit notes lead.",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4597,7 +4792,7 @@
     "zh-CN": "研磨度过细会加速大分子绿原酸内酯的释放，从而增加尾段苦感；高压萃取同时带出更多油脂与醇厚度。",
     "en": "Too fine a grind accelerates the release of large chlorogenic-acid lactones and adds late bitterness; pressure extraction also carries more oils and body.",
     "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4611,8 +4806,8 @@
     ],
     "zh-CN": "低温长时萃取下，挥发性酸与酸质通常更弱，感官图谱偏向甜感与圆润。",
     "en": "Under long, cold extraction the volatile acids and acidity are usually weaker; the sensory map shifts toward sweetness and roundness.",
-    "evidence_state": "LITERATURE_CLAIM",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
+    "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4626,8 +4821,8 @@
     ],
     "zh-CN": "浸泡式萃取与金属滤网让更多细粉与油脂进入杯中，醇厚度上升、干净度下降。",
     "en": "Immersion brewing through a metal filter passes more fines and oils: more body, less clarity.",
-    "evidence_state": "LITERATURE_CLAIM",
-    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
+    "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
    },
@@ -4997,13 +5192,10 @@
      "黄酒",
      "热带水果发酵酱",
      "水果黄酒",
-     "微醺朗姆",
-     "微醺",
      "威士忌桶",
      "雪莉桶",
      "野果发酵",
      "微醺酒香",
-     "厌氧风味",
      "苹果酒感",
      "水果发酵酱",
      "朗姆酒香"
@@ -5015,13 +5207,10 @@
      "huangjiu",
      "tropical fruit ferment",
      "fruit huangjiu",
-     "tipsy rum",
-     "tipsy",
      "whisky barrel",
      "sherry cask",
      "funky",
      "wine",
-     "funk",
      "cider",
      "fermented",
      "winey"

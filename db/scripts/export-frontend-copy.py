@@ -21,6 +21,7 @@ SRC = ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1"
 
 # strings that live in Vue components (not in the bundle, not in view.ts / about.ts)
 COMPONENT_STRINGS = {
+    "首页 App.vue（两块瓷砖）": [("开始 / 关于 瓷砖", "开始 ｜ 关于", "Start ｜ About")],
     "语境卡 ContextSetupCard": [
         ("小标签", "这杯咖啡", "This cup"),
         ("单品 / 拼配切换后缀", "≤ 3", "≤ 3"),
@@ -31,13 +32,14 @@ COMPONENT_STRINGS = {
     "Q6 EscalationModal": [("小标签", "再看一眼", "One more look")],
     "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享", "Home ｜ Start over ｜ Share"), ("操作区 aria", "操作", "Actions")],
     "上方堆叠 CollectedStack": [("勾选卡标题", "你的 5 个词", "Your 5 words"), ("收集中 aria", "收集中", "collecting")],
-    "About 抽屉 AboutDrawer": [
-        ("关闭 aria", "关闭", "Close"), ("展开 / 收起", "展开 ｜ 收起", "Details ｜ Collapse"),
-        ("数据流标题", "评审资料如何用于风味描述", "How the review material feeds the descriptions"),
-        ("数据流注", "左：来源评审族与记录数；右：12 类风味特征；带宽是该来源在该特征上的累计权重（每条记录的风味词投影到该特征后求和）", "left: source panels and their record counts; right: the 12 flavor features; ribbon width is that source's cumulative weight on that feature (each record's flavor words projected onto the feature, summed)"),
-        ("光谱标题", "16 组参考风味", "16 reference profiles"),
-        ("光谱注", "本项目从所用资料中整理的分组，不是咖啡的全部分类；每条射线一组，长度按记录数的对数刻度，刻度色是它主要的风味特征", "groups organised from the material used here, not a taxonomy of all coffee; one ray per group, length on a log scale of its records, tick colours its main flavor features"),
-        ("来源标题 / 行前缀 / 待复核", "资料来源 ｜ 本项目如何使用这份资料 ｜ 条待复核，未上线", "Sources ｜ How this project uses it ｜ held back until re-verified"),
+    "About 抽屉 AboutDrawer（四页）": [
+        ("关闭 aria / 滑动提示", "关闭 ｜ 向下滑动", "Close ｜ Scroll"), ("展开 / 收起", "展开 ｜ 收起", "Details ｜ Collapse"),
+        ("第三页标题", "评审资料如何用于风味描述", "From coffee reviews to flavor descriptions"),
+        ("第三页计数后缀", "条记录进入参考风味分组", "records enter the reference-profile grouping"),
+        ("第三页图注", "左：来源评审族与记录数；右：12 类风味特征；带宽是该来源在该特征上的累计权重。", "left: source panels and their record counts; right: the 12 flavor features; ribbon width is that source's cumulative weight on that feature."),
+        ("第四页标题", "本项目整理的 16 组参考风味", "16 reference profiles organised by this project"),
+        ("第四页图注", "每条射线一组，长度按记录数的对数刻度，刻度色是它主要的风味特征。", "one ray per group, length on a log scale of its records, tick colours its main flavor features."),
+        ("来源页标题 / 字段", "资料来源 ｜ 来源条款 ｜ 本项目的使用", "Sources ｜ Source terms ｜ Use in this project"),
         ("来源族名", "CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 储藏实验 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ 其他评审", "CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader storage panel ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ other panels"),
     ],
 }
@@ -137,18 +139,16 @@ def main() -> int:
     rows = [(k.removeprefix("sensory."), v["zh-CN"], v["en"]) for k, v in sorted(P["concept_tags"].items())]
     md += [table(["概念", "中文", "English"], rows), ""]
 
-    md += ["## 7. 相关风味说明（折叠层里的句子）", "", "标签为空的行不上屏（待复核）。", ""]
-    rows = [(s["context_id"], P["evidence_labels"].get(s["evidence_state"], {}).get("zh-CN", "（不上屏：" + s["evidence_state"] + "）"), s["zh-CN"], s["en"], (s.get("source_title") or "").split(" — ")[0]) for s in P["context_statements"]]
+    md += ["## 7. 关于这段描述（折叠层里的句子）", "", "标签为「（不上屏）」的行不出现在产品里：owner 自建的成因句是项目规则（在 About 的「初始参考如何形成」里解释），待复核的文献句撤下。", ""]
+    rows = [("初始参考句模板", P["evidence_labels"]["REFERENCE_BASIS"]["zh-CN"], P["reference_basis_templates"]["zh-CN"]["text"] + " " + P["reference_basis_templates"]["zh-CN"]["explain"], P["reference_basis_templates"]["en"]["text"] + " " + P["reference_basis_templates"]["en"]["explain"], "engine")]
+    rows += [(s["context_id"], P["evidence_labels"].get(s["evidence_state"], {}).get("zh-CN", "（不上屏：" + s["evidence_state"] + "）") if s["evidence_state"] in P["displayable_evidence_states"] else "（不上屏：" + s["evidence_state"] + "）", s["zh-CN"], s["en"], (s.get("source_title") or "").split(" — ")[0]) for s in P["context_statements"]]
     md += [table(["语境", "标签", "中文", "English", "出处"], rows), ""]
 
     md += ["## 8. About（about.ts，经执行导出）", ""]
     rows = [("页面小标题", zh["title"]["title"], en["title"]["title"]), ("Eyebrow", zh["approach"]["eyebrow"], en["approach"]["eyebrow"]), ("标题", zh["approach"]["title"], en["approach"]["title"])]
     for i, (a, b) in enumerate(zip(zh["approach"]["intro"], en["approach"]["intro"]), 1):
         rows.append((f"导言 {i}", a, b))
-    rows.append(("参考段标题", zh["approach"]["referenceTitle"], en["approach"]["referenceTitle"]))
-    for i, (a, b) in enumerate(zip(zh["approach"]["reference"], en["approach"]["reference"]), 1):
-        rows.append((f"参考段 {i}", a, b))
-    rows += [("示例卡 eyebrow", zh["example"]["eyebrow"], en["example"]["eyebrow"]), ("示例卡标题", zh["example"]["title"], en["example"]["title"]), ("示例卡词", " ｜ ".join(zh["example"]["words"]), " ｜ ".join(en["example"]["words"])), ("示例卡注", zh["example"]["note"], en["example"]["note"])]
+    rows += [("示例卡 eyebrow", zh["example"]["eyebrow"], en["example"]["eyebrow"]), ("示例卡标题", zh["example"]["title"], en["example"]["title"]), ("示例卡词", " ｜ ".join(zh["example"]["words"]), " ｜ ".join(en["example"]["words"]))]
     rows += [("作者段 eyebrow", zh["author"]["eyebrow"], en["author"]["eyebrow"]), ("作者", zh["author"]["name"], en["author"]["name"])]
     for i, (a, b) in enumerate(zip(zh["author"]["paragraphs"], en["author"]["paragraphs"]), 1):
         rows.append((f"作者段 {i}", a, b))
@@ -166,8 +166,8 @@ def main() -> int:
             rows.append((bz["title"] + " / " + be["title"], bz["body"], be["body"]))
         md += [table(["位置", "中文", "English"], rows), ""]
     md += ["### About · 资料来源列表（本项目如何使用这份资料）", ""]
-    rows = [(a["title"], a["gives"], b["gives"], a["licence"], f"{a['claimsLive']} 上线 / {a['claimsPendingReview']} 待复核") for a, b in zip(zh["evidence"], en["evidence"])]
-    md += [table(["来源", "中文", "English", "许可", "说明句"], rows), ""]
+    rows = [(a["title"], a["gives"], b["gives"], a["terms"], a["use"], a["claimsLive"]) for a, b in zip(zh["evidence"], en["evidence"])]
+    md += [table(["来源", "中文", "English", "来源条款", "本项目的使用", "上线说明句"], rows), ""]
 
     OUT.write_text("\n".join(md) + "\n", encoding="utf-8")
     print(f"written {OUT.relative_to(ROOT)} ({OUT.stat().st_size} bytes)")

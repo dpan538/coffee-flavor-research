@@ -55,3 +55,10 @@ licence filled on 2026-09-12; edit a row and re-run `ingest-external-literature.
 `LITERATURE_CLAIM_NEEDS_REVERIFICATION` — declared in the data and counted on the About page as "held back until re-verified", but never shown
 in the product. Use it when an external check finds that the cited source does not support the sentence (the WCR Gesha claim, the two UC Davis
 extraction-order claims); clear it once a supporting source is added or the sentence is rewritten.
+
+`use_note` (optional column, copy review 2, 2026-09-12): how this project uses the source, kept apart from the source's own
+terms (`licence_note`). Both reach the About page as separate fields ("来源条款" / "本项目的使用").
+
+UC Davis (2026-09-12): the DOI on file, 10.1016/j.foodchem.2020.126567, resolves to a turmeric-powder authentication paper,
+not a coffee study. All four rows carry `NEEDS_REVERIFICATION` with an empty locator; the source is not shown to readers until
+the owner re-establishes it from the paper actually read.

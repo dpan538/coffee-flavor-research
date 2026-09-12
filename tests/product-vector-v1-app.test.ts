@@ -89,7 +89,8 @@ describe("context catalog and screen models", () => {
   });
 
   it("app shell copy exists in both languages", () => {
-    expect(appShell("zh-CN").start).toBe("开始描述");
+    expect(appShell("zh-CN").start).toBe("开始");
+    expect(appShell("zh-CN").title).toBe("Put this cup into words");
     expect(appShell("en").localeSwitch).toBe("中");
   });
 });
@@ -133,40 +134,46 @@ describe("about content", () => {
   it("is bilingual, reads live numbers from the bundle, folds its details, and states every citation's licence", () => {
     const zh = aboutSections("zh-CN");
     const en = aboutSections("en");
-    // owner copy review 2026-09-12: how a card is made → technical notes → sources; the user-facing method section carries no formula
-    expect(zh.map((s) => s.id)).toEqual(["method", "technical", "literature"]);
+    // owner copy review 2 (2026-09-12): three folded entries — vocabulary & groups, how the questions work, data & method
+    expect(zh.map((s) => s.id)).toEqual(["vocabulary", "questions", "data"]);
     expect(zh.every((s) => s.folded && s.summary.length > 0 && s.blocks.length > 0)).toBe(true);
-    expect(zh[0]!.summary).toContain("由你确认");
-    expect(zh[0]!.blocks.map((b) => b.title)).toEqual(["参考资料", "提问方式", "描述的选择与确认", "结果的适用范围"]);
+    expect(zh[1]!.blocks.map((b) => b.title)).toEqual(["提问顺序", "描述的选择与确认"]);
+    expect(zh[2]!.blocks.map((b) => b.title)).toEqual(["资料范围", "初始参考如何形成", "结果的适用范围", "技术说明", "来源"]);
     expect(zh[0]!.blocks.some((b) => /V_pred|余弦|ΔV/.test(b.body))).toBe(false);
-    expect(en[1]!.blocks[1]!.body).toContain("0.8");
-    expect(zh[1]!.blocks[2]!.title).toContain("相似度");
+    expect(zh[1]!.blocks.some((b) => /V_pred|余弦|ΔV/.test(b.body))).toBe(false);
+    expect(en[2]!.blocks[3]!.body).toContain("0.8");
+    // boundary statements live once, where they belong
+    expect(zh[2]!.blocks[2]!.body).toContain("不构成对杯中成分或风味成因的测定");
+    expect(JSON.stringify(zh)).not.toContain("83K");
+    expect(JSON.stringify(zh)).not.toContain("不是质量保证");
     const cites = aboutCitations("en");
-    expect(cites.map((c) => c.id)).toEqual(["wcr_sensory_lexicon", "uc_davis_coffee_center", "coffee_ad_astra", "gactt"]);
-    expect(cites.slice(0, 3).every((c) => c.claims > 0 && c.locator && c.licence && c.evidenceState === "LITERATURE_CLAIM")).toBe(true);
+    // UC Davis is withdrawn (its DOI resolves to a turmeric paper): only sources with a note in use are listed for the reader
+    expect(cites.map((c) => c.id)).toEqual(["wcr_sensory_lexicon", "coffee_ad_astra", "gactt"]);
+    expect(cites.slice(0, 2).every((c) => c.claimsLive > 0 && c.locator && c.terms && c.use && c.evidenceState === "LITERATURE_CLAIM")).toBe(true);
     expect(cites.find((c) => c.id === "coffee_ad_astra")!.title).toContain("Jonathan Gagné");
-    // the three claims flagged in the review are declared but held back from the UI
-    expect(cites.find((c) => c.id === "uc_davis_coffee_center")!.claimsPendingReview).toBe(2);
-    expect(cites.find((c) => c.id === "wcr_sensory_lexicon")!.claimsPendingReview).toBe(1);
-    expect(cites.reduce((a, c) => a + c.claimsLive, 0)).toBe(8);
+    expect(cites.find((c) => c.id === "wcr_sensory_lexicon")!.terms).not.toContain("CC BY-SA");
+    expect(cites.reduce((a, c) => a + c.claimsLive, 0)).toBe(6);
     const stats = aboutStats("zh-CN");
     expect(stats.find((s) => s.key === "assertions")!.value).toBeGreaterThan(80000);
     expect(stats.find((s) => s.key === "consumers")!.value).toBe(4042);
+    expect(stats.find((s) => s.key === "pending")!.value).toBe(5);
   });
 
   it("says what the product is for before any implementation word, names the author's work, and gives every number a unit and a use", () => {
     const author = aboutAuthor("zh-CN");
     expect(author.name).toContain("潘岱");
-    expect(author.contributions.map((c) => c.value)).toEqual([12, 16, 94]);
+    expect(author.paragraphs[1]).toContain("怎样让专业的风味语言更便于日常品饮时使用");
+    expect(author.contributions.map((c) => c.value)).toEqual([94, 12, 16]);
     expect(author.contributions.every((c) => c.use.length > 0)).toBe(true);
     const scope = aboutScope("zh-CN");
     expect(scope.items.map((s) => s.key)).toEqual(["assertions", "coffees", "consumers", "sources"]);
     expect(scope.items.find((s) => s.key === "coffees")!.note).toContain("8,142");
-    expect(scope.items.find((s) => s.key === "consumers")!.note).toContain("GACTT");
+    expect(scope.items.find((s) => s.key === "consumers")!.label).toContain("GACTT");
+    expect(scope.items.find((s) => s.key === "sources")!.value).toBe(2);
     expect(scope.items.every((s) => s.unit.length > 0)).toBe(true);
     const example = aboutExample("zh-CN");
     expect(example.words).toHaveLength(5);
-    expect(example.note).toContain("示例");
+    expect(example.eyebrow).toContain("示例");
     expect(aboutExample("en").words.some((w) => /[一-鿿]/.test(w))).toBe(false);
   });
 });

@@ -29,6 +29,28 @@ PRODUCT_OPTIONS = {
            "espresso": ("ESPRESSO", "CORPUS_MEASURED"), "cold_brew": (None, "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING")},
     "C1": {"very_light": ("Light", "VERY_LIGHT_PROXY_FROM_LIGHT_ROW"), "light": ("Light", "CORPUS_MEASURED"), "medium_light": ("Medium-Light", "CORPUS_MEASURED"), "medium": ("Medium", "CORPUS_MEASURED"),
            "medium_dark": ("Medium-Dark", "CORPUS_MEASURED"), "dark": ("Dark", "CORPUS_MEASURED"), "very_dark": ("Very Dark", "CORPUS_MEASURED")},
+    # owner (2026-09-12, copy review 2): the eight processing methods drinkers meet on bags, plus decaf. A method without
+    # enough reviews has no reference row: the option exists, V_pred simply gets nothing from it (basis says so).
+    "C2_process": {"natural": ("natural", "CORPUS_MEASURED"), "washed": ("washed", "CORPUS_MEASURED"),
+                   "honey": ("honey", "NO_CORPUS_ROW (honey / pulped natural / semi-washed reviews with a usable vector are below the minimum of 30)"),
+                   "semi_washed": ("honey", "NO_CORPUS_ROW (grouped with honey by the extraction lexicon; below the minimum of 30)"),
+                   "wet_hulled": (None, "NO_CORPUS_ROW (2 reviews, below the minimum of 30)"), "anaerobic": ("anaerobic", "CORPUS_MEASURED"),
+                   "lactic": (None, "NO_CORPUS_ROW (not in the extraction lexicon)"), "barrel_aged": (None, "NO_CORPUS_ROW (not in the extraction lexicon)"),
+                   "decaf": ("decaf", "CORPUS_MEASURED")},
+}
+# labels the UI shows for every context option (view.ts reads them from the bundle; the engine uses them for the reference line)
+CONTEXT_LABELS = {
+    "pour_over_v60": {"zh-CN": "手冲 (V60)", "en": "Pour-over (V60)"}, "french_press": {"zh-CN": "法压", "en": "French press"},
+    "espresso": {"zh-CN": "意式浓缩", "en": "Espresso"}, "cold_brew": {"zh-CN": "冷萃", "en": "Cold brew"},
+    "very_light": {"zh-CN": "极浅烘", "en": "Very light"}, "light": {"zh-CN": "浅烘", "en": "Light"}, "medium_light": {"zh-CN": "中浅烘", "en": "Medium-light"},
+    "medium": {"zh-CN": "中烘", "en": "Medium"}, "medium_dark": {"zh-CN": "中深烘", "en": "Medium-dark"}, "dark": {"zh-CN": "深烘", "en": "Dark"}, "very_dark": {"zh-CN": "极深烘", "en": "Very dark"},
+    "gesha": {"zh-CN": "瑰夏 Gesha", "en": "Gesha"}, "bourbon": {"zh-CN": "波本 Bourbon", "en": "Bourbon"}, "typica": {"zh-CN": "铁皮卡 Typica", "en": "Typica"},
+    "caturra": {"zh-CN": "卡杜拉 Caturra", "en": "Caturra"}, "catuai": {"zh-CN": "卡杜艾 Catuai", "en": "Catuai"}, "sl28_sl34": {"zh-CN": "SL28 / SL34", "en": "SL28 / SL34"},
+    "pacamara": {"zh-CN": "帕卡马拉 Pacamara", "en": "Pacamara"}, "castillo": {"zh-CN": "卡斯蒂略 Castillo", "en": "Castillo"}, "robusta": {"zh-CN": "罗布斯塔 Robusta", "en": "Robusta"},
+    "ethiopian_landrace": {"zh-CN": "埃塞原生种 Heirloom", "en": "Ethiopian landrace"},
+    "natural": {"zh-CN": "日晒", "en": "Natural"}, "washed": {"zh-CN": "水洗", "en": "Washed"}, "honey": {"zh-CN": "蜜处理", "en": "Honey"},
+    "semi_washed": {"zh-CN": "半水洗", "en": "Semi-washed"}, "wet_hulled": {"zh-CN": "湿刨法", "en": "Wet-hulled"}, "anaerobic": {"zh-CN": "厌氧发酵", "en": "Anaerobic"},
+    "lactic": {"zh-CN": "乳酸发酵", "en": "Lactic fermentation"}, "barrel_aged": {"zh-CN": "酒桶发酵", "en": "Barrel-aged"}, "decaf": {"zh-CN": "低因", "en": "Decaf"},
 }
 
 
@@ -89,11 +111,11 @@ def main() -> int:
         r = krows.get((axis, option))
         return [float(r[f"k_{d}"]) for d in DIMS] if r else None
     bundle_k = {"C0": {}, "C1": {}, "C2_variety": {}, "C2_process": {}}
-    for axis in ("C0", "C1"):
+    for axis in ("C0", "C1", "C2_process"):
         for product_option, (corpus_option, basis) in PRODUCT_OPTIONS[axis].items():
             v = kvec(axis, corpus_option) if corpus_option else None
             bundle_k[axis][product_option] = {"vector": v, "basis": basis, "member_count": krows.get((axis, corpus_option), {}).get("member_count") if corpus_option else None}
-    for axis in ("C2_variety", "C2_process"):
+    for axis in ("C2_variety",):
         for (a, option), r in krows.items():
             if a == axis:
                 bundle_k[axis][option] = {"vector": kvec(axis, option), "basis": r["basis"], "member_count": int(r["member_count"])}
@@ -104,8 +126,8 @@ def main() -> int:
         "Q5_acid": {"A": {"acidity": 2, "fruity": 1}, "B": {"acidity": 1, "fermented_winey": 2}, "C": {"body": 1}},
         "Q6_sweet": {"A": {"floral": 1, "sweetness": 2}, "B": {"nutty_chocolate": 2, "bitter_roasted": 1}, "C": {"fruity": 2, "sweetness": 2}, "D": {}},  # D: sweetness not noticeable — an absence adds nothing (owner copy review 2026-09-12)
         "Q7_body": {"A": {"body": 1}, "B": {"body": 2}, "C": {"body": 3, "bitter_roasted": 1}},
-        "Q8_aroma": {"A": {"floral": 3}, "B": {"nutty_chocolate": 3}, "C": {"fermented_winey": 2, "fruity": 2}},
-        "Q9_bitter": {"A": {"nutty_chocolate": 1, "bitter_roasted": 1}, "B": {}, "C": {"bitter_roasted": 2}},  # C: clearly bitter (owner copy review 2026-09-12)
+        "Q8_aroma": {"A": {"floral": 3}, "B": {"nutty_chocolate": 3}, "C": {"fermented_winey": 2, "fruity": 2}, "D": {}},  # D: no clear aroma (owner copy review 2, 2026-09-12)
+        "Q9_bitter": {"A": {"bitter_roasted": 1}, "B": {}, "C": {"bitter_roasted": 2}},  # intensity only (owner copy review 2, 2026-09-12): the label no longer says 回甘, so A no longer adds nutty_chocolate
         "Q10_clean": {"A": {"floral": 1, "acidity": 1}, "B": {"fermented_winey": 1, "body": 1}},
     }
     # presentation layer (owner 2026-09-12): one vector backend, two languages. Minimalist CN tag
@@ -147,20 +169,26 @@ def main() -> int:
                     # owner copy review 2026-09-12: the label says what kind of statement it is — a project note, a count from
                     # the data, a research reference — and never claims this cup was measured; a claim pending a locator or
                     # re-verification has no label and is filtered out of the UI (displayable_evidence_states)
-                    "evidence_labels": {"OWNER_STATEMENT": {"zh-CN": "参考说明", "en": "Reference note"},
+                    # owner copy review 2 (2026-09-12): the owner's causal sentences (OWNER_STATEMENT) are project rules — they
+                    # document how the initial reference is formed and live in the method notes, never on the card. The card
+                    # shows: the initial reference (computed from V_pred), sourced research references, the difference line.
+                    "evidence_labels": {"REFERENCE_BASIS": {"zh-CN": "初始参考", "en": "Initial reference"},
                                         "CORPUS_MEASURED": {"zh-CN": "资料统计", "en": "From the data"},
                                         "LITERATURE_CLAIM": {"zh-CN": "研究参考", "en": "Research reference"},
-                                        "COMPUTED_DELTA": {"zh-CN": "描述差异", "en": "Where your description differs"}},
-                    "displayable_evidence_states": ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM", "COMPUTED_DELTA"],
-                    # ΔV is a difference between the description and the reference vector; it is not a bias and its cause is unknown
-                    "delta_templates": {"zh-CN": {"pos": "这次的描述中，{label}更突出。仅凭目前的信息，还无法判断这种差异的原因。",
-                                                  "neg": "这次的描述中，{label}不太明显。仅凭目前的信息，还无法判断这种差异的原因。"},
-                                        "en": {"pos": "In this description, {label} stands out more than this cup's setup usually shows. From what we have, the reason cannot be told.",
-                                               "neg": "In this description, {label} comes through less than this cup's setup usually shows. From what we have, the reason cannot be told."}},
+                                        "COMPUTED_DELTA": {"zh-CN": "你的描述", "en": "Your description"},
+                                        "PRODUCT_NOTE": {"zh-CN": "提示", "en": "Note"}},
+                    "displayable_evidence_states": ["REFERENCE_BASIS", "CORPUS_MEASURED", "LITERATURE_CLAIM", "COMPUTED_DELTA", "PRODUCT_NOTE"],
+                    # ΔV compares the description with the initial reference; the sentence names that comparison and nothing else
+                    "delta_templates": {"zh-CN": {"pos": "相较于初始参考，你的描述中，{label}更突出。", "neg": "相较于初始参考，你的描述中，{label}较弱。"},
+                                        "en": {"pos": "Compared with the initial reference profile, {label} is more pronounced in your description.",
+                                               "neg": "Compared with the initial reference profile, {label} is less pronounced in your description."}},
+                    "reference_basis_templates": {"zh-CN": {"text": "根据{context}，初始参考侧重{dims}。", "explain": "初始参考来自评审资料的统计，只是起点，不是这杯咖啡的测定。", "join": "、", "context_join": "、"},
+                                                  "en": {"text": "From {context}, the initial reference leans toward {dims}.", "explain": "It comes from the review data and is a starting point, not a measurement of this cup.", "join": ", ", "context_join": ", "}},
+                    "context_labels": CONTEXT_LABELS,
                     "citation_prefix": {"zh-CN": "参考资料：", "en": "Reference: "},
                     "card_heading": {"zh-CN": "风味卡", "en": "Flavor card"},
                     "preview_heading": {"zh-CN": "这杯咖啡的风味", "en": "This cup's flavor"},
-                    "science_heading": {"zh-CN": "相关风味说明", "en": "Flavor notes"},
+                    "science_heading": {"zh-CN": "关于这段描述", "en": "About this description"},
                     # the papery / stale group: show the words, ask for a second look, judge nothing
                     "defect_note": {"zh-CN": "这些描述常与储存或处理有关，值得再喝一口确认。这里不对这杯咖啡做质量判断。",
                                     "en": "These descriptions are often linked to storage or processing; worth a second sip to confirm. No quality judgement is made here."},
@@ -228,10 +256,10 @@ def main() -> int:
         "blend": {"max_varieties": 3, "composition": "normalize(sum of variety vectors)"},
         "origin_bias_delta": 0.1,
         "origin_regions": {
-            "ethiopia_east_africa": {"label": {"zh-CN": "埃塞俄比亚 / 东非（花香果酸）", "en": "Ethiopia / East Africa (floral, bright)"}, "bias": ["floral", "acidity"]},
-            "colombia_central_south_america": {"label": {"zh-CN": "哥伦比亚 / 中南美（均衡果酸）", "en": "Colombia / Central & South America (balanced fruit acidity)"}, "bias": ["fruity", "sweetness"]},
-            "yunnan": {"label": {"zh-CN": "云南（坚果 / 红糖 / 厌氧）", "en": "Yunnan (nutty, brown sugar, anaerobic)"}, "bias": ["fermented_winey", "nutty_chocolate"]},
-            "kenya": {"label": {"zh-CN": "肯尼亚（黑加仑 / 乌梅）", "en": "Kenya (blackcurrant, dark plum)"}, "bias": ["acidity", "fruity"]},
+            "ethiopia_east_africa": {"label": {"zh-CN": "埃塞俄比亚 / 东非", "en": "Ethiopia / East Africa"}, "bias": ["floral", "acidity"]},
+            "colombia_central_south_america": {"label": {"zh-CN": "哥伦比亚 / 中南美", "en": "Colombia / Central & South America"}, "bias": ["fruity", "sweetness"]},
+            "yunnan": {"label": {"zh-CN": "云南", "en": "Yunnan"}, "bias": ["fermented_winey", "nutty_chocolate"]},
+            "kenya": {"label": {"zh-CN": "肯尼亚", "en": "Kenya"}, "bias": ["acidity", "fruity"]},
         },
         "owner_reviewed": True,
     }

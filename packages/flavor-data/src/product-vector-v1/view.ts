@@ -5,7 +5,7 @@
  * framework: a React or Vue component binds these objects one-to-one.
  */
 import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json" with { type: "json" };
-import { cardCopy, type ContextAnswers, type Locale } from "./engine";
+import { cardCopy, contextLabel, type ContextAnswers, type Locale } from "./engine";
 import { type Word } from "./flow";
 import { nextStep, type Session } from "./session";
 
@@ -56,7 +56,8 @@ const TITLES: Record<string, Record<Locale, string>> = {
 };
 
 function label(value: string, locale: Locale): string {
-  return LABELS[value]?.[locale] ?? value;
+  const fromBundle = contextLabel(value, locale);
+  return fromBundle !== value ? fromBundle : (LABELS[value]?.[locale] ?? value);
 }
 
 function chips(axis: string, locale: Locale): Chip[] {
@@ -184,23 +185,23 @@ export function q6Copy(locale: Locale): { title: string; submit: string } {
   return locale === "zh-CN" ? { title: "哪些描述更贴近你的感受？", submit: "更新风味卡" } : { title: "Which of these are closer to what you tasted?", submit: "Update my card" };
 }
 
-/** App shell copy: hero, start button, top bar — bilingual, no styling. */
+/** App shell copy (owner, 2026-09-12): the English tagline is the hero title in both languages; two tiles, Start and About. */
 export function appShell(locale: Locale) {
   return locale === "zh-CN"
     ? {
-        title: "说清这一杯的风味",
-        subtitle: "从酸质、香气与口感开始，找到贴近你感受的描述。",
-        lead: "几次选择之后，你会得到一张由你确认的风味卡，和几条帮助理解这杯咖啡的参考说明。",
-        start: "开始描述",
+        title: "Put this cup into words",
+        subtitle: "从酸质、香气与口感开始，选出贴近你感受的词，组成这一杯的风味卡。",
+        lead: "",
+        start: "开始",
         about: "关于",
         localeSwitch: "EN",
         offlineReady: "离线可用",
       }
     : {
         title: "Put this cup into words",
-        subtitle: "Start from acidity, aroma and mouthfeel, and find the words closest to what you tasted.",
-        lead: "A few choices lead to a flavor card you confirm yourself, with reference notes to help you understand the cup.",
-        start: "Describe this cup",
+        subtitle: "Choose the words that fit your cup and create a flavor card.",
+        lead: "",
+        start: "Start",
         about: "About",
         localeSwitch: "中",
         offlineReady: "Works offline",

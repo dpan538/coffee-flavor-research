@@ -364,6 +364,25 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T09:30:00Z"
+    },
+    {
+      "id": "R3-D17",
+      "subject": "Copy review 2 + mobile pass: hard source errors fixed, project rules off the card, exits on every taste question, hero as home page, 54 dp controls, four-page scroll-driven About",
+      "decision": "Sources: the UC Davis DOI (10.1016/j.foodchem.2020.126567) resolves to a turmeric-authentication paper, so all four UC Davis notes are withdrawn (review_state) and the source leaves the reader's list until re-established; the WCR licence is recorded as observed on the page (free personal-use copies, no CC BY-SA statement) with source terms and project use kept in separate fields; the owner's causal sentences are project rules that document how the initial reference is formed and never appear on the card. The card's fold ('关于这段描述') shows the initial reference (computed from V_pred, said once, with its one-line explanation), the first sourced research reference, and the difference line 'Compared with the initial reference profile, {feature} is more / less pronounced in your description'. The card's group name follows the confirmed words (V_target + picks). Question bank: Q1 gains 闻不出明显的香气, Q4 becomes intensity only (有一点苦 / 没有明显苦感 / 苦感明显, increments 1 / 0 / 2), any absence answer caps the first check at mild; processing offers the eight bag methods plus decaf (honey, semi-washed, wet-hulled, lactic, barrel-aged have no reference row yet and say so); origin chips show only the place name. Copy: hero title 'Put this cup into words' in both languages, tiles 开始 / 关于 replace the About icon, About opens with 从品饮，到表达 and the sample card, the author section follows the owner's draft, boundary statements sit once under 结果的适用范围, 83K / 待复核 / 不是质量保证 leave the user copy, English edited on its own (flavor spelling, About this description, 3 main suggestions and 5 alternatives). Mobile: 1 : 2 on the home page and 1 : 3 in the flow, every icon control 54 × 54, chips 48 +, options 60 +, question titles at the top, two-line context chips, GSAP springs for card transitions. About: four pages — purpose + sample, author + three folded entries, the provenance flow and the sixteen profiles each drawn by scroll in a 320 dvh track (GSAP ScrollTrigger on the sheet), then sources with terms and use.",
+      "owner_words": "说清这一杯的风味太土了，反而是 Put this cup into words 这个很适合也用来给中文版做标题 … 所有小icon按钮至少是54×54 dp … 首页的上下部分可以做到1:2或者1:2.5 … 一个 start，一个 about … 开始即可 … 这两个数据可视化基本每个都会占一个完整的页面区域 … 绑定在 scroll 上 … UC Davis 条目的 DOI 错了 … 属于你设定的参考规则，就放在方法说明中 … 相较于初始参考，你的描述中，{label}更突出 … 用户没有选择'茉莉、白花'时，终卡标题是否仍然叫'茉莉与白花'？ … 首页这两个按钮应该是接近正方形，右上角的语言切换 icon 应该是类似圆角长方形 … 颜色可以学习一下 big sur … 图一的这个深色很适合用在最后一个描述卡 … 图八的颜色也不错",
+      "applied": {
+        "data": "external-literature/*.claims.csv (UC Davis locator blank + NEEDS_REVERIFICATION, WCR terms, use_note column), ingest (terms_short / use), CONTEXT_STATEMENTS (cause clause removed), QUESTION_BANK (Q1-D, Q4 relabel + cues), CONCEPT_FLAVOR_TAGS (en synced), CN_CONSUMER_FLAVOR_LEXICON (微醺 / 微醺朗姆 / 厌氧风味 mapper-only), build-matrix-k-v1 (C2_process product options, CONTEXT_LABELS, REFERENCE_BASIS / PRODUCT_NOTE states, delta + reference templates, plain origin labels)",
+        "code": "engine referenceBasisLine / contextLabel / terms_short; flow confirmedProfile + generalized absence cap + card composition; view appShell + labels from the bundle; about.ts rewritten (approach, example, author, scope, vocabulary / questions / data entries, citations with terms and use, UC Davis excluded); App.vue hero tiles + GSAP transitions; AppHeader; ContextSetupCard; QuizCard; FirstDescriptionCard; FinalAttributionCard; AboutDrawer four pages + ScrollTrigger; ProvenanceFlow / FlavorBurst progress prop; style.css 54 dp targets",
+        "verified": "vitest 54/54, vue-tsc, vite build; copy document regenerated",
+        "open": [
+          "re-establish the UC Davis source from the paper actually read (or drop it)",
+          "confirm WCR lexicon terms with WCR before any lexicon-derived data is redistributed",
+          "font files",
+          "share as PNG"
+        ],
+        "owner_follow_up_2026-09-12": "Home tiles near-square (aspect 1 : 1.02) at the top of the lower band; language toggle a black rounded-rectangle badge (54 dp) like the 极浅烘 badge on the reference cards; palette aligned with the owner's Big Sur Coffee bag cards — navy #1F3B5C for the final card and the sample card (higher contrast), lavender / lime / ochre / pink / terracotta / peach / olive for the context and question steps."
+      },
+      "recorded_at_utc": "2026-09-12T11:30:00Z"
     }
   ],
   "guards": {

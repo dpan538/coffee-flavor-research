@@ -18,7 +18,7 @@ import {
   DIMENSIONS,
   add,
   buildVPred,
-  calibrationLine, defectNote,
+  calibrationLine, defectNote, referenceBasisLine,
   cosine,
   infer,
   normalize,
@@ -57,7 +57,7 @@ export type Word = { text: string; dimension: string };
 export type Description = { main: Word[]; secondary: Word[]; all: Word[]; prompt: string };
 export type GateDecision = { escalate: boolean; reason: string; similarityPicksUser: number; similarityPicksPred: number; severeHistory: boolean; biasConfirmed: boolean };
 export type Q6Option = { dimension: string; text: string; delta: number };
-export type FinalCard = { picked: string[]; science: ScienceLine[]; closing: string; profileTitle: string | null };
+export type FinalCard = { picked: string[]; science: ScienceLine[]; closing: string; profileTitle: string | null; profileId: string | null };
 
 const N = DIMENSIONS.length;
 
@@ -170,10 +170,11 @@ export function flowStep(answers: FlowAnswers, context?: ContextAnswers): FlowSt
   if (missing("Q0", "Q1").length) return ask(missing("Q0", "Q1"), "base perception pair");
   if (missing("Q2", "Q3").length) return ask(missing("Q2", "Q3"), "coherence check needs Q2-Q3");
   let c23 = coherence(g(["Q0", "Q1"]), g(["Q2", "Q3"]), ["Q0-Q1", "Q2-Q3"]);
-  // owner copy review 2026-09-12: "sweetness not noticeable" adds no direction, and Q3 on its own is
-  // direction-degenerate (all three body answers point the same way), so the check group cannot claim a
-  // severe conflict — absence contradicts nothing. Capped at mild: one more question, never Path 3.
-  if (absentAnswer(answers, "Q2") && c23.level === "severe") c23 = { ...c23, similarity: Math.max(c23.similarity, flow.thresholds.mild), level: "mild", paradox: false };
+  // owner copy review 2026-09-12: a "not noticeable" answer (empty increment) adds no direction — and Q3 on its own
+  // is direction-degenerate (all three body answers point the same way) — so a group holding one cannot claim a
+  // severe conflict: absence contradicts nothing. Capped at mild: one more question, never Path 3.
+  const absence = (["Q0", "Q1", "Q2"] as Slot[]).some((s) => absentAnswer(answers, s));
+  if (absence && c23.level === "severe") c23 = { ...c23, similarity: Math.max(c23.similarity, flow.thresholds.mild), level: "mild", paradox: false };
   checks.push(c23);
   const ctx = contextCheck(context, g(["Q0", "Q1"]));
   if (ctx) checks.push(ctx);
@@ -311,19 +312,28 @@ export function applyQ6(result: InferenceResult, selectedDimensions: string[]): 
   };
 }
 
-/** Final summary card: the user's own 5 words, one or two science lines, the closing line. */
+/** The confirmed profile: the reader's five words weigh as much as the whole answer path, so a card whose picks
+ *  left the suggested group is titled by the group they actually confirmed (owner copy review 2, 2026-09-12). */
+export function confirmedProfile(result: InferenceResult, picks: Word[]): { profile: InferenceResult["profiles"][number]["profile"]; similarity: number } | null {
+  const pv = picksToVector(picks);
+  const v = pv.some((x) => x !== 0) ? normalize(add(result.vTarget, pv)) : result.vTarget;
+  return rankProfiles(v, 1)[0] ?? null;
+}
+
+/** Final summary card: the user's own 5 words, the notes about the description, the closing line. */
 export function finalCard(result: InferenceResult, picks: Word[], locale: Locale): FinalCard {
-  // 1-2 attribution sentences: the most specific statement, plus the first literature claim that applies
-  // (owner R3-D14: literature must be declared where the user reads it), then the computed bias line
-  const applicable = statementsFor(result.context, locale);
-  const science: ScienceLine[] = applicable.slice(0, 1);
-  const literature = applicable.find((l) => l.evidenceState.startsWith("LITERATURE_CLAIM") && l !== science[0]);
+  // owner copy review 2 (2026-09-12): the initial reference (computed, said once), the first sourced research
+  // reference that applies, the difference line; the owner's causal sentences are project rules, not card copy
+  const science: ScienceLine[] = [];
+  const basis = referenceBasisLine(result, locale);
+  if (basis) science.push(basis);
+  const literature = statementsFor(result.context, locale).find((l) => l.evidenceState === "LITERATURE_CLAIM");
   if (literature) science.push(literature);
   const top = result.topDeltaDimensions[0];
   if (top && Math.abs(top.delta) >= 0.1) science.push(calibrationLine(top.dimension, top.delta, locale));
-  const first = result.profiles[0];
+  const confirmed = confirmedProfile(result, picks);
   // the papery / stale group (owner copy review 2026-09-12): the words are shown, a second sip is suggested, no quality verdict
-  if (first && (first.profile as { anchor_id?: string }).anchor_id === "anchor-16") {
+  if (confirmed && (confirmed.profile as { anchor_id?: string }).anchor_id === "anchor-16") {
     const note = defectNote(locale);
     if (note) science.push(note);
   }
@@ -331,7 +341,8 @@ export function finalCard(result: InferenceResult, picks: Word[], locale: Locale
     picked: picks.map((w) => w.text),
     science,
     closing: flow.closing[locale],
-    profileTitle: first ? first.profile.owner_name[locale] || first.profile.owner_name.en : null,
+    profileTitle: confirmed ? confirmed.profile.owner_name[locale] || confirmed.profile.owner_name.en : null,
+    profileId: confirmed ? confirmed.profile.profile_id : null,
   };
 }
 

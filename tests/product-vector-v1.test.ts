@@ -86,14 +86,16 @@ describe("product-vector-v1 presentation layer", () => {
 
   it("science fold: combination statements only when every part is answered, most specific first, with evidence state", () => {
     const lines = statementsFor({ c0_preparation: "pour_over_v60", c1_roast: "light" }, "en");
-    expect(lines[0]!.about).toBe("C0_V60__C1_LIGHT");
+    expect(lines[0]!.about).toBe("C0_POUR_OVER_V60__C1_LIGHT");
     expect(lines.map((l) => l.about)).toContain("C1_LIGHT");
-    // owner copy review 2026-09-12: a claim pending a locator or re-verification never reaches the screen
-    expect(lines.every((l) => ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM", "COMPUTED_DELTA"].includes(l.evidenceState))).toBe(true);
-    expect(lines.every((l) => l.label.length > 0)).toBe(true);
-    expect(statementsFor({ c2_variety: "gesha" }, "zh-CN").some((l) => /基因|上限/.test(l.text))).toBe(false);
-    expect(lines.every((l) => l.sourceTitle.length > 0)).toBe(true);
-    expect(statementsFor({ c1_roast: "light" }, "en").map((l) => l.about)).not.toContain("C0_V60__C1_LIGHT");
+    // owner copy review 2 (2026-09-12): only sourced research references and data counts reach the screen; the
+    // owner's causal sentences are project rules (method notes), and claims pending re-verification are held back
+    expect(lines.every((l) => ["CORPUS_MEASURED", "LITERATURE_CLAIM"].includes(l.evidenceState))).toBe(true);
+    expect(lines.some((l) => l.evidenceState === "OWNER_STATEMENT")).toBe(false);
+    expect(lines.every((l) => l.label.length > 0 && l.citation.length > 0 && l.sourceTitle.length > 0)).toBe(true);
+    expect(statementsFor({ c2_variety: "gesha" }, "zh-CN")).toEqual([]);
+    expect(statementsFor({ c0_preparation: "cold_brew" }, "en")).toEqual([]); // the UC Davis notes are withdrawn (wrong DOI)
+    expect(statementsFor({ c1_roast: "light" }, "en").map((l) => l.about)).not.toContain("C0_POUR_OVER_V60__C1_LIGHT");
   });
 
   it("renders one vector backend in two languages: minimalist tags for zh-CN, scientific wording for en", () => {
@@ -105,7 +107,11 @@ describe("product-vector-v1 presentation layer", () => {
     expect(zh.headline!.tags.length).toBeLessThanOrEqual(4);
     expect(en.headline!.profileId).toBe(zh.headline!.profileId);
     expect(en.headline!.title).not.toBe(zh.headline!.title);
-    expect(zh.science.some((l) => l.about === "C0_V60__C1_LIGHT")).toBe(true);
+    // the initial reference is said once, first, in the reader's terms; then the sourced research reference
+    expect(zh.science[0]!.evidenceState).toBe("REFERENCE_BASIS");
+    expect(zh.science[0]!.text).toContain("手冲");
+    expect(zh.science[0]!.text).toContain("初始参考");
+    expect(zh.science.some((l) => l.about === "C0_POUR_OVER_V60__C1_LIGHT")).toBe(true);
     expect(en.science.every((l) => l.evidenceState && l.citationRef)).toBe(true);
   });
 });
@@ -149,7 +155,7 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
       paths[String(step.path)] = (paths[String(step.path)] ?? 0) + 1;
       asked += Object.keys(answers).length;
       total += 1;
-      if (!flow.absentAnswer(full, "Q2")) {
+      if (!(["Q0", "Q1", "Q2"] as const).some((s) => flow.absentAnswer(full, s))) {
         withEvidence[String(step.path)] = (withEvidence[String(step.path)] ?? 0) + 1;
         evidenceTotal += 1;
       } else {
@@ -157,10 +163,10 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
         expect(step.checks[0]!.level).not.toBe("severe");
       }
     }
-    expect(total).toBe(3 * 3 * 4 * 3 * 3 * 2);
-    // the owner's rhythm (R3-D10) holds among sequences that give directional evidence on Q2 (324 of them)
+    expect(total).toBe(3 * 4 * 4 * 3 * 3 * 2);
+    // the owner's rhythm (R3-D10) holds among sequences that give directional evidence on Q0-Q2 (486 of them)
     const share = (k: string) => (withEvidence[k] ?? 0) / evidenceTotal;
-    expect(evidenceTotal).toBe(324 * 3 / 2);
+    expect(evidenceTotal).toBe(3 * 3 * 3 * 3 * 3 * 2);
     expect(share("1")).toBeGreaterThanOrEqual(0.2);
     expect(share("1")).toBeLessThanOrEqual(0.35);
     expect(share("2")).toBeGreaterThanOrEqual(0.5);
@@ -168,9 +174,9 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     // the roast-polarity paradox guard (R3-D11) moves ~13% of sequences into Path 3; band widened accordingly
     expect(share("3") + share("4")).toBeGreaterThanOrEqual(0.05);
     expect(share("3") + share("4")).toBeLessThanOrEqual(0.3);
-    // overall, "sweetness not noticeable" can only take Path 2 (one more question), so Path 1 sits lower
+    // overall, a "not noticeable" aroma or sweetness can only take Path 2 (one more question), so Path 1 sits lower
     const overall = (k: string) => (paths[k] ?? 0) / total;
-    expect(overall("1")).toBeGreaterThanOrEqual(0.12);
+    expect(overall("1")).toBeGreaterThanOrEqual(0.1);
     expect(overall("2")).toBeGreaterThanOrEqual(0.5);
     expect(asked / total).toBeLessThanOrEqual(6);
   });
@@ -243,9 +249,38 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     const picks = flow.describe(result, "zh-CN").all.slice(0, 5);
     const card = flow.finalCard(result, picks, "zh-CN");
     expect(card.picked).toHaveLength(5);
-    expect(card.science.length).toBeLessThanOrEqual(3);
-    expect(card.science.every((l) => l.evidenceState)).toBe(true);
+    expect(card.science.length).toBeLessThanOrEqual(4);
+    expect(card.science[0]!.evidenceState).toBe("REFERENCE_BASIS");
+    expect(card.science.every((l) => l.evidenceState && l.label)).toBe(true);
+    expect(card.science.some((l) => l.evidenceState === "OWNER_STATEMENT")).toBe(false);
+    const delta = card.science.find((l) => l.evidenceState === "COMPUTED_DELTA");
+    if (delta) expect(delta.text).toContain("相较于初始参考");
     expect(card.closing).toContain("咖啡");
     expect(flow.finalCard(result, picks, "en").closing).toContain("enjoy");
+  });
+
+  it("the card's group name follows the confirmed words: picks that leave the suggested group retitle the card (copy review 2)", () => {
+    const result = flow.inferFromFlow(ctx, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" });
+    const description = flow.describe(result, "zh-CN");
+    const stayed = flow.finalCard(result, description.all.slice(0, 5), "zh-CN");
+    const away: Array<{ text: string; dimension: string }> = [
+      { text: "黑巧回甘", dimension: "bitter_roasted" }, { text: "烤榛果", dimension: "nutty_chocolate" }, { text: "丝绒感", dimension: "body" },
+      { text: "风干雪松", dimension: "woody_earthy" }, { text: "烟熏可可", dimension: "bitter_roasted" },
+    ];
+    const moved = flow.finalCard(result, away, "zh-CN");
+    expect(stayed.profileId).toBe(result.profiles[0]!.profile.profile_id);
+    expect(moved.profileId).not.toBe(stayed.profileId);
+    expect(moved.profileTitle).not.toContain("茉莉");
+    expect(moved.picked).toEqual(away.map((w) => w.text));
+  });
+
+  it("every question about a taste has a 'not noticeable' exit and an absence never reads as a severe conflict", () => {
+    const bank = productVectorBundle.question_bank as Record<string, { options: Record<string, { label: Record<string, string> }> }>;
+    expect(bank.Q0!.options.C!.label["zh-CN"]).toBe("酸感不明显");
+    expect(bank.Q1!.options.D!.label["zh-CN"]).toBe("闻不出明显的香气");
+    expect(bank.Q2!.options.D!.label["zh-CN"]).toBe("甜感不明显");
+    expect(bank.Q4!.options.B!.label["zh-CN"]).toBe("没有明显苦感");
+    const step = flow.flowStep({ Q0: "A", Q1: "D", Q2: "B", Q3: "C" });
+    expect(step.checks[0]!.level).not.toBe("severe");
   });
 });

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-// Where the data came from and what it became: source families on the left, the 12 dimensions on the right,
-// ribbons whose width is the family's mass on that dimension (from corpus_facts.families). Pure SVG, our own numbers.
+// From coffee reviews to flavor descriptions: source panels on the left, the 12 flavor features on the right,
+// ribbons whose width is the panel's cumulative weight on that feature (corpus_facts.families). Pure SVG, our own
+// numbers. `progress` (0–1, scroll-driven in About) draws it: the panels grow, then each panel's ribbons wipe in one
+// panel at a time, then the feature labels arrive. With no progress it renders complete.
 import { computed } from "vue";
 import { productVectorBundle } from "flavor-data/product-vector-v1";
 import { locale } from "../store";
 
+const props = withDefaults(defineProps<{ progress?: number }>(), { progress: 1 });
 const DIM_COLORS: Record<string, string> = {
   acidity: "#F2C24E", sweetness: "#F5B0C6", body: "#9B7B5D", floral: "#7268C9", fruity: "#EE8F70", nutty_chocolate: "#B97C4E",
   fermented_winey: "#8C4A4C", bitter_roasted: "#1E1C1A", spice: "#DA8A80", herbal_green: "#6FA85A", woody_earthy: "#2F7A4C", defect: "#7F90B8",
@@ -22,7 +25,6 @@ type Family = { family: string; coffees: number; mass: number[] };
 const families = computed<Family[]>(() => {
   const all = (productVectorBundle.corpus_facts as { families: Family[] }).families;
   const total = all.reduce((a, f) => a + f.coffees, 0);
-  // panels under 2% of the coffees fold into "other panels" so their labels never collide
   const top = all.filter((f) => f.coffees / total >= 0.02);
   const rest = all.filter((f) => f.coffees / total < 0.02);
   if (rest.length) top.push({ family: "others", coffees: rest.reduce((a, f) => a + f.coffees, 0), mass: dims.map((_, i) => rest.reduce((a, f) => a + (f.mass[i] ?? 0), 0)) });
@@ -38,7 +40,7 @@ const rightBars = computed(() => { let y = 0; return dims.map((d, i) => { const 
 const ribbons = computed(() => {
   const outL = leftBars.value.map((b) => b.y);
   const outR = rightBars.value.map((b) => b.y);
-  const out: Array<{ d: string; color: string; family: string }> = [];
+  const out: Array<{ d: string; color: string; family: string; fi: number }> = [];
   families.value.forEach((f, fi) => {
     dims.forEach((dim, di) => {
       const m = f.mass[di] ?? 0;
@@ -47,24 +49,44 @@ const ribbons = computed(() => {
       const y0 = outL[fi]!, y1 = outR[di]!;
       outL[fi] = y0 + hL; outR[di] = y1 + hR;
       const c = (LX + RX) / 2;
-      out.push({ d: `M ${LX} ${y0} C ${c} ${y0} ${c} ${y1} ${RX} ${y1} L ${RX} ${y1 + hR} C ${c} ${y1 + hR} ${c} ${y0 + hL} ${LX} ${y0 + hL} Z`, color: DIM_COLORS[dim] ?? "#999", family: f.family });
+      out.push({ d: `M ${LX} ${y0} C ${c} ${y0} ${c} ${y1} ${RX} ${y1} L ${RX} ${y1 + hR} C ${c} ${y1 + hR} ${c} ${y0 + hL} ${LX} ${y0 + hL} Z`, color: DIM_COLORS[dim] ?? "#999", family: f.family, fi });
     });
   });
   return out;
 });
 const fmt = (n: number) => n.toLocaleString(locale.value === "zh-CN" ? "zh-CN" : "en-US");
+
+// drawing schedule: 0–0.15 bars grow; 0.15–0.8 panels wipe in one after another; 0.75–1 feature labels arrive
+const clamp = (x: number) => Math.max(0, Math.min(1, x));
+const barGrow = computed(() => clamp(props.progress / 0.15));
+const wipe = (fi: number) => {
+  const n = families.value.length;
+  const span = 0.65 / n;
+  return clamp((props.progress - 0.15 - fi * span) / span);
+};
+const labelIn = (i: number) => clamp((props.progress - 0.75 - i * 0.015) / 0.12);
+const uid = Math.random().toString(36).slice(2, 8);
 </script>
 
 <template>
   <figure class="w-full" data-component="ProvenanceFlow">
     <svg :viewBox="`0 0 ${W} ${H}`" class="w-full h-auto" role="img">
-      <path v-for="(r, i) in ribbons" :key="i" :d="r.d" :fill="r.color" fill-opacity="0.55" />
-      <g v-for="b in leftBars" :key="b.f.family">
-        <rect :x="LX - 6" :y="b.y" width="6" :height="b.h" fill="#1E1C1A" />
-        <text :x="LX - 10" :y="b.y + Math.min(b.h, 16) / 2 + 3" text-anchor="end" font-size="8.5" fill="#1E1C1A">{{ FAMILY_LABEL[b.f.family]?.[locale] ?? (b.f.family === 'others' ? (locale === 'zh-CN' ? '其他评审' : 'other panels') : b.f.family) }}</text>
-        <text :x="LX - 10" :y="b.y + Math.min(b.h, 16) / 2 + 13" text-anchor="end" font-size="7.5" fill="#6B6660">{{ fmt(b.f.coffees) }}</text>
+      <defs>
+        <clipPath v-for="(b, fi) in leftBars" :id="`pf-${uid}-${fi}`" :key="'clip' + fi">
+          <rect :x="LX" y="-2" :width="(RX - LX + 8) * wipe(fi)" :height="H + 4" />
+        </clipPath>
+      </defs>
+      <g v-for="(b, fi) in leftBars" :key="'rib' + fi" :clip-path="`url(#pf-${uid}-${fi})`">
+        <path v-for="(r, i) in ribbons.filter((x) => x.fi === fi)" :key="i" :d="r.d" :fill="r.color" fill-opacity="0.55" />
       </g>
-      <g v-for="b in rightBars" :key="b.d">
+      <g v-for="(b, fi) in leftBars" :key="b.f.family">
+        <rect :x="LX - 6" :y="b.y" width="6" :height="b.h * barGrow" fill="#1E1C1A" />
+        <g :opacity="wipe(fi) > 0 ? Math.min(1, wipe(fi) * 3) : 0">
+          <text :x="LX - 10" :y="b.y + Math.min(b.h, 16) / 2 + 3" text-anchor="end" font-size="8.5" fill="#1E1C1A">{{ FAMILY_LABEL[b.f.family]?.[locale] ?? (b.f.family === 'others' ? (locale === 'zh-CN' ? '其他评审' : 'other panels') : b.f.family) }}</text>
+          <text :x="LX - 10" :y="b.y + Math.min(b.h, 16) / 2 + 13" text-anchor="end" font-size="7.5" fill="#6B6660">{{ fmt(b.f.coffees) }}</text>
+        </g>
+      </g>
+      <g v-for="(b, i) in rightBars" :key="b.d" :opacity="labelIn(i)">
         <rect :x="RX" :y="b.y" width="6" :height="b.h" :fill="DIM_COLORS[b.d]" />
         <text :x="RX + 10" :y="b.y + b.h / 2 + 3.5" font-size="8.5" fill="#1E1C1A">{{ labels[b.d]?.[locale] }}</text>
       </g>

@@ -5,7 +5,7 @@ dim:body	dimension	丝绒感|醇厚|圆润口感	velvety|full body|round mouthfe
 dim:floral	dimension	茉莉花|玉兰花|白花	jasmine|magnolia|white flowers	花香	floral	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
 dim:fruity	dimension	水蜜桃|黄桃|黑加仑|杏桃	peach|yellow peach|blackcurrant|apricot	果香	fruity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
 dim:nutty_chocolate	dimension	烤榛果|黑莓可可|提拉米苏	roasted hazelnut|berry cocoa|tiramisu	坚果巧克力	nutty & chocolate	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:fermented_winey	dimension	酒香|朗姆酒|发酵果酱	anaerobic winey|rum|fermented jam	发酵与酒香	fermented & winey	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (dimension label: process word 厌氧 removed)	true
+dim:fermented_winey	dimension	酒香|朗姆酒|发酵果酱	winey|rum|fermented jam	发酵与酒香	fermented & winey	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (dimension label: process word 厌氧 removed); en synced OWNER_COPY_REVIEW_2_2026-09-12	true
 dim:bitter_roasted	dimension	黑巧回甘|烟熏可可|重烘焙香	dark chocolate finish|smoky cocoa|deep roast	烘烤苦感	roast & bitter	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
 dim:spice	dimension	小豆蔻|肉桂|辛香料	cardamom|cinnamon|warm spice	香料	spice	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (异域 removed)	true
 dim:herbal_green	dimension	茉莉绿茶|高山乌龙|草本清香	jasmine green tea|high-mountain oolong|fresh herbal	草本绿茶	herbal & green	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
