@@ -32,11 +32,11 @@ function tile(ctx: CanvasRenderingContext2D, i: number, x: number, y: number, s:
   ctx.strokeStyle = color;
   ctx.beginPath();
   switch (i % 5) {
-    case 0: ctx.moveTo(2, 28); ctx.bezierCurveTo(2, 12, 14, 2, 28, 2); ctx.bezierCurveTo(28, 18, 16, 28, 2, 28); ctx.closePath(); ctx.fill(); break;
-    case 1: ctx.arc(15, 15, 13, 0, Math.PI * 2); ctx.fill(); break;
-    case 2: ctx.moveTo(2, 2); ctx.lineTo(28, 2); ctx.arc(2, 2, 26, 0, Math.PI / 2); ctx.closePath(); ctx.fill(); break;
-    case 3: ctx.moveTo(15, 2); ctx.bezierCurveTo(22, 10, 28, 16, 28, 21); ctx.arc(15, 21, 13, 0, Math.PI); ctx.bezierCurveTo(2, 16, 8, 10, 15, 2); ctx.closePath(); ctx.fill(); break;
-    default: ctx.lineWidth = 5; ctx.arc(15, 15, 11, 0, Math.PI * 2); ctx.stroke();
+    case 0: ctx.moveTo(3, 27); ctx.lineTo(3, 3); ctx.arc(3, 27, 24, -Math.PI / 2, 0); ctx.closePath(); ctx.fill(); break; // quarter
+    case 1: ctx.arc(15, 15, 11, 0, Math.PI * 2); ctx.fill(); break; // circle
+    case 2: ctx.moveTo(3, 21); ctx.arc(15, 21, 12, Math.PI, 0); ctx.closePath(); ctx.fill(); break; // half
+    case 3: ctx.moveTo(3, 27); ctx.lineTo(15, 3); ctx.lineTo(27, 27); ctx.closePath(); ctx.fill(); break; // triangle
+    default: ctx.moveTo(15, 3); ctx.lineTo(27, 15); ctx.lineTo(15, 27); ctx.lineTo(3, 15); ctx.closePath(); ctx.fill(); // diamond
   }
   ctx.restore();
 }
@@ -89,8 +89,8 @@ export async function renderCardPng(model: ResultCardModel, locale: "zh-CN" | "e
     ctx.beginPath(); ctx.moveTo(px + lw + 18, y - 8); ctx.lineTo(pr - vw - 18, y - 8); ctx.stroke(); ctx.restore();
     y += 52;
   }
-  // the words as one group
-  y += 40;
+  // the words as one group, set lower on the card (owner)
+  y = Math.max(y + 40, Y + H * 0.5);
   ctx.fillStyle = "#1E1C1A"; ctx.font = `600 96px ${SANS}`;
   const lines = wrapWords(ctx, model.picked, pr - px, 48);
   for (const line of lines) {

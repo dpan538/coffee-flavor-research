@@ -25,8 +25,13 @@ DIMS = ["acidity", "sweetness", "body", "floral", "fruity", "nutty_chocolate", "
 ALPHA_DEFAULT = 0.5
 MIN_VARIETY, MIN_PROCESS, MIN_CELL = 50, 30, 10
 PRODUCT_OPTIONS = {
-    "C0": {"pour_over_v60": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "french_press": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"),
-           "espresso": ("ESPRESSO", "CORPUS_MEASURED"), "cold_brew": (None, "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING")},
+    # owner (review 5): the ways a cup is commonly made; the corpus only measures cupping and espresso, so filter and
+    # immersion methods borrow the cupping row, moka borrows nothing (it is neither), cold methods have no row
+    "C0": {"espresso": ("ESPRESSO", "CORPUS_MEASURED"), "pour_over_v60": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"),
+           "moka_pot": (None, "NO_CORPUS_ROW (stovetop pressure is neither cupping nor espresso)"), "cold_brew": (None, "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING"),
+           "siphon": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "cold_drip": (None, "NO_CORPUS_ROW (cold method)"),
+           "french_press": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "turkish": (None, "NO_CORPUS_ROW (boiled, unfiltered)"),
+           "aeropress": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING")},
     "C1": {"very_light": ("Light", "VERY_LIGHT_PROXY_FROM_LIGHT_ROW"), "light": ("Light", "CORPUS_MEASURED"), "medium_light": ("Medium-Light", "CORPUS_MEASURED"), "medium": ("Medium", "CORPUS_MEASURED"),
            "medium_dark": ("Medium-Dark", "CORPUS_MEASURED"), "dark": ("Dark", "CORPUS_MEASURED"), "very_dark": ("Very Dark", "CORPUS_MEASURED")},
     # owner (2026-09-12, copy review 2): the eight processing methods drinkers meet on bags, plus decaf. A method without
@@ -40,8 +45,10 @@ PRODUCT_OPTIONS = {
 }
 # labels the UI shows for every context option (view.ts reads them from the bundle; the engine uses them for the reference line)
 CONTEXT_LABELS = {
-    "pour_over_v60": {"zh-CN": "手冲 (V60)", "en": "Pour-over (V60)"}, "french_press": {"zh-CN": "法压", "en": "French press"},
-    "espresso": {"zh-CN": "意式浓缩", "en": "Espresso"}, "cold_brew": {"zh-CN": "冷萃", "en": "Cold brew"},
+    "pour_over_v60": {"zh-CN": "手冲 Pour-over", "en": "Pour-over"}, "french_press": {"zh-CN": "法压壶 French press", "en": "French press"},
+    "espresso": {"zh-CN": "意式萃取 Espresso", "en": "Espresso"}, "cold_brew": {"zh-CN": "冷萃 Cold brew", "en": "Cold brew"},
+    "moka_pot": {"zh-CN": "摩卡壶 Moka pot", "en": "Moka pot"}, "siphon": {"zh-CN": "虹吸壶 Siphon", "en": "Siphon"},
+    "cold_drip": {"zh-CN": "冰滴 Cold drip", "en": "Cold drip"}, "turkish": {"zh-CN": "土耳其壶 Turkish", "en": "Turkish pot"}, "aeropress": {"zh-CN": "爱乐压 AeroPress", "en": "AeroPress"},
     "very_light": {"zh-CN": "极浅烘", "en": "Very light"}, "light": {"zh-CN": "浅烘", "en": "Light"}, "medium_light": {"zh-CN": "中浅烘", "en": "Medium-light"},
     "medium": {"zh-CN": "中烘", "en": "Medium"}, "medium_dark": {"zh-CN": "中深烘", "en": "Medium-dark"}, "dark": {"zh-CN": "深烘", "en": "Dark"}, "very_dark": {"zh-CN": "极深烘", "en": "Very dark"},
     "gesha": {"zh-CN": "瑰夏 Gesha", "en": "Gesha"}, "bourbon": {"zh-CN": "波本 Bourbon", "en": "Bourbon"}, "typica": {"zh-CN": "铁皮卡 Typica", "en": "Typica"},
@@ -128,7 +135,7 @@ def main() -> int:
         "Q7_body": {"A": {"body": 1}, "B": {"body": 2}, "C": {"body": 3, "bitter_roasted": 1}, "D": {"body": 1, "defect": 0.5}},  # D: astringent, drying (owner review 4)
         "Q8_aroma": {"A": {"floral": 3}, "B": {"nutty_chocolate": 3}, "C": {"fermented_winey": 2, "fruity": 2}, "D": {}},  # D: no clear aroma (owner copy review 2, 2026-09-12)
         "Q9_bitter": {"A": {"bitter_roasted": 1}, "B": {}, "C": {"bitter_roasted": 2}},  # intensity only (owner copy review 2, 2026-09-12): the label no longer says 回甘, so A no longer adds nutty_chocolate
-        "Q10_clean": {"A": {"floral": 1, "acidity": 1}, "B": {"fermented_winey": 1, "body": 1}, "C": {"fermented_winey": 0.5, "defect": 0.5}, "D": {}},  # C: blended but muddled; D: hard to say (owner review 4)
+        "Q10_clean": {"A": {"fermented_winey": 0.5, "body": 0.5, "fruity": 0.5}, "B": {"body": 1, "sweetness": 0.5}, "C": {"floral": 1, "acidity": 1}, "D": {}},  # owner review 5: A mixed, a little of everything; B full and consistent; C clear layers; D hard to say
     }
     # presentation layer (owner 2026-09-12): one vector backend, two languages. Minimalist CN tag
     # arrays for zh-CN, scientific wording for en; the science line is a collapsible second layer.
@@ -179,9 +186,15 @@ def main() -> int:
                                         "PRODUCT_NOTE": {"zh-CN": "提示", "en": "Note"}},
                     "displayable_evidence_states": ["REFERENCE_BASIS", "CORPUS_MEASURED", "LITERATURE_CLAIM", "COMPUTED_DELTA", "PRODUCT_NOTE"],
                     # ΔV compares the description with the initial reference; the sentence names that comparison and nothing else
-                    "delta_templates": {"zh-CN": {"pos": "相较于初始参考，你的描述中，{label}更突出。", "neg": "相较于初始参考，你的描述中，{label}较弱。"},
+                    "delta_templates": {"zh-CN": {"pos": "相较于初始参考，你的描述中，{label}更突出。", "neg": "相较于初始参考，你的描述中，{label}较弱。",
+                                                  "pos_variants": ["相较于初始参考，你的描述中，{label}更突出。", "你的描述比初始参考更偏向{label}。", "{label}在你的描述里比初始参考更明显。"],
+                                                  "neg_variants": ["相较于初始参考，你的描述中，{label}较弱。", "你的描述比初始参考更少提到{label}。", "{label}在你的描述里比初始参考淡一些。"],
+                                                  "pair_variants": ["相较于初始参考，你的描述更偏向{label}，{label2}则弱一些。", "你的描述里{label}比初始参考更明显，{label2}没那么突出。"]},
                                         "en": {"pos": "Compared with the initial reference profile, {label} is more pronounced in your description.",
-                                               "neg": "Compared with the initial reference profile, {label} is less pronounced in your description."}},
+                                               "neg": "Compared with the initial reference profile, {label} is less pronounced in your description.",
+                                               "pos_variants": ["Compared with the initial reference profile, {label} is more pronounced in your description.", "Your description leans more toward {label} than the initial reference does.", "{label} comes through more clearly in your description than in the initial reference."],
+                                               "neg_variants": ["Compared with the initial reference profile, {label} is less pronounced in your description.", "Your description mentions {label} less than the initial reference does.", "{label} is fainter in your description than in the initial reference."],
+                                               "pair_variants": ["Compared with the initial reference, your description leans toward {label}, with {label2} weaker.", "{label} stands out more in your description than in the initial reference, while {label2} recedes."]}},
                     "reference_basis_templates": {"zh-CN": {"text": "根据{context}，初始参考侧重{dims}。", "explain": "初始参考来自评审资料的统计，只是起点，不是这杯咖啡的测定。", "join": "、", "context_join": "、"},
                                                   "en": {"text": "From {context}, the initial reference leans toward {dims}.", "explain": "It comes from the review data and is a starting point, not a measurement of this cup.", "join": ", ", "context_join": ", "}},
                     "context_labels": CONTEXT_LABELS,

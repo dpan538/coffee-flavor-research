@@ -18,7 +18,7 @@ import {
   DIMENSIONS,
   add,
   buildVPred,
-  calibrationLine, defectNote, referenceBasisLine,
+  calibrationLine, defectNote, referenceBasisLine, textSeed,
   cosine,
   infer,
   normalize,
@@ -327,10 +327,13 @@ export function finalCard(result: InferenceResult, picks: Word[], locale: Locale
   const science: ScienceLine[] = [];
   const basis = referenceBasisLine(result, locale);
   if (basis) science.push(basis);
-  const literature = statementsFor(result.context, locale).find((l) => l.evidenceState === "LITERATURE_CLAIM");
+  // the reference and the difference line vary with the confirmed words (owner: not the same text every time)
+  const seed = textSeed(picks.map((w) => w.text));
+  const literatureLines = statementsFor(result.context, locale).filter((l) => l.evidenceState === "LITERATURE_CLAIM");
+  const literature = literatureLines[seed % Math.max(1, literatureLines.length)];
   if (literature) science.push(literature);
-  const top = result.topDeltaDimensions[0];
-  if (top && Math.abs(top.delta) >= 0.1) science.push(calibrationLine(top.dimension, top.delta, locale));
+  const [top, second] = result.topDeltaDimensions;
+  if (top && Math.abs(top.delta) >= 0.1) science.push(calibrationLine(top.dimension, top.delta, locale, seed, second && Math.abs(second.delta) >= 0.1 ? second : undefined));
   const confirmed = confirmedProfile(result, picks);
   // the papery / stale group (owner copy review 2026-09-12): the words are shown, a second sip is suggested, no quality verdict
   if (confirmed && (confirmed.profile as { anchor_id?: string }).anchor_id === "anchor-16") {

@@ -7,7 +7,7 @@ import { computed } from "vue";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-vue-next";
 import AppHeader from "./components/AppHeader.vue";
-import BrandGlyphs from "./components/BrandGlyphs.vue";
+import GeoMotif from "./components/GeoMotif.vue";
 import CollectedStack from "./components/CollectedStack.vue";
 import AboutDrawer from "./components/AboutDrawer.vue";
 import ContextSetupCard from "./components/ContextSetupCard.vue";
@@ -51,11 +51,11 @@ function onLeave(el: Element, done: () => void) {
     <!-- paper above, colour below: 58 : 42 on the home page, 1 : 3 in the flow (owner) -->
     <section class="relative shrink-0 bg-paper text-ink px-5 pt-4 pb-3 flex flex-col min-h-0 safe-top transition-[flex-basis] duration-500" :class="stage === 'hero' ? 'basis-[60.5%]' : 'basis-[25%]'" data-zone="top">
       <AppHeader :big="stage === 'hero'" />
-      <div v-if="stage === 'hero'" class="flex-1 min-h-0 flex flex-col justify-center gap-3 pt-10 pb-2" data-hero>
+      <div v-if="stage === 'hero'" class="flex-1 min-h-0 flex flex-col justify-center gap-3 pt-3 pb-2" data-hero>
         <h1 class="font-display font-bold text-[34px] leading-[1.05] tracking-tight rise" data-headline>{{ headline.before }}<span v-for="(l, i) in headline.letters" :key="i" :style="{ color: l.color }">{{ l.ch }}</span>{{ headline.after }}</h1>
         <h2 class="font-semibold text-[22px] leading-tight rise" :class="locale === 'zh-CN' ? 'display-zh' : 'font-display'">{{ shell.title }}</h2>
         <p class="text-[15px] leading-relaxed text-ink rise">{{ shell.subtitle }}</p>
-        <BrandGlyphs class="rise" :size="18" />
+        <GeoMotif class="rise" variant="home" :size="26" />
         <button type="button" class="text-left font-display font-bold text-[16px] leading-snug tracking-tight min-h-[44px] mt-3 rise" data-action="start-link" @click="start">
           <span v-for="(line, i) in sloganLines" :key="i" class="block">{{ line }}</span>
         </button>
@@ -70,11 +70,11 @@ function onLeave(el: Element, done: () => void) {
       <Transition :css="false" mode="out-in" @enter="onEnter" @leave="onLeave">
         <div :key="stageKey()" class="h-full">
           <section v-if="stage === 'hero'" class="h-full flex items-center gap-3 px-5 py-6" data-screen="hero">
-            <button type="button" class="tile flex-1 aspect-[1/1.2] bg-sun text-ink rise" data-action="start" @click="start">
+            <button type="button" class="tile flex-1 aspect-[1/1.32] bg-sun text-ink rise" data-action="start" @click="start">
               <span class="font-bold text-[28px] leading-none" :class="locale === 'zh-CN' ? 'display-zh' : 'display'">{{ shell.start }}</span>
               <ArrowRight :size="32" :stroke-width="2" class="self-end" />
             </button>
-            <button type="button" class="tile flex-1 aspect-[1/1.2] bg-mint2 text-ink rise" data-action="about" @click="aboutOpen = true">
+            <button type="button" class="tile flex-1 aspect-[1/1.32] bg-mint2 text-ink rise" data-action="about" @click="aboutOpen = true">
               <span class="font-bold text-[28px] leading-none" :class="locale === 'zh-CN' ? 'display-zh' : 'display'">{{ shell.about }}</span>
               <span class="self-end font-display font-bold text-[24px] leading-none">?</span>
             </button>

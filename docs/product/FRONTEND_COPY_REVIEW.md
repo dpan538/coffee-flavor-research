@@ -23,7 +23,7 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | c0_preparation 标题 | 怎么制作的？ | How was it made? |
-| c0_preparation 选项 | 手冲 (V60) ｜ 法压 ｜ 意式浓缩 ｜ 冷萃 | Pour-over (V60) ｜ French press ｜ Espresso ｜ Cold brew |
+| c0_preparation 选项 | 意式萃取 Espresso ｜ 手冲 Pour-over ｜ 摩卡壶 Moka pot ｜ 冷萃 Cold brew ｜ 虹吸壶 Siphon ｜ 冰滴 Cold drip ｜ 法压壶 French press ｜ 土耳其壶 Turkish ｜ 爱乐压 AeroPress | Espresso ｜ Pour-over ｜ Moka pot ｜ Cold brew ｜ Siphon ｜ Cold drip ｜ French press ｜ Turkish pot ｜ AeroPress |
 | c1_roast 标题 | 烘焙度 | Roast level |
 | c1_roast 选项 | 极浅烘 ｜ 浅烘 ｜ 中浅烘 ｜ 中烘 ｜ 中深烘 ｜ 深烘 ｜ 极深烘 | Very light ｜ Light ｜ Medium-light ｜ Medium ｜ Medium-dark ｜ Dark ｜ Very dark |
 | c2_variety 标题 | 豆种 | Variety |
@@ -49,8 +49,8 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | 两个按钮 | 开始 ｜ 关于 | Start ｜ About |
-| 品牌图形（与风味卡顶部同一排） | 叶 / 圆 / 扇 / 滴 / 环；套件另有 拱 / 楔 / 波 | leaf / circle / fan / drop / ring; the kit also has arch / wedge / wave |
-| 大标题五词五色 | Every taste has its own vocabulary.（每个词一种颜色） | Every taste has its own vocabulary. (one colour per word) |
+| 几何图形（三套组合共用一种语言） | 首页：四格邮票带（色底 + 奶白形）；About：六格拼布；风味卡：按所选词特征色的一排小格（四分圆 / 圆 / 半圆 / 三角 / 菱形），形状都在格内 | home: a four-tile stamp band (coloured ground + cream shape); About: a six-tile quilt; card: a row of small tiles in the words' colours (quarter / circle / half / triangle / diamond), every shape inside its box |
+| 大标题 | Every taste has its own vocabulary.（taste 五个字母各一种高亮色） | Every taste has its own vocabulary. (the five letters of taste, one bright colour each) |
 
 #### 风味卡 FlavorCard（终卡）
 
@@ -159,16 +159,16 @@
 | Q3 | 选项 A | 清爽，像绿茶或果汁 | light, like green tea or juice |
 | Q3 | 选项 B | 顺滑，像牛奶或丝绒 | smooth, like milk or velvet |
 | Q3 | 选项 C | 厚重，像黑巧或糖浆 | heavy, like dark chocolate or syrup |
-| Q3 | 选项 D | 有点涩，发干 | a little astringent, drying |
+| Q3 | 选项 D | 发涩，像喝了浓茶 | astringent, like strong tea |
 | Q4 | 提问 | 尾段苦吗？ | Bitter at the end? |
-| Q4 | 选项 A | 有一点苦 | a little bitter |
+| Q4 | 选项 A | 微苦，像可可或坚果皮 | slightly bitter, like cocoa or nut skin |
 | Q4 | 选项 B | 没有明显苦感 | no noticeable bitterness |
-| Q4 | 选项 C | 苦感明显 | clearly bitter |
+| Q4 | 选项 C | 苦得明显，像浓缩或炭烧 | clearly bitter, like espresso or charred roast |
 | Q5 | 提问 | 整体更像哪种？ | Overall, which is closer? |
-| Q5 | 选项 A | 味道一层一层，分得清 | flavors come one at a time, distinct |
-| Q5 | 选项 B | 味道混在一起，饱满 | flavors blend together, full |
-| Q5 | 选项 C | 味道混在一起，有点杂 | flavors blend together, a little muddled |
-| Q5 | 选项 D | 说不上来 | hard to say |
+| Q5 | 选项 A | 味道混在一起，各种风味都有一点 | flavors mixed together, a little of everything |
+| Q5 | 选项 B | 饱满圆润，一致性很高 | full and round, very consistent |
+| Q5 | 选项 C | 能分清楚多种味道，层次明确 | several flavors told apart, clear layers |
+| Q5 | 选项 D | 感觉不错但说不上来 | nice, but hard to say |
 
 ## 4. 十六组参考风味（终卡标题与标签）
 
@@ -197,18 +197,18 @@
 
 | 维度 | 标签 zh | label en | 维度词 zh | words en | 消费端补充 zh | consumer en |
 |---|---|---|---|---|---|---|
-| acidity | 酸质 | acidity | 清冽果酸 ｜ 明亮酸质 ｜ 柑橘酸 | crisp acidity ｜ bright acidity ｜ citric |  | citrus ｜ juicy ｜ tart ｜ crisp ｜ citrusy ｜ tangy ｜ lemony |
-| sweetness | 甜感 | sweetness | 高甜感 ｜ 蔗糖甜 ｜ 蜂蜜感 | high sweetness ｜ cane sugar ｜ honeyed | 冰糖雪梨 ｜ 太妃糖 ｜ 麦芽糖 ｜ 黑糖 ｜ 罗汉果甜 | rock-sugar pear ｜ toffee ｜ maltose ｜ dark brown sugar ｜ monk-fruit sweetness ｜ jam ｜ candy ｜ syrup ｜ jammy |
-| body | 醇厚度 | body | 丝绒感 ｜ 醇厚 ｜ 圆润口感 | velvety ｜ full body ｜ round mouthfeel |  | silky |
-| floral | 花香 | floral | 茉莉花 ｜ 玉兰花 ｜ 白花 | jasmine ｜ magnolia ｜ white flowers | 桂花 ｜ 栀子花 ｜ 咖啡花 ｜ 白兰花 ｜ 洋甘菊 | osmanthus ｜ gardenia ｜ coffee blossom ｜ white magnolia ｜ chamomile ｜ floral ｜ tea-like |
+| acidity | 酸质 | acidity | 葡萄柚 ｜ 血橙 ｜ 青柠 | grapefruit ｜ blood orange ｜ lime |  | citrus ｜ juicy ｜ tart ｜ crisp ｜ citrusy ｜ tangy ｜ lemony |
+| sweetness | 甜感 | sweetness | 蔗糖 ｜ 蜂蜜 ｜ 焦糖 | cane sugar ｜ honey ｜ caramel | 冰糖雪梨 ｜ 太妃糖 ｜ 麦芽糖 ｜ 黑糖 ｜ 罗汉果甜 | rock-sugar pear ｜ toffee ｜ maltose ｜ dark brown sugar ｜ monk-fruit sweetness ｜ jam ｜ candy ｜ syrup ｜ jammy |
+| body | 醇厚度 | body | 丝绒奶油 ｜ 慕斯 ｜ 奶油 | velvet cream ｜ mousse ｜ cream |  | silky |
+| floral | 花香 | floral | 茉莉花 ｜ 玉兰花 ｜ 橙花 | jasmine ｜ magnolia ｜ orange blossom | 桂花 ｜ 栀子花 ｜ 咖啡花 ｜ 白兰花 ｜ 洋甘菊 | osmanthus ｜ gardenia ｜ coffee blossom ｜ white magnolia ｜ chamomile ｜ floral ｜ tea-like |
 | fruity | 果香 | fruity | 水蜜桃 ｜ 黄桃 ｜ 黑加仑 ｜ 杏桃 | peach ｜ yellow peach ｜ blackcurrant ｜ apricot | 巨峰葡萄 ｜ 荔枝 ｜ 杨梅 ｜ 西梅 ｜ 青梅 ｜ 红心芭乐 | Kyoho grape ｜ lychee ｜ bayberry ｜ prune ｜ green plum ｜ pink guava ｜ berry ｜ berries ｜ stone fruit ｜ tropical ｜ melon |
-| nutty_chocolate | 坚果巧克力 | nutty & chocolate | 烤榛果 ｜ 黑莓可可 ｜ 提拉米苏 | roasted hazelnut ｜ berry cocoa ｜ tiramisu |  | chocolate |
-| fermented_winey | 发酵与酒香 | fermented & winey | 酒香 ｜ 朗姆酒 ｜ 发酵果酱 | winey ｜ rum ｜ fermented jam | 米酒 ｜ 酒酿 ｜ 酒酿圆子 ｜ 黄酒 ｜ 热带水果发酵酱 ｜ 水果黄酒 ｜ 威士忌桶 ｜ 雪莉桶 ｜ 野果发酵 ｜ 微醺酒香 ｜ 苹果酒感 ｜ 水果发酵酱 ｜ 朗姆酒香 | rice wine ｜ jiuniang (sweet fermented rice) ｜ jiuniang rice balls ｜ huangjiu ｜ tropical fruit ferment ｜ fruit huangjiu ｜ whisky barrel ｜ sherry cask ｜ funky ｜ wine ｜ cider ｜ fermented ｜ winey |
-| bitter_roasted | 烘烤苦感 | roast & bitter | 黑巧回甘 ｜ 烟熏可可 ｜ 重烘焙香 | dark chocolate finish ｜ smoky cocoa ｜ deep roast | 烤杏仁 ｜ 烘焙麦芽 ｜ 黑芝麻 ｜ 松露巧克力 | roasted almond ｜ roasted malt ｜ black sesame ｜ truffle chocolate ｜ smokey ｜ roasted ｜ dark roast ｜ ashy |
-| spice | 香料 | spice | 小豆蔻 ｜ 肉桂 ｜ 辛香料 | cardamom ｜ cinnamon ｜ warm spice |  |  |
-| herbal_green | 草本绿茶 | herbal & green | 茉莉绿茶 ｜ 高山乌龙 ｜ 草本清香 | jasmine green tea ｜ high-mountain oolong ｜ fresh herbal | 高山龙井 ｜ 武夷岩茶 ｜ 鸭屎香 ｜ 普洱茶韵 | high-mountain Longjing ｜ Wuyi rock tea ｜ Ya Shi Xiang (Dancong) ｜ Pu'er tea finish ｜ tea ｜ grass ｜ grassy ｜ herbal |
-| woody_earthy | 木质泥土 | woody & earthy | 风干雪松 ｜ 泥炭木质 ｜ 松露 | aged cedar ｜ peaty wood ｜ truffle |  |  |
-| defect | 瑕疵 | defect | 风味瑕疵 ｜ 过发酵味 | off-flavor ｜ over-fermented |  |  |
+| nutty_chocolate | 坚果巧克力 | nutty & chocolate | 烤榛果 ｜ 可可 ｜ 提拉米苏 | roasted hazelnut ｜ cocoa ｜ tiramisu |  | chocolate |
+| fermented_winey | 发酵与酒香 | fermented & winey | 朗姆酒 ｜ 红酒 ｜ 酒酿 | rum ｜ red wine ｜ jiuniang | 米酒 ｜ 酒酿 ｜ 酒酿圆子 ｜ 黄酒 ｜ 热带水果发酵酱 ｜ 水果黄酒 ｜ 威士忌桶 ｜ 雪莉桶 ｜ 野果发酵 ｜ 微醺酒香 ｜ 苹果酒感 ｜ 水果发酵酱 ｜ 朗姆酒香 | rice wine ｜ jiuniang (sweet fermented rice) ｜ jiuniang rice balls ｜ huangjiu ｜ tropical fruit ferment ｜ fruit huangjiu ｜ whisky barrel ｜ sherry cask ｜ funky ｜ wine ｜ cider ｜ fermented ｜ winey |
+| bitter_roasted | 烘烤苦感 | roast & bitter | 黑巧克力 ｜ 烟熏可可 ｜ 炭烧 | dark chocolate ｜ smoky cocoa ｜ charred | 烤杏仁 ｜ 烘焙麦芽 ｜ 黑芝麻 ｜ 松露巧克力 | roasted almond ｜ roasted malt ｜ black sesame ｜ truffle chocolate ｜ smokey ｜ roasted ｜ dark roast ｜ ashy |
+| spice | 香料 | spice | 小豆蔻 ｜ 肉桂 ｜ 丁香 | cardamom ｜ cinnamon ｜ clove |  |  |
+| herbal_green | 草本绿茶 | herbal & green | 茉莉绿茶 ｜ 高山乌龙 ｜ 柠檬草 | jasmine green tea ｜ high-mountain oolong ｜ lemongrass | 高山龙井 ｜ 武夷岩茶 ｜ 鸭屎香 ｜ 普洱茶韵 | high-mountain Longjing ｜ Wuyi rock tea ｜ Ya Shi Xiang (Dancong) ｜ Pu'er tea finish ｜ tea ｜ grass ｜ grassy ｜ herbal |
+| woody_earthy | 木质泥土 | woody & earthy | 风干雪松 ｜ 泥炭 ｜ 松露 | aged cedar ｜ peat ｜ truffle |  |  |
+| defect | 瑕疵 | defect | 纸味 ｜ 陈味 ｜ 霉味 | papery ｜ stale ｜ musty |  |  |
 
 ## 6. 94 个规范概念的极简词（用户录入豆子时上卡）
 

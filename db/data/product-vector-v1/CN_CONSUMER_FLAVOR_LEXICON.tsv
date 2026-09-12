@@ -97,3 +97,11 @@ surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary
 	chocolaty	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (20 respondents); zh counterpart pending	false	false
 	dirt	woody_earthy			GACTT_CONSUMER_TERMS_2026-09-12 (20 respondents); zh counterpart pending	false	false
 	ashy	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (17 respondents); zh counterpart pending	false	true
+清冽果酸	crisp acidity	acidity			OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+明亮酸质	bright acidity	acidity			OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+高甜感	high sweetness	sweetness			OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+丝绒感	velvety	body	sensory.smooth_mouthfeel		OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+黑巧回甘	dark chocolate finish	bitter_roasted	sensory.dark_chocolate		OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+醇厚	full body	body	sensory.fullness		OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+圆润口感	round mouthfeel	body			OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false
+重烘焙香	deep roast	bitter_roasted	sensory.roasted_character		OWNER_REVIEW_5_2026-09-12 (former dimension word kept for input only)	true	false

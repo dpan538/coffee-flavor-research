@@ -1,16 +1,16 @@
 key	kind	tags_zh_cn	tags_en	label_zh_cn	label_en	basis	owner_reviewed
-dim:acidity	dimension	清冽果酸|明亮酸质|柑橘酸	crisp acidity|bright acidity|citric	酸质	acidity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:sweetness	dimension	高甜感|蔗糖甜|蜂蜜感	high sweetness|cane sugar|honeyed	甜感	sweetness	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:body	dimension	丝绒感|醇厚|圆润口感	velvety|full body|round mouthfeel	醇厚度	body	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:floral	dimension	茉莉花|玉兰花|白花	jasmine|magnolia|white flowers	花香	floral	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:fruity	dimension	水蜜桃|黄桃|黑加仑|杏桃	peach|yellow peach|blackcurrant|apricot	果香	fruity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:nutty_chocolate	dimension	烤榛果|黑莓可可|提拉米苏	roasted hazelnut|berry cocoa|tiramisu	坚果巧克力	nutty & chocolate	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:fermented_winey	dimension	酒香|朗姆酒|发酵果酱	winey|rum|fermented jam	发酵与酒香	fermented & winey	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (dimension label: process word 厌氧 removed); en synced OWNER_COPY_REVIEW_2_2026-09-12	true
-dim:bitter_roasted	dimension	黑巧回甘|烟熏可可|重烘焙香	dark chocolate finish|smoky cocoa|deep roast	烘烤苦感	roast & bitter	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:spice	dimension	小豆蔻|肉桂|辛香料	cardamom|cinnamon|warm spice	香料	spice	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (异域 removed)	true
-dim:herbal_green	dimension	茉莉绿茶|高山乌龙|草本清香	jasmine green tea|high-mountain oolong|fresh herbal	草本绿茶	herbal & green	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:woody_earthy	dimension	风干雪松|泥炭木质|松露	aged cedar|peaty wood|truffle	木质泥土	woody & earthy	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
-dim:defect	dimension	风味瑕疵|过发酵味	off-flavor|over-fermented	瑕疵	defect	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator	true
+dim:acidity	dimension	葡萄柚|血橙|青柠	grapefruit|blood orange|lime	酸质	acidity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:sweetness	dimension	蔗糖|蜂蜜|焦糖	cane sugar|honey|caramel	甜感	sweetness	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:body	dimension	丝绒奶油|慕斯|奶油	velvet cream|mousse|cream	醇厚度	body	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:floral	dimension	茉莉花|玉兰花|橙花	jasmine|magnolia|orange blossom	花香	floral	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:fruity	dimension	水蜜桃|黄桃|黑加仑|杏桃	peach|yellow peach|blackcurrant|apricot	果香	fruity	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:nutty_chocolate	dimension	烤榛果|可可|提拉米苏	roasted hazelnut|cocoa|tiramisu	坚果巧克力	nutty & chocolate	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:fermented_winey	dimension	朗姆酒|红酒|酒酿	rum|red wine|jiuniang	发酵与酒香	fermented & winey	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (dimension label: process word 厌氧 removed); en synced OWNER_COPY_REVIEW_2_2026-09-12; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:bitter_roasted	dimension	黑巧克力|烟熏可可|炭烧	dark chocolate|smoky cocoa|charred	烘烤苦感	roast & bitter	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:spice	dimension	小豆蔻|肉桂|丁香	cardamom|cinnamon|clove	香料	spice	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_COPY_REVIEW_2026-09-12 (异域 removed); OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:herbal_green	dimension	茉莉绿茶|高山乌龙|柠檬草	jasmine green tea|high-mountain oolong|lemongrass	草本绿茶	herbal & green	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:woody_earthy	dimension	风干雪松|泥炭|松露	aged cedar|peat|truffle	木质泥土	woody & earthy	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
+dim:defect	dimension	纸味|陈味|霉味	papery|stale|musty	瑕疵	defect	OWNER_DIMENSION_TAG_MAP_CN_2026-09-12; en parallel by operator; OWNER_REVIEW_5_2026-09-12 (concrete flavor objects, no adjectives)	true
 sensory.acetic_vinegar	concept	醋味	vinegar	醋味	vinegar	OWNER_APPROVED_2026-09-12_V1_CANONICAL_BASELINE_LEXICON; OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花); OWNER_COPY_REVIEW_2026-09-12 (sensory word, not the acid)	true
 sensory.alcoholic	concept	酒精感	boozy	酒精感	boozy	OWNER_APPROVED_2026-09-12_V1_CANONICAL_BASELINE_LEXICON; OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	true
 sensory.almond	concept	杏仁	almond	杏仁	almond	OWNER_APPROVED_2026-09-12_V1_CANONICAL_BASELINE_LEXICON; OPERATOR_DRAFT_2026-09-12_CN_SPECIALTY_VOCABULARY (owner rules: stone fruit->黄桃/杏桃, brown sugar->红糖/蔗糖, winey->厌氧酒香/朗姆, citrus->柑橘/柚子, floral->茉莉花/咖啡花)	true

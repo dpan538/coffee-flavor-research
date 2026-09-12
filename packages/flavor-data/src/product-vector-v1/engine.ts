@@ -304,7 +304,7 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
 type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; terms_short?: string; use?: string; claims: number; state: string };
 type PresentationExtras = {
   evidence_labels?: Record<string, Record<Locale, string>>;
-  delta_templates?: Record<Locale, { pos: string; neg: string }>;
+  delta_templates?: Record<Locale, { pos: string; neg: string; pos_variants?: string[]; neg_variants?: string[]; pair_variants?: string[] }>;
   citation_prefix?: Record<Locale, string>;
   card_heading?: Record<Locale, string>;
   science_heading?: Record<Locale, string>;
@@ -363,15 +363,30 @@ export function shortSource(title: string): string {
   return head.replace("(Jonathan Gagné)", "(J. Gagné)");
 }
 
-/** softened calibration sentence for a delta dimension */
-export function calibrationLine(dimension: string, delta: number, locale: Locale): ScienceLine {
+/** A small deterministic seed so the wording varies from card to card (owner) without being random on re-render. */
+export function textSeed(parts: string[]): number {
+  let h = 7;
+  for (const p of parts) for (const ch of p) h = (h * 31 + ch.charCodeAt(0)) % 100003;
+  return h;
+}
+
+/** the difference line for a delta dimension; `seed` picks a wording, `second` (opposite sign) makes it a pair */
+export function calibrationLine(dimension: string, delta: number, locale: Locale, seed = 0, second?: { dimension: string; delta: number }): ScienceLine {
   const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
   const label = labels[dimension]?.[locale] ?? dimension;
   const templates = (presentation as PresentationExtras).delta_templates?.[locale];
   const words = presentation.delta_words[locale];
-  const text = templates
-    ? (delta > 0 ? templates.pos : templates.neg).replace("{label}", label)
-    : locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
+  let text: string;
+  if (templates) {
+    const pairs = templates.pair_variants ?? [];
+    const single = (delta > 0 ? templates.pos_variants : templates.neg_variants) ?? [delta > 0 ? templates.pos : templates.neg];
+    const usePair = !!second && delta > 0 && second.delta < 0 && pairs.length > 0 && seed % 3 === 2;
+    text = usePair
+      ? pairs[seed % pairs.length]!.replace("{label}", label).replace("{label2}", labels[second!.dimension]?.[locale] ?? second!.dimension)
+      : single[seed % single.length]!.replace("{label}", label);
+  } else {
+    text = locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
+  }
   return { text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}`, sourceTitle: "engine", sourceLicence: "", label: evidenceLabel("COMPUTED_DELTA", locale), citation: "" };
 }
 

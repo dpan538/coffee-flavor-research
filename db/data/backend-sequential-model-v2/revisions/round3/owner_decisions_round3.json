@@ -439,6 +439,23 @@
         "owner_follow_up_3": "The network page title gets more room below the header; the lower band is ~20 px shorter; the two buttons take brighter colours than the lavender band (sun #FFD54A, mint #7BE0C8); the letters of 'taste' use bright highlight colours; the hero text block sits lower with space above."
       },
       "recorded_at_utc": "2026-09-12T16:10:00Z"
+    },
+    {
+      "id": "R3-D21",
+      "subject": "Owner review 5: concrete flavor words, nine ways of making the cup, reworded Q3/Q4/Q5, varying card notes, SVG wordmark, pinned pages without stutter, fonts complete",
+      "decision": "Flavor words are objects, not adjectives: the dimension word lists become 葡萄柚 / 血橙 / 青柠, 蔗糖 / 蜂蜜 / 焦糖, 丝绒奶油 / 慕斯 / 奶油, 黑巧克力 / 烟熏可可 / 炭烧, 朗姆酒 / 红酒 / 酒酿, 小豆蔻 / 肉桂 / 丁香, 茉莉绿茶 / 高山乌龙 / 柠檬草, 纸味 / 陈味 / 霉味 (the former adjectives stay understood as input aliases). The first question offers the nine ways a cup is commonly made (espresso, pour-over, moka, cold brew, siphon, cold drip, French press, Turkish, AeroPress); filter and immersion methods borrow the cupping row, moka and the cold methods have no row. Q3-D reads 发涩，像喝了浓茶; Q4 reads 微苦，像可可或坚果皮 / 没有明显苦感 / 苦得明显，像浓缩或炭烧; Q5 is the owner's four: 味道混在一起，各种风味都有一点 / 饱满圆润，一致性很高 / 能分清楚多种味道，层次明确 / 感觉不错但说不上来, with increments mixed / full / layered / none. The card's research reference and difference line vary with the confirmed words (a seed picks among applicable references and among several wordings, including a two-feature form). The wordmark is one SVG with FLAVOR (Stack Sans) and WORDS (Fraunces) fitted to the same width; the hero block sits a little higher; the home buttons grow 20 px; the first two context cards are brighter. About: the design and sources pages are pinned only while compact (no nested scrolling), TOP fades out, jumps and fades in instead of replaying the drawings; the continent headers sit on their own rows. Stack Sans Text is self-hosted from the owner's download as a variable woff2 with its OFL.",
+      "owner_words": "引用与来源的挺住的位置还不是很好，这段的scroll有卡顿 … logo的WORDS的字间距需要微调 … 正好宽度和WORDS对齐 … backtotop … 带有opacity变化的线性回归顶部 … stacksans也在download中了 … 现在咖啡的做法明显有点少 … 有点涩对于口感而言是抽象的 … 苦感明显需要更详细的描述 … 味道混在一起，各种风味都有一点 … 黑巧回甘不是一种风味描述，应该是黑巧克力 … 清冽果酸不够具体 … 丝绒感不算风味描述 … 风味描述的位置应该在偏下位置 … 研究参考和你的描述需稍微多变",
+      "applied": {
+        "data": "QUESTION_BANK (Q3-D, Q4 A/B/C, Q5 A–D + cues), CONCEPT_FLAVOR_TAGS dimension words, CN_CONSUMER_FLAVOR_LEXICON input aliases, build-matrix-k-v1 (Q10 increments, C0 nine methods + labels, delta template variants)",
+        "code": "engine.ts textSeed + calibrationLine variants; flow.ts finalCard rotation; Wordmark.vue (new); AppHeader / AboutDrawer wordmark; App.vue hero + buttons; store colours; ContextSetupCard rows; FlavorCard words lower; exportCard words lower; AboutDrawer pins + fading TOP; style.css Stack Sans variable face; public/fonts StackSansText-Variable.woff2 + OFL",
+        "verified": "vitest 54/54, vue-tsc, vite build",
+        "open": [
+          "a real-phone pass on the share sheet",
+          "card variants beyond cream"
+        ],
+        "owner_follow_up": "The shared glyph row is replaced by one geometric kit with three compositions — a card row in the words' colours, a home stamp band (coloured grounds, cream shapes), an About quilt — with every shape inside its 30 × 30 tile (the old drop and ring were clipped); the PNG export draws the card composition; WORDS in the SVG wordmark is set a size smaller so its spacing is not squeezed."
+      },
+      "recorded_at_utc": "2026-09-12T18:20:00Z"
     }
   ],
   "guards": {

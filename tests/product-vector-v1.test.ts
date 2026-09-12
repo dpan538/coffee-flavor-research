@@ -78,9 +78,9 @@ describe("product-vector-v1 presentation layer", () => {
 
   it("defect guard: no defect tag on a clean vector, defect tag when defect dominates", () => {
     const clean = [0.5, 0.5, 0, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0.2];
-    expect(displayTags(clean, "zh-CN")).not.toContain("风味瑕疵");
+    expect(displayTags(clean, "zh-CN")).not.toContain("纸味");
     const bad = [0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.95];
-    expect(displayTags(bad, "zh-CN")).toContain("风味瑕疵");
+    expect(displayTags(bad, "zh-CN")).toContain("纸味");
     expect(displayTags(bad, "zh-CN", 4, ["sensory.musty", "sensory.jasmine"])).toContain("霉味");
   });
 
@@ -256,7 +256,7 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     expect(card.science.every((l) => l.evidenceState && l.label)).toBe(true);
     expect(card.science.some((l) => l.evidenceState === "OWNER_STATEMENT")).toBe(false);
     const delta = card.science.find((l) => l.evidenceState === "COMPUTED_DELTA");
-    if (delta) expect(delta.text).toContain("相较于初始参考");
+    if (delta) expect(delta.text).toContain("初始参考"); // one of several wordings, chosen by the confirmed words
     expect(card.closing).toContain("咖啡");
     expect(flow.finalCard(result, picks, "en").closing).toContain("enjoy");
   });
@@ -266,7 +266,7 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     const description = flow.describe(result, "zh-CN");
     const stayed = flow.finalCard(result, description.all.slice(0, 5), "zh-CN");
     const away: Array<{ text: string; dimension: string }> = [
-      { text: "黑巧回甘", dimension: "bitter_roasted" }, { text: "烤榛果", dimension: "nutty_chocolate" }, { text: "丝绒感", dimension: "body" },
+      { text: "黑巧克力", dimension: "bitter_roasted" }, { text: "烤榛果", dimension: "nutty_chocolate" }, { text: "丝绒奶油", dimension: "body" },
       { text: "风干雪松", dimension: "woody_earthy" }, { text: "烟熏可可", dimension: "bitter_roasted" },
     ];
     const moved = flow.finalCard(result, away, "zh-CN");

@@ -24,18 +24,20 @@ const ZH: Case[] = [
   { text: "很厚重，像糖浆", expect: { Q3: "C" } },
   { text: "有一点苦，但回甘", expect: { Q4: "A" } },
   { text: "完全不苦", expect: { Q4: "B" }, note: "negation forcing" },
-  { text: "层次很清楚，很干净", expect: { Q5: "A" } },
-  { text: "味道混在一起，很浓郁", expect: { Q5: "B" } },
+  { text: "层次很清楚，很干净", expect: { Q5: "C" }, note: "review 5: C = clear layers" },
+  { text: "味道混在一起，很浓郁", expect: { Q5: "A" }, note: "review 5: A = mixed, a little of everything" },
+  { text: "饱满圆润，很统一", expect: { Q5: "B" } },
+  { text: "感觉不错但说不上来", expect: { Q5: "D" } },
   { text: "桂花香很明显，酸质像青苹果", expect: { Q1: "A", Q0: "A" } },
   { text: "有米酒的发酵感，酸不刺激", expect: { Q0: "B" } },
   { text: "黑芝麻和烤杏仁的香气", expect: { Q1: "B" } },
   { text: "像荔枝和芒果，有点微醺", expect: { Q1: "C" } },
   { text: "冰糖雪梨那种清甜", expect: { Q2: "A" } },
   { text: "厌氧酒香很重，像朗姆酒", expect: { Q1: "C" } },
-  { text: "茉莉花和佛手柑，很干净", expect: { Q1: "A", Q5: "A" } },
+  { text: "茉莉花和佛手柑，很干净", expect: { Q1: "A", Q5: "C" } },
   { text: "焦糖和太妃糖的甜，尾段微苦", expect: { Q2: "B", Q4: "A" } },
   { text: "怕酸，喜欢丝绒一样顺滑的", expect: { Q0: "C", Q3: "B" }, note: "怕酸 → no-acid option" },
-  { text: "不要苦，要非常浓郁的甜感", expect: { Q4: "B", Q5: "B" }, note: "owner Persona C fragment" },
+  { text: "不要苦，要非常浓郁的甜感", expect: { Q4: "B", Q5: "B" }, note: "owner Persona C fragment: 浓郁 reads as full and consistent" },
   { text: "喜欢茉莉花香、柑橘酸，喝手冲，讨厌苦味", expect: { Q1: "A", Q0: "A", Q4: "B" }, note: "owner Persona A" },
   { text: "想要强烈的水蜜桃鲜明果酸", expect: { Q0: "A" }, note: "owner Persona B perception" },
   // owner copy review 2026-09-12: the exits — no sweetness, clearly bitter
@@ -72,7 +74,8 @@ describe("semantic disambiguation: consumer utterances → Q0-Q5 options", () =>
     expect(acid.vector[DIMENSIONS.indexOf("acidity")]).toBe(0);
     expect(acid.matched.some((t) => t.negated)).toBe(true);
     expect(acid.forced.Q0).toBe("C");
-    expect(utteranceVector("清冽果酸", "zh-CN").vector[DIMENSIONS.indexOf("acidity")]).toBeGreaterThan(0);
+    expect(utteranceVector("清冽果酸", "zh-CN").vector[DIMENSIONS.indexOf("acidity")]).toBeGreaterThan(0); // kept as an input alias
+    expect(utteranceVector("葡萄柚", "zh-CN").vector[DIMENSIONS.indexOf("acidity")]).toBeGreaterThan(0);
     const bitter = mapUtterance("毫无苦味", "zh-CN");
     expect(bitter.forced.Q4).toBe("B");
     expect(bitter.answers.Q4).toBe("B");

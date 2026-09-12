@@ -9,6 +9,11 @@
 (`~/Downloads/MiSans/woff2`), cut to the characters the app can show by `apps/pwa/scripts/subset-fonts.py` (re-run it after
 adding copy). MiSans is free for commercial use under Xiaomi's MiSans licence; the owner keeps the licence text with the download.
 
+# Stack Sans Text (owner's download, 2026-09-12)
+
+`StackSansText-Variable.woff2` (weight axis 200–700, converted from the variable TTF with fontTools) with `OFL-StackSansText.txt`
+— SIL Open Font License 1.1. Loaded in `src/style.css` as "Stack Sans"; the display face for FLAVOR and the English headings.
+
 # Self-hosted fonts
 
 Drop the font files here; `src/style.css` declares the faces and falls back to system fonts until they exist.

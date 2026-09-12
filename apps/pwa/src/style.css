@@ -6,8 +6,8 @@
 @font-face { font-family: "MiSans"; src: url("/fonts/MiSans-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "MiSans"; src: url("/fonts/MiSans-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "MiSans"; src: url("/fonts/MiSans-Demibold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Stack Sans"; src: url("/fonts/StackSans-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Stack Sans"; src: url("/fonts/StackSans-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+/* Stack Sans Text (SIL OFL, public/fonts/OFL-StackSansText.txt): the owner's download, one variable face for every weight */
+@font-face { font-family: "Stack Sans"; src: url("/fonts/StackSansText-Variable.woff2") format("woff2"); font-weight: 200 700; font-display: swap; }
 /* Fraunces (SIL OFL, public/fonts/OFL-Fraunces.txt): the serif the owner chose for the "words" half of the wordmark */
 @font-face { font-family: "Fraunces"; src: url("/fonts/Fraunces-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "Fraunces"; src: url("/fonts/Fraunces-Variable-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }

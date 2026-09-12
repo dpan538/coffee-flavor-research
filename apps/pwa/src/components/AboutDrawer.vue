@@ -8,7 +8,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { X } from "lucide-vue-next";
 import { aboutApproach, aboutAuthor, aboutCitations, aboutEvidence, aboutSections } from "flavor-data/product-vector-v1/about";
-import BrandGlyphs from "./BrandGlyphs.vue";
+import GeoMotif from "./GeoMotif.vue";
+import Wordmark from "./Wordmark.vue";
 import ProfileNetwork from "./ProfileNetwork.vue";
 import SourceColumns from "./SourceColumns.vue";
 import { aboutOpen, locale } from "../store";
@@ -22,7 +23,10 @@ const evidence = computed(() => aboutEvidence(locale.value));
 const citations = computed(() => aboutCitations(locale.value));
 const roleOf = (id: string) => citations.value.find((c) => c.id === id)?.role ?? "";
 function toTop() {
-  scroller.value?.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  const el = scroller.value;
+  if (!el) return;
+  if (reduced) { el.scrollTop = 0; return; }
+  gsap.to(el, { opacity: 0, duration: 0.22, ease: "power2.in", onComplete: () => { el.scrollTop = 0; ScrollTrigger.refresh(); gsap.to(el, { opacity: 1, duration: 0.4, ease: "power2.out" }); } });
 }
 const zh = computed(() => locale.value === "zh-CN");
 const openSection = ref("");
@@ -68,13 +72,13 @@ onBeforeUnmount(() => {
 <template>
   <aside ref="scroller" class="fixed inset-0 z-40 overflow-y-auto bg-paper text-ink fold-card safe-top safe-bottom" role="dialog" aria-modal="true" data-component="AboutDrawer">
     <div class="sticky top-0 z-10 bg-paper/95 backdrop-blur px-5 py-3 flex items-center justify-between">
-      <div class="leading-[0.9]"><span class="display block font-bold text-[22px]">flavor</span><span class="wordmark-serif block uppercase text-[22px] text-violet">words</span></div>
+      <Wordmark :width="78" />
       <button type="button" class="icon-btn" :aria-label="t.close" @click="aboutOpen = false"><X :size="22" :stroke-width="1.75" /></button>
     </div>
 
     <!-- page 1: what it is for — blank above, the glyphs, the owner's three paragraphs (less is more) -->
     <section class="min-h-[calc(100dvh-72px)] px-5 pt-20 pb-8 flex flex-col" data-page="1" data-section="approach">
-      <BrandGlyphs :size="20" />
+      <GeoMotif variant="about" :size="26" />
       <p class="text-[11px] tracking-[0.22em] text-muted mt-8">{{ approach.eyebrow }}</p>
       <h1 class="text-[36px] mt-2 font-bold" :class="zh ? 'display-zh' : 'display'">{{ approach.title }}</h1>
       <p v-for="(p, i) in approach.intro" :key="'i' + i" class="leading-relaxed text-[16px] mt-4">{{ p }}</p>
@@ -97,8 +101,8 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- page 4: design notes — pinned for a beat, three folded entries with coloured marks, the credit line (owner's copy) -->
-    <section class="relative min-h-[170dvh]" data-page="2" data-section="author">
-    <div class="sticky top-0 min-h-[100dvh] max-h-[100dvh] overflow-y-auto px-5 pt-[100px] pb-10 flex flex-col bg-paper" data-reveal>
+    <section class="relative" :class="openSection ? '' : 'min-h-[160dvh]'" data-page="2" data-section="author">
+    <div class="min-h-[100dvh] px-5 pt-[100px] pb-10 flex flex-col bg-paper" :class="openSection ? '' : 'sticky top-0'" data-reveal>
       <p class="text-[11px] tracking-[0.22em] text-muted">{{ author.eyebrow }}</p>
       <h2 class="text-[32px] mt-2 font-bold" :class="zh ? 'display-zh' : 'display'">{{ author.title }}</h2>
       <p v-for="(p, i) in author.paragraphs" :key="'a' + i" class="leading-relaxed mt-4 text-[16px]">{{ p }}</p>
@@ -128,8 +132,8 @@ onBeforeUnmount(() => {
     </section>
 
     <!-- page 5: sources in use, pinned for a beat, TOP at the bottom right -->
-    <section class="relative min-h-[170dvh]" data-page="5" data-section="evidence">
-    <div class="sticky top-0 min-h-[100dvh] max-h-[100dvh] overflow-y-auto px-5 pt-[100px] pb-28 flex flex-col bg-paper" data-reveal>
+    <section class="relative" :class="openSection ? '' : 'min-h-[160dvh]'" data-page="5" data-section="evidence">
+    <div class="min-h-[100dvh] px-5 pt-[100px] pb-28 flex flex-col bg-paper" :class="openSection ? '' : 'sticky top-0'" data-reveal>
       <h2 class="text-[28px] font-bold" :class="zh ? 'display-zh' : 'display'">{{ t.sources }}</h2>
       <ol class="mt-5 relative">
         <li v-for="(e, i) in evidence" :key="e.id" class="relative pl-6 pb-6">

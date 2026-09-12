@@ -597,14 +597,15 @@
     },
     "D": {
      "label": {
-      "zh-CN": "有点涩，发干",
-      "en": "a little astringent, drying"
+      "zh-CN": "发涩，像喝了浓茶",
+      "en": "astringent, like strong tea"
      },
      "cues": {
       "zh-CN": [
        "涩",
+       "发涩",
+       "浓茶那种涩",
        "发干",
-       "干涩",
        "收敛",
        "锁喉",
        "刮舌"
@@ -612,8 +613,8 @@
       "en": [
        "astringent",
        "drying",
-       "dry finish",
-       "puckering"
+       "puckering",
+       "like strong tea"
       ]
      }
     }
@@ -629,16 +630,18 @@
    "options": {
     "A": {
      "label": {
-      "zh-CN": "有一点苦",
-      "en": "a little bitter"
+      "zh-CN": "微苦，像可可或坚果皮",
+      "en": "slightly bitter, like cocoa or nut skin"
      },
      "cues": {
       "zh-CN": [
+       "微苦",
        "有一点苦",
        "有点苦",
-       "微苦",
        "一点苦",
        "略苦",
+       "可可那种苦",
+       "坚果皮",
        "苦得舒服",
        "苦中带甜",
        "带一点苦",
@@ -649,6 +652,7 @@
        "a little bitter",
        "a bit bitter",
        "touch of bitterness",
+       "cocoa bitterness",
        "bittersweet",
        "pleasant bitterness"
       ]
@@ -679,8 +683,8 @@
     },
     "C": {
      "label": {
-      "zh-CN": "苦感明显",
-      "en": "clearly bitter"
+      "zh-CN": "苦得明显，像浓缩或炭烧",
+      "en": "clearly bitter, like espresso or charred roast"
      },
      "cues": {
       "zh-CN": [
@@ -696,8 +700,9 @@
        "苦味盖过",
        "盖过",
        "苦得厉害",
-       "苦味明显",
-       "苦感明显"
+       "炭烧",
+       "焦苦",
+       "浓缩那种苦"
       ],
       "en": [
        "very bitter",
@@ -705,8 +710,9 @@
        "strongly bitter",
        "clearly bitter",
        "harsh bitterness",
-       "really bitter",
-       "overpowering bitterness"
+       "charred",
+       "burnt",
+       "espresso-like bitterness"
       ]
      }
     }
@@ -722,89 +728,93 @@
    "options": {
     "A": {
      "label": {
-      "zh-CN": "味道一层一层，分得清",
-      "en": "flavors come one at a time, distinct"
+      "zh-CN": "味道混在一起，各种风味都有一点",
+      "en": "flavors mixed together, a little of everything"
      },
      "cues": {
       "zh-CN": [
-       "层次",
-       "干净",
-       "清晰",
-       "分明",
-       "干净利落"
+       "混在一起",
+       "都有一点",
+       "混合",
+       "杂",
+       "各种味道",
+       "混着"
       ],
       "en": [
-       "layered",
-       "clean",
-       "clear",
-       "distinct"
+       "mixed together",
+       "a bit of everything",
+       "blended",
+       "jumbled"
       ]
      }
     },
     "B": {
      "label": {
-      "zh-CN": "味道混在一起，饱满",
-      "en": "flavors blend together, full"
+      "zh-CN": "饱满圆润，一致性很高",
+      "en": "full and round, very consistent"
      },
      "cues": {
       "zh-CN": [
-       "交融",
-       "浓郁",
-       "混在一起",
-       "融合",
        "饱满",
-       "厚实"
+       "圆润",
+       "一致",
+       "统一",
+       "顺",
+       "厚实",
+       "浑然",
+       "浓郁"
       ],
       "en": [
-       "blended",
-       "rich",
-       "melded",
        "full",
-       "dense"
+       "round",
+       "consistent",
+       "seamless",
+       "rich"
       ]
      }
     },
     "C": {
      "label": {
-      "zh-CN": "味道混在一起，有点杂",
-      "en": "flavors blend together, a little muddled"
+      "zh-CN": "能分清楚多种味道，层次明确",
+      "en": "several flavors told apart, clear layers"
      },
      "cues": {
       "zh-CN": [
-       "杂",
-       "混浊",
-       "浑浊",
-       "不干净",
-       "糊",
-       "杂糅",
-       "乱",
-       "混乱"
+       "层次",
+       "分得清",
+       "清晰",
+       "分明",
+       "干净利落",
+       "一层一层",
+       "分清楚"
       ],
       "en": [
-       "muddled",
-       "muddy",
-       "murky",
-       "unclear",
-       "messy"
+       "layered",
+       "distinct",
+       "clear",
+       "clean",
+       "separate"
       ]
      }
     },
     "D": {
      "label": {
-      "zh-CN": "说不上来",
-      "en": "hard to say"
+      "zh-CN": "感觉不错但说不上来",
+      "en": "nice, but hard to say"
      },
      "cues": {
       "zh-CN": [
        "说不上来",
        "不确定",
        "不好说",
-       "不知道"
+       "不知道",
+       "说不清"
       ],
       "en": [
        "hard to say",
        "not sure",
-       "can't tell"
+       "can't tell",
+       "can't put my finger on it"
       ]
      }
     }
@@ -2532,6 +2542,24 @@
  },
  "matrix_k": {
   "C0": {
+   "espresso": {
+    "vector": [
+     0.2772,
+     0.354,
+     0.3068,
+     0.0725,
+     0.5035,
+     0.503,
+     0.0488,
+     0.3283,
+     0.0522,
+     0.0055,
+     0.2809,
+     0.0106
+    ],
+    "basis": "CORPUS_MEASURED",
+    "member_count": 738
+   },
    "pour_over_v60": {
     "vector": [
      0.4396,
@@ -2549,6 +2577,39 @@
     ],
     "basis": "FILTER_IMMERSION_PROXY_FROM_CUPPING",
     "member_count": 5778
+   },
+   "moka_pot": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (stovetop pressure is neither cupping nor espresso)",
+    "member_count": null
+   },
+   "cold_brew": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING",
+    "member_count": null
+   },
+   "siphon": {
+    "vector": [
+     0.4396,
+     0.3886,
+     0.3151,
+     0.1201,
+     0.49,
+     0.4425,
+     0.0552,
+     0.2489,
+     0.0559,
+     0.0156,
+     0.1939,
+     0.0118
+    ],
+    "basis": "FILTER_IMMERSION_PROXY_FROM_CUPPING",
+    "member_count": 5778
+   },
+   "cold_drip": {
+    "vector": null,
+    "basis": "NO_CORPUS_ROW (cold method)",
+    "member_count": null
    },
    "french_press": {
     "vector": [
@@ -2568,28 +2629,28 @@
     "basis": "FILTER_IMMERSION_PROXY_FROM_CUPPING",
     "member_count": 5778
    },
-   "espresso": {
-    "vector": [
-     0.2772,
-     0.354,
-     0.3068,
-     0.0725,
-     0.5035,
-     0.503,
-     0.0488,
-     0.3283,
-     0.0522,
-     0.0055,
-     0.2809,
-     0.0106
-    ],
-    "basis": "CORPUS_MEASURED",
-    "member_count": 738
-   },
-   "cold_brew": {
+   "turkish": {
     "vector": null,
-    "basis": "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING",
+    "basis": "NO_CORPUS_ROW (boiled, unfiltered)",
     "member_count": null
+   },
+   "aeropress": {
+    "vector": [
+     0.4396,
+     0.3886,
+     0.3151,
+     0.1201,
+     0.49,
+     0.4425,
+     0.0552,
+     0.2489,
+     0.0559,
+     0.0156,
+     0.1939,
+     0.0118
+    ],
+    "basis": "FILTER_IMMERSION_PROXY_FROM_CUPPING",
+    "member_count": 5778
    }
   },
   "C1": {
@@ -3076,16 +3137,17 @@
   },
   "Q10_clean": {
    "A": {
-    "floral": 1,
-    "acidity": 1
+    "fermented_winey": 0.5,
+    "body": 0.5,
+    "fruity": 0.5
    },
    "B": {
-    "fermented_winey": 1,
-    "body": 1
+    "body": 1,
+    "sweetness": 0.5
    },
    "C": {
-    "fermented_winey": 0.5,
-    "defect": 0.5
+    "floral": 1,
+    "acidity": 1
    },
    "D": {}
   }
@@ -3830,50 +3892,50 @@
   "dimension_tags": {
    "acidity": {
     "zh-CN": [
-     "清冽果酸",
-     "明亮酸质",
-     "柑橘酸"
+     "葡萄柚",
+     "血橙",
+     "青柠"
     ],
     "en": [
-     "crisp acidity",
-     "bright acidity",
-     "citric"
+     "grapefruit",
+     "blood orange",
+     "lime"
     ]
    },
    "sweetness": {
     "zh-CN": [
-     "高甜感",
-     "蔗糖甜",
-     "蜂蜜感"
+     "蔗糖",
+     "蜂蜜",
+     "焦糖"
     ],
     "en": [
-     "high sweetness",
      "cane sugar",
-     "honeyed"
+     "honey",
+     "caramel"
     ]
    },
    "body": {
     "zh-CN": [
-     "丝绒感",
-     "醇厚",
-     "圆润口感"
+     "丝绒奶油",
+     "慕斯",
+     "奶油"
     ],
     "en": [
-     "velvety",
-     "full body",
-     "round mouthfeel"
+     "velvet cream",
+     "mousse",
+     "cream"
     ]
    },
    "floral": {
     "zh-CN": [
      "茉莉花",
      "玉兰花",
-     "白花"
+     "橙花"
     ],
     "en": [
      "jasmine",
      "magnolia",
-     "white flowers"
+     "orange blossom"
     ]
    },
    "fruity": {
@@ -3893,83 +3955,85 @@
    "nutty_chocolate": {
     "zh-CN": [
      "烤榛果",
-     "黑莓可可",
+     "可可",
      "提拉米苏"
     ],
     "en": [
      "roasted hazelnut",
-     "berry cocoa",
+     "cocoa",
      "tiramisu"
     ]
    },
    "fermented_winey": {
     "zh-CN": [
-     "酒香",
      "朗姆酒",
-     "发酵果酱"
+     "红酒",
+     "酒酿"
     ],
     "en": [
-     "winey",
      "rum",
-     "fermented jam"
+     "red wine",
+     "jiuniang"
     ]
    },
    "bitter_roasted": {
     "zh-CN": [
-     "黑巧回甘",
+     "黑巧克力",
      "烟熏可可",
-     "重烘焙香"
+     "炭烧"
     ],
     "en": [
-     "dark chocolate finish",
+     "dark chocolate",
      "smoky cocoa",
-     "deep roast"
+     "charred"
     ]
    },
    "spice": {
     "zh-CN": [
      "小豆蔻",
      "肉桂",
-     "辛香料"
+     "丁香"
     ],
     "en": [
      "cardamom",
      "cinnamon",
-     "warm spice"
+     "clove"
     ]
    },
    "herbal_green": {
     "zh-CN": [
      "茉莉绿茶",
      "高山乌龙",
-     "草本清香"
+     "柠檬草"
     ],
     "en": [
      "jasmine green tea",
      "high-mountain oolong",
-     "fresh herbal"
+     "lemongrass"
     ]
    },
    "woody_earthy": {
     "zh-CN": [
      "风干雪松",
-     "泥炭木质",
+     "泥炭",
      "松露"
     ],
     "en": [
      "aged cedar",
-     "peaty wood",
+     "peat",
      "truffle"
     ]
    },
    "defect": {
     "zh-CN": [
-     "风味瑕疵",
-     "过发酵味"
+     "纸味",
+     "陈味",
+     "霉味"
     ],
     "en": [
-     "off-flavor",
-     "over-fermented"
+     "papery",
+     "stale",
+     "musty"
     ]
    }
   },
@@ -4393,11 +4457,39 @@
   "delta_templates": {
    "zh-CN": {
     "pos": "相较于初始参考，你的描述中，{label}更突出。",
-    "neg": "相较于初始参考，你的描述中，{label}较弱。"
+    "neg": "相较于初始参考，你的描述中，{label}较弱。",
+    "pos_variants": [
+     "相较于初始参考，你的描述中，{label}更突出。",
+     "你的描述比初始参考更偏向{label}。",
+     "{label}在你的描述里比初始参考更明显。"
+    ],
+    "neg_variants": [
+     "相较于初始参考，你的描述中，{label}较弱。",
+     "你的描述比初始参考更少提到{label}。",
+     "{label}在你的描述里比初始参考淡一些。"
+    ],
+    "pair_variants": [
+     "相较于初始参考，你的描述更偏向{label}，{label2}则弱一些。",
+     "你的描述里{label}比初始参考更明显，{label2}没那么突出。"
+    ]
    },
    "en": {
     "pos": "Compared with the initial reference profile, {label} is more pronounced in your description.",
-    "neg": "Compared with the initial reference profile, {label} is less pronounced in your description."
+    "neg": "Compared with the initial reference profile, {label} is less pronounced in your description.",
+    "pos_variants": [
+     "Compared with the initial reference profile, {label} is more pronounced in your description.",
+     "Your description leans more toward {label} than the initial reference does.",
+     "{label} comes through more clearly in your description than in the initial reference."
+    ],
+    "neg_variants": [
+     "Compared with the initial reference profile, {label} is less pronounced in your description.",
+     "Your description mentions {label} less than the initial reference does.",
+     "{label} is fainter in your description than in the initial reference."
+    ],
+    "pair_variants": [
+     "Compared with the initial reference, your description leans toward {label}, with {label2} weaker.",
+     "{label} stands out more in your description than in the initial reference, while {label2} recedes."
+    ]
    }
   },
   "reference_basis_templates": {
@@ -4416,20 +4508,40 @@
   },
   "context_labels": {
    "pour_over_v60": {
-    "zh-CN": "手冲 (V60)",
-    "en": "Pour-over (V60)"
+    "zh-CN": "手冲 Pour-over",
+    "en": "Pour-over"
    },
    "french_press": {
-    "zh-CN": "法压",
+    "zh-CN": "法压壶 French press",
     "en": "French press"
    },
    "espresso": {
-    "zh-CN": "意式浓缩",
+    "zh-CN": "意式萃取 Espresso",
     "en": "Espresso"
    },
    "cold_brew": {
-    "zh-CN": "冷萃",
+    "zh-CN": "冷萃 Cold brew",
     "en": "Cold brew"
+   },
+   "moka_pot": {
+    "zh-CN": "摩卡壶 Moka pot",
+    "en": "Moka pot"
+   },
+   "siphon": {
+    "zh-CN": "虹吸壶 Siphon",
+    "en": "Siphon"
+   },
+   "cold_drip": {
+    "zh-CN": "冰滴 Cold drip",
+    "en": "Cold drip"
+   },
+   "turkish": {
+    "zh-CN": "土耳其壶 Turkish",
+    "en": "Turkish pot"
+   },
+   "aeropress": {
+    "zh-CN": "爱乐压 AeroPress",
+    "en": "AeroPress"
    },
    "very_light": {
     "zh-CN": "极浅烘",
@@ -5235,7 +5347,8 @@
      "太妃糖",
      "麦芽糖",
      "黑糖",
-     "罗汉果甜"
+     "罗汉果甜",
+     "高甜感"
     ],
     "en": [
      "rock-sugar pear",
@@ -5247,7 +5360,8 @@
      "jam",
      "candy",
      "syrup",
-     "jammy"
+     "jammy",
+     "high sweetness"
     ]
    },
    "herbal_green": {
@@ -5312,7 +5426,9 @@
      "烤杏仁",
      "烘焙麦芽",
      "黑芝麻",
-     "松露巧克力"
+     "松露巧克力",
+     "黑巧回甘",
+     "重烘焙香"
     ],
     "en": [
      "roasted almond",
@@ -5323,7 +5439,9 @@
      "smokey",
      "roasted",
      "dark roast",
-     "ashy"
+     "ashy",
+     "dark chocolate finish",
+     "deep roast"
     ]
    },
    "defect": {
@@ -5347,7 +5465,10 @@
     ]
    },
    "acidity": {
-    "zh-CN": [],
+    "zh-CN": [
+     "清冽果酸",
+     "明亮酸质"
+    ],
     "en": [
      "bright",
      "citrus",
@@ -5360,11 +5481,17 @@
      "crisp",
      "citrusy",
      "tangy",
-     "lemony"
+     "lemony",
+     "crisp acidity",
+     "bright acidity"
     ]
    },
    "body": {
-    "zh-CN": [],
+    "zh-CN": [
+     "丝绒感",
+     "醇厚",
+     "圆润口感"
+    ],
     "en": [
      "body",
      "mouthfeel",
@@ -5374,7 +5501,10 @@
      "thick",
      "full bodied",
      "watery",
-     "silky"
+     "silky",
+     "velvety",
+     "full body",
+     "round mouthfeel"
     ]
    },
    "woody_earthy": {

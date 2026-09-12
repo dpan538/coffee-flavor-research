@@ -21,7 +21,7 @@ SRC = ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1"
 
 # strings that live in Vue components (not in the bundle, not in view.ts / about.ts)
 COMPONENT_STRINGS = {
-    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("品牌图形（与风味卡顶部同一排）", "叶 / 圆 / 扇 / 滴 / 环；套件另有 拱 / 楔 / 波", "leaf / circle / fan / drop / ring; the kit also has arch / wedge / wave"), ("大标题五词五色", "Every taste has its own vocabulary.（每个词一种颜色）", "Every taste has its own vocabulary. (one colour per word)")],
+    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("几何图形（三套组合共用一种语言）", "首页：四格邮票带（色底 + 奶白形）；About：六格拼布；风味卡：按所选词特征色的一排小格（四分圆 / 圆 / 半圆 / 三角 / 菱形），形状都在格内", "home: a four-tile stamp band (coloured ground + cream shape); About: a six-tile quilt; card: a row of small tiles in the words' colours (quarter / circle / half / triangle / diamond), every shape inside its box"), ("大标题", "Every taste has its own vocabulary.（taste 五个字母各一种高亮色）", "Every taste has its own vocabulary. (the five letters of taste, one bright colour each)")],
     "风味卡 FlavorCard（终卡）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords")],
     "语境卡 ContextSetupCard": [
         ("小标签", "这杯咖啡", "This cup"),
