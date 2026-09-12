@@ -132,6 +132,34 @@
       "decision": "CR-1b (semantic on 77K) APPROVED; CR-1c (rights matrix to 77K) APPROVED; CR-4 (/tmp → COFFEE_FLAVOR_RESTRICTED_ROOT) APPROVED; CR-2 (parser v2) NOT YET UNDERSTOOD BY OWNER — re-explained, awaiting answer.",
       "owner_words": "我同意cr1的两个 … cr2我没看懂你什么意思，cr4是可以的",
       "recorded_at_utc": "2026-09-11T12:03:56Z"
+    },
+    {
+      "id": "R3-D5",
+      "subject": "Product design pivot: flavor vector space + cosine matching",
+      "decision": "ADOPT docs/product/FLAVOR_VECTOR_DESIGN_V1.md. 8-dimension SCA/WCR-style flavor vector; V_pred from a physics/knowledge matrix over C0-C2 (brew, roast, variety+processing); V_user from Q5-Q10 with fixed increments; cosine similarity, bias vector dV, V_target = V_pred + a*dV; candidate library by cosine; attribution text. No training, no transformer; MLP only as an optional V_pred implementation, not planned. ARCHIVE the adaptive-question / proposition-lattice / product-inference v0-v0.2 line (docs/archive/adaptive-question-policy-20260912). CR-2 APPROVED. F19 repair APPROVED. New tables unified on the current checkpoint (83K after CR-2).",
+      "owner_words": "批准cr2，f19允许，需要把新表统一到77K … 我觉得这套方案更合适，做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者transformer。停止无意义测试，数据的可用性比测试更重要。把这一轮写入新的设计md中并且archive老的一套决策。",
+      "operator_note": "'unify to 77K' was stated before CR-2 landed; CR-2 makes 83K the current checkpoint, so the semantic and product layers are unified on 83K.",
+      "open_decisions": [
+        "projection draft review (94 rows)",
+        "profile naming + benchmark beans (16 profiles)",
+        "alpha",
+        "structure-axis : descriptor-axis weight"
+      ],
+      "recorded_at_utc": "2026-09-12T02:01:05Z"
+    },
+    {
+      "id": "R3-D6",
+      "subject": "Vector design: dimension count, candidate-library path, structure axes",
+      "decision": "(1) 12 dimensions: the 8 SCA/WCR axes plus spice, herbal_green, woody_earthy, defect — 94/94 canonical concepts covered; defect is the negative constraint. (2) Candidate library = flavor profiles first (Target Profile Vector), then owner-named benchmark beans (classic templates such as Gesha / Kenya AA), then a user/community-entered offline library; product positioned as a scientific sensory diagnosis and flavor exploration tool, not a shopping guide; CoffeeReview coffees are never recommended items. (3) CoffeeReview Body and Acidity 1-10 editorial scores approved as the body / acidity axes (rank percentile).",
+      "owner_words": "支持直接升级到 12 维 … 采用 (a) 风味画像 + (b) 用户/社区自建 的复合模式 … 将产品定位为“科学感官诊断与风味探索工具” … 全面批准接入 Coffee Review 的 1–10 结构化评分列",
+      "applied": {
+        "projection": "CONCEPT_DIMENSION_PROJECTION_DRAFT.tsv now 12 columns, 60 MAPPED + 34 MAPPED_12D",
+        "structure_axes": "extract-coffeereview-structure-scores.py -> COFFEEREVIEW_STRUCTURE_AXES.tsv, 7,243 coffees; restricted raw scores beside the v2 ledger",
+        "library": "COFFEE_VECTOR_LIBRARY.tsv 8,899 usable (was 6,871)",
+        "profiles": "FLAVOR_PROFILE_LIBRARY.tsv k=16, owner_name / benchmark_beans columns empty",
+        "query_horizon": "309/324 users with top-3 > 0.85 (was 266); the 15 misses are all fermented_winey-heavy answers (the last empty axis)"
+      },
+      "recorded_at_utc": "2026-09-12T02:09:47Z"
     }
   ],
   "guards": {

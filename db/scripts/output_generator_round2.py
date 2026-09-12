@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Round 2 — deterministic OUT_SEPARATED generator, defects D1-D4 repaired.
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Round 2 — deterministic OUT_SEPARATED generator, defects D1-D4 repaired.
 
 Budget: main <= 3, secondary <= 2, overall_profile <= 3, comparison pool <= 8.
 

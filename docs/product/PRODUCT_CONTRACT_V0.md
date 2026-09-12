@@ -1,6 +1,6 @@
 # Coffee sensory product contract V0
 
-Status: current product-semantics source of truth
+Status: ARCHIVED 2026-09-12 (was: current product-semantics source of truth until R3-D5)
 
 This contract defines what the intended Coffee Flavor Atlas product is trying
 to do and how its output should be interpreted. It freezes product semantics,

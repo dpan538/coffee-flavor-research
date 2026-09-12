@@ -1,5 +1,7 @@
 # Context interaction decision — 2026-08-25
 
+> **ARCHIVED 2026-09-12.** This document belongs to the adaptive-question / proposition-lattice / product-inference decision line, superseded by [Flavor Vector Design V1](../product/FLAVOR_VECTOR_DESIGN_V1.md) (owner decision R3-D5). Kept unchanged below for reproducibility and sha256 lineage; see `docs/archive/adaptive-question-policy-20260912/README.md`.
+
 Status: accepted, forward-only
 
 Supersedes the current-interaction recommendations in Round 3A without

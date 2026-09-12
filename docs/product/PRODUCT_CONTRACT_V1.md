@@ -1,6 +1,6 @@
 # Product Contract V1
 
-**Status:** DRAFT — requires owner approval before it supersedes anything.
+**Status:** ARCHIVED 2026-09-12 — never approved; superseded by FLAVOR_VECTOR_DESIGN_V1 (R3-D5).
 **Supersedes:** `docs/product/PRODUCT_CONTRACT_V0.md` (frozen at commit `27d257c`), on
 approval.
 **Drafted by:** Claude, acting operator for R12C, from owner decisions D1–D11 recorded in

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build v0.2 research catalog from frozen v0.1 inputs and proposed wording.
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Build v0.2 research catalog from frozen v0.1 inputs and proposed wording.
 
 No corpus generation, source acquisition, statistical fitting or model training.
 """

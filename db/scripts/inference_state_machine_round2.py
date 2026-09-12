@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Round 2 — the session as a finite state machine over pure strategies.
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Round 2 — the session as a finite state machine over pure strategies.
 
 Everything here is deterministic: no fitting, no model, no randomness. Given a
 state, each strategy is a pure function returning an action.

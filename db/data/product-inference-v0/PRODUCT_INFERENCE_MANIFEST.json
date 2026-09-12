@@ -682,7 +682,7 @@
     "db/data/round3h/batch5/relationship_evidence_claims.tsv": "0eff3ed15d13df238c8d8efd2ad8d39e71d9a7071c0ccf880ff5b9016dba207a",
     "db/data/round3h/source_candidate_register.tsv": "9b51a3d01d9eb7c97535d14995b8a642e68eacf20d778c8a2bd0e8607a3c2176",
     "db/data/round3m/C0_C1_EVIDENCE_RECEIPT.json": "aae32da71da7dcba575a82d3ceff1bde9a1105a67da19ef812afc2cb07f07242",
-    "docs/product/PRODUCT_CONTRACT_V0.md": "921684c76da96ec4d5bcaa59e350eb905aae6d2786c1782c93032c5ebfe6d176",
+    "docs/product/PRODUCT_CONTRACT_V0.md": "6e56ebef059097ab0f64af97b576650b0d5765256f311bdc52a64a3acb7351eb",
     "packages/flavor-data/src/descriptors.ts": "6a36c5ea954a07c620adfcc476f908da92baf86dbf549ab32392832864f9c637"
   },
   "metrics": {

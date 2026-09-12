@@ -14,8 +14,8 @@ receipts stay reproducible.
 
 ## Product and experience
 
-- [Product Contract V0](./product/PRODUCT_CONTRACT_V0.md)
-- [Adaptive context/question architecture](./architecture/ADAPTIVE_CONTEXT_QUESTION_ARCHITECTURE.md)
+- [Flavor Vector Design V1](./product/FLAVOR_VECTOR_DESIGN_V1.md) — current design (2026-09-12): 8-dimension flavor vectors, projection matrix, cosine matching, C0–C2 context, Q5–Q10 perception questions
+- [Archive: adaptive-question policy line](./archive/adaptive-question-policy-20260912/README.md) — Product Contract V0/V1, the adaptive context/question architecture and the product-inference v0/v0.2 checkpoints (frozen, superseded)
 - [Methodology overview](./methodology/METHODOLOGY_OVERVIEW.md)
 - [Demo script](./portfolio/DEMO_SCRIPT.md)
 

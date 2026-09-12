@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate the public-safe deterministic Round 3N inference checkpoint.
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Generate the public-safe deterministic Round 3N inference checkpoint.
 
 This is an offline policy simulator. It does not train a model, estimate
 probabilities, or claim that its hand-declared decision weights are optimal.

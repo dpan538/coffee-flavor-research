@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Inspect one committed product-inference V0 policy case as JSON."""
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Inspect one committed product-inference V0 policy case as JSON."""
 
 from __future__ import annotations
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Round 2 — propositions, extents, and minimal sufficient generalisation.
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Round 2 — propositions, extents, and minimal sufficient generalisation.
 
 THE IDEA THE OWNER PROPOSED, DERIVED RATHER THAN STIPULATED
 -----------------------------------------------------------

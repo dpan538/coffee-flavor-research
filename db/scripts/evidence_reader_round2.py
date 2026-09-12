@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Round 2 — the single reader for what a session state actually says.
+"""ARCHIVED 2026-09-12 (owner decision R3-D5): superseded by docs/product/FLAVOR_VECTOR_DESIGN_V1.md; frozen, not extended.
+Round 2 — the single reader for what a session state actually says.
 
 WHY THIS MODULE EXISTS
 ----------------------

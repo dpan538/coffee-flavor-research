@@ -1,0 +1,131 @@
+{
+  "contract_version": "product-vector-v1.measurement.v2",
+  "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md",
+  "corpus": "CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv",
+  "dimensions": [
+    "acidity",
+    "sweetness",
+    "body",
+    "floral",
+    "fruity",
+    "nutty_chocolate",
+    "fermented_winey",
+    "bitter_roasted",
+    "spice",
+    "herbal_green",
+    "woody_earthy",
+    "defect"
+  ],
+  "projection": {
+    "concepts": 94,
+    "with_nonzero_projection": 94,
+    "owner_reviewed": false
+  },
+  "structure_axes": {
+    "coffees_with_coffeereview_scores": 7243,
+    "basis": "body / acidity rank percentile of CoffeeReview editorial 1-10 scores (owner D-open-3)"
+  },
+  "profiles": {
+    "k": 16,
+    "member_counts": [
+      1485,
+      1175,
+      1110,
+      780,
+      769,
+      705,
+      620,
+      550,
+      422,
+      334,
+      320,
+      288,
+      218,
+      59,
+      51,
+      13
+    ],
+    "top_dimensions": [
+      "fruity=0.75|sweetness=0.46|acidity=0.42",
+      "nutty_chocolate=0.57|fruity=0.52|acidity=0.43",
+      "sweetness=0.80|acidity=0.35|body=0.34",
+      "nutty_chocolate=0.80|body=0.41|acidity=0.34",
+      "fruity=0.72|acidity=0.51|body=0.42",
+      "nutty_chocolate=0.58|woody_earthy=0.52|bitter_roasted=0.36",
+      "fruity=0.56|woody_earthy=0.51|acidity=0.43",
+      "acidity=0.84|body=0.54|fruity=0.08",
+      "floral=0.63|acidity=0.45|body=0.41",
+      "body=0.98|acidity=0.19|sweetness=0.00",
+      "woody_earthy=0.81|bitter_roasted=0.34|body=0.33",
+      "spice=0.67|body=0.40|acidity=0.39",
+      "bitter_roasted=0.83|body=0.32|acidity=0.25",
+      "fermented_winey=0.63|acidity=0.53|nutty_chocolate=0.50",
+      "herbal_green=0.70|acidity=0.46|body=0.34",
+      "defect=0.98|body=0.15|acidity=0.10"
+    ]
+  },
+  "coverage": {
+    "coffees": 9128,
+    "usable_(>=2 mapped mentions)": 8899,
+    "thin_(1)": 66,
+    "empty_(0)": 163,
+    "usable_by_family": {
+      "family.ace_cup_of_excellence": 1390,
+      "family.coffeereview_kaggle_parsed": 7273,
+      "family.project_origin": 29,
+      "family.zenodo_golovinsky_q_grader_dataset": 111,
+      "family.coffee_board_of_india_fine_cup": 3,
+      "family.sheba_coffee_yemen_auction": 2,
+      "family.frontiers_inera_robusta_q_grader_panel": 79,
+      "family.frontiers_cenicafe_lengupa_trained_cuppers": 12
+    },
+    "usable_recommendable_in_public_product": 1626,
+    "mean_distinct_mapped_concepts_per_usable_coffee": 3.69
+  },
+  "uniformity": {
+    "top_axis_share": {
+      "fruity": 0.29,
+      "nutty_chocolate": 0.208,
+      "sweetness": 0.186,
+      "acidity": 0.137,
+      "woody_earthy": 0.046,
+      "floral": 0.043,
+      "body": 0.039,
+      "bitter_roasted": 0.03,
+      "spice": 0.016,
+      "herbal_green": 0.003,
+      "fermented_winey": 0.001,
+      "defect": 0.001
+    },
+    "mean_unit_mass_per_axis": {
+      "acidity": 0.3808,
+      "sweetness": 0.2679,
+      "body": 0.3224,
+      "floral": 0.0794,
+      "fruity": 0.3574,
+      "nutty_chocolate": 0.255,
+      "fermented_winey": 0.0426,
+      "bitter_roasted": 0.1491,
+      "spice": 0.033,
+      "herbal_green": 0.0183,
+      "woody_earthy": 0.1083,
+      "defect": 0.0072
+    },
+    "reading": "axes with a near-zero top-axis share are long-tail regions the corpus barely describes in this projection"
+  },
+  "query_horizon_test": {
+    "simulated_users": 324,
+    "top1_similarity_mean": 0.9486,
+    "top1_similarity_min": 0.8382,
+    "users_with_top3_all_above_0.85": 309,
+    "users_with_3_distinct_top3": 324,
+    "distinct_coffees_appearing_in_any_top3": 323,
+    "most_recommended_coffee_hits": 33,
+    "reading": "owner criterion: every simulated user finds >0.85 and non-repeating candidates"
+  },
+  "not_yet_measured": [
+    "profile names / benchmark beans: owner's (FLAVOR_PROFILE_LIBRARY owner_* columns)",
+    "C2 (variety x processing) sparsity: not extractable from the current ledgers; needs a targeted extraction from the CoffeeReview text and an approved WCR/processing source",
+    "V_pred / Matrix_K: not built; needs owner decision on the physics table's evidence basis"
+  ]
+}
