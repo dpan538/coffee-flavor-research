@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) and R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) and R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -64,6 +64,12 @@ V = [ acidity, sweetness, body, floral, fruity, nutty_chocolate, fermented_winey
 | C2 | 豆种 + 处理法（一题两栏）| 瑰夏 / 波本 / 铁皮卡 / 罗布斯塔 … × 水洗 / 日晒 / 蜜处理 / 厌氧 | 品种定风味上限（基因型），处理法定前体物质积累：日晒→还原糖/游离氨基酸↑→果酱、热带水果、高甜；水洗→内源有机酸突出→干净、柑橘、花香、高酸；厌氧→乳酸与外源酯类→酸奶、酒香 |
 
 `V_pred = normalize( K[C0] + K[C1] + K[C2_variety] + K[C2_process] )`，`Matrix_K` 每个选项一行 12 维。
+
+**拼配与产地（R3-D13）**：C2 豆种卡有「单品 SOE / 拼配 Blend」切换，拼配最多勾 3 个豆种，
+`V_blend_variety = normalize(Σ V_variety_i)`（等权均值），对应 Big Sur 那种「哥伦比亚瑰夏 + 埃塞原生种 + 印尼铁皮卡」的真实拼配结构。
+产地不是必选项，是 C2 的可选大区 Chip：埃塞俄比亚/东非（floral + acidity）、哥伦比亚/中南美（fruity + sweetness）、
+云南（fermented_winey + nutty_chocolate）、肯尼亚（acidity + fruity）；选了就在对应轴叠加 δ = 0.1 的偏置，跳过则完全靠豆种与处理法。
+产地在向量层本质是「海拔 + 基因 + 处理法」的集合表达，所以只做轻微引导。
 
 **Matrix_K 的来源分两层，状态不同：**
 
@@ -216,7 +222,23 @@ answerQ6(session, dimensions)           → α_strong 强修正，第二份描�
 ```
 每一步写入 `history`（事件 + 摘要），是用户研究要的隐式反馈记录。用户本地库（IndexedDB）是另一个模块，通过 `beans` 传入。
 
-### 3.5 交互闭环（R3-D9）
+### 3.5 应用接口层（R3-D13，先接口后视觉）
+
+owner 的指令是先把接口写完并跑通，视觉稍后对齐。交付的都是纯 TS、无样式、无框架绑定：
+
+| 模块 | 内容 |
+|---|---|
+| `view.ts` | `contextCatalog(locale)`：C0–C2 五张卡（冲煮、烘焙、豆种含 SOE/拼配切换与上限 3、处理法、可选产地含提示语）；`normalizeContext`；`screenModel(session)`：每次用户操作后唯一需要调用的函数，返回 question / describe_ready / first_description / escalation / result 五种屏幕模型（对应 QuizCard、FirstDescriptionCard、EscalationModal、ResultCard）；`appShell(locale)`：首页文案（标题、导言、开始、About、语言切换、离线标记）|
+| `user-db/` | Dexie 表 `user_beans`（id, name, roast_level, process, variety, concept_ids, created_at）；`addBean / listBeans / deleteBean / clearBeans`；`conceptIdsFromLabel(包装风味词)`；`beansAsVectors()` → `projectConcepts` → `BeanVector[]` 注入 `createSession(..., beans)` 离线匹配 |
+| `about.ts` | About 三板块（核心方法论、学术文献与理论支持、极简风味词典与数据血缘 + 隐私声明）双语内容，数字从 bundle 读取；四条引用各带证据状态（文献未入库时为 PENDING_INGEST）|
+
+**栈的说明**：owner 的组件命名是 Vue 3 + Tailwind；仓库现有前端是 React 19 + React Router 8 + Vite，无 Vue、无 Tailwind。
+接口层是框架无关的，两边都能一一绑定；选哪个栈在视觉对齐时定，这里不预设。
+
+PWA 拓扑（owner）：单一全屏主界面 + About 覆盖层，无底部 Tab；顶栏左 ⓘ About、右 EN/中；Hero 一句导言 + 巨型「开始风味诊断」+ 离线可用标记。
+流水线：打开 → 开始 → C0–C2 → Q0–Q5 一页一卡 → 第一次出卡 3+5 → 8 选 5 → 门控 → 总结卡（可保存/分享）或 Q6 → 精修卡。
+
+### 3.6 交互闭环（R3-D9）
 
 ```
 [阶段 1] C0–C2 + Q0–Q1，按 3.1 分支动态追问
@@ -327,8 +349,11 @@ CoffeeReview 的批准（R3-D2）是「内部研究」：它的向量用于标�
 + **GACTT 消费者语料抽取的 61 条英文高频词**（`extract-gactt-consumer-terms.py`，4,042 位受访者 9,997 条盲测笔记，只输出聚合频次
 `GACTT_CONSUMER_TERM_FREQUENCY.tsv`，不输出任何原文）。61 条里 32 条可上卡（chocolate、citrus、berry、juicy、funky、wine、smokey、stone fruit、tropical…），
 29 条是结构/泛称词（body、thin、watery、acidic、bitterness…）只给映射器听、不上卡（`display_eligible=false`）。
-fermented_winey 在消费者口中的词频：fermented 221、funky 109、wine 78、vinegar 36、funk 32、cider 19——「funky」是英语消费者的核心词，
-中文对应词（菌香 / funky 感 / 发酵感）等 owner 定。中文社媒语料（小红书 / 大众点评 / 淘宝）不在仓库里，按逐一审阅规则等 owner 提供。
+fermented_winey 在消费者口中的词频：fermented 221、funky 109、wine 78、vinegar 36、funk 32、cider 19。
+**owner 的中文本土化裁决（R3-D13）**：funky → 野果发酵（备选 厌氧风味 / 特异发酵感）、funk → 厌氧风味、fermented → 水果发酵酱（备选 厌氧发酵）、
+wine → 微醺酒香、winey → 朗姆酒香、cider → 苹果酒感（fermented_winey + acidity）；vinegar 不上卡，只做映射器的负向过滤词（defect + acidity）。
+规则：不直译成「菌香」或「臭味/怪味」，统一收敛为野果发酵、厌氧风味、微醺酒香。映射器里同名的词表词覆盖概念标签
+（"vinegar" 不再走 acetic_vinegar 的 fermented .7 投影）。中文社媒语料仍等 owner 提供。
 维度级取词顺序：owner 的 `DIMENSION_TAG_MAP_CN` 列表在前，消费端词在后。`CONCEPT_FLAVOR_TAGS.tsv`：12 个维度各一组中国本土词（owner 的 `DIMENSION_TAG_MAP_CN`：acidity → 清冽果酸｜明亮酸质｜柑橘酸；
 fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧酒香｜朗姆酒｜发酵果酱 …）+ 94 个规范概念各一个中/英极简词
 （按 owner 规则：stone fruit → 黄桃/杏桃，brown sugar → 红糖/蔗糖，winey → 厌氧酒香/朗姆，citrus → 柑橘/柚子，floral → 茉莉花/咖啡花）。
@@ -444,7 +469,8 @@ fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧�
 | 题库与映射器 | 完成：口语化题库（R3-D12 批准）、混合映射器、否定守卫 | §3.2 / §3.3 |
 | 会话接口 | 完成：`session.ts` 全链路（题卡 → 描述 → 8 选 5 → 门控 → 总结卡 / Q6），历史记录 | §3.4 |
 | 消费端词表 | 第一轮：29 + 5 中文，61 英文（GACTT）；中文社媒扩充等语料 | §6.2 |
-| 测试 | 43 个：引擎 / 表达层 / 节奏 / 语义歧义 28+5 / 画像 4+10 / 会话 6 | §7.5 |
+| 应用接口层 | 完成：视图模型、Dexie 用户库、About 内容；拼配与产地进引擎 | §3.5 |
+| 测试 | 51 个：引擎 / 表达层 / 节奏 / 语义歧义 28+5 / 画像 4+10 / 会话 6 / 应用层 8 | §7.5 |
 | 用户自建库 | 未开始（本地存储 + 录入表单 + 扫码）| §8 |
 | 前端运行时 | 未开始；现有前端是 v0.2 目录的 demo | §8 |
 | 充分性 | 4 项里 3 项过（饱和、稀疏主干、视野 95%），均匀度差最后一个轴（fermented_winey）| §7 |
@@ -462,7 +488,7 @@ WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（
 | 4 | 前端运行时 `packages/flavor-data/src/product-vector-v1`，纯 JS 推荐与归因引擎 | 引擎完成（`infer()`：V_pred / V_user / ΔV / V_target / 画像与豆款排序 / 语境证据基础），5 个引擎测试通过；页面与用户自建库（IndexedDB）未开始 |
 | 5 | 产品级风味描述与用户用语对齐（owner 新要求）| 未开始：用已批准的 GACTT 消费者描述建立「消费者用语 → 12 维」词表，画像命名与归因文案都从它取词 |
 
-**仍待 owner：** GACTT 英文消费词的中文对应（尤其 funky）；中文社媒语料；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
+**仍待 owner：** 前端栈选择（React 现状 vs Vue 3 + Tailwind）与视觉对齐；中文社媒语料；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
 `ingest-external-literature.py` 会把它们并入归因句表。
 
 ---

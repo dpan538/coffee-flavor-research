@@ -71,7 +71,12 @@ export function utteranceVector(text: string, locale: Locale): { vector: Vector;
       if (!negated) sum = add(sum, vec);
     }
   };
-  for (const [concept, tags] of Object.entries(conceptTags)) consider(tags[locale], projection[concept] ?? zero(), { concept });
+  const mapperSurface = new Set(Object.values(consumer).flatMap((terms) => (terms[locale] ?? []).map((t) => t.toLowerCase())));
+  // a lexicon term overrides a concept tag with the same surface text (owner: "vinegar" is a negative filter, not a fermented note)
+  for (const [concept, tags] of Object.entries(conceptTags)) {
+    if (mapperSurface.has(tags[locale].toLowerCase())) continue;
+    consider(tags[locale], projection[concept] ?? zero(), { concept });
+  }
   for (const [dimension, terms] of Object.entries(consumer)) for (const term of terms[locale] ?? []) consider(term, unit(dimension), { dimension });
   for (const [dimension, terms] of Object.entries(dimTags)) for (const term of terms[locale] ?? []) consider(term, unit(dimension), { dimension });
   return { vector: normalize(sum), matched };

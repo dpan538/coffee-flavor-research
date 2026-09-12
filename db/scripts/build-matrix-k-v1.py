@@ -191,7 +191,20 @@ def main() -> int:
     for r in rows(OUT / "QUESTION_BANK.tsv"):
         q = question_bank.setdefault(r["slot"], {"question": r["question_id"], "prompt": {"zh-CN": r["prompt_zh_cn"], "en": r["prompt_en"]}, "options": {}, "owner_reviewed": r["owner_reviewed"] == "true"})
         q["options"][r["option"]] = {"label": {"zh-CN": r["label_zh_cn"], "en": r["label_en"]}, "cues": {"zh-CN": [c for c in r["cues_zh_cn"].split("|") if c], "en": [c for c in r["cues_en"].split("|") if c]}}
-    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank,
+    # C2 refinements (owner R3-D13): blends = normalised mean of up to 3 variety rows; origin is an optional
+    # macro-region chip that adds a small bias (delta 0.1) on named axes — never required, never dominant.
+    context_rules = {
+        "blend": {"max_varieties": 3, "composition": "normalize(sum of variety vectors)"},
+        "origin_bias_delta": 0.1,
+        "origin_regions": {
+            "ethiopia_east_africa": {"label": {"zh-CN": "埃塞俄比亚 / 东非（高锐花果）", "en": "Ethiopia / East Africa (floral, bright)"}, "bias": ["floral", "acidity"]},
+            "colombia_central_south_america": {"label": {"zh-CN": "哥伦比亚 / 中南美（均衡果酸）", "en": "Colombia / Central & South America (balanced fruit acidity)"}, "bias": ["fruity", "sweetness"]},
+            "yunnan": {"label": {"zh-CN": "云南（坚果 / 红糖 / 厌氧）", "en": "Yunnan (nutty, brown sugar, anaerobic)"}, "bias": ["fermented_winey", "nutty_chocolate"]},
+            "kenya": {"label": {"zh-CN": "肯尼亚（高磷酸 / 乌梅）", "en": "Kenya (phosphoric acidity, dark plum)"}, "bias": ["acidity", "fruity"]},
+        },
+        "owner_reviewed": True,
+    }
+    bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank, "context_rules": context_rules,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
               "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "matrix_q": questions, "profiles": profiles,
               "benchmark_beans": [], "presentation": presentation,

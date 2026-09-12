@@ -293,6 +293,26 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T04:33:16Z"
+    },
+    {
+      "id": "R3-D13",
+      "subject": "GACTT consumer terms zh mapping; PWA topology; blends and optional origin; app interfaces before visual design; About content plan",
+      "decision": "(1) funky/funk -> 野果发酵 / 厌氧风味, fermented -> 水果发酵酱 / 厌氧发酵, wine/winey -> 微醺酒香 / 朗姆酒香, cider -> 苹果酒感 (fermented_winey + acidity), vinegar mapper-only negative filter (defect/acidity); never 菌香 or 臭味. (2) Front end: QuizCard / FirstDescriptionCard / ResultCard / EscalationModal bound to session.ts; user library packages/flavor-data/src/user-db with Dexie (user_beans) and projectConcepts into session beans; write interfaces and make them work first, no visual design yet. (3) PWA: online-first, offline-complete, single full-screen hero + About overlay, no tab bar; top bar About + EN/中; start button into the session flow. (4) C2: single/blend toggle, up to 3 varieties as the normalised mean; origin optional macro-region chips with a delta-0.1 bias. (5) About page: methodology, literature (WCR, UC Davis, Coffee Ad Astra), lexicon & provenance, local-only privacy statement.",
+      "owner_words": "统一收敛为 “野果发酵”、“厌氧风味” 或 “微醺酒香” … 暂时写完接口并确保功能正常，先不要开始视觉设计 … 在线优先、离线全功能 … 取消底部 Tab 栏 … 拼配豆（Blend）多选机制（最多 3 个豆种）… 不作为强制必选项 … δ = 0.1 … About 页面必须具备硬核的学术背书",
+      "applied": {
+        "lexicon": "GACTT en terms mapped to zh per the owner; vinegar row defect/mapper-only; lexicon terms override same-surface concept tags in the mapper",
+        "engine": "c2_variety accepts string | string[] (max 3, normalised mean); c2_origin optional with context_rules.origin_regions bias 0.1; statementsFor handles blends",
+        "interfaces": "view.ts (contextCatalog, normalizeContext, screenModel, appShell), user-db (Dexie user_beans + beansAsVectors + conceptIdsFromLabel), about.ts (bilingual sections + citations with evidence state)",
+        "deps": "dexie ^4.4.6, fake-indexeddb ^6.2.5 (dev)",
+        "tests": "51/51 across five files; tsc clean",
+        "stack_note": "repo front end is React 19 + React Router 8 + Vite (no Vue, no Tailwind); interfaces are framework-agnostic; stack choice deferred to the visual alignment",
+        "open": [
+          "front-end stack decision and visual design",
+          "Chinese social-media corpus",
+          "literature claim files"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T04:54:30Z"
     }
   ],
   "guards": {

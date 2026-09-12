@@ -67,6 +67,7 @@
     "@react-router/dev": "^8.0.1",
     "@react-router/node": "^8.0.1",
     "animejs": "^4.4.1",
+    "dexie": "^4.4.6",
     "isbot": "^5",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -79,6 +80,7 @@
     "@types/node": "^26.0.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "fake-indexeddb": "^6.2.5",
     "prettier": "^3.8.4",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"

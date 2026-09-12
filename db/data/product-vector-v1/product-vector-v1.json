@@ -625,6 +625,56 @@
    "owner_reviewed": true
   }
  },
+ "context_rules": {
+  "blend": {
+   "max_varieties": 3,
+   "composition": "normalize(sum of variety vectors)"
+  },
+  "origin_bias_delta": 0.1,
+  "origin_regions": {
+   "ethiopia_east_africa": {
+    "label": {
+     "zh-CN": "埃塞俄比亚 / 东非（高锐花果）",
+     "en": "Ethiopia / East Africa (floral, bright)"
+    },
+    "bias": [
+     "floral",
+     "acidity"
+    ]
+   },
+   "colombia_central_south_america": {
+    "label": {
+     "zh-CN": "哥伦比亚 / 中南美（均衡果酸）",
+     "en": "Colombia / Central & South America (balanced fruit acidity)"
+    },
+    "bias": [
+     "fruity",
+     "sweetness"
+    ]
+   },
+   "yunnan": {
+    "label": {
+     "zh-CN": "云南（坚果 / 红糖 / 厌氧）",
+     "en": "Yunnan (nutty, brown sugar, anaerobic)"
+    },
+    "bias": [
+     "fermented_winey",
+     "nutty_chocolate"
+    ]
+   },
+   "kenya": {
+    "label": {
+     "zh-CN": "肯尼亚（高磷酸 / 乌梅）",
+     "en": "Kenya (phosphoric acidity, dark plum)"
+    },
+    "bias": [
+     "acidity",
+     "fruity"
+    ]
+   }
+  },
+  "owner_reviewed": true
+ },
  "alpha_default": 0.5,
  "structure_axis_weight": 0.6,
  "score_semantics": "cosine similarity; not a probability; uncalibrated",
@@ -4188,7 +4238,13 @@
      "微醺朗姆",
      "微醺",
      "威士忌桶",
-     "雪莉桶"
+     "雪莉桶",
+     "野果发酵",
+     "微醺酒香",
+     "厌氧风味",
+     "苹果酒感",
+     "水果发酵酱",
+     "朗姆酒香"
     ],
     "en": [
      "rice wine",
@@ -4204,7 +4260,9 @@
      "funky",
      "wine",
      "funk",
-     "cider"
+     "cider",
+     "fermented",
+     "winey"
     ]
    },
    "bitter_roasted": {
@@ -4276,9 +4334,12 @@
     ]
    },
    "defect": {
-    "zh-CN": [],
+    "zh-CN": [
+     "醋味"
+    ],
     "en": [
-     "off"
+     "off",
+     "vinegar"
     ]
    },
    "spice": {
@@ -4380,7 +4441,13 @@
      "微醺朗姆",
      "微醺",
      "威士忌桶",
-     "雪莉桶"
+     "雪莉桶",
+     "野果发酵",
+     "微醺酒香",
+     "厌氧风味",
+     "苹果酒感",
+     "水果发酵酱",
+     "朗姆酒香"
     ],
     "en": [
      "rice wine",
@@ -4396,7 +4463,9 @@
      "funky",
      "wine",
      "funk",
-     "cider"
+     "cider",
+     "fermented",
+     "winey"
     ]
    },
    "bitter_roasted": {

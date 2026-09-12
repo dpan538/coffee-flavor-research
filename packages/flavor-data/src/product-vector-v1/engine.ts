@@ -28,8 +28,9 @@ export type Locale = "zh-CN" | "en";
 export type ContextAnswers = {
   c0_preparation?: string; // pour_over_v60 | french_press | espresso | cold_brew
   c1_roast?: string; // light | medium_light | medium | medium_dark | dark | very_dark
-  c2_variety?: string; // gesha | bourbon | ... (Matrix_K rows with corpus support)
+  c2_variety?: string | string[]; // one variety, or a blend of up to 3 (normalised mean of their rows)
   c2_process?: string; // washed | natural | anaerobic | decaf
+  c2_origin?: string; // optional macro-region chip (context_rules.origin_regions): a delta-0.1 bias, never required
 };
 export type PerceptionAnswers = Partial<Record<keyof typeof bundle.matrix_q, string>>;
 
@@ -127,10 +128,39 @@ function kRow(axis: keyof typeof bundle.matrix_k, option: string | undefined): {
 export function buildVPred(context: ContextAnswers): { vPred: Vector; contextBasis: ContextBasis[] } {
   let sum = zero();
   const contextBasis: ContextBasis[] = [];
+  const rules = bundle.context_rules;
   for (const [axis, key] of AXIS_KEYS) {
-    const { row, basis } = kRow(axis as keyof typeof bundle.matrix_k, context[key]);
+    if (key === "c2_variety") {
+      // blend (owner R3-D13): V_blend = normalize(Σ V_variety_i), at most max_varieties
+      const raw = context.c2_variety;
+      const varieties = (Array.isArray(raw) ? raw : raw ? [raw] : []).slice(0, rules.blend.max_varieties);
+      let blend = zero();
+      let members = 0;
+      for (const variety of varieties) {
+        const { row, basis } = kRow("C2_variety", variety);
+        if (basis) contextBasis.push({ ...basis, basis: varieties.length > 1 ? `${basis.basis};BLEND_MEMBER_${varieties.length}` : basis.basis });
+        if (row?.vector) {
+          blend = add(blend, row.vector);
+          members += 1;
+        }
+      }
+      if (members > 0) sum = add(sum, normalize(blend));
+      continue;
+    }
+    const { row, basis } = kRow(axis as keyof typeof bundle.matrix_k, context[key as keyof ContextAnswers] as string | undefined);
     if (basis) contextBasis.push(basis);
     if (row?.vector) sum = add(sum, row.vector);
+  }
+  if (context.c2_origin) {
+    const region = (rules.origin_regions as Record<string, { bias: string[] }>)[context.c2_origin];
+    if (region) {
+      const unit = normalize(sum.some((x) => x !== 0) ? sum : zero());
+      const biased = unit.map((x, i) => x + (region.bias.includes(DIMENSIONS[i] as string) ? rules.origin_bias_delta : 0));
+      sum = biased;
+      contextBasis.push({ axis: "C2_origin", option: context.c2_origin, basis: `ORIGIN_BIAS_DELTA_${rules.origin_bias_delta}_ON_${region.bias.join("+")}`, memberCount: null });
+    } else {
+      contextBasis.push({ axis: "C2_origin", option: context.c2_origin, basis: "UNKNOWN_OPTION", memberCount: null });
+    }
   }
   return { vPred: normalize(sum), contextBasis };
 }
@@ -262,13 +292,14 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
 
 /** Context statements whose parts are all answered, most specific (most parts) first. */
 export function statementsFor(context: ContextAnswers, locale: Locale): ScienceLine[] {
-  const answered = new Map<string, string>();
+  const answered = new Map<string, Set<string>>();
   for (const [axis, key] of AXIS_KEYS) {
     const value = context[key];
-    if (value) answered.set(axis, value);
+    const values = Array.isArray(value) ? value : value ? [value] : [];
+    if (values.length) answered.set(axis, new Set(values));
   }
   return presentation.context_statements
-    .filter((s) => s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis) === p.option))
+    .filter((s) => s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis)?.has(p.option)))
     .sort((a, b) => b.parts.length - a.parts.length)
     .map((s) => ({ text: s[locale], evidenceState: s.evidence_state, citationRef: s.citation_ref, about: s.context_id }));
 }

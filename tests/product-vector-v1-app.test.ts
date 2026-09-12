@@ -1,0 +1,140 @@
+/**
+ * App-layer interfaces (owner, 2026-09-12; interfaces first, no visual design):
+ * blends and origin bias in V_pred, the context catalog and screen models, the Dexie user library, About content.
+ */
+import "fake-indexeddb/auto";
+import { describe, expect, it } from "vitest";
+import { DIMENSIONS, buildVPred, cosine, productVectorBundle } from "../packages/flavor-data/src/product-vector-v1";
+import { aboutCitations, aboutSections } from "../packages/flavor-data/src/product-vector-v1/about";
+import { answer, createSession, firstDescription, nextStep, submitPicks } from "../packages/flavor-data/src/product-vector-v1/session";
+import { appShell, contextCatalog, normalizeContext, screenModel } from "../packages/flavor-data/src/product-vector-v1/view";
+import { addBean, beansAsVectors, clearBeans, conceptIdsFromLabel, deleteBean, listBeans, userDatabase } from "../packages/flavor-data/src/user-db";
+
+describe("C2 blends and optional origin", () => {
+  it("a blend of up to 3 varieties is the normalised mean of their rows; a 4th is dropped", () => {
+    const single = buildVPred({ c2_variety: "gesha" });
+    const blend = buildVPred({ c2_variety: ["gesha", "ethiopian_landrace", "typica"] });
+    const four = buildVPred({ c2_variety: ["gesha", "ethiopian_landrace", "typica", "bourbon"] });
+    expect(blend.contextBasis.filter((b) => b.axis === "C2_variety")).toHaveLength(3);
+    expect(blend.contextBasis.every((b) => b.basis.includes("BLEND_MEMBER_3"))).toBe(true);
+    expect(four.contextBasis.filter((b) => b.axis === "C2_variety")).toHaveLength(3);
+    expect(cosine(single.vPred, blend.vPred)).toBeGreaterThan(0.8);
+    expect(cosine(single.vPred, blend.vPred)).toBeLessThan(1);
+    expect(Math.abs(Math.hypot(...blend.vPred) - 1)).toBeLessThan(1e-6);
+  });
+
+  it("origin is optional: it adds a delta-0.1 bias on the region's axes and never dominates", () => {
+    const plain = buildVPred({ c1_roast: "light", c2_process: "washed" });
+    const eth = buildVPred({ c1_roast: "light", c2_process: "washed", c2_origin: "ethiopia_east_africa" });
+    const floral = DIMENSIONS.indexOf("floral");
+    expect(eth.vPred[floral]!).toBeGreaterThan(plain.vPred[floral]!);
+    expect(cosine(plain.vPred, eth.vPred)).toBeGreaterThan(0.95);
+    expect(eth.contextBasis.some((b) => b.axis === "C2_origin" && b.basis.startsWith("ORIGIN_BIAS_DELTA_0.1"))).toBe(true);
+    expect(buildVPred({ c1_roast: "light", c2_origin: "mars" }).contextBasis.some((b) => b.basis === "UNKNOWN_OPTION")).toBe(true);
+  });
+});
+
+describe("context catalog and screen models", () => {
+  it("the catalog carries every corpus-backed option, the blend toggle and the optional origin chips, in both languages", () => {
+    const zh = contextCatalog("zh-CN");
+    const en = contextCatalog("en");
+    expect(zh.map((c) => c.key)).toEqual(["c0_preparation", "c1_roast", "c2_variety", "c2_process", "c2_origin"]);
+    const variety = zh.find((c) => c.key === "c2_variety")!;
+    expect(variety.multi).toBe(true);
+    if (variety.key === "c2_variety") {
+      expect(variety.max).toBe(3);
+      expect(variety.toggle.blend).toContain("拼配");
+      expect(variety.chips.map((c) => c.value)).toContain("gesha");
+    }
+    const origin = zh.find((c) => c.key === "c2_origin")!;
+    expect(origin.optional).toBe(true);
+    expect(origin.chips.map((c) => c.value)).toEqual(["ethiopia_east_africa", "colombia_central_south_america", "yunnan", "kenya"]);
+    expect(en.find((c) => c.key === "c1_roast")!.chips.map((c) => c.label)).toContain("Light");
+    expect(normalizeContext({ c2_variety: ["gesha", "gesha", "typica", "bourbon", "sl28_sl34"] }).c2_variety).toEqual(["gesha", "typica", "bourbon"]);
+    expect(normalizeContext({ c2_variety: ["gesha"] }).c2_variety).toBe("gesha");
+  });
+
+  it("screenModel walks question → first description → result with plain data a component can bind", () => {
+    let s = createSession({ c0_preparation: "pour_over_v60", c1_roast: "light", c2_variety: ["gesha", "ethiopian_landrace"], c2_process: "washed", c2_origin: "ethiopia_east_africa" }, "zh-CN");
+    let m = screenModel(s);
+    expect(m.kind).toBe("question");
+    const answers: Record<string, string> = { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" };
+    let guard = 0;
+    while (m.kind === "question" && guard < 10) {
+      s = answer(s, m.slot as never, answers[m.slot]!);
+      m = screenModel(s);
+      guard += 1;
+    }
+    expect(m.kind).toBe("describe_ready");
+    s = firstDescription(s);
+    m = screenModel(s);
+    expect(m.kind).toBe("first_description");
+    if (m.kind === "first_description") {
+      expect(m.main).toHaveLength(3);
+      expect(m.pickCount).toBe(5);
+      s = submitPicks(s, [...m.main, ...m.secondary.slice(0, 2)]);
+    }
+    m = screenModel(s);
+    expect(["result", "escalation"]).toContain(m.kind);
+    if (m.kind === "result") {
+      expect(m.picked).toHaveLength(5);
+      expect(m.shareText).toContain("|");
+      expect(m.corrected).toBe(false);
+    }
+    expect(nextStep(s).kind === "final" || nextStep(s).kind === "q6").toBe(true);
+  });
+
+  it("app shell copy exists in both languages", () => {
+    expect(appShell("zh-CN").start).toBe("开始风味诊断");
+    expect(appShell("en").localeSwitch).toBe("中");
+  });
+});
+
+describe("user bean library (Dexie over IndexedDB)", () => {
+  it("adds, lists, projects and deletes beans locally", async () => {
+    const db = userDatabase("test-user-db-" + Math.random().toString(36).slice(2));
+    await clearBeans(db);
+    const tags = productVectorBundle.presentation.concept_tags as Record<string, { "zh-CN": string; en: string }>;
+    const ids = conceptIdsFromLabel("玉兰花 | 水蜜桃 | 佛手柑 | 青柠", tags);
+    expect(ids).toContain("sensory.peach");
+    expect(ids).toContain("sensory.bergamot");
+    const id = await addBean(db, { name: "Ethiopia Washed Sewda", roast_level: "light", process: "washed", variety: "ethiopian_landrace", concept_ids: ids });
+    await addBean(db, { name: "No notes yet", roast_level: "", process: "", variety: "", concept_ids: [] });
+    const beans = await listBeans(db);
+    expect(beans).toHaveLength(2);
+    const vectors = await beansAsVectors(db);
+    expect(vectors).toHaveLength(1);
+    expect(vectors[0]!.source).toBe("user");
+    expect(vectors[0]!.vector[DIMENSIONS.indexOf("fruity")]!).toBeGreaterThan(0);
+    await deleteBean(db, id);
+    expect(await listBeans(db)).toHaveLength(1);
+    await expect(addBean(db, { name: "  ", roast_level: "", process: "", variety: "", concept_ids: [] })).rejects.toThrow();
+  });
+
+  it("user beans enter a session as candidates and get ranked with tags", async () => {
+    const db = userDatabase("test-user-db-session-" + Math.random().toString(36).slice(2));
+    const tags = productVectorBundle.presentation.concept_tags as Record<string, { "zh-CN": string; en: string }>;
+    await addBean(db, { name: "Washed Masincho", roast_level: "light", process: "washed", variety: "ethiopian_landrace", concept_ids: conceptIdsFromLabel("白花 | 柑橘 | 茉莉绿茶 | 杏桃 | 茉莉花", tags) });
+    await addBean(db, { name: "Dark blend", roast_level: "dark", process: "natural", variety: "bourbon", concept_ids: conceptIdsFromLabel("黑巧克力 | 烟熏 | 焦糖", tags) });
+    const beans = await beansAsVectors(db);
+    let s = createSession({ c0_preparation: "pour_over_v60", c1_roast: "light", c2_process: "washed" }, "zh-CN", beans);
+    for (const [slot, option] of Object.entries({ Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" })) s = answer(s, slot as never, option);
+    s = firstDescription(s);
+    expect(s.result!.beans).toHaveLength(2);
+    expect(s.result!.beans[0]!.bean.label).toBe("Washed Masincho");
+  });
+});
+
+describe("about content", () => {
+  it("is bilingual, reads live numbers from the bundle, and states the evidence state of each citation", () => {
+    const zh = aboutSections("zh-CN");
+    const en = aboutSections("en");
+    expect(zh.map((s) => s.id)).toEqual(["methodology", "literature", "lexicon"]);
+    expect(zh[0]!.paragraphs[0]).toContain("12 维");
+    expect(en[0]!.paragraphs[1]).toContain("0.8");
+    expect(zh[2]!.paragraphs[1]).toContain("IndexedDB");
+    const cites = aboutCitations("en");
+    expect(cites.map((c) => c.id)).toEqual(["wcr", "ucdavis", "adastra", "gactt"]);
+    expect(cites.every((c) => ["LITERATURE_CLAIM", "PENDING_INGEST"].includes(c.evidenceState))).toBe(true);
+  });
+});

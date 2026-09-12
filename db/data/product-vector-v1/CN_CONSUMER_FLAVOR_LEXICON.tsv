@@ -54,11 +54,11 @@ surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary
 	tea	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (114 respondents); zh counterpart pending	false	true
 	nuts	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (113 respondents); zh counterpart pending	false	false
 	tart	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (113 respondents); zh counterpart pending	false	true
-	funky	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (109 respondents); zh counterpart pending	false	true
+野果发酵	funky	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (alt: 厌氧风味 / 特异发酵感)	true	true
 	heavy	body			GACTT_CONSUMER_TERMS_2026-09-12 (102 respondents); zh counterpart pending	false	false
 	thin	body			GACTT_CONSUMER_TERMS_2026-09-12 (100 respondents); zh counterpart pending	false	false
 	sweetness	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (78 respondents); zh counterpart pending	false	false
-	wine	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (78 respondents); zh counterpart pending	false	true
+微醺酒香	wine	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (alt: 朗姆酒香)	true	true
 	rich	body			GACTT_CONSUMER_TERMS_2026-09-12 (74 respondents); zh counterpart pending	false	false
 	smokey	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (72 respondents); zh counterpart pending	false	true
 	stone fruit	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (70 respondents); zh counterpart pending	false	true
@@ -81,7 +81,7 @@ surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary
 	grass	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (34 respondents); zh counterpart pending	false	true
 	spice	spice			GACTT_CONSUMER_TERMS_2026-09-12 (34 respondents); zh counterpart pending	false	false
 	syrup	sweetness			GACTT_CONSUMER_TERMS_2026-09-12 (33 respondents); zh counterpart pending	false	true
-	funk	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (32 respondents); zh counterpart pending	false	true
+厌氧风味	funk	fermented_winey			GACTT term; zh mapping OWNER_R3-D13_2026-09-12	true	true
 	tangy	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (32 respondents); zh counterpart pending	false	true
 	grassy	herbal_green			GACTT_CONSUMER_TERMS_2026-09-12 (32 respondents); zh counterpart pending	false	true
 	melon	fruity			GACTT_CONSUMER_TERMS_2026-09-12 (31 respondents); zh counterpart pending	false	true
@@ -92,5 +92,8 @@ surface_term_zh	surface_term_en	primary_dimension	canonical_concept_id	secondary
 	lemony	acidity			GACTT_CONSUMER_TERMS_2026-09-12 (22 respondents); zh counterpart pending	false	true
 	chocolaty	nutty_chocolate			GACTT_CONSUMER_TERMS_2026-09-12 (20 respondents); zh counterpart pending	false	false
 	dirt	woody_earthy			GACTT_CONSUMER_TERMS_2026-09-12 (20 respondents); zh counterpart pending	false	false
-	cider	fermented_winey			GACTT_CONSUMER_TERMS_2026-09-12 (19 respondents); zh counterpart pending	false	true
+苹果酒感	cider	fermented_winey		acidity 0.5	GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (acidity 0.5; alt: 微酸果酒)	true	true
 	ashy	bitter_roasted			GACTT_CONSUMER_TERMS_2026-09-12 (17 respondents); zh counterpart pending	false	true
+水果发酵酱	fermented	fermented_winey	sensory.fermented_character		GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (GACTT 221; alt: 厌氧发酵)	true	true
+朗姆酒香	winey	fermented_winey	sensory.wine_like_character		GACTT term; zh mapping OWNER_R3-D13_2026-09-12 (GACTT 10; alt: 微醺酒香)	true	true
+醋味	vinegar	defect		acidity 0.5	GACTT term (36); OWNER_R3-D13_2026-09-12: mapper-only negative filter, never a display term	true	false
