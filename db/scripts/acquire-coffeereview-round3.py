@@ -2,10 +2,19 @@
 """Round 3 — ingest the owner-reviewed CoffeeReview Kaggle scrape as a source family.
 
 WHAT THIS IS
-    coffee_reviews_parsed.csv: 8,387 reviews, 2000-2025, one review per URL, with
+    coffee_reviews_parsed.csv: 8,387 reviews, 1997-2025, one review per URL, with
     the Blind Assessment text that carries the named descriptors. Measured
     before writing this: 6,396 reviews carry >= 2 registry descriptors and all
     56 registry words appear, including all 36 that no question axis reaches.
+
+PARSER VERSIONS
+    v1 (frozen, 77K checkpoint): the "... in aroma and cup" sentence only.
+    6,180 reviews / 27,004 assertions; hit rate collapses before 2012.
+    v2 (CR-2, 83K checkpoint): v1 unchanged (same atom ids) plus four extra
+    sentence shapes and a bare-list fallback, each under its own pattern id in
+    the source locator. 7,300 reviews / 32,996 assertions; +5,992 of which
+    3,610 come from 2004-2011. Quality per pattern (registry-word rate, words
+    per atom) is measured in round3/cr2_parser_v2_finding.json.
 
 RIGHTS
     Scraped editorial content. Approved by the owner for this project's
@@ -152,11 +161,105 @@ def extract_descriptor_list(blind: str) -> str | None:
     return text or None
 
 
-def parse_coffeereview(b2, source: dict[str, str], path: Path) -> tuple[list[list[Any]], dict[str, int]]:
+# Parser v2 (CR-2). v1 covers the post-2012 house style ("... in aroma and cup");
+# before 2012 the same reviews list their descriptors in other sentence shapes.
+# Measured on the 8,387 reviews: v1 hit rate 5-25% for 1997-2003, 30-45% for
+# 2004-2011, >90% from 2013. Each extra shape is its own pattern id so the atoms
+# it yields stay measurable and revocable. v1 atoms keep their locator and ids;
+# the v1 sentence is masked before the v2 shapes run so nothing is captured twice.
+PARSER_VERSIONS = ("v1", "v2")
+COLON_LIST = re.compile(r"\b(?:aroma|cup|nose|flavou?rs?|notes)\s*:\s*([^.;]+)", re.I)
+IN_CUP_PREFIX = re.compile(r"(?:^|\.\s*)in\s+the\s+(?:small\s+)?(?:aroma|cup|finish)\s*[,:]?\s*([^.]+)", re.I)
+NOTES_OF = re.compile(
+    r"\b(?:notes?|hints?|suggestions?|nuances?|flavou?rs?|touch(?:es)?)\s+of\s+"
+    r"(.+?)(?=\s+in\s+(?:the\s+)?(?:aroma|cup|finish)\b|\s+(?:that|which|as|while|when)\b|[.;]|$)", re.I)
+AROMA_THROUGH = re.compile(
+    r"(?:^|\.\s*)([^.;]+?)\s+(?:runs?|carry|carries|carried|persists?|persisting|continues?|threads?)"
+    r"\s+(?:through|throughout|from)\s+(?:the\s+)?aroma\b", re.I)
+# items that describe structure, the tasting setup, or a clause rather than a descriptor
+ITEM_EXCLUDE = re.compile(
+    r"\b(?:acidity|acidy|mouthfeel|body|finish(?:es|ing)?|structure|sweetness|balance|aftertaste|roast|"
+    r"evaluated|tested|brewed|rating|points?|is|are|was|were|has|have|had|that|which|but|though|"
+    r"although|as|by|this|fades?|persists?|turns?|emerges?|dominates?|becomes?|carries|continues?)\b|\d", re.I)
+ITEM_PREFIX = re.compile(
+    r"^(?:(?:a|an|the|some|more|with|of|and|plus|also|very|slightly|slight|distinct|distinctly|continuing|continued)\s+)+"
+    r"|^(?:(?:a\s+)?(?:hints?|notes?|touch(?:es)?|suggestions?|nuances?|whiffs?)\s+of\s+)", re.I)
+ITEM_MAX_WORDS = 4
+V2_PATTERNS = (
+    ("aroma-colon", COLON_LIST),
+    ("in-the-cup-prefix", IN_CUP_PREFIX),
+    ("notes-of", NOTES_OF),
+    ("aroma-through-cup", AROMA_THROUGH),
+)
+
+
+def clean_v2_items(text: str) -> str | None:
+    """Keep only descriptor-shaped items of a captured list (v2 shapes only; v1 is frozen)."""
+    kept: list[str] = []
+    for raw in re.split(r"[,;]", text):
+        item = raw.strip(" .,:;\t\n\"'")
+        item = re.sub(r"\s*\([^)]*\)", "", item).strip()
+        while True:  # "a hint of milk chocolate": article, then hedge, then article again
+            stripped = ITEM_PREFIX.sub("", item).strip(" \"'")
+            if stripped == item:
+                break
+            item = stripped
+        if not item or len(item.split()) > ITEM_MAX_WORDS or ITEM_EXCLUDE.search(item):
+            continue
+        kept.append(item)
+    return ", ".join(kept) if kept else None
+
+
+def bare_list_sentence(blind: str) -> str | None:
+    """Post-2012 reviews without the v1 sentence list their descriptors as a bare
+    sentence of >= 4 short items (the 3-item adjective opener is not a list)."""
+    best: tuple[int, str] | None = None
+    for sentence in re.split(r"(?<=[.!?])\s+", blind):
+        core = sentence.strip().rstrip(".!?").strip()
+        items = [item.strip() for item in re.split(r"[,;]", core) if item.strip()]
+        if len(items) < 4 or re.search(r"\b(?:in|on|to|for|from|with|of|the|and\s+a)\b|\d", core, re.I):
+            continue
+        if any(len(item.split()) > ITEM_MAX_WORDS or ITEM_EXCLUDE.search(item) for item in items):
+            continue
+        if best is None or len(items) > best[0]:
+            best = (len(items), core)
+    return best[1] if best else None
+
+
+def extract_descriptor_lists(blind: str, version: str = "v1") -> list[tuple[str, str]]:
+    """[(pattern_id, list_text)]; the v1 sentence always comes first under its v1 id."""
+    found: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    masked = blind
+    m = LIST_SENTENCE.search(blind)
+    v1 = extract_descriptor_list(blind)
+    if v1:
+        found.append(("aroma-and-cup", v1))
+        seen.add(v1.casefold())
+        masked = blind[:m.start()] + ". " + blind[m.end():]
+    if version == "v1":
+        return found
+    for pattern_id, pattern in V2_PATTERNS:
+        for hit in pattern.finditer(masked):
+            text = clean_v2_items(hit.group(1))
+            if not text or text.casefold() in seen:
+                continue
+            seen.add(text.casefold())
+            found.append((pattern_id, text))
+    if not v1:
+        bare = bare_list_sentence(masked)
+        if bare:
+            text = clean_v2_items(bare)
+            if text and text.casefold() not in seen:
+                found.append(("bare-list", text))
+    return found
+
+
+def parse_coffeereview(b2, source: dict[str, str], path: Path, version: str = "v1") -> tuple[list[list[Any]], dict[str, Any]]:
     artifact_hash = sha256_file(path)
     result: list[list[Any]] = []
-    stats = {"rows": 0, "blind_assessment_empty": 0, "no_list_sentence": 0,
-             "espresso": 0, "records_with_atoms": 0}
+    stats: dict[str, Any] = {"parser_version": version, "rows": 0, "blind_assessment_empty": 0, "no_list_sentence": 0,
+                             "espresso": 0, "records_with_atoms": 0, "pattern_reviews": {}, "pattern_raw_atoms": {}}
     with path.open(encoding="utf-8", errors="replace", newline="") as fh:
         for row_number, row in enumerate(csv.DictReader(fh), 2):
             stats["rows"] += 1
@@ -165,8 +268,8 @@ def parse_coffeereview(b2, source: dict[str, str], path: Path) -> tuple[list[lis
             if not url or not blind:
                 stats["blind_assessment_empty"] += 1
                 continue
-            listed = extract_descriptor_list(blind)
-            if not listed:
+            extractions = extract_descriptor_lists(blind, version)
+            if not extractions:
                 stats["no_list_sentence"] += 1
                 continue
             prep = "ESPRESSO" if ESPRESSO.search(blind) else "CUPPING"
@@ -180,23 +283,29 @@ def parse_coffeereview(b2, source: dict[str, str], path: Path) -> tuple[list[lis
             roast = "; ".join(p for p in (roast_level, f"Agtron {agtron}" if agtron else "") if p) or "UNREPORTED"
             effective = b2.stable_id("effective-b2", source["route"], url, "BLIND_ASSESSMENT")
             coffee = b2.stable_id("coffee-b2", source["route"], url)
-            record_atoms = b2.make_atoms(
-                source=source,
-                artifact_sha256=artifact_hash,
-                source_url=url,
-                source_locator=f"csv:{path.name}#row={row_number};url={url};field=Blind Assessment;sentence=aroma-and-cup",
-                effective_record_id=effective,
-                coffee_identity_id=coffee,
-                edition_or_release=date or "UNREPORTED",
-                edition_year=year,
-                preparation_service=prep,
-                roast_evidence=roast,
-                source_field_label="Blind Assessment (aroma-and-cup descriptor list)",
-                raw_field_text=listed,
-                publication_layer="PANEL_PUBLISHED_BLIND_ASSESSMENT",
-                provenance_state="OWNER_REVIEWED_KAGGLE_SCRAPE_OF_PUBLISHED_REVIEW",
-                judge_observation_id="",
-            )
+            record_atoms: list[Any] = []
+            for pattern_id, listed in extractions:
+                pattern_atoms = b2.make_atoms(
+                    source=source,
+                    artifact_sha256=artifact_hash,
+                    source_url=url,
+                    source_locator=f"csv:{path.name}#row={row_number};url={url};field=Blind Assessment;sentence={pattern_id}",
+                    effective_record_id=effective,
+                    coffee_identity_id=coffee,
+                    edition_or_release=date or "UNREPORTED",
+                    edition_year=year,
+                    preparation_service=prep,
+                    roast_evidence=roast,
+                    source_field_label=f"Blind Assessment ({pattern_id} descriptor list)",
+                    raw_field_text=listed,
+                    publication_layer="PANEL_PUBLISHED_BLIND_ASSESSMENT",
+                    provenance_state="OWNER_REVIEWED_KAGGLE_SCRAPE_OF_PUBLISHED_REVIEW",
+                    judge_observation_id="",
+                )
+                if pattern_atoms:
+                    stats["pattern_reviews"][pattern_id] = stats["pattern_reviews"].get(pattern_id, 0) + 1
+                    stats["pattern_raw_atoms"][pattern_id] = stats["pattern_raw_atoms"].get(pattern_id, 0) + len(pattern_atoms)
+                    record_atoms.extend(pattern_atoms)
             if record_atoms:
                 stats["records_with_atoms"] += 1
                 result.append(record_atoms)
@@ -225,19 +334,24 @@ def main() -> int:
     parser.add_argument("--restricted-root", type=Path,
                         default=Path(os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT", str(DEFAULT_RESTRICTED_ROOT))))
     parser.add_argument("--public-dir", type=Path, default=PUBLIC)
+    parser.add_argument("--parser", choices=PARSER_VERSIONS, default="v1",
+                        help="v1: the frozen 77K extraction; v2: CR-2 sentence shapes (measured before adoption)")
+    parser.add_argument("--restricted-out", type=Path, default=None,
+                        help="override the restricted family dir (measurement runs); same /tmp and git-tree rules apply")
     args = parser.parse_args()
 
     restricted_root = require_restricted_root(args.restricted_root)
     source_path = restricted_root / SOURCE_REL
     if not source_path.is_file():
         raise SystemExit(f"source file missing under restricted root: {source_path}")
-    family_dir = restricted_root / FAMILY_DIR
+    family_dir = require_restricted_root(args.restricted_out) if args.restricted_out else restricted_root / FAMILY_DIR
     family_dir.mkdir(parents=True, exist_ok=True)
     args.public_dir.mkdir(parents=True, exist_ok=True)
 
     b2 = load_b2()
     started = time.time()
-    records, stats = parse_coffeereview(b2, SOURCE, source_path)
+    records, stats = parse_coffeereview(b2, SOURCE, source_path, args.parser)
+    batch_id = "coffeereview-round3-kaggle-parsed-20260911" if args.parser == "v1" else "coffeereview-round3-kaggle-parsed-v2-20260912"
     atoms = [a for rec in records for a in rec]
     raw_count = len(atoms)
     assertion_losses, record_losses = b2.apply_deinflation(atoms)
@@ -248,9 +362,9 @@ def main() -> int:
         item = dict(safe)
         item.pop("publisher", None)  # precedent: post40k publishes an id, not the name
         item["publisher_id"] = b2.stable_id("publisher", atom.source_family)
-        item["extension_batch_id"] = "coffeereview-round3-kaggle-parsed-20260911"
+        item["extension_batch_id"] = batch_id
         item["source_field_label"] = "hash:sha256:" + hashlib.sha256(atom.source_field_label.encode()).hexdigest()
-        item["parser_version"] = "round3.coffeereview-blind-assessment-parser.v1"
+        item["parser_version"] = f"round3.coffeereview-blind-assessment-parser.{args.parser}"
         item["adapter_version"] = "b2.public-safe-adapter"
         # Schema parity with the CoE staging sidecars, which descriptor-pipeline.py
         # and generate-batch6-semantic-corpus.py read. This family is not a CoE
@@ -261,9 +375,12 @@ def main() -> int:
         safe_rows.append(item)
     restricted_rows = list(b2.restricted_rows(atoms))
 
-    restricted_ledger = family_dir / "COFFEEREVIEW_ASSERTIONS_RESTRICTED.tsv"
+    # v1 names are frozen with the 77K checkpoint; v2 writes beside them so both
+    # checkpoints stay reproducible from the same restricted root.
+    suffix = "" if args.parser == "v1" else "_V2"
+    restricted_ledger = family_dir / f"COFFEEREVIEW_ASSERTIONS_RESTRICTED{suffix}.tsv"
     write_tsv(restricted_ledger, restricted_rows)
-    sidecar = args.public_dir / "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv"
+    sidecar = args.public_dir / f"COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR{suffix}.tsv"
     write_tsv(sidecar, safe_rows)
 
     classes: dict[str, int] = {}
@@ -273,7 +390,8 @@ def main() -> int:
 
     manifest = {
         "contract_version": "coffeereview-round3-manifest.v1",
-        "extension_batch_id": "coffeereview-round3-kaggle-parsed-20260911",
+        "parser_version": args.parser,
+        "extension_batch_id": batch_id,
         "generated_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "elapsed_seconds": round(time.time() - started, 1),
         "source": {k: v for k, v in SOURCE.items()},
@@ -293,7 +411,7 @@ def main() -> int:
         "guards": {"source_native_text_in_public_output": False, "model_eligible_assertion_count": 0,
                    "records_admitted": 0, "fit_count": 0, "schema_changed": False},
     }
-    (args.public_dir / "COFFEEREVIEW_ROUND3_MANIFEST.json").write_text(
+    (args.public_dir / f"COFFEEREVIEW_ROUND3_MANIFEST{suffix}.json").write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({k: manifest[k] for k in ("extraction", "raw_atom_count", "deinflated_assertion_count",
                                                "effective_record_count", "descriptor_class_counts")},

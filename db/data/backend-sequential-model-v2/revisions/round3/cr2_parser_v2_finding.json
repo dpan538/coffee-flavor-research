@@ -1,0 +1,111 @@
+{
+  "contract_version": "round3.cr2-parser-v2-finding.v1",
+  "generated_at_utc": "2026-09-12T01:41:22Z",
+  "scope": "CR-2 (owner-approved 2026-09-12): CoffeeReview blind-assessment parser v2. The v1 sentence shape ('... in aroma and cup') is the post-2012 house style; before 2012 the same reviews list descriptors in other shapes. This is a parser coverage defect, not a relaxation of data rules.",
+  "v1_hit_rate_by_era": {
+    "1997-2003": "5-25% (e.g. 2000: 5/103, 2003: 20/125)",
+    "2004-2011": "30-45% (e.g. 2007: 59/230, 2010: 119/318)",
+    "2012+": ">90% (e.g. 2016: 374/393, 2022: 579/586)"
+  },
+  "v2_design": {
+    "v1_frozen": "the v1 sentence is extracted first under its v1 locator (sentence=aroma-and-cup) so every v1 atom keeps its id; the v1 span is then masked before the v2 shapes run.",
+    "shapes": {
+      "aroma-colon": "'aroma: milk chocolate, cherryish fruit, ...'",
+      "in-the-cup-prefix": "'In the cup silky mouthfeel, ..., distinct cocoa, orange and berry notes'",
+      "notes-of": "'notes of orange, lemon and flowers' (stops at 'in aroma/cup', 'that/which/as')",
+      "aroma-through-cup": "'X and Y run through aroma and cup'",
+      "bare-list": "post-2012 reviews without the v1 sentence: a sentence of >= 4 short items, only when v1 missed"
+    },
+    "item_filter_v2_only": "items > 4 words, items carrying structure/setup/clause vocabulary (acidity, mouthfeel, finish, is/are/with/that, digits) are dropped; leading articles and hedges ('a hint of', 'notes of') stripped. v1 items untouched.",
+    "measurability": "each shape writes its own pattern id into source_locator, so its atoms can be counted, audited, or revoked separately."
+  },
+  "measurement_v2_1": {
+    "reviews_with_atoms": {
+      "v1": 6180,
+      "v2": 7300,
+      "new": 1120
+    },
+    "deinflated_assertions": {
+      "v1": 27004,
+      "v2": 32997,
+      "added": 5993
+    },
+    "added_atoms_by_era": {
+      "<=2003": 291,
+      "2004-2011": 3610,
+      "2012+": 2091
+    },
+    "per_pattern": {
+      "aroma-and-cup (v1)": {
+        "atoms": 27004,
+        "registry_word_rate": 0.61,
+        "words_per_atom": 1.9
+      },
+      "notes-of": {
+        "atoms": 3117,
+        "reviews": 2194,
+        "new_reviews": 762,
+        "registry_word_rate": 0.79,
+        "words_per_atom": 2.44
+      },
+      "aroma-colon": {
+        "atoms": 1099,
+        "reviews": 355,
+        "new_reviews": 284,
+        "registry_word_rate": 0.8,
+        "words_per_atom": 1.71
+      },
+      "in-the-cup-prefix": {
+        "atoms": 1055,
+        "reviews": 493,
+        "new_reviews": 395,
+        "registry_word_rate": 0.56,
+        "words_per_atom": 1.97
+      },
+      "bare-list": {
+        "atoms": 666,
+        "reviews": 136,
+        "new_reviews": 136,
+        "registry_word_rate": 0.61,
+        "words_per_atom": 1.7
+      },
+      "aroma-through-cup": {
+        "atoms": 55,
+        "reviews": 22,
+        "new_reviews": 21,
+        "registry_word_rate": 0.76,
+        "words_per_atom": 1.93
+      }
+    },
+    "rejected_first_draft": "v2.0 without the v1 mask and item filter: notes-of 5,736 atoms at 4.4 words/atom (42% > 4 words, re-captured v1 tails), bare-list 4,689 atoms at registry rate 0.26 (the 3-item adjective opener). Both fixed by design (mask, >= 4 items, item filter), not by dropping data.",
+    "quality_reading": "every retained shape maps to registry words at or above the v1 rate except in-the-cup-prefix (0.56 vs 0.61), with atom length matching v1; the added atoms are dominated by the 2004-2011 era the v1 shape could not see.",
+    "registry_word_gauge": "90 EXISTING_CANONICAL_CONCEPT ids from SEMANTIC_CONCEPT_NODE plus 14 family words; a proxy, not a validation."
+  },
+  "checkpoint": {
+    "rule": "CANDIDATE_77K is immutable, so the v2 delta becomes the next frozen checkpoint",
+    "83K": {
+      "source_assertions": 83031,
+      "formula": "77,038 + 5,993 v2-only rows",
+      "output_atoms": 88819,
+      "valid_source_assertions": 77637,
+      "identity_guard": "build_cleaned_83k refuses a v2 ledger that does not carry exactly the 27,004 v1 rows unchanged (compared in the segment id namespace)"
+    },
+    "semantic_layer_on_83k": {
+      "relation_edges": {
+        "77k": 136065,
+        "83k": 141460
+      },
+      "source_assertions": 83031
+    }
+  },
+  "artifacts": {
+    "parser": "db/scripts/acquire-coffeereview-round3.py --parser v2 (v1 remains default-reproducible)",
+    "staging": [
+      "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR_V2.tsv",
+      "COFFEEREVIEW_ROUND3_MANIFEST_V2.json"
+    ],
+    "restricted": "coffee-flavor-round3-coffeereview/COFFEEREVIEW_ASSERTIONS_RESTRICTED_V2.tsv (beside the v1 ledger)",
+    "pipeline": "descriptor-pipeline.py --checkpoint {50k,77k,83k}, default 83k; clean83k command"
+  },
+  "next": "CR-1b-ii: derive the owner review surface (gap register / cluster V2 enrichment) from the 83K consolidation."
+}

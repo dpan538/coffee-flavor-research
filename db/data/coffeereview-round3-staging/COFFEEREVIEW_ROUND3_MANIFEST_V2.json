@@ -1,0 +1,75 @@
+{
+  "contract_version": "coffeereview-round3-manifest.v1",
+  "parser_version": "v2",
+  "extension_batch_id": "coffeereview-round3-kaggle-parsed-v2-20260912",
+  "generated_at_utc": "2026-09-12T01:36:24Z",
+  "elapsed_seconds": 8.2,
+  "source": {
+    "url": "https://www.kaggle.com/datasets/schmoyote/coffee-reviews-dataset",
+    "filename": "coffee_reviews_parsed.csv",
+    "family": "family.coffeereview_kaggle_parsed",
+    "route": "route.coffeereview.kaggle-parsed-2000-2025.blind-assessment",
+    "schema": "schema.coffeereview.parsed-review-csv.v1",
+    "publisher": "Coffee Review (coffeereview.com); Kaggle scrape (schmoyote)",
+    "language": "en",
+    "rights": "AFFIRMATIVE_WITH_CONDITIONS",
+    "rights_basis": "OWNER_MANUAL_REVIEW_APPROVAL_R3_D2_SCRAPED_EDITORIAL_INTERNAL_RESEARCH_ONLY",
+    "evidence_tier": "P2",
+    "collection_tier": "SILVER"
+  },
+  "owner_decision": "round3/owner_decisions_round3.json#R3-D2",
+  "source_file_sha256": "7a69ea813c19a5abcdf2b7637c37e06a16fa220a6b3ef48d9ab20c1d3c9cec4f",
+  "restricted_root_environment_variable": "COFFEE_FLAVOR_RESTRICTED_ROOT",
+  "restricted_family_dir": "coffee-flavor-round3-coffeereview",
+  "extraction": {
+    "parser_version": "v2",
+    "rows": 8387,
+    "blind_assessment_empty": 11,
+    "no_list_sentence": 1076,
+    "espresso": 782,
+    "records_with_atoms": 7300,
+    "pattern_reviews": {
+      "aroma-colon": 365,
+      "aroma-and-cup": 6180,
+      "notes-of": 2411,
+      "in-the-cup-prefix": 517,
+      "bare-list": 136,
+      "aroma-through-cup": 22
+    },
+    "pattern_raw_atoms": {
+      "aroma-colon": 1109,
+      "aroma-and-cup": 27011,
+      "notes-of": 3115,
+      "in-the-cup-prefix": 1063,
+      "bare-list": 666,
+      "aroma-through-cup": 55
+    }
+  },
+  "raw_atom_count": 33019,
+  "deinflation": {
+    "assertion_losses": 22,
+    "record_losses": 649
+  },
+  "deinflated_assertion_count": 32997,
+  "effective_record_count": 7300,
+  "coffee_identity_count": 7300,
+  "descriptor_class_counts": {
+    "STRICT_FLAVOR": 32494,
+    "BROAD_SENSORY": 503
+  },
+  "restricted_assertion_ledger_sha256": "1da7569c4bc274e14d80849e2c5e65ce0441dea6ba12aa8d7ea4258cb421927b",
+  "public_files": [
+    {
+      "path": "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR_V2.tsv",
+      "sha256": "f97789338c4b48e71f6cf00f33f89bdbbf4b9f45250794de4b957b935082ec5f",
+      "data_row_count": 33019
+    }
+  ],
+  "guards": {
+    "source_native_text_in_public_output": false,
+    "model_eligible_assertion_count": 0,
+    "records_admitted": 0,
+    "fit_count": 0,
+    "schema_changed": false
+  }
+}

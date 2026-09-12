@@ -31,6 +31,8 @@ BATCH2_SIDECAR = BATCH2 / "PUBLIC_SAFE_ASSERTION_SIDECAR.tsv"
 COFFEEREVIEW_STAGING = ROOT / "db" / "data" / "coffeereview-round3-staging"
 COFFEEREVIEW_SIDECAR = COFFEEREVIEW_STAGING / "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR.tsv"
 COFFEEREVIEW_MANIFEST = COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST.json"
+COFFEEREVIEW_SIDECAR_V2 = COFFEEREVIEW_STAGING / "COFFEEREVIEW_PUBLIC_SAFE_ASSERTION_SIDECAR_V2.tsv"
+COFFEEREVIEW_MANIFEST_V2 = COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST_V2.json"
 BATCH2_ROUTES = BATCH2 / "SOURCE_ROUTE_PROBE_AND_YIELD.tsv"
 BATCH2_MANIFEST = BATCH2 / "BATCH2_PUBLIC_MANIFEST.json"
 
@@ -53,6 +55,10 @@ BATCH6_PRESERVED_OUTPUTS = {
     "CLEANED_77K_MANIFEST.json",
     "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv",
     "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv",
+    "CANDIDATE_83K_SNAPSHOT_MANIFEST.json",
+    "CLEANED_83K_MANIFEST.json",
+    "CLEANED_83K_OUTPUT_ATOM_LEDGER.tsv",
+    "CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv",
     "CLEANED_50K_MANIFEST.json",
     "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
     "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv",
@@ -422,6 +428,30 @@ def inventory() -> list[dict[str, Any]]:
             current_disposition="ADDITIVE_77K_CHECKPOINT_INPUT;OWNER_DECISION_R3_D2;MODEL_INELIGIBLE",
         )
         rows.append(cr_sidecar)
+
+    if COFFEEREVIEW_SIDECAR_V2.is_file() and COFFEEREVIEW_MANIFEST_V2.is_file():
+        cr2_manifest = json.loads(COFFEEREVIEW_MANIFEST_V2.read_text(encoding="utf-8"))
+        cr2_sidecar = dict(fields)
+        cr2_sidecar.update(
+            dataset_id="coffeereview-round3-kaggle-parsed-v2-public-safe",
+            dataset_name="Round 3 CoffeeReview parser v2 (CR-2) public-safe assertion sidecar; superset of v1 by assertion id",
+            source_round_or_batch="ROUND3_COFFEEREVIEW_CR2",
+            source_branch="research/round2-capture",
+            source_commit_sha="NA_GENERATED_IN_CURRENT_RESEARCH_BRANCH",
+            repository_path_or_restricted_locator=COFFEEREVIEW_SIDECAR_V2.relative_to(ROOT).as_posix(),
+            file_sha256=sha256_file(COFFEEREVIEW_SIDECAR_V2),
+            file_size=str(COFFEEREVIEW_SIDECAR_V2.stat().st_size),
+            row_count=data_rows(COFFEEREVIEW_SIDECAR_V2),
+            descriptor_candidate_row_count=str(cr2_manifest["deinflated_assertion_count"]),
+            effective_record_count=str(cr2_manifest["effective_record_count"]),
+            data_role="ROW_LEVEL_PRIMARY_PUBLIC_SAFE",
+            evidence_tiers_present="P2",
+            rights_state="AFFIRMATIVE_WITH_CONDITIONS",
+            review_state="PROVISIONAL_MACHINE_CLASSIFIED",
+            overlap_expected_with="coffeereview-round3-kaggle-parsed-public-safe",
+            current_disposition="ADDITIVE_83K_CHECKPOINT_INPUT;OWNER_DECISION_R3_D2_CR2;MODEL_INELIGIBLE",
+        )
+        rows.append(cr2_sidecar)
 
     batch2_routes = dict(fields)
     batch2_routes.update(

@@ -58,6 +58,13 @@ SNAPSHOT_77K = "professional-descriptor-candidate-v4-77k"
 CLEANED_77K = "professional-descriptor-cleaned-v2-77k"
 COFFEEREVIEW_FAMILY_DIR = "coffee-flavor-round3-coffeereview"
 COFFEEREVIEW_STAGING = ROOT / "db" / "data" / "coffeereview-round3-staging"
+# Round 3 CR-2 checkpoint: the frozen 77K denominator plus the 5,993 assertions
+# that CoffeeReview parser v2 adds (v1 atoms keep their ids, so the layer is
+# strictly additive). Same guard discipline as 50K -> 77K.
+FROZEN_83K_COUNT = 83031
+SNAPSHOT_83K = "professional-descriptor-candidate-v5-83k"
+CLEANED_83K = "professional-descriptor-cleaned-v2-83k"
+CHECKPOINTS = ("50k", "77k", "83k")
 TARGET_60K = 60000
 COE_START_PAGE = 142
 COE_START_INDEX = 2
@@ -1159,6 +1166,125 @@ def build_cleaned_77k(args: argparse.Namespace) -> tuple[list[dict[str, str]], l
     return decisions, atoms
 
 
+def build_cleaned_83k(args: argparse.Namespace) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    """77K view + the CoffeeReview parser-v2-only assertions -> 83K cleaned view.
+
+    Additive on the frozen 77K checkpoint exactly as 77K is additive on 50K.
+    Parser v2 re-emits every v1 atom under its v1 locator, so the v2 ledger is
+    a superset of the v1 ledger by descriptor_assertion_id; only the rows whose
+    id is not already in the 77K view are cleaned and appended. The identity
+    guard refuses a v2 ledger that does not contain the v1 rows unchanged.
+    """
+    cached_source = CURRENT / "CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv"
+    cached_atoms = CURRENT / "CLEANED_83K_OUTPUT_ATOM_LEDGER.tsv"
+    staging_manifest = json.loads((COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST_V2.json").read_text(encoding="utf-8"))
+    root = getattr(args, "restricted_root", None) or Path(os.environ.get("COFFEE_FLAVOR_RESTRICTED_ROOT", ""))
+    try:
+        if not str(root):
+            raise RuntimeError("no restricted root configured")
+        restricted_path = find_restricted_ledger(Path(root), "COFFEEREVIEW_ASSERTIONS_RESTRICTED_V2.tsv", COFFEEREVIEW_FAMILY_DIR)
+    except RuntimeError:
+        if cached_source.is_file() and cached_atoms.is_file():
+            decisions = read_tsv(cached_source)
+            atoms = read_tsv(cached_atoms)
+            if len(decisions) != FROZEN_83K_COUNT:
+                raise RuntimeError("cached 83K source denominator drift")
+            return decisions, atoms
+        raise
+    if sha_file(restricted_path) != staging_manifest["restricted_assertion_ledger_sha256"]:
+        raise RuntimeError("CoffeeReview v2 restricted ledger does not match the committed staging manifest hash")
+    batch6 = load_batch6()
+    decisions, atoms = build_cleaned_77k(args)
+    decisions = [dict(row) for row in decisions]
+    atoms = [dict(row) for row in atoms]
+    prior_ids = {row["descriptor_assertion_id"] for row in decisions}
+    # the 77K view keys CoffeeReview rows in the segment namespace (coffeereview_source);
+    # compare in that namespace, not on the raw B2 id
+    v2_rows = [row for row in read_tsv(restricted_path) if row["counts_as_assertion"] == "true"]
+    v2_keyed = [(coffeereview_source(row)["descriptor_assertion_id"], row) for row in v2_rows]
+    v1_in_v2 = sum(key in prior_ids for key, _ in v2_keyed)
+    if v1_in_v2 != FROZEN_77K_COUNT - FROZEN_50K_COUNT:
+        raise RuntimeError(f"parser v2 ledger does not carry the v1 rows unchanged: {v1_in_v2} of {FROZEN_77K_COUNT - FROZEN_50K_COUNT}")
+    raw_rows = [row for key, row in v2_keyed if key not in prior_ids]
+    if len(decisions) + len(raw_rows) != FROZEN_83K_COUNT:
+        raise RuntimeError(f"83K input denominator drift: 77k={len(decisions)} coffeereview_v2_only={len(raw_rows)}")
+    for raw in raw_rows:
+        source = coffeereview_source(raw)
+        decision, new_atoms = batch6.clean_source(source, raw["atomic_source_text"])
+        decisions.append(decision)
+        atoms.extend(new_atoms)
+    decisions = [{key: scalar(value) for key, value in row.items()} for row in decisions]
+    atoms = [{key: scalar(value) for key, value in row.items()} for row in atoms]
+    if len(decisions) != FROZEN_83K_COUNT or len({row["descriptor_assertion_id"] for row in decisions}) != FROZEN_83K_COUNT:
+        raise RuntimeError("combined 83K source assertion identity reconciliation failed")
+    if len(atoms) != sum(int(row["cleaned_output_atom_count"]) for row in decisions):
+        raise RuntimeError("combined 83K source/output atom reconciliation failed")
+    write_tsv(cached_source, fields(CURRENT / "CLEANED_50K_SOURCE_ASSERTION_LEDGER.tsv"), decisions)
+    write_tsv(cached_atoms, fields(CURRENT / "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv"), atoms)
+    manifest_content = "\n".join("\t".join((row["descriptor_assertion_id"], row["source_artifact_sha256"], row["effective_record_id"], row["atomic_source_text_sha256"])) for row in decisions)
+    snapshot = {
+        "contract_version": "candidate-83k-snapshot-manifest.v1",
+        "snapshot_version": SNAPSHOT_83K,
+        "snapshot_role": "IMMUTABLE_ACQUISITION_CHECKPOINT_NOT_TRAINING_CORPUS",
+        "immutable": True,
+        "candidate_77k_snapshot_sha256": sha_file(CURRENT / "CANDIDATE_77K_SNAPSHOT_MANIFEST.json"),
+        "coffeereview_round3_v2_manifest_sha256": sha_file(COFFEEREVIEW_STAGING / "COFFEEREVIEW_ROUND3_MANIFEST_V2.json"),
+        "coffeereview_parser_version": "v2",
+        "coffeereview_v2_only_assertion_count": len(raw_rows),
+        "snapshot_content_sha256": sha_text(manifest_content),
+        "source_assertion_count": len(decisions),
+        "effective_record_count": len({row["effective_record_id"] for row in decisions}),
+        "source_family_count": len({row["source_family_id"] for row in decisions}),
+        "source_ledger": cached_source.name,
+        "source_ledger_sha256": sha_file(cached_source),
+        "coffeereview_identity_namespace": "assertion-b7-coffeereview",
+        "coffeereview_identity_basis": "B2_ASSERTION_ID+SOURCE_ARTIFACT_SHA256+SOURCE_LOCATOR",
+        "coffeereview_owner_decision": "round3/owner_decisions_round3.json#R3-D2;CR-2 approved 2026-09-12",
+        "cleaner_changed": False,
+        "restricted_ledger_root_hash": staging_manifest["restricted_assertion_ledger_sha256"],
+        "cleaner_contract_version": CLEANER_VERSION,
+        "training_corpus_frozen": False,
+        "model_eligible_corpus_frozen": False,
+        "model_eligible_assertion_count": 0,
+        "schema_changed": False,
+        "new_migration_count": 0,
+    }
+    write_json(CURRENT / "CANDIDATE_83K_SNAPSHOT_MANIFEST.json", snapshot)
+    valid_count = sum(row["source_assertion_disposition"] in VALID_SOURCE for row in decisions)
+    valid_atoms = [row for row in atoms if row["counts_as_cleaned_descriptor_output"] == "true"]
+    cleaned_manifest = {
+        "contract_version": "cleaned-83k-manifest.v1",
+        "cleaned_view_version": CLEANED_83K,
+        "cleaner_version": CLEANER_VERSION,
+        "source_assertion_count": len(decisions),
+        "valid_source_assertion_count": valid_count,
+        "non_descriptor_source_assertion_count": sum(row["source_assertion_disposition"] == "NON_DESCRIPTOR" for row in decisions),
+        "unresolved_source_assertion_count": sum(row["source_assertion_disposition"] == "UNRESOLVED" for row in decisions),
+        "output_atom_count": len(atoms),
+        "valid_output_atom_count": len(valid_atoms),
+        "record_unique_output_atom_count": len({(row["effective_record_id"], batch6.target_id(row)) for row in valid_atoms if row["counts_as_record_unique_descriptor"] == "true"}),
+        "source_assertion_reconciliation_pass": sum(int(row["cleaned_output_atom_count"]) for row in decisions) == len(atoms),
+        "candidate_83k_snapshot_sha256": sha_file(CURRENT / "CANDIDATE_83K_SNAPSHOT_MANIFEST.json"),
+        "source_ledger_sha256": sha_file(cached_source),
+        "output_atom_ledger_sha256": sha_file(cached_atoms),
+        "model_run": False,
+    }
+    write_json(CURRENT / "CLEANED_83K_MANIFEST.json", cleaned_manifest)
+    return decisions, atoms
+
+
+CHECKPOINT_BUILDERS = {"50k": build_cleaned_50k, "77k": build_cleaned_77k, "83k": build_cleaned_83k}
+
+
+def command_clean83k(args: argparse.Namespace) -> int:
+    decisions, atoms = build_cleaned_83k(args)
+    manifest = json.loads((CURRENT / "CLEANED_83K_MANIFEST.json").read_text())
+    print(f"CANDIDATE_83K_SOURCE_ASSERTION_COUNT={len(decisions)}")
+    print(f"CLEANED_83K_OUTPUT_ATOM_COUNT={len(atoms)}")
+    print(f"CLEANED_83K_VALID_SOURCE_ASSERTION_COUNT={manifest['valid_source_assertion_count']}")
+    return 0
+
+
 def command_clean77k(args: argparse.Namespace) -> int:
     decisions, atoms = build_cleaned_77k(args)
     manifest = json.loads((CURRENT / "CLEANED_77K_MANIFEST.json").read_text())
@@ -1468,8 +1594,8 @@ def build_relation_support(batch6: Any, decisions: list[Mapping[str, str]], atom
 def command_semantic(args: argparse.Namespace) -> int:
     if not (STATE / "S2_REFERENCE_RELATION_SEED.tsv").is_file():
         acquire_semantic_references(args)
-    checkpoint = getattr(args, "checkpoint", "77k")
-    decisions, atoms = (build_cleaned_77k if checkpoint == "77k" else build_cleaned_50k)(args)
+    checkpoint = getattr(args, "checkpoint", "83k")
+    decisions, atoms = CHECKPOINT_BUILDERS[checkpoint](args)
     batch6 = load_batch6()
     clusters = batch6.concept_clusters(atoms)
     form_nodes, concept_nodes, edge_rows, evidence_rows, candidates, rejections = batch6.semantic_graph(atoms, clusters)
@@ -1643,7 +1769,10 @@ def command_checkpoint(args: argparse.Namespace) -> int:
         "CLEANED_50K_OUTPUT_ATOM_LEDGER.tsv",
         *(("CANDIDATE_77K_SNAPSHOT_MANIFEST.json", "CLEANED_77K_MANIFEST.json",
            "CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv", "CLEANED_77K_OUTPUT_ATOM_LEDGER.tsv")
-          if getattr(args, "checkpoint", "77k") == "77k" else ()),
+          if getattr(args, "checkpoint", "83k") in ("77k", "83k") else ()),
+        *(("CANDIDATE_83K_SNAPSHOT_MANIFEST.json", "CLEANED_83K_MANIFEST.json",
+           "CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv", "CLEANED_83K_OUTPUT_ATOM_LEDGER.tsv")
+          if getattr(args, "checkpoint", "83k") == "83k" else ()),
         "BATCH7_SEMANTIC_MANIFEST.json",
         "SEMANTIC_RELATION_SUPPORT.tsv",
         "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json",
@@ -1656,10 +1785,14 @@ def command_checkpoint(args: argparse.Namespace) -> int:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     snapshot = json.loads((CURRENT / "CANDIDATE_50K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
     cleaned = json.loads((CURRENT / "CLEANED_50K_MANIFEST.json").read_text(encoding="utf-8"))
-    checkpoint = getattr(args, "checkpoint", "77k")
-    if checkpoint == "77k":
-        snapshot_77k = json.loads((CURRENT / "CANDIDATE_77K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
-        cleaned_77k = json.loads((CURRENT / "CLEANED_77K_MANIFEST.json").read_text(encoding="utf-8"))
+    checkpoint = getattr(args, "checkpoint", "83k")
+    layered: dict[str, Any] = {}
+    if checkpoint in ("77k", "83k"):
+        layered["candidate_77k_snapshot"] = json.loads((CURRENT / "CANDIDATE_77K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
+        layered["cleaned_77k_view"] = json.loads((CURRENT / "CLEANED_77K_MANIFEST.json").read_text(encoding="utf-8"))
+    if checkpoint == "83k":
+        layered["candidate_83k_snapshot"] = json.loads((CURRENT / "CANDIDATE_83K_SNAPSHOT_MANIFEST.json").read_text(encoding="utf-8"))
+        layered["cleaned_83k_view"] = json.loads((CURRENT / "CLEANED_83K_MANIFEST.json").read_text(encoding="utf-8"))
     semantic = json.loads((CURRENT / "BATCH7_SEMANTIC_MANIFEST.json").read_text(encoding="utf-8"))
     benchmark = json.loads((CURRENT / "CROSS_FORM_BENCHMARK_SPLIT_MANIFEST.json").read_text(encoding="utf-8"))
     post50 = (
@@ -1683,7 +1816,7 @@ def command_checkpoint(args: argparse.Namespace) -> int:
         "canonical_current_cleaned_output_ledger": f"CLEANED_{checkpoint.upper()}_OUTPUT_ATOM_LEDGER.tsv",
         "candidate_50k_snapshot": snapshot,
         "cleaned_50k_view": cleaned,
-        **({"candidate_77k_snapshot": snapshot_77k, "cleaned_77k_view": cleaned_77k} if checkpoint == "77k" else {}),
+        **layered,
         "batch7_semantic_layer": semantic,
         "batch7_cross_form_benchmark": benchmark,
         "post50k_extension": post50 or {
@@ -1757,9 +1890,9 @@ def main() -> int:
     )
     parser.add_argument(
         "--checkpoint",
-        choices=("50k", "77k"),
-        default="77k",
-        help="corpus checkpoint the semantic layer and the current manifest are built from (round 3: 77k)",
+        choices=CHECKPOINTS,
+        default="83k",
+        help="corpus checkpoint the semantic layer and the current manifest are built from (round 3 CR-2: 83k)",
     )
     subcommands = parser.add_subparsers(dest="command", required=True)
     dispatch = {
@@ -1769,6 +1902,7 @@ def main() -> int:
         "resume": command_resume,
         "clean": command_clean,
         "clean77k": command_clean77k,
+        "clean83k": command_clean83k,
         "semantic": command_semantic,
         "validate": command_validate,
         "checkpoint": command_checkpoint,
