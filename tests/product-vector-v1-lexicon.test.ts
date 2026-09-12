@@ -4,7 +4,10 @@
  * Expected answers are the operator's reading of each sentence (owner review welcome).
  */
 import { describe, expect, it } from "vitest";
-import { mapUtterance, utteranceVector } from "../packages/flavor-data/src/product-vector-v1/lexicon";
+import {
+  mapUtterance,
+  utteranceVector,
+} from "../packages/flavor-data/src/product-vector-v1/lexicon";
 import { DIMENSIONS } from "../packages/flavor-data/src/product-vector-v1";
 
 type Case = { text: string; expect: Record<string, string>; note?: string };
@@ -17,15 +20,27 @@ const ZH: Case[] = [
   { text: "闻起来像烤面包和榛果", expect: { Q1: "B" } },
   { text: "有热带水果和一点酒香", expect: { Q1: "C" } },
   { text: "回甘像蜂蜜和蔗糖", expect: { Q2: "A" } },
-  { text: "很苦但是像黑巧克力一样甜", expect: { Q2: "B", Q4: "C" }, note: "copy review 2: Q4 is intensity only — 很苦 reads as clearly bitter; the chocolate sweetness goes to Q2" },
+  {
+    text: "很苦但是像黑巧克力一样甜",
+    expect: { Q2: "B", Q4: "C" },
+    note: "copy review 2: Q4 is intensity only — 很苦 reads as clearly bitter; the chocolate sweetness goes to Q2",
+  },
   { text: "甜得像果酱", expect: { Q2: "C" } },
   { text: "口感很轻，像果汁", expect: { Q3: "A" } },
   { text: "顺滑像牛奶", expect: { Q3: "B" } },
   { text: "很厚重，像糖浆", expect: { Q3: "C" } },
   { text: "有一点苦，但回甘", expect: { Q4: "A" } },
   { text: "完全不苦", expect: { Q4: "B" }, note: "negation forcing" },
-  { text: "层次很清楚，很干净", expect: { Q5: "C" }, note: "review 5: C = clear layers" },
-  { text: "味道混在一起，很浓郁", expect: { Q5: "A" }, note: "review 5: A = mixed, a little of everything" },
+  {
+    text: "层次很清楚，很干净",
+    expect: { Q5: "C" },
+    note: "review 5: C = clear layers",
+  },
+  {
+    text: "味道混在一起，很浓郁",
+    expect: { Q5: "A" },
+    note: "review 5: A = mixed, a little of everything",
+  },
   { text: "饱满圆润，很统一", expect: { Q5: "B" } },
   { text: "感觉不错但说不上来", expect: { Q5: "D" } },
   { text: "桂花香很明显，酸质像青苹果", expect: { Q1: "A", Q0: "A" } },
@@ -36,22 +51,56 @@ const ZH: Case[] = [
   { text: "厌氧酒香很重，像朗姆酒", expect: { Q1: "C" } },
   { text: "茉莉花和佛手柑，很干净", expect: { Q1: "A", Q5: "C" } },
   { text: "焦糖和太妃糖的甜，尾段微苦", expect: { Q2: "B", Q4: "A" } },
-  { text: "怕酸，喜欢丝绒一样顺滑的", expect: { Q0: "C", Q3: "B" }, note: "怕酸 → no-acid option" },
-  { text: "不要苦，要非常浓郁的甜感", expect: { Q4: "B", Q5: "B" }, note: "owner Persona C fragment: 浓郁 reads as full and consistent" },
-  { text: "喜欢茉莉花香、柑橘酸，喝手冲，讨厌苦味", expect: { Q1: "A", Q0: "A", Q4: "B" }, note: "owner Persona A" },
-  { text: "想要强烈的水蜜桃鲜明果酸", expect: { Q0: "A" }, note: "owner Persona B perception" },
+  {
+    text: "怕酸，喜欢丝绒一样顺滑的",
+    expect: { Q0: "C", Q3: "B" },
+    note: "怕酸 → no-acid option",
+  },
+  {
+    text: "不要苦，要非常浓郁的甜感",
+    expect: { Q4: "B", Q5: "B" },
+    note: "owner Persona C fragment: 浓郁 reads as full and consistent",
+  },
+  {
+    text: "喜欢茉莉花香、柑橘酸，喝手冲，讨厌苦味",
+    expect: { Q1: "A", Q0: "A", Q4: "B" },
+    note: "owner Persona A",
+  },
+  {
+    text: "想要强烈的水蜜桃鲜明果酸",
+    expect: { Q0: "A" },
+    note: "owner Persona B perception",
+  },
   // owner copy review 2026-09-12: the exits — no sweetness, clearly bitter
-  { text: "没什么甜味，尾段很苦", expect: { Q2: "D", Q4: "C" }, note: "absence of sweetness + clearly bitter" },
-  { text: "不甜，有一点苦但回甘", expect: { Q2: "D", Q4: "A" }, note: "negation forcing on 甜" },
+  {
+    text: "没什么甜味，尾段很苦",
+    expect: { Q2: "D", Q4: "C" },
+    note: "absence of sweetness + clearly bitter",
+  },
+  {
+    text: "不甜，有一点苦但回甘",
+    expect: { Q2: "D", Q4: "A" },
+    note: "negation forcing on 甜",
+  },
   { text: "太苦了，苦味盖过其他味道", expect: { Q4: "C" } },
-  { text: "闻不出什么香气，口感很顺滑", expect: { Q1: "D", Q3: "B" }, note: "aroma exit (copy review 2)" },
+  {
+    text: "闻不出什么香气，口感很顺滑",
+    expect: { Q1: "D", Q3: "B" },
+    note: "aroma exit (copy review 2)",
+  },
 ];
 
 const EN: Case[] = [
   { text: "bright lemon acidity, very lively", expect: { Q0: "A" } },
   { text: "smells like jasmine and green tea", expect: { Q1: "A" } },
-  { text: "no bitterness at all, smooth like milk", expect: { Q4: "B", Q3: "B" } },
-  { text: "caramel and dark chocolate sweetness, a little bitter", expect: { Q2: "B", Q4: "A" } },
+  {
+    text: "no bitterness at all, smooth like milk",
+    expect: { Q4: "B", Q3: "B" },
+  },
+  {
+    text: "caramel and dark chocolate sweetness, a little bitter",
+    expect: { Q2: "B", Q4: "A" },
+  },
   { text: "not sour, heavy and syrupy", expect: { Q0: "C", Q3: "C" } },
   { text: "no sweetness, very bitter", expect: { Q2: "D", Q4: "C" } },
 ];
@@ -62,7 +111,10 @@ function check(cases: Case[], locale: "zh-CN" | "en") {
     const m = mapUtterance(c.text, locale);
     for (const [slot, option] of Object.entries(c.expect)) {
       const got = (m.answers as Record<string, string>)[slot];
-      if (got !== option) failures.push(`${c.text} → ${slot}: expected ${option}, got ${got ?? "∅"} (scores ${JSON.stringify(m.scores[slot as keyof typeof m.scores]?.map((s) => `${s.option}:${s.score.toFixed(2)}`))})`);
+      if (got !== option)
+        failures.push(
+          `${c.text} → ${slot}: expected ${option}, got ${got ?? "∅"} (scores ${JSON.stringify(m.scores[slot as keyof typeof m.scores]?.map((s) => `${s.option}:${s.score.toFixed(2)}`))})`,
+        );
     }
   }
   return failures;
@@ -74,8 +126,14 @@ describe("semantic disambiguation: consumer utterances → Q0-Q5 options", () =>
     expect(acid.vector[DIMENSIONS.indexOf("acidity")]).toBe(0);
     expect(acid.matched.some((t) => t.negated)).toBe(true);
     expect(acid.forced.Q0).toBe("C");
-    expect(utteranceVector("清冽果酸", "zh-CN").vector[DIMENSIONS.indexOf("acidity")]).toBeGreaterThan(0); // kept as an input alias
-    expect(utteranceVector("葡萄柚", "zh-CN").vector[DIMENSIONS.indexOf("acidity")]).toBeGreaterThan(0);
+    expect(
+      utteranceVector("清冽果酸", "zh-CN").vector[
+        DIMENSIONS.indexOf("acidity")
+      ],
+    ).toBeGreaterThan(0); // kept as an input alias
+    expect(
+      utteranceVector("葡萄柚", "zh-CN").vector[DIMENSIONS.indexOf("acidity")],
+    ).toBeGreaterThan(0);
     const bitter = mapUtterance("毫无苦味", "zh-CN");
     expect(bitter.forced.Q4).toBe("B");
     expect(bitter.answers.Q4).toBe("B");
@@ -95,7 +153,10 @@ describe("semantic disambiguation: consumer utterances → Q0-Q5 options", () =>
     for (const c of ZH) {
       const m = mapUtterance(c.text, "zh-CN");
       for (const [slot, rows] of Object.entries(m.scores)) {
-        if ((m.answers as Record<string, string>)[slot]) expect(rows![0]!.option).toBe((m.answers as Record<string, string>)[slot]);
+        if ((m.answers as Record<string, string>)[slot])
+          expect(rows![0]!.option).toBe(
+            (m.answers as Record<string, string>)[slot],
+          );
       }
       expect(m.matched.length).toBeGreaterThan(0);
     }

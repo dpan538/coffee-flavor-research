@@ -3,12 +3,28 @@
  * Immutable sessions; the question bank supplies the prompts; the gate decides the branch.
  */
 import { describe, expect, it } from "vitest";
-import { answer, answerFromUtterance, answerQ6, createSession, firstDescription, nextStep, submitPicks } from "../packages/flavor-data/src/product-vector-v1/session";
+import {
+  answer,
+  answerFromUtterance,
+  answerQ6,
+  createSession,
+  firstDescription,
+  nextStep,
+  submitPicks,
+} from "../packages/flavor-data/src/product-vector-v1/session";
 import { DIMENSIONS } from "../packages/flavor-data/src/product-vector-v1";
 
-const LIGHT = { c0_preparation: "pour_over_v60", c1_roast: "light", c2_process: "washed" } as const;
+const LIGHT = {
+  c0_preparation: "pour_over_v60",
+  c1_roast: "light",
+  c2_process: "washed",
+} as const;
 
-function play(context: typeof LIGHT | Record<string, string>, answers: Record<string, string>, locale: "zh-CN" | "en" = "zh-CN") {
+function play(
+  context: typeof LIGHT | Record<string, string>,
+  answers: Record<string, string>,
+  locale: "zh-CN" | "en" = "zh-CN",
+) {
   let s = createSession(context, locale);
   let guard = 0;
   while (s.stage === "questions" && guard < 10) {
@@ -24,7 +40,14 @@ function play(context: typeof LIGHT | Record<string, string>, answers: Record<st
 
 describe("product-vector-v1 session", () => {
   it("asks the localised question cards in flow order and ends on the description stage", () => {
-    const s = play(LIGHT, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" });
+    const s = play(LIGHT, {
+      Q0: "A",
+      Q1: "A",
+      Q2: "A",
+      Q3: "A",
+      Q4: "B",
+      Q5: "A",
+    });
     expect(s.stage).toBe("describe");
     expect(s.step.path).toBe(1);
     expect(s.history.filter((h) => h.event === "answer")).toHaveLength(5);
@@ -35,7 +58,9 @@ describe("product-vector-v1 session", () => {
     if (first.kind === "ask") {
       expect(first.card.slot).toBe("Q0");
       expect(first.card.prompt).toContain("酸");
-      expect(first.card.options.map((o) => o.label)).toContain("柑橘 / 青苹果那种酸");
+      expect(first.card.options.map((o) => o.label)).toContain(
+        "柑橘 / 青苹果那种酸",
+      );
     }
   });
 
@@ -48,7 +73,14 @@ describe("product-vector-v1 session", () => {
   });
 
   it("branch A: coherent flow → first description → picks → final card with the user's words and the closing line", () => {
-    let s = play(LIGHT, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" });
+    let s = play(LIGHT, {
+      Q0: "A",
+      Q1: "A",
+      Q2: "A",
+      Q3: "A",
+      Q4: "B",
+      Q5: "A",
+    });
     s = firstDescription(s);
     expect(s.stage).toBe("picks");
     expect(s.description!.main).toHaveLength(3);
@@ -63,11 +95,22 @@ describe("product-vector-v1 session", () => {
   });
 
   it("branch B: sensory paradox + picks siding with perception → Q6 → second description and card", () => {
-    let s = play(LIGHT, { Q0: "A", Q1: "A", Q2: "B", Q3: "C", Q4: "A", Q5: "B" });
+    let s = play(LIGHT, {
+      Q0: "A",
+      Q1: "A",
+      Q2: "B",
+      Q3: "C",
+      Q4: "A",
+      Q5: "B",
+    });
     expect(s.step.path).toBe(3);
     s = firstDescription(s);
     const userSide = [...s.description!.all]
-      .sort((a, b) => (s.result!.vUser[DIMENSIONS.indexOf(b.dimension)] ?? 0) - (s.result!.vUser[DIMENSIONS.indexOf(a.dimension)] ?? 0))
+      .sort(
+        (a, b) =>
+          (s.result!.vUser[DIMENSIONS.indexOf(b.dimension)] ?? 0) -
+          (s.result!.vUser[DIMENSIONS.indexOf(a.dimension)] ?? 0),
+      )
       .slice(0, 5);
     s = submitPicks(s, userSide);
     if (s.stage === "q6") {
@@ -95,8 +138,23 @@ describe("product-vector-v1 session", () => {
   });
 
   it("the model adapts: later prompts pick up the previous answer and options re-rank by fit, exits last (owner, 2026-09-12)", () => {
-    const floral = answer(answer(createSession(LIGHT, "zh-CN"), "Q0", "A"), "Q1", "A");
-    const nutty = answer(answer(createSession({ c0_preparation: "espresso", c1_roast: "dark" }, "zh-CN"), "Q0", "C"), "Q1", "B");
+    const floral = answer(
+      answer(createSession(LIGHT, "zh-CN"), "Q0", "A"),
+      "Q1",
+      "A",
+    );
+    const nutty = answer(
+      answer(
+        createSession(
+          { c0_preparation: "espresso", c1_roast: "dark" },
+          "zh-CN",
+        ),
+        "Q0",
+        "C",
+      ),
+      "Q1",
+      "B",
+    );
     const q2f = nextStep(floral);
     const q2n = nextStep(nutty);
     expect(q2f.kind).toBe("ask");
@@ -117,7 +175,11 @@ describe("product-vector-v1 session", () => {
   });
 
   it("english sessions speak english end to end", () => {
-    let s = play(LIGHT, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" }, "en");
+    let s = play(
+      LIGHT,
+      { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" },
+      "en",
+    );
     const card = nextStep(createSession(LIGHT, "en"));
     if (card.kind === "ask") expect(card.card.prompt).toMatch(/acidity/i);
     s = firstDescription(s);

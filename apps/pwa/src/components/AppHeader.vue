@@ -8,7 +8,16 @@ defineProps<{ big?: boolean }>();
 
 <template>
   <header class="flex items-start justify-between" data-component="AppHeader">
-    <Wordmark :width="big ? 104 : 84" class="select-none transition-all duration-500" />
-    <button type="button" class="rounded-xl bg-ink text-paper min-h-[48px] min-w-[58px] px-3.5 text-[15px] font-semibold inline-flex items-center justify-center" @click="toggleLocale">{{ shell.localeSwitch }}</button>
+    <Wordmark
+      :width="big ? 104 : 84"
+      class="select-none transition-all duration-500"
+    />
+    <button
+      type="button"
+      class="rounded-xl bg-ink text-paper min-h-[48px] min-w-[58px] px-3.5 text-[15px] font-semibold inline-flex items-center justify-center"
+      @click="toggleLocale"
+    >
+      {{ shell.localeSwitch }}
+    </button>
   </header>
 </template>

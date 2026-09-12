@@ -2,65 +2,128 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="theme-color" content="#ffffff" />
     <title>flavorwords — Put this cup into words</title>
-    <meta name="description" content="Every taste has its own vocabulary. 从酸质、香气与口感开始，选出贴近你感受的词，组成这一杯的风味卡。A few questions turn what you taste into a flavor card, in Chinese and English, offline." />
+    <meta
+      name="description"
+      content="Every taste has its own vocabulary. 从酸质、香气与口感开始，选出贴近你感受的词，组成这一杯的风味卡。A few questions turn what you taste into a flavor card, in Chinese and English, offline."
+    />
     <meta name="author" content="Dai Pan (潘岱)" />
     <meta name="application-name" content="flavorwords" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://flavorwords.com/" />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
-    <link rel="apple-touch-icon" href="/icons/icon.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
     <link rel="alternate" hreflang="zh-CN" href="https://flavorwords.com/" />
     <link rel="alternate" hreflang="en" href="https://flavorwords.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="flavorwords" />
     <meta property="og:title" content="flavorwords — Put this cup into words" />
-    <meta property="og:description" content="Every taste has its own vocabulary. A few questions about acidity, aroma, sweetness and mouthfeel turn what you taste into your own flavor card." />
+    <meta
+      property="og:description"
+      content="Every taste has its own vocabulary. A few questions about acidity, aroma, sweetness and mouthfeel turn what you taste into your own flavor card."
+    />
     <meta property="og:url" content="https://flavorwords.com/" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="flavorwords — Put this cup into words" />
-    <meta name="twitter:description" content="Every taste has its own vocabulary. Turn what you taste into a flavor card." />
+    <meta
+      name="twitter:title"
+      content="flavorwords — Put this cup into words"
+    />
+    <meta
+      name="twitter:description"
+      content="Every taste has its own vocabulary. Turn what you taste into a flavor card."
+    />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "flavorwords",
-      "alternateName": "风味词",
-      "url": "https://flavorwords.com/",
-      "applicationCategory": "LifestyleApplication",
-      "operatingSystem": "Any (progressive web app)",
-      "inLanguage": ["zh-CN", "en"],
-      "isAccessibleForFree": true,
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "slogan": "Every taste has its own vocabulary.",
-      "description": "Put this cup into words: a few questions about acidity, aroma, sweetness, mouthfeel and bitterness lead to candidate flavor words; the drinker confirms five and they become a flavor card. Vocabulary and reference profiles are organised from public coffee reviews, sensory lexicons and consumer tasting language. Runs offline; nothing leaves the phone.",
-      "author": { "@type": "Person", "name": "Dai Pan", "alternateName": "潘岱" },
-      "creator": { "@type": "Person", "name": "Dai Pan", "alternateName": "潘岱" },
-      "about": [
-        { "@type": "Thing", "name": "Coffee flavor vocabulary" },
-        { "@type": "Thing", "name": "Coffee tasting notes" }
-      ],
-      "citation": [
-        { "@type": "CreativeWork", "name": "World Coffee Research — Sensory Lexicon", "url": "https://worldcoffeeresearch.org/resources/sensory-lexicon" },
-        { "@type": "Book", "name": "The Physics of Filter Coffee", "author": { "@type": "Person", "name": "Jonathan Gagné" }, "isbn": "978-0-578-95028-0", "url": "https://coffeeadastra.com/" },
-        { "@type": "Dataset", "name": "Great American Coffee Taste Test — aggregate consumer word frequencies" }
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "flavorwords",
+        "alternateName": "风味词",
+        "url": "https://flavorwords.com/",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any (progressive web app)",
+        "inLanguage": ["zh-CN", "en"],
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "slogan": "Every taste has its own vocabulary.",
+        "description": "Put this cup into words: a few questions about acidity, aroma, sweetness, mouthfeel and bitterness lead to candidate flavor words; the drinker confirms five and they become a flavor card. Vocabulary and reference profiles are organised from public coffee reviews, sensory lexicons and consumer tasting language. Runs offline; nothing leaves the phone.",
+        "author": {
+          "@type": "Person",
+          "name": "Dai Pan",
+          "alternateName": "潘岱"
+        },
+        "creator": {
+          "@type": "Person",
+          "name": "Dai Pan",
+          "alternateName": "潘岱"
+        },
+        "about": [
+          { "@type": "Thing", "name": "Coffee flavor vocabulary" },
+          { "@type": "Thing", "name": "Coffee tasting notes" }
+        ],
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "World Coffee Research — Sensory Lexicon",
+            "url": "https://worldcoffeeresearch.org/resources/sensory-lexicon"
+          },
+          {
+            "@type": "Book",
+            "name": "The Physics of Filter Coffee",
+            "author": { "@type": "Person", "name": "Jonathan Gagné" },
+            "isbn": "978-0-578-95028-0",
+            "url": "https://coffeeadastra.com/"
+          },
+          {
+            "@type": "Dataset",
+            "name": "Great American Coffee Taste Test — aggregate consumer word frequencies"
+          }
+        ]
+      }
     </script>
   </head>
   <body>
     <div id="app"></div>
     <noscript>
-      <main style="max-width: 40rem; margin: 2rem auto; padding: 0 1.25rem; font-family: system-ui, sans-serif; line-height: 1.6">
+      <main
+        style="
+          max-width: 40rem;
+          margin: 2rem auto;
+          padding: 0 1.25rem;
+          font-family: system-ui, sans-serif;
+          line-height: 1.6;
+        "
+      >
         <h1>flavorwords</h1>
-        <p><strong>Every taste has its own vocabulary.</strong> 风味，自有表达。</p>
-        <p>像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords 帮你找到贴近感受的词，组成这一杯的风味卡。</p>
-        <p>Some coffees are easy to taste, but harder to describe. A few questions about acidity, aroma, sweetness and mouthfeel lead to candidate flavor words; you confirm five, and they become your flavor card.</p>
-        <p>The app needs JavaScript. A machine-readable summary of what it does, how it works and which sources it uses is at <a href="/llms.txt">/llms.txt</a>. Research, design and development: Dai Pan (潘岱).</p>
+        <p>
+          <strong>Every taste has its own vocabulary.</strong> 风味，自有表达。
+        </p>
+        <p>
+          像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords
+          帮你找到贴近感受的词，组成这一杯的风味卡。
+        </p>
+        <p>
+          Some coffees are easy to taste, but harder to describe. A few
+          questions about acidity, aroma, sweetness and mouthfeel lead to
+          candidate flavor words; you confirm five, and they become your flavor
+          card.
+        </p>
+        <p>
+          The app needs JavaScript. A machine-readable summary of what it does,
+          how it works and which sources it uses is at
+          <a href="/llms.txt">/llms.txt</a>. Research, design and development:
+          Dai Pan (潘岱).
+        </p>
       </main>
     </noscript>
     <script type="module" src="/src/main.ts"></script>

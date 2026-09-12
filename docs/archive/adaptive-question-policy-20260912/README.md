@@ -17,13 +17,13 @@ policy, and an offline 120-case policy checkpoint with an owner review packet. R
 
 ## Archived documents
 
-| Document | Was | Now |
-|---|---|---|
-| `docs/product/PRODUCT_CONTRACT_V0.md` | product-semantics source of truth (frozen 27d257c) | ARCHIVED banner; still a lineage input of `product-inference-v0` |
-| `docs/product/PRODUCT_CONTRACT_V1.md` | draft, never approved | ARCHIVED banner |
-| `docs/architecture/ADAPTIVE_CONTEXT_QUESTION_ARCHITECTURE.md` | question-selection architecture | ARCHIVED banner |
-| `docs/decisions/CONTEXT_INTERACTION_DECISION_20260825.md` | Round 3C decision record | ARCHIVED banner |
-| `docs/decisions/ROUND3_CONTEXT_CALIBRATION_ARCHITECTURE_20260825.md` | C0/C1 calibration architecture | ARCHIVED banner; the C0/C1 *data* (`db/data/round3m/C0_C1_EVIDENCE_RECEIPT.json`) is reused by V1 §2 |
+| Document                                                             | Was                                                | Now                                                                                                  |
+| -------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `docs/product/PRODUCT_CONTRACT_V0.md`                                | product-semantics source of truth (frozen 27d257c) | ARCHIVED banner; still a lineage input of `product-inference-v0`                                     |
+| `docs/product/PRODUCT_CONTRACT_V1.md`                                | draft, never approved                              | ARCHIVED banner                                                                                      |
+| `docs/architecture/ADAPTIVE_CONTEXT_QUESTION_ARCHITECTURE.md`        | question-selection architecture                    | ARCHIVED banner                                                                                      |
+| `docs/decisions/CONTEXT_INTERACTION_DECISION_20260825.md`            | Round 3C decision record                           | ARCHIVED banner                                                                                      |
+| `docs/decisions/ROUND3_CONTEXT_CALIBRATION_ARCHITECTURE_20260825.md` | C0/C1 calibration architecture                     | ARCHIVED banner; the C0/C1 _data_ (`db/data/round3m/C0_C1_EVIDENCE_RECEIPT.json`) is reused by V1 §2 |
 
 ## Archived scripts (frozen; ARCHIVED line added to each docstring)
 

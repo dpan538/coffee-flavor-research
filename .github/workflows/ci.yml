@@ -45,6 +45,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          lfs: true # the 77K / 83K source-assertion ledgers live in Git LFS
 
       - name: Setup Python
         uses: actions/setup-python@v5

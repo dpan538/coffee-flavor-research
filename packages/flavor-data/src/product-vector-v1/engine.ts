@@ -32,12 +32,25 @@ export type ContextAnswers = {
   c2_process?: string; // washed | natural | anaerobic | decaf
   c2_origin?: string; // optional macro-region chip (context_rules.origin_regions): a delta-0.1 bias, never required
 };
-export type PerceptionAnswers = Partial<Record<keyof typeof bundle.matrix_q, string>>;
+export type PerceptionAnswers = Partial<
+  Record<keyof typeof bundle.matrix_q, string>
+>;
 
 export type Profile = (typeof bundle.profiles)[number];
-export type BeanVector = { id: string; label: string; vector: Vector; source: "benchmark" | "user"; conceptIds?: string[] };
+export type BeanVector = {
+  id: string;
+  label: string;
+  vector: Vector;
+  source: "benchmark" | "user";
+  conceptIds?: string[];
+};
 
-export type ContextBasis = { axis: string; option: string; basis: string; memberCount: number | null };
+export type ContextBasis = {
+  axis: string;
+  option: string;
+  basis: string;
+  memberCount: number | null;
+};
 
 export type InferenceResult = {
   vPred: Vector;
@@ -70,9 +83,25 @@ export type ScienceLine = {
 };
 export type Presentation = {
   locale: Locale;
-  headline: { title: string; tags: string[]; similarity: number; ownerReviewed: boolean; profileId: string } | null;
-  alternatives: Array<{ title: string; tags: string[]; similarity: number; profileId: string }>;
-  beans: Array<{ label: string; tags: string[]; similarity: number; source: BeanVector["source"] }>;
+  headline: {
+    title: string;
+    tags: string[];
+    similarity: number;
+    ownerReviewed: boolean;
+    profileId: string;
+  } | null;
+  alternatives: Array<{
+    title: string;
+    tags: string[];
+    similarity: number;
+    profileId: string;
+  }>;
+  beans: Array<{
+    label: string;
+    tags: string[];
+    similarity: number;
+    source: BeanVector["source"];
+  }>;
   science: ScienceLine[];
   scoreSemantics: string;
 };
@@ -128,30 +157,57 @@ function increments(spec: Record<string, number>): Vector {
   return v;
 }
 
-type KRow = { vector: number[] | null; basis: string; member_count: number | null };
+type KRow = {
+  vector: number[] | null;
+  basis: string;
+  member_count: number | null;
+};
 
-function kRow(axis: keyof typeof bundle.matrix_k, option: string | undefined): { row: KRow | null; basis: ContextBasis | null } {
+function kRow(
+  axis: keyof typeof bundle.matrix_k,
+  option: string | undefined,
+): { row: KRow | null; basis: ContextBasis | null } {
   if (!option) return { row: null, basis: null };
   const table = bundle.matrix_k[axis] as Record<string, KRow>;
   const row = table[option];
-  if (!row) return { row: null, basis: { axis, option, basis: "UNKNOWN_OPTION", memberCount: null } };
-  return { row, basis: { axis, option, basis: row.basis, memberCount: row.member_count } };
+  if (!row)
+    return {
+      row: null,
+      basis: { axis, option, basis: "UNKNOWN_OPTION", memberCount: null },
+    };
+  return {
+    row,
+    basis: { axis, option, basis: row.basis, memberCount: row.member_count },
+  };
 }
 
 /** Theoretical flavor vector for a context; options without a corpus row contribute nothing and are reported. */
-export function buildVPred(context: ContextAnswers): { vPred: Vector; contextBasis: ContextBasis[] } {
+export function buildVPred(context: ContextAnswers): {
+  vPred: Vector;
+  contextBasis: ContextBasis[];
+} {
   let sum = zero();
   const contextBasis: ContextBasis[] = [];
   for (const [axis, key] of AXIS_KEYS) {
     if (key === "c2_variety") {
       // blend (owner R3-D13): V_blend = normalize(Σ V_variety_i), at most max_varieties
       const raw = context.c2_variety;
-      const varieties = (Array.isArray(raw) ? raw : raw ? [raw] : []).slice(0, rules.blend.max_varieties);
+      const varieties = (Array.isArray(raw) ? raw : raw ? [raw] : []).slice(
+        0,
+        rules.blend.max_varieties,
+      );
       let blend = zero();
       let members = 0;
       for (const variety of varieties) {
         const { row, basis } = kRow("C2_variety", variety);
-        if (basis) contextBasis.push({ ...basis, basis: varieties.length > 1 ? `${basis.basis};BLEND_MEMBER_${varieties.length}` : basis.basis });
+        if (basis)
+          contextBasis.push({
+            ...basis,
+            basis:
+              varieties.length > 1
+                ? `${basis.basis};BLEND_MEMBER_${varieties.length}`
+                : basis.basis,
+          });
         if (row?.vector) {
           blend = add(blend, row.vector);
           members += 1;
@@ -160,19 +216,40 @@ export function buildVPred(context: ContextAnswers): { vPred: Vector; contextBas
       if (members > 0) sum = add(sum, normalize(blend));
       continue;
     }
-    const { row, basis } = kRow(axis as keyof typeof bundle.matrix_k, context[key as keyof ContextAnswers] as string | undefined);
+    const { row, basis } = kRow(
+      axis as keyof typeof bundle.matrix_k,
+      context[key as keyof ContextAnswers] as string | undefined,
+    );
     if (basis) contextBasis.push(basis);
     if (row?.vector) sum = add(sum, row.vector);
   }
   if (context.c2_origin) {
-    const region = (rules.origin_regions as Record<string, { bias: string[] }>)[context.c2_origin];
+    const region = (rules.origin_regions as Record<string, { bias: string[] }>)[
+      context.c2_origin
+    ];
     if (region) {
       const unit = normalize(sum.some((x) => x !== 0) ? sum : zero());
-      const biased = unit.map((x, i) => x + (region.bias.includes(DIMENSIONS[i] as string) ? rules.origin_bias_delta : 0));
+      const biased = unit.map(
+        (x, i) =>
+          x +
+          (region.bias.includes(DIMENSIONS[i] as string)
+            ? rules.origin_bias_delta
+            : 0),
+      );
       sum = biased;
-      contextBasis.push({ axis: "C2_origin", option: context.c2_origin, basis: `ORIGIN_BIAS_DELTA_${rules.origin_bias_delta}_ON_${region.bias.join("+")}`, memberCount: null });
+      contextBasis.push({
+        axis: "C2_origin",
+        option: context.c2_origin,
+        basis: `ORIGIN_BIAS_DELTA_${rules.origin_bias_delta}_ON_${region.bias.join("+")}`,
+        memberCount: null,
+      });
     } else {
-      contextBasis.push({ axis: "C2_origin", option: context.c2_origin, basis: "UNKNOWN_OPTION", memberCount: null });
+      contextBasis.push({
+        axis: "C2_origin",
+        option: context.c2_origin,
+        basis: "UNKNOWN_OPTION",
+        memberCount: null,
+      });
     }
   }
   return { vPred: normalize(sum), contextBasis };
@@ -194,18 +271,32 @@ export function deltaV(vUser: Vector, vPred: Vector): Vector {
   return vUser.map((x, i) => x - (vPred[i] ?? 0));
 }
 
-export function vTarget(vPred: Vector, delta: Vector, alpha = bundle.alpha_default): Vector {
+export function vTarget(
+  vPred: Vector,
+  delta: Vector,
+  alpha = bundle.alpha_default,
+): Vector {
   return normalize(vPred.map((x, i) => x + alpha * (delta[i] ?? 0)));
 }
 
-export function rankProfiles(target: Vector, limit = 3): Array<{ profile: Profile; similarity: number }> {
+export function rankProfiles(
+  target: Vector,
+  limit = 3,
+): Array<{ profile: Profile; similarity: number }> {
   return bundle.profiles
-    .map((profile) => ({ profile, similarity: cosine(target, profile.centroid) }))
+    .map((profile) => ({
+      profile,
+      similarity: cosine(target, profile.centroid),
+    }))
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit);
 }
 
-export function rankBeans(target: Vector, beans: BeanVector[], limit = 3): Array<{ bean: BeanVector; similarity: number }> {
+export function rankBeans(
+  target: Vector,
+  beans: BeanVector[],
+  limit = 3,
+): Array<{ bean: BeanVector; similarity: number }> {
   return beans
     .map((bean) => ({ bean, similarity: cosine(target, bean.vector) }))
     .sort((a, b) => b.similarity - a.similarity)
@@ -226,7 +317,12 @@ export function projectConcepts(conceptIds: string[]): Vector {
 export function infer(
   context: ContextAnswers,
   answers: PerceptionAnswers,
-  options: { alpha?: number; beans?: BeanVector[]; profileLimit?: number; beanLimit?: number } = {},
+  options: {
+    alpha?: number;
+    beans?: BeanVector[];
+    profileLimit?: number;
+    beanLimit?: number;
+  } = {},
 ): InferenceResult {
   const alpha = options.alpha ?? bundle.alpha_default;
   const { vPred, contextBasis } = buildVPred(context);
@@ -268,7 +364,12 @@ const DEFECT_DOMINANCE = 0.5;
  *               each mapped to the first unused word of its CN/EN tag list;
  *  defect guard — defect words appear only when defect dominates the vector.
  */
-export function displayTags(vector: Vector, locale: Locale, count = presentation.tag_count, conceptIds?: string[]): string[] {
+export function displayTags(
+  vector: Vector,
+  locale: Locale,
+  count = presentation.tag_count,
+  conceptIds?: string[],
+): string[] {
   const dimTags = presentation.dimension_tags as Record<string, LocalizedList>;
   const conceptTags = presentation.concept_tags as Record<string, Localized>;
   const projection = bundle.concept_projection as Record<string, number[]>;
@@ -281,7 +382,11 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
   if (conceptIds?.length) {
     const ranked = conceptIds
       .filter((id) => projection[id])
-      .filter((id) => defectDominates || (projection[id]![defectIndex] ?? 0) < DEFECT_DOMINANCE)
+      .filter(
+        (id) =>
+          defectDominates ||
+          (projection[id]![defectIndex] ?? 0) < DEFECT_DOMINANCE,
+      )
       .map((id) => ({ id, w: dot(projection[id]!, vector) }))
       .filter((x) => x.w > 0)
       .sort((a, b) => b.w - a.w);
@@ -292,7 +397,9 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
   }
   if (tags.length < count) {
     const dims = DIMENSIONS.map((d, i) => ({ d, w: vector[i] ?? 0 }))
-      .filter((x) => x.w > DIM_THRESHOLD && (x.d !== "defect" || defectDominates))
+      .filter(
+        (x) => x.w > DIM_THRESHOLD && (x.d !== "defect" || defectDominates),
+      )
       .sort((a, b) => b.w - a.w);
     for (const { d } of dims) {
       if (tags.length >= count) break;
@@ -303,22 +410,46 @@ export function displayTags(vector: Vector, locale: Locale, count = presentation
   return tags;
 }
 
-type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; terms_short?: string; use?: string; claims: number; state: string };
+type SourceRow = {
+  source_id: string;
+  title: string;
+  locator: string;
+  licence_note: string;
+  terms_short?: string;
+  use?: string;
+  claims: number;
+  state: string;
+};
 type PresentationExtras = {
   evidence_labels?: Record<string, Record<Locale, string>>;
-  delta_templates?: Record<Locale, { pos: string; neg: string; pos_variants?: string[]; neg_variants?: string[]; pair_variants?: string[] }>;
+  delta_templates?: Record<
+    Locale,
+    {
+      pos: string;
+      neg: string;
+      pos_variants?: string[];
+      neg_variants?: string[];
+      pair_variants?: string[];
+    }
+  >;
   citation_prefix?: Record<Locale, string>;
   card_heading?: Record<Locale, string>;
   science_heading?: Record<Locale, string>;
   displayable_evidence_states?: string[];
   defect_note?: Record<Locale, string>;
-  reference_basis_templates?: Record<Locale, { text: string; explain: string; join: string; context_join: string }>;
+  reference_basis_templates?: Record<
+    Locale,
+    { text: string; explain: string; join: string; context_join: string }
+  >;
   context_labels?: Record<string, Record<Locale, string>>;
 };
 
 /** UI label of a context option (bundle presentation.context_labels; the raw key when unknown). */
 export function contextLabel(option: string, locale: Locale): string {
-  return (presentation as PresentationExtras).context_labels?.[option]?.[locale] ?? option;
+  return (
+    (presentation as PresentationExtras).context_labels?.[option]?.[locale] ??
+    option
+  );
 }
 
 /** the label's native part for prose and card rows: "意式萃取 Espresso" → "意式萃取", "SL28 / SL34" stays */
@@ -330,40 +461,79 @@ export function shortContextLabel(option: string, locale: Locale): string {
 
 /** The initial reference, said once (owner copy review 2, 2026-09-12): which inputs it came from and which
  *  features it leans toward — computed from V_pred, so it is a statement about the reference, not about the cup. */
-export function referenceBasisLine(result: { vPred: Vector; context: ContextAnswers }, locale: Locale): ScienceLine | null {
-  const t = (presentation as PresentationExtras).reference_basis_templates?.[locale];
+export function referenceBasisLine(
+  result: { vPred: Vector; context: ContextAnswers },
+  locale: Locale,
+): ScienceLine | null {
+  const t = (presentation as PresentationExtras).reference_basis_templates?.[
+    locale
+  ];
   if (!t) return null;
   const parts: string[] = [];
   for (const [, key] of AXIS_KEYS) {
     const value = result.context[key];
-    for (const v of Array.isArray(value) ? value : value ? [value] : []) parts.push(shortContextLabel(v, locale));
+    for (const v of Array.isArray(value) ? value : value ? [value] : [])
+      parts.push(shortContextLabel(v, locale));
   }
   if (result.context.c2_origin) {
-    const region = (rules.origin_regions as Record<string, { label: Record<Locale, string> }>)[result.context.c2_origin];
+    const region = (
+      rules.origin_regions as Record<string, { label: Record<Locale, string> }>
+    )[result.context.c2_origin];
     if (region) parts.push(region.label[locale]);
   }
-  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
-  const dims = DIMENSIONS.map((d, i) => ({ d, w: result.vPred[i] ?? 0 })).filter((x) => x.w > 0.15).sort((a, b) => b.w - a.w).slice(0, 3).map((x) => labels[x.d]?.[locale] ?? x.d);
+  const labels = presentation.dimension_labels as Record<
+    string,
+    Record<Locale, string>
+  >;
+  const dims = DIMENSIONS.map((d, i) => ({ d, w: result.vPred[i] ?? 0 }))
+    .filter((x) => x.w > 0.15)
+    .sort((a, b) => b.w - a.w)
+    .slice(0, 3)
+    .map((x) => labels[x.d]?.[locale] ?? x.d);
   if (!parts.length || !dims.length) return null;
   const text = `${t.text.replace("{context}", parts.join(t.context_join)).replace("{dims}", dims.join(t.join))} ${t.explain}`;
-  return { text, evidenceState: "REFERENCE_BASIS", citationRef: "engine: V_pred = normalize(Σ K)", about: "reference_basis", sourceTitle: "engine", sourceLicence: "", label: evidenceLabel("REFERENCE_BASIS", locale), citation: "" };
+  return {
+    text,
+    evidenceState: "REFERENCE_BASIS",
+    citationRef: "engine: V_pred = normalize(Σ K)",
+    about: "reference_basis",
+    sourceTitle: "engine",
+    sourceLicence: "",
+    label: evidenceLabel("REFERENCE_BASIS", locale),
+    citation: "",
+  };
 }
 
 /** Evidence states a user may see (owner copy review 2026-09-12): a claim pending a locator or re-verification is declared in the data but never shown. */
 export function displayableEvidenceStates(): string[] {
-  return (presentation as PresentationExtras).displayable_evidence_states ?? Object.keys((presentation as PresentationExtras).evidence_labels ?? {});
+  return (
+    (presentation as PresentationExtras).displayable_evidence_states ??
+    Object.keys((presentation as PresentationExtras).evidence_labels ?? {})
+  );
 }
 
 /** The note for the papery / stale group: show the words, ask for a second sip, judge nothing. */
 export function defectNote(locale: Locale): ScienceLine | null {
   const text = (presentation as PresentationExtras).defect_note?.[locale];
   if (!text) return null;
-  return { text, evidenceState: "PRODUCT_NOTE", citationRef: "owner copy review 2026-09-12", about: "defect_note", sourceTitle: "owner", sourceLicence: "", label: evidenceLabel("PRODUCT_NOTE", locale), citation: "" };
+  return {
+    text,
+    evidenceState: "PRODUCT_NOTE",
+    citationRef: "owner copy review 2026-09-12",
+    about: "defect_note",
+    sourceTitle: "owner",
+    sourceLicence: "",
+    label: evidenceLabel("PRODUCT_NOTE", locale),
+    citation: "",
+  };
 }
 
 /** consumer-facing label for an evidence state ("研究参考"), never the raw enum */
 export function evidenceLabel(state: string, locale: Locale): string {
-  return (presentation as PresentationExtras).evidence_labels?.[state]?.[locale] ?? "";
+  return (
+    (presentation as PresentationExtras).evidence_labels?.[state]?.[locale] ??
+    ""
+  );
 }
 
 /** "World Coffee Research — Sensory Lexicon / Varieties Catalog" → "World Coffee Research"; "Coffee Ad Astra (Jonathan Gagné) — …" → "Coffee Ad Astra (J. Gagné)" */
@@ -375,46 +545,89 @@ export function shortSource(title: string): string {
 /** A small deterministic seed so the wording varies from card to card (owner) without being random on re-render. */
 export function textSeed(parts: string[]): number {
   let h = 7;
-  for (const p of parts) for (const ch of p) h = (h * 31 + ch.charCodeAt(0)) % 100003;
+  for (const p of parts)
+    for (const ch of p) h = (h * 31 + ch.charCodeAt(0)) % 100003;
   return h;
 }
 
 /** the difference line for a delta dimension; `seed` picks a wording, `second` (opposite sign) makes it a pair */
-export function calibrationLine(dimension: string, delta: number, locale: Locale, seed = 0, second?: { dimension: string; delta: number }): ScienceLine {
-  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
+export function calibrationLine(
+  dimension: string,
+  delta: number,
+  locale: Locale,
+  seed = 0,
+  second?: { dimension: string; delta: number },
+): ScienceLine {
+  const labels = presentation.dimension_labels as Record<
+    string,
+    Record<Locale, string>
+  >;
   const label = labels[dimension]?.[locale] ?? dimension;
-  const templates = (presentation as PresentationExtras).delta_templates?.[locale];
+  const templates = (presentation as PresentationExtras).delta_templates?.[
+    locale
+  ];
   const words = presentation.delta_words[locale];
   let text: string;
   if (templates) {
     const pairs = templates.pair_variants ?? [];
-    const single = (delta > 0 ? templates.pos_variants : templates.neg_variants) ?? [delta > 0 ? templates.pos : templates.neg];
-    const usePair = !!second && delta > 0 && second.delta < 0 && pairs.length > 0 && seed % 3 === 2;
+    const single = (delta > 0
+      ? templates.pos_variants
+      : templates.neg_variants) ?? [delta > 0 ? templates.pos : templates.neg];
+    const usePair =
+      !!second &&
+      delta > 0 &&
+      second.delta < 0 &&
+      pairs.length > 0 &&
+      seed % 3 === 2;
     text = usePair
-      ? pairs[seed % pairs.length]!.replace("{label}", label).replace("{label2}", labels[second!.dimension]?.[locale] ?? second!.dimension)
+      ? pairs[seed % pairs.length]!.replace("{label}", label).replace(
+          "{label2}",
+          labels[second!.dimension]?.[locale] ?? second!.dimension,
+        )
       : single[seed % single.length]!.replace("{label}", label);
   } else {
-    text = locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
+    text =
+      locale === "zh-CN"
+        ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。`
+        : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
   }
-  return { text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}`, sourceTitle: "engine", sourceLicence: "", label: evidenceLabel("COMPUTED_DELTA", locale), citation: "" };
+  return {
+    text,
+    evidenceState: "COMPUTED_DELTA",
+    citationRef: "engine: V_user − V_pred",
+    about: `delta:${dimension}`,
+    sourceTitle: "engine",
+    sourceLicence: "",
+    label: evidenceLabel("COMPUTED_DELTA", locale),
+    citation: "",
+  };
 }
 
 export function cardCopy(locale: Locale): { heading: string; science: string } {
   const extras = presentation as PresentationExtras;
-  return { heading: extras.card_heading?.[locale] ?? "", science: extras.science_heading?.[locale] ?? "" };
+  return {
+    heading: extras.card_heading?.[locale] ?? "",
+    science: extras.science_heading?.[locale] ?? "",
+  };
 }
 /** Short licence label for a source id ("CC BY-SA 4.0"), from the bundle's source registry; empty for owner statements. */
 export function sourceLicence(sourceId: string): string {
-  const registry = ((presentation as { sources?: SourceRow[] }).sources ?? []) as SourceRow[];
+  const registry = ((presentation as { sources?: SourceRow[] }).sources ??
+    []) as SourceRow[];
   const row = registry.find((r) => r.source_id === sourceId);
   if (!row?.licence_note) return "";
   if (row.terms_short) return row.terms_short;
   const cc = row.licence_note.match(/\(CC [A-Z-]+ [0-9.]+\)/);
-  return cc ? cc[0].slice(1, -1) : row.licence_note.split(" — ")[0]!.split(" (")[0]!;
+  return cc
+    ? cc[0].slice(1, -1)
+    : row.licence_note.split(" — ")[0]!.split(" (")[0]!;
 }
 
 /** Context statements whose parts are all answered, most specific (most parts) first. */
-export function statementsFor(context: ContextAnswers, locale: Locale): ScienceLine[] {
+export function statementsFor(
+  context: ContextAnswers,
+  locale: Locale,
+): ScienceLine[] {
   const answered = new Map<string, Set<string>>();
   for (const [axis, key] of AXIS_KEYS) {
     const value = context[key];
@@ -423,10 +636,16 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
   }
   const visible = new Set(displayableEvidenceStates());
   return presentation.context_statements
-    .filter((s) => visible.has(s.evidence_state) && s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis)?.has(p.option)))
+    .filter(
+      (s) =>
+        visible.has(s.evidence_state) &&
+        s.parts.length > 0 &&
+        s.parts.every((p) => answered.get(p.axis)?.has(p.option)),
+    )
     .sort((a, b) => b.parts.length - a.parts.length)
     .map((s) => {
-      const title = (s as { source_title?: string }).source_title ?? s.source_id;
+      const title =
+        (s as { source_title?: string }).source_title ?? s.source_id;
       const literature = s.evidence_state.startsWith("LITERATURE_CLAIM");
       const alt = (s as Record<string, unknown>)[`${locale}_alt`];
       return {
@@ -437,31 +656,71 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
         sourceTitle: title,
         sourceLicence: sourceLicence(s.source_id),
         label: evidenceLabel(s.evidence_state, locale),
-        citation: literature ? `${(presentation as PresentationExtras).citation_prefix?.[locale] ?? ""}${shortSource(title)}` : "",
+        citation: literature
+          ? `${(presentation as PresentationExtras).citation_prefix?.[locale] ?? ""}${shortSource(title)}`
+          : "",
         ...(typeof alt === "string" && alt ? { textAlt: alt } : {}),
       };
     });
 }
 
 /** A data-count line (资料统计): one measured reference row of this cup's context, its record count and its two leading features. */
-export function corpusLine(context: ContextAnswers, locale: Locale, seed = 0): ScienceLine | null {
-  const K = bundle.matrix_k as Record<string, Record<string, { vector: number[] | null; basis: string; member_count: number | null }>>;
-  const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
-  const candidates: Array<{ option: string; row: { vector: number[] | null; basis: string; member_count: number | null } }> = [];
+export function corpusLine(
+  context: ContextAnswers,
+  locale: Locale,
+  seed = 0,
+): ScienceLine | null {
+  const K = bundle.matrix_k as Record<
+    string,
+    Record<
+      string,
+      { vector: number[] | null; basis: string; member_count: number | null }
+    >
+  >;
+  const labels = presentation.dimension_labels as Record<
+    string,
+    Record<Locale, string>
+  >;
+  const candidates: Array<{
+    option: string;
+    row: {
+      vector: number[] | null;
+      basis: string;
+      member_count: number | null;
+    };
+  }> = [];
   for (const [axis, key] of AXIS_KEYS) {
     const value = context[key];
     for (const v of Array.isArray(value) ? value : value ? [value] : []) {
       const row = K[axis]?.[v];
-      if (row?.vector && row.member_count && row.basis === "CORPUS_MEASURED") candidates.push({ option: v, row });
+      if (row?.vector && row.member_count && row.basis === "CORPUS_MEASURED")
+        candidates.push({ option: v, row });
     }
   }
   if (!candidates.length) return null;
   const { option, row } = candidates[seed % candidates.length]!;
-  const dims = DIMENSIONS.map((d, i) => ({ d, w: row.vector![i] ?? 0 })).sort((a, b) => b.w - a.w).slice(0, 2).map((x) => labels[x.d]?.[locale] ?? x.d);
-  const n = row.member_count!.toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US");
+  const dims = DIMENSIONS.map((d, i) => ({ d, w: row.vector![i] ?? 0 }))
+    .sort((a, b) => b.w - a.w)
+    .slice(0, 2)
+    .map((x) => labels[x.d]?.[locale] ?? x.d);
+  const n = row.member_count!.toLocaleString(
+    locale === "zh-CN" ? "zh-CN" : "en-US",
+  );
   const name = shortContextLabel(option, locale);
-  const text = locale === "zh-CN" ? `评审资料里的${name}记录共 ${n} 条，最常出现的特征是${dims[0]}与${dims[1]}。` : `Among the ${n} ${name} records in the review material, ${dims[0]} and ${dims[1]} come up most.`;
-  return { text, evidenceState: "CORPUS_MEASURED", citationRef: `matrix_k:${option}`, about: `corpus:${option}`, sourceTitle: "corpus", sourceLicence: "", label: evidenceLabel("CORPUS_MEASURED", locale), citation: "" };
+  const text =
+    locale === "zh-CN"
+      ? `评审资料里的${name}记录共 ${n} 条，最常出现的特征是${dims[0]}与${dims[1]}。`
+      : `Among the ${n} ${name} records in the review material, ${dims[0]} and ${dims[1]} come up most.`;
+  return {
+    text,
+    evidenceState: "CORPUS_MEASURED",
+    citationRef: `matrix_k:${option}`,
+    about: `corpus:${option}`,
+    sourceTitle: "corpus",
+    sourceLicence: "",
+    label: evidenceLabel("CORPUS_MEASURED", locale),
+    citation: "",
+  };
 }
 
 /** Locale-aware rendering of an inference: headline profile + tags, alternatives, beans, and the science fold. */
@@ -469,14 +728,28 @@ export function present(result: InferenceResult, locale: Locale): Presentation {
   const labels = presentation.dimension_labels as Record<string, Localized>;
   const words = presentation.delta_words[locale];
   const toHeadline = (entry: { profile: Profile; similarity: number }) => {
-    const name = entry.profile.owner_name[locale] || entry.profile.owner_name.en || entry.profile.profile_id;
+    const name =
+      entry.profile.owner_name[locale] ||
+      entry.profile.owner_name.en ||
+      entry.profile.profile_id;
     const owned = entry.profile.display_tags[locale];
-    const tags = owned.length ? owned.slice(0, presentation.tag_count) : displayTags(entry.profile.centroid, locale);
-    return { title: name, tags, similarity: entry.similarity, ownerReviewed: entry.profile.owner_reviewed, profileId: entry.profile.profile_id };
+    const tags = owned.length
+      ? owned.slice(0, presentation.tag_count)
+      : displayTags(entry.profile.centroid, locale);
+    return {
+      title: name,
+      tags,
+      similarity: entry.similarity,
+      ownerReviewed: entry.profile.owner_reviewed,
+      profileId: entry.profile.profile_id,
+    };
   };
   const [first, ...rest] = result.profiles;
   const basis = referenceBasisLine(result, locale);
-  const science: ScienceLine[] = [...(basis ? [basis] : []), ...statementsFor(result.context, locale)];
+  const science: ScienceLine[] = [
+    ...(basis ? [basis] : []),
+    ...statementsFor(result.context, locale),
+  ];
   for (const { dimension, delta } of result.topDeltaDimensions) {
     if (Math.abs(delta) < 0.1) continue;
     science.push(calibrationLine(dimension, delta, locale));
@@ -486,11 +759,21 @@ export function present(result: InferenceResult, locale: Locale): Presentation {
     headline: first ? toHeadline(first) : null,
     alternatives: rest.map((entry) => {
       const h = toHeadline(entry);
-      return { title: h.title, tags: h.tags, similarity: h.similarity, profileId: h.profileId };
+      return {
+        title: h.title,
+        tags: h.tags,
+        similarity: h.similarity,
+        profileId: h.profileId,
+      };
     }),
     beans: result.beans.map(({ bean, similarity }) => ({
       label: bean.label,
-      tags: displayTags(bean.vector, locale, presentation.tag_count, bean.conceptIds),
+      tags: displayTags(
+        bean.vector,
+        locale,
+        presentation.tag_count,
+        bean.conceptIds,
+      ),
       similarity,
       source: bean.source,
     })),

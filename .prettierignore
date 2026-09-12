@@ -31,3 +31,9 @@ db/data/round3e/raw/mendeley_ftnir_v4/
 db/data/round3e/raw/mendeley_taste_sensitivity_v1/
 db/data/round3e/raw/usda_fdc_20260825/
 db/data/round3e/raw/wikidata_20260825/
+
+# Product-vector v1 generator-owned artifacts (build-matrix-k-v1.py,
+# build-product-vector-v1.py) and the exported copy review (export-frontend-copy.py)
+# keep generator bytes.
+db/data/product-vector-v1/*.json
+docs/product/FRONTEND_COPY_REVIEW.md
