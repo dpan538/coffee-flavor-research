@@ -88,7 +88,8 @@ describe("product-vector-v1 presentation layer", () => {
     const lines = statementsFor({ c0_preparation: "pour_over_v60", c1_roast: "light" }, "en");
     expect(lines[0]!.about).toBe("C0_V60__C1_LIGHT");
     expect(lines.map((l) => l.about)).toContain("C1_LIGHT");
-    expect(lines.every((l) => ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM"].includes(l.evidenceState))).toBe(true);
+    expect(lines.every((l) => ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM", "LITERATURE_CLAIM_PENDING_LOCATOR"].includes(l.evidenceState))).toBe(true);
+    expect(lines.every((l) => l.sourceTitle.length > 0)).toBe(true);
     expect(statementsFor({ c1_roast: "light" }, "en").map((l) => l.about)).not.toContain("C0_V60__C1_LIGHT");
   });
 
@@ -219,12 +220,12 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     expect(flow.applyQ6(result, [])).toBe(result);
   });
 
-  it("final card carries the user's own words, at most two science lines with evidence states, and the closing line", () => {
+  it("final card carries the user's own words, 1-2 attribution sentences plus the bias line (each with an evidence state), and the closing line", () => {
     const result = flow.inferFromFlow(ctx, { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" });
     const picks = flow.describe(result, "zh-CN").all.slice(0, 5);
     const card = flow.finalCard(result, picks, "zh-CN");
     expect(card.picked).toHaveLength(5);
-    expect(card.science.length).toBeLessThanOrEqual(2);
+    expect(card.science.length).toBeLessThanOrEqual(3);
     expect(card.science.every((l) => l.evidenceState)).toBe(true);
     expect(card.closing).toContain("咖啡");
     expect(flow.finalCard(result, picks, "en").closing).toContain("enjoy");

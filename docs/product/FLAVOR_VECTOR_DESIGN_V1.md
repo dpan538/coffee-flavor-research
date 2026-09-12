@@ -1,6 +1,6 @@
 # 风味向量设计 V1 (Flavor Vector Design V1)
 
-**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) and R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design), 2026-09-12
+**Status:** ACTIVE — owner decisions R3-D5 (pivot), R3-D6 (dimension count, candidate-library path, structure axes) R3-D7 (confirmation: 0.6 : 1.0 structure weight, data sources, Steps 1–4) R3-D8 (profile names, α = 0.5, literature intake, bilingual presentation layer) R3-D9 (coherence decision tree, 8-pick-5 feedback, Q6 escalation gate, consumer lexicon) R3-D10 (thresholds 0.80 / 0.65, slot mapping approved, lexicon v1 locked) R3-D11 (94 concept tags approved, literature claim conventions, hybrid utterance mapper, paradox guard, three test suites) R3-D12 (Q0 wording localised, question bank approved, guard and context check confirmed, Step 5: GACTT lexicon expansion and the session API) R3-D13 (GACTT zh mapping, blends and optional origin, PWA topology, app interfaces before visual design) and R3-D14 (Vue 3 + Tailwind isolated PWA, two-level claim declaration, three claims files ingested; stop before visual design), 2026-09-12
 (`db/data/backend-sequential-model-v2/revisions/round3/owner_decisions_round3.json`).
 **Supersedes:** the adaptive-question / proposition-lattice / product-inference v0–v0.2 line. Those artefacts are archived, not deleted: `docs/archive/adaptive-question-policy-20260912/README.md`.
 **Owner's words:** 「做向量然后进行相似度算法设计 … 做一个小而美的产品，后续产品中不再需要训练或者 transformer。停止无意义测试，数据的可用性比测试更重要。」
@@ -359,7 +359,19 @@ fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧�
 （按 owner 规则：stone fruit → 黄桃/杏桃，brown sugar → 红糖/蔗糖，winey → 厌氧酒香/朗姆，citrus → 柑橘/柚子，floral → 茉莉花/咖啡花）。
 概念行仍是操作员草案（`owner_reviewed=false`）。
 
-**6.3 科学归因句** `CONTEXT_STATEMENTS.tsv`（owner 的统一 schema）：`context_id`（语境组合键，如 `C0_V60__C1_LIGHT`）、`context_parts`、
+**6.3 科学归因句与文献声明（R3-D14 两层显式标注）**
+
+owner 的合规规则：文献引用必须在两个层面显式声明。(1) 界面层：总结卡与「科学解释」折叠层里每一句归因都带 `evidence_state` 与出处
+（「证据级别：LITERATURE_CLAIM · 来源：UC Davis Coffee Center」），About 的文献板块列出三项研究的名称、DOI/链接与许可说明；
+(2) 学术与合规层：原始 PDF/全文绝不进 Git，`source_locator` 指向文献，外部文献标 `LITERATURE_CLAIM`，与 owner 自建的 `OWNER_STATEMENT` 严格区分。
+
+三份 claims 文件已按 owner 给的核心内容入库（`db/data/external-literature/*.claims.csv`，11 条）：WCR 4 条绑定 C2_variety（瑰夏）与 C1_roast，
+UC Davis 4 条绑定 C0_brew（手冲、意式、冷萃、法压），Coffee Ad Astra 3 条绑定 C0_brew 与 C0×C1 组合句。**DOI/链接与许可说明尚未由 owner 补充**，
+所以这 11 条的状态是 `LITERATURE_CLAIM_PENDING_LOCATOR`：界面照常显示出处，About 里注明「DOI / 链接待补充」；两项补齐后重跑 ingest 即升为 `LITERATURE_CLAIM`。
+来源登记表 `LITERATURE_SOURCES.json` 随 ingest 生成，bundle 的 `presentation.sources` 供 About 读取。
+总结卡的归因句：最具体的语境句 + 第一条适用的文献句（若有）+ 计算得到的偏置句，每句带证据级别与来源。
+
+`CONTEXT_STATEMENTS.tsv`（owner 的统一 schema）：`context_id`（语境组合键，如 `C0_V60__C1_LIGHT`）、`context_parts`、
 `statement_zh`、`statement_en`、`evidence_state`（`OWNER_STATEMENT` / `CORPUS_MEASURED` / `LITERATURE_CLAIM`）、`citation_ref`。
 现有 27 条：21 条单选项句 + 6 条组合句（如浅烘 × V60、中深烘 × 厌氧）。文献接入后 `LITERATURE_CLAIMS.tsv` 以同一 schema 合并进来
 （`CONTEXT_STATEMENTS_MERGED.tsv` 是合并后的可读表）。引擎只取「所有组成部分都被回答」的句子，最具体的在前。
@@ -424,7 +436,19 @@ fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧�
 **7.5 三套本地测试（R3-D11）**：语义歧义（口语 → 选项，含否定）、用户画像全路径（A/B/C/C′ + 10 个画像）、
 词库自然度（3+5 描述的每个词都可归因到维度、双语同维度、无维度名泄漏）——都是 vitest，跑在 bundle 上，不碰 CI。
 
-## 8. 运行时形态
+## 8. 运行时形态与应用壳（R3-D14：Vue 3 + Tailwind v3，物理隔离）
+
+owner 的栈裁决：Vue 3（Composition API + TS）+ Tailwind CSS v3 + lucide 图标，与旧 React 组件物理隔离。实现：
+
+- `apps/pwa/`：独立入口（自己的 `index.html`、`vite.config.ts`、`tsconfig.json`、Tailwind/PostCSS 配置），`@vitejs/plugin-vue` + `vite-plugin-pwa`
+  （generateSW，manifest，离线预缓存）；根 `package.json` 增加 `pwa:dev / pwa:build / pwa:typecheck`。旧 React 应用留在 `app/`，不参与这条构建。
+- `src/store.ts` 是算法与 UI 的唯一桥：单例 `session`，`screen = shallowRef(screenModel(session))`，每次用户操作调一个 session 函数再刷新；组件里没有任何风味计算。
+- 组件（结构与绑定完成，无视觉）：`AppHeader`（About、EN/中、离线指示）、`ContextSetupCard`（C0–C2，SOE/拼配切换上限 3，产地可选 Chip）、
+  `QuizCard`（一页一题 + 进度）、`FirstDescriptionCard`（3+5 阵列 + 8 选 5）、`EscalationModal`（Q6，仅门控打开时）、
+  `FinalAttributionCard`（用户 5 词 + 每句归因的证据级别与来源 + 分享/再来一杯）、`AboutDrawer`（三板块 + 四条引用的链接/许可/状态）。
+- `vue-tsc` 通过，`vite build` 通过并生成 `sw.js`。按 owner 指令在视觉设计前停下：Tailwind 只用了结构类（布局、间距、边框），没有配色与字体决定。
+
+
 
 - 一个 JSON：投影矩阵、Matrix_K、Matrix_Q、画像库（16 个质心 + owner 命名）、标杆豆款向量、α。
 - 一段前端代码：加权求和 + 余弦 + top-k + 表达层（`displayTags` / `present`，locale = zh-CN | en）；用户自建库存本地（IndexedDB），匹配离线完成。
@@ -470,6 +494,8 @@ fruity → 水蜜桃｜黄桃｜黑加仑｜杏桃；fermented_winey → 厌氧�
 | 会话接口 | 完成：`session.ts` 全链路（题卡 → 描述 → 8 选 5 → 门控 → 总结卡 / Q6），历史记录 | §3.4 |
 | 消费端词表 | 第一轮：29 + 5 中文，61 英文（GACTT）；中文社媒扩充等语料 | §6.2 |
 | 应用接口层 | 完成：视图模型、Dexie 用户库、About 内容；拼配与产地进引擎 | §3.5 |
+| 应用壳 | 结构完成：`apps/pwa` Vue 3 + Tailwind v3 隔离入口，7 组件绑定 `screenModel`，PWA 离线构建通过；视觉未开始 | §8 |
+| 文献声明 | 11 条 claims 入库并在界面与 About 两层标注；DOI/许可待 owner 补 | §6.3 |
 | 测试 | 51 个：引擎 / 表达层 / 节奏 / 语义歧义 28+5 / 画像 4+10 / 会话 6 / 应用层 8 | §7.5 |
 | 用户自建库 | 未开始（本地存储 + 录入表单 + 扫码）| §8 |
 | 前端运行时 | 未开始；现有前端是 v0.2 目录的 demo | §8 |
@@ -488,7 +514,7 @@ WCR Varieties Catalog、UC Davis Coffee Center、Coffee Ad Astra 批准接入（
 | 4 | 前端运行时 `packages/flavor-data/src/product-vector-v1`，纯 JS 推荐与归因引擎 | 引擎完成（`infer()`：V_pred / V_user / ΔV / V_target / 画像与豆款排序 / 语境证据基础），5 个引擎测试通过；页面与用户自建库（IndexedDB）未开始 |
 | 5 | 产品级风味描述与用户用语对齐（owner 新要求）| 未开始：用已批准的 GACTT 消费者描述建立「消费者用语 → 12 维」词表，画像命名与归因文案都从它取词 |
 
-**仍待 owner：** 前端栈选择（React 现状 vs Vue 3 + Tailwind）与视觉对齐；中文社媒语料；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
+**仍待 owner：** 视觉参考（下一步）；三份文献的 DOI/链接与许可说明；WCR / UC Davis / Coffee Ad Astra 的 `*.claims.csv` 放入 `db/data/external-literature/`（README 有列定义），
 `ingest-external-literature.py` 会把它们并入归因句表。
 
 ---

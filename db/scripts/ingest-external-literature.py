@@ -47,13 +47,31 @@ def main() -> int:
                     parts = [(r["context_axis"], r["option"].strip())] if r["option"].strip() else []
                 rows.append({"context_id": "__".join(f"{a}_{o.upper()}" for a, o in parts) or f"GENERAL_{r['source_id']}_{n}",
                              "context_parts": "|".join(f"{a}:{o}" for a, o in parts),
-                             "statement_zh": r["claim_zh_cn"].strip(), "statement_en": r["claim_en"].strip(), "evidence_state": "LITERATURE_CLAIM",
-                             "citation_ref": f"{r['source_title']} — {r['source_locator']}", "source_id": r["source_id"], "licence_note": r["licence_note"],
+                             "statement_zh": r["claim_zh_cn"].strip(), "statement_en": r["claim_en"].strip(),
+                             # a literature claim is only fully declared once it carries a DOI / link and a licence note (owner rule, R3-D14)
+                             "evidence_state": "LITERATURE_CLAIM" if (r["source_locator"].strip() and r["licence_note"].strip()) else "LITERATURE_CLAIM_PENDING_LOCATOR",
+                             "citation_ref": f"{r['source_title']} — {r['source_locator'].strip() or 'DOI / link pending'}", "source_id": r["source_id"], "licence_note": r["licence_note"].strip() or "licence note pending",
                              "dimension_effects": effects, "owner_reviewed": "true"})
     with OUT.open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=["context_id", "context_parts", "statement_zh", "statement_en", "evidence_state", "citation_ref", "source_id", "licence_note", "dimension_effects", "owner_reviewed"], delimiter="\t", lineterminator="\n")
         w.writeheader(); w.writerows(rows)
-    print(json.dumps({"claim_files": len(list(IN.glob('*.claims.csv'))), "claims": len(rows), "problems": problems}, ensure_ascii=False))
+    # source registry for the About page (title, locator, licence, claim count, declaration state)
+    registry: dict[str, dict] = {}
+    for r in rows:
+        reg = registry.setdefault(r["source_id"], {"source_id": r["source_id"], "title": "", "locator": "", "licence_note": "", "claims": 0, "state": "LITERATURE_CLAIM"})
+        reg["claims"] += 1
+        if r["evidence_state"] == "LITERATURE_CLAIM_PENDING_LOCATOR":
+            reg["state"] = "LITERATURE_CLAIM_PENDING_LOCATOR"
+    for path in sorted(IN.glob("*.claims.csv")):
+        with path.open(encoding="utf-8-sig", newline="") as fh:
+            for r in csv.DictReader(fh):
+                reg = registry.get(r["source_id"])
+                if reg:
+                    reg["title"] = reg["title"] or r["source_title"].strip()
+                    reg["locator"] = reg["locator"] or r["source_locator"].strip()
+                    reg["licence_note"] = reg["licence_note"] or r["licence_note"].strip()
+    (OUT.parent / "LITERATURE_SOURCES.json").write_text(json.dumps({"sources": list(registry.values()), "rule": "raw PDFs / full text never enter git; locator and licence note are the owner's; a claim without both is LITERATURE_CLAIM_PENDING_LOCATOR"}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(json.dumps({"claim_files": len(list(IN.glob('*.claims.csv'))), "claims": len(rows), "pending_locator": sum(r["evidence_state"] == "LITERATURE_CLAIM_PENDING_LOCATOR" for r in rows), "sources": [(k, v["claims"], v["state"]) for k, v in registry.items()], "problems": problems}, ensure_ascii=False))
     return 1 if problems else 0
 
 

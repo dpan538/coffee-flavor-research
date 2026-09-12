@@ -3145,6 +3145,32 @@
    "en"
   ],
   "tag_count": 4,
+  "sources": [
+   {
+    "source_id": "coffee_ad_astra",
+    "title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction",
+    "locator": "",
+    "licence_note": "",
+    "claims": 3,
+    "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+   },
+   {
+    "source_id": "uc_davis_coffee_center",
+    "title": "UC Davis Coffee Center — brewing kinetics and sensory maps",
+    "locator": "",
+    "licence_note": "",
+    "claims": 4,
+    "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+   },
+   {
+    "source_id": "wcr_sensory_lexicon",
+    "title": "World Coffee Research — Sensory Lexicon / Varieties Catalog",
+    "locator": "",
+    "licence_note": "",
+    "claims": 4,
+    "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+   }
+  ],
   "dimension_labels": {
    "acidity": {
     "zh-CN": "酸质",
@@ -3742,7 +3768,8 @@
     "en": "Espresso amplifies body and oils; the volatile floral and fruit top notes are compressed.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C0_COLD_BREW",
@@ -3756,7 +3783,8 @@
     "en": "Cold brew suppresses the low-volatility acids: less acidity and floral lift, more sweetness and body.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C0_V60",
@@ -3770,7 +3798,8 @@
     "en": "Pour-over releases the early, volatile floral and fruit acids first.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C0_FRENCH_PRESS",
@@ -3784,7 +3813,8 @@
     "en": "Immersion brewing carries more oils and fines: more body, less clarity.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_LIGHT",
@@ -3798,7 +3828,8 @@
     "en": "Light roasts keep more chlorogenic acids and volatile aromatics: acidity and floral-fruit notes lead.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_MEDIUM_LIGHT",
@@ -3812,7 +3843,8 @@
     "en": "Medium-light roasts keep the floral-fruit acidity while caramelisation sweetness begins.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_MEDIUM",
@@ -3826,7 +3858,8 @@
     "en": "Medium roasts balance acidity against Maillard products: nut and caramel rise.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_MEDIUM_DARK",
@@ -3840,7 +3873,8 @@
     "en": "Medium-dark roasts are Maillard-dominated: body, chocolate and bitterness rise, acidity falls.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_DARK",
@@ -3854,7 +3888,8 @@
     "en": "Dark roasts degrade most chlorogenic acids: caramelised bitterness and smoke dominate.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_VERY_DARK",
@@ -3868,7 +3903,8 @@
     "en": "Very dark roasts are carbonised and smoky; origin and variety character is mostly covered.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_process_WASHED",
@@ -3882,7 +3918,8 @@
     "en": "Washed processing removes mucilage quickly; the bean's own organic acids stand out: clean, citrus, floral, high acidity.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_process_NATURAL",
@@ -3896,7 +3933,8 @@
     "en": "Natural processing lets fruit sugars ferment into the seed: more reducing sugars and free amino acids — jam, tropical fruit, high sweetness.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_process_ANAEROBIC",
@@ -3910,7 +3948,8 @@
     "en": "Anaerobic fermentation produces lactic acid and exogenous esters: yoghurt, winey notes, very distinctive.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_process_HONEY",
@@ -3924,7 +3963,8 @@
     "en": "Honey processing keeps part of the mucilage: sweetness and body between washed and natural.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_process_DECAF",
@@ -3938,7 +3978,8 @@
     "en": "Decaffeination removes some precursors; aroma intensity drops overall.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_variety_GESHA",
@@ -3952,7 +3993,8 @@
     "en": "The Gesha genotype has a very high ceiling for floral and citrus acidity with a lighter body.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_variety_BOURBON",
@@ -3966,7 +4008,8 @@
     "en": "Bourbon is sweet and balanced; caramel and red fruit are typical.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_variety_SL28_SL34",
@@ -3980,7 +4023,8 @@
     "en": "SL28/SL34 are known for blackcurrant and bright citric acidity.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_variety_ETHIOPIAN_LANDRACE",
@@ -3994,7 +4038,8 @@
     "en": "Ethiopian landraces are marked by jasmine, citrus and, when natural, blueberry.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_variety_TYPICA",
@@ -4008,7 +4053,8 @@
     "en": "Typica is clean and gently sweet with moderate body.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C2_variety_ROBUSTA",
@@ -4022,7 +4068,8 @@
     "en": "Robusta has low sugar precursors and high chlorogenic acid and caffeine: heavy bitterness and body, little floral-fruit.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C0_V60__C1_LIGHT",
@@ -4040,7 +4087,8 @@
     "en": "Light roast preserves volatile florals and fruit acids, and V60 fast extraction targets these front-end acids.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C0_ESPRESSO__C1_MEDIUM_DARK",
@@ -4058,7 +4106,8 @@
     "en": "Medium-dark Maillard products are amplified by espresso pressure and oils: dark chocolate, caramel and weight lead; acidity retreats.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C0_COLD_BREW__C1_LIGHT",
@@ -4076,7 +4125,8 @@
     "en": "Cold brew flattens the light roast's low-volatility acids: less floral lift, clearer sweetness and tea-like body.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_LIGHT__C2_process_WASHED",
@@ -4094,7 +4144,8 @@
     "en": "Light roast plus washed processing keeps citric acid and polar esters: citrus, jasmine and clean acidity.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_LIGHT__C2_process_NATURAL",
@@ -4112,7 +4163,8 @@
     "en": "Light roast plus natural processing keeps the fermented fruit sugars and esters: blueberry, jam and high sweetness.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
    },
    {
     "context_id": "C1_MEDIUM_DARK__C2_process_ANAEROBIC",
@@ -4130,7 +4182,181 @@
     "en": "Medium-dark plus anaerobic should read as dark chocolate and fermentation; a brighter acidity usually means the brew ran cool and under-extracted the late bitter phenolics.",
     "evidence_state": "OWNER_STATEMENT",
     "citation_ref": "owner 2026-09-12 (design examples)",
-    "source_id": "owner"
+    "source_id": "owner",
+    "source_title": "owner"
+   },
+   {
+    "context_id": "C0_POUR_OVER_V60",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "pour_over_v60"
+     }
+    ],
+    "zh-CN": "粉床细粉迁移引发微观通道效应时，局部过萃会导致中段甜感中断，并在余韵中引入涩感与杂味。",
+    "en": "When fines migrate and open micro-channels in the bed, local over-extraction breaks the mid-palate sweetness and brings astringency and off-notes into the finish.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — DOI / link pending",
+    "source_id": "coffee_ad_astra",
+    "source_title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction"
+   },
+   {
+    "context_id": "C0_POUR_OVER_V60__C1_LIGHT",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "pour_over_v60"
+     },
+     {
+      "axis": "C1",
+      "option": "light"
+     }
+    ],
+    "zh-CN": "浅烘手冲时，萃取率落在合适区间才有饱满的中段甜感；萃取率不足则酸而空，过高则涩。",
+    "en": "For light roasts on pour-over, mid-palate sweetness fills in only inside the right extraction-yield window; under-extraction reads sour and hollow, over-extraction astringent.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — DOI / link pending",
+    "source_id": "coffee_ad_astra",
+    "source_title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction"
+   },
+   {
+    "context_id": "C0_ESPRESSO__C1_MEDIUM_DARK",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "espresso"
+     },
+     {
+      "axis": "C1",
+      "option": "medium_dark"
+     }
+    ],
+    "zh-CN": "中深烘意式在高压下通道效应更敏感：粉饼不均会同时出现欠萃的酸与过萃的苦。",
+    "en": "Medium-dark espresso is more sensitive to channeling under pressure: an uneven puck shows under-extracted sourness and over-extracted bitterness at once.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction — DOI / link pending",
+    "source_id": "coffee_ad_astra",
+    "source_title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction"
+   },
+   {
+    "context_id": "C0_POUR_OVER_V60",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "pour_over_v60"
+     }
+    ],
+    "zh-CN": "快萃与较高水温优先溶解极性较高的有机酸分子，前段酸质与花果香先被释放。",
+    "en": "Fast extraction at higher water temperature dissolves the more polar organic acids first, so acidity and floral-fruit notes lead.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "source_id": "uc_davis_coffee_center",
+    "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
+   },
+   {
+    "context_id": "C0_ESPRESSO",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "espresso"
+     }
+    ],
+    "zh-CN": "研磨度过细会加速大分子绿原酸内酯的释放，从而增加尾段苦感；高压萃取同时带出更多油脂与醇厚度。",
+    "en": "Too fine a grind accelerates the release of large chlorogenic-acid lactones and adds late bitterness; pressure extraction also carries more oils and body.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "source_id": "uc_davis_coffee_center",
+    "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
+   },
+   {
+    "context_id": "C0_COLD_BREW",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "cold_brew"
+     }
+    ],
+    "zh-CN": "低温长时萃取压低挥发酸与前段酸质，TDS 与感官图谱偏向甜感与圆润。",
+    "en": "Long, cold extraction suppresses volatile acids and front-end acidity; the TDS–sensory map shifts toward sweetness and roundness.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "source_id": "uc_davis_coffee_center",
+    "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
+   },
+   {
+    "context_id": "C0_FRENCH_PRESS",
+    "parts": [
+     {
+      "axis": "C0",
+      "option": "french_press"
+     }
+    ],
+    "zh-CN": "浸泡式萃取与金属滤网让更多细粉与油脂进入杯中，醇厚度上升、干净度下降。",
+    "en": "Immersion brewing through a metal filter passes more fines and oils: more body, less clarity.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI / link pending",
+    "source_id": "uc_davis_coffee_center",
+    "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
+   },
+   {
+    "context_id": "C2_variety_GESHA",
+    "parts": [
+     {
+      "axis": "C2_variety",
+      "option": "gesha"
+     }
+    ],
+    "zh-CN": "瑰夏（Gesha）基因决定了其高挥发性单萜烯（如芳樟醇）的高表达上限，浅烘焙下呈现高锐白花与单醇果酸。",
+    "en": "The Gesha genotype sets a high ceiling for volatile monoterpenes such as linalool; at light roast it reads as sharp white florals and clean, single-note fruit acidity.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "source_id": "wcr_sensory_lexicon",
+    "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
+   },
+   {
+    "context_id": "C1_LIGHT",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "light"
+     }
+    ],
+    "zh-CN": "浅烘保留品种的花香与果酸参照物（花香、柑橘酸、单醇甜感），焦糖化产物尚未主导。",
+    "en": "Light roasting keeps the variety's floral and fruit-acid references (florals, citric acidity, clean sweetness) before caramelisation products take over.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "source_id": "wcr_sensory_lexicon",
+    "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
+   },
+   {
+    "context_id": "C1_MEDIUM",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "medium"
+     }
+    ],
+    "zh-CN": "中烘时焦糖化与美拉德参照物（红糖、坚果、可可）与残余果酸达到平衡。",
+    "en": "At medium roast the caramelisation and Maillard references (brown sugar, nut, cocoa) balance the remaining fruit acidity.",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "source_id": "wcr_sensory_lexicon",
+    "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
+   },
+   {
+    "context_id": "C1_DARK",
+    "parts": [
+     {
+      "axis": "C1",
+      "option": "dark"
+     }
+    ],
+    "zh-CN": "深烘下花香与果酸参照物被烘烤参照物（烟熏、焦糖苦、灰烬）覆盖。",
+    "en": "At dark roast the floral and fruit-acid references are covered by roast references (smoke, burnt caramel, ash).",
+    "evidence_state": "LITERATURE_CLAIM_PENDING_LOCATOR",
+    "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — DOI / link pending",
+    "source_id": "wcr_sensory_lexicon",
+    "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"
    }
   ],
   "tag_rules": {

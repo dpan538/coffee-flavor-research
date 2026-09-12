@@ -80,6 +80,10 @@ describe("context catalog and screen models", () => {
       expect(m.picked).toHaveLength(5);
       expect(m.shareText).toContain("|");
       expect(m.corrected).toBe(false);
+      // owner R3-D14: every science line declares its evidence state and its source at the UI level
+      expect(m.science.length).toBeGreaterThan(0);
+      expect(m.science.every((l) => l.evidenceState && l.sourceTitle)).toBe(true);
+      expect(m.science.some((l) => l.evidenceState.startsWith("LITERATURE_CLAIM"))).toBe(true);
     }
     expect(nextStep(s).kind === "final" || nextStep(s).kind === "q6").toBe(true);
   });
@@ -134,7 +138,8 @@ describe("about content", () => {
     expect(en[0]!.paragraphs[1]).toContain("0.8");
     expect(zh[2]!.paragraphs[1]).toContain("IndexedDB");
     const cites = aboutCitations("en");
-    expect(cites.map((c) => c.id)).toEqual(["wcr", "ucdavis", "adastra", "gactt"]);
-    expect(cites.every((c) => ["LITERATURE_CLAIM", "PENDING_INGEST"].includes(c.evidenceState))).toBe(true);
+    expect(cites.map((c) => c.id)).toEqual(["wcr_sensory_lexicon", "uc_davis_coffee_center", "coffee_ad_astra", "gactt"]);
+    expect(cites.every((c) => ["LITERATURE_CLAIM", "LITERATURE_CLAIM_PENDING_LOCATOR", "PENDING_INGEST"].includes(c.evidenceState))).toBe(true);
+    expect(cites.slice(0, 3).every((c) => c.claims > 0 && c.locator && c.licenceNote)).toBe(true);
   });
 });

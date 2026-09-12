@@ -121,7 +121,8 @@ def main() -> int:
             for r in rows(path):
                 parts = [{"axis": part.split(":")[0], "option": part.split(":")[1]} for part in r["context_parts"].split("|") if ":" in part]
                 statements.append({"context_id": r["context_id"], "parts": parts, "zh-CN": r["statement_zh"], "en": r["statement_en"],
-                                   "evidence_state": r["evidence_state"], "citation_ref": r["citation_ref"], "source_id": r["source_id"]})
+                                   "evidence_state": r["evidence_state"], "citation_ref": r["citation_ref"], "source_id": r["source_id"],
+                                   "source_title": r.get("source_title", "") or ("owner" if r["source_id"] == "owner" else r["source_id"])})
     merged_path = OUT / "CONTEXT_STATEMENTS_MERGED.tsv"
     with merged_path.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t", lineterminator="\n"); w.writerow(["context_id", "context_parts", "statement_zh", "statement_en", "evidence_state", "citation_ref", "source_id"])
@@ -131,7 +132,14 @@ def main() -> int:
         pr["owner_name"] = {"zh-CN": raw["owner_name_zh"], "en": raw["owner_name_en"]}
         pr["display_tags"] = {"zh-CN": [t for t in raw["display_tags_zh"].split("|") if t], "en": [t for t in raw["display_tags_en"].split("|") if t]}
         pr["owner_reviewed"] = raw.get("owner_reviewed", "false") == "true"
-    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "concept_tags": concept_tags,
+    sources_path = OUT / "LITERATURE_SOURCES.json"
+    sources = json.loads(sources_path.read_text(encoding="utf-8"))["sources"] if sources_path.is_file() else []
+    for st in statements:
+        if st["source_id"] != "owner":
+            src = next((x for x in sources if x["source_id"] == st["source_id"]), None)
+            if src:
+                st["source_title"] = src["title"]
+    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "sources": sources, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "concept_tags": concept_tags,
                     "delta_words": {"zh-CN": {"pos": "比这个语境的理论值更明显", "neg": "比这个语境的理论值更弱"}, "en": {"pos": "stronger than this context predicts", "neg": "weaker than this context predicts"}},
                     "context_statements": statements,
                     "tag_rules": {"priority_1": "concept-level tags when concept ids are present, ranked by projection weight against the vector", "priority_2": "dimension-level tags for dominant dimensions (weight > 0.15), first unused tag of the dimension's list", "defect_guard": "defect tags only when defect dominates (>= 0.5)"},

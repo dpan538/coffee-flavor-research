@@ -42,3 +42,11 @@ from `source_locator`.
 `context_axis` accepts the aliases `C0_brew`, `C1_roast`; a combination sentence sets `context_parts` (e.g. `C0:pour_over_v60|C1:light`).
 Templates with the exact columns and example rows live in `templates/` (not ingested). The example claim texts there are placeholders,
 not citations — replace them with sentences taken from the source.
+
+## Declaration state (owner rule, R3-D14)
+
+A claim row whose `source_locator` and `licence_note` are both filled ingests as `LITERATURE_CLAIM`. A row missing either ingests as
+`LITERATURE_CLAIM_PENDING_LOCATOR`: it is still shown in the product with its source name, and the About page says the DOI / link is
+pending. The ingest writes `db/data/product-vector-v1/LITERATURE_SOURCES.json` (one row per source: title, locator, licence note,
+claim count, state) which the About page reads. The three current files carry the owner's core content (11 claims) with locator and
+licence left blank — fill both columns and re-run `ingest-external-literature.py`.

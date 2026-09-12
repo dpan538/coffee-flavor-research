@@ -54,7 +54,7 @@ export type InferenceResult = {
   scoreSemantics: string;
 };
 
-export type ScienceLine = { text: string; evidenceState: string; citationRef: string; about: string };
+export type ScienceLine = { text: string; evidenceState: string; citationRef: string; about: string; sourceTitle: string };
 export type Presentation = {
   locale: Locale;
   headline: { title: string; tags: string[]; similarity: number; ownerReviewed: boolean; profileId: string } | null;
@@ -301,7 +301,7 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
   return presentation.context_statements
     .filter((s) => s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis)?.has(p.option)))
     .sort((a, b) => b.parts.length - a.parts.length)
-    .map((s) => ({ text: s[locale], evidenceState: s.evidence_state, citationRef: s.citation_ref, about: s.context_id }));
+    .map((s) => ({ text: s[locale], evidenceState: s.evidence_state, citationRef: s.citation_ref, about: s.context_id, sourceTitle: (s as { source_title?: string }).source_title ?? s.source_id }));
 }
 
 /** Locale-aware rendering of an inference: headline profile + tags, alternatives, beans, and the science fold. */
@@ -320,7 +320,7 @@ export function present(result: InferenceResult, locale: Locale): Presentation {
     if (Math.abs(delta) < 0.1) continue;
     const label = labels[dimension]?.[locale] ?? dimension;
     const text = locale === "zh-CN" ? `你感受到的${label}${delta > 0 ? words.pos : words.neg}。` : `Your ${label} reads ${delta > 0 ? words.pos : words.neg}.`;
-    science.push({ text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}` });
+    science.push({ text, evidenceState: "COMPUTED_DELTA", citationRef: "engine: V_user − V_pred", about: `delta:${dimension}`, sourceTitle: "engine" });
   }
   return {
     locale,

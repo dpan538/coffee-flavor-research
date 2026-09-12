@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "source_id": "coffee_ad_astra",
+      "title": "Coffee Ad Astra (Jonathan Gagné) — physics of coffee extraction",
+      "locator": "",
+      "licence_note": "",
+      "claims": 3,
+      "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+    },
+    {
+      "source_id": "uc_davis_coffee_center",
+      "title": "UC Davis Coffee Center — brewing kinetics and sensory maps",
+      "locator": "",
+      "licence_note": "",
+      "claims": 4,
+      "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+    },
+    {
+      "source_id": "wcr_sensory_lexicon",
+      "title": "World Coffee Research — Sensory Lexicon / Varieties Catalog",
+      "locator": "",
+      "licence_note": "",
+      "claims": 4,
+      "state": "LITERATURE_CLAIM_PENDING_LOCATOR"
+    }
+  ],
+  "rule": "raw PDFs / full text never enter git; locator and licence note are the owner's; a claim without both is LITERATURE_CLAIM_PENDING_LOCATOR"
+}

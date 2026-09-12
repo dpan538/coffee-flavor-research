@@ -304,7 +304,12 @@ export function applyQ6(result: InferenceResult, selectedDimensions: string[]): 
 export function finalCard(result: InferenceResult, picks: Word[], locale: Locale): FinalCard {
   const labels = presentation.dimension_labels as Record<string, Record<Locale, string>>;
   const words = presentation.delta_words[locale];
-  const science: ScienceLine[] = statementsFor(result.context, locale).slice(0, 1);
+  // 1-2 attribution sentences: the most specific statement, plus the first literature claim that applies
+  // (owner R3-D14: literature must be declared where the user reads it), then the computed bias line
+  const applicable = statementsFor(result.context, locale);
+  const science: ScienceLine[] = applicable.slice(0, 1);
+  const literature = applicable.find((l) => l.evidenceState.startsWith("LITERATURE_CLAIM") && l !== science[0]);
+  if (literature) science.push(literature);
   const top = result.topDeltaDimensions[0];
   if (top && Math.abs(top.delta) >= 0.1) {
     const label = labels[top.dimension]?.[locale] ?? top.dimension;
@@ -313,6 +318,7 @@ export function finalCard(result: InferenceResult, picks: Word[], locale: Locale
       evidenceState: "COMPUTED_DELTA",
       citationRef: "engine: V_user − V_pred",
       about: `delta:${top.dimension}`,
+      sourceTitle: "engine",
     });
   }
   const first = result.profiles[0];

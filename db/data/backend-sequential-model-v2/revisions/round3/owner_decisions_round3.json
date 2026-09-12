@@ -313,6 +313,23 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T04:54:30Z"
+    },
+    {
+      "id": "R3-D14",
+      "subject": "Vue 3 + Tailwind v3 isolated PWA; two-level literature declaration; three claims files; stop before visual design",
+      "decision": "(1) Stack: Vue 3 (Composition API + TS) + Tailwind CSS v3 + lucide icons, physically isolated from the old React components in a new entry; @vitejs/plugin-vue + tailwind in Vite; screenModel bound through a shallowRef. Components: AppHeader, ContextSetupCard, QuizCard, FirstDescriptionCard, EscalationModal, FinalAttributionCard, AboutDrawer, App. (2) No Chinese social-media corpus for now. (3) Claims must be declared at two levels: UI (every science line shows evidence_state and source; About lists the three sources with DOI/link and licence note) and compliance (no PDFs in git; source_locator in README; LITERATURE_CLAIM strictly separate from OWNER_STATEMENT). (4) Core content of the three claims files supplied by the owner (WCR -> C2_variety + C1_roast; UC Davis -> C0_brew; Coffee Ad Astra -> C0_brew and C0__C1 combinations). (5) Build the structure, stop before visual design; the owner will provide references.",
+      "owner_words": "直接与旧版 React 组件做物理隔离，采用 Vue 3 (Composition API + TS) + Tailwind CSS v3 … icon用lucide … 我们暂时不引入中文社媒语料 … 必须声明，且需要在两个层面进行显式标注 … 原始 PDF/论文全文绝不提交进 Git 仓库 … 先完成结构性构建，暂时还不开始视觉设计，在视觉前一步停下",
+      "applied": {
+        "pwa": "apps/pwa (index.html, vite.config.ts with vue + vite-plugin-pwa, tsconfig, tailwind/postcss), src/store.ts bridge, App.vue + 7 components; scripts pwa:dev / pwa:build / pwa:typecheck; vue-tsc clean; vite build + sw.js generated; dist ignored",
+        "claims": "11 rows in three *.claims.csv from the owner's core content; ingest marks rows without DOI/licence as LITERATURE_CLAIM_PENDING_LOCATOR and writes LITERATURE_SOURCES.json; bundle presentation.sources; ScienceLine.sourceTitle; finalCard adds the first applicable literature line; About citations read locator / licence / state from the registry",
+        "tests": "51/51; package tsc clean",
+        "deps": "vue, lucide-vue-next, @vitejs/plugin-vue, vue-tsc, tailwindcss@3, postcss, autoprefixer, vite-plugin-pwa",
+        "open": [
+          "visual design references (owner)",
+          "DOI / link + licence note for the three sources"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T05:10:08Z"
     }
   ],
   "guards": {

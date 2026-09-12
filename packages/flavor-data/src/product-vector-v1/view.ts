@@ -121,7 +121,7 @@ export type ResultCardModel = {
   title: string;
   picked: string[];
   tags: string[];
-  science: Array<{ text: string; evidenceState: string; citationRef: string }>;
+  science: Array<{ text: string; evidenceState: string; citationRef: string; sourceTitle: string }>;
   closing: string;
   corrected: boolean; // true after Q6 (second, refined card)
   shareText: string;
@@ -163,7 +163,7 @@ export function screenModel(session: Session): ScreenModel {
     title,
     picked: tags,
     tags,
-    science: (card?.science ?? []).map((l) => ({ text: l.text, evidenceState: l.evidenceState, citationRef: l.citationRef })),
+    science: (card?.science ?? []).map((l) => ({ text: l.text, evidenceState: l.evidenceState, citationRef: l.citationRef, sourceTitle: l.sourceTitle })),
     closing: card?.closing ?? "",
     corrected: session.q6 !== null && session.q6.selected.length > 0,
     shareText: `${title}\n${tags.join(" | ")}`,

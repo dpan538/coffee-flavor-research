@@ -6,29 +6,47 @@ import bundle from "../../../../db/data/product-vector-v1/product-vector-v1.json
 import { type Locale } from "./engine";
 
 export type AboutSection = { id: string; title: string; paragraphs: string[]; bullets?: string[] };
-export type Citation = { id: string; title: string; role: string; evidenceState: "LITERATURE_CLAIM" | "PENDING_INGEST"; locator: string };
+export type Citation = { id: string; title: string; role: string; evidenceState: "LITERATURE_CLAIM" | "LITERATURE_CLAIM_PENDING_LOCATOR" | "PENDING_INGEST"; locator: string; licenceNote: string; claims: number };
 
 const flow = bundle.question_flow;
 const dims = bundle.dimensions.length;
 const profiles = bundle.profiles.length;
 const concepts = Object.keys(bundle.concept_projection).length;
-const ingested = bundle.presentation.context_statements.filter((s) => s.evidence_state === "LITERATURE_CLAIM").length;
 
+type SourceRow = { source_id: string; title: string; locator: string; licence_note: string; claims: number; state: string };
+const ROLES: Record<string, Record<Locale, string>> = {
+  wcr_sensory_lexicon: { "zh-CN": "94 个规范风味概念与 12 维投影标尺的标准化定义；品种基因上限与烘焙演变的化学参照物", en: "standard definitions behind the 94 canonical concepts and the 12-dimension projection; variety ceilings and roast evolution references" },
+  uc_davis_coffee_center: { "zh-CN": "萃取动力学与感官图谱：研磨度、水温、TDS 对前段极性小分子酸与后段大分子苦感的释放规律", en: "brewing kinetics and sensory maps: how grind, temperature and TDS release polar acids early and large bitter molecules late" },
+  coffee_ad_astra: { "zh-CN": "咖啡萃取物理学：通道效应、萃取率（EY%）对中段甜感与尾段瑕疵风味的归因", en: "physics of extraction: channeling and extraction yield versus mid-palate sweetness and late off-notes" },
+};
+const TITLES: Record<string, string> = { wcr_sensory_lexicon: "World Coffee Research — Sensory Lexicon / Varieties Catalog", uc_davis_coffee_center: "UC Davis Coffee Center", coffee_ad_astra: "Coffee Ad Astra (Jonathan Gagné)" };
+
+/** The three literature sources from the bundle's source registry (locator and licence note are the owner's), plus GACTT. */
 export function aboutCitations(locale: Locale): Citation[] {
-  const state = ingested > 0 ? "LITERATURE_CLAIM" : "PENDING_INGEST";
-  return locale === "zh-CN"
-    ? [
-        { id: "wcr", title: "World Coffee Research — Sensory Lexicon / Varieties Catalog", role: "94 个规范风味概念与 12 维投影标尺的标准化定义；品种的感官潜能", evidenceState: state, locator: "db/data/external-literature/wcr_sensory_lexicon.claims.csv" },
-        { id: "ucdavis", title: "UC Davis Coffee Center", role: "萃取动力学与感官图谱：研磨度、水温、TDS 对前段极性小分子酸与后段大分子苦感的释放规律", evidenceState: state, locator: "db/data/external-literature/uc_davis_coffee_center.claims.csv" },
-        { id: "adastra", title: "Coffee Ad Astra (Jonathan Gagné)", role: "咖啡萃取物理学：通道效应、萃取率（EY%）对中段甜感与尾段缺陷风味的归因", evidenceState: state, locator: "db/data/external-literature/coffee_ad_astra.claims.csv" },
-        { id: "gactt", title: "Great American Coffee Taste Test (GACTT)", role: "4,042 位消费者的盲测笔记：消费端风味用语的频次基底（只用聚合计数）", evidenceState: "LITERATURE_CLAIM", locator: "db/data/product-vector-v1/GACTT_CONSUMER_TERM_FREQUENCY.tsv" },
-      ]
-    : [
-        { id: "wcr", title: "World Coffee Research — Sensory Lexicon / Varieties Catalog", role: "standard definitions behind the 94 canonical concepts and the 12-dimension projection; variety sensory potential", evidenceState: state, locator: "db/data/external-literature/wcr_sensory_lexicon.claims.csv" },
-        { id: "ucdavis", title: "UC Davis Coffee Center", role: "brewing kinetics and sensory maps: how grind, temperature and TDS release polar acids early and large bitter molecules late", evidenceState: state, locator: "db/data/external-literature/uc_davis_coffee_center.claims.csv" },
-        { id: "adastra", title: "Coffee Ad Astra (Jonathan Gagné)", role: "physics of extraction: channeling and extraction yield versus mid-palate sweetness and late off-notes", evidenceState: state, locator: "db/data/external-literature/coffee_ad_astra.claims.csv" },
-        { id: "gactt", title: "Great American Coffee Taste Test (GACTT)", role: "blind-tasting notes from 4,042 consumers: the frequency base of consumer flavor language (aggregate counts only)", evidenceState: "LITERATURE_CLAIM", locator: "db/data/product-vector-v1/GACTT_CONSUMER_TERM_FREQUENCY.tsv" },
-      ];
+  const registry = ((bundle.presentation as { sources?: SourceRow[] }).sources ?? []) as SourceRow[];
+  const out: Citation[] = [];
+  for (const id of ["wcr_sensory_lexicon", "uc_davis_coffee_center", "coffee_ad_astra"]) {
+    const row = registry.find((r) => r.source_id === id);
+    out.push({
+      id,
+      title: row?.title || TITLES[id]!,
+      role: ROLES[id]![locale],
+      evidenceState: row ? (row.state as Citation["evidenceState"]) : "PENDING_INGEST",
+      locator: row?.locator || (locale === "zh-CN" ? "DOI / 链接待 owner 补充" : "DOI / link pending (owner)"),
+      licenceNote: row?.licence_note || (locale === "zh-CN" ? "许可说明待补充" : "licence note pending"),
+      claims: row?.claims ?? 0,
+    });
+  }
+  out.push({
+    id: "gactt",
+    title: "Great American Coffee Taste Test (GACTT)",
+    role: locale === "zh-CN" ? "4,042 位消费者的盲测笔记：消费端风味用语的频次基底（只用聚合计数）" : "blind-tasting notes from 4,042 consumers: the frequency base of consumer flavor language (aggregate counts only)",
+    evidenceState: "LITERATURE_CLAIM",
+    locator: "db/data/product-vector-v1/GACTT_CONSUMER_TERM_FREQUENCY.tsv",
+    licenceNote: locale === "zh-CN" ? "owner 已审阅批准（T2 消费者观测）；仓库只含聚合频次" : "owner-reviewed and approved (T2 consumer observations); only aggregate counts are stored",
+    claims: 0,
+  });
+  return out;
 }
 
 export function aboutSections(locale: Locale): AboutSection[] {
@@ -49,7 +67,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
         id: "literature",
         title: "学术文献与理论支持",
         paragraphs: ["归因文案的每一句都带证据级别：OWNER_STATEMENT（产品方陈述）、CORPUS_MEASURED（从 83,031 条专业评审断言实测）、LITERATURE_CLAIM（引自下列文献）。"],
-        bullets: aboutCitations("zh-CN").map((c) => `${c.title} — ${c.role}`),
+        bullets: aboutCitations("zh-CN").map((c) => `${c.title} — ${c.role}（${c.locator}；${c.licenceNote}；${c.evidenceState}）`),
       },
       {
         id: "lexicon",
@@ -76,7 +94,7 @@ export function aboutSections(locale: Locale): AboutSection[] {
       id: "literature",
       title: "Literature and theoretical basis",
       paragraphs: ["Every attribution sentence carries its evidence state: OWNER_STATEMENT, CORPUS_MEASURED (from 83,031 professional review assertions) or LITERATURE_CLAIM (from the sources below)."],
-      bullets: aboutCitations("en").map((c) => `${c.title} — ${c.role}`),
+      bullets: aboutCitations("en").map((c) => `${c.title} — ${c.role} (${c.locator}; ${c.licenceNote}; ${c.evidenceState})`),
     },
     {
       id: "lexicon",
