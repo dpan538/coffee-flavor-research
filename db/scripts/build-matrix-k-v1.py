@@ -255,11 +255,30 @@ def main() -> int:
     context_rules = {
         "blend": {"max_varieties": 3, "composition": "normalize(sum of variety vectors)"},
         "origin_bias_delta": 0.1,
+        "origin_continents": {"africa": {"zh-CN": "非洲", "en": "Africa"}, "asia": {"zh-CN": "亚洲", "en": "Asia"}, "americas": {"zh-CN": "美洲", "en": "Americas"}},
+        # owner's origin chart (2026-09-12): countries grouped by continent; the continent's usual tendencies give the δ-0.1
+        # nudge (Africa fruit / floral, light body; Asia woody / spice, medium body; Americas nut / cocoa, fuller body), with a
+        # few country-level specifics. The chip shows only the place name — the nudge is internal.
         "origin_regions": {
-            "ethiopia_east_africa": {"label": {"zh-CN": "埃塞俄比亚 / 东非", "en": "Ethiopia / East Africa"}, "bias": ["floral", "acidity"]},
-            "colombia_central_south_america": {"label": {"zh-CN": "哥伦比亚 / 中南美", "en": "Colombia / Central & South America"}, "bias": ["fruity", "sweetness"]},
-            "yunnan": {"label": {"zh-CN": "云南", "en": "Yunnan"}, "bias": ["fermented_winey", "nutty_chocolate"]},
-            "kenya": {"label": {"zh-CN": "肯尼亚", "en": "Kenya"}, "bias": ["acidity", "fruity"]},
+            "ethiopia": {"label": {"zh-CN": "埃塞俄比亚", "en": "Ethiopia"}, "continent": "africa", "bias": ["floral", "fruity"]},
+            "kenya": {"label": {"zh-CN": "肯尼亚", "en": "Kenya"}, "continent": "africa", "bias": ["acidity", "fruity"]},
+            "rwanda": {"label": {"zh-CN": "卢旺达", "en": "Rwanda"}, "continent": "africa", "bias": ["fruity", "floral"]},
+            "tanzania": {"label": {"zh-CN": "坦桑尼亚", "en": "Tanzania"}, "continent": "africa", "bias": ["acidity", "fruity"]},
+            "yunnan": {"label": {"zh-CN": "中国云南", "en": "Yunnan, China"}, "continent": "asia", "bias": ["nutty_chocolate", "body"]},
+            "india": {"label": {"zh-CN": "印度", "en": "India"}, "continent": "asia", "bias": ["spice", "body"]},
+            "indonesia": {"label": {"zh-CN": "印尼", "en": "Indonesia"}, "continent": "asia", "bias": ["woody_earthy", "body"]},
+            "vietnam": {"label": {"zh-CN": "越南", "en": "Vietnam"}, "continent": "asia", "bias": ["body", "nutty_chocolate"]},
+            "yemen": {"label": {"zh-CN": "也门", "en": "Yemen"}, "continent": "asia", "bias": ["spice", "fruity"]},
+            "philippines": {"label": {"zh-CN": "菲律宾", "en": "Philippines"}, "continent": "asia", "bias": ["body", "woody_earthy"]},
+            "brazil": {"label": {"zh-CN": "巴西", "en": "Brazil"}, "continent": "americas", "bias": ["nutty_chocolate", "sweetness"]},
+            "panama": {"label": {"zh-CN": "巴拿马", "en": "Panama"}, "continent": "americas", "bias": ["floral", "acidity"]},
+            "jamaica": {"label": {"zh-CN": "牙买加", "en": "Jamaica"}, "continent": "americas", "bias": ["body", "sweetness"]},
+            "mexico": {"label": {"zh-CN": "墨西哥", "en": "Mexico"}, "continent": "americas", "bias": ["nutty_chocolate", "body"]},
+            "colombia": {"label": {"zh-CN": "哥伦比亚", "en": "Colombia"}, "continent": "americas", "bias": ["fruity", "sweetness"]},
+            "guatemala": {"label": {"zh-CN": "危地马拉", "en": "Guatemala"}, "continent": "americas", "bias": ["nutty_chocolate", "fruity"]},
+            "nicaragua": {"label": {"zh-CN": "尼加拉瓜", "en": "Nicaragua"}, "continent": "americas", "bias": ["nutty_chocolate", "sweetness"]},
+            "honduras": {"label": {"zh-CN": "洪都拉斯", "en": "Honduras"}, "continent": "americas", "bias": ["sweetness", "nutty_chocolate"]},
+            "costa_rica": {"label": {"zh-CN": "哥斯达黎加", "en": "Costa Rica"}, "continent": "americas", "bias": ["acidity", "sweetness"]},
         },
         "owner_reviewed": True,
     }

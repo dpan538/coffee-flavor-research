@@ -383,6 +383,25 @@
         "owner_follow_up_2026-09-12": "Home tiles near-square (aspect 1 : 1.02) at the top of the lower band; language toggle a black rounded-rectangle badge (54 dp) like the 极浅烘 badge on the reference cards; palette aligned with the owner's Big Sur Coffee bag cards — navy #1F3B5C for the final card and the sample card (higher contrast), lavender / lime / ochre / pink / terracotta / peach / olive for the context and question steps."
       },
       "recorded_at_utc": "2026-09-12T11:30:00Z"
+    },
+    {
+      "id": "R3-D18",
+      "subject": "Copy review 3 + brand pass: the flavor card as the product object, home to the owner's proportions, poster-style About visuals, origins by continent, selection trace, serif proposals",
+      "decision": "The flavor card is rebuilt as a three-layer object (the cup's own information with dotted leaders; the five confirmed words at equal weight under a violet selection trace; the reference entry and the flavorwords signature) on a cream card with a motif made of the words' feature colours, and it is shown on the home page as the main display object as well as in About and at the end of the flow — the group name no longer titles the card. The selection trace (violet underline) follows a chosen word from the quiz options and the picks to the card and the samples. Home follows the owner's stated proportions: hero 2.25 : 1 lower band, a smaller bold wordmark, 'Put this cup into words' bold, no status dot, two tall bright rectangular buttons (Start clay, About lime), the language badge a black rounded rectangle. About opens with 从品味，到表达, two intro sentences and a mission paragraph with real counts (8 panels, 83,031 descriptions, 4,042 consumers, roaster labels on Dianping / Xiaohongshu / Taobao); the author section is the owner's one-liner plus one sentence of work; the big numbers leave the headlines. The two visuals are rebuilt as full black pages drawn by scroll (420 dvh each): a column-and-trunk poster (A–L features on a log scale, stacked by panel, joining into the 8,142-record trunk, with a panel index and feature legend) after the extinction chart, and a numbered profile network (16 circles on two rings, curves to the two nearest groups, C1–C6 callouts with shared features, index and legend) after the spheres spread. Origin chips are the owner's chart: 19 countries grouped by continent, place names only, δ-0.1 nudges from the continent's usual tendencies. Seven OFL serif proposals for the wordmark delivered as a comparison page (Fraunces, Instrument Serif, Young Serif recommended).",
+      "owner_words": "首页这两个按钮应该是接近正方形 … 开始和关于应该是两个长条形的长方形按钮，1:1.25比例，都是亮色，下方的紫色部分和上方hero部分的比例应该是1:2.25左右，整体需要bold，现在的logo太大了 … 一个无法理解的绿色点需要去掉 … 两个大的数据可视化都不是满页的 … 图五给第一张图，图六学习架构和视觉化然后给第二张图 … 所有信息都要能读 … about应该写成从品味，到表达 … 最应该先重做的，是风味卡 … 这张卡里，哪一部分是我的？… 紫色划线 … 卡片可以有多个造型 … 我计划加入一种特别的serif字体，我需要你给我几个提案",
+      "applied": {
+        "data": "build-matrix-k-v1 origin_continents + 19 origin_regions with continent and bias",
+        "code": "view.ts Chip.group / origin groups / cupInfo; about.ts (从品味，到表达, mission, three-layer example, compressed author); FlavorCard.vue (new); FinalAttributionCard, App.vue home, AppHeader, QuizCard / FirstDescriptionCard / ContextSetupCard (selection trace, continent groups), SourceColumns.vue (new), ProfileNetwork.vue (new), AboutDrawer five pages; style.css .mark / .leader / .tile",
+        "verified": "vitest 54/54, vue-tsc, vite build; copy document regenerated",
+        "open": [
+          "owner picks a serif for the wordmark (font files + OFL into public/fonts)",
+          "card variants beyond the cream one (navy, patterned) once the serif is chosen",
+          "font files",
+          "share as PNG"
+        ],
+        "owner_follow_up": "The violet selection trace was withdrawn the same day (不要滥用紫色线条 … 全部删掉): no underline anywhere; a chosen option or chip inverts to ink as before; the card's words stand by size and spacing."
+      },
+      "recorded_at_utc": "2026-09-12T13:30:00Z"
     }
   ],
   "guards": {

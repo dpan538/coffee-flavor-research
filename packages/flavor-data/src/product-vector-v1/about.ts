@@ -11,8 +11,9 @@ export type AboutBlock = { title: string; body: string };
 export type AboutSection = { id: string; title: string; summary: string; blocks: AboutBlock[]; folded: boolean };
 export type Citation = { id: string; title: string; role: string; locator: string; terms: string; use: string; evidenceState: string; claims: number; claimsLive: number; claimsPendingReview: number };
 export type AboutStat = { key: string; value: number; label: string };
-export type Approach = { eyebrow: string; title: string; intro: string[] };
-export type ExampleCard = { eyebrow: string; title: string; words: string[]; note: string };
+export type Approach = { eyebrow: string; title: string; intro: string[]; mission: string[] };
+/** the sample card's three layers: the cup's info, the confirmed words, the reference entry + signature */
+export type ExampleCard = { eyebrow: string; title: string; cup: Array<{ label: string; value: string }>; words: string[]; reference: string; brand: string; note: string };
 export type Contribution = { value: number; unit: string; label: string; use: string };
 export type Author = { eyebrow: string; name: string; paragraphs: string[]; contributions: Contribution[] };
 export type ScopeItem = { key: string; value: number; unit: string; label: string; note: string };
@@ -28,7 +29,7 @@ const pending = (facts as { literature_claims_pending_review?: number }).literat
 const n = (v: number, locale: Locale) => v.toLocaleString(locale === "zh-CN" ? "zh-CN" : "en-US");
 
 export function aboutTitle(locale: Locale): { title: string; subtitle: string } {
-  return locale === "zh-CN" ? { title: "从品饮，到表达", subtitle: "From tasting to words" } : { title: "From tasting to words", subtitle: "从品饮，到表达" };
+  return locale === "zh-CN" ? { title: "从品味，到表达", subtitle: "From tasting to words" } : { title: "From tasting to words", subtitle: "从品味，到表达" };
 }
 
 /** What flavorwords is for — the first thing About says. Owner's wording. */
@@ -36,10 +37,14 @@ export function aboutApproach(locale: Locale): Approach {
   if (locale === "zh-CN") {
     return {
       eyebrow: "关于 flavorwords",
-      title: "从品饮，到表达",
+      title: "从品味，到表达",
       intro: [
         "flavorwords 把咖啡评审与感官资料中的描述，整理成日常品饮时可以使用的词汇与提问。",
         "从酸质、香气、甜感和口感出发，你选出贴近这一杯的表达，组成自己的风味卡。",
+      ],
+      mission: [
+        `我们想解决的困难很具体：专业的风味词很多，落到自己的杯子上却常常说不出口。为此整理了 ${facts.families.length} 组公开评审来源的 ${n(facts.source_assertions, locale)} 条风味描述、${n(facts.consumer_respondents, locale)} 位消费者的盲测用词，以及大众点评、小红书与淘宝上烘焙商标签里的中文说法。`,
+        "我们致力于提供足够准确的词，同时给每个人保留自己的说法。",
       ],
     };
   }
@@ -50,6 +55,10 @@ export function aboutApproach(locale: Locale): Approach {
       "Some cups are easier to taste than to describe. flavorwords turns the descriptions found in coffee reviews and sensory lexicons into words and questions you can use while drinking.",
       "Starting from acidity, aroma, sweetness and mouthfeel, you choose the expressions that fit this cup and make your own flavor card.",
     ],
+    mission: [
+      `The difficulty is concrete: professional flavor words are plentiful, yet hard to bring to your own cup. So we organised ${n(facts.source_assertions, locale)} flavor descriptions from ${facts.families.length} public review sources, the blind-tasting vocabulary of ${n(facts.consumer_respondents, locale)} consumers, and the Chinese expressions found on roaster labels across Dianping, Xiaohongshu and Taobao.`,
+      "We work to offer words accurate enough, while leaving everyone their own way of saying it.",
+    ],
   };
 }
 
@@ -58,8 +67,8 @@ export function aboutExample(locale: Locale): ExampleCard {
   const profile = bundle.profiles.find((p) => (p as { anchor_id?: string }).anchor_id === "anchor-09") ?? bundle.profiles[0]!;
   const words = [...profile.display_tags[locale].slice(0, 4), P.dimension_tags.acidity?.[locale]?.[0] ?? ""].filter(Boolean).slice(0, 5);
   return locale === "zh-CN"
-    ? { eyebrow: "风味卡示例 · 浅烘手冲", title: profile.owner_name[locale], words, note: "" }
-    : { eyebrow: "Sample flavor card · light-roast pour-over", title: profile.owner_name[locale], words, note: "" };
+    ? { eyebrow: "风味卡示例", title: profile.owner_name[locale], cup: [{ label: "冲煮", value: "手冲 (V60)" }, { label: "烘焙", value: "浅烘" }], words, reference: `参考风味 · ${profile.owner_name[locale]}`, brand: "flavorwords", note: "" }
+    : { eyebrow: "Sample flavor card", title: profile.owner_name[locale], cup: [{ label: "Brew", value: "Pour-over (V60)" }, { label: "Roast", value: "Light" }], words, reference: `Reference · ${profile.owner_name[locale]}`, brand: "flavorwords", note: "" };
 }
 
 /** Who did what: the owner's own boundary between their work and the sources' work; numbers tied to their use. */
@@ -69,8 +78,8 @@ export function aboutAuthor(locale: Locale): Author {
       eyebrow: "研究、设计与开发",
       name: "潘岱 · Dai Pan",
       paragraphs: [
-        "我整理公开咖啡评审与感官词汇，建立描述之间的对应关系，并设计了风味分组、双语词表和随回答调整的提问方式。",
-        "从资料整理到交互设计与开发，这个项目关注的是：怎样让专业的风味语言更便于日常品饮时使用？",
+        "flavorwords 关注的是：怎样提供足够准确的词，同时给每个人保留自己的说法。",
+        "资料整理、风味分组、双语词表、随回答调整的提问方式，以及从选词到确认风味卡的交互设计与开发。",
       ],
       contributions: [
         { value: facts.canonical_concepts, unit: "个", label: "双语风味词", use: "对照专业感官词汇整理，并补充中文品饮表达。" },
@@ -83,8 +92,8 @@ export function aboutAuthor(locale: Locale): Author {
     eyebrow: "Research, design and development",
     name: "Dai Pan · 潘岱",
     paragraphs: [
-      "I organised public coffee reviews and sensory lexicons, built the correspondences between descriptions, and designed the flavor groups, the bilingual word list and the questions that adapt to each answer.",
-      "From organising the material to designing and building the interaction, the project asks one question: how can professional flavor language be easier to use while drinking coffee?",
+      "flavorwords asks one thing: how to offer words accurate enough, while leaving everyone their own way of saying it.",
+      "Organising the material, the flavor groups, the bilingual word list, the questions that adapt to each answer, and the design and build of the path from choosing words to confirming a card.",
     ],
     contributions: [
       { value: facts.canonical_concepts, unit: "", label: "bilingual flavor words", use: "aligned with professional lexicons, with Chinese tasting expressions added." },

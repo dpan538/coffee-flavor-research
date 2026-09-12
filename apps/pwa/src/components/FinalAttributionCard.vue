@@ -1,21 +1,15 @@
 <script setup lang="ts">
-// Final card: heading (small) → profile → three lead words (largest) → two more (muted) → colour bar of the picked
-// words' dimensions → flavor notes (CSS-grid fold, closed by default) → icon bar: home, start over, share.
+// Final screen: the flavor card (the product object) on the navy band, then "关于这段描述" folded, then the icon bar.
 import { computed, ref } from "vue";
 import { House, RotateCcw, Share2 } from "lucide-vue-next";
 import type { ResultCardModel } from "flavor-data/product-vector-v1/view";
+import FlavorCard from "./FlavorCard.vue";
 import { home, locale, restart } from "../store";
 
 const props = defineProps<{ model: ResultCardModel }>();
 const open = ref(false);
-const labels = computed(() => (locale.value === "zh-CN" ? { home: "首页", again: "重新体验", share: "分享" } : { home: "Home", again: "Start over", share: "Share" }));
-const main = computed(() => props.model.picked.slice(0, 3));
-const rest = computed(() => props.model.picked.slice(3));
-const DIM_COLORS: Record<string, string> = {
-  acidity: "#F2C24E", sweetness: "#F5B0C6", body: "#9B7B5D", floral: "#7268C9", fruity: "#EE8F70", nutty_chocolate: "#B97C4E",
-  fermented_winey: "#8C4A4C", bitter_roasted: "#1E1C1A", spice: "#DA8A80", herbal_green: "#6FA85A", woody_earthy: "#2F7A4C", defect: "#7F90B8",
-};
-const bar = computed(() => props.model.pickedDimensions.map((d) => DIM_COLORS[d] ?? "#999"));
+const labels = computed(() => (locale.value === "zh-CN" ? { home: "首页", again: "重新体验", share: "分享", reference: "参考风味" } : { home: "Home", again: "Start over", share: "Share", reference: "Reference" }));
+const eyebrow = computed(() => `${props.model.heading}${props.model.corrected ? ` · ${locale.value === "zh-CN" ? "已确认" : "confirmed"}` : ""}`);
 async function share(text: string) {
   if (typeof navigator === "undefined") return;
   const nav = navigator as Navigator & { share?: (d: { text: string }) => Promise<void> };
@@ -26,32 +20,26 @@ async function share(text: string) {
 
 <template>
   <section class="h-full flex flex-col text-cream fold-card" data-component="FinalAttributionCard" :data-corrected="model.corrected">
-    <div class="px-6 pt-7 flex flex-col gap-2">
-      <p class="text-[11px] tracking-[0.2em] opacity-60">{{ model.heading }}<span v-if="model.corrected"> · {{ locale === 'zh-CN' ? '已确认' : 'confirmed' }}</span></p>
-      <h2 class="text-[22px] opacity-90 mt-1" :class="locale === 'zh-CN' ? 'display-zh' : 'display'">［{{ model.title }}］</h2>
-      <p class="text-[30px] leading-[1.15] font-semibold mt-2" data-words="main">{{ main.join("  │  ") }}</p>
-      <p class="text-lg opacity-75 mt-1" data-words="secondary">{{ rest.join("  ·  ") }}</p>
-      <div class="flex h-1.5 rounded-full overflow-hidden mt-4" aria-hidden="true">
-        <span v-for="(c, i) in bar" :key="i" class="flex-1" :style="{ backgroundColor: c }" />
-      </div>
-    </div>
-    <div class="mx-6 mt-5 flex-1 min-h-0 overflow-y-auto border-t border-cream/20 pt-3">
-      <button type="button" class="fold-toggle text-[13px] tracking-[0.18em] opacity-80" :aria-expanded="open" @click="open = !open">
-        <span>{{ model.scienceHeading }}</span><span class="text-xl leading-none">{{ open ? '–' : '+' }}</span>
-      </button>
-      <div class="fold" :data-open="open">
-        <div>
-          <ul class="mt-3 space-y-5 text-[15px] leading-relaxed">
-            <li v-for="line in model.science" :key="line.citationRef + line.text" :data-evidence-state="line.evidenceState">
-              <p class="text-[11px] tracking-[0.2em] opacity-60 mb-1">{{ line.label }}</p>
-              <p class="opacity-95">{{ line.text }}</p>
-              <p v-if="line.citation" class="text-xs opacity-60 mt-1 italic">{{ line.citation }}</p>
-            </li>
-          </ul>
+    <div class="flex-1 min-h-0 overflow-y-auto px-4 pt-4 pb-2">
+      <FlavorCard :cup="model.cupInfo" :words="model.picked" :dimensions="model.pickedDimensions" :reference="`${labels.reference} · ${model.title}`" :eyebrow="eyebrow" />
+      <div class="mx-2 mt-4 border-t border-cream/20 pt-1">
+        <button type="button" class="fold-toggle text-[13px] tracking-[0.18em] opacity-80" :aria-expanded="open" @click="open = !open">
+          <span>{{ model.scienceHeading }}</span><span class="text-xl leading-none">{{ open ? '–' : '+' }}</span>
+        </button>
+        <div class="fold" :data-open="open">
+          <div>
+            <ul class="mt-2 space-y-5 text-[15px] leading-relaxed pb-3">
+              <li v-for="line in model.science" :key="line.citationRef + line.text" :data-evidence-state="line.evidenceState">
+                <p class="text-[11px] tracking-[0.2em] opacity-60 mb-1">{{ line.label }}</p>
+                <p class="opacity-95">{{ line.text }}</p>
+                <p v-if="line.citation" class="text-xs opacity-60 mt-1 italic">{{ line.citation }}</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <nav class="px-6 pt-4 pb-5 flex items-center justify-between" :aria-label="locale === 'zh-CN' ? '操作' : 'Actions'">
+    <nav class="px-6 pt-3 pb-5 flex items-center justify-between" :aria-label="locale === 'zh-CN' ? '操作' : 'Actions'">
       <button type="button" class="rounded-full border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.home" :title="labels.home" @click="home"><House :size="22" :stroke-width="1.75" /></button>
       <button type="button" class="rounded-full border border-cream/35 w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.again" :title="labels.again" @click="restart"><RotateCcw :size="22" :stroke-width="1.75" /></button>
       <button type="button" class="rounded-full bg-cream text-ink w-14 h-14 inline-flex items-center justify-center" :aria-label="labels.share" :title="labels.share" @click="share(model.shareText)"><Share2 :size="22" :stroke-width="1.75" /></button>

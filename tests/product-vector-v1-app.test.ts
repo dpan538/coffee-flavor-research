@@ -5,7 +5,7 @@
 import "fake-indexeddb/auto";
 import { describe, expect, it } from "vitest";
 import { DIMENSIONS, buildVPred, cosine, productVectorBundle } from "../packages/flavor-data/src/product-vector-v1";
-import { aboutAuthor, aboutCitations, aboutExample, aboutScope, aboutSections, aboutStats } from "../packages/flavor-data/src/product-vector-v1/about";
+import { aboutApproach, aboutAuthor, aboutCitations, aboutExample, aboutScope, aboutSections, aboutStats } from "../packages/flavor-data/src/product-vector-v1/about";
 import { answer, createSession, firstDescription, nextStep, submitPicks } from "../packages/flavor-data/src/product-vector-v1/session";
 import { appShell, contextCatalog, normalizeContext, screenModel } from "../packages/flavor-data/src/product-vector-v1/view";
 import { addBean, beansAsVectors, clearBeans, conceptIdsFromLabel, deleteBean, listBeans, userDatabase } from "../packages/flavor-data/src/user-db";
@@ -25,7 +25,7 @@ describe("C2 blends and optional origin", () => {
 
   it("origin is optional: it adds a delta-0.1 bias on the region's axes and never dominates", () => {
     const plain = buildVPred({ c1_roast: "light", c2_process: "washed" });
-    const eth = buildVPred({ c1_roast: "light", c2_process: "washed", c2_origin: "ethiopia_east_africa" });
+    const eth = buildVPred({ c1_roast: "light", c2_process: "washed", c2_origin: "ethiopia" });
     const floral = DIMENSIONS.indexOf("floral");
     expect(eth.vPred[floral]!).toBeGreaterThan(plain.vPred[floral]!);
     expect(cosine(plain.vPred, eth.vPred)).toBeGreaterThan(0.95);
@@ -48,14 +48,19 @@ describe("context catalog and screen models", () => {
     }
     const origin = zh.find((c) => c.key === "c2_origin")!;
     expect(origin.optional).toBe(true);
-    expect(origin.chips.map((c) => c.value)).toEqual(["ethiopia_east_africa", "colombia_central_south_america", "yunnan", "kenya"]);
+    // the owner's origin chart: countries grouped by continent, the chip shows only the place name
+    expect(origin.chips).toHaveLength(19);
+    expect(origin.chips.map((c) => c.value)).toContain("yunnan");
+    expect(new Set(origin.chips.map((c) => c.group))).toEqual(new Set(["africa", "asia", "americas"]));
+    if (origin.key === "c2_origin") expect(origin.groups.map((g) => g.label)).toEqual(["非洲", "亚洲", "美洲"]);
+    expect(origin.chips.every((c) => !/[（(]/.test(c.label))).toBe(true);
     expect(en.find((c) => c.key === "c1_roast")!.chips.map((c) => c.label)).toContain("Light");
     expect(normalizeContext({ c2_variety: ["gesha", "gesha", "typica", "bourbon", "sl28_sl34"] }).c2_variety).toEqual(["gesha", "typica", "bourbon"]);
     expect(normalizeContext({ c2_variety: ["gesha"] }).c2_variety).toBe("gesha");
   });
 
   it("screenModel walks question → first description → result with plain data a component can bind", () => {
-    let s = createSession({ c0_preparation: "pour_over_v60", c1_roast: "light", c2_variety: ["gesha", "ethiopian_landrace"], c2_process: "washed", c2_origin: "ethiopia_east_africa" }, "zh-CN");
+    let s = createSession({ c0_preparation: "pour_over_v60", c1_roast: "light", c2_variety: ["gesha", "ethiopian_landrace"], c2_process: "washed", c2_origin: "ethiopia" }, "zh-CN");
     let m = screenModel(s);
     expect(m.kind).toBe("question");
     const answers: Record<string, string> = { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" };
@@ -78,6 +83,10 @@ describe("context catalog and screen models", () => {
     expect(["result", "escalation"]).toContain(m.kind);
     if (m.kind === "result") {
       expect(m.picked).toHaveLength(5);
+      // the card's top layer: only what was entered, in reading order (copy review 3)
+      expect(m.cupInfo.map((c) => c.key)).toEqual(["c0_preparation", "c1_roast", "c2_variety", "c2_process", "c2_origin"]);
+      expect(m.cupInfo.find((c) => c.key === "c2_origin")!.value).toBe("埃塞俄比亚");
+      expect(m.cupInfo.find((c) => c.key === "c2_variety")!.value).toContain(" + ");
       expect(m.shareText).toContain("|");
       expect(m.corrected).toBe(false);
       // owner R3-D14: every science line declares its evidence state and its source at the UI level
@@ -162,7 +171,9 @@ describe("about content", () => {
   it("says what the product is for before any implementation word, names the author's work, and gives every number a unit and a use", () => {
     const author = aboutAuthor("zh-CN");
     expect(author.name).toContain("潘岱");
-    expect(author.paragraphs[1]).toContain("怎样让专业的风味语言更便于日常品饮时使用");
+    expect(author.paragraphs[0]).toContain("给每个人保留自己的说法");
+    expect(aboutApproach("zh-CN").mission.join("")).toContain("83,031");
+    expect(aboutApproach("zh-CN").title).toBe("从品味，到表达");
     expect(author.contributions.map((c) => c.value)).toEqual([94, 12, 16]);
     expect(author.contributions.every((c) => c.use.length > 0)).toBe(true);
     const scope = aboutScope("zh-CN");
@@ -174,6 +185,10 @@ describe("about content", () => {
     const example = aboutExample("zh-CN");
     expect(example.words).toHaveLength(5);
     expect(example.eyebrow).toContain("示例");
+    // three layers, no group title repeating the words (copy review 3)
+    expect(example.cup.map((c) => c.label)).toEqual(["冲煮", "烘焙"]);
+    expect(example.reference).toContain("参考风味");
+    expect(example.brand).toBe("flavorwords");
     expect(aboutExample("en").words.some((w) => /[一-鿿]/.test(w))).toBe(false);
   });
 });

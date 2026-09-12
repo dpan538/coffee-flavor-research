@@ -31,7 +31,7 @@
 | c2_process 选项 | 日晒 ｜ 水洗 ｜ 蜜处理 ｜ 半水洗 ｜ 湿刨法 ｜ 厌氧发酵 ｜ 乳酸发酵 ｜ 酒桶发酵 ｜ 低因 | Natural ｜ Washed ｜ Honey ｜ Semi-washed ｜ Wet-hulled ｜ Anaerobic ｜ Lactic fermentation ｜ Barrel-aged ｜ Decaf |
 | c2_origin 标题 | 产地（可选） | Origin (optional) |
 | c2_origin 提示 | 不清楚产地也可以继续。 | Not sure? You can skip this. |
-| c2_origin 选项 | 埃塞俄比亚 / 东非 ｜ 哥伦比亚 / 中南美 ｜ 云南 ｜ 肯尼亚 | Ethiopia / East Africa ｜ Colombia / Central & South America ｜ Yunnan ｜ Kenya |
+| c2_origin 选项 | 埃塞俄比亚 ｜ 肯尼亚 ｜ 卢旺达 ｜ 坦桑尼亚 ｜ 中国云南 ｜ 印度 ｜ 印尼 ｜ 越南 ｜ 也门 ｜ 菲律宾 ｜ 巴西 ｜ 巴拿马 ｜ 牙买加 ｜ 墨西哥 ｜ 哥伦比亚 ｜ 危地马拉 ｜ 尼加拉瓜 ｜ 洪都拉斯 ｜ 哥斯达黎加 | Ethiopia ｜ Kenya ｜ Rwanda ｜ Tanzania ｜ Yunnan, China ｜ India ｜ Indonesia ｜ Vietnam ｜ Yemen ｜ Philippines ｜ Brazil ｜ Panama ｜ Jamaica ｜ Mexico ｜ Colombia ｜ Guatemala ｜ Nicaragua ｜ Honduras ｜ Costa Rica |
 
 ### 再确认 Q6（view.ts）
 
@@ -42,11 +42,18 @@
 
 ### 组件内固定文案
 
-#### 首页 App.vue（两块瓷砖）
+#### 首页 App.vue
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 开始 / 关于 瓷砖 | 开始 ｜ 关于 | Start ｜ About |
+| 两个按钮 | 开始 ｜ 关于 | Start ｜ About |
+| 示例卡（来自 about.ts aboutExample） | 风味卡示例 ｜ 冲煮 / 烘焙 ｜ 参考风味 · … ｜ flavorwords | Sample flavor card ｜ Brew / Roast ｜ Reference · … ｜ flavorwords |
+
+#### 风味卡 FlavorCard（终卡 / 首页示例 / About 示例）
+
+| 位置 | 中文 | English |
+|---|---|---|
+| 三层 | 上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords | top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords |
 
 #### 语境卡 ContextSetupCard
 
@@ -55,6 +62,7 @@
 | 小标签 | 这杯咖啡 | This cup |
 | 单品 / 拼配切换后缀 | ≤ 3 | ≤ 3 |
 | 下一步 / 跳过 / 已选 | 下一步 ｜ 跳过 ｜ 已选 | Next ｜ Skip ｜ chosen |
+| 产地分组标题 | 非洲 ｜ 亚洲 ｜ 美洲 | Africa ｜ Asia ｜ Americas |
 
 #### 题卡 QuizCard
 
@@ -79,6 +87,7 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | 再确认后的标记 | 已确认 | confirmed |
+| 参考行前缀 | 参考风味 | Reference |
 | 底部 icon aria | 首页 ｜ 重新体验 ｜ 分享 | Home ｜ Start over ｜ Share |
 | 操作区 aria | 操作 | Actions |
 
@@ -89,19 +98,20 @@
 | 勾选卡标题 | 你的 5 个词 | Your 5 words |
 | 收集中 aria | 收集中 | collecting |
 
-#### About 抽屉 AboutDrawer（四页）
+#### About 抽屉 AboutDrawer（五页）
 
 | 位置 | 中文 | English |
 |---|---|---|
 | 关闭 aria / 滑动提示 | 关闭 ｜ 向下滑动 | Close ｜ Scroll |
 | 展开 / 收起 | 展开 ｜ 收起 | Details ｜ Collapse |
 | 第三页标题 | 评审资料如何用于风味描述 | From coffee reviews to flavor descriptions |
-| 第三页计数后缀 | 条记录进入参考风味分组 | records enter the reference-profile grouping |
-| 第三页图注 | 左：来源评审族与记录数；右：12 类风味特征；带宽是该来源在该特征上的累计权重。 | left: source panels and their record counts; right: the 12 flavor features; ribbon width is that source's cumulative weight on that feature. |
+| 第三页导语 | 每一根柱子是一类风味特征在全部评审记录里的累计权重（对数刻度）。深浅是来源评审族，柱顶是数值；柱子在底部汇成一条主干：进入分组的记录。 | Each column is one flavor feature's cumulative weight across every review record (log scale). Shades are the review panels, the dot carries the value; the columns join into one trunk: the records that enter the grouping. |
+| 第三页主干 | 8,142 条记录 → 整理为 16 组参考风味 | 8,142 records → organised into 16 reference profiles |
 | 第四页标题 | 本项目整理的 16 组参考风味 | 16 reference profiles organised by this project |
-| 第四页图注 | 每条射线一组，长度按记录数的对数刻度，刻度色是它主要的风味特征。 | one ray per group, length on a log scale of its records, tick colours its main flavor features. |
+| 第四页导语 | 圆圈是本项目整理的 16 组参考风味：大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线把每组连到与它最接近的两组，C1–C6 标出最接近的几对。 | Circles are the 16 reference profiles this project organised: size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. White curves join each group to its two nearest, C1–C6 mark the closest pairs. |
+| 第四页环与注释 | 记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录 ｜ 共同点 | the 6 largest ｜ the other 10 ｜ records ｜ shared |
 | 来源页标题 / 字段 | 资料来源 ｜ 来源条款 ｜ 本项目的使用 | Sources ｜ Source terms ｜ Use in this project |
-| 来源族名 | CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 储藏实验 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ 其他评审 | CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader storage panel ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ other panels |
+| 来源族名 | CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ Project Origin 评审 ｜ Cenicafé 受训杯测师 ｜ 印度咖啡局 Fine Cup ｜ 也门 Sheba 拍卖评审 | CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ Project Origin panel ｜ Cenicafé trained cuppers ｜ Coffee Board of India Fine Cup ｜ Sheba Yemen auction panel |
 
 ## 2. 卡片标题、说明标签与差异句（bundle.presentation）
 
@@ -343,18 +353,21 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 页面小标题 | 从品饮，到表达 | From tasting to words |
+| 页面小标题 | 从品味，到表达 | From tasting to words |
 | Eyebrow | 关于 flavorwords | About flavorwords |
-| 标题 | 从品饮，到表达 | From tasting to words |
+| 标题 | 从品味，到表达 | From tasting to words |
 | 导言 1 | flavorwords 把咖啡评审与感官资料中的描述，整理成日常品饮时可以使用的词汇与提问。 | Some cups are easier to taste than to describe. flavorwords turns the descriptions found in coffee reviews and sensory lexicons into words and questions you can use while drinking. |
 | 导言 2 | 从酸质、香气、甜感和口感出发，你选出贴近这一杯的表达，组成自己的风味卡。 | Starting from acidity, aroma, sweetness and mouthfeel, you choose the expressions that fit this cup and make your own flavor card. |
-| 示例卡 eyebrow | 风味卡示例 · 浅烘手冲 | Sample flavor card · light-roast pour-over |
-| 示例卡标题 | 茉莉与白花 | Jasmine & White Flowers |
+| 使命段 1 | 我们想解决的困难很具体：专业的风味词很多，落到自己的杯子上却常常说不出口。为此整理了 8 组公开评审来源的 83,031 条风味描述、4,042 位消费者的盲测用词，以及大众点评、小红书与淘宝上烘焙商标签里的中文说法。 | The difficulty is concrete: professional flavor words are plentiful, yet hard to bring to your own cup. So we organised 83,031 flavor descriptions from 8 public review sources, the blind-tasting vocabulary of 4,042 consumers, and the Chinese expressions found on roaster labels across Dianping, Xiaohongshu and Taobao. |
+| 使命段 2 | 我们致力于提供足够准确的词，同时给每个人保留自己的说法。 | We work to offer words accurate enough, while leaving everyone their own way of saying it. |
+| 示例卡 eyebrow | 风味卡示例 | Sample flavor card |
+| 示例卡上层 | 冲煮 手冲 (V60) ｜ 烘焙 浅烘 | Brew Pour-over (V60) ｜ Roast Light |
 | 示例卡词 | 茉莉花 ｜ 白花 ｜ 佛手柑 ｜ 水蜜桃 ｜ 清冽果酸 | jasmine ｜ white flowers ｜ bergamot ｜ peach ｜ crisp acidity |
+| 示例卡下层 | 参考风味 · 茉莉与白花 ｜ flavorwords | Reference · Jasmine & White Flowers ｜ flavorwords |
 | 作者段 eyebrow | 研究、设计与开发 | Research, design and development |
 | 作者 | 潘岱 · Dai Pan | Dai Pan · 潘岱 |
-| 作者段 1 | 我整理公开咖啡评审与感官词汇，建立描述之间的对应关系，并设计了风味分组、双语词表和随回答调整的提问方式。 | I organised public coffee reviews and sensory lexicons, built the correspondences between descriptions, and designed the flavor groups, the bilingual word list and the questions that adapt to each answer. |
-| 作者段 2 | 从资料整理到交互设计与开发，这个项目关注的是：怎样让专业的风味语言更便于日常品饮时使用？ | From organising the material to designing and building the interaction, the project asks one question: how can professional flavor language be easier to use while drinking coffee? |
+| 作者段 1 | flavorwords 关注的是：怎样提供足够准确的词，同时给每个人保留自己的说法。 | flavorwords asks one thing: how to offer words accurate enough, while leaving everyone their own way of saying it. |
+| 作者段 2 | 资料整理、风味分组、双语词表、随回答调整的提问方式，以及从选词到确认风味卡的交互设计与开发。 | Organising the material, the flavor groups, the bilingual word list, the questions that adapt to each answer, and the design and build of the path from choosing words to confirming a card. |
 | 贡献 94 | 94 个双语风味词：对照专业感官词汇整理，并补充中文品饮表达。 | 94 bilingual flavor words: aligned with professional lexicons, with Chinese tasting expressions added. |
 | 贡献 12 | 12 类风味特征：每个风味词都归到其中一类；提问、出词和风味卡都按这些类取词。 | 12 flavor features: every flavor word belongs to one; questions, suggested words and the card all draw from them. |
 | 贡献 16 | 16 组参考风味：本项目从评审资料整理的分组，用来给出第一版描述。 | 16 reference profiles: groups this project organised from the review material to give a first description. |

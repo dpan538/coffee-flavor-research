@@ -21,26 +21,29 @@ SRC = ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1"
 
 # strings that live in Vue components (not in the bundle, not in view.ts / about.ts)
 COMPONENT_STRINGS = {
-    "首页 App.vue（两块瓷砖）": [("开始 / 关于 瓷砖", "开始 ｜ 关于", "Start ｜ About")],
+    "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("示例卡（来自 about.ts aboutExample）", "风味卡示例 ｜ 冲煮 / 烘焙 ｜ 参考风味 · … ｜ flavorwords", "Sample flavor card ｜ Brew / Roast ｜ Reference · … ｜ flavorwords")],
+    "风味卡 FlavorCard（终卡 / 首页示例 / About 示例）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords")],
     "语境卡 ContextSetupCard": [
         ("小标签", "这杯咖啡", "This cup"),
         ("单品 / 拼配切换后缀", "≤ 3", "≤ 3"),
         ("下一步 / 跳过 / 已选", "下一步 ｜ 跳过 ｜ 已选", "Next ｜ Skip ｜ chosen"),
+        ("产地分组标题", "非洲 ｜ 亚洲 ｜ 美洲", "Africa ｜ Asia ｜ Americas"),
     ],
     "题卡 QuizCard": [("小标签", "这一口", "This sip")],
     "第一次出卡 FirstDescriptionCard": [("提交按钮", "确认风味卡", "Confirm my card")],
     "Q6 EscalationModal": [("小标签", "再看一眼", "One more look")],
-    "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享", "Home ｜ Start over ｜ Share"), ("操作区 aria", "操作", "Actions")],
+    "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("参考行前缀", "参考风味", "Reference"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享", "Home ｜ Start over ｜ Share"), ("操作区 aria", "操作", "Actions")],
     "上方堆叠 CollectedStack": [("勾选卡标题", "你的 5 个词", "Your 5 words"), ("收集中 aria", "收集中", "collecting")],
-    "About 抽屉 AboutDrawer（四页）": [
+    "About 抽屉 AboutDrawer（五页）": [
         ("关闭 aria / 滑动提示", "关闭 ｜ 向下滑动", "Close ｜ Scroll"), ("展开 / 收起", "展开 ｜ 收起", "Details ｜ Collapse"),
         ("第三页标题", "评审资料如何用于风味描述", "From coffee reviews to flavor descriptions"),
-        ("第三页计数后缀", "条记录进入参考风味分组", "records enter the reference-profile grouping"),
-        ("第三页图注", "左：来源评审族与记录数；右：12 类风味特征；带宽是该来源在该特征上的累计权重。", "left: source panels and their record counts; right: the 12 flavor features; ribbon width is that source's cumulative weight on that feature."),
+        ("第三页导语", "每一根柱子是一类风味特征在全部评审记录里的累计权重（对数刻度）。深浅是来源评审族，柱顶是数值；柱子在底部汇成一条主干：进入分组的记录。", "Each column is one flavor feature's cumulative weight across every review record (log scale). Shades are the review panels, the dot carries the value; the columns join into one trunk: the records that enter the grouping."),
+        ("第三页主干", "8,142 条记录 → 整理为 16 组参考风味", "8,142 records → organised into 16 reference profiles"),
         ("第四页标题", "本项目整理的 16 组参考风味", "16 reference profiles organised by this project"),
-        ("第四页图注", "每条射线一组，长度按记录数的对数刻度，刻度色是它主要的风味特征。", "one ray per group, length on a log scale of its records, tick colours its main flavor features."),
+        ("第四页导语", "圆圈是本项目整理的 16 组参考风味：大小按记录数，颜色是该组最强的风味特征；内圈是记录最多的 6 组。白线把每组连到与它最接近的两组，C1–C6 标出最接近的几对。", "Circles are the 16 reference profiles this project organised: size by records, colour by the group's strongest feature; the inner ring holds the 6 largest. White curves join each group to its two nearest, C1–C6 mark the closest pairs."),
+        ("第四页环与注释", "记录最多的 6 组 ｜ 其余 10 组 ｜ 条记录 ｜ 共同点", "the 6 largest ｜ the other 10 ｜ records ｜ shared"),
         ("来源页标题 / 字段", "资料来源 ｜ 来源条款 ｜ 本项目的使用", "Sources ｜ Source terms ｜ Use in this project"),
-        ("来源族名", "CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 储藏实验 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ 其他评审", "CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader storage panel ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ other panels"),
+        ("来源族名", "CoffeeReview 编辑评审 ｜ Cup of Excellence 评审 ｜ Q-grader 数据集 ｜ 罗布斯塔 Q-grader 评审 ｜ Project Origin 评审 ｜ Cenicafé 受训杯测师 ｜ 印度咖啡局 Fine Cup ｜ 也门 Sheba 拍卖评审", "CoffeeReview editorial reviews ｜ Cup of Excellence juries ｜ Q-grader dataset ｜ Robusta Q-grader panel ｜ Project Origin panel ｜ Cenicafé trained cuppers ｜ Coffee Board of India Fine Cup ｜ Sheba Yemen auction panel"),
     ],
 }
 
@@ -148,7 +151,9 @@ def main() -> int:
     rows = [("页面小标题", zh["title"]["title"], en["title"]["title"]), ("Eyebrow", zh["approach"]["eyebrow"], en["approach"]["eyebrow"]), ("标题", zh["approach"]["title"], en["approach"]["title"])]
     for i, (a, b) in enumerate(zip(zh["approach"]["intro"], en["approach"]["intro"]), 1):
         rows.append((f"导言 {i}", a, b))
-    rows += [("示例卡 eyebrow", zh["example"]["eyebrow"], en["example"]["eyebrow"]), ("示例卡标题", zh["example"]["title"], en["example"]["title"]), ("示例卡词", " ｜ ".join(zh["example"]["words"]), " ｜ ".join(en["example"]["words"]))]
+    for i, (a, b) in enumerate(zip(zh["approach"]["mission"], en["approach"]["mission"]), 1):
+        rows.append((f"使命段 {i}", a, b))
+    rows += [("示例卡 eyebrow", zh["example"]["eyebrow"], en["example"]["eyebrow"]), ("示例卡上层", " ｜ ".join(f"{c['label']} {c['value']}" for c in zh["example"]["cup"]), " ｜ ".join(f"{c['label']} {c['value']}" for c in en["example"]["cup"])), ("示例卡词", " ｜ ".join(zh["example"]["words"]), " ｜ ".join(en["example"]["words"])), ("示例卡下层", zh["example"]["reference"] + " ｜ " + zh["example"]["brand"], en["example"]["reference"] + " ｜ " + en["example"]["brand"])]
     rows += [("作者段 eyebrow", zh["author"]["eyebrow"], en["author"]["eyebrow"]), ("作者", zh["author"]["name"], en["author"]["name"])]
     for i, (a, b) in enumerate(zip(zh["author"]["paragraphs"], en["author"]["paragraphs"]), 1):
         rows.append((f"作者段 {i}", a, b))

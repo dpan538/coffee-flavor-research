@@ -31,7 +31,10 @@
   .option .l2 { @apply block text-sm opacity-70 leading-tight; }
   /* owner: every icon control is at least 54 × 54 dp */
   .icon-btn { @apply rounded-full border border-ink/20 w-[54px] h-[54px] inline-flex items-center justify-center; }
-  .tile { @apply rounded-3xl p-5 flex flex-col justify-between text-left transition-transform duration-150; }
+  .tile { @apply rounded-[20px] p-4 flex flex-col justify-between text-left transition-transform duration-150; }
+  /* the card's mono metadata rows with dotted leaders (owner reference: the printed tasting card) */
+  .leader { @apply flex items-baseline gap-2 text-[11px] tracking-[0.08em] uppercase; }
+  .leader > i { @apply flex-1 border-b border-dotted border-ink/40 translate-y-[-3px]; }
   .tile:active { transform: scale(0.98); }
   .fold-toggle { @apply w-full text-left min-h-[48px] flex items-center justify-between; }
   .option[aria-pressed="true"] { @apply border-ink bg-ink text-paper; }

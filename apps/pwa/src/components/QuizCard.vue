@@ -26,7 +26,7 @@ async function choose(option: string, label: string) {
     </div>
     <ul class="flex-1 min-h-0 px-4 pt-5 pb-4 flex flex-col gap-2.5">
       <li v-for="option in model.options" :key="option.option" class="flex-1 min-h-[60px] max-h-[132px] flex rise">
-        <button type="button" class="option flex-1 flex items-center" :aria-pressed="selected === option.option" @click="choose(option.option, option.label)">{{ option.label }}</button>
+        <button type="button" class="option flex-1 flex items-center" :aria-pressed="selected === option.option" @click="choose(option.option, option.label)"><span>{{ option.label }}</span></button>
       </li>
     </ul>
   </section>

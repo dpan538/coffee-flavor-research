@@ -34,6 +34,13 @@ function lines(label: string): [string, string] {
   return m ? [m[1]!, m[2]!] : [label, ""];
 }
 
+/** origin: chips grouped under their continent (owner's origin chart); every other card is one flat list */
+const sections = computed(() => {
+  if (!card.value) return [];
+  if (card.value.key === "c2_origin") return card.value.groups.map((g) => ({ key: g.key, label: g.label, chips: card.value!.chips.filter((c) => c.group === g.key) }));
+  return [{ key: "all", label: "", chips: card.value.chips }];
+});
+
 function labelOf(values: string[]): string {
   if (!card.value) return "";
   return values.map((v) => lines(card.value!.chips.find((c) => c.value === v)?.label ?? v)[0]).join(" + ") || labels.value.skip;
@@ -52,11 +59,14 @@ function labelOf(values: string[]): string {
       </div>
     </div>
     <div class="flex-1 px-4 pt-4 pb-4 flex flex-col gap-3 min-h-0">
-      <div class="grid grid-cols-2 auto-rows-[minmax(60px,auto)] gap-2.5 overflow-y-auto min-h-0 content-start">
-        <button v-for="chip in card.chips" :key="chip.value" type="button" class="option !px-3 !py-2.5 flex flex-col items-center justify-center text-center rise" :aria-pressed="chosen.includes(chip.value)" :title="chip.basis" @click="choose(chip.value)">
-          <span class="l1">{{ lines(chip.label)[0] }}</span>
-          <span v-if="lines(chip.label)[1]" class="l2">{{ lines(chip.label)[1] }}</span>
-        </button>
+      <div class="grid grid-cols-2 auto-rows-[minmax(56px,auto)] gap-2.5 overflow-y-auto min-h-0 content-start">
+        <template v-for="section in sections" :key="section.key">
+          <p v-if="section.label" class="col-span-2 text-xs tracking-widest opacity-70 pt-1 -mb-1">{{ section.label }}</p>
+          <button v-for="chip in section.chips" :key="chip.value" type="button" class="option !px-3 !py-2.5 flex flex-col items-center justify-center text-center rise" :aria-pressed="chosen.includes(chip.value)" :title="chip.basis" @click="choose(chip.value)">
+            <span class="l1">{{ lines(chip.label)[0] }}</span>
+            <span v-if="lines(chip.label)[1]" class="l2">{{ lines(chip.label)[1] }}</span>
+          </button>
+        </template>
       </div>
       <div class="shrink-0 mt-auto pt-1">
         <button type="button" class="cta" :disabled="!ready" @click="advanceContext(labelOf(chosen))">

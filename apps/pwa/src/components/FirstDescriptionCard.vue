@@ -34,7 +34,7 @@ function toggle(word: Word) {
     <div class="flex-1 min-h-0 px-4 pt-5 pb-4 flex flex-col gap-3">
       <p class="text-sm opacity-80">{{ model.pickPrompt }}</p>
       <div class="flex flex-wrap gap-2.5" role="group">
-        <button v-for="word in all" :key="word.text" type="button" class="chip rise" :aria-pressed="chosen.some((w) => w.text === word.text)" :data-dimension="word.dimension" @click="toggle(word)">{{ word.text }}</button>
+        <button v-for="word in all" :key="word.text" type="button" class="chip rise" :aria-pressed="chosen.some((w) => w.text === word.text)" :data-dimension="word.dimension" @click="toggle(word)"><span>{{ word.text }}</span></button>
       </div>
       <div class="mt-auto shrink-0">
         <button type="button" class="cta" :disabled="!full" @click="submitPickedWords(chosen)">{{ submitLabel }} <span class="opacity-70 font-normal">{{ chosen.length }} / {{ model.pickCount }}</span></button>

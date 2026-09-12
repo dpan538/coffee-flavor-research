@@ -12,13 +12,13 @@ import { nextStep, type Session } from "./session";
 const rules = bundle.context_rules;
 const K = bundle.matrix_k as Record<string, Record<string, { vector: number[] | null; basis: string; member_count: number | null }>>;
 
-export type Chip = { value: string; label: string; basis: string; memberCount: number | null };
+export type Chip = { value: string; label: string; basis: string; memberCount: number | null; group?: string };
 export type ContextCard =
   | { key: "c0_preparation"; title: string; chips: Chip[]; multi: false; optional: false }
   | { key: "c1_roast"; title: string; chips: Chip[]; multi: false; optional: false }
   | { key: "c2_variety"; title: string; chips: Chip[]; multi: true; max: number; toggle: { single: string; blend: string }; optional: false }
   | { key: "c2_process"; title: string; chips: Chip[]; multi: false; optional: false }
-  | { key: "c2_origin"; title: string; chips: Chip[]; multi: false; optional: true; hint: string };
+  | { key: "c2_origin"; title: string; chips: Chip[]; multi: false; optional: true; hint: string; groups: Array<{ key: string; label: string }> };
 
 const LABELS: Record<string, Record<Locale, string>> = {
   pour_over_v60: { "zh-CN": "手冲 (V60)", en: "Pour-over (V60)" },
@@ -66,12 +66,15 @@ function chips(axis: string, locale: Locale): Chip[] {
 
 /** The C0–C2 context cards: preparation, roast, variety (single / blend toggle, max 3), processing, optional origin. */
 export function contextCatalog(locale: Locale): ContextCard[] {
-  const origins = Object.entries(rules.origin_regions as Record<string, { label: Record<Locale, string>; bias: string[] }>).map(([value, r]) => ({
+  const continents = ((rules as { origin_continents?: Record<string, Record<Locale, string>> }).origin_continents ?? {}) as Record<string, Record<Locale, string>>;
+  const origins = Object.entries(rules.origin_regions as Record<string, { label: Record<Locale, string>; bias: string[]; continent?: string }>).map(([value, r]) => ({
     value,
     label: r.label[locale],
     basis: `ORIGIN_BIAS_DELTA_${rules.origin_bias_delta}_ON_${r.bias.join("+")}`,
     memberCount: null,
+    ...(r.continent ? { group: r.continent } : {}),
   }));
+  const groups = Object.entries(continents).map(([key, label]) => ({ key, label: label[locale] }));
   return [
     { key: "c0_preparation", title: TITLES.c0_preparation![locale], chips: chips("C0", locale), multi: false, optional: false },
     { key: "c1_roast", title: TITLES.c1_roast![locale], chips: chips("C1", locale), multi: false, optional: false },
@@ -92,6 +95,7 @@ export function contextCatalog(locale: Locale): ContextCard[] {
       multi: false,
       optional: true,
       hint: locale === "zh-CN" ? "不清楚产地也可以继续。" : "Not sure? You can skip this.",
+      groups,
     },
   ];
 }
@@ -122,6 +126,8 @@ export type FirstDescriptionCardModel = {
 export type ResultCardModel = {
   kind: "result";
   title: string;
+  /** the cup's own information, only what was entered: brew, roast, variety, process, origin */
+  cupInfo: Array<{ key: string; label: string; value: string }>;
   picked: string[];
   pickedDimensions: string[];
   tags: string[];
@@ -168,6 +174,7 @@ export function screenModel(session: Session): ScreenModel {
   return {
     kind: "result",
     title,
+    cupInfo: cupInfo(session.context, locale),
     picked: tags,
     pickedDimensions: session.picks.map((w) => w.dimension),
     tags,
@@ -178,6 +185,23 @@ export function screenModel(session: Session): ScreenModel {
     corrected: session.q6 !== null && session.q6.selected.length > 0,
     shareText: `${title}\n${tags.join(" | ")}`,
   };
+}
+
+/** The cup's information for the card's top layer: only fields the reader actually entered, in reading order. */
+export function cupInfo(context: ContextAnswers, locale: Locale): Array<{ key: string; label: string; value: string }> {
+  const zh = locale === "zh-CN";
+  const names: Record<string, [string, string]> = { c0_preparation: ["冲煮", "Brew"], c1_roast: ["烘焙", "Roast"], c2_variety: ["豆种", "Variety"], c2_process: ["处理", "Process"], c2_origin: ["产地", "Origin"] };
+  const out: Array<{ key: string; label: string; value: string }> = [];
+  for (const key of ["c0_preparation", "c1_roast", "c2_variety", "c2_process", "c2_origin"] as const) {
+    const value = context[key];
+    const values = Array.isArray(value) ? value : value ? [value] : [];
+    if (!values.length) continue;
+    const text = key === "c2_origin"
+      ? values.map((v) => (rules.origin_regions as Record<string, { label: Record<Locale, string> }>)[v]?.label[locale] ?? v).join(" + ")
+      : values.map((v) => label(v, locale)).join(" + ");
+    out.push({ key, label: names[key]![zh ? 0 : 1], value: text });
+  }
+  return out;
 }
 
 /** Q6 copy: the second look is a question about the reader's own impression, never a correction of it. */
