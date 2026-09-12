@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Final card: heading (small) → profile → three lead words (largest) → two more (muted) → colour bar of the picked
-// words' dimensions → attribution (CSS-grid fold, closed by default) → icon bar: home, start over, share.
+// words' dimensions → flavor notes (CSS-grid fold, closed by default) → icon bar: home, start over, share.
 import { computed, ref } from "vue";
 import { House, RotateCcw, Share2 } from "lucide-vue-next";
 import type { ResultCardModel } from "flavor-data/product-vector-v1/view";
@@ -27,7 +27,7 @@ async function share(text: string) {
 <template>
   <section class="h-full flex flex-col text-cream fold-card" data-component="FinalAttributionCard" :data-corrected="model.corrected">
     <div class="px-6 pt-7 flex flex-col gap-2">
-      <p class="text-[11px] tracking-[0.2em] opacity-60">{{ model.heading }}<span v-if="model.corrected"> · {{ locale === 'zh-CN' ? '精修' : 'refined' }}</span></p>
+      <p class="text-[11px] tracking-[0.2em] opacity-60">{{ model.heading }}<span v-if="model.corrected"> · {{ locale === 'zh-CN' ? '已确认' : 'confirmed' }}</span></p>
       <h2 class="text-[22px] opacity-90 mt-1" :class="locale === 'zh-CN' ? 'display-zh' : 'display'">［{{ model.title }}］</h2>
       <p class="text-[30px] leading-[1.15] font-semibold mt-2" data-words="main">{{ main.join("  │  ") }}</p>
       <p class="text-lg opacity-75 mt-1" data-words="secondary">{{ rest.join("  ·  ") }}</p>

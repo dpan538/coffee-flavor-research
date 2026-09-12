@@ -102,10 +102,10 @@ def main() -> int:
                  "benchmark_beans": r["benchmark_beans"], "anchor_id": r["anchor_id"]} for r in rows(OUT / "FLAVOR_PROFILE_LIBRARY.tsv")]
     questions = {
         "Q5_acid": {"A": {"acidity": 2, "fruity": 1}, "B": {"acidity": 1, "fermented_winey": 2}, "C": {"body": 1}},
-        "Q6_sweet": {"A": {"floral": 1, "sweetness": 2}, "B": {"nutty_chocolate": 2, "bitter_roasted": 1}, "C": {"fruity": 2, "sweetness": 2}},
+        "Q6_sweet": {"A": {"floral": 1, "sweetness": 2}, "B": {"nutty_chocolate": 2, "bitter_roasted": 1}, "C": {"fruity": 2, "sweetness": 2}, "D": {}},  # D: sweetness not noticeable — an absence adds nothing (owner copy review 2026-09-12)
         "Q7_body": {"A": {"body": 1}, "B": {"body": 2}, "C": {"body": 3, "bitter_roasted": 1}},
         "Q8_aroma": {"A": {"floral": 3}, "B": {"nutty_chocolate": 3}, "C": {"fermented_winey": 2, "fruity": 2}},
-        "Q9_bitter": {"A": {"nutty_chocolate": 1, "bitter_roasted": 1}, "B": {}},
+        "Q9_bitter": {"A": {"nutty_chocolate": 1, "bitter_roasted": 1}, "B": {}, "C": {"bitter_roasted": 2}},  # C: clearly bitter (owner copy review 2026-09-12)
         "Q10_clean": {"A": {"floral": 1, "acidity": 1}, "B": {"fermented_winey": 1, "body": 1}},
     }
     # presentation layer (owner 2026-09-12): one vector backend, two languages. Minimalist CN tag
@@ -144,19 +144,26 @@ def main() -> int:
                     "delta_words": {"zh-CN": {"pos": "比这个语境的理论值更明显", "neg": "比这个语境的理论值更弱"}, "en": {"pos": "stronger than this context predicts", "neg": "weaker than this context predicts"}},
                     # consumer-facing layer (owner R3-D15): no raw enum reaches the screen; the calibration sentence reads as a
                     # sensory report, not as a correction of the drinker
-                    "evidence_labels": {"OWNER_STATEMENT": {"zh-CN": "烘焙与萃取成因", "en": "Roast & extraction"},
-                                        "CORPUS_MEASURED": {"zh-CN": "语料实测", "en": "Measured in the corpus"},
-                                        "LITERATURE_CLAIM": {"zh-CN": "物理萃取规律", "en": "Extraction physics"},
-                                        "LITERATURE_CLAIM_PENDING_LOCATOR": {"zh-CN": "物理萃取规律", "en": "Extraction physics"},
-                                        "COMPUTED_DELTA": {"zh-CN": "感官偏置校准", "en": "Perception calibration"}},
-                    "delta_templates": {"zh-CN": {"pos": "在当前的感知中，{label}的表达比理论物理值更显突出，可能受萃取温度或降温速率的影响。",
-                                                  "neg": "在当前的感知中，{label}的表达比理论物理值稍显收敛，可能受降温速率或水温偏置影响。"},
-                                        "en": {"pos": "In this cup, {label} reads more pronounced than the physics predicts; water temperature or cooling rate may be pushing it forward.",
-                                               "neg": "In this cup, {label} reads a little more restrained than the physics predicts; cooling rate or water temperature may be holding it back."}},
-                    "citation_prefix": {"zh-CN": "引用自：", "en": "From: "},
-                    "card_heading": {"zh-CN": "风味描述", "en": "Flavor description"},
-                    "preview_heading": {"zh-CN": "风味描述预览", "en": "Flavor preview"},
-                    "science_heading": {"zh-CN": "科学归因", "en": "Attribution"},
+                    # owner copy review 2026-09-12: the label says what kind of statement it is — a project note, a count from
+                    # the data, a research reference — and never claims this cup was measured; a claim pending a locator or
+                    # re-verification has no label and is filtered out of the UI (displayable_evidence_states)
+                    "evidence_labels": {"OWNER_STATEMENT": {"zh-CN": "参考说明", "en": "Reference note"},
+                                        "CORPUS_MEASURED": {"zh-CN": "资料统计", "en": "From the data"},
+                                        "LITERATURE_CLAIM": {"zh-CN": "研究参考", "en": "Research reference"},
+                                        "COMPUTED_DELTA": {"zh-CN": "描述差异", "en": "Where your description differs"}},
+                    "displayable_evidence_states": ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM", "COMPUTED_DELTA"],
+                    # ΔV is a difference between the description and the reference vector; it is not a bias and its cause is unknown
+                    "delta_templates": {"zh-CN": {"pos": "这次的描述中，{label}更突出。仅凭目前的信息，还无法判断这种差异的原因。",
+                                                  "neg": "这次的描述中，{label}不太明显。仅凭目前的信息，还无法判断这种差异的原因。"},
+                                        "en": {"pos": "In this description, {label} stands out more than this cup's setup usually shows. From what we have, the reason cannot be told.",
+                                               "neg": "In this description, {label} comes through less than this cup's setup usually shows. From what we have, the reason cannot be told."}},
+                    "citation_prefix": {"zh-CN": "参考资料：", "en": "Reference: "},
+                    "card_heading": {"zh-CN": "风味卡", "en": "Flavor card"},
+                    "preview_heading": {"zh-CN": "这杯咖啡的风味", "en": "This cup's flavor"},
+                    "science_heading": {"zh-CN": "相关风味说明", "en": "Flavor notes"},
+                    # the papery / stale group: show the words, ask for a second look, judge nothing
+                    "defect_note": {"zh-CN": "这些描述常与储存或处理有关，值得再喝一口确认。这里不对这杯咖啡做质量判断。",
+                                    "en": "These descriptions are often linked to storage or processing; worth a second sip to confirm. No quality judgement is made here."},
                     "context_statements": statements,
                     "tag_rules": {"priority_1": "concept-level tags when concept ids are present, ranked by projection weight against the vector", "priority_2": "dimension-level tags for dominant dimensions (weight > 0.15), first unused tag of the dimension's list", "defect_guard": "defect tags only when defect dominates (>= 0.5)"},
                     "layout": {"headline": "owner_name + display_tags (3-4 minimalist tags)", "science": "collapsible: context statements whose parts are all answered (most specific first) + the two largest delta dimensions, each with evidence_state and citation_ref"}}
@@ -205,8 +212,8 @@ def main() -> int:
                      "min_magnitude": 0.55, "context_min_magnitude": 0.25},
         # the hybrid utterance mapper (owner spec): score = alpha * cosine + beta * cue hits; negation forcing
         "utterance_mapper": {"alpha": 1.0, "beta": 0.5, "min_projection": 0.2, "direction_questions": ["Q0", "Q1", "Q2", "Q5"], "cue_questions": ["Q3", "Q4"],
-                             "negation_prefixes": {"zh-CN": ["不", "没", "无", "毫无", "几乎不", "怕", "不要", "不想要", "一点都不", "讨厌", "不喜欢", "不爱"], "en": ["not ", "no ", "without ", "hardly any ", "zero ", "hate ", "dislike "]},
-                             "forced_by_negation": {"zh-CN": {"苦": ["Q4", "B"], "酸": ["Q0", "C"]}, "en": {"bitter": ["Q4", "B"], "acid": ["Q0", "C"], "sour": ["Q0", "C"]}}},
+                             "negation_prefixes": {"zh-CN": ["不", "没", "没有", "没什么", "无", "毫无", "几乎不", "几乎没", "不太", "怕", "不要", "不想要", "一点都不", "讨厌", "不喜欢", "不爱"], "en": ["not ", "no ", "without ", "hardly any ", "zero ", "hate ", "dislike "]},
+                             "forced_by_negation": {"zh-CN": {"苦": ["Q4", "B"], "酸": ["Q0", "C"], "甜": ["Q2", "D"]}, "en": {"bitter": ["Q4", "B"], "acid": ["Q0", "C"], "sour": ["Q0", "C"], "sweet": ["Q2", "D"]}}},
         "closing": {"zh-CN": "感谢使用，祝你享受这杯咖啡！", "en": "Thank you — enjoy the cup!"},
         "slot_mapping_owner_reviewed": True,  # R3-D10: Q0 acid, Q1 aroma, Q2 sweetness, Q3 body, Q4 bitterness, Q5 complexity
     }
@@ -221,10 +228,10 @@ def main() -> int:
         "blend": {"max_varieties": 3, "composition": "normalize(sum of variety vectors)"},
         "origin_bias_delta": 0.1,
         "origin_regions": {
-            "ethiopia_east_africa": {"label": {"zh-CN": "埃塞俄比亚 / 东非（高锐花果）", "en": "Ethiopia / East Africa (floral, bright)"}, "bias": ["floral", "acidity"]},
+            "ethiopia_east_africa": {"label": {"zh-CN": "埃塞俄比亚 / 东非（花香果酸）", "en": "Ethiopia / East Africa (floral, bright)"}, "bias": ["floral", "acidity"]},
             "colombia_central_south_america": {"label": {"zh-CN": "哥伦比亚 / 中南美（均衡果酸）", "en": "Colombia / Central & South America (balanced fruit acidity)"}, "bias": ["fruity", "sweetness"]},
             "yunnan": {"label": {"zh-CN": "云南（坚果 / 红糖 / 厌氧）", "en": "Yunnan (nutty, brown sugar, anaerobic)"}, "bias": ["fermented_winey", "nutty_chocolate"]},
-            "kenya": {"label": {"zh-CN": "肯尼亚（高磷酸 / 乌梅）", "en": "Kenya (phosphoric acidity, dark plum)"}, "bias": ["acidity", "fruity"]},
+            "kenya": {"label": {"zh-CN": "肯尼亚（黑加仑 / 乌梅）", "en": "Kenya (blackcurrant, dark plum)"}, "bias": ["acidity", "fruity"]},
         },
         "owner_reviewed": True,
     }
@@ -245,7 +252,7 @@ def main() -> int:
                     "families": families,
                     "coffees": len(rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv")), "usable_coffee_vectors": sum(1 for r in rows(OUT / "COFFEE_VECTOR_LIBRARY.tsv") if r["vector_state"] == "USABLE"),
                     "semantic_relation_edges": semantic["semantic_relation_count"], "canonical_concepts": len(proj), "dimensions": len(DIMS), "profiles": len(profiles),
-                    "consumer_respondents": gactt.get("respondents", 0), "consumer_notes": gactt.get("notes", 0), "literature_sources": len(sources), "literature_claims": sum(s["claims"] for s in sources),
+                    "consumer_respondents": gactt.get("respondents", 0), "consumer_notes": gactt.get("notes", 0), "literature_sources": len(sources), "literature_claims": sum(s["claims"] for s in sources), "literature_claims_live": sum(s.get("claims_live", s["claims"]) for s in sources), "literature_claims_pending_review": sum(s.get("claims_pending_review", 0) for s in sources),
                     "mean_questions": 5.70}
     bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank, "context_rules": context_rules, "corpus_facts": corpus_facts,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",

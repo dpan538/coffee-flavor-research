@@ -106,9 +106,13 @@
     "zh-CN": [
      "不",
      "没",
+     "没有",
+     "没什么",
      "无",
      "毫无",
      "几乎不",
+     "几乎没",
+     "不太",
      "怕",
      "不要",
      "不想要",
@@ -136,6 +140,10 @@
      "酸": [
       "Q0",
       "C"
+     ],
+     "甜": [
+      "Q2",
+      "D"
      ]
     },
     "en": {
@@ -150,6 +158,10 @@
      "sour": [
       "Q0",
       "C"
+     ],
+     "sweet": [
+      "Q2",
+      "D"
      ]
     }
    }
@@ -170,8 +182,8 @@
    "options": {
     "A": {
      "label": {
-      "zh-CN": "鲜明多汁的柑橘 / 青苹果酸",
-      "en": "Bright & juicy citrus / green-apple acidity"
+      "zh-CN": "柑橘 / 青苹果那种酸",
+      "en": "citrus / green-apple acidity"
      },
      "cues": {
       "zh-CN": [
@@ -198,8 +210,8 @@
     },
     "B": {
      "label": {
-      "zh-CN": "柔和温和的乳酸 / 发酵果酸（像酸奶、水果黄酒）",
-      "en": "Soft lactic / fermented fruit acidity (like yoghurt)"
+      "zh-CN": "乳酸 / 发酵果酸（像酸奶、水果黄酒）",
+      "en": "lactic / fermented-fruit acidity (like yoghurt)"
      },
      "cues": {
       "zh-CN": [
@@ -225,8 +237,8 @@
     },
     "C": {
      "label": {
-      "zh-CN": "平顺无酸 / 低酸度（口感顺滑平衡）",
-      "en": "Smooth & low acidity (balanced, easy to drink)"
+      "zh-CN": "酸感不明显",
+      "en": "acidity not noticeable"
      },
      "cues": {
       "zh-CN": [
@@ -424,6 +436,31 @@
        "prune"
       ]
      }
+    },
+    "D": {
+     "label": {
+      "zh-CN": "甜感不明显",
+      "en": "hardly any sweetness"
+     },
+     "cues": {
+      "zh-CN": [
+       "不甜",
+       "没什么甜",
+       "甜感不明显",
+       "不太甜",
+       "几乎不甜",
+       "没有甜",
+       "不是很甜",
+       "不怎么甜"
+      ],
+      "en": [
+       "not sweet",
+       "no sweetness",
+       "hardly sweet",
+       "hardly any sweetness",
+       "not much sweetness"
+      ]
+     }
     }
    },
    "owner_reviewed": true
@@ -529,21 +566,25 @@
        "微苦",
        "有一点苦",
        "有点苦",
+       "一点苦",
+       "略苦",
        "回甘",
        "苦得舒服",
        "黑巧一样的苦",
-       "很苦",
-       "苦味",
-       "带苦",
-       "苦感",
-       "苦"
+       "像黑巧",
+       "黑巧克力一样",
+       "苦中带甜",
+       "带一点苦"
       ],
       "en": [
        "slightly bitter",
        "a little bitter",
+       "a bit bitter",
+       "touch of bitterness",
        "lingering sweet",
        "bittersweet",
-       "bitter"
+       "pleasant bitterness",
+       "like dark chocolate"
       ]
      }
     },
@@ -566,6 +607,38 @@
        "zero bitterness"
       ]
      }
+    },
+    "C": {
+     "label": {
+      "zh-CN": "苦味明显，盖过其他味道",
+      "en": "clearly bitter, over the other flavours"
+     },
+     "cues": {
+      "zh-CN": [
+       "很苦",
+       "太苦",
+       "好苦",
+       "非常苦",
+       "特别苦",
+       "苦味重",
+       "苦味很重",
+       "苦得明显",
+       "明显的苦",
+       "苦味盖过",
+       "盖过",
+       "苦得厉害",
+       "苦味明显"
+      ],
+      "en": [
+       "very bitter",
+       "too bitter",
+       "strongly bitter",
+       "clearly bitter",
+       "harsh bitterness",
+       "really bitter",
+       "overpowering bitterness"
+      ]
+     }
     }
    },
    "owner_reviewed": true
@@ -579,8 +652,8 @@
    "options": {
     "A": {
      "label": {
-      "zh-CN": "层次分明，很干净",
-      "en": "clear layers, very clean"
+      "zh-CN": "味道一层一层，分得清",
+      "en": "flavours come one at a time, distinct"
      },
      "cues": {
       "zh-CN": [
@@ -600,8 +673,8 @@
     },
     "B": {
      "label": {
-      "zh-CN": "风味交融，浓郁复杂",
-      "en": "flavours blend together, rich and complex"
+      "zh-CN": "味道混在一起，饱满",
+      "en": "flavours blend together, full"
      },
      "cues": {
       "zh-CN": [
@@ -634,7 +707,7 @@
   "origin_regions": {
    "ethiopia_east_africa": {
     "label": {
-     "zh-CN": "埃塞俄比亚 / 东非（高锐花果）",
+     "zh-CN": "埃塞俄比亚 / 东非（花香果酸）",
      "en": "Ethiopia / East Africa (floral, bright)"
     },
     "bias": [
@@ -664,8 +737,8 @@
    },
    "kenya": {
     "label": {
-     "zh-CN": "肯尼亚（高磷酸 / 乌梅）",
-     "en": "Kenya (phosphoric acidity, dark plum)"
+     "zh-CN": "肯尼亚（黑加仑 / 乌梅）",
+     "en": "Kenya (blackcurrant, dark plum)"
     },
     "bias": [
      "acidity",
@@ -834,6 +907,8 @@
   "consumer_notes": 9997,
   "literature_sources": 3,
   "literature_claims": 11,
+  "literature_claims_live": 8,
+  "literature_claims_pending_review": 3,
   "mean_questions": 5.7
  },
  "alpha_default": 0.5,
@@ -2631,7 +2706,8 @@
    "C": {
     "fruity": 2,
     "sweetness": 2
-   }
+   },
+   "D": {}
   },
   "Q7_body": {
    "A": {
@@ -2662,7 +2738,10 @@
     "nutty_chocolate": 1,
     "bitter_roasted": 1
    },
-   "B": {}
+   "B": {},
+   "C": {
+    "bitter_roasted": 2
+   }
   },
   "Q10_clean": {
    "A": {
@@ -2697,8 +2776,8 @@
    "benchmark_beans": "哥伦比亚 厌氧日晒 / 埃塞俄比亚 日晒 G1",
    "anchor_id": "anchor-01",
    "owner_name": {
-    "zh-CN": "熟果与黄桃甜感",
-    "en": "Tropical Stone Fruit"
+    "zh-CN": "黄桃与熟果",
+    "en": "Yellow Peach & Ripe Fruit"
    },
    "display_tags": {
     "zh-CN": [
@@ -2737,8 +2816,8 @@
    "benchmark_beans": "危地马拉 安提瓜水洗 (Guatemala Antigua)",
    "anchor_id": "anchor-02",
    "owner_name": {
-    "zh-CN": "榛果巧克力与红莓",
-    "en": "Nutty Cocoa & Berry"
+    "zh-CN": "榛果可可与红莓",
+    "en": "Hazelnut Cocoa & Red Berry"
    },
    "display_tags": {
     "zh-CN": [
@@ -2777,8 +2856,8 @@
    "benchmark_beans": "埃塞俄比亚 西达摩 水洗 / 哥伦比亚 蜜处理",
    "anchor_id": "anchor-17",
    "owner_name": {
-    "zh-CN": "蜂蜜甜果与杏桃",
-    "en": "Honeyed Sweet Fruit & Apricot"
+    "zh-CN": "蜂蜜与杏桃",
+    "en": "Honey & Apricot"
    },
    "display_tags": {
     "zh-CN": [
@@ -2817,8 +2896,8 @@
    "benchmark_beans": "哥伦比亚 惠兰水洗 (Colombia Huila)",
    "anchor_id": "anchor-04",
    "owner_name": {
-    "zh-CN": "经典黑巧与烤榛果",
-    "en": "Dark Chocolate & Roasted Nut"
+    "zh-CN": "黑巧克力与烤榛果",
+    "en": "Dark Chocolate & Roasted Hazelnut"
    },
    "display_tags": {
     "zh-CN": [
@@ -2857,21 +2936,21 @@
    "benchmark_beans": "苏门答腊 湿剥曼特宁 (Sumatra Mandheling PWN)",
    "anchor_id": "anchor-06",
    "owner_name": {
-    "zh-CN": "深烘烤雪松与松露",
-    "en": "Roasted Cedar & Earth"
+    "zh-CN": "雪松与烟熏",
+    "en": "Cedar & Smoke"
    },
    "display_tags": {
     "zh-CN": [
      "雪松",
-     "松露",
+     "烟熏",
      "黑巧克力",
-     "烟熏"
+     "松露"
     ],
     "en": [
      "cedar",
-     "truffle",
+     "smoke",
      "dark chocolate",
-     "smoke"
+     "truffle"
     ]
    },
    "owner_reviewed": true
@@ -2897,8 +2976,8 @@
    "benchmark_beans": "肯尼亚 AA (Kenya AA SL28/SL34)",
    "anchor_id": "anchor-05",
    "owner_name": {
-    "zh-CN": "鲜明柑橘与柚子酸质",
-    "en": "Bright Citrus & Yuzu Acid"
+    "zh-CN": "柑橘与柚子酸质",
+    "en": "Citrus & Yuzu Acidity"
    },
    "display_tags": {
     "zh-CN": [
@@ -2937,8 +3016,8 @@
    "benchmark_beans": "巴西 黄波本 (Brazil Yellow Bourbon)",
    "anchor_id": "anchor-03",
    "owner_name": {
-    "zh-CN": "蔗糖与纯净高甜",
-    "en": "Pure Cane Sweetness"
+    "zh-CN": "蔗糖与蜂蜜",
+    "en": "Cane Sugar & Honey"
    },
    "display_tags": {
     "zh-CN": [
@@ -2977,21 +3056,21 @@
    "benchmark_beans": "埃塞俄比亚 哈拉尔 (Ethiopia Harrar)",
    "anchor_id": "anchor-07",
    "owner_name": {
-    "zh-CN": "野生黑加仑与树莓",
-    "en": "Wild Forest Berry"
+    "zh-CN": "黑加仑与树莓",
+    "en": "Blackcurrant & Raspberry"
    },
    "display_tags": {
     "zh-CN": [
      "黑加仑",
      "树莓",
      "木质",
-     "红酒"
+     "酒香"
     ],
     "en": [
      "blackcurrant",
      "raspberry",
      "woody",
-     "red wine"
+     "winey"
     ]
    },
    "owner_reviewed": true
@@ -3017,8 +3096,8 @@
    "benchmark_beans": "埃塞俄比亚 耶加雪菲水洗 / 瑰夏 (Geisha)",
    "anchor_id": "anchor-09",
    "owner_name": {
-    "zh-CN": "高锐茉莉花与白花",
-    "en": "Delicate Jasmine & Floral"
+    "zh-CN": "茉莉与白花",
+    "en": "Jasmine & White Flowers"
    },
    "display_tags": {
     "zh-CN": [
@@ -3057,8 +3136,8 @@
    "benchmark_beans": "爪哇 老深烘 (Java Arabica / Old Brown)",
    "anchor_id": "anchor-11",
    "owner_name": {
-    "zh-CN": "泥炭烟熏与风干木",
-    "en": "Smoky Peat & Aged Wood"
+    "zh-CN": "烟熏与风干木",
+    "en": "Smoke & Aged Wood"
    },
    "display_tags": {
     "zh-CN": [
@@ -3097,8 +3176,8 @@
    "benchmark_beans": "也门 摩卡 (Yemen Matari)",
    "anchor_id": "anchor-12",
    "owner_name": {
-    "zh-CN": "异域小豆蔻与肉桂",
-    "en": "Cardamom & Sweet Spice"
+    "zh-CN": "小豆蔻与肉桂",
+    "en": "Cardamom & Cinnamon"
    },
    "display_tags": {
     "zh-CN": [
@@ -3137,8 +3216,8 @@
    "benchmark_beans": "意式拼配 深烘 (Italian Dark Roast Blend)",
    "anchor_id": "anchor-13",
    "owner_name": {
-    "zh-CN": "深烘重可可与回甘",
-    "en": "Deep Dark Cocoa Roast"
+    "zh-CN": "重可可与回甘",
+    "en": "Dark Cocoa & Sweet Finish"
    },
    "display_tags": {
     "zh-CN": [
@@ -3177,21 +3256,21 @@
    "benchmark_beans": "洪都拉斯 威士忌雪莉桶 / 厌氧日晒瑰夏",
    "anchor_id": "anchor-14",
    "owner_name": {
-    "zh-CN": "厌氧朗姆与微醺酒香",
-    "en": "Anaerobic Rum & Winey"
+    "zh-CN": "朗姆与发酵果香",
+    "en": "Rum & Fermented Fruit"
    },
    "display_tags": {
     "zh-CN": [
-     "厌氧朗姆",
-     "酒香",
+     "朗姆酒香",
+     "发酵果香",
      "热带水果",
-     "发酵"
+     "酒香"
     ],
     "en": [
-     "anaerobic rum",
-     "winey",
+     "rum",
+     "fermented fruit",
      "tropical fruit",
-     "fermented"
+     "winey"
     ]
    },
    "owner_reviewed": true
@@ -3217,8 +3296,8 @@
    "benchmark_beans": "巴拿马 浅烘铁皮卡 (Panama Typica)",
    "anchor_id": "anchor-15",
    "owner_name": {
-    "zh-CN": "清脆草本与绿茶香",
-    "en": "Fresh Herbal & Green Tea"
+    "zh-CN": "草本与绿茶",
+    "en": "Herbal & Green Tea"
    },
    "display_tags": {
     "zh-CN": [
@@ -3257,21 +3336,21 @@
    "benchmark_beans": "（负向约束集合，不推荐商品）",
    "anchor_id": "anchor-16",
    "owner_name": {
-    "zh-CN": "瑕疵预警风味",
-    "en": "Off-Flavor / Defect Group"
+    "zh-CN": "纸味与陈味",
+    "en": "Papery & Stale"
    },
    "display_tags": {
     "zh-CN": [
-     "瑕疵",
-     "霉味",
      "纸味",
-     "陈味"
+     "陈味",
+     "霉味",
+     "过发酵"
     ],
     "en": [
-     "defect",
-     "musty",
      "papery",
-     "stale"
+     "stale",
+     "musty",
+     "over-fermented"
     ]
    },
    "owner_reviewed": true
@@ -3297,8 +3376,8 @@
    "benchmark_beans": "巴西 半日晒 / 罗布斯塔精选 (Brazil Pulped Natural)",
    "anchor_id": "anchor-10",
    "owner_name": {
-    "zh-CN": "丝绒醇厚与糖浆感",
-    "en": "Full Velvet Body"
+    "zh-CN": "丝绒与糖浆口感",
+    "en": "Velvet & Syrup Mouthfeel"
    },
    "display_tags": {
     "zh-CN": [
@@ -3331,6 +3410,8 @@
     "locator": "https://coffeeadastra.com/ ; The Physics of Filter Coffee, ISBN 978-0-578-95028-0",
     "licence_note": "Personal blog & research citations / author attribution per public research principles (owner note 2026-09-12)",
     "claims": 3,
+    "claims_live": 3,
+    "claims_pending_review": 0,
     "state": "LITERATURE_CLAIM"
    },
    {
@@ -3339,6 +3420,8 @@
     "locator": "DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "licence_note": "Academic citation / educational & research attribution under fair use (owner note 2026-09-12)",
     "claims": 4,
+    "claims_live": 2,
+    "claims_pending_review": 2,
     "state": "LITERATURE_CLAIM"
    },
    {
@@ -3347,6 +3430,8 @@
     "locator": "https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "licence_note": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) — attribution required; derivative lexicon data must be shared alike (owner note 2026-09-12)",
     "claims": 4,
+    "claims_live": 3,
+    "claims_pending_review": 1,
     "state": "LITERATURE_CLAIM"
    }
   ],
@@ -3376,7 +3461,7 @@
     "en": "nutty & chocolate"
    },
    "fermented_winey": {
-    "zh-CN": "厌氧酒香",
+    "zh-CN": "发酵与酒香",
     "en": "fermented & winey"
    },
    "bitter_roasted": {
@@ -3477,7 +3562,7 @@
    },
    "fermented_winey": {
     "zh-CN": [
-     "厌氧酒香",
+     "酒香",
      "朗姆酒",
      "发酵果酱"
     ],
@@ -3503,12 +3588,12 @@
     "zh-CN": [
      "小豆蔻",
      "肉桂",
-     "异域辛香"
+     "辛香料"
     ],
     "en": [
      "cardamom",
      "cinnamon",
-     "exotic spice"
+     "warm spice"
     ]
    },
    "herbal_green": {
@@ -3548,7 +3633,7 @@
   },
   "concept_tags": {
    "sensory.acetic_vinegar": {
-    "zh-CN": "醋酸",
+    "zh-CN": "醋味",
     "en": "vinegar"
    },
    "sensory.alcoholic": {
@@ -3776,7 +3861,7 @@
     "en": "mint"
    },
    "sensory.molasses": {
-    "zh-CN": "黑糖",
+    "zh-CN": "糖蜜",
     "en": "molasses"
    },
    "sensory.moldy": {
@@ -3916,7 +4001,7 @@
     "en": "walnut"
    },
    "sensory.wine_like_character": {
-    "zh-CN": "红酒",
+    "zh-CN": "酒香",
     "en": "winey"
    },
    "sensory.woody": {
@@ -3936,51 +4021,57 @@
   },
   "evidence_labels": {
    "OWNER_STATEMENT": {
-    "zh-CN": "烘焙与萃取成因",
-    "en": "Roast & extraction"
+    "zh-CN": "参考说明",
+    "en": "Reference note"
    },
    "CORPUS_MEASURED": {
-    "zh-CN": "语料实测",
-    "en": "Measured in the corpus"
+    "zh-CN": "资料统计",
+    "en": "From the data"
    },
    "LITERATURE_CLAIM": {
-    "zh-CN": "物理萃取规律",
-    "en": "Extraction physics"
-   },
-   "LITERATURE_CLAIM_PENDING_LOCATOR": {
-    "zh-CN": "物理萃取规律",
-    "en": "Extraction physics"
+    "zh-CN": "研究参考",
+    "en": "Research reference"
    },
    "COMPUTED_DELTA": {
-    "zh-CN": "感官偏置校准",
-    "en": "Perception calibration"
+    "zh-CN": "描述差异",
+    "en": "Where your description differs"
    }
   },
+  "displayable_evidence_states": [
+   "OWNER_STATEMENT",
+   "CORPUS_MEASURED",
+   "LITERATURE_CLAIM",
+   "COMPUTED_DELTA"
+  ],
   "delta_templates": {
    "zh-CN": {
-    "pos": "在当前的感知中，{label}的表达比理论物理值更显突出，可能受萃取温度或降温速率的影响。",
-    "neg": "在当前的感知中，{label}的表达比理论物理值稍显收敛，可能受降温速率或水温偏置影响。"
+    "pos": "这次的描述中，{label}更突出。仅凭目前的信息，还无法判断这种差异的原因。",
+    "neg": "这次的描述中，{label}不太明显。仅凭目前的信息，还无法判断这种差异的原因。"
    },
    "en": {
-    "pos": "In this cup, {label} reads more pronounced than the physics predicts; water temperature or cooling rate may be pushing it forward.",
-    "neg": "In this cup, {label} reads a little more restrained than the physics predicts; cooling rate or water temperature may be holding it back."
+    "pos": "In this description, {label} stands out more than this cup's setup usually shows. From what we have, the reason cannot be told.",
+    "neg": "In this description, {label} comes through less than this cup's setup usually shows. From what we have, the reason cannot be told."
    }
   },
   "citation_prefix": {
-   "zh-CN": "引用自：",
-   "en": "From: "
+   "zh-CN": "参考资料：",
+   "en": "Reference: "
   },
   "card_heading": {
-   "zh-CN": "风味描述",
-   "en": "Flavor description"
+   "zh-CN": "风味卡",
+   "en": "Flavor card"
   },
   "preview_heading": {
-   "zh-CN": "风味描述预览",
-   "en": "Flavor preview"
+   "zh-CN": "这杯咖啡的风味",
+   "en": "This cup's flavor"
   },
   "science_heading": {
-   "zh-CN": "科学归因",
-   "en": "Attribution"
+   "zh-CN": "相关风味说明",
+   "en": "Flavor notes"
+  },
+  "defect_note": {
+   "zh-CN": "这些描述常与储存或处理有关，值得再喝一口确认。这里不对这杯咖啡做质量判断。",
+   "en": "These descriptions are often linked to storage or processing; worth a second sip to confirm. No quality judgement is made here."
   },
   "context_statements": [
    {
@@ -4021,10 +4112,10 @@
       "option": "pour_over_v60"
      }
     ],
-    "zh-CN": "手冲快萃优先释放前段高挥发花香与单体果酸。",
-    "en": "Pour-over releases the early, volatile floral and fruit acids first.",
+    "zh-CN": "手冲常见的表现是花香与果酸更清晰，醇厚较轻。",
+    "en": "Pour-over tends to show florals and fruit acidity more clearly, with a lighter body.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12",
+    "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4156,10 +4247,10 @@
       "option": "natural"
      }
     ],
-    "zh-CN": "日晒让果肉糖分长时间发酵渗入豆内，还原糖与游离氨基酸升高：果酱、热带水果、高甜、波本感。",
+    "zh-CN": "日晒让果肉糖分在发酵中渗入豆内，还原糖与游离氨基酸升高：果酱、热带水果、高甜。",
     "en": "Natural processing lets fruit sugars ferment into the seed: more reducing sugars and free amino acids — jam, tropical fruit, high sweetness.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12",
+    "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4171,10 +4262,10 @@
       "option": "anaerobic"
      }
     ],
-    "zh-CN": "厌氧发酵产生大量乳酸与外源酯类：酸奶、厌氧酒香、极高识别度。",
-    "en": "Anaerobic fermentation produces lactic acid and exogenous esters: yoghurt, winey notes, very distinctive.",
+    "zh-CN": "厌氧发酵常带来更多乳酸与酯类风味：酸奶感与酒香。",
+    "en": "Anaerobic fermentation tends to add lactic and ester notes: yoghurt and winey character.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12",
+    "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4216,10 +4307,10 @@
       "option": "gesha"
      }
     ],
-    "zh-CN": "瑰夏基因型花香与柑橘酸质上限极高，醇厚度偏轻。",
-    "en": "The Gesha genotype has a very high ceiling for floral and citrus acidity with a lighter body.",
+    "zh-CN": "瑰夏常见茉莉、白花与柑橘酸质，醇厚偏轻。",
+    "en": "Gesha commonly shows jasmine, white florals and citrus acidity with a lighter body.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12",
+    "citation_ref": "owner 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4310,10 +4401,10 @@
       "option": "light"
      }
     ],
-    "zh-CN": "浅烘焙保留了绿原酸与高挥发性花果香，V60 快萃优先释放了前段极性酸质。",
-    "en": "Light roast preserves volatile florals and fruit acids, and V60 fast extraction targets these front-end acids.",
+    "zh-CN": "浅烘保留了更多绿原酸与挥发性花果香，手冲又让这些花香与果酸更清晰。",
+    "en": "Light roast keeps more chlorogenic acids and volatile floral-fruit aromatics, and pour-over lets those florals and acids read clearly.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12 (design examples)",
+    "citation_ref": "owner 2026-09-12 (design examples); reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4405,10 +4496,10 @@
       "option": "anaerobic"
      }
     ],
-    "zh-CN": "中深烘 + 厌氧本应呈现较强的黑巧与发酵感；若你尝到更高的酸质，通常是冲煮水温偏低使后段大分子苦酚萃取不足。",
-    "en": "Medium-dark plus anaerobic should read as dark chocolate and fermentation; a brighter acidity usually means the brew ran cool and under-extracted the late bitter phenolics.",
+    "zh-CN": "中深烘 + 厌氧常见的表现是黑巧与发酵感并存；若你尝到的酸质更高，与这个组合的常见表现不同。水温偏低是可能的原因之一，但仅凭描述无法确定。",
+    "en": "Medium-dark plus anaerobic usually reads as dark chocolate with fermentation; a brighter acidity differs from the usual pattern for this combination. A cool brew is one possible reason, but the description alone cannot tell.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "owner 2026-09-12 (design examples)",
+    "citation_ref": "owner 2026-09-12 (design examples); reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4420,10 +4511,10 @@
       "option": "very_light"
      }
     ],
-    "zh-CN": "极浅烘几乎不动豆子的原始结构：绿原酸与挥发性花果香保留最完整，酸质最锐利，甜感与醇厚尚未展开。",
-    "en": "A very light roast barely touches the bean's original structure: chlorogenic acids and volatile florals stay almost intact, acidity is at its sharpest, sweetness and body have not opened yet.",
+    "zh-CN": "极浅烘几乎不动豆子的原始结构：绿原酸与挥发性花果香保留最完整，酸质最突出，甜感与醇厚尚未展开。",
+    "en": "A very light roast barely touches the bean's original structure: chlorogenic acids and volatile florals stay almost intact, acidity is at its most pronounced, sweetness and body have not opened yet.",
     "evidence_state": "OWNER_STATEMENT",
-    "citation_ref": "operator extension of the owner's light-roast statement, 2026-09-12",
+    "citation_ref": "operator extension of the owner's light-roast statement, 2026-09-12; reworded OWNER_COPY_REVIEW_2026-09-12 (tendency wording, no genetic ceiling / no cause asserted from the description)",
     "source_id": "owner",
     "source_title": "owner"
    },
@@ -4490,7 +4581,7 @@
     ],
     "zh-CN": "快萃与较高水温优先溶解极性较高的有机酸分子，前段酸质与花果香先被释放。",
     "en": "Fast extraction at higher water temperature dissolves the more polar organic acids first, so acidity and floral-fruit notes lead.",
-    "evidence_state": "LITERATURE_CLAIM",
+    "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
@@ -4505,7 +4596,7 @@
     ],
     "zh-CN": "研磨度过细会加速大分子绿原酸内酯的释放，从而增加尾段苦感；高压萃取同时带出更多油脂与醇厚度。",
     "en": "Too fine a grind accelerates the release of large chlorogenic-acid lactones and adds late bitterness; pressure extraction also carries more oils and body.",
-    "evidence_state": "LITERATURE_CLAIM",
+    "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
     "source_title": "UC Davis Coffee Center — brewing kinetics and sensory maps"
@@ -4518,8 +4609,8 @@
       "option": "cold_brew"
      }
     ],
-    "zh-CN": "低温长时萃取压低挥发酸与前段酸质，TDS 与感官图谱偏向甜感与圆润。",
-    "en": "Long, cold extraction suppresses volatile acids and front-end acidity; the TDS–sensory map shifts toward sweetness and roundness.",
+    "zh-CN": "低温长时萃取下，挥发性酸与酸质通常更弱，感官图谱偏向甜感与圆润。",
+    "en": "Under long, cold extraction the volatile acids and acidity are usually weaker; the sensory map shifts toward sweetness and roundness.",
     "evidence_state": "LITERATURE_CLAIM",
     "citation_ref": "UC Davis Coffee Center — brewing kinetics and sensory maps — DOI: 10.1016/j.foodchem.2020.126567 (Cotter et al., 2020, Food Chemistry; reference paper supplied by the owner)",
     "source_id": "uc_davis_coffee_center",
@@ -4550,7 +4641,7 @@
     ],
     "zh-CN": "瑰夏（Gesha）基因决定了其高挥发性单萜烯（如芳樟醇）的高表达上限，浅烘焙下呈现高锐白花与单醇果酸。",
     "en": "The Gesha genotype sets a high ceiling for volatile monoterpenes such as linalool; at light roast it reads as sharp white florals and clean, single-note fruit acidity.",
-    "evidence_state": "LITERATURE_CLAIM",
+    "evidence_state": "LITERATURE_CLAIM_NEEDS_REVERIFICATION",
     "citation_ref": "World Coffee Research — Sensory Lexicon / Varieties Catalog — https://worldcoffeeresearch.org/resources/sensory-lexicon",
     "source_id": "wcr_sensory_lexicon",
     "source_title": "World Coffee Research — Sensory Lexicon / Varieties Catalog"

@@ -347,6 +347,23 @@
         ]
       },
       "recorded_at_utc": "2026-09-12T06:32:28Z"
+    },
+    {
+      "id": "R3-D16",
+      "subject": "Owner's copy review: positioning first, evidence labelling by kind, claim re-verification, exit options in the question bank, profile naming, About reading order",
+      "decision": "flavorwords is positioned as a research-backed tool that helps enthusiasts recognise and describe the flavor in the cup: a few choices → a flavor card the reader confirms → reference notes with declared sources. Implementation vocabulary (diagnosis, attribution, calibration, bias, paradox, pruning, orthogonal, signature space) leaves the user copy. Evidence labels say what kind of statement it is (参考说明 / 资料统计 / 研究参考 / 描述差异); claims pending a locator or re-verification never reach the screen. ΔV is a difference, not a bias, and its cause is not asserted. Three literature claims held back after external checks (WCR lexicon cannot support a genotype ceiling; UC Davis fractionation contradicts 'acids first'); Coffee Ad Astra author corrected to Jonathan Gagné. Q0 options narrowed to one dimension, Q2 gets 'sweetness not noticeable', Q4 gets 'clearly bitter', Q5 loses its quality words; an absence answer caps the first coherence check at mild. Sixteen profiles renamed to two sensory references each; the defect group becomes 纸味与陈味 with a second-sip note and no quality verdict. About reordered: purpose → sample card → author and work → scope with units → visuals → how a card is made → technical notes → sources.",
+      "owner_words": "先让人理解这个产品值得用在哪里，再让人看到支撑它的研究 … 帮助我把这一杯咖啡的感受，说得更具体 … 不要让用户先读懂你的实现方式，才能理解产品价值 … 系统站在了判定用户感受对错的位置 … 每一句成因都注明出处 目前说得过满 … ΔV 不能直接叫作用户的感官偏置 … 以两个主要感官参照命名 … 产品用途 → 体验示例 → 作者与具体工作 → 资料来源 → 方法细节",
+      "applied": {
+        "data": "QUESTION_BANK.tsv (Q0 labels, Q2-D, Q4-C, Q5 labels, cues), CONCEPT_FLAVOR_TAGS.tsv (发酵与酒香, 辛香料, 醋味, 糖蜜, 酒香), PROFILE_NAME_ANCHORS.tsv + FLAVOR_PROFILE_LIBRARY.tsv (names/tags only, members unchanged), CONTEXT_STATEMENTS.tsv (7 rewordings), external-literature/*.claims.csv (review_state / review_note columns; 3 NEEDS_REVERIFICATION; cold-brew wording), ingest-external-literature.py, build-matrix-k-v1.py (Matrix_Q D/C, evidence labels, displayable states, delta templates, headings, defect_note, negation prefixes, forced 甜, origin labels)",
+        "code": "engine.ts displayableEvidenceStates/defectNote + statementsFor filter; flow.ts absentAnswer + mild cap, pick prompt, defect note on the card; view.ts appShell/hint/q6Copy; about.ts rewritten (approach, example, author, scope, sections method/technical/literature, citations); lexicon.ts negation dimension map; AboutDrawer.vue reordered; FinalAttributionCard 已确认; FirstDescriptionCard 确认风味卡; EscalationModal 再看一眼; FlavorBurst legend follows locale",
+        "verified": "vitest 52/52 (rhythm re-measured: evidence-carrying sequences 21/52/27; overall Path 1 15.7% by construction), vue-tsc clean, export-frontend-copy.py now executes view.ts/about.ts via esbuild",
+        "open": [
+          "owner re-read of the regenerated FRONTEND_COPY_REVIEW.md",
+          "a variety-chemistry source for the Gesha claim and a brewing-kinetics source for the two UC Davis notes, or drop them",
+          "Q0-C keeps the owner's Matrix_Q increment body:1 under the narrowed label 酸感不明显 — owner to confirm or zero it"
+        ]
+      },
+      "recorded_at_utc": "2026-09-12T09:30:00Z"
     }
   ],
   "guards": {

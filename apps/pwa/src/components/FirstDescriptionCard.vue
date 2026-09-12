@@ -9,7 +9,7 @@ const props = defineProps<{ model: FirstDescriptionCardModel }>();
 const chosen = ref<Word[]>([]);
 const all = computed(() => [...props.model.main, ...props.model.secondary]);
 const full = computed(() => chosen.value.length >= props.model.pickCount);
-const submitLabel = computed(() => (locale.value === "zh-CN" ? "生成我的风味卡" : "Make my card"));
+const submitLabel = computed(() => (locale.value === "zh-CN" ? "确认风味卡" : "Confirm my card"));
 
 function toggle(word: Word) {
   const has = chosen.value.some((w) => w.text === word.text);

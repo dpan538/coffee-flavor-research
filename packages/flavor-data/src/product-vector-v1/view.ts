@@ -90,7 +90,7 @@ export function contextCatalog(locale: Locale): ContextCard[] {
       chips: origins,
       multi: false,
       optional: true,
-      hint: locale === "zh-CN" ? "跳过也没关系：豆种和处理法已经决定了大部分预测" : "Skip if unsure: variety and processing already carry most of the prediction",
+      hint: locale === "zh-CN" ? "不清楚产地也可以继续。" : "Not sure? You can skip this.",
     },
   ];
 }
@@ -149,15 +149,15 @@ export function screenModel(session: Session): ScreenModel {
       pickCount: bundle.question_flow.first_description.pick_count,
       path: session.step.path,
       profileTitle: session.result?.profiles[0]?.profile.owner_name[locale] ?? null,
-      heading: ((bundle.presentation as { preview_heading?: Record<Locale, string> }).preview_heading ?? { "zh-CN": "风味描述预览", en: "Flavor preview" })[locale],
+      heading: ((bundle.presentation as { preview_heading?: Record<Locale, string> }).preview_heading ?? { "zh-CN": "这杯咖啡的风味", en: "This cup's flavor" })[locale],
     };
   }
   if (step.kind === "q6" && session.q6) {
     return {
       kind: "escalation",
-      title: locale === "zh-CN" ? "再确认一次：勾选你确实尝到的" : "One more check: tick what you actually tasted",
+      title: q6Copy(locale).title,
       options: session.q6.options.map((o) => ({ dimension: o.dimension, text: o.text })),
-      submitLabel: locale === "zh-CN" ? "生成精修风味卡" : "Refine my card",
+      submitLabel: q6Copy(locale).submit,
       reason: session.gate?.reason ?? "",
     };
   }
@@ -179,23 +179,28 @@ export function screenModel(session: Session): ScreenModel {
   };
 }
 
+/** Q6 copy: the second look is a question about the reader's own impression, never a correction of it. */
+export function q6Copy(locale: Locale): { title: string; submit: string } {
+  return locale === "zh-CN" ? { title: "哪些描述更贴近你的感受？", submit: "更新风味卡" } : { title: "Which of these are closer to what you tasted?", submit: "Update my card" };
+}
+
 /** App shell copy: hero, start button, top bar — bilingual, no styling. */
 export function appShell(locale: Locale) {
   return locale === "zh-CN"
     ? {
-        title: "感官归因与风味诊断",
-        subtitle: "感官物理学 × 12 维向量空间",
-        lead: "描述直觉里的这一口，看它在物理上为什么这样。",
-        start: "开始风味诊断",
+        title: "说清这一杯的风味",
+        subtitle: "从酸质、香气与口感开始，找到贴近你感受的描述。",
+        lead: "几次选择之后，你会得到一张由你确认的风味卡，和几条帮助理解这杯咖啡的参考说明。",
+        start: "开始描述",
         about: "关于",
         localeSwitch: "EN",
         offlineReady: "离线可用",
       }
     : {
-        title: "Sensory attribution & flavor diagnosis",
-        subtitle: "Sensory physics × a 12-dimension vector space",
-        lead: "Describe the sip as you feel it; see why the cup tastes that way.",
-        start: "Start the diagnosis",
+        title: "Put this cup into words",
+        subtitle: "Start from acidity, aroma and mouthfeel, and find the words closest to what you tasted.",
+        lead: "A few choices lead to a flavor card you confirm yourself, with reference notes to help you understand the cup.",
+        start: "Describe this cup",
         about: "About",
         localeSwitch: "中",
         offlineReady: "Works offline",

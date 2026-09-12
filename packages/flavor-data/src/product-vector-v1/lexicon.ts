@@ -111,7 +111,7 @@ export function mapUtterance(text: string, locale: Locale): UtteranceMapping {
     if (negatedAt.length) {
       forced[slot as Slot] = option;
       answers[slot as Slot] = option;
-      matched.push({ term: word, negated: true, dimension: slot === "Q4" ? "bitter_roasted" : "acidity" });
+      matched.push({ term: word, negated: true, dimension: ({ Q4: "bitter_roasted", Q0: "acidity", Q2: "sweetness" } as Record<string, string>)[slot] ?? "acidity" });
     }
   }
   for (const slot of Object.keys(bank) as Slot[]) {

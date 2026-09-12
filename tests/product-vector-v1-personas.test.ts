@@ -53,7 +53,7 @@ describe("owner personas", () => {
     const gate = flow.escalationGate(step, result, description.all.slice(0, 5));
     expect(gate.escalate).toBe(false);
     const top = result.profiles[0]!.profile;
-    expect(["Delicate Jasmine & Floral", "Bright Citrus & Yuzu Acid", "Tropical Stone Fruit", "Fresh Herbal & Green Tea"]).toContain(top.owner_name.en);
+    expect(["Jasmine & White Flowers", "Citrus & Yuzu Acidity", "Yellow Peach & Ripe Fruit", "Herbal & Green Tea"]).toContain(top.owner_name.en);
     const card = flow.finalCard(result, description.all.slice(0, 5), "zh-CN");
     expect(card.picked).toHaveLength(5);
     expect(card.closing).toContain("咖啡");

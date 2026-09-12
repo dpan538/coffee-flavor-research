@@ -5,7 +5,7 @@
 import "fake-indexeddb/auto";
 import { describe, expect, it } from "vitest";
 import { DIMENSIONS, buildVPred, cosine, productVectorBundle } from "../packages/flavor-data/src/product-vector-v1";
-import { aboutCitations, aboutSections, aboutStats } from "../packages/flavor-data/src/product-vector-v1/about";
+import { aboutAuthor, aboutCitations, aboutExample, aboutScope, aboutSections, aboutStats } from "../packages/flavor-data/src/product-vector-v1/about";
 import { answer, createSession, firstDescription, nextStep, submitPicks } from "../packages/flavor-data/src/product-vector-v1/session";
 import { appShell, contextCatalog, normalizeContext, screenModel } from "../packages/flavor-data/src/product-vector-v1/view";
 import { addBean, beansAsVectors, clearBeans, conceptIdsFromLabel, deleteBean, listBeans, userDatabase } from "../packages/flavor-data/src/user-db";
@@ -89,7 +89,7 @@ describe("context catalog and screen models", () => {
   });
 
   it("app shell copy exists in both languages", () => {
-    expect(appShell("zh-CN").start).toBe("开始风味诊断");
+    expect(appShell("zh-CN").start).toBe("开始描述");
     expect(appShell("en").localeSwitch).toBe("中");
   });
 });
@@ -133,16 +133,40 @@ describe("about content", () => {
   it("is bilingual, reads live numbers from the bundle, folds its details, and states every citation's licence", () => {
     const zh = aboutSections("zh-CN");
     const en = aboutSections("en");
-    expect(zh.map((s) => s.id)).toEqual(["methodology", "literature"]);
+    // owner copy review 2026-09-12: how a card is made → technical notes → sources; the user-facing method section carries no formula
+    expect(zh.map((s) => s.id)).toEqual(["method", "technical", "literature"]);
     expect(zh.every((s) => s.folded && s.summary.length > 0 && s.blocks.length > 0)).toBe(true);
-    expect(zh[0]!.summary).toContain("12 个正交维度");
-    expect(en[0]!.blocks[3]!.body).toContain("0.8");
-    expect(zh[0]!.blocks[2]!.title).toContain("排序");
+    expect(zh[0]!.summary).toContain("由你确认");
+    expect(zh[0]!.blocks.map((b) => b.title)).toEqual(["参考资料", "提问方式", "描述的选择与确认", "结果的适用范围"]);
+    expect(zh[0]!.blocks.some((b) => /V_pred|余弦|ΔV/.test(b.body))).toBe(false);
+    expect(en[1]!.blocks[1]!.body).toContain("0.8");
+    expect(zh[1]!.blocks[2]!.title).toContain("相似度");
     const cites = aboutCitations("en");
     expect(cites.map((c) => c.id)).toEqual(["wcr_sensory_lexicon", "uc_davis_coffee_center", "coffee_ad_astra", "gactt"]);
     expect(cites.slice(0, 3).every((c) => c.claims > 0 && c.locator && c.licence && c.evidenceState === "LITERATURE_CLAIM")).toBe(true);
+    expect(cites.find((c) => c.id === "coffee_ad_astra")!.title).toContain("Jonathan Gagné");
+    // the three claims flagged in the review are declared but held back from the UI
+    expect(cites.find((c) => c.id === "uc_davis_coffee_center")!.claimsPendingReview).toBe(2);
+    expect(cites.find((c) => c.id === "wcr_sensory_lexicon")!.claimsPendingReview).toBe(1);
+    expect(cites.reduce((a, c) => a + c.claimsLive, 0)).toBe(8);
     const stats = aboutStats("zh-CN");
     expect(stats.find((s) => s.key === "assertions")!.value).toBeGreaterThan(80000);
     expect(stats.find((s) => s.key === "consumers")!.value).toBe(4042);
+  });
+
+  it("says what the product is for before any implementation word, names the author's work, and gives every number a unit and a use", () => {
+    const author = aboutAuthor("zh-CN");
+    expect(author.name).toContain("潘岱");
+    expect(author.contributions.map((c) => c.value)).toEqual([12, 16, 94]);
+    expect(author.contributions.every((c) => c.use.length > 0)).toBe(true);
+    const scope = aboutScope("zh-CN");
+    expect(scope.items.map((s) => s.key)).toEqual(["assertions", "coffees", "consumers", "sources"]);
+    expect(scope.items.find((s) => s.key === "coffees")!.note).toContain("8,142");
+    expect(scope.items.find((s) => s.key === "consumers")!.note).toContain("GACTT");
+    expect(scope.items.every((s) => s.unit.length > 0)).toBe(true);
+    const example = aboutExample("zh-CN");
+    expect(example.words).toHaveLength(5);
+    expect(example.note).toContain("示例");
+    expect(aboutExample("en").words.some((w) => /[一-鿿]/.test(w))).toBe(false);
   });
 });

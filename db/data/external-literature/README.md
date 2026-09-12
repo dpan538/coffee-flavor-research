@@ -49,4 +49,9 @@ A claim row whose `source_locator` and `licence_note` are both filled ingests as
 `LITERATURE_CLAIM_PENDING_LOCATOR`: it is still shown in the product with its source name, and the About page says the DOI / link is
 pending. The ingest writes `db/data/product-vector-v1/LITERATURE_SOURCES.json` (one row per source: title, locator, licence note,
 claim count, state) which the About page reads. The three current files carry the owner's core content (11 claims) with locator and
-licence left blank — fill both columns and re-run `ingest-external-literature.py`.
+licence filled on 2026-09-12; edit a row and re-run `ingest-external-literature.py`.
+
+`review_state` / `review_note` (optional columns, owner copy review 2026-09-12): a row marked `NEEDS_REVERIFICATION` is ingested as
+`LITERATURE_CLAIM_NEEDS_REVERIFICATION` — declared in the data and counted on the About page as "held back until re-verified", but never shown
+in the product. Use it when an external check finds that the cited source does not support the sentence (the WCR Gesha claim, the two UC Davis
+extraction-order claims); clear it once a supporting source is added or the sentence is rewritten.

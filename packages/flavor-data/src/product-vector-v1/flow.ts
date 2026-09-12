@@ -18,7 +18,7 @@ import {
   DIMENSIONS,
   add,
   buildVPred,
-  calibrationLine,
+  calibrationLine, defectNote,
   cosine,
   infer,
   normalize,
@@ -140,6 +140,12 @@ export function contextCheck(context: ContextAnswers | undefined, base: Vector):
   return { between: ["context", "Q0-Q1"], similarity: capped, level: flips ? (levelOf(capped) === "severe" ? "mild" : levelOf(capped)) : levelOf(capped), paradox: flips };
 }
 
+/** An answer whose increment is empty ("not noticeable") carries no direction. */
+export function absentAnswer(answers: FlowAnswers, slot: Slot): boolean {
+  const a = answers[slot];
+  return a !== undefined && a !== "" && !slotVector(slot, a).some((x) => x !== 0);
+}
+
 /** Slot answers → Matrix_Q answers, so infer() runs unchanged. */
 export function perceptionAnswers(answers: FlowAnswers): PerceptionAnswers {
   const out: PerceptionAnswers = {};
@@ -163,7 +169,11 @@ export function flowStep(answers: FlowAnswers, context?: ContextAnswers): FlowSt
 
   if (missing("Q0", "Q1").length) return ask(missing("Q0", "Q1"), "base perception pair");
   if (missing("Q2", "Q3").length) return ask(missing("Q2", "Q3"), "coherence check needs Q2-Q3");
-  const c23 = coherence(g(["Q0", "Q1"]), g(["Q2", "Q3"]), ["Q0-Q1", "Q2-Q3"]);
+  let c23 = coherence(g(["Q0", "Q1"]), g(["Q2", "Q3"]), ["Q0-Q1", "Q2-Q3"]);
+  // owner copy review 2026-09-12: "sweetness not noticeable" adds no direction, and Q3 on its own is
+  // direction-degenerate (all three body answers point the same way), so the check group cannot claim a
+  // severe conflict — absence contradicts nothing. Capped at mild: one more question, never Path 3.
+  if (absentAnswer(answers, "Q2") && c23.level === "severe") c23 = { ...c23, similarity: Math.max(c23.similarity, flow.thresholds.mild), level: "mild", paradox: false };
   checks.push(c23);
   const ctx = contextCheck(context, g(["Q0", "Q1"]));
   if (ctx) checks.push(ctx);
@@ -234,7 +244,7 @@ export function describe(result: InferenceResult, locale: Locale): Description {
     }
     if (!progressed) break;
   }
-  const prompt = locale === "zh-CN" ? `请勾选出你觉得最符合你当前体验的 ${flow.first_description.pick_count} 个风味描述` : `Pick the ${flow.first_description.pick_count} words that best match what you tasted`;
+  const prompt = locale === "zh-CN" ? `选出最贴近你感受的 ${flow.first_description.pick_count} 个词。` : `Pick the ${flow.first_description.pick_count} words closest to what you tasted.`;
   return { main: words.slice(0, main), secondary: words.slice(main, total), all: words, prompt };
 }
 
@@ -312,6 +322,11 @@ export function finalCard(result: InferenceResult, picks: Word[], locale: Locale
   const top = result.topDeltaDimensions[0];
   if (top && Math.abs(top.delta) >= 0.1) science.push(calibrationLine(top.dimension, top.delta, locale));
   const first = result.profiles[0];
+  // the papery / stale group (owner copy review 2026-09-12): the words are shown, a second sip is suggested, no quality verdict
+  if (first && (first.profile as { anchor_id?: string }).anchor_id === "anchor-16") {
+    const note = defectNote(locale);
+    if (note) science.push(note);
+  }
   return {
     picked: picks.map((w) => w.text),
     science,

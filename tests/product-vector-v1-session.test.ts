@@ -35,7 +35,7 @@ describe("product-vector-v1 session", () => {
     if (first.kind === "ask") {
       expect(first.card.slot).toBe("Q0");
       expect(first.card.prompt).toContain("酸");
-      expect(first.card.options.map((o) => o.label)).toContain("鲜明多汁的柑橘 / 青苹果酸");
+      expect(first.card.options.map((o) => o.label)).toContain("柑橘 / 青苹果那种酸");
     }
   });
 

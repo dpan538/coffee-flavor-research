@@ -63,7 +63,7 @@ export type ScienceLine = {
   sourceLicence: string;
   /** consumer-facing label for the evidence state (never the raw enum) */
   label: string;
-  /** "引用自：Coffee Ad Astra (J. Gagné)" for literature; empty for owner statements and calibration */
+  /** "参考资料：Coffee Ad Astra (J. Gagné)" for literature; empty for owner statements and the difference line */
   citation: string;
 };
 export type Presentation = {
@@ -308,9 +308,23 @@ type PresentationExtras = {
   citation_prefix?: Record<Locale, string>;
   card_heading?: Record<Locale, string>;
   science_heading?: Record<Locale, string>;
+  displayable_evidence_states?: string[];
+  defect_note?: Record<Locale, string>;
 };
 
-/** consumer-facing label for an evidence state ("物理萃取规律"), never the raw enum */
+/** Evidence states a user may see (owner copy review 2026-09-12): a claim pending a locator or re-verification is declared in the data but never shown. */
+export function displayableEvidenceStates(): string[] {
+  return (presentation as PresentationExtras).displayable_evidence_states ?? Object.keys((presentation as PresentationExtras).evidence_labels ?? {});
+}
+
+/** The note for the papery / stale group: show the words, ask for a second sip, judge nothing. */
+export function defectNote(locale: Locale): ScienceLine | null {
+  const text = (presentation as PresentationExtras).defect_note?.[locale];
+  if (!text) return null;
+  return { text, evidenceState: "OWNER_STATEMENT", citationRef: "owner copy review 2026-09-12", about: "defect_note", sourceTitle: "owner", sourceLicence: "", label: evidenceLabel("OWNER_STATEMENT", locale), citation: "" };
+}
+
+/** consumer-facing label for an evidence state ("研究参考"), never the raw enum */
 export function evidenceLabel(state: string, locale: Locale): string {
   return (presentation as PresentationExtras).evidence_labels?.[state]?.[locale] ?? "";
 }
@@ -354,8 +368,9 @@ export function statementsFor(context: ContextAnswers, locale: Locale): ScienceL
     const values = Array.isArray(value) ? value : value ? [value] : [];
     if (values.length) answered.set(axis, new Set(values));
   }
+  const visible = new Set(displayableEvidenceStates());
   return presentation.context_statements
-    .filter((s) => s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis)?.has(p.option)))
+    .filter((s) => visible.has(s.evidence_state) && s.parts.length > 0 && s.parts.every((p) => answered.get(p.axis)?.has(p.option)))
     .sort((a, b) => b.parts.length - a.parts.length)
     .map((s) => {
       const title = (s as { source_title?: string }).source_title ?? s.source_id;

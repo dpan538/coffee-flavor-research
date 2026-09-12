@@ -38,6 +38,10 @@ const ZH: Case[] = [
   { text: "不要苦，要非常浓郁的甜感", expect: { Q4: "B", Q5: "B" }, note: "owner Persona C fragment" },
   { text: "喜欢茉莉花香、柑橘酸，喝手冲，讨厌苦味", expect: { Q1: "A", Q0: "A", Q4: "B" }, note: "owner Persona A" },
   { text: "想要强烈的水蜜桃鲜明果酸", expect: { Q0: "A" }, note: "owner Persona B perception" },
+  // owner copy review 2026-09-12: the exits — no sweetness, clearly bitter
+  { text: "没什么甜味，尾段很苦", expect: { Q2: "D", Q4: "C" }, note: "absence of sweetness + clearly bitter" },
+  { text: "不甜，有一点苦但回甘", expect: { Q2: "D", Q4: "A" }, note: "negation forcing on 甜" },
+  { text: "太苦了，苦味盖过其他味道", expect: { Q4: "C" } },
 ];
 
 const EN: Case[] = [
@@ -46,6 +50,7 @@ const EN: Case[] = [
   { text: "no bitterness at all, smooth like milk", expect: { Q4: "B", Q3: "B" } },
   { text: "caramel and dark chocolate sweetness, a little bitter", expect: { Q2: "B", Q4: "A" } },
   { text: "not sour, heavy and syrupy", expect: { Q0: "C", Q3: "C" } },
+  { text: "no sweetness, very bitter", expect: { Q2: "D", Q4: "C" } },
 ];
 
 function check(cases: Case[], locale: "zh-CN" | "en") {

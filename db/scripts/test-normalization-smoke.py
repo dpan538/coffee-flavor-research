@@ -179,7 +179,10 @@ def main() -> None:
     model_audit = document("SMOKE_MODEL_FILE_AUDIT.json")
     check(model_audit["committed_model_weight_file_count"] == 0, "committed model weight detected")
     check(model_audit["released_model_weight_file_count"] == 0, "released model weight claimed")
-    check(not any(path.is_file() and path.suffix.lower() in MODEL_SUFFIXES for path in ROOT.rglob("*")), "forbidden model suffix in repository")
+    # the gate is about files committed to the repository: vendored dependencies (node_modules carries 12-byte .bin test
+    # fixtures of a rollup plugin pulled in by vite-plugin-pwa), the git object store and build output are not scanned
+    vendored = {"node_modules", ".git", "dist", "build", ".react-router"}
+    check(not any(path.is_file() and path.suffix.lower() in MODEL_SUFFIXES and not vendored.intersection(path.relative_to(ROOT).parts) for path in ROOT.rglob("*")), "forbidden model suffix in repository")
 
     print("NORMALIZATION_ENGINEERING_SMOKE_CONTRACT_PASS=true")
     print("SMOKE_EXACT_INTERSECTION_OUTPUT_COUNT=1005")

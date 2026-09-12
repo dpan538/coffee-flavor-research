@@ -4,6 +4,7 @@
 // profile's own centroid weights across the 12 dimensions. Every number comes from the bundle.
 import { computed } from "vue";
 import { productVectorBundle } from "flavor-data/product-vector-v1";
+import { locale } from "../store";
 
 const DIM_COLORS: Record<string, string> = {
   acidity: "#F2C24E", sweetness: "#F5B0C6", body: "#9B7B5D", floral: "#7268C9", fruity: "#EE8F70", nutty_chocolate: "#B97C4E",
@@ -61,7 +62,7 @@ const spokes = computed(() =>
       <text :x="cx" :y="cy + 5" text-anchor="middle" font-size="13" fill="#1E1C1A" font-weight="600">{{ total.toLocaleString() }}</text>
     </svg>
     <figcaption class="mt-2 grid grid-cols-3 gap-x-3 gap-y-1 text-[11px] text-muted">
-      <span v-for="d in dims" :key="d" class="flex items-center gap-1"><span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ backgroundColor: DIM_COLORS[d] }" />{{ (productVectorBundle.presentation.dimension_labels as Record<string, Record<string, string>>)[d]?.['zh-CN'] }}</span>
+      <span v-for="d in dims" :key="d" class="flex items-center gap-1"><span class="inline-block w-2.5 h-2.5 rounded-sm" :style="{ backgroundColor: DIM_COLORS[d] }" />{{ (productVectorBundle.presentation.dimension_labels as Record<string, Record<string, string>>)[d]?.[locale] }}</span>
     </figcaption>
   </figure>
 </template>

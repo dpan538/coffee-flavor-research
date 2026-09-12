@@ -88,7 +88,10 @@ describe("product-vector-v1 presentation layer", () => {
     const lines = statementsFor({ c0_preparation: "pour_over_v60", c1_roast: "light" }, "en");
     expect(lines[0]!.about).toBe("C0_V60__C1_LIGHT");
     expect(lines.map((l) => l.about)).toContain("C1_LIGHT");
-    expect(lines.every((l) => ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM", "LITERATURE_CLAIM_PENDING_LOCATOR"].includes(l.evidenceState))).toBe(true);
+    // owner copy review 2026-09-12: a claim pending a locator or re-verification never reaches the screen
+    expect(lines.every((l) => ["OWNER_STATEMENT", "CORPUS_MEASURED", "LITERATURE_CLAIM", "COMPUTED_DELTA"].includes(l.evidenceState))).toBe(true);
+    expect(lines.every((l) => l.label.length > 0)).toBe(true);
+    expect(statementsFor({ c2_variety: "gesha" }, "zh-CN").some((l) => /基因|上限/.test(l.text))).toBe(false);
     expect(lines.every((l) => l.sourceTitle.length > 0)).toBe(true);
     expect(statementsFor({ c1_roast: "light" }, "en").map((l) => l.about)).not.toContain("C0_V60__C1_LIGHT");
   });
@@ -124,13 +127,15 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     expect(flow.questionFlow.alpha_strong).toBe(0.9);
   });
 
-  it("path rhythm over all 324 answer sequences: ~20% fast Path 1, ~50% corrective Path 2, ~25% severe Paths 3/4 with the paradox guard", () => {
-    const o3 = ["A", "B", "C"];
-    const o2 = ["A", "B"];
+  it("path rhythm over every answer sequence of the bank (Q2 and Q4 carry a 'not noticeable' exit since the copy review): ~20% fast Path 1, ~50% corrective Path 2, ~25% severe Paths 3/4", () => {
+    const bank = productVectorBundle.question_bank as Record<string, { options: Record<string, unknown> }>;
+    const opts = (slot: string) => Object.keys(bank[slot]!.options);
     const paths: Record<string, number> = { "1": 0, "2": 0, "3": 0, "4": 0 };
+    const withEvidence: Record<string, number> = { "1": 0, "2": 0, "3": 0, "4": 0 };
     let asked = 0;
     let total = 0;
-    for (const q0 of o3) for (const q1 of o3) for (const q2 of o3) for (const q3 of o3) for (const q4 of o2) for (const q5 of o2) {
+    let evidenceTotal = 0;
+    for (const q0 of opts("Q0")) for (const q1 of opts("Q1")) for (const q2 of opts("Q2")) for (const q3 of opts("Q3")) for (const q4 of opts("Q4")) for (const q5 of opts("Q5")) {
       const full: Record<string, string> = { Q0: q0, Q1: q1, Q2: q2, Q3: q3, Q4: q4, Q5: q5 };
       const answers: Record<string, string> = {};
       let step = flow.flowStep(answers);
@@ -144,9 +149,18 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
       paths[String(step.path)] = (paths[String(step.path)] ?? 0) + 1;
       asked += Object.keys(answers).length;
       total += 1;
+      if (!flow.absentAnswer(full, "Q2")) {
+        withEvidence[String(step.path)] = (withEvidence[String(step.path)] ?? 0) + 1;
+        evidenceTotal += 1;
+      } else {
+        // an absence answer contradicts nothing: never the severe path on the first check
+        expect(step.checks[0]!.level).not.toBe("severe");
+      }
     }
-    expect(total).toBe(324);
-    const share = (k: string) => (paths[k] ?? 0) / total;
+    expect(total).toBe(3 * 3 * 4 * 3 * 3 * 2);
+    // the owner's rhythm (R3-D10) holds among sequences that give directional evidence on Q2 (324 of them)
+    const share = (k: string) => (withEvidence[k] ?? 0) / evidenceTotal;
+    expect(evidenceTotal).toBe(324 * 3 / 2);
     expect(share("1")).toBeGreaterThanOrEqual(0.2);
     expect(share("1")).toBeLessThanOrEqual(0.35);
     expect(share("2")).toBeGreaterThanOrEqual(0.5);
@@ -154,6 +168,10 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     // the roast-polarity paradox guard (R3-D11) moves ~13% of sequences into Path 3; band widened accordingly
     expect(share("3") + share("4")).toBeGreaterThanOrEqual(0.05);
     expect(share("3") + share("4")).toBeLessThanOrEqual(0.3);
+    // overall, "sweetness not noticeable" can only take Path 2 (one more question), so Path 1 sits lower
+    const overall = (k: string) => (paths[k] ?? 0) / total;
+    expect(overall("1")).toBeGreaterThanOrEqual(0.12);
+    expect(overall("2")).toBeGreaterThanOrEqual(0.5);
     expect(asked / total).toBeLessThanOrEqual(6);
   });
 
