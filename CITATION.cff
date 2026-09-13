@@ -1,16 +1,24 @@
 cff-version: 1.2.0
-message: "If you use this software or its curated descriptor data, please cite this repository and the exact release or commit used."
-title: "Coffee Flavor Atlas"
+message: "If you use this software or its curated flavor data, please cite this repository and the exact commit used."
+title: "flavorwords — put this cup into words"
 authors:
-  - name: "dpan538"
-abstract: "An interactive, research-driven atlas of coffee flavor language, including bilingual descriptors, sensory association profiles, provenance records, and experimental web visualization."
+  - family-names: "Pan"
+    given-names: "Dai"
+    alias: "dpan538"
+abstract: "A data product that turns what a coffee drinker tastes into a small, defensible flavor vocabulary. The corpus is 83,031 professional sensory assertions over 9,128 effective coffee records from eight reviewed source families, normalised to 94 canonical concepts and projected onto 12 flavor dimensions; sixteen owner-named reference profiles and measured context and answer matrices drive a deterministic, bilingual (zh-CN / en) inference with evidence labelling on every card. Shipped as an offline-capable, installable PWA at flavorwords.com, backed by a PostgreSQL 17 knowledge base with provenance and rights tracking."
 repository-code: "https://github.com/dpan538/coffee-flavor-research"
+url: "https://flavorwords.com"
 license: MIT
 keywords:
   - coffee
   - coffee flavor
+  - flavor vocabulary
   - sensory science
-  - data visualization
+  - sensory lexicon
+  - data product
+  - flavor vectors
+  - knowledge base
+  - PostgreSQL
   - bilingual
+  - progressive web app
   - research software
-  - interactive atlas
