@@ -539,6 +539,22 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-13T02:15:32Z"
+    },
+    {
+      "id": "R3-D27",
+      "subject": "First-party research recorded: expert interviews, a cupping study, questionnaires and cupping-condition product tests replace the 'not started' status",
+      "decision": "The public surfaces had carried the atlas-era status that no first-party research existed. The owner's record: two rounds of domain interviews and an offline cupping study in Guangzhou with about ten professional baristas and coffee researchers across Guangzhou, Shanghai and Hefei, then two rounds of product questionnaires and two pre-launch tasting tests in real drinking sessions across V60 pour-over, milk coffee and moka pot preparations, whose findings revised question wording, flavor-word selection, matching behaviour and result presentation, whose feedback shaped the problem definition, the flavor-word system, the question flow and the matching logic and carried the product from the research prototype to launch. Recorded as OWNER_REPORTED: a receipt document with rounds and counts and no personal data, the public status source and generator, the claims register (two new claims replacing the zero-count ones), PORTFOLIO.md, the findings-status and overview documents, the README (What I did, Current status, 中文摘要) and llms.txt. Boundaries kept: participants are professionals and testers, not a general-audience sample; no quotes; no in-app interaction data. Framing per the owner: expert research validates the domain (vocabulary, problem definition, product logic); cupping-condition testing validates the product experience; neither is a general-audience sample, and 'validated ordinary-consumer demand' is never claimed. The README carries a dedicated User research and iteration section with the timeline (June interviews + cupping → August–September questionnaires → pre-launch cupping-condition tests → launch).",
+      "owner_words": "用户研究与产品迭代：开展两轮领域访谈及广州线下杯测研究，覆盖广州、上海、合肥近 10 位专业咖啡师与咖啡研究者；8–9 月继续进行两轮产品问卷和两组上线前内测，将反馈用于问题定义、风味词体系、问答流程及匹配逻辑的持续调整，并推动产品从早期研究原型迭代至正式上线。这个需要补充进入 readme 和机器阅读中，不是 No first-party user research yet … 这些参与者基本都是专业咖啡师或研究者，所以我会说领域访谈 / 专家访谈 / 专业用户研究，而不会笼统声称验证了普通消费者需求 … 专家研究验证领域合理性，内测验证实际产品体验 … 不要再写上线前进行了两组内测 … 两轮真实杯测场景下的产品测试，覆盖 V60 手冲、奶咖和摩卡壶 … 不只是看 UI，而是拿真实咖啡完成整个任务 … 不要写 Two rounds of beta testing were conducted before launch，写成 Two pre-launch tasting tests evaluated the product in real drinking sessions across V60 pour-over, milk coffee and moka pot preparations. Findings were used to revise question wording, flavor-word selection, matching behaviour and result presentation. 中文：上线前杯测测试：进行了两轮真实饮用场景下的产品测试，覆盖 V60 手冲、奶咖和摩卡壶，以不同萃取与饮用条件检查问答、候选风味词和结果呈现，并据此完成上线前调整。",
+      "applied": {
+        "data": "none",
+        "code": "docs/user-research/FIRST_PARTY_RESEARCH_RECEIPT.md; PUBLIC_STATUS_SOURCE.json first_party_research; generate-public-project-status.py rows; PUBLIC_CLAIMS_REGISTER.tsv; PORTFOLIO.md; FINDINGS_STATUS.md; USER_RESEARCH_OVERVIEW.md; README.md; llms.txt; regenerated PROJECT_STATUS.md, PORTFOLIO_FACTS.json, public/project-status.json; app/routes/methodology.tsx (APP claim surface) rows and markers",
+        "verified": "npm run public:verify; web gate; CI",
+        "open": [
+          "exact participant count if the owner wants it stated precisely (currently 'about 10')"
+        ],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-13T03:20:01Z"
     }
   ],
   "guards": {

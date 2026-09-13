@@ -31,10 +31,18 @@
     "migration_count": 60
   },
   "first_party_user_research": {
+    "cities": "Guangzhou, Shanghai, Hefei",
+    "cupping_study_count": 1,
+    "evidence": "docs/user-research/FIRST_PARTY_RESEARCH_RECEIPT.md",
+    "expert_interview_rounds": 2,
     "interaction_session_count": 0,
-    "interview_count": 0,
+    "participants_reported": "about 10 professional baristas and coffee researchers",
+    "period": "2026-06 to 2026-09",
+    "prelaunch_tasting_test_preparations": "V60 pour-over, milk coffee, moka pot",
+    "prelaunch_tasting_test_rounds": 2,
+    "questionnaire_rounds": 2,
+    "status": "OWNER_REPORTED",
     "synthetic_user_quote_count": 0,
-    "usability_session_count": 0,
     "user_data_collected": false
   },
   "ml": {

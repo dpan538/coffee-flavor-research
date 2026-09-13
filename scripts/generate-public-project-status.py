@@ -236,7 +236,7 @@ below by hand.
 | Product interface | IMPLEMENTED | Vue 3 PWA (flavorwords.com): bilingual, offline shell, phone, tablet and desktop layouts, keyboard and reduced-motion checks. |
 | Installable PWA | {pwa['status']} | {"Web app manifest, PNG and maskable icons, service worker and offline app shell are present; installs on iOS Safari, Android and HarmonyOS." if pwa['status'] == "IMPLEMENTED" else "No manifest, service worker, installability receipt, or offline app shell is present."} | <!-- claim: PWA_LIVE -->
 | PostgreSQL knowledge base | VALIDATED | Provenance, evidence, review, rights, duplicate, and gate contracts are executable. |
-| First-party user research | NOT_STARTED | Protocols exist; no user data was collected in this pass. |
+| First-party user research | {research['status']} | {research['expert_interview_rounds']} expert interview rounds and {research['cupping_study_count']} cupping study with {research['participants_reported']} ({research['cities']}); {research['questionnaire_rounds']} questionnaire rounds; {research['prelaunch_tasting_test_rounds']} pre-launch tasting tests in real drinking sessions across {research['prelaunch_tasting_test_preparations']} preparations; {research['period']}; notes stay offline, no in-app interaction data. |
 | Ranking or adaptive model | NOT_STARTED | `MODEL_STATUS={ml['model_status']}`; deterministic retrieval remains the baseline. |
 
 ## Governed counts
@@ -259,8 +259,8 @@ reviewed or model-ready evidence.
 | Reviewed professional universe | Reviewed P1/P2 strict assertions | {pilot['reviewed_p1_p2_strict_assertion_count']} | <!-- claim: REVIEWED_PROFESSIONAL_ASSERTIONS -->
 | Human review | Human-confirmed assertions | {pilot['human_confirmed_count']} | <!-- claim: HUMAN_CONFIRMED_ASSERTIONS -->
 | Model eligibility | Rights-cleared model-eligible assertions | {pilot['model_eligible_count']} | <!-- claim: MODEL_ELIGIBLE_ASSERTIONS -->
-| First-party research | Interview sessions | {research['interview_count']} | <!-- claim: USER_INTERVIEW_COUNT -->
-| First-party research | Usability sessions | {research['usability_session_count']} | <!-- claim: USER_USABILITY_COUNT -->
+| First-party research | Expert interview rounds + cupping studies (owner-reported) | {research['expert_interview_rounds']} + {research['cupping_study_count']} | <!-- claim: USER_RESEARCH_INTERVIEW_ROUNDS -->
+| First-party research | Questionnaire rounds + pre-launch tasting tests (owner-reported) | {research['questionnaire_rounds']} + {research['prelaunch_tasting_test_rounds']} | <!-- claim: USER_RESEARCH_CUPPING_TESTS -->
 | Model work | Model runs | {ml['model_run_count']} | <!-- claim: MODEL_RUN_COUNT -->
 
 ## Readiness gates
@@ -286,8 +286,10 @@ not raw-row targets.
   cannot silently become professional label truth.
 - Public availability does not grant model, deployment, or redistribution
   rights.
-- No interviews, usability sessions, first-party interaction events, model
-  runs, embeddings, cross-encoders, or deep-learning experiments are claimed.
+- First-party research is owner-reported (expert interviews, a cupping study,
+  questionnaires and pre-launch tasting tests; notes offline). No in-app interaction
+  events, model runs, embeddings, cross-encoders, or deep-learning experiments
+  are claimed.
 - {"The PWA is live; the flavor inference is deterministic vector arithmetic with no machine-learned model." if pwa['status'] == "IMPLEMENTED" else "PWA implementation remains planned; the current product is a mobile-first web prototype."}
 
 ## Provenance

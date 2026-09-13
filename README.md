@@ -26,7 +26,8 @@ review sources
 
 [What it does](#what-it-does) · [Why](#why) · [What I did](#what-i-did) ·
 [How the data supports the product](#how-the-data-supports-the-product) ·
-[How it is built](#how-it-is-built) · [Current status](#current-status) ·
+[User research](#user-research-and-iteration) · [How it is built](#how-it-is-built) ·
+[Current status](#current-status) ·
 [中文摘要](#中文摘要)
 
 ## What it does
@@ -96,6 +97,13 @@ six dynamic questions, the candidate-word selection and the conditional
 confirmation step, so that the reference data and the drinker's answers are
 combined rather than ranked against each other, and the drinker can be
 uncertain or disagree with the suggestion at every step.
+
+**User research and iteration.** Led the expert research and the
+pre-launch tasting tests described in
+[User research and iteration](#user-research-and-iteration), and fed each
+round into the problem definition, the flavor-word system, the question flow
+and the matching logic, carrying the product from a research prototype to
+launch.
 
 **Product design and delivery.** Led the bilingual interface, all product
 copy, the responsive PWA (phone, tablet, desktop), the offline experience, the
@@ -173,6 +181,24 @@ scope for rights reasons. Details:
 
 ![The About page's profile network: sixteen profiles sized by records, the six largest on the inner ring, nearest pairs joined](./docs/portfolio/assets/pwa-desktop-about-profiles.png)
 
+## User research and iteration
+
+<!-- prettier-ignore -->
+| When | Round | What it settled |
+| --- | --- | --- |
+| June 2026 | Two rounds of expert interviews and an offline cupping study in Guangzhou, with about ten professional baristas and coffee researchers across Guangzhou, Shanghai and Hefei <!-- claim: USER_RESEARCH_INTERVIEW_ROUNDS --> | How people actually describe flavor, and where professional words and everyday expressions diverge |
+| August–September 2026 | Two rounds of product questionnaires | How the product flow, the flavor words, the question design and the matching logic should be adjusted |
+| Pre-launch | Two pre-launch tasting tests evaluated the product in real drinking sessions across V60 pour-over, milk coffee and moka pot preparations. Findings were used to revise question wording, flavor-word selection, matching behaviour and result presentation. <!-- claim: USER_RESEARCH_CUPPING_TESTS --> | Pre-launch adjustments, checked under different extraction and drinking conditions |
+| 13 September 2026 | Launch at flavorwords.com | |
+
+Expert research validates the domain: the vocabulary system, the problem
+definition and the product logic. The pre-launch tasting tests validate the
+product experience under different extraction and drinking conditions. Neither is a general-audience sample, so the project does
+not claim to have validated ordinary-consumer demand. Notes and responses stay
+offline, no quotes are published, and the app collects no interaction data.
+The rounds are recorded in the
+[first-party research receipt](./docs/user-research/FIRST_PARTY_RESEARCH_RECEIPT.md).
+
 ## What changed along the way
 
 The most useful finding was that more coffee records did not mean more usable
@@ -232,9 +258,11 @@ npm run ci:verify        # full gate (PostgreSQL 17 needed for the database stag
 - **Live** at flavorwords.com, bilingual, offline, installable on three
   mobile platforms, with tablet and desktop layouts.
   <!-- claim: PWA_LIVE -->
-- **Not yet validated with users.** No first-party interviews or usability
-  sessions have been run and no interaction data is collected. What has been
-  checked is implementation behaviour: all 18,432 possible answer sequences
+- **Validated by experts and pre-launch tasting tests, not by a
+  general-audience sample.** Expert interviews, a cupping study, two
+  questionnaire rounds and two pre-launch tasting tests shaped the product; notes stay offline and
+  no quotes are published. The app collects no interaction data.
+  Implementation behaviour was also checked: all 18,432 possible answer sequences
   were enumerated (the extra confirmation step opens for 34.2% of them and
   never when the answers already agree) <!-- claim: Q6_TRIGGER_RATE --> and a
   324-user simulated query test found a nearest reference above 0.85 cosine
@@ -257,7 +285,7 @@ npm run ci:verify        # full gate (PostgreSQL 17 needed for the database stag
 **为什么做**：喝得出差别，说不出名字。专业词汇散落在杯测表、风味轮和包装描述里，日常场景用不上。
 产品把专业描述变成几道简单问题，让饮用者自己的描述成为结果的核心，随时可以说"都不像"。
 
-**我做了什么**：个人主导研究、产品设计、数据开发与交付，使用 AI 辅助实现。问题定义与产品方向；
+**我做了什么**：个人主导研究、产品设计、数据开发与交付，使用 AI 辅助实现。用户研究与产品迭代：6 月开展两轮专家访谈与广州线下杯测，覆盖广州、上海、合肥近 10 位专业咖啡师与咖啡研究者，解决用户实际怎样描述风味、专业词与普通表达差在哪里；8–9 月两轮产品问卷，确定产品流程、风味词、问答设计与匹配逻辑的调整；上线前杯测测试：进行了两轮真实饮用场景下的产品测试，覆盖 V60 手冲、奶咖和摩卡壶，以不同萃取与饮用条件检查问答、候选风味词和结果呈现，并据此完成上线前调整。专家研究验证领域合理性，杯测测试验证实际产品体验，均不代表普通消费者样本。问题定义与产品方向；
 专业来源逐一审阅选取、去重整合、描述提取、语义归一，建立从咖啡记录到风味向量与运行时数据包的
 链路；语境输入、六道动态问题、候选词选择与条件式确认的交互与匹配设计；双语界面、全部文案、
 响应式 PWA、离线、风味卡导出、部署与真机检查。
@@ -272,7 +300,7 @@ npm run ci:verify        # full gate (PostgreSQL 17 needed for the database stag
 问答线需要尚不存在的审阅标签，改用从语料实测得到的向量表示后，产品得以双语上线。
 
 **技术与边界**：数据构建与应用运行分开，应用只加载一个 JSON 数据包，因此离线和即时切换语言；
-运行时是确定性的向量匹配和规则化交互，不依赖生成式模型。尚未做第一方用户验证；概念到维度
+运行时是确定性的向量匹配和规则化交互，不依赖生成式模型。用户研究为专家访谈、杯测与上线前杯测测试，未做普通消费者样本验证，应用不采集交互数据；概念到维度
 的投影待逐项审阅；语料对草本、发酵、口感主导和瑕疵类描述稀疏；不推荐具体商业咖啡。
 
 ## Documentation

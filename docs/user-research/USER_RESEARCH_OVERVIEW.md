@@ -21,10 +21,10 @@ and traceability workflow. It does not contain participant evidence.
 ```mermaid
 flowchart LR
     D["Desk research\nDESK_RESEARCH_SUPPORTED"] --> H["Product hypotheses\nHYPOTHESIS"]
-    H --> P["Interview + usability protocol\nPLANNED"]
-    P --> F["Consented fieldwork\nNOT_STARTED"]
-    F --> A["Traceable synthesis\nNOT_STARTED"]
-    A --> E["Product evaluation\nNOT_STARTED"]
+    H --> P["Interview + cupping protocol\nRUN (owner-reported)"]
+    P --> F["Fieldwork\n2 interview rounds + 1 cupping study"]
+    F --> A["Synthesis\nOFFLINE NOTES"]
+    A --> E["Product evaluation\n2 questionnaire rounds + 2 pre-launch tasting tests"]
 ```
 
 ## Four evidence tracks

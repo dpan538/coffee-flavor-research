@@ -65,10 +65,16 @@ scope, so this overview uses project-centric language. See the
 The work combines desk research, standards and source auditing, corpus and
 schema design, data-rights review, source-specific parsing, duplicate forensics,
 product semantics, protocol design, deterministic retrieval evaluation, and
-planned human-centered research. Planned interviews and usability sessions are
-not presented as completed fieldwork. Current counts remain zero.
+first-party research: two rounds of expert interviews and an offline cupping
+study in Guangzhou with about ten professional baristas and coffee researchers
+(Guangzhou, Shanghai, Hefei) in June 2026, two questionnaire rounds in August
+and September, and two pre-launch tasting tests in real drinking sessions across V60
+pour-over, milk coffee and moka pot preparations. Expert research validates the
+domain; the tasting tests validate the product experience; neither is a
+general-audience sample. Owner-reported; notes stay offline and no quotes
+are published.
 
-<!-- claim: USER_INTERVIEW_COUNT --> <!-- claim: USER_USABILITY_COUNT -->
+<!-- claim: USER_RESEARCH_INTERVIEW_ROUNDS --> <!-- claim: USER_RESEARCH_CUPPING_TESTS -->
 
 ## Database and data-engineering work
 

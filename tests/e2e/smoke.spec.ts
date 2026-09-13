@@ -177,7 +177,17 @@ test("project status is generated, keyboard reachable, and reduced-motion aware"
   await expect(
     page.getByRole("heading", { name: /evidence before adjectives/i }),
   ).toBeVisible();
-  await expect(page.getByText("NOT_STARTED", { exact: true })).toHaveCount(2);
+  const generatedStatus = await (
+    await request.get("/project-status.json")
+  ).json();
+  await expect(page.getByText("NOT_STARTED", { exact: true })).toHaveCount(
+    generatedStatus.ml.model_run_count === 0 ? 1 : 0,
+  );
+  await expect(
+    page.getByText(generatedStatus.first_party_user_research.status, {
+      exact: true,
+    }),
+  ).toBeVisible();
   await expect(
     page.getByRole("link", { name: /Try the prototype/ }),
   ).toBeVisible();

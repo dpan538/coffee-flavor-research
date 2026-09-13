@@ -3,12 +3,19 @@
 ## Receipt
 
 ```text
-USER_DATA_COLLECTED=false
-INTERVIEW_COUNT=0
-USABILITY_SESSION_COUNT=0
+USER_DATA_COLLECTED_IN_APP=false
+EXPERT_INTERVIEW_ROUNDS=2
+CUPPING_STUDIES=1
+QUESTIONNAIRE_ROUNDS=2
+PRELAUNCH_TASTING_TESTS=2 (V60 pour-over, milk coffee, moka pot)
 PRODUCT_INTERACTION_SESSION_COUNT=0
 SYNTHETIC_USER_QUOTE_COUNT=0
+EVIDENCE=OWNER_REPORTED
 ```
+
+The rounds above are the owner's report; see the
+[first-party research receipt](./FIRST_PARTY_RESEARCH_RECEIPT.md). Raw notes
+stay offline and no quote or per-person finding is published here.
 
 ## Current hypotheses and questions
 

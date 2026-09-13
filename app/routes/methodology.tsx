@@ -262,14 +262,21 @@ export default function MethodologyRoute() {
           </article>
           <article>
             <span className="meta-label">USER RESEARCH</span>
-            <strong>NOT_STARTED</strong>
+            <strong>{projectStatus.first_party_user_research.status}</strong>
             <p>
-              {projectStatus.first_party_user_research.interview_count}
-              {" interviews and "}
-              {projectStatus.first_party_user_research.usability_session_count}
-              {" usability sessions; protocol design only."}
-              {/* claim: USER_INTERVIEW_COUNT */}
-              {/* claim: USER_USABILITY_COUNT */}
+              {projectStatus.first_party_user_research.expert_interview_rounds}
+              {" expert interview rounds and "}
+              {projectStatus.first_party_user_research.cupping_study_count}
+              {" cupping study; "}
+              {projectStatus.first_party_user_research.questionnaire_rounds}
+              {" questionnaire rounds; "}
+              {
+                projectStatus.first_party_user_research
+                  .prelaunch_tasting_test_rounds
+              }
+              {" pre-launch tasting tests; owner-reported."}
+              {/* claim: USER_RESEARCH_INTERVIEW_ROUNDS */}
+              {/* claim: USER_RESEARCH_CUPPING_TESTS */}
             </p>
           </article>
           <article>

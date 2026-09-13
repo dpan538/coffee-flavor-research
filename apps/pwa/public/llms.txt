@@ -39,7 +39,7 @@ People can tell that two coffees taste different but rarely say how. Professiona
 ## Current status
 
 - Live, bilingual, offline, installable; phone, tablet and desktop layouts.
-- Not yet validated with users: no interviews or usability sessions, no interaction data collected. Implementation behaviour was checked by enumerating all 18,432 answer sequences and a 324-user simulated query test; neither shows the words are right for a real drinker.
+- Validated by experts and pre-launch tasting tests, not by a general-audience sample. June 2026: two rounds of expert interviews and an offline cupping study in Guangzhou with about ten professional baristas and coffee researchers (Guangzhou, Shanghai, Hefei) settled how people actually describe flavor and where professional words and everyday expressions diverge. August–September 2026: two rounds of product questionnaires settled how the flow, the flavor words, the question design and the matching logic should change. Pre-launch: Two pre-launch tasting tests evaluated the product in real drinking sessions across V60 pour-over, milk coffee and moka pot preparations. Findings were used to revise question wording, flavor-word selection, matching behaviour and result presentation. Notes stay offline; no quotes are published; the app collects no interaction data. Implementation behaviour was also checked by enumerating all 18,432 answer sequences and a 324-user simulated query test.
 - The concept-to-dimension projection is an operator draft pending line-by-line review. Herbal, fermented, body-led and defective cups are thinly described in the corpus.
 
 ## Notes for machines

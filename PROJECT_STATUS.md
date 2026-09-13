@@ -12,7 +12,7 @@ below by hand.
 | Product interface | IMPLEMENTED | Vue 3 PWA (flavorwords.com): bilingual, offline shell, phone, tablet and desktop layouts, keyboard and reduced-motion checks. |
 | Installable PWA | IMPLEMENTED | Web app manifest, PNG and maskable icons, service worker and offline app shell are present; installs on iOS Safari, Android and HarmonyOS. | <!-- claim: PWA_LIVE -->
 | PostgreSQL knowledge base | VALIDATED | Provenance, evidence, review, rights, duplicate, and gate contracts are executable. |
-| First-party user research | NOT_STARTED | Protocols exist; no user data was collected in this pass. |
+| First-party user research | OWNER_REPORTED | 2 expert interview rounds and 1 cupping study with about 10 professional baristas and coffee researchers (Guangzhou, Shanghai, Hefei); 2 questionnaire rounds; 2 pre-launch tasting tests in real drinking sessions across V60 pour-over, milk coffee, moka pot preparations; 2026-06 to 2026-09; notes stay offline, no in-app interaction data. |
 | Ranking or adaptive model | NOT_STARTED | `MODEL_STATUS=NOT_TRAINED`; deterministic retrieval remains the baseline. |
 
 ## Governed counts
@@ -35,8 +35,8 @@ reviewed or model-ready evidence.
 | Reviewed professional universe | Reviewed P1/P2 strict assertions | 0 | <!-- claim: REVIEWED_PROFESSIONAL_ASSERTIONS -->
 | Human review | Human-confirmed assertions | 0 | <!-- claim: HUMAN_CONFIRMED_ASSERTIONS -->
 | Model eligibility | Rights-cleared model-eligible assertions | 0 | <!-- claim: MODEL_ELIGIBLE_ASSERTIONS -->
-| First-party research | Interview sessions | 0 | <!-- claim: USER_INTERVIEW_COUNT -->
-| First-party research | Usability sessions | 0 | <!-- claim: USER_USABILITY_COUNT -->
+| First-party research | Expert interview rounds + cupping studies (owner-reported) | 2 + 1 | <!-- claim: USER_RESEARCH_INTERVIEW_ROUNDS -->
+| First-party research | Questionnaire rounds + pre-launch tasting tests (owner-reported) | 2 + 2 | <!-- claim: USER_RESEARCH_CUPPING_TESTS -->
 | Model work | Model runs | 0 | <!-- claim: MODEL_RUN_COUNT -->
 
 ## Readiness gates
@@ -62,8 +62,10 @@ not raw-row targets.
   cannot silently become professional label truth.
 - Public availability does not grant model, deployment, or redistribution
   rights.
-- No interviews, usability sessions, first-party interaction events, model
-  runs, embeddings, cross-encoders, or deep-learning experiments are claimed.
+- First-party research is owner-reported (expert interviews, a cupping study,
+  questionnaires and pre-launch tasting tests; notes offline). No in-app interaction
+  events, model runs, embeddings, cross-encoders, or deep-learning experiments
+  are claimed.
 - The PWA is live; the flavor inference is deterministic vector arithmetic with no machine-learned model.
 
 ## Provenance
