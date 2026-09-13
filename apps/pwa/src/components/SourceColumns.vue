@@ -159,7 +159,10 @@ const tree = computed(() =>
 </script>
 
 <template>
-  <figure class="w-full text-[#F4F1EA]" data-component="SourceColumns">
+  <figure
+    class="w-full flex flex-col text-[#F4F1EA]"
+    data-component="SourceColumns"
+  >
     <div
       class="gap-3"
       :class="zh ? 'flex items-start justify-between' : 'flex flex-col'"
@@ -210,179 +213,181 @@ const tree = computed(() =>
         /><span class="text-[#D8D2C8]">{{ labels[d]?.[locale] }}</span>
       </li>
     </ul>
-    <svg
-      :viewBox="`0 0 ${W} 526`"
-      class="w-full h-auto mx-auto mt-1"
-      :class="zh ? 'max-h-[58dvh]' : 'max-h-[50dvh]'"
-      role="img"
-      font-family="inherit"
-    >
-      <!-- tiers -->
-      <g :opacity="axesIn">
-        <line
-          v-for="t in minorTiers"
-          :key="'m' + t.t"
-          x1="18"
-          :x2="W - 6"
-          :y1="t.y"
-          :y2="t.y"
-          stroke="#F4F1EA"
-          stroke-opacity="0.1"
-          stroke-width="0.5"
-          stroke-dasharray="2 3"
-        />
-        <line
-          v-for="t in tiers"
-          :key="t.t"
-          x1="18"
-          :x2="W - 6"
-          :y1="t.y"
-          :y2="t.y"
-          stroke="#F4F1EA"
-          stroke-opacity="0.22"
-          stroke-width="0.6"
-        />
-        <text
-          v-for="t in tiers"
-          :key="'l' + t.t"
-          x="4"
-          :y="t.y - 3"
-          font-size="9.5"
-          fill="#B9B4AA"
-        >
-          {{ fmt(t.t) }}
-        </text>
-        <line
-          x1="18"
-          :x2="W - 6"
-          :y1="BASE"
-          :y2="BASE"
-          stroke="#F4F1EA"
-          stroke-opacity="0.6"
-          stroke-width="1"
-        />
-        <text x="4" :y="BASE - 3" font-size="8.5" fill="#B9B4AA">0</text>
-        <g v-for="(x, i) in xs" :key="'g' + i">
+    <div class="flex-1 min-h-0 flex justify-center mt-1">
+      <svg
+        :viewBox="`0 0 ${W} 526`"
+        class="h-full w-auto max-w-full"
+        role="img"
+        font-family="inherit"
+      >
+        <!-- tiers -->
+        <g :opacity="axesIn">
           <line
-            :x1="x"
-            :x2="x"
-            :y1="TOP"
-            :y2="BASE"
+            v-for="t in minorTiers"
+            :key="'m' + t.t"
+            x1="18"
+            :x2="W - 6"
+            :y1="t.y"
+            :y2="t.y"
             stroke="#F4F1EA"
-            stroke-opacity="0.18"
+            stroke-opacity="0.1"
+            stroke-width="0.5"
+            stroke-dasharray="2 3"
+          />
+          <line
+            v-for="t in tiers"
+            :key="t.t"
+            x1="18"
+            :x2="W - 6"
+            :y1="t.y"
+            :y2="t.y"
+            stroke="#F4F1EA"
+            stroke-opacity="0.22"
             stroke-width="0.6"
           />
           <text
-            :x="x"
-            :y="TOP - 14"
-            text-anchor="middle"
-            font-size="12"
-            font-weight="700"
-            fill="#F4F1EA"
-          >
-            {{ LETTERS[i] }}
-          </text>
-          <text
-            :x="x"
-            :y="TOP - 3"
-            text-anchor="middle"
-            font-size="8.5"
+            v-for="t in tiers"
+            :key="'l' + t.t"
+            x="4"
+            :y="t.y - 3"
+            font-size="9.5"
             fill="#B9B4AA"
           >
-            {{ share(i) }}
+            {{ fmt(t.t) }}
+          </text>
+          <line
+            x1="18"
+            :x2="W - 6"
+            :y1="BASE"
+            :y2="BASE"
+            stroke="#F4F1EA"
+            stroke-opacity="0.6"
+            stroke-width="1"
+          />
+          <text x="4" :y="BASE - 3" font-size="8.5" fill="#B9B4AA">0</text>
+          <g v-for="(x, i) in xs" :key="'g' + i">
+            <line
+              :x1="x"
+              :x2="x"
+              :y1="TOP"
+              :y2="BASE"
+              stroke="#F4F1EA"
+              stroke-opacity="0.18"
+              stroke-width="0.6"
+            />
+            <text
+              :x="x"
+              :y="TOP - 14"
+              text-anchor="middle"
+              font-size="12"
+              font-weight="700"
+              fill="#F4F1EA"
+            >
+              {{ LETTERS[i] }}
+            </text>
+            <text
+              :x="x"
+              :y="TOP - 3"
+              text-anchor="middle"
+              font-size="8.5"
+              fill="#B9B4AA"
+            >
+              {{ share(i) }}
+            </text>
+          </g>
+        </g>
+        <!-- the tree, drawn from each column into the trunk -->
+        <path
+          v-for="(t, i) in tree"
+          :key="'t' + i"
+          :d="t.d"
+          fill="none"
+          :stroke="t.color"
+          stroke-width="5"
+          stroke-linejoin="round"
+          stroke-linecap="butt"
+          :stroke-dasharray="t.len"
+          :stroke-dashoffset="t.len * (1 - t.draw)"
+          stroke-opacity="0.92"
+        />
+        <!-- the columns -->
+        <g v-for="c in columns" :key="c.d">
+          <rect
+            v-for="(s, k) in c.segments"
+            :key="k"
+            :x="c.x - 7"
+            :y="s.y"
+            width="14"
+            :height="Math.max(0, s.h)"
+            :fill="c.color"
+            :fill-opacity="s.opacity"
+          />
+          <line
+            v-for="(s, k) in c.segments.slice(1)"
+            :key="'k' + k"
+            :x1="c.x - 9"
+            :x2="c.x + 9"
+            :y1="s.y + s.h"
+            :y2="s.y + s.h"
+            stroke="#0B0A09"
+            stroke-width="1"
+          />
+          <circle
+            v-if="c.done"
+            :cx="c.x"
+            :cy="c.top - 6"
+            r="4"
+            :fill="c.color"
+            stroke="#0B0A09"
+            stroke-width="1.2"
+          />
+          <text
+            v-if="c.done"
+            :x="c.x"
+            :y="c.top - 13"
+            text-anchor="middle"
+            font-size="8.5"
+            fill="#F4F1EA"
+          >
+            {{ fmt(c.total) }}
           </text>
         </g>
-      </g>
-      <!-- the tree, drawn from each column into the trunk -->
-      <path
-        v-for="(t, i) in tree"
-        :key="'t' + i"
-        :d="t.d"
-        fill="none"
-        :stroke="t.color"
-        stroke-width="5"
-        stroke-linejoin="round"
-        stroke-linecap="butt"
-        :stroke-dasharray="t.len"
-        :stroke-dashoffset="t.len * (1 - t.draw)"
-        stroke-opacity="0.92"
-      />
-      <!-- the columns -->
-      <g v-for="c in columns" :key="c.d">
-        <rect
-          v-for="(s, k) in c.segments"
-          :key="k"
-          :x="c.x - 7"
-          :y="s.y"
-          width="14"
-          :height="Math.max(0, s.h)"
-          :fill="c.color"
-          :fill-opacity="s.opacity"
-        />
-        <line
-          v-for="(s, k) in c.segments.slice(1)"
-          :key="'k' + k"
-          :x1="c.x - 9"
-          :x2="c.x + 9"
-          :y1="s.y + s.h"
-          :y2="s.y + s.h"
-          stroke="#0B0A09"
-          stroke-width="1"
-        />
-        <circle
-          v-if="c.done"
-          :cx="c.x"
-          :cy="c.top - 6"
-          r="4"
-          :fill="c.color"
-          stroke="#0B0A09"
-          stroke-width="1.2"
-        />
-        <text
-          v-if="c.done"
-          :x="c.x"
-          :y="c.top - 13"
-          text-anchor="middle"
-          font-size="8.5"
-          fill="#F4F1EA"
-        >
-          {{ fmt(c.total) }}
-        </text>
-      </g>
-      <!-- the trunk -->
-      <g :opacity="trunkIn">
-        <rect
-          :x="CX - 100"
-          :y="TRUNK_Y + 2"
-          width="200"
-          height="44"
-          rx="8"
-          fill="#F4F1EA"
-        />
-        <text
-          :x="CX"
-          :y="TRUNK_Y + 21"
-          text-anchor="middle"
-          font-size="13"
-          font-weight="700"
-          fill="#0B0A09"
-        >
-          {{ fmt(facts.usable_coffee_vectors) }} {{ zh ? "条记录" : "records" }}
-        </text>
-        <text
-          :x="CX"
-          :y="TRUNK_Y + 37"
-          text-anchor="middle"
-          font-size="10"
-          fill="#4a4642"
-        >
-          {{
-            zh
-              ? `→ 整理为 ${facts.profiles} 组参考风味`
-              : `→ organised into ${facts.profiles} reference profiles`
-          }}
-        </text>
-      </g>
-    </svg>
+        <!-- the trunk -->
+        <g :opacity="trunkIn">
+          <rect
+            :x="CX - 100"
+            :y="TRUNK_Y + 2"
+            width="200"
+            height="44"
+            rx="8"
+            fill="#F4F1EA"
+          />
+          <text
+            :x="CX"
+            :y="TRUNK_Y + 21"
+            text-anchor="middle"
+            font-size="13"
+            font-weight="700"
+            fill="#0B0A09"
+          >
+            {{ fmt(facts.usable_coffee_vectors) }}
+            {{ zh ? "条记录" : "records" }}
+          </text>
+          <text
+            :x="CX"
+            :y="TRUNK_Y + 37"
+            text-anchor="middle"
+            font-size="10"
+            fill="#4a4642"
+          >
+            {{
+              zh
+                ? `→ 整理为 ${facts.profiles} 组参考风味`
+                : `→ organised into ${facts.profiles} reference profiles`
+            }}
+          </text>
+        </g>
+      </svg>
+    </div>
   </figure>
 </template>

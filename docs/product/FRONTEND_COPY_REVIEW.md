@@ -16,6 +16,14 @@
 | 开始按钮 | 开始 | Start |
 | About 按钮 aria | 关于 | About |
 | 语言切换 | EN | 中 |
+| 添加到桌面 · 图标 | 添加到桌面 | Add to home screen |
+| 添加到桌面 · 标题 | 添加到主屏幕 | Add to Home Screen |
+| 添加到桌面 · iOS Safari | 在 Safari 底部点分享，选择「添加到主屏幕」。 | Tap Share at the bottom of Safari, then choose “Add to Home Screen”. |
+| 添加到桌面 · iOS 其他浏览器 | 用 Safari 打开这个页面，点分享，选择「添加到主屏幕」。 | Open this page in Safari, tap Share, then choose “Add to Home Screen”. |
+| 添加到桌面 · 鸿蒙 华为浏览器 | 在华为浏览器点右下角菜单，选择「添加到桌面」。 | In Huawei Browser, open the bottom-right menu and choose “Add to desktop”. |
+| 添加到桌面 · 微信内 | 请点右上角「···」，选择「在浏览器打开」，再添加到桌面。 | Tap “···” at the top right, choose “Open in browser”, then add it from there. |
+| 添加到桌面 · 其他浏览器 | 在浏览器菜单里选择「安装应用」或「添加到主屏幕」。 | Choose “Install app” or “Add to Home Screen” in your browser menu. |
+| 添加到桌面 · 关闭 | 知道了 | Got it |
 | 离线标记 title | 离线可用 | Works offline |
 
 ### 语境卡（view.ts contextCatalog）

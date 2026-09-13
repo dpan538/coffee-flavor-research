@@ -3,7 +3,7 @@
 // headline "Every taste has its own vocabulary." with the letters of "taste" each in a colour, the language title,
 // the body paragraph, the motif row and the two-line slogan (tapping it starts, no underline — a redundant path to
 // the Start button below). The lower band holds the two bright 1 : 1.2 buttons. In the flow the split is 1 : 3.
-import { computed } from "vue";
+import { computed, watch } from "vue";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-vue-next";
 import AppHeader from "./components/AppHeader.vue";
@@ -27,6 +27,16 @@ import {
   stageInk,
   start,
 } from "./store";
+
+// The document canvas takes the bottom band's colour: on iOS Safari the zone behind the toolbar and the overscroll
+// areas are painted by the canvas, not the page, so without this a paper strip cuts the band (owner, 2026-09-13).
+watch(
+  [stageColor, aboutOpen],
+  ([color, about]) => {
+    if (!about) document.documentElement.style.backgroundColor = color;
+  },
+  { immediate: true },
+);
 
 // "Every taste has its own vocabulary." — only the five letters of "taste" take a colour each (owner)
 const LETTER_COLORS = ["#7C6CFF", "#FF6B4A", "#2EC27E", "#FFB300", "#2F9BFF"];

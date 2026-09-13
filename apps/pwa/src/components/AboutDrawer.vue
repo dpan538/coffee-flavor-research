@@ -79,6 +79,17 @@ const t = computed(() =>
 const scroller = ref<HTMLElement | null>(null);
 const flowTrack = ref<HTMLElement | null>(null);
 const burstTrack = ref<HTMLElement | null>(null);
+
+// the document canvas (what iOS Safari shows behind its toolbar) follows the page under the sheet's bottom edge
+function syncCanvas() {
+  const el = scroller.value;
+  if (!el) return;
+  const y = el.scrollTop + el.clientHeight - 1;
+  const dark = [flowTrack.value, burstTrack.value].some(
+    (t) => t && y >= t.offsetTop && y < t.offsetTop + t.offsetHeight,
+  );
+  document.documentElement.style.backgroundColor = dark ? "#0B0A09" : "#FFFFFF";
+}
 const flowProgress = ref(0);
 const burstProgress = ref(0);
 const reduced =
@@ -92,6 +103,8 @@ function toggle(id: string) {
 }
 
 onMounted(async () => {
+  scroller.value?.addEventListener("scroll", syncCanvas, { passive: true });
+  syncCanvas();
   await nextTick();
   if (reduced || !scroller.value) {
     flowProgress.value = 1;
@@ -140,6 +153,7 @@ onMounted(async () => {
   });
 });
 onBeforeUnmount(() => {
+  scroller.value?.removeEventListener("scroll", syncCanvas);
   ScrollTrigger.getAll().forEach((s) => s.kill());
 });
 </script>
@@ -147,7 +161,7 @@ onBeforeUnmount(() => {
 <template>
   <aside
     ref="scroller"
-    class="fixed inset-0 z-40 overflow-y-auto bg-paper text-ink fold-card safe-top safe-bottom"
+    class="fixed inset-0 z-40 overflow-y-auto bg-paper text-ink fold-card safe-top"
     role="dialog"
     aria-modal="true"
     data-component="AboutDrawer"
@@ -168,7 +182,7 @@ onBeforeUnmount(() => {
 
     <!-- page 1: what it is for — blank above, the glyphs, the owner's three paragraphs (less is more) -->
     <section
-      class="app-col min-h-[calc(100dvh-72px)] px-5 pt-20 pb-8 flex flex-col"
+      class="app-col min-h-[calc(100dvh-72px)] px-5 pt-20 pb-[calc(2rem_+_env(safe-area-inset-bottom))] flex flex-col"
       data-page="1"
       data-section="approach"
     >
@@ -202,9 +216,9 @@ onBeforeUnmount(() => {
       data-section="flow"
     >
       <div
-        class="app-col sticky top-0 h-[100dvh] px-4 pt-[84px] pb-6 flex flex-col justify-center overflow-hidden text-[#F4F1EA]"
+        class="app-col sticky top-0 h-[100dvh] px-4 pt-[84px] pb-[calc(1.5rem_+_env(safe-area-inset-bottom))] flex flex-col justify-center overflow-hidden text-[#F4F1EA]"
       >
-        <SourceColumns :progress="flowProgress" />
+        <SourceColumns class="flex-1 min-h-0" :progress="flowProgress" />
       </div>
     </section>
 
@@ -216,7 +230,7 @@ onBeforeUnmount(() => {
       data-section="spectrum"
     >
       <div
-        class="app-col sticky top-0 h-[100dvh] px-4 pb-6 flex flex-col justify-start overflow-hidden text-[#F4F1EA]"
+        class="app-col sticky top-0 h-[100dvh] px-4 pb-[calc(1.5rem_+_env(safe-area-inset-bottom))] flex flex-col justify-start overflow-hidden text-[#F4F1EA]"
         :class="zh ? 'pt-[116px]' : 'pt-[106px]'"
       >
         <h2
@@ -225,7 +239,7 @@ onBeforeUnmount(() => {
         >
           {{ t.burstTitle }}
         </h2>
-        <ProfileNetwork class="mt-2" :progress="burstProgress" />
+        <ProfileNetwork class="mt-2 flex-1 min-h-0" :progress="burstProgress" />
       </div>
     </section>
 
@@ -236,7 +250,7 @@ onBeforeUnmount(() => {
       data-section="author"
     >
       <div
-        class="app-col sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-10 flex flex-col bg-paper"
+        class="app-col sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-[calc(2.5rem_+_env(safe-area-inset-bottom))] flex flex-col bg-paper"
         data-reveal
       >
         <p class="text-[11px] tracking-[0.22em] text-muted">
@@ -310,7 +324,7 @@ onBeforeUnmount(() => {
       data-section="evidence"
     >
       <div
-        class="app-col sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-28 flex flex-col bg-paper"
+        class="app-col sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-[calc(7rem_+_env(safe-area-inset-bottom))] flex flex-col bg-paper"
         data-reveal
       >
         <h2
@@ -354,7 +368,7 @@ onBeforeUnmount(() => {
         </ol>
         <button
           type="button"
-          class="absolute right-5 bottom-8 rounded-xl bg-ink text-paper min-h-[54px] px-5 font-semibold inline-flex items-center gap-2"
+          class="absolute right-5 bottom-[calc(2rem_+_env(safe-area-inset-bottom))] rounded-xl bg-ink text-paper min-h-[54px] px-5 font-semibold inline-flex items-center gap-2"
           data-action="top"
           @click="toTop"
         >

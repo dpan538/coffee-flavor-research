@@ -95,7 +95,7 @@ def main() -> int:
 
     md += ["## 1. 首页与流程界面", "", "### 首页 Hero（view.ts appShell）", ""]
     rows = [("口号", *pair(zh["shell"], en["shell"], "slogan")), ("标题", *pair(zh["shell"], en["shell"], "title")), ("段落", *pair(zh["shell"], en["shell"], "subtitle")), ("行动主张", *pair(zh["shell"], en["shell"], "claim")), ("开始链接（与下方按钮同一动作）", *pair(zh["shell"], en["shell"], "startLink")), ("开始按钮", *pair(zh["shell"], en["shell"], "start")),
-            ("About 按钮 aria", *pair(zh["shell"], en["shell"], "about")), ("语言切换", *pair(zh["shell"], en["shell"], "localeSwitch")), ("离线标记 title", *pair(zh["shell"], en["shell"], "offlineReady"))]
+            ("About 按钮 aria", *pair(zh["shell"], en["shell"], "about")), ("语言切换", *pair(zh["shell"], en["shell"], "localeSwitch")), ("添加到桌面 · 图标", *pair(zh["shell"], en["shell"], "install")), ("添加到桌面 · 标题", *pair(zh["shell"], en["shell"], "installTitle")), ("添加到桌面 · iOS Safari", *pair(zh["shell"], en["shell"], "installIos")), ("添加到桌面 · iOS 其他浏览器", *pair(zh["shell"], en["shell"], "installIosOther")), ("添加到桌面 · 鸿蒙 华为浏览器", *pair(zh["shell"], en["shell"], "installHarmony")), ("添加到桌面 · 微信内", *pair(zh["shell"], en["shell"], "installWechat")), ("添加到桌面 · 其他浏览器", *pair(zh["shell"], en["shell"], "installOther")), ("添加到桌面 · 关闭", *pair(zh["shell"], en["shell"], "installClose")), ("离线标记 title", *pair(zh["shell"], en["shell"], "offlineReady"))]
     md += [table(["位置", "中文", "English"], rows), ""]
     md += ["### 语境卡（view.ts contextCatalog）", ""]
     rows = []

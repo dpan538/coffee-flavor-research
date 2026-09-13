@@ -177,7 +177,10 @@ const ink = (hex: string) => {
 </script>
 
 <template>
-  <figure class="w-full text-[#F4F1EA]" data-component="ProfileNetwork">
+  <figure
+    class="w-full flex flex-col text-[#F4F1EA]"
+    data-component="ProfileNetwork"
+  >
     <div class="flex flex-col gap-2">
       <p class="text-[13px] leading-[1.45] text-[#B9B4AA]">
         {{
@@ -204,120 +207,121 @@ const ink = (hex: string) => {
         </li>
       </ol>
     </div>
-    <svg
-      :viewBox="`0 0 ${W} ${H}`"
-      class="w-full h-auto mx-auto mt-1"
-      :class="zh ? 'max-h-[35dvh]' : 'max-h-[31dvh]'"
-      role="img"
-    >
-      <g :opacity="ringsIn">
-        <circle
-          :cx="CX"
-          :cy="CY"
-          :r="R1"
-          fill="none"
-          stroke="#F4F1EA"
-          stroke-opacity="0.35"
-          stroke-width="0.8"
-          stroke-dasharray="3 4"
-        />
-        <circle
-          :cx="CX"
-          :cy="CY"
-          :r="R2"
-          fill="none"
-          stroke="#F4F1EA"
-          stroke-opacity="0.35"
-          stroke-width="0.8"
-          stroke-dasharray="3 4"
-        />
-        <text
-          :x="CX"
-          :y="CY + R1 + 18"
-          text-anchor="middle"
-          font-size="10"
-          fill="#B9B4AA"
-        >
-          {{ zh ? "记录最多的 6 组" : "the 6 largest" }}
-        </text>
-        <text
-          :x="CX"
-          :y="CY - R2 - 6"
-          text-anchor="middle"
-          font-size="10"
-          fill="#B9B4AA"
-        >
-          {{ zh ? "其余 10 组" : "the other 10" }}
-        </text>
-        <circle :cx="CX" :cy="CY" r="27" fill="#F4F1EA" />
-        <text
-          :x="CX"
-          :y="CY - 1"
-          text-anchor="middle"
-          font-size="11"
-          font-weight="700"
-          fill="#0B0A09"
-        >
-          {{ fmt(nodes.reduce((a, n) => a + n.members, 0)) }}
-        </text>
-        <text
-          :x="CX"
-          :y="CY + 10"
-          text-anchor="middle"
-          font-size="8.5"
-          fill="#4a4642"
-        >
-          {{ zh ? "条记录" : "records" }}
-        </text>
-      </g>
-      <path
-        v-for="(e, i) in edges"
-        :key="'e' + i"
-        :d="e.d"
-        fill="none"
-        stroke="#F4F1EA"
-        stroke-width="1"
-        stroke-opacity="0.75"
-        :stroke-dasharray="e.len"
-        :stroke-dashoffset="e.len * (1 - edgeIn(i))"
-      />
-      <g
-        v-for="(nd, i) in nodes"
-        :key="nd.id"
-        :transform="`translate(${nd.x} ${nd.y}) scale(${nodeIn(i)})`"
+    <div class="flex-1 min-h-0 flex justify-center mt-1">
+      <svg
+        :viewBox="`0 0 ${W} ${H}`"
+        class="h-full w-auto max-w-full"
+        role="img"
       >
-        <circle :r="nd.r" :fill="nd.color" />
-        <text
-          y="4"
-          text-anchor="middle"
-          font-size="11"
-          font-weight="700"
-          :fill="ink(nd.color)"
-        >
-          {{ nd.n }}
-        </text>
-      </g>
-      <g v-for="e in callouts" :key="e.callout" :opacity="notesIn">
-        <rect
-          :x="e.mx - 12"
-          :y="e.my - 8"
-          width="24"
-          height="16"
-          rx="2"
-          fill="#F4F1EA"
+        <g :opacity="ringsIn">
+          <circle
+            :cx="CX"
+            :cy="CY"
+            :r="R1"
+            fill="none"
+            stroke="#F4F1EA"
+            stroke-opacity="0.35"
+            stroke-width="0.8"
+            stroke-dasharray="3 4"
+          />
+          <circle
+            :cx="CX"
+            :cy="CY"
+            :r="R2"
+            fill="none"
+            stroke="#F4F1EA"
+            stroke-opacity="0.35"
+            stroke-width="0.8"
+            stroke-dasharray="3 4"
+          />
+          <text
+            :x="CX"
+            :y="CY + R1 + 18"
+            text-anchor="middle"
+            font-size="10"
+            fill="#B9B4AA"
+          >
+            {{ zh ? "记录最多的 6 组" : "the 6 largest" }}
+          </text>
+          <text
+            :x="CX"
+            :y="CY - R2 - 6"
+            text-anchor="middle"
+            font-size="10"
+            fill="#B9B4AA"
+          >
+            {{ zh ? "其余 10 组" : "the other 10" }}
+          </text>
+          <circle :cx="CX" :cy="CY" r="27" fill="#F4F1EA" />
+          <text
+            :x="CX"
+            :y="CY - 1"
+            text-anchor="middle"
+            font-size="11"
+            font-weight="700"
+            fill="#0B0A09"
+          >
+            {{ fmt(nodes.reduce((a, n) => a + n.members, 0)) }}
+          </text>
+          <text
+            :x="CX"
+            :y="CY + 10"
+            text-anchor="middle"
+            font-size="8.5"
+            fill="#4a4642"
+          >
+            {{ zh ? "条记录" : "records" }}
+          </text>
+        </g>
+        <path
+          v-for="(e, i) in edges"
+          :key="'e' + i"
+          :d="e.d"
+          fill="none"
+          stroke="#F4F1EA"
+          stroke-width="1"
+          stroke-opacity="0.75"
+          :stroke-dasharray="e.len"
+          :stroke-dashoffset="e.len * (1 - edgeIn(i))"
         />
-        <text
-          :x="e.mx"
-          :y="e.my + 4"
-          text-anchor="middle"
-          font-size="9.5"
-          font-weight="700"
-          fill="#0B0A09"
+        <g
+          v-for="(nd, i) in nodes"
+          :key="nd.id"
+          :transform="`translate(${nd.x} ${nd.y}) scale(${nodeIn(i)})`"
         >
-          {{ e.callout }}
-        </text>
-      </g>
-    </svg>
+          <circle :r="nd.r" :fill="nd.color" />
+          <text
+            y="4"
+            text-anchor="middle"
+            font-size="11"
+            font-weight="700"
+            :fill="ink(nd.color)"
+          >
+            {{ nd.n }}
+          </text>
+        </g>
+        <g v-for="e in callouts" :key="e.callout" :opacity="notesIn">
+          <rect
+            :x="e.mx - 12"
+            :y="e.my - 8"
+            width="24"
+            height="16"
+            rx="2"
+            fill="#F4F1EA"
+          />
+          <text
+            :x="e.mx"
+            :y="e.my + 4"
+            text-anchor="middle"
+            font-size="9.5"
+            font-weight="700"
+            fill="#0B0A09"
+          >
+            {{ e.callout }}
+          </text>
+        </g>
+      </svg>
+    </div>
     <div
       class="mt-2 transition-opacity duration-500"
       :style="{ opacity: notesIn }"

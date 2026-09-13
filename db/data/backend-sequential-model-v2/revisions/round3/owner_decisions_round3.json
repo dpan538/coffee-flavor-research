@@ -506,6 +506,22 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-13T01:20:03Z"
+    },
+    {
+      "id": "R3-D25",
+      "subject": "Safari bottom safe area, poster height on phones, and an add-to-home-screen entry",
+      "decision": "Three phone findings on the live site. (1) The About sheet padded its bottom safe area in paper, so a white strip cut the dark posters and the legend; the sheet no longer pads, each page carries the inset in its own padding, and the document canvas follows the colour under the bottom edge (stage colour on the home page and in the flow, dark or paper inside the sheet), so the zone iOS Safari paints behind its toolbar and the overscroll areas match the band instead of showing white. (2) On phone heights the two posters overflowed their pinned panel; the chart now takes whatever height the text leaves (flex column, SVG bound by the remaining height and the column width), so both pages fit at 660 px as well as at 900 px. (3) An add-to-home-screen icon sits left of the language badge: Chrome and Edge get their own install prompt on tap; Safari on iOS and iPadOS has no API, so a sheet explains Share → Add to Home Screen; HarmonyOS (HarmonyOS 4 and NEXT, Huawei Browser) gets the menu → 添加到桌面 line, Android without a prompt the browser-menu line, WeChat's in-app browser the open-in-browser line; the icon hides once the app runs standalone. Copy in appShell (install*, bilingual).",
+      "owner_words": "问题主要出现在 safari 底部安全区过渡的问题，现在白色直接截断导致内容无法完整展示。并且高度上的布局确实是一个比较大的问题。另一个问题是我们的 pwa 应该如何添加到桌面？貌似现在没有任何指引，可以在中英文切换的左侧加一个 download 的 icon，点击可以添加到桌面 … 确保鸿蒙系统也能够添加 pwa，需要确保对鸿蒙苹果安卓三端的支持 … 换行非常粗糙，稍微改一下，不要在最后一个字换行",
+      "applied": {
+        "data": "none",
+        "code": "view.ts appShell install / installTitle / installIos / installIosOther / installOther / installClose; apps/pwa/src/install.ts (beforeinstallprompt, standalone detection, platform); InstallSheet.vue; AppHeader.vue icon; vite-env.d.ts BeforeInstallPromptEvent; App.vue canvas watch; AboutDrawer.vue safe-area paddings, syncCanvas, posters flex-1; SourceColumns.vue and ProfileNetwork.vue chart wrappers; FRONTEND_COPY_REVIEW.md regenerated; install.ts platform.harmony / android / wechat; InstallSheet.vue line by platform and the quoted menu name kept unbreakable; export-frontend-copy.py install rows",
+        "verified": "headless Chromium with an iPhone user agent at 390×660 and 390×844 plus 1440×900: both posters end 24 px above the panel bottom at every height, canvas colour lavender on home and #0B0A09 on the posters; the sheet renders with the Share line; vue-tsc; vite build; vitest 99/99; full gate",
+        "open": [
+          "the network chart is small on the shortest phones (about 150 px at 660 px viewport); if the owner wants it larger, the C1–C6 list under it is the candidate to fold"
+        ],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-13T01:42:56Z"
     }
   ],
   "guards": {

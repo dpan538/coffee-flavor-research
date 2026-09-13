@@ -404,6 +404,16 @@ export function appShell(locale: Locale) {
         about: "关于",
         localeSwitch: "EN",
         offlineReady: "离线可用",
+        install: "添加到桌面",
+        installTitle: "添加到主屏幕",
+        installIos: "在 Safari 底部点分享，选择「添加到主屏幕」。",
+        installIosOther:
+          "用 Safari 打开这个页面，点分享，选择「添加到主屏幕」。",
+        installHarmony: "在华为浏览器点右下角菜单，选择「添加到桌面」。",
+        installWechat:
+          "请点右上角「···」，选择「在浏览器打开」，再添加到桌面。",
+        installOther: "在浏览器菜单里选择「安装应用」或「添加到主屏幕」。",
+        installClose: "知道了",
       }
     : {
         slogan: "Every taste has its own vocabulary.",
@@ -417,6 +427,19 @@ export function appShell(locale: Locale) {
         about: "About",
         localeSwitch: "中",
         offlineReady: "Works offline",
+        install: "Add to home screen",
+        installTitle: "Add to Home Screen",
+        installIos:
+          "Tap Share at the bottom of Safari, then choose “Add to Home Screen”.",
+        installIosOther:
+          "Open this page in Safari, tap Share, then choose “Add to Home Screen”.",
+        installHarmony:
+          "In Huawei Browser, open the bottom-right menu and choose “Add to desktop”.",
+        installWechat:
+          "Tap “···” at the top right, choose “Open in browser”, then add it from there.",
+        installOther:
+          "Choose “Install app” or “Add to Home Screen” in your browser menu.",
+        installClose: "Got it",
       };
 }
 
