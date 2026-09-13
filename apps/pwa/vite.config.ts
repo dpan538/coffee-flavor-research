@@ -27,7 +27,7 @@ export default defineConfig({
         name: "flavorwords — Put this cup into words",
         short_name: "flavorwords",
         description:
-          "Every taste has its own vocabulary. A few questions turn what you taste into a flavor card. Works offline.",
+          "Six guided questions, a choice of flavor words, and a personal flavor card. Works offline, in Chinese and English.",
         lang: "zh-CN",
         start_url: "/",
         display: "standalone",

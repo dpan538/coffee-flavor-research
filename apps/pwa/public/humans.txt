@@ -1,6 +1,7 @@
 /* TEAM */
-Research, design and development: Dai Pan (潘岱)
+Research, design and development: Dai Pan (潘岱), June–September 2026
 Site: https://flavorwords.com
+Source: https://github.com/dpan538/coffee-flavor-research
 
 /* THANKS */
 World Coffee Research (Sensory Lexicon), Coffee Ad Astra (Jonathan Gagné), Great American Coffee Taste Test (aggregate word counts)

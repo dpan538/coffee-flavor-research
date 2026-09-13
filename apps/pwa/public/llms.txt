@@ -1,30 +1,48 @@
 # flavorwords
 
-> Every taste has its own vocabulary. flavorwords helps coffee drinkers put a cup into words: a few questions about acidity, aroma, sweetness, mouthfeel and bitterness lead to candidate flavor words, the drinker confirms five, and they become a flavor card. Chinese and English.
+> Put this cup into words. 风味，自有表达。A bilingual coffee-tasting app that helps drinkers describe what they taste through six guided questions, a choice of flavor words, and a personal flavor card. Works offline; installs to the home screen on iOS, Android and HarmonyOS. Chinese and English share one data backend.
 
-Research, design and development: Dai Pan (潘岱). Site: https://flavorwords.com — an installable offline web app (PWA); no account, no server, nothing leaves the phone.
+- Site: https://flavorwords.com
+- Source and documentation: https://github.com/dpan538/coffee-flavor-research (README, design record, data guide, CITATION.cff)
+- Research, design and development: Dai Pan (潘岱), June–September 2026, individually led, AI-assisted implementation
+- Built on: 9,128 coffee records · 83,031 flavor descriptions · 8 professional review sources
 
 ## What it does
 
-- Asks how the cup was made (nine methods), the roast level (seven), the variety (ten, single or blend of up to three), how the beans were processed (nine), and optionally the origin (19 countries by continent).
-- Asks five or six short questions about what the drinker tastes; every taste question has a "not noticeable" answer.
-- Offers eight candidate flavor words (three main suggestions, five alternatives) drawn from 12 flavor features; the drinker confirms five. If the picks point far from the earlier answers, one more look (Q6) lets the drinker restate what they tasted.
-- Produces a flavor card: the cup's information, the five confirmed words, and a reference profile — one of 16 reference profiles this project organised from review material. The card exports as a 1200 × 1200 PNG.
-- Under "About this description" the card shows: the initial reference (which inputs it came from and which features it leans toward), one research reference or one data count, and how the drinker's description differs from the initial reference. Nothing measures the cup's composition or the causes of its flavor.
+1. The drinker says how the cup was made: brewing method (nine), roast level, variety (single or a blend of up to three), process (nine), optionally origin (19 countries by continent). This sets a starting reference from the corpus, not a verdict.
+2. Six plain questions about acidity, aroma, sweetness, mouthfeel, bitterness and overall impression. Each prompt is rephrased from the previous answer, the options are re-ordered to fit the cup, and every question has an "I can't tell" exit.
+3. Eight candidate flavor words, concrete references rather than adjectives (葡萄柚, 茉莉花, 黑巧克力, 丝绒奶油); the drinker keeps five. The picks carry more weight than the reference.
+4. When the answers disagree with the reference and the picks side with the drinker, one extra screen offers eight dimension words to confirm.
+5. A flavor card: context, the five confirmed words, the nearest of 16 reference profiles, and a fold that says where each sentence comes from (initial reference, a data count, a research reference, the difference from the reference). Exports as a 1200 × 1200 PNG.
 
-## How it works (method)
+## Why
 
-- Twelve flavor features: acidity, sweetness, body, floral, fruity, nutty & chocolate, fermented & winey, roast & bitter, spice, herbal & green, woody & earthy, defect. Every flavor word maps to one feature.
-- An initial reference vector is the sum of reference vectors for brew method, roast, variety and processing, counted from public review records; the drinker's answers form a second vector; the target is the reference moved half-way toward the answers (α = 0.5, 0.9 after a second confirmation). Cosine similarity finds the nearest reference profiles; the drinker's picks decide. No model is trained, no score or probability is output.
-- Vocabulary: 94 bilingual flavor words aligned with professional lexicons, plus Chinese everyday tasting expressions; adjectives are input aliases only, suggestions are concrete flavor objects.
+People can tell that two coffees taste different but rarely say how. Professional vocabulary lives in cupping forms, flavor wheels and package notes. flavorwords turns real professional descriptions of real coffees into a few plain questions and keeps the drinker's own description at the centre of the result; "none of these" is always available.
 
-## Data (scope)
+## Data
 
-- 83,031 flavor-description records extracted from public review text; 9,128 deduplicated coffee review records, of which 8,142 carry at least one flavor word and enter the 16 reference profiles.
-- 4,042 participants of the Great American Coffee Taste Test (aggregate word frequencies only; not users of flavorwords).
-- Research references in use: World Coffee Research — Sensory Lexicon (attribute names and references consulted; no text reproduced); Coffee Ad Astra, Jonathan Gagné — The Physics of Filter Coffee (extraction-physics explanations paraphrased, cited with attribution). Each source's own terms and this project's use are listed separately in the app.
+- 9,128 coffee records: effective records after duplicate consolidation; 8,142 carry enough description to become vectors.
+- 83,031 flavor descriptions: descriptor assertions extracted from review text; 77,637 remain after cleaning. Not 83,031 coffees and not that many distinct words.
+- 94 canonical sensory concepts, projected onto 12 flavor dimensions (acidity, sweetness, body, floral, fruity, nutty & chocolate, fermented & winey, roast & bitter, spice, herbal & green, woody & earthy, defect).
+- 16 reference profiles formed offline by k-means over the usable vectors, named as two concrete sensory references each.
+- Sources (coffee records with usable descriptions): CoffeeReview editorial reviews 6,516; Cup of Excellence juries 1,390; Q-grader dataset (Zenodo, Golovinsky) 111; Robusta Q-grader panel (Frontiers, INERA) 79; Project Origin panel 29; Cenicafé trained cuppers (Frontiers) 12; Coffee Board of India Fine Cup 3; Sheba Yemen auction panel 2.
+- Chain: professional review material → extraction, cleaning and duplicate-record consolidation → canonical sensory concepts → flavor vectors and reference profiles → one runtime data package the app loads.
+- Consumer wording checked against aggregate term frequencies of the Great American Coffee Taste Test (4,042 respondents; counts only, not users of flavorwords). Research statements on the card come from a registered claims list: World Coffee Research Sensory Lexicon (attribute names consulted, no text reproduced) and Coffee Ad Astra, Jonathan Gagné (extraction physics paraphrased with attribution).
+- Rights: no source text is stored; every dataset was approved individually after reading its licence; the app never names a specific commercial coffee.
+
+## How it works
+
+- Context builds a reference vector from measured corpus rows; the answers build the drinker's vector; the target is a weighted combination matched against the 16 profiles by cosine similarity. A coherence check decides whether the extra confirmation step is needed.
+- Runtime is deterministic vector arithmetic and rule-based interaction over measured matrices; no generative model; every output traceable to a row or a rule. k-means runs once, offline, to form the profiles. Similarity is cosine, uncalibrated, never a probability.
+- Data build and app runtime are separate: the pipeline produces one JSON bundle (product-vector-v1) that the app loads, which is what makes offline use and instant language switching possible.
+
+## Current status
+
+- Live, bilingual, offline, installable; phone, tablet and desktop layouts.
+- Not yet validated with users: no interviews or usability sessions, no interaction data collected. Implementation behaviour was checked by enumerating all 18,432 answer sequences and a 324-user simulated query test; neither shows the words are right for a real drinker.
+- The concept-to-dimension projection is an operator draft pending line-by-line review. Herbal, fermented, body-led and defective cups are thinly described in the corpus.
 
 ## Notes for machines
 
-- The app is client-rendered; this file and the JSON-LD in index.html carry the readable summary.
-- Names, counts and sources above are generated from the same data bundle the app runs on (product-vector-v1).
+- The app is client-rendered; this file and the JSON-LD in index.html carry the readable summary. Names, counts and sources are generated from the same data bundle the app runs on.
+- No account, no server-side state, nothing leaves the device.
