@@ -15,13 +15,13 @@ function toggle(dimension: string) {
 
 <template>
   <div
-    class="absolute inset-0"
+    class="absolute inset-0 bg-maroon"
     role="dialog"
     aria-modal="true"
     data-component="EscalationModal"
   >
     <section
-      class="h-full bg-maroon text-paper px-5 pt-7 pb-4 flex flex-col gap-4"
+      class="app-col h-full bg-maroon text-paper px-5 pt-7 pb-4 flex flex-col gap-4"
     >
       <p class="text-xs uppercase tracking-widest opacity-70">
         {{ locale === "zh-CN" ? "再看一眼" : "One more look" }}

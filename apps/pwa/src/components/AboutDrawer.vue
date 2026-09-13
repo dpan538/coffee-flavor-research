@@ -152,23 +152,23 @@ onBeforeUnmount(() => {
     aria-modal="true"
     data-component="AboutDrawer"
   >
-    <div
-      class="sticky top-0 z-10 bg-paper/95 backdrop-blur px-5 py-3 flex items-center justify-between"
-    >
-      <Wordmark :width="78" />
-      <button
-        type="button"
-        class="icon-btn"
-        :aria-label="t.close"
-        @click="aboutOpen = false"
-      >
-        <X :size="22" :stroke-width="1.75" />
-      </button>
+    <div class="sticky top-0 z-10 bg-paper/95 backdrop-blur px-5 py-3">
+      <div class="app-col flex items-center justify-between">
+        <Wordmark :width="78" />
+        <button
+          type="button"
+          class="icon-btn"
+          :aria-label="t.close"
+          @click="aboutOpen = false"
+        >
+          <X :size="22" :stroke-width="1.75" />
+        </button>
+      </div>
     </div>
 
     <!-- page 1: what it is for — blank above, the glyphs, the owner's three paragraphs (less is more) -->
     <section
-      class="min-h-[calc(100dvh-72px)] px-5 pt-20 pb-8 flex flex-col"
+      class="app-col min-h-[calc(100dvh-72px)] px-5 pt-20 pb-8 flex flex-col"
       data-page="1"
       data-section="approach"
     >
@@ -202,7 +202,7 @@ onBeforeUnmount(() => {
       data-section="flow"
     >
       <div
-        class="sticky top-0 h-[100dvh] px-4 pt-[84px] pb-6 flex flex-col justify-center overflow-hidden text-[#F4F1EA]"
+        class="app-col sticky top-0 h-[100dvh] px-4 pt-[84px] pb-6 flex flex-col justify-center overflow-hidden text-[#F4F1EA]"
       >
         <SourceColumns :progress="flowProgress" />
       </div>
@@ -216,7 +216,7 @@ onBeforeUnmount(() => {
       data-section="spectrum"
     >
       <div
-        class="sticky top-0 h-[100dvh] px-4 pb-6 flex flex-col justify-start overflow-hidden text-[#F4F1EA]"
+        class="app-col sticky top-0 h-[100dvh] px-4 pb-6 flex flex-col justify-start overflow-hidden text-[#F4F1EA]"
         :class="zh ? 'pt-[116px]' : 'pt-[106px]'"
       >
         <h2
@@ -236,7 +236,7 @@ onBeforeUnmount(() => {
       data-section="author"
     >
       <div
-        class="sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-10 flex flex-col bg-paper"
+        class="app-col sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-10 flex flex-col bg-paper"
         data-reveal
       >
         <p class="text-[11px] tracking-[0.22em] text-muted">
@@ -310,7 +310,7 @@ onBeforeUnmount(() => {
       data-section="evidence"
     >
       <div
-        class="sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-28 flex flex-col bg-paper"
+        class="app-col sticky top-0 min-h-[100dvh] px-5 pt-[100px] pb-28 flex flex-col bg-paper"
         data-reveal
       >
         <h2

@@ -485,13 +485,27 @@
         "code": "tests/product-vector-v1-q6-trigger.test.ts (enumeration floors + the seven recipes + control); SourceColumns.vue (EN panel labels, EN chart cap 50dvh, shorter EN intro); AboutDrawer.vue (page 4 EN pt 106px); package.json engines.node 22.x; vercel.json (prettier); .github/workflows ci.yml database-artifacts + historical-replay.yml checkout lfs: true; .gitattributes LFS entries via git lfs migrate; apps/pwa/scripts/build-icons.py + rasterize-icons.mjs → public/icons (icon.svg, icon-192/512.png, apple-touch-icon.png), vite.config manifest icons + includeAssets + png precache, index.html apple-touch-icon; prettier --write over apps/pwa, packages/flavor-data, tests and the product docs; .prettierignore for db/data/product-vector-v1/*.json and FRONTEND_COPY_REVIEW.md; FlavorBurst.vue / ProvenanceFlow.vue removed; db/data/product-inference-v0.2/SHA256SUMS refreshed",
         "verified": "18,432-sequence enumeration (6 contexts × 3 pick behaviours); vitest new file 10/10 and the full gate; two browser walks (recipes 1 and 6) through 更新风味卡 with data-corrected=true; EN About measured at 383 × 827: page 3 content top 87 px under a 78 px header with 27 px spare at the bottom, page 4 top 106 px; prettier . --check clean; root typecheck + react-router build; vitest 99/99; service worker active and updating in the preview, manifest icons all 200; full gate (web steps + database stages)",
         "open": [
-          "owner pushes: git push origin research/round2-capture:main (fast-forward; the LFS pre-push hook uploads the two objects first)",
           "GitHub LFS bandwidth: each run of the two LFS-enabled workflows downloads about 211 MB",
-          "Vercel import with the form sheet; attach flavorwords.com; confirm canonical / sitemap / manifest if the domain differs"
+          "Vercel import with the form sheet; attach flavorwords.com; confirm canonical / sitemap / manifest if the domain differs",
+          "pushed 2026-09-13 at the owner's instruction: origin/main e1bac12, CI run 34728720913 green (all three jobs), Vercel project deployed by the owner at flavorwords.vercel.app"
         ],
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-12T13:34:50Z"
+    },
+    {
+      "id": "R3-D24",
+      "subject": "Tablet and desktop layout: one centred content column, height-bound home tiles, nothing new",
+      "decision": "The PWA stays mobile-first; on wider screens the colour bands remain full-bleed and the content inside them sits in one centred column (phones: full width; from 640px, iPad mini and iPad Air portrait: 600px; from 1024px, landscape tablets and desktops: 680px). The two home tiles keep their 1 : 1.32 proportion and are bound by the band's height and half the column instead of stretching, which is what overlapped the headline on wide screens. The About drawer's header, page 1 and the sticky panels of pages 3, 4, 2 and 5 use the same column; the Q6 modal too. No new elements, sizes or copy.",
+      "owner_words": "我们现在需要把桌面端写一下，重点是布局问题，桌面端需要考虑 responsive，没有其他任何需要新增的，只是调整布局能适应各种屏幕，至少需要适配 ipad mini ipad air 和桌面端",
+      "applied": {
+        "data": "none",
+        "code": "style.css --app-col (100% / 600px / 680px), .app-col, .hero-tile; App.vue column wrappers in both bands, sm:justify-center on the tile row; EscalationModal.vue column; AboutDrawer.vue column on the header, page 1 and the four sticky panels",
+        "verified": "headless Chromium screenshots at 744×1133, 820×1180, 1180×820 and 1440×900 (home, context card, About pages 1–5) and the 390×844 phone regression unchanged; vue-tsc; vite build; full gate",
+        "open": [],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-13T01:20:03Z"
     }
   ],
   "guards": {

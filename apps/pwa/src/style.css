@@ -268,3 +268,32 @@
 .dot:nth-child(3) {
   animation-delay: 0.3s;
 }
+
+/* Tablets and desktops (owner, 2026-09-13): the colour bands stay full-bleed, the content inside them sits in one
+   centred column — phones keep the full width, iPad mini / iPad Air get 600px, landscape tablets and desktops 680px. */
+:root {
+  --app-col: 100%;
+}
+@media (min-width: 640px) {
+  :root {
+    --app-col: 600px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --app-col: 680px;
+  }
+}
+.app-col {
+  width: 100%;
+  max-width: var(--app-col);
+  margin-inline: auto;
+}
+/* the two home tiles: on wide screens they are bound by the band's height (and by half the column) instead of stretching */
+@media (min-width: 640px) {
+  .hero-tile {
+    flex: none;
+    height: min(100%, calc((var(--app-col) / 2 - 6px) * 1.32));
+    aspect-ratio: 1 / 1.32;
+  }
+}
