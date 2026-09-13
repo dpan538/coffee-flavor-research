@@ -522,6 +522,23 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-13T01:42:56Z"
+    },
+    {
+      "id": "R3-D26",
+      "subject": "README rewritten as the data-product R&D record: problem, data, method, product, engineering, contribution",
+      "decision": "The root README no longer describes the early atlas prototype. It presents flavorwords as a data-product R&D project for the owner's résumé: the problem, a Chinese summary, the product flow, the data (8 professional source families, 9,128 effective records, 8,142 usable vectors, 83,031 assertions with 77,637 valid, 94 concepts on 12 dimensions, the top-axis distribution, 16 named profiles with member counts, the literature registry states, the GACTT aggregate, the rights posture), the method (V_pred, V_user, ΔV with α, coherence thresholds, the measured Q6 gate, dynamic prompts, evidence labelling, the four sufficiency measurements), the engineering (repo map, runtime bundle, PostgreSQL 17, the commit gate, copy as data, Vercel + LFS), the contribution statement in the owner's own credit line with the AI pair-programming tool named, the research journey, status and limits. Every new number carries a claim marker registered with an evidence path; the governed status source now records the PWA as IMPLEMENTED (public claim allowed) and the phase PRODUCT_VECTOR_V1_PWA_LIVE; the generator names the product flavorwords; portfolio screenshots are six captures of the live PWA replacing the four atlas captures, with the manifest's required routes updated to the app's states.",
+      "owner_words": "需要针对性修改现在的 readme，repo 中的这一套是非常非常早期的 demo，需要完全改动。需要有对于数据的澄清并且对方法论的剖析，以及对于 contribution，problem，产品等方面的解读。需要有对于数据的展示，这会是我简历上的一个数据产品研发项目，所以需要你写明",
+      "applied": {
+        "data": "none",
+        "code": "README.md; docs/portfolio/PUBLIC_CLAIMS_REGISTER.tsv (+9 claims); docs/portfolio/PUBLIC_STATUS_SOURCE.json; scripts/generate-public-project-status.py (product name, subtitle, PWA rows conditional); PROJECT_STATUS.md / PORTFOLIO_FACTS.json / public/project-status.json regenerated; scripts/capture-portfolio-screenshots.mjs rewritten for the PWA; scripts/validate-screenshot-manifest.py required routes; docs/portfolio/SCREENSHOT_MANIFEST.md + six assets; docs/ASSET-LICENSES.md",
+        "verified": "npm run public:verify: claim lint 0 failures, register coverage pass (25 claims, 47 markers), markdown links pass, screenshot manifest pass (4 desktop, 2 mobile); prettier clean; full gate",
+        "open": [
+          "PORTFOLIO.md, the case study, demo script and docs/INDEX.md still tell the atlas-era story; the owner decides whether they are rewritten or archived",
+          "the contribution-scope review (docs/portfolio/CONTRIBUTION_SCOPE_REVIEW.md) is still marked OPEN; the README's contribution statement is the owner's own and can close it"
+        ],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-13T02:15:32Z"
     }
   ],
   "guards": {

@@ -138,10 +138,11 @@ def build_facts() -> dict[str, Any]:
             "phase_status": source["current_phase_status"],
         },
         "product": {
-            "name": "Coffee Flavor Atlas",
+            "name": "flavorwords",
             "public_subtitle": (
-                "An evidence-grounded mobile-first web prototype for translating "
-                "everyday coffee perception into professional sensory references."
+                "Put this cup into words: a bilingual, offline-capable PWA that turns "
+                "what a drinker tastes into a small flavor vocabulary grounded in "
+                "83K professional sensory assertions."
             ),
             "interaction_contract": {
                 "preparation_context": "C0",
@@ -232,8 +233,8 @@ below by hand.
 <!-- prettier-ignore -->
 | Surface | Status | Evidence-backed interpretation |
 | --- | --- | --- |
-| Mobile web prototype | IMPLEMENTED | Responsive React Router interface with keyboard and reduced-motion checks. |
-| Installable PWA | {pwa['status']} | No manifest, service worker, installability receipt, or offline app shell is present. |
+| Product interface | IMPLEMENTED | Vue 3 PWA (flavorwords.com): bilingual, offline shell, phone, tablet and desktop layouts, keyboard and reduced-motion checks. |
+| Installable PWA | {pwa['status']} | {"Web app manifest, PNG and maskable icons, service worker and offline app shell are present; installs on iOS Safari, Android and HarmonyOS." if pwa['status'] == "IMPLEMENTED" else "No manifest, service worker, installability receipt, or offline app shell is present."} | <!-- claim: PWA_LIVE -->
 | PostgreSQL knowledge base | VALIDATED | Provenance, evidence, review, rights, duplicate, and gate contracts are executable. |
 | First-party user research | NOT_STARTED | Protocols exist; no user data was collected in this pass. |
 | Ranking or adaptive model | NOT_STARTED | `MODEL_STATUS={ml['model_status']}`; deterministic retrieval remains the baseline. |
@@ -287,8 +288,7 @@ not raw-row targets.
   rights.
 - No interviews, usability sessions, first-party interaction events, model
   runs, embeddings, cross-encoders, or deep-learning experiments are claimed.
-- PWA implementation remains planned; the current product is a mobile-first web
-  prototype.
+- {"The PWA is live; the flavor inference is deterministic vector arithmetic with no machine-learned model." if pwa['status'] == "IMPLEMENTED" else "PWA implementation remains planned; the current product is a mobile-first web prototype."}
 
 ## Provenance
 

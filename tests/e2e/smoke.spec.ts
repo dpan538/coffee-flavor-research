@@ -202,7 +202,10 @@ test("project status is generated, keyboard reachable, and reduced-motion aware"
   expect(statusResponse.ok()).toBe(true);
   const status = await statusResponse.json();
   expect(status.ml.model_status).toBe("NOT_TRAINED");
-  expect(status.pwa.public_claim_allowed).toBe(false);
+  // the governed status decides the PWA claim: allowed exactly when the audit records IMPLEMENTED (flavorwords is live)
+  expect(status.pwa.public_claim_allowed).toBe(
+    status.pwa.status === "IMPLEMENTED",
+  );
   expect(status.first_party_user_research.user_data_collected).toBe(false);
 
   const hasHorizontalOverflow = await page.evaluate(

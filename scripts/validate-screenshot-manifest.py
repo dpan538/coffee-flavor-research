@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs/portfolio/SCREENSHOT_MANIFEST.md"
-REQUIRED_ROUTES = {"/", "/atlas?view=index&q=cacao&compare=jasmine,dark-chocolate", "/methodology#project-status"}
+REQUIRED_ROUTES = {"/", "/ (start → context card)", "/ (about → sources poster)"}
 
 
 def main() -> int:

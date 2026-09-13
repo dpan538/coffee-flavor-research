@@ -61,8 +61,8 @@ export const projectStatus = {
       "roast_context": "C1",
       "secondary_candidate_count": 3
     },
-    "name": "Coffee Flavor Atlas",
-    "public_subtitle": "An evidence-grounded mobile-first web prototype for translating everyday coffee perception into professional sensory references."
+    "name": "flavorwords",
+    "public_subtitle": "Put this cup into words: a bilingual, offline-capable PWA that turns what a drinker tastes into a small flavor vocabulary grounded in 83K professional sensory assertions."
   },
   "professional_descriptor_pilot": {
     "admitted_assertion_count": 140,
@@ -82,24 +82,24 @@ export const projectStatus = {
   },
   "pwa": {
     "accessible_names": true,
-    "installable_icons": false,
+    "installable_icons": true,
     "keyboard_access": true,
-    "offline_app_shell": false,
-    "public_claim_allowed": false,
+    "offline_app_shell": true,
+    "public_claim_allowed": true,
     "reduced_motion_behavior": true,
     "responsive_mobile_layout": true,
     "restricted_corpus_exposed_to_client": false,
-    "service_worker": false,
-    "status": "PLANNED",
-    "web_app_manifest": false
+    "service_worker": true,
+    "status": "IMPLEMENTED",
+    "web_app_manifest": true
   },
   "schema_version": "coffee-flavor-portfolio-facts-v1",
   "source": {
-    "branch": "codex/coffee-sensory-kb-v0-round3m-descriptor-first-provenance-pilot-20260828",
-    "phase": "PORTFOLIO_AND_REPOSITORY_NORMALIZATION",
+    "branch": "main",
+    "phase": "PRODUCT_VECTOR_V1_PWA_LIVE",
     "phase_status": "IMPLEMENTED",
-    "sha": "13b56d2c1d4beec3754ce53edec8954d4e034bce",
-    "work_branch": "codex/coffee-flavor-portfolio-repo-normalization-20260828"
+    "sha": "a3337f58324c89b6df90a4a1009f48b220ded349",
+    "work_branch": "research/round2-capture"
   },
-  "status_as_of": "2026-08-29"
+  "status_as_of": "2026-09-13"
 } as const;

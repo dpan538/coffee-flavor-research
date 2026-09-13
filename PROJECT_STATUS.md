@@ -9,8 +9,8 @@ below by hand.
 <!-- prettier-ignore -->
 | Surface | Status | Evidence-backed interpretation |
 | --- | --- | --- |
-| Mobile web prototype | IMPLEMENTED | Responsive React Router interface with keyboard and reduced-motion checks. |
-| Installable PWA | PLANNED | No manifest, service worker, installability receipt, or offline app shell is present. |
+| Product interface | IMPLEMENTED | Vue 3 PWA (flavorwords.com): bilingual, offline shell, phone, tablet and desktop layouts, keyboard and reduced-motion checks. |
+| Installable PWA | IMPLEMENTED | Web app manifest, PNG and maskable icons, service worker and offline app shell are present; installs on iOS Safari, Android and HarmonyOS. | <!-- claim: PWA_LIVE -->
 | PostgreSQL knowledge base | VALIDATED | Provenance, evidence, review, rights, duplicate, and gate contracts are executable. |
 | First-party user research | NOT_STARTED | Protocols exist; no user data was collected in this pass. |
 | Ranking or adaptive model | NOT_STARTED | `MODEL_STATUS=NOT_TRAINED`; deterministic retrieval remains the baseline. |
@@ -64,16 +64,15 @@ not raw-row targets.
   rights.
 - No interviews, usability sessions, first-party interaction events, model
   runs, embeddings, cross-encoders, or deep-learning experiments are claimed.
-- PWA implementation remains planned; the current product is a mobile-first web
-  prototype.
+- The PWA is live; the flavor inference is deterministic vector arithmetic with no machine-learned model.
 
 ## Provenance
 
 ```text
-SOURCE_BRANCH=codex/coffee-sensory-kb-v0-round3m-descriptor-first-provenance-pilot-20260828
-SOURCE_SHA=13b56d2c1d4beec3754ce53edec8954d4e034bce
-WORK_BRANCH=codex/coffee-flavor-portfolio-repo-normalization-20260828
-STATUS_AS_OF=2026-08-29
+SOURCE_BRANCH=main
+SOURCE_SHA=a3337f58324c89b6df90a4a1009f48b220ded349
+WORK_BRANCH=research/round2-capture
+STATUS_AS_OF=2026-09-13
 ```
 
 See [PORTFOLIO.md](./PORTFOLIO.md),
