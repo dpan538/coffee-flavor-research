@@ -65,7 +65,7 @@ describe("C2 blends and optional origin", () => {
     expect(Math.abs(Math.hypot(...blend.vPred) - 1)).toBeLessThan(1e-6);
   });
 
-  it("owner 2026-09-17: 美式 and 奶咖 are options on the espresso row, 奶咖 with a milk nudge, and 挂耳 merges into pour-over", () => {
+  it("owner 2026-09-17: 美式 and 奶咖 are options on the espresso row, 奶咖 with a milk nudge; 挂耳 is its own option on the pour-over row with a little less aroma", () => {
     const K = productVectorBundle.matrix_k.C0 as Record<
       string,
       { vector: number[] | null; basis: string }
@@ -85,12 +85,24 @@ describe("C2 blends and optional origin", () => {
     const labels = Object.fromEntries(zh.chips.map((c) => [c.value, c.label]));
     expect(labels.americano).toBe("美式 Americano");
     expect(labels.milk_coffee).toBe("奶咖 Milk coffee");
-    expect(labels.pour_over_v60).toContain("挂耳");
-    expect(zh.chips.map((c) => c.value).slice(0, 4)).toEqual([
+    expect(labels.pour_over_v60).toBe("手冲 Pour-over");
+    expect(labels.drip_bag).toBe("挂耳 Drip bag");
+    expect(K.drip_bag!.basis).toContain("FILTER_IMMERSION_PROXY_FROM_CUPPING");
+    const floral = productVectorBundle.dimensions.indexOf("floral");
+    const fruity = productVectorBundle.dimensions.indexOf("fruity");
+    expect(K.drip_bag!.vector![floral]!).toBeLessThan(
+      K.pour_over_v60!.vector![floral]!,
+    );
+    expect(K.drip_bag!.vector![fruity]!).toBeLessThan(
+      K.pour_over_v60!.vector![fruity]!,
+    );
+    expect(K.drip_bag!.vector!.every((x) => x >= 0)).toBe(true);
+    expect(zh.chips.map((c) => c.value).slice(0, 5)).toEqual([
       "espresso",
       "americano",
       "milk_coffee",
       "pour_over_v60",
+      "drip_bag",
     ]);
   });
 

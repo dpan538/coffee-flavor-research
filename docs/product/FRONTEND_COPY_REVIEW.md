@@ -31,7 +31,7 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | c0_preparation 标题 | 怎么制作的？ | How was it made? |
-| c0_preparation 选项 | 意式萃取 Espresso ｜ 美式 Americano ｜ 奶咖 Milk coffee ｜ 手冲·挂耳 Pour-over / drip bag ｜ 摩卡壶 Moka pot ｜ 冷萃 Cold brew ｜ 虹吸壶 Siphon ｜ 冰滴 Cold drip ｜ 法压壶 French press ｜ 土耳其壶 Turkish ｜ 爱乐压 AeroPress | Espresso ｜ Americano ｜ Milk coffee ｜ Pour-over / drip bag ｜ Moka pot ｜ Cold brew ｜ Siphon ｜ Cold drip ｜ French press ｜ Turkish pot ｜ AeroPress |
+| c0_preparation 选项 | 意式萃取 Espresso ｜ 美式 Americano ｜ 奶咖 Milk coffee ｜ 手冲 Pour-over ｜ 挂耳 Drip bag ｜ 摩卡壶 Moka pot ｜ 冷萃 Cold brew ｜ 虹吸壶 Siphon ｜ 冰滴 Cold drip ｜ 法压壶 French press ｜ 土耳其壶 Turkish ｜ 爱乐压 AeroPress | Espresso ｜ Americano ｜ Milk coffee ｜ Pour-over ｜ Drip bag ｜ Moka pot ｜ Cold brew ｜ Siphon ｜ Cold drip ｜ French press ｜ Turkish pot ｜ AeroPress |
 | c1_roast 标题 | 烘焙度 | Roast level |
 | c1_roast 选项 | 极浅烘 ｜ 浅烘 ｜ 中浅烘 ｜ 中烘 ｜ 中深烘 ｜ 深烘 ｜ 极深烘 | Very light ｜ Light ｜ Medium-light ｜ Medium ｜ Medium-dark ｜ Dark ｜ Very dark |
 | c2_variety 标题 | 豆种 | Variety |

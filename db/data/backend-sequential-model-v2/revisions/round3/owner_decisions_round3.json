@@ -628,6 +628,22 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-17T09:40:00Z"
+    },
+    {
+      "id": "R3-D32",
+      "subject": "挂耳 is its own brew option on the pour-over reference row with a slight aroma-down nudge; the CI filter ignores product-layer paths under db/",
+      "decision": "Correction of R3-D29's merge: 挂耳 (drip bag) belongs to the pour-over class but is a separate option — the two have different drinkers and one merged chip reads as unprofessional. drip_bag takes the cupping reference row like pour-over, with -0.05 on floral and fruity then renormalised (the owner: the aroma is a little weaker), label 挂耳 Drip bag; pour-over's label is 手冲 Pour-over again; twelve preparation options. The previous CI run still took about twenty minutes because that push changed the workflow file itself; the database-job filter now also excludes the product layer that happens to live under db/ (product-vector-v1 data, the decision ledger, the matrix builder, the copy export), none of which any database job reads, so button, label and word-list changes run the two-minute web job alone.",
+      "owner_words": "挂耳归类到手冲，但是依旧是不同的选项，所以不要让手冲和挂耳合并成一个选项，这个是一个很严重的误区，因为手冲和挂耳的客群不一样，把这两个合并只会让人觉得你不够专业。然后上一轮 ci 的检测长度还是接近 20 分钟，我不希望每次更新都这么长，尤其是改按键这种。挂耳其实有要稍微调整的，挂耳的香气会比手冲弱，算是有轻微的不一样，可以做轻微的加权。",
+      "applied": {
+        "data": "db/scripts/build-matrix-k-v1.py (drip_bag option, C0_BIAS floral/fruity -0.05 with a floor at zero, labels); product-vector-v1.json rebuilt; FRONTEND_COPY_REVIEW.md regenerated",
+        "code": ".github/workflows/ci.yml filter exclusions; tests/product-vector-v1-app.test.ts; TERM_EXPANSION_BATCH_1/2.md; FLAVOR_VECTOR_DESIGN_V1.md",
+        "verified": "vitest; pwa build; the twelve chips in the built preview; web gate; the next PR's CI should show the database jobs skipped",
+        "open": [
+          "the -0.05 aroma nudge is the operator's reading of 轻微 — adjust in C0_BIAS if the owner wants more or less"
+        ],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-17T10:20:00Z"
     }
   ],
   "guards": {

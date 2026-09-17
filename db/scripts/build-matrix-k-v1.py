@@ -29,10 +29,13 @@ PRODUCT_OPTIONS = {
     # immersion methods borrow the cupping row, moka borrows nothing (it is neither), cold methods have no row
     # owner (2026-09-17): 美式 is espresso plus water and 奶咖 espresso plus milk — separate options on the espresso row, not
     # new classes; milk brings milk-type flavours, so the 奶咖 row carries a +0.1 nudge on sweetness and body (C0_BIAS);
-    # 挂耳 is pre-ground pour-over and merges into the pour-over option (its label names both)
+    # 挂耳 (drip bag) is pre-ground pour-over: the same cupping reference row, but its own option — the two have different
+    # drinkers and merging them reads as unprofessional (owner, 2026-09-17); its aroma is a little weaker, so the row carries
+    # a -0.05 nudge on floral and fruity (C0_BIAS)
     "C0": {"espresso": ("ESPRESSO", "CORPUS_MEASURED"), "americano": ("ESPRESSO", "ESPRESSO_PROXY_DILUTED (owner 2026-09-17: espresso plus water, not a new class)"),
            "milk_coffee": ("ESPRESSO", "ESPRESSO_PROXY_PLUS_MILK_BIAS_0.1_ON_sweetness+body (owner 2026-09-17: espresso plus milk; milk-type flavours expected)"),
            "pour_over_v60": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"),
+           "drip_bag": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING_MINUS_AROMA_BIAS_0.05_ON_floral+fruity (owner 2026-09-17: pre-ground pour-over, a little less aroma)"),
            "moka_pot": (None, "NO_CORPUS_ROW (stovetop pressure is neither cupping nor espresso)"), "cold_brew": (None, "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING"),
            "siphon": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "cold_drip": (None, "NO_CORPUS_ROW (cold method)"),
            "french_press": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "turkish": (None, "NO_CORPUS_ROW (boiled, unfiltered)"),
@@ -49,10 +52,10 @@ PRODUCT_OPTIONS = {
                    "decaf": ("decaf", "CORPUS_MEASURED")},
 }
 # a small additive nudge on a proxied row, applied to the unit vector and renormalised (same mechanics as the origin bias)
-C0_BIAS = {"milk_coffee": {"sweetness": 0.1, "body": 0.1}}
+C0_BIAS = {"milk_coffee": {"sweetness": 0.1, "body": 0.1}, "drip_bag": {"floral": -0.05, "fruity": -0.05}}
 # labels the UI shows for every context option (view.ts reads them from the bundle; the engine uses them for the reference line)
 CONTEXT_LABELS = {
-    "pour_over_v60": {"zh-CN": "手冲·挂耳 Pour-over / drip bag", "en": "Pour-over / drip bag"}, "french_press": {"zh-CN": "法压壶 French press", "en": "French press"},
+    "pour_over_v60": {"zh-CN": "手冲 Pour-over", "en": "Pour-over"}, "drip_bag": {"zh-CN": "挂耳 Drip bag", "en": "Drip bag"}, "french_press": {"zh-CN": "法压壶 French press", "en": "French press"},
     "espresso": {"zh-CN": "意式萃取 Espresso", "en": "Espresso"}, "americano": {"zh-CN": "美式 Americano", "en": "Americano"},
     "milk_coffee": {"zh-CN": "奶咖 Milk coffee", "en": "Milk coffee"}, "cold_brew": {"zh-CN": "冷萃 Cold brew", "en": "Cold brew"},
     "moka_pot": {"zh-CN": "摩卡壶 Moka pot", "en": "Moka pot"}, "siphon": {"zh-CN": "虹吸壶 Siphon", "en": "Siphon"},
@@ -130,7 +133,7 @@ def main() -> int:
         for product_option, (corpus_option, basis) in PRODUCT_OPTIONS[axis].items():
             v = kvec(axis, corpus_option) if corpus_option else None
             if v and product_option in C0_BIAS:
-                v = mean_unit([[x + C0_BIAS[product_option].get(d, 0.0) for d, x in zip(DIMS, v)]])
+                v = mean_unit([[max(0.0, x + C0_BIAS[product_option].get(d, 0.0)) for d, x in zip(DIMS, v)]])
             bundle_k[axis][product_option] = {"vector": v, "basis": basis, "member_count": krows.get((axis, corpus_option), {}).get("member_count") if corpus_option else None}
     for axis in ("C2_variety",):
         for (a, option), r in krows.items():

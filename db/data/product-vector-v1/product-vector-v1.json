@@ -2708,6 +2708,24 @@
     "basis": "FILTER_IMMERSION_PROXY_FROM_CUPPING",
     "member_count": 5778
    },
+   "drip_bag": {
+    "vector": [
+     0.45245850668082876,
+     0.3999667327028436,
+     0.32431682314633564,
+     0.07215045795797564,
+     0.4528702068688914,
+     0.4554433330442828,
+     0.056814625952642736,
+     0.2561804420219706,
+     0.057535101281752335,
+     0.01605630733444251,
+     0.19957166616335917,
+     0.012145155547847541
+    ],
+    "basis": "FILTER_IMMERSION_PROXY_FROM_CUPPING_MINUS_AROMA_BIAS_0.05_ON_floral+fruity (owner 2026-09-17: pre-ground pour-over, a little less aroma)",
+    "member_count": 5778
+   },
    "moka_pot": {
     "vector": null,
     "basis": "NO_CORPUS_ROW (stovetop pressure is neither cupping nor espresso)",
@@ -4726,8 +4744,12 @@
   },
   "context_labels": {
    "pour_over_v60": {
-    "zh-CN": "手冲·挂耳 Pour-over / drip bag",
-    "en": "Pour-over / drip bag"
+    "zh-CN": "手冲 Pour-over",
+    "en": "Pour-over"
+   },
+   "drip_bag": {
+    "zh-CN": "挂耳 Drip bag",
+    "en": "Drip bag"
    },
    "french_press": {
     "zh-CN": "法压壶 French press",

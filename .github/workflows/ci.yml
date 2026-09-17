@@ -11,8 +11,8 @@ permissions:
   pull-requests: read # paths-filter lists a pull request's files through the API
 
 jobs:
-  # The data is frozen (owner, 2026-09-17): the database jobs run only when something under db/ (or this workflow)
-  # changed, or on a manual run. Pushes that touch only the compute or experience layer take the web job alone.
+  # The data is frozen (owner, 2026-09-17): the database jobs run only when the database itself changed (db/ minus
+  # the product layer), or on a manual run. Pushes that touch only the compute or experience layer take the web job alone.
   changes:
     name: Changed paths
     runs-on: ubuntu-latest
@@ -29,10 +29,19 @@ jobs:
         id: filter
         uses: dorny/paths-filter@v3
         with:
+          # with "every", a file counts only if it matches all patterns, so the "!" lines are real exclusions; with the
+          # default "some" a "!" line matches every file outside its path and the filter fires on any change
+          predicate-quantifier: every
           filters: |
             db:
               - 'db/**'
-              - '.github/workflows/ci.yml'
+              # the product layer lives under db/ too but no database job reads it (owner, 2026-09-17: a label or
+              # button change must not re-run the database); a change to this workflow does not trigger them either —
+              # run the workflow by hand (workflow_dispatch) to exercise every job
+              - '!db/data/product-vector-v1/**'
+              - '!db/data/backend-sequential-model-v2/revisions/**'
+              - '!db/scripts/build-matrix-k-v1.py'
+              - '!db/scripts/export-frontend-copy.py'
 
   checks:
     name: Format, typecheck, test, and build
