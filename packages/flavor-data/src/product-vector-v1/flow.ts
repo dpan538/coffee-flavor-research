@@ -78,8 +78,11 @@ export type GateDecision = {
   biasConfirmed: boolean;
 };
 export type Q6Option = { dimension: string; text: string; delta: number };
+export type EvaluationRow = { dimension: string; label: string; text: string };
 export type FinalCard = {
   picked: string[];
+  /** the card's evaluation line: the strongest evaluation dimensions of V_target, one word each (owner, 2026-09-17) */
+  evaluation: EvaluationRow[];
   science: ScienceLine[];
   closing: string;
   profileTitle: string | null;
@@ -362,48 +365,202 @@ function wordLists(dimension: string, locale: Locale): string[] {
   return [...owned, ...consumer];
 }
 
-/** First description: 3 main + 5 secondary words drawn from V_target's dimensions, each word attributable to a dimension. */
+/** The owner-approved words of a dimension, started at a cup-specific point; consumer terms follow unrotated, as before. */
+function rotatedWordList(
+  dimension: string,
+  locale: Locale,
+  seed: number,
+): string[] {
+  const owned =
+    (presentation.dimension_tags as Record<string, Record<Locale, string[]>>)[
+      dimension
+    ]?.[locale] ?? [];
+  const consumer =
+    (presentation.consumer_terms as Record<string, Record<Locale, string[]>>)[
+      dimension
+    ]?.[locale] ?? [];
+  const offset = owned.length
+    ? (seed + DIMENSIONS.indexOf(dimension)) % owned.length
+    : 0;
+  const rotated = owned.map((_, i) => owned[(offset + i) % owned.length]!);
+  return [...rotated, ...consumer];
+}
+
+/** owner (2026-09-17): a dimension is either a candidate (its words go to the pick list) or an evaluation dimension
+ *  (body, bitter & roasted, fermented & winey, spice, defect: its words go to the card's evaluation line, never to the
+ *  pick list). The roles live in the bundle (presentation.dimension_roles, from CONCEPT_FLAVOR_TAGS.tsv). */
+function dimensionRole(dimension: string): "candidate" | "evaluation" {
+  const roles =
+    (presentation as { dimension_roles?: Record<string, string> })
+      .dimension_roles ?? {};
+  return roles[dimension] === "evaluation" ? "evaluation" : "candidate";
+}
+
+/** A vector with the evaluation dimensions zeroed and renormalised: the space the reader's picks live in. */
+function candidateSubspace(v: Vector): Vector {
+  return normalize(
+    v.map((x, i) =>
+      dimensionRole(DIMENSIONS[i] as string) === "candidate" ? x : 0,
+    ),
+  );
+}
+
+/** A stable integer from V_target: cups with different targets start their word lists at different points. */
+function wordSeed(result: InferenceResult): number {
+  return Math.abs(
+    Math.round(
+      result.vTarget.reduce(
+        (sum, v, i) => sum + Math.abs(v) * (i + 1) * 97,
+        0,
+      ) * 100,
+    ),
+  );
+}
+
+/**
+ * First description: 3 main + 5 secondary words drawn from V_target's dimensions, each word attributable to a
+ * dimension. The three main words come from the three strongest dimensions (one each); the remaining slots are
+ * shared in proportion to dimension weight (largest remainder), so a cup led by fruit and sweetness shows several
+ * fruit and sugar words instead of one word from every faint dimension (owner, 2026-09-17: the cards must not keep
+ * repeating one small set). Each dimension's list is rotated by a cup-specific seed, so which words appear also
+ * varies between cups; both languages stay aligned position by position.
+ */
 export function describe(result: InferenceResult, locale: Locale): Description {
   const { main, secondary } = flow.first_description;
   const total = main + secondary;
-  const defectIndex = DIMENSIONS.indexOf("defect");
-  const defectDominates = (result.vTarget[defectIndex] ?? 0) >= 0.5;
+  // candidate dimensions only: the evaluation dimensions never supply pick words (owner, 2026-09-17)
   const ranked = DIMENSIONS.map((d, i) => ({ d, w: result.vTarget[i] ?? 0 }))
-    .filter((x) => x.w > 0 && (x.d !== "defect" || defectDominates))
+    .filter((x) => x.w > 0 && dimensionRole(x.d) === "candidate")
     .sort((a, b) => b.w - a.w);
+  const seed = wordSeed(result);
+  const lists = new Map(
+    ranked.map((x) => [x.d, rotatedWordList(x.d, locale, seed)] as const),
+  );
+  // slot quota per dimension: one for each of the top `main` dimensions, the rest by weight among dimensions that
+  // reach 12% of the leading weight, never more than a list can supply
+  const quota = new Map<string, number>();
+  for (const x of ranked.slice(0, main)) quota.set(x.d, 1);
+  const eligible = ranked.filter((x) => x.w >= 0.12 * (ranked[0]?.w ?? 0));
+  const sumW = eligible.reduce((s, x) => s + x.w, 0) || 1;
+  const spare = total - Math.min(main, ranked.length);
+  const shares = eligible.map((x) => {
+    const exact = (spare * x.w) / sumW;
+    return { d: x.d, q: Math.floor(exact), rem: exact - Math.floor(exact) };
+  });
+  let assigned = shares.reduce((s, x) => s + x.q, 0);
+  for (const x of [...shares].sort((a, b) => b.rem - a.rem)) {
+    if (assigned >= spare) break;
+    x.q += 1;
+    assigned += 1;
+  }
+  // a dimension may hold at most 1 + floor((words - 1) / 4) slots (3 words → 1, 4–7 → 2, 8+ → 3), so short lists do
+  // not cycle their few words on every card; the unfilled remainder falls to the round-robin below
+  for (const x of shares) {
+    const size = lists.get(x.d)?.length ?? 0;
+    const cap = size ? 1 + Math.floor((size - 1) / 4) : 0;
+    quota.set(x.d, Math.min(cap, (quota.get(x.d) ?? 0) + x.q));
+  }
   const words: Word[] = [];
   const used = new Set<string>();
-  for (let round = 0; words.length < total && round < 8; round += 1) {
+  const taken = new Map<string, number>();
+  const take = (d: string): boolean => {
+    const list = lists.get(d) ?? [];
+    let i = taken.get(d) ?? 0;
+    while (i < list.length && used.has(list[i]!)) i += 1;
+    if (i >= list.length) return false;
+    used.add(list[i]!);
+    words.push({ text: list[i]!, dimension: d });
+    taken.set(d, i + 1);
+    return true;
+  };
+  // main words: the top dimensions, one word each
+  for (const x of ranked.slice(0, main)) take(x.d);
+  // the rest: round by round in rank order while a dimension still has quota, so the list reads by importance
+  for (let round = 1; words.length < total && round < total; round += 1) {
     let progressed = false;
-    for (const { d } of ranked) {
+    for (const x of ranked) {
       if (words.length >= total) break;
-      const text = wordLists(d, locale)[round];
-      if (text && !used.has(text)) {
-        used.add(text);
-        words.push({ text, dimension: d });
-        progressed = true;
-      }
+      if ((taken.get(x.d) ?? 0) >= (quota.get(x.d) ?? 0)) continue;
+      if (take(x.d)) progressed = true;
     }
     if (!progressed) break;
   }
+  // fallback when the quotas could not be filled (short lists): plain round-robin over every ranked dimension
+  for (let round = 0; words.length < total && round < total; round += 1) {
+    let progressed = false;
+    for (const x of ranked) {
+      if (words.length >= total) break;
+      if (take(x.d)) progressed = true;
+    }
+    if (!progressed) break;
+  }
+  // reading order: the first word of every dimension present (rank order) before any dimension's second word, so the
+  // first `pick_count` positions span as many dimensions as the card holds; the set of words is unchanged
+  const ordered: Word[] = [];
+  const seen = new Set<string>();
+  for (const w of words) {
+    if (seen.has(w.dimension)) continue;
+    seen.add(w.dimension);
+    ordered.push(w);
+  }
+  for (const w of words) if (!ordered.includes(w)) ordered.push(w);
   const prompt =
     locale === "zh-CN"
       ? `选出最贴近你感受的 ${flow.first_description.pick_count} 个词。`
       : `Pick the ${flow.first_description.pick_count} words closest to what you tasted.`;
   return {
-    main: words.slice(0, main),
-    secondary: words.slice(main, total),
-    all: words,
+    main: ordered.slice(0, main),
+    secondary: ordered.slice(main, total),
+    all: ordered,
     prompt,
   };
 }
 
-/** The user's picks as a vector: one unit per picked word on its dimension. */
+/**
+ * The card's evaluation line (owner, 2026-09-17): the evaluation dimensions are not pick words; the strongest of them
+ * in V_target — at least 12% of the leading weight, defect only when it dominates (≥ 0.5) — at most three, each as its
+ * dimension label plus one word from the same cup-rotated list the candidates use.
+ */
+export function evaluate(
+  result: InferenceResult,
+  locale: Locale,
+): EvaluationRow[] {
+  const labels = presentation.dimension_labels as Record<
+    string,
+    Record<Locale, string>
+  >;
+  const top = Math.max(0, ...result.vTarget.map((v) => v ?? 0));
+  const defectDominates =
+    (result.vTarget[DIMENSIONS.indexOf("defect")] ?? 0) >= 0.5;
+  const seed = wordSeed(result);
+  return DIMENSIONS.map((d, i) => ({ d, w: result.vTarget[i] ?? 0 }))
+    .filter(
+      (x) =>
+        dimensionRole(x.d) === "evaluation" &&
+        x.w > 0 &&
+        x.w >= 0.12 * top &&
+        (x.d !== "defect" || defectDominates),
+    )
+    .sort((a, b) => b.w - a.w)
+    .slice(0, 3)
+    .map((x) => ({
+      dimension: x.d,
+      label: labels[x.d]?.[locale] ?? x.d,
+      text: rotatedWordList(x.d, locale, seed)[0] ?? "",
+    }))
+    .filter((r) => r.text !== "");
+}
+
+/**
+ * The user's picks as a vector: the set of dimensions the reader affirmed, one unit each. Two words of the same
+ * dimension count once, so the gate reads which dimensions were confirmed and does not swing with how many words a
+ * dimension happened to offer (the candidate list allocates slots by weight since 2026-09-17).
+ */
 export function picksToVector(picks: Word[]): Vector {
   const v = zero();
   for (const w of picks) {
     const i = DIMENSIONS.indexOf(w.dimension);
-    if (i >= 0) v[i] = (v[i] ?? 0) + 1;
+    if (i >= 0) v[i] = 1;
   }
   return normalize(v);
 }
@@ -415,8 +572,11 @@ export function escalationGate(
   picks: Word[],
 ): GateDecision {
   const pv = picksToVector(picks);
-  const similarityPicksUser = cosine(pv, result.vUser);
-  const similarityPicksPred = cosine(pv, result.vPred);
+  // the picks can only name candidate dimensions (owner, 2026-09-17), so the reader's answers and the reference are
+  // compared with them inside that subspace: body, bitterness, fermentation, spice and defect mass, which no pick can
+  // affirm or deny, is left out of both cosines
+  const similarityPicksUser = cosine(pv, candidateSubspace(result.vUser));
+  const similarityPicksPred = cosine(pv, candidateSubspace(result.vPred));
   const severeHistory =
     step.escalationEligible || step.checks.some((c) => c.level === "severe");
   // owner (2026-09-12): the second round is part of the model, not a rare exception. The flow's own verdict decides:
@@ -570,6 +730,7 @@ export function finalCard(
   }
   return {
     picked: picks.map((w) => w.text),
+    evaluation: evaluate(result, locale),
     science,
     closing: flow.closing[locale],
     profileTitle: confirmed

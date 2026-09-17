@@ -31,7 +31,7 @@
 | 位置 | 中文 | English |
 |---|---|---|
 | c0_preparation 标题 | 怎么制作的？ | How was it made? |
-| c0_preparation 选项 | 意式萃取 Espresso ｜ 手冲 Pour-over ｜ 摩卡壶 Moka pot ｜ 冷萃 Cold brew ｜ 虹吸壶 Siphon ｜ 冰滴 Cold drip ｜ 法压壶 French press ｜ 土耳其壶 Turkish ｜ 爱乐压 AeroPress | Espresso ｜ Pour-over ｜ Moka pot ｜ Cold brew ｜ Siphon ｜ Cold drip ｜ French press ｜ Turkish pot ｜ AeroPress |
+| c0_preparation 选项 | 意式萃取 Espresso ｜ 美式 Americano ｜ 奶咖 Milk coffee ｜ 手冲·挂耳 Pour-over / drip bag ｜ 摩卡壶 Moka pot ｜ 冷萃 Cold brew ｜ 虹吸壶 Siphon ｜ 冰滴 Cold drip ｜ 法压壶 French press ｜ 土耳其壶 Turkish ｜ 爱乐压 AeroPress | Espresso ｜ Americano ｜ Milk coffee ｜ Pour-over / drip bag ｜ Moka pot ｜ Cold brew ｜ Siphon ｜ Cold drip ｜ French press ｜ Turkish pot ｜ AeroPress |
 | c1_roast 标题 | 烘焙度 | Roast level |
 | c1_roast 选项 | 极浅烘 ｜ 浅烘 ｜ 中浅烘 ｜ 中烘 ｜ 中深烘 ｜ 深烘 ｜ 极深烘 | Very light ｜ Light ｜ Medium-light ｜ Medium ｜ Medium-dark ｜ Dark ｜ Very dark |
 | c2_variety 标题 | 豆种 | Variety |
@@ -238,17 +238,17 @@
 
 | 维度 | 标签 zh | label en | 维度词 zh | words en | 消费端补充 zh | consumer en |
 |---|---|---|---|---|---|---|
-| acidity | 酸质 | acidity | 葡萄柚 ｜ 血橙 ｜ 青柠 | grapefruit ｜ blood orange ｜ lime |  | citrus ｜ juicy ｜ tart ｜ crisp ｜ citrusy ｜ tangy ｜ lemony |
-| sweetness | 甜感 | sweetness | 蔗糖 ｜ 蜂蜜 ｜ 焦糖 | cane sugar ｜ honey ｜ caramel | 冰糖雪梨 ｜ 太妃糖 ｜ 麦芽糖 ｜ 黑糖 ｜ 罗汉果甜 | rock-sugar pear ｜ toffee ｜ maltose ｜ dark brown sugar ｜ monk-fruit sweetness ｜ jam ｜ candy ｜ syrup ｜ jammy |
+| acidity | 酸质 | acidity | 葡萄柚 ｜ 血橙 ｜ 青柠 ｜ 柠檬 ｜ 甜橙 ｜ 佛手柑 ｜ 蜜桔 ｜ 砂糖橘 | grapefruit ｜ blood orange ｜ lime ｜ lemon ｜ sweet orange ｜ bergamot ｜ honey mandarin ｜ sugar mandarin |  | citrus ｜ juicy ｜ tart ｜ crisp ｜ citrusy ｜ tangy ｜ lemony |
+| sweetness | 甜感 | sweetness | 蔗糖 ｜ 蜂蜜 ｜ 焦糖 ｜ 花蜜 ｜ 橘子糖 ｜ 黑糖 ｜ 枫糖 ｜ 牛轧糖 ｜ 白巧克力 | cane sugar ｜ honey ｜ caramel ｜ nectar ｜ mandarin candy ｜ brown sugar ｜ maple syrup ｜ nougat ｜ white chocolate | 冰糖雪梨 ｜ 太妃糖 ｜ 麦芽糖 ｜ 黑糖 ｜ 罗汉果甜 | rock-sugar pear ｜ toffee ｜ maltose ｜ dark brown sugar ｜ monk-fruit sweetness ｜ jam ｜ candy ｜ syrup ｜ jammy |
 | body | 醇厚度 | body | 丝绒奶油 ｜ 慕斯 ｜ 奶油 | velvet cream ｜ mousse ｜ cream |  | silky |
-| floral | 花香 | floral | 茉莉花 ｜ 玉兰花 ｜ 橙花 | jasmine ｜ magnolia ｜ orange blossom | 桂花 ｜ 栀子花 ｜ 咖啡花 ｜ 白兰花 ｜ 洋甘菊 | osmanthus ｜ gardenia ｜ coffee blossom ｜ white magnolia ｜ chamomile ｜ floral ｜ tea-like |
-| fruity | 果香 | fruity | 水蜜桃 ｜ 黄桃 ｜ 黑加仑 ｜ 杏桃 | peach ｜ yellow peach ｜ blackcurrant ｜ apricot | 巨峰葡萄 ｜ 荔枝 ｜ 杨梅 ｜ 西梅 ｜ 青梅 ｜ 红心芭乐 | Kyoho grape ｜ lychee ｜ bayberry ｜ prune ｜ green plum ｜ pink guava ｜ berry ｜ berries ｜ stone fruit ｜ tropical ｜ melon |
-| nutty_chocolate | 坚果巧克力 | nutty & chocolate | 烤榛果 ｜ 可可 ｜ 提拉米苏 | roasted hazelnut ｜ cocoa ｜ tiramisu |  | chocolate |
+| floral | 花香 | floral | 茉莉花 ｜ 玉兰花 ｜ 橙花 ｜ 咖啡花 ｜ 金银花 ｜ 山茶花 ｜ 玫瑰 ｜ 姜花 ｜ 洋甘菊 | jasmine ｜ magnolia ｜ orange blossom ｜ coffee blossom ｜ honeysuckle ｜ camellia ｜ rose ｜ ginger lily ｜ chamomile | 桂花 ｜ 栀子花 ｜ 咖啡花 ｜ 白兰花 ｜ 洋甘菊 | osmanthus ｜ gardenia ｜ coffee blossom ｜ white magnolia ｜ chamomile ｜ floral ｜ tea-like |
+| fruity | 果香 | fruity | 水蜜桃 ｜ 黄桃 ｜ 黑加仑 ｜ 杏桃 ｜ 蔓越莓 ｜ 蓝莓 ｜ 草莓 ｜ 葡萄 ｜ 白葡萄 ｜ 蜜瓜 ｜ 凤梨 ｜ 荔枝 ｜ 秋月梨 ｜ 白桃 ｜ 车厘子 | peach ｜ yellow peach ｜ blackcurrant ｜ apricot ｜ cranberry ｜ blueberry ｜ strawberry ｜ grape ｜ white grape ｜ melon ｜ pineapple ｜ lychee ｜ Akizuki pear ｜ white peach ｜ cherry | 巨峰葡萄 ｜ 荔枝 ｜ 杨梅 ｜ 西梅 ｜ 青梅 ｜ 红心芭乐 | Kyoho grape ｜ lychee ｜ bayberry ｜ prune ｜ green plum ｜ pink guava ｜ berry ｜ berries ｜ stone fruit ｜ tropical ｜ melon |
+| nutty_chocolate | 坚果巧克力 | nutty & chocolate | 烤榛果 ｜ 可可 ｜ 提拉米苏 ｜ 曲奇饼干 ｜ 牛奶巧克力 ｜ 榛果巧克力 ｜ 巧克力酱 ｜ 杏仁 ｜ 花生 | roasted hazelnut ｜ cocoa ｜ tiramisu ｜ butter cookie ｜ milk chocolate ｜ hazelnut chocolate ｜ chocolate sauce ｜ almond ｜ peanut |  | chocolate |
 | fermented_winey | 发酵与酒香 | fermented & winey | 朗姆酒 ｜ 红酒 ｜ 酒酿 | rum ｜ red wine ｜ jiuniang | 米酒 ｜ 酒酿 ｜ 酒酿圆子 ｜ 黄酒 ｜ 热带水果发酵酱 ｜ 水果黄酒 ｜ 威士忌桶 ｜ 雪莉桶 ｜ 野果发酵 ｜ 微醺酒香 ｜ 苹果酒感 ｜ 水果发酵酱 ｜ 朗姆酒香 | rice wine ｜ jiuniang (sweet fermented rice) ｜ jiuniang rice balls ｜ huangjiu ｜ tropical fruit ferment ｜ fruit huangjiu ｜ whisky barrel ｜ sherry cask ｜ funky ｜ wine ｜ cider ｜ fermented ｜ winey |
 | bitter_roasted | 烘烤苦感 | roast & bitter | 黑巧克力 ｜ 烟熏可可 ｜ 炭烧 | dark chocolate ｜ smoky cocoa ｜ charred | 烤杏仁 ｜ 烘焙麦芽 ｜ 黑芝麻 ｜ 松露巧克力 | roasted almond ｜ roasted malt ｜ black sesame ｜ truffle chocolate ｜ smokey ｜ roasted ｜ dark roast ｜ ashy |
 | spice | 香料 | spice | 小豆蔻 ｜ 肉桂 ｜ 丁香 | cardamom ｜ cinnamon ｜ clove |  |  |
-| herbal_green | 草本绿茶 | herbal & green | 茉莉绿茶 ｜ 高山乌龙 ｜ 柠檬草 | jasmine green tea ｜ high-mountain oolong ｜ lemongrass | 高山龙井 ｜ 武夷岩茶 ｜ 鸭屎香 ｜ 普洱茶韵 | high-mountain Longjing ｜ Wuyi rock tea ｜ Ya Shi Xiang (Dancong) ｜ Pu'er tea finish ｜ tea ｜ grass ｜ grassy ｜ herbal |
-| woody_earthy | 木质泥土 | woody & earthy | 风干雪松 ｜ 泥炭 ｜ 松露 | aged cedar ｜ peat ｜ truffle |  |  |
+| herbal_green | 草本绿茶 | herbal & green | 茉莉绿茶 ｜ 高山乌龙 ｜ 柠檬草 ｜ 伯爵茶 ｜ 红茶 | jasmine green tea ｜ high-mountain oolong ｜ lemongrass ｜ Earl Grey tea ｜ black tea | 高山龙井 ｜ 武夷岩茶 ｜ 鸭屎香 ｜ 普洱茶韵 | high-mountain Longjing ｜ Wuyi rock tea ｜ Ya Shi Xiang (Dancong) ｜ Pu'er tea finish ｜ tea ｜ grass ｜ grassy ｜ herbal |
+| woody_earthy | 木质泥土 | woody & earthy | 风干雪松 ｜ 泥炭 ｜ 松露 ｜ 杉木 | aged cedar ｜ peat ｜ truffle ｜ fir wood |  |  |
 | defect | 瑕疵 | defect | 纸味 ｜ 陈味 ｜ 霉味 | papery ｜ stale ｜ musty |  |  |
 
 ## 6. 94 个规范概念的极简词（用户录入豆子时上卡）

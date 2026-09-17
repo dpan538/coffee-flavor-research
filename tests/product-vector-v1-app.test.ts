@@ -65,6 +65,35 @@ describe("C2 blends and optional origin", () => {
     expect(Math.abs(Math.hypot(...blend.vPred) - 1)).toBeLessThan(1e-6);
   });
 
+  it("owner 2026-09-17: 美式 and 奶咖 are options on the espresso row, 奶咖 with a milk nudge, and 挂耳 merges into pour-over", () => {
+    const K = productVectorBundle.matrix_k.C0 as Record<
+      string,
+      { vector: number[] | null; basis: string }
+    >;
+    expect(K.americano!.basis).toContain("ESPRESSO_PROXY");
+    expect(K.americano!.vector).toEqual(K.espresso!.vector);
+    expect(K.milk_coffee!.basis).toContain("MILK");
+    const sweet = productVectorBundle.dimensions.indexOf("sweetness");
+    const body = productVectorBundle.dimensions.indexOf("body");
+    expect(K.milk_coffee!.vector![sweet]!).toBeGreaterThan(
+      K.espresso!.vector![sweet]!,
+    );
+    expect(K.milk_coffee!.vector![body]!).toBeGreaterThan(
+      K.espresso!.vector![body]!,
+    );
+    const zh = contextCatalog("zh-CN").find((c) => c.key === "c0_preparation")!;
+    const labels = Object.fromEntries(zh.chips.map((c) => [c.value, c.label]));
+    expect(labels.americano).toBe("美式 Americano");
+    expect(labels.milk_coffee).toBe("奶咖 Milk coffee");
+    expect(labels.pour_over_v60).toContain("挂耳");
+    expect(zh.chips.map((c) => c.value).slice(0, 4)).toEqual([
+      "espresso",
+      "americano",
+      "milk_coffee",
+      "pour_over_v60",
+    ]);
+  });
+
   it("origin is optional: it adds a delta-0.1 bias on the region's axes and never dominates", () => {
     const plain = buildVPred({ c1_roast: "light", c2_process: "washed" });
     const eth = buildVPred({
@@ -197,8 +226,12 @@ describe("context catalog and screen models", () => {
         true,
       );
       expect(
-        m.science.some((l) => l.evidenceState.startsWith("LITERATURE_CLAIM")),
-      ).toBe(true);
+        m.science.some(
+          (l) =>
+            l.evidenceState.startsWith("LITERATURE_CLAIM") ||
+            l.evidenceState.startsWith("CORPUS_MEASURED"),
+        ),
+      ).toBe(true); // the second note alternates by seed between a research reference and a data count (R3-D22)
     }
     expect(nextStep(s).kind === "final" || nextStep(s).kind === "q6").toBe(
       true,

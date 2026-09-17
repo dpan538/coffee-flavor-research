@@ -237,6 +237,8 @@ export type ResultCardModel = {
   cupInfo: Array<{ key: string; label: string; value: string }>;
   picked: string[];
   pickedDimensions: string[];
+  /** the evaluation line under the words: dimension label + word (owner, 2026-09-17) */
+  evaluation: Array<{ dimension: string; label: string; text: string }>;
   tags: string[];
   heading: string;
   scienceHeading: string;
@@ -312,6 +314,7 @@ export function screenModel(session: Session): ScreenModel {
     cupInfo: cupInfo(session.context, locale),
     picked: tags,
     pickedDimensions: session.picks.map((w) => w.dimension),
+    evaluation: card?.evaluation ?? [],
     tags,
     heading: cardCopy(locale).heading,
     scienceHeading: cardCopy(locale).science,
@@ -401,7 +404,10 @@ export function appShell(locale: Locale) {
         claim: "Put this cup into words.",
         start: "开始",
         startLink: "从这一口开始",
+        resume: "继续",
         about: "关于",
+        home: "首页",
+        exit: "退出",
         localeSwitch: "EN",
         offlineReady: "离线可用",
         install: "添加到桌面",
@@ -424,7 +430,10 @@ export function appShell(locale: Locale) {
         claim: "",
         start: "Start",
         startLink: "Start with this sip",
+        resume: "Resume",
         about: "About",
+        home: "Home",
+        exit: "Exit",
         localeSwitch: "中",
         offlineReady: "Works offline",
         install: "Add to home screen",
