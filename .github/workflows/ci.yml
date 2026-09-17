@@ -4,11 +4,36 @@ on:
   push:
     branches: [main, "codex/**", "research/**"]
   pull_request:
+  workflow_dispatch: # run every job by hand, including the database jobs
 
 permissions:
   contents: read
+  pull-requests: read # paths-filter lists a pull request's files through the API
 
 jobs:
+  # The data is frozen (owner, 2026-09-17): the database jobs run only when something under db/ (or this workflow)
+  # changed, or on a manual run. Pushes that touch only the compute or experience layer take the web job alone.
+  changes:
+    name: Changed paths
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      db: ${{ steps.filter.outputs.db }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Detect database changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            db:
+              - 'db/**'
+              - '.github/workflows/ci.yml'
+
   checks:
     name: Format, typecheck, test, and build
     runs-on: ubuntu-latest
@@ -37,6 +62,8 @@ jobs:
 
   database-artifacts:
     name: Public artifact and corpus contracts
+    needs: changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.db == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -73,6 +100,8 @@ jobs:
 
   database-current:
     name: PostgreSQL 17 current schema and SQL contracts
+    needs: changes
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.changes.outputs.db == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
 

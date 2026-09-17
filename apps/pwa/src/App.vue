@@ -31,12 +31,13 @@ import {
 } from "./store";
 import { applyUpdate, updateReady } from "./update";
 
-// a waiting build is applied silently on a clean home page (nothing to lose); with a paused flow on the home page the
-// line below the lead offers it instead, and in the flow it waits (owner, 2026-09-17)
+// a waiting build is applied silently whenever the app is on the home page — a paused flow is saved on the device and
+// comes back after the reload — and waits while a flow or About is open (owner, 2026-09-17: updates happen in the
+// background, never as a manual step)
 watch(
-  [updateReady, stage, aboutOpen, paused],
-  ([ready, s, about, p]) => {
-    if (ready && s === "hero" && !about && !p) applyUpdate();
+  [updateReady, stage, aboutOpen],
+  ([ready, s, about]) => {
+    if (ready && s === "hero" && !about) applyUpdate();
   },
   { immediate: true },
 );
@@ -176,15 +177,6 @@ function onLeave(el: Element, done: () => void) {
             {{ shell.subtitle }}
           </p>
           <GeoMotif class="rise" variant="home" :size="26" />
-          <button
-            v-if="updateReady"
-            type="button"
-            class="text-left text-[14px] font-medium underline underline-offset-4 min-h-[44px] rise"
-            data-action="update"
-            @click="applyUpdate"
-          >
-            {{ shell.updateReady }}
-          </button>
           <button
             type="button"
             class="text-left font-display font-bold text-[16px] leading-snug tracking-tight min-h-[44px] mt-3 rise"
