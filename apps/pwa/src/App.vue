@@ -29,6 +29,17 @@ import {
   stageInk,
   start,
 } from "./store";
+import { applyUpdate, updateReady } from "./update";
+
+// a waiting build is applied silently on a clean home page (nothing to lose); with a paused flow on the home page the
+// line below the lead offers it instead, and in the flow it waits (owner, 2026-09-17)
+watch(
+  [updateReady, stage, aboutOpen, paused],
+  ([ready, s, about, p]) => {
+    if (ready && s === "hero" && !about && !p) applyUpdate();
+  },
+  { immediate: true },
+);
 
 // The document canvas takes the bottom band's colour: on iOS Safari the zone behind the toolbar and the overscroll
 // areas are painted by the canvas, not the page, so without this a paper strip cuts the band (owner, 2026-09-13).
@@ -165,6 +176,15 @@ function onLeave(el: Element, done: () => void) {
             {{ shell.subtitle }}
           </p>
           <GeoMotif class="rise" variant="home" :size="26" />
+          <button
+            v-if="updateReady"
+            type="button"
+            class="text-left text-[14px] font-medium underline underline-offset-4 min-h-[44px] rise"
+            data-action="update"
+            @click="applyUpdate"
+          >
+            {{ shell.updateReady }}
+          </button>
           <button
             type="button"
             class="text-left font-display font-bold text-[16px] leading-snug tracking-tight min-h-[44px] mt-3 rise"

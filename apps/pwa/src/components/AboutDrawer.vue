@@ -48,6 +48,7 @@ function toTop() {
   });
 }
 const zh = computed(() => locale.value === "zh-CN");
+const buildId = __BUILD_ID__;
 const openSection = ref("");
 const PLUS_COLORS = ["#7268C9", "#E4724B", "#6F8B5A"];
 const t = computed(() =>
@@ -59,6 +60,7 @@ const t = computed(() =>
         scroll: "向下滑动",
         burstTitle: "本项目整理的 16 组参考风味",
         sources: "引用与来源",
+        version: "版本",
         uses: "本项目的使用",
         terms: "来源条款",
         top: "回到顶端",
@@ -70,6 +72,7 @@ const t = computed(() =>
         scroll: "Scroll",
         burstTitle: "16 reference profiles organised by this project",
         sources: "Citations and sources",
+        version: "Version",
         uses: "Use in this project",
         terms: "Source terms",
         top: "Back to top",
@@ -366,6 +369,10 @@ onBeforeUnmount(() => {
             </div>
           </li>
         </ol>
+        <!-- the build identifier (commit · day): the quickest way to tell which version a phone is running -->
+        <p class="text-[12px] text-muted mt-2" data-build-id>
+          {{ t.version }} {{ buildId }}
+        </p>
         <button
           type="button"
           class="absolute right-5 bottom-[calc(2rem_+_env(safe-area-inset-bottom))] rounded-xl bg-ink text-paper min-h-[54px] px-5 font-semibold inline-flex items-center gap-2"
