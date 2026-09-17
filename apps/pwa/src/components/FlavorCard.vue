@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // The flavor card — the product object. Three layers: the cup's information (only what was entered), the confirmed
-// words as one tight group, the reference entry and the signature. Cream card like a printed tasting card; the motif
-// row at the top is the kit's card composition painted with the words' feature colours.
+// words as one tight group, the evaluation line (body, bitterness, fermentation, spice: not pick words, owner
+// 2026-09-17), the reference entry and the signature. Cream card like a printed tasting card; the motif row at the top
+// is the kit's card composition painted with the words' feature colours.
 import { computed } from "vue";
 import GeoMotif from "./GeoMotif.vue";
 
@@ -10,6 +11,7 @@ const props = withDefaults(
     cup: Array<{ label: string; value: string }>;
     words: string[];
     dimensions?: string[];
+    evaluation?: Array<{ label: string; text: string }>;
     reference?: string;
     brand?: string;
     eyebrow?: string;
@@ -17,6 +19,7 @@ const props = withDefaults(
   }>(),
   {
     dimensions: () => [],
+    evaluation: () => [],
     reference: "",
     brand: "flavorwords",
     eyebrow: "",
@@ -86,6 +89,17 @@ const colors = computed(() =>
       data-layer="words"
     >
       <span v-for="w in words" :key="w">{{ w }}</span>
+    </p>
+    <p
+      v-if="evaluation.length"
+      class="flex flex-wrap gap-x-3 gap-y-0.5 text-[12px] text-muted"
+      :class="compact ? 'mt-3' : 'mt-4'"
+      data-layer="evaluation"
+    >
+      <span v-for="row in evaluation" :key="row.label"
+        >{{ row.label }}
+        <span class="text-ink font-medium">{{ row.text }}</span></span
+      >
     </p>
     <div
       class="flex items-end justify-between mt-7 border-t border-ink/15 pt-2"

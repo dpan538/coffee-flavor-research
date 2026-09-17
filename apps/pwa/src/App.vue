@@ -5,7 +5,7 @@
 // the Start button below). The lower band holds the two bright 1 : 1.2 buttons. In the flow the split is 1 : 3.
 import { computed, watch } from "vue";
 import gsap from "gsap";
-import { ArrowRight } from "lucide-vue-next";
+import { ArrowRight, Play } from "lucide-vue-next";
 import AppHeader from "./components/AppHeader.vue";
 import GeoMotif from "./components/GeoMotif.vue";
 import CollectedStack from "./components/CollectedStack.vue";
@@ -20,6 +20,8 @@ import {
   collecting,
   currentContextCard,
   locale,
+  paused,
+  resume,
   screen,
   shell,
   stage,
@@ -72,6 +74,8 @@ const stageKey = () => {
   if (!s) return "empty";
   return s.kind === "question" ? `q:${s.slot}` : s.kind;
 };
+// card tweens: 0.28 s out, 0.46 s in (from 0.4 / 0.62 after users reported lag, owner 2026-09-17); with the 240 ms collect
+// pause the next card is on screen about half a second after the tap
 // no animation when motion is reduced, and none while the document is hidden: a background tab gets no animation
 // frames, so a GSAP tween would never call done() and the next card would never mount
 const reduced = () =>
@@ -92,7 +96,7 @@ function onEnter(el: Element, done: () => void) {
       y: 0,
       scale: 1,
       opacity: 1,
-      duration: 0.62,
+      duration: 0.46,
       ease: "back.out(1.15)",
       onComplete: done,
       clearProps: "transform,opacity",
@@ -107,7 +111,7 @@ function onLeave(el: Element, done: () => void) {
     rotateX: 14,
     opacity: 0,
     transformOrigin: "50% 0%",
-    duration: 0.4,
+    duration: 0.28,
     ease: "power3.in",
     onComplete: done,
   });
@@ -195,10 +199,13 @@ function onLeave(el: Element, done: () => void) {
           @leave="onLeave"
         >
           <div :key="stageKey()" class="h-full">
+            <!-- two tiles, or three while a flow is paused: 开始 · 继续 · 关于 (owner, 2026-09-17) -->
             <section
               v-if="stage === 'hero'"
               class="h-full flex items-center sm:justify-center gap-3 px-5 py-6"
+              :style="{ '--hero-tiles': paused ? 3 : 2 }"
               data-screen="hero"
+              :data-tiles="paused ? 3 : 2"
             >
               <button
                 type="button"
@@ -207,11 +214,32 @@ function onLeave(el: Element, done: () => void) {
                 @click="start"
               >
                 <span
-                  class="font-bold text-[28px] leading-none"
-                  :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+                  class="font-bold leading-none"
+                  :class="[
+                    locale === 'zh-CN' ? 'display-zh' : 'display',
+                    paused ? 'text-[22px]' : 'text-[28px]',
+                  ]"
                   >{{ shell.start }}</span
                 >
-                <ArrowRight :size="32" :stroke-width="2" class="self-end" />
+                <ArrowRight
+                  :size="paused ? 26 : 32"
+                  :stroke-width="2"
+                  class="self-end"
+                />
+              </button>
+              <button
+                v-if="paused"
+                type="button"
+                class="tile hero-tile flex-1 aspect-[1/1.32] bg-sky2 text-ink rise"
+                data-action="resume"
+                @click="resume"
+              >
+                <span
+                  class="font-bold leading-none text-[22px]"
+                  :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+                  >{{ shell.resume }}</span
+                >
+                <Play :size="24" :stroke-width="2" class="self-end" />
               </button>
               <button
                 type="button"
@@ -220,12 +248,16 @@ function onLeave(el: Element, done: () => void) {
                 @click="aboutOpen = true"
               >
                 <span
-                  class="font-bold text-[28px] leading-none"
-                  :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+                  class="font-bold leading-none"
+                  :class="[
+                    locale === 'zh-CN' ? 'display-zh' : 'display',
+                    paused ? 'text-[22px]' : 'text-[28px]',
+                  ]"
                   >{{ shell.about }}</span
                 >
                 <span
-                  class="self-end font-display font-bold text-[24px] leading-none"
+                  class="self-end font-display font-bold leading-none"
+                  :class="paused ? 'text-[20px]' : 'text-[24px]'"
                   >?</span
                 >
               </button>

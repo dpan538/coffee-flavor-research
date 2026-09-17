@@ -41,6 +41,7 @@ export default {
         ochre: "#CBBB4C",
         sun: "#FFD54A",
         mint2: "#7BE0C8",
+        sky2: "#7CC4FF", // the resume tile: as bright and saturated as sun and mint2, no red beside the purple band (owner, 2026-09-17)
       },
       fontFamily: {
         display: [

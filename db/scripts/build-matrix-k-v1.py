@@ -27,7 +27,12 @@ MIN_VARIETY, MIN_PROCESS, MIN_CELL = 50, 30, 10
 PRODUCT_OPTIONS = {
     # owner (review 5): the ways a cup is commonly made; the corpus only measures cupping and espresso, so filter and
     # immersion methods borrow the cupping row, moka borrows nothing (it is neither), cold methods have no row
-    "C0": {"espresso": ("ESPRESSO", "CORPUS_MEASURED"), "pour_over_v60": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"),
+    # owner (2026-09-17): 美式 is espresso plus water and 奶咖 espresso plus milk — separate options on the espresso row, not
+    # new classes; milk brings milk-type flavours, so the 奶咖 row carries a +0.1 nudge on sweetness and body (C0_BIAS);
+    # 挂耳 is pre-ground pour-over and merges into the pour-over option (its label names both)
+    "C0": {"espresso": ("ESPRESSO", "CORPUS_MEASURED"), "americano": ("ESPRESSO", "ESPRESSO_PROXY_DILUTED (owner 2026-09-17: espresso plus water, not a new class)"),
+           "milk_coffee": ("ESPRESSO", "ESPRESSO_PROXY_PLUS_MILK_BIAS_0.1_ON_sweetness+body (owner 2026-09-17: espresso plus milk; milk-type flavours expected)"),
+           "pour_over_v60": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"),
            "moka_pot": (None, "NO_CORPUS_ROW (stovetop pressure is neither cupping nor espresso)"), "cold_brew": (None, "NO_CORPUS_ROW_LITERATURE_CLAIM_PENDING"),
            "siphon": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "cold_drip": (None, "NO_CORPUS_ROW (cold method)"),
            "french_press": ("CUPPING", "FILTER_IMMERSION_PROXY_FROM_CUPPING"), "turkish": (None, "NO_CORPUS_ROW (boiled, unfiltered)"),
@@ -43,10 +48,13 @@ PRODUCT_OPTIONS = {
                    "lactic": (None, "NO_CORPUS_ROW (not in the extraction lexicon)"), "barrel_aged": (None, "NO_CORPUS_ROW (not in the extraction lexicon)"),
                    "decaf": ("decaf", "CORPUS_MEASURED")},
 }
+# a small additive nudge on a proxied row, applied to the unit vector and renormalised (same mechanics as the origin bias)
+C0_BIAS = {"milk_coffee": {"sweetness": 0.1, "body": 0.1}}
 # labels the UI shows for every context option (view.ts reads them from the bundle; the engine uses them for the reference line)
 CONTEXT_LABELS = {
-    "pour_over_v60": {"zh-CN": "手冲 Pour-over", "en": "Pour-over"}, "french_press": {"zh-CN": "法压壶 French press", "en": "French press"},
-    "espresso": {"zh-CN": "意式萃取 Espresso", "en": "Espresso"}, "cold_brew": {"zh-CN": "冷萃 Cold brew", "en": "Cold brew"},
+    "pour_over_v60": {"zh-CN": "手冲·挂耳 Pour-over / drip bag", "en": "Pour-over / drip bag"}, "french_press": {"zh-CN": "法压壶 French press", "en": "French press"},
+    "espresso": {"zh-CN": "意式萃取 Espresso", "en": "Espresso"}, "americano": {"zh-CN": "美式 Americano", "en": "Americano"},
+    "milk_coffee": {"zh-CN": "奶咖 Milk coffee", "en": "Milk coffee"}, "cold_brew": {"zh-CN": "冷萃 Cold brew", "en": "Cold brew"},
     "moka_pot": {"zh-CN": "摩卡壶 Moka pot", "en": "Moka pot"}, "siphon": {"zh-CN": "虹吸壶 Siphon", "en": "Siphon"},
     "cold_drip": {"zh-CN": "冰滴 Cold drip", "en": "Cold drip"}, "turkish": {"zh-CN": "土耳其壶 Turkish", "en": "Turkish pot"}, "aeropress": {"zh-CN": "爱乐压 AeroPress", "en": "AeroPress"},
     "very_light": {"zh-CN": "极浅烘", "en": "Very light"}, "light": {"zh-CN": "浅烘", "en": "Light"}, "medium_light": {"zh-CN": "中浅烘", "en": "Medium-light"},
@@ -121,6 +129,8 @@ def main() -> int:
     for axis in ("C0", "C1", "C2_process"):
         for product_option, (corpus_option, basis) in PRODUCT_OPTIONS[axis].items():
             v = kvec(axis, corpus_option) if corpus_option else None
+            if v and product_option in C0_BIAS:
+                v = mean_unit([[x + C0_BIAS[product_option].get(d, 0.0) for d, x in zip(DIMS, v)]])
             bundle_k[axis][product_option] = {"vector": v, "basis": basis, "member_count": krows.get((axis, corpus_option), {}).get("member_count") if corpus_option else None}
     for axis in ("C2_variety",):
         for (a, option), r in krows.items():
@@ -143,6 +153,9 @@ def main() -> int:
     split = lambda v: [t for t in v.split("|") if t]
     dimension_labels = {r["key"].removeprefix("dim:"): {"zh-CN": r["label_zh_cn"], "en": r["label_en"]} for r in tags if r["kind"] == "dimension"}
     dimension_tags = {r["key"].removeprefix("dim:"): {"zh-CN": split(r["tags_zh_cn"]), "en": split(r["tags_en"])} for r in tags if r["kind"] == "dimension"}
+    # owner (2026-09-17): body, bitter & roasted, fermented & winey, spice and defect are evaluation dimensions — their words
+    # appear in the card's evaluation rows, never in the candidate list (CONCEPT_FLAVOR_TAGS.tsv role column)
+    dimension_roles = {r["key"].removeprefix("dim:"): (r.get("role") or "candidate") for r in tags if r["kind"] == "dimension"}
     concept_tags = {r["key"]: {"zh-CN": r["tags_zh_cn"], "en": r["tags_en"]} for r in tags if r["kind"] == "concept"}
     statements = []
     for name in ("CONTEXT_STATEMENTS.tsv", "LITERATURE_CLAIMS.tsv"):
@@ -170,7 +183,7 @@ def main() -> int:
             src = next((x for x in sources if x["source_id"] == st["source_id"]), None)
             if src:
                 st["source_title"] = src["title"]
-    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "sources": sources, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "concept_tags": concept_tags,
+    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "sources": sources, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "dimension_roles": dimension_roles, "concept_tags": concept_tags,
                     "delta_words": {"zh-CN": {"pos": "比这个语境的理论值更明显", "neg": "比这个语境的理论值更弱"}, "en": {"pos": "stronger than this context predicts", "neg": "weaker than this context predicts"}},
                     # consumer-facing layer (owner R3-D15): no raw enum reaches the screen; the calibration sentence reads as a
                     # sensory report, not as a correction of the drinker

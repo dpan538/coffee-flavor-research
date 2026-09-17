@@ -63,7 +63,7 @@ const cardWalk = async (page) => {
     await clickText(page, answer);
   }
   await page.waitForSelector('[data-words="main"]');
-  for (const word of ["朗姆酒", "黑巧克力", "水蜜桃", "烤榛果", "葡萄柚"])
+  for (const word of ["提拉米苏", "白桃", "甜橙", "曲奇饼干", "车厘子"])
     await clickText(page, word);
   await clickCta(page);
   await page.waitForSelector('[data-component="EscalationModal"]');

@@ -356,6 +356,52 @@ describe("product-vector-v1 question flow (coherence decision tree)", async () =
     );
   });
 
+  it("owner 2026-09-17: the candidate list never draws on the evaluation dimensions, which feed the card's evaluation line instead", () => {
+    const roles = productVectorBundle.presentation.dimension_roles as Record<
+      string,
+      string
+    >;
+    expect(
+      Object.entries(roles)
+        .filter(([, r]) => r === "evaluation")
+        .map(([d]) => d)
+        .sort(),
+    ).toEqual(
+      ["bitter_roasted", "body", "defect", "fermented_winey", "spice"].sort(),
+    );
+    for (const answers of [
+      { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" },
+      { Q0: "B", Q1: "C", Q2: "B", Q3: "C", Q4: "C", Q5: "A" },
+      { Q0: "D", Q1: "D", Q2: "D", Q3: "D", Q4: "C", Q5: "D" },
+    ]) {
+      const result = flow.inferFromFlow(ctx, answers);
+      for (const locale of ["zh-CN", "en"] as const) {
+        const words = flow.describe(result, locale).all;
+        expect(words).toHaveLength(8);
+        expect(words.every((w) => roles[w.dimension] !== "evaluation")).toBe(
+          true,
+        );
+        const rows = flow.evaluate(result, locale);
+        expect(rows.length).toBeLessThanOrEqual(3);
+        expect(rows.every((r) => roles[r.dimension] === "evaluation")).toBe(
+          true,
+        );
+        expect(rows.every((r) => r.label && r.text)).toBe(true);
+        expect(
+          flow.finalCard(result, words.slice(0, 5), locale).evaluation,
+        ).toEqual(rows);
+      }
+    }
+    // a heavy-bodied, bitter cup carries body and bitterness on the evaluation line
+    const heavy = flow.inferFromFlow(
+      { c0_preparation: "espresso", c1_roast: "dark" },
+      { Q0: "C", Q1: "B", Q2: "B", Q3: "C", Q4: "C", Q5: "B" },
+    );
+    expect(flow.evaluate(heavy, "zh-CN").map((r) => r.dimension)).toEqual(
+      expect.arrayContaining(["body", "bitter_roasted"]),
+    );
+  });
+
   it("escalation gate: Q6 only when a severe conflict happened and the picks side with the user against the theory", () => {
     const result = flow.inferFromFlow(ctx, {
       Q0: "A",

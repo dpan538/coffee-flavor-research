@@ -2654,6 +2654,42 @@
     "basis": "CORPUS_MEASURED",
     "member_count": 738
    },
+   "americano": {
+    "vector": [
+     0.2772,
+     0.354,
+     0.3068,
+     0.0725,
+     0.5035,
+     0.503,
+     0.0488,
+     0.3283,
+     0.0522,
+     0.0055,
+     0.2809,
+     0.0106
+    ],
+    "basis": "ESPRESSO_PROXY_DILUTED (owner 2026-09-17: espresso plus water, not a new class)",
+    "member_count": 738
+   },
+   "milk_coffee": {
+    "vector": [
+     0.25824857151828484,
+     0.4229612246367291,
+     0.3789881633969635,
+     0.06754336737040277,
+     0.46907704097927994,
+     0.46861122465258753,
+     0.04546367348518146,
+     0.30585500010625144,
+     0.04863122450669,
+     0.005123979593616762,
+     0.2616956123358088,
+     0.009875306125879578
+    ],
+    "basis": "ESPRESSO_PROXY_PLUS_MILK_BIAS_0.1_ON_sweetness+body (owner 2026-09-17: espresso plus milk; milk-type flavours expected)",
+    "member_count": 738
+   },
    "pour_over_v60": {
     "vector": [
      0.4396,
@@ -3988,24 +4024,46 @@
     "zh-CN": [
      "葡萄柚",
      "血橙",
-     "青柠"
+     "青柠",
+     "柠檬",
+     "甜橙",
+     "佛手柑",
+     "蜜桔",
+     "砂糖橘"
     ],
     "en": [
      "grapefruit",
      "blood orange",
-     "lime"
+     "lime",
+     "lemon",
+     "sweet orange",
+     "bergamot",
+     "honey mandarin",
+     "sugar mandarin"
     ]
    },
    "sweetness": {
     "zh-CN": [
      "蔗糖",
      "蜂蜜",
-     "焦糖"
+     "焦糖",
+     "花蜜",
+     "橘子糖",
+     "黑糖",
+     "枫糖",
+     "牛轧糖",
+     "白巧克力"
     ],
     "en": [
      "cane sugar",
      "honey",
-     "caramel"
+     "caramel",
+     "nectar",
+     "mandarin candy",
+     "brown sugar",
+     "maple syrup",
+     "nougat",
+     "white chocolate"
     ]
    },
    "body": {
@@ -4024,12 +4082,24 @@
     "zh-CN": [
      "茉莉花",
      "玉兰花",
-     "橙花"
+     "橙花",
+     "咖啡花",
+     "金银花",
+     "山茶花",
+     "玫瑰",
+     "姜花",
+     "洋甘菊"
     ],
     "en": [
      "jasmine",
      "magnolia",
-     "orange blossom"
+     "orange blossom",
+     "coffee blossom",
+     "honeysuckle",
+     "camellia",
+     "rose",
+     "ginger lily",
+     "chamomile"
     ]
    },
    "fruity": {
@@ -4037,25 +4107,59 @@
      "水蜜桃",
      "黄桃",
      "黑加仑",
-     "杏桃"
+     "杏桃",
+     "蔓越莓",
+     "蓝莓",
+     "草莓",
+     "葡萄",
+     "白葡萄",
+     "蜜瓜",
+     "凤梨",
+     "荔枝",
+     "秋月梨",
+     "白桃",
+     "车厘子"
     ],
     "en": [
      "peach",
      "yellow peach",
      "blackcurrant",
-     "apricot"
+     "apricot",
+     "cranberry",
+     "blueberry",
+     "strawberry",
+     "grape",
+     "white grape",
+     "melon",
+     "pineapple",
+     "lychee",
+     "Akizuki pear",
+     "white peach",
+     "cherry"
     ]
    },
    "nutty_chocolate": {
     "zh-CN": [
      "烤榛果",
      "可可",
-     "提拉米苏"
+     "提拉米苏",
+     "曲奇饼干",
+     "牛奶巧克力",
+     "榛果巧克力",
+     "巧克力酱",
+     "杏仁",
+     "花生"
     ],
     "en": [
      "roasted hazelnut",
      "cocoa",
-     "tiramisu"
+     "tiramisu",
+     "butter cookie",
+     "milk chocolate",
+     "hazelnut chocolate",
+     "chocolate sauce",
+     "almond",
+     "peanut"
     ]
    },
    "fermented_winey": {
@@ -4098,24 +4202,30 @@
     "zh-CN": [
      "茉莉绿茶",
      "高山乌龙",
-     "柠檬草"
+     "柠檬草",
+     "伯爵茶",
+     "红茶"
     ],
     "en": [
      "jasmine green tea",
      "high-mountain oolong",
-     "lemongrass"
+     "lemongrass",
+     "Earl Grey tea",
+     "black tea"
     ]
    },
    "woody_earthy": {
     "zh-CN": [
      "风干雪松",
      "泥炭",
-     "松露"
+     "松露",
+     "杉木"
     ],
     "en": [
      "aged cedar",
      "peat",
-     "truffle"
+     "truffle",
+     "fir wood"
     ]
    },
    "defect": {
@@ -4130,6 +4240,20 @@
      "musty"
     ]
    }
+  },
+  "dimension_roles": {
+   "acidity": "candidate",
+   "sweetness": "candidate",
+   "body": "evaluation",
+   "floral": "candidate",
+   "fruity": "candidate",
+   "nutty_chocolate": "candidate",
+   "fermented_winey": "evaluation",
+   "bitter_roasted": "evaluation",
+   "spice": "evaluation",
+   "herbal_green": "candidate",
+   "woody_earthy": "candidate",
+   "defect": "evaluation"
   },
   "concept_tags": {
    "sensory.acetic_vinegar": {
@@ -4602,8 +4726,8 @@
   },
   "context_labels": {
    "pour_over_v60": {
-    "zh-CN": "手冲 Pour-over",
-    "en": "Pour-over"
+    "zh-CN": "手冲·挂耳 Pour-over / drip bag",
+    "en": "Pour-over / drip bag"
    },
    "french_press": {
     "zh-CN": "法压壶 French press",
@@ -4612,6 +4736,14 @@
    "espresso": {
     "zh-CN": "意式萃取 Espresso",
     "en": "Espresso"
+   },
+   "americano": {
+    "zh-CN": "美式 Americano",
+    "en": "Americano"
+   },
+   "milk_coffee": {
+    "zh-CN": "奶咖 Milk coffee",
+    "en": "Milk coffee"
    },
    "cold_brew": {
     "zh-CN": "冷萃 Cold brew",

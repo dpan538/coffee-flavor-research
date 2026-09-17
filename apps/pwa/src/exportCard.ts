@@ -212,8 +212,25 @@ export async function renderCardPng(
     }
     y += 122;
   }
-  // rule, reference, signature
+  // the evaluation line above the rule (owner, 2026-09-17): dimension label + word, one line
   const footY = Y + H - 96;
+  if (model.evaluation.length) {
+    ctx.fillStyle = "#6B6660";
+    ctx.font = `400 26px ${SANS}`;
+    let x = px;
+    const ey = footY - 48 - 28;
+    for (const row of model.evaluation) {
+      ctx.fillStyle = "#6B6660";
+      ctx.fillText(row.label, x, ey);
+      x += ctx.measureText(row.label).width + 12;
+      ctx.fillStyle = "#1E1C1A";
+      ctx.font = `500 26px ${SANS}`;
+      ctx.fillText(row.text, x, ey);
+      x += ctx.measureText(row.text).width + 36;
+      ctx.font = `400 26px ${SANS}`;
+    }
+  }
+  // rule, reference, signature
   ctx.strokeStyle = "rgba(30,28,26,0.15)";
   ctx.lineWidth = 2;
   ctx.setLineDash([]);

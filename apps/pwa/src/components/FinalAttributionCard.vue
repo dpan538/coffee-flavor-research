@@ -55,6 +55,7 @@ async function share(text: string) {
         :cup="model.cupInfo"
         :words="model.picked"
         :dimensions="model.pickedDimensions"
+        :evaluation="model.evaluation"
         :reference="`${labels.reference} · ${model.title}`"
         :eyebrow="eyebrow"
       />

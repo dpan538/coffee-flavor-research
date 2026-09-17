@@ -2,6 +2,9 @@
  * Q6 reachability (owner, 2026-09-12): the second round must open for a real share of sessions, never on Path 1
  * (coherent answers have nothing to resolve), and the front-of-house test set in docs/product/Q6_TRIGGER_TEST_SET.md
  * must keep opening it. Rates are measured by enumerating every answer combination of the bank.
+ * Since the candidate list holds only the seven candidate dimensions (owner, 2026-09-17), confirming the first five
+ * words in order affirms nearly every dimension the reader can pick and is not a lean: the gate answers picks that
+ * side with the reader's own answers, so the floors are on those picks and the first five stay below them.
  */
 import { describe, expect, it } from "vitest";
 import {
@@ -121,15 +124,15 @@ describe("Q6 trigger rate (all 3,072 answer combinations per context)", () => {
       },
     },
   ])(
-    "$name: Path 1 never opens Q6; ≥20% of sequences do with the first five words, ≥45% when the picks side with the reader",
+    "$name: Path 1 never opens Q6; ≥45% of sequences do when the picks side with the reader, and confirming the first five in order never opens it more often than that",
     ({ context }) => {
       const { byPath, total } = enumerate(context);
       expect(total.n).toBe(3072);
       expect(byPath[1]!.n).toBeGreaterThan(0);
       expect(byPath[1]!.first).toBe(0);
       expect(byPath[1]!.user).toBe(0);
-      expect(total.first / total.n).toBeGreaterThanOrEqual(0.2);
       expect(total.user / total.n).toBeGreaterThanOrEqual(0.45);
+      expect(total.first).toBeLessThanOrEqual(total.user);
       // every conflict path stays reachable for Q6
       for (const path of [2, 3, 4])
         expect(byPath[path]!.user / byPath[path]!.n).toBeGreaterThanOrEqual(
@@ -156,7 +159,7 @@ const RECIPES: Array<{
       c2_process: "natural",
     },
     answers: { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B", Q5: "A" },
-    tap: ["茉莉花", "蔗糖", "葡萄柚", "水蜜桃", "丝绒奶油"],
+    tap: ["橙花", "咖啡花", "蔗糖", "甜橙", "蜂蜜"],
   },
   {
     name: "2 深烘 意式 · 日晒 波本 (Path 3)",
@@ -167,7 +170,7 @@ const RECIPES: Array<{
       c2_process: "natural",
     },
     answers: { Q0: "B", Q1: "B", Q2: "A", Q3: "A", Q4: "A", Q5: "A" },
-    tap: ["烤榛果", "朗姆酒", "蔗糖", "丝绒奶油", "葡萄柚"],
+    tap: ["榛果巧克力", "巧克力酱", "杏仁", "蜂蜜", "焦糖"],
   },
   {
     name: "3 浅烘 手冲 · 水洗 瑰夏 · 埃塞俄比亚",
@@ -176,16 +179,16 @@ const RECIPES: Array<{
       c1_roast: "light",
       c2_process: "washed",
       c2_variety: "gesha",
-      origin: ["ethiopia"],
+      c2_origin: "ethiopia",
     },
     answers: { Q0: "A", Q1: "C", Q2: "A", Q3: "C", Q4: "C", Q5: "D" },
-    tap: ["水蜜桃", "丝绒奶油", "黑巧克力", "葡萄柚", "蔗糖"],
+    tap: ["车厘子", "水蜜桃", "柠檬", "白巧克力", "甜橙"],
   },
   {
     name: "4 中烘 法压",
     context: { c0_preparation: "french_press", c1_roast: "medium" },
     answers: { Q0: "B", Q1: "C", Q2: "A", Q3: "B", Q4: "C", Q5: "A" },
-    tap: ["朗姆酒", "水蜜桃", "丝绒奶油", "蔗糖", "黑巧克力"],
+    tap: ["蔓越莓", "蓝莓", "草莓", "蜂蜜", "焦糖"],
   },
   {
     name: "5 中浅烘 冷萃 · 日晒",
@@ -195,7 +198,7 @@ const RECIPES: Array<{
       c2_process: "natural",
     },
     answers: { Q0: "B", Q1: "C", Q2: "B", Q3: "A", Q4: "A", Q5: "C" },
-    tap: ["朗姆酒", "水蜜桃", "烤榛果", "葡萄柚", "黑巧克力"],
+    tap: ["草莓", "牛奶巧克力", "血橙", "橙花", "葡萄"],
   },
   {
     name: "6 中深烘 摩卡壶 · 水洗 铁皮卡 · 巴西",
@@ -204,10 +207,10 @@ const RECIPES: Array<{
       c1_roast: "medium_dark",
       c2_process: "washed",
       c2_variety: "typica",
-      origin: ["brazil"],
+      c2_origin: "brazil",
     },
     answers: { Q0: "B", Q1: "C", Q2: "B", Q3: "B", Q4: "C", Q5: "C" },
-    tap: ["朗姆酒", "黑巧克力", "水蜜桃", "烤榛果", "葡萄柚"],
+    tap: ["提拉米苏", "白桃", "甜橙", "曲奇饼干", "车厘子"],
   },
   {
     name: "7 浅烘 爱乐压 · 厌氧 (Path 3)",
@@ -217,7 +220,7 @@ const RECIPES: Array<{
       c2_process: "anaerobic",
     },
     answers: { Q0: "A", Q1: "A", Q2: "B", Q3: "A", Q4: "B", Q5: "A" },
-    tap: ["茉莉花", "葡萄柚", "烤榛果", "水蜜桃", "丝绒奶油"],
+    tap: ["玉兰花", "血橙", "曲奇饼干", "青柠", "牛奶巧克力"],
   },
 ];
 
@@ -268,7 +271,7 @@ describe("Q6 front-of-house test set", () => {
         c1_roast: "light",
         c2_process: "washed",
         c2_variety: "gesha",
-        origin: ["ethiopia"],
+        c2_origin: "ethiopia",
       },
       { Q0: "A", Q1: "A", Q2: "A", Q3: "A", Q4: "B" },
     );
