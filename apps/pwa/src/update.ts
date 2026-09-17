@@ -1,8 +1,8 @@
 // Keeping the installed app current (owner, 2026-09-17): the service worker is registered in "prompt" mode, so a new
 // build is downloaded and parked as a waiting worker while the current one keeps serving. The app checks for a new
 // build when it starts, whenever it returns to the foreground or comes back online, and once an hour while open. When
-// a new build is waiting, App.vue applies it — a silent reload on a clean home page, or a visible line when a paused
-// flow would be lost — so nobody stays on an old version for more than one visit.
+// a new build is waiting, App.vue applies it with a silent reload as soon as the app is on the home page (a paused
+// flow is saved on the device and comes back), so nobody stays on an old version for more than one visit.
 import { ref } from "vue";
 import { registerSW } from "virtual:pwa-register";
 

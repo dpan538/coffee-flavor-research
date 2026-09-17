@@ -611,6 +611,23 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-17T08:30:00Z"
+    },
+    {
+      "id": "R3-D31",
+      "subject": "CI runs the database jobs only when db/ changes; a half-finished flow survives closing the app for six hours; production confirmed live",
+      "decision": "Three owner points after the two merges. (1) The data is frozen, so every push no longer re-tests the database: ci.yml gains a changed-paths job (dorny/paths-filter) and the two database jobs run only when something under db/ or the workflow itself changed, or on a manual workflow_dispatch; the web job always runs; the weekly historical-replay workflow is untouched. (2) 'The last two updates did not reach production': the Vercel dashboard shows both merge commits Ready in Production and the live HTML at flavorwords.com references the bundle built from 0ec8fb3 (no legacy registration script, the update line present), so production is live — what the owner's devices showed was the old service worker's cached page, the very defect R3-D30 fixed; devices on the old worker need two full relaunches (or cleared site data) once, after which updates are automatic. (3) The in-flow exit icon and the three-tile home page already exist (R3-D29) and were invisible for the same reason. New: the flow is saved on the device (context, answers, picks, second look, the stack's labels) whenever it changes; on the next open it comes back as a paused flow with 继续 on the home page, rebuilt by replaying the inputs through the engine; a saved flow older than six hours (FLOW_TTL_MS) is dropped at launch and the app opens clean; 开始 and 首页 clear it.",
+      "owner_words": "第一个就是不需要每次都全量 build 数据库内容，github 每次推送都会花大量时间重新测试数据库部分。我们的数据应该是固定的，然后仅更新计算或者体验层。第二个是最近的两个更新都卡在 vercel production，实际的内容没有发布到网络端。第三个问题，网页版只有 homepage 有下载，开始做题之后，homepage 的下载应该变成退出，退出后 homepage 也是三按钮并列版本。内存持久性可以设置久一点，但是如果超过几个小时，下一次打开的时候要把 cache 清掉。把这个做完，然后推送到 main。之前的两组更新其实都没过 vercel production，所以我测试端其实没有足够的反馈。",
+      "applied": {
+        "data": "none",
+        "code": ".github/workflows/ci.yml (changes job, needs/if on database-artifacts and database-current, workflow_dispatch, pull-requests: read); apps/pwa/src/store.ts (FLOW_KEY, FLOW_TTL_MS, saveFlow watcher, restoreFlow replay); apps/pwa/src/main.ts (restoreFlow at launch)",
+        "verified": "workflow contract test; vue-tsc; pwa build; saved flow restored in the built preview (context step and question step), expired flow dropped; web gate; live HTML and bundle checked with curl",
+        "open": [
+          "six hours is the operator's reading of 几个小时 — adjust FLOW_TTL_MS if the owner wants a different window",
+          "the first CI run after this change is itself a db-free push, so the database jobs should show as skipped; a manual workflow_dispatch exercises them"
+        ],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-17T09:40:00Z"
     }
   ],
   "guards": {

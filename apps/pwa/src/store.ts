@@ -15,6 +15,7 @@ import {
   answerQ6,
   createSession,
   firstDescription,
+  nextStep,
   relocalize,
   submitPicks,
   type Session,
@@ -288,6 +289,113 @@ export function submitQ6(dimensions: string[]) {
   if (!session.value) return;
   session.value = answerQ6(session.value, dimensions);
   refresh();
+}
+
+// The flow survives closing the app for a few hours (owner, 2026-09-17): a paused or half-finished flow comes back as
+// 继续 on the next open; older than FLOW_TTL_MS it is dropped and the app opens clean. What is saved are the inputs
+// (context, answers, picks, second look) and the stack's labels; the session is rebuilt by replaying them through the
+// engine, which is deterministic.
+const FLOW_KEY = "flavorwords.flow";
+export const FLOW_TTL_MS = 6 * 60 * 60 * 1000;
+type SavedFlow = {
+  savedAt: number;
+  stage: Exclude<Stage, "hero">;
+  draftContext: ContextAnswers;
+  contextIndex: number;
+  collected: CollectedCard[];
+  answers: Partial<Record<Slot, string>>;
+  picks: Word[] | null;
+  q6: string[] | null;
+};
+
+function readSavedFlow(): SavedFlow | null {
+  try {
+    const raw = localStorage.getItem(FLOW_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw) as SavedFlow;
+    if (
+      typeof saved.savedAt !== "number" ||
+      Date.now() - saved.savedAt > FLOW_TTL_MS ||
+      (saved.stage !== "context" && saved.stage !== "session")
+    ) {
+      localStorage.removeItem(FLOW_KEY);
+      return null;
+    }
+    return saved;
+  } catch {
+    return null;
+  }
+}
+
+function saveFlow() {
+  const live: Stage | null =
+    stage.value === "hero" ? paused.value : stage.value;
+  const current = live === "context" || live === "session" ? live : null;
+  try {
+    if (!current) {
+      localStorage.removeItem(FLOW_KEY);
+      return;
+    }
+    const s = session.value;
+    const saved: SavedFlow = {
+      savedAt: Date.now(),
+      stage: current,
+      draftContext: draftContext.value,
+      contextIndex: contextIndex.value,
+      collected: collected.value,
+      answers: (s?.answers ?? {}) as Partial<Record<Slot, string>>,
+      picks: s && s.picks.length ? s.picks : null,
+      q6: s?.q6 && s.q6.selected.length ? s.q6.selected : null,
+    };
+    localStorage.setItem(FLOW_KEY, JSON.stringify(saved));
+  } catch {
+    /* storage unavailable: the flow lasts for this visit */
+  }
+}
+watch(
+  [stage, paused, contextIndex, draftContext, collected, session],
+  saveFlow,
+  {
+    deep: true,
+  },
+);
+
+/** on launch: bring a saved flow back as a paused one (the home page shows 继续), or drop it when it is stale */
+export async function restoreFlow() {
+  const saved = readSavedFlow();
+  if (!saved) return;
+  draftContext.value = saved.draftContext;
+  contextIndex.value = saved.contextIndex;
+  collected.value = saved.collected;
+  if (saved.stage === "session") {
+    const beans = await beansAsVectors(userDatabase()).catch(() => []);
+    let s = createSession(
+      normalizeContext(saved.draftContext),
+      locale.value,
+      beans,
+    );
+    let guard = 0;
+    while (s.stage === "questions" && guard < 10) {
+      const step = nextStep(s);
+      if (step.kind !== "ask") break;
+      const option = saved.answers[step.card.slot as Slot];
+      if (!option) break;
+      s = answer(s, step.card.slot as Slot, option);
+      guard += 1;
+    }
+    if (s.stage === "describe") s = firstDescription(s);
+    if (saved.picks && s.stage === "picks" && s.description) {
+      const words = saved.picks
+        .map((p) => s.description!.all.find((w) => w.text === p.text))
+        .filter((w): w is Word => Boolean(w));
+      if (words.length === saved.picks.length) s = submitPicks(s, words);
+    }
+    if (saved.q6 && s.stage === "q6") s = answerQ6(s, saved.q6);
+    session.value = s;
+    refresh();
+  }
+  paused.value = saved.stage;
+  stage.value = "hero";
 }
 
 export function home() {

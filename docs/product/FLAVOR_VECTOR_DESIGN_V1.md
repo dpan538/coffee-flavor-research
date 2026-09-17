@@ -572,6 +572,12 @@ owner 的栈裁决：Vue 3（Composition API + TS）+ Tailwind CSS v3 + lucide �
 - 已安装的 PWA 不再停在旧版本：Service Worker 以 prompt 模式由 `src/update.ts` 注册；应用在启动、回到前台、恢复联网时各检查一次新构建，打开期间每小时一次；新构建装好待命后，干净的首页静默刷新，首页上有暂停的流程时显示「有新版本，点此更新」一行，做题中不打断。`applyUpdate` 自己发 SKIP_WAITING 并在 controllerchange 时刷新。关于页末尾与 `<html data-build>` 带构建标识（commit 短哈希 · 日期）。
 - 语言跟随设备：首次打开按设备首选语言（中文设备中文，其余英文），手动切换后记住；`<html lang>` 同步。
 
+**owner 2026-09-17，第三轮（R3-D31）**
+
+- CI：数据已冻结，数据库两个 job 只在 `db/**` 或工作流本身有改动时运行（changed-paths job），或手动 workflow_dispatch；web job 每次都跑。
+- 未完成的流程保存在本机（语境、答案、勾选、二看与堆叠标签），下次打开以「继续」回到原处，由引擎重放输入重建；超过 6 小时的存档在启动时丢弃，开始或首页会清掉。
+- 生产环境核对：flavorwords.com 的 HTML 与 bundle 已是最新合并提交；设备上看到旧版是旧 Service Worker 的缓存，R3-D30 之后不再发生，旧 worker 的设备需要彻底关开两次。
+
 ## 9. 脚本统筹（229 个脚本）
 
 | 组                                     | 处置            | 内容                                                                                                                                                                                                                                                                                                                                |
