@@ -29,6 +29,9 @@ jobs:
         id: filter
         uses: dorny/paths-filter@v3
         with:
+          # with "every", a file counts only if it matches all patterns, so the "!" lines are real exclusions; with the
+          # default "some" a "!" line matches every file outside its path and the filter fires on any change
+          predicate-quantifier: every
           filters: |
             db:
               - 'db/**'
