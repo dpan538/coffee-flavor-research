@@ -4,7 +4,7 @@
  * `screen = shallowRef(screenModel(session))`. The UI-only state (collected cards in the top zone,
  * the short "collecting" animation, the context stepper) also lives here so components stay dumb.
  */
-import { shallowRef, ref, computed } from "vue";
+import { computed, ref, shallowRef, watch } from "vue";
 import type {
   ContextAnswers,
   Locale,
@@ -63,7 +63,30 @@ export const COLORS: Record<string, string> = {
  *  (520 → 240 ms after users reported the flow as sluggish, owner 2026-09-17) */
 export const COLLECT_MS = 240;
 
-export const locale = ref<Locale>("zh-CN");
+// the language follows the device on first open — Chinese devices get 中文, everyone else English — and a manual
+// switch is remembered on this device (owner, 2026-09-17: English users must not land on a Chinese screen)
+const LOCALE_KEY = "flavorwords.locale";
+function initialLocale(): Locale {
+  try {
+    const saved = localStorage.getItem(LOCALE_KEY);
+    if (saved === "zh-CN" || saved === "en") return saved;
+  } catch {
+    /* storage unavailable: fall through to the device language */
+  }
+  const primary =
+    typeof navigator === "undefined"
+      ? ""
+      : (navigator.languages?.[0] ?? navigator.language ?? "");
+  return /^zh/i.test(primary) ? "zh-CN" : "en";
+}
+export const locale = ref<Locale>(initialLocale());
+watch(
+  locale,
+  (l) => {
+    if (typeof document !== "undefined") document.documentElement.lang = l;
+  },
+  { immediate: true },
+);
 export const stage = ref<Stage>("hero");
 /** a flow left through the wordmark or the exit button: the home page offers 继续 until 开始 or 首页 clears it (owner, 2026-09-17) */
 export const paused = ref<Stage | null>(null);
@@ -135,6 +158,11 @@ function wait(ms: number) {
 
 export function toggleLocale() {
   locale.value = locale.value === "zh-CN" ? "en" : "zh-CN";
+  try {
+    localStorage.setItem(LOCALE_KEY, locale.value);
+  } catch {
+    /* storage unavailable: the choice lasts for this visit */
+  }
   if (session.value) {
     session.value = relocalize(session.value, locale.value);
     refresh();
