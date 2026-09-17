@@ -1,4 +1,5 @@
 // Isolated Vue 3 + Tailwind v3 PWA entry (owner R3-D14). The React app under app/ is untouched and not built here.
+import { execSync } from "node:child_process";
 import { fileURLToPath, URL } from "node:url";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
@@ -6,13 +7,30 @@ import { VitePWA } from "vite-plugin-pwa";
 
 const here = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
+// the build identifier shown at the end of About and set on <html data-build>: commit + day (Vercel exposes the commit
+// as VERCEL_GIT_COMMIT_SHA; locally git answers); FLAVORWORDS_BUILD_ID overrides it, which the update test uses
+function buildId(): string {
+  if (process.env.FLAVORWORDS_BUILD_ID) return process.env.FLAVORWORDS_BUILD_ID;
+  let sha = (process.env.VERCEL_GIT_COMMIT_SHA ?? "").slice(0, 7);
+  if (!sha) {
+    try {
+      sha = execSync("git rev-parse --short HEAD", { encoding: "utf8" }).trim();
+    } catch {
+      sha = "dev";
+    }
+  }
+  return `${sha} · ${new Date().toISOString().slice(0, 10)}`;
+}
+
 export default defineConfig({
   root: here("."),
   publicDir: here("public"),
   plugins: [
     vue(),
     VitePWA({
-      registerType: "autoUpdate",
+      // "prompt": a new build waits until the app applies it (src/update.ts), instead of taking over mid-session
+      registerType: "prompt",
+      injectRegister: null,
       includeAssets: [
         "icons/icon.svg",
         "icons/icon-192.png",
@@ -61,7 +79,11 @@ export default defineConfig({
           },
         ],
       },
-      workbox: { globPatterns: ["**/*.{js,css,html,json,svg,png,woff2}"] },
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,json,svg,png,woff2}"],
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+      },
     }),
   ],
   resolve: {
@@ -70,5 +92,6 @@ export default defineConfig({
       "flavor-data": here("../../packages/flavor-data/src"),
     },
   },
+  define: { __BUILD_ID__: JSON.stringify(buildId()) },
   build: { outDir: here("dist"), emptyOutDir: true },
 });

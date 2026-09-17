@@ -133,6 +133,7 @@ const version = browser.version();
 const rows = [];
 for (const capture of captures) {
   const context = await browser.newContext({
+    locale: "zh-CN", // the app follows the device language since 2026-09-17; the portfolio shots are the Chinese screens
     viewport: capture.viewport,
     deviceScaleFactor: 1,
     reducedMotion: "reduce",

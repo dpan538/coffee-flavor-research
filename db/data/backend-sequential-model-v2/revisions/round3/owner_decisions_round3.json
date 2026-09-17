@@ -594,6 +594,23 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-17T11:30:00Z"
+    },
+    {
+      "id": "R3-D30",
+      "subject": "Installed app keeps itself current (prompt-mode service worker, update checks, silent refresh, build identifier); the language follows the device on first open",
+      "decision": "Users on the installed PWA stayed on old builds: the service worker was registered in autoUpdate mode by a bare script, so a new build took over only on the launch after next and nothing ever reloaded the page. The owner ruled this a serious experience problem and asked for automatic updating rather than a manual 'fetch update' icon. Now: the worker is registered in prompt mode from src/update.ts; the app checks for a new build at start, whenever it returns to the foreground or comes back online, and once an hour while open; a build that is installed and waiting is applied by App.vue — a silent reload on a clean home page (nothing to lose), a visible '有新版本，点此更新' line under the lead when a paused flow sits on the home page, and nothing while a flow is running. applyUpdate posts SKIP_WAITING and reloads on controllerchange itself (the register helper's own reload hook did not fire in testing). The build identifier (commit short hash · day, VERCEL_GIT_COMMIT_SHA on Vercel, git locally, FLAVORWORDS_BUILD_ID override for tests) is shown at the end of About and set on <html data-build>. Verified in the built preview: with the old code a new build's worker took control but the page stayed on the old build; with the new code the page reloaded to the new build within seconds of it appearing (navigation type reload) across two consecutive builds. Language: on first open the app follows the device's primary language — Chinese devices get 中文, everyone else English — and a manual switch is remembered on the device (localStorage, guarded); <html lang> follows; the portfolio screenshot script pins zh-CN so the Chinese screens stay the reference.",
+      "owner_words": "有一个问题，pwa 没有同步更新，我们是否应该在 pwa 的 homepage，也就是下载的位置，做一个 icon，功能是手动拉取更新？还是 pwa 后续会自动和网页版同步 … 我们需要这个 feature，这样能确保用户用到最新版本，否则现在的状况会造成严重的体验问题。完成后推送到 main … 另一个需要加的应该是语言检查，本机是中文还是英文，因为有些英语用户可能不想打开就是中文。这个我希望可以做到",
+      "applied": {
+        "data": "none",
+        "code": "apps/pwa/vite.config.ts (registerType prompt, injectRegister null, cleanupOutdatedCaches, clientsClaim, __BUILD_ID__ define); apps/pwa/src/update.ts; main.ts; App.vue watcher + update line; AboutDrawer.vue version line; view.ts shell strings updateReady / version; store.ts initialLocale + persisted toggle + html lang; scripts/capture-portfolio-screenshots.mjs locale zh-CN; vite-env.d.ts",
+        "verified": "vue-tsc; pwa build; update path in the built preview across three test builds; language toggle persistence in the preview; web gate",
+        "open": [
+          "the paused-flow line was verified by code reading only: the preview pane reloads the tab on every build, which discards the paused state before the line can be observed",
+          "the English-by-default path was verified by reasoning: the pane reports zh-CN and its device language cannot be emulated here"
+        ],
+        "owner_follow_up": ""
+      },
+      "recorded_at_utc": "2026-09-17T08:30:00Z"
     }
   ],
   "guards": {
