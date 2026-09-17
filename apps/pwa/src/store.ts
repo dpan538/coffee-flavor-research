@@ -59,10 +59,14 @@ export const COLORS: Record<string, string> = {
   escalation: "#8C4A4C",
   hero: "#A995E3",
 };
-export const COLLECT_MS = 520;
+/** the pause between a tap and the card folding away: long enough to read the highlight, short enough not to lag
+ *  (520 → 240 ms after users reported the flow as sluggish, owner 2026-09-17) */
+export const COLLECT_MS = 240;
 
 export const locale = ref<Locale>("zh-CN");
 export const stage = ref<Stage>("hero");
+/** a flow left through the wordmark or the exit button: the home page offers 继续 until 开始 or 首页 clears it (owner, 2026-09-17) */
+export const paused = ref<Stage | null>(null);
 export const aboutOpen = ref(false);
 export const online = ref(
   typeof navigator === "undefined" ? true : navigator.onLine,
@@ -138,10 +142,27 @@ export function toggleLocale() {
 }
 
 export function start() {
+  paused.value = null;
+  session.value = null;
+  screen.value = null;
   stage.value = "context";
   draftContext.value = {};
   contextIndex.value = 0;
   collected.value = [];
+}
+
+/** the wordmark and the exit button: back to the home page, the flow kept for 继续 */
+export function exitToHome() {
+  if (stage.value === "hero") return;
+  paused.value = stage.value;
+  stage.value = "hero";
+}
+
+/** 继续: back into the flow exactly where it was left */
+export function resume() {
+  if (!paused.value) return;
+  stage.value = paused.value;
+  paused.value = null;
 }
 
 /** value(s) chosen on the current context card, as a list */
@@ -242,6 +263,7 @@ export function submitQ6(dimensions: string[]) {
 }
 
 export function home() {
+  paused.value = null;
   session.value = null;
   screen.value = null;
   collected.value = [];
