@@ -36,11 +36,37 @@ class Inventory:
     query: str
 
 
+# The registered hashes pin the exact bytes of the inventories, and two things about those bytes used to come from the
+# machine instead of the database (found 2026-09-20: the replay passed on the Linux container and failed on macOS, on
+# committed main as well):
+#   - the row order: ORDER BY on text follows the database's default collation. The registered order is glibc's
+#     en_US.utf8, which ignores punctuation and spaces at the first level ("row_count": 1777 sorts before
+#     "row_count": 17); macOS sorts the same rows differently. FREEZE_ORDER names that order explicitly: an ICU
+#     collation with punctuation ignored (alternate = shifted), ties broken by byte order. It reproduces the registered
+#     order of all ten inventories, the 14,532-row language corpus included, on either platform.
+#   - timestamps: to_jsonb renders timestamptz in the session's time zone; the registered bytes are UTC.
+# The collation lives in pg_temp, so the replay database's schema (and its guard counts) are untouched.
+FREEZE_ORDER = "pg_temp.round3i_freeze_order"
+SESSION_SETUP = (
+    "SET TIME ZONE 'UTC';\n"
+    f"CREATE COLLATION {FREEZE_ORDER} "
+    "(provider = icu, locale = 'und-u-ka-shifted');\n"
+)
+
+
+def freeze_order(*columns: str) -> str:
+    """ORDER BY terms for text columns: the registered order first, byte order for ties."""
+    return ", ".join(
+        f'{column} COLLATE {FREEZE_ORDER}, {column} COLLATE "C"'
+        for column in columns
+    )
+
+
 def json_row_query(relation: str) -> str:
     return f"""
         SELECT to_jsonb(item)::TEXT AS record_json
         FROM {relation} AS item
-        ORDER BY to_jsonb(item)::TEXT
+        ORDER BY {freeze_order("to_jsonb(item)::TEXT")}
     """
 
 
@@ -55,7 +81,7 @@ INVENTORIES = (
         "round3i.freeze.source-inventory",
         "SOURCE_INVENTORY",
         "SOURCE_INVENTORY.tsv",
-        """
+        f"""
         SELECT record_type, record_key, record_json
         FROM (
           SELECT 'evidence_source_family'::TEXT AS record_type,
@@ -72,14 +98,14 @@ INVENTORIES = (
           SELECT 'language_source', language_source_key, to_jsonb(item)::TEXT
           FROM corpus.language_source AS item
         ) AS inventory
-        ORDER BY record_type, record_key, record_json
+        ORDER BY {freeze_order('record_type', 'record_key', 'record_json')}
         """,
     ),
     Inventory(
         "round3i.freeze.raw-file-manifest",
         "RAW_FILE_MANIFEST",
         "RAW_FILE_MANIFEST.tsv",
-        """
+        f"""
         SELECT record_type, record_key, record_json
         FROM (
           SELECT 'relationship_source_file'::TEXT AS record_type,
@@ -106,14 +132,14 @@ INVENTORIES = (
           CROSS JOIN LATERAL jsonb_array_elements(source.source_file_manifest)
                WITH ORDINALITY AS manifest(manifest_item, ordinality)
         ) AS inventory
-        ORDER BY record_type, record_key, record_json
+        ORDER BY {freeze_order('record_type', 'record_key', 'record_json')}
         """,
     ),
     Inventory(
         "round3i.freeze.sensory-inventory",
         "SENSORY_INVENTORY",
         "SENSORY_INVENTORY.tsv",
-        """
+        f"""
         SELECT record_type, record_key, record_json
         FROM (
           SELECT 'current_sensory_partition'::TEXT AS record_type,
@@ -128,7 +154,7 @@ INVENTORIES = (
                  to_jsonb(item)::TEXT
           FROM audit.model_prebuild_range_evidence_summary AS item
         ) AS inventory
-        ORDER BY record_type, record_key, record_json
+        ORDER BY {freeze_order('record_type', 'record_key', 'record_json')}
         """,
     ),
     Inventory(
@@ -342,7 +368,7 @@ def run_psql(database: str, sql: str, *, tuples_only: bool = False) -> bytes:
 
 def export_query(database: str, query: str, output_path: Path) -> int:
     copy_sql = (
-        "SET enable_nestloop = off;\nSET jit = off;\nCOPY (\n"
+        "SET enable_nestloop = off;\nSET jit = off;\n" + SESSION_SETUP + "COPY (\n"
         + query.strip()
         + "\n) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, DELIMITER E'\\t', "
         + "ENCODING 'UTF8');\n"
