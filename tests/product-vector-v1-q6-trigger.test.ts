@@ -170,7 +170,7 @@ const RECIPES: Array<{
       c2_process: "natural",
     },
     answers: { Q0: "B", Q1: "B", Q2: "A", Q3: "A", Q4: "A", Q5: "A" },
-    tap: ["榛果巧克力", "巧克力酱", "杏仁", "蜂蜜", "焦糖"],
+    tap: ["提拉米苏", "杏仁", "牛奶巧克力", "牛轧糖", "枫糖"],
   },
   {
     name: "3 浅烘 手冲 · 水洗 瑰夏 · 埃塞俄比亚",
@@ -182,13 +182,13 @@ const RECIPES: Array<{
       c2_origin: "ethiopia",
     },
     answers: { Q0: "A", Q1: "C", Q2: "A", Q3: "C", Q4: "C", Q5: "D" },
-    tap: ["车厘子", "水蜜桃", "柠檬", "白巧克力", "甜橙"],
+    tap: ["白桃", "草莓", "佛手柑", "橘子糖", "甜橙"],
   },
   {
     name: "4 中烘 法压",
     context: { c0_preparation: "french_press", c1_roast: "medium" },
     answers: { Q0: "B", Q1: "C", Q2: "A", Q3: "B", Q4: "C", Q5: "A" },
-    tap: ["蔓越莓", "蓝莓", "草莓", "蜂蜜", "焦糖"],
+    tap: ["葡萄干", "黄桃", "蔓越莓", "蔗糖", "蜂蜜"],
   },
   {
     name: "5 中浅烘 冷萃 · 日晒",
@@ -198,7 +198,7 @@ const RECIPES: Array<{
       c2_process: "natural",
     },
     answers: { Q0: "B", Q1: "C", Q2: "B", Q3: "A", Q4: "A", Q5: "C" },
-    tap: ["草莓", "牛奶巧克力", "血橙", "橙花", "葡萄"],
+    tap: ["蓝莓", "巧克力酱", "血橙", "橙花", "秋月梨"],
   },
   {
     name: "6 中深烘 摩卡壶 · 水洗 铁皮卡 · 巴西",
@@ -210,7 +210,7 @@ const RECIPES: Array<{
       c2_origin: "brazil",
     },
     answers: { Q0: "B", Q1: "C", Q2: "B", Q3: "B", Q4: "C", Q5: "C" },
-    tap: ["提拉米苏", "白桃", "甜橙", "曲奇饼干", "车厘子"],
+    tap: ["曲奇饼干", "荔枝", "甜橙", "花生", "白桃"],
   },
   {
     name: "7 浅烘 爱乐压 · 厌氧 (Path 3)",
@@ -220,7 +220,7 @@ const RECIPES: Array<{
       c2_process: "anaerobic",
     },
     answers: { Q0: "A", Q1: "A", Q2: "B", Q3: "A", Q4: "B", Q5: "A" },
-    tap: ["玉兰花", "血橙", "曲奇饼干", "青柠", "牛奶巧克力"],
+    tap: ["玉兰花", "血橙", "花生", "青柠", "榛果巧克力"],
   },
 ];
 

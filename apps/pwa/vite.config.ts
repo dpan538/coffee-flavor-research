@@ -22,11 +22,25 @@ function buildId(): string {
   return `${sha} · ${new Date().toISOString().slice(0, 10)}`;
 }
 
+const BUILD_ID = buildId();
+
 export default defineConfig({
   root: here("."),
   publicDir: here("public"),
   plugins: [
     vue(),
+    {
+      // version.json names the build the server is offering; the app reads it from the network (never from the
+      // service worker's cache) to notice that it is running an older one — see src/update.ts
+      name: "flavorwords-version-file",
+      generateBundle() {
+        this.emitFile({
+          type: "asset",
+          fileName: "version.json",
+          source: JSON.stringify({ build: BUILD_ID }),
+        });
+      },
+    },
     VitePWA({
       // "prompt": a new build waits until the app applies it (src/update.ts), instead of taking over mid-session
       registerType: "prompt",
@@ -81,6 +95,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,json,svg,png,woff2}"],
+        globIgnores: ["version.json"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
       },
@@ -92,6 +107,6 @@ export default defineConfig({
       "flavor-data": here("../../packages/flavor-data/src"),
     },
   },
-  define: { __BUILD_ID__: JSON.stringify(buildId()) },
+  define: { __BUILD_ID__: JSON.stringify(BUILD_ID) },
   build: { outDir: here("dist"), emptyOutDir: true },
 });

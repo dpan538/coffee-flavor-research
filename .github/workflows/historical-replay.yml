@@ -36,10 +36,12 @@ jobs:
           --health-retries 12
 
     steps:
+      # No Git LFS (2026-09-20). While the two source-assertion ledgers lived in LFS this checkout needed git inside
+      # the postgres container, which has none: the scheduled run failed with "Unable to locate executable file: git"
+      # before the replay started. The ledgers are xz archives in plain git now; db/scripts/ci-verify.sh writes them
+      # back and verifies their SHA-256 before anything reads them.
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          lfs: true # the 77K / 83K source-assertion ledgers live in Git LFS
 
       - name: Install Python for deterministic artifact verification
         run: |

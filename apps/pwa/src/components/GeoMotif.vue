@@ -1,8 +1,15 @@
+<script lang="ts">
+/** the last home row drawn in this visit, so the next appearance differs */
+const lastHomeSignature = { value: "" };
+</script>
+
 <script setup lang="ts">
 // The geometric kit (owner, 2026-09-12): flat shapes on 30 × 30 tiles, every shape inside its box, three compositions
 // that share one language but are not the same row —
 //   card:  a row of small tiles in the confirmed words' feature colours (quarter, circle, half, triangle, diamond);
-//   home:  five flat shapes in the bright palette, a different sequence from the card's;
+//   home:  the five simple shapes in the bright palette — half, triangle, circle, quarter, diamond (owner, 2026-09-18:
+//          simple geometry only; drops, leaves, bars and the like were ruled out before) — drawn anew every time the
+//          home page appears: their order, their turn and the order of the five home colours change;
 //   about: five flat shapes in the muted palette, another sequence (no coloured grounds — owner: too much contrast).
 import { computed } from "vue";
 
@@ -18,6 +25,8 @@ type Tile = {
     | "ring"
     | "petals"
     | "bars";
+  /** quarter turns, for the shapes that read differently when turned */
+  rot?: number;
 };
 const props = withDefaults(
   defineProps<{
@@ -43,20 +52,47 @@ const CARD_SHAPES: Tile["shape"][] = [
   "triangle",
   "diamond",
 ];
-const layout = computed<{ cols: number; rows: number; tiles: Tile[] }>(() => {
-  if (props.variant === "home") {
-    return {
-      cols: 5,
-      rows: 1,
-      tiles: [
-        { fg: "#7268C9", shape: "half" },
-        { fg: "#E4724B", shape: "triangle" },
-        { fg: "#2EC27E", shape: "circle" },
-        { fg: "#FFB300", shape: "quarter" },
-        { fg: "#1F3B5C", shape: "diamond" },
-      ],
-    };
+const HOME_COLORS = ["#7268C9", "#E4724B", "#2EC27E", "#FFB300", "#1F3B5C"];
+const HOME_SHAPES: Tile["shape"][] = [
+  "half",
+  "triangle",
+  "circle",
+  "quarter",
+  "diamond",
+];
+const TURNS: Partial<Record<Tile["shape"], number[]>> = {
+  quarter: [0, 90, 180, 270],
+  half: [0, 90, 180, 270],
+  triangle: [0, 180],
+};
+function shuffled<T>(items: T[]): T[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j]!, out[i]!];
   }
+  return out;
+}
+function drawHome(): Tile[] {
+  const colors = shuffled(HOME_COLORS);
+  return shuffled(HOME_SHAPES).map((shape, i) => {
+    const turns = TURNS[shape] ?? [0];
+    return {
+      fg: colors[i]!,
+      shape,
+      rot: turns[Math.floor(Math.random() * turns.length)]!,
+    };
+  });
+}
+// one draw per appearance of the component, never the same row twice in a row
+const signature = (tiles: Tile[]) =>
+  tiles.map((t) => `${t.shape}${t.rot ?? 0}${t.fg}`).join("|");
+let homeTiles = drawHome();
+while (signature(homeTiles) === lastHomeSignature.value) homeTiles = drawHome();
+lastHomeSignature.value = signature(homeTiles);
+
+const layout = computed<{ cols: number; rows: number; tiles: Tile[] }>(() => {
+  if (props.variant === "home") return { cols: 5, rows: 1, tiles: homeTiles };
   if (props.variant === "about") {
     return {
       cols: 5,
@@ -104,50 +140,52 @@ const height = computed(
       :transform="`translate(${(i % layout.cols) * (30 + GAP)} ${Math.floor(i / layout.cols) * (30 + GAP)})`"
     >
       <rect v-if="t.bg" width="30" height="30" rx="3" :fill="t.bg" />
-      <path
-        v-if="t.shape === 'quarter'"
-        d="M3 27 V3 A24 24 0 0 1 27 27 Z"
-        :fill="t.fg"
-      />
-      <circle
-        v-else-if="t.shape === 'circle'"
-        cx="15"
-        cy="15"
-        r="11"
-        :fill="t.fg"
-      />
-      <path
-        v-else-if="t.shape === 'half'"
-        d="M3 27 A12 12 0 0 1 27 27 Z"
-        :fill="t.fg"
-        transform="translate(0 -6)"
-      />
-      <path
-        v-else-if="t.shape === 'triangle'"
-        d="M3 27 L15 3 L27 27 Z"
-        :fill="t.fg"
-      />
-      <path
-        v-else-if="t.shape === 'diamond'"
-        d="M15 3 L27 15 L15 27 L3 15 Z"
-        :fill="t.fg"
-      />
-      <circle
-        v-else-if="t.shape === 'ring'"
-        cx="15"
-        cy="15"
-        r="9"
-        fill="none"
-        :stroke="t.fg"
-        stroke-width="5"
-      />
-      <g v-else-if="t.shape === 'petals'" :fill="t.fg">
-        <path d="M3 15 A12 12 0 0 1 15 3 A12 12 0 0 1 3 15 Z" />
-        <path d="M27 15 A12 12 0 0 0 15 27 A12 12 0 0 0 27 15 Z" />
-      </g>
-      <g v-else :fill="t.fg">
-        <rect x="3" y="5" width="24" height="6" rx="3" />
-        <rect x="3" y="19" width="24" height="6" rx="3" />
+      <g :transform="t.rot ? `rotate(${t.rot} 15 15)` : undefined">
+        <path
+          v-if="t.shape === 'quarter'"
+          d="M3 27 V3 A24 24 0 0 1 27 27 Z"
+          :fill="t.fg"
+        />
+        <circle
+          v-else-if="t.shape === 'circle'"
+          cx="15"
+          cy="15"
+          r="11"
+          :fill="t.fg"
+        />
+        <path
+          v-else-if="t.shape === 'half'"
+          d="M3 27 A12 12 0 0 1 27 27 Z"
+          :fill="t.fg"
+          transform="translate(0 -6)"
+        />
+        <path
+          v-else-if="t.shape === 'triangle'"
+          d="M3 27 L15 3 L27 27 Z"
+          :fill="t.fg"
+        />
+        <path
+          v-else-if="t.shape === 'diamond'"
+          d="M15 3 L27 15 L15 27 L3 15 Z"
+          :fill="t.fg"
+        />
+        <circle
+          v-else-if="t.shape === 'ring'"
+          cx="15"
+          cy="15"
+          r="9"
+          fill="none"
+          :stroke="t.fg"
+          stroke-width="5"
+        />
+        <g v-else-if="t.shape === 'petals'" :fill="t.fg">
+          <path d="M3 15 A12 12 0 0 1 15 3 A12 12 0 0 1 3 15 Z" />
+          <path d="M27 15 A12 12 0 0 0 15 27 A12 12 0 0 0 27 15 Z" />
+        </g>
+        <g v-else :fill="t.fg">
+          <rect x="3" y="5" width="24" height="6" rx="3" />
+          <rect x="3" y="19" width="24" height="6" rx="3" />
+        </g>
       </g>
     </g>
   </svg>

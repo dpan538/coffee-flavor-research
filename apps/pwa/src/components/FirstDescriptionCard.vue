@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// 3 + 5 words on a cream card, then the 8-choose-5 matrix (implicit strong feedback).
+// 3 + 5 words on a cream card, then the pick matrix (implicit strong feedback): three to five of the eight — five is
+// suggested, three are enough to confirm (owner, 2026-09-20: "这次我只能选出四个符合我口味的").
 import { computed, ref } from "vue";
 import type { FirstDescriptionCardModel } from "flavor-data/product-vector-v1/view";
 import type { Word } from "flavor-data/product-vector-v1/flow";
@@ -9,6 +10,7 @@ const props = defineProps<{ model: FirstDescriptionCardModel }>();
 const chosen = ref<Word[]>([]);
 const all = computed(() => [...props.model.main, ...props.model.secondary]);
 const full = computed(() => chosen.value.length >= props.model.pickCount);
+const enough = computed(() => chosen.value.length >= props.model.pickMin);
 const submitLabel = computed(() =>
   locale.value === "zh-CN" ? "确认风味卡" : "Confirm my card",
 );
@@ -27,7 +29,7 @@ function toggle(word: Word) {
       <h2
         v-if="model.profileTitle"
         class="text-2xl"
-        :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+        :class="locale === 'zh-CN' ? 'display-zh' : 'display-en'"
       >
         ［{{ model.profileTitle }}］
       </h2>
@@ -63,7 +65,7 @@ function toggle(word: Word) {
         <button
           type="button"
           class="cta"
-          :disabled="!full"
+          :disabled="!enough"
           @click="submitPickedWords(chosen)"
         >
           {{ submitLabel }}

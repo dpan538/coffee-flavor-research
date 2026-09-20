@@ -37,7 +37,7 @@ const parts = computed(() =>
         <div class="flex items-start justify-between gap-3">
           <h2
             class="text-[22px] leading-tight"
-            :class="shell.localeSwitch === 'EN' ? 'display-zh' : 'display'"
+            :class="shell.localeSwitch === 'EN' ? 'display-zh' : 'display-en'"
           >
             {{ shell.installTitle }}
           </h2>

@@ -22,17 +22,17 @@ SRC = ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1"
 # strings that live in Vue components (not in the bundle, not in view.ts / about.ts)
 COMPONENT_STRINGS = {
     "首页 App.vue": [("两个按钮", "开始 ｜ 关于", "Start ｜ About"), ("几何图形（三套组合共用一种语言）", "首页：四格邮票带（色底 + 奶白形）；About：六格拼布；风味卡：按所选词特征色的一排小格（四分圆 / 圆 / 半圆 / 三角 / 菱形），形状都在格内", "home: a four-tile stamp band (coloured ground + cream shape); About: a six-tile quilt; card: a row of small tiles in the words' colours (quarter / circle / half / triangle / diamond), every shape inside its box"), ("大标题", "Every taste has its own vocabulary.（taste 五个字母各一种高亮色）", "Every taste has its own vocabulary. (the five letters of taste, one bright colour each)")],
-    "风味卡 FlavorCard（终卡）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords")],
+    "风味卡 FlavorCard（终卡）": [("三层", "上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：风味词等大、一行多个（英文首字母大写），其下一行评价（维度 + 词，至多 3 项）；下：参考风味 · 分组名 ｜ flavorwords。卡片保持接近正方形", "top: Brew / Roast / Variety / Process / Origin (entered only); middle: the words at equal weight, several to a line (capitalised in English), then one line of evaluation pairs (dimension + word, at most 3); bottom: Reference · group ｜ flavorwords. The card stays close to square")],
     "语境卡 ContextSetupCard": [
         ("小标签", "这杯咖啡", "This cup"),
         ("单品 / 拼配切换后缀", "≤ 3", "≤ 3"),
         ("下一步 / 跳过 / 已选", "下一步 ｜ 跳过 ｜ 已选", "Next ｜ Skip ｜ chosen"),
         ("产地分组标题", "非洲 ｜ 亚洲 ｜ 美洲", "Africa ｜ Asia ｜ Americas"),
     ],
-    "题卡 QuizCard": [("小标签", "这一口", "This sip")],
+    "题卡 QuizCard": [("小标签", "这一口", "This cup"), ("选项与小字", "每题至多 5 个选项（见 7.2）；选项下方一行小字承接答不上来的读者", "five options at most (see 7.2); a quiet line under the options for a reader who cannot answer"), ("进度条 aria", "答题进度：点已答的题可返回修改 ｜ 修改第 n 题 ｜ 回到第 n 题，其余答案不变 ｜ 回到风味描述，答案不变", "Progress: tap an answered question to change it ｜ Change question n ｜ Back to question n, other answers unchanged ｜ Back to the description, answers unchanged"), ("上次的选择", "上次选的", "your last pick")],
     "第一次出卡 FirstDescriptionCard": [("提交按钮", "确认风味卡", "Confirm my card")],
     "Q6 EscalationModal": [("小标签", "再看一眼", "One more look")],
-    "终卡 FinalAttributionCard": [("再确认后的标记", "已确认", "confirmed"), ("参考行前缀", "参考风味", "Reference"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享（导出 1200×1200 PNG）", "Home ｜ Start over ｜ Share (exports a 1200×1200 PNG)"), ("操作区 aria", "操作", "Actions"), ("PNG 上的字", "风味卡 ｜ 参考风味 · … ｜ flavorwords", "FLAVOR CARD ｜ Reference · … ｜ flavorwords")],
+    "终卡 FinalAttributionCard": [("参考行前缀", "参考风味", "Reference"), ("底部 icon aria", "首页 ｜ 重新体验 ｜ 分享（导出 1200×2500 PNG）", "Home ｜ Start over ｜ Share (exports a 1200×2500 PNG)"), ("操作区 aria", "操作", "Actions"), ("PNG 上的字（1200×2500 邮票：透明背景、齿孔边，上白下深蓝；不写「风味卡」，没有小标题；布局固定）", "FLAVOR WORDS ｜ 五个图形 ｜ 风味词（最大；英文用 Fraunces 300，其余英文不变）｜ No. 序号 · 日期 ｜ flavorwords.com ｜ 评价各行 + 参考风味 ｜ 冲煮 / 烘焙 / 豆种 / 处理 / 产地 ｜ 补充描述（两句，不称「你」，与标语一起贴底）｜ Every taste has its own vocabulary.（一行）", "FLAVOR WORDS ｜ five shapes ｜ the words (largest; Fraunces 300 in English, other English unchanged) ｜ No. serial · date ｜ flavorwords.com ｜ evaluation rows + Reference ｜ Brew / Roast / Variety / Process / Origin ｜ supplementary description (two sentences, never \"your\", anchored to the bottom with the slogan) ｜ Every taste has its own vocabulary. (one line)")],
     "上方堆叠 CollectedStack": [("勾选卡标题", "候选风味描述", "Candidate descriptions"), ("收集中 aria", "收集中", "collecting")],
     "机器阅读层（index.html / public）": [("页面标题 / 描述", "flavorwords — Put this cup into words ｜ Every taste has its own vocabulary. 从酸质、香气与口感开始……", "same; JSON-LD WebApplication, noscript summary, llms.txt, robots, sitemap, humans"), ("manifest", "flavorwords — Put this cup into words ｜ Every taste has its own vocabulary. A few questions turn what you taste into a flavor card. Works offline.", "same")],
     "About 抽屉 AboutDrawer（五页）": [
@@ -153,6 +153,48 @@ def main() -> int:
     rows = [("初始参考句模板", P["evidence_labels"]["REFERENCE_BASIS"]["zh-CN"], P["reference_basis_templates"]["zh-CN"]["text"] + " " + P["reference_basis_templates"]["zh-CN"]["explain"], P["reference_basis_templates"]["en"]["text"] + " " + P["reference_basis_templates"]["en"]["explain"], "engine")]
     rows += [(s["context_id"], P["evidence_labels"].get(s["evidence_state"], {}).get("zh-CN", "（不上屏：" + s["evidence_state"] + "）") if s["evidence_state"] in P["displayable_evidence_states"] else "（不上屏：" + s["evidence_state"] + "）", s["zh-CN"], s["en"], (s.get("source_title") or "").split(" — ")[0]) for s in P["context_statements"]]
     md += [table(["语境", "标签", "中文", "English", "出处"], rows), ""]
+
+    md += ["### 7.1 卡片说明的句式（card_notes，2026-09-18；2026-09-19 改写）", "",
+           "「关于这段描述」里三类说明的全部句式。每个句式中英各三种说法、位置一一对应；引擎用与语言无关的种子选同一个序号，所以同一张卡在两种语言里说的是同一件事、同一组数字。数字来自评审资料的出现比例（corpus_stats）。",
+           "2026-09-19（owner）：资料统计只出一条，取最能说明问题的那一个统计；只用平常话给结论（「比一般咖啡更常见 / 差不多 / 更少见」），不出现任何数字——2026-09-20（owner）：「738 款中每 10 款约 4 款…平均约 3 款」会让读者觉得信息被过度平均、怀疑过拟合；「更常 / 更少」需要至少 10 个点的差距。初始参考同样只说方向，不带数字。", ""]
+    notes = P["card_notes"]
+    names = {"reference_frame": "初始参考：句子框架", "reference_clause_up_down": "初始参考分句：更常 + 更少", "reference_clause_up": "初始参考分句：更常", "reference_clause_down": "初始参考分句：更少",
+             "frequency": "频率", "frequency_again": "频率（同一句里第二次）", "frequency_under": "频率：不足 1", "frequency_again_under": "频率（第二次）：不足 1", "reference_typical": "初始参考：与一般咖啡接近",
+             "reference_none": "初始参考：没有可用记录", "reference_left_out": "初始参考：未计入的选项", "support": "资料统计：支持确认的词", "neutral": "资料统计：与一般咖啡相当",
+             "contrast": "资料统计：与这类咖啡的常态不同", "moved_both": "你的描述：有升有降", "moved_up": "你的描述：只有上升", "moved_down": "你的描述：只有下降",
+             "moved_none": "你的描述：接近初始参考", "words_both": "你的描述：词的来源（两类）", "words_own": "你的描述：词来自回答", "words_shared": "你的描述：词与初始参考一致", "second_look": "你的描述：第二次确认", "card_both": "导出卡补充描述：有升有降", "card_up": "导出卡补充描述：只有上升", "card_down": "导出卡补充描述：只有下降", "card_none": "导出卡补充描述：接近参考", "card_words_both": "导出卡补充描述：词的来源（两类）", "card_words_own": "导出卡补充描述：词来自这一偏向", "card_words_shared": "导出卡补充描述：词与参考一致", "structure_high": "资料统计：同烘焙度内的香气 / 余韵对照", "structure_aroma": "对照里的「香气」", "structure_aftertaste": "对照里的「余韵」", "structure_espresso": "对照里的「意式」"}
+    rows = []
+    for key, label in names.items():
+        a_list, b_list = notes["zh-CN"][key], notes["en"][key]
+        if isinstance(a_list, str):
+            rows.append((label, a_list, b_list))
+            continue
+        for i, (a, b) in enumerate(zip(a_list, b_list), 1):
+            rows.append((f"{label} · {i}", a, b))
+    md += [table(["句式", "中文", "English"], rows), ""]
+
+    bank = B.get("dynamic_bank")
+    if bank:
+        md += ["### 7.2 动态题库（dynamic_bank，R3-D40 / R3-D44）", "",
+               "应用现在运行的题目。每题至多显示 5 个选项：语料只剪枝（留下这类咖啡最常见的 4 个），不排序；第五个选项写清楚「不突出」；选项下方一行小字承接答不上来的读者。同一个选项的几种说法用「 ‖ 」分开，由会话种子选定、中英文取同一个序号；标签里的 {examples} 由该类咖啡语料里最常见的两三个词填入。源文件：`db/data/product-vector-v1/DYNAMIC_QUESTION_BANK.tsv`。", ""]
+        names_q = {"A": "核心 1 · 酸与水果", "B": "核心 2 · 香气主调", "C": "核心 3 · 甜", "D": "核心 4 · 口感（按冲煮方式给窗口，不按语料）", "S": "第二级 · 更像哪一个", "E1": "追问 · 香气有多明显", "E2": "追问 · 咽下去之后的余韵", "E3": "追问 · 苦感", "E4": "追问 · 整体印象（答案矛盾时）"}
+        rows = []
+        for qid, title in names_q.items():
+            pr = bank["prompts"][qid]
+            rows.append((f"**{title}** · 题面", pr["zh-CN"] + (f"（承接上一题时：……，{pr['tail']['zh-CN']}）" if pr.get("tail") else ""), pr["en"] + (f" (after a lead-in: … {pr['tail']['en']})" if pr.get("tail") else "")))
+            for o in bank["options"][qid]:
+                if qid == "S" and o["role"] == "word":
+                    continue
+                role = {"fifth": "第五个选项", "unanswered": "下方小字", "always": "常驻", "default_light": "浅烘默认显示"}.get(o["role"], "")
+                rows.append((f"{o['id']}" + (f"（{role}）" if role else ""), " ‖ ".join(o["label"]["zh-CN"]) + (f"　〔承接语：{o['lead_in']['zh-CN']}〕" if o.get("lead_in") else ""),
+                             " ‖ ".join(o["label"]["en"]) + (f"  [lead-in: {o['lead_in']['en']}]" if o.get("lead_in") else "")))
+        words = {}
+        for o in bank["options"]["S"]:
+            if o["role"] == "word":
+                words.setdefault(o["parent"], []).append((o["label"]["zh-CN"][0], o["label"]["en"][0]))
+        for parent, items in words.items():
+            rows.append((f"第二级 · {parent} 的词（显示语料支持最多的 5 个）", "、".join(z for z, _ in items), ", ".join(e for _, e in items)))
+        md += [table(["项", "中文", "English"], rows), ""]
 
     md += ["## 8. About（about.ts，经执行导出）", ""]
     rows = [("页面小标题", zh["title"]["title"], en["title"]["title"]), ("Eyebrow", zh["approach"]["eyebrow"], en["approach"]["eyebrow"]), ("标题", zh["approach"]["title"], en["approach"]["title"])]

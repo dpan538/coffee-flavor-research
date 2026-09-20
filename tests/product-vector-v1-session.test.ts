@@ -181,7 +181,8 @@ describe("product-vector-v1 session", () => {
       "en",
     );
     const card = nextStep(createSession(LIGHT, "en"));
-    if (card.kind === "ask") expect(card.card.prompt).toMatch(/acidity/i);
+    // plain spoken English in sentence case (R3-D35)
+    if (card.kind === "ask") expect(card.card.prompt).toMatch(/sour or tangy/i);
     s = firstDescription(s);
     s = submitPicks(s, s.description!.all.slice(0, 5));
     expect(s.card!.closing).toContain("enjoy");

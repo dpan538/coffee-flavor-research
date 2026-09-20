@@ -34,7 +34,7 @@ review sources
 
 ```mermaid
 flowchart LR
-    C["Context\nbrew · roast · variety · process · origin"] --> Q["Six guided questions"]
+    C["Context\nbrew · roast · variety · process · origin"] --> Q["Up to six guided questions"]
     Q --> D["Eight flavor words\nkeep five"]
     D -->|answers agree| F["Flavor card"]
     D -->|answers disagree| Q6["One more look"]
@@ -45,10 +45,16 @@ flowchart LR
 1. **Say how the cup was made.** Brewing method, roast, variety, process and,
    if known, origin. This sets a starting reference from the corpus; it is not
    a verdict.
-2. **Answer six plain questions** about acidity, aroma, sweetness, mouthfeel,
-   bitterness and overall impression. Each question is rephrased from the
-   previous answer, the options are re-ordered to fit this cup, and every
-   question has an "I can't tell" exit.
+2. **Answer up to six plain questions.** Four core ones — acidity and fruit,
+   aroma, sweetness, mouthfeel — then two follow-ups chosen for this cup:
+   which citrus or which berry it was, bitterness, how clear the aroma is, what
+   stays after swallowing, or the overall impression when the answers
+   disagree. Each question is rephrased from the previous answer and shows five
+   options at most: the corpus prunes a larger pool to what this kind of coffee
+   is usually described with, without sorting it, and the fifth option says
+   what it means ("acidity doesn't stand out; the cup feels round") instead of
+   a bare "not noticeable". A quiet line under the options is the exit for a
+   drinker who cannot answer.
 3. **Pick five of eight flavor words.** Concrete references rather than
    adjectives: 葡萄柚, 茉莉花, 黑巧克力, 丝绒奶油. The drinker's picks carry more
    weight than the reference.
@@ -217,6 +223,46 @@ atlas prototype and the adaptive-question line are archived, not deleted; the
 checkpoint history is in the
 [project timeline](./docs/portfolio/PROJECT_TIMELINE.md).
 
+## How a card is made
+
+The whole method in six steps. Nothing here measures the coffee: the app
+helps a drinker find words for what they taste, and says where each word
+came from.
+
+1. **A starting point from the cup's context.** Brew method and roast (and,
+   if known, process, variety, origin) give what coffees like this are usually
+   described with in the reviewed corpus. It is a prior, never a verdict.
+2. **The drinker's signals.** Four questions — acidity and fruit, the main
+   aroma, sweetness, mouthfeel — then at most two follow-ups chosen by the
+   answers (which fruit exactly, bitterness, aftertaste, aroma, the overall
+   impression). A question shows four options; only the first two questions
+   show five, the fifth being "I can't say", which changes nothing. The
+   options differ by kind of coffee: pruned by the corpus, never sorted by it,
+   and none of them refers back to an earlier question.
+3. **One vector.** The answers become weights over twelve flavor dimensions
+   and are blended, half and half, with the starting point. Whether the
+   answers agree with each other decides which follow-ups are asked, and
+   whether step 5 may ask for a confirmation.
+4. **Eight candidate words.** Each dimension gets word slots in proportion to
+   its weight. Which words fill them follows the drinker first: the very word
+   they chose; then the kind they pointed to; kinds of fruit they were shown
+   and passed over go last; a drinker who said "citrus" gets citrus words for
+   the fruit in that answer. Only where the drinker said nothing does the data
+   speak: a word leads if similar reviewed coffees mention it clearly more
+   often than coffee in general does — otherwise the cup's own rotation picks,
+   spread across sub-families so near-identical words do not crowd a card.
+5. **The drinker picks five.** If the picks side with the drinker's own
+   answers against the starting point after conflicting answers, one
+   confirmation step asks which flavors to trust; what the drinker confirms
+   there then outweighs the starting point.
+6. **The card.** The five words, evaluation rows taken from the answers
+   (body, bitterness, aftertaste), the nearest of sixteen reference profiles,
+   and one plain sentence from the review data.
+
+Every step is a pure function of the context, the answers and a seed: the
+same answers give the same card in both languages, and changing an earlier
+answer gives exactly the card a fresh session with the final answers would.
+
 ## How it is built
 
 ```text
@@ -235,6 +281,27 @@ tests/                    vitest suites for the model, session API, lexicon, per
 - **Runtime is deterministic.** Vector arithmetic and rule-based interaction
   over measured matrices; no generative model, and every output traceable.
   k-means is used once, offline, to form the reference profiles.
+- **Similar words: a soft constraint, not a cap.** Some coffees really are
+  built around one kind of flavor, so the card never limits how many of its
+  words may come from one flavor dimension; the dimension weights decide. What
+  the selection does avoid is near-identical words crowding a card by accident
+  of list order (two mandarins, three chocolates): every word belongs to a
+  sub-family, and within a dimension the first word of each sub-family comes
+  before any sub-family's second word. It is a preference, not a rule — a
+  dimension that needs more words than it has sub-families repeats one, and
+  when the drinker's answers point to one sub-family, that sub-family leads
+  and may repeat.
+- **Where the drinker gave no signal: steady what is evident, never what is
+  common.** A flavor dimension the answers did not touch used to take its word
+  from the cup's rotation alone, so a word that is typical of this kind of
+  coffee came and went from card to card. The app now looks at the reviewed
+  coffees nearest to the cup's vector and lets a word lead only when those
+  coffees mention it clearly more often than coffee in general does; every
+  other word keeps its rotation. Words that are common everywhere (orange,
+  cocoa, cedar) gain nothing from being common — ranking by plain frequency
+  was measured and rejected because it put the same few words on most cards.
+  The nearest-coffee index in the app holds a quantised vector and concept
+  indices per record — no names, sources, text or scores.
 - **Knowledge base.** PostgreSQL 17 with forward-only migrations models
   sources, provenance, rights dimensions, duplicate lineage and review
   receipts, so the corpus can be rebuilt and audited.
@@ -242,8 +309,10 @@ tests/                    vitest suites for the model, session API, lexicon, per
   claim contracts and a database gate run locally before each commit and on
   GitHub Actions. Every number in this README carries a marker checked
   against an evidence file.
-- **Deployment.** Vercel builds the PWA from a clean clone; the two largest
-  corpus ledgers are tracked with Git LFS.
+- **Deployment.** Vercel builds the PWA from a clean clone. The two largest
+  corpus ledgers exceed GitHub's file limit and are stored as xz archives in
+  plain git; a script writes them back and verifies their SHA-256, so neither
+  the build nor CI depends on Git LFS.
 
 ```bash
 npm ci
@@ -262,9 +331,11 @@ npm run ci:verify        # full gate (PostgreSQL 17 needed for the database stag
   general-audience sample.** Expert interviews, a cupping study, two
   questionnaire rounds and two pre-launch tasting tests shaped the product; notes stay offline and
   no quotes are published. The app collects no interaction data.
-  Implementation behaviour was also checked: all 18,432 possible answer sequences
-  were enumerated (the extra confirmation step opens for 34.2% of them and
-  never when the answers already agree) <!-- claim: Q6_TRIGGER_RATE --> and a
+  Implementation behaviour was also checked: 9,408 answer sequences of the
+  question bank were enumerated over six kinds of coffee (the extra
+  confirmation step never opens when the answers already agree, and opens for
+  64.1% of the sequences when the five picks lean the drinker's way)
+  <!-- claim: Q6_TRIGGER_RATE --> and a
   324-user simulated query test found a nearest reference above 0.85 cosine
   for 281 of them. <!-- claim: QUERY_HORIZON_TEST --> Neither shows that the
   words are right for a real drinker.
@@ -279,7 +350,7 @@ npm run ci:verify        # full gate (PostgreSQL 17 needed for the database stag
 ## 中文摘要
 
 **产品**：flavorwords.com，中英双语咖啡品鉴应用。说明冲煮方式、烘焙度、豆种、处理法和产地，
-回答六道随上一题变化的问题，从八个具体风味词里选五个，得到一张可导出、可分享的风味卡；
+回答至多六道随上一题变化的问题（四道核心题，加上为这一杯挑选的两道追问），从八个具体风味词里选五个，得到一张可导出、可分享的风味卡；
 离线可用，iOS、安卓、鸿蒙都能添加到桌面。
 
 **为什么做**：喝得出差别，说不出名字。专业词汇散落在杯测表、风味轮和包装描述里，日常场景用不上。
@@ -298,6 +369,12 @@ npm run ci:verify        # full gate (PostgreSQL 17 needed for the database stag
 **研发判断**：更多咖啡记录不一定带来更多可用的风味描述。消费者路线不适合专业词汇目标，
 竞赛档案增加了记录却没有增加描述，于是把观察粒度从咖啡条目改为单条风味描述；早先的自适应
 问答线需要尚不存在的审阅标签，改用从语料实测得到的向量表示后，产品得以双语上线。
+
+**一张风味卡是怎么来的（六步）**：① 语境给出起点——冲煮方式与烘焙度（以及已知的处理法、豆种、产地）对应评审资料里这类咖啡通常被怎样描述，它是先验，不是结论。② 读者的信号——四道题（酸与水果、香气主调、甜、口感），再按回答追问至多两道（具体是哪种水果、苦感、余韵、香气、整体印象）；每题四个选项，只有最前面两题是五个，第五个是「说不上来」，它不改变任何东西；选项随咖啡种类变化，由语料剪枝而不排序，任何选项都不回指前面的题目。③ 合成一个向量——回答折算成十二个风味维度上的权重，与起点各占一半混合；回答彼此是否一致，决定追问哪几道题，也决定第 ⑤ 步会不会多问一步。④ 八个候选词——各维度按权重分到名额，填哪个词先听读者的：读者选中的那个词，其次是读者指到的那一类；水果一题里看过没选的种类排到最后；读者答了柑橘，这个回答里的果香就用柑橘词表达。只有读者没说的地方才让资料说话：相似的评审记录提到某个词明显多于一般水平时，它领先；否则按这一杯自己的轮换取词，并按子类分散，避免相近的词挤在一张卡上。⑤ 读者勾选五个——如果在回答有矛盾之后，勾选又偏向读者自己的回答而背离起点，就多问一步，确认该信哪些风味；读者在这一步确认的内容，权重高于起点。⑥ 成卡——五个词，来自回答的评价行（醇厚度、苦感、余韵），十六组参考风味里最近的一组，以及一句来自评审资料的说明。每一步都是语境、回答与种子的纯函数：同样的回答在两种语言里得到同一张卡，回改某一题得到的卡与用最终答案新开一局完全相同。应用不测定咖啡，只帮读者为喝到的东西找到词，并说明每个词从哪来。
+
+**相近的词：软约束，不设上限**：有些咖啡本来就是围绕同一类风味塑造的，所以风味卡不限制同一维度能出几个词，由维度权重决定。要避免的只是相近的词因为词表顺序而挤在同一张卡上（两个橘子、三个巧克力）：每个词归属一个子类，同一维度里先取各子类的第一个词，再取第二个；这是偏好而不是规则——名额多于子类时允许重复，读者的回答指向某个子类时，由该子类领先并可以重复。
+
+**读者没给信号的词位：稳住明显的，不强化常见的**：回答没有涉及的风味维度，过去只靠这一杯的轮换取词，于是对这类咖啡很典型的词会时有时无。现在应用会查看与这一杯向量最接近的评审记录：只有当这些记录提到某个词的比率明显高于全部咖啡的水平时，这个词才稳定领先；其余的词保持轮换。到处都常见的词（甜橙、可可、雪松）不会因为常见而得到加强——按出现多少直接排序的做法量过并弃用，因为它会让大多数卡片出现同样几个词。随应用下发的近邻索引每条记录只有量化后的向量与概念编号，不含名称、来源、文字与分数。
 
 **技术与边界**：数据构建与应用运行分开，应用只加载一个 JSON 数据包，因此离线和即时切换语言；
 运行时是确定性的向量匹配和规则化交互，不依赖生成式模型。用户研究为专家访谈、杯测与上线前杯测测试，未做普通消费者样本验证，应用不采集交互数据；概念到维度

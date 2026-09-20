@@ -5,6 +5,9 @@ set -euo pipefail
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 source "$SCRIPT_DIR/ci-stage-timing.sh"
 
+# the two source-assertion ledgers are stored as xz archives (no Git LFS); write them back and verify them first
+python3 -B "$SCRIPT_DIR/materialize-large-ledgers.py"
+
 printf 'CI_PHASE=HISTORICAL_PUBLIC_ARTIFACT_AND_CURRENT_CONTRACTS\n'
 ci_timed CURRENT_ARTIFACTS \
   bash "$SCRIPT_DIR/ci-verify-current-artifacts.sh"

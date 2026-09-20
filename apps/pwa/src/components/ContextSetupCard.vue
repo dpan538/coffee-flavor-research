@@ -91,7 +91,7 @@ function labelOf(values: string[]): string {
       </p>
       <h2
         class="text-[32px] rise"
-        :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+        :class="locale === 'zh-CN' ? 'display-zh' : 'display-en'"
       >
         {{ card.title }}
       </h2>

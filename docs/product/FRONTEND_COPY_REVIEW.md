@@ -12,7 +12,7 @@
 | 标题 | 风味，自有表达。 | Put this cup into words. |
 | 段落 | 像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords 帮你找到贴近感受的词，组成这一杯的风味卡。 | Some coffees are easy to taste, but harder to describe. Find the words for what you taste, and bring them together in your own flavor card. |
 | 行动主张 | Put this cup into words. |  |
-| 开始链接（与下方按钮同一动作） | 从这一口开始 | Start with this sip |
+| 开始链接（与下方按钮同一动作） | 从这一口开始 | Start with this cup |
 | 开始按钮 | 开始 | Start |
 | About 按钮 aria | 关于 | About |
 | 语言切换 | EN | 中 |
@@ -64,7 +64,7 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 三层 | 上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：5 个词等大；下：参考风味 · 分组名 ｜ flavorwords | top: Brew / Roast / Variety / Process / Origin (entered only); middle: the 5 words at equal weight; bottom: Reference · group ｜ flavorwords |
+| 三层 | 上：冲煮 / 烘焙 / 豆种 / 处理 / 产地（只列已填的）；中：风味词等大、一行多个（英文首字母大写），其下一行评价（维度 + 词，至多 3 项）；下：参考风味 · 分组名 ｜ flavorwords。卡片保持接近正方形 | top: Brew / Roast / Variety / Process / Origin (entered only); middle: the words at equal weight, several to a line (capitalised in English), then one line of evaluation pairs (dimension + word, at most 3); bottom: Reference · group ｜ flavorwords. The card stays close to square |
 
 #### 语境卡 ContextSetupCard
 
@@ -79,7 +79,10 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 小标签 | 这一口 | This sip |
+| 小标签 | 这一口 | This cup |
+| 选项与小字 | 每题至多 5 个选项（见 7.2）；选项下方一行小字承接答不上来的读者 | five options at most (see 7.2); a quiet line under the options for a reader who cannot answer |
+| 进度条 aria | 答题进度：点已答的题可返回修改 ｜ 修改第 n 题 ｜ 回到第 n 题，其余答案不变 ｜ 回到风味描述，答案不变 | Progress: tap an answered question to change it ｜ Change question n ｜ Back to question n, other answers unchanged ｜ Back to the description, answers unchanged |
+| 上次的选择 | 上次选的 | your last pick |
 
 #### 第一次出卡 FirstDescriptionCard
 
@@ -97,11 +100,10 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 再确认后的标记 | 已确认 | confirmed |
 | 参考行前缀 | 参考风味 | Reference |
-| 底部 icon aria | 首页 ｜ 重新体验 ｜ 分享（导出 1200×1200 PNG） | Home ｜ Start over ｜ Share (exports a 1200×1200 PNG) |
+| 底部 icon aria | 首页 ｜ 重新体验 ｜ 分享（导出 1200×2500 PNG） | Home ｜ Start over ｜ Share (exports a 1200×2500 PNG) |
 | 操作区 aria | 操作 | Actions |
-| PNG 上的字 | 风味卡 ｜ 参考风味 · … ｜ flavorwords | FLAVOR CARD ｜ Reference · … ｜ flavorwords |
+| PNG 上的字（1200×2500 邮票：透明背景、齿孔边，上白下深蓝；不写「风味卡」，没有小标题；布局固定） | FLAVOR WORDS ｜ 五个图形 ｜ 风味词（最大；英文用 Fraunces 300，其余英文不变）｜ No. 序号 · 日期 ｜ flavorwords.com ｜ 评价各行 + 参考风味 ｜ 冲煮 / 烘焙 / 豆种 / 处理 / 产地 ｜ 补充描述（两句，不称「你」，与标语一起贴底）｜ Every taste has its own vocabulary.（一行） | FLAVOR WORDS ｜ five shapes ｜ the words (largest; Fraunces 300 in English, other English unchanged) ｜ No. serial · date ｜ flavorwords.com ｜ evaluation rows + Reference ｜ Brew / Roast / Variety / Process / Origin ｜ supplementary description (two sentences, never "your", anchored to the bottom with the slogan) ｜ Every taste has its own vocabulary. (one line) |
 
 #### 上方堆叠 CollectedStack
 
@@ -155,35 +157,35 @@
 
 | 题 | 位置 | 中文 | English |
 |---|---|---|---|
-| Q0 | 提问 | 喝到酸了吗？是哪一种？ | Any acidity? Which kind? |
-| Q0 | 选项 A | 柑橘 / 青苹果那种酸 | citrus / green-apple acidity |
-| Q0 | 选项 B | 乳酸 / 发酵果酸（像酸奶、水果黄酒） | lactic / fermented-fruit acidity (like yoghurt) |
-| Q0 | 选项 C | 酸感不明显 | acidity not noticeable |
-| Q0 | 选项 D | 酸苦，带点刺激 | sour and bitter, a little sharp |
-| Q1 | 提问 | 闻起来最像什么？ | What does it smell like? |
-| Q1 | 选项 A | 花香、茶感、草本 | floral, tea-like, herbal |
-| Q1 | 选项 B | 坚果、烤面包、烤榛果 | nuts, toast, roasted hazelnut |
-| Q1 | 选项 C | 热带水果，带一点微醺酒香 | tropical fruit with a boozy edge |
-| Q1 | 选项 D | 闻不出明显的香气 | no clear aroma |
-| Q2 | 提问 | 能喝出甜味吗？更像哪一种？ | Do you taste sweetness? Which kind? |
-| Q2 | 选项 A | 清爽的花蜜 / 蔗糖甜 | light nectar or cane-sugar sweetness |
-| Q2 | 选项 B | 浓郁的焦糖 / 黑巧克力 | rich caramel or dark chocolate |
-| Q2 | 选项 C | 熟果、果酱那种浓稠的甜 | ripe-fruit, jammy sweetness |
-| Q2 | 选项 D | 甜感不明显 | hardly any sweetness |
-| Q3 | 提问 | 口感如何？ | How does it feel in the mouth? |
-| Q3 | 选项 A | 清爽，像绿茶或果汁 | light, like green tea or juice |
-| Q3 | 选项 B | 顺滑，像牛奶或丝绒 | smooth, like milk or velvet |
-| Q3 | 选项 C | 厚重，像黑巧或糖浆 | heavy, like dark chocolate or syrup |
-| Q3 | 选项 D | 发涩，像喝了浓茶 | astringent, like strong tea |
-| Q4 | 提问 | 尾段苦吗？ | Bitter at the end? |
-| Q4 | 选项 A | 微苦，像可可或坚果皮 | slightly bitter, like cocoa or nut skin |
-| Q4 | 选项 B | 没有明显苦感 | no noticeable bitterness |
-| Q4 | 选项 C | 苦得明显，像浓缩或炭烧 | clearly bitter, like espresso or charred roast |
-| Q5 | 提问 | 整体更像哪种？ | Overall, which is closer? |
-| Q5 | 选项 A | 味道混在一起，各种风味都有一点 | flavors mixed together, a little of everything |
-| Q5 | 选项 B | 饱满圆润，一致性很高 | full and round, very consistent |
-| Q5 | 选项 C | 能分清楚多种味道，层次明确 | several flavors told apart, clear layers |
-| Q5 | 选项 D | 感觉不错但说不上来 | nice, but hard to say |
+| Q0 | 提问 | 喝到酸了吗？是哪一种？ | Does it taste sour or tangy? What kind? |
+| Q0 | 选项 A | 柑橘 / 青苹果那种酸 | Bright and crisp, like citrus or green apple |
+| Q0 | 选项 B | 乳酸 / 发酵果酸（像酸奶、水果黄酒） | Soft and tangy, like yoghurt or fermented fruit |
+| Q0 | 选项 C | 酸感不明显 | I don't notice any sourness |
+| Q0 | 选项 D | 酸苦，带点刺激 | Sour and bitter together, a little harsh |
+| Q1 | 提问 | 闻起来最像什么？ | What does it smell like most? |
+| Q1 | 选项 A | 花香、茶感、草本 | Flowers, tea or fresh herbs |
+| Q1 | 选项 B | 坚果、烤面包、烤榛果 | Nuts, toast or roasted hazelnut |
+| Q1 | 选项 C | 热带水果，带一点微醺酒香 | Tropical fruit with a boozy edge |
+| Q1 | 选项 D | 闻不出明显的香气 | I can't pick out a clear aroma |
+| Q2 | 提问 | 能喝出甜味吗？更像哪一种？ | Can you taste sweetness? Which kind? |
+| Q2 | 选项 A | 清爽的花蜜 / 蔗糖甜 | Light and clean, like nectar or cane sugar |
+| Q2 | 选项 B | 浓郁的焦糖 / 黑巧克力 | Rich, like caramel or dark chocolate |
+| Q2 | 选项 C | 熟果、果酱那种浓稠的甜 | Thick and jammy, like ripe fruit |
+| Q2 | 选项 D | 甜感不明显 | I don't notice much sweetness |
+| Q3 | 提问 | 口感如何？ | How does it feel in your mouth? |
+| Q3 | 选项 A | 清爽，像绿茶或果汁 | Light, like green tea or juice |
+| Q3 | 选项 B | 顺滑，像牛奶或丝绒 | Smooth, like milk or velvet |
+| Q3 | 选项 C | 厚重，像黑巧或糖浆 | Heavy, like dark chocolate or syrup |
+| Q3 | 选项 D | 发涩，像喝了浓茶 | Drying, like strong black tea |
+| Q4 | 提问 | 尾段苦吗？ | Is the aftertaste bitter? |
+| Q4 | 选项 A | 微苦，像可可或坚果皮 | A little, like cocoa or nut skins |
+| Q4 | 选项 B | 没有明显苦感 | Not really bitter |
+| Q4 | 选项 C | 苦得明显，像浓缩或炭烧 | Clearly bitter, like espresso or charred toast |
+| Q5 | 提问 | 整体更像哪种？ | Overall, how do the flavors come across? |
+| Q5 | 选项 A | 味道混在一起，各种风味都有一点 | Blended together, a bit of everything |
+| Q5 | 选项 B | 饱满圆润，一致性很高 | Full and rounded, all of a piece |
+| Q5 | 选项 C | 能分清楚多种味道，层次明确 | In clear layers, easy to tell apart |
+| Q5 | 选项 D | 感觉不错但说不上来 | Pleasant, but hard to put into words |
 
 ### 承接上一题的提问变体（bundle.question_flow.prompt_variants）
 
@@ -191,25 +193,25 @@
 
 | 题 | 条件 | 中文 | English |
 |---|---|---|---|
-| Q1 | 上一题 Q0 = A | 柑橘那种酸之后，闻起来最像什么？ | With that citrus acidity, what does it smell like? |
-| Q1 | 上一题 Q0 = B | 乳酸那种酸之后，闻起来最像什么？ | With that lactic acidity, what does it smell like? |
-| Q1 | 上一题 Q0 = C | 酸感不明显，那闻起来最像什么？ | Acidity aside, what does it smell like? |
-| Q1 | 上一题 Q0 = D | 酸苦之外，闻起来最像什么？ | Beyond the sour-bitter edge, what does it smell like? |
-| Q2 | 上一题 Q1 = A | 花香之后，能喝出甜味吗？更像哪一种？ | After the florals, do you taste sweetness? Which kind? |
-| Q2 | 上一题 Q1 = B | 坚果烤香之后，甜味更像哪一种？ | After the nutty, toasty notes, which sweetness is it? |
-| Q2 | 上一题 Q1 = C | 热带果香之后，甜味更像哪一种？ | After the tropical fruit, which sweetness is it? |
-| Q2 | 上一题 Q1 = D | 闻不出香气也没关系，能喝出甜味吗？ | No clear aroma is fine — do you taste sweetness? |
-| Q3 | 上一题 Q2 = A | 清爽的甜之后，口感如何？ | With that light sweetness, how does it feel in the mouth? |
-| Q3 | 上一题 Q2 = B | 焦糖黑巧的甜之后，口感如何？ | With caramel and dark chocolate, how does it feel in the mouth? |
-| Q3 | 上一题 Q2 = C | 果酱般的甜之后，口感如何？ | With that jammy sweetness, how does it feel in the mouth? |
-| Q3 | 上一题 Q2 = D | 甜感不明显的话，口感如何？ | Sweetness aside, how does it feel in the mouth? |
-| Q4 | 上一题 Q3 = A | 轻盈的口感，尾段苦吗？ | Light as it is, is the finish bitter? |
-| Q4 | 上一题 Q3 = B | 顺滑之后，尾段苦吗？ | After that smoothness, is the finish bitter? |
-| Q4 | 上一题 Q3 = C | 厚重之后，尾段苦吗？ | After that weight, is the finish bitter? |
-| Q4 | 上一题 Q3 = D | 发涩之外，尾段苦吗？ | Beyond the astringency, is the finish bitter? |
-| Q5 | 上一题 Q4 = A | 微苦收尾，这一口整体更像哪种？ | With a slightly bitter finish, which is the cup overall? |
-| Q5 | 上一题 Q4 = B | 不苦的话，这一口整体更像哪种？ | No bitterness — which is the cup overall? |
-| Q5 | 上一题 Q4 = C | 苦得明显，这一口整体更像哪种？ | Clearly bitter — which is the cup overall? |
+| Q1 | 上一题 Q0 = A | 柑橘那种酸之后，闻起来最像什么？ | With that citrus-like sourness, what does it smell like most? |
+| Q1 | 上一题 Q0 = B | 乳酸那种酸之后，闻起来最像什么？ | With that soft, yoghurt-like tang, what does it smell like most? |
+| Q1 | 上一题 Q0 = C | 酸感不明显，那闻起来最像什么？ | Sourness aside, what does it smell like most? |
+| Q1 | 上一题 Q0 = D | 酸苦之外，闻起来最像什么？ | Beyond the sour, bitter edge, what does it smell like most? |
+| Q2 | 上一题 Q1 = A | 花香之后，能喝出甜味吗？更像哪一种？ | After the floral, tea-like aroma, can you taste sweetness? Which kind? |
+| Q2 | 上一题 Q1 = B | 坚果烤香之后，甜味更像哪一种？ | After the nutty, toasty aroma, which kind of sweetness is it? |
+| Q2 | 上一题 Q1 = C | 热带果香之后，甜味更像哪一种？ | After the tropical-fruit aroma, which kind of sweetness is it? |
+| Q2 | 上一题 Q1 = D | 闻不出香气也没关系，能喝出甜味吗？ | No clear aroma is fine. Can you taste sweetness? |
+| Q3 | 上一题 Q2 = A | 清爽的甜之后，口感如何？ | With that light sweetness, how does it feel in your mouth? |
+| Q3 | 上一题 Q2 = B | 焦糖黑巧的甜之后，口感如何？ | With that caramel, dark-chocolate sweetness, how does it feel in your mouth? |
+| Q3 | 上一题 Q2 = C | 果酱般的甜之后，口感如何？ | With that jammy sweetness, how does it feel in your mouth? |
+| Q3 | 上一题 Q2 = D | 甜感不明显的话，口感如何？ | Sweetness aside, how does it feel in your mouth? |
+| Q4 | 上一题 Q3 = A | 轻盈的口感，尾段苦吗？ | It feels light. Is the aftertaste bitter? |
+| Q4 | 上一题 Q3 = B | 顺滑之后，尾段苦吗？ | It feels smooth. Is the aftertaste bitter? |
+| Q4 | 上一题 Q3 = C | 厚重之后，尾段苦吗？ | It feels heavy. Is the aftertaste bitter? |
+| Q4 | 上一题 Q3 = D | 发涩之外，尾段苦吗？ | It feels drying. Is the aftertaste bitter? |
+| Q5 | 上一题 Q4 = A | 微苦收尾，这一口整体更像哪种？ | With a slightly bitter aftertaste, how do the flavors come across overall? |
+| Q5 | 上一题 Q4 = B | 不苦的话，这一口整体更像哪种？ | With no real bitterness, how do the flavors come across overall? |
+| Q5 | 上一题 Q4 = C | 苦得明显，这一口整体更像哪种？ | With a clearly bitter aftertaste, how do the flavors come across overall? |
 
 ## 4. 十六组参考风味（终卡标题与标签）
 
@@ -239,16 +241,16 @@
 | 维度 | 标签 zh | label en | 维度词 zh | words en | 消费端补充 zh | consumer en |
 |---|---|---|---|---|---|---|
 | acidity | 酸质 | acidity | 葡萄柚 ｜ 血橙 ｜ 青柠 ｜ 柠檬 ｜ 甜橙 ｜ 佛手柑 ｜ 蜜桔 ｜ 砂糖橘 | grapefruit ｜ blood orange ｜ lime ｜ lemon ｜ sweet orange ｜ bergamot ｜ honey mandarin ｜ sugar mandarin |  | citrus ｜ juicy ｜ tart ｜ crisp ｜ citrusy ｜ tangy ｜ lemony |
-| sweetness | 甜感 | sweetness | 蔗糖 ｜ 蜂蜜 ｜ 焦糖 ｜ 花蜜 ｜ 橘子糖 ｜ 黑糖 ｜ 枫糖 ｜ 牛轧糖 ｜ 白巧克力 | cane sugar ｜ honey ｜ caramel ｜ nectar ｜ mandarin candy ｜ brown sugar ｜ maple syrup ｜ nougat ｜ white chocolate | 冰糖雪梨 ｜ 太妃糖 ｜ 麦芽糖 ｜ 黑糖 ｜ 罗汉果甜 | rock-sugar pear ｜ toffee ｜ maltose ｜ dark brown sugar ｜ monk-fruit sweetness ｜ jam ｜ candy ｜ syrup ｜ jammy |
+| sweetness | 甜感 | sweetness | 蔗糖 ｜ 蜂蜜 ｜ 焦糖 ｜ 花蜜 ｜ 橘子糖 ｜ 黑糖 ｜ 枫糖 ｜ 牛轧糖 ｜ 白巧克力 ｜ 糖蜜 ｜ 香草 | cane sugar ｜ honey ｜ caramel ｜ nectar ｜ mandarin candy ｜ brown sugar ｜ maple syrup ｜ nougat ｜ white chocolate ｜ molasses ｜ vanilla | 冰糖雪梨 ｜ 太妃糖 ｜ 麦芽糖 ｜ 黑糖 ｜ 罗汉果甜 | rock-sugar pear ｜ toffee ｜ maltose ｜ dark brown sugar ｜ monk-fruit sweetness ｜ jam ｜ candy ｜ syrup ｜ jammy |
 | body | 醇厚度 | body | 丝绒奶油 ｜ 慕斯 ｜ 奶油 | velvet cream ｜ mousse ｜ cream |  | silky |
 | floral | 花香 | floral | 茉莉花 ｜ 玉兰花 ｜ 橙花 ｜ 咖啡花 ｜ 金银花 ｜ 山茶花 ｜ 玫瑰 ｜ 姜花 ｜ 洋甘菊 | jasmine ｜ magnolia ｜ orange blossom ｜ coffee blossom ｜ honeysuckle ｜ camellia ｜ rose ｜ ginger lily ｜ chamomile | 桂花 ｜ 栀子花 ｜ 咖啡花 ｜ 白兰花 ｜ 洋甘菊 | osmanthus ｜ gardenia ｜ coffee blossom ｜ white magnolia ｜ chamomile ｜ floral ｜ tea-like |
-| fruity | 果香 | fruity | 水蜜桃 ｜ 黄桃 ｜ 黑加仑 ｜ 杏桃 ｜ 蔓越莓 ｜ 蓝莓 ｜ 草莓 ｜ 葡萄 ｜ 白葡萄 ｜ 蜜瓜 ｜ 凤梨 ｜ 荔枝 ｜ 秋月梨 ｜ 白桃 ｜ 车厘子 | peach ｜ yellow peach ｜ blackcurrant ｜ apricot ｜ cranberry ｜ blueberry ｜ strawberry ｜ grape ｜ white grape ｜ melon ｜ pineapple ｜ lychee ｜ Akizuki pear ｜ white peach ｜ cherry | 巨峰葡萄 ｜ 荔枝 ｜ 杨梅 ｜ 西梅 ｜ 青梅 ｜ 红心芭乐 | Kyoho grape ｜ lychee ｜ bayberry ｜ prune ｜ green plum ｜ pink guava ｜ berry ｜ berries ｜ stone fruit ｜ tropical ｜ melon |
-| nutty_chocolate | 坚果巧克力 | nutty & chocolate | 烤榛果 ｜ 可可 ｜ 提拉米苏 ｜ 曲奇饼干 ｜ 牛奶巧克力 ｜ 榛果巧克力 ｜ 巧克力酱 ｜ 杏仁 ｜ 花生 | roasted hazelnut ｜ cocoa ｜ tiramisu ｜ butter cookie ｜ milk chocolate ｜ hazelnut chocolate ｜ chocolate sauce ｜ almond ｜ peanut |  | chocolate |
+| fruity | 果香 | fruity | 水蜜桃 ｜ 黄桃 ｜ 黑加仑 ｜ 杏桃 ｜ 蔓越莓 ｜ 蓝莓 ｜ 草莓 ｜ 葡萄 ｜ 白葡萄 ｜ 蜜瓜 ｜ 凤梨 ｜ 荔枝 ｜ 秋月梨 ｜ 白桃 ｜ 车厘子 ｜ 树莓 ｜ 黑莓 ｜ 石榴 ｜ 李子 ｜ 苹果 ｜ 芒果 ｜ 香蕉 ｜ 椰子 ｜ 葡萄干 ｜ 西梅 | peach ｜ yellow peach ｜ blackcurrant ｜ apricot ｜ cranberry ｜ blueberry ｜ strawberry ｜ grape ｜ white grape ｜ melon ｜ pineapple ｜ lychee ｜ Akizuki pear ｜ white peach ｜ cherry ｜ raspberry ｜ blackberry ｜ pomegranate ｜ plum ｜ apple ｜ mango ｜ banana ｜ coconut ｜ raisin ｜ prune | 巨峰葡萄 ｜ 荔枝 ｜ 杨梅 ｜ 西梅 ｜ 青梅 ｜ 红心芭乐 | Kyoho grape ｜ lychee ｜ bayberry ｜ prune ｜ green plum ｜ pink guava ｜ berry ｜ berries ｜ stone fruit ｜ tropical ｜ melon |
+| nutty_chocolate | 坚果巧克力 | nutty & chocolate | 烤榛果 ｜ 可可 ｜ 提拉米苏 ｜ 曲奇饼干 ｜ 牛奶巧克力 ｜ 榛果巧克力 ｜ 巧克力酱 ｜ 杏仁 ｜ 花生 ｜ 核桃 ｜ 吐司 ｜ 麦芽 | roasted hazelnut ｜ cocoa ｜ tiramisu ｜ butter cookie ｜ milk chocolate ｜ hazelnut chocolate ｜ chocolate sauce ｜ almond ｜ peanut ｜ walnut ｜ toast ｜ malt |  | chocolate |
 | fermented_winey | 发酵与酒香 | fermented & winey | 朗姆酒 ｜ 红酒 ｜ 酒酿 | rum ｜ red wine ｜ jiuniang | 米酒 ｜ 酒酿 ｜ 酒酿圆子 ｜ 黄酒 ｜ 热带水果发酵酱 ｜ 水果黄酒 ｜ 威士忌桶 ｜ 雪莉桶 ｜ 野果发酵 ｜ 微醺酒香 ｜ 苹果酒感 ｜ 水果发酵酱 ｜ 朗姆酒香 | rice wine ｜ jiuniang (sweet fermented rice) ｜ jiuniang rice balls ｜ huangjiu ｜ tropical fruit ferment ｜ fruit huangjiu ｜ whisky barrel ｜ sherry cask ｜ funky ｜ wine ｜ cider ｜ fermented ｜ winey |
 | bitter_roasted | 烘烤苦感 | roast & bitter | 黑巧克力 ｜ 烟熏可可 ｜ 炭烧 | dark chocolate ｜ smoky cocoa ｜ charred | 烤杏仁 ｜ 烘焙麦芽 ｜ 黑芝麻 ｜ 松露巧克力 | roasted almond ｜ roasted malt ｜ black sesame ｜ truffle chocolate ｜ smokey ｜ roasted ｜ dark roast ｜ ashy |
-| spice | 香料 | spice | 小豆蔻 ｜ 肉桂 ｜ 丁香 | cardamom ｜ cinnamon ｜ clove |  |  |
-| herbal_green | 草本绿茶 | herbal & green | 茉莉绿茶 ｜ 高山乌龙 ｜ 柠檬草 ｜ 伯爵茶 ｜ 红茶 | jasmine green tea ｜ high-mountain oolong ｜ lemongrass ｜ Earl Grey tea ｜ black tea | 高山龙井 ｜ 武夷岩茶 ｜ 鸭屎香 ｜ 普洱茶韵 | high-mountain Longjing ｜ Wuyi rock tea ｜ Ya Shi Xiang (Dancong) ｜ Pu'er tea finish ｜ tea ｜ grass ｜ grassy ｜ herbal |
-| woody_earthy | 木质泥土 | woody & earthy | 风干雪松 ｜ 泥炭 ｜ 松露 ｜ 杉木 | aged cedar ｜ peat ｜ truffle ｜ fir wood |  |  |
+| spice | 香料 | spice | 肉桂 ｜ 丁香 ｜ 小豆蔻 ｜ 生姜 ｜ 八角 ｜ 肉豆蔻 | cinnamon ｜ clove ｜ cardamom ｜ ginger ｜ star anise ｜ nutmeg |  |  |
+| herbal_green | 草本绿茶 | herbal & green | 茉莉绿茶 ｜ 高山乌龙 ｜ 柠檬草 ｜ 伯爵茶 ｜ 红茶 ｜ 薄荷 | jasmine green tea ｜ high-mountain oolong ｜ lemongrass ｜ Earl Grey tea ｜ black tea ｜ mint | 高山龙井 ｜ 武夷岩茶 ｜ 鸭屎香 ｜ 普洱茶韵 | high-mountain Longjing ｜ Wuyi rock tea ｜ Ya Shi Xiang (Dancong) ｜ Pu'er tea finish ｜ tea ｜ grass ｜ grassy ｜ herbal |
+| woody_earthy | 木质泥土 | woody & earthy | 风干雪松 ｜ 泥炭 ｜ 松露 ｜ 杉木 ｜ 烟草 ｜ 柏木 ｜ 橡木 ｜ 檀香 ｜ 松木 ｜ 桦木 ｜ 干燥树皮 ｜ 沉香 | aged cedar ｜ peat ｜ truffle ｜ fir wood ｜ tobacco ｜ cypress ｜ oak ｜ sandalwood ｜ pine ｜ birch ｜ dry bark ｜ agarwood |  |  |
 | defect | 瑕疵 | defect | 纸味 ｜ 陈味 ｜ 霉味 | papery ｜ stale ｜ musty |  |  |
 
 ## 6. 94 个规范概念的极简词（用户录入豆子时上卡）
@@ -295,7 +297,7 @@
 | fermented_character | 发酵感 | fermented |
 | fresh_grass | 青草 | fresh grass |
 | fullness | 饱满 | full |
-| ginger | 姜 | ginger |
+| ginger | 生姜 | ginger |
 | grape | 葡萄 | grape |
 | grapefruit | 西柚 | grapefruit |
 | green_tea | 绿茶 | green tea |
@@ -396,6 +398,169 @@
 | C1_LIGHT | 研究参考 | 浅烘保留品种的花香与果酸参照物（花香、柑橘酸、单醇甜感），焦糖化产物尚未主导。 | Light roasting keeps the variety's floral and fruit-acid references (florals, citric acidity, clean sweetness) before caramelisation products take over. | World Coffee Research |
 | C1_MEDIUM | 研究参考 | 中烘时焦糖化与美拉德参照物（红糖、坚果、可可）与残余果酸达到平衡。 | At medium roast the caramelisation and Maillard references (brown sugar, nut, cocoa) balance the remaining fruit acidity. | World Coffee Research |
 | C1_DARK | 研究参考 | 深烘下花香与果酸参照物被烘烤参照物（烟熏、焦糖苦、灰烬）覆盖。 | At dark roast the floral and fruit-acid references are covered by roast references (smoke, burnt caramel, ash). | World Coffee Research |
+
+### 7.1 卡片说明的句式（card_notes，2026-09-18；2026-09-19 改写）
+
+「关于这段描述」里三类说明的全部句式。每个句式中英各三种说法、位置一一对应；引擎用与语言无关的种子选同一个序号，所以同一张卡在两种语言里说的是同一件事、同一组数字。数字来自评审资料的出现比例（corpus_stats）。
+2026-09-19（owner）：资料统计只出一条，取最能说明问题的那一个统计；只用平常话给结论（「比一般咖啡更常见 / 差不多 / 更少见」），不出现任何数字——2026-09-20（owner）：「738 款中每 10 款约 4 款…平均约 3 款」会让读者觉得信息被过度平均、怀疑过拟合；「更常 / 更少」需要至少 10 个点的差距。初始参考同样只说方向，不带数字。
+
+| 句式 | 中文 | English |
+|---|---|---|
+| 初始参考：句子框架 · 1 | 评审记录里，和一般咖啡相比，{clauses}。 | In the review records, compared with coffee generally, {clauses}. |
+| 初始参考：句子框架 · 2 | 从评审记录看，和一般咖啡相比，{clauses}。 | Going by the review records, and compared with coffee generally, {clauses}. |
+| 初始参考：句子框架 · 3 | 和评审记录里的全部咖啡相比，{clauses}。 | Set against all the coffees in the review records, {clauses}. |
+| 初始参考分句：更常 + 更少 | {option}的咖啡更常写到{up}、更少写到{down} | {option} coffees are described with {up} more often and with {down} less often |
+| 初始参考分句：更常 | {option}的咖啡更常写到{up} | {option} coffees are described with {up} more often |
+| 初始参考分句：更少 | {option}的咖啡更少写到{down} | {option} coffees are described with {down} less often |
+| 频率 | 每 {base} 款约 {k} 款 | about {k} in {base} |
+| 频率（同一句里第二次） | 约 {k} 款 | about {k} |
+| 频率：不足 1 | 每 {base} 款不到 1 款 | fewer than 1 in {base} |
+| 频率（第二次）：不足 1 | 不到 1 款 | fewer than 1 |
+| 初始参考：与一般咖啡接近 · 1 | 你选的{options}在评审记录里很常见，风味和一般咖啡差别不大：初始参考接近一杯典型的咖啡，最常被写到的是{dims}。 | What you chose ({options}) is common in the review records and differs little from coffee generally: the initial reference is close to a typical cup, where {dims} come up most. |
+| 初始参考：与一般咖啡接近 · 2 | {options}是评审记录里常见的组合，和所有咖啡相比没有明显偏向，最常被写到的是{dims}。 | {options} is a common combination in the review records with no clear lean against all coffees; {dims} come up most. |
+| 初始参考：与一般咖啡接近 · 3 | 评审记录里，{options}的咖啡与一般咖啡很接近，初始参考因此偏向常见的{dims}。 | In the review records, {options} coffees sit close to coffee generally, so the initial reference leans toward the usual {dims}. |
+| 初始参考：没有可用记录 · 1 | 这组选择在评审资料里没有足够的记录，这张卡主要依据你自己的回答。 | The review data has too few records for these choices, so this card rests mainly on your own answers. |
+| 初始参考：没有可用记录 · 2 | 评审资料里没有足够的记录能对应这组选择，描述主要来自你的回答。 | There are not enough review records to match these choices; the description comes mainly from your answers. |
+| 初始参考：没有可用记录 · 3 | 这组选择缺少可用的评审记录，初始参考很弱，描述以你的回答为主。 | These choices lack usable review records: the initial reference is weak and the description follows your answers. |
+| 初始参考：未计入的选项 · 1 | {options}没有足够的评审记录，没有计入初始参考。 | The initial reference leaves out {options}, for which there are too few review records. |
+| 初始参考：未计入的选项 · 2 | 评审资料里{options}的记录太少，初始参考没有用到。 | The review data has too few records for {options}, so the initial reference does not count it. |
+| 初始参考：未计入的选项 · 3 | {options}缺少评审记录，初始参考里不含这一项。 | Not counted in the initial reference, for lack of review records: {options}. |
+| 资料统计：支持确认的词 · 1 | 你确认的{words}属于{dim}，评审记录里{scope}的咖啡也比一般咖啡更常被这样描述。 | You confirmed {words} ({dim}). In the review records, {scope} coffees are described this way more often than coffee generally. |
+| 资料统计：支持确认的词 · 2 | 评审记录里，{scope}的咖啡比一般咖啡更常写到{dim}；你确认的{words}就属于这一类。 | In the review records, {scope} coffees are described with {dim} more often than coffee generally. This covers {words}, which you confirmed. |
+| 资料统计：支持确认的词 · 3 | {dim}在{scope}的咖啡里比一般咖啡更常见，这与你确认的{words}一致。 | {scope} coffees are described with {dim} more often than coffee generally, in line with {words}, which you confirmed. |
+| 资料统计：与一般咖啡相当 · 1 | 你确认的{words}属于{dim}；在这一点上，评审记录里{scope}的咖啡和一般咖啡差不多。 | You confirmed {words} ({dim}). Here, in the review records, {scope} coffees are much like coffee generally. |
+| 资料统计：与一般咖啡相当 · 2 | 评审记录里，{scope}的咖啡写到{dim}的情况和一般咖啡差不多；你确认的{words}属于这一类。 | In the review records, {scope} coffees are described with {dim} about as often as coffee generally. This covers {words}, which you confirmed. |
+| 资料统计：与一般咖啡相当 · 3 | {dim}在{scope}的咖啡里和一般咖啡差不多常见；你确认的{words}属于这一类。 | {scope} coffees are described with {dim} about as often as coffee generally; this covers {words}, which you confirmed. |
+| 资料统计：与这类咖啡的常态不同 · 1 | 你确认的{words}属于{dim}，评审记录里{scope}的咖啡比一般咖啡更少被这样描述：这部分更多来自你自己这一杯的感受。 | You confirmed {words} ({dim}). In the review records, {scope} coffees are described this way less often than coffee generally: this part comes more from your own cup. |
+| 资料统计：与这类咖啡的常态不同 · 2 | 评审记录里，{scope}的咖啡比一般咖啡更少写到{dim}；你确认的{words}来自你这一杯的感受，而不是这类咖啡的常态。 | In the review records, {scope} coffees are described with {dim} less often than coffee generally. What you confirmed ({words}) comes from your cup, not from what is usual for this kind of coffee. |
+| 资料统计：与这类咖啡的常态不同 · 3 | {dim}在{scope}的咖啡里比一般咖啡少见；你确认的{words}是你这一杯自己的特点。 | {scope} coffees are described with {dim} less often than coffee generally; what you confirmed ({words}) is this cup's own. |
+| 你的描述：有升有降 · 1 | 和初始参考相比，你的回答让{raised}更突出，{lowered}更淡。 | Compared with the initial reference, your answers bring out {raised} and tone down {lowered}. |
+| 你的描述：有升有降 · 2 | 你的回答把{raised}拉高了，{lowered}则比初始参考弱。 | Your answers raised {raised}, with {lowered} weaker than in the initial reference. |
+| 你的描述：有升有降 · 3 | 相较于初始参考，这一杯在你的回答里更偏{raised}，{lowered}没有那么明显。 | Against the initial reference, this cup leans toward {raised} in your answers, with {lowered} less evident. |
+| 你的描述：只有上升 · 1 | 和初始参考相比，你的回答让{raised}更突出。 | Compared with the initial reference, your answers bring out {raised}. |
+| 你的描述：只有上升 · 2 | 你的回答把{raised}拉高了，其余与初始参考接近。 | Your answers raised {raised}; the rest stays close to the initial reference. |
+| 你的描述：只有上升 · 3 | 相较于初始参考，这一杯在你的回答里更偏{raised}。 | Against the initial reference, this cup leans toward {raised} in your answers. |
+| 你的描述：只有下降 · 1 | 和初始参考相比，你的回答里{lowered}更淡，其余接近。 | Compared with the initial reference, your answers tone down {lowered}; the rest is close. |
+| 你的描述：只有下降 · 2 | 你的回答里{lowered}比初始参考弱，其余与它接近。 | Your answers put {lowered} below the initial reference; the rest stays close to it. |
+| 你的描述：只有下降 · 3 | 相较于初始参考，这一杯的{lowered}在你的回答里没有那么明显。 | Against the initial reference, your answers show less of {lowered}. |
+| 你的描述：接近初始参考 · 1 | 你的回答与初始参考接近，没有明显偏向。 | Your answers stay close to the initial reference, with no clear lean. |
+| 你的描述：接近初始参考 · 2 | 你的回答和初始参考基本一致。 | Your answers and the initial reference largely agree. |
+| 你的描述：接近初始参考 · 3 | 这一杯在你的回答里与初始参考相差不大。 | In your answers this cup differs little from the initial reference. |
+| 你的描述：词的来源（两类） · 1 | 卡上的词里，{own}来自这一偏向，{shared}与初始参考一致。 | On the card, that lean accounts for {own}; the initial reference already pointed to {shared}. |
+| 你的描述：词的来源（两类） · 2 | {own}是你的回答带来的，{shared}则在初始参考里就有。 | Your answers brought {own}; the initial reference already had {shared}. |
+| 你的描述：词的来源（两类） · 3 | 其中{own}出自你的回答，{shared}与初始参考相符。 | Owed to your answers: {own}. Shared with the initial reference: {shared}. |
+| 你的描述：词来自回答 · 1 | 卡上的词里，{own}来自这一偏向。 | On the card, that lean accounts for {own}. |
+| 你的描述：词来自回答 · 2 | {own}是你的回答带来的。 | Your answers brought {own}. |
+| 你的描述：词来自回答 · 3 | 其中{own}出自你的回答。 | Owed to your answers: {own}. |
+| 你的描述：词与初始参考一致 · 1 | 卡上的词里，{shared}与初始参考一致。 | On the card, the initial reference already pointed to {shared}. |
+| 你的描述：词与初始参考一致 · 2 | {shared}在初始参考里就有。 | The initial reference already had {shared}. |
+| 你的描述：词与初始参考一致 · 3 | 其中{shared}与初始参考相符。 | Shared with the initial reference: {shared}. |
+| 你的描述：第二次确认 · 1 | 第二次确认又强调了{dims}。 | The second look stressed {dims} further. |
+| 你的描述：第二次确认 · 2 | 再看一眼时，你进一步选了{dims}。 | On the second look you went on to choose {dims}. |
+| 你的描述：第二次确认 · 3 | 第二轮里你把{dims}又往前推了一步。 | In the second round you pushed {dims} a step further. |
+| 导出卡补充描述：有升有降 | 比同类咖啡的参考风味更偏{raised}，{lowered}更淡。 | Compared with the reference for this kind of coffee: more {raised}; less {lowered}. |
+| 导出卡补充描述：只有上升 | 比同类咖啡的参考风味更偏{raised}。 | Compared with the reference for this kind of coffee: more {raised}. |
+| 导出卡补充描述：只有下降 | {lowered}比同类咖啡的参考风味更淡。 | Compared with the reference for this kind of coffee: less {lowered}. |
+| 导出卡补充描述：接近参考 | 与同类咖啡的参考风味接近。 | Close to the reference for this kind of coffee. |
+| 导出卡补充描述：词的来源（两类） | {own}来自这一偏向，{shared}则与参考风味一致。 | That lean accounts for {own}; in line with the reference: {shared}. |
+| 导出卡补充描述：词来自这一偏向 | {own}来自这一偏向。 | That lean accounts for {own}. |
+| 导出卡补充描述：词与参考一致 | {shared}与参考风味一致。 | In line with the reference: {shared}. |
+| 资料统计：同烘焙度内的香气 / 余韵对照 · 1 | 你觉得{what}明显；评审记录里，{scope}的咖啡在同样烘焙度的咖啡中{what}也更常得到高分。 | You found the {what} clear; in the review records {scope} coffees are scored high for {what} more often than other coffees of the same roast. |
+| 资料统计：同烘焙度内的香气 / 余韵对照 · 2 | 评审记录里，{scope}的咖啡比同样烘焙度的咖啡更常因{what}得到高分，与你的回答一致。 | In the review records, {scope} coffees are scored high for {what} more often than other coffees of the same roast, in line with your answer. |
+| 资料统计：同烘焙度内的香气 / 余韵对照 · 3 | {what}是{scope}的咖啡在评审里常得高分的一项，你的回答也是如此。 | {what} is something {scope} coffees are often scored high for in the reviews, and your answer agrees. |
+| 对照里的「香气」 | 香气 | aroma |
+| 对照里的「余韵」 | 余韵 | aftertaste |
+| 对照里的「意式」 | 意式 | espresso |
+
+### 7.2 动态题库（dynamic_bank，R3-D40 / R3-D44）
+
+应用现在运行的题目。每题至多显示 5 个选项：语料只剪枝（留下这类咖啡最常见的 4 个），不排序；第五个选项写清楚「不突出」；选项下方一行小字承接答不上来的读者。同一个选项的几种说法用「 ‖ 」分开，由会话种子选定、中英文取同一个序号；标签里的 {examples} 由该类咖啡语料里最常见的两三个词填入。源文件：`db/data/product-vector-v1/DYNAMIC_QUESTION_BANK.tsv`。
+
+| 项 | 中文 | English |
+|---|---|---|
+| **核心 1 · 酸与水果** · 题面 | 喝到酸了吗？更像哪一类水果的酸？ | Does it taste sour or tangy? Which fruit is it closest to? |
+| A1 | 柑橘：{examples}那种　〔承接语：柑橘那种酸之后，〕 | Citrus: like {examples}  [lead-in: After that citrus acidity, ] |
+| A2 | 莓果：{examples}那种　〔承接语：莓果那种酸之后，〕 | Berries: like {examples}  [lead-in: After that berry-like acidity, ] |
+| A3 | 核果：{examples}那种　〔承接语：核果那种酸之后，〕 | Stone fruit: like {examples}  [lead-in: After that stone-fruit acidity, ] |
+| A4 | 苹果、梨、葡萄那种清爽的酸甜　〔承接语：苹果、葡萄那种清爽的酸之后，〕 | Apple, pear or grape: crisp and lightly sweet  [lead-in: After that crisp apple-and-grape acidity, ] |
+| A5 | 热带水果：{examples}那种　〔承接语：热带水果那种酸甜之后，〕 | Tropical fruit: like {examples}  [lead-in: After that tropical fruit, ] |
+| A6 | 果干：葡萄干、西梅那种带甜的酸　〔承接语：果干那种带甜的酸之后，〕 | Dried fruit: like raisin or prune, sweet and sour  [lead-in: After that dried-fruit tang, ] |
+| A7 | 发酵的酸：像酸奶、红酒、酒酿　〔承接语：发酵的酸之后，〕 | Fermented: like yoghurt, red wine or rice wine  [lead-in: After that fermented acidity, ] |
+| A8 | 尖酸，有点刺激　〔承接语：尖酸之后，〕 | Sharp and sour, a little harsh  [lead-in: After that sharp sourness, ] |
+| A0（第五个选项） | 酸不突出，整体圆润 ‖ 几乎喝不出酸，整体很柔和 ‖ 酸融在整体里，不单独显出来　〔承接语：酸不突出的话，〕 | Acidity doesn't stand out; the cup feels round ‖ Hardly any acidity; the cup is soft overall ‖ The acidity sits inside the whole and never comes forward  [lead-in: With the acidity in the background, ] |
+| A-（下方小字） | 这一项很难形容 ‖ 这一项我说不上来 ‖ 我恐怕很难准确回答 | This one is hard to describe ‖ I can't put this one into words ‖ I'm afraid I can't answer this accurately |
+| **核心 2 · 香气主调** · 题面 | 除了酸，闻起来、喝起来最像哪一类？（承接上一题时：……，闻起来、喝起来最像哪一类？） | Apart from that, what does it smell and taste most like? (after a lead-in: … what does it smell and taste most like?) |
+| B1 | 花：{examples}　〔承接语：花香之后，〕 | Flowers: {examples}  [lead-in: After the floral notes, ] |
+| B2 | 茶：红茶、绿茶、乌龙　〔承接语：茶感之后，〕 | Tea: black, green or oolong  [lead-in: After the tea notes, ] |
+| B3 | 草本：薄荷、柠檬草　〔承接语：草本的香气之后，〕 | Herbs: mint, lemongrass  [lead-in: After the herbal notes, ] |
+| B4 | 坚果：{examples}　〔承接语：坚果的香气之后，〕 | Nuts: {examples}  [lead-in: After the nutty notes, ] |
+| B5 | 巧克力、可可　〔承接语：巧克力的香气之后，〕 | Chocolate, cocoa  [lead-in: After the chocolate notes, ] |
+| B6 | 烤面包、谷物、麦芽　〔承接语：烤面包、谷物的香气之后，〕 | Toast, grain, malt  [lead-in: After the toasty, grainy notes, ] |
+| B7 | 香料：肉桂、丁香、八角　〔承接语：香料的香气之后，〕 | Spice: cinnamon, clove, star anise  [lead-in: After the spice, ] |
+| B8 | 木头：雪松、柏木、橡木　〔承接语：木头的香气之后，〕 | Wood: cedar, cypress, oak  [lead-in: After the woody notes, ] |
+| B9 | 烟熏、炭烧、烟草　〔承接语：烟熏的香气之后，〕 | Smoke, char, tobacco  [lead-in: After the smoky notes, ] |
+| B10（常驻） | 水果：果香最突出　〔承接语：果香最突出的话，〕 | Fruit: fruit is what stands out  [lead-in: With fruit standing out, ] |
+| B0（下方小字） | 香气是一个整体，没有哪一类特别突出 ‖ 各种香气融在一起，没有主调 ‖ 闻起来很完整，挑不出最突出的一类　〔承接语：香气没有主调的话，〕 | The aroma comes as a whole; nothing stands out ‖ The aromas blend together with no main note ‖ It smells complete; no single kind leads  [lead-in: With no single aroma leading, ] |
+| **核心 3 · 甜** · 题面 | 能喝出甜吗？更像哪一种甜？（承接上一题时：……，能喝出甜吗？更像哪一种甜？） | Can you taste sweetness? What kind? (after a lead-in: … can you taste sweetness? What kind?) |
+| C1 | 蜂蜜、花蜜　〔承接语：蜂蜜那种甜之后，〕 | Honey, nectar  [lead-in: After that honeyed sweetness, ] |
+| C2（浅烘默认显示） | 蔗糖、冰糖那种清甜　〔承接语：清爽的甜之后，〕 | Clean sweetness, like cane or rock sugar  [lead-in: After that clean sweetness, ] |
+| C3 | 焦糖、红糖　〔承接语：焦糖那种甜之后，〕 | Caramel, brown sugar  [lead-in: After that caramel sweetness, ] |
+| C4 | 黑糖、糖蜜：浓，带一点苦　〔承接语：黑糖、糖蜜那种浓甜之后，〕 | Dark sugar, molasses: deep, slightly bitter  [lead-in: After that deep, dark sweetness, ] |
+| C5 | 香草、奶油那种甜　〔承接语：香草、奶油那种甜之后，〕 | Vanilla, creamy sweetness  [lead-in: After that creamy sweetness, ] |
+| C6 | 熟透的水果、果酱　〔承接语：熟果那种甜之后，〕 | Ripe fruit, jam  [lead-in: After that ripe-fruit sweetness, ] |
+| C7 | 果干：葡萄干、蜜枣　〔承接语：果干那种甜之后，〕 | Dried fruit: raisin, dates  [lead-in: After that dried-fruit sweetness, ] |
+| C0（第五个选项） | 甜不突出，融在整体里 ‖ 有一点甜，但不单独显出来 ‖ 甜感很轻，和别的味道连在一起　〔承接语：甜不突出的话，〕 | Sweetness doesn't stand out; it sits in the whole ‖ A little sweet, but it never shows on its own ‖ Very light sweetness, joined to the other flavors  [lead-in: With little sweetness, ] |
+| C-（下方小字） | 这一项很难形容 ‖ 这一项我说不上来 ‖ 我恐怕很难准确回答 | This one is hard to describe ‖ I can't put this one into words ‖ I'm afraid I can't answer this accurately |
+| **核心 4 · 口感（按冲煮方式给窗口，不按语料）** · 题面 | 口感怎么样？（承接上一题时：……，口感怎么样？） | How does it feel in the mouth? (after a lead-in: … how does it feel in the mouth?) |
+| D6 | 偏稀，像兑了水 | Thin, watery |
+| D1 | 清爽，像茶或果汁 | Light, like tea or juice |
+| D2 | 顺滑，像牛奶 | Smooth, like milk |
+| D3 | 厚而滑，像奶油、丝绒 | Thick and silky, like cream |
+| D4 | 厚重挂口，像糖浆 | Heavy and coating, like syrup |
+| D5 | 发涩发干，像浓茶 | Drying and astringent, like strong tea |
+| D0（第五个选项） | 厚薄适中，没有特别的感觉 ‖ 不厚也不薄，很平常 ‖ 口感居中，没有特别之处 | Medium weight; nothing in particular ‖ Neither thick nor thin; ordinary ‖ Middle of the road; nothing in particular |
+| D-（下方小字） | 这一项很难形容 ‖ 这一项我说不上来 ‖ 我恐怕很难准确回答 | This one is hard to describe ‖ I can't put this one into words ‖ I'm afraid I can't answer this accurately |
+| **第二级 · 更像哪一个** · 题面 | 更像哪一个？（承接上一题时：……，{short}里，更像哪一个？） | Which one is it closest to? (after a lead-in: … Among {short}, which one is it closest to?) |
+| S-（下方小字） | 这一项很难形容 ‖ 这一项我说不上来 ‖ 我恐怕很难准确回答 | This one is hard to describe ‖ I can't put this one into words ‖ I'm afraid I can't answer this accurately |
+| **追问 · 香气有多明显** · 题面 | 凑近闻一闻，香气有多明显？ | Smell the cup: how clear is the aroma? |
+| E1a | 扑鼻，端起来就闻得到 | Strong: I notice it as soon as I lift the cup |
+| E1b | 清楚，凑近能闻到 | Clear when I bring it close |
+| E1c | 很淡，要仔细闻 | Faint: I have to look for it |
+| E1d | 几乎闻不到 | Hardly any |
+| E1-（下方小字） | 我恐怕很难准确回答 ‖ 这一项我说不上来 ‖ 这一项很难形容 | I'm afraid I can't answer this accurately ‖ I can't put this one into words ‖ This one is hard to describe |
+| **追问 · 咽下去之后的余韵** · 题面 | 咽下去之后，嘴里的味道留了多久？ | After you swallow, how long does the taste stay? |
+| E2a | 很快就感觉不到了 | It fades almost at once |
+| E2b | 稍微有一些感觉，但不明显 | There is a little, but it is not distinct |
+| E2c | 有较明确的余韵 | There is a fairly distinct aftertaste |
+| E2d | 余韵明显并带有回甘 | A clear aftertaste that turns sweet |
+| E2e | 余韵以苦或涩为主 | The aftertaste is mostly bitter or drying |
+| E2-（下方小字） | 我恐怕很难准确回答 ‖ 这一项我说不上来 ‖ 这一项很难形容 | I'm afraid I can't answer this accurately ‖ I can't put this one into words ‖ This one is hard to describe |
+| **追问 · 苦感** · 题面 | 尾段苦吗？ | Is the aftertaste bitter? |
+| E3a | 没有明显苦感 | No noticeable bitterness |
+| E3b | 微苦，像可可或坚果皮 | Slight, like cocoa or nut skins |
+| E3c | 有苦味但柔和，像黑巧克力 | Present but soft, like dark chocolate |
+| E3d | 苦得比较明显，像烟熏可可或烤焦的吐司边 | Pronounced, like smoky cocoa or the burnt edge of toast |
+| E3e | 非常重的苦味，像烧焦的木炭 | Very heavy bitterness, like burnt charcoal |
+| E3-（下方小字） | 我恐怕很难准确回答 ‖ 这一项我说不上来 ‖ 这一项很难形容 | I'm afraid I can't answer this accurately ‖ I can't put this one into words ‖ This one is hard to describe |
+| **追问 · 整体印象（答案矛盾时）** · 题面 | 这一口整体更像哪种？ | Overall, how do the flavors come across? |
+| E4a | 味道混在一起，各种风味都有一点 | The flavors blend together, a little of everything |
+| E4b | 饱满圆润，一致性很高 | Full and round, all of a piece |
+| E4c | 能分清楚多种味道，层次明确 | I can tell several flavors apart, in clear layers |
+| E4d | 感觉不错，但很难形容 ‖ 感觉不错但说不上来 | I like it, but it is hard to describe ‖ I like it, but I can't put it into words |
+| 第二级 · A1 的词（显示语料支持最多的 5 个） | 柠檬、青柠、甜橙、葡萄柚、佛手柑、血橙、蜜桔、砂糖橘 | lemon, lime, sweet orange, grapefruit, bergamot, blood orange, honey mandarin, sugar mandarin |
+| 第二级 · A2 的词（显示语料支持最多的 5 个） | 树莓、草莓、蓝莓、黑加仑、黑莓、石榴、蔓越莓 | raspberry, strawberry, blueberry, blackcurrant, blackberry, pomegranate, cranberry |
+| 第二级 · A3 的词（显示语料支持最多的 5 个） | 车厘子、李子、水蜜桃、白桃、黄桃、杏桃 | cherry, plum, peach, white peach, yellow peach, apricot |
+| 第二级 · A4 的词（显示语料支持最多的 5 个） | 葡萄、苹果、秋月梨、白葡萄 | grape, apple, Akizuki pear, white grape |
+| 第二级 · A5 的词（显示语料支持最多的 5 个） | 芒果、凤梨、香蕉、椰子、荔枝、蜜瓜 | mango, pineapple, banana, coconut, lychee, melon |
+| 第二级 · A6 的词（显示语料支持最多的 5 个） | 葡萄干、西梅 | raisin, prune |
+| 第二级 · B1 的词（显示语料支持最多的 5 个） | 茉莉花、玫瑰、橙花、洋甘菊、玉兰花、咖啡花、金银花、山茶花、姜花 | jasmine, rose, orange blossom, chamomile, magnolia, coffee blossom, honeysuckle, camellia, ginger lily |
+| 第二级 · B2 的词（显示语料支持最多的 5 个） | 红茶、茉莉绿茶、高山乌龙、伯爵茶 | black tea, jasmine green tea, high-mountain oolong, Earl Grey tea |
+| 第二级 · B3 的词（显示语料支持最多的 5 个） | 薄荷、柠檬草 | mint, lemongrass |
+| 第二级 · B4 的词（显示语料支持最多的 5 个） | 杏仁、烤榛果、核桃、花生 | almond, roasted hazelnut, walnut, peanut |
+| 第二级 · B5 的词（显示语料支持最多的 5 个） | 可可、牛奶巧克力、榛果巧克力、巧克力酱 | cocoa, milk chocolate, hazelnut chocolate, chocolate sauce |
+| 第二级 · B6 的词（显示语料支持最多的 5 个） | 吐司、麦芽、曲奇饼干、提拉米苏 | toast, malt, butter cookie, tiramisu |
+| 第二级 · B8 的词（显示语料支持最多的 5 个） | 风干雪松、杉木、柏木、橡木、檀香、松木、桦木、干燥树皮、沉香 | aged cedar, fir wood, cypress, oak, sandalwood, pine, birch, dry bark, agarwood |
+| 第二级 · B9 的词（显示语料支持最多的 5 个） | 烟草、泥炭、松露 | tobacco, peat, truffle |
 
 ## 8. About（about.ts，经执行导出）
 

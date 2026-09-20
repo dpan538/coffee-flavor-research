@@ -1,0 +1,1565 @@
+group	n	question_id	option_id	within_question_share_corrected	pruning
+all	6359	A	A1	0.2751	kept
+all	6359	A	A2	0.1771	kept
+all	6359	A	A3	0.2112	kept
+all	6359	A	A4	0.1730	
+all	6359	A	A5	0.0879	
+all	6359	A	A6	0.0685	
+all	6359	A	A7	0.0066	
+all	6359	A	A8	0.0007	
+all	6359	B	B1	0.1484	
+all	6359	B	B2	0.0082	
+all	6359	B	B3	0.0397	
+all	6359	B	B4	0.1631	kept
+all	6359	B	B5	0.3137	kept
+all	6359	B	B6	0.0287	
+all	6359	B	B7	0.0959	
+all	6359	B	B8	0.1519	kept
+all	6359	B	B9	0.0506	
+all	6359	C	C1	0.2063	
+all	6359	C	C3	0.2318	kept
+all	6359	C	C4	0.0945	
+all	6359	C	C5	0.0854	
+all	6359	C	C6	0.2692	kept
+all	6359	C	C7	0.1128	
+band=dark	738	A	A1	0.2310	kept
+band=dark	738	A	A2	0.0688	
+band=dark	738	A	A3	0.2145	kept
+band=dark	738	A	A4	0.1237	
+band=dark	738	A	A5	0.1096	
+band=dark	738	A	A6	0.2331	kept
+band=dark	738	A	A7	0.0169	
+band=dark	738	A	A8	0.0024	
+band=dark	738	B	B1	0.0735	
+band=dark	738	B	B2	0.0061	
+band=dark	738	B	B3	0.0279	
+band=dark	738	B	B4	0.0919	
+band=dark	738	B	B5	0.3113	kept
+band=dark	738	B	B6	0.1243	kept
+band=dark	738	B	B7	0.0997	
+band=dark	738	B	B8	0.2195	kept
+band=dark	738	B	B9	0.0457	
+band=dark	738	C	C1	0.0566	
+band=dark	738	C	C3	0.2630	kept
+band=dark	738	C	C4	0.1021	
+band=dark	738	C	C5	0.1106	
+band=dark	738	C	C6	0.1697	kept
+band=dark	738	C	C7	0.2980	kept
+band=dark|prep=espresso	147	A	A1	0.2323	kept
+band=dark|prep=espresso	147	A	A2	0.0777	
+band=dark|prep=espresso	147	A	A3	0.2796	kept
+band=dark|prep=espresso	147	A	A4	0.0864	
+band=dark|prep=espresso	147	A	A5	0.1286	
+band=dark|prep=espresso	147	A	A6	0.1898	kept
+band=dark|prep=espresso	147	A	A7	0.0050	
+band=dark|prep=espresso	147	A	A8	0.0007	
+band=dark|prep=espresso	147	B	B1	0.0590	
+band=dark|prep=espresso	147	B	B2	0.0018	
+band=dark|prep=espresso	147	B	B3	0.0315	
+band=dark|prep=espresso	147	B	B4	0.0965	
+band=dark|prep=espresso	147	B	B5	0.3295	kept
+band=dark|prep=espresso	147	B	B6	0.0925	
+band=dark|prep=espresso	147	B	B7	0.1343	kept
+band=dark|prep=espresso	147	B	B8	0.2214	kept
+band=dark|prep=espresso	147	B	B9	0.0335	
+band=dark|prep=espresso	147	C	C1	0.0494	
+band=dark|prep=espresso	147	C	C3	0.1493	kept
+band=dark|prep=espresso	147	C	C4	0.1140	
+band=dark|prep=espresso	147	C	C5	0.1245	
+band=dark|prep=espresso	147	C	C6	0.2977	kept
+band=dark|prep=espresso	147	C	C7	0.2652	kept
+band=dark|process=decaf	47	A	A1	0.1937	kept
+band=dark|process=decaf	47	A	A2	0.0363	
+band=dark|process=decaf	47	A	A3	0.1605	kept
+band=dark|process=decaf	47	A	A4	0.0912	
+band=dark|process=decaf	47	A	A5	0.1502	
+band=dark|process=decaf	47	A	A6	0.3579	kept
+band=dark|process=decaf	47	A	A7	0.0089	
+band=dark|process=decaf	47	A	A8	0.0013	
+band=dark|process=decaf	47	B	B1	0.0779	
+band=dark|process=decaf	47	B	B2	0.0034	
+band=dark|process=decaf	47	B	B3	0.0387	
+band=dark|process=decaf	47	B	B4	0.0505	
+band=dark|process=decaf	47	B	B5	0.2777	kept
+band=dark|process=decaf	47	B	B6	0.1738	kept
+band=dark|process=decaf	47	B	B7	0.0881	
+band=dark|process=decaf	47	B	B8	0.2446	kept
+band=dark|process=decaf	47	B	B9	0.0453	
+band=dark|process=decaf	47	C	C1	0.0309	
+band=dark|process=decaf	47	C	C3	0.2415	kept
+band=dark|process=decaf	47	C	C4	0.1230	
+band=dark|process=decaf	47	C	C5	0.1095	
+band=dark|process=decaf	47	C	C6	0.1337	kept
+band=dark|process=decaf	47	C	C7	0.3615	kept
+band=dark|process=natural	49	A	A1	0.2200	kept
+band=dark|process=natural	49	A	A2	0.2168	kept
+band=dark|process=natural	49	A	A3	0.2837	kept
+band=dark|process=natural	49	A	A4	0.0903	
+band=dark|process=natural	49	A	A5	0.0892	
+band=dark|process=natural	49	A	A6	0.0734	
+band=dark|process=natural	49	A	A7	0.0261	
+band=dark|process=natural	49	A	A8	0.0005	
+band=dark|process=natural	49	B	B1	0.1378	kept
+band=dark|process=natural	49	B	B2	0.0197	
+band=dark|process=natural	49	B	B3	0.0647	
+band=dark|process=natural	49	B	B4	0.1316	
+band=dark|process=natural	49	B	B5	0.3078	kept
+band=dark|process=natural	49	B	B6	0.0866	
+band=dark|process=natural	49	B	B7	0.0911	
+band=dark|process=natural	49	B	B8	0.1375	kept
+band=dark|process=natural	49	B	B9	0.0233	
+band=dark|process=natural	49	C	C1	0.1569	kept
+band=dark|process=natural	49	C	C3	0.2209	kept
+band=dark|process=natural	49	C	C4	0.0931	
+band=dark|process=natural	49	C	C5	0.0643	
+band=dark|process=natural	49	C	C6	0.3393	kept
+band=dark|process=natural	49	C	C7	0.1256	
+band=dark|process=washed	45	A	A1	0.2805	kept
+band=dark|process=washed	45	A	A2	0.0866	
+band=dark|process=washed	45	A	A3	0.2339	kept
+band=dark|process=washed	45	A	A4	0.1690	kept
+band=dark|process=washed	45	A	A5	0.1019	
+band=dark|process=washed	45	A	A6	0.1260	
+band=dark|process=washed	45	A	A7	0.0017	
+band=dark|process=washed	45	A	A8	0.0004	
+band=dark|process=washed	45	B	B1	0.1766	kept
+band=dark|process=washed	45	B	B2	0.0061	
+band=dark|process=washed	45	B	B3	0.0567	
+band=dark|process=washed	45	B	B4	0.1775	kept
+band=dark|process=washed	45	B	B5	0.3180	kept
+band=dark|process=washed	45	B	B6	0.0050	
+band=dark|process=washed	45	B	B7	0.0464	
+band=dark|process=washed	45	B	B8	0.1594	
+band=dark|process=washed	45	B	B9	0.0543	
+band=dark|process=washed	45	C	C1	0.1490	
+band=dark|process=washed	45	C	C3	0.2216	kept
+band=dark|process=washed	45	C	C4	0.1276	
+band=dark|process=washed	45	C	C5	0.1057	
+band=dark|process=washed	45	C	C6	0.2225	kept
+band=dark|process=washed	45	C	C7	0.1736	kept
+band=light	4421	A	A1	0.2854	kept
+band=light	4421	A	A2	0.1983	kept
+band=light	4421	A	A3	0.2021	kept
+band=light	4421	A	A4	0.1871	
+band=light	4421	A	A5	0.0912	
+band=light	4421	A	A6	0.0302	
+band=light	4421	A	A7	0.0053	
+band=light	4421	A	A8	0.0003	
+band=light	4421	B	B1	0.1714	kept
+band=light	4421	B	B2	0.0086	
+band=light	4421	B	B3	0.0405	
+band=light	4421	B	B4	0.1722	kept
+band=light	4421	B	B5	0.3103	kept
+band=light	4421	B	B6	0.0148	
+band=light	4421	B	B7	0.0969	
+band=light	4421	B	B8	0.1345	
+band=light	4421	B	B9	0.0507	
+band=light	4421	C	C1	0.2530	kept
+band=light	4421	C	C3	0.2336	
+band=light	4421	C	C4	0.0812	
+band=light	4421	C	C5	0.0778	
+band=light	4421	C	C6	0.3008	kept
+band=light	4421	C	C7	0.0537	
+band=light|prep=espresso	322	A	A1	0.2562	kept
+band=light|prep=espresso	322	A	A2	0.2335	kept
+band=light|prep=espresso	322	A	A3	0.2261	kept
+band=light|prep=espresso	322	A	A4	0.1566	
+band=light|prep=espresso	322	A	A5	0.0974	
+band=light|prep=espresso	322	A	A6	0.0294	
+band=light|prep=espresso	322	A	A7	0.0008	
+band=light|prep=espresso	322	A	A8	0.0000	
+band=light|prep=espresso	322	B	B1	0.1411	
+band=light|prep=espresso	322	B	B2	0.0057	
+band=light|prep=espresso	322	B	B3	0.0153	
+band=light|prep=espresso	322	B	B4	0.1687	kept
+band=light|prep=espresso	322	B	B5	0.3523	kept
+band=light|prep=espresso	322	B	B6	0.0063	
+band=light|prep=espresso	322	B	B7	0.0676	
+band=light|prep=espresso	322	B	B8	0.1869	kept
+band=light|prep=espresso	322	B	B9	0.0561	
+band=light|prep=espresso	322	C	C1	0.1599	
+band=light|prep=espresso	322	C	C3	0.2630	kept
+band=light|prep=espresso	322	C	C4	0.1859	
+band=light|prep=espresso	322	C	C5	0.0815	
+band=light|prep=espresso	322	C	C6	0.2577	kept
+band=light|prep=espresso	322	C	C7	0.0521	
+band=light|process=anaerobic	293	A	A1	0.2577	kept
+band=light|process=anaerobic	293	A	A2	0.2101	kept
+band=light|process=anaerobic	293	A	A3	0.1481	
+band=light|process=anaerobic	293	A	A4	0.2586	kept
+band=light|process=anaerobic	293	A	A5	0.1013	
+band=light|process=anaerobic	293	A	A6	0.0136	
+band=light|process=anaerobic	293	A	A7	0.0106	
+band=light|process=anaerobic	293	A	A8	0.0001	
+band=light|process=anaerobic	293	B	B1	0.1433	kept
+band=light|process=anaerobic	293	B	B2	0.0015	
+band=light|process=anaerobic	293	B	B3	0.0353	
+band=light|process=anaerobic	293	B	B4	0.0984	
+band=light|process=anaerobic	293	B	B5	0.4022	kept
+band=light|process=anaerobic	293	B	B6	0.0111	
+band=light|process=anaerobic	293	B	B7	0.1648	kept
+band=light|process=anaerobic	293	B	B8	0.1124	
+band=light|process=anaerobic	293	B	B9	0.0311	
+band=light|process=anaerobic	293	C	C1	0.1974	
+band=light|process=anaerobic	293	C	C3	0.2284	kept
+band=light|process=anaerobic	293	C	C4	0.0424	
+band=light|process=anaerobic	293	C	C5	0.1924	
+band=light|process=anaerobic	293	C	C6	0.3062	kept
+band=light|process=anaerobic	293	C	C7	0.0333	
+band=light|process=anaerobic|variety=caturra	32	A	A1	0.2675	kept
+band=light|process=anaerobic|variety=caturra	32	A	A2	0.1688	
+band=light|process=anaerobic|variety=caturra	32	A	A3	0.2088	kept
+band=light|process=anaerobic|variety=caturra	32	A	A4	0.2160	kept
+band=light|process=anaerobic|variety=caturra	32	A	A5	0.1089	
+band=light|process=anaerobic|variety=caturra	32	A	A6	0.0262	
+band=light|process=anaerobic|variety=caturra	32	A	A7	0.0038	
+band=light|process=anaerobic|variety=caturra	32	A	A8	0.0000	
+band=light|process=anaerobic|variety=caturra	32	B	B1	0.0901	
+band=light|process=anaerobic|variety=caturra	32	B	B2	0.0011	
+band=light|process=anaerobic|variety=caturra	32	B	B3	0.0292	
+band=light|process=anaerobic|variety=caturra	32	B	B4	0.1542	
+band=light|process=anaerobic|variety=caturra	32	B	B5	0.3421	kept
+band=light|process=anaerobic|variety=caturra	32	B	B6	0.0084	
+band=light|process=anaerobic|variety=caturra	32	B	B7	0.1650	kept
+band=light|process=anaerobic|variety=caturra	32	B	B8	0.1698	kept
+band=light|process=anaerobic|variety=caturra	32	B	B9	0.0402	
+band=light|process=anaerobic|variety=caturra	32	C	C1	0.1307	
+band=light|process=anaerobic|variety=caturra	32	C	C3	0.3242	kept
+band=light|process=anaerobic|variety=caturra	32	C	C4	0.0389	
+band=light|process=anaerobic|variety=caturra	32	C	C5	0.0705	
+band=light|process=anaerobic|variety=caturra	32	C	C6	0.3922	kept
+band=light|process=anaerobic|variety=caturra	32	C	C7	0.0436	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A1	0.3011	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A2	0.2597	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A3	0.1160	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A4	0.2324	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A5	0.0642	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A6	0.0243	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A7	0.0023	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	A	A8	0.0000	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B1	0.1822	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B2	0.0072	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B3	0.0310	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B4	0.1224	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B5	0.4269	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B6	0.0025	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B7	0.0686	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B8	0.1292	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	B	B9	0.0300	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	C	C1	0.3132	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	C	C3	0.2809	kept
+band=light|process=anaerobic|variety=ethiopian_landrace	31	C	C4	0.0443	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	C	C5	0.0216	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	C	C6	0.2451	
+band=light|process=anaerobic|variety=ethiopian_landrace	31	C	C7	0.0948	
+band=light|process=anaerobic|variety=gesha	49	A	A1	0.2964	kept
+band=light|process=anaerobic|variety=gesha	49	A	A2	0.1973	kept
+band=light|process=anaerobic|variety=gesha	49	A	A3	0.1250	
+band=light|process=anaerobic|variety=gesha	49	A	A4	0.2836	kept
+band=light|process=anaerobic|variety=gesha	49	A	A5	0.0841	
+band=light|process=anaerobic|variety=gesha	49	A	A6	0.0076	
+band=light|process=anaerobic|variety=gesha	49	A	A7	0.0059	
+band=light|process=anaerobic|variety=gesha	49	A	A8	0.0000	
+band=light|process=anaerobic|variety=gesha	49	B	B1	0.1849	kept
+band=light|process=anaerobic|variety=gesha	49	B	B2	0.0008	
+band=light|process=anaerobic|variety=gesha	49	B	B3	0.0596	
+band=light|process=anaerobic|variety=gesha	49	B	B4	0.0705	
+band=light|process=anaerobic|variety=gesha	49	B	B5	0.3912	kept
+band=light|process=anaerobic|variety=gesha	49	B	B6	0.0057	
+band=light|process=anaerobic|variety=gesha	49	B	B7	0.1933	kept
+band=light|process=anaerobic|variety=gesha	49	B	B8	0.0719	
+band=light|process=anaerobic|variety=gesha	49	B	B9	0.0221	
+band=light|process=anaerobic|variety=gesha	49	C	C1	0.1979	
+band=light|process=anaerobic|variety=gesha	49	C	C3	0.1602	
+band=light|process=anaerobic|variety=gesha	49	C	C4	0.0232	
+band=light|process=anaerobic|variety=gesha	49	C	C5	0.3153	kept
+band=light|process=anaerobic|variety=gesha	49	C	C6	0.2851	kept
+band=light|process=anaerobic|variety=gesha	49	C	C7	0.0183	
+band=light|process=carbonic_maceration	32	A	A1	0.2885	kept
+band=light|process=carbonic_maceration	32	A	A2	0.2077	kept
+band=light|process=carbonic_maceration	32	A	A3	0.1942	
+band=light|process=carbonic_maceration	32	A	A4	0.2127	kept
+band=light|process=carbonic_maceration	32	A	A5	0.0733	
+band=light|process=carbonic_maceration	32	A	A6	0.0199	
+band=light|process=carbonic_maceration	32	A	A7	0.0035	
+band=light|process=carbonic_maceration	32	A	A8	0.0002	
+band=light|process=carbonic_maceration	32	B	B1	0.1761	kept
+band=light|process=carbonic_maceration	32	B	B2	0.0056	
+band=light|process=carbonic_maceration	32	B	B3	0.0263	
+band=light|process=carbonic_maceration	32	B	B4	0.1651	kept
+band=light|process=carbonic_maceration	32	B	B5	0.3219	kept
+band=light|process=carbonic_maceration	32	B	B6	0.0387	
+band=light|process=carbonic_maceration	32	B	B7	0.0859	
+band=light|process=carbonic_maceration	32	B	B8	0.1194	
+band=light|process=carbonic_maceration	32	B	B9	0.0609	
+band=light|process=carbonic_maceration	32	C	C1	0.3417	kept
+band=light|process=carbonic_maceration	32	C	C3	0.1599	
+band=light|process=carbonic_maceration	32	C	C4	0.0556	
+band=light|process=carbonic_maceration	32	C	C5	0.0532	
+band=light|process=carbonic_maceration	32	C	C6	0.3528	kept
+band=light|process=carbonic_maceration	32	C	C7	0.0368	
+band=light|process=honey	81	A	A1	0.2763	kept
+band=light|process=honey	81	A	A2	0.1804	kept
+band=light|process=honey	81	A	A3	0.2414	kept
+band=light|process=honey	81	A	A4	0.1600	
+band=light|process=honey	81	A	A5	0.0919	
+band=light|process=honey	81	A	A6	0.0477	
+band=light|process=honey	81	A	A7	0.0022	
+band=light|process=honey	81	A	A8	0.0001	
+band=light|process=honey	81	B	B1	0.1976	kept
+band=light|process=honey	81	B	B2	0.0037	
+band=light|process=honey	81	B	B3	0.0175	
+band=light|process=honey	81	B	B4	0.1831	kept
+band=light|process=honey	81	B	B5	0.3092	kept
+band=light|process=honey	81	B	B6	0.0064	
+band=light|process=honey	81	B	B7	0.0874	
+band=light|process=honey	81	B	B8	0.1345	
+band=light|process=honey	81	B	B9	0.0607	
+band=light|process=honey	81	C	C1	0.2767	kept
+band=light|process=honey	81	C	C3	0.2312	
+band=light|process=honey	81	C	C4	0.0797	
+band=light|process=honey	81	C	C5	0.0661	
+band=light|process=honey	81	C	C6	0.2662	kept
+band=light|process=honey	81	C	C7	0.0801	
+band=light|process=natural	1236	A	A1	0.2536	kept
+band=light|process=natural	1236	A	A2	0.3081	kept
+band=light|process=natural	1236	A	A3	0.1585	kept
+band=light|process=natural	1236	A	A4	0.1490	
+band=light|process=natural	1236	A	A5	0.1043	
+band=light|process=natural	1236	A	A6	0.0175	
+band=light|process=natural	1236	A	A7	0.0081	
+band=light|process=natural	1236	A	A8	0.0010	
+band=light|process=natural	1236	B	B1	0.1590	kept
+band=light|process=natural	1236	B	B2	0.0031	
+band=light|process=natural	1236	B	B3	0.0502	
+band=light|process=natural	1236	B	B4	0.1776	kept
+band=light|process=natural	1236	B	B5	0.3372	kept
+band=light|process=natural	1236	B	B6	0.0067	
+band=light|process=natural	1236	B	B7	0.1010	
+band=light|process=natural	1236	B	B8	0.1193	
+band=light|process=natural	1236	B	B9	0.0459	
+band=light|process=natural	1236	C	C1	0.2927	kept
+band=light|process=natural	1236	C	C3	0.2193	
+band=light|process=natural	1236	C	C4	0.0731	
+band=light|process=natural	1236	C	C5	0.0711	
+band=light|process=natural	1236	C	C6	0.3072	kept
+band=light|process=natural	1236	C	C7	0.0367	
+band=light|process=natural|variety=bourbon	99	A	A1	0.2307	kept
+band=light|process=natural|variety=bourbon	99	A	A2	0.3033	kept
+band=light|process=natural|variety=bourbon	99	A	A3	0.1743	kept
+band=light|process=natural|variety=bourbon	99	A	A4	0.1678	
+band=light|process=natural|variety=bourbon	99	A	A5	0.1139	
+band=light|process=natural|variety=bourbon	99	A	A6	0.0066	
+band=light|process=natural|variety=bourbon	99	A	A7	0.0030	
+band=light|process=natural|variety=bourbon	99	A	A8	0.0004	
+band=light|process=natural|variety=bourbon	99	B	B1	0.1302	kept
+band=light|process=natural|variety=bourbon	99	B	B2	0.0120	
+band=light|process=natural|variety=bourbon	99	B	B3	0.0408	
+band=light|process=natural|variety=bourbon	99	B	B4	0.2158	kept
+band=light|process=natural|variety=bourbon	99	B	B5	0.3305	kept
+band=light|process=natural|variety=bourbon	99	B	B6	0.0026	
+band=light|process=natural|variety=bourbon	99	B	B7	0.1079	
+band=light|process=natural|variety=bourbon	99	B	B8	0.1101	
+band=light|process=natural|variety=bourbon	99	B	B9	0.0503	
+band=light|process=natural|variety=bourbon	99	C	C1	0.2662	kept
+band=light|process=natural|variety=bourbon	99	C	C3	0.2193	
+band=light|process=natural|variety=bourbon	99	C	C4	0.0831	
+band=light|process=natural|variety=bourbon	99	C	C5	0.0724	
+band=light|process=natural|variety=bourbon	99	C	C6	0.3452	kept
+band=light|process=natural|variety=bourbon	99	C	C7	0.0138	
+band=light|process=natural|variety=catuai	34	A	A1	0.2146	kept
+band=light|process=natural|variety=catuai	34	A	A2	0.2816	kept
+band=light|process=natural|variety=catuai	34	A	A3	0.1521	
+band=light|process=natural|variety=catuai	34	A	A4	0.1982	kept
+band=light|process=natural|variety=catuai	34	A	A5	0.1067	
+band=light|process=natural|variety=catuai	34	A	A6	0.0412	
+band=light|process=natural|variety=catuai	34	A	A7	0.0050	
+band=light|process=natural|variety=catuai	34	A	A8	0.0006	
+band=light|process=natural|variety=catuai	34	B	B1	0.1599	kept
+band=light|process=natural|variety=catuai	34	B	B2	0.0019	
+band=light|process=natural|variety=catuai	34	B	B3	0.0502	
+band=light|process=natural|variety=catuai	34	B	B4	0.2086	kept
+band=light|process=natural|variety=catuai	34	B	B5	0.3280	kept
+band=light|process=natural|variety=catuai	34	B	B6	0.0381	
+band=light|process=natural|variety=catuai	34	B	B7	0.0767	
+band=light|process=natural|variety=catuai	34	B	B8	0.0997	
+band=light|process=natural|variety=catuai	34	B	B9	0.0369	
+band=light|process=natural|variety=catuai	34	C	C1	0.3103	kept
+band=light|process=natural|variety=catuai	34	C	C3	0.1672	
+band=light|process=natural|variety=catuai	34	C	C4	0.0970	
+band=light|process=natural|variety=catuai	34	C	C5	0.0729	
+band=light|process=natural|variety=catuai	34	C	C6	0.2651	kept
+band=light|process=natural|variety=catuai	34	C	C7	0.0873	
+band=light|process=natural|variety=caturra	64	A	A1	0.2784	kept
+band=light|process=natural|variety=caturra	64	A	A2	0.3033	kept
+band=light|process=natural|variety=caturra	64	A	A3	0.1501	kept
+band=light|process=natural|variety=caturra	64	A	A4	0.1445	
+band=light|process=natural|variety=caturra	64	A	A5	0.0888	
+band=light|process=natural|variety=caturra	64	A	A6	0.0188	
+band=light|process=natural|variety=caturra	64	A	A7	0.0156	
+band=light|process=natural|variety=caturra	64	A	A8	0.0005	
+band=light|process=natural|variety=caturra	64	B	B1	0.1466	
+band=light|process=natural|variety=caturra	64	B	B2	0.0016	
+band=light|process=natural|variety=caturra	64	B	B3	0.0253	
+band=light|process=natural|variety=caturra	64	B	B4	0.1831	kept
+band=light|process=natural|variety=caturra	64	B	B5	0.3756	kept
+band=light|process=natural|variety=caturra	64	B	B6	0.0034	
+band=light|process=natural|variety=caturra	64	B	B7	0.0863	
+band=light|process=natural|variety=caturra	64	B	B8	0.1479	kept
+band=light|process=natural|variety=caturra	64	B	B9	0.0303	
+band=light|process=natural|variety=caturra	64	C	C1	0.1864	
+band=light|process=natural|variety=caturra	64	C	C3	0.3418	kept
+band=light|process=natural|variety=caturra	64	C	C4	0.0520	
+band=light|process=natural|variety=caturra	64	C	C5	0.0529	
+band=light|process=natural|variety=caturra	64	C	C6	0.3268	kept
+band=light|process=natural|variety=caturra	64	C	C7	0.0402	
+band=light|process=natural|variety=ethiopian_landrace	247	A	A1	0.2565	kept
+band=light|process=natural|variety=ethiopian_landrace	247	A	A2	0.3712	kept
+band=light|process=natural|variety=ethiopian_landrace	247	A	A3	0.1355	
+band=light|process=natural|variety=ethiopian_landrace	247	A	A4	0.1399	kept
+band=light|process=natural|variety=ethiopian_landrace	247	A	A5	0.0862	
+band=light|process=natural|variety=ethiopian_landrace	247	A	A6	0.0035	
+band=light|process=natural|variety=ethiopian_landrace	247	A	A7	0.0070	
+band=light|process=natural|variety=ethiopian_landrace	247	A	A8	0.0002	
+band=light|process=natural|variety=ethiopian_landrace	247	B	B1	0.1498	kept
+band=light|process=natural|variety=ethiopian_landrace	247	B	B2	0.0006	
+band=light|process=natural|variety=ethiopian_landrace	247	B	B3	0.0455	
+band=light|process=natural|variety=ethiopian_landrace	247	B	B4	0.1644	kept
+band=light|process=natural|variety=ethiopian_landrace	247	B	B5	0.3779	kept
+band=light|process=natural|variety=ethiopian_landrace	247	B	B6	0.0014	
+band=light|process=natural|variety=ethiopian_landrace	247	B	B7	0.0743	
+band=light|process=natural|variety=ethiopian_landrace	247	B	B8	0.1396	
+band=light|process=natural|variety=ethiopian_landrace	247	B	B9	0.0464	
+band=light|process=natural|variety=ethiopian_landrace	247	C	C1	0.3308	kept
+band=light|process=natural|variety=ethiopian_landrace	247	C	C3	0.2313	
+band=light|process=natural|variety=ethiopian_landrace	247	C	C4	0.1049	
+band=light|process=natural|variety=ethiopian_landrace	247	C	C5	0.0241	
+band=light|process=natural|variety=ethiopian_landrace	247	C	C6	0.3016	kept
+band=light|process=natural|variety=ethiopian_landrace	247	C	C7	0.0073	
+band=light|process=natural|variety=gesha	158	A	A1	0.2495	kept
+band=light|process=natural|variety=gesha	158	A	A2	0.2285	kept
+band=light|process=natural|variety=gesha	158	A	A3	0.1738	
+band=light|process=natural|variety=gesha	158	A	A4	0.1787	kept
+band=light|process=natural|variety=gesha	158	A	A5	0.1622	
+band=light|process=natural|variety=gesha	158	A	A6	0.0047	
+band=light|process=natural|variety=gesha	158	A	A7	0.0022	
+band=light|process=natural|variety=gesha	158	A	A8	0.0003	
+band=light|process=natural|variety=gesha	158	B	B1	0.2345	kept
+band=light|process=natural|variety=gesha	158	B	B2	0.0008	
+band=light|process=natural|variety=gesha	158	B	B3	0.0293	
+band=light|process=natural|variety=gesha	158	B	B4	0.1487	kept
+band=light|process=natural|variety=gesha	158	B	B5	0.3607	kept
+band=light|process=natural|variety=gesha	158	B	B6	0.0018	
+band=light|process=natural|variety=gesha	158	B	B7	0.1120	
+band=light|process=natural|variety=gesha	158	B	B8	0.0793	
+band=light|process=natural|variety=gesha	158	B	B9	0.0329	
+band=light|process=natural|variety=gesha	158	C	C1	0.3345	kept
+band=light|process=natural|variety=gesha	158	C	C3	0.1711	
+band=light|process=natural|variety=gesha	158	C	C4	0.0207	
+band=light|process=natural|variety=gesha	158	C	C5	0.0747	
+band=light|process=natural|variety=gesha	158	C	C6	0.3886	kept
+band=light|process=natural|variety=gesha	158	C	C7	0.0104	
+band=light|process=washed	1544	A	A1	0.3188	kept
+band=light|process=washed	1544	A	A2	0.1198	
+band=light|process=washed	1544	A	A3	0.2423	kept
+band=light|process=washed	1544	A	A4	0.2001	kept
+band=light|process=washed	1544	A	A5	0.0859	
+band=light|process=washed	1544	A	A6	0.0307	
+band=light|process=washed	1544	A	A7	0.0024	
+band=light|process=washed	1544	A	A8	0.0000	
+band=light|process=washed	1544	B	B1	0.1779	kept
+band=light|process=washed	1544	B	B2	0.0120	
+band=light|process=washed	1544	B	B3	0.0432	
+band=light|process=washed	1544	B	B4	0.1848	kept
+band=light|process=washed	1544	B	B5	0.3016	kept
+band=light|process=washed	1544	B	B6	0.0067	
+band=light|process=washed	1544	B	B7	0.0824	
+band=light|process=washed	1544	B	B8	0.1479	
+band=light|process=washed	1544	B	B9	0.0434	
+band=light|process=washed	1544	C	C1	0.2021	
+band=light|process=washed	1544	C	C3	0.2511	kept
+band=light|process=washed	1544	C	C4	0.0656	
+band=light|process=washed	1544	C	C5	0.0670	
+band=light|process=washed	1544	C	C6	0.3606	kept
+band=light|process=washed	1544	C	C7	0.0537	
+band=light|process=washed|variety=bourbon	264	A	A1	0.2920	kept
+band=light|process=washed|variety=bourbon	264	A	A2	0.0858	
+band=light|process=washed|variety=bourbon	264	A	A3	0.2436	kept
+band=light|process=washed|variety=bourbon	264	A	A4	0.2789	kept
+band=light|process=washed|variety=bourbon	264	A	A5	0.0628	
+band=light|process=washed|variety=bourbon	264	A	A6	0.0364	
+band=light|process=washed|variety=bourbon	264	A	A7	0.0004	
+band=light|process=washed|variety=bourbon	264	A	A8	0.0000	
+band=light|process=washed|variety=bourbon	264	B	B1	0.1189	
+band=light|process=washed|variety=bourbon	264	B	B2	0.0076	
+band=light|process=washed|variety=bourbon	264	B	B3	0.0294	
+band=light|process=washed|variety=bourbon	264	B	B4	0.2520	kept
+band=light|process=washed|variety=bourbon	264	B	B5	0.2416	kept
+band=light|process=washed|variety=bourbon	264	B	B6	0.0156	
+band=light|process=washed|variety=bourbon	264	B	B7	0.0947	
+band=light|process=washed|variety=bourbon	264	B	B8	0.1772	kept
+band=light|process=washed|variety=bourbon	264	B	B9	0.0631	
+band=light|process=washed|variety=bourbon	264	C	C1	0.1560	
+band=light|process=washed|variety=bourbon	264	C	C3	0.3356	kept
+band=light|process=washed|variety=bourbon	264	C	C4	0.0750	
+band=light|process=washed|variety=bourbon	264	C	C5	0.1021	
+band=light|process=washed|variety=bourbon	264	C	C6	0.2735	kept
+band=light|process=washed|variety=bourbon	264	C	C7	0.0577	
+band=light|process=washed|variety=caturra	102	A	A1	0.2435	kept
+band=light|process=washed|variety=caturra	102	A	A2	0.1013	
+band=light|process=washed|variety=caturra	102	A	A3	0.2702	kept
+band=light|process=washed|variety=caturra	102	A	A4	0.2311	kept
+band=light|process=washed|variety=caturra	102	A	A5	0.0883	
+band=light|process=washed|variety=caturra	102	A	A6	0.0648	
+band=light|process=washed|variety=caturra	102	A	A7	0.0009	
+band=light|process=washed|variety=caturra	102	A	A8	0.0000	
+band=light|process=washed|variety=caturra	102	B	B1	0.1260	
+band=light|process=washed|variety=caturra	102	B	B2	0.0047	
+band=light|process=washed|variety=caturra	102	B	B3	0.0269	
+band=light|process=washed|variety=caturra	102	B	B4	0.2325	kept
+band=light|process=washed|variety=caturra	102	B	B5	0.2963	kept
+band=light|process=washed|variety=caturra	102	B	B6	0.0026	
+band=light|process=washed|variety=caturra	102	B	B7	0.0679	
+band=light|process=washed|variety=caturra	102	B	B8	0.1871	kept
+band=light|process=washed|variety=caturra	102	B	B9	0.0559	
+band=light|process=washed|variety=caturra	102	C	C1	0.1590	
+band=light|process=washed|variety=caturra	102	C	C3	0.2859	kept
+band=light|process=washed|variety=caturra	102	C	C4	0.0795	
+band=light|process=washed|variety=caturra	102	C	C5	0.0363	
+band=light|process=washed|variety=caturra	102	C	C6	0.3349	kept
+band=light|process=washed|variety=caturra	102	C	C7	0.1044	
+band=light|process=washed|variety=ethiopian_landrace	211	A	A1	0.3991	kept
+band=light|process=washed|variety=ethiopian_landrace	211	A	A2	0.1360	kept
+band=light|process=washed|variety=ethiopian_landrace	211	A	A3	0.2488	kept
+band=light|process=washed|variety=ethiopian_landrace	211	A	A4	0.1316	
+band=light|process=washed|variety=ethiopian_landrace	211	A	A5	0.0687	
+band=light|process=washed|variety=ethiopian_landrace	211	A	A6	0.0151	
+band=light|process=washed|variety=ethiopian_landrace	211	A	A7	0.0008	
+band=light|process=washed|variety=ethiopian_landrace	211	A	A8	0.0000	
+band=light|process=washed|variety=ethiopian_landrace	211	B	B1	0.2141	kept
+band=light|process=washed|variety=ethiopian_landrace	211	B	B2	0.0217	
+band=light|process=washed|variety=ethiopian_landrace	211	B	B3	0.0537	
+band=light|process=washed|variety=ethiopian_landrace	211	B	B4	0.1548	kept
+band=light|process=washed|variety=ethiopian_landrace	211	B	B5	0.3622	kept
+band=light|process=washed|variety=ethiopian_landrace	211	B	B6	0.0008	
+band=light|process=washed|variety=ethiopian_landrace	211	B	B7	0.0443	
+band=light|process=washed|variety=ethiopian_landrace	211	B	B8	0.1156	
+band=light|process=washed|variety=ethiopian_landrace	211	B	B9	0.0328	
+band=light|process=washed|variety=ethiopian_landrace	211	C	C1	0.2200	kept
+band=light|process=washed|variety=ethiopian_landrace	211	C	C3	0.1777	
+band=light|process=washed|variety=ethiopian_landrace	211	C	C4	0.0445	
+band=light|process=washed|variety=ethiopian_landrace	211	C	C5	0.0289	
+band=light|process=washed|variety=ethiopian_landrace	211	C	C6	0.4988	kept
+band=light|process=washed|variety=ethiopian_landrace	211	C	C7	0.0300	
+band=light|process=washed|variety=gesha	148	A	A1	0.3813	kept
+band=light|process=washed|variety=gesha	148	A	A2	0.1007	
+band=light|process=washed|variety=gesha	148	A	A3	0.2271	kept
+band=light|process=washed|variety=gesha	148	A	A4	0.2011	kept
+band=light|process=washed|variety=gesha	148	A	A5	0.0726	
+band=light|process=washed|variety=gesha	148	A	A6	0.0164	
+band=light|process=washed|variety=gesha	148	A	A7	0.0007	
+band=light|process=washed|variety=gesha	148	A	A8	0.0000	
+band=light|process=washed|variety=gesha	148	B	B1	0.2486	kept
+band=light|process=washed|variety=gesha	148	B	B2	0.0171	
+band=light|process=washed|variety=gesha	148	B	B3	0.0671	
+band=light|process=washed|variety=gesha	148	B	B4	0.1315	kept
+band=light|process=washed|variety=gesha	148	B	B5	0.2998	kept
+band=light|process=washed|variety=gesha	148	B	B6	0.0018	
+band=light|process=washed|variety=gesha	148	B	B7	0.0963	
+band=light|process=washed|variety=gesha	148	B	B8	0.1111	
+band=light|process=washed|variety=gesha	148	B	B9	0.0267	
+band=light|process=washed|variety=gesha	148	C	C1	0.2483	kept
+band=light|process=washed|variety=gesha	148	C	C3	0.2088	
+band=light|process=washed|variety=gesha	148	C	C4	0.0417	
+band=light|process=washed|variety=gesha	148	C	C5	0.1180	
+band=light|process=washed|variety=gesha	148	C	C6	0.3531	kept
+band=light|process=washed|variety=gesha	148	C	C7	0.0300	
+band=light|process=washed|variety=sl28_sl34	111	A	A1	0.2923	kept
+band=light|process=washed|variety=sl28_sl34	111	A	A2	0.2573	kept
+band=light|process=washed|variety=sl28_sl34	111	A	A3	0.1471	
+band=light|process=washed|variety=sl28_sl34	111	A	A4	0.1893	kept
+band=light|process=washed|variety=sl28_sl34	111	A	A5	0.0831	
+band=light|process=washed|variety=sl28_sl34	111	A	A6	0.0300	
+band=light|process=washed|variety=sl28_sl34	111	A	A7	0.0009	
+band=light|process=washed|variety=sl28_sl34	111	A	A8	0.0000	
+band=light|process=washed|variety=sl28_sl34	111	B	B1	0.1667	kept
+band=light|process=washed|variety=sl28_sl34	111	B	B2	0.0134	
+band=light|process=washed|variety=sl28_sl34	111	B	B3	0.0429	
+band=light|process=washed|variety=sl28_sl34	111	B	B4	0.1185	
+band=light|process=washed|variety=sl28_sl34	111	B	B5	0.3767	kept
+band=light|process=washed|variety=sl28_sl34	111	B	B6	0.0024	
+band=light|process=washed|variety=sl28_sl34	111	B	B7	0.0687	
+band=light|process=washed|variety=sl28_sl34	111	B	B8	0.1831	kept
+band=light|process=washed|variety=sl28_sl34	111	B	B9	0.0276	
+band=light|process=washed|variety=sl28_sl34	111	C	C1	0.1404	
+band=light|process=washed|variety=sl28_sl34	111	C	C3	0.3668	kept
+band=light|process=washed|variety=sl28_sl34	111	C	C4	0.0996	
+band=light|process=washed|variety=sl28_sl34	111	C	C5	0.0225	
+band=light|process=washed|variety=sl28_sl34	111	C	C6	0.2871	kept
+band=light|process=washed|variety=sl28_sl34	111	C	C7	0.0835	
+band=light|process=washed|variety=typica	70	A	A1	0.2996	kept
+band=light|process=washed|variety=typica	70	A	A2	0.0992	
+band=light|process=washed|variety=typica	70	A	A3	0.2695	kept
+band=light|process=washed|variety=typica	70	A	A4	0.2074	kept
+band=light|process=washed|variety=typica	70	A	A5	0.0966	
+band=light|process=washed|variety=typica	70	A	A6	0.0265	
+band=light|process=washed|variety=typica	70	A	A7	0.0011	
+band=light|process=washed|variety=typica	70	A	A8	0.0000	
+band=light|process=washed|variety=typica	70	B	B1	0.1421	
+band=light|process=washed|variety=typica	70	B	B2	0.0055	
+band=light|process=washed|variety=typica	70	B	B3	0.0413	
+band=light|process=washed|variety=typica	70	B	B4	0.2007	kept
+band=light|process=washed|variety=typica	70	B	B5	0.2938	kept
+band=light|process=washed|variety=typica	70	B	B6	0.0127	
+band=light|process=washed|variety=typica	70	B	B7	0.1138	
+band=light|process=washed|variety=typica	70	B	B8	0.1424	kept
+band=light|process=washed|variety=typica	70	B	B9	0.0477	
+band=light|process=washed|variety=typica	70	C	C1	0.1524	
+band=light|process=washed|variety=typica	70	C	C3	0.2653	kept
+band=light|process=washed|variety=typica	70	C	C4	0.0471	
+band=light|process=washed|variety=typica	70	C	C5	0.0873	
+band=light|process=washed|variety=typica	70	C	C6	0.4017	kept
+band=light|process=washed|variety=typica	70	C	C7	0.0463	
+band=light|variety=bourbon	559	A	A1	0.2776	kept
+band=light|variety=bourbon	559	A	A2	0.1552	
+band=light|variety=bourbon	559	A	A3	0.2253	kept
+band=light|variety=bourbon	559	A	A4	0.2436	kept
+band=light|variety=bourbon	559	A	A5	0.0732	
+band=light|variety=bourbon	559	A	A6	0.0245	
+band=light|variety=bourbon	559	A	A7	0.0005	
+band=light|variety=bourbon	559	A	A8	0.0000	
+band=light|variety=bourbon	559	B	B1	0.1321	
+band=light|variety=bourbon	559	B	B2	0.0100	
+band=light|variety=bourbon	559	B	B3	0.0284	
+band=light|variety=bourbon	559	B	B4	0.2342	kept
+band=light|variety=bourbon	559	B	B5	0.2621	kept
+band=light|variety=bourbon	559	B	B6	0.0290	
+band=light|variety=bourbon	559	B	B7	0.1008	
+band=light|variety=bourbon	559	B	B8	0.1468	kept
+band=light|variety=bourbon	559	B	B9	0.0565	
+band=light|variety=bourbon	559	C	C1	0.2433	
+band=light|variety=bourbon	559	C	C3	0.2688	kept
+band=light|variety=bourbon	559	C	C4	0.0883	
+band=light|variety=bourbon	559	C	C5	0.1027	
+band=light|variety=bourbon	559	C	C6	0.2592	kept
+band=light|variety=bourbon	559	C	C7	0.0378	
+band=light|variety=castillo	47	A	A1	0.2881	kept
+band=light|variety=castillo	47	A	A2	0.1519	
+band=light|variety=castillo	47	A	A3	0.1824	kept
+band=light|variety=castillo	47	A	A4	0.2253	kept
+band=light|variety=castillo	47	A	A5	0.1162	
+band=light|variety=castillo	47	A	A6	0.0167	
+band=light|variety=castillo	47	A	A7	0.0192	
+band=light|variety=castillo	47	A	A8	0.0002	
+band=light|variety=castillo	47	B	B1	0.1387	
+band=light|variety=castillo	47	B	B2	0.0050	
+band=light|variety=castillo	47	B	B3	0.0232	
+band=light|variety=castillo	47	B	B4	0.1620	kept
+band=light|variety=castillo	47	B	B5	0.3378	kept
+band=light|variety=castillo	47	B	B6	0.0085	
+band=light|variety=castillo	47	B	B7	0.1391	
+band=light|variety=castillo	47	B	B8	0.1494	kept
+band=light|variety=castillo	47	B	B9	0.0363	
+band=light|variety=castillo	47	C	C1	0.2622	kept
+band=light|variety=castillo	47	C	C3	0.1852	
+band=light|variety=castillo	47	C	C4	0.0459	
+band=light|variety=castillo	47	C	C5	0.1504	
+band=light|variety=castillo	47	C	C6	0.3260	kept
+band=light|variety=castillo	47	C	C7	0.0304	
+band=light|variety=catuai	90	A	A1	0.2481	kept
+band=light|variety=catuai	90	A	A2	0.1747	
+band=light|variety=catuai	90	A	A3	0.2139	kept
+band=light|variety=catuai	90	A	A4	0.2350	kept
+band=light|variety=catuai	90	A	A5	0.0858	
+band=light|variety=catuai	90	A	A6	0.0300	
+band=light|variety=catuai	90	A	A7	0.0124	
+band=light|variety=catuai	90	A	A8	0.0001	
+band=light|variety=catuai	90	B	B1	0.1696	kept
+band=light|variety=catuai	90	B	B2	0.0035	
+band=light|variety=catuai	90	B	B3	0.0277	
+band=light|variety=catuai	90	B	B4	0.2195	kept
+band=light|variety=catuai	90	B	B5	0.2854	kept
+band=light|variety=catuai	90	B	B6	0.0265	
+band=light|variety=catuai	90	B	B7	0.0795	
+band=light|variety=catuai	90	B	B8	0.1334	
+band=light|variety=catuai	90	B	B9	0.0549	
+band=light|variety=catuai	90	C	C1	0.2543	
+band=light|variety=catuai	90	C	C3	0.2575	kept
+band=light|variety=catuai	90	C	C4	0.0734	
+band=light|variety=catuai	90	C	C5	0.0759	
+band=light|variety=catuai	90	C	C6	0.2829	kept
+band=light|variety=catuai	90	C	C7	0.0561	
+band=light|variety=caturra	265	A	A1	0.2580	kept
+band=light|variety=caturra	265	A	A2	0.1746	
+band=light|variety=caturra	265	A	A3	0.2199	kept
+band=light|variety=caturra	265	A	A4	0.2213	kept
+band=light|variety=caturra	265	A	A5	0.0801	
+band=light|variety=caturra	265	A	A6	0.0401	
+band=light|variety=caturra	265	A	A7	0.0059	
+band=light|variety=caturra	265	A	A8	0.0001	
+band=light|variety=caturra	265	B	B1	0.1186	
+band=light|variety=caturra	265	B	B2	0.0017	
+band=light|variety=caturra	265	B	B3	0.0190	
+band=light|variety=caturra	265	B	B4	0.2019	kept
+band=light|variety=caturra	265	B	B5	0.3126	kept
+band=light|variety=caturra	265	B	B6	0.0129	
+band=light|variety=caturra	265	B	B7	0.1063	
+band=light|variety=caturra	265	B	B8	0.1761	kept
+band=light|variety=caturra	265	B	B9	0.0509	
+band=light|variety=caturra	265	C	C1	0.1680	
+band=light|variety=caturra	265	C	C3	0.3451	kept
+band=light|variety=caturra	265	C	C4	0.0597	
+band=light|variety=caturra	265	C	C5	0.0572	
+band=light|variety=caturra	265	C	C6	0.3029	kept
+band=light|variety=caturra	265	C	C7	0.0670	
+band=light|variety=ethiopian_landrace	533	A	A1	0.3214	kept
+band=light|variety=ethiopian_landrace	533	A	A2	0.2583	kept
+band=light|variety=ethiopian_landrace	533	A	A3	0.1782	kept
+band=light|variety=ethiopian_landrace	533	A	A4	0.1532	
+band=light|variety=ethiopian_landrace	533	A	A5	0.0744	
+band=light|variety=ethiopian_landrace	533	A	A6	0.0110	
+band=light|variety=ethiopian_landrace	533	A	A7	0.0035	
+band=light|variety=ethiopian_landrace	533	A	A8	0.0000	
+band=light|variety=ethiopian_landrace	533	B	B1	0.1789	kept
+band=light|variety=ethiopian_landrace	533	B	B2	0.0108	
+band=light|variety=ethiopian_landrace	533	B	B3	0.0463	
+band=light|variety=ethiopian_landrace	533	B	B4	0.1556	kept
+band=light|variety=ethiopian_landrace	533	B	B5	0.3730	kept
+band=light|variety=ethiopian_landrace	533	B	B6	0.0038	
+band=light|variety=ethiopian_landrace	533	B	B7	0.0611	
+band=light|variety=ethiopian_landrace	533	B	B8	0.1256	
+band=light|variety=ethiopian_landrace	533	B	B9	0.0449	
+band=light|variety=ethiopian_landrace	533	C	C1	0.2779	kept
+band=light|variety=ethiopian_landrace	533	C	C3	0.2203	
+band=light|variety=ethiopian_landrace	533	C	C4	0.0682	
+band=light|variety=ethiopian_landrace	533	C	C5	0.0333	
+band=light|variety=ethiopian_landrace	533	C	C6	0.3772	kept
+band=light|variety=ethiopian_landrace	533	C	C7	0.0231	
+band=light|variety=gesha	440	A	A1	0.3152	kept
+band=light|variety=gesha	440	A	A2	0.1582	
+band=light|variety=gesha	440	A	A3	0.1930	kept
+band=light|variety=gesha	440	A	A4	0.1953	kept
+band=light|variety=gesha	440	A	A5	0.1278	
+band=light|variety=gesha	440	A	A6	0.0098	
+band=light|variety=gesha	440	A	A7	0.0006	
+band=light|variety=gesha	440	A	A8	0.0000	
+band=light|variety=gesha	440	B	B1	0.2668	kept
+band=light|variety=gesha	440	B	B2	0.0103	
+band=light|variety=gesha	440	B	B3	0.0481	
+band=light|variety=gesha	440	B	B4	0.1160	
+band=light|variety=gesha	440	B	B5	0.3237	kept
+band=light|variety=gesha	440	B	B6	0.0045	
+band=light|variety=gesha	440	B	B7	0.1216	kept
+band=light|variety=gesha	440	B	B8	0.0790	
+band=light|variety=gesha	440	B	B9	0.0299	
+band=light|variety=gesha	440	C	C1	0.3200	kept
+band=light|variety=gesha	440	C	C3	0.1569	
+band=light|variety=gesha	440	C	C4	0.0242	
+band=light|variety=gesha	440	C	C5	0.1172	
+band=light|variety=gesha	440	C	C6	0.3633	kept
+band=light|variety=gesha	440	C	C7	0.0185	
+band=light|variety=pacamara	49	A	A1	0.2979	kept
+band=light|variety=pacamara	49	A	A2	0.1667	
+band=light|variety=pacamara	49	A	A3	0.2089	kept
+band=light|variety=pacamara	49	A	A4	0.2313	kept
+band=light|variety=pacamara	49	A	A5	0.0504	
+band=light|variety=pacamara	49	A	A6	0.0305	
+band=light|variety=pacamara	49	A	A7	0.0029	
+band=light|variety=pacamara	49	A	A8	0.0116	
+band=light|variety=pacamara	49	B	B1	0.1136	
+band=light|variety=pacamara	49	B	B2	0.0050	
+band=light|variety=pacamara	49	B	B3	0.0232	
+band=light|variety=pacamara	49	B	B4	0.1982	kept
+band=light|variety=pacamara	49	B	B5	0.3369	kept
+band=light|variety=pacamara	49	B	B6	0.0085	
+band=light|variety=pacamara	49	B	B7	0.1239	
+band=light|variety=pacamara	49	B	B8	0.1534	kept
+band=light|variety=pacamara	49	B	B9	0.0374	
+band=light|variety=pacamara	49	C	C1	0.1679	
+band=light|variety=pacamara	49	C	C3	0.3399	kept
+band=light|variety=pacamara	49	C	C4	0.0923	
+band=light|variety=pacamara	49	C	C5	0.0681	
+band=light|variety=pacamara	49	C	C6	0.2721	kept
+band=light|variety=pacamara	49	C	C7	0.0597	
+band=light|variety=pink_bourbon	53	A	A1	0.2502	kept
+band=light|variety=pink_bourbon	53	A	A2	0.2376	kept
+band=light|variety=pink_bourbon	53	A	A3	0.2278	kept
+band=light|variety=pink_bourbon	53	A	A4	0.1807	
+band=light|variety=pink_bourbon	53	A	A5	0.0847	
+band=light|variety=pink_bourbon	53	A	A6	0.0161	
+band=light|variety=pink_bourbon	53	A	A7	0.0028	
+band=light|variety=pink_bourbon	53	A	A8	0.0002	
+band=light|variety=pink_bourbon	53	B	B1	0.1639	kept
+band=light|variety=pink_bourbon	53	B	B2	0.0048	
+band=light|variety=pink_bourbon	53	B	B3	0.0224	
+band=light|variety=pink_bourbon	53	B	B4	0.1764	kept
+band=light|variety=pink_bourbon	53	B	B5	0.3859	kept
+band=light|variety=pink_bourbon	53	B	B6	0.0081	
+band=light|variety=pink_bourbon	53	B	B7	0.0658	
+band=light|variety=pink_bourbon	53	B	B8	0.1372	
+band=light|variety=pink_bourbon	53	B	B9	0.0355	
+band=light|variety=pink_bourbon	53	C	C1	0.2902	kept
+band=light|variety=pink_bourbon	53	C	C3	0.1495	
+band=light|variety=pink_bourbon	53	C	C4	0.0641	
+band=light|variety=pink_bourbon	53	C	C5	0.0857	
+band=light|variety=pink_bourbon	53	C	C6	0.3811	kept
+band=light|variety=pink_bourbon	53	C	C7	0.0294	
+band=light|variety=red_bourbon	76	A	A1	0.2665	kept
+band=light|variety=red_bourbon	76	A	A2	0.2087	kept
+band=light|variety=red_bourbon	76	A	A3	0.1921	
+band=light|variety=red_bourbon	76	A	A4	0.1954	kept
+band=light|variety=red_bourbon	76	A	A5	0.1118	
+band=light|variety=red_bourbon	76	A	A6	0.0230	
+band=light|variety=red_bourbon	76	A	A7	0.0023	
+band=light|variety=red_bourbon	76	A	A8	0.0001	
+band=light|variety=red_bourbon	76	B	B1	0.1214	
+band=light|variety=red_bourbon	76	B	B2	0.0039	
+band=light|variety=red_bourbon	76	B	B3	0.0185	
+band=light|variety=red_bourbon	76	B	B4	0.1293	kept
+band=light|variety=red_bourbon	76	B	B5	0.3982	kept
+band=light|variety=red_bourbon	76	B	B6	0.0067	
+band=light|variety=red_bourbon	76	B	B7	0.1400	kept
+band=light|variety=red_bourbon	76	B	B8	0.1238	
+band=light|variety=red_bourbon	76	B	B9	0.0581	
+band=light|variety=red_bourbon	76	C	C1	0.2882	kept
+band=light|variety=red_bourbon	76	C	C3	0.2561	
+band=light|variety=red_bourbon	76	C	C4	0.0641	
+band=light|variety=red_bourbon	76	C	C5	0.0500	
+band=light|variety=red_bourbon	76	C	C6	0.3000	kept
+band=light|variety=red_bourbon	76	C	C7	0.0416	
+band=light|variety=robusta	35	A	A1	0.2873	kept
+band=light|variety=robusta	35	A	A2	0.1755	
+band=light|variety=robusta	35	A	A3	0.1877	kept
+band=light|variety=robusta	35	A	A4	0.1843	kept
+band=light|variety=robusta	35	A	A5	0.0971	
+band=light|variety=robusta	35	A	A6	0.0481	
+band=light|variety=robusta	35	A	A7	0.0199	
+band=light|variety=robusta	35	A	A8	0.0002	
+band=light|variety=robusta	35	B	B1	0.1456	kept
+band=light|variety=robusta	35	B	B2	0.0053	
+band=light|variety=robusta	35	B	B3	0.0579	
+band=light|variety=robusta	35	B	B4	0.1530	kept
+band=light|variety=robusta	35	B	B5	0.3010	kept
+band=light|variety=robusta	35	B	B6	0.0537	
+band=light|variety=robusta	35	B	B7	0.0951	
+band=light|variety=robusta	35	B	B8	0.1214	
+band=light|variety=robusta	35	B	B9	0.0669	
+band=light|variety=robusta	35	C	C1	0.2383	kept
+band=light|variety=robusta	35	C	C3	0.1773	
+band=light|variety=robusta	35	C	C4	0.0793	
+band=light|variety=robusta	35	C	C5	0.0799	
+band=light|variety=robusta	35	C	C6	0.3191	kept
+band=light|variety=robusta	35	C	C7	0.1060	
+band=light|variety=sl28_sl34	248	A	A1	0.2687	kept
+band=light|variety=sl28_sl34	248	A	A2	0.3025	kept
+band=light|variety=sl28_sl34	248	A	A3	0.1295	
+band=light|variety=sl28_sl34	248	A	A4	0.1800	kept
+band=light|variety=sl28_sl34	248	A	A5	0.0957	
+band=light|variety=sl28_sl34	248	A	A6	0.0165	
+band=light|variety=sl28_sl34	248	A	A7	0.0070	
+band=light|variety=sl28_sl34	248	A	A8	0.0001	
+band=light|variety=sl28_sl34	248	B	B1	0.1918	kept
+band=light|variety=sl28_sl34	248	B	B2	0.0186	
+band=light|variety=sl28_sl34	248	B	B3	0.0642	
+band=light|variety=sl28_sl34	248	B	B4	0.1185	
+band=light|variety=sl28_sl34	248	B	B5	0.3430	kept
+band=light|variety=sl28_sl34	248	B	B6	0.0080	
+band=light|variety=sl28_sl34	248	B	B7	0.0710	
+band=light|variety=sl28_sl34	248	B	B8	0.1532	kept
+band=light|variety=sl28_sl34	248	B	B9	0.0318	
+band=light|variety=sl28_sl34	248	C	C1	0.2812	kept
+band=light|variety=sl28_sl34	248	C	C3	0.2827	kept
+band=light|variety=sl28_sl34	248	C	C4	0.1191	
+band=light|variety=sl28_sl34	248	C	C5	0.0605	
+band=light|variety=sl28_sl34	248	C	C6	0.2199	
+band=light|variety=sl28_sl34	248	C	C7	0.0367	
+band=light|variety=typica	141	A	A1	0.2894	kept
+band=light|variety=typica	141	A	A2	0.1745	
+band=light|variety=typica	141	A	A3	0.2031	kept
+band=light|variety=typica	141	A	A4	0.1943	kept
+band=light|variety=typica	141	A	A5	0.1202	
+band=light|variety=typica	141	A	A6	0.0168	
+band=light|variety=typica	141	A	A7	0.0016	
+band=light|variety=typica	141	A	A8	0.0001	
+band=light|variety=typica	141	B	B1	0.1672	kept
+band=light|variety=typica	141	B	B2	0.0025	
+band=light|variety=typica	141	B	B3	0.0425	
+band=light|variety=typica	141	B	B4	0.1733	kept
+band=light|variety=typica	141	B	B5	0.2911	kept
+band=light|variety=typica	141	B	B6	0.0251	
+band=light|variety=typica	141	B	B7	0.1211	
+band=light|variety=typica	141	B	B8	0.1258	
+band=light|variety=typica	141	B	B9	0.0513	
+band=light|variety=typica	141	C	C1	0.2354	
+band=light|variety=typica	141	C	C3	0.2477	kept
+band=light|variety=typica	141	C	C4	0.0676	
+band=light|variety=typica	141	C	C5	0.0708	
+band=light|variety=typica	141	C	C6	0.3486	kept
+band=light|variety=typica	141	C	C7	0.0298	
+band=medium	1200	A	A1	0.2548	kept
+band=medium	1200	A	A2	0.1444	kept
+band=medium	1200	A	A3	0.2468	kept
+band=medium	1200	A	A4	0.1401	
+band=medium	1200	A	A5	0.0634	
+band=medium	1200	A	A6	0.1424	
+band=medium	1200	A	A7	0.0068	
+band=medium	1200	A	A8	0.0012	
+band=medium	1200	B	B1	0.0930	
+band=medium	1200	B	B2	0.0073	
+band=medium	1200	B	B3	0.0432	
+band=medium	1200	B	B4	0.1669	kept
+band=medium	1200	B	B5	0.3298	kept
+band=medium	1200	B	B6	0.0309	
+band=medium	1200	B	B7	0.0892	
+band=medium	1200	B	B8	0.1865	kept
+band=medium	1200	B	B9	0.0531	
+band=medium	1200	C	C1	0.1388	
+band=medium	1200	C	C3	0.2088	kept
+band=medium	1200	C	C4	0.1332	
+band=medium	1200	C	C5	0.0962	
+band=medium	1200	C	C6	0.2224	kept
+band=medium	1200	C	C7	0.2007	kept
+band=medium|prep=espresso	259	A	A1	0.2377	kept
+band=medium|prep=espresso	259	A	A2	0.1275	
+band=medium|prep=espresso	259	A	A3	0.2406	kept
+band=medium|prep=espresso	259	A	A4	0.1492	
+band=medium|prep=espresso	259	A	A5	0.0897	
+band=medium|prep=espresso	259	A	A6	0.1538	kept
+band=medium|prep=espresso	259	A	A7	0.0013	
+band=medium|prep=espresso	259	A	A8	0.0002	
+band=medium|prep=espresso	259	B	B1	0.0703	
+band=medium|prep=espresso	259	B	B2	0.0014	
+band=medium|prep=espresso	259	B	B3	0.0139	
+band=medium|prep=espresso	259	B	B4	0.1878	kept
+band=medium|prep=espresso	259	B	B5	0.3420	kept
+band=medium|prep=espresso	259	B	B6	0.0207	
+band=medium|prep=espresso	259	B	B7	0.0828	
+band=medium|prep=espresso	259	B	B8	0.2262	kept
+band=medium|prep=espresso	259	B	B9	0.0547	
+band=medium|prep=espresso	259	C	C1	0.0614	
+band=medium|prep=espresso	259	C	C3	0.2013	kept
+band=medium|prep=espresso	259	C	C4	0.1967	
+band=medium|prep=espresso	259	C	C5	0.1308	
+band=medium|prep=espresso	259	C	C6	0.1985	kept
+band=medium|prep=espresso	259	C	C7	0.2113	kept
+band=medium|process=honey	33	A	A1	0.2342	kept
+band=medium|process=honey	33	A	A2	0.1488	
+band=medium|process=honey	33	A	A3	0.2383	kept
+band=medium|process=honey	33	A	A4	0.1485	
+band=medium|process=honey	33	A	A5	0.0580	
+band=medium|process=honey	33	A	A6	0.1672	kept
+band=medium|process=honey	33	A	A7	0.0044	
+band=medium|process=honey	33	A	A8	0.0008	
+band=medium|process=honey	33	B	B1	0.0966	
+band=medium|process=honey	33	B	B2	0.0048	
+band=medium|process=honey	33	B	B3	0.0505	
+band=medium|process=honey	33	B	B4	0.1825	kept
+band=medium|process=honey	33	B	B5	0.3448	kept
+band=medium|process=honey	33	B	B6	0.0202	
+band=medium|process=honey	33	B	B7	0.0584	
+band=medium|process=honey	33	B	B8	0.1884	kept
+band=medium|process=honey	33	B	B9	0.0539	
+band=medium|process=honey	33	C	C1	0.1395	
+band=medium|process=honey	33	C	C3	0.1539	kept
+band=medium|process=honey	33	C	C4	0.1214	
+band=medium|process=honey	33	C	C5	0.1403	
+band=medium|process=honey	33	C	C6	0.2251	kept
+band=medium|process=honey	33	C	C7	0.2198	kept
+band=medium|process=natural	170	A	A1	0.1585	kept
+band=medium|process=natural	170	A	A2	0.2884	kept
+band=medium|process=natural	170	A	A3	0.2601	kept
+band=medium|process=natural	170	A	A4	0.1183	
+band=medium|process=natural	170	A	A5	0.0886	
+band=medium|process=natural	170	A	A6	0.0838	
+band=medium|process=natural	170	A	A7	0.0021	
+band=medium|process=natural	170	A	A8	0.0002	
+band=medium|process=natural	170	B	B1	0.1345	
+band=medium|process=natural	170	B	B2	0.0010	
+band=medium|process=natural	170	B	B3	0.0805	
+band=medium|process=natural	170	B	B4	0.1483	kept
+band=medium|process=natural	170	B	B5	0.3182	kept
+band=medium|process=natural	170	B	B6	0.0099	
+band=medium|process=natural	170	B	B7	0.1047	
+band=medium|process=natural	170	B	B8	0.1596	kept
+band=medium|process=natural	170	B	B9	0.0433	
+band=medium|process=natural	170	C	C1	0.1926	kept
+band=medium|process=natural	170	C	C3	0.1955	kept
+band=medium|process=natural	170	C	C4	0.1306	
+band=medium|process=natural	170	C	C5	0.0724	
+band=medium|process=natural	170	C	C6	0.2674	kept
+band=medium|process=natural	170	C	C7	0.1415	
+band=medium|process=washed	212	A	A1	0.2810	kept
+band=medium|process=washed	212	A	A2	0.0961	
+band=medium|process=washed	212	A	A3	0.2599	kept
+band=medium|process=washed	212	A	A4	0.1513	kept
+band=medium|process=washed	212	A	A5	0.0637	
+band=medium|process=washed	212	A	A6	0.1330	
+band=medium|process=washed	212	A	A7	0.0092	
+band=medium|process=washed	212	A	A8	0.0059	
+band=medium|process=washed	212	B	B1	0.0925	
+band=medium|process=washed	212	B	B2	0.0016	
+band=medium|process=washed	212	B	B3	0.0234	
+band=medium|process=washed	212	B	B4	0.2054	kept
+band=medium|process=washed	212	B	B5	0.3183	kept
+band=medium|process=washed	212	B	B6	0.0255	
+band=medium|process=washed	212	B	B7	0.0834	
+band=medium|process=washed	212	B	B8	0.1964	kept
+band=medium|process=washed	212	B	B9	0.0534	
+band=medium|process=washed	212	C	C1	0.1591	
+band=medium|process=washed	212	C	C3	0.1825	kept
+band=medium|process=washed	212	C	C4	0.1612	
+band=medium|process=washed	212	C	C5	0.0696	
+band=medium|process=washed	212	C	C6	0.2440	kept
+band=medium|process=washed	212	C	C7	0.1837	kept
+band=medium|process=washed|variety=bourbon	33	A	A1	0.2593	kept
+band=medium|process=washed|variety=bourbon	33	A	A2	0.1411	
+band=medium|process=washed|variety=bourbon	33	A	A3	0.2766	kept
+band=medium|process=washed|variety=bourbon	33	A	A4	0.1598	kept
+band=medium|process=washed|variety=bourbon	33	A	A5	0.0343	
+band=medium|process=washed|variety=bourbon	33	A	A6	0.1272	
+band=medium|process=washed|variety=bourbon	33	A	A7	0.0014	
+band=medium|process=washed|variety=bourbon	33	A	A8	0.0002	
+band=medium|process=washed|variety=bourbon	33	B	B1	0.0927	
+band=medium|process=washed|variety=bourbon	33	B	B2	0.0015	
+band=medium|process=washed|variety=bourbon	33	B	B3	0.0557	
+band=medium|process=washed|variety=bourbon	33	B	B4	0.1577	kept
+band=medium|process=washed|variety=bourbon	33	B	B5	0.3478	kept
+band=medium|process=washed|variety=bourbon	33	B	B6	0.0283	
+band=medium|process=washed|variety=bourbon	33	B	B7	0.0675	
+band=medium|process=washed|variety=bourbon	33	B	B8	0.2040	kept
+band=medium|process=washed|variety=bourbon	33	B	B9	0.0448	
+band=medium|process=washed|variety=bourbon	33	C	C1	0.1383	
+band=medium|process=washed|variety=bourbon	33	C	C3	0.1932	kept
+band=medium|process=washed|variety=bourbon	33	C	C4	0.1727	kept
+band=medium|process=washed|variety=bourbon	33	C	C5	0.1041	
+band=medium|process=washed|variety=bourbon	33	C	C6	0.2403	kept
+band=medium|process=washed|variety=bourbon	33	C	C7	0.1514	
+band=medium|variety=bourbon	134	A	A1	0.2852	kept
+band=medium|variety=bourbon	134	A	A2	0.1838	kept
+band=medium|variety=bourbon	134	A	A3	0.2492	kept
+band=medium|variety=bourbon	134	A	A4	0.1237	
+band=medium|variety=bourbon	134	A	A5	0.0543	
+band=medium|variety=bourbon	134	A	A6	0.1012	
+band=medium|variety=bourbon	134	A	A7	0.0022	
+band=medium|variety=bourbon	134	A	A8	0.0004	
+band=medium|variety=bourbon	134	B	B1	0.1198	
+band=medium|variety=bourbon	134	B	B2	0.0022	
+band=medium|variety=bourbon	134	B	B3	0.0587	
+band=medium|variety=bourbon	134	B	B4	0.1422	kept
+band=medium|variety=bourbon	134	B	B5	0.3461	kept
+band=medium|variety=bourbon	134	B	B6	0.0197	
+band=medium|variety=bourbon	134	B	B7	0.0840	
+band=medium|variety=bourbon	134	B	B8	0.1815	kept
+band=medium|variety=bourbon	134	B	B9	0.0458	
+band=medium|variety=bourbon	134	C	C1	0.1620	kept
+band=medium|variety=bourbon	134	C	C3	0.2177	kept
+band=medium|variety=bourbon	134	C	C4	0.1412	
+band=medium|variety=bourbon	134	C	C5	0.1064	
+band=medium|variety=bourbon	134	C	C6	0.2339	kept
+band=medium|variety=bourbon	134	C	C7	0.1388	
+band=medium|variety=caturra	34	A	A1	0.2622	kept
+band=medium|variety=caturra	34	A	A2	0.1198	
+band=medium|variety=caturra	34	A	A3	0.2722	kept
+band=medium|variety=caturra	34	A	A4	0.1433	kept
+band=medium|variety=caturra	34	A	A5	0.0830	
+band=medium|variety=caturra	34	A	A6	0.1142	
+band=medium|variety=caturra	34	A	A7	0.0044	
+band=medium|variety=caturra	34	A	A8	0.0008	
+band=medium|variety=caturra	34	B	B1	0.1063	
+band=medium|variety=caturra	34	B	B2	0.0244	
+band=medium|variety=caturra	34	B	B3	0.0470	
+band=medium|variety=caturra	34	B	B4	0.1425	kept
+band=medium|variety=caturra	34	B	B5	0.3063	kept
+band=medium|variety=caturra	34	B	B6	0.0195	
+band=medium|variety=caturra	34	B	B7	0.0985	
+band=medium|variety=caturra	34	B	B8	0.1963	kept
+band=medium|variety=caturra	34	B	B9	0.0591	
+band=medium|variety=caturra	34	C	C1	0.1059	
+band=medium|variety=caturra	34	C	C3	0.2451	kept
+band=medium|variety=caturra	34	C	C4	0.0842	
+band=medium|variety=caturra	34	C	C5	0.1458	
+band=medium|variety=caturra	34	C	C6	0.2592	kept
+band=medium|variety=caturra	34	C	C7	0.1597	kept
+band=medium|variety=gesha	31	A	A1	0.2599	kept
+band=medium|variety=gesha	31	A	A2	0.1406	
+band=medium|variety=gesha	31	A	A3	0.2700	kept
+band=medium|variety=gesha	31	A	A4	0.1512	kept
+band=medium|variety=gesha	31	A	A5	0.0594	
+band=medium|variety=gesha	31	A	A6	0.1135	
+band=medium|variety=gesha	31	A	A7	0.0045	
+band=medium|variety=gesha	31	A	A8	0.0008	
+band=medium|variety=gesha	31	B	B1	0.1960	kept
+band=medium|variety=gesha	31	B	B2	0.0390	
+band=medium|variety=gesha	31	B	B3	0.0267	
+band=medium|variety=gesha	31	B	B4	0.1356	
+band=medium|variety=gesha	31	B	B5	0.3181	kept
+band=medium|variety=gesha	31	B	B6	0.0191	
+band=medium|variety=gesha	31	B	B7	0.0797	
+band=medium|variety=gesha	31	B	B8	0.1381	kept
+band=medium|variety=gesha	31	B	B9	0.0477	
+band=medium|variety=gesha	31	C	C1	0.2131	kept
+band=medium|variety=gesha	31	C	C3	0.1446	
+band=medium|variety=gesha	31	C	C4	0.1200	
+band=medium|variety=gesha	31	C	C5	0.0666	
+band=medium|variety=gesha	31	C	C6	0.2815	kept
+band=medium|variety=gesha	31	C	C7	0.1742	kept
+prep=espresso	728	A	A1	0.2439	kept
+prep=espresso	728	A	A2	0.1695	kept
+prep=espresso	728	A	A3	0.2457	kept
+prep=espresso	728	A	A4	0.1381	
+prep=espresso	728	A	A5	0.1037	
+prep=espresso	728	A	A6	0.0985	
+prep=espresso	728	A	A7	0.0005	
+prep=espresso	728	A	A8	0.0000	
+prep=espresso	728	B	B1	0.0983	
+prep=espresso	728	B	B2	0.0028	
+prep=espresso	728	B	B3	0.0159	
+prep=espresso	728	B	B4	0.1621	kept
+prep=espresso	728	B	B5	0.3475	kept
+prep=espresso	728	B	B6	0.0251	
+prep=espresso	728	B	B7	0.0872	
+prep=espresso	728	B	B8	0.2106	kept
+prep=espresso	728	B	B9	0.0505	
+prep=espresso	728	C	C1	0.0934	
+prep=espresso	728	C	C3	0.2086	kept
+prep=espresso	728	C	C4	0.1824	kept
+prep=espresso	728	C	C5	0.1120	
+prep=espresso	728	C	C6	0.2504	kept
+prep=espresso	728	C	C7	0.1532	
+process=anaerobic	304	A	A1	0.2558	kept
+process=anaerobic	304	A	A2	0.1992	kept
+process=anaerobic	304	A	A3	0.1504	
+process=anaerobic	304	A	A4	0.2597	kept
+process=anaerobic	304	A	A5	0.1009	
+process=anaerobic	304	A	A6	0.0236	
+process=anaerobic	304	A	A7	0.0104	
+process=anaerobic	304	A	A8	0.0001	
+process=anaerobic	304	B	B1	0.1352	kept
+process=anaerobic	304	B	B2	0.0013	
+process=anaerobic	304	B	B3	0.0341	
+process=anaerobic	304	B	B4	0.0939	
+process=anaerobic	304	B	B5	0.4006	kept
+process=anaerobic	304	B	B6	0.0130	
+process=anaerobic	304	B	B7	0.1697	kept
+process=anaerobic	304	B	B8	0.1179	
+process=anaerobic	304	B	B9	0.0342	
+process=anaerobic	304	C	C1	0.1822	
+process=anaerobic	304	C	C3	0.2290	kept
+process=anaerobic	304	C	C4	0.0615	
+process=anaerobic	304	C	C5	0.1852	kept
+process=anaerobic	304	C	C6	0.2887	kept
+process=anaerobic	304	C	C7	0.0535	
+process=carbonic_maceration	32	A	A1	0.2817	kept
+process=carbonic_maceration	32	A	A2	0.1936	
+process=carbonic_maceration	32	A	A3	0.2003	kept
+process=carbonic_maceration	32	A	A4	0.2031	kept
+process=carbonic_maceration	32	A	A5	0.0712	
+process=carbonic_maceration	32	A	A6	0.0453	
+process=carbonic_maceration	32	A	A7	0.0044	
+process=carbonic_maceration	32	A	A8	0.0004	
+process=carbonic_maceration	32	B	B1	0.1613	kept
+process=carbonic_maceration	32	B	B2	0.0053	
+process=carbonic_maceration	32	B	B3	0.0256	
+process=carbonic_maceration	32	B	B4	0.1591	kept
+process=carbonic_maceration	32	B	B5	0.3242	kept
+process=carbonic_maceration	32	B	B6	0.0479	
+process=carbonic_maceration	32	B	B7	0.0852	
+process=carbonic_maceration	32	B	B8	0.1305	
+process=carbonic_maceration	32	B	B9	0.0609	
+process=carbonic_maceration	32	C	C1	0.3074	kept
+process=carbonic_maceration	32	C	C3	0.1603	kept
+process=carbonic_maceration	32	C	C4	0.0654	
+process=carbonic_maceration	32	C	C5	0.0591	
+process=carbonic_maceration	32	C	C6	0.3298	kept
+process=carbonic_maceration	32	C	C7	0.0780	
+process=decaf	62	A	A1	0.2123	kept
+process=decaf	62	A	A2	0.0791	
+process=decaf	62	A	A3	0.1729	kept
+process=decaf	62	A	A4	0.1634	
+process=decaf	62	A	A5	0.1159	
+process=decaf	62	A	A6	0.2531	kept
+process=decaf	62	A	A7	0.0030	
+process=decaf	62	A	A8	0.0003	
+process=decaf	62	B	B1	0.1052	
+process=decaf	62	B	B2	0.0040	
+process=decaf	62	B	B3	0.0396	
+process=decaf	62	B	B4	0.1085	
+process=decaf	62	B	B5	0.3128	kept
+process=decaf	62	B	B6	0.1235	kept
+process=decaf	62	B	B7	0.0758	
+process=decaf	62	B	B8	0.1883	kept
+process=decaf	62	B	B9	0.0423	
+process=decaf	62	C	C1	0.1189	
+process=decaf	62	C	C3	0.2768	kept
+process=decaf	62	C	C4	0.1127	
+process=decaf	62	C	C5	0.0771	
+process=decaf	62	C	C6	0.1870	kept
+process=decaf	62	C	C7	0.2274	kept
+process=honey	121	A	A1	0.2595	kept
+process=honey	121	A	A2	0.1660	kept
+process=honey	121	A	A3	0.2383	kept
+process=honey	121	A	A4	0.1531	
+process=honey	121	A	A5	0.0816	
+process=honey	121	A	A6	0.0991	
+process=honey	121	A	A7	0.0022	
+process=honey	121	A	A8	0.0002	
+process=honey	121	B	B1	0.1669	kept
+process=honey	121	B	B2	0.0028	
+process=honey	121	B	B3	0.0238	
+process=honey	121	B	B4	0.1823	kept
+process=honey	121	B	B5	0.3212	kept
+process=honey	121	B	B6	0.0097	
+process=honey	121	B	B7	0.0768	
+process=honey	121	B	B8	0.1546	
+process=honey	121	B	B9	0.0620	
+process=honey	121	C	C1	0.2208	kept
+process=honey	121	C	C3	0.1956	kept
+process=honey	121	C	C4	0.0856	
+process=honey	121	C	C5	0.1117	
+process=honey	121	C	C6	0.2387	kept
+process=honey	121	C	C7	0.1476	
+process=natural	1455	A	A1	0.2397	kept
+process=natural	1455	A	A2	0.3004	kept
+process=natural	1455	A	A3	0.1776	kept
+process=natural	1455	A	A4	0.1417	
+process=natural	1455	A	A5	0.1015	
+process=natural	1455	A	A6	0.0300	
+process=natural	1455	A	A7	0.0083	
+process=natural	1455	A	A8	0.0009	
+process=natural	1455	B	B1	0.1533	kept
+process=natural	1455	B	B2	0.0038	
+process=natural	1455	B	B3	0.0555	
+process=natural	1455	B	B4	0.1702	kept
+process=natural	1455	B	B5	0.3328	kept
+process=natural	1455	B	B6	0.0125	
+process=natural	1455	B	B7	0.1009	
+process=natural	1455	B	B8	0.1269	
+process=natural	1455	B	B9	0.0442	
+process=natural	1455	C	C1	0.2674	kept
+process=natural	1455	C	C3	0.2157	kept
+process=natural	1455	C	C4	0.0836	
+process=natural	1455	C	C5	0.0712	
+process=natural	1455	C	C6	0.3019	kept
+process=natural	1455	C	C7	0.0603	
+process=washed	1801	A	A1	0.3139	kept
+process=washed	1801	A	A2	0.1140	
+process=washed	1801	A	A3	0.2443	kept
+process=washed	1801	A	A4	0.1939	kept
+process=washed	1801	A	A5	0.0843	
+process=washed	1801	A	A6	0.0457	
+process=washed	1801	A	A7	0.0032	
+process=washed	1801	A	A8	0.0007	
+process=washed	1801	B	B1	0.1691	kept
+process=washed	1801	B	B2	0.0105	
+process=washed	1801	B	B3	0.0415	
+process=washed	1801	B	B4	0.1872	kept
+process=washed	1801	B	B5	0.3038	kept
+process=washed	1801	B	B6	0.0087	
+process=washed	1801	B	B7	0.0805	
+process=washed	1801	B	B8	0.1539	
+process=washed	1801	B	B9	0.0449	
+process=washed	1801	C	C1	0.1934	kept
+process=washed	1801	C	C3	0.2403	kept
+process=washed	1801	C	C4	0.0818	
+process=washed	1801	C	C5	0.0687	
+process=washed	1801	C	C6	0.3389	kept
+process=washed	1801	C	C7	0.0770	
+variety=bourbon	718	A	A1	0.2788	kept
+variety=bourbon	718	A	A2	0.1590	
+variety=bourbon	718	A	A3	0.2297	kept
+variety=bourbon	718	A	A4	0.2216	kept
+variety=bourbon	718	A	A5	0.0676	
+variety=bourbon	718	A	A6	0.0428	
+variety=bourbon	718	A	A7	0.0005	
+variety=bourbon	718	A	A8	0.0001	
+variety=bourbon	718	B	B1	0.1301	
+variety=bourbon	718	B	B2	0.0081	
+variety=bourbon	718	B	B3	0.0356	
+variety=bourbon	718	B	B4	0.2142	kept
+variety=bourbon	718	B	B5	0.2804	kept
+variety=bourbon	718	B	B6	0.0271	
+variety=bourbon	718	B	B7	0.0947	
+variety=bourbon	718	B	B8	0.1561	kept
+variety=bourbon	718	B	B9	0.0537	
+variety=bourbon	718	C	C1	0.2250	kept
+variety=bourbon	718	C	C3	0.2566	kept
+variety=bourbon	718	C	C4	0.0998	
+variety=bourbon	718	C	C5	0.1051	
+variety=bourbon	718	C	C6	0.2494	kept
+variety=bourbon	718	C	C7	0.0641	
+variety=castillo	49	A	A1	0.2760	kept
+variety=castillo	49	A	A2	0.1374	
+variety=castillo	49	A	A3	0.1932	kept
+variety=castillo	49	A	A4	0.2122	kept
+variety=castillo	49	A	A5	0.1243	
+variety=castillo	49	A	A6	0.0372	
+variety=castillo	49	A	A7	0.0194	
+variety=castillo	49	A	A8	0.0004	
+variety=castillo	49	B	B1	0.1354	
+variety=castillo	49	B	B2	0.0046	
+variety=castillo	49	B	B3	0.0222	
+variety=castillo	49	B	B4	0.1528	kept
+variety=castillo	49	B	B5	0.3379	kept
+variety=castillo	49	B	B6	0.0160	
+variety=castillo	49	B	B7	0.1351	
+variety=castillo	49	B	B8	0.1607	kept
+variety=castillo	49	B	B9	0.0353	
+variety=castillo	49	C	C1	0.2298	kept
+variety=castillo	49	C	C3	0.1809	kept
+variety=castillo	49	C	C4	0.0763	
+variety=castillo	49	C	C5	0.1496	
+variety=castillo	49	C	C6	0.3001	kept
+variety=castillo	49	C	C7	0.0634	
+variety=catuai	103	A	A1	0.2507	kept
+variety=catuai	103	A	A2	0.1655	
+variety=catuai	103	A	A3	0.2211	kept
+variety=catuai	103	A	A4	0.2210	kept
+variety=catuai	103	A	A5	0.0789	
+variety=catuai	103	A	A6	0.0505	
+variety=catuai	103	A	A7	0.0121	
+variety=catuai	103	A	A8	0.0002	
+variety=catuai	103	B	B1	0.1652	kept
+variety=catuai	103	B	B2	0.0030	
+variety=catuai	103	B	B3	0.0252	
+variety=catuai	103	B	B4	0.2146	kept
+variety=catuai	103	B	B5	0.2867	kept
+variety=catuai	103	B	B6	0.0297	
+variety=catuai	103	B	B7	0.0731	
+variety=catuai	103	B	B8	0.1472	
+variety=catuai	103	B	B9	0.0552	
+variety=catuai	103	C	C1	0.2333	kept
+variety=catuai	103	C	C3	0.2442	kept
+variety=catuai	103	C	C4	0.0746	
+variety=catuai	103	C	C5	0.0750	
+variety=catuai	103	C	C6	0.2809	kept
+variety=catuai	103	C	C7	0.0920	
+variety=caturra	300	A	A1	0.2562	kept
+variety=caturra	300	A	A2	0.1640	
+variety=caturra	300	A	A3	0.2268	kept
+variety=caturra	300	A	A4	0.2137	kept
+variety=caturra	300	A	A5	0.0816	
+variety=caturra	300	A	A6	0.0519	
+variety=caturra	300	A	A7	0.0057	
+variety=caturra	300	A	A8	0.0001	
+variety=caturra	300	B	B1	0.1147	
+variety=caturra	300	B	B2	0.0064	
+variety=caturra	300	B	B3	0.0220	
+variety=caturra	300	B	B4	0.1920	kept
+variety=caturra	300	B	B5	0.3090	kept
+variety=caturra	300	B	B6	0.0141	
+variety=caturra	300	B	B7	0.1062	
+variety=caturra	300	B	B8	0.1832	kept
+variety=caturra	300	B	B9	0.0523	
+variety=caturra	300	C	C1	0.1506	kept
+variety=caturra	300	C	C3	0.3397	kept
+variety=caturra	300	C	C4	0.0571	
+variety=caturra	300	C	C5	0.0710	
+variety=caturra	300	C	C6	0.2972	kept
+variety=caturra	300	C	C7	0.0844	
+variety=ethiopian_landrace	567	A	A1	0.3125	kept
+variety=ethiopian_landrace	567	A	A2	0.2497	kept
+variety=ethiopian_landrace	567	A	A3	0.1801	kept
+variety=ethiopian_landrace	567	A	A4	0.1532	
+variety=ethiopian_landrace	567	A	A5	0.0792	
+variety=ethiopian_landrace	567	A	A6	0.0217	
+variety=ethiopian_landrace	567	A	A7	0.0035	
+variety=ethiopian_landrace	567	A	A8	0.0001	
+variety=ethiopian_landrace	567	B	B1	0.1752	kept
+variety=ethiopian_landrace	567	B	B2	0.0102	
+variety=ethiopian_landrace	567	B	B3	0.0486	
+variety=ethiopian_landrace	567	B	B4	0.1523	kept
+variety=ethiopian_landrace	567	B	B5	0.3710	kept
+variety=ethiopian_landrace	567	B	B6	0.0049	
+variety=ethiopian_landrace	567	B	B7	0.0646	
+variety=ethiopian_landrace	567	B	B8	0.1287	
+variety=ethiopian_landrace	567	B	B9	0.0446	
+variety=ethiopian_landrace	567	C	C1	0.2609	kept
+variety=ethiopian_landrace	567	C	C3	0.2174	kept
+variety=ethiopian_landrace	567	C	C4	0.0729	
+variety=ethiopian_landrace	567	C	C5	0.0410	
+variety=ethiopian_landrace	567	C	C6	0.3644	kept
+variety=ethiopian_landrace	567	C	C7	0.0435	
+variety=gesha	477	A	A1	0.3151	kept
+variety=gesha	477	A	A2	0.1531	
+variety=gesha	477	A	A3	0.1987	kept
+variety=gesha	477	A	A4	0.1908	kept
+variety=gesha	477	A	A5	0.1250	
+variety=gesha	477	A	A6	0.0165	
+variety=gesha	477	A	A7	0.0007	
+variety=gesha	477	A	A8	0.0001	
+variety=gesha	477	B	B1	0.2670	kept
+variety=gesha	477	B	B2	0.0128	
+variety=gesha	477	B	B3	0.0458	
+variety=gesha	477	B	B4	0.1138	
+variety=gesha	477	B	B5	0.3242	kept
+variety=gesha	477	B	B6	0.0056	
+variety=gesha	477	B	B7	0.1182	kept
+variety=gesha	477	B	B8	0.0829	
+variety=gesha	477	B	B9	0.0297	
+variety=gesha	477	C	C1	0.3164	kept
+variety=gesha	477	C	C3	0.1522	kept
+variety=gesha	477	C	C4	0.0288	
+variety=gesha	477	C	C5	0.1109	
+variety=gesha	477	C	C6	0.3615	kept
+variety=gesha	477	C	C7	0.0302	
+variety=pacamara	57	A	A1	0.2967	kept
+variety=pacamara	57	A	A2	0.1539	
+variety=pacamara	57	A	A3	0.2295	kept
+variety=pacamara	57	A	A4	0.2110	kept
+variety=pacamara	57	A	A5	0.0457	
+variety=pacamara	57	A	A6	0.0486	
+variety=pacamara	57	A	A7	0.0034	
+variety=pacamara	57	A	A8	0.0111	
+variety=pacamara	57	B	B1	0.0939	
+variety=pacamara	57	B	B2	0.0044	
+variety=pacamara	57	B	B3	0.0211	
+variety=pacamara	57	B	B4	0.1912	kept
+variety=pacamara	57	B	B5	0.3429	kept
+variety=pacamara	57	B	B6	0.0153	
+variety=pacamara	57	B	B7	0.1299	
+variety=pacamara	57	B	B8	0.1665	kept
+variety=pacamara	57	B	B9	0.0349	
+variety=pacamara	57	C	C1	0.1359	kept
+variety=pacamara	57	C	C3	0.3497	kept
+variety=pacamara	57	C	C4	0.0946	
+variety=pacamara	57	C	C5	0.0686	
+variety=pacamara	57	C	C6	0.2649	kept
+variety=pacamara	57	C	C7	0.0862	
+variety=pink_bourbon	53	A	A1	0.2449	kept
+variety=pink_bourbon	53	A	A2	0.2259	kept
+variety=pink_bourbon	53	A	A3	0.2325	kept
+variety=pink_bourbon	53	A	A4	0.1732	
+variety=pink_bourbon	53	A	A5	0.0829	
+variety=pink_bourbon	53	A	A6	0.0368	
+variety=pink_bourbon	53	A	A7	0.0035	
+variety=pink_bourbon	53	A	A8	0.0004	
+variety=pink_bourbon	53	B	B1	0.1512	kept
+variety=pink_bourbon	53	B	B2	0.0045	
+variety=pink_bourbon	53	B	B3	0.0218	
+variety=pink_bourbon	53	B	B4	0.1714	kept
+variety=pink_bourbon	53	B	B5	0.3882	kept
+variety=pink_bourbon	53	B	B6	0.0158	
+variety=pink_bourbon	53	B	B7	0.0650	
+variety=pink_bourbon	53	B	B8	0.1467	
+variety=pink_bourbon	53	B	B9	0.0353	
+variety=pink_bourbon	53	C	C1	0.2636	kept
+variety=pink_bourbon	53	C	C3	0.1500	kept
+variety=pink_bourbon	53	C	C4	0.0718	
+variety=pink_bourbon	53	C	C5	0.0898	
+variety=pink_bourbon	53	C	C6	0.3621	kept
+variety=pink_bourbon	53	C	C7	0.0627	
+variety=red_bourbon	82	A	A1	0.2506	kept
+variety=red_bourbon	82	A	A2	0.2015	kept
+variety=red_bourbon	82	A	A3	0.2204	kept
+variety=red_bourbon	82	A	A4	0.1809	
+variety=red_bourbon	82	A	A5	0.1053	
+variety=red_bourbon	82	A	A6	0.0383	
+variety=red_bourbon	82	A	A7	0.0028	
+variety=red_bourbon	82	A	A8	0.0003	
+variety=red_bourbon	82	B	B1	0.1150	
+variety=red_bourbon	82	B	B2	0.0035	
+variety=red_bourbon	82	B	B3	0.0172	
+variety=red_bourbon	82	B	B4	0.1302	kept
+variety=red_bourbon	82	B	B5	0.3979	kept
+variety=red_bourbon	82	B	B6	0.0124	
+variety=red_bourbon	82	B	B7	0.1406	kept
+variety=red_bourbon	82	B	B8	0.1286	
+variety=red_bourbon	82	B	B9	0.0547	
+variety=red_bourbon	82	C	C1	0.2592	kept
+variety=red_bourbon	82	C	C3	0.2399	kept
+variety=red_bourbon	82	C	C4	0.0667	
+variety=red_bourbon	82	C	C5	0.0651	
+variety=red_bourbon	82	C	C6	0.3038	kept
+variety=red_bourbon	82	C	C7	0.0654	
+variety=robusta	68	A	A1	0.2880	kept
+variety=robusta	68	A	A2	0.1594	kept
+variety=robusta	68	A	A3	0.1992	kept
+variety=robusta	68	A	A4	0.1508	
+variety=robusta	68	A	A5	0.1005	
+variety=robusta	68	A	A6	0.0839	
+variety=robusta	68	A	A7	0.0178	
+variety=robusta	68	A	A8	0.0003	
+variety=robusta	68	B	B1	0.1148	
+variety=robusta	68	B	B2	0.0038	
+variety=robusta	68	B	B3	0.0468	
+variety=robusta	68	B	B4	0.1362	kept
+variety=robusta	68	B	B5	0.3107	kept
+variety=robusta	68	B	B6	0.0644	
+variety=robusta	68	B	B7	0.0952	
+variety=robusta	68	B	B8	0.1554	kept
+variety=robusta	68	B	B9	0.0725	
+variety=robusta	68	C	C1	0.1789	kept
+variety=robusta	68	C	C3	0.1939	kept
+variety=robusta	68	C	C4	0.1032	
+variety=robusta	68	C	C5	0.0830	
+variety=robusta	68	C	C6	0.2883	kept
+variety=robusta	68	C	C7	0.1527	
+variety=sl28_sl34	280	A	A1	0.2629	kept
+variety=sl28_sl34	280	A	A2	0.3045	kept
+variety=sl28_sl34	280	A	A3	0.1319	
+variety=sl28_sl34	280	A	A4	0.1779	kept
+variety=sl28_sl34	280	A	A5	0.0942	
+variety=sl28_sl34	280	A	A6	0.0219	
+variety=sl28_sl34	280	A	A7	0.0066	
+variety=sl28_sl34	280	A	A8	0.0001	
+variety=sl28_sl34	280	B	B1	0.1747	kept
+variety=sl28_sl34	280	B	B2	0.0173	
+variety=sl28_sl34	280	B	B3	0.0651	
+variety=sl28_sl34	280	B	B4	0.1208	
+variety=sl28_sl34	280	B	B5	0.3421	kept
+variety=sl28_sl34	280	B	B6	0.0098	
+variety=sl28_sl34	280	B	B7	0.0733	
+variety=sl28_sl34	280	B	B8	0.1651	kept
+variety=sl28_sl34	280	B	B9	0.0317	
+variety=sl28_sl34	280	C	C1	0.2711	kept
+variety=sl28_sl34	280	C	C3	0.2710	kept
+variety=sl28_sl34	280	C	C4	0.1219	
+variety=sl28_sl34	280	C	C5	0.0677	
+variety=sl28_sl34	280	C	C6	0.2236	kept
+variety=sl28_sl34	280	C	C7	0.0447	
+variety=typica	176	A	A1	0.2881	kept
+variety=typica	176	A	A2	0.1638	
+variety=typica	176	A	A3	0.1950	kept
+variety=typica	176	A	A4	0.1988	kept
+variety=typica	176	A	A5	0.1207	
+variety=typica	176	A	A6	0.0318	
+variety=typica	176	A	A7	0.0017	
+variety=typica	176	A	A8	0.0002	
+variety=typica	176	B	B1	0.1549	kept
+variety=typica	176	B	B2	0.0087	
+variety=typica	176	B	B3	0.0432	
+variety=typica	176	B	B4	0.1727	kept
+variety=typica	176	B	B5	0.2856	kept
+variety=typica	176	B	B6	0.0252	
+variety=typica	176	B	B7	0.1141	
+variety=typica	176	B	B8	0.1396	
+variety=typica	176	B	B9	0.0559	
+variety=typica	176	C	C1	0.2157	kept
+variety=typica	176	C	C3	0.2522	kept
+variety=typica	176	C	C4	0.0892	
+variety=typica	176	C	C5	0.0829	
+variety=typica	176	C	C6	0.3074	kept
+variety=typica	176	C	C7	0.0526	
+variety=yellow_bourbon	32	A	A1	0.2440	kept
+variety=yellow_bourbon	32	A	A2	0.1889	kept
+variety=yellow_bourbon	32	A	A3	0.1734	
+variety=yellow_bourbon	32	A	A4	0.1811	kept
+variety=yellow_bourbon	32	A	A5	0.0728	
+variety=yellow_bourbon	32	A	A6	0.1351	
+variety=yellow_bourbon	32	A	A7	0.0042	
+variety=yellow_bourbon	32	A	A8	0.0004	
+variety=yellow_bourbon	32	B	B1	0.1572	kept
+variety=yellow_bourbon	32	B	B2	0.0053	
+variety=yellow_bourbon	32	B	B3	0.0259	
+variety=yellow_bourbon	32	B	B4	0.2008	kept
+variety=yellow_bourbon	32	B	B5	0.2983	kept
+variety=yellow_bourbon	32	B	B6	0.0188	
+variety=yellow_bourbon	32	B	B7	0.0983	
+variety=yellow_bourbon	32	B	B8	0.1407	
+variety=yellow_bourbon	32	B	B9	0.0547	
+variety=yellow_bourbon	32	C	C1	0.2099	kept
+variety=yellow_bourbon	32	C	C3	0.2455	kept
+variety=yellow_bourbon	32	C	C4	0.0600	
+variety=yellow_bourbon	32	C	C5	0.0789	
+variety=yellow_bourbon	32	C	C6	0.1916	
+variety=yellow_bourbon	32	C	C7	0.2140	kept
