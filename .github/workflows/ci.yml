@@ -42,6 +42,11 @@ jobs:
               - '!db/data/backend-sequential-model-v2/revisions/**'
               - '!db/scripts/build-matrix-k-v1.py'
               - '!db/scripts/export-frontend-copy.py'
+              - '!db/scripts/build-dynamic-question-bank.py'
+              - '!db/scripts/build-neighbour-index.py'
+              - '!db/scripts/build-simulation-test-set.py'
+              - '!db/scripts/build-flow-experiment-data.py'
+              - '!db/scripts/extract-coffeereview-structure-scores.py'
 
   checks:
     name: Format, typecheck, test, and build
@@ -81,13 +86,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          lfs: true # the 77K / 83K source-assertion ledgers live in Git LFS
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      # the 77K / 83K source-assertion ledgers are stored as xz archives in plain git (no Git LFS: the monthly LFS
+      # bandwidth ran out and the job could not check out); this writes them back and verifies their SHA-256
+      - name: Write the two large ledgers from their archives
+        run: python -B db/scripts/materialize-large-ledgers.py
 
       - name: Record public-artifact Python runtime
         run: |

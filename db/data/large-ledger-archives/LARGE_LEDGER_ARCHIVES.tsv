@@ -1,0 +1,3 @@
+ledger_path	archive_path	ledger_sha256	ledger_bytes
+db/data/current/CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv	db/data/large-ledger-archives/CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv.xz	a580a16f10d6c680e3efeffe280b70bfbe4dfc59ef308ab4222a56e584ea3587	100846074
+db/data/current/CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv	db/data/large-ledger-archives/CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv.xz	ad7e8bd7dc75a6a24f93cb479ee7cd5bc5623d99cc707f9695e4bbb5e0a6d0dc	109872513

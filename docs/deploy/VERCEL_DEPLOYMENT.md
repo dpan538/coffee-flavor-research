@@ -20,17 +20,17 @@
 
 ## 二、部署后的 Project Settings
 
-| 位置                                              | 设置              | 值                                                                                                          |
-| ------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------- |
-| Settings → General → Node.js Version              | Node.js Version   | **22.x**（`package.json` 的 `engines.node` 已写 `22.x`，Vercel 会据此选择）                                 |
-| Settings → General → Build & Development Settings | Framework Preset  | Other                                                                                                       |
-| 同上                                              | Build Command     | `npm run pwa:build`                                                                                         |
-| 同上                                              | Output Directory  | `apps/pwa/dist`                                                                                             |
-| 同上                                              | Install Command   | `npm ci`                                                                                                    |
-| Settings → Git                                    | Production Branch | `main`                                                                                                      |
-| Settings → Git → Git Large File Storage           | Git LFS           | **关闭**（默认）。两份 77K / 83K 来源账本在 LFS 里，PWA 构建不读取它们，关闭可省下每次 clone 约 211 MB 下载 |
-| Settings → Git → Ignored Build Step               | 留默认            | 每次推到 main 都会重新部署                                                                                  |
-| Settings → Domains                                | 添加域名          | `flavorwords.com`（主域）与 `www.flavorwords.com`（重定向到主域）                                           |
+| 位置                                              | 设置              | 值                                                                                     |
+| ------------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------- |
+| Settings → General → Node.js Version              | Node.js Version   | **22.x**（`package.json` 的 `engines.node` 已写 `22.x`，Vercel 会据此选择）            |
+| Settings → General → Build & Development Settings | Framework Preset  | Other                                                                                  |
+| 同上                                              | Build Command     | `npm run pwa:build`                                                                    |
+| 同上                                              | Output Directory  | `apps/pwa/dist`                                                                        |
+| 同上                                              | Install Command   | `npm ci`                                                                               |
+| Settings → Git                                    | Production Branch | `main`                                                                                 |
+| Settings → Git → Git Large File Storage           | Git LFS           | **关闭**（默认）。仓库自 2026-09-20 起不再使用 Git LFS，PWA 构建也不读取那两份来源账本 |
+| Settings → Git → Ignored Build Step               | 留默认            | 每次推到 main 都会重新部署                                                             |
+| Settings → Domains                                | 添加域名          | `flavorwords.com`（主域）与 `www.flavorwords.com`（重定向到主域）                      |
 
 域名 DNS（在域名注册商处）：
 
@@ -64,5 +64,5 @@ Vercel 的 Domains 页面会显示它当前要求的记录，以页面显示为�
 git push origin research/round2-capture:main
 ```
 
-- 两份来源账本 `db/data/current/CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv`（109.9 MB）与 `CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv`（100.8 MB）超过或逼近 GitHub 100 MiB 的单文件硬限制，已迁入 Git LFS；`git push` 时 LFS 的 pre-push 钩子会先上传这两个对象，再推提交。
-- CI 里读取这两份账本的两个 workflow（`ci.yml` 的 `database-artifacts`、`historical-replay.yml`）已改为 `actions/checkout` 加 `lfs: true`；每次运行下载约 211 MB LFS 带宽。`checks`（网页门禁）与 `database-current` 不读取它们，保持普通 checkout。
+- 两份来源账本 `db/data/current/CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv`（109.9 MB）与 `CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv`（100.8 MB）超过或逼近 GitHub 100 MiB 的单文件硬限制。2026-09-13 起它们放在 Git LFS；2026-09-20 起改为以 xz 压缩包（5–6 MB）存放在普通 git 里，由 `db/scripts/materialize-large-ledgers.py` 写回原文件并校验 SHA-256（压缩包与清单在 `db/data/large-ledger-archives/`；原文件已加入 `.gitignore`）。原因：带 LFS 的 CI 检出每次下载约 211 MB，月度 LFS 流量用完之后数据库作业连检出都无法完成；owner 要求不再依赖 LFS。
+- `ci.yml` 的 `database-artifacts` 与 `historical-replay.yml` 改回普通 checkout，随后运行上述脚本；本机的 `db/scripts/ci-verify.sh` 同样先运行它。新克隆仓库后如果要在本机跑数据库相关脚本，先执行一次 `python3 db/scripts/materialize-large-ledgers.py`。账本内容如有合法变更，用 `--pack` 重新生成压缩包与清单。

@@ -309,8 +309,10 @@ tests/                    vitest suites for the model, session API, lexicon, per
   claim contracts and a database gate run locally before each commit and on
   GitHub Actions. Every number in this README carries a marker checked
   against an evidence file.
-- **Deployment.** Vercel builds the PWA from a clean clone; the two largest
-  corpus ledgers are tracked with Git LFS.
+- **Deployment.** Vercel builds the PWA from a clean clone. The two largest
+  corpus ledgers exceed GitHub's file limit and are stored as xz archives in
+  plain git; a script writes them back and verifies their SHA-256, so neither
+  the build nor CI depends on Git LFS.
 
 ```bash
 npm ci

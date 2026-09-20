@@ -42,3 +42,8 @@ yarn-error.log*
 pnpm-debug.log*
 apps/pwa/dist/
 apps/pwa/dev-dist/
+
+# written from their .xz archives by db/scripts/materialize-large-ledgers.py (larger than GitHub's 100 MiB file limit)
+db/data/current/CLEANED_77K_SOURCE_ASSERTION_LEDGER.tsv
+db/data/current/CLEANED_83K_SOURCE_ASSERTION_LEDGER.tsv
+db/data/current/*.tsv.partial
