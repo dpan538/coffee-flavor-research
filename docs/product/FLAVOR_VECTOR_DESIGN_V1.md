@@ -543,6 +543,7 @@ owner 的栈裁决：Vue 3（Composition API + TS）+ Tailwind CSS v3 + lucide �
 - 前台测试集 `docs/product/Q6_TRIGGER_TEST_SET.md`：7 条会开 Q6 的序列（含精确的题面、选项顺序、候选词与勾选）加 1 条 Path 1 对照；回归测试 `tests/product-vector-v1-q6-trigger.test.ts` 固定下限（Path 1 = 0；前 5 个 ≥ 20%；偏向自己 ≥ 45%；各分歧路径 ≥ 25%）并逐条验证 7 条序列进入 Q6、更新后卡片状态为已确认（模型字段；2026-09-19 起界面不再显示「已确认」字样）。第 1 条与第 6 条在浏览器里走通。
 - 英文 About：来源海报的评审族标签缩短、图表上限 50dvh、引言缩短一行，383 × 827 下内容顶部落在 sticky 头之下、底部余 27 px；风味谱系页英文上边距 116 → 106 px，中文不变。
 - 推送准备：分支新增的两份来源账本（109.9 MB、100.8 MB）超过或逼近 GitHub 100 MiB 硬限制，迁入 Git LFS（未推送分支用 `git lfs migrate import` 重写历史）；读取它们的两个 workflow 的 checkout 打开 `lfs: true`；Vercel 侧 LFS 保持关闭。`package.json` 固定 Node 22.x；`vercel.json` 过 prettier；Vercel 导入表单逐项写在 `docs/deploy/VERCEL_DEPLOYMENT.md`。
+- 不再使用 Git LFS（R3-D50，2026-09-20）：月度 LFS 流量用完之后，带 LFS 检出的数据库作业无法运行；owner 要求不再依赖 LFS。两份来源账本改为 xz 压缩包（4.7 MB、5.2 MB）存放在普通 git 的 `db/data/large-ledger-archives/` 里，`db/scripts/materialize-large-ledgers.py` 写回原文件并按 `LARGE_LEDGER_ARCHIVES.tsv` 校验大小与 SHA-256（哈希与原 LFS 对象一致），原文件加入 `.gitignore`；两个 workflow 改回普通 checkout。同一决策修复了历史重放对运行机器的依赖：Round 3I 的导出显式使用忽略标点的 ICU 排序（平手按字节序）并固定 UTC，冻结文件、迁移与登记的哈希都没有改动。
 - PWA 与 GitHub 就绪：图标只有白底加现有 wordmark（FLAVOR / WORDS 从随包的 Stack Sans、Fraunces 描成轮廓，SVG 不依赖字体；另出 PNG 192 / 512 / apple-touch 180 与 maskable 项）。仓库的 prettier 契约覆盖到 PWA 与 product-vector 源码（生成器产物加入 ignore），删去两个未引用组件，product-inference-v0.2 的 SHA256SUMS 按 F19 修复与设计 V1 重新生成的两份文件刷新——否则 GitHub 的 checks 任务会红。
 
 **平板与桌面布局（R3-D24）**
