@@ -322,11 +322,13 @@ export function infer(
     beans?: BeanVector[];
     profileLimit?: number;
     beanLimit?: number;
+    /** the reader's vector when the answers are not Matrix_Q letters (the dynamic question bank supplies its own weights) */
+    vUser?: Vector;
   } = {},
 ): InferenceResult {
   const alpha = options.alpha ?? bundle.alpha_default;
   const { vPred, contextBasis } = buildVPred(context);
-  const vUser = buildVUser(answers);
+  const vUser = options.vUser ?? buildVUser(answers);
   const delta = deltaV(vUser, vPred);
   const target = vTarget(vPred, delta, alpha);
   const topDeltaDimensions = delta

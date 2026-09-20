@@ -18,11 +18,7 @@ import {
   DIMENSIONS,
   add,
   buildVPred,
-  calibrationLine,
-  corpusLine,
   defectNote,
-  referenceBasisLine,
-  textSeed,
   cosine,
   infer,
   normalize,
@@ -40,12 +36,35 @@ import {
   type Vector,
 } from "./engine";
 
+import { neighbourWordScores } from "./neighbours";
+import {
+  answeredRows,
+  dynamicOptionVector,
+  followUpKeys,
+  isDynamicOption,
+} from "./dynamicBank";
+import {
+  cardNote,
+  descriptionNote,
+  noteSeed,
+  referenceNote,
+  structureNote,
+  supportNotes,
+} from "./notes";
+
 const flow = bundle.question_flow;
 const presentation = bundle.presentation;
 
 export type Slot = "Q0" | "Q1" | "Q2" | "Q3" | "Q4" | "Q5";
 export const SLOTS = flow.slots.map((s) => s.slot as Slot);
-export type FlowAnswers = Partial<Record<Slot, string>>;
+/** Answers by question key: the six slots, and in the dynamic bank also "E1", "E2" and "S:<first-level option>". */
+export type FlowAnswers = Partial<Record<string, string>>;
+export type FlowOptions = {
+  /** the dynamic question bank's flow: four core questions, then two follow-ups at most (R3-D40) */
+  dynamic?: boolean;
+  /** rotates the second follow-up between visits; fixed for a session */
+  nonce?: number;
+};
 export type CoherenceLevel = "coherent" | "mild" | "severe";
 export type CoherenceCheck = {
   between: [string, string];
@@ -55,14 +74,24 @@ export type CoherenceCheck = {
 };
 export type FlowPath = 1 | 2 | 3 | 4;
 export type FlowStep = {
-  ask: Slot[];
+  ask: string[];
   deliver: boolean;
   path: FlowPath | null;
   checks: CoherenceCheck[];
   escalationEligible: boolean;
   reason: string;
+  /** dynamic bank: how many questions this cup is asked in all, once the four core answers decide the follow-ups */
+  planned?: number;
+  /** dynamic bank, once the four core answers are in: every question this cup is asked, in order — six at most. An
+   *  answer kept from an earlier path for a question that is not among them will never be asked for again. */
+  plannedKeys?: string[];
+  /** dynamic bank: the follow-up is a strong correction — the four core answers are in severe conflict; such a
+   *  question may show five options instead of four (owner, 2026-09-20) */
+  strong?: boolean;
 };
-export type Word = { text: string; dimension: string };
+/** A word and the dimension it belongs to. `slot` is set when the word fills ANOTHER dimension's slot: the reader said
+ *  "citrus", so the fruit weight of that answer is shown as citrus words (R3-D49); picking such a word affirms both. */
+export type Word = { text: string; dimension: string; slot?: string };
 export type Description = {
   main: Word[];
   secondary: Word[];
@@ -84,6 +113,8 @@ export type FinalCard = {
   /** the card's evaluation line: the strongest evaluation dimensions of V_target, one word each (owner, 2026-09-17) */
   evaluation: EvaluationRow[];
   science: ScienceLine[];
+  /** the exported card's sentence: what stands out in this cup, not addressed to the reader (owner, 2026-09-19) */
+  cardNote: string;
   closing: string;
   profileTitle: string | null;
   profileId: string | null;
@@ -97,11 +128,14 @@ function questionOf(slot: Slot): keyof typeof bundle.matrix_q {
   return entry.question as keyof typeof bundle.matrix_q;
 }
 
-/** Unnormalised increment vector of one answer. */
-export function slotVector(slot: Slot, answer: string): Vector {
+/** Unnormalised increment vector of one answer: a dynamic-bank option by its own weights, else a Matrix_Q letter. */
+export function slotVector(slot: string, answer: string): Vector {
+  const dynamic = dynamicOptionVector(answer);
+  if (dynamic) return dynamic;
+  if (!SLOTS.includes(slot as Slot)) return zero();
   const spec =
     (
-      bundle.matrix_q[questionOf(slot)] as Record<
+      bundle.matrix_q[questionOf(slot as Slot)] as Record<
         string,
         Record<string, number>
       >
@@ -115,7 +149,7 @@ export function slotVector(slot: Slot, answer: string): Vector {
 }
 
 /** Unit vector of a group of answered slots (zero vector if none answered). */
-export function groupVector(answers: FlowAnswers, slots: Slot[]): Vector {
+export function groupVector(answers: FlowAnswers, slots: string[]): Vector {
   let sum = zero();
   for (const slot of slots) {
     const answer = answers[slot];
@@ -207,7 +241,7 @@ export function contextCheck(
 }
 
 /** An answer whose increment is empty ("not noticeable") carries no direction. */
-export function absentAnswer(answers: FlowAnswers, slot: Slot): boolean {
+export function absentAnswer(answers: FlowAnswers, slot: string): boolean {
   const a = answers[slot];
   return (
     a !== undefined && a !== "" && !slotVector(slot, a).some((x) => x !== 0)
@@ -219,7 +253,7 @@ export function perceptionAnswers(answers: FlowAnswers): PerceptionAnswers {
   const out: PerceptionAnswers = {};
   for (const slot of SLOTS) {
     const answer = answers[slot];
-    if (answer) out[questionOf(slot)] = answer;
+    if (answer && !isDynamicOption(answer)) out[questionOf(slot)] = answer;
   }
   return out;
 }
@@ -230,11 +264,12 @@ export function perceptionAnswers(answers: FlowAnswers): PerceptionAnswers {
 export function flowStep(
   answers: FlowAnswers,
   context?: ContextAnswers,
+  options: FlowOptions = {},
 ): FlowStep {
-  const has = (s: Slot) => answers[s] !== undefined && answers[s] !== "";
-  const missing = (...slots: Slot[]) => slots.filter((s) => !has(s));
+  const has = (s: string) => answers[s] !== undefined && answers[s] !== "";
+  const missing = (...slots: string[]) => slots.filter((s) => !has(s));
   const checks: CoherenceCheck[] = [];
-  const ask = (slots: Slot[], reason: string): FlowStep => ({
+  const ask = (slots: string[], reason: string): FlowStep => ({
     ask: slots,
     deliver: false,
     path: null,
@@ -254,7 +289,7 @@ export function flowStep(
     escalationEligible,
     reason,
   });
-  const g = (slots: Slot[]) => groupVector(answers, slots);
+  const g = (slots: string[]) => groupVector(answers, slots);
 
   if (missing("Q0", "Q1").length)
     return ask(missing("Q0", "Q1"), "base perception pair");
@@ -264,9 +299,7 @@ export function flowStep(
   // owner copy review 2026-09-12: a "not noticeable" answer (empty increment) adds no direction — and Q3 on its own
   // is direction-degenerate (all three body answers point the same way) — so a group holding one cannot claim a
   // severe conflict: absence contradicts nothing. Capped at mild: one more question, never Path 3.
-  const absence = (["Q0", "Q1", "Q2"] as Slot[]).some((s) =>
-    absentAnswer(answers, s),
-  );
+  const absence = ["Q0", "Q1", "Q2"].some((s) => absentAnswer(answers, s));
   if (absence && c23.level === "severe")
     c23 = {
       ...c23,
@@ -286,6 +319,76 @@ export function flowStep(
   const first: CoherenceLevel =
     ctx && order[ctx.level] < order[c23.level] ? ctx.level : c23.level;
 
+  if (options.dynamic) {
+    // The dynamic bank (R3-D40): bitterness and the overall impression are no longer asked of every cup. The tree's
+    // checks are the same; what changes is which questions follow the four core ones — see followUpKeys.
+    const follow = followUpKeys(context ?? {}, answers, first, options.nonce);
+    const need = follow.filter((k) => !has(k));
+    if (need.length)
+      return {
+        planned: 4 + follow.length,
+        plannedKeys: ["Q0", "Q1", "Q2", "Q3", ...follow],
+        strong: first === "severe",
+        ...ask(
+          [need[0]!],
+          first === "severe"
+            ? "Path 3: correction questions"
+            : first === "mild"
+              ? "Path 2: confirmation, then the most telling detail"
+              : "Path 1: the most telling details",
+        ),
+      };
+    if (first === "severe") {
+      const withBase = coherence(g(["Q4", "Q5"]), g(["Q0", "Q1"]), [
+        "Q4-Q5",
+        "Q0-Q1",
+      ]);
+      const withCheck = coherence(g(["Q4", "Q5"]), g(["Q2", "Q3"]), [
+        "Q4-Q5",
+        "Q2-Q3",
+      ]);
+      checks.push(withBase, withCheck);
+      return withBase.level === "coherent" || withCheck.level === "coherent"
+        ? deliver(3, false, "Path 3: Q4-Q5 agree with one side")
+        : deliver(
+            3,
+            true,
+            "Path 3: Q4-Q5 agree with neither side — Q6 eligible after the picks",
+          );
+    }
+    if (first === "mild") {
+      const withBase = coherence(g(["Q5"]), g(["Q0", "Q1", "Q3", "Q4"]), [
+        "Q5",
+        "Q0-Q1+Q3-Q4",
+      ]);
+      const withCheck = coherence(g(["Q5"]), g(["Q2", "Q3", "Q4"]), [
+        "Q5",
+        "Q2+Q3-Q4",
+      ]);
+      checks.push(withBase, withCheck);
+      return withBase.level === "coherent" || withCheck.level === "coherent"
+        ? deliver(2, false, "Path 2: Q5 agrees with one side")
+        : deliver(
+            2,
+            true,
+            "Path 2: Q5 conflicts again — Q6 eligible after the picks",
+          );
+    }
+    if (has("Q4")) {
+      const late = coherence(g(["Q0", "Q1", "Q2"]), g(["Q3", "Q4"]), [
+        "Q0-Q2",
+        "Q3-Q4",
+      ]);
+      checks.push(late);
+      if (late.level === "severe")
+        return deliver(
+          4,
+          true,
+          "Path 4: late mutation — Q6 eligible after the picks",
+        );
+    }
+    return deliver(1, false, "Path 1: coherent throughout");
+  }
   if (first === "severe") {
     // Path 3: correct with Q4-Q5; Q4-Q5 must agree with one side
     const need = missing("Q4", "Q5");
@@ -350,7 +453,21 @@ export function inferFromFlow(
   answers: FlowAnswers,
   options: { alpha?: number; beans?: BeanVector[] } = {},
 ): InferenceResult {
-  return infer(context, perceptionAnswers(answers), options);
+  const vUser = dynamicUserVector(answers);
+  return infer(context, perceptionAnswers(answers), {
+    ...options,
+    ...(vUser ? { vUser } : {}),
+  });
+}
+
+/** The reader's vector when the answers come from the dynamic bank (its options carry their own weights); undefined
+ *  for Matrix_Q letters, which keep the original arithmetic bit for bit. */
+export function dynamicUserVector(answers: FlowAnswers): Vector | undefined {
+  if (!Object.values(answers).some((a) => isDynamicOption(a))) return undefined;
+  let sum = zero();
+  for (const [key, answer] of Object.entries(answers))
+    if (answer) sum = add(sum, slotVector(key, answer));
+  return normalize(sum);
 }
 
 function wordLists(dimension: string, locale: Locale): string[] {
@@ -366,24 +483,105 @@ function wordLists(dimension: string, locale: Locale): string[] {
 }
 
 /** The owner-approved words of a dimension, started at a cup-specific point; consumer terms follow unrotated, as before. */
+/**
+ * A dimension's words for one cup: the list rotated by the cup's seed, then spread by sub-family — a soft constraint,
+ * not a cap (owner, 2026-09-19). Some coffees really are built around one kind of flavor, so nothing limits how many
+ * words a dimension may supply; but near-identical words (two mandarins, three chocolates) should not crowd a card by
+ * accident of list order. So the first word of every sub-family comes before any sub-family's second word, in rotation
+ * order. When the reader's answers point to one sub-family (`focus`, from the second-level questions), that sub-family
+ * leads and may repeat: the spread yields to what the reader says. Index-based, so both languages stay aligned.
+ *
+ * `scores` (owner, 2026-09-20, R3-D47) say which words are DISTINCTIVE of coffees like this one (neighbours.ts): a
+ * word scores only when the records nearest to the cup mention it clearly more often than coffee in general does.
+ * They apply only to a dimension the reader gave NO signal for; with a hint, the reader's answer decides. A distinctive
+ * word no longer comes and goes with the rotation — it leads its dimension; every other word (score 0: the words that
+ * are common everywhere, and the ones the corpus cannot score) keeps its rotation order, and the spread by sub-family
+ * still holds. The aim is to steady what is evident for this cup, never to push what is strong on every cup.
+ */
+export type WordHints = Record<
+  string,
+  { family?: string; lead?: string; passed?: string[]; from?: string }
+>;
+
 function rotatedWordList(
   dimension: string,
   locale: Locale,
   seed: number,
+  hint: { family?: string; lead?: string; passed?: string[] } = {},
+  scores?: readonly number[],
 ): string[] {
+  const focus = hint.family;
   const owned =
     (presentation.dimension_tags as Record<string, Record<Locale, string[]>>)[
       dimension
     ]?.[locale] ?? [];
+  const families =
+    (
+      presentation as unknown as {
+        dimension_tag_families?: Record<string, string[]>;
+      }
+    ).dimension_tag_families?.[dimension] ?? [];
   const consumer =
     (presentation.consumer_terms as Record<string, Record<Locale, string[]>>)[
       dimension
     ]?.[locale] ?? [];
+  const familyOf = (index: number) => families[index] ?? `w${index}`;
+  // the base order interleaves the sub-families: with runs of one sub-family in the list, the word that follows a run
+  // would be drawn far more often than the others
+  const byFamily = new Map<string, number[]>();
+  owned.forEach((_, i) =>
+    byFamily.set(familyOf(i), [...(byFamily.get(familyOf(i)) ?? []), i]),
+  );
+  const base: number[] = [];
+  for (let round = 0; base.length < owned.length; round += 1)
+    for (const members of byFamily.values())
+      if (members[round] !== undefined) base.push(members[round]!);
   const offset = owned.length
     ? (seed + DIMENSIONS.indexOf(dimension)) % owned.length
     : 0;
-  const rotated = owned.map((_, i) => owned[(offset + i) % owned.length]!);
-  return [...rotated, ...consumer];
+  const rotated = base.map((_, i) => base[(offset + i) % base.length]!);
+  // the very word the reader chose at the second level leads; then the sub-family pointed to; then the spread
+  const zhWords =
+    (presentation.dimension_tags as Record<string, Record<Locale, string[]>>)[
+      dimension
+    ]?.["zh-CN"] ?? [];
+  const lead = hint.lead ? zhWords.indexOf(hint.lead) : -1;
+  const focused = [
+    ...(lead >= 0 ? [lead] : []),
+    ...(focus
+      ? rotated.filter((i) => familyOf(i) === focus && i !== lead)
+      : []),
+  ];
+  const open = rotated.filter((i) => !focused.includes(i));
+  const rest =
+    scores && !hint.family && !hint.lead
+      ? open
+          .map((i, at) => ({ i, at }))
+          .sort(
+            (a, b) => (scores[b.i] ?? 0) - (scores[a.i] ?? 0) || a.at - b.at,
+          )
+          .map((x) => x.i)
+      : open;
+  // round by round: every sub-family's next word, in the order the rotation meets the sub-families
+  const spreadOf = (indices: number[]): number[] => {
+    const queues = new Map<string, number[]>();
+    for (const i of indices)
+      queues.set(familyOf(i), [...(queues.get(familyOf(i)) ?? []), i]);
+    const out: number[] = [];
+    while (out.length < indices.length)
+      for (const queue of queues.values()) {
+        const next = queue.shift();
+        if (next !== undefined) out.push(next);
+      }
+    return out;
+  };
+  // sub-families the reader was shown and did not choose come last (R3-D49): the card follows the reader's signals
+  const passed = new Set(hint.passed ?? []);
+  const spread = [
+    ...spreadOf(rest.filter((i) => !passed.has(familyOf(i)))),
+    ...spreadOf(rest.filter((i) => passed.has(familyOf(i)))),
+  ];
+  return [...focused, ...spread].map((i) => owned[i]!).concat(consumer);
 }
 
 /** owner (2026-09-17): a dimension is either a candidate (its words go to the pick list) or an evaluation dimension
@@ -423,18 +621,56 @@ function wordSeed(result: InferenceResult): number {
  * shared in proportion to dimension weight (largest remainder), so a cup led by fruit and sweetness shows several
  * fruit and sugar words instead of one word from every faint dimension (owner, 2026-09-17: the cards must not keep
  * repeating one small set). Each dimension's list is rotated by a cup-specific seed, so which words appear also
- * varies between cups; both languages stay aligned position by position.
+ * varies between cups, and spread by sub-family as a soft constraint (see rotatedWordList): there is no fixed cap on
+ * one kind of flavor. Both languages stay aligned position by position. With `options.neighbours` (the dynamic flow),
+ * a dimension the reader gave no signal for takes its word order from the records nearest to this cup (R3-D47).
  */
-export function describe(result: InferenceResult, locale: Locale): Description {
+export function describe(
+  result: InferenceResult,
+  locale: Locale,
+  hints: WordHints | Record<string, string> = {},
+  options: { neighbours?: boolean } = {},
+): Description {
+  const hintOf = (d: string) => {
+    const h = (hints as Record<string, unknown>)[d];
+    return typeof h === "string"
+      ? { family: h }
+      : ((h as WordHints[string] | undefined) ?? {});
+  };
   const { main, secondary } = flow.first_description;
   const total = main + secondary;
   // candidate dimensions only: the evaluation dimensions never supply pick words (owner, 2026-09-17)
-  const ranked = DIMENSIONS.map((d, i) => ({ d, w: result.vTarget[i] ?? 0 }))
+  const everyRanked = DIMENSIONS.map((d, i) => ({
+    d,
+    w: result.vTarget[i] ?? 0,
+    reader: (result.vUser[i] ?? 0) > 0,
+  }))
     .filter((x) => x.w > 0 && dimensionRole(x.d) === "candidate")
     .sort((a, b) => b.w - a.w);
+  // measured, not adopted (R3-D49, `prior_slots` in the bundle): "none" gives a word only to dimensions the reader's
+  // own answers weigh on; dimensions that come from the context's prior alone fill in only when the card would
+  // otherwise fall short
+  const readerOnly =
+    options.neighbours === true &&
+    (flow.first_description as { prior_slots?: string }).prior_slots ===
+      "none" &&
+    everyRanked.some((x) => x.reader);
+  const ranked = readerOnly ? everyRanked.filter((x) => x.reader) : everyRanked;
   const seed = wordSeed(result);
+  // the dynamic flow only: where the reader gave no signal, the records nearest to this cup order the words
+  const scores = options.neighbours
+    ? neighbourWordScores(result.vTarget)
+    : null;
+  // a dimension's slots may be filled with another dimension's words (`from`: the reader said "citrus", so the fruit
+  // weight of that answer stands for citrus words); the words keep the dimension they belong to
+  const sourceOf = (d: string) => {
+    const from = hintOf(d).from;
+    return from && dimensionRole(from) === "candidate" ? from : d;
+  };
+  const listOf = (d: string) =>
+    rotatedWordList(d, locale, seed, hintOf(d), scores?.[d]);
   const lists = new Map(
-    ranked.map((x) => [x.d, rotatedWordList(x.d, locale, seed)] as const),
+    everyRanked.map((x) => [x.d, listOf(sourceOf(x.d))] as const),
   );
   // slot quota per dimension: one for each of the top `main` dimensions, the rest by weight among dimensions that
   // reach 12% of the leading weight, never more than a list can supply
@@ -456,7 +692,9 @@ export function describe(result: InferenceResult, locale: Locale): Description {
   // a dimension may hold at most 1 + floor((words - 1) / 4) slots (3 words → 1, 4–7 → 2, 8+ → 3), so short lists do
   // not cycle their few words on every card; the unfilled remainder falls to the round-robin below
   for (const x of shares) {
-    const size = lists.get(x.d)?.length ?? 0;
+    // the list's length in ONE language for both: consumer terms differ in number between the languages, and a cap that
+    // differed with them put the last words of a card in a different order (found 2026-09-20; picks map by position)
+    const size = wordLists(x.d, "zh-CN").length;
     const cap = size ? 1 + Math.floor((size - 1) / 4) : 0;
     quota.set(x.d, Math.min(cap, (quota.get(x.d) ?? 0) + x.q));
   }
@@ -469,7 +707,11 @@ export function describe(result: InferenceResult, locale: Locale): Description {
     while (i < list.length && used.has(list[i]!)) i += 1;
     if (i >= list.length) return false;
     used.add(list[i]!);
-    words.push({ text: list[i]!, dimension: d });
+    words.push(
+      sourceOf(d) === d
+        ? { text: list[i]!, dimension: d }
+        : { text: list[i]!, dimension: sourceOf(d), slot: d },
+    );
     taken.set(d, i + 1);
     return true;
   };
@@ -494,20 +736,38 @@ export function describe(result: InferenceResult, locale: Locale): Description {
     }
     if (!progressed) break;
   }
+  if (readerOnly)
+    for (let round = 0; words.length < total && round < total; round += 1) {
+      let progressed = false;
+      for (const x of everyRanked) {
+        if (words.length >= total) break;
+        if (take(x.d)) progressed = true;
+      }
+      if (!progressed) break;
+    }
   // reading order: the first word of every dimension present (rank order) before any dimension's second word, so the
   // first `pick_count` positions span as many dimensions as the card holds; the set of words is unchanged
   const ordered: Word[] = [];
   const seen = new Set<string>();
   for (const w of words) {
-    if (seen.has(w.dimension)) continue;
-    seen.add(w.dimension);
+    const slot = w.slot ?? w.dimension; // a word that fills another dimension's slot stands for that dimension here
+    if (seen.has(slot)) continue;
+    seen.add(slot);
     ordered.push(w);
   }
   for (const w of words) if (!ordered.includes(w)) ordered.push(w);
+  // owner, 2026-09-20: five is a suggestion, not a condition — a reader who finds four words that fit gets a card
+  const most = flow.first_description.pick_count;
+  const least =
+    (flow.first_description as { pick_min?: number }).pick_min ?? most;
   const prompt =
     locale === "zh-CN"
-      ? `选出最贴近你感受的 ${flow.first_description.pick_count} 个词。`
-      : `Pick the ${flow.first_description.pick_count} words closest to what you tasted.`;
+      ? least < most
+        ? `选出最贴近你感受的 ${least}–${most} 个词，建议选 ${most} 个。`
+        : `选出最贴近你感受的 ${most} 个词。`
+      : least < most
+        ? `Pick the ${least} to ${most} words closest to what you tasted — ${most} if you can.`
+        : `Pick the ${most} words closest to what you tasted.`;
   return {
     main: ordered.slice(0, main),
     secondary: ordered.slice(main, total),
@@ -558,10 +818,11 @@ export function evaluate(
  */
 export function picksToVector(picks: Word[]): Vector {
   const v = zero();
-  for (const w of picks) {
-    const i = DIMENSIONS.indexOf(w.dimension);
-    if (i >= 0) v[i] = 1;
-  }
+  for (const w of picks)
+    for (const d of [w.dimension, w.slot]) {
+      const i = d ? DIMENSIONS.indexOf(d) : -1;
+      if (i >= 0) v[i] = 1;
+    }
   return normalize(v);
 }
 
@@ -607,6 +868,21 @@ export function escalationGate(
   };
 }
 
+/** The same word in another language: the owned lists are aligned position by position. */
+export function localizeWord(word: Word, locale: Locale): Word {
+  for (const from of ["zh-CN", "en"] as Locale[]) {
+    const i = wordLists(word.dimension, from).indexOf(word.text);
+    const text = i >= 0 ? wordLists(word.dimension, locale)[i] : undefined;
+    if (text) return { ...word, text };
+  }
+  return word;
+}
+
+/** The word that stands for a dimension in the confirmation step; the card shows this very word when it is chosen. */
+export function q6Word(dimension: string, locale: Locale): string {
+  return wordLists(dimension, locale)[0] ?? "";
+}
+
 /** Q6: the strong-correction checkbox — one word per dimension, for the dimensions where user and theory disagree most. */
 export function q6Options(result: InferenceResult, locale: Locale): Q6Option[] {
   return DIMENSIONS.map((d, i) => ({
@@ -618,7 +894,7 @@ export function q6Options(result: InferenceResult, locale: Locale): Q6Option[] {
     .slice(0, flow.q6.option_count)
     .map((x) => ({
       dimension: x.dimension,
-      text: wordLists(x.dimension, locale)[0] ?? x.dimension,
+      text: q6Word(x.dimension, locale) || x.dimension,
       delta: x.delta,
     }));
 }
@@ -679,59 +955,105 @@ export function finalCard(
   result: InferenceResult,
   picks: Word[],
   locale: Locale,
+  options: {
+    nonce?: number;
+    secondLook?: string[];
+    /** the session's answers: aroma, aftertaste and bitterness answered in the dynamic bank go to the evaluation rows */
+    answers?: FlowAnswers;
+  } = {},
 ): FinalCard {
-  // owner copy review 2 (2026-09-12): the initial reference (computed, said once), the first sourced research
-  // reference that applies, the difference line; the owner's causal sentences are project rules, not card copy
-  const science: ScienceLine[] = [];
-  const basis = referenceBasisLine(result, locale);
-  if (basis) science.push(basis);
-  // the second line varies with the cup, the answers and the confirmed words (owner: not the same text every time):
-  // a research reference (one of those that apply, in one of its two phrasings) or a data-count line, alternating
-  const seed = textSeed([
-    ...picks.map((w) => w.text),
-    JSON.stringify(result.context),
-    ...result.vUser.map((x) => x.toFixed(2)),
-  ]);
+  // owner, 2026-09-18: the notes interpret the data (notes.ts) — the reference read against all review records, the
+  // one statistic that bears on the confirmed words, what the reader's answers moved. At most four notes (five with
+  // the papery group's note). The seed holds nothing language-dependent, so both languages carry the same statistics; the
+  // session's nonce lets the same cup draw a different supporting statistic on another visit.
+  const seed = noteSeed(result, picks, options.nonce);
+  // What the reader answered outranks what the vector implies: the chosen word for bitterness replaces the derived
+  // one ("no noticeable bitterness" removes the row), aroma and aftertaste are rows of their own. Four rows at most.
+  const answered = answeredRows(options.answers ?? {}, locale);
+  const replaced = new Set(answered.rows.map((r) => r.dimension));
+  const derived = evaluate(result, locale).filter(
+    (r) =>
+      !replaced.has(r.dimension) &&
+      !(answered.noBitterness && r.dimension === "bitter_roasted"),
+  );
+  // What the reader ticked in the confirmation step is the last and most explicit thing they said (owner, 2026-09-20:
+  // "I chose cinnamon and it is not on the card"): an evaluation dimension chosen there gets its row, with the very
+  // word the option showed — not the cup's rotated word, and not removed by an earlier "no noticeable bitterness".
+  const labels = presentation.dimension_labels as Record<
+    string,
+    Record<Locale, string>
+  >;
+  // (a ticked word that is already among the card's words does not repeat as a row)
+  const among = new Set(picks.map((w) => w.text));
+  const confirmedRows = (options.secondLook ?? [])
+    .filter((d) => dimensionRole(d) === "evaluation" && d !== "defect")
+    .filter((d) => !among.has(q6Word(d, locale)))
+    .map((d) => ({
+      dimension: d,
+      label: labels[d]?.[locale] ?? d,
+      text: q6Word(d, locale),
+    }))
+    .filter((r) => r.text);
+  const confirmedDims = new Set(confirmedRows.map((r) => r.dimension));
+  const evaluation = [
+    ...confirmedRows,
+    ...[
+      ...derived.slice(0, Math.max(0, 4 - answered.rows.length)),
+      ...answered.rows,
+    ].filter((r) => !confirmedDims.has(r.dimension)),
+  ]
+    .filter((r) => !among.has(r.text)) // a word on the card does not repeat as a row
+    .slice(0, 4);
+  const confirmed = confirmedProfile(result, picks);
+  // the papery / stale group (owner copy review 2026-09-12): the words are shown, a second sip is suggested, no quality verdict
+  const papery =
+    confirmed &&
+    (confirmed.profile as { anchor_id?: string }).anchor_id === "anchor-16"
+      ? defectNote(locale)
+      : null;
   const literatureLines = statementsFor(result.context, locale).filter(
     (l) => l.evidenceState === "LITERATURE_CLAIM",
   );
-  const data = corpusLine(result.context, locale, seed >> 3);
-  const pickLiterature =
-    literatureLines.length > 0 && (!data || (seed >> 1) % 3 !== 0);
-  if (pickLiterature) {
-    const line = literatureLines[seed % literatureLines.length]!;
-    science.push(
-      line.textAlt && (seed >> 2) % 2 === 1
-        ? { ...line, text: line.textAlt }
-        : line,
-    );
-  } else if (data) {
-    science.push(data);
-  }
-  const [top, second] = result.topDeltaDimensions;
-  if (top && Math.abs(top.delta) >= 0.1)
-    science.push(
-      calibrationLine(
-        top.dimension,
-        top.delta,
-        locale,
-        seed,
-        second && Math.abs(second.delta) >= 0.1 ? second : undefined,
-      ),
-    );
-  const confirmed = confirmedProfile(result, picks);
-  // the papery / stale group (owner copy review 2026-09-12): the words are shown, a second sip is suggested, no quality verdict
-  if (
-    confirmed &&
-    (confirmed.profile as { anchor_id?: string }).anchor_id === "anchor-16"
-  ) {
-    const note = defectNote(locale);
-    if (note) science.push(note);
-  }
+  // a research reference joins two times in three when one applies; the data note is always a single one (owner,
+  // 2026-09-19: two notes under the same label read as a bug)
+  const literature =
+    literatureLines.length > 0 && seed % 3 !== 0
+      ? literatureLines[(seed >> 1) % literatureLines.length]!
+      : null;
+  // one data note: the statistic about the confirmed words, or — one visit in two, when the reader found the aroma or
+  // the aftertaste clear and this kind of coffee is known for it — the comparison within the same roast
+  const structure =
+    seed % 2 === 0
+      ? structureNote(result, options.answers ?? {}, locale, seed)
+      : null;
+  const data = structure
+    ? [structure]
+    : supportNotes(result, picks, locale, seed, 1);
+  const science: ScienceLine[] = [
+    referenceNote(result, locale, seed),
+    ...data,
+    ...(literature
+      ? [
+          literature.textAlt && (seed >> 2) % 2 === 1
+            ? { ...literature, text: literature.textAlt }
+            : literature,
+        ]
+      : []),
+    descriptionNote(
+      result,
+      picks,
+      evaluation,
+      locale,
+      seed,
+      options.secondLook ?? [],
+    ),
+    ...(papery ? [papery] : []),
+  ];
   return {
     picked: picks.map((w) => w.text),
-    evaluation: evaluate(result, locale),
+    evaluation,
     science,
+    cardNote: cardNote(result, picks, evaluation, locale),
     closing: flow.closing[locale],
     profileTitle: confirmed
       ? confirmed.profile.owner_name[locale] || confirmed.profile.owner_name.en

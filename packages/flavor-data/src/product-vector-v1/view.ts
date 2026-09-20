@@ -218,6 +218,8 @@ export type QuizCardModel = {
   prompt: string;
   adapted: boolean;
   options: Array<{ option: string; label: string; fit: number }>;
+  /** the line under the options for a reader who cannot answer (dynamic bank); not one of the five options */
+  unanswered?: { option: string; label: string };
   progress: { answered: number; expected: number };
 };
 export type FirstDescriptionCardModel = {
@@ -226,6 +228,8 @@ export type FirstDescriptionCardModel = {
   secondary: Word[];
   pickPrompt: string;
   pickCount: number;
+  /** the card can be confirmed from this many words on (owner, 2026-09-20: five is a suggestion, three are enough) */
+  pickMin: number;
   path: number | null;
   profileTitle: string | null;
   heading: string;
@@ -251,8 +255,12 @@ export type ResultCardModel = {
     label: string;
     citation: string;
   }>;
+  /** the exported card's sentence about this cup (third person: a shared card does not say "your") */
+  cardNote: string;
   closing: string;
   corrected: boolean; // true after Q6 (second, refined card)
+  /** the cup and the confirmed dimensions, with nothing language-dependent: seeds the exported card's pattern and serial */
+  cardSeed: string;
   shareText: string;
 };
 export type EscalationModalModel = {
@@ -282,6 +290,9 @@ export function screenModel(session: Session): ScreenModel {
       secondary: session.description.secondary,
       pickPrompt: session.description.prompt,
       pickCount: bundle.question_flow.first_description.pick_count,
+      pickMin:
+        (bundle.question_flow.first_description as { pick_min?: number })
+          .pick_min ?? bundle.question_flow.first_description.pick_count,
       path: session.step.path,
       profileTitle:
         session.result?.profiles[0]?.profile.owner_name[locale] ?? null,
@@ -327,8 +338,14 @@ export function screenModel(session: Session): ScreenModel {
       label: l.label,
       citation: l.citation,
     })),
+    cardNote: card?.cardNote ?? "",
     closing: card?.closing ?? "",
     corrected: session.q6 !== null && session.q6.selected.length > 0,
+    cardSeed: JSON.stringify([
+      session.context,
+      session.answers,
+      session.picks.map((w) => w.dimension),
+    ]),
     shareText: `${title}\n${tags.join(" | ")}`,
   };
 }
@@ -429,8 +446,8 @@ export function appShell(locale: Locale) {
         lead: "",
         claim: "",
         start: "Start",
-        startLink: "Start with this sip",
-        resume: "Resume",
+        startLink: "Start with this cup",
+        resume: "Continue",
         about: "About",
         home: "Home",
         exit: "Exit",
