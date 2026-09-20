@@ -1,0 +1,10 @@
+question_id	kind	prompt_zh_cn	prompt_en	basis	owner_reviewed	tail_zh_cn	tail_en
+A	core	喝到酸了吗？更像哪一类水果的酸？	Does it taste sour or tangy? Which fruit is it closest to?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true		
+B	core	除了酸，闻起来、喝起来最像哪一类？	Apart from that, what does it smell and taste most like?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true	闻起来、喝起来最像哪一类？	what does it smell and taste most like?
+C	core	能喝出甜吗？更像哪一种甜？	Can you taste sweetness? What kind?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true	能喝出甜吗？更像哪一种甜？	can you taste sweetness? What kind?
+D	core	口感怎么样？	How does it feel in the mouth?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true	口感怎么样？	how does it feel in the mouth?
+S	second	更像哪一个？	Which one is it closest to?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true	{short}里，更像哪一个？	Among {short}, which one is it closest to?
+E1	evaluation	凑近闻一闻，香气有多明显？	Smell the cup: how clear is the aroma?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true		
+E2	evaluation	咽下去之后，嘴里的味道留了多久？	After you swallow, how long does the taste stay?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true		
+E3	evaluation	尾段苦吗？	Is the aftertaste bitter?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true		
+E4	evaluation	这一口整体更像哪种？	Overall, how do the flavors come across?	OWNER_REVIEWED_2026-09-19 (R3-D40 wording review; deltas and focus are the operator's draft)	true		

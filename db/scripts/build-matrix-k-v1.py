@@ -92,19 +92,24 @@ def main() -> int:
     vec = {k: [float(r[f"v_{d}"]) for d in DIMS] for k, r in lib.items()}
     groups = defaultdict(list)
     cells = defaultdict(list)
+    members = defaultdict(set)  # (axis, corpus option) -> record ids, for the presence statistics on the card
     for k, v in vec.items():
         prep = lib[k]["preparation_service_id"]
         roast = axes.get(k, {}).get("roast_level", "UNREPORTED")
         groups[("C0", prep)].append(v)
+        members[("C0", prep)].add(k)
         if roast not in ("", "UNREPORTED", "NA"):
             groups[("C1", roast)].append(v)
+            members[("C1", roast)].add(k)
             cells[(prep, roast)].append(v)
         lab = c2.get(k)
         if lab:
             if lab["variety"] != "UNRESOLVED" and lab["variety_multi"] == "false":
                 groups[("C2_variety", lab["variety"])].append(v)
+                members[("C2_variety", lab["variety"])].add(k)
             if lab["process"] != "UNRESOLVED" and lab["process_multi"] == "false":
                 groups[("C2_process", lab["process"])].append(v)
+                members[("C2_process", lab["process"])].add(k)
     minimum = {"C0": 1, "C1": MIN_CELL, "C2_variety": MIN_VARIETY, "C2_process": MIN_PROCESS}
     matrix = []
     for (axis, option), vs in sorted(groups.items()):
@@ -139,6 +144,34 @@ def main() -> int:
         for (a, option), r in krows.items():
             if a == axis:
                 bundle_k[axis][option] = {"vector": kvec(axis, option), "basis": r["basis"], "member_count": int(r["member_count"])}
+    # Presence statistics for the card's notes (owner, 2026-09-18: interpret the data instead of repeating the reader's
+    # choices): for every measured option, the share of its review records that mention each flavor dimension at all
+    # (v_d > 0), next to the same share over all records; pairs of options that occur together in at least 30 records
+    # give a more specific statistic. Only CORPUS_MEASURED product options are listed — a proxy row describes cupping or
+    # espresso records, not the borrowed method.
+    def presence(ids):
+        n = len(ids)
+        return [round(sum(1 for k in ids if vec[k][i] > 0) / n, 4) for i in range(len(DIMS))]
+    measured = []  # (axis, product option, corpus option)
+    for axis in ("C0", "C1", "C2_process"):
+        for product_option, (corpus_option, basis) in PRODUCT_OPTIONS[axis].items():
+            if basis == "CORPUS_MEASURED" and (axis, corpus_option) in members:
+                measured.append((axis, product_option, corpus_option))
+    for (axis, option), r in krows.items():
+        if axis == "C2_variety":
+            measured.append((axis, option, option))
+    corpus_stats = {"basis": "share of CoffeeReview usable-vector records that mention the dimension (v_d > 0)", "minimum_pair_records": 30,
+                    "all": {"n": len(vec), "presence": presence(list(vec))}, "options": {}, "pairs": []}
+    for axis, product_option, corpus_option in measured:
+        ids = members[(axis, corpus_option)]
+        corpus_stats["options"].setdefault(axis, {})[product_option] = {"n": len(ids), "presence": presence(ids)}
+    for i, (axis_a, option_a, corpus_a) in enumerate(measured):
+        for axis_b, option_b, corpus_b in measured[i + 1:]:
+            if axis_a == axis_b:
+                continue
+            both = members[(axis_a, corpus_a)] & members[(axis_b, corpus_b)]
+            if len(both) >= 30:
+                corpus_stats["pairs"].append({"a": [axis_a, option_a], "b": [axis_b, option_b], "n": len(both), "presence": presence(both)})
     proj = {r["canonical_concept_id"]: [float(r[d]) for d in DIMS] for r in rows(OUT / "CONCEPT_DIMENSION_PROJECTION_DRAFT.tsv")}
     profiles = [{"profile_id": r["profile_id"], "member_count": int(r["member_count"]), "top_dimensions": r["top_dimensions"], "centroid": [float(r[f"c_{d}"]) for d in DIMS],
                  "benchmark_beans": r["benchmark_beans"], "anchor_id": r["anchor_id"]} for r in rows(OUT / "FLAVOR_PROFILE_LIBRARY.tsv")]
@@ -159,6 +192,11 @@ def main() -> int:
     # owner (2026-09-17): body, bitter & roasted, fermented & winey, spice and defect are evaluation dimensions — their words
     # appear in the card's evaluation rows, never in the candidate list (CONCEPT_FLAVOR_TAGS.tsv role column)
     dimension_roles = {r["key"].removeprefix("dim:"): (r.get("role") or "candidate") for r in tags if r["kind"] == "dimension"}
+    # sub-families of the words (owner, 2026-09-19): near-identical words — two mandarins, three chocolates — are spread by a
+    # soft preference in describe(); a list aligned with dimension_tags, position by position
+    dimension_tag_families = {r["key"].removeprefix("dim:"): split(r.get("tag_families") or "") for r in tags if r["kind"] == "dimension"}
+    for d, fams in dimension_tag_families.items():
+        assert len(fams) == len(dimension_tags[d]["zh-CN"]) == len(dimension_tags[d]["en"]), f"tag_families misaligned for {d}"
     concept_tags = {r["key"]: {"zh-CN": r["tags_zh_cn"], "en": r["tags_en"]} for r in tags if r["kind"] == "concept"}
     statements = []
     for name in ("CONTEXT_STATEMENTS.tsv", "LITERATURE_CLAIMS.tsv"):
@@ -186,7 +224,7 @@ def main() -> int:
             src = next((x for x in sources if x["source_id"] == st["source_id"]), None)
             if src:
                 st["source_title"] = src["title"]
-    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "sources": sources, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "dimension_roles": dimension_roles, "concept_tags": concept_tags,
+    presentation = {"locales": ["zh-CN", "en"], "tag_count": 4, "sources": sources, "dimension_labels": dimension_labels, "dimension_tags": dimension_tags, "dimension_tag_families": dimension_tag_families, "dimension_roles": dimension_roles, "concept_tags": concept_tags,
                     "delta_words": {"zh-CN": {"pos": "比这个语境的理论值更明显", "neg": "比这个语境的理论值更弱"}, "en": {"pos": "stronger than this context predicts", "neg": "weaker than this context predicts"}},
                     # consumer-facing layer (owner R3-D15): no raw enum reaches the screen; the calibration sentence reads as a
                     # sensory report, not as a correction of the drinker
@@ -214,6 +252,141 @@ def main() -> int:
                                                "pair_variants": ["Compared with the initial reference, your description leans toward {label}, with {label2} weaker.", "{label} stands out more in your description than in the initial reference, while {label2} recedes."]}},
                     "reference_basis_templates": {"zh-CN": {"text": "根据{context}，初始参考侧重{dims}。", "explain": "初始参考来自评审资料的统计，只是起点，不是这杯咖啡的测定。", "join": "、", "context_join": "、"},
                                                   "en": {"text": "From {context}, the initial reference leans toward {dims}.", "explain": "It comes from the review data and is a starting point, not a measurement of this cup.", "join": ", ", "context_join": ", "}},
+                    # The card's notes (owner, 2026-09-18): the reference note interprets the choices against all review records
+                    # instead of repeating them; the data notes are statistics that bear on the confirmed words, drawn anew for
+                    # every session; the description note says what the reader's answers moved and which confirmed words come
+                    # from that. Every list has the same length and order in both languages: the engine picks a variant by an
+                    # index that does not depend on the language, so a card says the same thing in both.
+                    # What a dimension means in the cup, for the notes (owner, 2026-09-19: "香料更突出" reads as evasive — a bare
+                    # category is not what the reader tasted; Chinese readers hear 香料 as 八角、桂皮). The gloss names familiar things.
+                    "dimension_gloss": {
+                        "zh-CN": {"acidity": "酸质（柑橘、莓果那样明亮的酸）", "sweetness": "甜感（蔗糖、蜂蜜、焦糖一类）", "body": "醇厚度（入口的厚薄与顺滑）",
+                                  "floral": "花香（茉莉、橙花一类）", "fruity": "果香（桃、莓果、热带水果一类）", "nutty_chocolate": "坚果巧克力（榛果、可可一类）",
+                                  "fermented_winey": "发酵酒香（红酒、朗姆、酒酿一类）", "bitter_roasted": "烘烤苦感（黑巧、炭烧一类）", "spice": "辛香（肉桂、丁香一类的温暖香气）",
+                                  "herbal_green": "草本茶感（绿茶、乌龙、柠檬草一类）", "woody_earthy": "木质泥土（雪松、泥土一类）", "defect": "瑕疵"},
+                        "en": {"acidity": "acidity (the bright sourness of citrus or berries)", "sweetness": "sweetness (cane sugar, honey, caramel)", "body": "body (how thick and smooth it feels)",
+                               "floral": "floral notes (jasmine, orange blossom)", "fruity": "fruit notes (peach, berries, tropical fruit)", "nutty_chocolate": "nut and chocolate notes (hazelnut, cocoa)",
+                               "fermented_winey": "fermented, winey notes (red wine, rum)", "bitter_roasted": "roast and bitterness (dark chocolate, char)", "spice": "warm spice (cinnamon, clove)",
+                               "herbal_green": "herbal, tea-like notes (green tea, oolong)", "woody_earthy": "woody, earthy notes (cedar, earth)", "defect": "defect"}},
+                    "card_notes": {
+                        "zh-CN": {
+                            "join": "、", "last_join": "、", "pair_join": "、", "frequency": "每 {base} 款约 {k} 款", "frequency_under": "每 {base} 款不到 1 款",
+                            "frequency_again": "约 {k} 款", "frequency_again_under": "不到 1 款", "clause_join": "；",
+                            "reference_clause_up_down": "{option}的咖啡更常写到{up}、更少写到{down}",
+                            "reference_clause_up": "{option}的咖啡更常写到{up}",
+                            "reference_clause_down": "{option}的咖啡更少写到{down}",
+                            "reference_frame": ["评审记录里，和一般咖啡相比，{clauses}。",
+                                                "从评审记录看，和一般咖啡相比，{clauses}。",
+                                                "和评审记录里的全部咖啡相比，{clauses}。"],
+                            "reference_typical": ["你选的{options}在评审记录里很常见，风味和一般咖啡差别不大：初始参考接近一杯典型的咖啡，最常被写到的是{dims}。",
+                                                  "{options}是评审记录里常见的组合，和所有咖啡相比没有明显偏向，最常被写到的是{dims}。",
+                                                  "评审记录里，{options}的咖啡与一般咖啡很接近，初始参考因此偏向常见的{dims}。"],
+                            "reference_none": ["这组选择在评审资料里没有足够的记录，这张卡主要依据你自己的回答。",
+                                               "评审资料里没有足够的记录能对应这组选择，描述主要来自你的回答。",
+                                               "这组选择缺少可用的评审记录，初始参考很弱，描述以你的回答为主。"],
+                            "reference_left_out": ["{options}没有足够的评审记录，没有计入初始参考。",
+                                                   "评审资料里{options}的记录太少，初始参考没有用到。",
+                                                   "{options}缺少评审记录，初始参考里不含这一项。"],
+                            "support": ["你确认的{words}属于{dim}，评审记录里{scope}的咖啡也比一般咖啡更常被这样描述。",
+                                        "评审记录里，{scope}的咖啡比一般咖啡更常写到{dim}；你确认的{words}就属于这一类。",
+                                        "{dim}在{scope}的咖啡里比一般咖啡更常见，这与你确认的{words}一致。"],
+                            "neutral": ["你确认的{words}属于{dim}；在这一点上，评审记录里{scope}的咖啡和一般咖啡差不多。",
+                                        "评审记录里，{scope}的咖啡写到{dim}的情况和一般咖啡差不多；你确认的{words}属于这一类。",
+                                        "{dim}在{scope}的咖啡里和一般咖啡差不多常见；你确认的{words}属于这一类。"],
+                            "contrast": ["你确认的{words}属于{dim}，评审记录里{scope}的咖啡比一般咖啡更少被这样描述：这部分更多来自你自己这一杯的感受。",
+                                         "评审记录里，{scope}的咖啡比一般咖啡更少写到{dim}；你确认的{words}来自你这一杯的感受，而不是这类咖啡的常态。",
+                                         "{dim}在{scope}的咖啡里比一般咖啡少见；你确认的{words}是你这一杯自己的特点。"],
+                            "moved_both": ["和初始参考相比，你的回答让{raised}更突出，{lowered}更淡。",
+                                           "你的回答把{raised}拉高了，{lowered}则比初始参考弱。",
+                                           "相较于初始参考，这一杯在你的回答里更偏{raised}，{lowered}没有那么明显。"],
+                            "moved_up": ["和初始参考相比，你的回答让{raised}更突出。",
+                                         "你的回答把{raised}拉高了，其余与初始参考接近。",
+                                         "相较于初始参考，这一杯在你的回答里更偏{raised}。"],
+                            "moved_down": ["和初始参考相比，你的回答里{lowered}更淡，其余接近。",
+                                           "你的回答里{lowered}比初始参考弱，其余与它接近。",
+                                           "相较于初始参考，这一杯的{lowered}在你的回答里没有那么明显。"],
+                            "moved_none": ["你的回答与初始参考接近，没有明显偏向。",
+                                           "你的回答和初始参考基本一致。",
+                                           "这一杯在你的回答里与初始参考相差不大。"],
+                            "words_both": ["卡上的词里，{own}来自这一偏向，{shared}与初始参考一致。",
+                                           "{own}是你的回答带来的，{shared}则在初始参考里就有。",
+                                           "其中{own}出自你的回答，{shared}与初始参考相符。"],
+                            "words_own": ["卡上的词里，{own}来自这一偏向。", "{own}是你的回答带来的。", "其中{own}出自你的回答。"],
+                            "words_shared": ["卡上的词里，{shared}与初始参考一致。", "{shared}在初始参考里就有。", "其中{shared}与初始参考相符。"],
+                            "second_look": ["第二次确认又强调了{dims}。", "再看一眼时，你进一步选了{dims}。", "第二轮里你把{dims}又往前推了一步。"],
+                            "card_both": "比同类咖啡的参考风味更偏{raised}，{lowered}更淡。",
+                            "card_up": "比同类咖啡的参考风味更偏{raised}。",
+                            "card_down": "{lowered}比同类咖啡的参考风味更淡。",
+                            "card_none": "与同类咖啡的参考风味接近。",
+                            "card_words_both": "{own}来自这一偏向，{shared}则与参考风味一致。",
+                            "card_words_own": "{own}来自这一偏向。",
+                            "card_words_shared": "{shared}与参考风味一致。",
+                            "structure_aroma": "香气", "structure_aftertaste": "余韵", "structure_espresso": "意式",
+                            "structure_high": ["你觉得{what}明显；评审记录里，{scope}的咖啡在同样烘焙度的咖啡中{what}也更常得到高分。",
+                                               "评审记录里，{scope}的咖啡比同样烘焙度的咖啡更常因{what}得到高分，与你的回答一致。",
+                                               "{what}是{scope}的咖啡在评审里常得高分的一项，你的回答也是如此。"]},
+                        "en": {
+                            "join": ", ",
+                            "last_join": " and ",
+                            "pair_join": " and ",
+                            "frequency": "about {k} in {base}",
+                            "frequency_under": "fewer than 1 in {base}",
+                            "frequency_again": "about {k}",
+                            "frequency_again_under": "fewer than 1",
+                            "clause_join": "; ",
+                            "reference_clause_up_down": "{option} coffees are described with {up} more often and with {down} less often",
+                            "reference_clause_up": "{option} coffees are described with {up} more often",
+                            "reference_clause_down": "{option} coffees are described with {down} less often",
+                            "reference_frame": ["In the review records, compared with coffee generally, {clauses}.",
+                                                "Going by the review records, and compared with coffee generally, {clauses}.",
+                                                "Set against all the coffees in the review records, {clauses}."],
+                            "reference_typical": ["What you chose ({options}) is common in the review records and differs little from coffee generally: the initial reference is close to a typical cup, where {dims} come up most.",
+                                                  "{options} is a common combination in the review records with no clear lean against all coffees; {dims} come up most.",
+                                                  "In the review records, {options} coffees sit close to coffee generally, so the initial reference leans toward the usual {dims}."],
+                            "reference_none": ["The review data has too few records for these choices, so this card rests mainly on your own answers.",
+                                               "There are not enough review records to match these choices; the description comes mainly from your answers.",
+                                               "These choices lack usable review records: the initial reference is weak and the description follows your answers."],
+                            "reference_left_out": ["The initial reference leaves out {options}, for which there are too few review records.",
+                                                   "The review data has too few records for {options}, so the initial reference does not count it.",
+                                                   "Not counted in the initial reference, for lack of review records: {options}."],
+                            "support": ["You confirmed {words} ({dim}). In the review records, {scope} coffees are described this way more often than coffee generally.",
+                                        "In the review records, {scope} coffees are described with {dim} more often than coffee generally. This covers {words}, which you confirmed.",
+                                        "{scope} coffees are described with {dim} more often than coffee generally, in line with {words}, which you confirmed."],
+                            "neutral": ["You confirmed {words} ({dim}). Here, in the review records, {scope} coffees are much like coffee generally.",
+                                        "In the review records, {scope} coffees are described with {dim} about as often as coffee generally. This covers {words}, which you confirmed.",
+                                        "{scope} coffees are described with {dim} about as often as coffee generally; this covers {words}, which you confirmed."],
+                            "contrast": ["You confirmed {words} ({dim}). In the review records, {scope} coffees are described this way less often than coffee generally: this part comes more from your own cup.",
+                                         "In the review records, {scope} coffees are described with {dim} less often than coffee generally. What you confirmed ({words}) comes from your cup, not from what is usual for this kind of coffee.",
+                                         "{scope} coffees are described with {dim} less often than coffee generally; what you confirmed ({words}) is this cup's own."],
+                            "moved_both": ["Compared with the initial reference, your answers bring out {raised} and tone down {lowered}.",
+                                           "Your answers raised {raised}, with {lowered} weaker than in the initial reference.",
+                                           "Against the initial reference, this cup leans toward {raised} in your answers, with {lowered} less evident."],
+                            "moved_up": ["Compared with the initial reference, your answers bring out {raised}.",
+                                         "Your answers raised {raised}; the rest stays close to the initial reference.",
+                                         "Against the initial reference, this cup leans toward {raised} in your answers."],
+                            "moved_down": ["Compared with the initial reference, your answers tone down {lowered}; the rest is close.",
+                                           "Your answers put {lowered} below the initial reference; the rest stays close to it.",
+                                           "Against the initial reference, your answers show less of {lowered}."],
+                            "moved_none": ["Your answers stay close to the initial reference, with no clear lean.",
+                                           "Your answers and the initial reference largely agree.",
+                                           "In your answers this cup differs little from the initial reference."],
+                            "words_both": ["On the card, that lean accounts for {own}; the initial reference already pointed to {shared}.",
+                                           "Your answers brought {own}; the initial reference already had {shared}.",
+                                           "Owed to your answers: {own}. Shared with the initial reference: {shared}."],
+                            "words_own": ["On the card, that lean accounts for {own}.", "Your answers brought {own}.", "Owed to your answers: {own}."],
+                            "words_shared": ["On the card, the initial reference already pointed to {shared}.", "The initial reference already had {shared}.", "Shared with the initial reference: {shared}."],
+                            "second_look": ["The second look stressed {dims} further.", "On the second look you went on to choose {dims}.", "In the second round you pushed {dims} a step further."],
+                            "card_both": "Compared with the reference for this kind of coffee: more {raised}; less {lowered}.",
+                            "card_up": "Compared with the reference for this kind of coffee: more {raised}.",
+                            "card_down": "Compared with the reference for this kind of coffee: less {lowered}.",
+                            "card_none": "Close to the reference for this kind of coffee.",
+                            "card_words_both": "That lean accounts for {own}; in line with the reference: {shared}.",
+                            "card_words_own": "That lean accounts for {own}.",
+                            "card_words_shared": "In line with the reference: {shared}.",
+                            "structure_aroma": "aroma", "structure_aftertaste": "aftertaste", "structure_espresso": "espresso",
+                            "structure_high": ["You found the {what} clear; in the review records {scope} coffees are scored high for {what} more often than other coffees of the same roast.",
+                                               "In the review records, {scope} coffees are scored high for {what} more often than other coffees of the same roast, in line with your answer.",
+                                               "{what} is something {scope} coffees are often scored high for in the reviews, and your answer agrees."]}},
                     "context_labels": CONTEXT_LABELS,
                     "citation_prefix": {"zh-CN": "参考资料：", "en": "Reference: "},
                     "card_heading": {"zh-CN": "风味卡", "en": "Flavor card"},
@@ -260,7 +433,7 @@ def main() -> int:
         "calibration_2026_09_12": {"Q0-Q1_vs_Q2-Q3_over_81_combinations": {"min": 0.62, "median": 0.73, "p75": 0.82, "max": 0.98, "coherent_at_0.85": 18, "mild": 56, "severe_below_0.65": 7},
                                     "note": "measured under 0.85/0.65; owner moved to 0.80/0.65 (R3-D10) so Path 2 stays the main path and Path 1 serves the most consistent ~30%."},
         "alpha_strong": 0.9,
-        "first_description": {"main": 3, "secondary": 5, "pick_count": 5},
+        "first_description": {"main": 3, "secondary": 5, "pick_count": 5, "pick_min": 3, "prior_slots": "keep"},  # "none" was measured and not adopted: see docs/product/QUESTION_FLOW_SIMULATION.md (R3-D49)
         "q6": {"option_count": 8, "kind": "dimension_words_by_largest_delta", "multi_select": True},
         # roast-polarity paradox guard: bright-light (+) vs dark-heavy (-). Two answer groups whose polarities
         # flip with magnitude >= min_magnitude are a sensory paradox (owner's Persona C: light-roast acidity
@@ -276,25 +449,25 @@ def main() -> int:
         # owner (2026-09-12): a dynamic model asks differently after each answer — every later prompt picks up the previous
         # answer, and the options are re-ranked by their fit to what the cup and the answers so far point to (session.nextStep)
         "prompt_variants": {
-            "Q1": {"by": "Q0", "A": {"zh-CN": "柑橘那种酸之后，闻起来最像什么？", "en": "With that citrus acidity, what does it smell like?"},
-                   "B": {"zh-CN": "乳酸那种酸之后，闻起来最像什么？", "en": "With that lactic acidity, what does it smell like?"},
-                   "C": {"zh-CN": "酸感不明显，那闻起来最像什么？", "en": "Acidity aside, what does it smell like?"},
-                   "D": {"zh-CN": "酸苦之外，闻起来最像什么？", "en": "Beyond the sour-bitter edge, what does it smell like?"}},
-            "Q2": {"by": "Q1", "A": {"zh-CN": "花香之后，能喝出甜味吗？更像哪一种？", "en": "After the florals, do you taste sweetness? Which kind?"},
-                   "B": {"zh-CN": "坚果烤香之后，甜味更像哪一种？", "en": "After the nutty, toasty notes, which sweetness is it?"},
-                   "C": {"zh-CN": "热带果香之后，甜味更像哪一种？", "en": "After the tropical fruit, which sweetness is it?"},
-                   "D": {"zh-CN": "闻不出香气也没关系，能喝出甜味吗？", "en": "No clear aroma is fine — do you taste sweetness?"}},
-            "Q3": {"by": "Q2", "A": {"zh-CN": "清爽的甜之后，口感如何？", "en": "With that light sweetness, how does it feel in the mouth?"},
-                   "B": {"zh-CN": "焦糖黑巧的甜之后，口感如何？", "en": "With caramel and dark chocolate, how does it feel in the mouth?"},
-                   "C": {"zh-CN": "果酱般的甜之后，口感如何？", "en": "With that jammy sweetness, how does it feel in the mouth?"},
-                   "D": {"zh-CN": "甜感不明显的话，口感如何？", "en": "Sweetness aside, how does it feel in the mouth?"}},
-            "Q4": {"by": "Q3", "A": {"zh-CN": "轻盈的口感，尾段苦吗？", "en": "Light as it is, is the finish bitter?"},
-                   "B": {"zh-CN": "顺滑之后，尾段苦吗？", "en": "After that smoothness, is the finish bitter?"},
-                   "C": {"zh-CN": "厚重之后，尾段苦吗？", "en": "After that weight, is the finish bitter?"},
-                   "D": {"zh-CN": "发涩之外，尾段苦吗？", "en": "Beyond the astringency, is the finish bitter?"}},
-            "Q5": {"by": "Q4", "A": {"zh-CN": "微苦收尾，这一口整体更像哪种？", "en": "With a slightly bitter finish, which is the cup overall?"},
-                   "B": {"zh-CN": "不苦的话，这一口整体更像哪种？", "en": "No bitterness — which is the cup overall?"},
-                   "C": {"zh-CN": "苦得明显，这一口整体更像哪种？", "en": "Clearly bitter — which is the cup overall?"}},
+            "Q1": {"by": "Q0", "A": {"zh-CN": "柑橘那种酸之后，闻起来最像什么？", "en": "With that citrus-like sourness, what does it smell like most?"},
+                   "B": {"zh-CN": "乳酸那种酸之后，闻起来最像什么？", "en": "With that soft, yoghurt-like tang, what does it smell like most?"},
+                   "C": {"zh-CN": "酸感不明显，那闻起来最像什么？", "en": "Sourness aside, what does it smell like most?"},
+                   "D": {"zh-CN": "酸苦之外，闻起来最像什么？", "en": "Beyond the sour, bitter edge, what does it smell like most?"}},
+            "Q2": {"by": "Q1", "A": {"zh-CN": "花香之后，能喝出甜味吗？更像哪一种？", "en": "After the floral, tea-like aroma, can you taste sweetness? Which kind?"},
+                   "B": {"zh-CN": "坚果烤香之后，甜味更像哪一种？", "en": "After the nutty, toasty aroma, which kind of sweetness is it?"},
+                   "C": {"zh-CN": "热带果香之后，甜味更像哪一种？", "en": "After the tropical-fruit aroma, which kind of sweetness is it?"},
+                   "D": {"zh-CN": "闻不出香气也没关系，能喝出甜味吗？", "en": "No clear aroma is fine. Can you taste sweetness?"}},
+            "Q3": {"by": "Q2", "A": {"zh-CN": "清爽的甜之后，口感如何？", "en": "With that light sweetness, how does it feel in your mouth?"},
+                   "B": {"zh-CN": "焦糖黑巧的甜之后，口感如何？", "en": "With that caramel, dark-chocolate sweetness, how does it feel in your mouth?"},
+                   "C": {"zh-CN": "果酱般的甜之后，口感如何？", "en": "With that jammy sweetness, how does it feel in your mouth?"},
+                   "D": {"zh-CN": "甜感不明显的话，口感如何？", "en": "Sweetness aside, how does it feel in your mouth?"}},
+            "Q4": {"by": "Q3", "A": {"zh-CN": "轻盈的口感，尾段苦吗？", "en": "It feels light. Is the aftertaste bitter?"},
+                   "B": {"zh-CN": "顺滑之后，尾段苦吗？", "en": "It feels smooth. Is the aftertaste bitter?"},
+                   "C": {"zh-CN": "厚重之后，尾段苦吗？", "en": "It feels heavy. Is the aftertaste bitter?"},
+                   "D": {"zh-CN": "发涩之外，尾段苦吗？", "en": "It feels drying. Is the aftertaste bitter?"}},
+            "Q5": {"by": "Q4", "A": {"zh-CN": "微苦收尾，这一口整体更像哪种？", "en": "With a slightly bitter aftertaste, how do the flavors come across overall?"},
+                   "B": {"zh-CN": "不苦的话，这一口整体更像哪种？", "en": "With no real bitterness, how do the flavors come across overall?"},
+                   "C": {"zh-CN": "苦得明显，这一口整体更像哪种？", "en": "With a clearly bitter aftertaste, how do the flavors come across overall?"}},
         },
         "option_ranking": "options are ordered by cosine(option increment, normalize(V_pred + Σ answered increments)); zero-increment (absence) options stay last",
         "slot_mapping_owner_reviewed": True,  # R3-D10: Q0 acid, Q1 aroma, Q2 sweetness, Q3 body, Q4 bitterness, Q5 complexity
@@ -357,10 +530,15 @@ def main() -> int:
                     "mean_questions": 5.70}
     bundle = {"version": "product-vector-v1", "design": "docs/product/FLAVOR_VECTOR_DESIGN_V1.md", "dimensions": DIMS, "question_flow": question_flow, "question_bank": question_bank, "context_rules": context_rules, "corpus_facts": corpus_facts,
               "alpha_default": ALPHA_DEFAULT, "structure_axis_weight": 0.6, "score_semantics": "cosine similarity; not a probability; uncalibrated",
-              "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "matrix_q": questions, "profiles": profiles,
+              "training_run_count": 0, "concept_projection": proj, "matrix_k": bundle_k, "corpus_stats": corpus_stats, "matrix_q": questions, "profiles": profiles,
               "benchmark_beans": [], "presentation": presentation,
               "notes": ["benchmark_beans are the owner's names per profile (benchmark_beans column); vectors for them are not yet built", "cold_brew has no corpus row",
                         "literature claims arrive via db/data/external-literature (ingest-external-literature.py)"]}
+    # the dynamic question bank (R3-D40), built by build-dynamic-question-bank.py from the owner-reviewed table and the corpus;
+    # embedded as it is so that the app still loads one bundle and nothing else
+    dynamic = OUT / "DYNAMIC_QUESTION_BANK_BUILD.json"
+    if dynamic.is_file():
+        bundle["dynamic_bank"] = json.loads(dynamic.read_text(encoding="utf-8"))
     (OUT / "product-vector-v1.json").write_text(json.dumps(bundle, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     summary = {"matrix_rows": len(matrix), "by_axis": {a: sum(1 for r in matrix if r["context_axis"] == a) for a in ("C0", "C1", "C2_variety", "C2_process")},
                "variety_rows": [(r["option"], r["member_count"]) for r in matrix if r["context_axis"] == "C2_variety"],
