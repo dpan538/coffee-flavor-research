@@ -28,7 +28,7 @@ function toggle(dimension: string) {
       </p>
       <h2
         class="text-[30px]"
-        :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+        :class="locale === 'zh-CN' ? 'display-zh' : 'display-en'"
       >
         {{ model.title }}
       </h2>

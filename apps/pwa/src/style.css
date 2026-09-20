@@ -73,6 +73,11 @@
   .display {
     @apply font-display uppercase tracking-tight leading-[0.92];
   }
+  /* English titles in sentence case (owner, 2026-09-19: questions and buttons must not be all capitals); the uppercase
+     .display stays for the poster headings in About */
+  .display-en {
+    @apply font-display font-bold tracking-tight leading-[1.08] normal-case;
+  }
   .display-zh {
     @apply font-sans font-semibold tracking-normal leading-tight normal-case;
   }
@@ -102,6 +107,14 @@
   .option {
     @apply w-full text-left rounded-2xl px-5 py-4 text-lg leading-snug min-h-[60px] border-2 border-transparent transition-all duration-150 bg-paper text-ink;
   }
+  /* short phones (under 740 px tall): five options have to fit under a two-line question; 54 px is the smallest control */
+  @media (max-height: 739px) {
+    .option {
+      min-height: 54px;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
   /* a two-line chip: name above, latin name below, both inside the box */
   .option .l1 {
     @apply block;
@@ -115,6 +128,29 @@
   }
   .tile {
     @apply rounded-[20px] p-4 flex flex-col justify-between text-left transition-transform duration-150;
+  }
+  /* a progress segment: the bar stays 4 px thin, the hit box is 44 px tall and up to 40 px wide (negative margins keep
+     the row's height); answered segments are the way back to that question */
+  .seg {
+    @apply flex-1 max-w-[40px] h-11 -my-5 px-1 flex items-center;
+  }
+  .seg:not(:disabled) {
+    cursor: pointer;
+  }
+  .seg:not(:disabled):active > span {
+    transform: scaleY(2.5);
+  }
+  /* the question on screen: a slightly taller bar, so it reads as "here" even when kept answers fill the bars after it */
+  .seg[aria-current="step"] > span {
+    height: 7px;
+  }
+  /* the option chosen last time, while that question is open for editing */
+  .option > span:first-child {
+    /* a long option breaks into even lines instead of leaving one character behind */
+    text-wrap: balance;
+  }
+  .option-prev {
+    @apply border-ink/40;
   }
   /* the card's mono metadata rows with dotted leaders (owner reference: the printed tasting card) */
   .leader {
@@ -244,8 +280,16 @@
 .stack-move {
   transition: top 420ms var(--ease-out);
 }
+/* cards folding back out of the stack (going back to change an answer) fade instead of vanishing */
+.stack-leave-active {
+  transition: opacity 180ms ease;
+}
+.stack-leave-to {
+  opacity: 0;
+}
 @media (prefers-reduced-motion: reduce) {
   .stack-enter-active,
+  .stack-leave-active,
   .rise {
     transition: none;
     animation: none;

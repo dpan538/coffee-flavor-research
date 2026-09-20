@@ -19,10 +19,8 @@ const labels = computed(() =>
         reference: "Reference",
       },
 );
-const eyebrow = computed(
-  () =>
-    `${props.model.heading}${props.model.corrected ? ` · ${locale.value === "zh-CN" ? "已确认" : "confirmed"}` : ""}`,
-);
+// the eyebrow is the card's name only: "confirmed" was engineering talk on a tasting card (owner, 2026-09-19)
+const eyebrow = computed(() => props.model.heading);
 const busy = ref(false);
 /** the card as a 1200 × 1200 PNG through the share sheet, or saved; the text share is the fallback */
 async function share(text: string) {
@@ -42,6 +40,11 @@ async function share(text: string) {
     busy.value = false;
   }
 }
+
+// phones under 740 px tall: the card takes its compact form, so more of it shows above the buttons
+const short =
+  typeof window !== "undefined" &&
+  window.matchMedia("(max-height: 739px)").matches;
 </script>
 
 <template>
@@ -50,19 +53,27 @@ async function share(text: string) {
     data-component="FinalAttributionCard"
     :data-corrected="model.corrected"
   >
-    <div class="flex-1 min-h-0 overflow-y-auto px-4 pt-4 pb-2">
+    <!-- short phones: less air above the card and above the fold, so "About this description" shows under the card
+         in English too (owner, 2026-09-20) -->
+    <div
+      class="flex-1 min-h-0 overflow-y-auto px-4 pt-4 pb-2 [@media(max-height:739px)]:pt-2 [@media(max-height:739px)]:pb-0"
+    >
       <FlavorCard
+        :compact="short"
         :cup="model.cupInfo"
         :words="model.picked"
         :dimensions="model.pickedDimensions"
         :evaluation="model.evaluation"
+        :locale="locale"
         :reference="`${labels.reference} · ${model.title}`"
         :eyebrow="eyebrow"
       />
-      <div class="mx-2 mt-4 border-t border-cream/20 pt-1">
+      <div
+        class="mx-2 mt-4 border-t border-cream/20 pt-1 [@media(max-height:739px)]:mt-2 [@media(max-height:739px)]:pt-0"
+      >
         <button
           type="button"
-          class="fold-toggle min-h-[58px] text-[15px] tracking-[0.14em] opacity-90"
+          class="fold-toggle min-h-[58px] [@media(max-height:739px)]:min-h-[48px] text-[15px] tracking-[0.14em] opacity-90"
           :aria-expanded="open"
           @click="open = !open"
         >

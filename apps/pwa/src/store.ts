@@ -9,14 +9,18 @@ import type {
   ContextAnswers,
   Locale,
 } from "flavor-data/product-vector-v1/engine";
-import type { Word, Slot } from "flavor-data/product-vector-v1/flow";
+import { isQuestionKey } from "flavor-data/product-vector-v1/dynamicBank";
+import type { Word } from "flavor-data/product-vector-v1/flow";
 import {
   answer,
+  answerAndReplay,
   answerQ6,
   createSession,
   firstDescription,
   nextStep,
   relocalize,
+  reopenQuestion,
+  resumeKept,
   submitPicks,
   type Session,
 } from "flavor-data/product-vector-v1/session";
@@ -43,18 +47,26 @@ export type CollectedCard = {
 };
 
 /** card colours: the Big Sur bag palette (owner, 2026-09-12), one flat block per step; the final card is the navy block */
+// Every card of a flow has its own colour (owner, 2026-09-20: no colour twice, and brighter, purer than before — the
+// olive of the overall question read as dark). Fifteen hues about 24° apart at high saturation and 72–80% lightness,
+// so the ink on them keeps its contrast; the five context cards and the four core questions are always on screen
+// together, the follow-ups take the hues left between them. A second level has its own colour, not its parent's.
 export const COLORS: Record<string, string> = {
-  c0_preparation: "#F3D66E",
-  c1_roast: "#FFDCC8",
-  c2_variety: "#C9DB6E",
-  c2_process: "#E97BAF",
-  c2_origin: "#6F8B5A",
-  Q0: "#A995E3",
-  Q1: "#E4724B",
-  Q2: "#C9DB6E",
-  Q3: "#F2C7B5",
-  Q4: "#E97BAF",
-  Q5: "#CBBB4C",
+  c0_preparation: "#FFD84D", // yellow
+  c1_roast: "#FFB98A", // peach
+  c2_variety: "#7CE3B5", // mint
+  c2_process: "#FF94BE", // pink
+  c2_origin: "#A6E36A", // leaf
+  Q0: "#BDA3FF", // lavender
+  Q1: "#FF8E6E", // coral
+  Q2: "#D6EC5A", // lime
+  Q3: "#7ED6F5", // sky
+  Q4: "#DFA3FF", // orchid — bitterness
+  Q5: "#94BEFF", // blue — the overall impression
+  E1: "#7FE38B", // green — how strong the aroma is
+  E2: "#A9ADFF", // periwinkle — the aftertaste
+  "S:A": "#FF9FE5", // magenta — which fruit
+  "S:B": "#6FE3D6", // aqua — which aroma word
   description: "#EFE7D5",
   final: "#1F3B5C",
   escalation: "#8C4A4C",
@@ -114,7 +126,7 @@ export const stageColor = computed(() => {
     );
   const s = screen.value;
   if (!s) return COLORS.description!;
-  if (s.kind === "question") return COLORS[s.slot] ?? COLORS.Q0!;
+  if (s.kind === "question") return questionColor(s.slot);
   if (s.kind === "first_description" || s.kind === "describe_ready")
     return COLORS.description!;
   if (s.kind === "escalation") return COLORS.escalation!;
@@ -171,6 +183,7 @@ export function toggleLocale() {
 }
 
 export function start() {
+  keptAnswers.value = {};
   paused.value = null;
   session.value = null;
   screen.value = null;
@@ -247,6 +260,8 @@ export async function advanceContext(labelForStack: string) {
     normalizeContext(draftContext.value),
     locale.value,
     beans,
+    Date.now(), // the nonce: another visit may draw a different supporting statistic, wording and second follow-up
+    "dynamic", // the dynamic question bank (R3-D40): four core questions, two follow-ups at most
   );
   stage.value = "session";
   refresh();
@@ -254,7 +269,7 @@ export async function advanceContext(labelForStack: string) {
 }
 
 export async function pick(
-  slot: Slot,
+  slot: string,
   option: string,
   label: string,
   title: string,
@@ -262,13 +277,119 @@ export async function pick(
   if (!session.value) return;
   collecting.value = true;
   await wait(COLLECT_MS);
-  collect({ key: slot, title, label, color: COLORS[slot] ?? "#7F90B8" });
-  session.value = answer(session.value, slot, option);
-  if (session.value.stage === "describe")
-    session.value = firstDescription(session.value);
+  collect({ key: slot, title, label, color: questionColor(slot) });
+  const edited = answerAndReplay(
+    session.value,
+    slot,
+    option,
+    keptAnswers.value,
+  );
+  for (const r of edited.replayed)
+    collect(stackCard(r.slot, r.prompt, r.label));
+  keptAnswers.value = edited.kept;
+  let next = edited.session;
+  if (next.stage === "describe") next = firstDescription(next);
+  session.value = next;
   refresh();
   collecting.value = false;
 }
+
+/** the questions answered so far, in the order they were asked (the stack's question cards) */
+export const answeredSlots = computed(() =>
+  collected.value.map((c) => c.key).filter(isQuestionKey),
+);
+
+/** every question has its own colour; the second level of a fruit answer (S:A…) and of an aroma answer (S:B…) too */
+const questionColor = (key: string): string =>
+  COLORS[key] ?? COLORS[key.slice(0, 3)] ?? COLORS.Q0!;
+
+/**
+ * Going back through the progress segments keeps the other answers (owner, 2026-09-18). The logic is the engine's
+ * (session.ts: reopenQuestion / answerAndReplay, enumerated in tests/product-vector-v1-edit-replay); the store only
+ * holds the kept answers and folds the stack to match.
+ */
+export const keptAnswers = ref<Partial<Record<string, string>>>({});
+
+const stackCard = (
+  slot: string,
+  title: string,
+  label: string,
+): CollectedCard => ({
+  key: slot,
+  title,
+  label,
+  color: questionColor(slot),
+});
+
+/** open an answered (or kept) question for editing: the answers before it stay applied, the rest are kept for replay */
+export function editSlot(target: string) {
+  const current = session.value;
+  if (!current || collecting.value) return;
+  const known = { ...current.answers, ...keptAnswers.value };
+  if (!known[target]) return;
+  const edited = reopenQuestion(current, target, keptAnswers.value);
+  collected.value = [
+    ...collected.value.filter(
+      (c) => !isQuestionKey(c.key) && c.key !== "picks",
+    ),
+    ...edited.replayed.map((r) => stackCard(r.slot, r.prompt, r.label)),
+  ];
+  keptAnswers.value = edited.kept;
+  session.value = edited.session;
+  refresh();
+}
+
+/** back to where the reader was, with every kept answer applied unchanged (the first open segment after the kept ones) */
+export function resumeEditing() {
+  const current = session.value;
+  if (!current || collecting.value) return;
+  if (!Object.keys(keptAnswers.value).length) return;
+  const edited = resumeKept(current, keptAnswers.value);
+  for (const r of edited.replayed)
+    collect(stackCard(r.slot, r.prompt, r.label));
+  keptAnswers.value = edited.kept;
+  let next = edited.session;
+  if (next.stage === "describe") next = firstDescription(next);
+  session.value = next;
+  refresh();
+}
+
+export type ProgressSegment = {
+  slot: string | null;
+  /** frontier: where the reader was before going back — tapping it applies the kept answers and returns there */
+  state: "answered" | "current" | "kept" | "frontier" | "future";
+  /** a frontier that is the description itself: the kept answers complete the flow */
+  delivers?: boolean;
+};
+/** the progress row of a question card: answered questions, the current one, kept answers after it, then the rest */
+export const progressSegments = computed<ProgressSegment[]>(() => {
+  const model = screen.value;
+  if (!model || model.kind !== "question") return [];
+  const current = model.slot;
+  const segments: ProgressSegment[] = [
+    ...answeredSlots.value.map((slot) => ({
+      slot,
+      state: "answered" as const,
+    })),
+    { slot: current, state: "current" as const },
+    // the kept answers keep the order the questions were asked in
+    ...Object.keys(keptAnswers.value)
+      .filter((slot) => slot !== current && keptAnswers.value[slot])
+      .map((slot) => ({ slot, state: "kept" as const })),
+  ];
+  if (Object.keys(keptAnswers.value).length > 0 && session.value)
+    segments.push({
+      slot: null,
+      state: "frontier",
+      delivers:
+        resumeKept(session.value, keptAnswers.value).session.stage !==
+        "questions",
+    });
+  const total = Math.max(model.progress.expected, segments.length);
+  while (segments.length < total)
+    segments.push({ slot: null, state: "future" });
+  return segments;
+});
 
 export async function submitPickedWords(words: Word[]) {
   if (!session.value) return;
@@ -303,7 +424,11 @@ type SavedFlow = {
   draftContext: ContextAnswers;
   contextIndex: number;
   collected: CollectedCard[];
-  answers: Partial<Record<Slot, string>>;
+  answers: Partial<Record<string, string>>;
+  kept?: Partial<Record<string, string>>;
+  /** a flow saved by the six fixed questions cannot be replayed by the dynamic bank: it is dropped */
+  mode?: "dynamic";
+  nonce?: number;
   picks: Word[] | null;
   q6: string[] | null;
 };
@@ -316,7 +441,9 @@ function readSavedFlow(): SavedFlow | null {
     if (
       typeof saved.savedAt !== "number" ||
       Date.now() - saved.savedAt > FLOW_TTL_MS ||
-      (saved.stage !== "context" && saved.stage !== "session")
+      (saved.stage !== "context" && saved.stage !== "session") ||
+      // answers given to the six fixed questions mean nothing to the dynamic bank: such a flow starts over
+      (saved.stage === "session" && saved.mode !== "dynamic")
     ) {
       localStorage.removeItem(FLOW_KEY);
       return null;
@@ -343,7 +470,10 @@ function saveFlow() {
       draftContext: draftContext.value,
       contextIndex: contextIndex.value,
       collected: collected.value,
-      answers: (s?.answers ?? {}) as Partial<Record<Slot, string>>,
+      answers: s?.answers ?? {},
+      mode: "dynamic",
+      kept: keptAnswers.value,
+      nonce: s?.nonce ?? 0,
       picks: s && s.picks.length ? s.picks : null,
       q6: s?.q6 && s.q6.selected.length ? s.q6.selected : null,
     };
@@ -373,14 +503,20 @@ export async function restoreFlow() {
       normalizeContext(saved.draftContext),
       locale.value,
       beans,
+      saved.nonce ?? Date.now(),
+      "dynamic",
     );
     let guard = 0;
     while (s.stage === "questions" && guard < 10) {
       const step = nextStep(s);
       if (step.kind !== "ask") break;
-      const option = saved.answers[step.card.slot as Slot];
+      const option = saved.answers[step.card.slot];
       if (!option) break;
-      s = answer(s, step.card.slot as Slot, option);
+      try {
+        s = answer(s, step.card.slot, option);
+      } catch {
+        break; // an option this build no longer shows: the reader continues from this question
+      }
       guard += 1;
     }
     if (s.stage === "describe") s = firstDescription(s);
@@ -392,6 +528,7 @@ export async function restoreFlow() {
     }
     if (saved.q6 && s.stage === "q6") s = answerQ6(s, saved.q6);
     session.value = s;
+    keptAnswers.value = saved.kept ?? {};
     refresh();
   }
   paused.value = saved.stage;
@@ -399,6 +536,7 @@ export async function restoreFlow() {
 }
 
 export function home() {
+  keptAnswers.value = {};
   paused.value = null;
   session.value = null;
   screen.value = null;

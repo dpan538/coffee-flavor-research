@@ -12,6 +12,7 @@ const props = withDefaults(
     words: string[];
     dimensions?: string[];
     evaluation?: Array<{ label: string; text: string }>;
+    locale?: "zh-CN" | "en";
     reference?: string;
     brand?: string;
     eyebrow?: string;
@@ -20,6 +21,7 @@ const props = withDefaults(
   {
     dimensions: () => [],
     evaluation: () => [],
+    locale: "zh-CN",
     reference: "",
     brand: "flavorwords",
     eyebrow: "",
@@ -42,6 +44,9 @@ const DIM_COLORS: Record<string, string> = {
   defect: "#7F90B8",
 };
 const FALLBACK = ["#7268C9", "#E4724B", "#C9DB6E", "#F2C24E", "#1F3B5C"];
+// English words are stored in lower case; on the card each one opens with a capital (owner, 2026-09-19)
+const cap = (text: string) =>
+  props.locale === "en" ? text.charAt(0).toUpperCase() + text.slice(1) : text;
 const colors = computed(() =>
   props.words.map(
     (_, i) =>
@@ -53,7 +58,7 @@ const colors = computed(() =>
 <template>
   <article
     class="rounded-[22px] bg-cream text-ink"
-    :class="compact ? 'px-4 pt-4 pb-3' : 'px-5 pt-5 pb-4'"
+    :class="compact ? 'px-4 pt-3 pb-2.5' : 'px-5 pt-3.5 pb-3'"
     data-component="FlavorCard"
   >
     <div class="flex items-center justify-between">
@@ -70,7 +75,7 @@ const colors = computed(() =>
         :colors="colors"
       />
     </div>
-    <dl class="mt-3 space-y-1" data-layer="cup">
+    <dl class="mt-2 space-y-0.5" data-layer="cup">
       <div v-for="row in cup" :key="row.label" class="leader">
         <dt class="text-muted">{{ row.label }}</dt>
         <i />
@@ -79,30 +84,71 @@ const colors = computed(() =>
         </dd>
       </div>
     </dl>
+    <!-- the words flow in lines, never one per line (owner, 2026-09-19: the card stays near square); each flavor keeps
+         to itself — no break inside "Brown sugar" — and opens with a capital, so neighbours never run together -->
     <p
-      class="flex flex-wrap gap-x-4 gap-y-0 font-semibold"
-      :class="
-        compact
-          ? 'text-[22px] leading-[1.3] mt-5'
-          : 'text-[27px] leading-[1.3] mt-9'
-      "
+      class="flex flex-wrap items-baseline gap-y-0 font-semibold"
+      :class="[
+        compact ? 'mt-3' : 'mt-4',
+        locale === 'en'
+          ? compact
+            ? 'text-[18px] leading-[1.2] tracking-tight gap-x-4'
+            : 'text-[21px] leading-[1.2] tracking-tight gap-x-5'
+          : compact
+            ? 'text-[22px] leading-[1.22] gap-x-5'
+            : 'text-[27px] leading-[1.22] gap-x-5',
+      ]"
       data-layer="words"
     >
-      <span v-for="w in words" :key="w">{{ w }}</span>
+      <span v-for="w in words" :key="w" class="whitespace-nowrap">{{
+        cap(w)
+      }}</span>
     </p>
-    <p
+    <!-- the evaluation rows read like the cup rows above — a label and its value — set as a fine-ruled table of two
+         columns, so four rows take two lines (owner, 2026-09-20: the inline run of labels and words had a weak
+         hierarchy; then: "not bad, but tighten it, it is too long"). English labels and values (Roast & bitter,
+         Dark chocolate) do not fit half a row, so English uses one column of full rows. -->
+    <dl
       v-if="evaluation.length"
-      class="flex flex-wrap gap-x-3 gap-y-0.5 text-[12px] text-muted"
-      :class="compact ? 'mt-3' : 'mt-4'"
+      class="grid border-t border-ink/15"
+      :class="[
+        compact ? 'mt-2.5' : 'mt-3',
+        locale === 'en' ? 'grid-cols-1' : 'grid-cols-2',
+      ]"
       data-layer="evaluation"
     >
-      <span v-for="row in evaluation" :key="row.label"
-        >{{ row.label }}
-        <span class="text-ink font-medium">{{ row.text }}</span></span
+      <div
+        v-for="(row, i) in evaluation"
+        :key="row.label"
+        class="min-w-0 flex items-baseline justify-between gap-x-2 border-b border-ink/15"
+        :class="[
+          locale === 'en'
+            ? 'py-[2px]'
+            : i % 2 === 0 && i === evaluation.length - 1
+              ? 'py-[3px] col-span-2'
+              : i % 2 === 0
+                ? 'py-[3px] pr-3 border-r'
+                : 'py-[3px] pl-3',
+        ]"
       >
-    </p>
+        <dt
+          class="uppercase text-muted"
+          :class="
+            locale === 'en'
+              ? 'text-[10px] tracking-[0.03em]'
+              : 'text-[11px] tracking-[0.08em]'
+          "
+        >
+          {{ row.label }}
+        </dt>
+        <dd class="ml-auto text-[12px] font-medium text-right">
+          {{ cap(row.text) }}
+        </dd>
+      </div>
+    </dl>
     <div
-      class="flex items-end justify-between mt-7 border-t border-ink/15 pt-2"
+      class="flex items-end justify-between pt-2"
+      :class="evaluation.length ? 'mt-2.5' : 'mt-5 border-t border-ink/15'"
       data-layer="reference"
     >
       <p class="text-[11px] text-muted">{{ reference }}</p>

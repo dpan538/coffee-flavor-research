@@ -2,7 +2,7 @@
 // Two bands, no background of their own (owner). Home: the hero band holds the small wordmark and, centred, the
 // headline "Every taste has its own vocabulary." with the letters of "taste" each in a colour, the language title,
 // the body paragraph, the motif row and the two-line slogan (tapping it starts, no underline — a redundant path to
-// the Start button below). The lower band holds the two bright 1 : 1.2 buttons. In the flow the split is 1 : 3.
+// the Start button below). The lower band holds the two bright 1 : 1.2 buttons. In the flow the split is 30 : 70 (28 : 72 on short screens).
 import { computed, watch } from "vue";
 import gsap from "gsap";
 import { ArrowRight, Play } from "lucide-vue-next";
@@ -29,15 +29,15 @@ import {
   stageInk,
   start,
 } from "./store";
-import { applyUpdate, updateReady } from "./update";
+import { applyUpdate, staleBuild, updateReady, workerSwapped } from "./update";
 
 // a waiting build is applied silently whenever the app is on the home page — a paused flow is saved on the device and
 // comes back after the reload — and waits while a flow or About is open (owner, 2026-09-17: updates happen in the
 // background, never as a manual step)
 watch(
-  [updateReady, stage, aboutOpen],
-  ([ready, s, about]) => {
-    if (ready && s === "hero" && !about) applyUpdate();
+  [updateReady, workerSwapped, staleBuild, stage, aboutOpen],
+  ([ready, swapped, stale, s, about]) => {
+    if ((ready || swapped || stale) && s === "hero" && !about) applyUpdate();
   },
   { immediate: true },
 );
@@ -72,6 +72,13 @@ const headline = computed(() => {
     after: text.slice(at + 5),
   };
 });
+// three tiles are a third of the row each. English labels are sentence case and "Continue" is the widest: at 20 px
+// "Resume" already ran past the tile's right padding and looked pushed to the right (owner, 2026-09-20), so the English
+// size is the one at which the widest label sits inside the padding on a 360 px phone — all three start at the same
+// left edge and none reaches the right one.
+const threeTileText = computed(() =>
+  locale.value === "zh-CN" ? "text-[22px]" : "text-[16px] tracking-tight",
+);
 // the slogan line breaks before 从: the claim on one line, the start line on the next
 const sloganLines = computed(() =>
   [shell.value.claim, shell.value.startLink + " →"].filter(
@@ -135,10 +142,19 @@ function onLeave(el: Element, done: () => void) {
     class="h-[100dvh] flex flex-col transition-colors duration-500"
     :style="{ backgroundColor: stageColor, color: stageInk }"
   >
-    <!-- paper above, colour below: 58 : 42 on the home page, 1 : 3 in the flow (owner) -->
+    <!-- paper above, colour below: 58 : 42 on the home page; in the flow 30 : 70, and 28 : 72 on phones under 740 px
+         tall (owner, 2026-09-20: with six question cards in the stack the top was cramped and each card's strip too
+         narrow to tap; it was 1 : 3). Short phones also get a smaller question and 54 px options, so five options fit; on
+         the final page they give the card more room (23 : 77), so "About this description" shows under it. -->
     <section
       class="relative shrink-0 bg-paper text-ink px-5 pt-4 pb-3 flex flex-col min-h-0 safe-top transition-[flex-basis] duration-500"
-      :class="stage === 'hero' ? 'basis-[60.5%]' : 'basis-[25%]'"
+      :class="
+        stage === 'hero'
+          ? 'basis-[60.5%]'
+          : screen?.kind === 'result'
+            ? 'basis-[23%] [@media(min-height:740px)]:basis-[30%]'
+            : 'basis-[28%] [@media(min-height:740px)]:basis-[30%]'
+      "
       data-zone="top"
     >
       <div class="app-col flex-1 min-h-0 flex flex-col">
@@ -221,15 +237,15 @@ function onLeave(el: Element, done: () => void) {
             >
               <button
                 type="button"
-                class="tile hero-tile flex-1 aspect-[1/1.32] bg-sun text-ink rise"
+                class="tile hero-tile flex-1 min-w-0 aspect-[1/1.32] bg-sun text-ink rise"
                 data-action="start"
                 @click="start"
               >
                 <span
                   class="font-bold leading-none"
                   :class="[
-                    locale === 'zh-CN' ? 'display-zh' : 'display',
-                    paused ? 'text-[22px]' : 'text-[28px]',
+                    locale === 'zh-CN' ? 'display-zh' : 'display-en',
+                    paused ? threeTileText : 'text-[28px]',
                   ]"
                   >{{ shell.start }}</span
                 >
@@ -242,28 +258,31 @@ function onLeave(el: Element, done: () => void) {
               <button
                 v-if="paused"
                 type="button"
-                class="tile hero-tile flex-1 aspect-[1/1.32] bg-sky2 text-ink rise"
+                class="tile hero-tile flex-1 min-w-0 aspect-[1/1.32] bg-sky2 text-ink rise"
                 data-action="resume"
                 @click="resume"
               >
                 <span
-                  class="font-bold leading-none text-[22px]"
-                  :class="locale === 'zh-CN' ? 'display-zh' : 'display'"
+                  class="font-bold leading-none"
+                  :class="[
+                    locale === 'zh-CN' ? 'display-zh' : 'display-en',
+                    threeTileText,
+                  ]"
                   >{{ shell.resume }}</span
                 >
                 <Play :size="24" :stroke-width="2" class="self-end" />
               </button>
               <button
                 type="button"
-                class="tile hero-tile flex-1 aspect-[1/1.32] bg-mint2 text-ink rise"
+                class="tile hero-tile flex-1 min-w-0 aspect-[1/1.32] bg-mint2 text-ink rise"
                 data-action="about"
                 @click="aboutOpen = true"
               >
                 <span
                   class="font-bold leading-none"
                   :class="[
-                    locale === 'zh-CN' ? 'display-zh' : 'display',
-                    paused ? 'text-[22px]' : 'text-[28px]',
+                    locale === 'zh-CN' ? 'display-zh' : 'display-en',
+                    paused ? threeTileText : 'text-[28px]',
                   ]"
                   >{{ shell.about }}</span
                 >
