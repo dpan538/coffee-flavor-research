@@ -6,8 +6,8 @@
 # MiSans (owner's download, subset on 2026-09-12)
 
 `MiSans-Regular.woff2`, `MiSans-Medium.woff2`, `MiSans-Demibold.woff2` are subsets of the owner's MiSans download
-(`~/Downloads/MiSans/woff2`), cut to the characters the app can show by `apps/pwa/scripts/subset-fonts.py` (re-run it after
-adding copy). MiSans is free for commercial use under Xiaomi's MiSans licence; the owner keeps the licence text with the download.
+(`~/Downloads/MiSans/woff2`), cut to the characters the app and the static pages `/zh`, `/en`, `404` can show by `apps/pwa/scripts/subset-fonts.py` (re-run it after
+adding copy or changing `build-static-pages.mjs`; last run 2026-09-21). MiSans is free for commercial use under Xiaomi's MiSans licence; the owner keeps the licence text with the download.
 
 # Stack Sans Text (owner's download, 2026-09-12)
 

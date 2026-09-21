@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Subset MiSans to the characters the PWA can show (owner's download → apps/pwa/public/fonts).
 
-The app renders only strings from the runtime bundle, the copy modules and the Vue components, so the subset is the
-union of every character in those files plus ASCII, CJK punctuation and the digits/units the cards print. Output:
+The app renders only strings from the runtime bundle, the copy modules and the Vue components, and the static pages of
+the machine-readable layer (public/*.html) are written by one script, so the subset is the union of every character in
+those files plus ASCII, CJK punctuation and the digits/units the cards print. Output:
 MiSans-{Regular,Medium,Demibold}.woff2 (a few hundred KB each instead of ~5 MB), which the service worker can precache.
 Usage: python3 apps/pwa/scripts/subset-fonts.py [~/Downloads/MiSans/woff2]
 """
@@ -14,7 +15,9 @@ ROOT = Path(__file__).resolve().parents[3]
 SRC = Path(sys.argv[1] if len(sys.argv) > 1 else Path.home() / "Downloads" / "MiSans" / "woff2").expanduser()
 OUT = ROOT / "apps" / "pwa" / "public" / "fonts"
 TEXT_SOURCES = [ROOT / "db" / "data" / "product-vector-v1" / "product-vector-v1.json", *(ROOT / "packages" / "flavor-data" / "src" / "product-vector-v1").glob("*.ts"),
-                *(ROOT / "apps" / "pwa" / "src").rglob("*.vue"), *(ROOT / "apps" / "pwa" / "src").rglob("*.ts"), ROOT / "apps" / "pwa" / "index.html"]
+                *(ROOT / "apps" / "pwa" / "src").rglob("*.vue"), *(ROOT / "apps" / "pwa" / "src").rglob("*.ts"), ROOT / "apps" / "pwa" / "index.html",
+                # the one-language pages /zh and /en and the 404 page use the same typefaces (build-static-pages.mjs): run this after them
+                *(ROOT / "apps" / "pwa" / "public").glob("*.html")]
 BASE = "".join(chr(c) for c in range(0x20, 0x7F)) + "，。、；：？！“”‘’（）《》〈〉【】「」『』—…·│・×→↔↑↓≥≤≈±°%‰′″‑–　©®™"
 
 
