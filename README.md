@@ -35,7 +35,7 @@ review sources
 ```mermaid
 flowchart LR
     C["Context\nbrew · roast · variety · process · origin"] --> Q["Up to six guided questions"]
-    Q --> D["Eight flavor words\nkeep five"]
+    Q --> D["Eight flavor words\nkeep three to five"]
     D -->|answers agree| F["Flavor card"]
     D -->|answers disagree| Q6["One more look"]
     Q6 --> F
@@ -49,21 +49,24 @@ flowchart LR
    aroma, sweetness, mouthfeel — then two follow-ups chosen for this cup:
    which citrus or which berry it was, bitterness, how clear the aroma is, what
    stays after swallowing, or the overall impression when the answers
-   disagree. Each question is rephrased from the previous answer and shows five
-   options at most: the corpus prunes a larger pool to what this kind of coffee
-   is usually described with, without sorting it, and the fifth option says
-   what it means ("acidity doesn't stand out; the cup feels round") instead of
-   a bare "not noticeable". A quiet line under the options is the exit for a
-   drinker who cannot answer.
-3. **Pick five of eight flavor words.** Concrete references rather than
-   adjectives: 葡萄柚, 茉莉花, 黑巧克力, 丝绒奶油. The drinker's picks carry more
-   weight than the reference.
+   disagree. Each question is rephrased from the previous answer and shows four
+   options — five for the first two questions: the corpus prunes a larger pool
+   to what this kind of coffee is usually described with, without sorting it;
+   one option says what "it does not stand out" means ("acidity doesn't stand
+   out; the cup feels round") instead of a bare "not noticeable"; "I can't
+   say" is a regular option; and no option refers back to an earlier question.
+3. **Keep three to five of eight flavor words.** Concrete references rather
+   than adjectives: 葡萄柚, 茉莉花, 黑巧克力, 柏木. Five is a suggestion, not a
+   condition. The drinker's picks carry more weight than the reference.
 4. **Take one more look when the answers disagree.** If the answers conflict
    with the reference and the picks side with the drinker, one extra screen
-   offers eight dimension words to confirm.
-5. **Keep the card.** Context, five confirmed words, the nearest reference
-   profile, and a fold that says where each sentence comes from. Export it as a
-   1200×1200 PNG, share it, or install the app.
+   offers eight words to tick; what is ticked appears on the card, and the
+   drinker's own picks are kept.
+5. **Keep the card.** Context, the confirmed words, evaluation rows, the
+   nearest reference profile, and a fold that says in plain words where each
+   sentence comes from. Export it as a stamp-shaped PNG, share it, or install
+   the app. Any earlier question can be reopened from the progress bar; the
+   other answers are kept and recomputed.
 
 The Chinese and English versions share one data backend: switching language
 re-derives the words, prompts and card without asking anything again.

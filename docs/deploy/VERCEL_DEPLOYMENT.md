@@ -43,9 +43,9 @@ Vercel 的 Domains 页面会显示它当前要求的记录，以页面显示为�
 
 ## 三、构建产物与 vercel.json 的对应关系
 
-- 构建脚本：`vite build --config apps/pwa/vite.config.ts`，输出到 `apps/pwa/dist`（`index.html`、`assets/`、`fonts/`、`icons/`、`sw.js`、`workbox-*.js`、`manifest.webmanifest`、`robots.txt`、`sitemap.xml`、`humans.txt`、`llms.txt`）。
+- 构建脚本：`vite build --config apps/pwa/vite.config.ts`，输出到 `apps/pwa/dist`（`index.html`、`assets/`、`fonts/`、`icons/`、`sw.js`、`workbox-*.js`、`manifest.webmanifest`、`robots.txt`、`sitemap.xml`、`humans.txt`、`llms.txt`、`zh.html`、`en.html`、`404.html`、`favicon.ico`、`og.png`）。
 - `vercel.json` 的 headers：`/sw.js` 不缓存（Service Worker 更新即时生效）；`/manifest.webmanifest` 的 Content-Type 为 `application/manifest+json`；`/fonts/*` 与 `/assets/*` 一年不可变缓存（文件名带哈希）。
-- `cleanUrls: true`：`/index.html` 会重定向到 `/`。应用只有一个页面，没有客户端路由，不需要 rewrites。
+- `cleanUrls: true`：`/index.html` 会重定向到 `/`，`zh.html` 与 `en.html` 以 `/zh`、`/en` 提供。应用只有一个页面，没有客户端路由，不需要 rewrites；`redirects` 里只有 `/about` → `/en`。
 
 ## 四、部署后的检查清单
 
@@ -53,6 +53,8 @@ Vercel 的 Domains 页面会显示它当前要求的记录，以页面显示为�
 2. `/manifest.webmanifest` 返回 JSON，响应头 `content-type: application/manifest+json`。
 3. `/sw.js` 响应头 `cache-control: no-cache, no-store, must-revalidate`。
 4. `/robots.txt`、`/sitemap.xml`、`/llms.txt`、`/humans.txt` 都能打开；`sitemap.xml` 与 `index.html` 里的 canonical 指向正式域名。
+   `/zh` 与 `/en` 是不需要 JavaScript 的分语言静态页（`<html lang>` 分别为 zh-CN 与 en，响应头带 `content-language`），`/about` 转到 `/en`，`/favicon.ico` 返回图标，不存在的地址返回品牌化的 404 页。
+   这一层每次改动并部署之后：在 Google Search Console 提交 `https://flavorwords.com/sitemap.xml`，对 `/`、`/zh`、`/en` 逐个「请求编入索引」（必须在部署之后——地址在线上还是 404 时请求会被拒绝）；Bing Webmaster Tools 可直接从 Search Console 导入已验证的站点；百度搜索资源平台需要 owner 自己的账号，验证码放进 `apps/pwa/index.html`。
 5. 手机浏览器「添加到主屏幕」可安装；断网后再打开仍能进入首页（Service Worker 预缓存）。
 6. 走一遍 `docs/product/Q6_TRIGGER_TEST_SET.md` 的第 6 条序列，确认 Q6 弹层与「更新风味卡」在线上构建里正常。
 

@@ -976,6 +976,42 @@
         "owner_follow_up": ""
       },
       "recorded_at_utc": "2026-09-20T09:40:00Z"
+    },
+    {
+      "id": "R3-D51",
+      "subject": "The machine-readable layer is rewritten: a reader that runs no JavaScript learns that flavorwords is a coffee-tasting app",
+      "decision": "Owner, with two screenshots: asked to analyse flavorwords.com, an assistant described it as an English-vocabulary learning site, and a search engine's summary guessed it was a parked or unused domain — rewrite the machine-readable layer, make sure robots, language models and browsers can all read it, and set up the surrounding configuration. Found: the title was 'flavorwords — Put this cup into words' with no mention of coffee; the body held an empty app root and a noscript block, which page fetchers commonly drop; there was no static page and no share image; and the facts were stale (six questions, keep five, a 1200 × 1200 export). Now: coffee is in the title and the description in both languages; the app root carries a real bilingual summary (what it is, how it is used, what it is built on, what it is not) that the app replaces when it starts — its first screen is only the wordmark and the tagline, so a person on a slow connection sees a splash, not a wall of text; a JSON-LD graph (WebSite, Person, WebApplication, FAQPage — one question answers 'is this a vocabulary-learning site?' with no); a static page /about that needs no JavaScript; llms.txt rewritten with the current facts and an explicit statement of what the site is and is not; robots.txt allowing every crawler and naming assistants and AI search crawlers; sitemap.xml with /, /about and /llms.txt; a 1200 × 630 share image drawn from the wordmark and the five simple shapes; the manifest's description, id and scope; the service worker's navigation fallback leaves /about and the text files alone; response headers for the text files, the sitemap and a Link header pointing at llms.txt. Checked locally: without JavaScript 2,101 characters of text are readable, with 13 mentions of coffee / 咖啡; with JavaScript the summary is gone once the app has started and nothing scrolls; with the service worker in control /about is still the static page and /llms.txt is served as it is; the JSON-LD parses.",
+      "owner_words": "我们需要重新写一下机器阅读层，并且确保robot和llm以及浏览器都能读取到，周边的配置也需要配好",
+      "applied": {
+        "code": "apps/pwa/index.html; apps/pwa/public/about.html, llms.txt, robots.txt, sitemap.xml, humans.txt, og.png; apps/pwa/scripts/build-og-image.mjs; apps/pwa/vite.config.ts (manifest, navigateFallbackDenylist, includeAssets); vercel.json (headers)",
+        "docs": "README (What it does brought up to date), FRONTEND_COPY_REVIEW.md",
+        "open": [
+          "the search engines have to crawl the site again before their summaries change: the owner submits https://flavorwords.com/sitemap.xml in Search Console (and Bing Webmaster Tools) and requests indexing of / and /about; an assistant that answered from the site's name alone may keep doing so until it fetches the page",
+          "the facts in index.html, about.html and llms.txt are written by hand and have to be kept in step with the README when the product changes",
+          "not committed or pushed yet: the owner decides"
+        ],
+        "owner_follow_up": "",
+        "superseded_in_part_by": "R3-D52: the bilingual static page /about is replaced by one page per language, /zh and /en (/about leads to /en); the sitemap and the addresses to request indexing for change accordingly"
+      },
+      "recorded_at_utc": "2026-09-21T03:00:00Z"
+    },
+    {
+      "id": "R3-D52",
+      "subject": "SEO and SMO round: one address per language, the brand on every surface a browser or a share card reads, light adaptation for Bing, Safari and Baidu",
+      "decision": "Owner, with a Search Console screenshot ('Indexing request rejected — during live testing, indexing issues were detected with the URL' for /about): this may be a hidden danger; this round also needs SEO and SMO, the site's branding completed, both languages detectable by browsers, and a little adaptation for Bing, Safari and Baidu. Found: the rejection is not a defect of the page — R3-D51 had not been deployed, so production answered /about with 404 (also /favicon.ico); the request has to be repeated after deployment. Found as well: one address carried both languages, so a search engine could not tell a Chinese page from an English one (the three hreflang lines all pointed to /), and the browser's own surfaces (tab and history title, share sheet, bookmark) stayed bilingual whatever the reader's language. Now: /zh (lang zh-CN) and /en (lang en) are static one-language pages written by one script, with the brand on them (wordmark, the five simple shapes, the app's typefaces), reciprocal hreflang with x-default = / on all three pages and in the sitemap, Content-Language response headers, and an 'Open flavorwords' button that opens the app in that language through /?lang=; the app takes ?lang= as a manual language choice, remembers it and takes the parameter off the address so / stays the one canonical address; the app sets the title and the description in the reader's language when it starts or the language is switched; /about (given out once) leads to /en. Brand and sharing: favicon.ico (16/32/48, the square cropped to the wordmark), a Safari pinned-tab mask icon and wordmark.svg drawn from icon.svg; itemprop name/description/image for QQ, Qzone and WeChat cards next to Open Graph and Twitter; a Brand node (logo, slogan, sameAs the repository) and the two language pages in the JSON-LD; a branded 404 page. Engines: Baidu/360/Sogou metas (applicable-device, no-transform, no-siteapp, renderer), a short keywords line, more crawlers named in robots.txt; Apple web-app metas. The MiSans subset now includes the characters of the static pages (46 were missing, so the Chinese page would have mixed two typefaces). A contract test guards what breaks silently: the hreflang cluster, canonicals, page languages, the structured data, the sitemap, and that the figures are the bundle's.",
+      "owner_words": "这可能是隐患。然后这一轮还需要做seo和smo，需要完善网站的branding，并且确保中英文都能被浏览器检测到，bing和safari和百度这类也需要稍微适配",
+      "applied": {
+        "code": "apps/pwa/scripts/build-static-pages.mjs (→ public/zh.html, en.html, 404.html, icons/wordmark.svg, icons/mask-icon.svg); apps/pwa/scripts/rasterize-icons.mjs (→ public/favicon.ico); apps/pwa/scripts/subset-fonts.py (public/*.html are text sources; MiSans re-subset); apps/pwa/index.html; apps/pwa/src/store.ts (requestedLocale, HEAD); apps/pwa/public/sitemap.xml, robots.txt, llms.txt, humans.txt; apps/pwa/vite.config.ts; vercel.json (redirect /about → /en, Content-Language, Link with hreflang); public/about.html removed",
+        "tests": "tests/machine-readable-layer.test.ts",
+        "docs": "FRONTEND_COPY_REVIEW.md (titles, descriptions, keywords line and the two pages are copy for the owner's review), FLAVOR_VECTOR_DESIGN_V1.md, VERCEL_DEPLOYMENT.md",
+        "verified": "local preview: /, /zh, /en answer without JavaScript with their own lang, canonical and the same hreflang cluster; JSON-LD parses; sitemap well-formed; in a browser with the service worker on, /zh and /en render at 375 px without horizontal scroll, /?lang=en and /?lang=zh-CN switch language, title, description and the saved choice and leave / in the address bar",
+        "open": [
+          "after deployment the owner submits https://flavorwords.com/sitemap.xml and requests indexing of /, /zh and /en in Search Console; Bing Webmaster Tools can import the verified site from Search Console; Baidu's webmaster platform needs the owner's own account and gives a verification code that would go into index.html — no verification code is in the pages yet",
+          "a device that installed the app before this deployment keeps the old service worker until the app applies the update; until then it answers /zh and /en with the app itself, which is harmless (crawlers have no service worker)",
+          "the app renders in the device language, so a crawler that runs JavaScript sees / in English; Chinese readers are served by /zh through hreflang and by the static summary for engines that do not run JavaScript (Baidu)",
+          "Vercel is slow or unreachable from parts of mainland China and the site has no ICP filing; Baidu may index it slowly or not at all whatever the markup says"
+        ]
+      }
     }
   ],
   "guards": {

@@ -116,8 +116,14 @@
 
 | 位置 | 中文 | English |
 |---|---|---|
-| 页面标题 / 描述 | flavorwords — Put this cup into words ｜ Every taste has its own vocabulary. 从酸质、香气与口感开始…… | same; JSON-LD WebApplication, noscript summary, llms.txt, robots, sitemap, humans |
-| manifest | flavorwords — Put this cup into words ｜ Every taste has its own vocabulary. A few questions turn what you taste into a flavor card. Works offline. | same |
+| 首页标题 / 描述（不运行 JavaScript 的读者看到的；双语同在一行） | flavorwords — 咖啡风味描述工具 · Put this cup of coffee into words ｜ flavorwords 是一款免费的咖啡品鉴网页应用：回答几个关于这一杯咖啡的简单问题，选出贴近感受的风味词，得到一张自己的风味卡。 | same title; the description continues in English: flavorwords is a free coffee-tasting web app: answer a few plain questions about the cup of coffee you are drinking, keep the flavor words that fit, and get a flavor card in your own words. Built on 9,128 professionally reviewed coffees. Works offline, in Chinese and English. |
+| 应用启动后的标题 / 描述（随语言切换；与 /zh、/en 相同） | flavorwords — 咖啡风味描述工具：把这一杯咖啡说出来 ｜ flavorwords 是一款免费的咖啡品鉴网页应用：……基于 9,128 条专业评审的咖啡记录，可离线使用，中英双语。 | flavorwords — Put this cup of coffee into words ｜ flavorwords is a free coffee-tasting web app: … Built on 9,128 professionally reviewed coffees. Works offline, in English and Chinese. |
+| 分语言静态页 /zh、/en（build-static-pages.mjs；标题、导语、五步用法、数据来源、作者） | 标题：flavorwords — 咖啡风味描述工具：把这一杯咖啡说出来 ｜ H1：把这一杯咖啡说出来 ｜ 导语：风味，自有表达。flavorwords 是一款免费的咖啡品鉴网页应用。｜ 按钮：打开 flavorwords → ｜ 小节：怎么用 / 数据从哪来 / 谁做的 | title: flavorwords — a coffee-tasting app: put this cup into words ｜ H1: Put this cup of coffee into words ｜ lede: Every taste has its own vocabulary. flavorwords is a free coffee-tasting web app. ｜ button: Open flavorwords → ｜ sections: How it works / Where the data comes from / Who made it |
+| 关键词一行（给百度、360、搜狗；Google 不读） | 咖啡风味, 咖啡品鉴, 咖啡风味描述, 风味词, 风味卡 | coffee tasting, coffee flavor, tasting notes, flavor words, flavorwords |
+| 分享卡（Open Graph / Twitter / itemprop） | flavorwords — 咖啡风味描述工具 · Put this cup of coffee into words ｜ 一款免费的咖啡品鉴网页应用：回答几个简单问题，把这一杯咖啡的风味整理成一张风味卡。｜ 图：og.png（字标、两句标语、五个图形） | flavorwords — Put this cup of coffee into words ｜ A free coffee-tasting web app: a few plain questions, the flavor words that fit, and a flavor card in your own words. |
+| 404 页 | 没有这个页面 ｜ flavorwords 是一款免费的咖啡品鉴网页应用。｜ 打开应用 ｜ 中文介绍 | Page not found ｜ flavorwords is a free coffee-tasting web app. ｜ Open flavorwords ｜ About, in English |
+| 其余 | JSON-LD（WebSite、Brand、Person、WebApplication、FAQPage；两页各一个 AboutPage）、#app 里的静态说明、llms.txt、robots.txt、sitemap.xml、humans.txt | same |
+| manifest | flavorwords — Put this cup into words ｜ A free coffee-tasting app: a few plain questions about the cup you are drinking, the flavor words that fit, and a flavor card in your own words. Works offline, in Chinese and English. | same |
 
 #### About 抽屉 AboutDrawer（五页）
 
