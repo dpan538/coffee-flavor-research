@@ -1,3 +1,36 @@
+# flavorwords.com — a free coffee-tasting web app (not a language-learning site).
+# Everything here is public and may be crawled, indexed, quoted and used to answer questions about the site.
+# Plain-text summary for language models: https://flavorwords.com/llms.txt
+# Readable pages without JavaScript:       https://flavorwords.com/zh (中文) · https://flavorwords.com/en (English)
+
 User-agent: *
 Allow: /
+
+# Named so that an explicit allow is on record for assistants and AI search crawlers.
+User-agent: Googlebot
+User-agent: Google-Extended
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: Bytespider
+User-agent: Baiduspider
+User-agent: Baiduspider-render
+User-agent: 360Spider
+User-agent: Sogou web spider
+User-agent: YisouSpider
+User-agent: YandexBot
+User-agent: DuckDuckBot
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://flavorwords.com/sitemap.xml

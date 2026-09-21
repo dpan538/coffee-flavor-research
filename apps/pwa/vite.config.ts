@@ -54,13 +54,22 @@ export default defineConfig({
         "sitemap.xml",
         "llms.txt",
         "humans.txt",
+        "zh.html",
+        "en.html",
+        "404.html",
+        "favicon.ico",
+        "icons/wordmark.svg",
+        "icons/mask-icon.svg",
+        "og.png",
       ],
       manifest: {
         name: "flavorwords — Put this cup into words",
         short_name: "flavorwords",
         description:
-          "Six guided questions, a choice of flavor words, and a personal flavor card. Works offline, in Chinese and English.",
+          "A free coffee-tasting app: a few plain questions about the cup you are drinking, the flavor words that fit, and a flavor card in your own words. Works offline, in Chinese and English.",
         lang: "zh-CN",
+        id: "/",
+        scope: "/",
         start_url: "/",
         display: "standalone",
         background_color: "#ffffff",
@@ -94,6 +103,15 @@ export default defineConfig({
         ],
       },
       workbox: {
+        // the app shell answers navigations, except the pages and files of the machine-readable layer: /zh and /en
+        // are static pages of their own (/about leads to /en), and the text files must reach a reader as they are
+        navigateFallbackDenylist: [
+          /^\/(zh|en|about|404)(\.html)?$/,
+          /^\/llms\.txt$/,
+          /^\/robots\.txt$/,
+          /^\/humans\.txt$/,
+          /^\/sitemap\.xml$/,
+        ],
         globPatterns: ["**/*.{js,css,html,json,svg,png,woff2}"],
         globIgnores: ["version.json"],
         cleanupOutdatedCaches: true,

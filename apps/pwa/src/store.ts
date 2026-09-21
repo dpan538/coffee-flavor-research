@@ -77,9 +77,37 @@ export const COLORS: Record<string, string> = {
 export const COLLECT_MS = 240;
 
 // the language follows the device on first open — Chinese devices get 中文, everyone else English — and a manual
-// switch is remembered on this device (owner, 2026-09-17: English users must not land on a Chinese screen)
+// switch is remembered on this device (owner, 2026-09-17: English users must not land on a Chinese screen).
+// /?lang=en and /?lang=zh-CN are how the one-language pages /en and /zh open the app (owner, 2026-09-21): the reader
+// chose a language there, so it counts as a manual switch; the parameter is then taken off the address, which stays
+// the one canonical "/".
 const LOCALE_KEY = "flavorwords.locale";
+function requestedLocale(): Locale | null {
+  if (typeof location === "undefined") return null;
+  const asked = new URLSearchParams(location.search).get("lang");
+  if (!asked) return null;
+  const chosen: Locale | null = /^zh/i.test(asked)
+    ? "zh-CN"
+    : /^en/i.test(asked)
+      ? "en"
+      : null;
+  try {
+    if (chosen) localStorage.setItem(LOCALE_KEY, chosen);
+    const url = new URL(location.href);
+    url.searchParams.delete("lang");
+    history.replaceState(
+      history.state,
+      "",
+      url.pathname + url.search + url.hash,
+    );
+  } catch {
+    /* storage or history unavailable: the language still applies to this visit */
+  }
+  return chosen;
+}
 function initialLocale(): Locale {
+  const asked = requestedLocale();
+  if (asked) return asked;
   try {
     const saved = localStorage.getItem(LOCALE_KEY);
     if (saved === "zh-CN" || saved === "en") return saved;
@@ -93,10 +121,30 @@ function initialLocale(): Locale {
   return /^zh/i.test(primary) ? "zh-CN" : "en";
 }
 export const locale = ref<Locale>(initialLocale());
+// What the browser itself reads follows the language too — the tab and history title, the share sheet, a bookmark,
+// the translate prompt (from <html lang>): index.html ships both languages in one title for readers that run no
+// JavaScript; a person gets their own. The same wording as /zh and /en (apps/pwa/scripts/build-static-pages.mjs).
+const HEAD: Record<Locale, { title: string; description: string }> = {
+  "zh-CN": {
+    title: "flavorwords — 咖啡风味描述工具：把这一杯咖啡说出来",
+    description:
+      "flavorwords 是一款免费的咖啡品鉴网页应用：回答几个关于这一杯咖啡的简单问题，选出贴近感受的风味词，得到一张自己的风味卡。基于 9,128 条专业评审的咖啡记录，可离线使用，中英双语。",
+  },
+  en: {
+    title: "flavorwords — Put this cup of coffee into words",
+    description:
+      "flavorwords is a free coffee-tasting web app: answer a few plain questions about the cup of coffee you are drinking, keep the flavor words that fit, and get a flavor card in your own words. Built on 9,128 professionally reviewed coffees. Works offline, in English and Chinese.",
+  },
+};
 watch(
   locale,
   (l) => {
-    if (typeof document !== "undefined") document.documentElement.lang = l;
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = l;
+    document.title = HEAD[l].title;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", HEAD[l].description);
   },
   { immediate: true },
 );

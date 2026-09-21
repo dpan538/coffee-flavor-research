@@ -7,146 +7,422 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <meta name="theme-color" content="#ffffff" />
-    <title>flavorwords — Put this cup into words</title>
+    <!-- The machine-readable layer (owner, 2026-09-21): a reader that runs no JavaScript — a search crawler, an LLM's
+         page fetcher, a link preview — has to learn from this file alone that flavorwords is a COFFEE tasting app.
+         With "Put this cup into words" as the whole title and an empty body, an assistant described the site as an
+         English vocabulary trainer. So: coffee is in the title and the description in both languages, the body
+         carries a real summary (replaced by the app when it starts), and /zh, /en, /llms.txt, the JSON-LD below,
+         robots.txt and sitemap.xml say the same thing. Facts here follow the README and the data bundle.
+         The app switches this title and description to the reader's language when it starts (src/store.ts). -->
+    <title>
+      flavorwords — 咖啡风味描述工具 · Put this cup of coffee into words
+    </title>
     <meta
       name="description"
-      content="Put this cup into words. 用几个简单问题，把这一杯的感受整理成一张风味卡。A bilingual coffee-tasting app that helps drinkers describe what they taste through six guided questions, a choice of flavor words, and a personal flavor card. Works offline, in Chinese and English."
+      content="flavorwords 是一款免费的咖啡品鉴网页应用：回答几个关于这一杯咖啡的简单问题，选出贴近感受的风味词，得到一张自己的风味卡。flavorwords is a free coffee-tasting web app: answer a few plain questions about the cup of coffee you are drinking, keep the flavor words that fit, and get a flavor card in your own words. Built on 9,128 professionally reviewed coffees. Works offline, in Chinese and English."
+    />
+    <meta
+      name="keywords"
+      content="咖啡风味, 咖啡品鉴, 咖啡风味描述, 风味词, 风味卡, coffee tasting, coffee flavor, tasting notes, flavor words, flavorwords"
     />
     <meta name="author" content="Dai Pan (潘岱)" />
     <meta name="application-name" content="flavorwords" />
-    <meta name="robots" content="index, follow" />
+    <meta name="apple-mobile-web-app-title" content="flavorwords" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- both languages live at this address; /zh and /en are the one-language pages (Bing reads this, not hreflang) -->
+    <meta http-equiv="content-language" content="zh-CN, en" />
+    <!-- Baidu, 360, Sogou: one responsive page for phone and desktop, do not transcode it, render with the modern engine -->
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large"
+    />
     <link rel="canonical" href="https://flavorwords.com/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="mask-icon" href="/icons/mask-icon.svg" color="#7268C9" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="/icons/apple-touch-icon.png"
     />
-    <link rel="alternate" hreflang="zh-CN" href="https://flavorwords.com/" />
-    <link rel="alternate" hreflang="en" href="https://flavorwords.com/" />
+    <!-- one language, one address, for the readers that cannot tell two languages apart on one page: /zh is Chinese,
+         /en is English, and this address — the app, which follows the device language and switches in place — is
+         where everyone else goes (x-default). /zh and /en carry the same three lines. -->
+    <link rel="alternate" hreflang="zh-CN" href="https://flavorwords.com/zh" />
+    <link rel="alternate" hreflang="en" href="https://flavorwords.com/en" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://flavorwords.com/"
+    />
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="/llms.txt"
+      title="flavorwords — plain-text summary for language models"
+    />
+    <link rel="author" href="/humans.txt" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="flavorwords" />
-    <meta property="og:title" content="flavorwords — Put this cup into words" />
+    <meta
+      property="og:title"
+      content="flavorwords — Put this cup of coffee into words · 咖啡风味描述工具"
+    />
     <meta
       property="og:description"
-      content="A bilingual coffee-tasting app that helps drinkers describe what they taste through six guided questions, a choice of flavor words, and a personal flavor card."
+      content="A free coffee-tasting web app: a few plain questions about the cup you are drinking, the flavor words that fit, and a flavor card in your own words. 回答几个简单问题，把这一杯咖啡的风味整理成一张风味卡。"
     />
     <meta property="og:url" content="https://flavorwords.com/" />
+    <meta property="og:image" content="https://flavorwords.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="flavorwords — Put this cup of coffee into words. 风味，自有表达。"
+    />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:locale:alternate" content="en_US" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="flavorwords — Put this cup into words"
+      content="flavorwords — Put this cup of coffee into words"
     />
     <meta
       name="twitter:description"
-      content="Six guided questions, a choice of flavor words, and a personal flavor card. Works offline, in Chinese and English."
+      content="A free coffee-tasting web app: a few plain questions, the flavor words that fit, and a flavor card in your own words. Works offline, in Chinese and English."
     />
+    <meta name="twitter:image" content="https://flavorwords.com/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="flavorwords — Put this cup of coffee into words. 风味，自有表达。"
+    />
+    <!-- QQ, Qzone and some WeChat versions build their share card from these three -->
+    <meta
+      itemprop="name"
+      content="flavorwords — 咖啡风味描述工具 · Put this cup of coffee into words"
+    />
+    <meta
+      itemprop="description"
+      content="一款免费的咖啡品鉴网页应用：回答几个简单问题，把这一杯咖啡的风味整理成一张风味卡。A free coffee-tasting web app."
+    />
+    <meta itemprop="image" content="https://flavorwords.com/og.png" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "flavorwords",
-        "alternateName": "风味词",
-        "url": "https://flavorwords.com/",
-        "applicationCategory": "LifestyleApplication",
-        "operatingSystem": "Any (progressive web app)",
-        "inLanguage": ["zh-CN", "en"],
-        "isAccessibleForFree": true,
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "slogan": "Every taste has its own vocabulary.",
-        "description": "A bilingual coffee-tasting app that helps drinkers describe what they taste through six guided questions, a choice of flavor words, and a personal flavor card. Built on 9,128 coffee records and 83,031 flavor descriptions from eight professional review sources, normalised to 94 sensory concepts on 12 flavor dimensions and 16 reference profiles. Runtime is deterministic vector matching with no generative model. Runs offline; nothing leaves the phone.",
-        "datePublished": "2026-09-13",
-        "dateModified": "2026-09-13",
-        "featureList": [
-          "Six guided questions rephrased from the previous answer",
-          "Eight concrete flavor words, keep five",
-          "Flavor card with evidence-labelled notes",
-          "1200×1200 PNG export",
-          "Offline, installable on iOS, Android and HarmonyOS",
-          "Chinese and English on one data backend"
-        ],
-        "isBasedOn": {
-          "@type": "SoftwareSourceCode",
-          "name": "coffee-flavor-research",
-          "codeRepository": "https://github.com/dpan538/coffee-flavor-research",
-          "programmingLanguage": ["TypeScript", "Python", "SQL"],
-          "license": "https://opensource.org/licenses/MIT",
-          "author": {
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://flavorwords.com/#website",
+            "url": "https://flavorwords.com/",
+            "name": "flavorwords",
+            "alternateName": ["风味词", "FlavorWords"],
+            "description": "A free coffee-tasting web app that helps a drinker describe the cup of coffee in front of them.",
+            "inLanguage": ["zh-CN", "en"],
+            "image": "https://flavorwords.com/og.png",
+            "publisher": { "@id": "https://flavorwords.com/#author" },
+            "hasPart": [
+              {
+                "@type": "AboutPage",
+                "@id": "https://flavorwords.com/zh",
+                "inLanguage": "zh-CN"
+              },
+              {
+                "@type": "AboutPage",
+                "@id": "https://flavorwords.com/en",
+                "inLanguage": "en"
+              }
+            ]
+          },
+          {
+            "@type": "Brand",
+            "@id": "https://flavorwords.com/#brand",
+            "name": "flavorwords",
+            "alternateName": "风味词",
+            "url": "https://flavorwords.com/",
+            "logo": "https://flavorwords.com/icons/icon-512.png",
+            "slogan": "Every taste has its own vocabulary. 风味，自有表达。",
+            "sameAs": ["https://github.com/dpan538/coffee-flavor-research"]
+          },
+          {
             "@type": "Person",
+            "@id": "https://flavorwords.com/#author",
             "name": "Dai Pan",
-            "alternateName": "潘岱"
-          }
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Dai Pan",
-          "alternateName": "潘岱"
-        },
-        "creator": {
-          "@type": "Person",
-          "name": "Dai Pan",
-          "alternateName": "潘岱"
-        },
-        "about": [
-          { "@type": "Thing", "name": "Coffee flavor vocabulary" },
-          { "@type": "Thing", "name": "Coffee tasting notes" }
-        ],
-        "citation": [
-          {
-            "@type": "CreativeWork",
-            "name": "World Coffee Research — Sensory Lexicon",
-            "url": "https://worldcoffeeresearch.org/resources/sensory-lexicon"
+            "alternateName": "潘岱",
+            "url": "https://github.com/dpan538"
           },
           {
-            "@type": "Book",
-            "name": "The Physics of Filter Coffee",
-            "author": { "@type": "Person", "name": "Jonathan Gagné" },
-            "isbn": "978-0-578-95028-0",
-            "url": "https://coffeeadastra.com/"
+            "@type": "WebApplication",
+            "@id": "https://flavorwords.com/#app",
+            "name": "flavorwords",
+            "alternateName": "风味词",
+            "url": "https://flavorwords.com/",
+            "image": "https://flavorwords.com/og.png",
+            "brand": { "@id": "https://flavorwords.com/#brand" },
+            "sameAs": ["https://github.com/dpan538/coffee-flavor-research"],
+            "applicationCategory": "LifestyleApplication",
+            "applicationSubCategory": "Coffee tasting",
+            "operatingSystem": "Any (progressive web app: iOS, Android, HarmonyOS, desktop browsers)",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": ["zh-CN", "en"],
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "slogan": "Every taste has its own vocabulary.",
+            "description": "flavorwords is a coffee-tasting app, not a language-learning site. A drinker says how the cup of coffee was made, answers up to six plain questions about what they taste (acidity and fruit, aroma, sweetness, mouthfeel, then two follow-ups chosen for this cup), keeps three to five of eight concrete flavor words, and gets a flavor card with the nearest of 16 reference profiles. Built on 9,128 coffee records and 83,031 flavor descriptions from eight professional review sources, normalised to 94 sensory concepts on 12 flavor dimensions. Runtime is deterministic vector matching with no generative model. Runs offline; nothing leaves the device.",
+            "datePublished": "2026-09-13",
+            "dateModified": "2026-09-21",
+            "featureList": [
+              "Context of the cup: brewing method, roast, variety, process, origin",
+              "Up to six guided questions; options differ by kind of coffee and never refer back to an earlier question",
+              "Eight concrete flavor words such as grapefruit, jasmine, dark chocolate; keep three to five",
+              "One confirmation step when the answers disagree with the reference",
+              "Flavor card with the nearest of 16 reference profiles and plain notes on where each sentence comes from",
+              "PNG export of the card",
+              "Go back to any question; the other answers are kept and recomputed",
+              "Offline, installable on iOS, Android and HarmonyOS",
+              "Chinese and English on one data backend"
+            ],
+            "isBasedOn": {
+              "@type": "SoftwareSourceCode",
+              "name": "coffee-flavor-research",
+              "codeRepository": "https://github.com/dpan538/coffee-flavor-research",
+              "programmingLanguage": ["TypeScript", "Python", "SQL"],
+              "license": "https://opensource.org/licenses/MIT",
+              "author": { "@id": "https://flavorwords.com/#author" }
+            },
+            "author": { "@id": "https://flavorwords.com/#author" },
+            "creator": { "@id": "https://flavorwords.com/#author" },
+            "about": [
+              { "@type": "Thing", "name": "Coffee" },
+              { "@type": "Thing", "name": "Coffee tasting" },
+              { "@type": "Thing", "name": "Coffee flavor vocabulary" },
+              { "@type": "Thing", "name": "Coffee tasting notes" }
+            ],
+            "citation": [
+              {
+                "@type": "CreativeWork",
+                "name": "World Coffee Research — Sensory Lexicon",
+                "url": "https://worldcoffeeresearch.org/resources/sensory-lexicon"
+              },
+              {
+                "@type": "Book",
+                "name": "The Physics of Filter Coffee",
+                "author": { "@type": "Person", "name": "Jonathan Gagné" },
+                "isbn": "978-0-578-95028-0",
+                "url": "https://coffeeadastra.com/"
+              },
+              {
+                "@type": "Dataset",
+                "name": "Great American Coffee Taste Test — aggregate consumer word frequencies"
+              }
+            ]
           },
           {
-            "@type": "Dataset",
-            "name": "Great American Coffee Taste Test — aggregate consumer word frequencies"
+            "@type": "FAQPage",
+            "@id": "https://flavorwords.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is flavorwords?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A free coffee-tasting web app. You say how your cup of coffee was made, answer a few plain questions about what you taste, keep the flavor words that fit, and get a flavor card in your own words. It works offline and in Chinese and English."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is flavorwords a site for learning English vocabulary?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The words in flavorwords are coffee flavor words — grapefruit, jasmine, dark chocolate, cedar. It is a tool for describing the taste of a cup of coffee, not a language-learning or word-memorising tool."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "flavorwords 是做什么的？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "flavorwords 是一款免费的咖啡品鉴网页应用：说明这一杯咖啡是怎么做的，回答几个关于酸、香气、甜和口感的简单问题，选出贴近感受的风味词，得到一张自己的风味卡。它不是背单词或学英语的网站。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where do the flavor words come from?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "From 9,128 coffee records and 83,031 flavor descriptions written by professional reviewers and juries in eight sources, including CoffeeReview and Cup of Excellence. They are normalised to 94 sensory concepts on 12 flavor dimensions and 16 reference profiles. No source text is stored and no commercial coffee is named."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does flavorwords use a generative AI model or collect my data?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. It runs deterministic vector matching over measured tables inside your browser. There is no account and no server-side state; nothing you answer leaves your device."
+                }
+              }
+            ]
           }
         ]
       }
     </script>
+    <style>
+      /* the summary below is what a reader without JavaScript gets; the app replaces it when it starts. Its first
+         screen is only the wordmark and the tagline — the same thing the app's home page opens with — so a person on a
+         slow connection sees a splash, not a wall of text; the summary itself sits below the first screen. */
+      .static-summary {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 0 1.25rem 4rem;
+        font-family:
+          system-ui,
+          -apple-system,
+          "PingFang SC",
+          "Microsoft YaHei",
+          sans-serif;
+        line-height: 1.65;
+        color: #1e1c1a;
+      }
+      .static-summary header {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .static-summary h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+        margin: 0 0 0.75rem;
+      }
+      .static-summary h2 {
+        font-size: 1.2rem;
+        margin: 2rem 0 0.5rem;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <main class="static-summary">
+        <header>
+          <h1>flavorwords</h1>
+          <p>
+            <strong lang="en">Put this cup of coffee into words.</strong>
+            风味，自有表达。
+          </p>
+          <p>
+            一款免费的咖啡品鉴网页应用 ·
+            <span lang="en">a free coffee-tasting web app</span>
+          </p>
+        </header>
+
+        <section>
+          <h2>flavorwords 是什么</h2>
+          <p>
+            flavorwords
+            是一款免费的<strong>咖啡品鉴</strong>网页应用。喝得出两杯咖啡不一样，却说不出哪里不一样——像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords
+            用几个简单问题，帮你找到贴近感受的风味词，组成这一杯咖啡的风味卡。它不是学英语或背单词的网站：这里的“词”是葡萄柚、茉莉花、黑巧克力、雪松这样的咖啡风味词。
+          </p>
+          <ol>
+            <li>
+              说明这一杯是怎么做的：冲煮方式、烘焙度、豆种、处理法，以及已知的产地。
+            </li>
+            <li>
+              回答至多六个简单问题：酸与水果、香气、甜、口感，再按你的回答追问两题。每题四个选项，“说不上来”始终可选。
+            </li>
+            <li>从八个具体的风味词里选出三到五个最贴近的。</li>
+            <li>
+              得到一张风味卡：你确认的词、最接近的参考风味、每句话的来源；可以导出为图片。
+            </li>
+          </ol>
+          <p>
+            中文与英文共用同一套数据；可离线使用，可添加到
+            iOS、Android、HarmonyOS
+            的主屏幕；没有账号，回答不会离开你的设备；运行时不使用生成式模型。
+          </p>
+          <p>
+            更多：<a href="/zh" hreflang="zh-CN">flavorwords 中文介绍</a> ·
+            <a href="/llms.txt">纯文本摘要</a> ·
+            <a href="https://github.com/dpan538/coffee-flavor-research"
+              >GitHub 上的源码、数据说明与方法</a
+            >
+          </p>
+        </section>
+
+        <section lang="en">
+          <h2>What flavorwords is</h2>
+          <p>
+            flavorwords is a free <strong>coffee-tasting</strong> web app. Most
+            people can tell that two coffees taste different but not say how.
+            flavorwords asks a few plain questions about the cup in front of you
+            and helps you find flavor words that fit — grapefruit, jasmine, dark
+            chocolate, cedar — then puts them on a flavor card. It is not a
+            language-learning or vocabulary-memorising site: the “words” are
+            coffee flavor words.
+          </p>
+          <ol>
+            <li>
+              Say how the cup was made: brewing method, roast, variety, process
+              and, if known, origin.
+            </li>
+            <li>
+              Answer up to six plain questions: acidity and fruit, aroma,
+              sweetness, mouthfeel, then two follow-ups chosen by your answers.
+              Four options each; “I can’t say” is always an answer.
+            </li>
+            <li>Keep three to five of eight concrete flavor words.</li>
+            <li>
+              Get a flavor card: the words you confirmed, the nearest reference
+              profile, and where each sentence comes from. Export it as an
+              image.
+            </li>
+          </ol>
+          <h2>What it is built on</h2>
+          <p>
+            9,128 coffee records and 83,031 flavor descriptions from eight
+            professional review sources (among them CoffeeReview and Cup of
+            Excellence juries), normalised to 94 sensory concepts on 12 flavor
+            dimensions, 16 reference profiles and 101 flavor words in Chinese
+            and English. At run time the app does deterministic vector matching
+            in the browser: no generative model, no account, nothing leaves the
+            device. It works offline and installs to the home screen on iOS,
+            Android and HarmonyOS.
+          </p>
+          <p>
+            Research, design and development: Dai Pan (潘岱), 2026. More:
+            <a href="/en" hreflang="en">about flavorwords</a> ·
+            <a href="/llms.txt">plain-text summary</a> ·
+            <a href="https://github.com/dpan538/coffee-flavor-research"
+              >source, data guide and method on GitHub</a
+            >.
+          </p>
+        </section>
+      </main>
+    </div>
     <noscript>
-      <main
+      <p
         style="
-          max-width: 40rem;
-          margin: 2rem auto;
+          max-width: 42rem;
+          margin: 0 auto 3rem;
           padding: 0 1.25rem;
           font-family: system-ui, sans-serif;
-          line-height: 1.6;
         "
       >
-        <h1>flavorwords</h1>
-        <p>
-          <strong>Every taste has its own vocabulary.</strong> 风味，自有表达。
-        </p>
-        <p>
-          像柑橘，像可可，或是某种熟悉却一时叫不出名字的味道。flavorwords
-          帮你找到贴近感受的词，组成这一杯的风味卡。
-        </p>
-        <p>
-          A bilingual coffee-tasting app that helps drinkers describe what they
-          taste through six guided questions, a choice of flavor words, and a
-          personal flavor card. Works offline and installs to the home screen on
-          iOS, Android and HarmonyOS.
-        </p>
-        <p>
-          The app needs JavaScript. A machine-readable summary of what it does,
-          how it works and which sources it uses is at
-          <a href="/llms.txt">/llms.txt</a>. Research, design and development:
-          Dai Pan (潘岱).
-        </p>
-      </main>
+        这个应用需要 JavaScript 才能运行；上面的说明与
+        <a href="/zh">中文介绍</a> 不需要。 The app itself needs JavaScript; the
+        summary above and <a href="/en">the English page</a> do not.
+      </p>
     </noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>

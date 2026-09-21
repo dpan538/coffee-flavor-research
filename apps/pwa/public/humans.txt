@@ -1,6 +1,7 @@
 /* TEAM */
 Research, design and development: Dai Pan (潘岱), June–September 2026
-Site: https://flavorwords.com
+Site: https://flavorwords.com — a free coffee-tasting web app
+About (readable without JavaScript): https://flavorwords.com/en · https://flavorwords.com/zh
 Source: https://github.com/dpan538/coffee-flavor-research
 
 /* THANKS */
@@ -8,5 +9,6 @@ World Coffee Research (Sensory Lexicon), Coffee Ad Astra (Jonathan Gagné), Grea
 Fonts: MiSans (Xiaomi), Fraunces (Undercase Type, OFL), Stack Sans Text (OFL)
 
 /* SITE */
+Last update: 2026-09-21
 Standards: HTML5, CSS3, ES2022, Web App Manifest, Service Worker
 Components: Vue 3, Tailwind CSS 3, GSAP, Dexie
